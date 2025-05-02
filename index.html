@@ -15,7 +15,8 @@
             --link-hover-color: #0056b3;
             --base-font-size: 17px;
             --line-height: 1.7;
-            --item-gap: 0.8rem; /* Gap between chapter links */
+            --item-gap: 0.8rem; /* Gap between links */
+            --section-gap: 2.5rem; /* Gap between static links and chapter list */
         }
 
         body {
@@ -49,40 +50,56 @@
             margin: 0 auto;
         }
 
+        .static-links-section {
+            margin-bottom: var(--section-gap);
+            padding-bottom: calc(var(--section-gap) / 2); /* Add some padding below */
+            border-bottom: 1px solid #eee; /* Separator line */
+        }
+
+        /* Common list styles */
+        .static-links-list,
         .chapter-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex; /* Use Flexbox */
-            flex-wrap: wrap; /* Allow items to wrap */
-            gap: var(--item-gap); /* Spacing between items */
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--item-gap);
         }
 
+         /* Common list item styles */
+        .static-links-list li,
         .chapter-list li {
-            /* Calculate width for 5 columns, subtracting the gap */
+            /* Default: 5 columns */
             flex: 0 0 calc(20% - var(--item-gap) * 4 / 5);
             text-align: center;
-            box-sizing: border-box; /* Include padding/border in width */
+            box-sizing: border-box;
         }
 
+         /* Common link styles */
+        .static-links-list a,
         .chapter-list a {
             text-decoration: none;
             color: var(--link-color);
             font-size: 0.9em;
             transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            display: block; /* Make link fill the li */
+            display: block;
             padding: 0.2rem 0.3rem;
             border-radius: 3px;
         }
 
+        .static-links-list a:hover,
+        .static-links-list a:focus,
         .chapter-list a:hover,
         .chapter-list a:focus {
             color: var(--link-hover-color);
             background-color: #f0f0f0;
         }
 
+
         /* Responsive adjustments */
         @media (max-width: 1200px) {
+            .static-links-list li,
             .chapter-list li {
                 /* 4 columns */
                 flex-basis: calc(25% - var(--item-gap) * 3 / 4);
@@ -91,7 +108,8 @@
 
         @media (max-width: 992px) {
              body { padding: 2rem; }
-            .chapter-list li {
+             .static-links-list li,
+             .chapter-list li {
                  /* 3 columns */
                 flex-basis: calc(33.333% - var(--item-gap) * 2 / 3);
             }
@@ -100,21 +118,32 @@
         @media (max-width: 768px) {
              body { padding: 1.5rem; }
              .main-title { font-size: 1.9em; letter-spacing: 0.05em; }
-            .chapter-list li {
+             .static-links-list li,
+             .chapter-list li {
                  /* 2 columns */
                 flex-basis: calc(50% - var(--item-gap) * 1 / 2);
+            }
+            .static-links-section {
+                 margin-bottom: var(--section-gap) * 0.8;
+                 padding-bottom: calc(var(--section-gap) / 2.5);
             }
         }
 
          @media (max-width: 480px) {
              body { padding: 1.5rem 1rem; }
              .main-title { font-size: 1.7em; }
-            .chapter-list li {
+             .static-links-list li,
+             .chapter-list li {
                  /* 1 column */
                 flex-basis: 100%;
-                text-align: left; /* Align left on smallest screens */
-            }
-             .chapter-list a { padding: 0.3rem 0.5rem; } /* More padding for touch */
+                text-align: left;
+             }
+             .static-links-list a,
+             .chapter-list a { padding: 0.3rem 0.5rem; }
+             .static-links-section {
+                 margin-bottom: var(--section-gap) * 0.6;
+                 padding-bottom: calc(var(--section-gap) / 3);
+             }
         }
     </style>
 </head>
@@ -124,8 +153,17 @@
     </header>
 
     <div class="content-container">
+
+        <div class="static-links-section">
+             <ul class="static-links-list">
+                 <li><a href="relationships.html">人物关系</a></li>
+                 <li><a href="jinling-beauties.html">金陵十二钗</a></li>
+                 <!-- Add more static links here as needed -->
+             </ul>
+        </div>
+
         <ul class="chapter-list" id="chapterList">
-            <!-- Links will be generated here by JavaScript -->
+            <!-- Chapter links will be generated here by JavaScript -->
         </ul>
     </div>
 
@@ -135,53 +173,49 @@
 
         // Function to convert number to Chinese numeral (simplified version)
         function toChineseNumeral(n) {
-            if (n < 1 || n > 120) return '';
-            const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
-            const units = ['', '十', '百'];
-            let s = '';
-            const hundred = Math.floor(n / 100);
-            const ten = Math.floor((n % 100) / 10);
-            const one = n % 10;
+             if (n < 1 || n > 120) return '';
+             const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+             const units = ['', '十', '百'];
+             let s = '';
+             const hundred = Math.floor(n / 100);
+             const ten = Math.floor((n % 100) / 10);
+             const one = n % 10;
 
              if (hundred > 0) { // 100-120
-                 s += digits[hundred] + units[2];
-                 if (ten === 0 && one > 0) s += digits[0]; // 101-109 need ling
+                 s += digits[hundred] + units[2]; // 一百
+                 if (ten === 0 && one > 0) s += digits[0]; // Add 零 for 101-109
              }
 
              if (ten > 0) { // 10-19, 20-29, ..., 110-119
-                 if (ten === 1 && (hundred === 0 || n === 110)) { // 10-19 or 110-119
-                      if (n >= 10 && n < 20) s += units[1]; // 十, 十一, ...十九
-                      else if (n >= 110 && n < 120) s+= digits[ten] + units[1]; //一百一十, 一百一十一...
-
-                 } else { // 20, 30..90, 120
-                     s += digits[ten] + units[1]; // 二十, 三十... 一百二十
+                 if (ten === 1 && (n < 20 || n >= 110)) { // Special handling for 10-19 and 110-119
+                     if (n < 20) s += units[1]; // Just add 十 for 10-19
+                     else s += digits[ten] + units[1]; // Add 一十 for 110-119
+                 } else { // 20, 30..90, 100, 120
+                     s += digits[ten] + units[1]; // 二十, 三十...九十, 一百二十
                  }
+             } else if (hundred > 0 && one > 0 && ten === 0) {
+                 // If 101-109, the '零' is already added.
+                 // If 1-9, ten is 0, no need to add zero.
+             } else if (n > 100 && ten === 0 && one === 0) {
+                 // Handles 100 - already done.
+             } else if ( n < 10) {
+                 // Handled by 'one > 0' below
+             } else if (n % 10 === 0 && n >= 20 && n < 100) {
+                  // Handles 20, 30..90 - already done
              }
+
 
              if (one > 0) {
-                // Only add 'one' if ten is not 1 (already handled "十一" to "十九")
-                // Or if it's cases like 21, 31.. or 101, 111
-                 if (ten !== 1 || n<10 || n > 19) {
-                    s += digits[one];
-                 }
+                // Add digit for 1-9, 21-29, ..., 101-109, 111-119
+                s += digits[one];
              }
-             // Special case cleanups
-             if (n===10) return '第十';
-             if (n===20) return '第二十';
-             if (n===30) return '第三十';
-             if (n===40) return '第四十';
-             if (n===50) return '第五十';
-             if (n===60) return '第六十';
-             if (n===70) return '第七十';
-             if (n===80) return '第八十';
-             if (n===90) return '第九十';
-             if (n===100) return '第一百';
-             if (n===110) return '第一百一十';
-             if (n===120) return '第一百二十';
 
+             // Handle n=10 separately as logic above results in just "十"
+            if (n === 10) return '第十';
 
-            return `第${s}`; // Prepend '第' for chapter number
+             return `第${s}`; // Prepend '第' for chapter number
         }
+
 
         // Generate links (Ensuring it runs only once)
         if (chapterList.children.length === 0) { // Check if list is empty before populating
