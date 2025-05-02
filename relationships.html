@@ -244,8 +244,8 @@
                     { // Default node style
                         selector: 'node',
                         style: {
-                            'background-color': 'var(--node-bg)',
-                            'border-width': 1.5,
+                            'background-color': 'whitesmoke',
+                            'border-width': 1.0,
                             'border-color': 'var(--node-border)',
                             'width': `var(--node-size)`,
                             'height': `var(--node-size)`,
@@ -260,7 +260,7 @@
                             'color': 'var(--node-text-color)',
                             'text-outline-width': 1.5, // Fine-tuned outline
                             'text-outline-color': 'var(--diagram-bg)',
-                            'text-outline-opacity': 0.7,
+                            'text-outline-opacity': 0.1,
                             'opacity': 1,
                             'transition-property': 'background-color, border-color, opacity, width, height',
                             'transition-duration': '0.3s'
@@ -269,7 +269,7 @@
                     { // Style for the focused node (center)
                         selector: '.center-node',
                          style: {
-                            'background-color': 'var(--highlight-color)',
+                            'background-color': 'royalblue',
                             'border-color': 'var(--highlight-border)',
                             'border-width': 2.5,
                             'width': `calc(var(--node-size) * 1.6)`, // Adjusted size
@@ -283,7 +283,7 @@
                      { // Style for direct neighbors of the focused node
                         selector: '.neighbor-node',
                          style: {
-                             'background-color': 'var(--neighbor-highlight-color)',
+                            'background-color': 'deepskyblue',
                              'border-color': 'var(--neighbor-border)',
                              'border-width': 2,
                              'width': `calc(var(--node-size) * 1.2)`,
@@ -313,7 +313,7 @@
                              'text-rotation': 'autorotate',
                              'text-margin-y': -4, // Adjust vertical position relative to edge
                              'text-background-color': 'var(--diagram-bg)', // Background for readability
-                             'text-background-opacity': 0.7,
+                             'text-background-opacity': 0.1,
                              'text-background-padding': '1px',
                              'text-background-shape': 'round-rectangle',
                             'opacity': 0.6,
