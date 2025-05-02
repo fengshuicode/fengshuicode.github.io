@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红楼梦 - 人物关系</title>
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --link-color: #333333; /* Reusing for consistency, though no direct links here */
+            --link-hover-color: #0056b3;
+            --base-font-size: 17px;
+            --line-height: 1.7;
+             /* Removed unused list variables */
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem;
+            box-sizing: border-box;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+
+        .main-title {
+            font-size: 2.2em;
+            color: var(--title-color);
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 0.1em;
+        }
+
+         .content-container {
+            max-width: 95%; /* Allow wider container for diagram */
+            margin: 2rem auto; /* Add margin top/bottom */
+            overflow-x: auto; /* Allow horizontal scrolling for large diagram */
+            padding: 1rem;
+            background-color: #fff; /* White background for diagram area */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+            border-radius: 6px;
+        }
+
+        /* Style mermaid diagram nodes */
+        .mermaid .label {
+             color: var(--text-color); /* Ensure text color consistency */
+        }
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+          fill: #f8f8f8; /* Light fill for nodes */
+          stroke: #ccc; /* Border for nodes */
+          stroke-width: 1px;
+        }
+        .mermaid .edgePath path {
+          stroke: #aaa; /* Color for relationship lines */
+        }
+         .mermaid .arrowheadPath {
+           fill: #aaa; /* Color for arrowheads */
+         }
+
+         /* Center the mermaid diagram container itself if needed */
+         .mermaid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 500px; /* Ensure minimum height */
+         }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+             body { padding: 1.5rem; }
+             .main-title { font-size: 1.9em; letter-spacing: 0.05em; }
+             .content-container { max-width: 100%; padding: 0.5rem; }
+             :root { --base-font-size: 15px; } /* Slightly smaller base font on mobile */
+             .mermaid text { font-size: 11px !important; } /* Force smaller font in diagram on mobile */
+        }
+
+         @media (max-width: 480px) {
+             body { padding: 1rem 0.5rem; }
+             .main-title { font-size: 1.7em; }
+             .page-header { margin-bottom: 2rem; }
+             .mermaid text { font-size: 10px !important; } /* Even smaller font */
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1 class="main-title">红楼梦 人物关系</h1>
+    </header>
+
+    <div class="content-container">
+        <div class="mermaid-container">
+            <pre class="mermaid">
+flowchart LR
+    HLM["红楼梦人物"]
+
+    subgraph 宁国府 (Ningguo Mansion)
+        direction LR
+        NGG["宁国公 (长子)"] --> JDH["贾代化 (长子)"]
+        JDH --> JF["贾敷 (长子, 早夭)"]
+        JDH --> JJK["贾敬 (次子)"]
+        JJK --> JZhen["贾珍 (儿子)"]
+        JZhen --- YS["尤氏 (妻子)"]
+        JZhen --> JRong["贾蓉 (儿子)"]
+        JRong --- QKQ["秦可卿 (妻子)"]
+        QKQ --- QY["秦业 (父亲)"]
+        QY --> QZ["秦钟 (弟弟)"]
+        QZ --- ZN["智能 (恋人)"]
+        QY --> BZN["宝珠 (义女)"]
+        JRong --- LG["龄官 (恋人)"]
+        JZhen --- JQ["贾蔷 (侄子)"]
+        JZhen --- RH["入画 (丫鬟)"]
+    end
+
+    subgraph 荣国府 (Rongguo Mansion)
+        direction LR
+        RGG["荣国公 (次子)"] --> JDS["贾代善 (长子)"]
+        RGG --> JDR["贾代儒"]
+        JDR --> JRui["贾瑞 (儿子)"]
+        JRui --- JX["娇杏 (妻子)"]
+
+        JDS --- SJT["史太君 (妻子)"]
+        JDS --> JS["贾赦 (长子)"]
+        JDS --> JZheng["贾政 (次子)"]
+        JDS --> JM["贾敏 (女儿)"]
+
+        JS --- XFR["邢夫人 (妻子)"]
+        JS --> JLian["贾琏 (儿子)"]
+        JS --> JYC["贾迎春 (女儿)"]
+        JS --- YY["鸳鸯 (丫鬟)"]
+
+        JLian --- WXF["王熙凤 (妻子)"]
+        JLian --- YEJ["尤二姐 (妾)"]
+        YEJ --- YSJ["尤三姐 (妹妹)"]
+        YSJ --- LXL["柳湘莲 (恋人)"]
+        JLian --> QJ["巧姐 (女儿)"]
+        JLian --- PE["平儿 (丫鬟)"]
+        JYC --- SZU["孙绍祖 (丈夫)"]
+        JYC --- SQ["司棋 (丫鬟)"]
+
+        JZheng --- WFR["王夫人 (妻子)"]
+        JZheng --- ZYiniang["周姨娘 (妾)"]
+        JZheng --- Zhaoyiniang["赵姨娘 (妾)"]
+        JZheng --> JZh["贾珠 (长子, 早夭)"]
+        JZheng --> JYCun["贾元春 (长女)"]
+        JZheng --> JBY["<b>贾宝玉</b> (次子)"]
+        Zhaoyiniang --> JTC["贾探春 (庶女)"]
+        Zhaoyiniang --> JHuan["贾环 (庶子)"]
+        JZheng --> JTC
+        JZheng --> JHuan
+
+        JZh --- LN["李纨 (妻子)"]
+        JZh --> JLan["贾兰 (儿子)"]
+        LN --- LQ["李绮 (堂妹)"]
+        LN --- LW["李纹 (堂妹)"]
+        %% ZBY["甄宝玉"] -- "丈夫?" --- LW
+
+        JYCun --- BQ["抱琴 (丫鬟)"]
+        JBY --- XR["袭人 (丫鬟)"]
+        JBY --- QW["晴雯 (丫鬟)"]
+        JBY --- SY["麝月 (丫鬟)"]
+        JBY --- QW2["秋纹 (丫鬟)"]
+        JBY --- JC["金钏 (丫鬟)"]
+        JTC --- SS["侍书 (丫鬟)"]
+
+        JM --- LRH["林如海 (丈夫)"]
+        JM --> LDY["<b>林黛玉</b> (女儿)"]
+        LDY --- XY["雪雁 (丫鬟)"]
+        LDY --- ZJ["紫鹃 (丫鬟)"]
+        LDY --- JYCun_t["贾雨村 (老师)"]
+
+    end
+
+    subgraph 史家 (Shi Family)
+        direction BT
+        SJT --- SN["史鼐 (兄弟/内侄?)"] %% Relation unclear from diagram alone
+        SN --> SXY["史湘云 (侄女)"]
+        SJ["史家"] --> SJT
+    end
+
+     subgraph 王家 (Wang Family)
+        direction LR
+        WG["王公"] --> WZT["王子腾 (儿子)"]
+        WG --> WFR
+        WG --> XYM["薛姨妈 (女儿)"]
+        WG --> FJZ["凤姐之父 (儿子)"]
+        WZT --> WR["王仁 (儿子)"]
+        FJZ --> WXF
+        WFR --- LLao["刘姥姥 (亲戚)"] %% Simplified relation
+     end
+
+     subgraph 薛家 (Xue Family)
+        direction LR
+        XG["薛公"] --> BCZF["宝钗祖父"]
+        BCZF --> XBCZF["薛宝钗之父"]
+        BCZF --> XBQZF["薛宝琴之父"]
+
+        XBCZF --- XYM
+        XBCZF --> XP["薛蟠 (儿子)"]
+        XBCZF --> XBC["<b>薛宝钗</b> (女儿)"]
+
+        XP --- XJY["邢岫烟 (妻子)"]
+        XP --- XJG["夏金桂 (妻子)"]
+        XP --- XL["香菱 (妾)"]
+        ZSY["甄士隐 (父亲)"] --> XL
+
+        XBQZF --> XBK["薛蝌 (儿子)"]
+        XBQZF --> XBQin["薛宝琴 (女儿)"]
+
+     end
+
+    %% Connect Families via Marriages/Parentage
+    HLM --> NGG
+    HLM --> RGG
+    HLM --> SJ
+    HLM --> WJ
+    HLM --> XJ
+            </pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: false, htmlLabels: true } });
+    </script>
+
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
+
