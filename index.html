@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
-<!-- saved from url=(0092)file:///Users/gavinwu/Downloads/%E7%BA%A2%E6%A5%BC%E6%A2%A6%20-%20Chapter%20Index%20(1).html -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>红楼梦 - 章节目录</title>
     <style>
@@ -10,11 +11,11 @@
             --body-bg-color: #fdfdfd;
             --text-color: #333333;
             --title-color: #1a1a1a;
-            --link-color: #333333; /* Using text color for minimal look */
-            --link-hover-color: #0056b3; /* Standard hover color */
+            --link-color: #333333;
+            --link-hover-color: #0056b3;
             --base-font-size: 17px;
-            --line-height: 1.7; /* Slightly reduced for list */
-            --column-gap: 2rem; /* Adjusted column gap */
+            --line-height: 1.7;
+            --item-gap: 0.8rem; /* Gap between chapter links */
         }
 
         body {
@@ -32,19 +33,19 @@
             text-align: center;
             margin-bottom: 3rem;
             border-bottom: 1px solid #eee;
-            padding-bottom: 1.5rem; /* Increased padding */
+            padding-bottom: 1.5rem;
         }
 
         .main-title {
             font-size: 2.2em;
             color: var(--title-color);
-            font-weight: 600; /* Semi-bold */
+            font-weight: 600;
             margin: 0;
-            letter-spacing: 0.1em; /* Add some spacing */
+            letter-spacing: 0.1em;
         }
 
          .content-container {
-            max-width: 1100px; /* Slightly adjusted max-width */
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -52,78 +53,68 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            column-count: 5; /* Start with 5 columns on wider screens */
-            column-gap: var(--column-gap);
+            display: flex; /* Use Flexbox */
+            flex-wrap: wrap; /* Allow items to wrap */
+            gap: var(--item-gap); /* Spacing between items */
         }
 
         .chapter-list li {
-            margin-bottom: 0.6rem; /* Reduced space between links */
-            break-inside: avoid-column;
-            text-align: center; /* Center text */
-            padding: 0.2rem 0;
+            /* Calculate width for 5 columns, subtracting the gap */
+            flex: 0 0 calc(20% - var(--item-gap) * 4 / 5);
+            text-align: center;
+            box-sizing: border-box; /* Include padding/border in width */
         }
 
         .chapter-list a {
             text-decoration: none;
             color: var(--link-color);
-            font-size: 0.9em; /* Slightly smaller font for links */
+            font-size: 0.9em;
             transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            display: block;
-            padding: 0.1rem 0.3rem; /* Small padding for hover effect */
-            border-radius: 3px; /* Slight rounding */
+            display: block; /* Make link fill the li */
+            padding: 0.2rem 0.3rem;
+            border-radius: 3px;
         }
 
         .chapter-list a:hover,
         .chapter-list a:focus {
             color: var(--link-hover-color);
-            background-color: #f0f0f0; /* Subtle background on hover */
+            background-color: #f0f0f0;
         }
 
         /* Responsive adjustments */
-         @media (max-width: 1200px) {
-            .chapter-list {
-                column-count: 4;
+        @media (max-width: 1200px) {
+            .chapter-list li {
+                /* 4 columns */
+                flex-basis: calc(25% - var(--item-gap) * 3 / 4);
             }
-         }
+        }
 
         @media (max-width: 992px) {
-            .chapter-list {
-                column-count: 3;
-            }
-             body {
-                padding: 2rem;
+             body { padding: 2rem; }
+            .chapter-list li {
+                 /* 3 columns */
+                flex-basis: calc(33.333% - var(--item-gap) * 2 / 3);
             }
         }
 
         @media (max-width: 768px) {
-            .chapter-list {
-                column-count: 2;
+             body { padding: 1.5rem; }
+             .main-title { font-size: 1.9em; letter-spacing: 0.05em; }
+            .chapter-list li {
+                 /* 2 columns */
+                flex-basis: calc(50% - var(--item-gap) * 1 / 2);
             }
-             body {
-                padding: 1.5rem;
-            }
-             .main-title {
-                 font-size: 1.9em;
-                 letter-spacing: 0.05em;
-             }
         }
 
          @media (max-width: 480px) {
-            .chapter-list {
-                column-count: 1;
+             body { padding: 1.5rem 1rem; }
+             .main-title { font-size: 1.7em; }
+            .chapter-list li {
+                 /* 1 column */
+                flex-basis: 100%;
+                text-align: left; /* Align left on smallest screens */
             }
-             body {
-                padding: 1.5rem 1rem; /* Adjust padding */
-            }
-             .main-title {
-                 font-size: 1.7em;
-             }
-             .chapter-list li {
-                 text-align: left; /* Align left on smallest screens */
-             }
-             .chapter-list a {
-                 padding: 0.3rem 0.5rem; /* More padding for touch */
-             }
+             .chapter-list a { padding: 0.3rem 0.5rem; } /* More padding for touch */
         }
     </style>
 </head>
@@ -135,7 +126,7 @@
     <div class="content-container">
         <ul class="chapter-list" id="chapterList">
             <!-- Links will be generated here by JavaScript -->
-        <li><a href="file:///Users/gavinwu/Downloads/001.html">第一回</a></li><li><a href="file:///Users/gavinwu/Downloads/002.html">第二回</a></li><li><a href="file:///Users/gavinwu/Downloads/003.html">第三回</a></li><li><a href="file:///Users/gavinwu/Downloads/004.html">第四回</a></li><li><a href="file:///Users/gavinwu/Downloads/005.html">第五回</a></li><li><a href="file:///Users/gavinwu/Downloads/006.html">第六回</a></li><li><a href="file:///Users/gavinwu/Downloads/007.html">第七回</a></li><li><a href="file:///Users/gavinwu/Downloads/008.html">第八回</a></li><li><a href="file:///Users/gavinwu/Downloads/009.html">第九回</a></li><li><a href="file:///Users/gavinwu/Downloads/010.html">第十回</a></li><li><a href="file:///Users/gavinwu/Downloads/011.html">第十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/012.html">第十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/013.html">第十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/014.html">第十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/015.html">第十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/016.html">第十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/017.html">第十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/018.html">第十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/019.html">第十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/020.html">第二十回</a></li><li><a href="file:///Users/gavinwu/Downloads/021.html">第二十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/022.html">第二十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/023.html">第二十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/024.html">第二十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/025.html">第二十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/026.html">第二十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/027.html">第二十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/028.html">第二十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/029.html">第二十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/030.html">第三十回</a></li><li><a href="file:///Users/gavinwu/Downloads/031.html">第三十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/032.html">第三十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/033.html">第三十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/034.html">第三十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/035.html">第三十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/036.html">第三十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/037.html">第三十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/038.html">第三十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/039.html">第三十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/040.html">第四十回</a></li><li><a href="file:///Users/gavinwu/Downloads/041.html">第四十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/042.html">第四十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/043.html">第四十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/044.html">第四十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/045.html">第四十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/046.html">第四十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/047.html">第四十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/048.html">第四十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/049.html">第四十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/050.html">第五十回</a></li><li><a href="file:///Users/gavinwu/Downloads/051.html">第五十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/052.html">第五十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/053.html">第五十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/054.html">第五十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/055.html">第五十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/056.html">第五十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/057.html">第五十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/058.html">第五十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/059.html">第五十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/060.html">第六十回</a></li><li><a href="file:///Users/gavinwu/Downloads/061.html">第六十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/062.html">第六十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/063.html">第六十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/064.html">第六十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/065.html">第六十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/066.html">第六十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/067.html">第六十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/068.html">第六十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/069.html">第六十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/070.html">第七十回</a></li><li><a href="file:///Users/gavinwu/Downloads/071.html">第七十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/072.html">第七十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/073.html">第七十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/074.html">第七十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/075.html">第七十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/076.html">第七十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/077.html">第七十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/078.html">第七十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/079.html">第七十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/080.html">第八十回</a></li><li><a href="file:///Users/gavinwu/Downloads/081.html">第八十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/082.html">第八十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/083.html">第八十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/084.html">第八十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/085.html">第八十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/086.html">第八十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/087.html">第八十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/088.html">第八十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/089.html">第八十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/090.html">第九十回</a></li><li><a href="file:///Users/gavinwu/Downloads/091.html">第九十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/092.html">第九十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/093.html">第九十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/094.html">第九十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/095.html">第九十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/096.html">第九十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/097.html">第九十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/098.html">第九十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/099.html">第九十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/100.html">第一百回</a></li><li><a href="file:///Users/gavinwu/Downloads/101.html">第一百零一回</a></li><li><a href="file:///Users/gavinwu/Downloads/102.html">第一百零二回</a></li><li><a href="file:///Users/gavinwu/Downloads/103.html">第一百零三回</a></li><li><a href="file:///Users/gavinwu/Downloads/104.html">第一百零四回</a></li><li><a href="file:///Users/gavinwu/Downloads/105.html">第一百零五回</a></li><li><a href="file:///Users/gavinwu/Downloads/106.html">第一百零六回</a></li><li><a href="file:///Users/gavinwu/Downloads/107.html">第一百零七回</a></li><li><a href="file:///Users/gavinwu/Downloads/108.html">第一百零八回</a></li><li><a href="file:///Users/gavinwu/Downloads/109.html">第一百零九回</a></li><li><a href="file:///Users/gavinwu/Downloads/110.html">第一百一十回</a></li><li><a href="file:///Users/gavinwu/Downloads/111.html">第一百一十一回</a></li><li><a href="file:///Users/gavinwu/Downloads/112.html">第一百一十二回</a></li><li><a href="file:///Users/gavinwu/Downloads/113.html">第一百一十三回</a></li><li><a href="file:///Users/gavinwu/Downloads/114.html">第一百一十四回</a></li><li><a href="file:///Users/gavinwu/Downloads/115.html">第一百一十五回</a></li><li><a href="file:///Users/gavinwu/Downloads/116.html">第一百一十六回</a></li><li><a href="file:///Users/gavinwu/Downloads/117.html">第一百一十七回</a></li><li><a href="file:///Users/gavinwu/Downloads/118.html">第一百一十八回</a></li><li><a href="file:///Users/gavinwu/Downloads/119.html">第一百一十九回</a></li><li><a href="file:///Users/gavinwu/Downloads/120.html">第一百二十回</a></li></ul>
+        </ul>
     </div>
 
     <script>
@@ -152,43 +143,59 @@
             const ten = Math.floor((n % 100) / 10);
             const one = n % 10;
 
-             if (hundred > 0) {
-                s += digits[hundred] + units[2]; // Add "一百"
-            }
+             if (hundred > 0) { // 100-120
+                 s += digits[hundred] + units[2];
+                 if (ten === 0 && one > 0) s += digits[0]; // 101-109 need ling
+             }
 
-            if (ten > 0) {
-                if (hundred > 0 && ten === 0) {
-                   // handled below if one > 0
-                } else if (ten === 1 && n > 10 && n < 20) { // 11-19
-                    s += units[1]; // Just "十"
-                } else if (n === 10) {
-                    s += units[1]; // Just "十"
-                } else { // 20, 30, ..., 110, 120
-                    s += digits[ten] + units[1];
-                }
-            } else if (hundred > 0 && one > 0) { // 101-109
-                s += digits[0]; // Add "零"
-            }
+             if (ten > 0) { // 10-19, 20-29, ..., 110-119
+                 if (ten === 1 && (hundred === 0 || n === 110)) { // 10-19 or 110-119
+                      if (n >= 10 && n < 20) s += units[1]; // 十, 十一, ...十九
+                      else if (n >= 110 && n < 120) s+= digits[ten] + units[1]; //一百一十, 一百一十一...
 
-            if (one > 0) {
-                s += digits[one];
-            }
-             // Special cases for clean output
-            if (n === 110) return '一百一十';
-            if (n === 120) return '一百二十';
+                 } else { // 20, 30..90, 120
+                     s += digits[ten] + units[1]; // 二十, 三十... 一百二十
+                 }
+             }
 
-            return s;
+             if (one > 0) {
+                // Only add 'one' if ten is not 1 (already handled "十一" to "十九")
+                // Or if it's cases like 21, 31.. or 101, 111
+                 if (ten !== 1 || n<10 || n > 19) {
+                    s += digits[one];
+                 }
+             }
+             // Special case cleanups
+             if (n===10) return '第十';
+             if (n===20) return '第二十';
+             if (n===30) return '第三十';
+             if (n===40) return '第四十';
+             if (n===50) return '第五十';
+             if (n===60) return '第六十';
+             if (n===70) return '第七十';
+             if (n===80) return '第八十';
+             if (n===90) return '第九十';
+             if (n===100) return '第一百';
+             if (n===110) return '第一百一十';
+             if (n===120) return '第一百二十';
+
+
+            return `第${s}`; // Prepend '第' for chapter number
         }
 
-        // Generate links
-         for (let i = 1; i <= totalChapters; i++) {
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            const chapterNumber = String(i).padStart(3, '0'); // Format as 001, 002, etc.
-            link.href = `${chapterNumber}.html`;
-            link.textContent = `第${toChineseNumeral(i)}回`;
-            listItem.appendChild(link);
-            chapterList.appendChild(listItem);
+        // Generate links (Ensuring it runs only once)
+        if (chapterList.children.length === 0) { // Check if list is empty before populating
+             for (let i = 1; i <= totalChapters; i++) {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                const chapterNumber = String(i).padStart(3, '0'); // Format as 001, 002, etc.
+                link.href = `${chapterNumber}.html`;
+                link.textContent = `${toChineseNumeral(i)}回`; // Add 回 character
+                listItem.appendChild(link);
+                chapterList.appendChild(listItem);
+            }
+        } else {
+            console.warn("Chapter list already populated. Skipping generation.");
         }
     </script>
 
@@ -216,6 +223,5 @@ window.console = new Proxy(console, {
     return target[prop];
   }
 });
-</script>
-
-</body></html>
+</script></body>
+</html>
