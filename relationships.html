@@ -4,18 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>红楼梦 - 人物关系</title>
+    <title>红楼梦 - 人物关系 (交互式 V3)</title>
+    <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
     <style>
         :root {
+            /* Using a standard, widely available CJK font stack */
             --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
             --body-bg-color: #fdfdfd;
             --text-color: #333333;
             --title-color: #1a1a1a;
-            --link-color: #333333; /* Reusing for consistency, though no direct links here */
+            --link-color: #333333;
             --link-hover-color: #0056b3;
-            --base-font-size: 17px;
-            --line-height: 1.7;
-             /* Removed unused list variables */
+            --base-font-size: 16px;
+            --line-height: 1.6;
+            --diagram-bg: #ffffff;
+            --node-bg: #f0f4f8;
+            --node-border: #b0c4de;
+            --node-text-color: #2c3e50;
+            --edge-color: #d8dfe6;
+            --edge-label-color: #555555; /* Color for edge labels */
+            --highlight-color: #ffd700;
+            --highlight-border: #ccac00;
+            --neighbor-highlight-color: #e6f7ff;
+            --neighbor-border: #91d5ff;
+            --faded-opacity: 0.20; /* Make faded elements dimmer */
+            --node-size: 17px; /* Slightly larger base size */
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
 
         body {
@@ -24,222 +44,409 @@
             color: var(--text-color);
             font-size: var(--base-font-size);
             line-height: var(--line-height);
-            margin: 0;
-            padding: 2rem 3rem;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
         }
 
         .page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin: 1rem 1.5rem 0.5rem 1.5rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid #eee;
-            padding-bottom: 1.5rem;
+            flex-shrink: 0;
         }
 
         .main-title {
-            font-size: 2.2em;
+            font-size: 1.8em;
             color: var(--title-color);
             font-weight: 600;
             margin: 0;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
         }
 
          .content-container {
-            max-width: 95%; /* Allow wider container for diagram */
-            margin: 2rem auto; /* Add margin top/bottom */
-            overflow-x: auto; /* Allow horizontal scrolling for large diagram */
-            padding: 1rem;
-            background-color: #fff; /* White background for diagram area */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
-            border-radius: 6px;
-        }
-
-        /* Style mermaid diagram nodes */
-        .mermaid .label {
-             color: var(--text-color); /* Ensure text color consistency */
-        }
-        .mermaid .node rect,
-        .mermaid .node circle,
-        .mermaid .node ellipse,
-        .mermaid .node polygon {
-          fill: #f8f8f8; /* Light fill for nodes */
-          stroke: #ccc; /* Border for nodes */
-          stroke-width: 1px;
-        }
-        .mermaid .edgePath path {
-          stroke: #aaa; /* Color for relationship lines */
-        }
-         .mermaid .arrowheadPath {
-           fill: #aaa; /* Color for arrowheads */
-         }
-
-         /* Center the mermaid diagram container itself if needed */
-         .mermaid-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-grow: 1;
             width: 100%;
-            min-height: 500px; /* Ensure minimum height */
+            position: relative;
+            padding: 0.5rem;
+            box-sizing: border-box;
          }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-             body { padding: 1.5rem; }
-             .main-title { font-size: 1.9em; letter-spacing: 0.05em; }
-             .content-container { max-width: 100%; padding: 0.5rem; }
-             :root { --base-font-size: 15px; } /* Slightly smaller base font on mobile */
-             .mermaid text { font-size: 11px !important; } /* Force smaller font in diagram on mobile */
-        }
-
-         @media (max-width: 480px) {
-             body { padding: 1rem 0.5rem; }
-             .main-title { font-size: 1.7em; }
-             .page-header { margin-bottom: 2rem; }
-             .mermaid text { font-size: 10px !important; } /* Even smaller font */
+        #cy {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--diagram-bg);
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <header class="page-header">
-        <h1 class="main-title">红楼梦 人物关系</h1>
+        <h1 class="main-title">人物关系 (交互式)</h1>
     </header>
 
     <div class="content-container">
-        <div class="mermaid-container">
-            <pre class="mermaid">
-flowchart LR
-    HLM["红楼梦人物"]
-
-    subgraph 宁国府 (Ningguo Mansion)
-        direction LR
-        NGG["宁国公 (长子)"] --> JDH["贾代化 (长子)"]
-        JDH --> JF["贾敷 (长子, 早夭)"]
-        JDH --> JJK["贾敬 (次子)"]
-        JJK --> JZhen["贾珍 (儿子)"]
-        JZhen --- YS["尤氏 (妻子)"]
-        JZhen --> JRong["贾蓉 (儿子)"]
-        JRong --- QKQ["秦可卿 (妻子)"]
-        QKQ --- QY["秦业 (父亲)"]
-        QY --> QZ["秦钟 (弟弟)"]
-        QZ --- ZN["智能 (恋人)"]
-        QY --> BZN["宝珠 (义女)"]
-        JRong --- LG["龄官 (恋人)"]
-        JZhen --- JQ["贾蔷 (侄子)"]
-        JZhen --- RH["入画 (丫鬟)"]
-    end
-
-    subgraph 荣国府 (Rongguo Mansion)
-        direction LR
-        RGG["荣国公 (次子)"] --> JDS["贾代善 (长子)"]
-        RGG --> JDR["贾代儒"]
-        JDR --> JRui["贾瑞 (儿子)"]
-        JRui --- JX["娇杏 (妻子)"]
-
-        JDS --- SJT["史太君 (妻子)"]
-        JDS --> JS["贾赦 (长子)"]
-        JDS --> JZheng["贾政 (次子)"]
-        JDS --> JM["贾敏 (女儿)"]
-
-        JS --- XFR["邢夫人 (妻子)"]
-        JS --> JLian["贾琏 (儿子)"]
-        JS --> JYC["贾迎春 (女儿)"]
-        JS --- YY["鸳鸯 (丫鬟)"]
-
-        JLian --- WXF["王熙凤 (妻子)"]
-        JLian --- YEJ["尤二姐 (妾)"]
-        YEJ --- YSJ["尤三姐 (妹妹)"]
-        YSJ --- LXL["柳湘莲 (恋人)"]
-        JLian --> QJ["巧姐 (女儿)"]
-        JLian --- PE["平儿 (丫鬟)"]
-        JYC --- SZU["孙绍祖 (丈夫)"]
-        JYC --- SQ["司棋 (丫鬟)"]
-
-        JZheng --- WFR["王夫人 (妻子)"]
-        JZheng --- ZYiniang["周姨娘 (妾)"]
-        JZheng --- Zhaoyiniang["赵姨娘 (妾)"]
-        JZheng --> JZh["贾珠 (长子, 早夭)"]
-        JZheng --> JYCun["贾元春 (长女)"]
-        JZheng --> JBY["<b>贾宝玉</b> (次子)"]
-        Zhaoyiniang --> JTC["贾探春 (庶女)"]
-        Zhaoyiniang --> JHuan["贾环 (庶子)"]
-        JZheng --> JTC
-        JZheng --> JHuan
-
-        JZh --- LN["李纨 (妻子)"]
-        JZh --> JLan["贾兰 (儿子)"]
-        LN --- LQ["李绮 (堂妹)"]
-        LN --- LW["李纹 (堂妹)"]
-        %% ZBY["甄宝玉"] -- "丈夫?" --- LW
-
-        JYCun --- BQ["抱琴 (丫鬟)"]
-        JBY --- XR["袭人 (丫鬟)"]
-        JBY --- QW["晴雯 (丫鬟)"]
-        JBY --- SY["麝月 (丫鬟)"]
-        JBY --- QW2["秋纹 (丫鬟)"]
-        JBY --- JC["金钏 (丫鬟)"]
-        JTC --- SS["侍书 (丫鬟)"]
-
-        JM --- LRH["林如海 (丈夫)"]
-        JM --> LDY["<b>林黛玉</b> (女儿)"]
-        LDY --- XY["雪雁 (丫鬟)"]
-        LDY --- ZJ["紫鹃 (丫鬟)"]
-        LDY --- JYCun_t["贾雨村 (老师)"]
-
-    end
-
-    subgraph 史家 (Shi Family)
-        direction BT
-        SJT --- SN["史鼐 (兄弟/内侄?)"] %% Relation unclear from diagram alone
-        SN --> SXY["史湘云 (侄女)"]
-        SJ["史家"] --> SJT
-    end
-
-     subgraph 王家 (Wang Family)
-        direction LR
-        WG["王公"] --> WZT["王子腾 (儿子)"]
-        WG --> WFR
-        WG --> XYM["薛姨妈 (女儿)"]
-        WG --> FJZ["凤姐之父 (儿子)"]
-        WZT --> WR["王仁 (儿子)"]
-        FJZ --> WXF
-        WFR --- LLao["刘姥姥 (亲戚)"] %% Simplified relation
-     end
-
-     subgraph 薛家 (Xue Family)
-        direction LR
-        XG["薛公"] --> BCZF["宝钗祖父"]
-        BCZF --> XBCZF["薛宝钗之父"]
-        BCZF --> XBQZF["薛宝琴之父"]
-
-        XBCZF --- XYM
-        XBCZF --> XP["薛蟠 (儿子)"]
-        XBCZF --> XBC["<b>薛宝钗</b> (女儿)"]
-
-        XP --- XJY["邢岫烟 (妻子)"]
-        XP --- XJG["夏金桂 (妻子)"]
-        XP --- XL["香菱 (妾)"]
-        ZSY["甄士隐 (父亲)"] --> XL
-
-        XBQZF --> XBK["薛蝌 (儿子)"]
-        XBQZF --> XBQin["薛宝琴 (女儿)"]
-
-     end
-
-    %% Connect Families via Marriages/Parentage
-    HLM --> NGG
-    HLM --> RGG
-    HLM --> SJ
-    HLM --> WJ
-    HLM --> XJ
-            </pre>
-        </div>
+        <div id="cy"></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js"></script>
     <script>
-      mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: false, htmlLabels: true } });
-    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Node Data (mostly same, ensuring labels are concise) ---
+            const nodes = [ { data: { id: 'hlm', label: '红楼梦人物' } }, { data: { id: 'ning_guo_gong', label: '宁国公' } }, { data: { id: 'jia_dai_hua', label: '贾代化' } }, { data: { id: 'jia_fu', label: '贾敷 (早夭)' } }, { data: { id: 'jia_jing', label: '贾敬' } }, { data: { id: 'jia_zhen', label: '贾珍' } }, { data: { id: 'you_shi', label: '尤氏' } }, { data: { id: 'jia_rong', label: '贾蓉' } }, { data: { id: 'qin_ke_qing', label: '秦可卿' } }, { data: { id: 'qin_ye', label: '秦业' } }, { data: { id: 'qin_zhong', label: '秦钟' } }, { data: { id: 'zhi_neng', label: '智能' } }, { data: { id: 'bao_zhu', label: '宝珠' } }, { data: { id: 'ling_guan', label: '龄官' } }, { data: { id: 'jia_qiang', label: '贾蔷' } }, { data: { id: 'ru_hua', label: '入画 (丫鬟)' } }, { data: { id: 'jia_xi_chun', label: '贾惜春' } }, { data: { id: 'yuan_yang', label: '鸳鸯 (丫鬟)' } }, { data: { id: 'rong_guo_gong', label: '荣国公' } }, { data: { id: 'jia_dai_shan', label: '贾代善' } }, { data: { id: 'shi_tai_jun', label: '史太君' } }, { data: { id: 'jia_she', label: '贾赦' } }, { data: { id: 'xing_fu_ren', label: '邢夫人' } }, { data: { id: 'jia_lian', label: '贾琏' } }, { data: { id: 'wang_xi_feng', label: '王熙凤' } }, { data: { id: 'qiao_jie', label: '巧姐' } }, { data: { id: 'ping_er', label: '平儿 (丫鬟)' } }, { data: { id: 'you_er_jie', label: '尤二姐' } }, { data: { id: 'you_san_jie', label: '尤三姐' } }, { data: { id: 'liu_xiang_lian', label: '柳湘莲' } }, { data: { id: 'jia_ying_chun', label: '贾迎春' } }, { data: { id: 'sun_shao_zu', label: '孙绍祖' } }, { data: { id: 'si_qi', label: '司棋 (丫鬟)' } }, { data: { id: 'jin_chuan', label: '金钏 (丫鬟)' } }, { data: { id: 'jia_zheng', label: '贾政' } }, { data: { id: 'wang_fu_ren', label: '王夫人' } }, { data: { id: 'zhou_yi_niang', label: '周姨娘' } }, { data: { id: 'zhao_yi_niang', label: '赵姨娘' } }, { data: { id: 'jia_zhu', label: '贾珠 (早夭)' } }, { data: { id: 'li_wan', label: '李纨' } }, { data: { id: 'jia_lan', label: '贾兰' } }, { data: { id: 'li_qi', label: '李绮' } }, { data: { id: 'li_wen', label: '李纹' } }, { data: { id: 'jia_yuan_chun', label: '贾元春' } }, { data: { id: 'bao_qin', label: '抱琴 (丫鬟)' } }, { data: { id: 'jia_bao_yu', label: '贾宝玉' } }, { data: { id: 'zhen_bao_yu', label: '甄宝玉' } }, { data: { id: 'xi_ren', label: '袭人 (丫鬟)' } }, { data: { id: 'qing_wen', label: '晴雯 (丫鬟)' } }, { data: { id: 'she_yue', label: '麝月 (丫鬟)' } }, { data: { id: 'qiu_wen', label: '秋纹 (丫鬟)' } }, { data: { id: 'jia_tan_chun', label: '贾探春' } }, { data: { id: 'shi_shu', label: '侍书 (丫鬟)' } }, { data: { id: 'jia_huan', label: '贾环' } }, { data: { id: 'jia_min', label: '贾敏' } }, { data: { id: 'lin_ru_hai', label: '林如海' } }, { data: { id: 'lin_dai_yu', label: '林黛玉' } }, { data: { id: 'xue_yan', label: '雪雁 (丫鬟)' } }, { data: { id: 'zi_juan', label: '紫鵑 (丫鬟)' } }, { data: { id: 'jia_yu_cun', label: '贾雨村' } }, { data: { id: 'jiao_xing', label: '娇杏' } }, { data: { id: 'jia_dai_ru', label: '贾代儒' } }, { data: { id: 'jia_rui_parent', label: '贾瑞父母' } }, { data: { id: 'jia_rui', label: '贾瑞' } }, { data: { id: 'shi_jia', label: '史家' } }, { data: { id: 'shi_yuan', label: '史源' } }, { data: { id: 'shi_xiang_yun', label: '史湘云' } }, { data: { id: 'wang_jia', label: '王家' } }, { data: { id: 'wang_gong', label: '王公' } }, { data: { id: 'wang_zi_teng', label: '王子腾' } }, { data: { id: 'xue_yi_ma', label: '薛姨妈' } }, { data: { id: 'feng_jie_father', label: '凤姐之父' } }, { data: { id: 'wang_ren', label: '王仁' } }, { data: { id: 'liu_lao_lao', label: '刘姥姥' } }, { data: { id: 'xue_jia', label: '薛家' } }, { data: { id: 'xue_gong', label: '薛公' } }, { data: { id: 'bao_chai_gfather', label: '宝钗祖父' } }, { data: { id: 'xue_bao_qin_father', label: '薛宝琴之父' } }, { data: { id: 'xue_bao_chai_father', label: '薛宝钗之父' } }, { data: { id: 'xue_yi_ma_2', label: '薛姨妈' } }, { data: { id: 'xue_pan', label: '薛蟠' } }, { data: { id: 'xing_xiu_yan', label: '邢岫烟' } }, { data: { id: 'xia_jin_gui', label: '夏金桂' } }, { data: { id: 'xiang_ling', label: '香菱' } }, { data: { id: 'zhen_shi_yin', label: '甄士隐' } }, { data: { id: 'xue_bao_chai', label: '薛宝钗' } }, { data: { id: 'xue_bao_qin', label: '薛宝琴' } }];
 
+            // --- Edge Data (Added relationship labels where appropriate) ---
+             const edges = [
+                // Root connections (no labels needed)
+                { data: { source: 'hlm', target: 'ning_guo_gong' } },
+                { data: { source: 'hlm', target: 'rong_guo_gong' } },
+                { data: { source: 'hlm', target: 'shi_jia' } },
+                { data: { source: 'hlm', target: 'wang_jia' } },
+                { data: { source: 'hlm', target: 'xue_jia' } },
+
+                // Ningguo Line
+                 { data: { source: 'ning_guo_gong', target: 'jia_dai_hua', label: '父子' } },
+                 { data: { source: 'jia_dai_hua', target: 'jia_fu', label: '父子' } },
+                 { data: { source: 'jia_dai_hua', target: 'jia_jing', label: '父子' } },
+                 { data: { source: 'jia_jing', target: 'jia_zhen', label: '父子' } },
+                 { data: { source: 'jia_jing', target: 'jia_xi_chun', label: '父女' } }, // Jia Jing is Xichun's father
+                 { data: { source: 'jia_zhen', target: 'jia_rong', label: '父子' } },
+                 { data: { source: 'jia_zhen', target: 'you_shi', label: '夫妻' } },
+                 { data: { source: 'jia_zhen', target: 'jia_qiang', label: '叔侄' } }, // Zhen is Qiang's uncle
+                 { data: { source: 'jia_rong', target: 'qin_ke_qing', label: '夫妻' } },
+                 { data: { source: 'qin_ke_qing', target: 'qin_ye', label: '父女' } },
+                 { data: { source: 'qin_ye', target: 'qin_zhong', label: '父子' } },
+                 { data: { source: 'qin_ke_qing', target: 'bao_zhu', label: '收养?' } },
+                 { data: { source: 'qin_zhong', target: 'zhi_neng', label: '恋人' } },
+                 { data: { source: 'jia_rong', target: 'ling_guan', label: '爱慕?' } }, // Complex/unclear from diagram
+                 { data: { source: 'jia_zhen', target: 'ru_hua', label: '主仆' } }, // Xichun's maid, but connected to Zhen in diagram
+
+                 // Rongguo Line
+                 { data: { source: 'rong_guo_gong', target: 'jia_dai_shan', label: '父子' } },
+                 { data: { source: 'rong_guo_gong', target: 'jia_dai_ru' } }, // Relationship less direct, keep unlabeled?
+                 { data: { source: 'jia_dai_shan', target: 'shi_tai_jun', label: '夫妻' } },
+                 { data: { source: 'jia_dai_shan', target: 'jia_she', label: '父子' } },
+                 { data: { source: 'jia_dai_shan', target: 'jia_zheng', label: '父子' } },
+                 { data: { source: 'jia_dai_shan', target: 'jia_min', label: '父女' } },
+                 { data: { source: 'shi_tai_jun', target: 'jia_she', label: '母子' } },
+                 { data: { source: 'shi_tai_jun', target: 'jia_zheng', label: '母子' } },
+                 { data: { source: 'shi_tai_jun', target: 'jia_min', label: '母女' } },
+
+                 // Jia She Branch
+                 { data: { source: 'jia_she', target: 'xing_fu_ren', label: '夫妻' } },
+                 { data: { source: 'jia_she', target: 'jia_lian', label: '父子' } },
+                 { data: { source: 'jia_she', target: 'jia_ying_chun', label: '父女' } },
+                 { data: { source: 'jia_lian', target: 'wang_xi_feng', label: '夫妻' } },
+                 { data: { source: 'jia_lian', target: 'qiao_jie', label: '父女' } },
+                 { data: { source: 'wang_xi_feng', target: 'qiao_jie', label: '母女' } },
+                 { data: { source: 'jia_lian', target: 'you_er_jie', label: '纳妾' } },
+                 { data: { source: 'wang_xi_feng', target: 'ping_er', label: '主仆' } },
+                 { data: { source: 'you_er_jie', target: 'you_san_jie', label: '姐妹'} },
+                 { data: { source: 'you_san_jie', target: 'liu_xiang_lian', label: '恋慕'} },
+                 { data: { source: 'jia_ying_chun', target: 'sun_shao_zu', label: '夫妻' } },
+                 { data: { source: 'jia_ying_chun', target: 'si_qi', label: '主仆' } },
+
+                 // Jia Zheng Branch
+                 { data: { source: 'jia_zheng', target: 'wang_fu_ren', label: '夫妻' } },
+                 { data: { source: 'jia_zheng', target: 'zhou_yi_niang', label: '纳妾' } },
+                 { data: { source: 'jia_zheng', target: 'zhao_yi_niang', label: '纳妾' } },
+                 { data: { source: 'jia_zheng', target: 'jia_zhu', label: '父子' } }, // From Wang Fu Ren
+                 { data: { source: 'jia_zheng', target: 'jia_yuan_chun', label: '父女' } }, // From Wang Fu Ren
+                 { data: { source: 'jia_zheng', target: 'jia_bao_yu', label: '父子' } }, // From Wang Fu Ren
+                 { data: { source: 'wang_fu_ren', target: 'jia_zhu', label: '母子' } },
+                 { data: { source: 'wang_fu_ren', target: 'jia_yuan_chun', label: '母女' } },
+                 { data: { source: 'wang_fu_ren', target: 'jia_bao_yu', label: '母子' } },
+                 { data: { source: 'wang_fu_ren', target: 'jin_chuan', label: '主仆' } },
+                 { data: { source: 'jia_zhu', target: 'li_wan', label: '夫妻' } },
+                 { data: { source: 'jia_zhu', target: 'jia_lan', label: '父子' } },
+                 { data: { source: 'li_wan', target: 'jia_lan', label: '母子' } },
+                 { data: { source: 'li_wan', target: 'li_qi', label: '姑嫂'} }, // Li Wan is sister-in-law to Li Qi/Wen
+                 { data: { source: 'li_wan', target: 'li_wen', label: '姑嫂'} },
+                 { data: { source: 'li_qi', target: 'zhen_bao_yu', label: '夫妻?' } }, // Husband unclear
+                 { data: { source: 'li_wen', target: 'zhen_bao_yu', label: '夫妻?' } },
+                 { data: { source: 'jia_yuan_chun', target: 'bao_qin', label: '主仆' } },
+                 { data: { source: 'jia_bao_yu', target: 'xi_ren', label: '主仆' } }, // Technically maid, relationship evolves
+                 { data: { source: 'jia_bao_yu', target: 'qing_wen', label: '主仆' } },
+                 { data: { source: 'jia_bao_yu', target: 'she_yue', label: '主仆' } },
+                 { data: { source: 'jia_bao_yu', target: 'qiu_wen', label: '主仆' } },
+                 { data: { source: 'jia_zheng', target: 'jia_tan_chun', label: '父女 (庶)' } }, // From Zhao Yi Niang
+                 { data: { source: 'jia_zheng', target: 'jia_huan', label: '父子 (庶)' } }, // From Zhao Yi Niang
+                 { data: { source: 'zhao_yi_niang', target: 'jia_tan_chun', label: '母女' } },
+                 { data: { source: 'zhao_yi_niang', target: 'jia_huan', label: '母子' } },
+                 { data: { source: 'jia_tan_chun', target: 'shi_shu', label: '主仆' } },
+
+                 // Jia Min Branch
+                 { data: { source: 'jia_min', target: 'lin_ru_hai', label: '夫妻' } },
+                 { data: { source: 'jia_min', target: 'lin_dai_yu', label: '母女' } },
+                 { data: { source: 'lin_ru_hai', target: 'lin_dai_yu', label: '父女' } },
+                 { data: { source: 'lin_dai_yu', target: 'xue_yan', label: '主仆' } },
+                 { data: { source: 'lin_dai_yu', target: 'zi_juan', label: '主仆' } },
+                 { data: { source: 'lin_ru_hai', target: 'jia_yu_cun', label: '师友?' } }, // Teacher/Friend connection
+                 { data: { source: 'jia_yu_cun', target: 'jiao_xing', label: '夫妻' } },
+
+                 // Jia Dai Ru Branch
+                 { data: { source: 'jia_dai_ru', target: 'jia_rui_parent' } }, // Parent relationship implied
+                 { data: { source: 'jia_rui_parent', target: 'jia_rui', label: '父子?' } }, // Grandparent? Diagram unclear
+
+                 // Shi Family Connections
+                 { data: { source: 'shi_jia', target: 'shi_tai_jun', label: '家族' } }, // Link to Jia tree
+                 { data: { source: 'shi_jia', target: 'shi_yuan' } }, // Relative
+                 { data: { source: 'shi_jia', target: 'shi_xiang_yun', label: '家族' } },
+                 { data: { source: 'shi_tai_jun', target: 'shi_xiang_yun', label: '姑侄孙' } }, // Grand niece
+
+                 // Wang Family Connections
+                 { data: { source: 'wang_jia', target: 'wang_gong', label: '家族' } },
+                 { data: { source: 'wang_gong', target: 'wang_zi_teng', label: '父子' } },
+                 { data: { source: 'wang_gong', target: 'wang_fu_ren', label: '父女' } }, // Link to Jia tree
+                 { data: { source: 'wang_gong', target: 'xue_yi_ma', label: '父女' } },   // Link to Xue tree
+                 { data: { source: 'wang_gong', target: 'feng_jie_father', label: '父子' } },
+                 { data: { source: 'wang_zi_teng', target: 'wang_ren', label: '父子' } },
+                 { data: { source: 'feng_jie_father', target: 'wang_xi_feng', label: '父女' } }, // Link to Jia tree
+                 { data: { source: 'wang_jia', target: 'liu_lao_lao', label: '远亲' } },
+
+                 // Xue Family Connections
+                 { data: { source: 'xue_jia', target: 'xue_gong', label: '家族' } },
+                 { data: { source: 'xue_gong', target: 'bao_chai_gfather' } }, // Implied parent
+                 { data: { source: 'bao_chai_gfather', target: 'xue_bao_qin_father', label: '父子?' } }, // Brothers?
+                 { data: { source: 'bao_chai_gfather', target: 'xue_bao_chai_father', label: '父子?' } },
+                 { data: { source: 'xue_bao_chai_father', target: 'xue_yi_ma_2', label: '夫妻'} },
+                 { data: { source: 'xue_yi_ma', target: 'xue_yi_ma_2'} }, // Link the two YiMa nodes (no label needed)
+                 { data: { source: 'xue_bao_chai_father', target: 'xue_pan', label: '父子' } },
+                 { data: { source: 'xue_bao_chai_father', target: 'xue_bao_chai', label: '父女' } },
+                 { data: { source: 'xue_yi_ma_2', target: 'xue_pan', label: '母子' } },
+                 { data: { source: 'xue_yi_ma_2', target: 'xue_bao_chai', label: '母女' } },
+                 { data: { source: 'xue_bao_qin_father', target: 'xue_bao_qin', label: '父女' } },
+                 { data: { source: 'xue_pan', target: 'xing_xiu_yan', label: '夫妻' } }, // Assumed wife
+                 { data: { source: 'xue_pan', target: 'xia_jin_gui', label: '夫妻' } },
+                 { data: { source: 'xue_pan', target: 'xiang_ling', label: '纳妾' } },
+                 { data: { source: 'xiang_ling', target: 'zhen_shi_yin', label: '父女'} },
+
+                 // Main Character Connections (Cousins/Love Interests - keep dashed, maybe label edge?)
+                 { data: { source: 'jia_bao_yu', target: 'lin_dai_yu', style: 'dashed', label: '情愫' } }, // Emotional connection
+                 { data: { source: 'jia_bao_yu', target: 'xue_bao_chai', style: 'dashed', label: '婚约?' } }, // Eventual spouse
+                 { data: { source: 'jia_bao_yu', target: 'shi_xiang_yun', style: 'dashed', label: '表亲' } }, // Cousins
+             ];
+
+
+            let currentCenterNode = null;
+            const initialCenterNodeId = 'jia_bao_yu';
+
+            const cy = cytoscape({
+                container: document.getElementById('cy'),
+                elements: [...nodes, ...edges],
+
+                style: [
+                    { // Default node style
+                        selector: 'node',
+                        style: {
+                            'background-color': 'var(--node-bg)',
+                            'border-width': 1.5,
+                            'border-color': 'var(--node-border)',
+                            'width': `var(--node-size)`,
+                            'height': `var(--node-size)`,
+                            'shape': 'ellipse',
+                            'label': 'data(label)',
+                            'text-valign': 'bottom',
+                            'text-halign': 'center',
+                            'text-margin-y': '4px', // Adjusted margin
+                            'font-family': 'var(--font-family)', // Explicitly use font stack
+                            'font-size': '12px', // Slightly larger node label font
+                            'font-weight': 'normal',
+                            'color': 'var(--node-text-color)',
+                            'text-outline-width': 1.5, // Fine-tuned outline
+                            'text-outline-color': 'var(--diagram-bg)',
+                            'text-outline-opacity': 0.7,
+                            'opacity': 1,
+                            'transition-property': 'background-color, border-color, opacity, width, height',
+                            'transition-duration': '0.3s'
+                        }
+                    },
+                    { // Style for the focused node (center)
+                        selector: '.center-node',
+                         style: {
+                            'background-color': 'var(--highlight-color)',
+                            'border-color': 'var(--highlight-border)',
+                            'border-width': 2.5,
+                            'width': `calc(var(--node-size) * 1.6)`, // Adjusted size
+                            'height': `calc(var(--node-size) * 1.6)`,
+                            'font-weight': '600', // Bolder label for center node
+                            'font-size': '13px', // Larger label for center
+                            'opacity': 1,
+                            'z-index': 10
+                         }
+                     },
+                     { // Style for direct neighbors of the focused node
+                        selector: '.neighbor-node',
+                         style: {
+                             'background-color': 'var(--neighbor-highlight-color)',
+                             'border-color': 'var(--neighbor-border)',
+                             'border-width': 2,
+                             'width': `calc(var(--node-size) * 1.2)`,
+                             'height': `calc(var(--node-size) * 1.2)`,
+                             'opacity': 1,
+                             'z-index': 5
+                         }
+                     },
+                    { // Style for nodes that are NOT focused or neighbors
+                        selector: '.faded',
+                         style: {
+                            'opacity': 'var(--faded-opacity)',
+                             'z-index': 1
+                        }
+                    },
+                    { // Default edge style
+                        selector: 'edge',
+                        style: {
+                            'width': 1,
+                            'line-color': 'var(--edge-color)',
+                            'target-arrow-shape': 'none',
+                            'curve-style': 'bezier',
+                            'label': 'data(label)', // Display the edge label
+                            'font-family': 'var(--font-family)',
+                            'font-size': '9px', // Keep edge labels small
+                            'color': 'var(--edge-label-color)',
+                             'text-rotation': 'autorotate',
+                             'text-margin-y': -4, // Adjust vertical position relative to edge
+                             'text-background-color': 'var(--diagram-bg)', // Background for readability
+                             'text-background-opacity': 0.7,
+                             'text-background-padding': '1px',
+                             'text-background-shape': 'round-rectangle',
+                            'opacity': 0.6,
+                            'z-index': 3,
+                            'transition-property': 'line-color, opacity',
+                             'transition-duration': '0.3s'
+                        }
+                    },
+                     { // Style for edges connected to the focused node
+                        selector: '.highlighted-edge',
+                         style: {
+                             'opacity': 1, // Make highlighted edges fully opaque
+                             'width': 1.5,
+                             'line-color': 'var(--link-hover-color)',
+                             'color': '#111', // Darker label color for highlighted edges
+                             'font-weight': 'bold',
+                             'font-size': '10px', // Slightly larger label when highlighted
+                             'z-index': 4
+                         }
+                     },
+                     { // Style for edges NOT connected to the focused node
+                        selector: '.faded-edge',
+                         style: {
+                            'opacity': 'calc(var(--faded-opacity) * 0.6)', // Fade edge & label
+                            'z-index': 2
+                        }
+                     },
+                    { // Style dashed edges differently if needed
+                         selector: 'edge[style = "dashed"]',
+                         style: {
+                             'line-style': 'dashed',
+                             'line-color': '#a0a0a0' // Different color for dashed lines
+                         }
+                     },
+                    { // Highlight dashed edges connected to focus node
+                        selector: '.highlighted-edge[style = "dashed"]',
+                        style:{
+                            'line-color': 'var(--link-hover-color)', // Use highlight color but keep dashed
+                             'width': 1.5
+                        }
+                    }
+                ],
+
+                layout: { name: 'preset' },
+                minZoom: 0.15, // Adjusted minZoom
+                maxZoom: 3.0,
+                wheelSensitivity: 0.2
+            });
+
+            // --- Interaction Logic (focusOnNode, event listeners remain the same) ---
+            function focusOnNode(node, duration = 500) {
+                if (!node || node.empty()) return;
+
+                currentCenterNode = node;
+                const neighborhoodNodes = node.neighborhood('node').union(node);
+                const neighborhoodEdges = node.neighborhood('edge');
+
+                cy.batch(() => {
+                    cy.elements().removeClass('center-node neighbor-node highlighted-edge faded faded-edge');
+                    cy.elements().addClass('faded faded-edge'); // Fade all first
+                    neighborhoodNodes.removeClass('faded'); // Unfade neighborhood nodes
+                    neighborhoodEdges.removeClass('faded-edge').addClass('highlighted-edge'); // Unfade & highlight neighborhood edges
+                    neighborhoodNodes.addClass('neighbor-node'); // Style neighbors
+                    node.removeClass('neighbor-node').addClass('center-node'); // Override center style
+                });
+
+                cy.stop().animate({
+                    center: { eles: node },
+                    zoom: cy.zoom() < 1 ? 1.2 : cy.zoom() * 0.8, // Adjusted zoom logic slightly
+                    duration: duration,
+                    easing: 'ease-out'
+                });
+            }
+
+            cy.on('tap', 'node', function(evt){
+                const tappedNode = evt.target;
+                focusOnNode(tappedNode);
+             });
+
+            cy.on('tap', function(event){
+                 if( event.target === cy ){
+                     cy.batch(() => {
+                         cy.elements().removeClass('center-node neighbor-node highlighted-edge faded faded-edge');
+                     });
+                    currentCenterNode = null;
+                    // Optional: Reset zoom/pan
+                     cy.animate({ fit: { padding: 50 }, duration: 400 });
+                 }
+             });
+
+            // --- Initial Setup (remains the same) ---
+            cy.ready(() => {
+                const initialNode = cy.getElementById(initialCenterNodeId);
+                const layout = cy.layout({
+                    name: 'cose',
+                    animate: false,
+                    padding: 50, // Increased padding
+                    nodeRepulsion: () => 20000, // Further increased repulsion
+                    idealEdgeLength: () => 120, // Increased target length
+                    nodeOverlap: 25,
+                    fit: true,
+                    randomize: true
+                });
+
+                layout.one('layoutstop', () => {
+                    setTimeout(() => {
+                         if (!initialNode.empty()) {
+                            focusOnNode(initialNode, 0);
+                            cy.center(initialNode);
+                            cy.zoom(1); // Start at zoom 1 after layout
+                         } else {
+                            cy.fit(null, 50);
+                         }
+                    }, 50);
+                 });
+                 layout.run();
+             });
+
+             let resizeTimer;
+             window.addEventListener('resize', function() {
+                 clearTimeout(resizeTimer);
+                 resizeTimer = setTimeout(function() {
+                     cy.resize();
+                    if (currentCenterNode && !currentCenterNode.empty()) {
+                         cy.center(currentCenterNode); // Just recenter without zoom animation
+                     } else {
+                        cy.fit(null, 50);
+                     }
+                 }, 250);
+             });
+
+        });
+    </script>
 <script>window.parent.postMessage({ action: "ready" }, "*"); 
  
 window.console = new Proxy(console, {
@@ -266,4 +473,3 @@ window.console = new Proxy(console, {
 });
 </script></body>
 </html>
-
