@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九章  论资本利润</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">国富论 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./008.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第九章  论资本利润</h1>
+        <a href="./008.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">资本利润的增减，与劳动工资的增减，同样取决于社会财富的增减。但财富状态对两者的影响却大不相同。</div>
+            <div class="text-block simplified-text">财富增长会影响工资和利润，但影响方式不同。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">资本的增加，提高了工资，因而倾向于减低利润。在同一行业中，如有许多富商投下了资本，他们的相互竞争，自然倾向于减低这一行业的利润；同一社会各种行业的资本，如果全都同样增加了，那末同样的竞争必对所有行业产生同样的结果。</div>
+            <div class="text-block simplified-text">资本增加会提高工资但降低利润。同一行业资本过多会因竞争拉低利润；全社会资本普遍增加时，所有行业利润都会因竞争下降。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">前面已经说过，即使要确定某一特定地方和某一特定时间的劳动的平均工资，也不容易。而且，所能确定的，只不过是最普通的工资。但就资本利润说，就连最普通的利润，我们也很少能够确定。利润极易变动，经营某特定行业的人，未必都能够说出他的每年平均利润是多少。他的利润，不但要受他所经营的那些商品价格的变动的影响，而且要受他的竞争者和顾客运气的好坏、商品在海陆运输上甚或在堆栈内所可能遭遇的许许多多意外事故的影响。所以，利润率不仅年年变动，日日变动，甚至时时刻刻都在变动。要确定一个大国内各行业平均利润，必然更加困难；至于要相当准确地确定以前或现今的利润，那必定是完全不可能的了。</div>
+            <div class="text-block simplified-text">确定劳动的平均工资很难，只能知道大概水平。而资本利润更难估算，因为利润波动很大，受商品价格、竞争、运输风险等多种因素影响，时刻在变。所以，计算全国各行业的平均利润几乎不可能，更别提准确了解过去或现在的利润了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">不过，我们要相当准确地确定往昔或现今的资本平均利润，虽不可能，但我们可以货币的利息上略知其梗概。可以提出这样一个原则：在使用货币所获较多的地方，对于货币的使用，通常支付较多的报酬；在使用货币所获较少的地方，对于货币的使用，通常支付较少的报酬。我们由此确信，一国内资本的一般利润，必定随着其市场的一般利息率的变动而变动。利息率下落，利润必随着下落；利息率上升，利润必随着上升。所以，利息的变动情况，可使我们略知利润的变动情况。</div>
+            <div class="text-block simplified-text">虽然无法精确计算过去或现在的平均资本利润，但可以通过货币利息大致了解。通常，货币收益高的地方，利息也高；收益低的地方，利息也低。因此，一国的资本利润会随市场利息率变化：利息降，利润降；利息升，利润升。观察利息变化就能推测利润变化。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">亨利八世第三十七年以法令宣布，一切利息不得超过百分之十。可见，以前的利息有的时候是在百分之十以上。其后，热心宗教的爱德华六世，受宗教的影响，禁止一切利息。但这种禁令，和同性质的其他各种禁令一样，据说没产生效果，而高利贷的弊害，没有减少，反而增加了。于是，亨利八世的法令，由于伊丽莎白女王第十三年的法令第八条的规定，又发生效力了。此后，百分之十常为法定利息率，直到詹姆士一世第二十一年，才把它限定为百分之八。复辟后不久，利息率减为百分之六。安妮女王第十二年，再减至百分之五。这一切法律的规定，看来极其适当。它们都是在市场利息率即有良好信用的人通常借款的利息率变动之后作出的，并不是走在前头。自安妮女王时代以来，百分之五的利息率，似乎比市场利息率高，而不比它低。在晚近战争以前，政府曾以百分之三的利息率借款，而王国首都及其他许多地方，有良好信用的人则以百分之三点五、百分之四、百分之四点五等利息率借款。</div>
+            <div class="text-block simplified-text">亨利八世时规定利息不超过10%，说明之前更高。后来爱德华六世禁止利息，但没用，高利贷反而更多。于是伊丽莎白女王恢复了10%的利率。之后利率逐渐下调：詹姆士一世时8%，复辟后6%，安妮女王时5%。这些调整都跟着市场走，不是硬来的。安妮女王后，5%的利率比市场实际利率还高。战前政府借3%，民间信用好的人借3.5%到4.5%。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">我国自亨利八世以来，财富与收入都在不断增加，而且在进展过程中，其速度似乎是逐渐增加，而不是减少。不仅日在进步，而且进步得越来越快。这期间的劳动工资不断增加，而大部分工商业的资本利润却在减少。</div>
+            <div class="text-block simplified-text">自亨利八世起，英国的财富和收入持续增长，且增速越来越快。工人工资不断上涨，但多数工商业的利润却在下降。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">在大都市经营一种行业，往往比乡村需墓更多的资本。各种行业上所使用的资本的庞大和富裕的竟争者人数的众多，乃是都市资本利润率一般低于农村资本利润率的原因。但是，都市的劳动工资，一般都比农村高。在繁荣的都市，拥有大量生产资本的人，往往不能按他们所需要的人数雇到劳动者，所以他们互相竞争，这样就抬高劳动工资而减低资本利润。在没有充分资本来雇用全体劳动者的偏僻地方，一般人民为获得职业而相互竞争，于是劳动工资降落，而资本利润增高。</div>
+            <div class="text-block simplified-text">城市做生意比农村需要更多钱。城里竞争大、投资多，所以利润比农村低，但工资更高。因为城里老板多、工人少，老板抢人推高了工资。而农村工作少、人多，工资低，老板利润更高。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">苏格兰的法定利息率虽与英格兰相同，市场利息率却高些。该地有良好信用的人，通常不能以少于百分之五的利息率借款。就连爱丁堡的私立银行，对于随时兑现全部或一部分的期票，也给与百分之四的利息。伦敦的私立银行，对于储入的资金，不给付利息。在苏格兰经营几乎所有行业，所需资本都比英格兰少。所只苏格兰普通利润率，比英格兰高些。上面已经说过，苏格兰的劳动工费，比英格兰低。此外，苏格兰不仅比英格兰穷得多，其进展的速度也慢得多，尽管它明显地是在前进。</div>
+            <div class="text-block simplified-text">苏格兰的市场利率比英格兰高，信用好的人借款利率至少5%，爱丁堡的私立银行对期票支付4%利息，而伦敦的银行不付利息。苏格兰各行业所需资本较少，利润率较高，但工资更低。苏格兰比英格兰更穷，发展也更慢，不过仍在进步。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">法国法定利息率，在本世纪内，不常受市场利息率的支配。在1720年，法定利息率，由二十分之一落到五十分之一，即由百分之五落到百分之二。在1724年，提到三十分之一，即提到百分之三点三。在 1725年，再提到二十分之一，即提到百分之五。 1766年，拉弗迪执政，又减到二十五分之一，即百分之四。其后，神父特雷执政，又恢复到原来的百分之五。一般认为，这样强行抑制法定利息率的目的，在于为减低公债利息率做准备；这种目的有时确曾达到。就现在说，法国也许没有英国那么富裕。法国的法定利息率一般比英国低，而市场利息率却一般比英国高。这是因为法国，象其他国家一样，有了很安全和很容易的回避法律的方法。据在英法两国经商的英国商人说，法国的商业利润比英国高；正由于这个原因，许多英国人不想把资本投在重商的本国，却愿投在轻商的法国。法国的工资比英国低。你如果由苏格兰到英格兰去，你所看到的这两地普通人民服装和面色的差异，可充分表示这两地社会状况的差异。然而，假如你从法国回到英国来，这种对照就更为鲜明了。法国无疑比苏格兰富裕，但其进步速度似乎不及苏格兰。对于苏格兰，人们一般甚或普遍认为，它正在退步；此种见解，即使对法国说，也是没有根据的；一个二三十年前曾到过苏格兰视察而现在又到那边视察的人，绝不会对它抱有此种见解。</div>
+            <div class="text-block simplified-text">法国的法定利息率经常变动，18世纪从5%降到2%，后来又多次调整。政府控制利息率可能是为了降低公债利息，有时确实有效。法国不如英国富裕，法定利息率比英国低，但市场利息率更高，因为人们能找到办法绕过法律。法国商业利润更高，吸引了一些英国资本，但工资比英国低。法国比苏格兰富裕，但发展速度不如苏格兰。有人认为苏格兰在退步，但去过的人会发现并非如此。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">反之，就领土面积及人口的比例说，荷兰比英格兰富裕。荷兰政府以百分之二的利息率借款，而有良好信用的人民以百分之三的利息率借款。据说，荷兰的劳动工资比英格兰高。大家又都知道，荷兰人经营生意所获利润，比欧洲其他任何国人都低。有些人说，现今荷兰的商业正在衰退。就商业的某些部门说，也许确是如此。但上面所说的征候似可表明，该国商业并未一般衰退。当利润减少时，商人们往往都埋怨说商业衰退了；可是利润减少，乃是商业繁盛的自然结果，或是所投资本比以前更多的自然结果。在晚近英法战争中，荷兰人乘机获得了法国全部运输业务，而且直到现今，还有一部分操在荷兰人手中。英法的国债，成为荷兰人一宗大财产。据说，单就英国说，就有大约四千万镑（但我以为这说得过大）。此外，荷兰人还把巨额资金贷给较本国利息率为高的外国的私人。这些事实，无疑表示他们资本的过剩，或者说，他们的资本已增加到投在本国适当生产上不能得相当利润的程度，但不表示商业衰退。由经营特定行业而获得的私人责本，虽增加到不能尽行投在这一行业上的程度，但这一行业仍继续增进；大国的资本也可有这种情况。</div>
+            <div class="text-block simplified-text">荷兰比英格兰更富裕，政府借款利率2%，民间3%。荷兰工资高但利润低，有人觉得商业在衰退，但这其实是资本过剩的结果，说明商业繁荣。比如，荷兰在英法战争中抢到运输生意，还持有大量英法国债，对外国放贷利率也比本国高。这些都说明荷兰资本太多，国内投资利润下降，而非商业衰退。就像某个行业钱太多投不完，但行业仍在增长，国家整体资本也可能这样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">在我国北美及西印度的殖民地，劳动工资、货币利息只及资本利润，都比英格兰高。各殖民地的法定利息率和市场利息率，是百分之六到百分之八。不过，劳动的高工资和资本的高利润同时存在，是新殖民地特殊情况所特有的现象，而在其他地方是很少见的。在新殖民地中，资本对领土面积的比例以及人口对资本的比例，在一定期间内必定比大多数国家低。他们所有的土地，多于他们资本所能耕作的土地，所以，他们只把资本投在土质最肥沃和位置最适宜的土地上，即投在海滨和可航行河流沿岸各地。此外，购买这等土地的价格，往往低于其自然生产物的价值。为购买并改良这等土地而投下的资本，必然产生极大的利润，因而使他们能够支付非常高的利息。投在这种有利用途上的资本的迅速积累，使种植园所有者能雇用的工人数，很快增加到新殖民地不能供应的程度。这样，他们能在新殖民地居到的劳动者的报酬，使极其优裕。但是，随着殖民地的扩展，资本利润就逐渐减少。土质最肥沃和位置最好的土地既全被占有，耕作土壤和位置较差的土地所能取得的利润，使减少了，而用在土地上的资本，也只能提供较低的利息。在现世纪中，我国殖民地大部分法定利息率和市场利息率，都因此大大减低。随着财富、改良工作及人口的增进，利息低落了。劳动工资却不与资本利润共同跌落。不论资本利润如何，对劳动的需求，随资本增加而增加。利润尽管减低，资本却不但继续增加，而且比以前增加得更为迅速。就此点说，勤劳的国家和勤劳的个人都一样。大资本利润虽低，但比高利润的小资本，一般增加得更为迅速。俗语说，货币产生货币。已经取得了少许，不愁不能取得更多。最困难的是这少许的取得。在前面，我已就资本的增加和业务的增加，即资本的增加和对有用劳动的需求的增加这两者的关系，作了部分的说明，以后在论述资本积累时，当详加说明。</div>
+            <div class="text-block simplified-text">北美和西印度殖民地的工资和利润比英国高，利息率在6%-8%。这是因为新殖民地地广人稀，资本少，人们只耕种最肥沃、位置最好的土地，利润高，所以能付高工资和高利息。但随着殖民地发展，好地被占完，耕种差地的利润下降，利息也降低。不过，工资不会跟着降，因为资本增加会持续推高劳动需求。大资本即使利润低，增长也比小资本快，就像“钱生钱”。最难的是赚到第一桶金。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">新领土的获得或新行业的开展，即使在财富正在迅速增加的国家，也会提高资本利润，因而也会增加货币利息。由于这国家的资本，不够应付这种新获得或新发展所给各个人带来的全部业务，所以只把它投在能提供最大利润的那些行业上。以前投在其他行业上的资本，必有一部分撤回来，转入更有利的新行业。所以，在那些旧行业，竞争便没有以前那么剧烈，而市场上各种货物的供给也减少了。货物减少，价格势必或多或少地上升，这就对经营者提供更大的利润，而他们也能以比从前高的利息率借入资金。在晚近战争结束以后不久，有良好信用的个人，乃至一些伦敦最大商号，一般以百分之五的利息率借款。在战前，他们通常没交付过百分之四或百分之四点五以上的利息。这可由我国占领北美和西印度曾增加我国领土与商业那一事实来充分说明，用不着设想我国资财已经减少。旧资本所要经营的业务增加得那么多，那必然会使很多行业的资本量减少，结果，在这些行业，由于竞争已较和缓，利润必然增加。我相信，晚近战争的巨大费用，并没使不列颠的资财减少，其原因，我以后将加以说明。</div>
+            <div class="text-block simplified-text">新行业或新领土的开发会提高利润和利息。因为资本有限，会流向利润更高的新行业，导致旧行业资本减少、竞争减弱、供应下降、价格上涨，利润和利息随之上升。例如，战后伦敦大商号的借款利率从战前的4%-4.5%涨到5%，就是因为新增业务分散了资本，推高了利润，而非国家财富减少。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">但是，社会资财即维持产业的资金的减少，使劳动工资降低，因而使资本利润以及货币利息增高。由于劳动工资低落，社会上剩有的资本的所有者，以货品提供市场所需的费用，比以前少；由于他们以货品提供市场所用的资本比以前少，他们能够且比以前高的价格出售货物。所费较少，所得较多，他们的利润从两方面增加，因此能够出高的利息。在孟加拉及东印度其他英领殖民地，获得巨大资产是那么快、那么容易这一事实，可以证明这些贫苦地方的劳动工资非常的低而资本利润非常的大。其货币利息也相应地非常的高。孟加拉农家往往以百分之四十、五十或六十的利息借入资金，并以次期的收获物作为抵押。能够担负这种高利息的利润，必然侵占地主的几乎所有地租，而这样高的利息，也必然侵占利润的大部分。罗马共和国衰亡以前，各地方在总督竭泽而渔的暴政下，似乎都有同样高的利息。从西塞罗的书简，我们知道，有道德的布鲁塔斯也曾在塞浦路斯岛以百分之四十八的利息借款。</div>
+            <div class="text-block simplified-text">社会财富减少会降低工资，但提高利润和利息。工资低意味着生产成本减少，商家能以更高价格卖货，利润增加，因此能付更高利息。比如孟加拉工资极低，利润极高，利息达40%-60%，几乎吞噬了地租和大部分利润。古罗马衰亡时也有类似情况，如布鲁塔斯在塞浦路斯放贷利率高达48%。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">一国所获的财富，如已达到它的土壤、气候和相对于他国而言的位置所允许获得的限度，因而没有再进步的可能，但尚未退步，那末，在这种状态下，它的劳动工资及资本利润也许都非常的低。一国人口的繁殖，如已完全达到其领土所可维持或其资本所可雇用的限度，那末，在这种状态下，职业上的竞争必然非常激烈，使劳动工资低落到仅足维持现有劳动者人数，而且由于人口已经非常稠密，也不可能再有增加。一国的资本，如与国内各种必须经营的行业所需要的资本相比，已达到饱和程度，那末各种行业所使用的资本，就达到各行业的性质和范围所允许使用的程度。这样，各地方的竞争就大到无可再大，而普通利润便小到无可再小。</div>
+            <div class="text-block simplified-text">当一个国家的财富、人口和资本增长到极限时，工资和利润会降到最低。人口过多会导致工作竞争激烈，工资仅够维持生活；资本过剩会使行业竞争加剧，利润变得极低。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">然而，也许没有一个国家的财富曾经达到这种程度。中国似乎长期处于静止状态，其财富也许在许久以前已完全达到该国法律制度所允许有的限度，但若易以其他法制，那末该国土壤、气候和位置所可允许的限度，可能比上述限度大得多。一个忽视或鄙视国外贸易、只允许外国船舶驶入一二港口的国家，不能经营在不同法制下所可经营的那么多交易。此外，在富者或大资本家在很大程度上享有安全，而贫者或小资本家不但不能安全，而且随时都可能被下级官吏借口执行法律而强加掠夺的国家，国内所经营的各种行业，都不能按照各种行业的性质和范围所能容纳的程度，投下足够多的资本。在各种行业上，压迫贫者，必然使富者的垄断成为制度。富者垄断行业，就能获有极大利润。所以，中国的普通利息率，据说是百分之十二，而资本的普通利润，必须足够担负这样高的利息。</div>
+            <div class="text-block simplified-text">中国财富增长受限于法律制度和政策。限制外贸、官员压榨小商人导致行业垄断，富人利润高但整体经济停滞。比如利息高达12%，说明资本利润被少数人掌控，阻碍了发展潜力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">一国法律上的缺陷，有时会使其利息率增高到大大超过它的贫富状况所需要的程度。它的法律如果不强制人们履行契约，那就使一切借款人所处的地位，和法制修明国家中破产者或信用不好者的地位相差不远。出借人收回借款的不确定性，就使他索取破产者在借款时通常需要出的那么高的利息。在侵略罗马帝国西部各地的未开化民族中，有许久，契约的履行与否只凭当事者的信义，他们王朝的裁判所很少过问此事。当时利息率达到那么高，恐怕这也是一部分原因。</div>
+            <div class="text-block simplified-text">法律不保障契约执行时，借款人还款不确定，出借人就会像对待信用差的人一样收高利息。比如古罗马被蛮族入侵后，契约靠诚信而非法律执行，导致利息率飙升。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">要是法规完全禁止利息，那也不能收到效果。许多人必须借入资金；而出借人，不仅对于这笔资金的使用，要求相当的报酬，而且对于回避法律的困难和危险，也要求相当的补偿。孟德斯鸠说，一切回数国利息率之所以高，并不是囵为他们贫穷，而是部分因为法律禁止利息，部分因为贷金难于收回。</div>
+            <div class="text-block simplified-text">禁止利息没用，因为借钱的人多，放贷的人不仅要赚利息，还要补偿法律风险和收款难。孟德斯鸠说，有些国家利息高，不是因为穷，而是因为禁利息和难收款。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">最低的普通利润率，除了足够补偿投资容易遇到的意外损失以外，还须有剩余。只有这一剩余才是纯利润或净利润。普通所谓总利润，除了包含这种剩余以外，还包含为补偿意外损失而保留的部分。借款人所能支付的利息，只与纯利润成比例。</div>
+            <div class="text-block simplified-text">普通利润率至少要能弥补投资风险和意外损失，剩下的才是纯利润。总利润包括纯利润和风险补偿金。利息只和纯利润有关。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">出借资金，即使相当谨慎，亦有受意外损失的可能。所以，最低的普通利息率，和最低的普通利润率一样，除了补偿贷借容易遇到的意外损失外，还须有剩余。如果无此剩余，那未出借资金的动机，就只能是慈善心或友情了。</div>
+            <div class="text-block simplified-text">借钱给别人，就算再小心也可能亏钱。所以最低利息要能弥补可能的损失，还得有点赚头。不然的话，除非出于好心或交情，否则没人愿意借。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">在财富已达到极度、而且用在各种行业上的资本都已达到最大限度的国家，普通纯利润率便很低，因而这种利润所能负担的普通市场利息率也很低；这样，除大富豪外，任何人都不能靠货币利息生活。小有产者和中等有产者，都不得不自己监督自己资本的用途。几乎一切人都得成为实业家，都有从事某种产业的必要。荷兰的现状，似与此相似。在那里，不是实业家，就不能算是时髦人物。需要使得几乎每一个人都习以为常地去经营某种行业。习俗又到处支配时尚。不和别人穿上同样的服装，便成为笑柄；不和别人同样从事实业，也不免成为笑柄。一个无所事事的游惰者，厕身实业家中间，正如一个文官厕身军队中间一样，会感到很尴尬，甚至会受到轻视。</div>
+            <div class="text-block simplified-text">在富国，资本多利润低，利息少到只有富豪能靠利息生活。普通人必须自己经营生意，否则会被嘲笑或轻视。荷兰就是这样，不工作的人会被看作异类。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">最高的普通利润率，也许是这样一种利润率，它在大部分商品价格中占去应当归作地租那一部分的全部，仅余足够支付商品生产及上市所需的劳动的最低工资，即仅足维持生存的工资。在劳动者从事工作时，总得设法养活他们，但地主未必都要给付。东印度公司职员在孟加拉经营商业的利润，恐怕与这最高率相差不远。</div>
+            <div class="text-block simplified-text">最高利润率可能是商品价格中扣除地租后，仅够支付工人最低生存工资的部分。这种情况下，工人勉强维生，地主却未必有收入。例如，东印度公司在孟加拉的商业利润就接近这种最高利润率。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">通常市场利息率对普通纯利润率所应有的比例，必随利润升落而变动。英国商人把相当于两倍利息的利润，看做适中合理的利润。我想，这所谓适中合理的利润，不外就是普通利润。在普通纯利润率为百分之八或百分之十的国家，借用资金来经营业务的人，从所得利润之半作为利息，也许是合理的。资本由借用人担负风险，他好象给出借人保险；在大部分行业，百分之四或百分之五，既可作为这种保险所冒风险的足够补偿，亦可作为不辞辛苦运用这笔资本的足够报酬。可是，在普通利润率低得多或高得多的国家，就不可能有像上述那样的利息和纯利润的比例。利润率低得多时，也许不能以一半作为利息；利润率高得多时，就可以一半以上作为利息。</div>
+            <div class="text-block simplified-text">市场利率和利润率通常成正比。英国商人认为合理利润是利息的两倍。比如，利润率为8%-10%时，借款人付一半利润作利息是合理的，其中4%-5%算风险补偿和劳务报酬。但如果利润率过低或过高，这个比例就不适用：太低时付不起一半利息，太高时利息可能超过一半。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">财富迅速增进的国家，可在许多商品的价格上，以低的利润弥补高的劳动工资，这样它们的商品，就能与繁荣程度较低而劳动工资较低的邻国的商品以同样低廉的价格出售。</div>
+            <div class="text-block simplified-text">经济快速发展的国家，虽然工资高，但能通过降低利润来保持商品低价，从而与工资低但经济落后的国家竞争。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">实际上，高利润抬高生产物价格的倾向，比高工资大得多。例如，麻布制造厂各种劳动者，如梳麻工、纺工、织工等的工资，如果每日各提高二便土，那末麻布一匹价格所必须增高的数额，只等于生产这一匹麻布所雇的工作人数，乘以他们生产这一匹麻布的工作日数，再乘以二便土。商品价格中归于工资的那一部分，在一切制造阶段，按算术级数递次增加。但雇用这些工人的所有雇主的利润，如果都抬高百分之五，那末，商品价格中归于利润的那一部分，在一切制造阶段，就按几何级数递次增加。就是说，梳麻工的雇主在卖麻时，要求他所垫付的材料和工人工资的全部价值，另外加上百分之五。同样，纺工的雇主，也要求他所垫付的麻价和纺工工资的全部价值，另外加上百分之五。推而至于织工的雇主，也同样要求另外加上百分之五。所以，工资增高对商品价格抬高的作用，恰如单利对债额累积的作用。利润增高的作用，却象复利一样。我国商人和制造者，对于高工资提高物价、从而减少国内外销路的恶果，大发牢骚；但对于高利润的恶果，他们却只字不谈。关于由自己得利而产生的恶果，他们保持沉默。他们只对由他人得利而产生的恶果，大喊大叫。</div>
+            <div class="text-block simplified-text">高利润比高工资更会推高商品价格。工资涨一点，价格按比例涨一点；但利润涨一点，价格会像滚雪球一样越涨越多。商人们总抱怨工资涨了会让东西卖不出去，却对利润上涨的坏处闭口不谈——因为那是他们自己的利益。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
