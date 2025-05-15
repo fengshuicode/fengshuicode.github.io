@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章  论商品的真实价格与名义价格</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">国富论 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./004.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五章  论商品的真实价格与名义价格</h1>
+        <a href="./004.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">或其劳动价格与货币价格</div>
+            <div class="text-block simplified-text">工资和物价</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">一个人是贫是富，就看他能在什么程度上享受人生的必需品、便利品和娱乐品。但自分工完全确立以来，各人所需要的物品，仅有极小部分仰给于自己劳动，最大部分却须仰给于他人劳动。所以，他是贫是富，要看他能够支配多少劳动，换言之，要看他能够购买多少劳动。一个人占有某货物，但不愿自己消费，而愿用以交换他物，对他说来，这货物的价值，等于使他能购买或能支配的劳动量。因此，劳动是衡量一切商品交换价值的真实尺度。</div>
+            <div class="text-block simplified-text">贫富取决于你能享受多少生活所需和娱乐。分工后，大部分东西要靠别人的劳动获得，所以贫富看你能否购买或支配更多劳动。商品的价值就是它能换取的劳动量，劳动才是衡量商品价值的真正标准。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">任何一个物品的真实价格，即要取得这物品实际上所付出的代价，乃是获得它的辛苦和麻烦。对于已得此物但愿用只交换他物的人来说，它的真正价值，等于因占有它而能自己省免并转加到别人身上去的辛苦和麻烦。以货币或货物购买物品，就是用劳动购买，正如我们用自己的劳动取得一样。此等货币或货物，使我们能够免除相当的劳动。它们含有一定劳动量的价值，我们用以交换其他当时被认为有同量劳动价值的物品。劳动是第一性价格，是最初用以购买一切货物的代价。世间一切财富，原来都是用劳动购买而不是用金银购买的。所以，对于占有财富并愿用以交换一些新产品的人来说，它的价值，恰恰等于它使他们能够购买或支配的劳动量。</div>
+            <div class="text-block simplified-text">物品的真实价格是获得它所付出的劳动。用钱或货物买东西，就是用劳动交换。劳动是购买一切东西的根本代价，财富的价值在于它能换取多少劳动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">霍布斯说：财富就是权力。但获得或承继大宗财产的人，未必就获得或承继了民政上或军政上的政治权力。他的财产，也许可以提供他一种获得政权的手段，但单有财产未必就能给他政权。财产对他直接提供的权力，是购买力，是对于当时市场上各种劳动或各种劳动生产物的支配权。他的财产的大小与这种支配权的大小恰成比例，换言之，财产的大小，与他所能购买或所能支配的他人劳动量或他人劳动生产物数量的大小恰成比例。一种物品的交换价值，必然恰等于这物品对其所有者所提供的劳动支配权。</div>
+            <div class="text-block simplified-text">霍布斯认为财富就是权力，但有钱不一定直接掌握政治权力。财富能帮你获得权力，但主要给你的是购买力，即控制他人劳动或产品的能力。财富越多，能买的东西或支配的劳动就越多。一件东西的价值等于它能换来的劳动控制权。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">劳动虽是一切商品交换价值的真实尺度，但一切商品的价值，通常不是按劳动估定的。要确定两个不同的劳动量的比例，往往很困难。两种不同工作所费去的时间，往往不是决定这比例的唯一因素，它们的不同困难程度和精巧程度，也须加以考虑。一个钟头的困难工作，比一个钟头的容易工作，也许包含有更多劳动量；需要十年学习的工作做一小时，比普通业务做一月所含劳动量也可能较多。但是，困难程度和精巧程度的准确尺度不容易找到。诚然，在交换不同劳动的不同生产物时，通常都在一定程度上，考虑到上述困难程度和精巧程度，但在进行这种交换时，不是按任何准确尺度来作调整，而是通过市场上议价来作大体上两不相亏的调整。这虽不很准确，但对日常买卖也就够了。</div>
+            <div class="text-block simplified-text">劳动决定商品价值，但实际交易中很难精确衡量劳动量。不同工作的难度和技能要求不同，比如高难度或高技能的工作一小时可能比简单工作一月更值钱。但这些差异难以准确量化，所以市场交易通常靠双方议价来大致平衡，虽然不精确，但够用了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">加之，商品多与商品交换，因而多与商品比较，商品少与劳动交换，因而少与劳动比较。所以，以一种商品所能购得的另一种商品量来估定其交换价值，比以这商品所能购得的劳动量来估定其交换价值，较为自然。而且，我们说一定分量的特定商品，比说一定分量的劳动，也更容易使人理解。因为，前者是一个可以看得到和接触得到的物体，后者却是一个抽象的概念。抽象概念，纵能使人充分理解，也不象具体物那样明显、那样自然。</div>
+            <div class="text-block simplified-text">商品通常用来交换其他商品，而不是劳动，所以用商品能换多少其他商品来衡量它的价值，比用能换多少劳动更直观。因为商品是看得见摸得着的，而劳动是个抽象概念，理解起来没那么直接自然。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">但是，在物物交换已经停止，货币已成为商业上一般媒介的时候，商品就多与货币交换，少与别种商品交换。屠户需要面包或麦酒，不是把牛肉或羊肉直接拿到面包店或酒店去交换，却是先把牛肉或羊肉拿到市场去换取货币，然后再用货币交换面包或麦酒。他售卖牛羊肉所得的货币量，决定他后来所能购买的面包量和麦酒量。因此，屠户估计牛羊肉价值，自然多用牛羊肉直接换来的物品量即货币量，少用牛羊肉间接换来的物品量即面包和麦酒量。说家畜肉一磅值三便土或四便土，比说肉一磅值面包三斤或四斤，或值麦酒三夸脱或四夸脱，也更合宜。所以，一个商品的交换价值，多按货币量计算，少按这商品所能换得的劳动量或其他商品量计算。</div>
+            <div class="text-block simplified-text">货币成为交易媒介后，商品主要和货币交换，而不是直接换其他商品。比如屠夫卖肉换钱，再用钱买面包和酒，而不是直接用肉去换。肉能换多少钱决定了能买多少面包和酒。因此，大家更习惯用货币（比如一磅肉值三便士）而不是其他商品（比如一磅肉值三斤面包）来衡量商品价值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">象一切其他商品一样，金银的价值时有变动，时有高低，其购买也时有难易。一定金银量所能购买或所能支配的劳动量或他种商品量，往往取决于当时已发现的著名金银矿山出产量的大小。十六世纪美洲金银旷山的发现，使欧洲金银的价值几乎减低为原价的三分之一。此等金属由矿山上市所需劳动既较少，故上市后所能购买或所能支配的劳动也按同一程度减少。而且，在金银价值上，这虽是最大的一次变革，但不能说是历史上唯一无二的变革。我们知道，本身数量会不断变动的尺度，如人足一步、人手一握或两臂合抱，决不是测定他物数量的正确尺度；同样，自身价值会不断变动的商品，也决不是计量他种商品价值的准确尺度。但是，劳动却当别论。等量劳动，无论在什么时候和什么地方，对于劳动者都可以说有同等的价值。如果劳动者都具有一般的精力和熟练与技巧程度，那末在劳动时，就必然牺牲等量的安乐、自由与幸福。他所购得的货物不论多少，总是等于他所付出的代价。诚然，他的劳动，虽有时能购得多量货物，有时只能购得少量货物，但这是货物价值变动，不是购买货物的劳动价值变动。不论何时何地，凡是难于购得或在取得时需花多量劳动的货物，价必昂贵；凡是易于购得或在取得时只需少量劳动的货物，价必低廉。所以，只有本身价值绝不变动的劳动，才是随时随地可用以估量和比较各种商品价值的最后和真实标准。劳动是商品的真实价格，货币只是商品的名义价格。</div>
+            <div class="text-block simplified-text">金银的价值会变，取决于矿产量。16世纪美洲发现大矿后，欧洲金银价值跌了三分之二。用会变的东西（比如金银）衡量商品价值不准确，但劳动可以。同样的劳动在任何时候、任何地方价值都一样，因为劳动者付出的代价相同。商品价格变化是因为商品价值在变，不是劳动价值在变。劳动才是衡量商品价值的真实标准，货币只是表面价格。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">可是，等量劳动，对于劳动者，虽常有等量价值，但在雇用劳动者的人看来，它的价值却时高时低。雇主购买劳动，有时需用多量货物，有时只需用少量货物；因而，在他看来，劳动价格与其他一切物品一样常在变动。在他看来，以多量货物购得的劳动价昂，以少量货物购得的劳动价廉。共实，在前一场合，是货物价廉；在后一场合，是货物价昂。</div>
+            <div class="text-block simplified-text">劳动者的劳动价值对他们自己是一样的，但对雇主来说却不同。雇主觉得用更多货物换劳动时劳动贵，用更少货物换时劳动便宜。其实，这只是货物本身价格在变：前者是货物便宜，后者是货物贵了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">所以，按照通俗的说法，劳动也象商品一样可以说有真实价格与名义价格。所谓真实价格，就是报酬劳动的一定数量的生活必需品和便利品。所谓名义价格，就是报酬劳动的一定数量的货币。劳动者是贫是富，其劳动报酬是坏是好，不与其劳动的名义价格成比例，而与其劳动的真实价格成比例。</div>
+            <div class="text-block simplified-text">劳动报酬有实际价值和货币价值之分。实际价值指能买到的生活用品数量，货币价值则是拿到的钱数。劳动者穷富取决于实际价值，而非货币价值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">就商品与劳动说，真实价格与名义价格的区别，不仅仅是纯理论问题，在实用上，也非常重要。同一真实价格的价值，往往相等；但同一名义价格的价值，却往往因金银价值变动而产生极大的差异。所以，假设一个人，要以永久租佃为条件而售卖地产，如果他真要使地租的价值永久不变，那就不可把地租定为一定数额的货币。一定数额的货币的价值难免有两种变动：第一，由于同一名称铸币各时代所含不同金银分量而产生的变动；第二，由于同一分量金银价值各时代各不相同而产生的变动。</div>
+            <div class="text-block simplified-text">商品和劳动的真实价格和名义价格区别很大，实际中也很重要。同样的真实价格价值通常不变，但同样的名义价格会因金银价值变化而差异很大。比如永久出租地产时，想保持地租价值稳定，就不能用固定金额的货币来定租金。因为货币价值会变：一是铸币含金银量可能不同，二是金银本身价值会波动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">君王和国家往往认为，减少铸币内所含的纯金属的量对他们眼前有利。但他们很少认为，增加铸币内所含纯金属量于己有利。我相信，各国铸币内所含的纯金属量都在不断减少，从来没有增加，所只，这种变动常使货币地租的价值降低。</div>
+            <div class="text-block simplified-text">国家常通过减少铸币中的金属含量来获利，却很少增加。这导致货币地租贬值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">美洲矿山的发现，降低了欧洲金银的价值。据一般人推测，金银价值还会逐渐下降，而且在长时期内大概会继续下降（但我认为这没有确实论据）。所以，在这种推测下，即使地租不规定为铸币若干镑，而规定为纯银或某种成色的白银若干盎斯，这种变动多半会降低而不是增加货币地租的价值。</div>
+            <div class="text-block simplified-text">美洲发现银矿后，欧洲金银贬值了。人们普遍认为金银会继续贬值（但我觉得不一定）。所以，即使地租用白银而不是货币计算，地租的实际价值可能也会下降。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">谷物地租却不如此。谷物地租，即使在铸币名实一致的时候，也比货币地租更能保持原有价值。伊丽莎白第十八年规定，国内各学院地租，三分之二纳货币，其余三分之一要纳谷物，或按照当时最近市场上的谷价折合货币。由谷物折合货币的部分，原不过占全部地租的三分之一，但现在据布勒克斯顿博士说，却已二倍于其他三分之二了。依此算来，各学院的货币地租，一定几乎已经减到原值的四分之一或其原值谷物的四分之一了。但是，自腓力普和玛利朝代迄今，英国铸币单位几乎无变化；同一数量的磅、先令或便士，几乎含有同一分量纯银。由此可见，各学院货币地租价值的跌落完全是由于银价的下降。</div>
+            <div class="text-block simplified-text">谷物地租比货币地租更能保值。伊丽莎白时期规定学院地租的三分之一用谷物或按市价折算成货币支付。如今这部分谷物折算的价值已是货币地租的两倍，说明货币地租的实际价值已降至原来的四分之一。虽然英国货币单位一直没变，但银价下跌导致货币地租贬值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">设若银价下落，而铸币内所含的纯银量又同时减少，货币地租的损失就会更大。苏格兰铸币含银量的变动比英格兰大得多，而法兰西又比苏格兰大得更多。所以，这两国昔日报有价值的地租，现在几乎全无价值可言。</div>
+            <div class="text-block simplified-text">银价下跌时，如果硬币的含银量也减少，货币地租的损失会更严重。苏格兰和法国的硬币含银量比英格兰降得更多，导致这些国家过去的地租现在几乎不值钱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">在两个相隔很远的时期里，等量谷物（即劳动者的生活资料），比等量金银或其他货物，似更可能购买等量劳动。所以，等量谷物在两个相隔很远的时期里更可能保持几乎相同的真实价格，换言之，使有谷物者，更可能以等量谷物购买或支配他人的等量劳动。我只说，等量谷物比等量其他商品更可能购买或支配等量劳动，因为等量谷物不可能丝毫不差地购买或支配等量劳动。劳动者的生活资料，换言之，劳动的真实价格，如后章所要说明的，在不同时期是大不相同的。劳动者所享有的生活资料，在进步社会，多于静止社会，在静止社会，又多于退步社会。在一定时间内，谷物以外其他任何商品所能购得的劳动量，必定相当于这商品当时所能购得的生活资料量。所以，谷物地租，只受一定分量谷物所能购买的劳动量上的变动的影响。但以其他任何物品计算的地租，不但要受一定分量谷物所能购买的劳动量上的变动的影响，同时还要受一定分量这物品所能购换的谷物量上的变动的影响。</div>
+            <div class="text-block simplified-text">谷物比其他商品更能稳定地换取等量劳动，因为劳动者的生活资料（谷物）价格长期变化较小。但实际劳动价格会随社会发展阶段（进步、静止或退步）而变化。谷物地租只受谷物能换取的劳动量影响，而其他商品的地租还受该商品能换取的谷物量影响。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">不过，我们要注意一点：谷物地租真实价值的变动，就一世纪一世纪来说，虽比货币地租真实价值的变动少得多，但就一年一年来说，却比货币地租真实价值的变动多得多。如后章所要说明的，劳动的货币价格，并不逐年随谷物的货币价格涨落而变动。它似乎不和谷物的暂时或偶然价格相适应，而和谷物的平均或普通价格相适应，而且，我们以后会知道，谷物的平均或普通价格，受银价的支配，受银矿山出产额大小的支配，爱运银到市场所必须使用的劳动量的支配，因而也受所必须消费的谷物量的支配。银价就一世纪一世纪来说，有时虽有很大变动，但就一年一年来说，却很少有很大变动，往往在五十年或一百年内，具有相同或大约相同的价值。因此，也在这么长久的一个时期内，具有相同或几乎相同的平均或普通货币价格。而劳动也保持有同样的货币价格，至少在社会其他情况全无变动或几乎无变动的场合是这样。不过，谷物的暂时或偶然价格，今年比去年高一倍是常会发生的事，例如，今年每夸特二十五先令，明年涨至五十先令。可是，当谷物涨至每夸特五十先令时，谷物地租的名义价值和真实价值就比以前高一倍，或者说所支配的劳动量或其他货物量比以前大一倍，但在这些变动中，劳动和大多数其他商品的货币价格却仍旧不变。</div>
+            <div class="text-block simplified-text">谷物地租的长期价值比货币地租稳定，但短期波动更大。劳动的工资不随每年粮价变化，而是由粮食的长期平均价格决定，而后者受白银供应和开采成本影响。白银价格长期可能大幅变动，但短期内较稳定，因此劳动工资也相对固定。然而，粮食价格可能一年翻倍，导致谷物地租的名义和实际价值翻倍，但工资和其他商品价格通常不变。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">由此可见，只有劳动才是价值的普遍尺度和正确尺度，换言之，只有用劳动作标准，才能在一切时代和一切地方比较各种商品的价值。就一世纪一世纪来说，我们不能用一种物品所能换得的银量来估定这物品的真实价值；就一年一年来说，我们不能用一种物品所能换得的谷物量来估定这物品的真实价值。但无论就一世纪一世纪来说，或就一年一年来说，我们都可极其准确地用一种物品所能换得的劳动量，来估定这物品的真实价值。就一世纪一世纪来说，谷物比银更适合于作为尺度，因为在这场合，等量谷物比等量白银更有支配等量劳动的可能。反之，就一年一年来说，以银为尺度又胜于谷物，因为在这场合，等量的银比等量谷物更有支配等量劳动的可能。</div>
+            <div class="text-block simplified-text">劳动是衡量商品价值的唯一可靠标准。长期来看，谷物比白银更能准确反映价值；短期来看，白银比谷物更合适。因为劳动价值相对稳定，而金银和谷物的购买力会随时间波动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">真实价格与名义价格的区分，对订定永久地租或缔结长期租地契约，可能还有用处，但对日常生活中比较普通的买卖，却没有用处。</div>
+            <div class="text-block simplified-text">分清实际价格和名义价格对长期地租或租约有用，但对日常买卖没啥用。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">在同一时间和同一地方，一切物品的真实价格与名义价格都成正比例。例如，在伦敦市场上售卖一种商品，所得货币愈多，那末在那个时间，它所能购买或所能支配的劳动量亦愈多；所得货币愈少，它所能购买或支配的劳动量亦愈少。所以，在同一时间和同一地方，货币乃是一切商品的真实交换价值的正确尺度。但只在同一时间和同一地方才是这样。</div>
+            <div class="text-block simplified-text">同一时间、同一地点，商品的价格和它能换取的劳动量成正比。钱越多，买到的劳动越多；钱越少，买到的劳动越少。所以，钱是衡量商品真实价值的准确标准，但仅限于同一时间和地点。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">在相隔很远的两个地方，商品的真实价格与货币价格不成正比例，而往来贩运货物的商人只考虑商品的货币价格，换言之，他所考虑的，只是购买商品所用的银数和出卖商品可换得的银数之间的差额。在中国广州地方，半盎斯白银所可支配的劳动量或生活必需品和便利品量，比伦敦一盎斯白银所可支配的也许还要大。所以，对于各该地的某一商品的所有者来说，在广州以半盎斯白银出售，比在伦敦只一盎斯白银出售，实际上也许更有价值，更为重要。不过，如果伦敦商人能在广州以半盎斯白银购买的某一商品，后来能在伦敦以一盎斯白银的价格出卖，他这趟买卖，就获得了百分之百的利益，好象伦敦和广州的银价完全相同一样。至于广州半盎斯白银，比伦敦一盎斯白银，能够支配更多劳动或更多生活必需品和便利品，对这个商人来说，是不重要的。在伦敦，一盎斯白银使他能够支配的劳动量和生活必需品与便利品量，总是两倍于半盎斯白银，而这正是他所希求的。</div>
+            <div class="text-block simplified-text">两地商品的实际价值和货币价格不成正比，但商人只关心买卖的银钱差价。比如广州半盎斯白银能买的东西可能比伦敦一盎斯还多，但对商人来说不重要。只要在广州低价买入，伦敦高价卖出赚到钱就行，哪怕两地购买力不同也无所谓。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">由于一切买卖行为的适当与否，最终都取决干商品的名义价格或货币价格，而日常生活中几乎所有交易也受其支配，所以，人们大都注意名义价格而不注意真实价格，是毫不足怪的。</div>
+            <div class="text-block simplified-text">买卖是否划算主要看商品的标价，日常交易也靠它决定，所以大家自然更关注价格数字而非实际价值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">但是，就本书说，有时也必须比较特定商品在不同时间和不同地方的不同真实价值，换言之，有时也必须比较特定商品在不同时期对其所有者所提供的不同的支配他人劳动的能力。这样，我们所要比较的，与其说是出售特定商品通常可得的不同银量，勿宁说是不同银量所能买得的不同劳动量。但是，时间隔远了，地方隔远了，劳动的时价如何，往往无从正确知道。正式记录谷物时价的地方虽然不多，但对于谷物时价，人们一般知道得比较清楚，而历史家和著述家也更常注意谷物时价。所以，一般地说，我们得心满意足地用谷物时价来作比较，这并不是因为它和劳动时价总是恰恰以同一比例涨落，而是因为二者一般总是以最近似的比例涨落。我在下面要作几个这种比较。</div>
+            <div class="text-block simplified-text">这本书有时需要比较商品在不同时间和地点的实际价值，也就是看它能换取多少劳动。直接比较劳动价格很难，因为历史数据不足。但谷物价格记录较多，所以常用它来比较，虽然不完美，但大致能反映劳动价格的变化。后面我会做几个这样的比较。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">随着产业进步，商业国发现了同时使用数种金属铸币的便利；大的付款用金币；价值不大不小的买卖用银币；数额更小的买卖用铜币或比铜币更贱的金属铸币。在这三种金属中，他们往往特别选定一种作为主要的价值尺度。而他们所选择的，似乎都是最先用作商业媒介的金属。他们在没有其他货币可用时，就已把它用作本位，所以后来即使需要改变，也往往仍旧使用。</div>
+            <div class="text-block simplified-text">随着商业发展，人们发现用不同金属铸币更方便：大额用金币，中等用银币，小额用铜币。通常他们会选最早使用的金属作为主要价值标准，即使后来有需要也很少更换。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">据说，罗马在第一次普尼克战争之前五年内开始铸造银币；在这之前，罗马只有铜币。所以，罗马共和国似乎继续以铜币为价值尺度。罗马一切簿账，一切财产价值，都以若干阿斯或若干塞斯特斯（Sesterce）计算。阿斯一直是铜币名称。而塞斯特斯一词其意即为两个半阿斯，故塞斯特斯虽原为银币，但其价值常以铜币计算。所以，在罗马，对于负债很多的人，人们都说，他借有许多别人的铜。</div>
+            <div class="text-block simplified-text">罗马在第一次普尼克战争前五年才开始造银币，之前只用铜币。共和国时期，罗马人记账和估价都用阿斯或塞斯特斯（等于两个半阿斯）。虽然塞斯特斯是银币，但价值按铜币算。因此，欠债多的人被称为"借了很多铜"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">至于那些在罗马帝国废墟上立国的北方民族，在定居之初，似乎只有银币，即在后此若干年代，也没有金币和铜币。撒克逊人入主英格兰时，英格兰也只有银币。直到爱德华三世时代，只有少许金币。在詹姆士一世以后，才有铜币。所只，在英格兰，而且依据同一理由，我相信，在近代欧洲的其他各国，一切簿账以及一切货物与一切财产的价值都用银计算。要表述一个人的财产额时，我们不说它值多少金几尼，而说它值多少磅纯银。</div>
+            <div class="text-block simplified-text">北方民族在罗马帝国废墟上建国时，主要用银币。比如撒克逊人统治英格兰时只有银币，后来才有少量金币和铜币。因此，近代欧洲包括英格兰都用银来计算财产价值，比如用“多少磅纯银”而不是“多少金几尼”来表示财产数额。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">我相信，各国法定的支付手段，最初都只是被特认为价值标准的那种金属铸币。在英格兰，黄金在铸币后很久还不曾取得法币资格。金币和银币价值的比例，不由法律或公告规定，而纯然取决于市场。所以，债务人如果以金偿债，债权人可以拒绝，不然，就须按照双方同意的金价计算。铜在今日，只用以兑换小银币，已经不是法币了。所以，在这种情况下，本位金属与非本位金属的区别，已不仅仅是名义上的区别了。</div>
+            <div class="text-block simplified-text">最初，各国法定货币都是特定金属铸的硬币。比如英国，黄金铸币很久后才成为法定货币。当时金币和银币的兑换率由市场决定，债权人可以拒收金币，除非双方商定价格。如今铜币只能换小银币，不再是法定货币。所以，本位和非本位金属的区别不仅是名义上的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">往后，人们逐渐习惯于同时使用数种铸币，而且熟悉各种铸币价值的比例；我相信，在那时候，大多数国家，才感到了确定这比例的便利，才用法律规定，有怎样纯度和重量的几尼，应该兑换二十一先令，并规定对于有那么大数额的债款，可用它作为法币偿付。在这种状态下，在法定比例继续有效期间内，本位金属与非本位金属的区别，只是名义上的区别了。</div>
+            <div class="text-block simplified-text">后来，人们习惯用多种货币，并了解它们的兑换比例。于是，各国为了方便，就用法律规定了货币的兑换标准，比如纯度、重量和对应价值。这样，在规定有效期内，不同货币的区别就只是名义上的了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">不过，在法定比例发生变动时，本位金属与非本位金属的区别又成为我至少似乎成为不仅仅是名义上的区别。例如，在一切账目都以银币记明，而一切债务都以银币表明的场合，如果金币一几尼的法定价值，由二十一先令落至二十先令，或升至二十二先令，以银币偿还旧欠，虽和以前相同，然只金币偿还，就有很大的差异。在一几尼低于二十一先令场合，所需金币数额必较大；在高于二十一先令的场合，所需金币数额必较小。在这情况下，与金价比较，银价似乎不易于变动。这时，好象是以银衡量金的价值，而不以金衡量银的价值。金的价值，似取决于金所能交换的银量；银的价值，似不取决于银所能交换的金量。但这种差异，全然起因于账目款额多用银币表明的习惯。例如，德拉蒙期票一张，若注明金币二十五几尼或五十几尼，则在法定比例发生变动以后，仍旧可只象只前那样用同额金币付还。这时，若不以金币而以银币兑付，则所需银数必随法定比例的变动而有很大的不同。就这张期票的支付说，与银价比较，金价又似乎不易于变动。这时，又好象是以金衡量银的价值，而不是以银衡量金的价值了。所以，如果账簿、契约、债券上的款额全都以金币来表示，则被特认为价值标准或价值尺度的金属，就应当是金而不是银了。</div>
+            <div class="text-block simplified-text">当法定货币比例变化时，用哪种金属还债会影响实际支付金额。如果用银币记账，金币价值变动会导致还债所需金币数量变化（比如1金币从21先令变成20先令，就要用更多金币还债），这时银价显得更稳定。反之，如果用金币记账，银币价值变动会影响还银数量，金价就显得更稳。说白了，哪种金属被用作记账标准，哪种就显得价值更稳定。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">在不同金属铸币的不同价值中，要是有个法定比例持续不变，那末最昂贵的金属的价值，事实上便支配一切铸币的价值。例如，英铜币十二便士，以常衡（十六盎斯为一磅）计，重铜半磅，而由于铜质不良，未铸成铜币前很少能值银币七便士。可是，由于法律规定，铜币十二便土换一先令，于是在市场上被认为值一先令，并可随时换成一先令。即在最近金币改革以前，英国金币，一般地说，不曾象大部分银币那样，低劣到标准重量以下，至少在伦敦及其附近流通的金币是如此。可是，磨损的银币二十一先令的被视为无大损耗的金币一几尼的等值物。最近，由于法律规定，英政府已采取措施使金币也象别的国家的通用铸币那样尽量接近于标准重量。而官署非依重量计算不得收受金币的命令，在这命令继续有效的期间内，当可保持金币的重量，使常与标准接近。银币仍如金币改革以前那样处于磨损剥蚀状态。可是在市场上，磨损了的银币二十一先令，仍被认为值优良的金币一几尼。</div>
+            <div class="text-block simplified-text">如果法律规定不同金属硬币的固定兑换比例，最贵金属的价值就决定了所有硬币的价值。比如，英国规定12铜便士换1先令，即使铜本身不值那么多，人们还是接受这个兑换率。以前，金币比银币更接近标准重量，但磨损的21先令银币仍被当作1几尼金币使用。后来政府要求金币必须足重，但银币依然磨损严重，可21先令还是能换1几尼。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">这样，金币的改革显然抬高了能和金币兑换的银币的价值。</div>
+            <div class="text-block simplified-text">金币改革让银币更值钱了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">英国造币厂以金一磅铸成四十四个半几尼，按一几尼为二十一先令计算，就等于四十六镑十四先令六便上。所只，重一盎斯的金币，等于银币三镑十七先令十便士半。英格兰向来不征收铸币税，以重一磅或一盎斯标准金块持往造币厂，可不折不扣换回重一磅或一盎斯的铸币。所以，每盎斯三磅十七先令十便士半，就成为英格兰所谓金的造币厂价格，也就是造币厂交换标准金块所付给的金币量。</div>
+            <div class="text-block simplified-text">英国造币厂用1磅黄金铸成44.5几尼（1几尼=21先令），相当于46英镑14先令6便士。1盎司金币值3英镑17先令10.5便士银币。英格兰不收铸币税，拿标准金块去造币厂能1:1兑换成金币。所以1盎司黄金的官方价格就是3英镑17先令10.5便士，也就是造币厂给的金币数量。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">在金币改革前，市场上标准金块的价格，好多年都在每盎斯三镑十八先令以上，常是三镑十九先令，更常是四镑。但在当时磨损的四镑的金币里，很少含有一盎斯以上的标准金。金币改革以后，每盎斯标准金块的市价很少超过三镑十七先令七便士。改革前，其市场价格总是或多或少地超过造币厂价格；改革后，市场价格一直低于造币厂价格。但不论以金币或以银币支付，市价都相同。所以，最近金币的改革，不仅提高了金币的价值，而且也提高了和金块乃至和一切其他货物对比的银的价值。不过，因为大部分其他货物的价格，还受许多其他原因的影响，所以和这些货物相比，金币或银币的价值增长得不象它们那么显著。</div>
+            <div class="text-block simplified-text">金币改革前，金块价格长期高于每盎司三镑十八先令，常接近四镑，而磨损的金币实际含金量不足一盎司。改革后，金块价格降到三镑十七先令七便士以下，一直低于造币厂价格。这次改革提升了金币价值，也带动了银和其他货物的价值上涨，但由于其他因素影响，金银的升值幅度不如其他货物明显。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">英格兰造币厂以标准银块一磅铸成含有重标准银一磅的六十二先令银币。所只，一盎斯合五先令二便士就是英格兰所谓银的造币厂价格，也就是造币厂交换标准银块所给付的银币量。在金币改革以前，一盎斯标准银块的市场价格有时是五先令四便士，有时是五先令五便士，有时是五先令六便士，有时是五先令七便士，有时是五先令八便士。不过，就中似乎以五先令七便士为最普通。金币改革以后，一盎斯标准银块的市场价格降到五先令三便士、五先令四便士或五先令五便士，很少超过五先令五便士。可是，银块的市场价格，虽因金币改革而减低了许多，但始终没有降到象造币厂那么低的价格。</div>
+            <div class="text-block simplified-text">英格兰造币厂用一磅银块铸成62先令银币，所以一盎司银块等于5先令2便士，这叫银的造币厂价格。改革前，一盎司银块市价通常在5先令7便士左右，最高到8便士。改革后，市价降到3到5便士，但始终比造币厂价格高。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">就英格兰铸币所合不同金属的比价说，铜的评价远远超过它的真实价值，因而银的评价略低于它的真实价值。在欧洲市场，就法国、荷兰的铸币说，纯金一盎斯大约摸纯银十四盎斯；就英格兰的铸币说，纯金一盎斯却能换得纯银约十五盎斯。就是说，银在英格兰的评价低于欧洲一般的评价。然而，即使在英格兰，铜块的价格也不因铸币铜的评价过高而增高；同样，银块价格，也不因铸币银的评价过低而下落。银块仍保持着它对金子的适当比例；由于同一理由，铜块也保持着它对银子的适当比例。</div>
+            <div class="text-block simplified-text">英格兰铸币中铜价虚高，银价偏低。欧洲市场上金兑银比例约1:14，英格兰却是1:15，说明银在英格兰更不值钱。但实际交易中，银块和铜块的价格并未受铸币定价影响，仍保持与金、银的正常比价关系。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">在威廉第三改革银币以后，银块价格仍然略高于造币厂价格。洛克认为，这种高价是允许银块输出而禁止银币输出的结果。他说，允许银块输出，国内对银块的需要必大于对银币的需要。可是，国内为普通买卖而需要银币的人，必然比为输出或为其他目的而需要银块的人多得多。现在我们也同样允许金块输出、禁止金币输出，而金块价格却落到造币厂价格之下。那时象现今一样，铸币的银，和金对比，是评价太低了。那时（那时金币也被认为无须改革）象现今一样，金币支配一切铸币的真实价值。以前的银币改革，既不能使银块价格降低到造币厂价格，那末，现今任何类似的改革恐怕也不能做到这一点。</div>
+            <div class="text-block simplified-text">洛克指出，威廉三世改革银币后，银块价格仍高于官方定价，因为允许出口银块但禁止出口银币，导致国内对银块需求更大。同样，如今允许金块出口但禁止金币出口，金块价格却低于官方价。过去和现在一样，银币价值被低估，金币实际主导货币价值。之前的银币改革未能压低银块价格，现在类似的改革可能也无效。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">假若银币能够象金币那样，做到和标准重量大致相同，那末按照今日比价，金币一几尼所能换入的银币，就要多于它所能购买的银块。银币如含有十足的标准重量，则先把银币熔成银块，再以银块换成金币，然后以金币换取银币，就有利可图。要防止此种毛病，似乎只有改变金银比价。</div>
+            <div class="text-block simplified-text">如果银币和金币一样足重，按现在比价，一几尼金币能换的银币比能买的银块还多。这样人们就会把银币熔成银块换金币，再用金币换更多银币来获利。要解决这个问题，只能调整金银的兑换比例。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">就铸币的金银适当比值说，要是把现今低于这比值的银价评得高于这比值，同时又象规定铜币除了可以兑换先令外不得充作法币那样，规定银币除了可以兑换几尼外不得充作法币，那末上述毛病，也许可以减少。银的高的评价绝不会使任何债权人吃亏，正如现今铜的高的评价，不会使债权人吃亏一样。在这种规定下，吃亏的只有银行业者。当他们的银行发生挤兑时，他们往往以最小的六便士银币支付款项，想借此延宕时间。这种规定的实行，却使他们不能再使用这种不名誉的方法来避免立时兑付。结果他们将不得不经常在金柜中储有更大数量的现金。这对银行业者当然很不利，但对债权人的利益却是很大的保障。</div>
+            <div class="text-block simplified-text">调整银币与金币的兑换比例，并限制银币只能兑换金币（类似铜币只能兑换先令的规定），可以减少金融问题。提高银价不会损害债权人利益，就像现在铜价高不影响债权人一样。唯一受影响的是银行，因为它们无法再用小额银币拖延兑付，必须储备更多现金。这对银行不利，但能更好地保护债权人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">固然，即使在今日优良金币中，三磅十七先令十便土半（金的造币厂价格），也未必含有一盎斯以上的标准金；因此，有人认为，这数额不应当购换更多的标准金块。但是，金铸币在使用上实较金块便利；加之，铸造货币在英国虽不取费，但金块持往造币厂，往往须在数星期之后才能换回铸币。现今造币厂工作繁忙，要延到数月以后才能取回铸币。时间这样的拖延，等于抽收小额的铸币税，并使金币的价值略高于等量金块的价值。所以，英国铸币银的评价，若能保持对金的适当比例，那末，不实行银币改革，也能使银块价格落到造币厂价格之下；甚至现今磨损了的银币价值也会受银币所能兑换的优良金币的价值的支配。</div>
+            <div class="text-block simplified-text">现在金币虽然含金量不高，但比金块用起来方便。而且英国造币厂免费铸币，但金块换金币要等很久，相当于变相收费，所以金币比等量金块更值钱。只要金币和银币比例合适，不改革银币也能让银块价格低于官方定价，旧银币的价值也会跟着金币走。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">对铸造金银币课以小额铸币税，会使铸币金银的价值更进一步高出同量条块金银。这时，铸造货币会按税额比例增加铸币金属的价值，正如把金银制成器皿会按制造费用的大小而增加金银器皿的价值。铸币价值高于金银块，这不仅可阻止铸币的熔解，还可以阻止铸币的输出。万一因当前某种急需而输出货币，其大部分不久也会流回本国。铸币在外国，只能按照条块的重量出售，而在国内却具有超过重量的购买力。所以把输出的货币带回国内来是有利可图的。法兰西对铸币课以百分之八的铸币税。据说，法国输出的货币都会自动回到本国来。</div>
+            <div class="text-block simplified-text">征收小额铸币税能让金银币比等量金银块更值钱。这样既防止人们熔掉硬币，也减少货币外流。即使急需外流，大部分钱也会流回来，因为在国外只能按重量算钱，而在国内能买到更多东西。比如法国收8%铸币税，外流的钱最后都自己回来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">金银条块市价不时变动的原因，和一切其他商品市价不时变动的原因相同。此类金属常因海陆运输途中的意外事件而遭受损失；在镀金、包金、镶边和绣花过程中，都会有不断的消耗；在铸币及器皿上，都会有磨损。所以，自己不占有矿山的国家，为了弥补此等损失和消耗，就需要不断输入金银。我相信，金银进口商也象其他商人一样会竭力使金银的输入适合于当时的需要。可是，无论他们对供求的考虑如何周到，也总不免有时输入太多，有时输入太少。假如金银条块输入多于需要，他们往往不愿冒再输出的危险与困难，而情愿以略低于一般价格的价格在国内售去若干；反之，如果输入少于需要，他们可得的市价，就会高于一般价格。但是，在这种偶然变动下，金银条块的市价，若竟能在好几年内稳定地持续地保持着略高于造币厂价格或略低于造币厂价格的状态，我们敢说，那一定起因于铸币本身的某种情况，使得一定数量铸币的价值在这几年内高于或低于铸币中应含有的纯金量或纯银量。结果的稳定和持续，只相应的原因的稳定和持续为前提。</div>
+            <div class="text-block simplified-text">金银价格波动的原因和其他商品一样。运输损耗、使用磨损等导致需要不断进口金银。进口商会尽量按需供应，但难免有时多有时少。供过于求时，他们低价出售；供不应求时，高价卖出。如果价格长期偏高或偏低，那可能是铸币本身的问题，导致其实际价值与所含金银量不符。长期稳定的结果必有长期稳定的原因。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">任何一个国家的货币，在某一特定时间和特定地方，是怎样准确的价值尺度，那要看通用的铸币是怎样准确地符合于它的标准，换言之，要看铸币所包合的纯金量或纯银量，是怎样准确地符合于它应当含有的纯金量或纯银量。例如，在英国，如果四十四个半几尼恰好含有标准金一磅，即纯金十一盎斯和合金一盎斯，则此种金币，就可作为某一特定时间和特定地方所可能有的商品实际价值的正确尺度。此四十四个半几尼，若因磨损消耗，其所合标准金重量不到一磅，而且磨损的程度又参差不一，则这种价值尺度就会象其他各种度量衡一样，难免有些不正确。恰好适合标准的度量衡既不多见，所以商人们调整自己商品价格时，总是尽量不按照应当有的度量衡标准，而按照他们凭一般经验觉得实际上是的那种度量衡标准来调整。在铸币紊乱的场合，商品价格也不是按铸币应当含有的纯金量或纯银量，而是按商人一般以经验觉察到的铸币实际含量来作调整。</div>
+            <div class="text-block simplified-text">货币的价值尺度准不准确，要看它含的金银量是否符合标准。比如英国的金币，如果44.5几尼正好含1磅标准金（11盎司纯金加1盎司合金），那它就是靠谱的计价标准。但如果金币磨损导致含金量不足，就像不准的秤一样，计价就不准了。实际上，商人定价时不会按理论上的标准，而是按他们日常经验中货币的实际价值来算。当货币混乱时，价格也是按实际金银含量调整，而不是理论上的标准。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">应当指出，我所谓的商品货币价格，总是指这商品出售所得的纯金量或纯银量，与铸币名称无关。例如，我把爱德华一世时代六先令八便士的货币价格，和今日一镑的货币价格，看做同一的货币价格，因为根据我们所能判断的，那时的六先令八便士和今日的一镑几乎含有同一分量的纯银。</div>
+            <div class="text-block simplified-text">我说的商品价格指的是它值多少纯金或纯银，跟钱币叫啥没关系。比如爱德华一世时的六先令八便士和现在的一英镑，我觉得是一个价，因为它们含的纯银量差不多。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
