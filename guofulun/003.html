@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三章  论分工受市场范围的限制</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">国富论 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./002.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第三章  论分工受市场范围的限制</h1>
+        <a href="./002.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">分工起因于交换能力，分工的程度，因此总要受交换能力大小的限制，换言之，要受市场广狭的限制。市场要是过小，那就不能鼓励人们终生专务一业。因为在这种状态下，他们不能用自己消费不了的自己劳动生产物的剩余部分，随意换得自己需要的别人劳动生产物的剩余部分。</div>
+            <div class="text-block simplified-text">分工取决于市场大小。市场太小，人们就没法靠交换多余产品来专精一行，因为换不到自己需要的东西。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">有些业务，那怕是最普通的业务，也只能在大都市经营。例如搬运工人，就只能在大都市生活。小村落固不待言；即普通墟市，亦嫌过小，不能给他以不断的工作。散布在荒凉的苏格兰高地一带的人迹稀少的小乡村的农夫，不论是谁，也不能不为自己的家属兼充屠户、烙面师乃至酿酒人。在那种地方，要在二十哩内找到二个铁匠、木匠或泥水匠，也不容易。离这班工匠至少有八九哩之遙的零星散居人家，只好亲自动手作许多小事情；在人口众多的地方，那些小事情一定会雇请专业工人帮忙。农村工人几乎到处都是一个人兼营几种性质很类似因而使用同一材料的行业。农村木匠要制造一切木制的物品；农村铁匠要制作一切铁制的物品。农村木匠不仅是木匠，同时又是细工木匠，家具师、雕刻师、车轮制造者、耕犁制造者，乃至二轮四轮运货车制造者。木匠的工作如此繁杂，铁匠的工作还更繁杂。在苏格兰高地那样僻远内地，无论如何，总维持不了一个专门造铁钉的工人。因为他即使一日只能制钉一千枚，一年只劳动三百日，也每年能制钉三十万枚。但在那里，一年也销不了他一日的制造额，就是说销不了一千枚。</div>
+            <div class="text-block simplified-text">有些生意只能在大城市做，比如搬运工。小地方人太少，活儿不够。像苏格兰偏远乡村的农民，得自己当屠夫、面包师和酿酒师，因为附近很难找到工匠。农村工匠啥都得会，木匠要做各种木工活，铁匠要打各种铁器。在偏远地区，连专门做钉子的人都活不下去，因为一年卖的量还不够他一天做的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">水运开拓了比陆运所开拓的广大得多的市场，所以从来各种产业的分工改良，自然而然地都开始于沿海沿河一带。这种改良往往经过许久以后才慢慢普及到内地。现在，以御者二人马八匹，驾广辐四轮运货车一辆，载重约四吨货物，往返伦敦和爱丁堡间，计需六星期日程。然而，由六人或八人驾驶船一艘，载重二百吨货物，往返伦敦和利斯间，也只需同样日程。所以需一百人，四百匹马和五十辆四轮运货车搬运的货物，可借水运之便，由六人或八人搬运。而且，把二百吨货物由伦敦运往爱丁堡，依最低陆运费计算，亦需负担一百人三个星期的生活费和四百匹马五十辆四轮运货车的维持费，以及和维持费几乎相等的消耗。若由水运，所应负担的，充其量也不过是六人至八人的生活费，载重二百吨货船的消耗费，和较大的保险费，即水运保险费与陆运保险费之间的差额。所以，假若在这两都市间，除陆运外，没有其他交通方法，那末除了那些重量不大而价格很高的货物而外，便没有什么商品能由一地运至另一地了。这样，两地间的商业，就只有现今的一小部分，而这两地相互间对产业发展提供的刺激，也只有现今的一小部分。假使世界上只有陆运，则各僻远地区间的商业，一定会无法进行。有什么货物，负担得起由伦敦至加尔各答的陆上运费呢，即使有这种货物，又有什么输送方法能使货物安然通过介在两地间的许多野蛮民族的领土呢，然而，现今这两个都市，相互进行大规模的贸易，相互提供市场，并对彼此的产业发展，相互给与很大的鼓励。</div>
+            <div class="text-block simplified-text">水运比陆运更高效，能开拓更大市场。比如，同样时间，水运能运更多货，成本更低。如果只有陆运，很多地方之间几乎没法贸易，商业会大受影响。现在像伦敦和加尔各答这样远的地方能大规模贸易，全靠水运。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">由于水运有这么大的便利，所以工艺和产业的改良，都自然发初在水运便利的地方。这种改良总要隔许久以后才能普及到内地。由于与河海隔离，内地在长期间内，只能在邻近地方，而不能在其他地方，销售其大部分生产物。所只，它的货品销量，在长时间内，必定和邻近地方的财富与人口成比例。结果，它的改良进步总落在邻近地方的后面。我国殖民北美所开发的大种植园，都沿着海岸和河岸，很少扩展到离此很远的地区。</div>
+            <div class="text-block simplified-text">水运方便的地方更容易发展工业和贸易，所以这些地方进步更快。而内陆因为交通不便，只能卖货给附近地区，发展就慢得多。比如北美早期的种植园，基本都建在河边或海边，很少往内陆扩展。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">根据最可靠的历史记载，开化最早的乃是地中海沿岸各国。地中海是今日世界上最大的内海，没有潮汐，因而除风起浪涌外，也没有可怕的波涛。地中海，由于海面平滑，岛屿棋布，离岸很近，在罗盘针向未发明，造船术尚不完全，人都不愿远离海岸，而视狂澜怒涛为畏途的时候，对于初期航海最为适宜。在古代，驶过世界的尽头，换言之，驶过直布罗陀海峡西航，在航海上久被视为最危险最可惊的企图。就连当时以造船航海事业著名的腓尼基人和迦太基人，也是过了许久才敢于尝试。而且，在他们尝试过了很久以后，别国人民才敢问津。</div>
+            <div class="text-block simplified-text">地中海最适合早期航海，因为它风浪小、岛屿多、离岸近。在古代，人们害怕远航，连航海高手腓尼基人和迦太基人也很久才敢穿过直布罗陀海峡，其他国家更晚才尝试。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">在地中海沿岸各国中，农业或制造业发达最早改良最大的，要首推埃及。上埃及的繁盛地域，都在尼罗河两岸数哩内。在下埃及，尼罗河分成无数支流，大大小小，分布全境；这些支流，只要略施人工，就不但可在境内各大都市间，而且在各重要村落间，甚至在村野各农家间，提供水上交通的便利。这种便利，与今日荷兰境内的莱茵河和麦斯河，几乎全然一样。内陆航行，如此广泛，如此便易，无怪埃及进步得那么早。</div>
+            <div class="text-block simplified-text">埃及是地中海地区最早发展农业和制造业的国家。尼罗河在上埃及两岸几英里内孕育了繁荣，在下埃及则分出众多支流，稍加改造就能方便连接城市、村庄甚至农家，就像荷兰的莱茵河和麦斯河一样。这种便利的内河航运极大推动了埃及的早期发展。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">东印度孟加拉各省，以及中国东部的几个省，似乎也在极早的时候期已有农业和制造业上的改良，虽然关于这种往古事迹的真相，我欧洲有权威的历史家尚未能予以确证。印度的恒河及其他大河，都分出许多可通航的支流，与埃及的尼罗河无异。中国东部各省也有若干大江大河，分成许许多多支流和水道，相互交通着，扩大了内地航行的范围。这种航行范围的广阔，不但非尼罗河或恒河所可比拟，即此二大河合在一起也望尘莫及。但令人奇怪的是，古代埃及人、印度人和中国人，都不奖励外国贸易。他们的财富似乎全然得自内陆的航行。</div>
+            <div class="text-block simplified-text">孟加拉和中国东部很早就发展了农业和制造业，但欧洲历史学家无法证实。这些地区河流众多，航运发达，远超埃及和印度。然而，古代埃及、印度和中国却不重视外贸，财富主要来自内河航运。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">非洲内地，黑海和里海以北极远的亚洲地方，古代的塞西亚，即今日的鞑靼和西伯利亚，似乎一向都处于野蛮未开化状态。鞑靼海是不能通航的冰洋，虽有若干世界著名大河流过鞑靼，但因彼此距离太远，大部分地区不利于商业和交通。在欧洲，有波罗的海与亚得里亚海；在欧亚两大陆间，有地中海与黑海；在亚洲，有阿拉伯、波斯、印度、孟加拉瓜及退罗诸海湾。但在非洲，却是一个大内海也没有，境内诸大河又相隔太远，因此不能有较大规模的内地航行。此外，一国境内，纵有大河流贯其间，但若毫无支流，其下游又须流经他国国境始注于海，这国也就仍然不能有大规模的商业，因为上游国能否与海洋交通，随时都要受下游国的支配，就巴伐利亚、奥地利和匈牙利各国说，多瑙河的效用极为有限，但若此河到黑海的全部航权，竟为三国中任何一国所独有，效用就不可同日而语了。</div>
+            <div class="text-block simplified-text">古代非洲、亚洲北部和鞑靼地区因缺乏通航水域和河流距离远，不利于商业发展。相比之下，欧洲和亚洲其他地区因有众多相连海域和河流，交通便利。此外，若河流流经多国且下游被控制，上游国家的商业也会受限，如多瑙河因航权分散而效用有限。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
