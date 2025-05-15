@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一章  论财富的自然的发展</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">国富论 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./016.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一章  论财富的自然的发展</h1>
+        <a href="./016.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">文明社会的重要商业，就是都市居民与农村居民通商。这种商业，有的是以原生产物与制造品直接交换，有的是以货币或纸币作媒介交换。农村以生活资料及制造材料供给都市，都市则以一部分制造品供给农村居民。不再生产亦不能再生产生活资料的都市，其全部财富和全部生活资料都可说是得自农村。但我们不要根据这点，就说都市的利得即是农村的损失。他们有相互的利害关系。这里，分工的结果，象其他方面的分工一样，对双方从事各种职业的居民都有利益。农村居民，与其亲自劳动来制造他们需要的制造品，无宁作这种交换，因为由这种交换，他们可用较小量的自身劳动生产物购得较大量的制造品。都市是农村剩余产物的市场，农民用不了的东西，就拿到都市去交换他们需要的物品。都市的居民愈多，其居民的收入愈大，农村剩余产物的市场愈广阔。这种市场愈广阔，对广大人民愈有利。在离都市一哩生产的谷物，与在离都市二十哩生产的谷物，在市上的售价都一样。但后者所得的售价，一般地说，不但要补偿其生产费用和上市费用，而且要对农业家提供农业的普通利润。所以，都市附近的农业家和耕作者，从谷物售价所得的，不仅是农业的普通利润，而且包括自远地运来出售的谷物的运费全部价值。此外，在他们购买的东西的买价上，他们还节省这些东西的远途运费的全部价值。试一比较都市附近各农村和远离都市各农村的耕作事业，你就知道都市商业是怎样有利于农村。就连所有宣传贸易差额的各种谬说，也没有一种敢妄说城乡通商对城市或对乡村有损的。</div>
+            <div class="text-block simplified-text">城市和农村通过商业互相受益。农村提供食物和原料，城市提供工业品。这种交换让双方都更高效：农民能买到更多工业品，城市为农产品提供了更大市场。离城市近的农民还能省下运费，赚得更多。城乡贸易对两边都有利，没人能否认这点。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">按照事物的本性，生活资料必先于便利品和奢侈品，所以，生产前者的产业，亦必先于生产后者的产业。提供生活资料的农村的耕种和改良，必先于只提供奢侈品和便利品的都市的增加。乡村居民须先维持自己，才只剩余产物维持都市的居民。所以，要先增加农村产物的剩余，才谈得上增设都市。但因都市生活资料，不一定要仰给于附近的农村，甚至不一定要仰给于国内的农村，而可以从远方运来，所以，这虽然不是一般原则的例外，却使各时代各国家进步繁荣的过程，因而有所差异。</div>
+            <div class="text-block simplified-text">生活必需品生产比奢侈品更重要，所以农业要先发展起来，才能支撑城市的增长。农民得先养活自己，剩下的才能供给城市。城市不一定依赖附近农村，可以从远处获取物资，这让各地发展速度不同。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">农村先于都市的事态，在大多数国家，是由需要迫成的，但在所有国家，又有人类天性促其实现。只要人为制度不压抑人类天性，则在境内土地尚未完全开垦改良以前，都市的增设，决不能超过农村的耕作情况和改良情况所能支持的限度。如果利润相等或几乎相等，多数人必宁愿投资以改良土地开垦土地，不愿投资于工业及国外贸易。投在土地上的资本，可受到投资人自身更直接的监察；与商人资本比较，他的财产不易遭遇意外。商人的财产，不但常须冒狂风巨浪的危险，而且由于商人常须对风俗情况都不易熟习的远郊的人贷给信用，还要冒人类的愚蠢与不正行为这些更不可靠因素的危险。反之，地主的资本，却可固定在土地改良物上，可只说是尽了人事所做得到的安全。而且，乡村风景的美丽，乡村生活的愉快，乡村心理的恬静，以及乡村所提供的独立性，只要这独立性不受到人为的迫害的话，这些实具有吸引每一个人的巨大魅力。耕作土地既为人的原始目标，所以，在有人类存在的一切阶段，这个原始的职业将为人类所永远爱悦。</div>
+            <div class="text-block simplified-text">农村发展通常先于城市，这是现实需求和人性的共同作用。只要制度不压制天性，城市规模就不会超过农村能支撑的限度。相比工商业，人们更愿意投资农业，因为农业风险更小、更可控。乡村生活也更安全、宁静、独立，充满吸引力。农业是人类最原始也最持久的职业，永远受人喜爱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">没有工匠的帮助，农耕必大感不便，且会时作时辍。农民常常需要锻工、木匠、轮匠、犁匠、泥水匠、砖匠、皮革匠、鞋匠和缝匠的服务。这类工匠，一方面因为要互相帮助，另一方面又因为不必要象农民那样有固定地址，所以，自然而然地聚居一地，结果，就形成了一种小市镇或小村落。后来，又有屠户、酒家、面包师，只及许多就供给临时需要那一点说对他们是必要的或有用的其他工匠及零售商人加入，于是市镇日益扩大起来。乡民和市民是互相服务的。市镇是乡民不断前往把原生产物交换制造品的市集或市场。就是依着这种交换，都市居民才取得了工作材料和生活资料的供给。他们售给乡村居民的制成品的数量，支配他们所购的材料及食料的数量。所以，他们的材料及食料的增加，只能按照乡民对制成品需要增加的比例而增加，而这种需要，又只能按照耕作及改良事业发展的比例而发展。所以，设使人为制度不扰乱事物的自然倾向，那就无论在什么政治社会里，都市财富的增长与规模的扩大，都是乡村耕作及改良事业发展的结果，而且按照乡村耕作及改良事业发展的比例而增长扩大。</div>
+            <div class="text-block simplified-text">农民需要工匠帮忙，所以工匠们聚在一起形成小镇。后来又有商贩加入，小镇慢慢变大。城里人和乡下人互相帮忙：乡下人用农产品换城里人的商品。城里人买多少材料和生活用品，取决于他们能卖多少商品给乡下人。所以城市的发展全靠农村的进步。要是没人乱搞，城市富不富、大不大，就看农村发展得好不好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">在未曾垦殖、土地极易购得的我们北美殖民地，为销售于远方而兴办的制造业，在任何市镇都还不曾有过。在北美洲，当工匠获得的资本，超过他所经营的、以供给邻近乡村为职志的事业所需要的数额时，他不会想办一家工厂来作销售远方的生意。他一般宁愿用多余的资财，来购买或改良未开垦的土地，由技工一变而为农业家。当地付给技工的高昂工资，对于技工所提供的舒畅生活，都不足以诱使他为他人工作，他总情愿为自己工作。他觉得，技工是顾客的仆役，仰给生活于顾客；至于耕作自己的土地，从自己家庭的劳力取得衣食之资的农业家，则是真正的主人翁，独立于世界。</div>
+            <div class="text-block simplified-text">北美殖民地土地便宜且易得，没人办厂做远销生意。工匠赚了钱宁愿买地种田，也不开厂。因为种地能自己做主，不像工匠要依赖顾客。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">反之，在土地全已开垦或不易购得的国家，技工所获资本，如果已经不能全数投在邻近地区随时需要的事业上，其有余部分，就会用来扩张营业，准备销售远方。锻工将建立铁厂，织工将建立麻织厂毛织厂。随着时间的推进，这各种制造业，将慢慢地进行精密的分工，用各种方法加以改进。这是大家容易想得到的，用不着细选。</div>
+            <div class="text-block simplified-text">在土地紧张的国家，技工如果没法把资金全投在本地生意上，多余的钱就会用来扩大生产，把货卖到远处。比如铁匠开铁厂，织布的开纺织厂。时间久了，这些行业会越来越细分，技术也会不断改进。这个道理很简单，不用多说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">在利润相等或几乎相等的条件下，人们选择投资途径时，在制造业与国外贸易业两者中，自宁愿选择制造业，其原因正如在农业与制造业中，宁愿选择农业一样。与制造商的资本比较，地主或农业家的资本更为稳当。同样地，与国外贸易的资本比较，制造商的资本更为稳当，因为随时都在自己监察之下。诚然，随便什么时代，随便什么社会，剩余原生产物及制造品，或者说，国内无人需要的原生产物及制造品，都必须送往外国，以交换国内需要的其他物品。但输运剩余产物到外国去的资本，为本国所有，成为外国所有，却是无关重要的。如果本国的资本，不够我们同时耕作一切土地，并完完全全地制造一切原生产物，那末，由外国资本来输运本国剩余原生产物到外国去，亦对本国有很大的利益。因为，赖有这种资本，本国的资本，便可全部投在更有利的用途上。中国、印度、古埃及的富裕，充分证明了一种事实，即是，纵使本国输出业，有大部分为外国人经营，这国国民的富裕，仍可达到极高的程度。北美殖民地、西印度殖民地，设若除了本地所有的资本，即波有外国资本替它们输出剩余产物，它们的进步，会慢得多吧。</div>
+            <div class="text-block simplified-text">人们投资时更倾向于选择更稳当的行业。相比外贸，制造业更稳当，就像农业比制造业更稳当一样，因为资本更易监管。剩余产品需要出口换取所需，但用本国还是外国资本运输并不重要。如果本国资本不足，用外国资本运输剩余产品反而有利，能让本国资本投入更高效领域。历史证明，即使外贸主要由外国人经营，国家仍可富裕，如中国、印度、古埃及。北美和西印度殖民地若仅靠本地资本，发展会更慢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">按照事物的自然趋势，进步社会的资本，首先是大部分投在农业上，其次投在工业上，最后投在国外贸易上。这种顺序是极自然的；我相信，在所有拥有多少领土的社会，资本总是在某程度上按照这种顺序投用。总得先开垦了一些土地然后才能成立很多城市；总得在城市里先有了些粗糙的制造业，然后才会有人愿意投身于国外贸易。</div>
+            <div class="text-block simplified-text">社会发展的自然规律是：资本先投入农业，再转向工业，最后才用于外贸。因为得先有农业才能建城市，有了工业基础才会发展外贸。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">这个自然的顺序，虽然在所有进步的社会里都已在某种程度上发生，但就今日欧洲各国的情状说，这个顺序却就许多方面说，似乎完全相反。它们的精制造业或适于远地销售的制造业，多由国外贸易引出。农业大改良，也是制造业和国外贸易所产生的结果。这种反自然的退化的顺序，乃是风俗习惯迫成的。他们原来的统治的性质使他们的风俗习惯变成了这个模样。后来，这种统治大大改变了，他们的风俗习惯却仍没有多大改变。</div>
+            <div class="text-block simplified-text">欧洲各国的发展顺序看似反常：外贸带动制造业，再推动农业改良。这种违背自然规律的倒退，源于长期形成的风俗习惯。虽然统治方式已变，但旧习惯仍难改变。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
