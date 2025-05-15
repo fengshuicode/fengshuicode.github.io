@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一章  论资财的划分</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">国富论 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./011.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一章  论资财的划分</h1>
+        <a href="./011.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">一人所有的资财，若仅足维持他数日或数周的生活，他很少会想从这笔资财取得收入。他将慎之又慎地消费它，并且希望在用完它之前，能依靠自身的劳动，取得一些东西来作补充。在这场合，他的收入完全来自他的劳动。各国贫穷劳动者大部分就是过这种生活。</div>
+            <div class="text-block simplified-text">如果一个人只有够活几天的钱，他会很节省，尽量靠干活赚钱。穷人们大多这么过日子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">他所有的资财，如足够维持他数月或数年的生活，他自然希望这笔资财中有一大部分可以提供收入；他将仅保留一适当部分，作为未曾取得收入以前的消费，以维持他的生活。他的全部资财于是分成两部分。他希望从以取得收入的部分，称为资本。另一部分，则供目前消费，其中包含三项东西：（一）原为这一目的而保留的那部分资财；（二）逐渐得来的收入，不论来源如何；（三）用以上两项于以前买进来但至今尚未用完的物品，如被服、家具等等。为目前的消费而保留的资财，或包含三项之一，或三项之二，或三项全有。</div>
+            <div class="text-block simplified-text">一个人如果有足够生活几个月或几年的钱，他会把大部分用来赚取收入，只留一小部分用于日常开销。这些钱分成两部分：用来赚钱的叫资本，用于当前消费的包括预留的生活费、陆续得到的收入，以及之前买的还没用完的东西（比如衣服、家具）。日常开销的钱可能包含这三项中的一项、两项或全部。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">对投资者提供收入或利润的资本，有两种使用方法。</div>
+            <div class="text-block simplified-text">资本有两种用途：赚钱或分利。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">一，资本可用来生产、制造或购买物品，然后卖出去以取得利润。这样使用的资本，在留在所有者手中或保持原状时，对于投资者不能提供任何收入或利润。商人的货物，在未卖出换得货币以前，不能提供收入或利润；货币在未重新付出换得货物以前，也是一样。商人的资本不断以一个形态用出，以另一个形态收进；而且也只有依靠这种流通，依靠这种继续的交换，才有利润可图。因此，这样的资本可称为流动资本。</div>
+            <div class="text-block simplified-text">资本用来生产或买卖物品赚钱。如果放着不动，就赚不到钱。比如商人的货没卖出去，钱没用来进货，都没利润。资本要不断流动和交换才能赚钱，所以叫流动资本。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">二，资本又可用来改良土地，购买有用的机器和工具，或用来置备无须易主或无须进一步流通即可提供利润的东西。这样的资本可称为固定资本。</div>
+            <div class="text-block simplified-text">资本可以投资土地、机器等长期使用的资产来赚钱，这种钱叫固定资本。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">不同职业所必需的固定资本与流动资本之间的比例，极不相同。</div>
+            <div class="text-block simplified-text">不同职业需要的固定和流动资本比例差别很大。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">譬如，商人的资本便全然是流动资本。他简直无需使用机器或工具，除非把商店或堆栈看做机器或工具。</div>
+            <div class="text-block simplified-text">商人的资本都是流动的，基本不用机器或工具，除非把店铺或仓库也算作工具。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">手工业者和制造者的资本，一部分就须固定在工具上。不过，这部分的大小，各业不同，有的行业很小，有的行业很大。裁缝业者除了一包针外，不需别种工具。制鞋业者的工具比较值钱些，但多得有限。织布业者与制鞋业者比较，工具就贵得多了。但是，这一类手工业者的资本，大部分是流动的，起初或作为工人工资而流出，或作为原材料价格而流出，然后再从产品价格流入，其中含有利润。</div>
+            <div class="text-block simplified-text">手工业者的资本一部分用于工具，不同行业投入不同：裁缝只需针，鞋匠工具稍贵，织布工更贵。但大部分资本是流动的，用于工资和材料，通过销售产品回收并赚取利润。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">在别种事业，就需要大得多的固定资本了。譬如，一个大铁工厂，要设置熔铁炉、锻冶场、截铁场，非有极大经费不可。至若开采煤矿所需的吸水机以及其他各种机械，所费还要多。</div>
+            <div class="text-block simplified-text">其他行业需要更多固定投资。比如，建钢铁厂要花大钱买熔炉、锻造设备等。开采煤矿的抽水机等设备更贵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">就农业家说，用于购买农具的资本是固定的；用于维持工人与支付工资的资本是流动的。前者他保管在手中从而获取利润，后者他支付出去从而获取利润。耕畜的价格或价值，和农具一样，可称为固定资本；饲养牲畜的费用，和维持工人的费用一样，可称为流动资本。农业家获取利润的方法，一为保有耕畜，一为支付饲养牲畜的费用。但只售卖为目的，非以代耕为目的的牲畜，其购买费和饲养费，却都应归入流动资本之内。在这里，农业家靠出卖牲畜以取得利润。在生产牲畜的国家，非以代耕或贩卖为目的，而是以剪毛、挤乳、繁种以求利润为目的而买入的羊或牛，应当称为固定资本；在这里生利的方法在于保有它们。它们的维持费是流动资本；在这里，生利的方法在于付出维持费。赚回维持费的时候，维持费的利润及牲畜全部价格的利润，都会在羊毛价格、产乳价格、繁种价格上，提供出来。种子的全部价值，亦可称为固定资本。种子虽往返于土地与谷仓之间，但未更换主人，所以没有真正地流动过。农业家获取利润，不是靠出售种子，而是靠种子孳生产品。</div>
+            <div class="text-block simplified-text">农业中，固定资本包括农具、耕畜和种子，这些东西留着用能赚钱；流动资本是工人工资和牲畜饲养费，花出去能赚钱。如果是卖牲畜，买和养的钱都算流动资本。养牛羊为了毛、奶、繁殖的，算固定资本，靠留着赚钱；饲养费算流动资本，靠花钱赚钱。种子也算固定资本，因为不转手，靠种出东西赚钱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">一个国家或一个社会的总资财，即是其至体居民的资财，所以，亦自然分作这三个部分，各有各的特殊作用。</div>
+            <div class="text-block simplified-text">社会总财富属于全体居民，分为三部分，各有不同作用。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">第一部分是留供目前消费的，其特性是不提供收入或利润。已由消费者购买，但尚未完全消费掉的食品、衣服、家具等物，属于这一类。仅供居住的国内房屋，也是这个部分中的一个部分。投在房屋上的资财，如该屋是由其所有者自住，那末，从那时刻起，即失去资本的作用，就是说，它对屋主不提供任何收入。这样的住屋，虽然象衣服、家具一样对他很有用，但也象衣服、家具一样，不能给他提供收入。它只是费用的一部分，不是收入的一部分。租屋与人，可以取租，但房屋本身不能生产任何东西，租户仍须从劳动、资本或土地上所得的收入来付租金。所以，对于屋主私人，它虽提供收入，因而有资本作用，但对社会公众，则不提供收入，不能有资本作用。它丝毫不能增加全体人民的收入。同样，衣服和家具，有时亦可提供收入，从而对特殊个人有资本作用。化装舞会盛行的地方，就有人以出租化装衣服为业，租期一夜。家具商人常常论月或论年出租家具；葬仪店往往论日论星期出租葬仪品。还有许多人出租备有家具的房屋，不仅收取房租，还收取家具租。总之，这种租借事件随地都有。但由出租此种物品而得来的收入，归根结底总是出自别种收入来源。此外，尚有一事须加以注意，即无论就个人说或就社会说，在留供目前消费的各种资财中，消费最慢的是投在房屋上的那一部分。衣服可穿用数年，家具可使用五十年或一百年，但建筑坚固、保护周全的房屋，却可使用好几百年。不过房屋虽要好久时间才会消耗掉，但它仍是供目前消费的资财，和衣服、家具一样。</div>
+            <div class="text-block simplified-text">有些东西买来是马上用的，比如吃的、穿的、家具和自住的房子。这些东西不能赚钱，只是花钱。租出去的房子能收租金，但租金来自租户的其他收入，房子本身不创造收入。衣服家具偶尔也能出租赚钱，但钱还是来自别人的收入。房子能用很久，但和衣服家具一样，都属于消费品。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">第二部分就是固定资本。其特性是不必经过流通，不必更换主人，即可提供收入或利润。其中主要包含四项：</div>
+            <div class="text-block simplified-text">固定资本指不通过买卖就能赚钱的资产，主要有四类。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">第一，一切便利劳动和节省劳动的有用机器与工具。第二，一切有利润可取的建筑物，如商店、堆栈、工场、农屋、厩舍、谷仓等。这类建筑物，不仅对出租房屋的屋主提供收入，而且对纳祖的人也是获取收入的手段。这种建筑物和住屋大不相同。这是营业上的用具，也应该视为营业上用具。第二，用开垦、排水、围墙、施肥等有利可图的方法投下的使土地变得更适于耕作的土地改良费。改良的农场好象有用的机器，可以便利劳动，节省劳动；它使投资者投下的等量流动资本能提供大得多的收入。这两者是一样有利的，但机器较易磨损，而改良的土地却比较耐久。农业家除了按照最有利的方法，投下耕作所必须投下的资本以外，对于土地简直用不着什么修缮。第四，社会上一切人民学到的有用才能。学习一种才能，须受教育，须进学校，须做学徒，所费不少。这样费去的资本，好象已经实现并且固定在学习者的身上。这些才能，对于他个人自然是财产的一部分，对于他所属的社会，也是财产的一部分。工人增进的熟练程度，可和便利劳动、节省劳动的机器和工其同样看作是社会上的固定资本。学习的时候，固然要花一笔费用，但这种费用，可以得到偿还，兼取利润。</div>
+            <div class="text-block simplified-text">1. 有用的机器和工具能节省劳力。  
+2. 能赚钱的建筑（如商店、仓库）是营业工具，和住房不同。  
+3. 改良土地（如开垦、施肥）能提高收益，比机器更耐用。  
+4. 学到的技能是个人和社会的财富，像机器一样能提高效率，前期投入后期能回本赚钱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">第三部分是流动资本。其特性是要靠流通、耍靠更换主人而提供收入。它也包含四项：</div>
+            <div class="text-block simplified-text">第三部分是流动资本，特点是流通换主才能赚钱，包括四项内容。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">第一，货币。赖有货币，其他三项才能周转而分配给真正的消费者。第二，屠户、牧畜家、农业家、谷商、酿酒商等人所有的食品，他们出售这种食品，可以获得利润。第三，还在耕作者、制造者、布商、木材商、木匠、瓦匠等人手中的衣服、家具、房屋三者的材料。这些材料是否是纯粹的原料或半加工的材料，可以不问；只要未曾制成衣服、家具或房屋，即属于这项。第四，已经制成，但仍在制造者或商人手中，未曾卖给或分配给真正消费者的物品，例如锻冶店、木器店、金店、宝石店、瓷器店以及其他各种店铺柜台上陈列着的制成品。这样，流动资本包含各种商家手里的食品、材料、制成品及货币。食料、材料、制成品的流转和分配，都须有货币。不然就不能到达最后使用或消费它们的人手中。</div>
+            <div class="text-block simplified-text">流动资本包括四类：货币、食品、原材料和制成品。货币让其他三类能流通到消费者手里。食品由生产者出售获利。原材料是未加工成成品的物资。制成品是已做好但还没卖出的商品。所有东西都需要货币才能流转到最终消费者手中。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">这四项中，有三项——食品、材料、制成品——通常在一年内，或在较一年为长或短的期间内，会由流动资本变成固定资本，或变成留供目前消费的资财。</div>
+            <div class="text-block simplified-text">食品、材料和制成品通常在一年内会从流动资本转为固定资本或被直接消耗掉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">固定资本都是由流动资本变成的，而且要不断地由流动资本来补充。营业上一切有用的机器工具，都出自流动资本。流动资本提供建造机器的材料，提供维持建造机器的工人的费用。机器制成以后，又常须有流动资本来修理。没有流动资本，固定资本不能提供任何收入。工作所用的材料，工人生存所赖的食料，都出自流动资本。没有流动资本，即使最有用的机器工具，亦不能生产一点东西。土地无论怎样改良，没有流动资本，亦不能提供收入。维持耕作和收获的工人，也非有流动资本不可。</div>
+            <div class="text-block simplified-text">固定资本来自流动资本，并依赖它维持。流动资本提供制造机器的材料、工人工资和维修费用。没有流动资本，机器和土地再好也产不出东西，因为材料和工人生活都靠流动资本支撑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">固定资衣和流动资本，具有同一目的，也只有一个目的，那就是，使留供目前消费的资财不致匮乏，而且能增加。人民的衣食住，都仰给于这种资财。人民的贫富，亦取决于这两种资本所能提供的这项资财是丰饶还是贫乏。</div>
+            <div class="text-block simplified-text">固定和流动资本都是为了保障并增加日常消费资源。人们的生活所需和贫富程度都取决于这些资源的多少。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">为了补充社会上固定资本和供目前消费的资财，需要不断从流动资本中抽出大部分，所从流动资本亦须有不断的补充。没有这仲仆充，流动资本不久就会干竭。这种增什有三个主要来源，即土地产物、矿山产物、渔业产物。达三个资源不断供给食料和材料。其中有一部分通过加工制为完成品。正是由于这种供给，从流动资年抽出的食料、材料、完成品，才有了新的补充。此外，还必须从矿山采取所需要的维持和补充用来作为货币的金属。在普通情况下，货币虽无须从流动资本抽出来作为固定资本或留供目前消费的资财，但象其他东西一样，货币难免磨损，难免输往外国，所以仍须不断加以补充，不过数量小得多罢了。</div>
+            <div class="text-block simplified-text">流动资本需要不断补充，否则会耗尽。补充来源主要是土地、矿山和渔业的产出，它们提供食物、原料和成品。货币也需要少量补充，因为它会磨损或流出国外。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">土地、矿山和渔业都需要有固定资本和流动资本来经营；其产物，不仅要偿还这样投下的资本，益以利润，还要偿还社会上一切其他资本，益以利润。制造者每年消费的食品和材料，山农民年年为之补充；农民每年消费的工业品，由制造者年年为之补充。这两个阶级同，虽很少以制造品和农产品互相直接交换，但他们之间年年进行交换的实际情况，却就是如此。我们知道，农民所有的是谷物、牲畜、亚麻、羊毛；他所要的是衣服、家具、工具。买谷物、牲畜、亚麻、羊毛的人，不见得就是卖衣服、家具、工具的人。所以农民先用原生产物换取货币；有了货币，他就可随地购买他所需要的制造品。经营渔业和矿业的资本，亦至少有一部分由土地来补充。从水里捕鱼，从地里掘矿，都少不了地面上的产物。</div>
+            <div class="text-block simplified-text">土地、矿山和渔业的经营需要资金投入，其收益要覆盖成本并带来利润。农民和制造商互相依赖：农民提供粮食和原料，制造商提供工业品。虽然他们不直接交换，但通过货币交易实现需求。比如农民卖农产品换钱，再用钱买所需物品。渔业和矿业的部分成本也靠土地产出支撑，比如捕鱼和采矿都需要地面资源。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">在它们自然生产力大小相等的场合，土地、矿山和渔场的产额，都和投资数量的大小与资金用法的好坏成比例。在资本数量相等，投资方法又同样适当的场合，它们的产量就和它们的自然生产力的大小成比例。</div>
+            <div class="text-block simplified-text">土地、矿山和渔场的产量取决于投资多少和资金使用效率。如果投资额和方法相同，产量就由它们的自然生产力决定。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">在一切生活比较安定的国家里，有常识的人，无不愿用可供他使用的资财来求目前享乐，或求未来利润。如是用来求目前享乐，那它就是留供目前消费的资财。如是用来求未来利润，那未求利润的方法，不是把资财保留在手里，就是把资财花用出去。在前一场合，它是固定资本；在后一场合，它是流动资本。在生命财产相当安全的场合，一个人如果不把他所能支配的一切资财（不管是自有的或借入的）用于这些用途之一，说他不是疯狂，我是不能相信的。</div>
+            <div class="text-block simplified-text">在稳定的社会里，人们通常会把钱用于当下享受或未来赚钱。用于享受的钱是消费资金；用于赚钱的，要么存着（固定资本），要么投资出去（流动资本）。如果有人不这么用钱，除非疯了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">如果不幸，国家专制，君主暴虐，人民财产随时有受侵害的危险，那末，人民往往把资财的大部分藏匿起来。这样，当他们所时肘刻刻提防的灾难一只临头的时候，他们就可随时把它带往安全地方。据说，在土耳其，在印度，并且我相信在亚洲其他各国，都常有这种事情。在封建暴虐时代，我国似乎也有过这种情形。发掘的宝物，当时被视为欧洲各大国君主的一项大收入。凡埋藏地下、无从证明属于谁的物品，概视为国王所有，非得国王特令恩准，那就既不属于发现者，亦不属于地主。此种宝藏，在当时极受重现。当时的金银矿产亦复如此。倘非明令特许，金银矿产并不包含在普通土地所有权之内。随意开采是不行的。但铅、铜、锡、煤各种矿山，因比较不重要，所以听任人民开采。</div>
+            <div class="text-block simplified-text">如果国家专制、君主暴虐，人民担心财产被夺，就会把钱藏起来，以便随时带走。土耳其、印度等亚洲国家常有这种事，欧洲封建时期也这样。那时，地下挖出的无主财宝都归国王，开采金银矿也要国王批准。但铅、铜、锡、煤矿没那么重要，百姓可以随便挖。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
