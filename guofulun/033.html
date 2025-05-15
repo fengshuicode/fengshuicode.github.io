@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三章  论公债</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../index.html" class="site-nav-link">Book Index</a>
+        <a href="/index.html" class="site-nav-link">Homepage</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./prev-page.html" class="chapter-nav-button prev-button">&lt; Prev</a>
+        <h1 class="chapter-title">第三章  论公债</h1>
+        <a href="./next-page.html" class="chapter-nav-button next-button">Next &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">在商业未开展、制造业未改进的未开化社会，对于仅能由商业及制造业带来的高价奢侈品还一无所知的时候，有大收入的人，象我在第三篇说过的那样，除了尽收入能维持多少人，使用以维持多少人外，再也不能有其他消费或享受收入的方法。一个大收入，随时都可说是对一大量生活必需品的支配力。在那种未开化社会状态下，那收入一般都是以一大量必需品，即粗衣粗食的原料，如谷物、牲畜、羊毛及生皮等物收进的。当时既无商业，又无制造业，所以这些物资的所有者，找不到任何东西，可以交换其消费不了的大部分物资；除了尽其所有，用以供人吃穿外，他简直无法处置其剩余。在此情况下，富者及有权势者的主要费用，就是不奢华的款客和不炫耀的惠施，而这种款客和惠施，我在本书第三篇也曾说过，是不容易使人陷于破产的。至于利己的享乐就不同了，虽至微末，追求的结果，智者有时亦不免于灭亡。例如斗鸡的狂热，曾经使许多人破了产。我相信，由上述性质的款待或惠施而败家的人，当不很多，但由铺张的款客和炫耀的惠施而败家的则为数极多。在我们封建的祖先之间，同一家族长久继续保有同一地产的事实，可充分表示他们生活上量入为出的一般性向。大土地所有者不断行着乡下式的款待，看来虽与良好的理财原则不可分离的生活秩序有所背离，但我们得承认他们至少也知道搏节，没把全部收入尽行消费掉。他们大概有机会卖掉其一部分羊毛或生皮取得货币。这货币的一部分，他们也许是用以购买当前环境所能提供的某种虚荣品及奢侈品来消费，但还有一部分，则常是照原样蓄藏起来。实际上，他们除了把节约的部分蓄藏着，也就不好再怎么处置。经商吧，那对于一个绅士是不名誉的；放债吧，当时早视为非义，而且为法律所不许，那是更不名誉的。加之，在那种强暴混乱的时代，说不定有一天会被赶出自己的住宅，所以，在手边藏蓄一点货币，以便那时候携带一些公认为有价值的东西，逃往安全地带，是得计的。使个人以藏蓄货币为得计的强暴，更使个人以隐匿其藏蓄的货币为得计。动不动就有埋藏物发现，无主财宝发现，那可充分证明，当时藏蓄货币及隐匿藏蓄之事，是非常流行的。有一个时候，埋藏物简直成了君主的一个重要收入部分。然在今日，哪怕全王国的一切埋藏物，亦恐不够成为一个多财绅士的主要收入部门了。</div>
+            <div class="text-block simplified-text">在原始社会，没有商业和制造业，富人只能把收入花在基本生活上，多余的物资除了招待客人或施舍外没别的用处。这种花费不容易让人破产，而自私的享乐却容易让人倾家荡产。那时候的富人虽然大方待客，但通常还是会存下一些钱，因为做生意或放贷都不体面，而且乱世中藏钱也保险。现在埋藏的财宝已经不值钱了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">节约与藏蓄的倾向，流行于人民之间，也同样流行于君主之间。我在本书第四篇说过，在没有什么商业及制造业可言的国家，君主所处境地，自然会使他奉行蓄积所必要的节约。在那种境地，就是君主的费用，亦不能由他的虚荣心支配；他喜欢有一个华丽装饰的宫廷，但那个无知的时代，却只能给他提供一点无甚价值的小玩意儿。而这就构成他宫廷的全部装饰。当时是无常备军的必要的，所以，象其他大领主的费用一样，就连君主的费用，除了用以奖励其佃户，款待其家臣外，几乎没有用处。但是奖励及款待，很少会流于无节制，而虚荣则几乎都会流于无节制，因此，欧洲一切古代君主，无不善有财宝。即在今日，听说每个鞑靼酋长，还是积有财宝。</div>
+            <div class="text-block simplified-text">在商业和制造业不发达的国家，君主和百姓都习惯节约存钱。那时君主没啥可炫耀的，装饰宫廷的只是些不值钱的小玩意。因为没有常备军，君主开销主要是赏赐佃户和招待家臣，这些花费有限，所以古代欧洲君主和现在的鞑靼酋长都爱存钱。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
