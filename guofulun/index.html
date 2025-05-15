@@ -170,7 +170,7 @@
 
         // Function to convert number to Chinese numeral (simplified version)
         function toChineseNumeral(n) {
-             if (n < 1 || n > 120) return '';
+             if (n < 1 || n > 32) return '';
              const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
              const units = ['', '十', '百'];
              let s = '';
@@ -220,7 +220,7 @@
                 const listItem = document.createElement('li');
                 const link = document.createElement('a');
                 const chapterNumber = String(i).padStart(3, '0'); // Format as 001, 002, etc.
-                link.href = `/${chapterNumber}.html`;
+                link.href = `${chapterNumber}.html`;
                 link.textContent = `${toChineseNumeral(i)}回`; // Add 回 character
                 listItem.appendChild(link);
                 chapterList.appendChild(listItem);
