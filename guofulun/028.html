@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八章  关于重商主义的结论</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">国富论 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./027.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八章  关于重商主义的结论</h1>
+        <a href="./027.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">重商主义提出的富国两大手段，虽是奖励输出和阻抑输入，但对于某些特定商品，则所奉行的政策又似与此相反，即奖励输入和阻抑输出。但据称，其最后目标总是相同，即通过有利的贸易差额，使国家致富。它阻抑工业原料和职业用具的输出，使我国商人处于有利地位，并使他们在外国市场上能以比其他各国货物价格低的价格出售他们的货物。它提出限制几种价值不大的商品的输出，使其他商品在数量和价值上都有大得多的输出。它又提出奖励工业原料的输入，使我国人民能以较廉的价格把这些原料制成成品，从而防止制造品在数量和价值上较大的输入。至少，在我国的法律全书中，我不曾看到奖励职业用具输入的法令。制造业发展到相当高的程度的时候，职业用具的制作，就成为许多极重要制造业的目标。对这种工具的输入给予任何奖励，当然大大妨碍这些制造业者的利益。所以，这样的输入，不但不被奖励，而且往往被禁止。例如，羊毛梳具，除了从爱尔兰输入，或作为破船货物或捕获货物输入，就依据爱德华四世第三年的法令而禁止了。伊丽莎白女王第三十九年，重申了这种禁令；此后的法令，继续禁止，使此种禁止成为永久的禁止。</div>
+            <div class="text-block simplified-text">重商主义主张通过贸易顺差致富，主要方法是鼓励出口、限制进口。但对某些商品，政策相反：鼓励进口原料以降低生产成本，限制出口原料和工具来保持竞争优势。不过，职业用具的进口通常被禁止，以保护本国制造业。例如，羊毛梳具长期被禁止进口，除非来自爱尔兰或是特殊情况。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">工业原料的输入，有时得到免税的奖励，有时得到奖励金。</div>
+            <div class="text-block simplified-text">工业原料进口有时免税或给补贴。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">羊毛从若干国家输入，棉花从一切国家输入，生麻、大部分染料和大部分生皮从爱尔兰或英领殖民地输入，海豹皮从英领格林兰渔场输入，生铁和铁条从英领殖民地输入，以及其他几种工业原料输入，若按正当手续呈报海关，即可得到免除一切课税的奖励。这种免税条例，以及许多其他商业条例，也许都是我国商人和制造业者，出于私人利害关系，硬要立法当局制定的。但这些规定，是完全正当的、合理的；要是符合国家的需要，可把这种规定推广到一切其他工业原料，那是一定有利于人民大众的。</div>
+            <div class="text-block simplified-text">羊毛、棉花、麻、染料、生皮、海豹皮、生铁等原料从英国殖民地或特定国家进口时，如果手续合规，可以免税。这些免税政策可能是商人和制造商为自身利益推动的，但如果对国家有利，推广到更多原料会造福大众。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">可是，由于大制造业者的贪欲，这种免税，有时竟大大超过可正当地看作加工原料的范围。乔治二世第二十四年第四十六号法令规定，外国黄麻织纱每输入一磅，仅纳轻微的税一便士。先前，帆布麻织纱输入一磅须纳六便士，法国和荷兰麻织纱输入一磅须纳一先令，一切普鲁土产的麻织纱输入一百磅须纳二镑十三先令四便士。但我国制造业者，仍不长久满足于这样的减税。于是，乔治二世第二十九年第十五号法令，即规定输出每码价格不超过一先令六便士的不列颠和爱尔兰麻布得领奖励金的法令，免除了对黄麻织纱输入所课轻微的税。其实，由亚麻制成麻织纱的各种操作，比由麻织纱制成麻布的操作，需要使用大得多的劳动量。且不说亚麻栽种者和亚麻梳理者的劳动，要使一个织工有不断的工作，至少须有三个或四个纺工；制造麻布所需要的全部劳动，有五分之四以上，是用在麻织纱制造上面。而我国的纺工，都是可怜人，通常是妇女，散居国内各地，无依无靠。但我国大制造业者取利润的方法，不是售卖纺工的制品，而是售卖织工的完全制品。他们的利益，在于以尽可能高的价格售卖完全制品，所以他们的利益，也在于以尽可能低的价格购买原材料。为使自己的货物能以尽可能高的价格出售，他们硬要立法当局对他们自己的麻布的输出，发给奖励金，对一切外国麻布的输入，课以高的关税，对法国输入的供国内消费的某几种麻布，一律禁止。为要以尽可能低的价格购入贫纺工的制品，他们奖励外国麻织纱输入，使与本国出品竞争。他们一心一意要压低自己所雇织工的工资，正如他们要压低贫纺工所得一样。所以，他们企图提高完全制造品价格或减低原料价格，都不是为着劳动者的利益。重商主义所要奖励的产业，都是有钱有势的人所经营的产业。至于为贫苦人民的利益而经营的产业，却往往被忽视、被压抑。</div>
+            <div class="text-block simplified-text">大制造商为了多赚钱，利用免税政策过度压低原料价格。比如，他们先是让进口黄麻织纱的税从高降到很低，后来干脆免税。实际上，做麻织纱比做麻布更费人力，纺纱工人（多是贫困妇女）干了大部分活，但制造商只顾自己利益：高价卖麻布，低价买原料。他们还通过法律手段给自己发出口补贴，对外国麻布加税甚至禁止进口，同时鼓励进口外国麻织纱来打压本国纺工。这些做法全是为了压榨工人、抬高利润，根本不管穷人死活。重商主义只帮富人，穷人的生计却被忽视和打压。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">麻布输出奖励金及外国麻织纱输入免税条例，颁布时原以十五年为期，以后经过二次延长，延续到今日，但将于1786年6月24日国会议期终结时满期失效。</div>
+            <div class="text-block simplified-text">这条关于麻布奖励和免税的法规最初有效期为15年，后来延长了两次，但会在1786年6月24日国会结束时到期。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">工业原料得享受奖励金而输入的，主要是从我国美洲殖民地输入的原料。</div>
+            <div class="text-block simplified-text">进口美洲殖民地的工业原料能获得奖励金。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">最初发给的这类奖励金，乃是在现世纪初叶，对美洲输入的造船用品所发给的奖励金。所谓造船用品，包括适于建造船桅、帆桁、牙樯的木材、大麻、柏油、松脂、松香油。但船桅木材输入每吨二十先令的奖励金，大麻输入每吨六镑的奖励金，也推广到苏格兰输入英格兰的船桅木材。这两种奖励金，按原有金额无变更地继续发给，一直到满期之时为止。即大麻输入奖励金，于1741年1月1日国会议期终结时满期失效，船桅木材输入奖励金，于1781年6月24日国会议期终结时满期失效。</div>
+            <div class="text-block simplified-text">18世纪初，英国对进口美洲造船材料（如木材、大麻、柏油等）发放奖励金。苏格兰运往英格兰的船桅木材和大麻也享受同样补贴：船桅木材每吨20先令，大麻每吨6英镑。这些奖励金一直发放到规定期限，大麻补贴1741年到期，船桅木材补贴1781年到期。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">柏油、松脂、松香油输入奖励金，在其继续有效期间内，经过了若干变更。原来，柏油和松脂每吨输入得奖励金四镑；松香油每吨输入得奖励金三镑。后来，柏油每吨输入奖励金四镑，仅限于按特殊方法制造的柏油，其他的良好纯洁的商用柏油，减为每吨四十四先令。松脂奖励金减为每吨二十先令；松香油奖励金减为每吨一镑十先令。</div>
+            <div class="text-block simplified-text">柏油、松脂和松香油的进口奖励金后来调整了。最初，柏油和松脂每吨分别奖励4镑和3镑。后来，只有特定方法生产的柏油能拿4镑，普通商用柏油降到44先令；松脂降到20先令，松香油降到1镑10先令。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">按照时间的先后，第二次发给的工业原料输入奖励金，便是乔洽二世第二十一年第三十号法令对英国殖民地蓝靛输入所发给的奖励金了。在殖民地的蓝靛仅值上等法国蓝靛价格的四分之三时，按这法令，领得了每磅六便士的奖励金。这个奖励金的发给，亦是有限期的，但曾经数次延期，并减至每磅四便士，将于1781年3月25日国会议期终结时满期失效。</div>
+            <div class="text-block simplified-text">英国在乔治二世时期通过法令，给殖民地的蓝靛发放奖励金。最初每磅6便士，后来降到4便士，有效期到1781年3月25日。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">第三次发给的这一类奖励金，乃是乔治三世第四年第二十六号法令对英国殖民地大麻或生亚麻输入所发给的奖励金了（在这期间，我国有时讨好北美殖民地，有时和它争执）。这个奖励金，以二十一年为期，从1764年6月24日至1785年6月24日。每七年分为一期。第一期每吨奖励金八镑；第二期六镑；第三期四镑。苏格兰气候不宜于种麻，虽亦种麻，但产量不多，品质较劣，故不得享受此种奖励金。如果苏格兰亚麻输入英格兰，亦可得奖励金，那对联合王国南部本地的生产，就未免是太大的妨害了。</div>
+            <div class="text-block simplified-text">这是乔治三世时期给英国殖民地进口大麻或亚麻的奖励金政策，持续21年（1764-1785年），每7年一期，奖金从8镑降到4镑。苏格兰因气候不适合种麻，产量少质量差，所以没资格拿奖励金。如果苏格兰亚麻运到英格兰也能拿钱，会损害英格兰本地生产。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">第四次发给的这一类奖励金，乃是乔治三世第五年第四十五号法令对美洲木材输入的奖励金了。期限为九年，从1766年1月1日至1775年1月1日。每三年分为一期。第一期，每输入好松板一百二十条，得奖励金二十先令；其他方板每五十立方呎，得奖励金十二先令。第二期，每输入好松板一百二十条，得奖励金十五先令；其他方板每五十立方呎，得奖励金八先令。第三期，每输入好松板一百二十条，得奖励金十先令；其他方板每五十立方呎，得奖励金五先令。</div>
+            <div class="text-block simplified-text">这是乔治三世时期对美洲木材进口的奖励政策，从1766年到1775年，分三期执行。第一期每120条好松板奖励20先令，每50立方英尺方板奖励12先令；第二期分别降为15先令和8先令；第三期再降到10先令和5先令。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">第五次发给的这一类奖励金，乃是乔治三世第九年第三十八号法令，对英国殖民地生丝输入的奖励金了。限期二十一年，从1770年1月1日至1791年1月1日。每七年分为一期。第一期，每输入生丝价值一百镑，得奖励金二十五镑；第二期，得奖励金二十镑；第三期，得奖励金十五镑。但养蚕造丝，需要那么多的手工，而在北美，工价又是那么高，所以连这样大的奖励金，也不可能产生任何大的效果。</div>
+            <div class="text-block simplified-text">这是乔治三世时期给英国殖民地进口生丝的奖励金政策，有效期21年（1770-1791年），分三期发放：第一期每100镑奖励25镑，第二期20镑，第三期15镑。但由于北美人工成本太高，即使奖励丰厚，效果也不大。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">第六次发给的这一类奖励金，乃是乔治三世第十一年第五十号法令，对英国殖民地酒桶、大桶、桶板、桶头板输入的奖励金了。限期九年，从1772年1月1日至1781年1月1日。三年一期，第一期，输入各物一定量，得奖励金六镑；第二期，得四镑；第三期，得二镑。</div>
+            <div class="text-block simplified-text">这是乔治三世时期的一项法令，给英国殖民地进口酒桶材料发奖励金，有效期9年（1772-1781年）。奖励逐年减少：前三年每批6英镑，中间三年4英镑，最后三年2英镑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">第七次即最后一次发给的这一类奖励金，乃是乔治王世十九年第三十七号法令，对爱尔兰大麻输入的奖励金了。限期为二十一年，即从1779年6月24日至1800年6月24日，每七年分为一期。这和美洲大麻及生亚麻输入的奖励金，全是一样，而每一期的奖励金标准，亦是一样，但不象对美洲那样，奖励金不推广到生亚麻。爱尔兰生亚麻输入的奖励金，对不列颠这种物品的栽种，是太大的妨害了。在对爱尔兰大麻输入发给奖励金时，不列颠议会和爱尔兰议会之间的感情，并不比以前不列颠和美洲的感情好，但我们总希望，前者是在比后者更顺适的情况下发给的。</div>
+            <div class="text-block simplified-text">这是乔治三世时期对爱尔兰大麻进口的最后一项奖励金政策，有效期21年（1779-1800年），每七年一期，标准与美洲大麻相同但不包括生亚麻，因为那会损害英国本土种植。虽然当时英爱关系紧张，但比之前英美关系稍好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">同时，这几种商品，若从美洲输入，我们就给以奖励金，若从任何其他国家输入，我们即课以高的关税。我国美洲殖民地的利害关系，与祖国的利害关系，被认为是一致的。他们的财富，被认为是我们的财富。据说输到他们那里去的货币，会由于贸易差额，全部回到我们这里来，我们无论怎样在他们身上用钱，亦不致使我们减少一个铜板。无论就那一点说，他们的都是我们所有，用钱在他们身上，等于用钱来增进我们自己的财产，对本国人民有利。这样一个主义的愚妄，已为经验所充分暴露，我们无须多说一句话来暴露它的愚妄。如果我国美洲殖民地，真是大不列颠的一部分，此种奖励金便可认为是对生产的奖励金，但依然要受这类奖励金所要受的一切非难，但不受其他的非难。</div>
+            <div class="text-block simplified-text">这些商品如果从美洲进口，我们会给补贴；从其他国家进口，则征收高关税。当时人们认为美洲殖民地和英国利益一致，殖民地的财富就是英国的财富，花在殖民地的钱最终会通过贸易回流英国，不会造成损失。这种想法很愚蠢，事实已经证明它错了。如果美洲真的是英国的一部分，这种补贴虽然仍有问题，但至少理由更合理。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">工业原料的输出，有时由于绝对禁止而受到妨碍，有时由于高的关税而受到妨碍。</div>
+            <div class="text-block simplified-text">出口工业原料有时被完全禁止，有时被高关税限制。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">我国呢绒制造者，说服国会，使它相信，国家的繁荣，依存于他们这种业务的成功与推广，他们在这一点上，比任何其他种类制造业者都更成功。他们不仅从绝对禁止外国呢绒输入，取得了一种妨害消费者的独占，而且从禁止活羊及羊毛输出，取得了一种妨害牧羊者及羊毛生产者的独占。我国保证岁入的法律，有许多被人适当地指斥说，对那些在法律未颁布前被认为无罪的行为科以严厉处罚，实过于苛酷。但我敢说，连最苛酷的岁入法律，与我国商人和制造业者吵吵闹闹地硬要国会颁布，以支持他们那种荒谬的、不正当的独占权的某几种法律比较，亦会使人觉得平和宽大。象德拉科的法律一样，支持那种独占权的法律，可以说是用血写成的。</div>
+            <div class="text-block simplified-text">英国呢绒商成功游说国会，认为国家繁荣依赖他们的产业。他们不仅垄断市场，禁止进口外国呢绒损害消费者，还禁止出口活羊和羊毛伤害牧民。这些保护性法律比严苛的税收法律更不公平，简直是用鲜血写成的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">伊丽莎白第八年第三号法令规定，输出绵羊、小羊、公羊老，初犯没收其全部货物，监禁一年，在某一市日，截断其左手，钉在市镇上示众；再犯，即宣告为重罪犯人，判处死刑。此法律的目的，在于防止我国的羊种在外国繁殖。查理二世第十三年及第十四年第十八号法令，又宣布输出羊毛亦犯重罪，输出者须受重犯罪人那样的刑罚，货物亦被没收。</div>
+            <div class="text-block simplified-text">英国曾颁布法律严惩偷运羊和羊毛的行为。初犯者没收货物、坐牢一年并砍左手示众；再犯直接判死刑。这些法律是为了防止羊种和羊毛技术外流。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">为着国家的人道名誉，我们希望这两种法律都不实施。第一种，据我所知，虽至今尚未明令撤除，法学家霍金斯认为至今还是有效，但那法律，也许在查理二世第十二年第三十二号法令第三节中，实际被取消了。查理二世的法令，虽没有明白取消前法令所规定的刑罚，却规定了一种新刑罚，即凡输出或企图输出羊一头，科罚金二十先令，并没收这头羊及其所有者对船只的部分所有权。第二种法律，则由威廉三世第七年、第八年第二十八号法令第四节明白撤废了。这法令宣称：“查理二世第十三年及第十四年颁布的禁止羊毛输出法令，把羊毛输出看做重罪。因为刑罚过于苛重，犯罪者的控诉，未能按法办理。该法令关于该犯罪行为定为重罪一节，着即明令撤销，宣告无效。”</div>
+            <div class="text-block simplified-text">为了国家声誉，我们希望这两条法律都不执行。第一条虽未正式废除，但可能已被查理二世的新法令取代，改为每出口一只羊罚款20先令并没收。第二条被威廉三世明确废除，认为原刑罚太重，取消了将羊毛出口定为重罪的规定。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">但是，这个较和缓法令所制定的刑罚，以及先前法令所制定而未经这法令撤除的刑罚，都还是十分严酷。除了没收货物，输出者每输出或企图输出羊毛一磅，须科罚金三先令；这大抵比其原价高四倍乃至五倍。而且，犯此罪的商人或任何人，不得向任何代理人或其他人，索取债务或要求清还账目。不问其财产如何，不问其能否交付这样重的罚款，法律总想使他完全破产。但人民大众的道德，还没败坏到蒙法律制定人那样，所以我未曾听到过有人利用这个条款。倘若犯此罪的人，不能在判决后三个月内交付罚款，即处以七年的流刑，未满期逃归，作为重犯处罚，不得享受僧侣的特典。船主知罪不告，船只及其设备没收。船长水手知罪不告，所有动产和货物没收，并处三个月的徒刑，后又改定为六个月的徒刑。</div>
+            <div class="text-block simplified-text">这条法令的惩罚很重：走私羊毛每磅罚三先令，是原价的四五倍。违法者不管有钱没钱，都会被罚到破产，甚至可能流放七年。船主或船员知情不报也会被没收财产和坐牢。不过，实际中很少有人利用这些严苛条款。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">为要防止输出，境内羊毛贸易，全部受到极苛刻极烦琐的限制。羊毛不得装在箱内、桶内、匣内，只可用布或皮革包装，外面写着三吋长的大字“羊毛”或“毛线”，否则没收货物及其盛器，每磅罚三先令，由所有者或包装者交纳。除了在日出及日落之间的时候，羊毛又不可由马或马车搬运，也不可在离海达五哩以内由陆路搬运，否则没收货物及车马。邻近海岸的小邑，得于一年内，对由小邑或经过小邑而运出或输出羊毛的人，提出控诉，如羊毛价不及十镑，则科以罚金二十镑，如在十镑以上，则科以三倍原价及三倍诉讼费的罚金。对居民中任何二人执行裁判，裁判所得向其他居民课税来偿还，象在盗窃的场合一样。倘有人私通小邑官吏，以求减免罚金，则处以徒刑五年；任何人都可告发。这种法规，全国通行。</div>
+            <div class="text-block simplified-text">为了防止羊毛出口，政府对国内羊毛贸易设置了严格限制：羊毛只能用布或皮革包装，并标明“羊毛”或“毛线”字样，否则没收货物并罚款；运输时间限于日出到日落，且不得在海岸五英里内陆运，违者没收货物和运输工具。沿海小镇可对违规运输者起诉，罚款高达原价三倍。居民需共同承担罚金，包庇官员者判刑五年，鼓励举报。这些规定全国适用。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">肯特及萨塞克斯二郡，限制尤为烦琐。距海岸十哩以内的羊毛所有者，必须在剪下羊毛后三天内，以所剪的数量及藏所，书面报告最近的海关。在其中任何部分迁移以前，又须以羊毛的捆数、重量，买者姓名住址，及移运地址，作同样的报告。在这二郡内，凡居在距海十五哩内的人，在未向国王保证，不以这样购得的羊毛的任何部分再售给距海十五哩内任何他人以前，不得购买任何羊毛。倘若未作这样的报告和保证，即以羊毛向这二郡的海边输运，一经发觉，就没收其羊毛，犯者科罚金每磅三先令。倘若未作这样的报告，即以羊毛存放于距海十五哩内者，查封没收其羊毛；倘在查封后，有人要求领还，必须对国库提出保证，在败诉时，除了其他一切处罚，还须交付三倍的诉讼费。</div>
+            <div class="text-block simplified-text">肯特和萨塞克斯两郡对羊毛交易有严格规定：离海岸10英里内的羊毛主，剪毛后3天内需向海关报告数量及存放地；运输前还需上报捆数、重量、买家及目的地。离海岸15英里内的人买羊毛前，必须向国王保证不转卖给其他15英里内的人。违规运输或存放羊毛会被没收并罚款，每磅3先令。未报告存放的羊毛会被查封，想取回需向国库交保证金，败诉后还要付三倍诉讼费。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">在境内贸易受这样的限制时，我相信，沿海贸易决不会很自由。羊毛所有者，要输运或企图输运羊毛到海岸任何港埠，从那边由海道运至海岸上其他港埠，那末在他输运羊毛路出口港五哩以内的地方以前，须先到出口港报告羊毛包数、重量及记号，否则没收羊毛，并没收马、马车或其他车辆；其他各种禁止羊毛输出迄今还有效的法律，当然也定有各种罚则。但威廉三世第一年第三十二号法令，却又是那么宽大，它宣称：“若于剪毛十日后，将羊毛真实捆数及存地，亲自向最近的海关提出证明，并在羊毛迁运前三日，亲自向最近的海关说明其意图，就可把羊毛从剪毛地点运回家来，尽管剪毛地点，是在距海五哩以内的地方。”向沿海输运的羊毛，必须保证在登记的某港口起运上陆，倘若没有官吏在前，即行上货，则没收其羊毛，并科以每磅三先令的通常罚金。</div>
+            <div class="text-block simplified-text">在国内贸易受限的情况下，沿海贸易也不自由。羊毛运输规定严格：运输羊毛到沿海港口前，须在距出口港5英里内申报数量、重量和标记，否则没收货物和运输工具。威廉三世时期放宽了规定：剪毛10天内向海关报备真实数量及存放地，运输前3天申报意图，即可从剪毛地运回家，即使剪毛地距海不足5英里。沿海运输羊毛须在指定港口装卸，无官员监督上货将没收羊毛并罚款每磅3先令。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">我国呢绒制造者，为要证明他们对国会要求施行这样异常的限制，是完全正当，竟然说英国羊毛具有特殊品质，比任何其他国家的羊毛都好；说他国的羊毛，不搀入若干英国羊毛，就不能造出有相当质量的制造品；说精良呢绒，非由英国羊毛，不能织成；说英国若能完全防止本国羊毛输出，就能独占几乎全世界呢绒业，没有谁能和他竞争，他就可随意抬高价格，售卖呢绒，并在短期间内，依最有利的贸易差额，取得非常大的财富。这种学说，象大多数其他为许多人民所确信的学说一样，过去为多数人民所盲目信从，而且至今仍为他们所信从。至于一般不懂得呢绒业或未曾研究呢绒业的人，却是几乎全体相信。其实，英国羊毛，不但不是制造精良呢绒所必需，而且全不适合于制造精良呢绒。精良呢绒，全由西班牙羊毛织成。并且，把英国羊毛搀到西班牙羊毛中去织造，还会在一定程度上，减低呢绒的质量。</div>
+            <div class="text-block simplified-text">英国羊毛商为了证明限制羊毛出口合理，声称英国羊毛品质独特，是制造优质呢绒的必需品，其他国家必须掺入英国羊毛才能生产好呢绒。他们认为，禁止羊毛出口能让英国垄断全球呢绒业，随意定价并快速致富。这种观点被很多人盲目相信，尤其是外行人。但实际上，英国羊毛并不适合制造优质呢绒，反而会降低质量，真正的好呢绒完全由西班牙羊毛制成。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">本书曾经说明，此等法规，不仅使羊毛价格，减低到现时应有价格以下，而且使其大大低于爱德华三世时代的实际价格。英格兰苏格兰合并，此法规即通行于苏格兰。据说，苏格兰羊毛价格因此跌了一半。《羊毛研究报告》的作者约翰·斯密，是一位极精明、极聪明的作者。他说，最好的英国羊毛在英国的价格，一般比阿姆斯特丹市上极劣羊毛通常售卖的价格低。这些法规公开提出的目的，是把这商品的价格，减至自然应有的价格之下；毫无疑问，它们曾产生预期的效果。</div>
+            <div class="text-block simplified-text">这些法规压低了羊毛价格，不仅低于当前合理价，甚至比爱德华三世时代还低。合并英格兰苏格兰后，苏格兰羊毛价跌了一半。专家约翰·斯密指出，英国上等羊毛的售价竟低于阿姆斯特丹的劣质羊毛。这些法规确实达到了人为压低价格的目的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">也许有人认为，价格这样的降低，由于阻害羊毛的生产，必然大大减低这商品的年产额，虽不比从前低，但比现令状态下市场要是公开自由任其价格上升到自然应有水平时所会有的产额低。但我总相信，其年产额虽多少会受这种法规的影响，但不可能大受影响。羊毛的生产，不是牧羊者使用其劳动及资本的主要目标。说他从羊毛希图利润，不如说他从羊肉希图利润。在多数场合，羊肉的平均或普通价格，可以补偿羊毛平均或普通价格的不足。本书曾经说过（第一篇第十一章）：“不论何种规定，如果能降低羊毛及羊皮价格，使低于自然应有的程度，那末在进步和耕作发达的国家，就必然稍能提高羊肉的价格。无论是大牲畜或小牲畜，只要是在改良的耕地上饲养，其价格必须足够支付地主的合理地租和农民的合理利润。所谓合理的利润，即有理由可希望从改良的耕地上取得的利润。如果不够，其饲养不久就会停止。羊毛羊皮如不够支付这种价格，那就必须由羊肉支付。前者所付愈少，后者所付必愈多。这种价格，究竟是怎样由羊的各部分分担，地主与农民是不关心的。他们所关心的，只是付足了价格没有。所以，在进步及耕作发达的国家，他们作为消费者，虽因这种规定可提高食品价格，不免受若干影响，但作为地主与农民，他们的利益，却不大受这种规定的影响。”所以，照这样推论下去，在进步及耕作发达的国家，羊毛价格这样的降低，不致引起这商品年产额的减少。不过，由于它使羊肉价格升涨，所以可能稍稍减低这种家畜肉的需要，从而稍稍减低此种家畜肉的生产。但即是这样，其影响似乎亦不很大。</div>
+            <div class="text-block simplified-text">有人认为降低羊毛价格会大幅减少产量，因为这会打击生产积极性。但我觉得影响不会太大，因为养羊的主要利润来自羊肉而非羊毛。如果羊毛价格低了，羊肉价格就会相应上涨来弥补，确保农民和地主的收益。所以羊毛降价不会明显减少产量，最多可能稍微影响羊肉需求和产量，但整体影响很小。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">不过，对干年产量，其影响虽不很大，但对于品质，其影响却也许有人认为是非常的大。英国羊毛的品质，虽不比从前低，但比现今农耕状态下所应有的程度低，也许有人认为，品质的低，几乎与价格的低成比例。羊毛的品质，既取决于羊种、牧草及羊毛生产全过程中羊的管理与清洁，而牧羊者对于此等事件的注意，又一定要看羊毛价格对所需要的劳动和费用，能提供怎样的赔偿，这是大家可以想象得到的。但羊毛的优劣，在很大程度上，取决于羊的健康、发育与体躯；改良羊肉所必要的注意，就某几点说，亦就很够改良羊毛了。所以，英国羊毛价格虽低，但其品质，据说，即在现世纪中，亦有相当的改良。价格要是好些，改良也许会大些；价格的低贱，虽然阻碍了这种改良，但却没有完全阻止这种改良。</div>
+            <div class="text-block simplified-text">英国羊毛品质虽未下降，但可能低于当前农业水平应有的标准。品质受羊种、牧草和管理影响，而牧羊者的投入取决于羊毛价格是否划算。羊的健康和体型对羊毛质量很关键，改善羊肉的措施也能提升羊毛品质。尽管低价限制了改进，但本世纪羊毛质量仍有提升。若价格更高，改进可能更大，但低价并未完全阻止质量改善。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">所以，此等规定的粗暴，对羊毛年产量及其品质的影响，似没达到人们所预期的那么大（但我认为它对质的影响可能大于对量的影响）；羊毛生产者的利益，虽在一定程度上受伤害，但总的说来，其伤害并不象一般所想象的那么大。但是，这种考究，决不能证明，绝对禁止羊毛输出是正当的，只不过充分证明，对羊毛输出课以重税，不会是不正当的。</div>
+            <div class="text-block simplified-text">这些规定对羊毛产量和质量的影响比预期小，对质量的损害可能更大。虽然羊毛生产者的利益受损，但程度比想象的要轻。不过，这并不能证明完全禁止羊毛出口是合理的，只能说明对出口征收重税未必不合理。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">一国君主，对其所属各阶级人民，应给予公正平等的待遇；仅仅为了促进一个阶级的利益，而伤害另一阶级的利益，显然是违反这个原则的。这种禁令，正是仅仅为了促进制造业者的利益而伤害了羊毛生产者的利益。</div>
+            <div class="text-block simplified-text">统治者应公平对待所有阶层，偏袒某一方而损害另一方是不对的。比如为保护制造商而牺牲羊毛生产者的利益就是如此。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">各阶级人民，都有纳税以支持君主或国家的义务。每输出羊毛一托德即三十八磅，课税五先令甚或十先令，就给君主提供很大的收入。这种课税，也许不象禁止输出有那么大的减低羊毛价格的作用，所以对羊毛生产者利益的损害程度，会少一些。对于制造业者，它提供了足够大的利益，因为他虽然必须以比禁止输出的场合高的价格购买羊毛，但与外国制造业者比较，他至少能够少付五先令或十先令的价格，而且还可省免外国制造业者所必须支付的运费及保险费。要想出对君主能提供很大收入，同时又对任何人都不会引起困难的赋税，那几乎是不可能的。</div>
+            <div class="text-block simplified-text">所有人都要纳税支持国家。每出口38磅羊毛征税5到10先令，给国家带来不少收入。这种税比直接禁止出口羊毛对生产者的伤害小些。国内制造商虽然买羊毛更贵，但比外国同行少付5到10先令，还省了运费和保险费。很难找到既让国家赚钱又不让人为难的税。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">这种禁令虽附有防止输出的各种罚则，并没有防止羊毛的输出。大家都知道，每年输出仍是很大的。外国市场与本国市场羊毛价格上很大的差额，对于秘密输出是那么大的引诱，以致严酷的法律也不能加以防止。这种不合法的秘密输出，除了秘密输出者外，对任何人都无利。但是，课有赋税的合法的输出，既给君主提供收入，又可省免其他更苛重、更难堪的赋说的征收，对国内各阶级人民都可有利。</div>
+            <div class="text-block simplified-text">尽管有严厉的禁令和处罚，羊毛仍大量走私出口，因为国内外价差太大，诱惑难挡。走私只让走私者得利，而合法征税出口既能增加政府收入，又能减轻人民负担，对大家都有好处。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">漂白土，由于被认为是呢绒制造及漂白所必需，故其输出所受的处罚，几乎和羊毛的输出相同。烟管土，虽公认和漂白土不相同，但由于很类似，而且因为漂白土有时可作为烟管土输出，亦受同样的禁止与处罚。</div>
+            <div class="text-block simplified-text">漂白土因为对呢绒生产和漂白很重要，所以出口受罚，和羊毛一样。烟管土虽然和漂白土不同，但因为很像，有时会被冒充出口，所以也受到同样的处罚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">查理二世第十三年和十四年第七号法令规定，靴、鞋或拖鞋除外，一切生皮鞣皮都禁止输出；这法律给我国靴匠和鞋匠以一种妨害牧畜业和鞣皮业的独占。此后，法律又规定，鞣皮业对每重一百一十二磅鞣皮纳轻微的税一先令，即可摆脱此种独占。他们即以不加制造的鞣皮输出，亦可于输出时，收回所纳国产税的三分之二。一切皮革制造品，都得免税输出；输出者还可收回所纳国产税全部。我国牧畜者，却仍继续受旧时独占权的害。牧畜者散居国内各地，彼此隔离，要团结起来，强迫他们同胞接受他们的独占、或摆脱他人可能强加在他们身上的独占，在他们都是极其困难的。各种制造业者，都住在大都市，所以能够很容易团结起来。连牛骨亦禁止输出；在这点上，制角器和制梳那二种不重要的行业，亦得享受一种妨害牧畜业者的独占。</div>
+            <div class="text-block simplified-text">英国法律曾禁止出口生皮和鞣皮（靴鞋除外），保护了鞋匠但损害了牧畜和鞣皮业。后来鞣皮商只需交少量税就能出口，还能退税，而皮革制品出口完全免税。但牧畜者仍受旧规限制，因居住分散难以联合反抗。相比之下，城市制造商更容易联合施压。连牛骨也被禁出口，让一些小行业占了牧畜者的便宜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">以禁止或课税方法，限制半制成品的输出，并不是皮革制造业所特有的。在一件物品还要加工才合于直接使用与消费时，我们的制造业者便以为那应当由他们来完成。羊毛线与绒线和羊毛一样，禁止输出，受同样的处罚，甚至白呢绒输出，亦须纳税；我国染业在这点上，取得了一种妨害呢绒业的独占。我国的呢绒制造者，虽有力防御他们自身，但大部分大的呢绒制造者，兼营染业。所以，用不着防御了。表壳，钟壳，表针盘，钟针盘，都禁止输出。我国制表者和制钟者，似乎都不愿这一类制作品的价格因外国人的竞购而抬高。</div>
+            <div class="text-block simplified-text">政府限制半成品出口，比如羊毛、呢绒、钟表零件等，是为了保护本国制造业。制造商希望由自己完成最终产品，避免外国竞争抬高价格或影响利润。染业和呢绒业甚至通过政策互相保护，大制造商因兼营染业而受益。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">爱德华三世、亨利八世和爱德华六世的一些法令，规定一切金属都禁止输出。铅锡列为例外，或因为此二金属极为丰饶。而其输出，又为当时王国贸易相当大的部分。威廉和玛利第五年第十七号法令，为要奖励开矿，允许由不列颠矿物制造的铁、铜和黄铜的输出，不受禁止。铜块无论产自本国或产自外国，后来威廉三世第九年和第十年第二十六号法令都允许输出。未加工黄铜，即所谓枪炮金属、钟铃金属或货币鉴定人金属（shroff-metal），却仍继续禁止输出。各种黄铜制造品都得免税输出。</div>
+            <div class="text-block simplified-text">英国早期法令禁止金属出口，但铅锡例外，因产量大且贸易重要。后来为鼓励采矿，允许出口本国产的铁、铜和黄铜。铜块不论产地均可出口，但未加工的铜制品仍被禁止。不过，所有铜制成品可免税出口。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">不完全禁止输出的工业原料，往往在输出时课以重税。</div>
+            <div class="text-block simplified-text">出口工业原料通常会被征收高额关税。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">乔治一世第八年第十五号法令规定，英国一切货物，无论是英国生产或制造的，按以前法令，在输出时须纳税的，都得免税输出。但下述各货物，却作为例外，即明矾、铅、铅矿、锡、鞣皮、绿矾、煤炭、梳毛机、白呢绒、菱锌矿、各种兽皮、胶、兔毛、野兔毛、各种毛、马匹、黄色氧化铅矿。这些物品，除了马匹，都是工业原料，半制成品（可视为要进一步加工的材料），或职业用具。这法令，依然要这些货物纳以前所须缴纳的税，即旧补助税及百分之一出口税。</div>
+            <div class="text-block simplified-text">英国乔治一世时期规定，大部分本国商品出口免税，但工业原料、半成品和工具（如铅、煤炭、毛皮等）仍需缴纳旧税。马匹也包括在内。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">这法令又规定，有许多染色用的外国染料，得于输入时免纳一切税。但后来输出时，须纳一定的税，但不能算重。似乎，我国染业者，一面认为，奖励此等染料输入，于己有利，一面又认为，稍稍阻害其输出，于己亦有利。但是，商人为了贪欲而想出的此种令人注目的巧妙手法，却似乎在这里失其所望了。因为它必然使输入者注意，不超过国内市场需要而输入。结果，国内市场上，这类商品的供给，总是不足，这类商品的价格，总是比输入自由输出亦自由的场合高些。</div>
+            <div class="text-block simplified-text">这条法令规定，进口染色染料免税，但出口时要交少量税。染业者想通过限制出口来获利，但商人为了赚钱会控制进口量，避免供过于求。结果导致国内市场染料短缺，价格比自由进出口时更高。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">依照上述法令，西尼加胶或阿拉伯胶，列在染料之内，亦得免税输入。在再输出时，要纳轻微的税，一百一十二磅不过三便士。当时，法国独占西尼加附近生产这种染料的国家的贸易；英国市场不容易从生产地点直接输入来供应。干是，乔治二世第二十五年规定，西尼加胶，得从欧洲各地输入（那与航海条例的本首大相违背）。但此法令的目的，不在于奖励这种贸易，所以违反英国重商政策的普通原理，于其输入时，每一百一十二磅课税十先令，而在输出时，又不许退还任何部分。1755年开始的战争的胜利，使英国象从前的法国一样，对那些国家也享受专营贸易的特权，和议一成立，我们的制造者即要乘此良机，建立一种有利于他们自己但有害干这商品生产者及输入者的独占。所以，乔治三世第五年第三十七号法令规定，从英王陛下非洲领土输出西尼加胶，只许输往不列颠；象对我国美洲殖民地和西印度殖民地各列举商品一样，加上了同样的限制、规律、没收及处罚。诚然，其输入，一百一十二磅只纳轻税六便士，但其再输出，一百一十二磅须纳重税三十先令。我国制造业者的意旨，要把这全部产量运到英国来，而且，为要使自己能以自定的价格购买这商品，又规定其中任何部分，除非负担大的费用，不能再输出。事实上，这样的费用，就够阻害它的输出了。他们在这里，象在其他许多场合一样，都是受着贪欲的驱使，但结果同样大失所望。这种重税，是秘密输出的引诱。这种商品，有许多是由英国和非洲，秘密输往欧洲各制造国，尤其是荷兰。因此，乔治三世第十四年第十号法令，把此输出税减为每一百一十二磅纳五先令。</div>
+            <div class="text-block simplified-text">英国规定西尼加胶可免税进口，再出口时少量征税。起初法国垄断其贸易，英国难以直接进口，后来允许从欧洲进口但征重税。战后英国获得贸易垄断权，制造商趁机限制出口，只许运往英国并征高额再出口税，企图控制价格。但这导致走私增多，最终英国不得不降低出口税。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">按旧补助税所依据的地方税则，海狸皮一件估定为六先令八便士；1722年以前，海狸皮每件输入所纳的各种补助税和关税，约等于这地方税的五分之一，即一先令四便士。在输出时，除了旧补助税的一半即仅仅二便士外，都可退还。一种这样重要的工业原料，在输入时，须课这样的关税，被认为太高；于是，在1722年，地方税减为二先令六便士，输入税亦减为六便士。但输出时，亦仅能退还此额的一半。那次胜利的战争，使英国占领了产海狸最多的地方，而海狸皮又为列举商品之一，所以，其输出，就限于从美洲运至英国市场了。我国制造业者不久就想利用这机会。1764年，海狸皮一件输入税减为一便士，输出税则提高至每件七便士，并不得退还任何输入税。同法令又规定，海狸毛或海狸腹部输出，每磅须纳税一先令六便士，但对海狸皮输入税则无所变改，由英国人用英国船输入的，所纳的税仍在四先令与五先令之间。</div>
+            <div class="text-block simplified-text">以前，海狸皮进口税是1先令4便士，出口能退大部分税。1722年，进口税降到6便士，但出口退税也减半。后来英国控制了主要海狸产地，1764年又调整税率：进口税降到1便士，出口税涨到7便士且不退进口税。同时，海狸毛出口税涨到每磅1先令6便士，但海狸皮进口税不变，英国船只进口仍交4-5先令税。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">煤炭，可视为工业原料，亦可视为职业用具，故其输出，课有重税，现在（1783年）是每吨纳税五先令以上，或每纽卡斯尔煤衡量纳税十五先令以上。这在许多场合，简直高于炭坑所在地的商品原价，甚或高于输出港的商品原价。</div>
+            <div class="text-block simplified-text">煤炭既是工业原料也是工具，现在（1783年）出口税很高，每吨超5先令或每纽卡斯尔计量超15先令，有时甚至超过产地或港口的原价。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">但真正职业用具的输出，一般不是通过高关税，而是通过绝对禁止来限制。于是，威廉三世第七年和第八年第二十号法令第八条规定，织手套和长祙的织机或机械禁止输出，违则不仅把输出乃至企图输出的织机或机械没收，而且须科罚金四十镑，一半归于国王，一半归于告发人。同样，乔治三世第十四年第七十一号法令规定，棉制造业、麻制造业、羊毛制造业和丝制造业使用的一切用具禁止输出，违则货物没收，犯者科罚金二百镑，知情不报又以船供其运输的船长，亦须科罚金二百镑。</div>
+            <div class="text-block simplified-text">以前英国用法律禁止出口专业工具，违者重罚。比如威廉三世时期，出口织袜机器会被没收并罚款40英镑。乔治三世时期，出口纺织工具也会被没收，罚款200英镑，连帮忙运货的船长也要罚200英镑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">当死的职业用具的输出受到这么重的处罚时，活的职业用具即技工自不能听其来去自如。所以，乔治一世第五年法令第二十七号规定，凡引诱英国技工或制造业工人到外国去执行职业或传授职业者，初犯科罚一百镑以下的罚金，处三个月徒刑，并继续拘禁，到罚金付清之时为止；再犯即随法庭意旨，科以罚金，处十二个月徒刑，并继续拘禁，到罚金付清之时为止。乔治二世第二十三年第十三号法令，加重了这种处罚，即初犯科罚金五百镑，处十二个月徒刑，并继续拘禁，到罚金付清之时为止；再犯科罚金一千镑，处二年徒刑，并继续拘禁，到罚金付清之时为止。</div>
+            <div class="text-block simplified-text">英国法律严惩引诱技工出国工作或传授技能的行为：初犯罚100英镑、关3个月，直到交完罚款；再犯罚更多、关更久。后来惩罚加重，初犯罚500英镑、关1年；再犯罚1000英镑、关2年，都要交完罚款才能放人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">按照上述二法令中前一个法令，某一个人如被证明曾勾引某一技工，或某一技工如被证明受人引诱或答应或订约为上述目的前往外国，那末这样的技工，必须向法庭提出不出国的合式的保证，而在未向法庭提出此种保证以前，得由法庭拘禁。</div>
+            <div class="text-block simplified-text">如果有人引诱技工出国，或技工答应出国工作，他们必须向法庭保证不出国，否则会被拘留。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">若有某一技工，竟自出国了，并在外国执行其职业或传授其职业，则在英王陛下的驻外公使或领事的警告下，或在当时阁员的警告下，必须在接警告后六个月内回国，并继续住在本国，否则即从那时候起，被剥夺一切国内财产的继承权，亦不得作国内任何人的遗嘱执行人或财产管理人，更不得继承、承受或购买国内任何土地。他自己所有的动产及不动产，也被国王没收，作为外国人看待，不受国王保护。</div>
+            <div class="text-block simplified-text">如果技术工人出国工作或教学，接到英国驻外使节或政府警告后，必须在6个月内回国定居。否则将失去国内财产继承权、土地购买权等权利，个人财产也会被没收，不再受法律保护。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">我国自夸爱护自由。无须说明，此等规定和此等夸大的自由精神是多么矛盾。十分明显，这种自由，在这场合，为了商人和制造业者琐细的利益而被牺牲了。</div>
+            <div class="text-block simplified-text">我们自称崇尚自由，但这些规定明显与之矛盾，实际上是为了商人和制造商的利益牺牲了自由。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">这一切规定可称颂的动机，是推广我国制造业。但推广的方法，不是改良自己的制造业，而是阻抑我们邻国的制造业，并尽可能消灭一切可恶竞争者的捣乱性竞争。我国制造业者认为，他们应当独占本国同胞的技能才干。通过限制某些职业在一个时间内所得雇用的人数，并规定一切职业须有长时间的学徒时期，他们企图局限各职业的知识，使仅为少数人所掌握，而且愈少愈好，他们又不愿这少数人中有一些人到外国去传授技能给外国人。</div>
+            <div class="text-block simplified-text">这些规定旨在保护本国制造业，但方法不是提升自身，而是打压外国竞争。本国制造商想垄断行业，限制从业人数和延长学徒期，以此控制技术传播，防止外流。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">消费是一切生产的唯一目的，而生产者的利益，只在能促进消费者的利益时，才应当加以注意。这原则是完全自明的，简直用不着证明。但在重商主义下，消费者的利益，几乎都是为着生产者的利益而被牺牲了，这种主义似乎不把消费看作一切工商业的终极目的，而把生产看作工商业的终极目的。</div>
+            <div class="text-block simplified-text">生产是为了消费，生产者的利益只有在能帮到消费者时才重要。这道理很明显。但重商主义只顾生产者，牺牲消费者，把生产当目的，而不是消费。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">对于凡能与本国产物和制造品竞争的一切外国商品，在输入时加以限制，就显然是为着生产者的利益而牺牲国内消费者的利益了。为了前者的利益，后者不得不支付此种独占所增加的价格。</div>
+            <div class="text-block simplified-text">限制进口外国商品，保护本国生产者，却让国内消费者买单，被迫承受更高的价格。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">对于本国某些生产物，在输出时发给奖励金，那亦全是为了生产者的利益。国内消费者，第一不得不缴纳为支付奖励金所必要征收的赋税；第二不得不缴纳商品在国内市场上价格抬高所必然产生的更大的赋税。</div>
+            <div class="text-block simplified-text">给本国出口商品发补贴，主要是为了生产者的利益。但消费者要承担双重负担：一是交税补贴出口，二是买更贵的商品。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">有名的与葡萄牙签订的通商条约，通过高的关税，使我国消费者不能向邻国购买我们本国气候所不宜生产的商品，但必须向一个遥远的国家购买这种商品，虽明知该国这种商品的品质较差。国内消费者，为了使本国生产者能在比较有利的条件下输出某几种产物到这一个遥远国家去，不得不忍受此种困难。这几种产物的强迫输出在国内市场上引起的增高价格，亦得由消费者支付。</div>
+            <div class="text-block simplified-text">葡萄牙的通商条约抬高关税，逼着消费者从遥远的葡萄牙买质量差的商品，而不能从邻国买。这么做是为了让本国产品能更容易出口到葡萄牙，但代价是国内消费者要承受更高的价格。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">但为管理我国美洲殖民地和西印度殖民地而订立的许多法律，比我国所有其他通商条例，都更严重地牺牲国内消费者的利益，以顾全生产者的利益。一个大的帝国建立起来了，而其建立的唯一目的，便是造成一个顾客之国，使他们只能向我国各生产者的店铺购买我国所能供给的各种物品。我国生产者由此种独占取得的仅是价格稍稍的提高，而我国消费者要负担全部费用，以维持这个帝国，护卫这个帝国。为了这个目的，仅仅为了这个目的，我国在最近二次战争中，用去了二亿镑以上，借债一亿七千万镑以上，至于前此各次战争用费，还不算在里面。单单这一项借款的利息，不仅大于由殖民地贸易独占据说所能得到的异常的利润的全部，而且大于这贸易的价值的全部，换言之，大于每年平均输出到殖民地的货物价值的全部。</div>
+            <div class="text-block simplified-text">英国为了独占美洲和西印度殖民地的贸易，牺牲了国内消费者的利益来保护生产商。这些殖民地只能从英国购买商品，让生产商稍微提价获利，但维持和保卫殖民地的巨额成本全由消费者承担。仅最近两场战争就花费超2亿英镑，借款1.7亿英镑，利息甚至超过殖民贸易的全部利润和货物价值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">谁是这重商学说体系的设计者，不难于确定。我相信，那决不是消费者，因为消费者的利益全被忽视了。那一定是生产者，因为生产者的利益受到那么周到的注意。但在生产者中，我们的商人与制造业者，又要算是主要的设计者。在这一章所讨论的商业条例中，我们制造者的利益，受到了最特别的注意。消费者或不如说其他生产者的利益，就为着制造业者的利益而被牺牲了。</div>
+            <div class="text-block simplified-text">重商主义体系的设计者显然是生产商，尤其是制造商，他们只顾自己的利益，完全忽视了消费者和其他生产者的权益。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
