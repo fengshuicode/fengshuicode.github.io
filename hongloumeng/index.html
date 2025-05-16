@@ -223,7 +223,7 @@
                 const listItem = document.createElement('li');
                 const link = document.createElement('a');
                 const chapterNumber = String(i).padStart(3, '0'); // Format as 001, 002, etc.
-                link.href = `/${chapterNumber}.html`;
+                link.href = `/hongloumeng/${chapterNumber}.html`;
                 link.textContent = `${toChineseNumeral(i)}回`; // Add 回 character
                 listItem.appendChild(link);
                 chapterList.appendChild(listItem);
