@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十回 黄风岭唐僧有难　半山中八戒争先</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./020.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十回 黄风岭唐僧有难　半山中八戒争先</h1>
+        <a href="./022.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">偈曰：</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+简单来说就是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">法本从心生，还是从心灭。生灭尽由谁，请君自辨别。既然皆己心，何用别人说?只须下苦功，扭出铁中血。绒绳着鼻穿，挽定虚空结。拴在无为树，不使他颠劣。莫认贼为子，心法都忘绝。休教他瞒我，一拳先打彻。现心亦无心，现法法也辍。人牛不见时，碧天光皎洁。秋月一般圆，彼此难分别。</div>
+            <div class="text-block simplified-text">佛法是从心里生出来的，还是从心里消失的？生和灭到底由谁决定，你自己好好想想。既然都是自己的心，何必听别人说？只要下苦功夫，像从铁里拧出血那样拼命。用绳子穿住牛鼻子，打个结拴在空中。把它绑在"无为"这棵树上，不让它乱跑。别把贼当儿子，把那些心法全忘掉。别让它骗我，先给它一拳打穿。现在的心其实也没心，现在的法其实也没法。人和牛都看不见的时候，天空一片明亮。像秋天的月亮一样圆满，分不清哪个是哪个。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">这一篇偈子，乃是玄奘法师悟彻了《多心经》，打开了门户。那长老常念常存，一点灵光自透。</div>
+            <div class="text-block simplified-text">这段话的意思是：这首佛诗是玄奘法师完全领悟了《心经》后写出来的，帮他真正理解了佛法。这位高僧经常念诵、牢记这首诗，心里自然就明白了佛法的真谛。
+
+（说明：1.将"偈子"译为"佛诗"更易懂；2."悟彻"译为"完全领悟"；3."打开了门户"意译为"真正理解了佛法"；4."长老"译为"高僧"；5."一点灵光自透"意译为"心里自然就明白了佛法的真谛"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">且说他三众，在路餐风宿水，带月披星，早又至夏景炎天。但见那：</div>
+            <div class="text-block simplified-text">话说他们三个人，一路风餐露宿，白天赶路晚上看星星，转眼又到了炎热的夏天。你看那景色：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">花尽蝶无情叙，树高蝉有声喧。野蚕成茧火榴妍，沼内新荷出现。</div>
+            <div class="text-block simplified-text">花儿谢了蝴蝶就不来了，树高了蝉叫得特别响。野蚕结茧石榴花开得红艳艳，池塘里新长出的荷花也冒头了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">那日正行时，忽然天晚，又见山路旁边，有一村舍。三藏道：“悟空，你看那‘日落西山藏火镜，月升东海现冰轮’。幸而道旁有一人家，我们且借宿一宵，明日再走。”八戒道：“说得是。我老猪也有些饿了，且到人家化些斋吃，有力气，好挑行李。”行者道：“这个恋家鬼!你离了家几日，就生报怨！”八戒道：“哥啊，似不得你这喝风呵烟的人。我从跟了师父这几日，长忍半肚饥，你可晓得？”三藏闻之道：“悟能，你若是在家心重呵，不是个出家的了，你还回去罢。”那呆子慌得跪下道：“师父，你莫听师兄之言。他有些赃埋人。我不曾报怨甚的，他就说我报怨。我是个直肠的痴汉，我说道肚内饥了，好寻个人家化斋，他就骂我是恋家鬼。师父啊，我受了菩萨的戒行，又承师父怜悯，情愿要伏侍师父往西天去，誓无退悔。这叫做‘恨苦修行’。怎的说不是出家的话！”三藏道：“既是如此，你且起来。”那呆子纵身跳起，口里絮絮叨叨的，挑着担子，只得死心塌地，跟着前来。</div>
+            <div class="text-block simplified-text">那天他们正赶路，天突然黑了，看见山路旁有个村子。唐僧说："悟空，你看太阳下山月亮出来了。幸好路边有人家，我们借住一晚，明天再走吧。"八戒说："对啊，我老猪也饿了，去人家那儿要点吃的，吃饱了才有力气挑行李。"悟空笑话他："你这恋家的家伙！才出门几天就抱怨！"八戒委屈道："哥啊，我可不像你能喝西北风。跟着师父这几天，我经常饿肚子，你知道吗？"唐僧听了说："悟能，要是你这么想家，就别出家了，回去吧。"八戒吓得赶紧跪下："师父别听师兄乱说！他就是爱冤枉人。我根本没抱怨，他就说我抱怨。我是个直性子，就说肚子饿了想找人家要口饭吃，他就骂我恋家。师父啊，我受了菩萨的戒，又蒙您收留，铁了心要跟您去西天，绝不反悔。这叫吃苦修行，怎么就不是出家人了！"唐僧说："既然这样，起来吧。"那呆子一骨碌爬起来，嘴里嘟嘟囔囔地挑着担子，只能老老实实跟着走。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">早到了路旁人家门首。三藏下马，行者接了缰绳，八戒歇了行李，都伫立绿荫之下。三藏拄着九环锡杖，按按藤缠篾织斗篷，先奔门前，只见一老者，斜倚竹床之上，口里嘤嘤的念佛。三藏不敢高言，慢慢的叫一声“施主，问讯了。”那老者一骨鲁跳将起来，忙敛衣襟，出门还礼道：“长老，失迎。你自那方来的?到我寒门何故？”三藏道：“贫僧是东土大唐和尚，奉圣旨，上雷音寺拜佛求经。适至宝方天晚，意投檀府告借一宵，万祈方便方便。”那老儿摆手摇头道：“去不得。西天难取经。要取经，往东天去罢。”三藏口中不语，意下沉吟：“菩萨指道西去，怎么此老说往东行?东边那得有经?......”腼腆难言，半晌不答。</div>
+            <div class="text-block simplified-text">他们来到一户人家门前。唐僧下了马，孙悟空接过缰绳，猪八戒放下行李，三人站在树荫下。唐僧拄着九环锡杖，整理了一下藤条编的斗篷，走到门前。只见一个老头斜靠在竹床上，嘴里小声念着佛。唐僧不敢大声说话，轻声叫道："老人家，打扰了。"老头一听，赶紧跳起来，整理好衣服出门还礼说："师父，有失远迎。您从哪儿来？到我这穷人家有什么事？"唐僧回答："我是从东土大唐来的和尚，奉皇上命令去雷音寺拜佛取经。路过您这儿天黑了，想在您家借住一晚，请您行个方便。"老头摆摆手摇头说："去不得。西天取经太难了。要取经，还是往东走吧。"唐僧听了没说话，心里琢磨："菩萨明明说往西走，怎么这老人家说往东？东边哪有经书啊......"他一时不知怎么回答，半天没出声。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说行者素性凶顽，忍不住，上前高叫道：“那老儿，你这们大年纪，全不晓事。我出家人远来借宿，就把这厌钝的话虎唬我。十分你家窄狭，没处睡时，我们在树底下好道也坐一夜，不打搅你。”那老者扯住三藏道：“师父，你倒不言语，你那个徒弟，那般拐子脸，别颏腮，雷公嘴，红眼睛的一个痨病魔鬼，怎么反冲撞我这年老之人！”行者笑道：“你这个老儿，忒也没眼色!似那俊刮些儿的，叫做中看不中吃。想我老孙，虽小，颇结实，皮裹一团筋哩。”那老者道：“你想必有些手段。”行者道：“不敢夸言，也将就看得过。”老者道：“你家居何处?因甚事削发为僧？”行者道：“老孙祖贯东胜神洲海东傲来国花果山水帘洞居住。自小儿学做妖怪，称名悟空。凭本事，挣了一个齐天大圣。只因不受天禄，大反天宫，惹了一场灾愆。如今脱难消灾，转拜沙门，前求正果，保我这唐朝驾下的师父，上西天拜佛走遭，怕甚么山高路险，水阔波狂!我老孙也捉得怪，降得魔。伏虎擒龙，踢天弄井，都晓得些儿。倘若府上有甚么丢砖打瓦，锅叫门开，老孙便能安镇。”</div>
+            <div class="text-block simplified-text">孙悟空脾气急，忍不住上前大声说：“老头儿，你这么大年纪了怎么不懂事？我们和尚大老远来借住一晚上，你净说些难听的话吓唬人。就算你家地方小没处睡，我们在树下坐一晚上也行，不麻烦你。”老头拉着唐僧说：“师父你怎么不说话？你那个徒弟长得像个痨病鬼——拐子脸、尖下巴、雷公嘴、红眼睛，怎么反倒来顶撞我这个老人家！”孙悟空笑着说：“你这老头真没眼力！那些长得好看的，都是中看不中用。我老孙虽然瘦小，可结实着呢，浑身都是肌肉。”老头说：“看你这样，应该有点本事吧？”孙悟空说：“不敢说大话，还算过得去。”老头问：“你家住哪儿？为啥当和尚？”孙悟空答：“我老家在东胜神洲傲来国的花果山水帘洞。从小当妖怪，叫孙悟空。靠本事混了个齐天大圣的名号。后来因为不服天庭管，大闹天宫惹了祸。现在改邪归正当了和尚，保护我这位唐朝师父去西天取经。什么高山险路、大风大浪我都不怕！抓妖怪、降恶魔、打老虎、捉龙我都会。要是你家有什么闹鬼砸东西的怪事，我老孙都能摆平。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">那老儿听得这篇言语，哈哈笑道：“原来是个撞头化缘的熟嘴儿和尚。”行者道：“你儿子便是熟嘴!我这些时，只因跟我师父走路辛苦，还懒说话哩。”那老儿道：“若是你不辛苦，不懒说话，好道活活的聒杀我!你既有这样手段，西方也还去得，去得。你一行几众?请至茅舍里安宿。”三藏道：“多蒙老施主不叱之恩。我一行三众。”老者道：“那一众在那里？”行者指着道：“这老儿眼花，那绿荫下站的不是？”老儿果然眼花，忽抬头细看，一见八戒这般嘴脸，就唬得一步一跌，往屋里乱跑，只叫：“关门，关门!妖怪来了！”行者赶上扯住道：“老儿莫怕，他不是妖怪，是我师弟。”老者战兢兢的道：“好，好，好!一个丑似一个的和尚！”八戒上前道：“老官儿，你若以相貌取人，干净差了。我们丑自丑，却都有用。”那老者正在门前与三个和尚相讲，只见那庄南边有两个少年人，带着一个老妈妈，三四个小男女，敛衣赤脚，插秧而回。他看见一匹白马，一担行李，都在他家门首喧哗，不知是甚来历，都一拥上前问道：“做甚么的？”八戒调过头来，把耳朵摆了几摆，长嘴伸了一伸，吓得那些人东倒西歪，乱跄乱跌。慌得那三藏满口招呼道：“莫怕，莫怕!我们不是歹人，我们是取经的和尚。”那老儿才出了门，搀着妈妈道：“婆婆起来，少要惊恐。这师父，是唐朝来的，只是他徒弟脸嘴丑些，却也山恶人善。带男女们家去。”那妈妈才扯着老儿，二少年领着儿女进去。</div>
+            <div class="text-block simplified-text">老头听完这话，大笑着说："原来是个油嘴滑舌要饭的和尚。"孙悟空说："你儿子才油嘴滑舌呢！我这些天跟着师父赶路太累，都懒得说话。"老头说："要是你不累还爱说话，非得把我吵死不可！看你这么有本事，去西天应该没问题。你们一共几个人？到我家住一晚吧。"唐僧说："多谢老人家不嫌弃。我们一共三个人。"老头问："还有一个在哪儿？"孙悟空指着说："你这老头眼花啦，树底下站着的不是？"老头仔细一看，见到猪八戒的长相，吓得连滚带爬往屋里跑，大喊："快关门！妖怪来了！"孙悟空拉住他说："别怕，他不是妖怪，是我师弟。"老头发抖着说："好家伙！一个比一个丑的和尚！"猪八戒上前说："老伯，以貌取人可不对。我们虽然丑，但都有真本事。"
+
+正说着，庄南边走来两个年轻人，扶着一个老太太，带着三四个光脚的小孩，卷着裤腿插完秧回来。他们看见门口有白马和行李，一群人围上来问："你们是干什么的？"猪八戒一转头，甩了甩耳朵，伸长嘴巴，吓得那些人东倒西歪。唐僧赶紧解释："别怕！我们不是坏人，是去西天取经的和尚。"老头这才出来，扶着老太太说："老伴别怕，这几位是从大唐来的高僧，就是徒弟长得吓人，其实心地善良。带孩子们回家吧。"老太太这才拉着老头，两个年轻人带着孩子们进屋去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">三藏却坐在他门楼里竹床之上，埋怨道：“徒弟呀，你两个相貌既丑，言语又粗，把这一家儿吓得七损八伤，都替我身造罪哩！”八戒道：“不瞒师父说，老猪自从跟了你，这些时俊了许多哩。若像往常在高老庄走时，把嘴朝前一掬，把耳两头一摆，常吓杀二三十人哩。”行者笑道：“呆子不要乱说，把那丑也收拾起些。”三藏道：“你看悟空说的话。相貌是生成的，你教他怎么收拾？”行者道：“把那个耙子嘴，揣在怀里，莫拿出来；把那蒲扇耳，贴在后面，不要摇动，这就是收拾了。”那八戒真个把嘴揣了，把耳贴了，拱着头，立于左右。行者将行李拿入门里，将白马拴在桩上。</div>
+            <div class="text-block simplified-text">唐僧坐在竹床上抱怨说："徒弟啊，你们俩长得丑说话又难听，把这家人吓得够呛，这不是给我惹麻烦吗！"  
+
+八戒说："师父，实话跟您说，我自从跟了您已经好看多了。要是在高老庄那会儿，我把嘴往前一撅，耳朵一甩，经常能吓死二三十个人呢。"  
+
+孙悟空笑着说："呆子别瞎说，把你那丑样收着点。"  
+
+唐僧说："悟空你这话说的，长相是天生的，怎么收啊？"  
+
+悟空说："让他把那张耙子似的长嘴藏衣服里别露出来，大耳朵贴在脑后别乱晃，这不就得了。"  
+
+八戒真的把嘴藏起来，耳朵贴好，低着头站在旁边。悟空把行李搬进屋，把白马拴在木桩上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">只见那老儿才引个少年，拿一个板盘儿，托三杯清茶来献。茶罢，又吩咐办斋。那少年又拿一张有窟窿无漆水的旧桌，端两条破头折脚的凳子，放在天井中，请三众凉处坐下。三藏方问道：“老施主，高姓？”老者道：“在下姓王。”——“有几位令嗣？”——道：“有两个小儿，三个小孙。”三藏道：“恭喜，恭喜。”又问：“年寿几何？”——道：“痴长六十一岁。”行者道：“好，好，好!花甲重逢矣。”三藏复问道：“老施主，始初说西天经难取者，何也？”老者道：“经非难取，只是道中艰涩难行。我们这向西去，只有三十里远近，有一座山，叫做八百里黄风岭。那山中多有妖怪。故言难取者，此也。若论此位小长老，说有许多手段，却也去得。”行者道：“不妨，不妨!有了老孙与我这师弟，任他是甚么妖怪，不敢惹我。”</div>
+            <div class="text-block simplified-text">那老头带着个年轻人过来，端了个盘子，上面放着三杯清茶请他们喝。喝完茶，老头又让准备斋饭。年轻人搬来一张破旧掉漆的桌子，还有两条缺腿的凳子，放在院子里阴凉处，请他们坐下。
+
+唐僧问："老人家贵姓啊？"老头说："我姓王。"唐僧又问："您有几个孩子？"老头答："有两个儿子，三个孙子。"唐僧说："真是好福气啊！"接着问："您今年多大年纪？"老头说："六十一了。"孙悟空插嘴说："好啊好啊！这是活满一甲子又从头开始了。"
+
+唐僧继续问："老人家，您刚才说西天取经很难，是为什么？"老头解释道："经书倒不难拿，主要是路上太难走。往西三十里地有座八百里黄风岭，山里全是妖怪。所以我说难就难在这儿。不过看这位小师父本事不小，应该能过去。"
+
+孙悟空拍胸脯说："怕什么！有我和我师弟在，管他什么妖怪都不敢动我们。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">正说处，又见儿子拿将饭来，摆在桌上，道声“请斋”。三藏就合掌讽起斋经。八戒早已吞了一碗。长老的几句经还未了，那呆子又吃够三碗。行者道：“这个馕糠!好道汤着饿鬼了！”那老王倒也知趣，见他吃得快，道：“这个长老，想着实饿了，快添饭来。”那呆子真个食肠大：看他不抬头，一连就吃有十数碗。三藏、行者俱各吃不上两碗。呆子不住，便还吃哩。老王道：“仓卒无肴，不敢苦劝，请再进一。”三藏、行者俱道：“够了。”八戒道：“老儿滴答甚么，谁和你发课，说甚么五爻六爻；有饭只管添将来就是。”呆子一顿，把他一家子饭都吃得罄尽，还只说才得半饱。却才收了家火，在那门楼下，安排了竹床板铺睡下。</div>
+            <div class="text-block simplified-text">他们正说着话，看到老人的儿子端着饭菜过来，把饭菜摆在桌上，说了声"请用斋"。唐僧就双手合十开始念经。八戒已经吞下一碗饭了。唐僧的经还没念完，八戒又吃了三碗。孙悟空说："这饭桶！简直像饿死鬼投胎！"老人很会看眼色，见他吃得快，就说："这位师父看来是真饿了，快再添饭。"八戒的饭量确实大：只见他头都不抬，一口气吃了十几碗。唐僧和孙悟空各自连两碗都没吃完。八戒还不停，继续吃。老人说："准备得匆忙，没什么好菜，不敢多劝，请再吃点。"唐僧和孙悟空都说："够了。"八戒却说："老头儿啰嗦什么，谁要跟你算卦说那些有的没的；有饭尽管添来就是了。"这呆子一顿饭，把人家一家的饭都吃光了，还说只吃了个半饱。吃完饭收拾了碗筷，在大门楼下搭了竹板床睡觉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">次日天晓，行者去背马，八戒去整担，老王又教妈妈整治些点心汤水管待，三众方致谢告行。老者道：“此去倘路间有甚不虞，是必还来茅舍。”行者道：“老儿，莫说哈话。我们出家人，不走回头路。”遂此策马挑担西行。</div>
+            <div class="text-block simplified-text">第二天天刚亮，孙悟空去牵马，猪八戒收拾行李，老头又让老伴准备了些热汤点心招待他们。三人谢过老头一家准备上路。老头说："这一路上要是遇到什么麻烦，一定再回来住啊。"孙悟空回答："老爷子，别说丧气话。我们当和尚的，从来不往回走。"说完就骑马挑担往西去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">噫!这一去，果无好路朝西域，定有邪魔降大灾。三众前来，不上半日，果逢一座高山。说起来，十分险峻。三藏马到临崖，斜挑宝观看，果然那：</div>
+            <div class="text-block simplified-text">哎呀！这一路上，去西天肯定不好走，准会碰到妖怪惹出大祸。唐僧他们三个走了不到半天，就遇到一座特别陡峭的高山。唐僧骑马到悬崖边，仔细一看，那山真是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">高的是山，峻的是岭；陡的是崖，深的是壑；响的是泉，鲜的是花。那山高不高，顶上接青霄；这涧深不深，底中见地府。山前面，有骨都都白云，屹嶝嶝怪石；说不尽千丈万丈挟魂崖。崖后有，弯弯曲曲藏龙洞，洞中有叮叮当当滴水岩。又见些丫丫叉叉带角鹿，泥泥痴痴看人獐；盘盘曲曲红鳞蟒，耍耍顽顽白面猿。至晚巴山寻穴虎，带晓翻波出水龙，登的洞门唿喇喇响。草里飞禽，扑轳轳起；林中走兽，掬行。猛然一阵狼虫过，吓得人心蹬蹬惊。正是那当倒洞当当倒洞，洞当当倒洞当山；青岱染成千丈玉，碧纱笼罩万堆烟。那师父缓促银骢，孙大圣停云慢步，猪悟能磨担徐行。正看那山，忽闻得一阵旋风大作。三藏在马上心惊，道：“悟空，风起了！”行者道：“风却怕他怎的!此乃天家四时之气，有何惧哉！”三藏道：“此风甚恶，比那天风不同。”行者道：“怎见得不比天风？”三藏道：“你看这风：</div>
+            <div class="text-block simplified-text">改写后的白话文：
+
+这儿有高山峻岭，悬崖深沟，哗哗响的泉水，鲜艳的花儿。那山高得快要碰到天，沟深得好像能通到地府。山前飘着一团团白云，立着奇形怪状的石头，还有吓死人的万丈悬崖。悬崖后面弯弯曲曲的山洞里，有滴滴答答的钟乳石。这儿还有长着犄角的鹿，傻乎乎盯着人看的獐子，盘成一团的花斑大蟒，蹦来跳去的白脸猴子。一到晚上就有老虎找窝，天刚亮就有龙从水里钻出来，弄得山洞呼呼响。草丛里的鸟儿扑棱棱飞，林子里的野兽跑来跑去。突然一群狼虫冲过去，吓得人心里直扑腾。这地方真是怪，山洞连着山洞，山连着山，青绿的山像玉石，雾气像绿纱罩着山堆。
+
+唐僧骑着马慢慢走，孙悟空停下云头，猪八戒扛着行李慢悠悠跟着。正看着山呢，突然刮起一阵大风。唐僧在马上害怕地说："悟空，起风了！"
+孙悟空说："怕风干啥？这是正常的天气变化，有啥好怕的！"
+唐僧说："这风不对劲，和普通的风不一样。"
+孙悟空问："怎么不一样？"
+唐僧说："你看这风："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">巍巍荡荡飒飘飘，渺渺茫茫出碧霄。过岭只闻千树吼，入林但见万竿摇。岸边摆柳连根动，园内吹花带叶飘。收网渔舟皆紧缆，落篷客艇尽抛锚。途半征夫迷失路，山中樵子担难挑。仙果林间猴子散，奇花丛内鹿儿逃。崖前桧柏颗颗倒，涧下松篁叶叶凋。播土扬尘沙迸迸，翻江搅海浪涛涛。”</div>
+            <div class="text-block simplified-text">这风可真大啊！呼呼地刮着，从天上直冲下来。吹过山岭时，只听见千万棵树哗哗响；钻进树林里，看到无数竹竿摇来晃去。河边的柳树被吹得连根晃动，园子里的花和叶子一起被卷上天。打鱼的船赶紧收网系紧绳子，载客的船也落下帆抛了锚。赶路的人被风吹得找不着方向，山里的樵夫连担子都挑不稳。树林里的猴子吓得四处逃散，漂亮花丛中的鹿也慌忙逃跑。山崖前的柏树一棵棵被刮倒，山涧下的竹子树叶全被吹落。大风卷起满天尘土，搅得江海翻起巨浪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">八戒上前，一把扯住行者道：“师兄，十分风大!我们且躲一躲儿干净。”行者笑道：“兄弟不济!风大时就躲，倘或亲面撞见妖精，怎的是好？”八戒道：“哥啊，你不曾闻得‘避色如避仇，避风如避箭’哩!我们躲一躲，也不亏人。”行者道：“且莫言语，等我把这风抓一把来闻一闻看。”八戒笑道：“师兄又扯空头谎了，风又好抓得过来闻!就是抓得来，便也渍了去了。”行者道：“兄弟，你不知道老孙有个‘抓风’之法。”</div>
+            <div class="text-block simplified-text">八戒赶紧拉住孙悟空说："师兄，这风太大了！咱们先找个地方躲躲吧。"孙悟空笑着说："你也太怂了！风大就躲，要是真碰上妖怪可咋办？"八戒回道："哥啊，你没听过'躲女人要像躲仇人，躲大风要像躲箭'吗？咱们躲一躲又不丢人。"孙悟空说："你先别说话，让我抓把风闻闻看。"八戒笑了："师兄你又吹牛了，风还能抓着闻？就算抓住了，也早从指缝漏光了。"孙悟空说："老弟你不懂，老孙我有抓风的绝活。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">好大圣，让过风头，把那风尾抓过去闻了一闻，有些腥气，道：“果然不是好风!这风的味道不是虎风，定是怪风。断乎有些蹊跷。”说不了，只见那山坡下，剪尾跑蹄，跳出一只斑斓猛虎，慌得那三藏坐不稳雕鞍，翻根头跌下白马，斜倚在路旁，真个是魂飞魄散。八戒丢了行李，掣钉钯，不让行者走上前，大喝一声道：“孽畜!那里走！”赶将去，劈头就筑。那只虎直挺挺站将起来，把那前左爪轮起，抠住自家的胸膛，往下一抓，滑剌的一声，把个皮剥将下来，站立道旁。你看他怎生恶相!咦，那模样：</div>
+            <div class="text-block simplified-text">大圣躲过风头，抓住风尾闻了闻，有股腥味，说："这风真邪门！不是老虎的风，肯定是妖怪的风。肯定有问题。"话还没说完，就看到山坡下窜出一只花斑猛虎，吓得唐僧从马上摔下来，瘫在路边，魂都快吓没了。八戒扔下行李，举起钉耙，抢在行者前面大喊："畜生！往哪跑！"冲上去就打。那老虎直直站起来，用左前爪撕开自己胸口，哗啦一声把整张皮剥下来，站在路边。你们看它那副凶相！哎呀，那模样：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">血津津的赤剥身躯，红媸媸的弯环腿足。火焰焰的两鬓蓬松，硬搠搠的双眉的竖。白森森的四个钢牙，光耀耀的一双金眼。气昂昂的努力大哮，雄纠纠的厉声高喊。喊道：“慢来!慢来!吾党不是别人，乃是黄风大王部下的前路先锋。今奉大王严命，在山巡逻，要拿几个凡夫去做案酒。你是那里来的和尚，敢擅动兵器伤我？”八戒骂道：“我把你这个孽畜!你是认不得我!我等不是那过路的凡夫，乃东土大唐御弟三藏之弟子，奉旨上西方拜佛求经者。你早早的远避他方，让开大路，休惊了我师父，饶你性命；若似前猖獗，钯举处，却不留情！”那妖精那容分说，急近步，丢一个架子，望八戒劈脸来抓。这八戒忙闪过，轮钯就筑。那怪手无兵器，下头就走，八戒随后赶来。那怪到了山坡下，乱石丛中，取出两口赤铜刀，急轮起，转身来迎。两个在这坡前，一往一来，一冲一撞的赌斗。那里孙行者搀起唐僧道：“师父，你莫害怕。且坐住，等老孙去助助八戒，打倒那怪好走。”三藏才坐将起来，战兢兢的，口里念着《多心经》不题。</div>
+            <div class="text-block simplified-text">一只浑身血红的妖怪，长着弯曲的红腿，两鬓毛发像火焰一样炸开，眉毛又粗又硬，四颗白森森的尖牙，一双闪闪发光的金色眼睛。它气势汹汹地大吼：“站住！我是黄风大王手下的先锋，奉命在山里巡逻，抓几个人回去下酒。你这和尚是哪来的？竟敢动手打我！”  
+
+猪八戒骂道：“你这畜生！睁大眼睛看清楚！我们可不是普通人，是东土大唐御弟唐三藏的徒弟，奉旨去西天取经的。识相的就赶紧滚开，别吓着我师父，还能饶你一命！要是再敢嚣张，看我不一耙子打死你！”  
+
+妖怪根本不听，冲上来就要抓八戒。八戒闪身躲开，抡起钉耙就打。妖怪手里没武器，转身就跑，八戒紧追不舍。妖怪跑到山坡下的乱石堆里，抽出两把赤铜刀，转身迎战。两人在山坡前打得难分难解。  
+
+这时，孙悟空扶起唐僧说：“师父别怕，坐着别动，我去帮八戒收拾那妖怪，咱们好赶路。”唐僧哆哆嗦嗦地坐起来，嘴里不停地念《多心经》。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">那行者掣了铁棒，喝声叫“拿了！”此时八戒抖擞精神，那怪败下阵去。行者道：“莫饶他!务要赶上！”他两个轮钉钯，举铁棒，赶下山来。那怪慌了手脚，使个“金蝉脱壳计”，打个滚，现了原身，依然是一只猛虎。行者与八戒那里肯舍，赶着那虎，定要除根。那怪见他赶得至近，却又抠着胸膛，剥下皮来，苫盖在那卧虎石上，脱真身，化一阵狂风，径回路口。路口上那师父正念《多心经》，被他一把拿住，驾长风摄将去了。可怜那三藏啊!江流注定多磨折，寂灭门中功行难。</div>
+            <div class="text-block simplified-text">孙悟空举起金箍棒，大喊一声："抓住他！"这时猪八戒也打起精神，妖怪打不过就逃。孙悟空喊："别放过他！一定要追上！"他俩一个挥钉耙，一个举铁棒，追下山去。妖怪急了，使出"金蝉脱壳"的招数，打个滚现出原形，原来是只老虎。孙悟空和猪八戒紧追不舍，非要打死它不可。妖怪见他们越追越近，又撕开胸口虎皮，把皮盖在石头上假装是老虎，真身变成一阵狂风溜回路口。正好唐僧在路口念《多心经》，被妖怪一把抓住，驾着风给掳走了。可怜的唐僧啊！命中注定要受苦，取经路上磨难多。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那怪把唐僧擒来洞口，按住狂风，对把门的道：“你去报大王说，前路虎先锋拿了一个和尚，在门外听令。”那洞主传令，教：“拿进来。”那虎先锋，腰撇着两口赤铜刀，双手捧着唐僧，上前跪下道：“大王，小将不才，蒙钧令差往山上巡逻，忽遇一个和尚，他是东土大唐驾下御弟三藏法师，上西方拜佛求经，被我擒来奉上，聊具一馔。”</div>
+            <div class="text-block simplified-text">那妖怪把唐僧抓到洞口，停下大风，对看门的小妖说：“你去报告大王，就说前面的虎先锋抓了个和尚，现在在门外等着命令。”洞里的妖怪头领下令说：“带进来。”那虎先锋腰上别着两把铜刀，双手抓着唐僧，上前跪下说：“大王，小的没啥本事，奉命在山上巡逻，碰巧遇到一个和尚。他是东土大唐皇帝的御弟三藏法师，要去西天拜佛取经。我把他抓来献给您，好歹算是一顿饭。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">那洞主闻得此言，吃了一惊道：“我闻得前者有人传说：三藏法师乃大唐奉旨意取经的神僧；他手下有一个徒弟，名唤孙行者，神通广大，智力高强。你怎么能够捉得他来？”先锋道：“他有两个徒弟：先来的，便一柄九齿钉钯，他生得嘴长耳大；又一个，使一根金箍铁棒，他生得火眼金睛。正赶着小将争持，被小将使一个‘金蝉脱壳’之计，撤身得空，把这和尚拿来，奉献大王，聊表一餐之敬。”</div>
+            <div class="text-block simplified-text">那个妖怪头子听了这话，吓了一跳说："我之前听人说：唐僧是大唐皇帝派去取经的圣僧；他有个徒弟叫孙悟空，本事特别大，聪明又厉害。你怎么可能抓得到他？"小妖头目回答："他有两个徒弟：先来的那个使一把九齿钉耙，长着长嘴巴大耳朵；另一个用金箍棒，眼睛像着火一样亮。正跟我打着呢，我用了招'金蝉脱壳'的计策，趁他们不注意，把这个和尚抓来献给大王，就当给您加个菜吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">洞主道：“且莫吃他着。”先锋道：“大王，见食不食，呼为劣蹶。”洞主道：“你不晓得。吃了他不打紧，只恐怕他那两个徒弟上门吵闹，未为稳便。且把他绑在后园定风桩上，待三五日，他两个不来搅扰，那时节，一则图他身子干净，二来不动口舌，却不任我们心意?或煮或蒸，或煎或炒，慢慢的自在受用不迟。”先锋大喜道：“大王深谋远虑，说得有理。”教：“小的们，拿了去。”</div>
+            <div class="text-block simplified-text">妖怪头子说："先别急着吃他。"小妖说："大王，有吃的却不吃，这叫犯傻。"妖怪头子说："你不懂。吃了他倒没啥，就怕他那两个徒弟找上门来闹事，那就麻烦了。先把他绑在后园的定风桩上，等个三五天。要是他那两个徒弟不来闹腾，到时候一来他身子更干净了，二来也不会有人来吵吵，咱们想怎么处置就怎么处置。是煮是蒸，是煎是炒，慢慢享用也不迟啊。"小妖高兴地说："大王想得真周到，说得对。"然后喊道："小的们，把他带下去！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">旁边拥上七八个绑缚手，将唐僧拿去，好便似鹰拿燕雀，索绑绳缠。这的是苦命江流思行者，遇难神僧想悟能。道声：“徒弟啊!不知你在那山擒怪，何处降妖，我却被魔头拿来，遭此毒害，几时再得相见!好苦啊!你们若早些儿来，还救得我命；若十分迟了，断然不能保矣！”一边嗟叹，一边泪落如雨。</div>
+            <div class="text-block simplified-text">这时候，旁边突然冲出来七八个专门绑人的小妖怪，一下子就把唐僧抓住了。他们抓唐僧就像老鹰抓小鸟一样轻松，用绳子把他捆得结结实实。可怜的唐僧这时候特别想念孙悟空，遇到危险又想起猪八戒。他哭着喊："徒弟们啊！你们现在在哪座山上打妖怪啊？我现在被妖魔抓住了，正在受苦受难，不知道什么时候才能再见到你们！我太惨了！你们要是早点来，还能救我一命；要是来得太晚，我肯定就没命了！"他一边叹气，一边哗哗地掉眼泪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">却说那行者、八戒，赶那虎下山坡，只见那虎跑倒了，塌伏在崖前。行者举棒，尽力一打，转震得自己手疼。八戒复筑了一钯，并将钯齿迸起。原来是一张虎皮，盖着一块卧虎石。行者大惊道：“不好了，不好了!中了他计也！”八戒道：“中他甚计？”行者道：“这个叫做‘金蝉脱壳计’：他将虎皮苫在此，他却走了。我们且回去看看师父，莫遭毒手。”两个急急转来，早已不见了三藏。行者大叫如雷道：“怎的好!师父已被他擒去了！”八戒即便牵着马，眼中滴泪道：“天哪!天哪!却往那里找寻！”行者抬着头跳道：“莫哭，莫哭!一哭就挫了锐气。横竖想只在此山，我们寻寻去来。”</div>
+            <div class="text-block simplified-text">孙悟空和猪八戒追着那只老虎跑下山坡，眼看老虎倒在地上，趴在悬崖边不动了。孙悟空抡起金箍棒使劲一打，结果震得自己手疼。猪八戒又用钉耙猛砸，没想到把耙子的齿都崩飞了。仔细一看——哪是什么真老虎，就是一张虎皮盖在一块长得像老虎的大石头上！
+
+孙悟空立刻反应过来："坏了坏了！咱们上当了！"  
+猪八戒还没明白："上什么当？"  
+孙悟空急得直跺脚："这是'金蝉脱壳'的把戏！妖怪把虎皮扔这儿当幌子，自己早溜了！快回去看看师父，别出事了！"  
+
+两人赶紧往回跑，可唐僧早没影了。孙悟空急得大吼："完了！师父肯定被妖怪抓走了！"  
+猪八戒牵着白龙马直掉眼泪："老天爷啊！这上哪儿找去啊？"  
+孙悟空跳起来喊："别哭别哭！哭就没干劲了！反正妖怪肯定还在山里，咱们仔细找找！"  
+
+（说明：原文中"金蝉脱壳计"作为经典成语保留，现代人普遍能理解；"钯齿迸起"译为"耙子的齿都崩飞了"更直观；用"长得像老虎的大石头"替代"卧虎石"更口语化。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">他两个果奔入山中，穿岗越岭，行够多时，只见那石崖之下，耸出一座洞府。两人定步观瞻，果然凶险。但见那：</div>
+            <div class="text-block simplified-text">他们俩真的跑进了山里，翻过山岗，越过山岭，走了很久。突然看到一座山洞出现在石崖下面。两人停下脚步仔细看，那地方看起来真的很吓人。你看啊：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">迭障尖峰，回峦古道。青松翠竹依依，绿柳碧梧冉冉。崖前有怪石双双，林内有幽禽对对。涧水远流冲石壁，山泉细滴漫沙堤。野云片片，瑶草芊芊。妖狐狡兔乱撺梭，角鹿香獐齐斗勇。劈崖斜挂万年藤，深壑半悬千岁柏。奕奕巍巍欺华岳，落花啼鸟赛天台。行者道：“贤弟，你可将行李歇在藏风山凹之间，撒放马匹，不要出头。等老孙去他门首，与他赌斗。必须拿住妖精，方才救得师父。”八戒道：“不消吩咐，请快去。”</div>
+            <div class="text-block simplified-text">眼前是一片险峻的山峰和弯弯曲曲的老路。松树竹子绿油油的，柳树梧桐也长得茂盛。山崖前立着奇形怪状的石头，树林里成对的鸟儿在鸣叫。山涧的水冲过石壁流得老远，山泉细细地滴在沙堤上。天上飘着朵朵云彩，地上长着茂盛的仙草。狡猾的狐狸野兔窜来窜去，鹿和獐子互相较劲。陡峭的山崖上挂着千年老藤，深谷里长着古老的柏树。这山高大雄伟，比华山还险，景色比天台山还美。
+
+孙悟空说："老弟，你把行李放在山背风的地方，让马随便吃草，别出来。等我去妖怪洞口跟他打一架。非得抓住妖怪，才能救出师父。"
+
+猪八戒回答："知道了，你快去吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">行者整一整直裰，束一束虎裙，掣了棒，撞至那门前，只见那门上有六个大字，乃“黄风岭黄风洞”，却便丁字脚站定，执着棒，高叫道：“妖怪!趁早儿送我师父出来，省得掀翻了你窝巢，平了你住处！”</div>
+            <div class="text-block simplified-text">孙悟空整理好衣服，系紧虎皮裙，拿起金箍棒，冲到洞门前。他看见门上写着六个大字："黄风岭黄风洞"，就叉开腿稳稳站住，举着棒子大声喊道："妖怪！赶紧把我师父送出来！不然我就把你的老窝掀个底朝天，把你住的地方夷为平地！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">那小怪闻言，一个个害怕，战兢兢的，跑入里面报道：“大王!祸事了！”那黄风怪正坐间，问：“有何事？”小妖道：“洞门外来了一个雷公嘴毛脸的和尚，手持着一根许大粗的铁棒，要他师父哩！”那洞主惊张，即唤虎先锋道：“我教你去巡山，只该拿些山牛、野彘、肥鹿、胡羊，怎么拿那唐僧来!却惹他那徒弟来此闹吵，怎生区处？”先锋道：“大王放心稳便，高枕勿忧，小将不才，愿带领五十个小妖校出去，把那甚么孙行者拿来凑吃。”洞主道：“我这里除了大小头目，还有五七百名小校，凭你选择，领多少去。只要拿住那行者，我们才自自在在吃那和尚一块肉，情愿与你拜为兄弟；但恐拿他不得，反伤了你，那时休得埋怨我也。”</div>
+            <div class="text-block simplified-text">那些小妖怪一听，吓得直哆嗦，慌慌张张跑进去报告：“大王！出大事了！”黄风怪正坐着，问：“怎么了？”小妖说：“洞口来了个和尚，长得像雷公，满脸毛，手里拿着根特别粗的铁棍，来找他师父呢！”妖怪头子一听就慌了，赶紧叫来虎先锋：“我让你去巡山，你该抓些野牛、野猪、肥鹿、山羊，怎么把唐僧抓来了！现在惹得他徒弟找上门闹事，这可怎么办？”先锋说：“大王别担心，踏踏实实躺着，我虽然本事不大，愿意带五十个小妖出去，把那个什么孙行者抓来一起吃。”妖怪头子说：“我这里除了大小头目，还有五六百个小妖，随你挑，想带多少都行。只要抓住那猴子，咱们就能安心吃唐僧肉，我还愿意跟你结拜兄弟；就怕你抓不住他，反倒伤了自己，到时候可别怪我。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">虎怪道：“放心!放心!等我去来。”果然点起五十名精壮小妖，擂鼓摇旗，缠两口赤铜刀，腾出门来，厉声高叫道：“他是那里来的个猴和尚!敢在此间大呼小叫的做甚？”行者骂道：“你这个剥皮的畜生!你弄甚么脱壳法儿，把我师父摄了，倒转问我做甚!趁早好好送我师父出来，还饶你这个性命！”虎怪道：“你师父是我拿了，要与我大王做顿下饭。你识起倒，回去吧!不然，拿住你，一齐凑吃，却不是‘买一个又饶一个’？”行者闻言，心中大怒。迸迸，钢牙错啮；滴流流，火眼睁圆；掣铁棒喝道：“你多大欺心，敢说这等大话，休走，看棍！”那先锋急持刀按住。这一场果然不善，他两个各显威能。好杀：</div>
+            <div class="text-block simplified-text">老虎精说："别担心！等着我！"他马上点了五十个强壮的小妖，敲鼓摇旗，拿着两把铜刀冲出门，大声喊："哪来的猴子和尚！敢在这儿大呼小叫的干什么？"孙悟空骂道："你这该剥皮的畜生！耍什么花招把我师父抓走了，还敢来问我？赶紧把我师父好好送出来，还能饶你一命！"老虎精说："你师父是我抓的，要给我们大王当配菜。识相的就快滚！不然连你一起抓了吃掉，这不是'买一送一'吗？"孙悟空一听，气得要命。咬得牙齿嘎嘣响，瞪圆了火眼金睛，抽出铁棒骂道："你好大的胆子，敢说这种大话！别跑，吃我一棒！"那老虎精赶紧举刀挡住。这下可打起来了，两边都使出真本事。这场打斗可真厉害：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">那怪是个真鹅卵，悟空是个鹅卵石。赤铜刀架美猴王，浑如垒卵来击石。鸟鹊怎与凤凰争?鹁鸽敢和鹰鹞敌?那怪喷风灰满山，悟空吐雾云迷日。来往不禁三五回，先锋腰软全无力。转身败了要逃生，却被悟空抵死逼。</div>
+            <div class="text-block simplified-text">那妖怪就像个普通的鹅蛋，孙悟空却像块坚硬的鹅卵石。妖怪用赤铜刀打美猴王，简直像拿鸡蛋碰石头。小鸟哪能跟凤凰比？鸽子敢和老鹰斗？妖怪吹起狂风，弄得满山灰尘；孙悟空吐出雾气，遮天蔽日。两人打了几个来回，妖怪腰酸腿软没力气了。转身想逃跑，却被孙悟空死死缠住不放。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">那虎怪撑持不住，回头就走。他原来在那洞主面前说了嘴，不敢回洞，径往山坡上逃生。行者那里肯放，执着棒，只情赶来，呼呼吼吼，喊声不绝，却赶到那藏风山凹之间。正抬头，见八戒在那里放马。八戒忽听见呼呼声喊，回头观看，乃是行者赶败的虎怪，就丢了马，举起钯，刺斜着头一筑。可怜那先锋，脱身要跳黄丝网，岂知又遇罩鱼人。却被八戒一钯，筑得九个窟窿鲜血冒，一头脑髓尽流干。有诗为证，诗曰：三五年前归正宗，持斋把素悟真空。诚心要保唐三藏，初秉沙门立此功。</div>
+            <div class="text-block simplified-text">那老虎精打不过，转头就跑。它之前在洞主面前夸下海口，现在不敢回洞，直接往山坡上逃命。孙悟空哪肯放过它，拿着金箍棒紧追不舍，一边追一边大喊大叫，一直追到藏风山的山坳里。这时孙悟空一抬头，看见猪八戒正在那儿放马。猪八戒突然听到喊叫声，回头一看，发现是孙悟空在追赶一只被打败的老虎精，就扔下马，举起钉耙，斜着脑袋一耙子打过去。可怜那老虎精，刚想逃跑，结果又碰上猪八戒。被猪八戒一耙子打下去，身上戳出九个血窟窿，脑浆都流干了。有首诗说：这只老虎精皈依佛门已经三五年，吃素修行领悟佛法。它诚心要保护唐僧，刚入佛门就立了这个功劳。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">那呆子一脚住他的脊背，两手轮钯又筑。行者见了，大喜道：“兄弟，正是这等!他领了几十个小妖，敢与老孙赌斗；被我打败了，他转不往洞跑，却跑来这里寻死。亏你接着；不然，又走了。”八戒道：“弄风摄师父去的可是他？”行者道：“正是，正是。”八戒道：“你可曾问他师父的下落么？”行者道：“这怪把师父拿在洞里，要与他甚么鸟大王做下饭。是老孙恼了，就与他斗将这里来，却着你送了性命。兄弟啊，这个功劳算你的。你可还守着马与行李，等我把这死怪拖了去，再到那洞口索战。须是拿得那老妖，方才救得师父。”八戒道：“哥哥说得有理。你去，你去。若是打败了这老妖，还赶将这里来，等老猪截住杀他。”好行者，一只手提着铁棒，一只手拖着死虎，径至他洞口。正是：法师有难逢妖怪，情性相和伏乱魔。</div>
+            <div class="text-block simplified-text">那猪八戒一脚踩住妖怪的背，抡起钉耙就打。孙悟空看了高兴地说："老弟，干得好！这妖怪带了群小喽啰跟我打，被我打输了。他不往洞里逃，反倒跑到这儿送死。幸亏你拦住了，不然又让他跑了。"  
+
+八戒问："之前刮妖风抓走师父的就是他吧？"  
+悟空说："没错，就是他。"  
+八戒又问："你问他师父在哪儿了吗？"  
+悟空答："这妖怪把师父抓进洞里，说要给什么鸟大王当下酒菜。我气坏了，就追着他打到这儿，结果让你给打死了。老弟，这功劳算你的。你继续看着马和行李，我把这死妖怪拖到洞口叫阵。非得抓住那老妖怪，才能救出师父。"  
+
+八戒说："大哥说得对，你快去吧。要是打输了就往回跑，我老猪在这儿堵着弄死他。"  
+孙悟空一手拎着金箍棒，一手拖着死老虎，直奔妖怪洞口。这真是：唐僧遇难碰上妖怪，师徒齐心降服妖魔。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">毕竟不知此去可降得妖怪，救得唐僧，且听下回分解。</div>
+            <div class="text-block simplified-text">不知道这次去能不能打败妖怪、救出唐僧，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
