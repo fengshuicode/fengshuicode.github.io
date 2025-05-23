@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百零四回　段家庄重招新女婿　房山寨双并旧强人</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./103.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百零四回　段家庄重招新女婿　房山寨双并旧强人</h1>
+        <a href="./105.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话说当下王庆闯到定山堡。那里有五六百人家。那戏台却在堡东麦地上。那时粉头还未上台。台下四面，有三四十只桌子，都有人围挤着在那里掷骰赌钱。那掷色的名儿，非止一端，乃是：</div>
+            <div class="text-block simplified-text">话说王庆这会儿跑到了定山堡。这地方住着五六百户人家。戏台搭在村子东边的麦地里。当时唱戏的还没上台。戏台下面摆着三四十张桌子，每张桌子都挤满了人在扔骰子赌博。他们玩的骰子游戏花样可多了，有这些玩法：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">六风儿，五么子，火燎毛，朱窝儿。</div>
+            <div class="text-block simplified-text">这段原文看起来像是一些零散的词语或方言俗语，不太容易直接理解。我试着用最直白的白话解释一下：
+
+这些可能是过去人们用来形容某些东西的土话或顺口溜。大概意思是：
+
+"六风儿"可能指刮得特别猛的风；
+"五么子"有点像说"什么东西"或"不知道啥"；
+"火燎毛"就是火苗烧到毛发，形容事情很急很快；
+"朱窝儿"可能指红色的窝或洞，也可能是某种小动物的家。
+
+不过说实话，这些词现在不太常用了，就像爷爷奶奶那辈人说的老话，具体意思得看当时说话的场景。就像现在年轻人说"绝绝子"一样，外地人可能也听不懂。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">又有那颠钱的，蹲踞在地上，共有二十余簇人。那颠钱的名儿，也不止一端，乃是：</div>
+            <div class="text-block simplified-text">还有一群人蹲在地上玩抛硬币的游戏，总共有二十多堆人。这种抛硬币的玩法有很多种，比如：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">浑纯儿，三背间，八叉儿。</div>
+            <div class="text-block simplified-text">这段话看起来像是一些不常见的词语或方言的组合，可能没有明确的现代白话对应。如果按字面直白解释：
+
+"浑纯儿"可能是形容一个东西或人很纯粹、不掺假；"三背间"字面意思是三个背面之间的空间；"八叉儿"可以理解为八个分叉的形状。
+
+合起来大致是说：一个很纯粹的东西，在三个背面之间的空间里，有八个分叉的形状。
+
+不过由于原文本身信息不完整且用词特殊，以上只是根据字面的猜测。如果能提供更多背景信息，可以尝试更准确的转换。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">那些掷色的在那里呼么喝六，颠钱的在那里唤字叫背。或夹笑带骂，或认真厮打。那输了的，脱衣典裳，褫巾剥袜，也要去翻本。废事业，忘寝食，到底是个输字，那赢的意气扬扬，东摆西摇，南闯北踅的寻酒头儿再做。身边便袋里，搭膊里，衣袖里，都是银钱。到后捉本算帐，原来赢不多。赢的都被把梢的，放囊的，拈了头儿去。不说赌博光景。更有村姑农妇，丢了锄麦，撇了灌菜，也是三三两两，成群作队，仰着黑泥般脸，露着黄金般齿，呆呆地立着，等那粉头出来，看他一般是爹娘养的，他便如何恁般标致，有若干人看他。当下不但邻近村坊人，城中人也赶出来睃看。把那青青的麦地，踏光了十数亩。</div>
+            <div class="text-block simplified-text">这段文字描述了一个热闹的赌博场面和围观的人群。用大白话来说就是：
+
+一群赌徒在那儿大呼小叫地玩骰子、赌钱。有人边笑边骂，有人真打起来。输的人连衣服鞋子都脱下来当掉，还想翻本。他们不干活、不睡觉，结果还是输。赢的人得意洋洋，到处晃悠找酒喝。虽然他们身上口袋里塞满了钱，但最后算下来其实没赢多少——钱都被庄家和抽头的拿走了。
+
+不光有赌钱的场景，还有不少农村妇女放下农活，三五成群地来看热闹。她们脸上沾着泥巴，露出黄牙，傻站着等妓女出来，心里纳闷：同样是人，怎么人家就长得那么漂亮，那么多人看？当时不光附近村民，连城里人都跑来看，把十几亩绿油油的麦田都踩秃了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话休絮繁。当下王庆闲看了一回，看得技养。见那戏台东边人丛里，有个彪形大汉，两手靠着桌子，在杌子上坐地。那汉生的圆眼大脸，阔肩细腰，桌上堆着五贯钱，一个色盆，六只骰子，却无主顾与他赌。王庆思想道：“俺自从吃官司到今日，有十数个月不会弄这个道儿了。前日范全哥哥把与我买柴薪的一锭银在此，将来做个梢儿，与那厮掷几掷，赢几贯钱回去买杲儿吃。”</div>
+            <div class="text-block simplified-text">别啰嗦了。当时王庆看了一会儿，手痒想玩。他看到戏台东边人群里有个高大壮实的男人，两手撑在桌上，坐在凳子上。那人圆眼睛大脸盘，宽肩膀细腰，桌上放着五贯钱，一个骰盅，六颗骰子，但没人跟他赌。王庆心想："我自从吃了官司到现在，已经一年多没玩这个了。前几天范全哥哥给我买柴火的一锭银子还在身上，不如拿来做本钱，跟这家伙玩几把骰子，赢点钱回去买果子吃。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">当下王庆取出银子，望桌上一丢，对那汉道：“胡乱掷一回。”那汉一眼瞅着王庆说道：“要掷便来。”说还未毕，早有一个人向那前面桌子边人丛里挨出来，貌相长大，与那坐下的大汉彷佛相似，对王庆说道：“秃秃，他这锭银怎好出主，将银来，我有钱在此。你赢了，每贯只要加利二十文。”王庆道：“最好。”与那人打了两贯钱。寻人已是每贯先除去二十文。王庆道：“也罢。”随即与那汉讲过，掷朱窝儿。方掷得两三盆，随有一人挨下来，出主等掷。</div>
+            <div class="text-block simplified-text">王庆拿出银子，往桌上一扔，对那个男的说："随便玩一把。"那个男的看了王庆一眼说："要玩就来。"话还没说完，就有个高个子从前面桌子边的人群里挤出来，长得跟坐着的那个男的差不多，对王庆说："喂，你这银子不够当赌注，拿我的钱吧。你要是赢了，每贯钱我只收你二十文利息。"王庆说："行啊。"就跟那人借了两贯钱。那人已经提前从每贯钱里扣了二十文。王庆说："算了。"然后跟那个男的商量好，开始玩掷骰子。刚玩了两三把，又有人凑过来下注等着玩。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">那王庆是东京积赌惯家，他信得盆口真，又会躲闪打浪，又狡滑奸诈，下捵主作弊。那放囊的乘闹里踅过那边桌上去了。那挨下来的说，王庆掷得凶，收了主，只替那汉拈头儿。王庆一口气掷赢了两贯钱。得了采，越掷得出，三红、四聚，只管撒出来。那汉性急反本，掷下便是绝，塌脚、小四不脱手。王庆掷了九点，那汉偏调出倒八来。无一个时辰，把五贯钱输个罄尽。</div>
+            <div class="text-block simplified-text">王庆是东京城里出了名的老赌棍。他特别会看骰子的门道，又会耍花招躲开别人的注意，狡猾得很，经常在赌桌上动手脚。那个放赌本的人趁乱溜到对面桌子去了。旁边看热闹的人都说王庆手气太旺，把庄家都赢了，现在只帮那个汉子抽头（抽成）。王庆一口气连赢了两贯钱。赢了钱后他手气更顺，不停地掷出好点数。那汉子急着翻本，结果越赌越输，连"塌脚"、"小四"这种小点数都躲不开。最后王庆掷出九点，那汉子偏偏只掷出倒八点。不到一个时辰（两小时），那汉子就把五贯钱输得精光。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">王庆赢了钱，用绳穿过两贯，放在一边，待寻那汉赎梢。又将那三贯穿缚停当，方欲将肩来负钱，那输的汉子喝道：“你待将钱往那里去？只怕是才出炉的，热的敖炙了手。”王庆怒道：“你输与我的，却放那鸟屁！”那汉睁圆怪眼，骂道：“狗弟子孩儿！你敢伤你老爷？”王庆骂道：“村撮鸟！俺便怕你！把拳打在俺肚里，拔不出来。不将钱去。”那汉提起双拳，望王庆劈脸打来。王庆侧身一闪，就势接住那汉的手，将右肘向那汉胸脯只一搪，右脚应手将那汉左脚一勾。那汉是蛮力，那里解得这跌法，扑通的望后颠翻，面孔朝天，背脊着地。那立拢来看的人都笑起来。那汉却待挣紥，被王庆上前按住，照实落处只顾打。那在先放囊的走来，也不解劝，也不帮助，只将桌上的钱都抢去了。王庆大怒，弃了地上汉子，大踏步赶去。只见人丛里闪出一个女子来，大喝道：“那厮不得无礼，有我在此！”王庆看那女子，生的如何？</div>
+            <div class="text-block simplified-text">王庆赢了些钱，用绳子串好两贯钱放在一边，准备找那个男的换钱。又把另外三贯钱绑好，刚想扛起来走人，那个输钱的男的突然喊："你想把钱拿到哪儿去？这钱怕是刚出炉的，小心烫手！"王庆火了："你输给我的钱，还在这儿放屁！"
+
+那男的瞪大眼睛骂："狗娘养的！你敢动老子试试？"王庆回骂："乡巴佬！我怕你？有本事打我一拳，让你拔都拔不出来。这钱你别想拿回去。"
+
+那男的挥拳就打，王庆躲开一把抓住他的手，用胳膊肘顶他胸口，同时伸脚一绊。那男的只会用蛮力，哪会应付这招，直接仰面朝天摔在地上。围观看热闹的人都笑了。那男的想爬起来，被王庆按住一顿揍。
+
+之前放钱袋的人走过来，既不劝架也不帮忙，直接把桌上的钱都抢走了。王庆气坏了，扔下地上那个男的就去追。突然人群里冲出来个女的，大喊："混蛋别嚣张，有我在！"
+
+这女的长啥样呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">眼大露凶光，眉粗横杀气。腰肢坌蠢，全无袅娜风情。面皮顽厚，惟赖粉脂铺翳。异样钗枪插一头，时兴钏镯露双臂。频搬石臼，笑他人气喘急促。常掇井栏，夸自己膂力不费。针线不知如何拈，拽腿牵拳是长技。</div>
+            <div class="text-block simplified-text">这个人长得凶神恶煞：眼睛瞪得老大，眉毛又粗又乱，看着就吓人。身材粗壮笨拙，一点都没有女人那种柔美的样子。脸皮厚得跟城墙似的，全靠涂脂抹粉来遮丑。头上插满乱七八糟的发饰，胳膊上挂满当下流行的镯子。整天搬石臼干重活，还笑话别人累得直喘气；经常提着井栏炫耀，说自己力气大不费劲。根本不会做针线活，打架斗殴倒是她的拿手好戏。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">那女子有二十四五年纪。他脱了外面衫子，卷做一团，丢在一个桌上，里面是箭杆小袖，紧身鹦哥绿短袄，下穿一条大裆紫夹绸裤儿，踏步上前，提起拳头，望王庆打来。王庆见他是女子，又见他起拳便有破绽，有意耍他。故意不用快跌，也拽双拳，吐个门户，摆开解数，与那女子相扑。但见：</div>
+            <div class="text-block simplified-text">那女的二十四五岁。她脱掉外衣，卷成一团扔在桌上，里面穿着紧身绿短袄和紫色绸裤，大步上前，挥拳就打王庆。王庆看她是个女的，又发现她出拳有破绽，就想逗她玩。他故意不使真本事，也摆开架势，跟那女的比划起来。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">拽开大四平，踢起双飞脚。仙人指路，老子骑鹤。拗鸾肘出近前心，当头炮热侵额角。翘跟淬地龙，扭腕擎天橐。这边女子使个盖顶撒花，这里男儿，耍个绕腰贯索。两个似迎风贴扇儿，无移时急雨催花落。</div>
+            <div class="text-block simplified-text">两个人打得非常激烈。一个拉开架势，猛踢双脚；一个像仙人指路，一个像骑鹤的老头。他们用肘击打对方胸口，用拳头猛砸额头。一会儿蹲下扫腿，一会儿扭动手腕反击。女的使出一招从上往下打，男的来个拦腰缠斗。两人打得像被风吹动的扇子一样快，不一会儿就像暴雨打落花朵那样分出了胜负。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">那时粉头已上台做笑乐院本。众人见这边男女相扑，一齐走拢来，把两人围在圈子中看。那女子见王庆只办得架隔遮拦，没本事钻进来，他便觑个空，使个黑虎偷心势，一拳望王庆劈心打来。王庆将身一侧，那女子打个空，收拳不迭。被王庆就势扭捽定，只一交，把女子攧翻。刚刚着地，顺手儿又抱起来。这个势叫做虎抱头。王庆道：“莫污了衣服，休怪俺冲撞。你自来寻俺。”那女子毫无羞怒之色，倒把王庆赞道：“啧，啧！好拳腿！果是觔节。”</div>
+            <div class="text-block simplified-text">那时候，表演的女子已经在台上演滑稽戏。大家看到这边有男女在摔跤，都围过来看热闹，把两人围在中间。那女子见王庆只会防守，没法反击，就抓住机会，用一招"黑虎掏心"，朝王庆胸口打来。王庆往旁边一闪，女子没打着，想收拳已经来不及。王庆趁机抓住她，一个过肩摔就把她放倒。刚着地，又顺手把她抱起来。这招叫"虎抱头"。王庆说："别弄脏衣服，别怪我冒犯。是你先来找我的。"那女子不但没生气，反而夸王庆："啧啧！好身手！真有两下子。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">那边输钱吃打的，与那放囊抢钱的两个汉子，分开众人，一齐上前喝道：“驴牛射的狗弟子孩儿！恁般胆大，怎敢跌我妹子！”王庆喝骂道：“输败腌臜村鸟龟子！抢了俺的钱，反出秽言！”抢上前，拽拳便打。只见一个人从人丛里抢出来，横身隔住了一双半人，六个拳头，口里高叫道：“李大郎不得无礼！段二哥，段五哥，也休要动手。都是一块土上人，有话便好好地说。”王庆看时，却是范全。三人真个住了手。范全连忙向那女子道：“三娘拜揖。”那女子也道了万福。便问：“李大郎是院长亲戚么？”范全道：“是在下表弟。”那女子道：“出色的好拳脚。”</div>
+            <div class="text-block simplified-text">那边有两个男的，一个赌钱输了被打，一个抢钱放高利贷，他们推开人群冲上来骂道："狗娘养的兔崽子！胆子不小，敢欺负我妹妹！"王庆回骂："输光钱的废物！抢了我的钱还敢骂人！"说着就要动手打人。
+
+这时突然有个人从人群里挤出来，挡在他们中间喊道："李大郎别乱来！段二哥、段五哥也别动手。都是自己人，有话好好说。"王庆一看，原来是范全。三个人这才停手。
+
+范全赶紧对那姑娘行礼："三娘好。"那姑娘也回了个礼，问道："李大郎是院长的亲戚吗？"范全回答："是我表弟。"那姑娘说："拳脚功夫挺厉害啊。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">王庆对范全道：“叵耐那厮自己输了钱，反教同夥儿抢去了。”范全笑道：“这个是二哥、五哥的买卖，你如何来闹他？”那边段二、段五四只眼瞅着看妹子。那女子说道：“看范院长面皮，不必和他争闹了。拿那锭银子来。”段五见妹子劝他，又见妹子奢遮，是我也是输了。只得取出那锭原银，递与妹子三娘。那三娘把与范全道：“原银在此，将了去。”说罢，便扯着段二、段五，分开众人去了。范全也扯了王庆，一迳回到草庄内。</div>
+            <div class="text-block simplified-text">王庆对范全说："那家伙真不要脸，自己赌钱输了，反倒叫同伙把钱抢走了。"范全笑着说："这是二哥和五哥的事，你干嘛去捣乱？"那边段二和段五一直盯着妹妹看。那姑娘说："看范院长的面子，别跟他吵了。把那锭银子拿来吧。"段五见妹妹劝他，又觉得妹妹说得有道理，自己也确实理亏，只好拿出那锭银子交给妹妹三娘。三娘把银子给范全说："银子在这儿，拿走吧。"说完就拉着段二、段五，分开人群走了。范全也拉着王庆，直接回到了草屋。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">范全埋怨王庆道：“俺为娘面上，担着血海般胆，留哥哥在此。倘遇恩赦，再与哥哥营谋。你却恁般没坐性！那段二、段五最刁泼的。那妹子段三娘更是渗濑。人起他个绰号儿，唤他做大虫窝。良家子弟不知被他诱紥了多少。他十五岁时便嫁个老公。那老公果是坌蠢。不上一年，被他灸煿杀了。他恃了膂力，和段二、段五，专一在外寻趁厮闹，赚那恶心钱儿。邻近村坊，那一处不怕他的。他每接这粉头，专为勾引人来赌博。那一张桌子，不是他圈套里。哥哥，你却到那时惹是招非。倘或露出马脚来，你吾这场祸害，却是不小！”王庆被范全说得顿口无言。范全起身，对王庆道：“我要州里去当直。明日再来看你。”</div>
+            <div class="text-block simplified-text">范全责怪王庆说："我看在咱娘的面子上，冒着天大的风险收留你在这儿。要是碰上朝廷大赦，还能再帮你想办法。可你也太沉不住气了！那段二、段五两兄弟最不是东西，他们那个妹妹段三娘更吓人，外号叫'母老虎窝'。多少正经人家的小伙子都被她骗过。她十五岁就嫁人，那丈夫是个傻子，不到一年就被她折磨死了。仗着自己力气大，她和两个哥哥整天在外面惹事生非，专干些坑蒙拐骗的勾当。附近村子谁不怕他们？他们弄来那些妓女，就是为了设赌局骗人。那张赌桌就是个陷阱。哥啊，你偏要去招惹他们。要是露了馅，咱们可都要倒大霉！"王庆被说得哑口无言。范全站起来对王庆说："我得去州里值班，明天再来看你。"
+
+（说明：翻译时做了以下处理：
+1. "渗濑"译为"更吓人"
+2. "灸煿杀"意译为"折磨死"
+3. "寻趁厮闹"译为"惹事生非"
+4. "粉头"译为"妓女"
+5. 保留"母老虎窝"等特色称谓
+6. 将文言虚词"恁般"转为"太"，"却"转为"偏"等现代词
+7. 保持口语化短句结构，如"最不是东西""倒大霉"等）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">不说范全进房州城去，且说当日王庆天晚歇息，一宿无话。次日，梳洗方毕，只见庄客报道：“段太公来看大郎。”王庆只得到外面迎接。却是皱面银须一个老叟。叙礼罢，分宾主坐定。段太公将王庆从头上直看至脚下，口里说道：“果是魁伟。”便问王庆：“那里人氏，因何到此。范院长是足下什么亲戚？曾娶妻也不？”王庆听他问的跷蹊，便捏一派假话支吾，说道：“在下西京人氏，父母双亡，妻子也死过了。与范节级是中表兄弟。因旧年范节级有公干到西京见在下儿自一身，没人照顾，特接在下到此。在下颇知些拳棒。待后觑个方便，就在本州讨个出身。”</div>
+            <div class="text-block simplified-text">好的，我用最简单直白的现代白话文改写这段内容：
+
+不说范全去房州城里的事，单说王庆那天晚上睡觉，一夜无事。第二天，他刚洗完脸梳好头，就听见家里的伙计报告说：“段太公来看您了。”王庆只好出门迎接。来的是个满脸皱纹、白胡子的老头。两人客套一番后，分主客坐下。段太公把王庆从头到脚仔细打量了一遍，嘴里说着：“确实长得高大魁梧。”接着就问王庆：“你是哪里人？为什么到这里来？范院长是你什么亲戚？娶媳妇了吗？”王庆觉得他问得奇怪，就编了一套谎话应付：“我是西京人，父母都去世了，老婆也死了。范节级是我表哥。去年他因公事到西京，看我孤零零一个人没人照应，特意接我过来。我懂些拳脚功夫，等以后有机会，就在本地谋个差事。”
+
+（说明：完全保留原文所有信息，用最通俗的口语表达，如“伙计”对应“庄客”，“老婆”对应“妻子”，“孤零零”对应“一身”等。将“跷蹊”译为“奇怪”，“支吾”译为“应付”，“觑个方便”译为“等有机会”等，确保一听就懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">段太公听罢大喜。便问了王庆的年庚八字，辞别去了。又过多样时，王庆正在疑虑，又有一个人推扉进来，问道：“范院长可在么？这位就是李大郎么？”二人都面面厮觑，错愕相顾，都想道：“曾会过来？”叙礼才罢，正欲动问，恰好范全也到。三人坐定。范全道：“李先生为何到此？”王庆听了这句，猛可的想着道：“他是卖卦的李助。”那李助也想起来道：“他是东京人姓王，曾与我问卜。”李助对范全道：“院长，小子一向不曾来亲近得。敢问有个令亲李大郎么？”范全指王庆道：“只这个便是我兄弟李大郎。”</div>
+            <div class="text-block simplified-text">段太公听完非常高兴。他问了王庆的生辰八字，然后就走了。又过了好一会儿，王庆正觉得奇怪，又有一个人推门进来，问道："范院长在吗？这位就是李大郎吗？"王庆和来人都互相看着对方，一脸惊讶，心里都想："我们是不是见过？"他们刚打完招呼，正要问清楚，正好范全也来了。三人坐下后，范全问："李先生怎么来了？"王庆听到这句话，突然想起来："他是那个算卦的李助。"李助也记起来了："他是东京来的姓王的，找我算过命。"李助对范全说："院长，我一直没来拜访您。请问您有个亲戚叫李大郎吗？"范全指着王庆说："这位就是我兄弟李大郎。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">王庆接过口来道：“在下本姓是李。那个王是外公姓。”李助拍手笑道：“小子好记分。我说是姓王，曾在东京开封府前相会来。”王庆见他说出备细，低头不语。李助对王庆道：“自从别后，回到荆南，遇异人授以剑术，及看子平的妙诀。因此人叫小子做金剑先生。近日在房州，闻此处热闹，特到此赶节做生理。段氏兄弟知小子有剑术，要小子教导他击刺。所以留小子在家。适才段太公回来，把贵造与小子推算。那里有这样好八字！日后贵不可言。目下红鸾照临，应有喜庆之事。段三娘与段太公大喜，欲招赘大郎为婿。小子乘着吉日，特到此为月老。三娘的八字，十分旺夫。适才曾合过来。铜盆铁帚，正是一对儿夫妻。作成小子吃杯喜酒。”范全听了这一席话，沉吟了一回，心下思想道：“那段氏刁顽。如或不允这头亲事，设或有个破绽，为害不浅。只得将机就机罢。”便对李助道：“原来如此。承段太公、三娘美意。只是这个兄弟粗蠢,怎好做娇客？”</div>
+            <div class="text-block simplified-text">王庆接过话头说："我本来姓李，'王'是我外公的姓。"李助拍手笑道："你这记性不错啊！我记得你姓王，之前在东京开封府前见过。"王庆听他这么详细地说出来，就低头不说话了。  
+
+李助对王庆说："自从咱们分开后，我回到荆南，遇到一个高人，教了我剑术和算命的本事。所以别人都叫我'金剑先生'。最近听说房州这儿挺热闹，我就来这儿赶集做生意。段家兄弟知道我会剑术，想让我教他们功夫，所以留我在家。刚才段太公回来，把你的生辰八字给我算了一卦，哎呀，你这命格太好了！以后肯定大富大贵。眼下红鸾星动，马上就有喜事。段三娘和段太公高兴得很，想招你当上门女婿。我趁着这好日子，特地来当媒人。三娘的八字旺夫得很，刚才合过你们的八字，简直是天造地设的一对儿！让我也讨杯喜酒喝。"  
+
+范全听完这番话，琢磨了一会儿，心想："那段家的人不好惹，要是拒绝这门亲事，说不定会惹出麻烦，不如顺水推舟算了。"就对李助说："原来是这样。多谢段太公和三娘的好意。只是我这兄弟粗笨，哪配得上当人家的娇客女婿？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">李助道：“阿也！院长不必太谦了。那边三娘，不住口的称赞大娘哩。”范全道：“如此，极妙的了。在下便可替他主婚。”身边取出五两重的一锭银，送与李助道：“村庄没什东西相待，这些薄意，准个茶果。事成另当重谢。”李助道：“这怎么使得？”范全道：“惶恐，惶恐！只有一句话，先生不必说他有两姓。凡事都望周全。”李助是个星卜家，得了银子，千恩万谢的，辞了范全、王庆，来到段家庄回覆。那里管什么一姓两姓，好人歹人，一味撮合山，骗酒食，赚铜钱。更兼段三娘自己看中意了对头儿。平日一家都怕他的。虽是段太公也不敢拗他的。所以这件事一说就成。</div>
+            <div class="text-block simplified-text">李助说："哎呀！院长您太客气了。那边段三娘一直夸您家姑娘好呢。"范全回答："那太好了。我就可以做主给他们办婚事。"说完掏出五两银子给李助："乡下没什么好东西招待，这点小意思就当请喝茶吃点心。等事情办成了再好好谢你。"李助推辞："这怎么好意思收？"范全说："别客气！就是有件事要拜托您，别提男方有两个姓氏的事。还请您多帮忙周全。"李助是个算命的，拿了银子连连道谢，告别范全和王庆，去段家庄回话。他哪管什么姓氏不姓氏、好人坏人，只管说媒拉纤骗吃骗喝赚钱。再加上段三娘自己看上了对方，平时家里人都怕她，连她爹段太公也不敢反对。所以这门亲事一说就成了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">李助两边往来说合，指望多说些聘金，月老方才旺相。范全恐怕行聘，播扬惹事。讲过两家一概都省。那段太公是做家的，更是喜欢。一迳择日成亲。择了本月二十二日，宰牛杀猪，网鱼捕蛙，只办得大碗酒，大盘肉，请些男亲女戚吃喜酒。其笙箫鼓吹，洞房花烛，一概都省。范全替王庆做了一身新衣服，送到段家庄上。范全因官认有事，先辞别去了。</div>
+            <div class="text-block simplified-text">李助在两边来回传话，想多要点彩礼钱，这样媒人也能多赚点。范全怕下聘礼太招摇会惹麻烦，就说两边都省掉这些礼节算了。段太公是个节俭的人，听了特别高兴。直接定了结婚的日子，就选在这个月二十二号。他们杀了牛和猪，抓了鱼和青蛙，准备了大碗的酒和大盘的肉，请了些男女亲戚来喝喜酒。至于吹吹打打、闹洞房这些排场，全都省了。范全给王庆做了套新衣服，送到段家庄上。范全因为衙门里有事，先走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">王庆与段三娘交拜合卺等项，也是草草完事。段太公摆酒在草堂上，同二十余个亲戚，及自家儿子、新女婿，与媒人李助，在草堂吃了一日酒。至暮方散。众亲戚路近的，都辞谢去了。留下路远走不迭的，乃是姑丈方翰夫妇，表弟丘翔老小，段二的舅子施俊男女。三个男人在外边东厢歇息。那三个女眷，通是不老成的，搬些酒食，与王庆、段三娘暖房。嘻嘻哈哈，又喝了一回酒，方才收拾歇息。当有丫头老妈，到新房中铺床叠被，请新官人和姐姐安置。丫头从外面拽上了房门，自各知趣去了。</div>
+            <div class="text-block simplified-text">王庆和段三娘匆匆忙忙完成了拜堂成亲的仪式。段老太公在草堂摆酒席，请了二十多个亲戚，还有自家儿子、新女婿王庆，以及媒人李助，热热闹闹喝了一整天酒，直到天黑才散场。住得近的亲戚都告辞回家了，剩下几个路远的没走成，包括姑丈方翰两口子、表弟丘翔一家，还有段二的舅子施俊夫妇。三个男的被安排在外屋东厢房休息。那三个女眷都是爱闹腾的，又端来酒菜给王庆和段三娘"暖房"，一群人嘻嘻哈哈闹着喝酒，折腾够了才去睡觉。这时候丫鬟婆子们到新房铺好床被，请新郎新娘休息。丫鬟从外面带上门，很识相地都退下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">段三娘从小出头露面，况是过来人，惯家儿，也不害什么羞耻，一迳卸钗环，脱衫子。王庆是个浮浪子弟，他自从吃官司后，也寡了十数个月。段三娘虽粗眉大眼，不比娇秀、牛氏妖娆窈窕。只见他在灯前敞出胸膛，解下红主腰儿，露出白净净肉奶奶乳儿，不觉淫心荡漾，便来搂那妇人。段三娘把王庆一掌打个耳刮子道：“莫要歪缠，恁般要紧！”两个搂抱上床，钻入被窝里，共枕欢娱。正是：</div>
+            <div class="text-block simplified-text">段三娘从小就在外面混，见过世面，是个老手，也不觉得害羞，直接摘掉首饰脱了衣服。王庆是个浪荡子，自从吃了官司后，已经很久没碰女人了。段三娘虽然长得粗壮，比不上那些娇滴滴的美女。但王庆看见她在灯下敞开衣服，解下红肚兜，露出白花花的胸脯，顿时起了色心，上去就搂她。段三娘反手给了王庆一耳光说："别猴急，这么着急干啥！"两人这才抱在一起上床，钻进被窝快活去了。说白了就是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">一个是失节村姑，一个是行凶军犯。脸皮都是三尺厚，脚板一般十寸长。这个认真气喘声嘶，却似牛齁柳影。那个假做言娇语涩，浑如莺啭花间。不穿罗袜，肩膊上露两只赤脚。倒溜金钗，枕头边堆一朵乌云。未解誓海盟山，也搏弄得千般旖旎。并无羞云怯雨，亦揉搓万种妖娆。</div>
+            <div class="text-block simplified-text">这段文字描述了一对男女的粗俗行为。  
+
+一个是没了贞操的乡下女人，一个是犯了罪的凶狠兵痞。两人脸皮都厚得很，脚板又大又长。男的喘着粗气，像牛喘一样难听；女的装模作样，娇声细语，像黄莺在花丛里叫。她没穿袜子，光着肩膀和脚丫；金钗歪斜，黑发散乱在枕头边。他们没说什么山盟海誓，却搞得缠绵暧昧；也不觉得羞耻，只顾着互相撩拨，做出各种放荡姿态。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">当夜新房外，又有嘴也笑得歪的一椿事儿。那方翰、丘翔、施俊的老婆，通是少年，都吃得脸儿红红地。且不去睡，扯了段二、段五的两个老婆，悄地到新房外，隔板侧耳窃听，房中声息，被他每件件都听得仔细。那王庆是个浮浪子，颇知房中术。他见老婆来得，竭力奉承。外面这夥妇人，听到浓深处，不觉罗宬儿也湿透了。</div>
+            <div class="text-block simplified-text">那天晚上在新房外面，还发生了一件让人笑掉大牙的事。方翰、丘翔、施俊这几个人的老婆都是年轻媳妇，喝酒喝得满脸通红。她们不肯去睡觉，偷偷拉着段二和段五的老婆，蹑手蹑脚地跑到新房外面，把耳朵贴在墙上偷听里面的动静。屋里的声音被她们听得一清二楚。原来新郎王庆是个花花公子，特别懂男女之事。他看到新娘子这么主动，就使尽浑身解数讨好她。外面这群女人听到最刺激的地方，连裙子都湿透了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">众妇人正在那里嘲笑打诨，你绰我捏，只见段二抢进来大叫道：“怎么好！怎么好！你每也不知利害，兀是在此笑耍。”众妇人都捏了两把汗，却没理会处。段二又喊道：“妹子三娘快起来！你床上招了个祸胎也！”段三娘正在得意处，反嗔怪段二，便在床上答道：“夜晚间有什事，恁般大惊小怪！”段二又喊道：“火燎乌毛了，你每兀是不知死活！”王庆心中本是有事的人，教老婆穿衣服，一同出房来问。众妇人都跑散了。王庆方出房门，被段二一手扯住，来到前面草堂上。却是范全在那城叫苦叫屈，如热锅上蚂蚁，没走一头处。随后段太公、段五、段三娘都到。</div>
+            <div class="text-block simplified-text">一群女人正在那儿嘻嘻哈哈地打闹，你推我搡的。突然段二冲进来大喊："糟了糟了！你们还在这儿闹着玩，都不知道出大事了！"女人们都吓出一身冷汗，但还没反应过来。段二又喊："三妹快起来！你床上躺着个惹祸精！"段三娘正高兴呢，反而怪段二多事，躺在床上回嘴："大晚上的能有什么事，至于这么大惊小怪吗！"段二急得直跳脚："都火烧眉毛了，你们还不知死活！"
+
+王庆本来就心里有事，赶紧让老婆穿好衣服，一起出来问情况。那些女人早就吓得跑光了。王庆刚出门，就被段二一把拉住，拽到前院的草堂上。只见范全在那儿急得直跺脚，像热锅上的蚂蚁团团转。接着段太公、段五、段三娘也都赶来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">却是新安县龚家村东的黄达，调治好了打伤的病，被他访知王庆踪迹实落处。昨晚到房州报知州尹。州尹张顾行押了公文，便差都头，领着士兵，来捉凶人王庆，及窝藏人犯范全，并段氏人众。范全因与本州当案薛孔目交好，密地理先透了个消息。范全弃了老小，一溜烟走来这里。”顷刻便有官兵来也。众人个个都要吃官司哩。”众人跌脚槌胸，好似掀翻了抱鸡窠，弄出许多慌来。却去骂王庆，羞三娘。</div>
+            <div class="text-block simplified-text">事情是这样的：新安县龚家村东边有个叫黄达的人，他之前被打伤后治好了，后来打听到了王庆藏身的确切地点。昨晚他就跑到房州向州官报告了这事。州官张顾行马上发了抓捕公文，派了都头带着士兵来抓凶手王庆，还有窝藏罪犯的范全和段家一帮人。范全因为和州里管案子的薛孔目关系好，提前偷偷得到了消息。他连家里人都顾不上，赶紧逃到这里来报信。"官兵马上就到了，咱们这些人全都要被抓去坐牢啊！"大家一听急得直跺脚捶胸，像捅了马蜂窝一样乱成一团。有人开始骂王庆，还有人怪罪三娘惹出这事。
+
+（说明：译文完全保留原文情节要素，用"捅了马蜂窝"替代"掀翻抱鸡窠"的比喻更符合现代人认知，将"羞三娘"译为"怪罪三娘"更易理解，所有动作描写都转化为口语化表达，如"一溜烟走来"译为"赶紧逃来"，确保每句话都符合现代白话文习惯。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">正在闹炒，只见草堂外东厢里走出算命的金剑先生李助，上前说道：“列位若要免祸，须听小子一言。”众人一齐上前，拥着来问。李助道：“事已如此，三十六策，走为上策。”众人道：“走到那里去？”李助道：“只这里西去二十里外，有座房山。”众人道：“那里是强人出没去处。”李助笑道：“列位恁般呆，你每如今还想要做好人？”众人道：“却是怎么？”李助道：“房山寨主廖立，与小子颇是相识。他手下有五六百名喽罗，官兵不能收捕。事不宜迟，快收拾细软等物，都到那里入夥，方避得大祸。”方翰等六个男女，恐怕日后捉亲属连累，又被王庆、段三娘十分撺掇，众人无可奈何，只得都上了这条路。把庄里有的没的细软等物，即便收拾，尽教打叠起了。一壁点起三四十个火把。王庆、段三娘、段二、段五、方翰、丘翔、施俊、李助、范全九个人，都结束齐整，各人跨了腰刀，枪架上拿了朴刀。唤集庄客，愿去的共是四十余个。俱拽紥拴缚停当。王庆、李助、范全当头，方翰、丘翔、施俊保护女子在中。幸得那五个女子，都是锄头般的脚，却与男子一般的会走。段三娘、段二、段五在后。把庄上前后，都放把火。发声喊，众人都执器械，一哄望西而走。邻舍及近村人家，平日畏段家人物如虎。今日见他每明火执仗，又不知他每备细，都闭着门，那里有一个敢来拦当。</div>
+            <div class="text-block simplified-text">大家正吵得不可开交，这时算命先生李助从外面走进来，大声说："各位想活命的话，就听我一句劝。"大伙儿立刻围上去问。李助说："都到这地步了，三十六计走为上计。"有人问："往哪儿跑？"李助回答："往西二十里有个房山。"有人担心："那不是强盗窝吗？"李助笑道："你们怎么这么死脑筋，现在还想着当好人？"见大家不明白，他接着说："我跟房山寨主廖立很熟，他手下有五六百号人，官府都拿他们没办法。赶紧收拾值钱东西去投奔，才能躲过这场大祸。"
+
+方翰等六个人怕连累家人，加上王庆和段三娘一个劲儿怂恿，大家没办法，只好照做。他们把庄里能带走的财物都打包好，点了三四十个火把。王庆、段三娘、李助等九个人全副武装，有的带腰刀，有的拿朴刀。庄里愿意跟着走的四十多号人也收拾停当。
+
+队伍这样安排：王庆他们打头阵，方翰几个保护女眷在中间——好在这些女人都跟男人一样能走，段三娘兄妹断后。临走前放火烧了庄子，一群人举着火把拿着武器往西跑。邻居和附近村民平时就怕段家人，现在看他们拿着武器明火执仗地出走，又不知道具体原因，全都关门闭户，没一个人敢出来拦。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">王庆等方行得四五里，早遇着都头士兵，同了黄达，眼同来捉人。都头上前，早被王庆手起刀落，把一个斩为两段。李助、段三娘等，一拥上前，杀散士兵。黄达也被王庆杀了。</div>
+            <div class="text-block simplified-text">王庆他们刚走了四五里路，就碰上了都头带着士兵，和黄达一起来抓人。都头刚冲上来，王庆抬手就是一刀，直接把他砍成两截。李助、段三娘他们一拥而上，打跑了士兵。黄达也被王庆杀了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">王庆等一行人，来到房山寨下，已是五更时分。李助计议，欲先自上山，诉求廖立，方好领众人上山入夥。寨内巡视的小喽罗，见山下火把乱明，即去报知寨主。那廖立疑是官后。他平日欺惯了官兵没用，连忙起身，披挂绰枪，开了栅寨，点起小喽罗下山拒敌。王庆见山上火起，又有许多人下来，先做准备。当下廖立直到山下，看见许多男女，料道不是官兵。廖立挺枪喝道：“你这夥乌男女，如何来惊动我山寨，在太岁头上动土？”李助上前躬身道：“大王，是劣弟李助。”随即把王庆犯罪，及杀管营，杀官兵的事，略述一遍。廖立听李助说得王庆恁般了得，更有段家兄弟帮助。”我只一身，恐日后受他每气。”翻着脸对李助道：“我这个小去处，却容不得你每。”</div>
+            <div class="text-block simplified-text">王庆他们一伙人到了房山寨山下，天都快亮了。李助出主意说，想自己先上山找廖立谈谈，才好带着大家上山入伙。山寨里巡逻的小兵看见山下火把乱晃，赶紧去报告寨主。廖立以为是官兵来了，他平时欺负惯了没用的官兵，马上爬起来，穿好盔甲拿起枪，打开寨门，带着小兵下山迎敌。王庆看见山上起火，又有很多人下来，就提前做好了准备。
+
+廖立冲到山下，看见一大群男男女女，知道不是官兵。他举着枪大喊："你们这群家伙，敢来我的山寨闹事，活腻了吗？"李助赶紧上前弯腰行礼说："大王，是我啊，您的小弟李助。"然后把王庆犯了罪、杀了管营和官兵的事简单说了一遍。廖立听李助说王庆这么厉害，还有段家兄弟帮忙，心里想："我就一个人，以后怕是要受他们欺负。"马上拉下脸对李助说："我这个小地方，可装不下你们这些人。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">王庆听了这句，心下思想：“山寨中只有这个主儿。先除了此人，小喽罗何足为虑。”便挺朴刀直抢廖立。那廖立大怒，拈枪来迎。段三娘恐王庆有失，挺朴刀来相助。三个人斗了十数合，三个人里倒了一个。正是：瓦罐不离井上破，强人必在镝前亡。毕竟三人中倒了那一个？且听下回分解。</div>
+            <div class="text-block simplified-text">王庆听到这话，心里想："山寨里就数这家伙最难对付。先干掉他，剩下的小喽啰就不算什么了。"说完就举着刀冲向廖立。廖立气坏了，抄起长枪迎战。段三娘怕王庆吃亏，也提着刀来帮忙。三个人打了十几个回合，其中一个被打倒了。这就叫：常在河边走哪有不湿鞋，出来混迟早要还的。到底是谁被打倒了？咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
