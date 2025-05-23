@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九十七回　陈瓘谏官升安抚　琼英处女做先锋</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./096.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第九十七回　陈瓘谏官升安抚　琼英处女做先锋</h1>
+        <a href="./098.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话说当下吴用对宋江道：“城中军马单弱。前日恃乔道清妖术。今知乔道清败困，外援不至，如何不惊恐。小弟今晨上云梯观望，见守城军士都有惊惧之色。今当乘其惊惧，开以自新之路，明其利害之机。城中必缚将出降。兵不血刃，此城唾手可得。”宋江大喜道：“军师之谋什善。”当下计议，写成数十道晓谕的兵檄。其词云：</div>
+            <div class="text-block simplified-text">吴用对宋江说："现在城里的军队实力很弱。之前他们靠乔道清的妖术撑腰，现在知道乔道清被打败了，外援又没到，肯定很害怕。我今天早上爬上云梯观察，看到守城的士兵都露出害怕的表情。我们应该趁他们害怕的时候，给他们一条改过自新的活路，跟他们讲清楚利害关系。这样城里的人一定会把将领绑出来投降。不用打仗，这座城就能轻松拿下。"宋江很高兴地说："军师这个主意太好了。"于是他们商量后，写了几十张告示。告示上写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">"大宋征北正先锋宋示谕昭德州守城将士军民人等知悉：田虎叛逆，法在必诛。其余胁从，情有可原。守城将士能反邪归正，改过自新，率领军民开门降纳，定行保奏朝廷，赦罪录用。如将士怙终不悛；尔等军民，俱系宋朝赤子，速当兴举大义，擒缚将士，归顺天朝。为首的定行重赏，奏请优叙。如执迷逡巡，城破之日，玉石俱焚，孑遗靡有。特谕。”</div>
+            <div class="text-block simplified-text">大宋征北先锋宋将军给昭德州的守城官兵和老百姓发通告：
+
+田虎造反，必须消灭。但被逼跟着造反的人可以原谅。守城的官兵如果愿意改邪归正，带着老百姓开城门投降，我们一定向朝廷报告，免你们的罪还给官做。要是官兵死不悔改，老百姓们你们都是大宋的子民，应该马上行动起来，抓住那些官兵投降。带头的重重有赏，还能封官。如果还犹豫不决，等我们攻破城池的时候，一个都不留，全都要完蛋。特此通知。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">宋江令军士将晓谕拴缚箭矢，四面射入城中。传令各门稍缓攻击，看城中动静。次日平明，只听得城中呐喊振天，四门竖起降旗。守城偏将金鼎、黄钺，聚集军民，杀死副将叶声、牛庚、冷宁，将三个首级，悬挂竿首，挑示宋军。牢中放出李逵、鲁智深、武松、刘唐、鲍旭、项充、李兖、唐斌，俱用轿扛抬，大开城门，拥送出城。军民香花灯烛，迎接宋兵入城。宋先锋大喜。传谕各门将佐，统领军马，次第入城，兵不血刃。百姓秋毫无犯，欢声雷动。</div>
+            <div class="text-block simplified-text">宋江让士兵们把劝降信绑在箭上，从四面八方射进城里。他命令各城门部队先别急着进攻，看看城里有什么反应。第二天天亮时，只听见城里喊声震天，四个城门都挂起了投降的白旗。守城的副将金鼎和黄钺带着士兵百姓，把不肯投降的将领叶声、牛庚、冷宁杀了，把这三人脑袋挂在竹竿上，举着给宋江的军队看。他们还从牢里放出了李逵、鲁智深、武松、刘唐、鲍旭、项充、李兖、唐斌这些人，用轿子抬着，大开城门送他们出来。城里的军民点香烛、举花灯，欢迎宋江的军队进城。宋江非常高兴，命令各个城门的将领按顺序带兵进城，没动一刀一枪就拿下城池。士兵们对老百姓秋毫无犯，全城百姓高兴得欢呼起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">宋江到帅府升坐。鲁智深等八人，前来参拜道：“哥哥，万分不得相见了！今赖兄长威力，复得聚首，恍如梦中！”宋江等众人，俱感泣泪下。次后金鼎、黄钺率领翁奎、蔡泽、杨春上前参拜。宋江连忙答拜，扶起道：“将军等兴举大义，保全生灵，此不世之勋也。”黄钺等道：“某等不能速来归顺，罪不可逭。反蒙先锋厚礼，真是铭心刻骨，誓死图报。”黄钺等又将鲁智深、李逵等骂贼不屈的事情，备细陈说。宋江感泣称赞。李逵道：“俺听得说那贼鸟道在百谷岭，待俺去砍那撮鸟一百斧，出那口鸟气！”宋江道：“乔道清被一清兄弟围困百谷岭，欲降伏他。罗真人已有法旨，兄弟不可造次。”鲁智深对李逵道：“兄长之命，安敢不遵。”李逵方才肯住。</div>
+            <div class="text-block simplified-text">宋江在帅府坐镇。鲁智深等八个人来拜见，说："大哥，真没想到还能见到你！多亏大哥厉害，咱们才能再聚，跟做梦一样！"宋江他们听了都感动得哭了。接着金鼎、黄钺带着翁奎、蔡泽、杨春也来拜见。宋江赶紧回礼，扶起他们说："将军们干大事、救百姓，立了大功啊。"黄钺他们说："我们没能早点来投靠，实在有罪。反倒让大哥这么厚待，这份恩情我们记在心里，拼死也要报答。"黄钺他们又详细说了鲁智深、李逵他们怎么骂叛贼、宁死不屈的事。宋江听了又感动又夸赞。李逵嚷嚷道："听说那王八蛋道士在百谷岭，等我去砍他一百斧子出气！"宋江说："乔道清已经被一清兄弟困在百谷岭了，正要劝他投降。罗真人已经有安排，你别乱来。"鲁智深对李逵说："大哥发话了，咱们得听。"李逵这才消停。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">当下宋先锋出榜安抚百姓，赏劳三军将佐，标写公孙胜、金鼎、黄钺功次。正在料理军务，忽报神行太保戴宗自晋宁回。戴宗入府参见。宋行锋忙问晋宁消息。戴宗道：“小弟蒙兄长差遣到晋宁，卢先锋正在攻打城池。他道：'待卢某克了城池，却好到兄长处报捷。’因此留小弟在彼，一连住了三四日。晋宁急切攻打不下。到今月初六日，是夜重雾，咫尺不辨。卢先锋令军士悄地囊土填积城下。至三更时分，城东北守御稍懈。我兵潜上土囊，攀援登城，杀死守城将士一十三员。田彪开北门冲突，舍命逃遁。其余牙将俱降。获战马五千余匹，投降军士二万余人，杀死者甚众。当下卢先锋克了晋宁。天明雾霁，正在安抚料理，忽报威胜田虎，差殿帅孙安，统领将佐十员，军马二万，前来救援，离城十里下寨。卢先锋即令秦明、杨志、欧鹏、邓飞，领兵出城迎敌。卢先锋亲自领兵接应。当下秦明与孙安战到五六十合，不分胜负。卢先锋兵到，见孙安勇猛，卢先锋令鸣金收兵。孙安亦自收兵。各立营寨。卢先锋回寨，说孙安勇猛，只可智取，不可力敌。</div>
+            <div class="text-block simplified-text">宋江刚贴出告示安抚百姓，犒赏三军将士，记录公孙胜、金鼎、黄钺的功劳。正忙着处理军务时，突然听说戴宗从晋宁回来了。戴宗进府拜见，宋江赶紧问晋宁的情况。戴宗说："大哥派我去晋宁时，卢俊义正在攻城。他说等拿下城池再来报喜，就让我在那儿住了三四天。晋宁城一时半会儿打不下来。直到这个月初六晚上，起了大雾，近在眼前都看不清人。卢俊义让士兵偷偷用布袋装土堆在城墙下。到了半夜，城东北防守松懈，我们的兵悄悄爬上土堆，翻墙进城，杀了十三个守城将领。田彪从北门拼命冲出去逃跑了，其他副将都投降了。我们缴获五千多匹战马，收降两万多士兵，杀死的敌人更多。卢俊义就这样拿下了晋宁城。天亮雾散后，他正忙着安顿事务，突然听说田虎派大将孙安带着十个副将、两万兵马赶来救援，在离城十里的地方扎营。卢俊义立刻派秦明、杨志、欧鹏、邓飞带兵出城迎战，自己带兵接应。秦明和孙安打了五六十回合不分胜负。卢俊义赶到后，看孙安太厉害，就下令收兵。孙安也撤兵回营。两边各自安营扎寨后，卢俊义回来说，孙安这人太猛，不能硬拼，得用计谋对付。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">次日，分拨军马埋伏。卢先锋亲自出阵，与孙安战到五十余合。孙安战马忽然前失，把孙安颠下马来。卢先锋喝道：'此非汝战败之罪，快换马来战。'孙安换马，又与卢先锋斗过五十余合。卢先锋佯败奔走，诱孙安赶到林子边。一声炮响，两边伏兵齐出。孙安措手不及，被两边抛出绊马索，将孙安绊倒。众军赶上，连人和马，生擒活捉。北阵里秦英、陆清、姚约三将，齐出救夺孙安。那边杨志、欧鹏、邓飞齐出接住。六骑马捉对儿厮杀，到间深处，只见杨志大喝一声，只一枪将秦英搠下马来。陆清与欧鹏正斗，被欧鹏卖个破绽，赚陆清一刀砍来，欧鹏把身一闪，陆清砍个空，收刀不迭，被欧鹏照后心一枪刺死。姚约见二人落马，拨马望本阵便走。被邓飞赶上，举铁链当头一下，把姚约连盔透顶，打个粉碎。卢先锋驱兵掩杀，北兵大败，杀死四五千人。北军退十里下寨。我兵得胜进城。众军卒把孙安绑缚解来。卢俊义亲释其缚，待以厚礼。劝孙安归顺天朝。孙安见卢先锋如此意气，情愿降顺。孙安对卢先锋说道：'城外尚有七员将佐，军马一万五千。容孙某出城招他来降。'卢先锋坦然无疑，放孙安出城。孙安单骑到北寨，说降七将，都来参见卢先锋。卢先锋大喜，置酒管待。孙安说：'某与乔道清同领兵离威胜，乔道清往救壶关。此人素有妖术，恐宋先锋处罹其荼毒。乔道清与孙某同乡。孙某感将军厚恩，愿往壶关探听消息，说乔道清归顺。'卢先锋依允。遂令小弟领孙安同来报捷。卢先锋令宣赞、郝思文、吕方、郭盛管领兵马二万，镇守晋宁。卢先锋统领其余将佐，兵马二万，望汾阳进征。戴某昨日于晋宁起程，替孙安也作起神行法。今日于路，已闻得兄长兵围昭德，乔道清被困。比及到城外，又知兄长大兵进城。特来参见哥哥。孙安见在府门外伺候。”</div>
+            <div class="text-block simplified-text">第二天，卢俊义安排军队埋伏好，自己亲自上阵和孙安打了五十多个回合。孙安的马突然失蹄把他摔下来，卢俊义喊道："这不是你的错，快去换匹马再打！"孙安换了马，又和卢俊义打了五十多回合。这时卢俊义假装打不过逃跑，把孙安引到树林边。只听一声炮响，埋伏的士兵冲出来，孙安来不及反应就被绊马索绊倒，被活捉了。
+
+北边阵营的秦英、陆清、姚约三员大将冲出来想救孙安，这边杨志、欧鹏、邓飞立刻迎战。六个人捉对厮杀，打着打着，杨志突然大喝一声，一枪把秦英刺下马。陆清和欧鹏交手时，欧鹏故意露出破绽，等陆清一刀砍过来时闪身躲开，趁机一枪刺死了陆清。姚约见两个同伴都死了，调转马头就跑，被邓飞追上，一铁链砸碎脑袋。
+
+卢俊义带兵追杀，北军大败，死了四五千人，退到十里外扎营。我军得胜回城，把绑着的孙安押来。卢俊义亲自给他松绑，好好招待他，劝他归顺。孙安很感动，愿意投降，还说："城外还有我的七个将领和一万五千士兵，让我去劝他们投降。"卢俊义爽快地答应了。
+
+孙安一个人骑马到北边军营，成功说服七个将领一起投降。卢俊义很高兴，设宴招待他们。孙安又说："我和乔道清一起从威胜带兵出来，他去救壶关了。这个人会妖术，我怕宋先锋吃亏。我和他是同乡，想去找他劝降。"卢俊义同意了，就派人带着孙安来报信。
+
+卢俊义留下宣赞等四将带着两万兵守晋宁，自己带着其他将领和两万兵向汾阳进军。我昨天从晋宁出发，用神行法带着孙安赶路。今天在路上听说哥哥的军队包围了昭德，乔道清被困住了。等我们赶到城外，又听说大军已经进城。现在孙安正在府门外等着见您。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">宋江大喜，令戴宗引孙安进见。戴宗遵令，领孙安入府，上前参见。宋江看孙安轩昂魁伟，一表非俗，下阶迎接。孙安纳头便拜道：“孙某抗拒大兵，罪该万死。”宋江答拜不迭，道：“将军反邪归正，与宋某同灭田虎。回朝报奏朝廷，自当录用。”孙安拜谢起立。宋先锋命坐，置酒管待。孙安道：“乔道清妖术利害，今幸公孙先生解破。”宋江道：“公孙一清欲降服他，授以正法。今围困三四日，尚未有降意。”孙安道：“此人与孙某最厚，当说他来降。”当下宋先锋令戴宗同孙安出北门，到公孙胜寨中。相见已毕，戴宗、孙安将来意备细对公孙胜说了。一清大喜，即令孙安入岭寻觅乔道清。孙安领命，单骑上岭。</div>
+            <div class="text-block simplified-text">宋江很高兴，让戴宗带孙安来见他。戴宗按命令带着孙安进府，上前行礼。宋江看孙安长得高大威武，相貌不凡，就下台阶迎接。孙安跪下磕头说："我孙安之前抵抗大军，罪该万死。"宋江赶紧回礼说："将军现在弃暗投明，和我一起打田虎。等回朝报告皇上，一定会重用你。"孙安道谢后站起来。宋江请他坐下，摆酒招待。孙安说："乔道清妖法厉害，幸好有公孙先生破解。"宋江说："公孙一清想收服他，教他改邪归正。但围困了三四天，他还不肯投降。"孙安说："这人和我交情最好，我去劝他投降。"于是宋江让戴宗和孙安出北门，到公孙胜的营寨。见面后，戴宗和孙安把来意详细告诉了公孙胜。公孙胜很高兴，马上让孙安上山找乔道清。孙安领命，一个人骑马上了山。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说乔道清与费珍、薛灿，与十五六个军士，藏匿在神农庙里，与本庙道人，借索些粗粝充饥。这庙里止有三个道人，被乔道清等将他累月募化积下的饭来都吃尽了。又见他人众，只得忍气吞声。是日乔道清听得城中呐喊，便出庙登高崖了望。见城外兵已解围，门内有人马出入。知宋兵已是入城。</div>
+            <div class="text-block simplified-text">乔道清和费珍、薛灿，带着十五六个士兵，躲在神农庙里。他们跟庙里的道士要了些粗粮填肚子。庙里只有三个道士，乔道清这帮人把他们攒了好几个月的粮食都吃光了。道士看他们人多势众，虽然生气但也只能忍着。有一天，乔道清听见城里传来喊叫声，就跑到庙外的高坡上张望。他看到城外的军队已经撤走了，城门里有人马进出，这才知道宋军已经进城了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">正在嗟叹，忽见崖畔树林中，走出一个樵者，腰插柯斧，将扁担做个拐杖，一步步捉脚儿走上崖来，口中念着个歌儿道：</div>
+            <div class="text-block simplified-text">正叹气呢，突然看见山崖边的树林里走出来一个砍柴的。他腰里别着斧头，用扁担当拐杖，一步一步慢慢爬上山崖，嘴里还哼着小曲儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">“上山如挽舟，下山如顺流。挽舟常自戒，顺流常自繇。我今上山者，预为下山谋。”</div>
+            <div class="text-block simplified-text">上山就像拉船逆水走，下山就像顺水往下漂。拉船时要时刻小心，顺流时就能轻松自在。我现在正在上山，但也得提前想好下山的事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">乔道清听了这六句樵歌，心中颇觉恍然，便问道：“你知城中消息私？”樵叟道：“金鼎、黄钺杀了副将叶声，已将城池归顺宋朝。宋江兵不血刃，得了昭德。”乔道清道：“原来如此。”那樵者说罢，转过石崖，望山坡后去了。</div>
+            <div class="text-block simplified-text">乔道清听完这六句山歌，心里有点明白了，就问："你知道城里现在什么情况吗？"砍柴的老头说："金鼎、黄钺把副将叶声杀了，已经带着全城投降宋朝了。宋江的军队没打仗就拿下了昭德城。"乔道清说："原来是这么回事。"那砍柴的说完，转过山崖，往山坡后面走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">乔道清又见一人一骑，寻路上岭，渐近庙前。乔道清下崖观看，吃了一惊。原来是殿帅孙安。”他为何便到此处？”孙安下马，上前叙礼毕。乔道清忙问：“殿帅领兵往晋宁，为何独自到此？岭下有许多军马，如何不拦当？”孙安道：“好教兄长得知。”乔道清见孙安不称国师，已有三分疑虑。孙安道：“且到庙中，细细备述。”二人进庙。费珍、薛灿都来相见毕。孙安方把在晋宁被获投降的事说了一遍。乔道淆默然无语。孙安道：“兄长休要狐疑。宋先锋等十分义气。我等投在麾下，归顺天朝，后来亦得个结果。孙某此来，特为兄长。兄长往时，曾访罗真人否？”乔道清忙问：“你如何知道？”孙安道：“罗真人不接见兄长，令童子传命，说你后来'遇德魔降'。这句话有么？”乔道清连忙答道：“有，有。”孙安道：“破兄长法的这个人，你认得么？”乔道清道：“他是我对头。只知他是宋军中人，却不知道他的来历。”孙安道：“则他便是罗真人徒弟，叫做公孙胜，宋先锋的副军师。这句法语，也是他对小弟说的。此城叫做昭德。兄长法破，可不是合了'遇德魔降'的说话？公孙胜专为真人法旨，要点化你同归正道，所以将兵马围困，不上山来擒捉。他既法可以胜你，他若要害你，此又何难。兄长不可执迷。”乔道清言下大悟。遂同孙安带领费珍、薛灿下岭，到公孙胜军前。</div>
+            <div class="text-block simplified-text">乔道清又看见一个人骑着马，沿着山路往山上走，慢慢靠近庙前。乔道清从山崖上下来看，吓了一跳，发现是殿帅孙安。他心里纳闷："他怎么到这儿来了？"  
+
+孙安下了马，上前跟乔道清打了招呼。乔道清赶紧问："你不是带兵去晋宁了吗？怎么一个人跑到这儿来了？山下那么多兵马，怎么没人拦你？"  
+
+孙安说："大哥，我慢慢跟你说。"乔道清注意到孙安没叫他"国师"，心里有点怀疑。孙安接着说："咱们进庙里细说吧。"两人进了庙，费珍、薛灿也过来见了面。  
+
+孙安这才把在晋宁被抓后投降的事一五一十说了。乔道清听完，沉默不语。孙安劝道："大哥别犹豫了。宋江他们很讲义气，咱们投靠他们，归顺朝廷，以后也有个好出路。我这次来，就是专门为了劝你。"  
+
+孙安又问："大哥，你以前是不是去找过罗真人？"乔道清一惊："你怎么知道？"孙安说："罗真人没见你，让童子传话，说你以后会'遇德魔降'，有这回事吧？"乔道清连连点头："有，有。"  
+
+孙安接着说："破你法术的那个人，你认识吗？"乔道清说："他是我的对头，只知道是宋江那边的人，但不知道他的底细。"孙安说："他就是罗真人的徒弟，叫公孙胜，是宋江的副军师。那句话也是他告诉我的。这座城叫昭德，你的法术被破，不就应了'遇德魔降'的话吗？公孙胜是奉罗真人的意思，想点化你走上正道，所以才围住山，没上来抓你。他既然能破你的法术，想害你还不容易？大哥别再固执了。"  
+
+乔道清听完，一下子明白了。于是跟着孙安，带着费珍、薛灿一起下山，到公孙胜的军营去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">孙安先入营报知。公孙胜出寨迎接。乔道清入寨，拜伏请罪道：“蒙法师仁爱，为乔某一人，致劳大军，乔某之罪益深。”公孙胜大喜，答拜不迭，以宾礼相待。乔道清见公孙胜如此意气，便道：“乔某有眼不识好人。今日得侍法师左右，平生有幸。”公孙胜传令解围。樊瑞等众将，四面拔寨都起。公孙胜率领乔道清、费珍、薛灿入城，参见宋先锋。宋江以礼相待，用好言抚慰。乔道清见宋江谦和，愈加钦服。少顷，樊瑞、单廷珪、魏定国、林冲、张清都到。宋江传令，将军马尽数收入城中屯住。当下宋江置酒庆贺。席间公孙胜对乔道清说：“足下这法，上等不比诸佛菩萨累劫修来，证入虚空三昧，自在神通；中等不比蓬莱三十六洞真仙，准几十年抽添水火，换髓移筋，方得超形度世，游戏造化。你不过凭着符咒，袭取一时，盗窃天地之精英，假借鬼神之运用。在佛家谓之金刚禅邪法，在仙家谓之幻术。若认此法便可超凡入圣，岂非毫厘千里之谬！”乔道清听罢，似梦方觉。当下拜公孙胜为师。宋江等听公孙胜说的明白玄妙，都称赞公孙胜的神功道德。当日酒散，一宿无话。</div>
+            <div class="text-block simplified-text">孙安先进军营报告。公孙胜出来迎接。乔道清进了军营，跪下认错说："感谢法师您这么照顾我，为了我一个人，让大军这么辛苦，我的罪过更重了。"公孙胜很高兴，连忙回礼，像对待贵客一样招待他。
+
+乔道清看公孙胜这么真诚，就说："我真是有眼不识泰山。今天能跟着法师您，是我这辈子最大的福气。"公孙胜下令撤掉包围。樊瑞等将领带着部队从四面撤走。公孙胜带着乔道清、费珍、薛灿进城见宋江。宋江很客气地接待他，说了些安慰的话。乔道清看宋江这么谦虚随和，更加佩服。
+
+过了一会儿，樊瑞、单廷珪、魏定国、林冲、张清都来了。宋江下令把所有部队都撤进城里驻扎。当天宋江设宴庆祝。酒席上公孙胜对乔道清说："你用的这些法术，往上比不了那些菩萨神仙多年修行得来的真本事；中等水平也比不上蓬莱那些真仙几十年修炼的功夫。你就是靠着符咒，暂时偷用天地间的灵气，借用鬼神的力量。在佛家这叫邪门歪道，在道家这叫幻术。要是以为靠这个就能成仙成佛，那可就差得太远了！"乔道清听完，这才恍然大悟，当场拜公孙胜为师。宋江他们听公孙胜说得这么清楚明白，都夸他本事大、品德高。当天喝完酒，一夜无事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">次日，宋江令萧让写表申奏朝廷，得了晋宁、昭德二府。写书申呈宿太尉报捷。其卫州、晋宁、昭德、盖州、陵川、高平六府州县缺的官，乞太尉择贤能堪任的，奏请速补，更替将领征进。当下萧让书写停当。宋江令戴宗赍捧，即日起程。</div>
+            <div class="text-block simplified-text">第二天，宋江让萧让写报告给朝廷，说已经拿下了晋宁和昭德两座城。又写了封信给宿太尉报喜。同时提到卫州、晋宁、昭德、盖州、陵川、高平这六个地方的官员职位空缺，请太尉赶紧选些有本事的人来补缺，还要换些将领继续打仗。萧让写完报告后，宋江立刻派戴宗带着文件出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">戴宗遵令，拴缚行囊包裹，赍捧表文书札，选个轻捷军士跟随。辞别宋先锋，作起神行法，镒日便到东京。先往宿太尉府中，呈递书札。恰遇宿太尉在府。戴宗在府前寻得个本府杨虞候，先送了些人事银两，然后把书札相烦转达太尉。杨虞候接书入府。少顷，杨虞候出来唤道：“太尉有钧旨，呼唤头领。”戴宗跟随虞候进府。只见太尉正在厅上坐地，拆书观看。戴宗上前参见。太尉道：“正在紧要的时节，来的恁般凑巧！前日正被蔡京、童贯、高俅在天子面前，劾奏你的哥哥宋先锋，覆军杀将，丧师辱国，大肆诽谤。欲皇上加罪。天子犹豫不决。却被右正言陈瓘，上疏劾蔡京、童贯、高俅诬陷忠良，排挤善类，说汝等兵马已渡壶关险隘，乞治蔡京等欺妄之罪。以此忤了蔡太师，寻他罪过。昨日奏过天子说：'陈瓘撰尊尧录，他尊神宗为尧，即寓讪陛下之意。乞治陈瓘讪上之罪。'幸的天子不即加罪。今日得汝报捷，不但陈瓘有颜，连我也放下许多忧闷。明日早朝，我将汝奏捷表文上达。”戴宗再拜称谢，出府觅个寓所，安歇听候，不在话下。</div>
+            <div class="text-block simplified-text">戴宗接到命令，收拾好行李包裹，带上公文信件，找了个手脚麻利的小兵跟着。他跟宋江告别后，使出神行法，第二天就到了东京。他先去宿太尉府上送信，正巧宿太尉在家。戴宗在府门口找到太尉手下的杨虞候，先塞了点银子当见面礼，再请他帮忙把信转交给太尉。杨虞候拿着信进去了。过了一会儿，杨虞候出来叫戴宗："太尉叫你进去。"戴宗跟着进了府，看见太尉正坐在大厅里看信。戴宗上前行礼。太尉说："来得正是时候！前几天蔡京、童贯、高俅在皇上面前告你大哥宋江的状，说他打仗失败、损兵折将、丢了朝廷的脸，说了一大堆坏话，想让皇上治他的罪。皇上还没拿定主意。结果右正言陈瓘上书弹劾蔡京他们诬陷好人，说你们的部队已经打过壶关险要，请求治蔡京他们欺君之罪。这下得罪了蔡京，蔡京就找陈瓘的麻烦。昨天蔡京对皇上说：'陈瓘写的《尊尧录》把神宗皇帝比作尧，这是在讽刺皇上。'幸好皇上没马上治罪。今天收到你们打胜仗的消息，不仅给陈瓘长了脸，我也放心多了。明天早朝，我就把你们的捷报呈给皇上。"戴宗连忙道谢，出了太尉府找个地方住下等着，这都不在话下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">且说宿太尉次日早朝入内。道君皇帝在文德殿朝见文武。宿太尉拜舞山呼毕，将宋江捷表奏闻，说：“宋江等征讨田虎，前后共克复六府州县。今差人赍捧捷表上闻。”天子龙颜欣悦。宿元景又奏道：“正言陈瓘撰尊尧录，以先帝神宗为尧，陛下为舜。尊尧何得为罪？陈瓘素刚正不屈，遇事敢言，素有胆略。乞陛下加封陈瓘官爵。敕陈瓘到河北监督兵马，必成大功。”天子准奏。随即降旨：陈瓘于原官上加升枢密院同知，着他为安抚，统领御营军马二万，前往宋江军胶督战，并赍赏赐银两，犒劳将佐军卒。当下朝散，宿太尉回到私第，唤戴宗打发回书。戴宗已知有了圣旨，拜辞宿太尉，离了东京。作起神行法，次日已到昭德城中。往返东京，刚刚四日。</div>
+            <div class="text-block simplified-text">第二天一早，宿太尉去上朝。皇帝在文德殿召见文武百官。宿太尉行完大礼后，报告说："宋江他们打田虎，已经收复了六个州府。现在派人送来了捷报。"皇帝听了很高兴。宿太尉又说："陈瓘写了《尊尧录》，把先帝比作尧帝，把您比作舜帝。这怎么能算有罪呢？陈瓘这人一向正直敢说话，很有胆识。请皇上给他升官，派他去河北监督军队，一定能立大功。"皇帝同意了，马上下令：给陈瓘升官当枢密院同知，派他带两万御林军去宋江部队督战，还带了赏银犒劳将士。散朝后，宿太尉回家叫来戴宗，让他带回复信。戴宗知道圣旨内容后，告别宿太尉离开京城。他用神行法赶路，第二天就到了昭德城。这一来一回只用了四天时间。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">宋江正在整点兵马，商议进征，见戴宗回来，忙问奏闻消息。戴宗将宿太尉回书呈上。宋江拆开看罢，将书中备细，一一对众头领说知。众人都道：“难得陈安抚恁般肝胆！我们也不枉在这里出力。”宋江传令，待接了敕旨，然后进征。众针遵令，在城屯住，不在话下。</div>
+            <div class="text-block simplified-text">宋江正在清点军队，商量出兵的事，看到戴宗回来了，赶紧问他朝廷那边有什么消息。戴宗把宿太尉的回信交给宋江。宋江打开信看完后，把信里的详细内容都告诉了各位头领。大家听了都说："陈安抚这么够意思，真是难得！我们在这儿拼命也值了。"宋江下令说，等接到皇帝的正式命令后再出兵。大伙儿都按命令行事，暂时在城里住下。这部分就先说到这儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">却说昭德城北潞城县，是本府属县。城中守将池方，探知乔道清围困时，便星夜差人到威胜田虎处申报告急。田虎手下伪省院官，接了潞城池方告急申文，正欲奏知田虎，忽报晋宁已失，御弟三大王田彪，止逃得性命到此。说还未毕，恰好田彪已到。田彪同省院官入内拜见田虎。田彪放声大哭，说：“宋兵势大，被他打破晋宁城池，杀了儿子田实。臣止逃得性命至此。失地丧师，臣该万死！”说罢又哭。那边省院官又启奏道：“臣适才接得潞城守将池方申文，说乔国师已被宋兵围困，昭德危在旦夕。”</div>
+            <div class="text-block simplified-text">故事发生在昭德城北边的潞城县，这是昭德府下面的一个县。城里有个守将叫池方，他听说乔道清被围困的消息后，连夜派人到威胜田虎那里求救。
+
+田虎手下的官员刚收到潞城发来的求救信，正准备向田虎报告，突然又传来消息：晋宁城已经失守了，田虎的弟弟田彪只身逃到这里。话还没说完，田彪就到了。
+
+田彪和官员们一起进去见田虎，一见面就嚎啕大哭："宋军太厉害了，他们攻破了晋宁城，杀了我儿子田实。我拼死才逃出来。丢了城池又损兵折将，我真是罪该万死啊！"说完又哭起来。
+
+这时旁边的官员接着说："我刚收到潞城守将池方的报告，说乔国师（乔道清）已经被宋军包围，昭德城眼看就要守不住了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">田虎闻奏大惊。会集文武众官，右丞相太师卞祥，枢密官范权，统军大将马灵等，当廷商议。”即日宋江侵夺边界，占了我两座大郡，杀死众多兵将。乔道清已被他围困。汝等如何处置？”当有国舅邬梨奏道：“主上勿忧。臣受国恩，愿部领军马，克日兴师，前往昭德。务要擒获宋江等众，恢复原夺城池。”那邬梨国舅，原是威胜富户。邬梨入骨好使枪棒，两臂有千斤力气，开的好硬弓，惯使一柄五十斤重泼风大刀。田虎知他幼妹大有姿色，便娶来为妻。遂将邬梨封为枢密，称做国舅。当下邬梨国舅又奏道：“臣幼女琼英，近梦神人教授武艺。觉来便是膂力过人。不但武艺精熟，更有一件神异的手段。手飞石子，打击禽乌，百发百中。近来人都称他做'琼矢镞'。臣保奏幼女为先锋，必获成功。”田虎随即降旨，封琼英为郡主。邬梨谢恩方毕，又有统军大将马灵奏道：“臣愿部领军马，往汾阳退敌。”田虎大喜，都赐金印虎牌，赏赐明珠珍宝。邬梨、马灵各拨兵三万，速便起兵前去。</div>
+            <div class="text-block simplified-text">田虎听到报告后吓坏了，马上召集文武官员开会。参加会议的有右丞相太师卞祥、枢密官范权、统军大将马灵等人。田虎在会上说："现在宋江攻打我们的地盘，已经抢走了两座重要城池，杀了很多将士。连乔道清都被他们围住了。你们说该怎么办？"
+
+这时国舅邬梨站出来说："大王别担心。我受国家恩惠，愿意带兵出征，一定在规定时间内打到昭德，活捉宋江他们，把丢掉的城池都夺回来。"这个邬梨国舅本来是威胜县的有钱人，特别喜欢练武，力气特别大，能拉开很硬的弓，平时用的是一把五十斤重的大刀。田虎因为他妹妹长得漂亮，就娶来做老婆，所以封邬梨当了大官，叫他国舅。
+
+邬梨接着说："我小女儿琼英最近做了个梦，梦见神仙教她武功。醒来后力气变得特别大，不仅武艺高强，还有个特别厉害的本事——能用石子打鸟，百发百中。最近大家都叫她'琼矢镞'。我推荐让我女儿当先锋，一定能打赢。"田虎立刻下旨，封琼英为郡主。
+
+邬梨刚谢完恩，大将马灵又站出来说："我愿意带兵去汾阳打退敌人。"田虎很高兴，给他们发了金印和兵符，还赏了珍珠宝贝。最后派给邬梨和马灵各三万兵马，让他们立刻出发。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">不说马灵统领偏牙将佐军马，望汾阳进发，且说邬梨国舅领了王旨兵符，下教场挑选兵马三万，整顿刀枪弓箭，一应器械，归第领了女将琼英，为前部先锋，入内辞别田虎，摆布起身。琼英女领父命，统领军马，迳奔昭德来。只因这女将出征，有分教：贞烈女报不共戴天之仇，英雄将成琴琴伉俪之好。毕竟不知女将军怎生搦战？且听下回分解。</div>
+            <div class="text-block simplified-text">咱们先不说马灵带着副将和军队往汾阳去的事。单说邬梨国舅接到大王的命令和兵符，到练兵场点了三万精兵，准备好刀枪弓箭这些装备。回家带上女将琼英当先锋，进宫和田虎告别后，就带兵出发了。琼英这姑娘奉父亲之命，带着军队直奔昭德。这次女将出征可有好戏看：刚烈的姑娘要报血海深仇，英雄好汉要成就美满姻缘。到底这位女将军是怎么打仗的？咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
