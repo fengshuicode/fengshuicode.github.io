@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三十五回 玄德南漳逢隐沦　单福新野遇英主</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./034.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第三十五回 玄德南漳逢隐沦　单福新野遇英主</h1>
+        <a href="./036.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说蔡瑁方欲回城，赵云引军赶出城来。原来赵云正饮酒间，忽见人马动，急入内观之，席上不见了玄德。云大惊，出投馆舍，听得人说：“蔡瑁引军望西赶去了。”云火急绰枪上马，引着原带来三百军，奔出西门，正迎着蔡瑁，急问曰：“吾主何在？”瑁曰：“使君逃席而去，不知何往。”赵云是谨细之人，不肯造次，即策马前行。遥望大溪，别无去路，乃复回马，喝问蔡瑁曰：“汝请吾主赴宴，何故引着军马追来？”瑁曰：“九郡四十二州县官僚俱在此，吾为上将，岂可不防护？”云曰：“汝逼吾主何去了？”瑁曰：“闻使君匹马出西门，到此却又不见。”云惊疑不定，直来溪边看时，只见隔岸一带水迹。云暗忖曰：“难道连马跳过了溪去？”令三百军四散观望，并不见踪迹。云再回马时，蔡瑁已入城去了。云乃拿守门军士追问，皆说：“刘使君飞马出西门而去。”云再欲入城？又恐有埋伏，遂急引军归新野。</div>
+            <div class="text-block simplified-text">蔡瑁正想回城，赵云带着兵追了出来。原来赵云刚才在喝酒，突然发现外面人马骚动，赶紧进去查看，发现刘备不在酒席上了。赵云大吃一惊，跑到住处打听，听人说：“蔡瑁带兵往西边追去了。”赵云急忙拿起枪骑上马，带着自己原来的三百士兵冲出西门，正好碰上蔡瑁，着急地问：“我家主公去哪儿了？”蔡瑁说：“刘使君中途离席走了，不知道去哪儿了。”赵云是个谨慎的人，不敢轻举妄动，就骑马往前找。远远看见前面有条大河，没别的路可走，又掉头回来质问蔡瑁：“你请我家主公吃饭，为什么带着兵马来追？”蔡瑁狡辩说：“这么多官员都在这里，我是大将，能不负责安保吗？”赵云逼问：“你到底把我家主公逼到哪儿去了？”蔡瑁说：“听说刘使君一个人骑马出了西门，可到这儿又不见了。”赵云心里又急又疑，跑到河边查看，只看到对岸有水迹。赵云心里嘀咕：“难道连人带马跳过河去了？”让三百士兵四处寻找，都没找到。等赵云再回头时，蔡瑁已经回城了。赵云抓住守门士兵盘问，士兵都说：“刘使君快马加鞭从西门跑了。”赵云想再进城找，又怕有埋伏，只好赶紧带兵回新野。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说玄德跃马过溪，似醉如痴，想：“此阔涧一跃而过，岂非天意！”迤逦望南漳策马而行，日将沉西。正行之间，见一牧童跨于牛背上，口吹短笛而来。玄德叹曰：“吾不如也！”遂立马观之。牧童亦停牛罢笛，熟视玄德，曰：“将军莫非破黄巾刘玄德否？”玄德惊问曰：“汝乃村僻小童，何以知吾姓字！”牧童曰：“我本不知，因常侍师父，有客到日，多曾说有一刘玄德，身长七尺五寸，垂手过膝，目能自顾其耳，乃当世之英雌，今观将军如此模样，想必是也。”玄德曰：“汝师何人也？”牧童曰：“吾师覆姓司马，名徽，字德操，颍川人也。道号水镜先生。”玄德曰：“汝师与谁为友？”小童曰：“与襄阳庞德公、庞统为友。”玄德曰：“庞德公乃庞统何人？”童子曰：“叔侄也。庞德公字山民，长俺师父十岁；庞统字士元，少俺师父五岁。一日，我师父在树上采桑，适庞统来相访，坐于树下，共相议论，终日不倦。吾师甚爱庞统，呼之为弟。”玄德曰：“汝师今居何处？”牧童遥指曰：“前面林中，便是庄院。”玄德曰：“吾正是刘玄德。汝可引我去拜见你师父。”童子便引玄德，行二里余，到庄前下马，入至中门，忽闻琴声甚美。玄德教童子且休通报，侧耳听之。琴声忽住而不弹。一人笑而出曰：“琴韵清幽，音中忽起高抗之调。必有英雄窃听。”童子指谓玄德曰：“此即吾师水镜先生也。”玄德视其人，松形鹤骨，器宇不凡。慌忙进前施礼，衣襟尚湿。水镜曰：“公今日幸免大难！”玄德惊讶不已。小童曰：“此刘玄德也。”水镜请入草堂，分宾主坐定。玄德见架上满堆书卷，窗外盛栽松竹，横琴于石床之上，清气飘然。水镜问曰：“明公何来？”玄德曰：“偶尔经由此地，因小童相指，得拜尊颜，不胜万幸！”水镜笑曰：“公不必隐讳。公今必逃难至此。”玄德遂以襄阳一事告之。水镜曰：“吾观公气色，已知之矣。”因问玄德曰：“吾久闻明公大名，何故至今犹落魄不偶耶？”玄德曰：“命途多蹇，所以至此。”水镜曰：“不然。盖因将军左右不得其人耳。”玄德曰：“备虽不才，文有孙乾、糜竺、简雍之辈，武有关、张、赵云之流，竭忠辅相，颇赖其力。”水镜曰：“关、张、赵云，皆万人敌，惜无善用之之人。若孙乾、糜竺辈，乃白面书生，非经纶济世之才也。”玄德曰：“备亦尝侧身以求山谷之遗贤，奈未遇其人何！”水镜曰：“岂不闻孔子云十室之邑必有忠信，何谓无人？”玄德曰：“备愚昧不识，愿赐指教。”水镜曰：“公闻荆襄诸郡小儿谣言乎？其谣曰：八九年间始欲衰，至十三年无孑遗。到头天命有所归，泥中蟠龙向天飞。此谣始于建安初：建安八年，刘景升丧却前妻，便生家乱，此所谓始欲衰也；无孑遗者，不久则景升将逝，文武零落无孑遗矣；天命有归，龙向天飞，盖应在将军也。”玄德闻言惊谢曰：“备安敢当此！”水镜曰：“今天下之奇才，尽在于此，公当往求之。”玄德急问曰：“奇才安在？果系何人？”水镜曰：“伏龙、凤雏，两人得一，可安天下。”玄德曰：“伏龙、凤雏何人也？”水镜抚掌大笑曰：“好！好！”玄德再问时，水镜曰：“天色已晚，将军可于此暂宿一宵，明日当言之。”即命小童具饮馔相待，马牵入后院喂养。玄德饮膳毕，即宿于草堂之侧。玄德因思水镜之言，寝不成寐。约至更深，忽听一人叩门而入，水镜曰：“元直何来？”玄德起床密听之，闻其人答曰：“久闻刘景升善善恶恶，特往谒之。及至相见，徒有虚名，盖善善而不能用，恶恶而不能去者也。故遗书别之，而来至此。”水镜曰：“公怀王佐之才，宜择人而事，奈何轻身往见景升乎？且英雄豪杰，只在眼前，公自不识耳。”其人曰：“先生之言是也。”玄德闻之大喜，暗忖此人必是伏龙、凤雏，即欲出见，又恐造次。候至天晓，玄德求见水镜，问曰：“昨夜来者是谁？”水镜曰：“此吾友也。”玄德求与相见。水镜曰：“此人欲往投明主，已到他处去了。”玄德请问其姓名。水镜笑曰：“好！好！”玄德再问：“伏龙、凤雏，果系何人？”水镜亦只笑曰：“好！好！”玄德拜请水镜出山相助，同扶汉室。水镜曰：“山野闲散之人，不堪世用。自有胜吾十倍者来助公，公宜访之。”正谈论间，忽闻庄外人喊马嘶，小童来报：“有一将军，引数百人到庄来也。”玄德大惊，急出视之，乃赵云也。玄德大喜。云下马入见曰：“某夜来回县，寻不见主公，连夜跟问到此。主公可作速回县。只恐有人来县中厮杀。”玄德辞了水镜，与赵云上马，投新野来。行不数里，一彪人马来到，视之，乃云长、翼德也。相见大喜。玄德诉说跃马檀溪之事，共相嗟讶。到县中，与孙乾等商议。乾曰：“可先致书于景升，诉告此事。”玄德从其言，即令孙乾赍书至荆州。刘表唤入问曰：“吾请玄德襄阳赴会，缘何逃席而去？”孙乾呈上书札，具言蔡瑁设谋相害，赖跃马檀溪得脱。表大怒，急唤蔡瑁责骂曰：“汝焉敢害吾弟！”命推出斩之。蔡夫人出，哭求免死，表怒犹未息。孙乾告曰：“若杀蔡瑁，恐皇叔不能安居于此矣。”表乃责而释之，使长子刘琦同孙乾至玄德处请罪。</div>
+            <div class="text-block simplified-text">刘备骑马跳过一条很宽的溪水，像做梦一样，心想："这么宽的沟居然能跳过去，肯定是老天帮忙！"他沿着小路往南漳方向走，太阳快下山时，看见一个放牛娃骑着牛、吹着笛子过来。刘备感叹："我过得还不如这孩子快活啊！"就停下马看。放牛娃也停下牛不吹了，盯着刘备问："您是不是打黄巾军的刘备将军？"
+
+刘备吃惊地问："你一个乡下小孩怎么认识我？"小孩说："我本来不认识，但我师父的客人常说起刘备将军，说您身高七尺五寸，手长过膝盖，耳朵大得能看见自己耳朵，是当今英雄。我看您长得像，就猜是您。"刘备问："你师父是谁？"小孩答："我师父叫司马徽，道号水镜先生，和襄阳的庞德公、庞统是朋友。"刘备问清楚他们关系后，让小孩带路去见师父。
+
+走了两里路来到一座庄园，听到里面传出好听的琴声。刘备让小孩先别通报，站在门外听。琴声突然停了，一个人笑着走出来说："琴声里突然出现高亢的音调，肯定有英雄在偷听。"小孩介绍说这就是他师父水镜先生。刘备赶紧行礼，衣服还湿着。水镜先生说："您今天刚逃过大难吧？"刘备很惊讶。水镜先生请刘备进屋，屋里堆满书，窗外种着松竹，石床上放着琴，很清雅。
+
+水镜先生问："您为什么一直没能成大事？"刘备说运气不好。水镜先生说："不是运气问题，是您身边缺少真正的人才。"刘备数了数手下的文官武将，水镜先生点评说："关羽、张飞、赵云确实厉害，但没人会用好他们。孙乾那些文官都是书呆子，办不了大事。"
+
+水镜先生说起当地童谣，暗示刘备将来能成大事，并说："现在天下最厉害的两个人才就在附近，您得到其中一个就能安定天下。"刘备忙问是谁，水镜先生只笑着说："伏龙、凤雏。"再问就不说了。
+
+晚上刘备睡不着，听见有人来找水镜先生，抱怨刘表徒有虚名不会用人。刘备猜这人可能就是伏龙或凤雏，但没好意思出去见。天亮后问水镜先生，水镜只说朋友已经走了。
+
+刘备请水镜先生出山帮忙，水镜推辞说："我只是个闲人，会有比我厉害十倍的人来帮您。"正说着，赵云带兵找来，说县城可能有危险。刘备告辞离开，半路遇到关羽、张飞来接应。回到县城后，孙乾建议写信向刘表说明蔡瑁要害他的事。刘表大怒要杀蔡瑁，被蔡夫人求情拦下，最后派大儿子刘琦来向刘备道歉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">琦奉命赴新野，玄德接着，设宴相待。酒酣，琦忽然堕泪。玄德问其故。琦曰：“继母蔡氏，常怀谋害之心；侄无计免祸，幸叔父指教。”玄德劝以小心尽孝，自然无祸。次日，琦泣别。玄德乘马送琦出郭，因指马谓琦曰：“若非此马，吾已为泉下之人矣。”琦曰：“此非马之力，乃叔父之洪福也。”说罢。相别。刘琦涕泣而去。</div>
+            <div class="text-block simplified-text">刘备奉命去新野，刘琦来见他，刘备摆酒招待。喝到一半，刘琦突然掉眼泪。刘备问他怎么了。刘琦说："我后妈蔡氏总想害我，我没办法躲过灾祸，希望叔叔给我想个办法。"刘备劝他只要小心行事、好好尽孝道，自然就没事。第二天，刘琦哭着告别。刘备骑马送他出城，指着马对刘琦说："要不是这匹马，我早就死了。"刘琦说："这不是马的功劳，是叔叔您福气大啊。"说完两人就分别了。刘琦一边哭一边走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">玄德回马入城，忽见市上一人，葛巾布袍，皂绦乌履，长歌而来。歌曰：“天地反覆兮，火欲殂；大厦将崩兮，一木难扶。山谷有贤兮，欲投明主；明主求贤兮，却不知吾。”玄德闻歌，暗思：“此人莫非水镜所言伏龙、凤雏乎？”遂下马相见，邀入县衙。问其姓名，答曰：“某乃颍上人也，姓单，名福。久闻使君纳士招贤，欲来投托，未敢辄造；故行歌于市，以动尊听耳。”玄德大喜，待为上宾。单福曰：“适使君所乘之马，再乞一观。”玄德命去鞍牵于堂下。单福曰：“此非的卢马乎？虽是千里马，却只妨主，不可乘也。”玄德曰：“已应之矣。”遂具言跃檀溪之事。福曰：“此乃救主，非妨主也；终必妨一主。某有一法可禳。玄德曰：“愿闻禳法。”福曰：“公意中有仇怨之人，可将此马赐之；待妨过了此人，然后乘之，自然无事。”玄德闻言变色曰：“公初至此，不教吾以正道，便教作利己妨人之事，备不敢闻教。”福笑谢曰：“向闻使君仁德，未敢便信，故以此言相试耳。”玄德亦改容起谢曰：“备安能有仁德及人，惟先生教之。”福曰：“吾自颍上来此，闻新野之人歌曰‘新野牧，刘皇叔；自到此，民丰足。’可见使君之仁德及人也。”玄德乃拜单福为军师，调练本部人马。</div>
+            <div class="text-block simplified-text">刘备骑马回城时，突然看见街上有个人。这人扎着粗布头巾，穿着布衣黑鞋，边走边唱：“世道乱糟糟啊，汉朝要完蛋；房子快塌了，一根柱子撑不住。山里有能人啊，想找好老板；好老板找能人，却不知道我。”刘备听了心想：“这人该不会就是水镜先生说的伏龙、凤雏吧？”于是下马打招呼，请他去县衙。
+
+问他叫什么，那人回答：“我是颍上人，叫单福。早就听说刘大人招人才，想来投奔，又不敢冒失，所以故意在街上唱歌引您注意。”刘备很高兴，把他当贵客招待。
+
+单福说：“刚才您骑的马，能再让我看看吗？”刘备让人卸了马鞍牵过来。单福说：“这不是的卢马吗？虽然是千里马，但会克主人，不能骑啊。”刘备说：“可它之前救过我。”就把马跳檀溪的事说了。单福解释：“那次是救主，不算克主。但这马迟早会克一个主人。我有办法化解——您要是有仇人，把这马送他，等克完那人再骑就没事了。”
+
+刘备一听脸色变了：“您刚来就教我做损人利己的事？这种话我听不得。”单福笑着道歉：“早听说您仁义，我不太信，故意试探您。”刘备也赶紧道歉：“我哪有什么仁义，还要先生多指点。”单福说：“我从颍上过来时，听新野百姓唱‘刘皇叔来当官，老百姓吃饱饭’，这就是您的仁义啊。”于是刘备拜单福当军师，让他训练军队。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说曹操自冀州回许都，常有取荆州之意，特差曹仁、李典并降将吕旷、吕翔等领兵三万，屯樊城，虎视荆襄，就探看虚实。时吕旷、吕翔禀曹仁曰：“今刘备屯兵新野，招军买马，积草储粮，其志不小，不可不早图之。吾二人自降丞相之后，未有寸功，愿请精兵五千，取刘备之头，以献丞相。”曹仁大喜，与二吕兵五千，前往新野厮杀。</div>
+            <div class="text-block simplified-text">曹操从冀州回到许都后，一直想拿下荆州。他专门派了曹仁、李典和投降的吕旷、吕翔带着三万兵马驻扎在樊城，盯着荆州和襄阳，顺便打探那边的情况。  
+
+这时候，吕旷和吕翔对曹仁说：“现在刘备在新野招兵买马，囤积粮草，野心不小，咱们得早点对付他。我们俩投降丞相后还没立过功，希望能带五千精兵去砍了刘备的脑袋，献给丞相。”曹仁一听很高兴，就给了他们五千兵马，让他们去打新野。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">探马飞报玄德。玄德请单福商议。福曰：“既有敌兵，不可令其入境。可使关公引一军从左而出，以敌来军中路；张飞引一军从右而出，以敌来军后路；公自引赵云出兵前路相迎：敌可破矣。”玄德从其言，即差关、张二人去讫；然后与单福、赵云等，共引二千人马出关相迎。</div>
+            <div class="text-block simplified-text">有人跑来向刘备报告敌情。刘备找单福商量对策。单福说："既然敌人打过来了，就不能让他们进来。可以让关羽带一支队伍从左路出击，对付敌人的中路部队；张飞带一支队伍从右路出击，截断敌人的后路；您亲自带着赵云从正面迎战。这样就能打败敌人了。"刘备听了单福的建议，立刻派关羽、张飞出发；然后自己和单福、赵云带着两千人马出关迎敌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">行不数里，只见山后尘头大起，吕旷、吕翔引军来到。两边各射住阵角。玄德出马于旗门下，大呼曰：“来者何人，敢犯吾境？”吕旷出马曰：“吾乃大将吕旷也。奉丞相命，特来擒汝！”玄德大怒，使赵云出马。二将交战，不数合，赵云一枪刺吕旷于马下。玄德麾军掩杀，吕翔抵敌不住，引军便走。正行间，路傍一军突出，为首大将，乃关云长也；冲杀一阵，吕翔折兵大半，夺路走脱。行不到十里，又一军拦住去路，为首大将，挺矛大叫：“张翼德在此！”直取吕翔。翔措手不及，被张飞一矛刺中，翻身落马而死。余众四散奔走。玄德合军追赶，大半多被擒获。玄德班师回县，重待单富，稿赏三军。</div>
+            <div class="text-block simplified-text">没走几里地，就看见山后尘土飞扬，原来是吕旷、吕翔带着军队杀过来了。两边人马摆开阵势。刘备骑马走到军旗下，大声喊道："你们是谁？敢来我的地盘撒野？"吕旷骑马出来说："我是大将吕旷！奉丞相的命令，专门来抓你！"刘备气坏了，派赵云出战。两人打了没几个回合，赵云一枪就把吕旷挑下马。刘备指挥军队冲杀过去，吕翔挡不住，带着兵就逃。正跑着，路边突然杀出一支军队，领头的正是关羽；一阵冲杀后，吕翔损失了一大半人马，好不容易才逃掉。跑了不到十里地，又有一支军队拦住去路，领头的将军举着长矛大喊："张飞在这儿！"直接朝吕翔杀来。吕翔来不及反应，被张飞一矛刺中，摔下马死了。剩下的士兵全跑光了。刘备集合军队追击，俘虏了大部分逃兵。刘备带着军队回城，好好招待了单富，犒赏全军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说败军回见曹仁，报说：“二吕被杀，军士多被活捉。”曹仁大惊，与李典商议。典曰：“二将欺敌而亡，今只宜按兵不动，申报丞相，起大兵来征剿，乃为上策。”仁曰：“不然。今二将阵亡，死折许多军马，此仇不可不急报。量新野弹丸之地，何劳丞相大军？”典曰：“刘备人杰也，不可轻视。”仁曰：“公何怯也！”典曰：“兵法云知彼知己，百战百胜。某非怯战，但恐不能必胜耳。”仁怒曰：“公怀二心耶？吾必欲生擒刘备！”典曰：“将军若去，某守樊城。”仁曰：“汝若不同去，真怀二心矣！”典不得已，只得与曹仁点起二万五千军马，渡河投新野而来。正是：偏裨既有舆尸辱，主将重兴雪耻兵。未知胜负何如，且听下文分解。</div>
+            <div class="text-block simplified-text">败兵回去见曹仁，报告说：“吕旷、吕翔两位将军被杀，很多士兵被抓了。”曹仁大吃一惊，赶紧找李典商量。李典说：“他俩是因为轻敌才死的。现在咱们最好按兵不动，先报告给丞相（曹操），等派大军来围剿，这才是最好的办法。”  
+
+曹仁不以为然：“不行！现在两位将军战死，还损失这么多兵马，这仇必须马上报。新野就是个巴掌大的小地方，哪用得着惊动丞相的大军？”  
+
+李典劝他：“刘备可不是一般人，不能小看他啊。”  
+
+曹仁火了：“你怎么这么怂？”  
+
+李典解释：“兵法上说‘知己知彼才能百战百胜’。我不是怕打仗，是怕万一打不赢啊。”  
+
+曹仁更生气了：“你该不会是有二心吧？我非活捉刘备不可！”  
+
+李典无奈：“将军一定要去的话，那我留下来守樊城。”  
+
+曹仁怒道：“你不跟我一起去，就是真有二心！”  
+
+李典没办法，只好和曹仁带着两万五千兵马，渡河杀向新野。  
+
+这正是：副将战死丢了脸，主将带兵来报仇。到底谁输谁赢？咱们下回再说。  
+
+（说明：1. “二吕”补全为历史人物名；2. “舆尸辱”译为“丢脸”更直白；3. 保留“下回分解”传统说书句式；4. 对话添加分段更符合现代阅读习惯）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
