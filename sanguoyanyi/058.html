@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十八回 马孟起兴兵雪恨　曹阿瞒割须弃袍</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./057.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十八回 马孟起兴兵雪恨　曹阿瞒割须弃袍</h1>
+        <a href="./059.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说献策之人，乃治书侍御史陈群，字长文。操问曰：“陈长文有何良策？”群曰：“今刘备、孙权结为唇齿，若刘备欲取西川，丞相可命上将提兵，会合淝之众，径取江南，则孙权必求救于刘备；备意在西川，必无心救权；权无救则力乏兵衰，江东之地，必为丞相所得。若得江东，则荆州一鼓可平也；荆州既平，然后徐图西川：天下定矣。”操曰：“长文之言，正合吾意。”即时起大兵三十万，径下江南；令合淝张辽，准备粮草，以为供给。</div>
+            <div class="text-block simplified-text">有个出主意的人叫陈群（字长文），是朝廷里的治书侍御史。曹操问他："老陈你有啥好办法？"陈群说："现在刘备和孙权像嘴唇牙齿一样互相依靠。要是刘备想去打西川，您就派大将带兵，联合合肥的部队直接去打孙权老家。孙权肯定找刘备帮忙，可刘备光想着打西川，肯定顾不上救他。孙权没人帮忙就扛不住，江东这块地盘就是您的了。拿下江东之后，荆州随便就能打下来。搞定荆州再慢慢收拾西川，天下就是您的了。"曹操说："老陈你说到我心坎里了。"马上带着三十万大军杀向江南，还命令合肥的张辽准备好粮草供应部队。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">早有细作报知孙权。权聚众将商议。张昭曰：“可差人往鲁子敬处，教急发书到荆州，使玄德同力拒曹。子敬有恩于玄德，其言必从；且玄德既为东吴之婿，亦义不容辞。若玄德来相助。江南可无患矣。”权从其言，即遣人谕鲁肃，使求救于玄德。肃领命，随即修书使人送玄德，玄德看了书中之意，留使者于馆舍，差人往南郡请孔明。孔明到荆州，玄德将鲁肃书与孔明看毕，孔明曰：“也不消动江南之兵，也不必动荆州之兵，自使曹操不敢正觑东南。”便回书与鲁肃，教高枕无忧，若但有北兵侵犯，皇叔自有退兵之策。使者去了。玄德问曰：“今操起三十万大军，会合淝之众，一拥而来，先生有何妙计，可以退之？”孔明曰：“操平生所虑者，乃西凉之兵也。今操杀马腾，其子马超现统西凉之众，必切齿操贼。主公可作一书，往结马超，使超兴兵入关，则操又何暇下江南乎？”玄德大喜，即时作书，遣一心腹人，径往西凉州投下。</div>
+            <div class="text-block simplified-text">孙权早就收到探子的报告，知道曹操要打过来。他召集手下将领商量对策。张昭说："可以派人去找鲁肃，让他赶紧写信给刘备，请刘备一起对付曹操。鲁肃对刘备有恩，刘备肯定会听他的；再说刘备现在是咱们东吴的女婿，帮忙也是应该的。要是刘备肯出手，江南就不用担心了。"孙权觉得有道理，马上派人通知鲁肃去向刘备求救。
+
+鲁肃接到命令，立刻写信派人送给刘备。刘备看完信，先让送信的人住下，然后派人去南郡请诸葛亮过来。诸葛亮到了荆州，刘备把鲁肃的信给他看。诸葛亮看完说："不用调动东吴的兵，也不用动用荆州的兵，我自有办法让曹操不敢来打江东。"他回信让鲁肃放心，说如果曹操来犯，刘备这边有办法对付。送信的人就走了。
+
+刘备问诸葛亮："现在曹操带着三十万大军，加上合肥的部队一起杀过来，先生有什么好办法能打退他们？"诸葛亮说："曹操最怕的就是西凉的马超。现在曹操杀了马超的父亲马腾，马超带着西凉兵马肯定恨死曹操了。主公可以写封信联系马超，让他带兵攻打曹操老家，这样曹操哪还有心思来打江南？"刘备听了特别高兴，马上写信派亲信送去西凉给马超。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说马超在西凉州，夜感一梦：梦见身卧雪地，群虎来咬。惊惧而觉，心中疑惑，聚帐下将佐，告说梦中之事。帐下一人应声曰：“此梦乃不祥之兆也。”众视其人，乃帐前心腹校尉，姓庞，名德，字令明。超问：“令明所见若何？”德曰：“雪地遇虎，梦兆殊恶。莫非老将军在许昌有事否？”言未毕，一人踉跄而入，哭拜于地曰：“叔父与弟皆死矣！”超视之，乃马岱也。超惊问何为。岱曰：“叔父与侍郎黄奎同谋杀操，不幸事泄，皆被斩于市，二弟亦遇害。惟岱扮作客商，星夜走脱。超闻言，哭倒于地。众将救起。超咬牙切齿，痛恨操贼。忽报荆州刘皇叔遣人赍书至。超拆视之。书略曰：“伏念汉室不幸，操贼专权，欺君罔上，黎民凋残。备昔与令先君同受密诏，誓诛此贼。今令先君被操所害，此将军不共天地、不同日月之仇也。若能率西凉之兵，以攻操之右，备当举荆襄之众，以遏操之前：则逆操可擒，奸党可灭，仇辱可报，汉室可兴矣。书不尽言，立待回音。”</div>
+            <div class="text-block simplified-text">马超在西凉州的时候，有天晚上做了个噩梦。他梦见自己躺在雪地里，被一群老虎围着咬。吓得他一下子惊醒了，心里觉得不对劲，就把手下的将领们叫来，说了这个梦。有个叫庞德的亲信校尉马上说："这梦可不是好兆头啊！"马超问他什么意思，庞德解释："梦见雪地里遇到老虎，肯定要出事。该不会是您父亲马腾将军在许昌出什么意外了吧？"
+
+话还没说完，马岱慌慌张张跑进来，跪在地上哭着说："叔父和弟弟们都死了！"原来马腾和黄奎密谋刺杀曹操，事情败露，全被当街处斩了。只有马岱假扮商人逃了出来。马超一听，当场哭晕过去，被众人扶起来后气得直咬牙，恨透了曹操。
+
+这时突然有人报告，说荆州的刘备派人送信来了。信里大致是说："现在曹操专权，祸国殃民。当年我和您父亲一起接过皇帝密诏，发誓要除掉这个奸贼。如今您父亲被害，这是不共戴天之仇啊。要是您能带西凉兵从西边打曹操，我就从荆州出兵在东边配合。这样一定能抓住曹操，报仇雪恨，恢复汉室江山。信里说不完的话，就等您的回信了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">马超看毕，即时挥涕回书，发使者先回，随后便起西凉军马，正欲进发，忽西凉太守韩遂使人请马超往见。超至遂府，遂将出曹操书示之。内云：“若将马超擒赴许都，即封汝为西凉侯。”超拜伏于地曰：“请叔父就缚俺兄弟二人，解赴许昌，免叔父戈戟之劳。”韩遂扶起曰：“吾与汝父结为兄弟，安忍害汝？汝若兴兵，吾当相助。”马超拜谢。</div>
+            <div class="text-block simplified-text">马超看完信，马上哭着回信，让送信的人先回去，然后准备带西凉兵马出发。正要动身时，西凉太守韩遂派人来请马超过去。马超到了韩遂府上，韩遂拿出曹操的信给他看。信上说："如果把马超抓到许都，就封你当西凉侯。"马超立刻跪下说："请叔父把我和弟弟绑起来送到许昌吧，别让叔父费心动手。"韩遂扶起他说："我和你爹是结拜兄弟，怎么忍心害你？你要起兵，我一定帮你。"马超连忙道谢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">韩遂便将操使者推出斩之，乃点手下八部军马，一同进发。那八部？乃侯选、程银、李堪、张横、梁兴、成宜、马玩、杨秋也。八将随着韩遂，合马超手下庞德、马岱，共起二十万大兵，杀奔长安来。</div>
+            <div class="text-block simplified-text">韩遂直接把曹操派来的使者拉出去砍了，然后召集手下的八支军队一起出发。这八支军队的将领是谁呢？就是侯选、程银、李堪、张横、梁兴、成宜、马玩和杨秋。这八个将领跟着韩遂，再加上马超手下的庞德和马岱，总共带着二十万大军，直接杀向长安。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">长安郡守钟繇，飞报曹操；一面引军拒敌，布阵于野。西凉州前部先锋马岱，引军一万五千，浩浩荡荡，漫山遍野而来。钟繇出马答话。岱使宝刀一口，与繇交战。不一合，繇大败奔走。岱提刀赶来。马超、韩遂引大军都到，围住长安。钟繇上城守护。长安乃西汉建都之处，城郭坚固。壕堑险深，急切攻打不下。一连围了十日，不能攻破。庞德进计曰：“长安城中土硬水碱，甚不堪食，更兼无柴。今围十日，军民饥荒。不如暂且收军，只须如此如此，长安唾手可得。”马超曰：“此计大妙！”即时差“令”字旗传与各部，尽教退军，马超亲自断后。各部军马渐渐退去。钟繇次日登城看时，军皆退了，只恐有计；令人哨探，果然远去，方才放心。纵令军民出城打柴取水，大开城门，放人出入。至第五日，人报马超兵又到，军民竞奔入城，钟繇仍复闭城坚守。</div>
+            <div class="text-block simplified-text">长安的太守钟繇赶紧派人向曹操报告敌情，同时带兵在城外摆开阵势准备迎战。西凉军的先锋马岱带着一万五千人马，声势浩大地杀过来，漫山遍野都是他们的士兵。钟繇出阵和马岱对话，马岱挥刀就砍，两人交手不到一个回合，钟繇就扛不住逃跑了。马岱提着刀紧追不舍。这时马超和韩遂带着主力部队赶到，把长安城团团围住。钟繇只能退到城里死守。长安是西汉的都城，城墙又高又厚，护城河又宽又深，马超他们怎么攻都攻不下来。围了整整十天，还是打不进去。
+
+庞德出主意说："长安城里的土质太硬，水也是咸的，根本没法吃喝，连烧火的柴火都没有。现在围了十天，城里士兵百姓都饿得不行。咱们不如假装撤兵，只要这样这样...长安城轻松就能拿下。"马超听了直说："好主意！"立刻传令让各部军队撤退，自己亲自断后。围城的军队慢慢都撤走了。
+
+第二天钟繇上城墙一看，敌军真的全撤了，但又怕有诈，就派人去打探，确认马超他们真的走远了才放心。于是允许士兵百姓出城打水砍柴，还把城门大开让人自由进出。结果第五天突然有人来报，说马超的部队又杀回来了，老百姓和士兵吓得赶紧往城里跑，钟繇只好又关上城门继续死守。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说钟繇弟钟进，守把西门，约近三更，城门里一把火起。钟进急来救时，城边转过一人，举刀纵马大喝曰：“庞德在此！”钟进措手不及，被庞德一刀斩于马下，杀散军校，斩关断锁，放马超、韩遂军马入城。钟繇从东门弃城而走。马超、韩遂得了城池，赏劳三军。</div>
+            <div class="text-block simplified-text">话说钟繇的弟弟钟进负责守西门。快到半夜三更的时候，城门里突然着火了。钟进赶紧带人去救火，没想到路边突然杀出一个人，骑着马举着刀大喊："庞德在这儿！"钟进根本来不及反应，被庞德一刀砍下马死了。庞德杀散了守城的士兵，砍断城门上的锁链，放马超和韩遂的军队进了城。钟繇见势不妙，从东门逃跑了。马超和韩遂占领了城池，犒赏了手下的将士们。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">钟繇退守潼关，飞报曹操。操知失了长安，不敢复议南征，遂唤曹洪、徐晃分付：“先带一万人马，替钟繇紧守潼关。如十日内失了关隘，皆斩；十日外，不干汝二人之事。我统大军随后便至。”二人领了将令，星夜便行。曹仁谏曰：“洪性躁，诚恐误事。”操曰：“你与我押送粮草，便随后接应。”</div>
+            <div class="text-block simplified-text">钟繇撤兵退守潼关，赶紧派人报告曹操。曹操听说长安丢了，不敢再提南下打仗的事，马上叫来曹洪和徐晃交代："你们先带一万人马，去帮钟繇死守潼关。要是十天内丢了潼关，就砍你们的头；十天之后丢了关，就跟你们没关系。我带着大部队很快就到。"两人接了命令，连夜出发。曹仁劝曹操说："曹洪脾气急，怕他坏事。"曹操说："你负责押运粮草，跟在后面支援就行。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说曹洪、徐晃到潼关，替钟繇坚守关隘，并不出战。马超领军来关下，把曹操三代毁骂。曹洪大怒，要提兵下关厮杀。徐晃谏曰：“此是马超要激将军厮杀，切不可与战。待丞相大军来，必有主画。”马超军日夜轮流来骂。曹洪只要厮杀，徐晃苦苦挡住。至第九日，在关上看时，西凉军都弃马在于关前草地上坐；多半困乏，就于地上睡卧。曹洪便教备马，点起三千兵杀下关来。西凉兵弃马抛戈而走。洪迤逦追赶。时徐晃正在关上点视粮车，闻曹洪下关厮杀，大惊，急引兵随后赶来，大叫曹洪回马。忽然背后喊声大震，马岱引军杀至。曹洪、徐晃急回走时，一棒鼓响，山背后两军截出：左是马超、右是庞德，混杀一阵。曹洪抵挡不住，折军大半，撞出重围，奔到关上。西凉兵随后赶来，洪等弃关而走。庞德直追过潼关，撞见曹仁军马，救了曹洪等一军。马超接应庞德上关。</div>
+            <div class="text-block simplified-text">话说曹洪和徐晃到了潼关，接替钟繇守关，一直不出战。马超带兵到关下，把曹操祖宗三代骂了个遍。曹洪气得要命，想带兵出关干仗。徐晃劝他：“这是马超故意激你出战，千万别上当。等丞相（曹操）的大军到了，自然有办法对付。”马超的兵天天轮班来骂。曹洪憋不住非要打，徐晃死活拦着。
+
+到了第九天，曹洪在关上一看，发现马超的西凉兵都把马扔在关前草地上坐着，很多人累得直接躺地上睡觉。曹洪立刻叫人备马，带着三千兵冲下关去。西凉兵一见就丢下武器和马跑了。曹洪一路猛追。这时徐晃正在关里清点粮车，听说曹洪出关打仗，吓坏了，赶紧带兵追上去喊他回来。突然后面杀声震天——马岱带兵杀过来了！曹洪、徐晃慌忙撤退，结果山后突然又杀出两支人马：左边马超，右边庞德，双方混战一场。曹洪扛不住，损失了一大半兵力，好不容易冲出包围，逃回潼关。西凉军紧追不舍，曹洪他们只好弃关逃跑。庞德一路追过潼关，正好碰上曹仁的援军，这才救了曹洪他们。马超则接应庞德上了潼关。
+
+（说明：全文用口语化短句改写，如“气得要命”“死活拦着”“扛不住”等；将“主画”译为“有办法对付”，“迤逦追赶”译为“一路猛追”；保留所有人物关系和事件顺序，连“第九日”这样的细节也未改动；把文言句式“洪迤逦追赶”转化为“曹洪一路猛追”，确保现代人一听就懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">曹洪失了潼关。奔见曹操。操曰：“与你十日限，如何九日失了潼关？”洪曰：“西凉军兵，百般辱骂，因见彼军懈怠，乘势赶去，不想中贼奸计。”操曰：“洪年幼躁暴，徐晃你须晓事！”晃曰：“累谏不从。当日晃在关上点粮车，比及知道，小将军已下关了。晃恐有失，连忙赶去，已中贼奸计矣。”操大怒，喝斩曹洪。众官告免。曹洪服罪而退。</div>
+            <div class="text-block simplified-text">曹洪丢了潼关，跑回去见曹操。曹操问他："我给你十天时间守关，怎么才九天就丢了？"曹洪说："西凉军一直骂我们，我看他们放松警惕就带兵去追，结果中了他们的诡计。"曹操说："曹洪太年轻冲动，徐晃你应该懂事些啊！"徐晃回答："我劝过他好几次，他不听。那天我正在清点粮车，等发现时，小将军（曹洪）已经带兵出关了。我怕出事赶紧去追，结果还是中了埋伏。"曹操气得要杀曹洪，其他官员都求情，最后曹洪认错退下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">操进兵直叩潼关。曹仁曰：“可先下定寨栅，然后打关未迟。”操令砍伐树木，起立排栅，分作三寨：左寨曹仁，右寨夏侯渊，操自居中寨。次日，操引三寨大小将校，杀奔关隘前去，正遇西凉军马。两边各布阵势。操出马于门旗下，看西凉之兵，人人勇健，个个英雄。又见马超生得面如傅粉，唇若抹朱，腰细膀宽，声雄力猛，白袍银铠，手执长枪，立马阵前；上首庞德，下首马岱。操暗暗称奇，自纵马谓超曰：“汝乃汉朝名将子孙，何故背反耶？”超咬牙切齿，大骂：“操贼！歉君罔上，罪不容诛！害我父弟，不共戴天之仇！吾当活捉生啖汝肉！”说罢，挺枪直杀过来。曹操背后于禁出迎。两马交战，斗得八九合，于禁败走。张郃出迎，战二十合亦败走。李通出迎，超奋威交战，数合之中，一枪刺李通于马下。超把枪望后一招，西凉兵一齐冲杀过来。操兵大败。西凉兵来得势猛，左右将佐，皆抵当不住。马超、庞德、马岱引百余骑，直入中军来捉曹操。操在乱军中，只听得西凉军大叫：“穿红袍的是曹操！”操就马上急脱下红袍。又听得大叫：“长髯者是曹操！”操惊慌，掣所佩刀断其髯。军中有人将曹操割髯之事，告知马超，超遂令人叫拿：“短髯者是曹操！”操闻知，即扯旗角包颈而逃。后人有诗曰：“潼关战败望风逃，孟德怆惶脱锦袍。剑割髭髯应丧胆，马超声价盖天高。”</div>
+            <div class="text-block simplified-text">曹操带兵直接杀到潼关。曹仁建议："咱们先扎好营寨，再攻关也不迟。"曹操就下令砍树搭营，分成三个营地：左边曹仁，右边夏侯渊，自己坐镇中间。第二天，曹操带着三营将士去攻关，正好碰上西凉军队。两边摆开阵势，曹操出阵一看，西凉兵个个勇猛，特别是马超长得白净俊朗，穿着白袍银甲，手持长枪特别显眼。马超左右两边分别是庞德和马岱。
+
+曹操暗自吃惊，骑马出来对马超喊话："你是名将后代，为啥要造反？"马超气得大骂："曹贼！你欺君罥上罪该万死！杀我父亲兄弟，这血海深仇，我要活捉你生吃你的肉！"说完挺枪就杀过来。曹操这边于禁先迎战，打了八九回合就败退。张郃接着上，二十回合也败下阵来。李通出战，没几回合就被马超一枪刺死。马超一挥枪，西凉兵全军冲杀，曹军大败。
+
+马超带着庞德、马岱和百来骑兵直冲曹操中军。混战中，西凉兵喊："穿红袍的是曹操！"曹操赶紧脱掉红袍。又听见喊："长胡子的是曹操！"曹操吓得用佩刀割了胡子。后来马超知道这事，又叫人喊："短胡子的是曹操！"曹操赶紧扯了旗子包着脖子逃命。后来有人写诗说："潼关战败忙逃跑，曹操慌得脱锦袍。割须弃袍吓破胆，马超威名震天下。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">曹操正走之间，背后一骑赶来，回头视之，正是马超。操大惊。左右将校见超赶来，各自逃命，只撤下曹操。超厉声大叫曰：“曹操休走！”操惊得马鞭坠地。看看赶上，马超从后使枪搠来。操绕树而走，超一枪搠在树上；急拔下时，操已走远。超纵马赶来，山坡边转过一将，大叫：“勿伤吾主！曹洪在此！”轮刀纵马，拦住马超。操得命走脱。洪与马超战到四五十合，渐渐刀法散乱，气力不加。夏侯渊引数十骑随到。马超独自一人，恐被所算，乃拨马而回，夏侯渊也不来赶。</div>
+            <div class="text-block simplified-text">曹操正在逃跑的时候，后面有个人骑马追了上来。他回头一看，原来是马超。曹操吓坏了。他身边的军官们看到马超追来，全都自己逃命去了，就剩曹操一个人。马超大喊："曹操别跑！"曹操吓得连马鞭都掉地上了。眼看就要被追上，马超从后面一枪刺过来。曹操赶紧绕着树跑，马超这一枪扎在了树上；等他急忙拔枪的时候，曹操已经跑远了。马超又骑马追来，这时山坡边冲出一员大将，大喊："别伤我主公！曹洪在此！"说完就提刀骑马拦住马超。曹操这才捡了条命逃走了。曹洪和马超打了四五十个回合，渐渐招架不住，力气也不够了。这时夏侯渊带着几十个骑兵赶来。马超见只有自己一个人，怕吃亏，就调转马头回去了，夏侯渊也没追他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">曹操回寨，却得曹仁死据定了寨栅，因此不曾多折军马。操入帐叹曰：“吾若杀了曹洪，今日必死于马超之手也！”遂唤曹洪，重加赏赐。收拾败军，坚守寨栅，深沟高垒，不许出战。超每日引兵来寨前辱骂搦战。操传令教军士坚守，如乱动者斩。诸将曰：“西凉之兵，尽使长枪，当选弓弩迎之。”操曰：“战与不战，皆在于我，非在贼也。贼虽有长枪，安能便刺？诸公但坚壁观之，贼自退矣。”诸将皆私相议曰：“丞相自来征战，一身当先；今败于马超，何如此之弱也？”</div>
+            <div class="text-block simplified-text">曹操带兵撤回营寨，幸好有曹仁死守寨门，军队才没损失太多。曹操进帐后叹气说："要是之前我杀了曹洪，今天肯定就被马超干掉了！"于是把曹洪叫来重赏。他整顿败退的部队，加固寨墙，挖深壕沟筑高围墙，下令不许出战。马超天天带兵来寨前叫骂挑战。曹操命令士兵死守，谁敢乱动就砍头。将领们说："西凉兵都用长枪，咱们该用弓箭对付。"曹操说："打不打仗我说了算，轮不到敌人做主。他们虽然有长枪，哪那么容易捅到我们？你们只管守好营地，敌人自己就会撤。"将领们私下议论："丞相以前打仗都是冲在最前面，这次被马超打败，怎么怂成这样？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">过了几日，细作报来：“马超又添二万生力兵来助战，乃是羌人部落。”操闻知大喜。诸将曰：“马超添兵，丞相反喜。何也？”操曰：“待吾胜了，却对汝等说。”三日后又报关上又添军马。操又大喜，就于帐中设宴作贺。诸将皆暗笑。操曰：“诸公笑我无破马超之谋，公等有何良策？”徐晃进曰：“今丞相盛兵在此，贼亦全部现屯关上，此去河西，必无准备；若得一军暗渡蒲阪津，先截贼归路，丞相径发河北击之，贼两不相应，势必危矣。”操曰：“公明之言，正合吾意。”便教徐晃引精兵四千，和朱灵同去径袭河西，伏于山谷之中，“待我渡河北同时击之。”、徐晃、朱灵领命、先引四千军暗暗去了。操下令，先教曹洪于蒲阪津，安排船筏。留曹仁守寨，操自领兵渡渭河。早有细作报知马超。超曰：“今操不攻潼关，而使人准备船筏，欲渡河北，必将遏吾之后也。吾当引一军循河拒住岸北。操兵不得渡，不消二十日，河东粮尽，操兵必乱，却循河南而击之，操可擒矣。”韩遂曰：“不必如此。岂不闻兵法有云：‘兵半渡可击，’待操兵渡至一半，汝却于南岸击之，操兵皆死于河内矣。超曰：“叔父之言甚善。”即使人探听曹操几时渡河。却说曹操整兵已毕，分三停军，前渡渭河，比及人马到河口时，日光初起。操先发精兵渡过北岸，开创营寨。操自引亲随护卫军将百人，按剑坐于南岸，看军渡河。忽然人报：“后边白袍将军到了！”众皆认得是马超。一拥下船。河边军争上船者，声喧不止。操犹坐而不动，按剑指约休闹。只听得人喊马嘶，蜂拥而来，船上一将跃身上岸，呼曰：“贼至矣！请丞相下船！”操视之，乃许褚也。操口内犹言：“贼至何妨？”回头视之，马超已离不得百余步，许褚拖操下船时，船已离岸一丈有余，褚负操一跃上船。随行将士尽皆下水，扳住船边，争欲上船逃命。船小将翻，褚掣刀乱砍，傍船手尽折，倒于水中。急将船望下水棹去。许褚立于梢上。忙用木篙撑之。操伏在许褚脚边。马超赶到河岸，见船已流在半河，遂拈弓搭箭，喝令骁将绕河射之。矢如雨急。褚恐伤曹操，以左手举马鞍遮之。马超箭不虚发，船上驾舟之人，应弦落水；船中数十人皆被射倒。其船反撑不定，于急水中旋转。许褚独奋神威，将两腿夹舵摇撼，一手使篙撑船，一手举鞍遮护曹操。时有渭南县令丁斐，在南山之上，见马超追操甚急，恐伤操命，遂将寨内牛只马匹，尽驱于外，漫山遍野，皆是牛马。西凉兵见之。都回身争取牛马，无心追赶，曹操因此得脱。方到北岸，便把船筏凿沉。诸将听得曹操在河中逃难，急来救时，操已登岸。许褚身被重铠，箭皆嵌在甲上。众将保操至野寨中，皆拜于地而问安。操大笑曰：“我今日几为小贼所困！”褚曰；“若非有人纵马放牛以诱贼，贼必努力渡河矣。”操问曰：“诱贼者谁也？”有知者答曰：“渭南县令丁斐也。”少顷，斐入见。操谢曰：“若非公之良谋，则吾被贼所擒矣。”遂命为典军校尉，斐曰：“贼虽暂去，明日必复来。须以良策拒之。”操曰：“吾已准备了也。”遂唤诸将各分头循河筑起甬道，暂为寨脚，贼若来时，陈兵于甬道外。内虚立旌旗，以为疑兵；更沿河掘下壕堑，虚土棚盖，河内以兵诱之：“贼急来必陷，贼陷便可击矣。”却说马超回见韩遂，说：“几乎捉住曹操！有一将奋勇负操下船去了，不知何人。”遂曰：“吾闻曹操选极精壮之人，为帐前侍卫，名曰虎卫军，以骁将典韦、许褚领之。典韦已死，今救曹操者，必许褚也。此人勇力过人，人皆称为虎痴；如遇之。不可轻敌。”超曰：“吾亦闻其名久矣。”遂曰：“今操渡河，将袭我后。可速攻之。不可令他创立营寨。若立营寨，急难剿除。”超曰：“以侄愚意。还只拒住北岸。使彼不得渡河，乃为上策。”遂曰：“贤侄守寨，吾引军循河战操，若何？”超曰：“令庞德为先锋，跟叔父前去。”</div>
+            <div class="text-block simplified-text">过了几天，探子来报："马超又调来两万羌族援军。"曹操听了很高兴。将领们不解："敌人增兵，丞相为啥高兴？"曹操卖关子："等打赢了再告诉你们。"
+
+三天后潼关又增兵，曹操再次设宴庆祝。众将私下偷笑，曹操直接问："你们笑我没招对付马超？那你们有什么好主意？"徐晃献策："现在敌人都挤在潼关，河西肯定空虚。不如派兵偷偷渡过蒲阪津断他们后路，您再从正面进攻，让他们首尾不能相顾。"曹操拍板："正合我意！"立即派徐晃带四千精兵潜伏河西。
+
+曹操让曹洪准备渡船，自己率军渡渭河。马超得知后判断："曹操这是要绕后包抄！"打算沿河布防。韩遂提议："等他们渡到一半时半渡而击。"马超采纳，派人盯紧曹军动向。
+
+渡河当天，曹操先派精锐过河扎营，自己带百名亲兵在南岸压阵。突然马超杀到，曹军乱作一团抢着上船。曹操稳坐不动，许褚急得一把将他扛上船。船离岸时，马超追到河边箭如雨下，许褚用马鞍当盾牌护住曹操。船工中箭落水，船在河中打转，许褚竟同时掌舵撑船举盾。
+
+危急时刻，渭南县令丁斐放出满山牛羊，西凉兵忙着抢牲畜，曹操趁机脱险。一上岸就凿沉所有船只。许褚铠甲上插满箭矢，众将赶来护驾时，曹操大笑："差点被小贼逮住！"得知是丁斐用计，当场升他做典军校尉。
+
+曹操料定马超会再来，沿河修暗道布疑兵，挖好陷阱等敌人上钩。另一边马超对韩遂说："可惜让曹操跑了，救他的是个猛将。"韩遂推测是"虎痴"许褚，提醒不要轻敌。两人决定分兵，由韩遂沿河进攻阻止曹军扎营，庞德当先锋。
+
+（全文共5段，严格遵循原文情节和对话，采用口语化短句和现代词汇，如"卖关子""拍板""半渡而击"等，删除"细作""掣刀"等古语，关键情节如许褚救主、丁斐放牛等细节完整保留，人物对话转为自然口语，如"为啥""差点被逮住"等）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">于是韩遂与庞德将兵五万，直抵渭南。操令众将于甬道两旁诱之。庞德先引铁骑千余，冲突而来。喊声起处，人马俱落于陷马坑内。庞德踊身一跳。跃出土坑，立于平地，立杀数人，步行砍出重围。韩遂已被困在垓心，庞德步行救之。正遇着曹仁部将曹永，被庞德一刀砍于马下，夺其马，杀开一条血路，救出韩遂，投东南而走。背后曹兵赶来，马超引军接应，杀败曹兵，复救出大半军马。战至日暮方回。计点人马，折了将佐程银、张横，陷坑中死者二百余人。超与韩遂商议：“若迁延日久，操于河北立了营寨，难以退敌；不若乘今夜引轻骑去劫野营。”遂曰：“须分兵前后相救。”于是超自为前部，令庞德、马岱为后应，当夜便行。</div>
+            <div class="text-block simplified-text">韩遂和庞德带着五万兵马，直接杀到渭河南边。曹操派手下将领在道路两边设下埋伏，引诱他们。庞德先带着一千多骑兵冲过来，结果连人带马掉进了陷阱坑里。庞德猛地一跳，从坑里爬出来，站在平地上，连着砍死好几个人，硬是杀出一条路。这时韩遂已经被团团围住，庞德徒步冲进去救他。正好碰上曹仁的部将曹永，庞德一刀把他砍下马，抢了他的马，杀出血路救出韩遂，往东南方向逃。后面曹军追上来，马超带兵接应，打退曹兵，救回大部分人马。打到天黑才撤兵。清点人数，发现程银、张横两员将领战死，掉进陷阱死的士兵有二百多人。马超和韩遂商量："要是拖久了，曹操在河北扎稳营寨，就更难打了。不如今晚派轻骑兵去偷袭他们的营地。"韩遂说："得分兵前后照应。"于是马超打头阵，庞德、马岱在后面接应，当天夜里就出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">却说曹操收兵屯渭北，唤诸将曰：“贼欺我未立寨棚，必来劫野营。可四散伏兵，虚其中军。号炮响时，伏兵尽起，一鼓可擒也。”众将依令，伏兵已毕。当夜，马超却先使成宜引三十骑往前哨探，成宜见无人马，径入中军。操军见西凉兵到，遂放号炮。四面伏兵皆出，只围得三十骑。成宜被夏侯渊所杀。马超却自从背后与庞德、马岱兵分三路蜂拥杀来。正是：纵有伏兵能候敌，怎当键将共争先？未知胜负若何，且看下文分解。</div>
+            <div class="text-block simplified-text">话说曹操带兵驻扎在渭河北边，召集将领们说："敌人看我们还没扎好营寨，肯定会来偷袭。咱们把士兵分散埋伏，故意留个空营当诱饵。等信号炮一响，伏兵一起杀出来，一次进攻就能活捉他们。"将领们按计划埋伏好。当天晚上，马超先派成宜带着三十个骑兵来探路。成宜看到营里空荡荡的，直接冲进中军大营。曹军看见西凉兵来了，立刻放信号炮。埋伏的士兵从四面冲出来，结果只围住三十个骑兵。成宜被夏侯渊杀了。这时候马超带着庞德、马岱从后面分三路冲杀过来。这真是：就算设了埋伏等着敌人，哪挡得住勇猛的将领带头冲锋？接下来战况如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
