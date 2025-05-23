@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十七回　宋公明大战幽州　呼延灼力擒番将</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./086.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十七回　宋公明大战幽州　呼延灼力擒番将</h1>
+        <a href="./088.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">古风：</div>
+            <div class="text-block simplified-text">好的，没问题！我会把这段古文翻译成简单直白的现代白话文，就像平时聊天一样通俗易懂。你准备好原文了吗？可以发给我，我马上帮你转换。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">胡马嘶风荡尘土，旗帜翩翩杂钲鼓。</div>
+            <div class="text-block simplified-text">战马在风中嘶鸣，扬起一片尘土，军旗随风飘动，夹杂着锣鼓的声音。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">黄髯番将跨雕鞍，插箭弯弓排队伍。</div>
+            <div class="text-block simplified-text">有个长着黄胡子、外族长相的将军骑在装饰华丽的马鞍上，背后背着箭，手里拿着弓，正指挥士兵们排好队形。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">摇缰纵马望南来，个个扬威并耀武。</div>
+            <div class="text-block simplified-text">他们骑着马，挥着缰绳往南跑，一个个都摆出威风凛凛、神气活现的样子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">刀诛北海赤须龙，剑斩南山白额虎。</div>
+            <div class="text-block simplified-text">用刀砍死了北海的红胡子龙，用剑杀掉了南山的白额头老虎。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">梁山泊内众英雄，胸中劲气吞长虹。</div>
+            <div class="text-block simplified-text">梁山上的好汉们，个个都是硬骨头，气势特别强。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">一朝归顺遵大义，誓清天下诛群凶。</div>
+            <div class="text-block simplified-text">一旦投降归顺，就要遵守大义，发誓要扫清天下，消灭所有恶人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">奉宣直抵幽燕界，累夺城池建大功。</div>
+            <div class="text-block simplified-text">直接听命令打到幽州那边，连着拿下好几座城，立了大功。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">兀颜统军真良将，神机妙策欺飞熊。</div>
+            <div class="text-block simplified-text">这个叫兀颜的将军确实是个厉害角色，打仗特别有一套，连飞熊（指代厉害的对手）都能被他耍得团团转。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">幽州城下决胜负，青草山川尘影红。</div>
+            <div class="text-block simplified-text">在幽州城边决一死战，  
+打得青草山川都染上了血红色。  
+
+（说明：1. "决胜负"译为"决一死战"更直白；2. "尘影红"用"染上血红色"解释战争惨烈；3. 保留"幽州""山川"等关键地名景物；4. 整体改为两个白话短句，符合口语节奏）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">擒胡破虏容易事，尽在功名掌握中。</div>
+            <div class="text-block simplified-text">打胜仗抓敌人其实不难，想立功成名全看自己本事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">当时兀颜延寿将引二万余军马，会合了太真驸马、李金吾二将，共领三万五千番军，整顿枪刀弓箭一应器械完备，摆布起身。早有探子来幽州城里报知宋江。宋江便请军师吴用商议：“辽兵累败，今次必选精兵猛将前来厮杀。当以何策应之？”吴用道：“先调兵出城布下阵势，待辽兵来，慢慢地挑战。他若无能，自然退去。”宋江道：“军师高论至明。”随即调遣军马出城。离城十里，地名方山，地势平坦，靠山傍水排下九宫八卦阵势。</div>
+            <div class="text-block simplified-text">当时，辽国大将兀颜延寿带着两万多兵马，和太真驸马、李金吾两位将军的部队会合，总共三万五千辽军。他们准备好刀枪弓箭等武器，整队出发。宋江在幽州城里早就接到探子的报告，知道这事。他马上找军师吴用商量："辽军连吃败仗，这次肯定派精锐部队来拼命。咱们该怎么对付？"吴用说："先派兵出城摆好阵型，等辽军来了再慢慢跟他们打。要是他们不行，自己就会撤退。"宋江说："军师说得对。"立刻派兵出城，在离城十里的方山一带摆开九宫八卦阵。那儿地势平坦，背靠山，面朝水，适合布阵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">等候间，只见辽兵分做三队而来。兀颜小将军兵马是皂旗，太真驸马是红旗，李金吾军是青旗。三军齐到，见宋江摆成阵势。那兀颜延寿在父亲手下曾习得阵法，深知玄妙。见宋江摆下九宫八卦阵势，便令青红旗二军，分在左右，扎下营寨。自去中军竖起云梯，看了宋兵果是九宫八卦阵势。下云梯来，冷笑不止。左右副将问道：“将军何故冷笑？”兀颜延寿道：“量他这个九宫八卦阵，谁不省得！他将此等阵势，瞒人不过，俺却惊他则个。”令众军擂三通画鼓，竖起将台。就台上用两把号旗招展，左右列成阵势已了。下将台来，上马，令首将哨开阵势，亲到阵前与宋江打话。那小将军怎生结束？但见：</div>
+            <div class="text-block simplified-text">正在等着的时候，只见辽兵分成三队过来了。兀颜小将军的部队举着黑旗，太真驸马的部队举着红旗，李金吾的部队举着青旗。三路人马一起到达，看到宋江已经摆好了阵型。那个兀颜延寿从小跟着父亲学过兵法，很懂阵法门道。他一看宋江摆的是九宫八卦阵，就让红旗和青旗两支队伍分别驻扎在左右两边。自己爬到中军的云梯上观察，确认宋军摆的确实是九宫八卦阵。从梯子下来后，他不停地冷笑。手下将领问他："将军为什么冷笑？"兀颜延寿说："就他这种九宫八卦阵，谁看不出来啊！他用这种普通阵法骗不了人，看我怎么吓唬他们。"于是命令士兵擂了三通战鼓，搭起指挥台。在台上用两面令旗指挥，很快就把队伍排列好了。下台后骑上马，命令先锋打开阵型，亲自到阵前跟宋江喊话。这小将军是怎么打扮的呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">戴一顶三叉如意紫金冠，穿一件蜀锦团花白银铠，足穿四缝鹰嘴抹绿靴，腰系双环龙角黄鞓带。虬螭吞首打将鞭，霜雪裁锋杀人剑。左悬金画宝雕弓，右插银嵌狼牙箭。使一枝画杆方天戟，骑一匹铁脚枣骝马。</div>
+            <div class="text-block simplified-text">这人头上戴着三叉紫金冠，身上穿着银白色带花纹的铠甲，脚上蹬着绿色鹰嘴靴，腰间扎着双龙扣的黄色皮带。手里拿着刻有龙头的打人鞭子和寒光闪闪的杀人剑。左边挂着金色雕花弓，右边插着银色狼牙箭。使的是一杆画着图案的方天戟，骑的是一匹铁蹄枣红马。
+
+（说明：改写时做了以下处理：
+1. 将"如意"等古语词去掉
+2. "蜀锦团花"简化为"带花纹的"
+3. "四缝"等专业术语直接去掉
+4. "虬螭吞首"用"刻有龙头的"代替
+5. "霜雪裁锋"用"寒光闪闪"形容
+6. 保持所有装备信息不遗漏
+7. 使用"这人"开头更口语化
+8. 把"足穿"等文言表达改为"脚上蹬着"等白话）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">兀颜延寿勒马直到阵前，高声叫道：“你摆九宫八卦阵，待要瞒谁！你却识得俺的阵么？”宋江听的番将要斗阵法，叫军中竖起云梯。宋江、吴用、朱武上云梯观望了辽兵阵势。三队相连，左右相顾。朱武早已认得，对宋江道：“此辽兵之阵是太乙三才阵也。”宋江留下吴用同朱武在将台上，自下云梯来。上马出到阵前，挺鞭直指辽将喝道：“量你这太乙三才阵，何足为奇！”兀颜小将军道：“你识吾阵，看俺变法，教汝不识。”勒马入中军，再上将台，把号旗招展，变成阵势。吴用、朱武在将台上看了，此乃变作河洛四象阵。使人下云梯来回复宋江知了。兀颜小将军再出阵门，横戟问道：“还识俺阵否？”宋江答道：“此乃变出河洛四象阵。”他兀颜小将军摇著头冷笑，再入阵中，上将台，把号旗左招右展，又变成阵势。吴用、朱武在将台上看了，朱武道：“此乃变作循环八卦阵。”再使人报与宋江知道。那小将军再出阵前高声问道：“还能识吾阵否？”宋江笑道：“料然只是变出循环八卦阵，不足为奇。”小将军听了，心中自忖道：“俺这几个阵势都是秘传来的，不期却被此人识破。宋兵之中，必有人物。”兀颜小将军再入阵中，下马，上将台，将号旗招展，左右盘旋，变成个阵势，四边都无门路，内藏八八六十四队兵马。朱武再上云梯看了，对吴用说道：“此乃是武侯八阵图，藏了首尾，人皆不晓。”便着人请宋公明到阵中，上将台看这阵法：“休欺负他辽兵，这等阵图皆得传授。此四阵皆从一派传流下来，并无走移。先是太乙三才，生出河洛四象，四象生出循环八卦，八卦生出八八六十四卦，已变为八阵图。此是循环无比，绝高的阵法。”宋江下将台，上战马，直到阵前。小将军搠戟在地，勒马阵前，高声大叫：“能识俺阵否？”宋江喝道：“汝小将年幼学浅，如井底之蛙。只知此等阵法以为绝高。量这藏头八阵图法瞒谁？瞒吾大宋小儿也瞒不过！”兀颜小将军道：“你虽识俺阵法，你且排个奇异的阵势，瞒俺则个。”宋江喝道：“只俺这九宫八卦阵势，虽是浅薄，你敢打么？”小将军大笑道：“量此等小阵，有何难哉！你军中休放冷箭，看咱打你这个小阵。”有诗为证：</div>
+            <div class="text-block simplified-text">白话文改写：
+
+辽国将领兀颜延寿骑马来到阵前，大声喊道："你们摆这个九宫八卦阵想骗谁？你们能认出我的阵法吗？"宋江听说对方要比阵法，就让士兵架起瞭望台。宋江、吴用和朱武爬上去观察辽军阵型，看到三队人马互相连接，左右呼应。朱武一眼就认出来了，告诉宋江："这是辽军的太乙三才阵。"宋江让吴用和朱武留在台上，自己下来骑马出阵，用马鞭指着辽将说："你这太乙三才阵有什么了不起的！"
+
+兀颜小将军说："你既然认得这个阵，看我变个新阵让你认不出来！"说完回到军中，登上指挥台挥动令旗变换阵型。吴用和朱武在台上看得清楚，告诉宋江："现在变成河洛四象阵了。"小将军再次出阵挑衅："还认得吗？"宋江回答："不就是河洛四象阵嘛。"小将军冷笑着摇头，又回去变阵。朱武看出这次变成了循环八卦阵，赶紧告诉宋江。小将军又来问，宋江笑着说："不过是循环八卦阵，没什么稀奇的。"
+
+小将军心里暗想："这些阵法都是秘传的，怎么都被他们识破了？宋军里肯定有能人。"他再次变阵，这次摆出个四面包围、没有出入口的阵型，里面藏着六十四队兵马。朱武仔细看后对吴用说："这是诸葛亮的八阵图，隐藏了首尾，一般人根本看不出来。"他让人请宋江来看，解释说："别小看辽军，他们这些阵法都是真传。从太乙三才到河洛四象，再到循环八卦，最后变成八阵图，一环套一环，确实厉害。"
+
+宋江回到阵前，小将军插着长戟问："这下还认得吗？"宋江喝道："你年纪小见识短，像井底之蛙。这种藏头八阵图连我们宋朝小孩都骗不过！"小将军说："你既然认得，有本事摆个新奇阵法让我开开眼？"宋江回道："就这个九宫八卦阵，你敢打吗？"小将军大笑："这种小阵有什么难的！你们别放冷箭，看我怎么破你的阵！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">九宫八卦已无敌，河络四象真堪奇。</div>
+            <div class="text-block simplified-text">这九宫八卦的功夫已经厉害到没对手了，河络四象的阵法更是神奇得不得了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">莫向阵前夸大口，交锋时下见危机。</div>
+            <div class="text-block simplified-text">别在打仗前吹牛说大话，真打起来才知道有多危险。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">且说兀颜小将军便传将令，直教太真驸马、李金吾各拨一千军：“待俺打透阵势，便来策应。”传令已罢，众军擂鼓。宋江也传下将令，教军中整擂三通战鼓，门旗两开，放打阵的小将入来。那兀颜延寿带本部下二十来员牙将，一千披甲马军，用手掐算当日属火，不从正南离位上来。带了军马转过右边，从西方兑位上，荡开白旗，杀入阵内。后面的被弓箭手射住，止有一半军马入的去。其余都回本阵。</div>
+            <div class="text-block simplified-text">话说兀颜小将军下令，让太真驸马和李金吾各自调派一千士兵："等我冲开敌阵后，你们马上来接应。"命令下达后，士兵们擂起战鼓。宋江这边也传令，让部队连擂三通战鼓，营门大开，放对方攻阵的小将进来。
+
+兀颜延寿带着手下二十多名将领和一千名全副武装的骑兵，掐指一算当天五行属火，就没从正南方向进攻。他带着部队转向右边，从西边打着白旗冲进阵里。后面的部队被弓箭手挡住，只有一半人马成功冲进去，剩下的都退回自己阵营了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">却说小将军走到阵里，便奔中军。只见中间白荡荡如银墙铁壁，团团围住小将军。那兀颜延寿见了，惊的面如土色。心中暗想：“阵里那得这等城子？”便教四边且打通旧路，要杀出阵来。众军回头看时，白茫茫如银海相似，满地只听的水响，不见路径。小将军甚慌，引军杀投南门来。只见千团火块，万缕红霞，就地而滚，并不见一个军马。小将军那里敢出南门。铲斜里杀投东门来，只见带叶树木，连枝山柴，交横塞满地下，两边都是鹿角，无路可进。却转过北门来，又见黑气遮天，乌云蔽日，身手不见掌，如黑暗地狱相似。那兀颜小将军在阵内，四门无路可出。心中疑道：“此必是宋江行持妖法。休问怎生，只就这里死撞出去。”众军得令，齐声呐喊，杀将出去。旁边撞出一员大将，高声喝道：“孺子小将走那里去！”兀颜小将军欲待来战，措手不及，脑门上早飞下一鞭来，那小将军眼明手快，便把方天戟来拦住，只听得双鞭齐下，早把戟杆折做两段。急待挣扎，被那将军扑入怀内，轻舒猿臂，款扭狼腰，把这兀颜小将军活捉过去。拦住后军，都喝下马来。众军黑天摸地，不辨东西，只得下马受降。拿住小将军的不是别人，正是虎军大将双鞭呼延灼。当时公孙胜在中军作法，见报捉了小将军，便收了法术，阵中仍复如旧，青天白日。</div>
+            <div class="text-block simplified-text">话说小将军冲进敌阵，直奔中心。结果发现四周全是白茫茫一片，像铁墙一样把他团团围住。这小将军一看，吓得脸都白了，心里直嘀咕："这阵里怎么会有城墙？"赶紧命令士兵们往原路杀回去。士兵们回头一看，满地都是白花花的，只听见水声哗哗响，根本找不着路。小将军慌了神，带着人马往南门冲。结果那边满地都是火球红云滚来滚去，连个鬼影子都看不见。小将军哪敢从南门走啊，赶紧调头往东门跑。结果东门更绝，满地都是带叶子的树枝柴火，还堆满了防御用的鹿角，根本过不去。没办法又往北门冲，结果北门更吓人，天黑得伸手不见五指，跟地狱似的。小将军这下彻底没招了，四个门都出不去。他心想："这肯定是宋江那伙人使的妖法。管他呢，拼死也得冲出去！"士兵们听到命令，大喊着往外冲。突然杀出个将军，大喝道："小兔崽子往哪儿跑！"小将军刚要迎战，还没反应过来，对方一鞭子就朝脑门抽下来了。还好他反应快，用方天戟挡了一下，结果"咔嚓"一声，戟杆被打成两截。还没等他缓过劲，那将军一把将他抱住，轻轻松松就把他活捉了。后面的士兵也被拦住，全被喝令下马投降。这黑灯瞎火的，士兵们连东南西北都分不清，只好乖乖投降。你猜捉住小将军的是谁？正是大名鼎鼎的双鞭将呼延灼。这时候公孙胜在中军施法，听说小将军被抓了，就收了法术。阵里立刻恢复了原样，又是大白天了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">且说太真驸马并李金吾将军各引兵一千，只等阵中消息，便要来策应。却不想不见些动静，不敢杀过来。宋江出到阵前，高声喝道：“你那两军不降更待何时！”兀颜小将已被吾生擒在此。”喝令群刀手簇出阵前。李金吾见了，一骑马，一条枪，直赶过来要救兀颜延寿。却有霹雳火秦明正当前部，飞起狼牙棍，直取李金吾。二马相交，军器并举，两军齐声呐喊，李金吾先自心中慌了，手段缓急差迟，被秦明当头一棍，连盔透顶打的粉碎。李金吾攧下马来。太真驸马见李金吾输了，引军便回。宋江催兵掩杀，辽兵大败奔走。夺得战马三千余匹，旗幡剑戟弃满山川。宋江引兵径望燕京进发，直欲长驱席卷，以复王封。有诗为证：</div>
+            <div class="text-block simplified-text">话说太真驸马和李金吾将军各自带着一千兵马，就等着看战场上的情况，准备随时支援。可等了半天也没见动静，不敢贸然进攻。宋江走到阵前，大声喊道："你们这两路兵马还不投降，要等到什么时候？你们的小将兀颜延寿已经被我们活捉了！"说完就让刀斧手把俘虏押到阵前。李金吾一看，立刻骑马挺枪冲过来想救人。这时秦明正好在前线，抡起狼牙棒就迎了上去。两人骑马交战，兵器相碰，两边士兵齐声呐喊。李金吾心里一慌，动作就慢了半拍，被秦明一棒子打在头上，连头盔带脑袋都砸得粉碎，当场摔下马死了。太真驸马见李金吾战败，赶紧带兵撤退。宋江乘胜追击，辽兵大败而逃。这一仗缴获了三千多匹战马，战场上到处都是丢下的旗帜武器。宋江带着部队直接向燕京进发，打算一口气打过去收复失地。有诗为证：
+
+（说明：1.将文言虚词"且说"改为口语化的"话说"；2."策应"改为"支援"；3."动静"译为"情况"；4."簇出"译为"押到"；5."手段缓急差迟"译为"动作慢了半拍"；6."攧下马来"译为"摔下马死了"；7.保留原文所有关键情节和细节）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">矢心直欲退强兵，力殚机危竟不成。</div>
+            <div class="text-block simplified-text">我本来一心想着要打退强大的敌人，拼尽全力却还是没能成功，反而让自己陷入危险境地。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">生捉两员英勇将，败军残卒奔辽城。</div>
+            <div class="text-block simplified-text">活捉了两名勇猛的敌将，剩下的残兵败将都逃回辽城去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">却说辽兵败残人马逃回辽国，见了兀颜统军，俱说小将军去打宋兵阵势，被他活捉去了，其余牙将，尽皆归降。李金吾亦被他那里一个秦明一棍打死，军卒四散逃走，不知下落。太真驸马逃的性命，不知去向。兀颜统军听了大惊，便道：“吾儿自小习学阵法，颇知玄妙。宋江那厮把甚阵势捉了吾儿？”左右道：“只是个九宫八卦阵势，又无甚希奇。俺这小将军布了四个阵势，都被那蛮子识破了。临了，对俺小将军说道：‘你识我九宫八卦阵，你敢来打么？’俺小将军便领了千百骑马军从西门打将入去，被他强弓硬弩射住，只有一半人马能勾入去。不知怎生被他生擒活捉了。”兀颜统军道：“量这个九宫八卦阵有甚难打，必是被他变了阵势。”众军道：“俺们在将台上望见他阵中队伍不动，旗幡不改，只见上面一派黑云罩定阵中。”兀颜统军道：“恁的必是妖术。吾不起军，这厮也来。若不取胜，吾当自刎。谁敢与吾作前部先锋，引兵前去？俺驱大队随后便来。”帐前转过二将齐出：“某等两个愿为前部。”一个是大辽番官琼妖纳延；一个是燕京番将姓寇，双名镇远。兀颜统军大喜。便道：“体两个小心在意，与吾引一万军兵作前部先锋，逢山开路，遇水叠桥。吾引大军随后便到。”</div>
+            <div class="text-block simplified-text">辽国残兵败将逃回去见了主帅兀颜统军，报告说："小将军去攻打宋军阵法，结果被活捉了。手下将领全都投降了。李金吾将军也被对方一个叫秦明的用棍子打死了，士兵们四散逃跑，现在下落不明。太真驸马虽然逃了出来，但也不知道去哪儿了。"
+
+兀颜统军大吃一惊："我儿子从小就学兵法，很懂阵法。宋江那家伙用什么阵法抓了他？"手下回答："就是个普通的九宫八卦阵，没什么特别的。咱们小将军连换了四种阵法，都被对方识破了。最后那帮南蛮还挑衅说：'你既然认得我的九宫八卦阵，敢来打吗？'小将军就带着骑兵从西门冲进去，结果被他们的弓箭挡住，只有一半人冲进去，不知道怎么就被活捉了。"
+
+兀颜统军说："九宫八卦阵有什么难打的？肯定是他们偷偷变了阵法。"士兵们说："我们在指挥台上看得清清楚楚，他们的队伍没动，旗子也没变，就是阵地上方突然冒出一片黑云罩着。"
+
+兀颜统军判断："这肯定是妖术！我不出兵他们也会打过来。要是打不赢，我就自杀！谁愿意当先锋带兵先去？我带着大军随后就到。"这时两个将领站出来说："我们愿意当先锋！"一个是辽国将领琼妖纳延，另一个是燕京将领寇镇远。
+
+兀颜统军很高兴："你们俩小心点，带一万兵马当先锋，遇到山路就开路，遇到河流就搭桥。我带着大军马上跟进。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">且不说琼、寇二将起身，作先锋开路。却说兀颜统军随即整点本部下十一曜大将，二十八宿将军，尽数出征。先说那十一曜大将：</div>
+            <div class="text-block simplified-text">先不说琼、寇两位将军已经出发，在前面开路。单说兀颜统帅这边，他马上召集了自己手下的十一曜大将和二十八宿将军，带着全部人马出征。咱们先说说这十一曜大将都有谁：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">太阳星御弟大王耶律得重，引兵五千；太阴星天寿公主答里孛，引女兵五千；罗星皇侄耶律得荣，引雄兵三千；计都星皇侄耶律得华，引雄兵三千；紫气星皇侄耶律得忠，引雄兵三千；月孛星皇侄耶律得信，引雄兵三千；东方青帝木星大将只儿拂郎，引兵三千；西方太白金星大将乌利可安，引兵三千；南方荧惑火星大将洞仙文荣，引兵三千；北方玄武水星大将曲利出清，引兵三千；中央镇星土星上将都统军兀颜光，总领各飞兵马首将五千，镇守中坛。</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+辽国派出了好几支军队，每支军队都有不同的将领带领：
+
+1. 太阳星耶律得重（皇帝的弟弟），带兵5000人
+2. 太阴星天寿公主答里孛，带女兵5000人
+3. 皇侄耶律得荣（罗睺星），带精兵3000人
+4. 皇侄耶律得华（计都星），带精兵3000人
+5. 皇侄耶律得忠（紫气星），带精兵3000人
+6. 皇侄耶律得信（月孛星），带精兵3000人
+
+还有四方大将：
+7. 东方大将只儿拂郎（木星），带兵3000人
+8. 西方大将乌利可安（金星），带兵3000人
+9. 南方大洞仙文荣（火星），带兵3000人
+10. 北方大将曲利出清（水星），带兵3000人
+
+最后是总指挥：
+11. 中央大将兀颜光（土星），统领5000精锐部队坐镇中央指挥。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">兀颜统军再点部下那二十八宿将军：</div>
+            <div class="text-block simplified-text">颜统军又叫来了手下的二十八位大将：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">角木蛟孙忠、亢金龙张起、氐土貉刘仁、房日兔谢武、心月狐裴直、尾火虎顾永兴、箕水豹贾茂、斗木獬萧大观、牛金牛薛雄、女土蝠俞得成、虚日鼠徐威、危月燕李益、室火猪祖兴、壁水貐成珠那海、奎木狼郭永昌、娄金狗阿哩义、胃土雉高彪、昴日鸡顺受高、毕月乌国永泰、觜火猴潘异、参水猿周豹、井木犴童里合、鬼金羊王景、柳土獐雷春、星日马卞君保、张月鹿李复 翼火蛇狄圣、轸水蚓班古儿。</div>
+            <div class="text-block simplified-text">这是一串人名，每个名字前面都有一个古代星宿名称作为前缀。这些名字看起来像是古代小说或传说中的人物，可能是某个团体或组织的成员名单。具体如下：
+
+1. 角木蛟 - 孙忠  
+2. 亢金龙 - 张起  
+3. 氐土貉 - 刘仁  
+4. 房日兔 - 谢武  
+5. 心月狐 - 裴直  
+6. 尾火虎 - 顾永兴  
+7. 箕水豹 - 贾茂  
+8. 斗木獬 - 萧大观  
+9. 牛金牛 - 薛雄  
+10. 女土蝠 - 俞得成  
+11. 虚日鼠 - 徐威  
+12. 危月燕 - 李益  
+13. 室火猪 - 祖兴  
+14. 壁水貐 - 成珠那海  
+15. 奎木狼 - 郭永昌  
+16. 娄金狗 - 阿哩义  
+17. 胃土雉 - 高彪  
+18. 昴日鸡 - 顺受高  
+19. 毕月乌 - 国永泰  
+20. 觜火猴 - 潘异  
+21. 参水猿 - 周豹  
+22. 井木犴 - 童里合  
+23. 鬼金羊 - 王景  
+24. 柳土獐 - 雷春  
+25. 星日马 - 卞君保  
+26. 张月鹿 - 李复  
+27. 翼火蛇 - 狄圣  
+28. 轸水蚓 - 班古儿  
+
+简单来说，就是28个带有星宿称号的人名列表。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">那兀颜光整点就十一曜大将二十八宿将军，引起大队军马精兵二十余万，倾国而起，奉请大辽国主御驾亲征。</div>
+            <div class="text-block simplified-text">辽国大将兀颜光召集了十一位曜星大将和二十八位星宿将军，带着二十多万精锐部队全军出动，还特意请辽国皇帝亲自领兵出征。  
+
+（说明：改写时做了以下处理）  
+1. "整点就"改为更口语的"召集了"  
+2. "引起大队军马"用"带着...部队"更直白  
+3. "倾国而起"转化为"全军出动"  
+4. "奉请御驾亲征"用"请皇帝亲自领兵"更易懂  
+5. 保留所有关键信息（将领数量、兵力规模、御驾亲征）  
+6. 使用"辽国"替代古语"大辽"更符合现代习惯</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">且不说兀颜统军兴起大队之师卷地而来。再说先锋琼、寇二将引一万人马，逢山开路，先来进兵。早有细作报与宋江，这场厮杀不小。宋江听了大惊。传下将令，一面教取卢俊义部下尽数军马，一面又取檀州、蓟州旧有人员都来听调。就请赵枢密前来监战。再要水军头目将带水手人员，尽数登岸，都到霸州取齐，陆路进发。水军头领护持赵枢密在后而来。应有军马尽到幽州。宋江等接见赵枢密，参拜已罢。赵枢密道：“将军如此劳神，国之柱石，名传万载，不泯之德也。下官回朝，于天子前必当重保。”宋江答道：“无能小将，不足挂齿。上托天子洪福齐天，下赖元帅虎威，偶成小功，非人能也。今有探细人报来就里，闻知辽国兀颜统军起二十万军马，倾国而来。兴亡胜败，决此一战。特请枢相另立营寨，于十五里外屯扎，看宋江尽忠竭力，施犬马之劳，与众弟兄并力向前，决此一战。托天子盛德，早得取胜，以报朝廷。”赵枢密道：“将军善觑方便。孙子有云：‘多算胜，少算不胜。’善加谋略，事事皆宜仔细。”宋江遂辞了赵枢密，与同卢俊义引起大兵，转过幽州地面所属永清县界，把军马屯扎，下了营寨。聚集诸将头领上帐同坐，商议军情大事。</div>
+            <div class="text-block simplified-text">先不说辽国大将兀颜统军带着大部队杀过来了。单说他们的先锋琼、寇两位将军，已经带了一万人马，一路开道，先打过来了。宋江早就收到探子的报告，知道这场仗不好打。宋江一听就急了，赶紧下令：一边让卢俊义把手下的兵马全调过来，一边把原来檀州、蓟州的老部下都叫来听指挥。还专门请朝廷的赵枢密来督战。又命令水军头领带着所有水手上岸，全部到霸州集合，从陆路进军。水军头领保护着赵枢密在后面跟着。所有部队都要赶到幽州会合。
+
+宋江见到赵枢密，行完礼后，赵枢密说："将军这么费心，真是国家的顶梁柱啊！你的功劳一定会名留青史。等我回朝，一定在皇上面前好好保举你。"宋江回答："我这点本事不值一提。全靠皇上洪福齐天，还有元帅的威风，才侥幸立了点小功劳。现在探子来报，说辽国兀颜统军带着二十万大军，全国出动来打我们。国家存亡就看这一仗了。请枢密大人把营地安在十五里外，看我宋江拼死效力，带着弟兄们全力杀敌。希望借皇上的福气，早点打赢，报答朝廷。"赵枢密说："将军见机行事。就像孙子兵法说的：'准备充分才能赢，准备不足就会输。'要多动脑筋，事事都要考虑周全。"宋江告别赵枢密后，和卢俊义带着大军开到幽州永清县地界，安营扎寨。召集所有将领在大帐里开会，商量打仗的事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">宋江道：“今次兀颜统军亲引辽兵倾国而来，决非小可。死生胜负在此一战。汝等众兄弟皆宜努力向前，勿生退悔。但得微功，上达朝廷，天子恩赏，必当共享。并无独善之理。”众皆起身都道：“兄长之命谁敢不依！尽心竭力，当报大恩。”正商议间，小校来报：“有辽国使人下战书来。”宋江教唤至帐下，将书呈上。宋江拆书看了，乃是辽国兀颜统军帐前先锋使琼、寇二将军，充前部兵马，相期来日决战。宋江就批书尾，回示来日决战。叫与来使酒食，放回本寨。来日天明，准决胜负。</div>
+            <div class="text-block simplified-text">宋江说："这次辽国的兀颜统帅亲自带着全国军队打过来，情况非常严重。咱们的生死成败就看这一仗了。各位兄弟都要拼命往前冲，别想着后退。只要立下功劳，报给朝廷，皇上的封赏肯定人人有份，绝不会亏待大家。"所有人都站起来说："大哥吩咐的事我们一定照办！拼了命也要报答您的恩情。"正说着，哨兵来报告："辽国派人来下战书了。"宋江让人把使者带进来，接过战书。他打开一看，是辽国先锋琼将军和寇将军写的，说他们打头阵，约好明天决战。宋江直接在战书后面批了"明天决战"，然后给使者吃了顿饭，放他回去了。约定天亮后决一死战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">此时秋尽冬来，军披重铠，马挂皮甲，尽皆得时。次日，五更造饭，平明拔寨，尽数起行。不到四五里，宋兵早与辽兵相迎。遥望皂雕旗影里，闪出两员先锋旗号来。战鼓喧天，门旗开处，那个琼先锋当先出马。怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这时候秋天结束冬天来了，士兵们都穿着厚铠甲，战马也披上皮甲，正是打仗的好时候。第二天天还没亮就做饭，天亮就收拾营寨出发。走了不到四五里地，宋朝军队就遇上了辽国军队。远远看见黑色大旗下面，有两支先锋部队的旗子。战鼓敲得震天响，营门大旗一开，那个叫琼先锋的将军第一个骑马冲出来。他长什么样呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">头戴鱼尾卷云镔铁冠，披挂龙鳞傲霜嵌缝铠，身穿石榴红锦绣罗袍，腰系荔枝七宝黄金带，足穿抹绿鹰嘴金线靴，腰悬炼银竹节熟钢鞭。左插硬弓，右悬长箭。马跨越岭巴山兽，枪搦翻江搅海龙。</div>
+            <div class="text-block simplified-text">这个人头上戴着铁做的鱼尾形状帽子，帽子上有卷云花纹。身上穿着龙鳞图案的铠甲，铠甲接缝处装饰精美。外面套着大红色的华丽长袍，腰间系着镶有宝石的金色腰带。脚上穿着绿色金线靴子，靴头尖尖像鹰嘴。腰上还挂着一根银光闪闪的钢鞭。左边带着硬弓，右边挂着长箭。骑着一匹能翻山越岭的骏马，手里拿着长枪，看起来威风凛凛，连江海里的龙都能降服。
+
+（说明：通过以下方式实现白话转换：
+1. 将"镔铁冠"译为"铁做的帽子"
+2. "龙鳞傲霜嵌缝铠"拆解为"龙鳞图案的铠甲，接缝处装饰精美"
+3. 用"大红色"替代"石榴红"
+4. "荔枝七宝黄金带"译为"镶有宝石的金色腰带"
+5. 保留"鹰嘴"的比喻但增加解释
+6. 将最后两句的气势用"威风凛凛"概括
+7. 保持所有装备信息的完整呈现）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">当下那个琼妖纳延横枪跃马，立在阵前。宋江在门旗下看了琼先锋如此英雄，便问：“谁与此将交战？”当下九纹龙史进提刀跃马，出来与琼将军挑战。二骑战马相交，两般军器并举，鞍上人斗人，坐下马斗马，刀来枪去花一团，枪来刀去锦一簇，四条臂膊乱纵横，八只马蹄撩乱走。史进与琼妖纳延斗到二三十合，使进气力不加，拨回马望本阵便走。琼先锋纵马赶来。宋江阵上，小李广花荣正在宋江背后，见输了史进，便拈起弓，搭上箭，把马挨出阵前。觑的来马较近，飕的只一箭，正中琼先锋面门，翻身落马。史进听的背后坠马，霍地回身，复上一刀，结果了琼妖纳延。可怜能敌番官，到此须还丧命。</div>
+            <div class="text-block simplified-text">那时候，琼妖纳延拿着枪骑着马，威风凛凛地站在队伍最前面。宋江在自家队伍里看到他这么厉害，就问："谁去跟他打？"话音刚落，九纹龙史进就提着刀骑马冲出去挑战。两人骑着马打成一团，刀枪你来我往，人在马背上厮杀，马也在下面较劲。刀光枪影混作一片，四条胳膊挥舞不停，八只马蹄乱蹬乱跑。打了二三十个回合后，史进力气跟不上了，调转马头就往回跑。琼妖纳延骑马紧追。宋江这边，站在后面的小李广花荣看见史进打不过，立刻拿起弓搭上箭，骑马冲出队伍。等追兵靠近时，"嗖"的一箭正好射中琼妖纳延的脸，他当场摔下马。史进听到身后有人落马，猛地转身补了一刀，把琼妖纳延给杀了。这么厉害的一个人，最后还是把命搭上了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">那寇先锋望见砍了琼先锋，怒从心上起，恶向胆边生，跃马挺枪，直出阵前，高声大骂：“贼将怎敢暗算吾兄！”当有病尉迟孙立飞马直出，径来奔寇镇远。军中战鼓喧天，耳畔喊声不绝。那孙立的金枪神出鬼没，寇先锋见了，先自八分胆丧。斗不过二十余合，寇先锋勒回马便走，不敢回阵，恐怕撞动了阵脚，绕阵东北而走。孙立正要建功，那里肯放？纵马赶去。寇先锋去的远了。孙立在马上带住枪，左手拈弓，右手取箭，搭上箭，拽满弓，觑着寇先锋后心较亲，只一箭。那寇将军听的弓弦响，把身一倒，那枝箭却好射到，顺手只一绰，绰了那枝箭。孙立见了，暗暗地喝采。寇先锋冷笑道：“这厮卖弄弓箭！”便把那枝箭咬在口里，自把枪带住了事环上，急把左手取出硬弓，右手箭搭上弦，扭过身来，望孙立前心窝里一箭射来。孙立早已偷眼见了，在马上左来右去。那枝箭到胸前，把身望后便倒，那枝箭从身上飞过去了。这马收勒不住，只顾跑来。寇先锋把弓穿在臂上，扭回身且看孙立倒在马上。寇先锋想道：“必是中了箭。”原来孙立两腿有力，夹住宝镫，倒在马上，故作如此，却不坠下马来。寇先锋勒转马要来捉孙立。两个马头却好相迎着，隔不的丈尺来去，孙立却跳将起来，大喝一声：“不恁地拿你，你须走了！”寇先锋吃了一惊，便回道：“你只躲的我箭，须躲不的我枪！”望孙立胸前尽力一枪搠来，孙立挺起胸脯，受他一枪。强尖到甲，略侧一侧，那枪从肋罗里放将过去，那寇将军却扑入怀里来。孙立就手提起腕上虎眼钢鞭，向那寇先锋胸袋上飞将下来，削去了半个天灵骨。那寇将军在镇远做了半世番官，死于孙立之手，尸骸落于马前。孙立提枪回来阵前。宋江大纵三军，掩杀过对阵来。辽兵无主，东西乱窜，各自逃生。</div>
+            <div class="text-block simplified-text">那个姓寇的先锋官看到姓琼的先锋被杀，气得要命，火冒三丈，骑着马举着枪就冲出来，大声骂道："你这混蛋竟敢暗算我兄弟！"这时孙立立刻骑马冲出来，直奔寇镇远。战场上战鼓震天响，喊杀声不断。孙立的金枪耍得神出鬼没，寇先锋一看就怂了。打了不到二十个回合，寇先锋调转马头就跑，不敢回自己阵营，怕影响军心，绕着战场往东北方向逃。孙立想立功，哪肯放过他？骑马就追。眼看寇先锋跑远了，孙立停住马，左手拿弓右手取箭，拉满弓瞄准寇先锋后背，"嗖"地一箭射去。寇先锋听到弓弦声，身子一歪，顺手就把箭接住了。孙立看了心里暗暗叫好。寇先锋冷笑道："就你会射箭？"说完把箭咬在嘴里，把枪挂在马鞍上，迅速拿出自己的硬弓，转身朝孙立心口就是一箭。孙立早就看见了，在马背上左右闪躲。箭到跟前时他突然往后一躺，箭就从身上飞过去了。马停不下来继续往前跑。寇先锋把弓挎在胳膊上，回头看孙立倒在马背上，心想："肯定中箭了。"其实孙立双腿有力，夹着马镫故意装死。寇先锋调转马头要来抓孙立，两匹马正好面对面，距离不到一丈远，孙立突然跳起来大喊："不这样骗你，你早跑了！"寇先锋吓一跳，回嘴道："你能躲箭，看你怎么躲枪！"说着朝孙立胸口猛刺一枪。孙立挺起胸膛硬接，枪尖碰到铠甲时他稍微侧身，让枪从腋下穿过，寇先锋整个人扑了过来。孙立顺手抡起钢鞭，照着寇先锋脑袋砸下去，直接削掉半边头盖骨。这个在镇远当了大半辈子官的寇将军，就这样死在孙立手里，尸体从马上栽下来。孙立提着枪回到阵前。宋江趁机指挥大军冲杀过去。辽兵没了主将，乱成一团四处逃命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">宋江正赶之间，听的前面连珠炮响。宋江便教水军头领先当住，一枝军卒人马把住水口。差花荣、奏明、吕方、郭盛骑马上山顶望时，只见垓垓攘攘，番军人马盖地而来。吓的宋江三魂荡荡，七魄悠悠。正是：饶君便有张良计，到底难逃白虎危。毕竟来的大队番军是何处人马，且听下回分解。</div>
+            <div class="text-block simplified-text">宋江正带兵追赶敌人，突然听到前面传来一连串的炮声。他马上命令水军将领先顶住，派一队士兵守住河口。接着让花荣、秦明、吕方、郭盛骑马到山顶查看情况。他们往下一看，只见密密麻麻的敌军像潮水一样涌过来。宋江吓得魂都快飞了。这真是：就算你有天大的本事，也躲不过这场大难。到底来了多少敌军？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
