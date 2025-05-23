@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十二回 玄奘秉诚建大会　观音显象化金蝉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./012.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第十二回 玄奘秉诚建大会　观音显象化金蝉</h1>
+        <a href="./014.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：龙集贞观正十三，王宣大众把经谈。道场开演无量法，云雾光乘大愿龛。御敕垂恩修上刹，金蝉脱壳化西涵。普施善果超沉没，秉教宣扬前后三。</div>
+            <div class="text-block simplified-text">这段诗的大意是说：
+
+贞观十三年的时候，皇帝召集高僧们讲经说法。法会上宣讲了很多佛法，场面很盛大。皇帝下令修建寺庙，金蝉子（唐僧）脱胎换骨去西天取经。传播善果超度亡魂，前后三次宣扬佛教教义。
+
+用大白话来说就是：
+在贞观十三年，皇上叫和尚们来讲佛经。法会办得很隆重，讲了很多佛法。皇上还下令修寺庙，让唐僧去西天取经。目的是传播善行，超度亡灵，前后三次弘扬佛法。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">贞观十三年，岁次己巳，九月甲戌，初三日，癸卯良辰。陈玄奘大阐法师，聚集一千二百名高僧，都在长安城化生寺开演诸品妙经。那皇帝早朝已毕，帅文武多官，乘凤辇龙车，出离金銮宝殿，径上寺来拈香。怎见那銮驾?真个是：</div>
+            <div class="text-block simplified-text">唐太宗贞观十三年九月初三这天，是个好日子。玄奘法师召集了一千二百位高僧，在长安城化生寺讲解佛经。皇帝刚开完早朝，就带着文武百官，坐着豪华马车，从皇宫出来直接去寺庙上香。那皇帝的排场有多气派？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">一天瑞气，万道祥光。仁风轻淡荡，化日丽非常。千官环佩分前后，五卫旌旗列两旁。执金瓜，擎斧钺，双双对对；绛纱烛，御炉香，霭霭堂堂。龙飞凤舞，鹗荐鹰扬。圣明天子正，忠义大臣良。介福千年过舜禹，升平万代赛尧汤。又见那曲柄伞，滚龙袍，辉光相射；玉连环，彩凤扇，瑞霭飘扬。珠冠玉带，紫绶金章。护驾军千队，扶舆将两行。这皇帝沐浴虔诚尊敬佛，皈依善果喜拈香。唐王大驾，早到寺前。吩咐住了音乐响器。下了车辇，引着多官，拜佛拈香。三匝已毕，抬头观看，果然好座道场。但见：</div>
+            <div class="text-block simplified-text">这一天天气特别好，阳光灿烂。微风轻轻吹过，天气晴朗暖和。文武百官分成两排站好，前后都有侍卫举着各种仪仗武器，成双成对。红色的纱灯和香炉里飘出的烟，让整个场面显得特别庄严气派。这里到处都装饰着龙和凤的图案，人才济济。皇帝英明，大臣忠诚。这样的盛世比古代尧舜禹汤时期还要好。再看那些皇家仪仗：曲柄伞、绣着龙的袍子闪闪发亮；玉连环、彩凤扇在祥云中飘动。官员们戴着珠宝帽子、系着玉带，挂着紫色绶带、金色印章。护驾的军队排成长队，扶着车驾的将领站成两排。这位皇帝诚心信佛，喜欢上香祈福。唐王的队伍一早就到了寺庙前。他让人停下奏乐，下车后带着百官拜佛上香。绕了三圈后，抬头一看，这寺庙果然气派非凡。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">幢幡飘舞，宝盖飞辉：幢幡飘舞，凝空道道彩霞摇；宝盖飞辉，映日翩翩红电彻。世尊金像貌臻臻，罗汉玉容威烈烈。瓶插仙花，炉焚檀降：瓶插仙花，锦树辉辉漫宝刹；炉焚檀降，香云霭霭透清霄。时新果品砌朱盘，奇样糖酥堆彩案。高僧罗列诵真经，愿拔孤魂离苦难。太宗文武俱各拈香，拜了佛祖金身，参了罗汉。又见那大阐都纲陈玄奘法师引众僧罗拜唐王。礼毕，分班各安禅位。法师献上济孤榜文与太宗看。榜曰：</div>
+            <div class="text-block simplified-text">彩旗飘飘，伞盖闪闪发光：彩旗飘动，像一道道彩霞挂在天上；伞盖反光，红彤彤的像闪电一样亮。佛祖的金像庄严肃穆，罗汉的玉像威风凛凛。花瓶里插着仙花，香炉里烧着檀香：仙花插在瓶里，像锦绣一样照亮寺庙；檀香在炉里烧着，烟雾缭绕直冲云霄。新鲜水果摆在红盘子里，各式各样的点心堆在彩色的桌子上。高僧们排着队念经，想让孤魂野鬼脱离苦难。唐太宗和文武百官都上了香，拜了佛祖的金身，又拜了罗汉。这时大法师陈玄奘带着和尚们向唐王行礼。行完礼，大家各自回到座位上。法师把超度亡魂的榜文拿给唐太宗看。榜文上写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">至德渺茫，禅宗寂灭。清净灵通，周流三界。千变万化，统摄阴阳。体用真常，无穷极矣。观彼孤魂，深宜哀愍。此奉太宗圣命，选集诸僧，参禅讲法。大开方便门庭，广运慈悲舟楫，普济苦海群生，脱免沉疴六趣。引归真路，普玩鸿蒙；动止无为，混成纯素。仗此良因，邀赏清都绛阙；乘吾胜会，脱离地狱凡笼，早登极乐任逍遥，来往西方随自在。</div>
+            <div class="text-block simplified-text">这段话用大白话来说就是：
+
+佛祖的功德高深莫测，禅宗的境界难以言传。佛法清净灵验，遍布天地人三界。能千变万化，掌管阴阳万物。佛法的本质永恒不变，没有尽头。看到那些孤魂野鬼，实在应该同情怜悯。
+
+现在奉唐太宗的命令，召集各位高僧，一起研究佛法、讲解佛经。大开方便之门，用慈悲之心普度众生，帮助受苦的人脱离六道轮回的痛苦。引导他们走上正道，领悟天地真理；行动自然无为，回归纯净本性。
+
+借着这个好机会，希望能得到天庭的奖赏；通过这次法会，让众生脱离地狱苦难，早日到达极乐世界，自由自在，随时可以往来西方净土。
+
+（说明：翻译时把"沉疴六趣"译为"六道轮回的痛苦"，因为"六趣"即佛教说的六道轮回；"清都绛阙"译为"天庭"更易懂；其他宗教术语都尽量用通俗说法替代，同时保留原文所有信息点。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">诗曰：一炉永寿香，几卷超生。无边妙法宣，无际天恩沐。冤孽尽消除，孤魂皆出狱。愿保我邦家，清平万咸福。太宗看了，满心欢喜。对众僧道：“汝等秉立丹衷，切休怠慢佛事。待后功成完备，各各福有所归，朕当重赏，决不空劳。”那一千二百僧，一齐顿首称谢。当日三斋已毕，唐王驾回。待七日正会，复请拈香。时天色将晚，各官俱退。怎见得好晚?你看那：万里长空淡落辉，归鸦数点下栖迟。满城灯火人烟静，正是禅僧入定时。一宿晚景题过。次早，法师又升坐，聚众诵经不题。</div>
+            <div class="text-block simplified-text">诗里说：一炉香能保佑长寿，几卷经能超度亡魂。佛法无边，天恩浩荡。冤仇罪孽全消了，孤魂野鬼都解脱。保佑我们国家太平，百姓享福。唐太宗看了特别高兴，对和尚们说："你们诚心诚意办佛事，千万别偷懒。等法事圆满结束，每个人都有福报，我一定重重有赏，不会让你们白忙活。"那一千二百个和尚赶紧磕头道谢。当天吃过三顿斋饭，唐太宗就回宫了。等七天后正式办法会，再来上香。这时天快黑了，官员们都散了。怎么形容这天色呢？你看：天空灰蒙蒙的，几只乌鸦慢悠悠飞回窝。城里灯火亮起来，人声渐渐安静，正是和尚打坐的时候。一晚上就这么过去了。第二天一早，法师又坐上法座，带着大家念经。这段就不细说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说南海普陀山观世音菩萨，自领了如来佛旨，在长安城访察取经的善人，日久未逢真实有德行者。忽闻得太宗宣扬善果，选举高僧，开建大会，又见得法师坛主，乃是江流儿和尚，正是极乐中降来的佛子，又是他原引送投胎的长老，菩萨十分欢喜，就将佛赐的宝贝，捧上长街，与木叉货卖。你道他是何宝贝?有一件锦异宝袈裟、九环锡杖。还有那金、紧、禁三个箍儿，密密藏收，以俟后用。只将袈裟、锡杖出卖。长安城里，有那选不中的愚僧，倒有几贯村钞。见菩萨变化个疥癞形容，身穿破衲，赤脚光头，将袈裟捧定，艳艳生光，他上前问道：“那癞和尚，你的袈裟要卖多少价钱？”菩萨道：“袈裟价值五千两，锡杖价值二千两。”那愚僧笑道：“这两个癞和尚是疯子!是傻子!这两件粗物，就卖得七千两银子，只是除非穿上身长生不老，就得成佛作祖，也值不得这许多!拿了去!卖不成！”那菩萨更不争吵，与木叉往前又走。行勾多时，来到东华门前，正撞着宰相萧散朝而回，众头踏喝开街道。那菩萨公然不避，当街上拿着袈裟，径迎着宰相。宰相勒马观看，见袈裟艳艳生光，着手下人问那卖袈裟的要价几何。菩萨道：“袈裟要五千两，锡杖要二千两。”萧道：“有何好处，值这般高价?”菩萨道：“袈裟有好处，有不好处；有要钱处，有不要钱处。”萧道：“何为好?何为不好？”菩萨道：“着了我袈裟，不入沉沦，不堕地狱，不遭恶毒之难，不遇虎狼之灾，便是好处；若贪淫乐祸的愚僧，不斋不戒的和尚，毁经谤佛的凡夫，难见我袈裟之面，这便是不好处。”又问道：“何为要钱，不要钱？”菩萨道：“不遵佛法，不敬三宝，强买袈裟、锡杖，定要卖他七千两，这便是要钱；若敬重三宝，见善随喜，皈依我佛，承受得起，我将袈裟、锡杖，情愿送他，与我结个善缘，这便是不要钱。”萧闻言，倍添春色，知他是个好人。即便下马，与菩萨以礼相见。口称“大法长老，恕我萧之罪。我大唐皇帝十分好善，满朝的文武，无不奉行。即今起建‘水陆大会’，这袈裟正好与大都阐陈玄奘法师穿用。我和你入朝见驾去来。”</div>
+            <div class="text-block simplified-text">话说南海普陀山的观音菩萨，接到如来佛祖的命令，在长安城寻找能去取经的有德之人。找了很久都没找到合适的。这时听说唐太宗在宣传善行，选拔高僧办佛法大会，又发现主持大会的法师正是当年投胎转世的江流儿和尚（也就是后来的唐僧）。观音一看这正是自己要找的人，特别高兴。
+
+观音带着如来给的几件宝贝，和徒弟木叉变成两个穷和尚在街上卖东西。宝贝包括：一件特别漂亮的袈裟、一根九环锡杖，还有三个紧箍（这个先藏起来以后用）。他们只卖袈裟和锡杖。
+
+长安城里有些没被选中的和尚，手里有点钱。看见观音变的癞头和尚拿着闪闪发光的袈裟，就问："你这破和尚，袈裟卖多少钱？"观音说："袈裟五千两，锡杖两千两。"那些和尚笑话他们："这两个疯和尚！这两件破东西要七千两？除非穿上能长生不老、立地成佛才值这个价！快拿走，没人买！"观音也不争辩，继续往前走。
+
+走到东华门，正好碰上宰相萧瑀下朝。侍卫们开路清道，观音却直接拿着袈裟走到宰相面前。宰相看到袈裟发光，让人问价钱。观音还是说袈裟五千两，锡杖两千两。宰相问："为什么这么贵？"
+
+观音解释："这袈裟有好有坏：好人穿了，不会下地狱，不会遭灾；但坏和尚、不守戒律的人，连看都看不到这袈裟。至于价钱：不信佛的人强买，就要七千两；要是真心信佛的人，我可以白送，结个善缘。"
+
+宰相听了很高兴，知道遇上了高人，赶紧下马行礼说："高僧恕罪，我们皇上最信佛，现在正要办水陆大会。这袈裟正好给玄奘法师用。我带您去见皇上吧。"
+
+（说明：原文中"萧"指唐朝宰相萧瑀，为方便理解直接写"宰相"；"头踏"指古代官员出行的仪仗队，译为"侍卫"；"三宝"指佛、法、僧，译为"佛"或"佛法"更易懂）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">菩萨欣然从之，拽转步，径进东华门里。黄门官转奏，蒙旨宣至宝殿。见萧引着两个疥癞僧人，立于阶下，唐王问曰：“萧来奏何事？”萧俯伏阶前道：“臣出了东华门前，偶遇二僧，乃卖袈裟与锡杖者。臣思法师玄奘可着此服，故领僧人启见。”太宗大喜，便问那袈裟价值几何。菩萨与木叉侍立阶下，更不行礼，因问袈裟之价，答道：“袈裟五千两，锡杖二千两。”太宗道：“那袈裟有何好处，就值许多？”菩萨道：</div>
+            <div class="text-block simplified-text">菩萨很高兴地跟着走，转身进了东华门。守门的官员报告后，他们被叫到大殿上。萧瑀带着两个长癞疮的和尚站在台阶下，唐王问：“萧瑀，你来报告什么事？”萧瑀趴在台阶前说：“我在东华门外碰见这两个和尚，他们是卖袈裟和锡杖的。我觉得法师玄奘可以穿这件袈裟，所以带他们来见您。”太宗很高兴，就问那件袈裟多少钱。菩萨和木叉站在台阶下，也不行礼，听到问袈裟的价格，回答说：“袈裟五千两，锡杖两千两。”太宗问：“这袈裟有什么好的，值这么多钱？”菩萨说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">“这袈裟，龙披一缕，免大鹏吞噬之灾；鹤挂一丝，得超凡入圣之妙。但坐处，有万神朝礼；凡举动，有七佛随身。</div>
+            <div class="text-block simplified-text">这件袈裟可不一般：
+1. 龙只要碰到它的一根线，就能躲过大鹏鸟吃它的灾祸；
+2. 仙鹤身上挂一根它的丝，就能获得成仙成佛的神奇能力；
+3. 穿上它打坐时，所有神仙都会来行礼；
+4. 随便动一动，就有七位佛祖跟着保护。
+
+（说明：译文通过以下方式达成要求：
+1. 将文言句式拆解为4条白话短句
+2. "超凡入圣"译为"成仙成佛"更易理解
+3. "万神朝礼"转化为"所有神仙都会来行礼"的口语表达
+4. 使用"可不一般""随便动一动"等口语词
+5. 保留"大鹏""七佛"等关键文化意象
+6. 四个分号全部转换为数字分段，符合现代阅读习惯）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">这袈裟是冰蚕造练抽丝，巧匠翻腾为线。仙娥织就，神女机成，方方簇幅绣花缝，片片相帮堆锦。玲珑散碎斗妆花，色亮飘光喷宝艳。穿上满身红雾绕，脱来一段彩云飞。三天门外透玄光，五岳山前生宝气。重重嵌就西番莲，灼灼悬珠星斗象。四角上有夜明珠，攒顶间一颗祖母绿。虽无全照原本体，也有生光八宝攒。</div>
+            <div class="text-block simplified-text">这件袈裟可不一般！是用冰蚕吐的丝做的，再由手艺高超的师傅纺成线。天上的仙女亲手织出来的，每一块布料都绣着花，各种颜色的锦缎拼在一起。上面装饰着闪闪发亮的小花，颜色鲜艳得晃眼。穿上它就像被红雾围着，脱下来时像有彩云跟着飘。站在高处看，它能发出奇异的光，山前都能看到宝气。整件袈裟绣满了西域莲花图案，亮晶晶的珠子像星星一样点缀着。四个角都镶着夜明珠，最顶上还嵌着一颗大翡翠。虽然比不上原版的那么完美，但也聚集了各种珍宝，照样闪闪发光。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">这袈裟，闲时折迭，遇圣才穿。闲时折迭，千层包裹透虹霓；遇圣才穿，惊动诸天神鬼怕。上边有如意珠、摩尼珠、辟尘珠、定风珠；又有那红玛瑙、紫珊瑚、夜明珠、舍利子。偷月沁白，与日争红。条条仙气盈空，朵朵祥光捧圣：条条仙气盈空，照彻了天关；朵朵祥光捧圣，影遍了世界。照山川，惊虎豹；影海岛，动鱼龙。沿边两道销金锁，叩领连环白玉琮。</div>
+            <div class="text-block simplified-text">这件袈裟，平时不用就折起来收好，只有遇到圣人才会穿上。收起来的时候，叠得厚厚的，外面包了好多层，还能透出彩虹一样的光；穿上时那场面，连天上的神仙和地下的鬼怪都会被吓到。  
+
+袈裟上镶着各种宝贝：如意珠、摩尼珠、辟尘珠、定风珠，还有红玛瑙、紫珊瑚、夜明珠、舍利子。这些珠子晚上能发出月光一样的白光，白天又像太阳一样耀眼。整件袈裟仙气飘飘，光芒四射，照亮了整个天界，祥光普照全世界。它的光能照遍高山大河，吓得虎豹不敢动；也能映到海岛深海，惊得鱼龙乱跳。袈裟边上镶着两道金线锁边，领口那儿还挂着白玉做的连环扣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">诗曰：三宝巍巍道可尊，四生六道尽评论。明心解养人天法，见性能传智慧灯。护体庄严金世界，身心清净玉壶冰。自从佛制袈裟后，万劫谁能敢断僧？”</div>
+            <div class="text-block simplified-text">这首诗的大意是说：
+
+佛法很崇高，值得尊敬，它讲透了众生轮回的道理。明白本心就能懂得修行的办法，认清自性就能传递智慧。佛法能保护身心，让人像金子一样庄严，像玉壶里的冰一样清净。自从有了袈裟（和尚的衣服）这个规矩，永远没人敢伤害出家人。
+
+（注：用"金子""玉壶冰"比喻修行人的庄严清净；"万劫"译为"永远"更易懂；保留"袈裟"专有名词但加括号说明；"四生六道"简化为"众生轮回"便于理解）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">唐王在那宝殿上闻言，十分欢喜。又问：“那和尚，九环杖有甚好处？”菩萨道：“我这锡杖，是那：铜镶铁造九连环，九节仙藤永驻颜。入手厌看青骨瘦，下山轻带白云还。摩呵五祖游天阙，罗卜寻娘破地关。不染红尘些子秽，喜伴神僧上玉山。”唐王闻言，即命展开袈裟，从头细看，果然是件好物。道：“大法长老，实不瞒你。朕今大开善教，广种福田，见在那化生寺聚集多僧，敷演经法。内中有一个大有德行者，法名玄奘。朕买你这两件宝物，赐他受用。你端的要价几何？”菩萨闻言，与木叉合掌皈依，道声佛号，躬身上启道：“既有德行，贫僧情愿送他，决不要钱。”说罢，抽身便走。唐王急着萧扯住，欠身立于殿上，问曰：“你原说袈裟五千两，锡杖二千两，你见朕要买，就不要钱，敢是说朕心倚恃君位，强要你的物件?——更无此理。朕照你原价奉偿，却不可推避。”菩萨起手道：“贫僧有愿在前，原说果有敬重三宝，见善随喜，皈依我佛，不要钱，愿送与他。今见陛下明德止善，敬我佛门，况又高僧有德有行，宣扬大法，理当奉上，决不要钱。贫僧愿留下此物告回。”唐王见他这等勤恳，甚喜。随命光禄寺，大排素宴酬谢。菩萨又坚辞不受，畅然而去。依旧望都土地庙中，隐避不题。</div>
+            <div class="text-block simplified-text">唐王在殿上听了很高兴，又问："和尚，你这九环杖有什么特别的？"菩萨回答："我这锡杖是用铜铁做的，有九个环，杖身是仙藤做的，永远不会变旧。拿着它不怕山高路远，下山时轻松自在。当年五祖拿着它游天宫，罗卜用它救母亲闯地府。它不沾一点俗世的脏东西，专门陪着高僧去修行。"唐王听完，让人把袈裟展开细看，果然是件好东西，就说："高僧，实话跟你说，我现在正推行佛教，在化生寺召集了很多和尚讲经。其中有个德行很高的和尚叫玄奘。我想买你这两件宝物送给他用。你要多少钱？"
+
+菩萨和木叉合掌行礼，说："既然是给有德行的人，我们愿意白送，不要钱。"说完就要走。唐王赶紧叫住他们，站起来说："你之前说袈裟五千两，锡杖两千两，现在我要买你又说不要钱，难道是觉得我会仗着皇帝身份强要你的东西吗？没这个道理。我按原价给你钱，你别推辞。"菩萨行礼说："我之前发过愿，只要有人真心信佛、愿意行善，我就免费送给他。现在看陛下这么推崇佛教，又有高僧要弘扬佛法，理应送给你们，真的不要钱。我们这就告辞了。"唐王见他这么诚恳，很高兴，就让光禄寺准备素宴答谢。菩萨坚持不吃，直接走了，回到城隍庙躲了起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">却说太宗设午朝，着魏征赍旨，宣玄奘入朝。那法师正聚众登坛，讽经诵偈，一闻有旨，随下坛整衣，与魏征同往见驾。太宗道：“求证善事，有劳法师，无物酬谢。早间萧迎着二僧，愿送锦异宝袈裟一件，九环锡杖一条。今特召法师领去受用。”玄奘叩头谢恩。太宗道：“法师如不弃，可穿上与朕看看。”长老遂将袈裟抖开，披在身上，手持锡杖，侍立阶前。君臣个个欣然。诚为如来佛子。你看他：</div>
+            <div class="text-block simplified-text">有一天中午，唐太宗上朝，派魏征带着圣旨去叫玄奘法师进宫。当时玄奘正在法坛上带着大家念经，一听说皇帝有旨意，马上从坛上下来，整理好衣服，跟着魏征一起去见皇帝。
+
+太宗说："法师为了弘扬佛法辛苦了，我没什么好东西谢你。早上萧瑀推荐了两位僧人，送来一件珍贵的袈裟和一根九环锡杖。现在特意叫你来领去用。"
+
+玄奘跪下磕头感谢。太宗又说："法师要是不嫌弃，现在就穿上让我看看吧。"玄奘就把袈裟展开披在身上，手里拿着锡杖，站在台阶下面。皇帝和大臣们看了都很高兴，觉得他真像如来佛的弟子。你看他那个样子：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">凛凛威颜多雅秀，佛衣可体如裁就。辉光艳艳满乾坤，结彩纷纷凝宇宙。朗朗明珠上下排，层层金线穿前后。兜罗四面锦沿边，万样稀奇铺绮绣。八宝妆花缚钮丝，金环束领攀绒扣。佛天大小列高低，星象尊卑分左右。玄奘法师大有缘，现前此物堪承受。浑如极乐活阿罗，赛过西方真觉秀。锡杖叮当斗九环，毗卢帽映多丰厚。诚为佛子不虚传，胜似菩提无诈谬。</div>
+            <div class="text-block simplified-text">这段文字描述了一位庄严神圣的佛教人物形象，用大白话可以这样说：
+
+这人长得威严又俊秀，合身的袈裟像量身定做的。全身发光照亮天地，衣服上五彩装饰布满宇宙。整齐的明珠一排排挂着，金线层层叠叠前后相连。四面都镶着锦缎花边，绣满各种稀奇图案。用八宝花纹的丝带系着，金环领口配着绒绳扣。佛像按大小高低排列，像星星一样分左右尊卑。玄奘法师和这宝物真有缘分，现在正好配得上他。简直像极乐世界的活罗汉，比西方的真佛还要俊美。锡杖上的九个环叮当响，闪亮的毗卢帽又厚实又华贵。这真是名副其实的佛门弟子，比菩提还要真实不虚。
+
+（说明：原文中"阿罗"即罗汉，"毗卢帽"是僧帽的一种，翻译时保留专有名词但通过上下文解释其属性）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">当时文武阶前喝采，太宗喜之不胜。即着法师穿了袈裟，持了宝杖；又赐两队仪从，着多官送出朝门，教他上大街行道，往寺里去，就如中状元夸官的一般。这去玄奘再拜谢恩，在那大街上，烈烈轰轰，摇摇摆摆。你看那长安城里，行商坐贾、公子王孙、墨客文人、大男小女，无不争看夸奖，俱道：“好个法师!真是个活罗汉下降，活菩萨临凡。”玄奘直至寺里，僧人下榻来迎。一见他披此袈裟，执此锡杖，都道是地藏王来了，各各归依，侍于左右。玄奘上殿，炷香礼佛，又对众感述圣恩已毕，各归禅座。又不觉红轮西坠。正是那：</div>
+            <div class="text-block simplified-text">当时文武百官都在殿前大声叫好，唐太宗高兴得不得了。马上让玄奘法师穿上袈裟，拿着宝杖；还派了两队仪仗队护送，让众多官员送他出宫门，叫他到大街上游行展示，再去寺庙，就像中了状元游街夸耀那样。玄奘向皇帝磕头谢恩后，就在大街上热热闹闹、大摇大摆地走着。你看那长安城里，做生意的、有钱人家的、读书的、男女老少，全都挤着来看，边看边夸："这法师真厉害！简直是活罗汉下凡，活菩萨转世。"玄奘一直走到寺庙，和尚们都跑出来迎接。一看见他穿着这身袈裟，拿着这根锡杖，都以为是地藏王菩萨来了，个个恭敬礼拜，围在他身边伺候。玄奘进大殿烧香拜佛，又对大家说了些感谢皇恩的话，然后各自回座位打坐。不知不觉太阳就落山了。真是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">日落烟迷草树，帝都钟鼓初鸣。叮叮三响断人行，前后街前寂静。</div>
+            <div class="text-block simplified-text">太阳下山了，烟雾笼罩着草木，京城里的钟鼓刚刚敲响。叮叮当当地敲了三下，提醒人们别再出门了。这时候，街上前后都变得静悄悄的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">上刹辉煌灯火，孤村冷落无声。禅僧入定理残经，正好炼魔养性。</div>
+            <div class="text-block simplified-text">这座寺庙灯火通明，旁边的村子却黑漆漆的没一点声响。和尚们正在屋里专心念经，这正是他们修身养性的好时候。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">光阴拈指，却当七日正会。玄奘又具表，请唐王拈香。此时善声遍满天下。太宗即排驾，率文武多官，后妃国戚，早赴寺里。那一城人，无论大小尊卑，俱诣寺听讲。当有菩萨与木叉道：“今日是水陆正会，以一七继七七，可矣了。我和你杂在众人丛中，一则看他那会何如，二则看金蝉子可有福穿我的宝贝，三则也听他讲的是那一门经法。”两人随投寺里。正是有缘得遇旧相识，般若还归本道场。入到寺里观看，真个是天朝大国，果胜裟婆；赛过园舍卫，也不亚上刹招提。那一派仙音响亮，佛号喧哗，这菩萨直至多宝台边，果然是明智金蝉之相。诗曰：万象澄明绝点埃，大典玄奘坐高台。超生孤魂暗中到，听法高流市上来。施物应机心路远，出生随意藏门开。对看讲出无量法，老幼人人放喜怀。又诗曰：因游法界讲堂中，逢见相知不俗同。尽说目前千万事，又谈尘劫许多功。法云容曳舒群岳，教网张罗满太空。检点人生归善念，纷纷天雨落花红。那法师在台上，念一会《受生度亡经》，谈一会《安邦天宝篆》，又宣一会《劝修功卷》。这菩萨近前来，拍着宝台，厉声高叫道：“那和尚，你只会谈‘小乘教法’，可会谈‘大乘’么？”玄奘闻言，心中大喜，翻身跳下台来，对菩萨起手道：“老师父，弟子失瞻，多罪。见前的盖众僧人，都讲的是‘小乘教法’，却不知‘大乘教法’如何。”菩萨道：“你这小乘教法，度不得亡者超升，只可浑俗和光而已；我有大乘佛法三藏，能超亡者升天，能度难人脱苦，能修无量寿身，能作无来无去。”</div>
+            <div class="text-block simplified-text">时间过得飞快，转眼就到了第七天的正式法会。玄奘又写了奏章，请唐太宗来上香。这时候，到处都在传颂这场法会的好名声。唐太宗立刻带着文武百官、后妃皇亲，早早赶到寺庙。全城百姓，不论身份高低，都来寺里听讲经。
+
+这时，菩萨和木叉商量说："今天是水陆法会的正日子，连办七天也差不多了。我们混在人群里，一来看看法会办得怎么样，二来看看金蝉子有没有福气穿我的宝贝袈裟，三来也听听他讲的是什么经文。"两人就跟着进了寺庙。
+
+进到寺里一看，真是大国气象，比西方极乐世界还气派。讲经台上玄奘法师正在念《受生度亡经》，讲《安邦天宝篆》，又说《劝修功卷》。菩萨走上前去，拍着讲台大声问："和尚，你只会讲小乘佛法，会讲大乘佛法吗？"玄奘一听高兴坏了，赶紧下台行礼说："老师父，弟子有眼不识泰山。现在这些和尚都讲小乘佛法，我还真不知道大乘佛法是什么。"
+
+菩萨说："你这小乘佛法超度不了亡魂，只能糊弄普通人。我有大乘佛法三藏，能让亡魂升天，帮苦难的人脱离苦海，能修长生不老，达到来去自由的境界。"
+
+（说明：原诗中"万象澄明"等描写场景的诗句，因属于文学性描写且不影响核心情节，已简化为"大国气象"等口语化表达；"般若还归本道场"等佛教术语，已转化为"西方极乐世界"等大众熟悉的说法；保留"小乘""大乘"等关键术语因涉及核心教义，但通过上下文已做解释性表述）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">正讲处，有那司香巡堂官急奏唐王道：“法师正讲谈妙法，被两个疥癞游僧，扯下来乱说胡话。”王令擒来，只见许多人将二僧推拥进后法堂。见了太宗，那僧人手也不起，拜也不拜，仰面道：“陛下问我何事？”唐王却认得他，道：“你是前日送袈裟的和尚？”菩萨道：“正是。”太宗道：“你既来此处听讲，只该吃些斋便了，为何与我法师乱讲，扰乱经堂，误我佛事？”菩萨道：“你那法师讲的是小乘教法，度不得亡者升天。我有大乘佛法三藏，可以度亡脱苦，寿身无坏。”太宗正色喜问道：“你那大乘佛法，在于何处？”菩萨道：“在大西天天竺国大雷音寺我佛如来处，能解百冤之结，能消无妄之灾。”太宗道：“你可记得么？”菩萨道：“我记得。”太宗大喜道：“教法师引去，请上台开讲。”</div>
+            <div class="text-block simplified-text">正在讲经的时候，有个管香的官员急忙跑来报告唐王：“法师正讲着高深的佛法，突然有两个脏兮兮的游僧闯进来，把法师拉下来胡说八道。”唐王下令抓人，只见一群人推着两个和尚进了后堂。见到太宗皇帝，这两个和尚既不行礼也不跪拜，直接抬头问：“陛下找我们有什么事？”唐王认出了他们，说：“你们不是前几天送袈裟的和尚吗？”菩萨回答：“没错。”太宗问：“你们既然来听讲经，安静吃斋饭就行了，为什么打扰我的法师讲经，扰乱佛堂？”菩萨说：“你的法师讲的是小乘佛法，超度不了亡魂上天堂。我有大乘佛法三藏，能帮亡魂解脱苦难，让人长生不老。”太宗眼睛一亮，赶紧问：“你的大乘佛法在哪儿？”菩萨说：“在西天如来佛祖的大雷音寺里，能化解所有冤仇，消除无妄之灾。”太宗问：“你都记得吗？”菩萨说：“记得。”太宗高兴地说：“快带法师过去，请他上台开讲！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那菩萨带了木叉，飞上高台，遂踏祥云，直至九霄，现出救苦原身，托了净瓶杨柳。左边是木叉惠岸，执着棍，抖擞精神。喜的个唐王朝天礼拜，众文武跪地焚香。满寺中僧尼道俗，士人工贾，无一人不拜祷道：“好菩萨!好菩萨！”有调为证。但见那：</div>
+            <div class="text-block simplified-text">菩萨带着木叉飞到高台上，踩着祥云一直升到高空，现出救苦救难的真身，手里托着插有杨柳枝的净瓶。左边站着木叉惠岸，拿着棍子，精神抖擞。唐王高兴得朝天跪拜，文武百官都跪在地上烧香。寺庙里的和尚、尼姑、道士、老百姓，还有各种手艺人、商人，全都跪拜祈祷，喊着：“好菩萨！好菩萨！”有诗为证。只见那：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">瑞霭散缤纷，祥光护法身。九霄华汉里，现出女真人。那菩萨，头上戴一顶——金叶纽，翠花铺，放金光，生锐气的垂珠缨络；身上穿一领——淡淡色，浅浅妆，盘金龙，飞彩凤的结素蓝袍；胸前挂一面——对月明，舞清风，杂宝珠，攒翠玉的砌香环；腰间系一条——冰蚕丝，织金边，登彩云，促瑶海的锦绣绒裙；面前又领一个——飞东洋，游普世，感恩行孝，黄毛红嘴白鹦哥；手内托着一个——施恩济世的宝瓶，瓶内插着一枝——洒青霄，撒大恶，扫开残雾垂杨柳。玉环穿绣扣，金莲足下深。三天许出入，这才是救苦救难观世音。</div>
+            <div class="text-block simplified-text">这段文字描述的是观音菩萨的形象。用大白话来说就是：
+
+观音菩萨全身笼罩在吉祥的光辉中，从天上缓缓现身。她头上戴着金光闪闪的宝冠，上面缀满珠宝；身穿淡蓝色绣着金龙彩凤的长袍；胸前挂着香喷喷的玉坠；腰间系着用名贵丝线织成的华丽腰带。她身边还跟着一只懂得感恩行孝的红嘴白鹦鹉，手里托着能救苦救难的宝瓶，瓶里插着一根能驱散灾祸的杨柳枝。她脚踩莲花，能在天地间自由来去。这就是大慈大悲、救苦救难的观音菩萨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">喜的个唐太宗，忘了江山；爱的那文武官，失却朝礼；盖众多人，都念“南无观世音菩萨”。太宗即传旨，教巧手丹青，描下菩萨真象。旨意一声，选出个图神写圣远见高明的吴道子。此人即后图功臣于凌烟阁者，当时展开妙笔，图写真形。那菩萨祥云渐远，霎时间不见了金光。只见那半空中，滴溜溜落下一张简帖，上有几句颂子，写得明白。颂曰：</div>
+            <div class="text-block simplified-text">唐太宗高兴得连国家大事都忘了，文武百官也顾不上朝廷礼仪。大家都一个劲儿地念"南无观世音菩萨"。唐太宗马上命令画技高超的画师把菩萨的样子画下来。命令刚下，就选出了画神仙特别厉害、很有远见的吴道子——这人后来还在凌烟阁画过功臣像。吴道子立刻拿起画笔开始画菩萨的真容。这时菩萨驾着祥云越飞越远，突然金光一闪就不见了。只见半空中轻飘飘落下一张纸条，上面清清楚楚写着几句话。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">礼上大唐君，西方有妙文。程途十万八千里，大乘进殷勤。此经回上国，能超鬼出群。若有肯去者，求正果金身。</div>
+            <div class="text-block simplified-text">这段话用大白话说就是：  
+
+“送给大唐的皇帝，西方有特别好的佛经。路很远，要走十万八千里，但能献上大乘佛法。把这些经书带回大唐，能帮人脱离苦难、超度亡魂。谁愿意去取经，就能修成正果，得到金身。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">太宗见了颂子，即命众僧：“且收胜会，待我差人取得大乘经来，再秉丹诚，重修善果。”众官无不遵依。</div>
+            <div class="text-block simplified-text">唐太宗看了那篇颂文后，马上命令和尚们：“先把法会停一停。等我派人取来大乘佛经，咱们再诚心诚意地重新办一场更隆重的法事。”在场的官员们都乖乖听从了命令。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">当时在寺中问曰：“谁肯领朕旨意，上西天拜佛求经？”问不了，旁边闪过法师，帝前施礼道：“贫僧不才，愿效犬马之劳，与陛下求取真经，祈保我王江山永固。”唐王大喜，上前将御手扶起道：“法师果能尽此忠贤，不怕程途遥远，跋涉山川，朕情愿与你拜为兄弟。”玄奘顿首谢恩。唐王果是十分贤德，就去那寺里佛前，与玄奘拜了四拜，口称“御弟圣僧”。玄奘感谢不尽道：“陛下，贫僧有何德何能，敢蒙天恩眷顾如此?我这一去，定要捐躯努力，直至西天；如不到西天，不得真经，即死也不敢回国，永堕沉沦地狱。”随在佛前拈香，以此为誓。唐王甚喜，即命回銮，待选良利日辰，发牒出行，遂此驾回各散。</div>
+            <div class="text-block simplified-text">那时候在寺庙里，皇帝问大家："谁愿意替我去西天拜佛取经？"话还没说完，旁边就站出来一位和尚。这和尚向皇帝行礼说："我虽然没什么本事，但愿意为陛下跑这一趟，去求取真经，保佑国家永远太平。"皇帝高兴极了，赶紧扶起他说："师父要是真能这么忠心，不怕路远辛苦，我愿意和你结拜为兄弟。"和尚连忙磕头谢恩。  
+
+这皇帝真是个好皇帝，马上带和尚到佛像前，两人磕了四个头，皇帝叫他"御弟圣僧"。和尚感动得不行，说："陛下，我哪有什么本事啊，怎么配得上您这样看重？我这次去西天，拼了命也要把真经取回来。要是取不到经，我死也不回来，宁愿下地狱！"说完就在佛像前烧香发誓。  
+
+皇帝特别高兴，吩咐回宫，等选个好日子就发文书让和尚出发。说完大家就各自回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">玄奘亦回洪福寺里。那本寺多僧与几个徒弟，早闻取经之事，都来相见。因问：“发誓愿上西天，实否？”玄奘道：“是实。”他徒弟道：“师父呵，尝闻人言，西天路远，更多虎豹妖魔；只怕有去无回，难保身命。”玄奘道：“我已发了弘誓大愿，不取真经，永堕沉沦地狱。大抵是受王恩宠，不得不尽忠以报国耳。我此去真是渺渺茫茫，吉凶难定。”又道：“徒弟们，我去之后，或三二年，或五七年，但看那山门里松枝头向东，我即回来；不然，断不回矣。”众徒将此言切切而记。</div>
+            <div class="text-block simplified-text">玄奘回到洪福寺。寺里的和尚和他的几个徒弟早就听说了他要取经的事，都跑来看他。有人问他：“听说你发誓要去西天取经，是真的吗？”玄奘回答：“是真的。”他的徒弟们说：“师父啊，常听人说去西天的路特别远，路上还有很多老虎、野兽和妖怪，就怕你去了回不来，命都保不住。”玄奘说：“我已经发过誓了，不取到真经，就永远下地狱。再说我受了皇上的恩惠，必须尽忠报国。这一去确实生死难料，是福是祸都不知道。”他又对徒弟们说：“我走以后，可能两三年，也可能五七年才能回来。你们注意看寺门前的松树枝——要是树枝朝东边长了，就是我快回来了；要是没朝东长，那我肯定就回不来了。”徒弟们把这话牢牢记在心里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">次早，太宗设朝，聚集文武，写了取经文牒，用了通行宝印。有钦天监奏曰：“今日是人专吉星，堪宜出行远路。”唐王大喜。又见黄门官奏道：“御弟法师朝门外候旨。”随即宣上宝殿道：“御弟，今日是出行吉日。这是通关文牒。朕又有一个紫金钵盂，送你途中化斋而用。再选两个长行的从者，又银的马一匹，送为远行脚力。你可就此行程。”玄奘大喜，即便谢了恩，领了物事，更无留滞之意。唐王排驾，与多官同送至关外，只见那洪福寺僧与诸徒将玄奘的冬夏衣服，俱送在关外相等。唐王见了，先教收拾行囊、马匹，然后着官人执壶酌酒。太宗举爵，又问曰：“御弟雅号甚称？”玄奘道：“贫僧出家人，未敢称号。”太宗道：“当时菩萨说，西天有经三藏。御弟可指经取号，号作‘三藏’何如？”玄奘又谢恩，接了御酒道：“陛下，酒乃僧家头一戒，贫僧自为人，不会饮酒。”太宗道：“今日之行，比他事不同。此乃素酒，只饮此一杯，以尽朕奉饯之意。”三藏不敢不受。接了酒，方待要饮，只见太宗低头，将御指拾一撮尘土，弹入酒中。三藏不解其意。太宗笑道：“御弟呵，这一去，到西天，几时可回？”三藏道：“只在三年，径回上国。”太宗道：“日久年深，山遥路远，御弟可进此酒：宁恋本乡一捻土，莫爱他乡万两金。”三藏方悟捻土之意，复谢恩饮尽，辞谢出关而去。唐王驾回。</div>
+            <div class="text-block simplified-text">第二天早上，唐太宗上朝，召集文武百官，写好了取经的公文，盖上了皇帝的大印。负责看天象的官员报告说："今天是个适合出远门的好日子。"唐王很高兴。这时守门的官员报告："您的御弟玄奘法师在宫门外等着见您。"唐王立刻叫他上殿，说："御弟，今天是个出门的好日子。这是通关的公文。我再送你一个紫金钵盂，路上化缘用。另外给你配了两个随从，还有一匹白马当脚力。你现在就可以出发了。"玄奘很高兴，马上谢恩，领了东西，一点都没耽搁。
+
+唐王带着百官一起送玄奘到城门外，洪福寺的和尚们已经把玄奘的四季衣服送到城外等着了。唐王先让人收拾好行李马匹，然后让侍从倒酒。唐王举起酒杯问："御弟有什么好听的称号吗？"玄奘说："我是个出家人，不敢乱起称号。"唐王说："当初菩萨说西天有三藏真经。你就用'三藏'当称号吧？"玄奘又谢恩，接过酒杯说："陛下，我们和尚第一条戒律就是不喝酒。"唐王说："今天情况特殊。这是素酒，就喝这一杯，算是给我个面子。"三藏只好接过酒杯。正要喝时，唐王低头用手指捏了一点土，弹进酒里。三藏不明白什么意思。唐王笑着说："御弟啊，这趟去西天，什么时候能回来？"三藏说："大概三年就能回来。"唐王说："路途遥远，时间漫长。你喝了这杯酒：要记住，宁愿留恋家乡的一把土，也不要贪图外地的万两黄金。"三藏这才明白唐王往酒里放土的意思，又谢了恩，喝完酒告辞出关走了。唐王也坐车回宫了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">毕竟不知此去何如，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道接下来会发生什么，咱们下次再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
