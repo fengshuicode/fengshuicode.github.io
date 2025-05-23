@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十七回　徐宁教使钩镰枪　宋江大破连环马</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./056.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十七回　徐宁教使钩镰枪　宋江大破连环马</h1>
+        <a href="./058.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句"诗曰："可以直白地翻译为：
+
+"这首诗说的是：" 或者 "诗里这样写道："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">人生切莫恃英雄，术业精粗自不同。</div>
+            <div class="text-block simplified-text">别以为自己很厉害，每个人擅长的东西都不一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">猛虎尚然逢恶兽，毒蛇犹自怕蜈蚣。</div>
+            <div class="text-block simplified-text">老虎再厉害也会碰到更凶的野兽，毒蛇那么毒照样怕蜈蚣。
+
+（解释说明：用"再厉害"替代"尚然"，"照样怕"替代"犹自怕"，完全保留"一物降一物"的核心寓意。将文言虚词转化为"那么""照样"等口语词，用"碰到"这个生活化动词替代"逢"。最后用具体动物对比关系，直观展现强弱相克的自然规律。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">七擒孟获奇诸葛，两困云长羡吕蒙。</div>
+            <div class="text-block simplified-text">这段文字讲的是三国时期的两个故事：
+
+1. "七擒孟获"说的是诸葛亮抓了南蛮首领孟获七次又放了他七次，最后让孟获心服口服。这是在夸诸葛亮打仗很有计谋。
+
+2. "两困云长"说的是吕蒙两次用计困住关羽（关羽字云长），这是在夸吕蒙也很会用兵。
+
+简单说就是：诸葛亮七次抓住孟获真厉害，吕蒙两次困住关羽也不简单。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">珍重宋江真智士，呼延顷刻入囊中。</div>
+            <div class="text-block simplified-text">宋江这人真聪明，轻轻松松就把呼延给收服了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说晁盖、宋江、吴用、公孙胜与众头领就聚义厅上启请徐宁教使钩镰枪法。众人看徐宁时，果然一表好人物：六尺五六长身体，团团的一个白脸，三牙细黑髭髯，十分腰细膀阔。曾有一篇《西江月》，单道着徐宁模样：</div>
+            <div class="text-block simplified-text">简单直白的现代白话文：
+
+晁盖、宋江、吴用、公孙胜和其他头领在聚义厅上请徐宁教大家使用钩镰枪。大家看徐宁，确实是个好汉：身高一米八左右，圆润的白脸，留着三缕细黑胡子，腰细肩膀宽。有首《西江月》词专门形容徐宁的长相：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">臂健开弓有准，身轻上马如飞。弯弯两道卧蚕眉，凤翥鸾翔子弟。战铠细穿柳叶，乌巾斜带花枝。常随宝驾侍丹墀，神手徐宁无对。</div>
+            <div class="text-block simplified-text">这个人胳膊有力气，拉弓射箭特别准，身体灵活，上马动作快得像飞一样。他有两道弯弯的浓眉毛，长得英俊潇洒像个贵公子。穿的战甲是用柳叶形状的金属片精心打造的，头上歪戴着装饰花枝的黑头巾。经常跟着皇帝的车驾，在皇宫里当侍卫。要说武艺，神枪手徐宁真是没人能比得上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">当下徐宁选军已罢，便下聚义厅来，拿起一把钩镰枪自使一回。众人见了喝采。徐宁便教众军道：“但凡马上使这般军器，就腰胯里做步上来，上中七路，三钩四拨，一搠一分，共使九个变法。若是步行使这钩镰枪，亦最得用。先使八步四拨，荡开门户，十二步一变，十六步大转身，分钩、镰、搠、缴；二十四步，那上攒下，钩东拨西；三十六步，浑身盖护，夺硬斗强。此是钩镰枪正法。”就一路路敷演，教众头领看。众军汉见了徐宁使钩镰枪，都喜欢。就当日为始，将选拣精锐壮健之人，晓夜习学。又教步军藏林伏草，钩蹄拽腿，下面三路暗法。不到半月之间，教成山寨五七百人。宋江并众头领看了大喜，准备破敌。有诗为证：</div>
+            <div class="text-block simplified-text">徐宁挑好士兵后，从聚义厅下来，拿起钩镰枪亲自演示了一番。大家看了都叫好。徐宁就教士兵们："马上用这种兵器时，要从腰间发力，往上中下七路进攻，动作有三钩四拨，一刺一分，总共九种变化。要是步战用这钩镰枪也很管用。先走八步做四个拨挡动作，打开对方防御；十二步变一次招，十六步大转身，分钩、镰、刺、缴四种打法；二十四步时上下兼顾，左右开弓；三十六步就能全面防守，跟人硬拼。这才是钩镰枪的正宗用法。"他一边说一边挨个演示给头领们看。
+
+士兵们看了徐宁的演示都很兴奋。从当天开始，就挑选身体强壮的士兵日夜练习。还教步兵怎么在树林草丛里埋伏，用钩镰枪绊马腿、钩人脚，专攻下三路的阴招。不到半个月，就训练出五六百人。宋江和其他头领看了非常高兴，准备用这招对付敌人。有首诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">四拨三钩通七路，共分九变合神机。</div>
+            <div class="text-block simplified-text">这段文字可以这样简单直白地解释：
+
+"用四种拨法、三种钩法能打通七条路线，总共有九种变化组合，这些方法配合起来非常巧妙有效。"
+
+或者更口语化：
+
+"四种拨弄加三种钩法，能走通七条路，一共九种花样，搭配起来特别灵。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">二十四步那前后，一十六翻大转围。</div>
+            <div class="text-block simplified-text">二十四步前后走，转十六个大圈圈。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">破锐摧坚如拉朽，搴旗斩将有神威。</div>
+            <div class="text-block simplified-text">打敌人就像撕烂破布一样轻松，砍倒军旗、干掉大将简直太厉害了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">闻风已落高俅胆，此法今无古亦稀。</div>
+            <div class="text-block simplified-text">听说高俅一听到风声就吓破了胆，这种厉害的手段，现在少见，古代也少有。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">却说呼延灼自从折了彭玘、凌振，每日只把马军来水边搦战。山寨中只教水军头领牢守各处滩头，水底钉了暗桩。呼延灼虽是在山西、山北两路出哨，决不能勾到山寨边。梁山泊却叫凌振制造了诸般火炮，尽皆完备，克日定时下山对敌。学使钩镰枪军士已都学成本事。宋江道：“不才浅见，未知合众位心意否？”吴用道：“愿闻其略。”宋江道：“明日并不用一骑马军，众头领都是步战。孙吴兵法却利于山林沮泽。却将步军下山，分作十队诱敌。但见军马冲掩将来，都望芦苇荆棘林中乱走。却先把钩镰枪军士埋伏在彼，每十个会使钩镰枪的，间着十个挠钩手。但见马到，一搅钩翻，便把挠钩搭将入去捉了。平川窄路也如此埋伏。此法如何？”吴学究道：“正如此藏兵捉将。”徐宁道：“钩镰枪并挠钩，正是此法。”</div>
+            <div class="text-block simplified-text">话说呼延灼自从损失了彭玘、凌振两员大将后，天天派骑兵到水边叫阵。梁山这边只让水军头领死死守住各处滩头，还在水下打了暗桩。呼延灼虽然派兵在山西、山北两边巡逻，但根本摸不到梁山寨子跟前。
+
+这时候，梁山已经让凌振造好了各种火炮，准备选个好日子下山打仗。那些学钩镰枪的士兵也都练成了。宋江说："我有个不成熟的想法，不知道大家觉得怎么样？"吴用说："说来听听。"宋江解释道："明天咱们不用骑兵，所有头领都步行作战。古代兵法上说山地水边适合步兵打仗。咱们把步兵分成十队去引敌人上钩。等敌军骑兵冲过来，咱们的人就往芦苇丛和荆棘林里跑。提前埋伏好的钩镰枪兵，每十个枪兵配十个挠钩手。等敌人的马一到，先用钩镰枪绊倒马匹，再用挠钩把人拖过来活捉。平地和窄路也都这么埋伏。你们看这办法行不？"
+
+吴用赞同道："这招藏兵抓将正合适。"徐宁也说："用钩镰枪配挠钩，就该这么打。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">宋江当日分拨十队步军人马：刘唐、杜迁引一队，穆弘、穆春引一队，杨雄、陶宗旺引一队，朱仝、邓飞引一队，解珍、解宝引一队，邹渊、邹润引一队，一丈青、王矮虎引一队，薛永、马麟引一队，燕顺、郑天寿引一队，杨林、李云引一队。这十队步军先行下山，诱引敌军。再差李俊、张横、张顺、三阮、童威、童猛、孟康九个水军头领，乘驾战船接应。再叫花荣、秦明、李应、柴进、孙立、欧鹏六个头领，乘马引军，只在山边搦战。凌振、杜兴专放号炮。却叫徐宁上、汤隆总行招引使钩镰枪军士。中军宋江、吴用、公孙胜戴宗、吕方、郭盛，总制军马，指挥号令。其余头领俱各守寨。宋江分拨已定。是夜三更，先载使钩镰枪军士过渡，四面去分头埋伏已定。四更，却渡十队步军过去。凌振、杜兴载过风火炮架上高埠去处，竖起炮架，阁上火炮。徐宁、汤隆各执号带渡水。平明时分，宋江守中军人马，隔水擂鼓，呐喊摇旗。</div>
+            <div class="text-block simplified-text">那天，宋江把步兵分成十队：
+1. 刘唐、杜迁带一队
+2. 穆弘、穆春带一队
+3. 杨雄、陶宗旺带一队
+4. 朱仝、邓飞带一队
+5. 解珍、解宝带一队
+6. 邹渊、邹润带一队
+7. 一丈青、王矮虎带一队
+8. 薛永、马麟带一队
+9. 燕顺、郑天寿带一队
+10. 杨林、李云带一队
+
+这十队步兵先下山去引诱敌人。接着派李俊、张横、张顺、三阮、童威、童猛、孟康这九个水军头领，坐战船接应。再让花荣、秦明、李应、柴进、孙立、欧鹏六个头领骑马带兵，在山边叫阵。凌振、杜兴专门放信号炮。徐宁和汤隆负责带领用钩镰枪的士兵。宋江、吴用、公孙胜、戴宗、吕方、郭盛坐镇中军指挥。其他头领都留守山寨。
+
+当天夜里：
+- 三更天（半夜）：先让用钩镰枪的士兵过河埋伏
+- 四更天（凌晨）：十队步兵过河
+- 凌振、杜兴把大炮运到高处架好
+- 徐宁、汤隆拿着信号旗过河
+
+天亮时，宋江在中军隔河擂鼓，士兵们摇旗呐喊。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">呼延灼正在中军帐内，听得探子报知，传令便差先锋韩滔先来出哨，随即锁上连环甲马。呼延灼全身披挂，骑了踢雪乌骓马，仗着双鞭，大驱军马杀奔梁山泊来。隔水望见宋江引着许多军马。呼延灼教摆开马军。先锋韩滔来与呼延灼商议道：“正南上一队步军，不知是何处来的？”呼延灼道：“休问他何处军，只顾把连环马冲将去。”韩滔引着五百马军飞哨出去。又见东南上一队军兵起来，却欲分兵去哨，只见西南上又有起一队旗号，招飐呐喊。韩滔再引军回来，对呼延灼道：“南边三队贼兵，都是梁山泊旗号。”呼延灼道：“这厮许多时不出来厮杀，必有计策。”说犹未了，只听得北边一声炮响。呼延灼骂道：“这炮必是凌振从贼，教他施放。”众人平南一望，只见北边又拥起三队旗号。呼延灼道：“此必是贼人奸计。我和你把人马分为两路，我去杀北边人马，你去杀南边人马。”正欲分兵之际，只见西边又是四路人马起来，呼延灼心慌。又听的正北上连珠炮响，一带直接到土坡上；那一个母炮周回接着四十九个子炮，名为子母炮，响处风威大作。呼延灼军兵不战自乱，急和韩滔各引马步军兵四下冲突。这十队步军，东赶东走，西赶西走。呼延灼看了大怒，引兵望北冲将来。宋江军兵尽投芦苇中乱走。呼延灼大驱连环马，卷地而来。那甲马一齐跑发，收勒不住，尽望败苇折芦之中、枯草荒林之内跑了去。只听里面唿哨响处，钩镰枪一齐举手，先钩倒两边马脚，中间的甲马便自咆哮起来。那挠钩手军士一齐搭住，芦苇中只顾缚人。呼延灼见中了钩镰枪计，便勒马回南边去赶韩滔。背后风火炮当头打将下来。这边那边，漫山遍野，都是步军追赶着。韩滔、呼延灼部领的连环甲马，乱滚滚都攧入荒草芦苇之中，尽被捉了。二将情知中了计策，纵马去四面跟寻马军，夺路奔走时，更兼那几条路上麻林般摆着梁山泊旗号，不敢投那几条路走。一直便望西北上来。行不到五六里路，早拥出一队强人，当先两个好汉拦路，一个是没遮拦穆弘，一个是小遮拦穆春。拈两条朴刀，大喝道：“败将休走！”呼延灼忿怒，舞起双鞭，纵马直取穆弘、穆春。略斗四五合，穆春便走，呼延灼只怕中了计，不来追赶，望正北大路而走。山坡下又转出一队强人，当先两个好汉拦路，一个是两头蛇解珍，一个双尾蝎解宝。各挺钢叉，直奔前来。呼延灼舞起双鞭，来战两个。斗不到五七合，解珍、解宝拔步便走，呼延灼赶不过半里多路，两边钻出二十四把钩镰枪，着地卷将来。呼延灼无心恋战，拨转马头望东北上大路便走。又撞着王矮虎、一丈青夫妻二人截住去路。呼延灼见路径不平，四下兼有荆棘遮拦，拍马舞鞭，杀开条路直冲过去。王矮虎、一丈青赶了一直，赶不上，自回山听令。呼延灼自投东北上去了。杀的大败亏输，雨零星散。有诗为证：</div>
+            <div class="text-block simplified-text">呼延灼正在军营里，突然探子来报告情况。他立刻命令先锋韩滔先去侦察，自己则准备好连环甲马。呼延灼全副武装，骑上黑马，拿着双鞭，带着大军冲向梁山泊。过河后，远远看见宋江带着大批人马。呼延灼让骑兵摆开阵势。韩滔过来报告：“南边有一队步兵，不知道是哪来的？”呼延灼说：“管他是谁，直接用连环马冲过去！”韩滔带着五百骑兵冲了出去。
+
+这时东南方向又出现一队人马，韩滔正想分兵去查看，西南方向又冒出一队举着梁山泊旗号的队伍，大喊大叫。韩滔赶紧撤回，告诉呼延灼：“南边三队都是梁山泊的人。”呼延灼说：“这帮人这么久不出来打，肯定有诈。”话还没说完，北边突然响起炮声。呼延灼骂道：“这炮肯定是叛徒凌振放的！”众人往南一看，北边又冒出三队人马。呼延灼说：“这绝对是敌人的诡计。我们兵分两路，我去打北边，你去打南边。”
+
+正要分兵时，西边又杀出四路人马，呼延灼慌了。这时北边接连响起炮声，一直打到土坡上——那是一种叫“子母炮”的大炮，一炮带四十九个小炮，炸得地动山摇。呼延灼的军队乱成一团，他和韩滔急忙带兵突围。梁山泊的十队步兵东追西赶，呼延灼气得带兵往北冲。宋江的人马假装逃进芦苇丛。
+
+呼延灼带着连环马冲过去，结果战马跑得太猛停不下来，全部冲进了芦苇丛。突然芦苇里响起哨声，钩镰枪专钩马腿，中间的连环马立刻乱成一团。埋伏的士兵用挠钩把人一个个拖下马捆起来。呼延灼发现中计，赶紧调头去找韩滔，结果背后又被火炮轰炸。漫山遍野都是梁山泊的步兵在追他们。
+
+韩滔和呼延灼的连环马全陷在芦苇丛里被活捉。两人知道中计，想找路逃跑，可每条路上都插满了梁山泊的旗子，只好往西北跑。跑了不到五六里，突然跳出穆弘、穆春两兄弟拦路。打了四五回合，穆春假装逃跑，呼延灼怕中计没追，继续往北跑。
+
+结果山坡下又杀出解珍、解宝兄弟，打了不到十回合也假装逃跑。呼延灼追了半里路，两边突然冒出二十四把钩镰枪，他不敢再打，转向东北逃跑。路上又遇到王英、扈三娘夫妻拦路，呼延灼拼命杀出一条血路才逃脱。最后部队被打得七零八落，惨败收场。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">十路军兵振地来，将军难免剥床灾。</div>
+            <div class="text-block simplified-text">敌人带着大队人马杀过来了，就算是再厉害的将军也躲不过这场大祸。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">连环铁骑如烟散，喜得孤身出九垓。</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+敌人的骑兵像烟一样散开了，我很高兴一个人从重重包围里逃了出来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">话分两头。且说宋江鸣金收军回山，各请功赏。三千连环甲马，有停半被钩镰枪拨倒，伤损了马蹄，剥去皮甲，把来做菜马食；二停多好马，牵上山去喂养，作坐马。带甲军士，都被生擒上山。五千步军，被三面围得紧急，有望中军躲的，都被钩镰枪拖翻捉了；望水边逃命的，尽被水军头领围裹上船去，拽过滩头，拘捉上山。先前被拿去的马匹并捉去军士，尽行复夺回寨。把呼延灼寨栅尽数拆来，水边泊内，搭盖小寨。再造两处做眼酒店房屋等项。仍前着孙新、顾大嫂、石勇、时迁两处开店。刘唐、杜迁拿得韩滔，把来绑缚解到山寨。宋江见了，亲解其缚，请上厅来，以礼陪话，相待筵宴，令彭玘、凌振说他入伙。韩滔也是七十二煞之数，自然义气相投，就梁山泊做了头领。宋江便教修书，使人往陈州搬取韩滔老小来山寨中完聚。宋江喜得破了连环马，又得了许多军马、衣甲、盔刀添助，每日做筵席庆喜。仍旧调拨各路守把，提防官兵，不在话下。</div>
+            <div class="text-block simplified-text">事情要分开说。先说宋江这边，他敲锣收兵回到梁山，给大伙儿论功行赏。那三千连环甲马，有一半被钩镰枪撂倒，马腿受伤，剥了皮甲，宰了当菜马吃；剩下两千多匹好马，牵上山养着当坐骑。穿盔甲的骑兵全被活捉上山。五千步兵被三面包围，有的往中军跑，都被钩镰枪绊倒抓住；往河边逃的，全被水军头领赶上船，拖到岸边押上山。之前被官府抢走的马匹和士兵，这次全都抢回来了。他们把呼延灼的军营全拆了，材料运到水边盖小寨子，还重修了两处当眼线的酒店，照样派孙新、顾大嫂、石勇、时迁去经营。刘唐、杜迁抓住了韩滔，捆着押回山寨。宋江亲自给他松绑，请到大厅好酒好菜招待，让彭玘、凌振劝他入伙。韩滔本来就是天罡地煞星转世，跟梁山好汉意气相投，当场就当了头领。宋江马上写信，派人去陈州接韩滔全家来山寨团聚。宋江这次特别高兴，不光破了连环马，还缴获大批战马、盔甲、武器，天天摆酒庆祝。当然该防守的地方照样派人守着，防备官兵来犯，这些就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">却说呼延灼折了许多官军人马，不敢回京。独自一个骑着那匹踢雪乌骓马，把衣甲拴在马上，于路逃难。却无盘缠，解下束腰金带，卖来盘缠。在路寻思道：“不想今日闪得我有家难奔，有国难投。却是去投谁好？”猛然想起：“青州慕容知府旧与我有一面相识，何不去那里投奔他？却打慕容贵妃的关节，那时再引军来报仇未迟。”</div>
+            <div class="text-block simplified-text">话说呼延灼打了败仗，手下的兵死的死、逃的逃，他不敢回京城。就一个人骑着那匹叫"踢雪乌骓"的黑马，把盔甲绑在马背上，一路逃命。身上没钱，只好把金腰带解下来卖了换路费。一边走一边想："没想到今天混到这种地步，有家不能回，有国不能投。现在该去找谁呢？"突然想起来："青州的慕容知府以前跟我有点交情，不如去投靠他？先走他妹妹慕容贵妃的关系，等以后有机会再带兵来报仇也不迟。"
+
+（说明：改写时做了以下处理：
+1. "折了许多官军人马"改为"打了败仗，手下的兵死的死、逃的逃"
+2. "于路逃难"改为"一路逃命"
+3. "盘缠"直接解释为"路费"
+4. "闪得我有家难奔"这种文言表达改为"混到这种地步，有家不能回"
+5. "打关节"这种古代说法改为"走关系"
+6. 保留了所有关键信息：战败逃亡、卖腰带、投奔慕容知府、打算日后报仇等）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">在路行了二日，当晚又饥又渴，见路旁一个村酒店，呼延灼下马，把马拴在门前树上，入来店内，把鞭子放在桌上，坐下了，叫酒保取酒肉来吃。酒保道：“小人这里只卖酒。要肉时，村里却才杀羊，若要，小人去回买。”呼延灼把腰里料袋解下来，取出些金带倒换的碎银两，把与酒保道：“你可回一脚羊肉与我煮了，就对付草料喂养我这匹马。今夜只就你这里宿一宵，明日自投青州府里去。”酒保道：“官人，此间宿不妨，只是没好床帐。”呼延灼道：“我是出军的人，但有歇处便罢。”酒保拿了银子自去买羊肉。呼延灼把马背上捎的衣甲取将下来，松了肚带，坐在门前。等了半晌，只见酒保提一脚羊肉归来，呼延灼便叫煮了，回三斤面来打饼，打两角酒来。酒保一面煮肉打饼，一面烧脚汤与呼延灼洗了脚，便把马牵放屋后小屋下。酒保一面切草煮料。呼延灼先讨热酒吃了一回。少刻肉熟，呼延灼叫酒保，也与他些酒肉吃了，分付道：“我是朝廷军官，为因收捕梁山泊失利，待往青州投慕容知府。你好生与我喂养这匹马，是今上御赐的，名为踢雪乌骓马。明日我重重赏你。”酒保道：“感承相公，却有一件事教相公得知。离此间不远有座山，唤做桃花山。山上有一伙强人，为头的是打虎将李忠，第二个是小霸王周通。聚集着五七百小喽啰，打家劫舍，如常来搅扰村坊。官司累次着仰捕盗官军来收捕他不得，相公夜间须用小心省睡。”呼延灼说道：“我有万夫不当之勇，便道那厮们全伙都来，也待怎生？只与我好生喂养这匹马。”吃了一回酒肉饼子，酒保就店里打了一铺，安排呼延灼睡了。一者呼延灼连日心闷，二乃又多了几杯酒，就和衣而卧，一觉直睡到三更方醒。只听得屋后酒保在那里叫屈起来。呼延灼听得，连忙跳将起来，提了双鞭，走去屋后问道：“你如何叫屈？”酒保道：“小人起来上草，只见篱笆推翻，被人将相公的马偷将去了。远远地望见三四里火把尚明，一定是那里去了。”有诗为证：</div>
+            <div class="text-block simplified-text">赶了两天路，又饿又渴。看见路边有个小村子的酒馆，呼延灼下马，把马拴在门前树上，走进店里，把鞭子往桌上一放坐下，叫伙计上酒上肉。伙计说："我们这儿只卖酒。要吃肉的话，村里刚杀了羊，您要的话我去给您买。"呼延灼解开腰间的钱袋，掏出些碎银子给伙计说："你去买条羊腿给我煮上，再喂喂我的马。今晚就在你这儿住一宿，明天我去青州府。"伙计说："客官住这儿没问题，就是没像样的床铺。"呼延灼说："当兵的，有地方睡就行。"伙计拿了银子去买羊肉。
+
+呼延灼把马背上的盔甲卸下来，松开马肚带，坐在门口等。过了好一会儿，伙计提着条羊腿回来，呼延灼让他煮上，又要了三斤面做饼，打了两角酒。伙计一边煮肉做饼，一边烧洗脚水给呼延灼洗脚，把马牵到屋后小棚里，又切草喂马。呼延灼先要了热酒喝着。等肉熟了，他让伙计也吃点酒肉，交代说："我是朝廷军官，因为打梁山泊吃了败仗，要去青州找慕容知府。你好好喂我这匹马，这是皇上赏的，叫踢雪乌骓马。明天我多给你赏钱。"伙计说："多谢大人。不过有件事得告诉您，离这儿不远的桃花山上有一伙强盗，头领是打虎将李忠和小霸王周通，带着五六百号人经常打劫村子。官府派人抓了好几次都没抓到，您晚上睡觉留点神。"呼延灼说："我有万夫不当之勇，就算他们全来又能怎样？你只管好好喂马。"吃喝完，伙计在店里铺了床，呼延灼躺下就睡。一来心里烦闷，二来多喝了几杯，衣服都没脱就睡着了，一觉睡到半夜。突然听见屋后伙计在喊冤。呼延灼赶紧跳起来，提着双鞭跑到屋后问："怎么回事？"伙计说："我起来喂马，发现篱笆被推倒，您的马被人偷了！远处三四里外还有火把亮着，准是往那边跑了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">舟横瀚海摧残舵，车入深山坏却辕。</div>
+            <div class="text-block simplified-text">船在大海上航行，船舵被风浪打坏了；车子开进深山老林，车轴也断了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">不日呼延须入伙，降魔殿里有因缘。</div>
+            <div class="text-block simplified-text">很快呼延就要加入我们了，在降魔殿里这都是命中注定的缘分。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">且说呼延灼道：“那里正是何处？”酒保道：“眼见得那条路上，正是桃花山小喽啰偷得去了。”呼延灼吃了一惊，便叫酒保引路，就田塍上赶了二三里，火把看看不见，正不知投那里去了。呼延灼说道：“若无了御赐的马，却怎地是好？”酒保道：“相公明日须去州里告了，差官军来剿捕，方才能勾这匹马。”呼延灼闷闷不已，坐到天明，早叫酒保挑了衣甲，径投青州来。</div>
+            <div class="text-block simplified-text">呼延灼问："那是什么地方？"店小二回答："看那条路的方向，肯定是桃花山的小土匪偷走的。"呼延灼吓了一跳，赶紧让店小二带路。他们沿着田埂追了两三里地，连火把的光都看不见了，根本不知道贼往哪儿跑了。呼延灼着急地说："要是丢了皇上赏赐的马，这可怎么办啊？"店小二出主意："大人您明天得去州府报案，派官兵来围剿，才能把马找回来。"呼延灼愁得不行，一直坐到天亮，一大早让店小二挑着盔甲行李，直接往青州去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">到城里时，天色已晚了，不敢见官，且在客店里歇了一夜。次日天晓，径到府堂阶下，参拜了慕容知府。知府大惊，问道：“闻知将军收捕梁山泊草寇，如何却到此间？”呼延灼只得把上项诉说了一遍。慕容知府听了道：“虽是将军折了许多人马，此非慢功之罪，中了贼人奸计，亦无奈何。下官所辖地面多被草寇侵害，将军到此，可先扫清桃花山，夺取那匹御赐的马，却收伏二龙山、白虎山，未为晚矣。一发剿捕了时，下官自当一力保奏，再教将军引兵复仇如何？”呼延灼再拜道：“深谢恩相主监！若蒙如此复仇，誓当效死报德。”慕容知府教请呼延灼去客房里暂歇，一面更衣宿食。那挑甲酒保，自叫他回去了。</div>
+            <div class="text-block simplified-text">这人到城里的时候，天已经黑了。他不敢马上去见当官的，就在旅馆住了一晚上。第二天一大早，他直接到官府大堂台阶下，拜见了慕容知府。
+
+知府很吃惊，问他："听说将军你去打梁山泊的土匪了，怎么跑到这儿来了？"呼延灼只好把之前发生的事情都讲了一遍。
+
+知府听完说："虽然将军你损失了不少人马，但这不怪你办事不力，是中了土匪的诡计，也没办法。我管的地盘也经常被土匪骚扰。既然将军来了，不如先去把桃花山打下来，把那匹皇上赏赐的马抢回来，然后再去收拾二龙山和白虎山，都来得及。等把这些土匪都剿灭了，我一定全力向朝廷推荐你，再让你带兵去报仇，你看怎么样？"
+
+呼延灼又行了个礼说："太感谢大人照顾了！要是能这样报仇，我一定拼死效忠报答您。"知府就让呼延灼先去客房休息，顺便换衣服吃饭。那个挑行李的店小二，就让他自己回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">一住三日。呼延灼急欲要这匹御赐马，又来禀复知府，便教点军。慕容知府传点马步军二千，借与呼延灼，又与了一匹青鬃马。呼延灼谢了恩相，披挂上马，带领军兵前来报仇，径往桃花山进发。</div>
+            <div class="text-block simplified-text">呼延灼在那儿待了三天。他特别想要那匹皇帝赏赐的马，又去找知府说这事。知府就给他调了两千步兵和骑兵，还给了他一匹青色鬃毛的战马。呼延灼谢过知府，穿好盔甲骑上马，带着兵去桃花山报仇。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">且说桃花山上打虎将李忠与小霸王周通，自得了这匹踢雪乌骓马，每日在山上庆喜饮酒。当日有伏路小喽啰报道：“青州军马来也！”小霸王周通起身道：“哥哥守寨，兄弟去退官军。”便点起一百小喽啰，绰枪上马，下山来迎敌官军。却说呼延灼引起二千军马，来到山前，摆开阵势。呼延灼当先出马，厉声高叫：“强贼早来受缚！”小霸王周通将小喽啰一字摆开，便挺枪出马。怎生打扮？有诗为证：</div>
+            <div class="text-block simplified-text">话说桃花山上的李忠和周通，自从抢到那匹名叫"踢雪乌骓"的好马后，天天在山上喝酒庆祝。这天，放哨的小喽啰跑来报告："青州的官兵打过来了！"周通站起来说："大哥你守着山寨，我带人去打退官兵。"他马上召集了一百个小喽啰，拿起长枪骑上马，冲下山去迎战。
+
+另一边，呼延灼带着两千官兵来到山前，摆好阵势。他骑马走到最前面，大声喊道："山贼们快投降！"周通让小喽啰们排成一排，自己举着长枪骑马出来。他当时是什么打扮呢？有首诗是这么说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">身着团花宫锦服，手持走水绿沉枪。</div>
+            <div class="text-block simplified-text">这人穿着绣满花样的华丽官服，手里拿着一杆深绿色的长枪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">面阔体强身似虎，尽道周通小霸王。</div>
+            <div class="text-block simplified-text">这人长得又高又壮，身体结实得像老虎一样，大家都叫他"小霸王"周通。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">当下呼延灼见了周通，便纵马向前来战，周通也跃马来迎。二马相交，斗不到六七合，周通气力不加，拨转马头往山上便走。呼延灼赶了一直，怕有计策，急下山来扎住寨栅，等候再战。</div>
+            <div class="text-block simplified-text">这时呼延灼看到周通，立刻骑马冲上去打。周通也骑马迎战。两人骑着马打在一起，才打了不到六七回合，周通就体力不支，调转马头往山上跑。呼延灼追了一段路，担心有埋伏，赶紧撤回山下扎营，准备下次再打。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">却说周通回寨里，见李忠诉说：“呼延灼武艺高强，遮拦不住，只得且退山上。倘或他赶到寨前来，如之奈何？”李忠道：“我闻二龙山宝珠寺，花和尚鲁智深在彼，多有人伴，更兼有个甚么青面兽杨志，又新有个行者武松，都有万夫不当之勇。不如写一封书，使小喽啰去那里求救。若解得危难，拚得投托他大寨，月终纳他些进奉也好。”周通道：“小弟也多知他那里豪杰，只恐那和尚记当初之事，不肯来救。”李忠笑道：“他那时又打了你，又得了我们许多金银酒器去，如何倒有见怪之心？他是个直性的好人，使人到彼，必然亲引军来救应。”周通道：“哥哥也说得是。”就写了一封书，差两个了事的小喽啰，从后山踅将下去，取路投二龙山来。行了两日，早到山下，那里小喽啰问了备细来情。</div>
+            <div class="text-block simplified-text">周通回到山寨，对李忠说："呼延灼武功太厉害，我们打不过，只能先退回山上。要是他追到山寨来，可怎么办？"李忠说："听说二龙山宝珠寺有个花和尚鲁智深，手下人多，还有个叫青面兽杨志的，最近又来了个行者武松，都是特别能打的好汉。不如写封信，派个小兵去求救。要是他们肯帮忙解围，我们干脆投靠他们，每月交点钱也行。"周通说："我也知道他们厉害，就怕鲁智深还记着以前的事，不肯来帮忙。"李忠笑着说："上次他打了你，还拿走了我们不少金银酒器，哪还会记仇？他是个爽快人，派人去请，肯定会带兵来救。"周通说："大哥说得对。"就写了封信，派了两个机灵的小兵，从后山小路下去，往二龙山去了。走了两天，到了山下，那里的小兵问清了他们的来意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">且说宝珠寺里大殿上坐着三个头领：为首是花和尚鲁智深，第二是青面兽杨志，第三是行者二郎武松。前面山门下坐着四个小头领：一个是金眼彪施恩，原是孟州牢城施管营的儿子，为因武松杀了张都监一家人口，官司着落他家追捉凶身，以此连夜挈家逃走在江湖上；后来父母俱亡，打听得武松在二龙山，连夜投奔入伙。一个是操刀鬼曹正，原是同鲁智深、杨志收夺宝珠寺，杀了邓龙，后来入伙。一个是菜园子张青，一个是母夜叉孙二娘，这是夫妻两个，原是孟州道十字坡卖人肉馒头的，亦来投奔入伙。曹正听得说桃花山有书，先来问了详细，直去殿上禀复三个大头领知道。智深便道：“洒家当初离五台山时，到一个桃花村投宿，好生打了那周通撮鸟一顿。李忠那厮却来，认得洒家，却请去上山吃了一日酒，结识洒家为兄，留俺做个寨主。俺见这厮们悭吝，被俺卷了若干金银器撒开他。如今来求救，且看他说甚么。放那小喽啰上关来。”曹正去不多时，把那小喽啰引到殿下，唱了喏，说道：“青州慕容知府近日收得个征进梁山泊失利的双鞭呼延灼，如今慕容知府先教扫荡俺这里桃花山、二龙山、白虎山几座山寨，却借军与他收捕梁山泊复仇。俺的头领今欲启请大头领将军下山相救，明朝无事了时，情愿来纳进奉。”杨志道：“俺们各守山寨，保护山头，本不去救应的是。洒家一者怕坏了江湖上豪杰，二者恐那厮得了桃花山便小觑了洒家这里。可留下张青、孙二娘、施恩、曹正看守寨栅，俺三个亲自走一遭。”随即点起五百小喽啰，六十余骑军马，各带了衣甲军器，下山径往桃花山来。</div>
+            <div class="text-block simplified-text">话说宝珠寺的大殿上坐着三个老大：打头的是花和尚鲁智深，排第二的是青面兽杨志，第三是武松。山门那儿还有四个小头目：一个是金眼彪施恩，他本来是孟州监狱长的儿子，因为武松杀了张都监全家，官府要抓他家人问罪，他就带着全家跑路了。后来父母都死了，听说武松在二龙山，就赶来入伙。一个是操刀鬼曹正，之前跟鲁智深、杨志一起抢了宝珠寺，杀了邓龙，后来就留在这儿了。还有菜园子张青和母夜叉孙二娘两口子，他们原来在孟州十字坡开黑店卖人肉包子，也来投奔了。
+
+曹正听说桃花山来信了，先问清楚情况，赶紧去报告三位老大。鲁智深说："我当初离开五台山时，在桃花村住过一晚，把周通那个混蛋揍了一顿。后来李忠那小子认出我，请我上山喝酒，非要认我当大哥，还让我当寨主。我看他们小气吧啦的，就卷了他们一堆金银跑了。现在来求救，先听听他们怎么说。把那个报信的叫上来。"
+
+曹正很快把报信的带上殿。那人行礼说："青州的慕容知府最近收留了攻打梁山泊失败的呼延灼。现在知府要先打掉我们桃花山、二龙山这几处山寨，再让呼延灼带兵去打梁山泊报仇。我们头领想请几位老大去帮忙，等事情过了，一定重重答谢。"
+
+杨志说："本来我们各守各的山头，不该多管闲事。但一来怕坏了江湖义气，二来怕他们拿下桃花山后会小看我们。这样吧，留张青、孙二娘、施恩、曹正看家，我们三个亲自走一趟。"说完就点了五百小弟，六十多个骑兵，带上武器装备，直奔桃花山去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">却说李忠知二龙山消息，自引了三百小喽啰下山策应。呼延灼闻知，急引所部军马拦路列阵，舞鞭出马，来与李忠相持。怎见李忠模样？有诗为证：</div>
+            <div class="text-block simplified-text">李忠听说二龙山那边有情况，就带着三百个小兵下山帮忙。呼延灼知道后，赶紧带着自己的部队在路上摆开阵势，骑着马冲出来，要跟李忠打。李忠长啥样呢？有首诗是这么说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">头尖骨脸似蛇形，枪棒林中独擅名。</div>
+            <div class="text-block simplified-text">这个人长得尖头尖脑，脸长得像蛇一样。在耍枪弄棒的人群里，就数他最出名。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">打虎将军心胆大，李忠祖是霸陵生。</div>
+            <div class="text-block simplified-text">这位打虎将军胆子特别大，李忠的祖上原本是霸陵那边的人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">原来李忠祖贯濠州定远人氏，家中祖传靠使枪棒为生，人见他身材壮健，因此呼他做打虎将。当时下山来与呼延灼交战。李忠如何敌得呼延灼过，斗了十合之上，见不是头，拨开军器便走。呼延灼见他本事低微，纵马赶上山来。小霸王周通正在半山里看见，便飞下鹅卵石来。呼延灼慌忙回马下山来。只见官军迭头呐喊。呼延灼便问道：“为何呐喊？”后军答道：“远望见一彪军马飞奔而来。”呼延灼听了，便来后军队里看时，见尘头起处，当头一个胖大和尚，骑一匹白马。那人是谁？正是：</div>
+            <div class="text-block simplified-text">李忠老家在濠州定远，家里世代靠耍枪弄棒谋生。因为他长得高大结实，大家都叫他"打虎将"。这次他下山和呼延灼交手，但根本打不过，才打了十来个回合就招架不住，赶紧收了兵器逃跑。呼延灼看他武功不行，骑着马就追上山。
+
+半山腰的周通看到这情况，马上往下扔石头。呼延灼吓得赶紧调转马头往山下跑。这时官军突然乱哄哄地喊叫起来，呼延灼问："你们喊什么？"后面的士兵回答："远处有一大队人马正朝这边冲过来！"呼延灼跑到队伍后面一看，只见尘土飞扬中，领头的是个胖大和尚，骑着一匹白马。你猜这人是谁？没错，就是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">自从落发闹禅林，万里曾将壮士寻。臂负千斤扛鼎力，天生一片杀人心。欺佛祖，喝观音，戒刀禅杖冷森森。不看经卷花和尚，酒肉沙门鲁智深。</div>
+            <div class="text-block simplified-text">这个和尚自从剃了头发进寺庙，跑遍各地找好汉比武。他力气大得能扛起千斤重的大鼎，天生就是个狠角色。连佛祖和观音都敢不放在眼里，手里总拿着吓人的大刀和禅杖。这个花和尚从不念经，整天喝酒吃肉，说的就是那个鲁智深。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">鲁智深在马上大喝道：“那个是梁山泊杀败的撮鸟，敢来俺这里唬吓人？”呼延灼道：“先杀你这个秃驴，豁我心中怒气！”鲁智深轮动铁禅杖，呼延灼舞起双鞭，二马相交，两边呐喊，斗四五十合，不分胜败。呼延灼暗暗喝采道：“这个和尚倒恁地了得！”两边鸣金，各自收军暂歇。呼延灼少停，再纵马出阵，大叫：“贼和尚，再出来！与你定个输赢，见个胜败！”鲁智深却待正要出马，侧首恼犯了这个英雄，叫道：“大哥少歇，看洒家去捉这厮。”那人舞刀出马。来战呼延灼的是谁？正是：</div>
+            <div class="text-block simplified-text">鲁智深骑在马上大声骂道："哪个是被梁山泊打败的混蛋，敢来这儿吓唬人？"呼延灼回骂："先宰了你这秃驴，出出我心头恶气！"鲁智深抡起铁禅杖，呼延灼挥舞双鞭，两人骑马对冲，两边士兵呐喊助威，打了四五十回合不分胜负。呼延灼心里暗暗佩服："这和尚还真有两下子！"两边敲锣收兵，各自回营休息。没过多久，呼延灼又骑马出来叫阵："贼和尚，有种再出来！咱们今天非得分个高下！"鲁智深刚要应战，旁边一位好汉忍不住了，喊道："大哥先歇着，让我去收拾这家伙。"这人提刀上马。想知道来战呼延灼的是谁吗？正是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">曾向京师为制使，花石纲累受艰难。虹霓气逼斗牛寒。刀能安宇宙，弓可定尘寰。虎体狼腰猿臂健，跨龙驹稳坐雕鞍。英雄声价满梁山。人称青面兽，杨志是军班。</div>
+            <div class="text-block simplified-text">这个人以前在京城当过大官，负责运送花石纲，吃了不少苦头。他气势很强，像彩虹一样耀眼，让人看了就害怕。他武艺高强，刀法能平定天下，弓箭功夫也很厉害。他长得虎背狼腰，手臂像猿猴一样有力，骑在骏马上稳稳当当。在梁山好汉里，他的名声特别响亮。因为脸上有块青色胎记，大家都叫他"青面兽"，他就是杨志，是个当兵的出身。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">当时杨志出马来与呼延灼交锋，两个斗到四十余合，不分胜败。呼延灼见杨志手段高强，寻思道：“怎地那里走出这两个来？好生了得，不是绿林中手段。”杨志也见呼延灼武艺高强，卖个破绽，拨回马跑回本阵。呼延灼也勒转马头，不来追赶。两边各自收军。鲁智深便和杨志商议道：“俺们初到此处，不宜逼近下寨，且退二十里，明时却再来厮杀。”带领小喽啰，自过附近山岗下寨去了。</div>
+            <div class="text-block simplified-text">当时杨志骑马出来和呼延灼单挑，两人打了四十多个回合，还是分不出胜负。呼延灼看杨志武功厉害，心里想："这两个人是从哪儿冒出来的？本事真不小，不像是普通土匪的功夫。"杨志也觉得呼延灼武艺高强，就故意露出个破绽，调转马头跑回自己队伍。呼延灼也拉住马不追。两边各自收兵。鲁智深跟杨志商量说："咱们刚来这儿，不能离敌人太近扎营，先退二十里地，明天再来打。"于是带着手下喽啰兵，到附近山坡下安营扎寨去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">却说呼延灼在帐中纳闷，心内想道：“指望到此势如劈竹，便拿了这伙草寇，怎知却又逢着这般对手。我直如此命薄！”正没摆布处，只见慕容知府使人来唤道：“叫将军且领兵回来，保守城中。今有白虎山强人孔明、孔亮，引人马来青州借粮，怕府库有失，特令来请将军回城守备。”呼延灼听了，就这机会，带领军马，连夜回青州去了。</div>
+            <div class="text-block simplified-text">呼延灼在军营里正发愁，心想："本以为这次能轻松打败这帮土匪，谁知道碰上这么难缠的对手。我真是倒霉！"正不知道该怎么办时，慕容知府派人来叫他："将军先带兵回城吧。现在白虎山的强盗孔明、孔亮带着人来青州抢粮食，怕城里仓库出事，特意请将军回去守城。"呼延灼一听，正好借这个机会，连夜带着部队回青州去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">次日，鲁智深与杨志、武松又引了小喽啰摇旗呐喊，直到山下来，看时，一个军马也无了，倒吃了一惊。山上李忠、周通引人下来，拜请三位头领上到山寨里，杀牛宰马，筵席相待，一面使人下山，探听前路消息。</div>
+            <div class="text-block simplified-text">第二天，鲁智深、杨志和武松又带着一群小喽啰，举着旗子大声喊叫着冲到山下。到那儿一看，发现连一个官兵的影子都没有，他们大吃一惊。这时，山上的李忠和周通带着人下来，恭敬地请三位首领上山。他们在山寨里杀了牛和马，摆酒设宴招待三人，同时派人下山去打探前面的情况。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">且说呼延灼引军回到城下，却见了一彪军马正来到城边。为头的乃是白虎山下孔太公儿子毛头星孔明、独火星孔亮。两个因和本乡一个财主争竞，把他一门良贱尽都杀了，聚集起五七百人，占住白虎山，打家劫舍。因为青州城里有他的叔叔孔宾，被慕容知府捉下，监在牢里。孔明、孔亮特地点起山寨小喽啰来打青州，要救叔叔孔宾。正迎着呼延灼军马，两边撞着，敌住厮杀。呼延灼便出马到阵前。慕容知府在城楼上观看，见孔明当先挺枪出马。怎生模样？有诗为证：</div>
+            <div class="text-block simplified-text">话说呼延灼带兵回到城下，突然看见一队人马正往城门赶来。领头的是白虎山下孔太公的两个儿子——孔明和孔亮。这哥俩因为跟当地一个有钱人闹矛盾，把人家全家老小都给杀了，然后拉拢了五六百人占山为王，专门抢劫。他们听说青州城里关着他们的叔叔孔宾（是被慕容知府抓起来的），就带着山寨的小弟们来打青州，想救出叔叔。正好碰上了呼延灼的部队，两边人马撞个正着，当场就打起来了。呼延灼骑马冲到阵前。慕容知府在城楼上观战，看见孔明第一个提着枪冲出来。他长啥样呢？有首诗是这么说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">白虎山中间气生，学成武艺敢相争。</div>
+            <div class="text-block simplified-text">白虎山里练出了一身好功夫，现在有本事跟人较量了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">性刚智勇身形异，绰号毛头是孔明。</div>
+            <div class="text-block simplified-text">这个人性格刚烈、聪明勇敢，长相特别，外号叫"毛头"，就是诸葛亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">当时孔明便挺枪出马，直取呼延灼。两马相交，斗到二十余合，呼延灼要在知府面前显本事，又值孔明武艺不精，只办得架隔遮拦，斗到间深里，被呼延灼就马上把孔明活捉了去。孔亮只得引了小喽啰便走。慕容知府在敌楼上指着，叫呼延灼引军去赶。官兵一掩，活捉得百十余人。孔亮大败，四散奔走，至晚寻个古庙安歇。</div>
+            <div class="text-block simplified-text">诸葛亮（孔明）立刻骑马冲出来，拿着枪直冲向呼延灼。两人打在一起，打了二十多个回合。呼延灼想在知府面前表现自己，加上诸葛亮武功一般，只能勉强招架。打到激烈的时候，呼延灼直接把诸葛亮从马上活捉了。  
+
+诸葛亮的弟弟孔亮（孔亮）一看情况不对，赶紧带着手下的小兵逃跑。慕容知府站在城楼上看见，命令呼延灼带兵去追。官兵一拥而上，又抓了一百多人。孔亮被打得惨败，手下人四散逃跑，直到晚上才找了个破庙休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">却说呼延灼活捉得孔明，解入城中，来见慕容知府。知府大喜，叫把孔明大枷钉下牢里，和孔宾一处监收。一面赏劳三军，一面管待呼延灼，备问桃花山消息。呼延灼道：“本待是瓮中捉鳖，手到拿来，无端又被一伙强人前来救应。数内一个和尚，一个青脸大汉，二次交锋，各无胜败。这两个武艺不比寻常，不是绿林中手段，因此未曾拿得。”慕容知府道：“这个和尚便是延安府老种经略帐前军官提辖鲁达，今次落发为僧，唤做花和尚鲁智深。这一个青脸大汉亦是东京殿帅府制使官，唤做青面兽杨志。再有一个行者，唤做武松，原是景阳冈打虎的武都头，也如此武艺高强。这三个占住二龙山，打家劫舍，累次抵敌官军，杀了三五个捕盗官，直至如今，未曾捉得。”呼延灼道：“我见这厮们武艺精熟，原来却是杨制使和鲁提辖，名不虚传。恩相放心，呼延灼已见他们本事了，只在早晚，一个个活捉了解官。”知府大喜，设筵管待已了，且请客房内歇。不在话下。</div>
+            <div class="text-block simplified-text">话说呼延灼抓住了孔明，把他押进城去见慕容知府。知府很高兴，让人给孔明戴上重枷关进大牢，和孔宾关在一起。接着犒赏了军队，又招待呼延灼吃饭，顺便问他桃花山那边的情况。呼延灼说："本来以为抓他们像瓮中捉鳖一样容易，没想到半路杀出一伙强盗来救人。里面有个和尚和一个青脸大汉，我跟他们打了两次都没分出胜负。这两个人功夫了得，不像一般的土匪，所以没能抓住。"知府说："那个和尚原来是延安府老种经略手下的军官鲁达，现在出家当了和尚，叫花和尚鲁智深。那个青脸大汉是东京殿帅府的制使官，叫青面兽杨志。还有个行者叫武松，就是景阳冈打虎的武都头，功夫也很厉害。这三个人占着二龙山当强盗，经常跟官府作对，已经杀了三五个捕快，到现在都没抓住。"呼延灼说："怪不得他们功夫这么好，原来是杨制使和鲁提辖，果然名不虚传。大人放心，我已经摸清他们的底细了，早晚把他们一个个活捉了送来。"知府听了很高兴，设宴款待后，安排呼延灼去客房休息。这事就先说到这儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">却说孔亮引领败残人马，正行之间，猛可里树林中撞出一彪军马，当先一筹好汉。怎生打扮？有《西江月》为证：</div>
+            <div class="text-block simplified-text">话说孔亮带着打了败仗剩下的士兵正在赶路，突然从树林里冲出一队人马，领头的是个厉害角色。这人什么打扮呢？有首《西江月》词是这么形容的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">直裰冷披黑雾，戒箍光射秋霜。额前剪发拂眉长，脑后护头齐项。顶骨数珠灿白，杂绒绦结微黄。钢刀两口迸寒光，行者武松形像。</div>
+            <div class="text-block simplified-text">这人身穿一件黑色直裰，像裹着冷冰冰的黑雾，头上戴的戒箍亮得像秋天的霜。他额前的短发垂到眉毛，后脑的头发整整齐齐地护住脖子。脖子上挂的白色骨珠闪闪发亮，腰间的黄丝带有点发旧。手里两把钢刀寒光闪闪——这就是行者武松的样子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">孔亮见了是武松，慌忙滚鞍下马，便拜道：“壮士无恙！”武松连忙答礼，扶起问道：“闻知足下弟兄们占住白虎山聚义，几次要来拜望，一者不得下山，二乃路途不顺，以此难得相见。今日何事到此？”孔亮把救叔叔孔宾陷兄之事，告诉了一遍。武松道：“足下休慌。我有六七个弟兄，见在二龙山聚义。今为桃花山李忠、周通被青州官军攻击得紧，来我山寨求救。鲁、杨二头领引了孩儿们先来与呼延灼交战，两个厮并了他一日，呼延灼夜间去了。山寨中留我弟兄三个筵宴，把这匹御赐马送与我们。今我部领头队人马回山，他二位随后便到。我叫他去打青州，救你叔兄如何？”孔亮拜谢武松。等了半晌，只见鲁智深、杨志两个并马都到。武松引孔亮拜见二位，备说：“那时我与宋江在他庄上相会，多有相扰。今日俺们可以义气为重，聚集三山人马，攻打青州，杀了慕容知府，擒获呼延灼，各取府库钱粮，以供山寨之用，如何？”鲁智深道：“洒家也是这般思想。便使人去桃花山报知，叫李忠、周通引孩儿们来，俺三处一同去打青州。”杨志便道：“青州城池坚固，人马强壮，又有呼延灼那厮英勇。不是俺自灭威风，若要攻打青州时，只除非依我一言，指日可得。”武松道：“哥哥，愿闻其略。”</div>
+            <div class="text-block simplified-text">孔亮一看见是武松，赶紧从马上跳下来，跪下说："大哥你还好吗？"武松马上回礼，扶他起来问："听说你们兄弟在白虎山聚义，我早就想去看你们，但一直没机会下山，路也不好走，所以没见成。今天怎么到这儿来了？"孔亮就把救叔叔孔宾和哥哥被抓的事说了一遍。
+
+武松说："别急。我有六七个兄弟在二龙山聚义。现在桃花山的李忠、周通被青州官兵打得很惨，来向我们求救。鲁智深和杨志两位头领先带人和呼延灼打了一天，晚上呼延灼跑了。山寨里留我们三个喝酒，还送了这匹御赐的马。现在我带着先头部队回山，他们俩马上就到。我让他们去打青州救你叔叔和哥哥，怎么样？"孔亮连忙道谢。
+
+等了一会儿，鲁智深和杨志骑马来了。武松带孔亮见过他们，说："当年我和宋江在他家庄上见过，受了不少招待。现在咱们讲义气，集合三座山的人马去打青州，杀了慕容知府，抓住呼延灼，拿官府的钱粮养山寨，怎么样？"
+
+鲁智深说："我也是这么想的。派人去桃花山通知李忠、周通带人来，咱们三处一起打青州。"杨志接着说："青州城防坚固，兵强马壮，还有呼延灼那个能打的。不是我说丧气话，要打青州，除非按我说的做，很快就能拿下。"武松说："大哥快说说看。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">那主办者志言无数句，话不一席，有分教：青州百姓，家家瓦裂烟飞：水浒英雄，个个摩拳擦掌。直教同声相应归山寨，一气相随聚水滨。毕竟杨志对武松说出怎地打青州，且听下回分解。</div>
+            <div class="text-block simplified-text">那个组织者说了很多话，意思大概是：青州的老百姓要遭殃了，家家户户都会被打得稀巴烂；梁山好汉们个个都跃跃欲试，准备大干一场。最后大家都响应号召回了山寨，一起到水边集合。具体杨志跟武松说了怎么打青州，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
