@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第四回　赵员外重修文殊院　鲁智深大闹五台山</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./002.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第四回　赵员外重修文殊院　鲁智深大闹五台山</h1>
+        <a href="./004.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">躲难逃灾入代州，恩人相遇喜相酬。</div>
+            <div class="text-block simplified-text">逃难到了代州这个地方，碰巧遇到恩人，大家都很高兴，好好感谢了他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">只因法网重重布，且向空门好好修。</div>
+            <div class="text-block simplified-text">法律管得太严了，不如出家当和尚好好修行。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">打坐参禅求解脱，粗茶淡饭度春秋。</div>
+            <div class="text-block simplified-text">坐着发呆想开点，粗茶淡饭过日子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">他年证果尘缘满，好向弥陀国里游。</div>
+            <div class="text-block simplified-text">等以后修行圆满了，就能去阿弥陀佛的极乐世界了。  
+
+（解释：用大白话把"证果尘缘满"说成"修行圆满"，"弥陀国"换成"阿弥陀佛的极乐世界"，"游"字用"去"表达更直白。保留了"修行成功-往生极乐"的核心信息。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当下鲁提辖扭过身来看时，拖扯的不是别人，却是渭州酒楼上救了的金老。那老儿直拖鲁达到僻静处，说道：“恩人，你好大胆！见今明明地张挂榜文，出一千贯赏钱捉你，你缘何却去看榜？若不是老汉遇见时，却不被做公的拿了。榜上见写着你年甲貌相贯址。”鲁达道：“洒家不瞒你说，因为你上，就那日回到状元桥下，正迎着郑屠那厮，被洒家三拳打死了。因此上在逃，一到处撞了四五十日，不想来到这里。你缘何不回东京去，也来到这里？”金老道：“恩人在上，自从得恩人救了，老汉寻得一辆车子，本欲要回东京去，又怕这厮赶来，亦无恩人在彼搭救，因此不上东京去。随路望北来，撞见一个京师古邻，来这里做买卖，就带老汉父子两口儿到这里。亏杀了他，就与老汉女儿做媒，结交此间一个大财主赵员外，养做外宅，衣食丰足，皆出于恩人。我女儿常常对他孤老说提辖大恩。那人员外也爱刺枪使棒，常说道：‘怎地得恩人相会一面也好。’想念如何能勾得见。且请恩人到家，过几日却再商议。”</div>
+            <div class="text-block simplified-text">鲁达一转身，发现拉他的不是别人，正是之前在渭州酒楼上救过的金老头。老头把鲁达拉到没人的地方说："恩人啊，你胆子也太大了！现在到处贴着告示，悬赏一千贯抓你呢，你怎么还敢去看告示？要不是我碰见你，你早被官差抓走了。告示上连你的年龄、长相、住址都写得清清楚楚。"
+
+鲁达说："实话跟你说，就因为那天送你走后，我在状元桥遇到郑屠那混蛋，被我三拳打死了。所以一直在逃，到处躲了四五十天，没想到跑到这儿来了。你怎么不回东京，也到这儿来了？"
+
+金老头回答："恩人啊，自从你救了我们，我找了辆车，本来想回东京，又怕郑屠的人追来，那边也没人帮我们，就没回去。一路往北走，碰到一个京城的老邻居，他来这里做生意，就把我们父女俩带过来了。多亏他帮忙，给我女儿做媒，嫁给了这里的大财主赵员外当外室，现在吃穿不愁，这都是托你的福啊。我女儿经常跟赵员外说你的恩情。那赵员外也喜欢舞枪弄棒，常说：‘要是能见恩人一面就好了。’一直想见你呢。先请恩人到我家住几天，咱们再慢慢商量。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">鲁提辖便和金老行不得半里，到门首，只见老儿揭起帘子，叫道：“我儿，大恩人在此。”那女孩儿浓妆艳裹，从里面出来，请鲁达居中坐了，插烛也似拜了六拜，说道：“若非恩人垂救，怎能勾有今日！”鲁达看那女子时，另是一般丰韵，比前不同。但见：</div>
+            <div class="text-block simplified-text">鲁提辖和金老走了不到半里路，到了家门口。老头掀开门帘喊："闺女，咱们的大恩人来了！"那姑娘打扮得漂漂亮亮从屋里出来，请鲁达坐在正中间，像插蜡烛一样恭恭敬敬磕了六个头，说："要不是恩人您出手相救，我哪有今天的好日子！"鲁达仔细看这姑娘，发现她气色模样跟以前完全不一样了。只见她：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">金钗斜插，掩映乌云；翠袖巧裁，轻笼瑞雪。樱桃口浅晕微红，春笋手半舒嫩玉。纤腰袅娜，绿罗裙微露金莲；素体轻盈，红戏绣袄偏宜玉体。脸堆三月娇花，眉扫初春嫩柳。香肌扑簌瑶台月，翠鬓笼松楚岫云。</div>
+            <div class="text-block simplified-text">这位女子打扮得很漂亮：她斜插着金钗，黑发像乌云一样浓密；翠绿的衣袖裁剪精巧，衬得皮肤像雪一样白。她的嘴唇像樱桃一样红润，手指像春笋一样细嫩。纤细的腰肢轻轻摆动，绿罗裙下隐约露出小脚；身材苗条，穿着红绣花的短袄正合身。脸蛋像三月的鲜花一样娇艳，眉毛像初春的柳叶一样细长。皮肤白嫩得像月光下的美玉，乌黑的头发蓬松如云。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">那女子拜罢，便请鲁提辖道：“恩人上楼去请坐。”鲁达道：“不须生受，洒家便要去。”金老便道：“恩人既到这里，如何肯放教你便去。”老儿接了杆棒包裹，请到楼上坐定。老儿分付道：“我儿陪待恩人坐一坐，我去安排来。”鲁达道：“不消多事，随分便好。”老儿道：“提辖恩念，杀身难报。量些粗食薄味，何足挂齿。”女子留住鲁达在楼上坐地，金老下来，叫了家中新讨的小厮，分付那个丫嬛一面烧着火，老儿和这小厮上街来，买了些鲜鱼、嫩鸡、酿鹅、肥鲊、时新果子之类归来。一面开酒，收拾菜蔬，都早摆了，搬上楼来，</div>
+            <div class="text-block simplified-text">那姑娘行完礼，就请鲁提辖说："恩人上楼坐会儿吧。"鲁达回答："不用麻烦了，我这就走。"金老汉赶紧说："恩人都到这儿了，哪能让你就这么走。"老头接过鲁达的棍棒和包袱，把他请到楼上坐好。老头交代说："闺女你陪着恩人坐会儿，我去准备饭菜。"鲁达说："别太费事，随便吃点就行。"老头说："您的大恩大德，我这条命都报答不完。这点粗茶淡饭，根本不值一提。"姑娘留在楼上陪鲁达坐着，金老汉下楼叫来新雇的伙计，让丫鬟先烧着火，自己带着伙计上街，买了鲜鱼、嫩鸡、烧鹅、咸鱼、新鲜水果这些回来。一边烫着酒，一边准备饭菜，很快就弄好了，把酒菜都端上楼来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">春台上放下三个盏子，三双箸，铺下菜蔬果子下饭等物。丫嬛将银酒壶荡上酒来，子父二人轮番把盏。金老倒地便拜。鲁提辖道：“老人家，如何恁地下礼？折杀俺也。”金老说道：“恩人听禀，前日老汉初到这里，写个红纸牌儿，旦夕一炷香，子父两个兀自拜哩。今日恩人亲身到此，如何不拜。”鲁达道：“却也难你这片心。”</div>
+            <div class="text-block simplified-text">在酒桌上摆好了三个酒杯、三双筷子，还有各种下酒菜和水果。丫鬟用银酒壶倒上酒，父女俩轮流给鲁提辖敬酒。金老头跪下来就磕头。鲁提辖赶紧说："老人家，您这是干啥？我可受不起啊！"金老头回答："恩人您听我说，前两天我刚到这儿，就写了您的牌位，每天早晚都带着闺女给您上香磕头。今天您真人来了，哪能不拜啊！"鲁达听了说："唉，你这份心意真让我过意不去。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">三人慢慢地饮酒，将及晚也，只听得楼下打将起来。鲁提辖开窗看时，只见楼下三二十人，各执白木棍棒，口里都叫：“拿将下来！”人丛里一个人骑在马上，口里大喝道：“休教走了这贼！”鲁达见不是头，拿起凳子，从楼上打将下来。金老连忙拍手叫道：“都不要动手。”那老儿抢下楼去，直至那骑马的官人身边，说了几句言语。那官人笑将起来，便喝散了那二三十人，各自去了。</div>
+            <div class="text-block simplified-text">三个人正慢慢喝酒，天快黑了，突然听见楼下打起来了。鲁提辖（鲁达）打开窗户一看，楼下有二三十个人，手里拿着白木棍棒，大喊："把他抓下来！"人群里有个骑马的，大声喊："别让这贼跑了！"鲁达一看情况不对，抄起凳子就从楼上冲下去。金老头赶紧拍手喊："都别动手！"那老头急忙跑下楼，到骑马的那个当官的面前说了几句话。那当官的听完笑了，马上喝退了那二三十个人，人群就散开了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">那官人下马，入到里面，老儿请下鲁提辖来。那官人扑翻身便拜道：“闻名不如见面，见面胜似闻名。义士提辖受礼。”鲁达便问那金老道：“这官人是谁？素不相识，缘何便拜洒家？”老儿道：“这个便是我儿的官人赵员外。却才只道老汉引甚么郎君子弟，在楼上吃酒，因此引庄客来厮打。老汉说知，方才喝散了。”鲁达道：“原来如此，怪员外不得。”赵员外再请鲁提辖上楼坐定，金老重整杯盘，再备酒食相待。赵员外让鲁达上首坐地，鲁达道：“洒家怎敢。”员外道：“聊表小弟相敬之礼。多闻提辖如此豪杰，今日天赐相见，实为万幸。”鲁达道：“洒家是个粗卤汉子，又犯了该死的罪过，若蒙员外不弃贫贱，结为相识，但有用洒家处，便与你去。”赵员外大喜，动问打死郑屠一事，说些闲话，较量些枪法，吃了半夜酒，各自歇了。</div>
+            <div class="text-block simplified-text">那当官的下了马，进到屋里，老头儿把鲁提辖请过来。那当官的一见鲁达就跪下磕头说："早就听说过您的大名，今天见到真人比传闻还厉害。好汉请受我一拜。"鲁达问老头："这人是谁？我根本不认识，为啥要拜我？"老头解释："这就是我女儿的丈夫赵员外。刚才他误以为我带不三不四的人在楼上喝酒，所以带着家丁来打架。我跟他说清楚后，他才把人喊走了。"鲁达说："哦，是这样啊，那不能怪员外。"
+
+赵员外又请鲁达上楼坐，老头重新摆了酒菜招待。赵员外让鲁达坐主位，鲁达推辞说："我哪敢啊。"赵员外说："这是表示我对您的尊敬。早就听说您是条好汉，今天能见到真是老天开眼。"鲁达说："我是个粗人，还背着人命官司。您要是不嫌弃，咱们交个朋友。以后有用得着我的地方，尽管开口。"赵员外很高兴，就问起打死郑屠夫的事，两人聊了些闲话，比划了下武艺，喝酒喝到半夜才各自休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">次日天明，赵员外道：“此处恐不稳便，可请提辖到敝庄住几时。”鲁达问道：“贵庄在何处？”员外道：“离此间十里多路，地名七宝村便是。”鲁达道：“最好。”员外先使人去庄上，叫牵两匹马来。未及晌午，马已到来。员外便请鲁提辖上马，叫庄客担了行李。鲁达相辞了金老父子二人，和赵员外上了马，两个并马行程，于路说些旧话，投七宝村来。不多时，早到庄前下马。赵员外携住鲁达的手，直至草堂上，分宾而坐。一面叫杀羊置酒相待，晚间收拾客房安歇。次日，又备酒食管待。鲁达道：“员外错爱，洒家如何报答。”赵员外便道：“四海之内，皆兄弟也。如何言报答之事。”</div>
+            <div class="text-block simplified-text">第二天天亮后，赵员外说："这里恐怕不安全，不如请提辖到我家里住几天吧。"鲁达问："你家在哪儿？"赵员外回答："离这儿大概十里路，有个叫七宝村的地方就是。"鲁达说："那挺好。"赵员外先派人回家，让准备两匹马。不到中午，马就来了。赵员外请鲁达上马，让仆人挑着行李。鲁达告别了金老汉父子，和赵员外一起骑马出发。两人一边赶路一边聊天，往七宝村去。没多久就到了庄前，两人下马。赵员外拉着鲁达的手，带他到客厅，分主客坐下。马上叫人杀羊备酒招待，晚上还收拾了客房让鲁达休息。第二天又准备酒菜招待。鲁达说："员外这么热情招待，我真不知道该怎么报答。"赵员外说："天下人都是兄弟，说什么报答不报答的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">话休絮繁。鲁达自此之后，在这赵员外庄上住了五七日。忽一日，两个正在书院里闲坐说话，只见金老急急奔来庄上，径到书院里，见了赵员外并鲁提辖。见没人，便对鲁达道：“恩人，不是老汉心多，为是恩人前日老汉请在楼上吃酒，员外误听人报，引领庄客来闹了街坊，后却散了，人都有些疑心，说开去。昨日有三四个做公的来邻舍街坊打听得紧，只怕要来村里缉捕恩人。倘或有些疏失，如之奈何？”鲁达道：“恁地时，洒家自去便了。”赵员外道：“若是留提辖在此，诚恐有些山高水低，教提辖怨怅；若不留提辖来，许多面皮都不好看。赵某却有个道理，教提辖万无一失，足可安身避难，只怕提辖不肯。”鲁达道：“洒家是个该死的人，但得一处安身便了，做甚么不肯。”赵员外道：“若如此，最好。离此间三十余里有座山，唤做五台山。山上有一个文殊院，原是文殊菩萨道场。寺里有五七百僧人，为头智真长老，是我弟兄。我祖上曾舍钱在寺里，是本寺的施主檀越。我曾许下剃度一僧在寺里，已买下一道五花度牒在此，只不曾有个心腹之人了这条愿心。如是提辖肯时，一应费用都是赵某备办。委实肯落发做和尚么？”鲁达寻思：“如今便要去时，那里投奔人？不如就了这条路罢。”便道：“既蒙员外做主，洒家情愿做了和尚，专靠员外照管。”当时说定了，连夜收拾衣服盘缠，段匹礼物，排担了。次日早起来，叫庄客挑了，两个取路望五台山来。辰牌已后，早到那山下。鲁提辖看那五台山时，果然好座大山。但见：</div>
+            <div class="text-block simplified-text">简单直白的现代白话文：
+
+长话短说。鲁达在赵员外家住了五六天。有一天，他和赵员外正在书房聊天，突然金老头慌慌张张跑来。看周围没人，就对鲁达说："恩人啊，不是我爱瞎想。上次咱们在酒楼喝酒，赵员外听错消息带人来闹事，虽然后来散了，但已经引起别人怀疑。昨天有好几个官差在附近打听，恐怕是来抓你的。万一出事可怎么办？"
+
+鲁达说："要是这样，我走就是了。"
+
+赵员外说："留你在这儿吧，怕连累你；不留你吧，又显得我不讲义气。我倒有个主意能保你安全，就怕你不愿意。"
+
+鲁达说："我这条命本来就不值钱，能有个落脚的地方就行，有什么不愿意的。"
+
+赵员外说："那太好了。离这儿三十多里有座五台山，山上有座文殊院。我和住持智真长老是兄弟，我们家一直给寺庙捐钱。我早就许愿要送个人去出家，连和尚的证件都准备好了，就是没找到合适的人。你要是愿意，所有费用我包了。你真愿意剃头当和尚吗？"
+
+鲁达心想："现在也没别处可去，不如就这样吧。"就说："既然员外安排，我愿意当和尚，全靠您照顾了。"
+
+当天晚上他们就收拾好行李礼物。第二天一早，让仆人挑着东西，两人就往五台山去了。快到中午时到了山脚下。鲁达一看，五台山真是座好山。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">云遮峰顶，日转山腰。嵯峨仿佛接天关，崒嵂参差侵汉表。岩前花木，舞春风暗吐清香；洞口藤萝，披宿雨倒悬嫩线。飞云瀑布，银河影浸月光寒；峭壁苍松，铁角铃摇龙尾动。宜是由揉蓝染出，天生工积翠妆成。根盘直压三千丈，气势平吞四百州。</div>
+            <div class="text-block simplified-text">这座山高耸入云，云雾遮住了山顶，太阳绕着山腰转。陡峭的山峰好像直通天上，高低不平的山势直插云霄。山前的花草树木在春风中摇摆，悄悄散发着清香；洞口垂挂的藤蔓经过夜雨冲刷，像一串串嫩绿的丝线倒悬着。飞泻的瀑布像银河倒挂，月光照在水雾上泛着寒意；陡峭山壁上的老松树，枝干像铁角一样，松针晃动如同龙尾摇摆。整座山像是用蓝颜料染过，又像天然堆积的翡翠。山脚盘踞方圆三千里，雄伟的气势仿佛能吞没四方大地。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">赵员外与鲁提辖两乘轿子抬上山来，一面使庄客前去通报。到得寺前，早有寺中都寺、监寺出来迎接。两个下了轿子，去山门外亭子上坐定。寺内智真长老得知，引着首座、侍者，出山门外来迎接。赵员外和鲁达向前施礼，真长老打了问讯，说道：“施主远出不易。”赵员外答道：“有些小事，特来上刹相浼。”真长老便道：“且请员外方丈吃茶。”赵员外前行，鲁达跟在背后。看那文殊寺，果然是好座大刹。但见：</div>
+            <div class="text-block simplified-text">赵员外和鲁提辖坐着两顶轿子上山，还让一个手下先去寺庙报信。到了庙前，庙里的管事和尚们已经出来迎接。两人下轿后，在山门外的小亭子里坐下。庙里的智真长老知道后，带着几个大和尚出来迎接。赵员外和鲁达上前行礼，长老问候说："施主大老远来不容易啊。"赵员外回答："有点小事，专门来贵寺麻烦您。"长老就说："请员外到方丈室喝茶吧。"赵员外走在前面，鲁达跟在后面。看这文殊寺，真是座气派的大寺庙。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">山门侵峻岭，佛殿接青云。钟楼与月窟相连，经阁共峰峦对立。香积厨通一泓泉水，众僧寮纳四面烟霞。老僧方丈斗牛边，禅客经堂云雾里。白面猿时时献果，将怪石敲响木鱼；黄斑鹿日日衔花，向宝殿供养金佛。七层宝塔接丹霄，千古圣僧来大刹。</div>
+            <div class="text-block simplified-text">这座寺庙建在高山上，大门紧挨着陡峭的山岭，佛殿高得好像能碰到云彩。钟楼建得跟月亮一样高，藏经楼正对着山峰。厨房旁边有一汪清泉，僧房四周云雾缭绕。老和尚的禅房靠近星空，修行人的经堂藏在云雾中。庙里有只白猴子经常摘果子，还会用怪石当木鱼敲；还有只梅花鹿天天叼着鲜花，到佛殿里供佛。七层高的宝塔直插云霄，自古以来很多高僧都来这里修行。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">当时真长老请赵员外并鲁达到方丈。长老邀员外向客席而坐，鲁达便去下首坐在禅椅上。员外叫鲁达附耳低言：“你来这里出家，如何便对长老坐地？”鲁达道：“洒家不省得。”起身立在员外肩下。面前首座、维那、侍者、监寺、都寺、知客、书记，依次排立东西两班。庄客把轿子安顿了，一齐搬将盒子入方丈来，摆在面前。长老道：“何故又将礼物来？寺中多有相渎檀越处。”赵员外道：“些小薄礼，何足称谢。”道人、行童收拾去了。赵员外起身道：“一事启堂头大和尚：赵某旧有一条愿心，许剃一僧在上刹，度牒词簿都已有了，到今不曾剃得。今有这个表弟，姓鲁名达，军汉出身，因见尘世艰辛，情愿弃俗出家。万望长老收录，慈悲慈悲，看赵某薄面，披剃为僧。一应所用，小子自当准备，烦望长老玉成，幸甚！”长老见说，答道：“这个事缘，是光辉老僧山门，容易容易。且请拜茶。”只见行童托出茶来。怎见得那盏茶的好处？有诗为证：</div>
+            <div class="text-block simplified-text">那时候，老和尚请赵员外和鲁达到方丈室。老和尚让赵员外坐在客座上，鲁达就在下首的禅椅上坐下。赵员外悄悄对鲁达说："你是来出家的，怎么能对着老和尚坐着呢？"鲁达回答："俺不懂这些规矩。"说完就站起来站到赵员外旁边。屋里两边站着首座、维那等寺里的执事僧人。赵家的仆人安顿好轿子，把礼盒都搬进方丈室摆好。老和尚说："怎么又带礼物来？寺里多有打扰施主的地方。"赵员外说："一点小意思，不值一提。"小和尚们把东西收拾走了。
+
+赵员外站起来说："有件事想跟方丈说：我早就有个心愿，想在贵寺剃度一个僧人，度牒文书都准备好了，一直没找到合适的人。现在我这个表弟，叫鲁达，以前是当兵的，看破红尘想出家。请方丈收下他，看在我的面子上给他剃度。需要的东西我都会准备好，请方丈成全。"老和尚听了说："这是给我们寺院增光的事，好说好说。先请喝茶。"这时小和尚端上茶来。这茶有多好呢？有诗为证：（后面应该是描写茶的诗歌）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">玉蕊金芽真绝品，僧家制造甚工夫。</div>
+            <div class="text-block simplified-text">这茶真是顶级好货，和尚们做它可费了不少功夫。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">兔毫盏内香云白，蟹眼汤中细浪铺。</div>
+            <div class="text-block simplified-text">白话文：  
+
+兔毫茶盏里飘着白色的茶香，煮茶的沸水冒着小泡泡，像螃蟹眼睛一样，水面泛起细小的波纹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">战退睡魔离枕席，增添清气入肌肤。</div>
+            <div class="text-block simplified-text">原文翻译成大白话就是：
+
+赶走了瞌睡虫，从床上爬起来，整个人都精神了，感觉神清气爽，皮肤都舒服多了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">仙茶自合桃源种，不许移根傍帝都。</div>
+            <div class="text-block simplified-text">这好茶啊，天生就该长在桃花源那样的好地方，可不能把它挪到京城去种。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">真长老与赵员外众人茶罢，收了盏托。真长老便唤首座、维那商议剃度这人，分付监寺、都寺安排办斋。只见首座与众僧自去商议道：“这个人不似出家的模样，一双眼恰似贼一般。”众僧道：“知客，你去邀请客人坐地，我们与长老计较。”知客出来请赵员外、鲁达到客馆里坐地。首座、众僧禀长老说道：“却才这个要出家的人，形容丑恶，貌相凶顽，不可剃度他，恐久后累及山门。”长老道：“他是赵员外檀越的兄弟，如何别得他的面皮。你等众人且休疑心，待我看一看。”焚起一炷信香，长老上禅椅盘膝而坐，口诵咒语，入定去了。一炷香过，却好回来，对众僧说道：“只顾剃度他。此人上应天星，心地刚直。虽然时下凶顽，命中驳杂，久后却得清净，正果非凡，汝等皆不及他。可记吾言，勿得推阻。”首座道：“长老只是护短，我等只得从他。不谏不是，谏他不从便了。”</div>
+            <div class="text-block simplified-text">真长老和赵员外他们喝完茶，收拾了茶具。真长老就叫来首座、维那商量给这人剃度出家的事，又让监寺、都寺去准备斋饭。这时首座和其他僧人私下商量说："这人长得不像出家人，眼睛贼溜溜的。"僧人们说："知客僧，你先去招呼客人坐着，我们去跟长老说说。"知客僧就出来请赵员外和鲁达到客房坐着。
+
+首座带着僧人们跟长老说："刚才那个想出家的人，长相凶恶，不能给他剃度，怕以后连累寺庙。"长老说："他是赵员外的兄弟，不能不给面子。你们先别急，让我看看。"长老点了一炷香，坐在禅椅上念经打坐。一炷香烧完，长老回来说："尽管给他剃度。这人是天上的星宿转世，心地正直。虽然现在看着凶，命里有些波折，但以后会修成正果，比你们都强。记住我的话，别拦着。"首座说："长老就是护着他，我们只能听您的。劝您不听就算了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">长老叫备斋食，请赵员外等方丈会斋。斋罢，监寺打了单帐，赵员外取出银两，教人买办物料，一面在寺里做僧鞋、僧衣、僧帽、袈裟、拜具。一两日都已完备。长老选了吉日良时，教鸣鸿钟，击动法鼓，就法堂内会集大众。整整齐齐五六百僧人，尽披袈裟，都到法座下合掌作礼，分作两班。赵员外取出银锭、表礼、信香，向法座前礼拜了，表白宣疏已罢，行童引鲁达到法座下。维那教鲁达除了巾帻，把头发分做九路绾了，揲起来。净发人先把一周遭都剃了，却待剃髭须，鲁达道：“留了这些儿还洒家也好。”众僧忍笑不住。真长老在法座上道：“大众听偈。”念道：</div>
+            <div class="text-block simplified-text">长老让人准备斋饭，请赵员外他们到方丈室一起吃。吃完饭，寺里管事的把账单拿出来，赵员外拿出银子，叫人去买做衣服的材料，同时在寺里赶制僧鞋、僧衣、僧帽、袈裟和拜垫。一两天就全做好了。长老挑了个好日子，让人敲钟打鼓，召集所有和尚到法堂集合。五六百个和尚穿着袈裟，整整齐齐站成两排，在法座前合掌行礼。赵员外拿出银元宝、礼物和香，在法座前行礼后，有人念了文书。然后小和尚领着鲁达到法座前。管事的人让鲁达摘掉头巾，把头发分成九股扎起来。剃头师傅先把他脑袋剃光，正要剃胡子时，鲁达说："给洒家留着这点胡子吧。"和尚们都忍不住笑。长老在法座上对大家说："听我念偈语。"接着念道：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">“寸草不留，六根清净。与汝剃了，免得争竞。”</div>
+            <div class="text-block simplified-text">"一根杂草都不留，彻底清干净。干脆给你剃光，省得再费劲。"  
+
+解释：  
+1. 保留了"彻底清除"和"剃度"的核心信息  
+2. 用"杂草""剃光"等生活化词汇替代佛教术语  
+3. "省得再费劲"比"免得争竞"更符合现代口语  
+4. 维持了原文"斩草除根"的决绝语气  
+5. 未添加宗教色彩，纯粹表达"彻底解决"的意图</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">长老念罢偈言，喝一声：“咄，尽皆剃去！”净发人只一刀，尽皆剃了。首座呈将度牒上法座前，请长老赐法名。长老拿着空头度牒而说偈曰：</div>
+            <div class="text-block simplified-text">老和尚念完一段话，大喊一声："嘿，全剃掉！"理发师傅一刀下去，头发全剃光了。寺院里的管事把出家证书递到老和尚面前，请他给取个法号。老和尚拿着空白的证书，又念了一段话：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">“灵光一点，价值千金。佛法广大，赐名智深。”</div>
+            <div class="text-block simplified-text">这段话的意思是：
+
+"你有一点特别聪明的地方，非常珍贵。佛法无边，给你起个法号叫'智深'。"
+
+简单说就是：
+你很有慧根，很难得。根据佛法，以后你就叫"智深"了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">长老赐名已罢，把度牒转将下来。书记僧填写了度牒，付与鲁智深收受。长老又赐法衣袈裟，教智深穿了。监寺引上法座前，长老用手与他摩顶受记道：“一要归依三宝，二要归奉佛法，三要归敬师友：此是三归。五戒者：一不要杀生，二不要偷盗，三不要邪淫，四不要贪酒，五不要妄语。”智深不晓得禅宗答应“是”“否”两字，却便道：“洒家记得。”众僧都笑。受记已罢，赵员外请众僧到云堂里坐下，焚香设斋供献。大小职事僧人，各有上贺礼物。都寺引鲁智深参拜了众师兄师弟，又引去僧堂背后丛林里选佛场坐地。当夜无事。</div>
+            <div class="text-block simplified-text">老和尚给鲁智深起了法名，办好出家证明交给书记僧填写。写完就把证明给了鲁智深。老和尚又给他一套和尚穿的法衣，让他换上。管事的和尚带他到佛像前，老和尚摸着他的头说规矩："第一要信佛，第二要守佛法，第三要尊敬师父和同门，这叫三归。还有五条戒律：不杀生、不偷东西、不搞男女关系、不贪杯、不说瞎话。"鲁智深不懂禅宗规矩，不会答"是"或"否"，直接说："俺记住了。"惹得和尚们都笑了。仪式结束后，赵员外请所有和尚到禅房吃饭烧香。寺里各级管事的和尚都送了贺礼。管事和尚带鲁智深见过各位师兄师弟，又领他到后山禅堂打坐。这天晚上没别的事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">次日，赵员外要回，告辞。长老留连不住，早斋已罢，并众僧都送出山门。赵员外合掌道：“长老在上，众师父在此，凡事慈悲。小弟智深乃是愚卤直人，早晚礼数不到，言语冒渎，误犯清规，万望觑赵某薄面，恕免恕免。”长老道：“员外放心，老僧自慢慢地教他念经诵咒，办道参禅。”员外道：“日后自得报答。”人丛里唤智深到松树下，低低分付道：“贤弟，你从今日难比往常，凡事自宜省戒，切不可托大。倘有不然，难以相见。保重，保重。早晚衣服，我自使人送来。”智深道：“不索哥哥说，洒家都依了。”当时赵员外相辞长老，再别了众人上轿，引了庄客，拕了一乘空轿，取了盒子，下山回家去了。当下长老自引了众僧回寺。</div>
+            <div class="text-block simplified-text">第二天，赵员外要走了，向长老告别。长老留不住他，吃过早饭后，带着和尚们一起把他送到寺庙门口。赵员外双手合十说："长老，各位师父，请多包涵。我弟弟鲁智深是个粗人，不懂规矩，说话做事可能冒犯寺规，看在我的面子上，请多原谅。"长老回答："员外放心，我会慢慢教他念经修行。"赵员外说："以后一定报答您。"然后从人群中叫出鲁智深到松树下，小声叮嘱："兄弟，从今以后不比从前，凡事要收敛些，千万别摆架子。要是惹出麻烦，咱们就难见面了。保重啊！衣服我会派人按时送来。"鲁智深说："哥哥不用多说，我都听你的。"说完赵员外告别长老和众人，坐上轿子，带着随从和空轿子，拿着食盒下山回家了。长老也带着和尚们回寺里去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">话说鲁智深回到丛林选佛场中禅床上，扑倒头便睡。上下肩两个禅和子推他起来，说道：“使不得，既要出家，如何不学坐禅？”智深道：“洒家自睡，干你甚事？”禅和子道：“善哉！”智深裸袖道：“团鱼洒家也吃，甚么善哉！”禅和子道：“却是苦也。”智深便道：“团鱼大腹，又肥甜了，好吃，那得苦也？”上下肩禅和子都不采他，由他自睡了。次日，要去对长老说知智深如此无礼。首座劝道：“老说道，他后来正果非凡，我等皆不及他，只是护短。你们且没奈何，休与他一般见识。”禅和子自去了。智深见没人说他，到晚放翻身体，横罗十字，倒在禅床上睡。夜间鼻如雷响，如要起来净手，大惊小怪，只在佛殿后撒尿撒屎，遍地都是。侍者禀长老说：“智深好生无礼，全没些个出家人体面。丛林中如何安着得此等之人。”长老喝道：“胡说！且看檀越之面，后来必改。”自此无人敢说。</div>
+            <div class="text-block simplified-text">鲁智深回到寺庙的禅房里，倒头就睡。旁边两个和尚推醒他说："不行啊，你既然出家了，怎么不学着打坐？"鲁智深说："老子睡觉关你屁事？"和尚说："罪过啊！"鲁智深撸起袖子说："甲鱼老子都吃过，还怕什么罪过！"和尚叹气："真是造孽。"鲁智深还嘴："甲鱼肚子又肥又甜，好吃得很，怎么就造孽了？"两个和尚懒得理他，随他睡去了。
+
+第二天，和尚们想去找方丈告状。管事和尚劝道："方丈说过，这人以后会有大成就，我们都不如他，就是脾气差。你们别跟他计较了。"和尚们只好作罢。
+
+鲁智深见没人管他，晚上干脆四仰八叉躺在禅床上睡，鼾声如雷。半夜要上厕所，也不讲究，直接在佛殿后面拉屎撒尿，弄得满地都是。小和尚跟方丈告状："鲁智深太不像话了，一点出家人的样子都没有！"方丈骂道："闭嘴！看在施主的面子上，他以后会改的。"从此再没人敢说他了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">鲁智深在五台山寺中，不觉搅了四五个月。时遇初冬天气，智深久静思动。当日睛明得好，智深穿了皂布直裰，系了鸦青绦，换了僧鞋，大踏步走出山门来。信步行到半山亭子上，坐在鹅项懒凳上，寻思道：“干鸟么！俺往常好酒好肉每日不离口，如今教洒家做了和尚，饿得干瘪了。赵员外这几日又不使人送些东西来与洒家吃，口中淡出鸟来，这早晚怎地得些酒来吃也好。”正想酒哩，只见远远地一个汉子，挑着一副担桶，唱上山来。上面盖着桶盖，那汉子手里拿着一个旋子，唱着上来。唱道：</div>
+            <div class="text-block simplified-text">鲁智深在五台山寺庙里已经住了四五个月。这天正好是初冬，天气晴朗，他闲得发慌想出去走走。他穿上黑色僧衣，系好青色腰带，换了僧鞋，大步走出庙门。他随意溜达到半山腰的亭子里，坐在长凳上想："真没劲！以前我天天喝酒吃肉，现在当了和尚，嘴里都快淡出鸟来了。赵员外这些天也不派人送点吃的来。这会儿要是能喝点酒该多好。"正想着呢，就看见远处有个汉子挑着担子，一边唱歌一边往山上走。担子上盖着桶盖，那人手里还拿着个酒提子，唱着歌上来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">“九里山前作战场，牧童拾得旧刀枪。</div>
+            <div class="text-block simplified-text">九里山以前打过仗，放牛娃捡到了打仗留下的旧刀旧枪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">顺风吹动乌江水，好似虞姬别霸王。”</div>
+            <div class="text-block simplified-text">"大风吹着乌江水翻滚，就像当年虞姬和霸王生死离别时的情景。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">鲁智深观见那汉子担担桶上来，坐在亭子上，看这汉子也来亭子上歇下担桶。智深道：“兀那汉子，你那桶里甚么东西？”那汉子道：“好酒。”智深道：“多少钱一桶？”那汉子道：“和尚，你真个也是作耍？”智深道：“洒家和你耍甚么！”那汉子道：“我这酒挑上去，只卖与寺内火工道人、直厅轿夫、老郎们做生活的吃。本寺长老已有法旨，但卖与和尚们吃了，我们都被长老责罚，追了本钱，赶出屋去。我们见关着本寺的本钱，见住着本寺的屋宇，如何敢卖与你吃？”智深道：“真个不卖？”那汉子道：“杀了我也不卖。”智深道：“洒家也不杀你，只要问你买酒吃。”那汉子见不是头，挑了担桶便走。智深赶下亭子来，双手拿住扁担，只一脚，交当踢着。那汉子双手掩着做一堆，蹲在地下，半日起不得。智深把那两桶酒，都提在亭子上，地下拾起旋子，开了桶盖，只顾舀冷酒吃。无移时，两桶酒吃了一桶。智深道：“汉子，明日来寺里讨钱。”那汉子方才疼止，又怕寺里长老得知，坏了衣饭，忍气吞声，那里敢讨钱。把酒分做两半桶挑子，拿了旋子，飞也似下山去了。</div>
+            <div class="text-block simplified-text">鲁智深看见一个挑着酒桶的男人上山来，就坐在亭子里。那男人也到亭子里放下酒桶休息。鲁智深问："喂，你那桶里装的啥？"男人答："好酒。"鲁智深问："多少钱一桶？"男人说："和尚，你开玩笑吧？"鲁智深说："谁跟你开玩笑！"男人解释："我这酒是挑到寺里卖给干活的火工、轿夫他们的。方丈有规定，要是卖给和尚喝，我们会被罚钱，连本钱都要赔光，还得被赶走。我们靠着寺里的本钱做生意，住着寺里的房子，哪敢卖给你啊？"鲁智深问："真不卖？"男人说："打死我也不卖。"鲁智深说："我不打你，就想买酒喝。"男人见情况不对，挑起酒桶就要走。鲁智深追上去，双手抓住扁担，一脚把男人踢倒在地。男人疼得捂着肚子蹲着，半天起不来。鲁智深把两桶酒拎到亭子里，捡起酒勺，打开桶盖就舀着喝。没多久就喝完了一整桶。鲁智深对男人说："明天来寺里拿钱。"男人刚缓过劲儿，又怕被方丈知道丢了饭碗，只好憋着气不敢要钱。他把剩下的酒匀成两半桶，拿起酒勺，飞快地跑下山去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">只说鲁智深在亭子上坐了半日，酒却上来，下得亭子，松树根边又坐了半歇，酒越涌上来。智深把皂直裰褪膊下来，把两只袖子缠在腰里，露出脊背上花绣来，扇着两个膀子上山来。看时，但见：</div>
+            <div class="text-block simplified-text">鲁智深在亭子里坐了很长时间，酒劲上来了。他走下亭子，又在松树根旁边坐了一会儿，酒劲更大了。鲁智深把黑色外衣脱下来，两只袖子系在腰上，露出背上的纹身，晃着膀子往山上走。这时他看到：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">头重脚轻，对明月眼红面赤；前合后仰，趁清风东倒西歪。踉踉跄跄上山来，似当风之鹤；摆摆摇摇回寺去，如出水之龟。脚尖曾踢涧中龙，拳头要打山下虎。指定天宫，叫骂天蓬元帅；踏开地府，要拿催命判官。裸形赤体醉魔君，放火杀人花和尚。</div>
+            <div class="text-block simplified-text">这个人喝得醉醺醺的，走路摇摇晃晃。他抬头看着月亮，满脸通红；被风一吹，身子前俯后仰，东倒西歪。他跌跌撞撞往山上走，活像被风吹得站不稳的鹤；摇摇摆摆回寺庙，又像刚爬上岸的乌龟。醉得发疯时，他抬脚说要踢水里的龙，挥拳说要打山下的虎。指着天上骂天蓬元帅，踩着地府要抓催命判官。这个光着身子、喝得烂醉的疯和尚，就是个会放火杀人的花和尚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">鲁智深看看来到山门下，两个门子远远地望见，拿着竹篦来到山门下，拦住鲁智深便喝道：“你是佛家弟子，如何噇得烂醉了上山来。你须不瞎，也见库局里贴的晓示：但凡和尚破戒吃酒，决打四十竹篦，赶出寺去；如门子纵容醉的僧人入寺，也吃十下。你快下山去，饶你几下竹篦。”鲁智深一者初做和尚，二来旧性未改，睁起双眼骂道：“直娘贼！你两个要打洒家，俺便和你厮打！”门子见势头不好，一个飞也似入来报监寺，一个虚拖竹篦拦他。智深用手隔过，叉开五指，去那门子脸上只一掌，打得踉踉跄跄。却待挣扎，智深再复一拳，打倒在山门下，只是叫苦。智深道：“洒家饶你这厮。”踉踉跄跄攧入寺里来。</div>
+            <div class="text-block simplified-text">鲁智深走到寺庙门口，两个守门的和尚远远看见他，拿着竹板过来拦住他，大声说：“你是个和尚，怎么喝得烂醉来寺庙？你没瞎的话，应该看见寺里贴的告示：和尚要是破戒喝酒，就打四十竹板赶出去；要是我们放醉酒的和尚进来，也得挨十下。你赶紧下山，还能少挨几下板子。”鲁智深刚当和尚不久，脾气还是老样子，瞪着眼睛就骂：“狗东西！你们想打我？老子就跟你们干！”守门的看情况不对，一个赶紧跑去报告管事和尚，另一个假装用竹板拦他。鲁智深一把推开，抡起巴掌就扇过去，打得那和尚站都站不稳。刚要爬起来，鲁智深又是一拳，直接把他打趴在大门口直叫唤。鲁智深说：“老子今天饶了你。”说完摇摇晃晃地闯进庙里去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">监寺听得门子报说，叫起老郎、火工、直厅轿夫三二十人，各执白木棍棒，从西廊下抢出来，却好迎着智深。智深望见，大吼了一声，却似嘴边起个霹雳，大踏步抢入来。众人初时不知他是军官出身，次后见他行得凶了，慌忙都退入藏殿里去，便把亮槅关上。智深抢入阶来，一拳一脚，打开亮槅，三二十人都赶得没路。夺条棒，从藏殿里打将出来。</div>
+            <div class="text-block simplified-text">寺里的管事听到看门的报告，马上叫来二十多个老杂工、伙夫和轿夫，每人抄起白木棍子，从西边走廊冲出来，正好撞上鲁智深。智深一看见他们，大吼一声，那声音跟打雷似的，迈开大步就冲了过去。这帮人一开始不知道他当过军官，后来看他这么凶，吓得全都躲进藏经阁，还把门关上了。智深冲到台阶上，几拳几脚就把门砸开，把那二十多人打得无处可逃。他抢过一根棍子，从藏经阁一路打了出来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">监寺慌忙报知长老。长老听得，急引了三五个侍者，直来廊下，喝道：“智深不得无礼！”智深虽然酒醉，却认得是长老，撇了棒，向前来打个问讯，指着廊下，对长老道：“智深吃了两碗酒，又不曾撩拨他们，他众人又引人来打洒家。”长老道：“你看我面，快去睡了，明日却说。”鲁智深道：“俺不看长老面，洒家直打死你那几个秃驴。”长老叫侍者扶智深到禅床上，扑地便倒了，齁齁地睡了。众多职事僧人围定长老，告诉道：“向日徒弟们曾谏长老来，今日如何？本寺那里容得这等野猫，乱了清规。”长老道：“虽是如今眼下有些啰唣，后来却成得正果。无奈何，且看赵员外檀越之面，容恕他这一番。我自明日叫去埋冤他便了。”众僧冷笑道：“好个没分晓的长老！”各自散去歇息。</div>
+            <div class="text-block simplified-text">寺里的管事和尚赶紧跑去告诉方丈。方丈一听，马上带着几个随从赶到走廊，大声喝止："智深！别胡闹！"智深虽然喝醉了，但还认得出是方丈，就扔了棍子，上前行礼，指着走廊那边对方丈说："我就喝了两碗酒，又没招惹他们，他们倒叫人来打我。"方丈说："看在我的面子上，你先去睡觉，有事明天再说。"鲁智深嚷嚷："要不是给你面子，我非打死那几个光头不可！"方丈让随从扶智深回禅房，他一沾床就鼾声如雷睡着了。
+
+其他管事和尚围住方丈告状："早跟您说过这人不靠谱，现在闹成这样？咱们寺庙哪能留这种野人，把规矩都坏了。"方丈解释："虽然现在闹得不像话，但将来能修成正果。没办法，看在赵员外面子上，这次就饶了他。明天我亲自去教训他。"和尚们冷笑着走开："这方丈真糊涂！"各自回房休息了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">次日早斋罢，长老使侍者到僧堂里坐禅处唤智深时，尚兀自未起。待他起来，穿了直裰，赤着脚，一道烟走出僧堂来。侍者吃了一惊，赶出外来寻时，却走在佛殿后撒屎。侍者忍笑不住，等他净了手，说道：“长老请你说话。”智深跟着侍者到方丈，长老道：“智深虽是个武夫出身，今来赵员外檀越剃度了你，我与你摩顶受记，教你一不可杀生，二不可偷盗，三不可邪淫，四不可贪酒，五不可妄语。此五戒，乃僧家常理。出家人第一不可贪酒。你如何夜来吃得大醉，打了门子，伤坏了藏殿上朱红槅子，又把火工道人都打走了，口出喊声。如何这般所为？”智深跪下道：“今番不敢了。”长老道：“既然出家，如何先破了酒戒，又乱了清规？我不看你施主赵员外面，定赶你出寺。再后休犯。”智深起来合掌道：“不敢，不敢。”长老留在方丈里，安排早饭与他吃，又用好言语劝他。取一领细布直裰，一双僧鞋，与了智深，教回僧堂去了。</div>
+            <div class="text-block simplified-text">第二天早上吃过斋饭，长老让小和尚去禅房叫鲁智深，结果他还在睡懒觉。等他磨磨蹭蹭起来，披上僧衣光着脚，一溜烟跑出禅房。小和尚追出去找，发现他居然在佛殿后面拉屎。小和尚憋不住笑，等他方便完就说："长老叫你去见他。"
+
+鲁智深跟着小和尚来到方丈室，长老训他："虽然你以前是个武夫，但现在赵员外送你出家，我给你剃度受戒，规矩都跟你说清楚了：一不能杀生，二不能偷东西，三不能搞女人，四不能贪酒，五不能说瞎话。这些是当和尚的基本要求。尤其第一条就是不准喝酒！可你昨晚喝得烂醉，打伤看门的，砸坏佛殿的红漆门，还把烧火的杂工都打跑了，大吵大闹像什么话？"
+
+鲁智深赶紧跪下认错："下次不敢了。"长老说："既然当了和尚，怎么一来就破戒？要不是看赵员外的面子，非赶你出寺不可。下不为例！"鲁智深站起来双手合十："一定改，一定改。"
+
+长老留他在方丈室吃了早饭，又好好劝了他一番。最后给他一套新僧衣、一双僧鞋，让他回禅房去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">昔大唐一个名贤，姓张名旭，作一篇《醉歌行》，单说那酒。端的做得好，道是：</div>
+            <div class="text-block simplified-text">从前唐朝有个名人，叫张旭，写了篇《醉歌行》，专门讲喝酒的。这诗写得真好，他是这么说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">金瓯潋滟倾欢伯，双手擎来两眸白。</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+我拿着酒杯倒满美酒，双手捧着喝到两眼发直。
+
+解释：
+1. "金瓯"指酒杯，"潋滟"形容酒满，直接说"倒满酒杯"
+2. "欢伯"是酒的雅称，直接用"美酒"
+3. "两眸白"指喝醉后眼神发直的状态
+4. 保留了喝酒的核心场景和醉态描写
+5. 完全使用口语化表达，如"捧着喝""两眼发直"
+6. 未添加或删减原意，只是转换了表达方式</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">延颈长舒似玉虹，咽吞犹恨江湖窄。</div>
+            <div class="text-block simplified-text">伸长脖子像彩虹一样舒展，喝水的时候还嫌江湖太小不够喝。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">昔年侍宴玉皇前，敌饮都无两三客。</div>
+            <div class="text-block simplified-text">以前在玉皇大帝的宴会上陪酒，能跟我对着喝的人连两三个都不到。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">蟠桃烂熟堆珊瑚，琼液浓斟浮琥珀。</div>
+            <div class="text-block simplified-text">熟透的蟠桃堆得像珊瑚一样红艳艳，美酒倒出来像琥珀一样闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">流霞畅饮数百杯，肌肤润泽腮微赤。</div>
+            <div class="text-block simplified-text">喝了几百杯美酒，脸微微发红，皮肤也变得光滑红润。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">天地闻知酒量洪，敕令受赐三千石。</div>
+            <div class="text-block simplified-text">老天爷听说这人酒量特别大，就下令赏给他三千石酒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">飞仙劝我不记数，酩酊神清爽筋骨。</div>
+            <div class="text-block simplified-text">神仙劝我别想太多，喝个痛快反而能让精神变好、身体舒服。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">东君命我赋新诗，笑指三山咏标格。</div>
+            <div class="text-block simplified-text">老天爷让我写首新诗，我笑着指向远处三座山，拿它们当榜样来写。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">信笔挥成五百言，不觉尊前堕巾帻。</div>
+            <div class="text-block simplified-text">我随手一写就写了五百多字，完全没注意到酒杯前头掉了头巾。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">宴罢昏迷不记归，乘鸾误入云光宅。</div>
+            <div class="text-block simplified-text">喝得大醉记不清回家的路，迷迷糊糊骑错仙鹤闯进了神仙住的地方。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">仙童扶下紫云来，不辨东西与南北。</div>
+            <div class="text-block simplified-text">有个仙童从紫云上扶下来，整个人晕头转向，连东南西北都分不清了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">一饮千锺百首诗，草书乱散纵横划。</div>
+            <div class="text-block simplified-text">喝上千杯酒，写下百首诗，草书写得乱七八糟，笔画横七竖八。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">但凡饮酒，不可尽欢。常言酒能成事，酒能败事，便是小胆的吃了，也胡乱做了大胆，何况性高的人。</div>
+            <div class="text-block simplified-text">喝酒的时候，千万别喝得太嗨。老话说，酒能帮你办成事，也能让你坏事。就算是胆小的人，喝多了也会乱来，更别说那些本来就冲动的人了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">再说这鲁智深自从吃酒醉闹了这一场，一连三四个月不敢出寺门去。忽一日，天色暴热，是二月间天气。离了僧房，信步踱出山门外立地，看着五台山，喝采一回。猛听得山下叮叮的响声，顺风吹上山来。智深再回僧堂里，取了些银两，揣在怀里，一步步走下山来。出得那“五台福地”的牌楼来看时，原来却是一个市井，约有五七百人家。智深看那市镇上时，也有卖肉的，也有卖菜的，也有酒店、面店。智深寻思道：“干呆么！俺早知有这个去处，不夺他那桶酒吃，也自下来买些吃。这几日熬得清水流，且过去看有甚东西买些吃。”听得那响处，却是打铁的在那里打铁。间壁一家门上，写着“父子客店”。</div>
+            <div class="text-block simplified-text">鲁智深自从那次喝醉酒闹事后，三四个月都不敢出寺庙。有一天，天气突然很热，正是二月份的时候。他离开僧房，慢慢走到山门外站着，看了看五台山，忍不住叫好。忽然听见山下传来叮叮当当的声音，顺着风飘上山来。鲁智深回到僧房，拿了些银子揣在怀里，一步步走下山。走出"五台福地"的牌楼一看，原来是个小镇，大概住着五六百户人家。他看见街上有卖肉的、卖菜的，还有酒店和面馆。鲁智深心想："我真傻！早知道有这地方，当初就不用抢那桶酒喝了，直接下来买多好。这几天嘴里都快淡出鸟来了，去看看有什么好吃的。"顺着声音找过去，发现是个铁匠铺在打铁。旁边有家店，门口挂着"父子客店"的招牌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">智深走到铁匠铺门前看时，见三个人打铁。智深便道：“兀那待诏，有好钢铁么？”那打铁的看见鲁智深腮边新剃暴长短须，戗戗地好渗濑人，先有五分怕他。那待诏住了手道：“师父请坐，要打甚么生活？”智深道：“洒家要打条禅杖，一口戒刀，不知有上等好铁么？”待诏道：“小人这里正有些好铁，不知师父要打多少重的禅杖？戒刀但凭分付。”智深道：“洒家只要打一条一百斤重的。”待诏笑道：“重了，师父。小人打怕不打了，只恐师父如何使得动。便是关王刀，也则只有八十一斤重。”智深焦躁道：“俺便不及关王？他也只是个人。”待诏道：“小人好心，只可打条四五十斤的，也十分重了。”智深道：“便依你说，比关王刀，也打八十一斤的。”待诏道：“师父，肥了不好看，又不中使。依着小人，好生打一条六十二斤的水磨禅杖与师父，使不动时，休怪小人。戒刀已说了，不用分付，小人自用十分好铁打造在此。”智深道：“两件家生要几两银子？”待诏道：“不讨价，实要五两银子。”智深道：“俺便依你五两银子，你若打得好时，再有赏你。”那待诏接了银两道：“小人便打在此。”智深道：“俺有些碎银子在这里，和你买碗酒吃。”待诏道：“师父稳便。小人赶趁些生活，不及相陪。”</div>
+            <div class="text-block simplified-text">鲁智深走到铁匠铺门口，看见三个人在打铁。他问：“师傅，有好铁吗？”打铁的看他一脸凶相，有点害怕，停下活儿说：“师父请坐，要打什么东西？”智深说：“我要打一根禅杖和一把戒刀，有好铁吗？”铁匠说：“我这有好铁，禅杖要多重的？戒刀您说样式就行。”智深说：“禅杖要一百斤的。”铁匠笑了：“太重了师父。我打是能打，就怕您用不动。关公的刀才八十一斤呢。”智深不耐烦了：“我比不上关公？他不也是人！”铁匠说：“我是好心，打四五十斤的就够重了。”智深说：“那就按关公刀的重量，打八十一斤的。”铁匠劝道：“师父，太粗了不好看也不顺手。我给您打根六十二斤的水磨禅杖吧，要是用不动可别怪我。戒刀您放心，我用最好的铁打。”智深问：“两件家伙要多少钱？”铁匠说：“不还价，五两银子。”智深说：“行，打得好再加钱。”铁匠接过银子说：“我这就给您打。”智深又说：“我这还有点零钱，请你喝碗酒。”铁匠说：“师父您自便，我还得干活，就不陪您了。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">智深离了铁匠人家，行不到三二十步，见一个酒望子挑出在房檐上。智深掀起帘子，入到里面坐下，敲那桌子叫道：“将酒来！”卖酒的主人家说道：“师父少罪，小人住的房屋也是寺里的，本钱也是寺里的，长老已有法旨，但是小人们卖酒与寺里僧人吃了，便要追了小人们本钱，又赶出屋。因此只得休怪。”智深道：“胡乱卖些与洒家吃，俺须不说是你家便了。”店主人道：“胡乱不得，师父别处去吃，休怪休怪。”智深只得起身，便道：“洒家别处吃得，却来和你说话。”出得店门，行了几步，又望见一家酒旗儿直挑出在门前。智深一直走进去，坐下叫道：“主人家，快把酒来卖与俺吃。”店主人道：“师父，你好不晓事。长老已有法旨，你须也知，却来坏我们衣饭。”智深不肯动身，三回五次，那里肯卖。智深情知不肯，起身又走，连走了三五家，都不肯卖。智深寻思一计：“若不个道理，如何能勾酒吃。”远远的杏花深处，市梢尽头，一家挑出个草帚儿来。智深走到那里看时，却是个傍村小酒店。但见：</div>
+            <div class="text-block simplified-text">鲁智深离开铁匠铺，走了不到二三十步，看见一家酒馆的招牌挂在屋檐下。他掀开门帘进去坐下，拍着桌子喊："拿酒来！"店主说："师父别见怪，我们这房子是寺里的，本钱也是寺里的。方丈有规定，要是我们卖酒给寺里的和尚喝，就要没收本钱，还要把我们赶出去。所以实在对不住了。"鲁智深说："随便卖点给我喝，我保证不说是在你这买的。"店主说："这可不行，师父您去别处喝吧，实在对不住。"鲁智深只好站起来说："我去别处喝，回头再来找你。" 
+
+出了店门没走几步，又看见一家酒馆挂着旗子。鲁智深直接走进去坐下喊："老板，快拿酒来给我喝！"店主说："师父您怎么这么不懂事？方丈的规定您也知道，这不是砸我们饭碗吗？"鲁智深赖着不走，但店主死活不肯卖。见实在买不到，他只好起身离开。 
+
+连着跑了三五家酒馆，都没人肯卖酒给他。鲁智深心里琢磨："不想个办法，今天这酒是喝不成了。"忽然看见远处杏花林尽头，村口有家小店挂着草扎的幌子。走近一看，是家乡村小酒馆。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">傍村酒肆已多年，斜插桑麻古道边。</div>
+            <div class="text-block simplified-text">这家小酒馆在村子边上开了很多年，就在那条老路旁边，周围还种着桑树和麻。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">白板凳铺宾客坐，矮篱笆用棘荆编。</div>
+            <div class="text-block simplified-text">白板凳给客人坐，矮篱笆是用带刺的树枝编的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">破瓮榨成黄米酒，柴门挑出布青帘。</div>
+            <div class="text-block simplified-text">把破罐子酿成黄米酒，从柴门边挂出青布做的酒旗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">更有一般堪笑处，牛屎泥墙画酒仙。</div>
+            <div class="text-block simplified-text">这地方还有个特别搞笑的地方：用牛粪糊的墙上，画着个酒鬼神仙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">鲁智深揭起帘子，走入村店里来，倚着小窗坐下，便叫道：“主人家，过往僧人买碗酒吃！”庄家看了一看道：“和尚，你那里来？”智深道：“俺是行脚僧人，游方到此经过，要买碗酒吃。”庄家道：“和尚若是五台山寺里的师父，我却不敢卖与你吃。”智深道：“洒家不是。你快将酒卖来。”庄家看见鲁智深这般模样，声音各别，便道：“你要打多少酒？”智深道：“休问多少，大碗只顾筛来。”约莫也吃了十来碗酒，智深问道：“有甚肉，把一盘来吃。”庄家道：“早来有些牛肉，都卖没了，只有些菜蔬在此。”智深猛闻得一阵肉香，走出空地上看时，只见墙边沙锅里煮着一只狗在那里。智深便道：“你家见有狗肉，如何不卖与俺吃？”庄家道：“我怕你是出家人不吃狗肉，因此不来问你。”</div>
+            <div class="text-block simplified-text">鲁智深掀开门帘，走进村里的酒馆，靠窗坐下就喊：“老板，过路的和尚想买碗酒喝！”店家打量他一眼问：“和尚，你从哪儿来？”鲁智深说：“我是云游的和尚，路过这儿，想喝碗酒。”店家说：“你要是五台山寺庙的和尚，我可不敢卖给你。”鲁智深嚷道：“我不是！赶紧拿酒来。”店家看他长相粗鲁、口音特别，就问：“你要打多少酒？”鲁智深大手一挥：“别问多少，用大碗尽管倒！”喝了大概十来碗后，鲁智深问：“有什么肉？给我来一盘。”店家说：“早上还有牛肉，现在卖完了，只剩些素菜。”鲁智深突然闻到肉香，跑到后院一看——墙角砂锅里正煮着只狗。他立刻喊道：“明明有狗肉，为啥不卖我？”店家支吾着：“我以为出家人不吃狗肉，就没敢问你要不要。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">智深道：“洒家的银子有在这里。”就将银子递与庄家道：“你且卖半只与俺吃。”那庄家连忙取半只熟狗肉，捣些蒜泥，将来放在智深面前。智深大喜，用手扯那狗肉，蘸着蒜泥吃，一连又吃了十来碗酒。吃得口滑，只顾要吃，那里肯住。庄家倒都呆了，叫道：“和尚只恁地罢！”智深睁起眼道：“洒家又不白吃你的，管俺怎地！”庄家道：“再要多少？”智深道：“再打一桶来。”庄家只得又舀一桶来。智深无移时又吃了这桶酒，剩下一脚狗腿，把来揣在怀里。临出门又道：“多的银子，明日又来吃。”吓得庄家目睁口呆，罔知所措，看见他早望五台山上去了。</div>
+            <div class="text-block simplified-text">鲁智深说："我的钱在这儿。"就把钱递给店老板说："你先给我切半只狗肉。"老板赶紧拿来半只煮好的狗肉，捣了些蒜泥，端到鲁智深面前。鲁智深高兴坏了，直接用手撕狗肉，蘸着蒜泥吃，一口气又喝了十几碗酒。越吃越来劲，根本停不下来。老板都看傻了，喊道："和尚差不多得了！"鲁智深瞪着眼说："我又不是不给钱，你管我呢！"老板问："还要多少？"鲁智深说："再打一桶酒来。"老板只好又舀了一桶。没多久鲁智深又把酒喝光了，剩下一条狗腿，顺手塞进怀里。临走还说："多出来的钱，明天再来吃。"吓得老板目瞪口呆，不知所措，眼看着他往五台山方向去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">智深走到半山亭子上，坐了一回，酒却涌上来。跳起身，口里道：“俺好些时不曾拽拳使脚，觉道身体都困倦了，洒家且使几路看。”下得亭子，把两只袖子掿在手里，上下左右使了一回。使得力发，只一膀子搧在亭子柱上，只听得刮剌剌一声响亮，把亭子柱打折了，坍了亭子半边。门子听得半山里响，高处看时，只见鲁智深一步一攧，抢上山来。两个门子叫道：“苦也！前日这畜生醉了，今番又醉得不小可！”便把山门关上，把拴拴了，只在门缝里张时，见智深抢到山门下，见关了门，把拳头擂鼓也似敲门，两个门子那里敢开。智深敲了一回，扭过身来，看了左边的金刚，喝一声道：“你这个鸟大汉，不替俺敲门，却拿着拳头吓洒家，俺须不怕你。”跳上台基，把栅剌子只一拔，却似撧葱般拔开了。拿起一根折木头，去那金刚腿上便打，簌簌的泥和颜色都脱下来。门子张见道：“苦也！”只得报知长老。智深等了一回，调转身来看着右边金刚，喝一声道：“你这厮张开大口，也来笑洒家。”便跳过右边台基上，把那金刚脚上打了两下，只听得一声震天价响，那尊金刚从台基上倒撞下来。智深提着折木头大笑。</div>
+            <div class="text-block simplified-text">鲁智深走到半山腰的亭子里，坐了一会儿，酒劲上来了。他站起来说："我好久没活动拳脚了，感觉浑身不得劲，干脆练两下。"他走下亭子，挽起袖子，上下左右打了一通拳。打得兴起，一膀子撞在亭子柱子上，只听"咔嚓"一声，柱子断了，半边亭子塌了。
+
+看门的和尚听见半山腰的动静，从高处一看，只见鲁智深摇摇晃晃往山上冲。两个看门的喊："糟了！上次这醉鬼闹事，这次醉得更厉害！"赶紧关上大门，上了门栓，从门缝往外看。鲁智深冲到庙门前，见门关了，抡起拳头像擂鼓一样砸门，看门的哪敢开。
+
+鲁智深敲了一会儿门，转头看见左边的金刚像，骂道："你这大个子不帮我敲门，还举着拳头吓唬我？我可不怕你！"跳上台阶，一把扯断栅栏，像拔葱似的轻松。捡起一根断木头，照着金刚腿就打，泥塑的颜料哗哗往下掉。看门的见了直叫苦，赶紧去报告方丈。
+
+鲁智深等了一会儿，又转向右边的金刚像，骂道："你这家伙张着大嘴，也敢笑话我？"跳到右边台阶，照着金刚脚打了两下，只听"轰隆"一声巨响，那尊金刚像从台基上栽了下来。鲁智深提着断木头哈哈大笑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">两个门子去报长老，长老道：“休要惹他，你们自去。”只见这首座、监寺，都寺，并一应职事僧人，都到方丈禀说：“这野猫今日醉得不好，把半山亭子、山门下金刚都打坏了，如何是好？”长老道：“自古天子尚且避醉汉，何况老僧乎？若是打坏了金刚，请他的施主赵员外自来塑新的；倒了亭子，也要他修盖。这个且由他。”众僧道：“金刚乃是山门之主，如何把来换过？”长老道：“休说坏了金刚，便是打坏了殿上三世佛，也没奈何，只可回避他。你们见前日的行凶么？”众僧出得方丈，都道：“好个囫囵粥的长老！门子，你且休开门，只在里面听。”智深在外面大叫道：“直娘的秃驴们！不放洒家入寺时，山门外讨把火来，烧了这个鸟寺。”众僧听得叫，只得叫门子：“拽了大拴，由那畜生入来。若不开时，真个做出来！”门子只得捻脚捻手，把拴拽了，飞也似闪入房里躲了。众僧也各自回避。</div>
+            <div class="text-block simplified-text">两个看门的和尚跑去报告长老，长老说："别去招惹他，你们自己看着办。"这时候寺里的管事和尚们都来方丈室报告："那个野和尚今天发酒疯，把半山腰的亭子和山门前的金刚像都砸坏了，这可怎么办？"长老说："连皇帝都要躲着醉汉，何况我这个老和尚？金刚像要是坏了，就让当初出钱塑像的赵员外再出钱重做；亭子倒了也让他来修。这事先别管他。"和尚们说："金刚可是咱们寺庙的门面啊，怎么能随便换？"长老说："别说砸了金刚像，就算他把大殿里的佛像都砸了，咱们也只能躲着。你们忘了他前几天打人的事吗？"和尚们走出方丈室，都嘀咕说："这长老真是和稀泥！看门的，你先别开门，在里面听着。"鲁智深在外面大骂："他娘的秃驴！再不开门，老子就在山门外放把火，烧了这破庙！"和尚们听见叫骂，只好对看门的说："快把门闩拉开，让那疯子进来吧。再不开门他真能干出这事来！"看门的只好轻手轻脚拉开门闩，然后飞快躲进屋里。其他和尚也都各自躲起来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">只说那鲁智深双手把山门尽力一推，扑地攧将入来，吃了一跤。扒将起来，把头摸一摸，直奔僧堂来。到得选佛场中，禅和子正打坐间，看见智深揭起帘子，钻将入来，都吃一惊，尽低了头。智深到得禅床边，喉咙里咯咯地响，看着地下便吐。众僧都闻不得那臭，个个道：“善哉！”齐掩了口鼻。智深吐了一回，扒上禅床，解下绦，把直裰带子都必必剥剥扯断了，脱下那脚狗腿来。智深道：“好，好！正肚饥哩。”扯来便吃。众僧看见，便把袖子遮了脸，上下肩两个禅和子远远地躲开。智深见他躲开，便扯一块狗肉，看着上首的道：“你也到口。”上首的那和尚把两只袖子死掩了脸，智深道：“你不吃？”把肉望下首的禅和子嘴边塞将去。那和尚躲不迭，却待下禅床。智深把他劈耳朵揪住，将肉便塞。对床四五个禅和子跳过来劝时，智深撇了狗肉，提起拳头，去那光脑袋上必必剥剥只顾凿。满堂僧众大喊起来，都去柜中取了衣钵要走。此乱唤做“卷堂大散”，首座那里禁约得住。智深一昧地打将出来，大半禅客都躲出廊下来。监寺、都寺不与长老说知，叫起一班职事僧人，点起老郎、火工道人、直厅轿夫，约有一二百人，都执杖叉棍棒，尽使手巾盘头，一齐打入僧堂来。智深见了，大吼一声，别无器械，抢入僧堂里佛面前，推翻供桌，撧两条桌脚，从堂里打将出来。但见：</div>
+            <div class="text-block simplified-text">鲁智深用双手使劲推开寺庙大门，结果用力过猛，直接摔了个狗吃屎。他爬起来摸摸脑袋，直奔和尚们打坐的地方。  
+
+到了佛堂，和尚们正在打坐，突然看见鲁智深掀开帘子闯进来，全都吓了一跳，赶紧低头不敢看他。鲁智深走到禅床边，喉咙里咕噜咕噜响，低头就往地上吐。那味道太臭，和尚们受不了，纷纷捂着鼻子喊：“天哪！”  
+
+鲁智深吐完，爬上禅床，扯断腰带，脱下脚上绑的狗腿，说：“好，好！正好饿了。”抓起狗肉就吃。和尚们一看，赶紧用袖子遮住脸，旁边的和尚也躲得远远的。鲁智深见他们躲，就撕下一块狗肉，对着上座的和尚说：“你也来一口。”那和尚死死捂住脸，鲁智深问：“不吃？”转头就把肉往旁边和尚嘴里塞。那和尚想躲，差点从禅床上摔下去。鲁智深一把揪住他耳朵，硬把肉往他嘴里塞。对面几个和尚赶紧过来劝，鲁智深扔了狗肉，抡起拳头就往他们光头上猛敲。  
+
+整个佛堂乱成一团，和尚们吓得跑去拿行李要跑。这场面叫“卷堂大散”，连首座都管不住。鲁智深一路打出去，大多数和尚都躲到走廊下。监寺和都寺没告诉长老，直接叫了一两百个杂役、火工道人、轿夫，拿着棍棒，头上缠着毛巾，冲进佛堂要抓鲁智深。  
+
+鲁智深见这阵势，大吼一声，手边没武器，就冲到佛像前掀翻供桌，掰断两条桌腿当武器，从佛堂一路打出去。只见——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">67.</span>
+            <div class="text-block original-text">心头火起，口角雷鸣。奋八九尺猛兽身躯，吐三千丈凌云志气。按不住杀人怪胆，圆睁起卷海双晴。直截横冲，似中箭投崖虎豹；前奔后涌，如着枪跳涧豺狼。直饶揭帝也难当，便是金刚须拱手。恰似顿断绒绦锦鹞子，犹如扯开铁锁火猢狲。</div>
+            <div class="text-block simplified-text">气得火冒三丈，骂得震天响。他挺起高大的身躯，浑身是劲，一副天不怕地不怕的样子。压不住想杀人的冲动，瞪圆了眼睛，眼珠子都快瞪出来了。横冲直撞，像中了箭从悬崖跳下来的老虎豹子；前冲后突，像挨了枪往山涧里逃的豺狼。就算是神仙来了也挡不住，金刚来了也得认输。活像断了线的风筝，又像挣脱铁链的猴子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">68.</span>
+            <div class="text-block original-text">当时鲁智深轮两条桌脚，打将出来。众多僧行见他来得凶了，都拖了棒，退到廊下。智深两条桌脚着地卷将来，众僧早两下合拢来。智深大怒，指东打西，指南打北，只饶了两头的。当时智深直打到法堂下，只见长老喝道：“智深不得无礼！众僧也休动手。”两边众人被打伤了十数个，见长老来，各自退去。智深见众人退散，撇了桌脚，叫道：“长老与洒家做主。”此时酒已七八分醒了。长老道：“智深，你连累杀老僧。前番醉了一次，搅扰了一场，我教你兄赵员外得知，他写书来与众僧陪话。今番你又如此大醉无礼，乱了清规，打坍了亭子，又打坏了金刚，这个且由他。你搅得众僧卷堂而走，这个罪业非小。我这里五台山文殊菩萨道场，千百年清净香火去处，如何容得你这等秽污。你且随我来方丈里过几日，我安排你一个去处。”智深随长老到方丈去。长老一面叫职事僧人留住众禅客，再回僧堂，自去坐禅；打伤了的和尚，自去将息。长老领智深到方丈歇了一夜。</div>
+            <div class="text-block simplified-text">鲁智深抡起两条桌子腿，冲出来就打。和尚们看他来势汹汹，都拿着棍子退到走廊下。智深挥舞着桌腿冲过去，和尚们赶紧围上来。智深火冒三丈，东打西打，南打北打，就放过两头的和尚。他一路打到法堂前，长老喝止道："智深别胡闹！和尚们也别打了。"两边已经有十几个和尚被打伤，见长老来了，都退开。智深看人都散了，扔了桌腿喊："长老给我评评理！"这时候他的酒也醒了大半。长老说："智深啊，你可害苦我了。上次喝醉闹了一场，我让你哥哥赵员外知道了，他还写信来给和尚们道歉。这次你又喝得大醉胡闹，破坏规矩，打塌亭子，打坏金刚像，这些先不说。你把和尚们都吓得要离开寺庙，这罪过可不小。我们五台山是文殊菩萨的道场，千百年来都是清净修行的地方，哪能容你这样胡来。你先跟我到方丈住几天，我再给你找个去处。"智深跟着长老去了方丈。长老让管事和尚安抚其他僧人，让他们回禅堂打坐，受伤的和尚自己去养伤。长老带着智深在方丈住了一晚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">69.</span>
+            <div class="text-block original-text">次日，真长老与首座商议，收拾了些银两赍发他，教他别处去，可先说与赵员外知道。长老随即修书一封，使两个直厅道人径到赵员外庄上说知就里，立等回报。赵员外看了来书，好生不然，回书来拜复长老，说道：“坏了的金刚、亭子，赵某随即备价来修。智深任从长老发遣。”长老得了回书，便叫侍者取领皂布直裰，一双僧鞋，十两白银，房中唤过智深。长老道：“智深，你前番一次大醉，闹了僧堂，便是误犯。今次又大醉，打坏了金刚，坍了亭子，卷堂闹了选佛场，你这罪业非轻。又把众禅客打伤了。我这里出家是个清静去处，你这等做，甚是不好。看你赵檀越面皮，与你这封书，投一个去处安身，我这里决然安你不得了。我夜来看了，赠汝四句偈言，终身受用。”智深道：“师父教弟子那里去安身立命？愿听俺师四句偈言。”</div>
+            <div class="text-block simplified-text">第二天，真长老和首座商量后，准备了一些银子打发鲁智深，让他去别的地方，但得先告诉赵员外一声。长老马上写了一封信，派两个管事的和尚直接去赵员外家说明情况，等着回复。赵员外看完信，心里很不高兴，回信给长老说："打坏的金刚像和亭子，我马上出钱修好。智深就听长老安排吧。"  
+
+长老收到回信，就让侍从拿来一件黑僧衣、一双僧鞋和十两银子，把智深叫到房里。长老说："智深，你上次喝得大醉，大闹僧堂，还算是一时糊涂。这次又喝醉，打坏金刚像，弄塌亭子，搅乱选佛场，你这祸闯得太大了。还打伤了那么多僧人。咱们这儿是清净修行的地儿，你这么做实在不像话。看在赵员外的面子上，给你这封信，找个地方安身吧，我这儿是真留不住你了。我昨晚想了想，送你四句话，你一辈子都能用得着。"  
+
+智深问："师父让徒弟去哪儿安身？您说的四句话，弟子想听听。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">70.</span>
+            <div class="text-block original-text">真长老指着鲁智深，说出这几句言语，去这个去处。有分教：这人笑挥禅杖，战天下英雄好汉；怒掣戒刀，砍世上逆子谗臣。直教名驰塞北三千里，证果江南第一州。毕竟真长老与智深说出甚言语来，且听下回分解。</div>
+            <div class="text-block simplified-text">老和尚指着鲁智深，说了几句话，让他去某个地方。结果就是：这家伙以后会笑嘻嘻地挥着禅杖，跟天下好汉打架；发起火来就拔出戒刀，专砍那些不孝子和奸臣。最后让他名声响彻北方几千里，在江南修成正果。到底老和尚跟鲁智深说了什么？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
