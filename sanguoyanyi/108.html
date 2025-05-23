@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百八回 丁奉雪中奋短兵　孙峻席间施密计</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./107.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百八回 丁奉雪中奋短兵　孙峻席间施密计</h1>
+        <a href="./109.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说姜维正走，遇着司马师引兵拦截。原来姜维取雍州之时，郭淮飞报入朝，魏主与司马懿商议停当，懿遣长子司马师引兵五万，前来雍州助战；师听知郭淮敌退蜀兵，师料蜀兵势弱，就来半路击之。直赶到阳平关，却被姜维用武侯所传连弩法，于两边暗伏连弩百余张，一弩发十矢，皆是药箭，两边弩箭齐发，前军连人带马射死不知其数。司马师于乱军之中，逃命而回。却说麴山城中蜀将句安，见援兵不至，乃开门降魏。姜维折兵数万，领败兵回汉中屯扎。司马师自还洛阳。至嘉平三年秋八月，司马懿染病，渐渐沉重，乃唤二子至榻前嘱曰：“吾事魏历年，官授太傅，人臣之位极矣；人皆疑吾有异志，吾尝怀恐惧。吾死之后，汝二人善理国政。慎之！慎之！”言讫而亡。长子司马师，次子司马昭，二人申奏魏主曹芳。芳厚加祭葬，优锡赠谥；封师为大将军，总领尚书机密大事，昭为骠骑上将军。却说吴主孙权，先有太子孙登，乃徐夫人所生，于吴赤乌四年身亡，遂立次子孙和为太子，乃琅琊王夫人所生。和因与全公主不睦，被公主所谮，权废之，和忧恨而死，又立三子孙亮为太子，乃潘夫人所生。此时陆逊、诸葛瑾皆亡，一应大小事务，皆归于诸葛恪。太元元年秋八月初一日，忽起大风，江海涌涛，平地水深八尺。吴主先陵所种松柏，尽皆拔起，直飞到建业城南门外，倒卓于道上。权因此受惊成病。至次年四月内，病势沉重，乃召太傅诸葛恪、大司马吕岱至榻前，嘱以后事。嘱讫而薨。在位二十四年，寿七十一岁，乃蜀汉延熙十五年也。后人有诗曰：“紫髯碧眼号英雄，能使臣僚肯尽忠。二十四年兴大业，龙盘虎踞在江东。”</div>
+            <div class="text-block simplified-text">姜维正带兵走着，突然遇到司马师带兵拦路。原来之前姜维攻打雍州时，郭淮赶紧向朝廷报告。魏国皇帝和司马懿商量后，派司马懿的大儿子司马师带五万兵马来雍州帮忙。司马师听说郭淮已经打退了蜀军，觉得蜀军现在实力不行，就半路截杀姜维。一直追到阳平关，没想到姜维用了诸葛亮传下来的连弩战术——在两边埋伏了一百多架连弩，每架能连发十支毒箭。两边万箭齐发，魏军前锋连人带马被射死无数。司马师在乱军中拼命逃了回去。
+
+这时麴山城的蜀将句安因为等不到援军，开城投降了魏国。姜维损失了好几万士兵，带着残兵退回汉中驻扎。司马师也撤回了洛阳。
+
+到了嘉平三年八月，司马懿病重，把两个儿子叫到床前交代："我伺候魏国这么多年，官做到太傅，当臣子的已经到顶了。别人总怀疑我有二心，我一直提心吊胆。我死后你们要好好治理国家，千万小心！"说完就死了。大儿子司马师、小儿子司马昭报告给魏主曹芳。曹芳厚葬了司马懿，封司马师当大将军总管朝政，司马昭当骠骑将军。
+
+再说东吴这边，孙权原本的太子孙登（徐夫人所生）早就死了，后来立二儿子孙和（琅琊王夫人所生）当太子。但孙和跟全公主处不好，被公主诬告，孙权就废了他。孙和郁闷而死，孙权又改立三子孙亮（潘夫人所生）为太子。这时陆逊、诸葛瑾这些老臣都去世了，国家大事都交给诸葛恪处理。
+
+太元元年八月初一，突然刮起狂风，江海翻腾，平地积水八尺深。孙权祖坟种的松柏全被连根拔起，直接飞到建业城南门外，倒插在路中间。孙权被这事吓出病来。第二年四月病危，叫来诸葛恪和吕岱交代后事，说完就死了。在位24年，享年71岁，当时是蜀汉延熙十五年。后人有诗称赞他："紫胡子蓝眼睛真英雄，能让部下都尽忠。二十四年创基业，雄踞江东显威风。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">孙权既亡，诸葛恪立孙亮为帝，大赦天下，改元建兴元年；谥权曰大皇帝，葬于蒋陵。早有细作探知其事，报入洛阳。司马师闻孙权已死，遂议起兵伐吴。尚书傅嘏曰：“吴有长江之险，先帝屡次征伐，皆不遂意；不如各守边疆，乃为上策。”师曰：“天道三十年一变，岂得常为鼎峙乎？吾欲伐吴。”昭曰：“今孙权新亡，孙亮幼懦，其隙正可乘也。”遂令征南大将军王昶引兵十万攻南郡，征东将军胡遵引兵十万攻东兴，镇南都督毋丘俭引兵十万攻武昌：三路进发。又遣弟司马昭为大都督，总领三路军马。</div>
+            <div class="text-block simplified-text">孙权死后，诸葛恪扶立孙亮当皇帝，大赦天下，改年号为建兴元年；给孙权追封"大皇帝"的称号，把他埋在蒋陵。这事很快被探子打听到，报告给了洛阳的司马师。司马师听说孙权死了，就商量着要出兵打东吴。尚书傅嘏劝他："东吴有长江天险，先帝（指司马懿）以前多次打都没成功。不如咱们守好自己地盘，这才是最好的办法。"但司马师说："天下大势三十年一变，哪能一直三国鼎立呢？我就要打东吴。"司马昭也说："现在孙权刚死，孙亮年纪小又软弱，正是好机会。"于是司马师派三路大军：王昶带十万兵打南郡，胡遵带十万兵打东兴，毋丘俭带十万兵打武昌。还让他弟弟司马昭当总指挥，统领这三路兵马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">是年冬十二月，司马昭兵至东吴边界，屯住人马，唤王昶、胡遵、毋丘俭到帐中计议曰：“东吴最紧要处，惟东兴郡也。今他筑起大堤，左右又筑两城，以防巢湖后面攻击，诸公须要仔细。”遂令王昶、毋丘俭各引一万兵，列在左右：“且勿进发；待取了东兴郡，那时一齐进兵。”昶、俭二人受令而去。昭又令胡遵为先锋，总领三路兵前去：“先搭浮桥，取东兴大堤；若夺得左右二城，便是大功。”遵领兵来搭浮桥。</div>
+            <div class="text-block simplified-text">那年冬天十二月，司马昭带兵到了东吴边境，安营扎寨后，把王昶、胡遵、毋丘俭叫到营帐里商量说："东吴最重要的地方就是东兴郡。现在他们修了大堤，左右两边还建了两座城，用来防备从巢湖后面的进攻，你们一定要小心。"于是命令王昶、毋丘俭各带一万兵马，分别驻扎在左右两边："先别进攻；等拿下东兴郡后，再一起进军。"王昶、毋丘俭领命走了。司马昭又让胡遵当先锋，统领三路兵马先出发："先搭浮桥，拿下东兴大堤；要是能攻下左右两座城，就是大功一件。"胡遵就带兵去搭浮桥了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说吴太傅诸葛恪，听知魏兵三路而来，聚众商议。平北将军丁奉曰：“东兴乃东吴紧要处所，若有失，则南郡、武昌危矣。”恪曰：“此论正合吾意。公可就引三千水兵从江中去，吾随后令吕据、唐咨、留赞各引一万马步兵，分三路来接应。但听连珠炮响，一齐进兵。吾自引大兵后至。”丁奉得令，即引三千水兵，分作三十只船，望东兴而来。</div>
+            <div class="text-block simplified-text">话说吴国的太傅诸葛恪，听说魏兵分三路打过来了，就召集手下商量对策。平北将军丁奉说："东兴是咱们东吴的关键地方，要是丢了，南郡和武昌可就危险了。"诸葛恪说："你说得对。你马上带三千水军坐船从江上出发，我随后派吕据、唐咨、留赞他们各带一万步兵骑兵，分三路支援。听到连续放炮的信号，就一起进攻。我亲自带大部队在后面跟着。"丁奉接到命令，立刻带着三千水军，分乘三十条船，往东兴方向去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说胡遵渡过浮桥，屯军于堤上，差桓嘉、韩综攻打二城。左城中乃吴将全端守把，右城中乃吴将留略守把。此二城高峻坚固，急切攻打不下。全、留二人见魏兵势大，不敢出战，死守城池。胡遵在徐塘下寨。时值严寒，天降大雪，胡遵与众将设席高会。忽报水上有三十只战船来到。遵出寨视之，见船将次傍岸，每船上约有百人。遂还帐中，谓诸将曰：“不过三千人耳，何足惧哉！”只令部将哨探，仍前饮酒。</div>
+            <div class="text-block simplified-text">话说胡遵带兵过了浮桥，在河堤上安营扎寨，派桓嘉、韩综去攻打左右两座城。左边城里是吴国将领全端守着，右边城里是吴国将领留略守着。这两座城又高又结实，一时半会儿打不下来。全端和留略看到魏军人多势众，不敢出城迎战，只能死守城池。胡遵在徐塘扎营。当时天气特别冷，还下着大雪，胡遵和将领们正在帐中摆酒席吃喝。突然有人来报告，说河上来了三十艘战船。胡遵出营查看，看见那些船快要靠岸了，每艘船上大概有一百来人。他回到帐中，对手下将领说："顶多就三千人，有什么好怕的！"就只派了几个小兵去侦察，自己继续喝酒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">丁奉将船一字儿抛在水上，乃谓部将曰：“大丈夫立功名，取富贵，正在今日！”遂令众军脱去衣甲，卸了头盔，不用长枪大戟，止带短刀。魏兵见之大笑，更不准备。忽然连珠炮响了三声，丁奉扯刀当先，一跃上岸。众军皆拔短刀，随奉上岸，砍入魏寨，魏兵措手不及。韩综急拔帐前大戟迎之，早被丁奉抢入怀内，手起刀落，砍翻在地。桓嘉从左边转出，忙绰枪刺丁奉，被奉挟住枪杆。嘉弃枪而走，奉一刀飞去，正中左肩，嘉望后便倒。奉赶上，就以枪刺之。三千吴兵，在魏寨中左冲右突。胡遵急上马夺路而走。魏兵齐奔上浮桥，浮桥已断，大半落水而死；杀倒在雪地者，不知其数。车仗马匹军器，皆被吴兵所获。司马昭、王昶、毋丘俭听知东兴兵败，亦勒兵而退。却说诸葛恪引兵至东兴，收兵赏劳了毕，乃聚诸将曰：“司马昭兵败北归，正好乘势进取中原。”遂一面遣人赍书入蜀，求姜维进兵攻其北，许以平分天下；一面起大兵二十万，来伐中原。临行时，忽见一道白气，从地而起，遮断三军，对面不见。蒋延曰：“此气乃白虹也，主丧兵之兆。太傅只可回朝，不可伐魏。”恪大怒曰：“汝安敢出不利之言，以慢吾军心！”叱武士斩之。众皆告免，恪乃贬蒋延为庶人，仍催兵前进。丁奉曰：“魏以新城为总隘口，若先取得此城，司马师破胆矣。”恪大喜，即趱兵直至新城。守城牙门将军张特，见吴兵大至，闭门坚守。恪令兵四面围定。早有流星马报入洛阳。主簿虞松告司马师曰：“今诸葛恪困新城，且未可与战。吴兵远来，人多粮少，粮尽自走矣。待其将走，然后击之，必得全胜。但恐蜀兵犯境，不可不防。”师然其言，遂令司马昭引一军助郭淮防姜维；毋丘俭、胡遵拒住吴兵。</div>
+            <div class="text-block simplified-text">丁奉把战船排成一排停在江上，对手下将领说："是爷们儿就该今天拼一把，建功立业赚富贵！"他命令士兵脱掉笨重盔甲，只带短刀。魏军看见这阵仗都笑翻了，压根没防备。
+
+突然三声炮响，丁奉第一个挥刀跳上岸，士兵们跟着冲进魏军营寨。魏军完全没反应过来，韩综慌忙拿长戟抵抗，被丁奉贴身一刀砍倒。桓嘉从侧面偷袭，丁奉一把抓住他的枪，吓得桓嘉扔枪就跑，结果被飞刀扎中后背。三千吴军在魏营里横冲直撞，魏军主帅胡遵骑马逃命，士兵们挤上浮桥逃窜，结果桥断了，淹死冻死无数。吴军缴获大批物资。
+
+司马昭他们听说前线惨败，赶紧撤军。诸葛恪带兵到东兴后，犒赏完军队就说："现在司马昭刚吃败仗，正是我们攻打中原的好机会！"他一边派人联系蜀国的姜维约定南北夹击，一边带着二十万大军出发。刚要开拔时，突然地上冒出一股白雾挡住军队。蒋延劝道："这是凶兆啊，咱们别打了！"诸葛恪气得要杀他，被众人劝住后把蒋延贬为平民，继续进军。
+
+丁奉建议："新城是魏军要塞，拿下这里准能吓破司马师的胆。"诸葛恪立刻带兵包围新城。守将张特关城门死守。消息传到洛阳，谋士虞松对司马师说："咱们别急着打，吴军远道而来缺粮草，等他们饿得不行撤退时再打。但要防备蜀军偷袭。"司马师就派司马昭协助防蜀，让毋丘俭他们牵制吴军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说诸葛恪连月攻打新城不下，下令众将：“并力攻城，怠慢者立斩。”于是诸将奋力攻打。城东北角将陷。张特在城中定下一计：乃令一舌辩之士，赍捧册籍，赴吴寨见诸葛恪，告曰：“魏国之法：若敌人困城，守城将坚守一百日，而无救兵至，然后出城降敌者，家族不坐罪。今将军围城已九十余日；望乞再容数日，某主将尽率军民出城投降。今先具册籍呈上。”恪深信之，收了军马，遂不攻城。原来张特用缓兵之计，哄退吴兵，遂拆城中房屋，于破城处修补完备，乃登城大骂曰：“吾城中尚有半年之粮，岂肯降吴狗耶！尽战无妨！”恪大怒，催兵打城。城上乱箭射下。恪额上正中一箭，翻身落马。诸将救起还寨，金疮举发。众军皆无战心；又因天气亢炎，军士多病。恪金疮稍可，欲催兵攻城。营吏告曰：“人人皆病，安能战乎？”恪大怒曰：“再说病者斩之！”众军闻知，逃者无数。忽报都督蔡林引本部军投魏去了。恪大惊，自乘马遍视各营，果见军士面色黄肿，各带病容。遂勒兵还吴。早有细作报知毋丘俭。俭尽起大兵，随后掩杀。</div>
+            <div class="text-block simplified-text">诸葛亮带兵攻打新城好几个月都没打下来，就下令说："所有人一起攻城，谁偷懒就砍头！"于是将士们拼命进攻，眼看城东北角快被攻破了。守城的张特想了个办法：派一个能说会道的人带着户口册去见诸葛亮，说："魏国法律规定：如果敌人围城，守将坚持一百天还没援军，就可以投降，家人也不会受牵连。现在你们围城九十多天了，能不能再等几天？我们将军会带着全城军民投降。先把户口册交给你。"诸葛亮信以为真，就撤兵停止攻城。其实这是张特的缓兵之计，等吴军撤退后，他马上拆房子修补城墙，修好后站在城头大骂："我们城里还有半年的粮食，怎么可能投降你们这些吴狗！要打就打！"诸葛亮气坏了，赶紧下令攻城，结果被城上射来的箭射中额头，摔下马来。将士们把他救回军营，但箭伤发作，加上天气炎热，士兵们都病倒了。诸葛亮伤刚好点又要攻城，军官报告说："士兵都病了，怎么打仗？"诸葛亮发火说："谁再说生病就砍头！"士兵们听说后纷纷逃跑。这时又传来消息说大将蔡林带着部队投奔魏国去了。诸葛亮赶紧骑马巡视各营，果然看见士兵们面黄肌瘦、病怏怏的，只好撤兵回吴国。魏国将领毋丘俭早就得到消息，立刻带大军追杀过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">吴兵大败而归，恪甚羞惭，托病不朝。吴主孙亮自幸其宅问安，文武官僚皆来拜见。恪恐人议论，先搜求众官将过失，轻则发遣边方，重则斩首示众。于是内外官僚，无不悚惧。又令心腹将张约、朱恩管御林军。以为牙爪。却说孙峻字子远，乃孙坚弟孙静曾孙，孙恭之子也；孙权存日，甚爱之，命掌御林军马。今闻诸葛恪令张约、朱恩二人掌御林军，夺其权，心中大怒。太常卿滕胤，素与诸葛恪有隙，乃乘间说峻曰：“诸葛恪专权恣虐，杀害公卿，将有不臣之心。公系宗室，何不早图之？”峻曰：“我有是心久矣；今当即奏天子，请旨诛之。”于是孙峻、滕胤入见吴主孙亮，密奏其事。亮曰：“朕见此人，亦甚恐怖；常欲除之，未得其便。今卿等果有忠义，可密图之。”胤曰：“陛下可设席召恪，暗伏武士于壁衣中，掷杯为号，就席间杀之，以绝后患。”亮从之。</div>
+            <div class="text-block simplified-text">吴国军队打了大败仗回来，诸葛恪觉得很丢脸，就假装生病不去上朝。吴国皇帝孙亮亲自去他家看望，官员们都来拜见。诸葛恪怕别人说他闲话，就先找手下官员的毛病，小错的就发配到边疆，严重的直接砍头示众。这样一来，朝廷里外的官员都吓得要命。他还让自己的亲信张约、朱恩掌管御林军，当作自己的打手。
+
+再说孙峻（字子远），他是孙坚弟弟孙静的曾孙，孙恭的儿子。孙权活着的时候很喜欢他，让他管御林军。现在听说诸葛恪派张约、朱恩接管御林军，夺了自己的权力，气得要死。太常卿滕胤一直和诸葛恪不和，就趁机对孙峻说："诸葛恪独揽大权，随便杀害大臣，怕是要造反。您是皇亲国戚，为什么不早点对付他？"孙峻说："我早就有这个想法了，现在就去报告皇上，请旨杀了他。"
+
+于是孙峻和滕胤去见孙亮，偷偷报告这事。孙亮说："我每次见到这个人也害怕，早就想除掉他，就是没找到机会。你们要是真有忠心，就偷偷想办法吧。"滕胤出主意说："皇上可以请诸葛恪吃饭，在屏风后面埋伏武士，摔杯子当暗号，直接在酒席上杀了他，永绝后患。"孙亮同意了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说诸葛恪自兵败回朝，托病居家，心神恍惚。一日，偶出中堂，忽见一人穿麻挂孝而入。恪叱问之，其人大惊无措。恪令拿下拷问，其人告曰：“某因新丧父亲，入城请僧追荐；初见是寺院而入，却不想是太傅之府。却怎生来到此处也？”恪大怒，召守门军士问之。军士告曰：“某等数十人，皆荷戈把门，未尝暂离，并不见一人入来。”恪大怒，尽数斩之。是夜，恪睡卧不安，忽听得正堂中声响如霹雳。恪自出视之，见中梁折为两段。恪惊归寝室，忽然一阵阴风起处，见所杀披麻人与守门军士数十人，各提头索命。恪惊倒在地，良久方苏。次早洗面，闻水甚血臭。恪叱侍婢，连换数十盆，皆臭无异。恪正惊疑间，忽报天子有使至，宣太傅赴宴。</div>
+            <div class="text-block simplified-text">话说诸葛恪打了败仗回朝后，借口生病在家休养，整天心神不宁。有一天，他偶然走到大厅，突然看见一个穿孝服的人闯进来。诸葛恪大声喝问，那人吓得手足无措。诸葛恪叫人把他抓起来审问，那人解释说："我父亲刚去世，进城找和尚做法事。一开始以为这是寺庙才进来的，没想到是太傅的府邸。我怎么会走到这里来呢？"诸葛恪勃然大怒，叫来看门的士兵质问。士兵们都说："我们几十个人一直拿着武器守门，从没离开过，根本没看见有人进来。"诸葛恪气疯了，把这些守门士兵全杀了。
+
+当天晚上，诸葛恪睡不着觉，突然听见大厅里传来打雷般的巨响。他出去一看，发现房梁断成了两截。诸葛恪吓得跑回卧室，这时刮起一阵阴风，只见被他杀死的那个穿孝服的人和几十个守门士兵，个个提着脑袋来找他索命。诸葛恪当场吓晕过去，好久才醒过来。
+
+第二天早上洗脸时，他闻到水里有股血腥味。诸葛恪骂丫鬟换水，连换几十盆还是臭的。正当他惊疑不定时，突然有人来报，说皇帝派使者来请太傅去赴宴。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">恪令安排车仗。方欲出府，有黄犬衔住衣服，嘤嘤作声，如哭之状。恪怒曰：“犬戏我也！”叱左右逐去之，遂乘车出府。行不数步，见车前一道白虹，自地而起，如白练冲天而去。恪甚惊怪，心腹将张约进车前密告曰；“今日宫中设宴，未知好歹，主公不可轻入。”恪听罢，便令回车。行不到十余步，孙峻、滕胤乘马至车前曰：“太傅何故便回？”恪曰：“吾忽然腹痛，不可见天子。”胤曰：“朝廷为太傅军回，不曾面叙，故特设宴相召，兼议大事。太傅虽感贵恙，还当勉强一行。”恪从其言，遂同孙峻、滕胤入宫，张约亦随入。</div>
+            <div class="text-block simplified-text">诸葛恪让人准备车马。刚要出府门，一条黄狗突然咬住他的衣服，发出呜呜的声音，像是哭一样。诸葛恪生气地说："这狗在耍我！"骂手下人把狗赶走，然后上车出发。走了没多远，看见车前突然冒出一道白光，像白布一样直冲上天。诸葛恪觉得奇怪，他的心腹将领张约悄悄过来对他说："今天宫里摆酒席，不知吉凶，您最好别轻易进宫。"诸葛恪听完就命令掉头回去。车走了不到十几步，孙峻和滕胤骑马追上来问："太傅怎么突然要回去？"诸葛恪说："我突然肚子疼，不能去见皇帝了。"滕胤说："朝廷因为您刚打完仗回来，还没当面叙话，特意设宴请您，还要商量大事。太傅虽然不舒服，还是勉强去一趟吧。"诸葛恪听了他们的话，就跟孙峻、滕胤一起进宫，张约也跟着进去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">恪见吴主孙亮，施礼毕，就席而坐。亮命进酒，恪心疑，辞曰：“病躯不胜杯酌。”孙峻曰：“太傅府中常服药酒，可取饮乎？”恪曰：“可也。”遂令从人回府取自制药酒到，恪方才放心饮之。酒至数巡，吴主孙亮托事先起。孙峻下殿，脱了长服，着短衣，内披环甲，手提利刃，上殿大呼曰：“天子有诏诛逆贼！”诸葛恪大惊，掷杯于地，欲拔剑迎之，头已落地。张约见峻斩恪，挥刀来迎。峻急闪过，刀尖伤其左指。峻转身一刀，砍中张约右臂。武士一齐拥出，砍倒张约，剁为肉泥。孙峻一面令武士收恪家眷，一面令人将张约并诸葛恪尸首，用芦席包裹，以小车载出，弃于城南门外石子岗乱冢坑内。却说诸葛恪之妻正在房中心神恍惚，动止不宁，忽一婢女入房。恪妻问曰：“汝遍身如何血臭？”其婢忽然反目切齿，飞身跳跃，头撞屋梁，口中大叫：“吾乃诸葛恪也！被奸贼孙峻谋杀！”恪合家老幼，惊惶号哭。不一时，军马至，围住府第，将恪全家老幼，俱缚至市曹斩首。时吴建兴二年冬十月也。昔诸葛瑾存日，见恪聪明尽显于外，叹曰：“此子非保家之主也！”又魏光禄大夫张缉，曾对司马师曰：“诸葛恪不久死矣。”师问其故，缉曰：“威震其主，何能久乎？”至此果中其言。却说孙峻杀了诸葛恪，吴主孙亮封峻为丞相、大将军、富春侯，总督中外诸军事。自此权柄尽归孙峻矣。</div>
+            <div class="text-block simplified-text">诸葛恪去见吴国君主孙亮，行完礼后坐下。孙亮让人上酒，诸葛恪心里怀疑酒有问题，推辞说："我身体不好，不能喝酒。"孙峻说："太傅府里不是常备药酒吗？可以拿来喝吧？"诸葛恪说："可以。"就让人回府取来自制的药酒，这才放心喝起来。
+
+酒过几轮，孙亮借口有事提前离席。孙峻走下大殿，脱掉长袍，露出里面的铠甲，拿着刀冲上殿大喊："皇上命令杀掉叛贼！"诸葛恪吓坏了，扔了酒杯想拔剑反抗，脑袋已经被砍下来了。张约看到孙峻杀了诸葛恪，提刀冲过来。孙峻躲开，刀尖划伤了张约左手。孙峻转身一刀砍中张约右臂。士兵们一拥而上，把张约砍成肉酱。
+
+孙峻一边派兵去抓诸葛恪全家，一边让人用草席裹着诸葛恪和张约的尸体，用小车拉到城南门外的乱坟岗扔掉。当时诸葛恪的妻子在屋里坐立不安，突然一个丫鬟进来。他妻子问："你身上怎么有血腥味？"那丫鬟突然瞪眼咬牙，跳起来撞向房梁，大喊："我是诸葛恪！被奸贼孙峻害死了！"全家吓得大哭。很快军队包围了诸葛府，把全家老小都绑到街口处死。这是吴国建兴二年十月的事。
+
+当年诸葛瑾在世时，看到儿子诸葛恪太爱显摆，叹气说："这孩子守不住家业啊！"魏国的张缉也对司马师说过："诸葛恪活不久了。"司马师问为什么，张缉说："他的威风盖过君主，能长久吗？"现在果然应验了。
+
+孙峻杀了诸葛恪后，孙亮封他当丞相、大将军、富春侯，掌管全国兵权。从此大权都落在孙峻手里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">且说姜维在成都，接得诸葛恪书，欲求相助伐魏，遂入朝，奏准后主，复起大兵，北伐中原。正是：一度兴师未奏绩，两番讨贼欲成功。未知胜负如何，且看下文分解。</div>
+            <div class="text-block simplified-text">话说姜维在成都，收到了诸葛恪的信，信里请他帮忙一起打魏国。姜维就去见后主刘禅，得到批准后，再次带大军北伐中原。这真是：上次出兵没打赢，这回再战想成功。到底结果怎么样，咱们接着往下看。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
