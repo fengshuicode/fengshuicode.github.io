@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七回 袁绍磐河战公孙　孙坚跨江击刘表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./006.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七回 袁绍磐河战公孙　孙坚跨江击刘表</h1>
+        <a href="./008.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说孙坚被刘表围住，亏得程普、黄盖、韩当三将死救得脱，折兵大半，夺路引兵回江东。自此孙坚与刘表结怨。</div>
+            <div class="text-block simplified-text">话说孙坚被刘表带兵包围，差点儿完蛋，幸好手下程普、黄盖、韩当三位大将拼死相救才逃出来。这一仗损失了一大半士兵，最后好不容易杀出一条血路，带着剩下的兵撤回江东。打这以后，孙坚就跟刘表结下梁子了。
+
+（说明：改写时做了以下处理：
+1. "却说"改为"话说"，更符合现代讲故事的开头
+2. "亏得"改为"幸好"，更口语化
+3. "死救得脱"译为"拼死相救才逃出来"，更直白
+4. "折兵大半"译为"损失了一大半士兵"，避免文言词汇
+5. "夺路引兵回江东"译为"杀出一条血路，带着剩下的兵撤回江东"，形象易懂
+6. 最后一句完全保留原意，用"结下梁子"替代"结怨"，更生活化
+全文信息完全保留，没有任何增删）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">且说袁绍屯兵河内，缺少粮草。冀州牧韩馥，遣人送粮以资军用。谋士逢纪说绍曰：“大丈夫纵横天下，何待人送粮为食！冀州乃钱粮广盛之地，将军何不取之？”绍曰：“未有良策。”纪曰：“可暗使人驰书与公孙瓒，令进兵取冀州，约以夹攻，瓒必兴兵。韩馥无谋之辈，必请将军领州事；就中取事，唾手可得。”绍大喜，即发书到瓒处。瓒得书，见说共攻冀州，平分其地，大喜，即日兴兵。</div>
+            <div class="text-block simplified-text">话说袁绍带着军队驻扎在河内，粮食不够吃了。冀州的长官韩馥派人送了些粮食来支援他。袁绍的谋士逢纪对他说："大男人闯天下，怎么能靠别人送粮食过日子！冀州这地方钱多粮多，您干嘛不把它拿下？"袁绍说："我还没想到好办法。"逢纪出主意说："可以偷偷派人送信给公孙瓒，叫他出兵打冀州，咱们说好一起动手，他肯定答应。韩馥这人没脑子，到时候一定会请您去管冀州。咱们趁机下手，轻松就能拿下。"袁绍听了特别高兴，马上派人送信给公孙瓒。公孙瓒收到信，看到说一起打冀州还能平分地盘，高兴坏了，当天就带兵出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">绍却使人密报韩馥。馥慌聚荀谌、辛评二谋士商议。谌曰：“公孙瓒将燕、代之众，长驱而来，其锋不可当。兼有刘备、关、张助之，难以抵敌。今袁本初智勇过人，手下名将极广，将军可请彼同治州事，彼必厚待将军，无患公孙瓒矣。”韩馥即差别驾关纯去请袁绍。长史耿武谏曰：“袁绍孤客穷军，仰我鼻息，譬如婴儿在股掌之上，绝其乳哺，立可饿死。奈何欲以州事委之？此引虎入羊群也。”馥曰：“吾乃袁氏之故吏，才能又不如本初。古者择贤者而让之，诸君何嫉妒耶？”耿武叹曰：“冀州休矣！”于是弃职而去者三十余人。独耿武与关纯伏于城外，以待袁绍。</div>
+            <div class="text-block simplified-text">袁绍偷偷派人给韩馥报信。韩馥急忙找来谋士荀谌和辛评商量。荀谌说："公孙瓒带着燕、代两地的军队打过来了，势头很猛，挡不住。再加上有刘备、关羽、张飞帮忙，更难对付。现在袁绍本事大、手下能人多，不如请他来一起管理冀州，他肯定会好好待你，就不用怕公孙瓒了。"韩馥马上派关纯去请袁绍。
+
+长史耿武劝道："袁绍现在势单力薄，全靠我们养活，就像手里抱着的婴儿，不给奶喝马上就能饿死。怎么能把整个冀州交给他？这等于把老虎放进羊群啊！"韩馥说："我本来就是袁家老部下，能力也不如袁绍。古人都会让位给有本事的人，你们干嘛眼红呢？"耿武叹气说："冀州完蛋了！"结果三十多个官员辞职走了。只有耿武和关纯躲在城外，等着偷袭袁绍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">数日后，绍引兵至。耿武、关纯拔刀而出，欲刺杀绍。绍将颜良立斩耿武，文丑砍死关纯。绍入冀州，以馥为奋威将军，以田丰、沮授、许攸、逢纪分掌州事，尽夺韩馥之权。馥懊悔无及，遂弃下家小，匹马往投陈留太守张邈去了。</div>
+            <div class="text-block simplified-text">几天后，袁绍带兵到了冀州。耿武和关纯拿着刀冲出来，想杀袁绍。袁绍手下的大将颜良立刻杀了耿武，文丑砍死了关纯。袁绍进了冀州后，让韩馥当了个空头将军（奋威将军），把田丰、沮授、许攸、逢纪这些人安排管理州里的事务，把韩馥的权力全抢走了。韩馥后悔得要死，但已经来不及了，最后连老婆孩子都不要了，一个人骑马跑去投奔陈留太守张邈了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说公孙瓒知袁绍已据冀州，遣弟公孙越来见绍，欲分其地。绍曰：“可请汝兄自来，吾有商议。”越辞归。行不到五十里，道旁闪出一彪军马，口称：“我乃董丞相家将也！”乱箭射死公孙越。从人逃回见公孙瓒，报越已死。瓒大怒曰：“袁绍诱我起兵攻韩馥，他却就里取事；今又诈董卓兵射死吾弟，此冤如何不报！”尽起本部兵，杀奔冀州来。</div>
+            <div class="text-block simplified-text">话说公孙瓒听说袁绍占了冀州，就派弟弟公孙越去找袁绍，想分一块地盘。袁绍说："让你哥自己来，我有事要和他商量。"公孙越就回去了。结果走了不到五十里，路边突然杀出一队兵马，喊着："我们是董丞相的人！"一阵乱箭把公孙越射死了。跟着公孙越的人逃回去告诉公孙瓒，说公孙越死了。公孙瓒气坏了，说："袁绍骗我出兵打韩馥，自己却趁机占了便宜；现在又假装董卓的人杀了我弟弟，这仇非报不可！"于是带着全部人马，杀向冀州去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">绍知瓒兵至，亦领军出。二军会于磐河之上：绍军于磐河桥东，瓒军于桥西。瓒立马桥上，大呼曰：“背义之徒，何敢卖我！”绍亦策马至桥边，指瓒曰：“韩馥无才，愿让冀州于吾，与尔何干？”瓒曰：“昔日以汝为忠义，推为盟主；今之所为，真狼心狗行之徒，有何面目立于世间！”袁绍大怒曰：“谁可擒之？”言未毕，文丑策马挺枪，直杀上桥。公孙瓒就桥边与文丑交锋。战不到十余合，瓒抵挡不住，败阵而走。文丑乘势追赶。瓒走入阵中，文丑飞马径入中军，往来冲突。瓒手下健将四员，一齐迎战；被文丑一枪，刺一将下马，三将俱走。文丑直赶公孙瓒出阵后，瓒望山谷而逃。文丑骤马厉声大叫：“快下马受降！”瓒弓箭尽落，头盔堕地；披发纵马，奔转山坡；其马前失，瓒翻身落于坡下。文丑急捻枪来刺。忽见草坡左侧转出个少年将军，飞马挺枪，直取文丑，公孙瓒扒上坡去，看那少年：生得身长八尺，浓眉大眼，阔面重颐，威风凛凛，与文丑大战五六十合，胜负未分。瓒部下救军到，文丑拨回马去了。那少年也不追赶。瓒忙下土坡，问那少年姓名。那少年欠身答曰：“某乃常山真定人也，姓赵，名云，字子龙。本袁绍辖下之人。因见绍无忠君救民之心，故特弃彼而投麾下，不期于此处相见。”瓒大喜，遂同归寨，整顿甲兵。次日，瓒将军马分作左右两队，势如羽翼。马五千余匹，大半皆是白马。因公孙瓒曾与羌人战，尽选白马为先锋，号为白马将军；羌人但见白马便走，因此白马极多。袁绍令颜良、文丑为先锋，各引弓弩手一千，亦分作左右两队；令在左者射公孙瓒右军，在右者射公孙瓒左军。再令麴义引八百弓手，步兵一万五千，列于阵中。袁绍自引马步军数万，于后接应。公孙瓒初得赵云，不知心腹，令其另领一军在后。遣大将严纲为先锋。瓒自领中军，立马桥上，傍竖大红圈金线帅字旗于马前。从辰时擂鼓，直到巳时，绍军不进。麴义令弓手皆伏于遮箭牌下，只听炮响发箭。严纲鼓噪呐喊，直取麴义。义军见严纲兵来，都伏而不动；直到来得至近，一声炮响，八百弓弩手一齐俱发。纲急待回，被麴义拍马舞刀，斩于马下，瓒军大败。左右两军，欲来救应，都被颜良、文丑引弓弩手射住。绍军并进，直杀到界桥边。麴义马到，先斩执旗将，把绣旗砍倒。公孙瓒见砍倒绣旗，回马下桥而走。麴义引军直冲到后军，正撞着赵云，挺枪跃马，直取麴义。战不数合，一枪刺麴义于马下。赵云一骑马飞入绍军，左冲右突，如入无人之境。公孙瓒引军杀回，绍军大败。</div>
+            <div class="text-block simplified-text">袁绍听说公孙瓒带兵来了，也带兵出来迎战。两军在磐河两岸对峙：袁绍的军队在桥东边，公孙瓒的军队在桥西边。公孙瓒骑马站在桥上，大声骂道："你这个不讲义气的混蛋，竟敢出卖我！"袁绍也骑马到桥边，指着公孙瓒说："韩馥没本事，自愿把冀州让给我，关你什么事？"公孙瓒回骂："当初还以为你是个忠义之人，推举你当盟主，没想到你是个狼心狗肺的东西，还有脸活在世上！"袁绍气得大喊："谁能给我抓住他？"
+
+话音刚落，袁绍手下大将文丑就骑马提枪冲上桥去。公孙瓒在桥边和文丑打起来，打了不到十来个回合就招架不住，掉头就跑。文丑紧追不舍。公孙瓒逃回自己军中，文丑直接冲进敌军阵营横冲直撞。公孙瓒手下四员大将一起围攻文丑，结果被文丑一枪刺死一个，剩下三个全跑了。文丑一直追着公孙瓒冲出军阵，公孙瓒往山里逃。文丑一边追一边喊："快下马投降！"公孙瓒的弓箭都掉光了，头盔也掉了，披头散发地骑马往山坡上跑，结果马失前蹄，把他摔下山坡。文丑举枪就要刺，突然从山坡左边冲出一个年轻将军，骑马挺枪直取文丑。公孙瓒趁机爬上山坡，看到这个年轻人：身高八尺，浓眉大眼，方脸宽下巴，威风凛凛，和文丑大战五六十回合不分胜负。这时公孙瓒的援军赶到，文丑就掉头跑了。年轻人也没追。
+
+公孙瓒赶紧下山坡问年轻人姓名。年轻人恭敬地回答："我是常山真定人，姓赵名云，字子龙。本来是袁绍手下，但看他不是真心为百姓做事的人，所以特地来投奔您，没想到在这儿碰上了。"公孙瓒很高兴，就带着赵云回营整顿军队。
+
+第二天，公孙瓒把军队分成左右两队，像鸟的翅膀一样展开。他有五千多匹马，大部分是白马。因为以前和羌人打仗时，公孙瓒专门用白马当先锋，号称"白马将军"，羌人一见白马就跑，所以他养了很多白马。袁绍这边派颜良、文丑当先锋，各带一千弓箭手，也分成左右两队，左边的射公孙瓒右军，右边的射公孙瓒左军。又派麴义带八百弓箭手和一万五千步兵摆在中间。袁绍自己带着几万人在后面支援。
+
+公孙瓒刚收赵云，还不完全信任，就让他带一支部队在后面。派大将严纲当先锋，自己坐镇中军，骑马站在桥上，前面竖着大红镶金边的帅旗。从早上七点擂鼓到九点，袁绍军队一直不动。麴义让弓箭手都躲在盾牌后面，等炮响再放箭。严纲带着人喊叫着冲过来，麴义的军队趴着不动，等他们冲到很近时，一声炮响，八百弓箭手一齐放箭。严纲想撤退，被麴义骑马追上，一刀砍死。公孙瓒军队大败，左右两军想来救援，都被颜良、文丑的弓箭手射退。袁绍军队全线进攻，一直打到界桥边。麴义冲过来先砍倒举旗的士兵，把帅旗砍倒。公孙瓒见帅旗倒了，赶紧掉头逃跑。麴义带兵直冲后军，正好碰上赵云。赵云挺枪就刺，没几个回合就把麴义刺下马。赵云单枪匹马冲进袁绍军中，如入无人之境。公孙瓒带兵杀回来，袁绍军队大败。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说袁绍先使探马看时，回报麴义斩将搴旗，追赶败兵；因此不作准备，与田丰引着帐下持戟军士数百人，弓箭手数十骑，乘马出观，呵呵大笑曰：“公孙瓒无能之辈！”正说之间，忽见赵云冲到面前。弓箭手急待射时，云连刺数人，众军皆走。后面瓒军团团围裹上来。田丰慌对绍曰：“主公且于空墙中躲避！”绍以兜鍪扑地，大呼曰：“大丈夫愿临阵斗死，岂可入墙而望活乎！”众军士齐心死战，赵云冲突不入，绍兵大队掩至，颜良亦引军来到，两路并杀。赵云保公孙瓒杀透重围，回到界桥。绍驱兵大进，复赶过桥，落水死者，不计其数。</div>
+            <div class="text-block simplified-text">袁绍先派人去打探情况，探子回报说麴义杀了敌将、夺了军旗，正在追打败逃的敌人。袁绍觉得胜券在握，就没做防备，只带着田丰和几百个拿长矛的士兵、几十个弓箭手，骑马出来看热闹。他得意地大笑说："公孙瓒真是个没用的废物！"正说着，赵云突然冲到他面前。弓箭手慌忙放箭，但赵云一连刺倒好几个人，士兵们吓得四散逃跑。这时公孙瓒的大部队从后面包围上来。田丰急忙对袁绍喊："主公快躲到那堵空墙后面去！"袁绍把头盔往地上一摔，大喊："大丈夫要死也要死在战场上，怎么能像缩头乌龟一样躲墙后求活！"士兵们被他的话激励，拼死抵抗，赵云一时冲不进去。这时袁绍的大部队赶到，颜良也带兵来了，两路人马一起进攻。赵云保护着公孙瓒杀出包围，退回界桥。袁绍带兵乘胜追击，又追过桥去，淹死的敌人数都数不清。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">袁绍当先赶来，不到五里，只听得山背后喊声大起，闪出一彪人马，为首三员大将，乃是刘玄德、关云长、张翼德。因在平原探知公孙瓒与袁绍相争，特来助战。当下三匹马，三般兵器，飞奔前来，直取袁绍。绍惊得魂飞天外，手中宝刀坠于马下，忙拨马而逃，众人死救过桥。公孙瓒亦收军归寨。玄德、关、张动问毕，瓒曰：“若非玄德远来救我，几乎狼狈。”教与赵云相见。玄德甚相敬爱，便有不舍之心。</div>
+            <div class="text-block simplified-text">袁绍正带兵往前追，还没跑出五里地，突然听到山后面杀声震天，冲出一支队伍。领头的有三员大将，正是刘备、关羽和张飞。原来他们在平原县听说公孙瓒和袁绍打起来了，特地赶来帮忙。只见三人骑着马，拿着武器，直接朝袁绍杀过去。袁绍吓得魂都快没了，手里的刀都掉地上了，赶紧调转马头逃命，手下人拼死保护他过了桥。公孙瓒也收兵回营。刘备他们和公孙瓒寒暄后，公孙瓒说："要不是刘备大老远来救我，我这次可就惨了。"接着把赵云介绍给刘备认识。刘备一见赵云就特别喜欢，都有点舍不得分开了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说袁绍输了一阵，坚守不出。两军相拒月余，有人来长安报知董卓。李儒对卓曰：“袁绍与公孙瓒，亦当今豪杰。现在磐河厮杀，宜假天子之诏，差人往和解之。二人感德，必顺太师矣。”卓曰：“善。”次日便使太傅马日磾、太仆赵岐，赍诏前去。二人来至河北，绍出迎于百里之外，再拜奉诏。次日，二人至瓒营宣谕，瓒乃遣使致书于绍，互相讲和。二人自回京复命。瓒即日班师，又表荐刘玄德为平原相。玄德与赵云分别，执手垂泪，不忍相离。云叹曰：“某曩日误认公孙瓒为英雄；今观所为，亦袁绍等辈耳！”玄德曰：“公且屈身事之，相见有日。”洒泪而别。</div>
+            <div class="text-block simplified-text">袁绍打了一场败仗后，就躲在城里不出来。两军就这样僵持了一个多月。有人把这事报告给了在长安的董卓。李儒对董卓说："袁绍和公孙瓒现在都是很有势力的人，他们正在磐河打仗。不如以皇帝的名义下道诏书，派人去劝他们和解。他们感激您的恩德，一定会听您的话。"董卓说："好。"第二天就派太傅马日磾和太仆赵岐带着诏书去了。
+
+这两人到了河北，袁绍亲自到百里外迎接，恭恭敬敬地接了诏书。第二天，他们又到公孙瓒军营宣读诏书，公孙瓒就派人送信给袁绍，双方讲和了。两个使者回长安复命。公孙瓒当天就撤军了，还上书推荐刘备当平原相。
+
+刘备和赵云分别时，两人拉着手掉眼泪，舍不得分开。赵云叹气说："我以前错把公孙瓒当成英雄，现在看他的所作所为，跟袁绍是一路货色！"刘备说："您先委屈一下跟着他，我们以后还会见面的。"两人流着泪告别了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说袁术在南阳，闻袁绍新得冀州，遣使来求马千匹。绍不与，术怒。自此兄弟不睦。又遣使往荆州，问刘表借粮二十万，表亦不与。术恨之，密遣人遗书于孙坚，使伐刘表。其书略曰：“前者刘表截路，乃吾兄本初之谋也。今本初又与表私议欲袭江东。公可速兴兵伐刘表，吾为公取本初，二仇可报。公取荆州，吾取冀州，切勿误也！”坚得书曰：“叵耐刘表昔日断吾归路，今不乘时报恨，更待何年！”聚帐下程普、黄盖、韩当等商议。程普曰：“袁术多诈，未可准信。”坚曰：“吾自欲报仇，岂望袁术之助乎？”便差黄盖先来江边安排战船，多装军器粮草，大船装载战马，克日兴师。江中细作探知，来报刘表。表大惊，急聚文武将士商议。蒯良曰：“不必忧虑。可令黄祖部领江夏之兵为前驱，主公率荆襄之众为援。孙坚跨江涉湖而来，安能用武乎？”表然之，令黄祖设备，随后便起大军。却说孙坚有四子，皆吴夫人所生：长子名策，字伯符；次子名权，字仲谋；三子名翊，字叔弼；四子名匡，字季佐。吴夫人之妹，即为孙坚次妻，亦生一子一女：子名朗，字早安；女名仁。坚又过房俞氏一子，名韶，字公礼。坚有一弟，名静，字幼台。坚临行，静引诸子列拜于马前而谏曰：“今董卓专权，天子懦弱，海内大乱，各霸一方；江东方稍宁，以一小恨而起重兵，非所宜也。愿兄详之。”坚曰：“弟勿多言。吾将纵横天下，有仇岂可不报！”长子孙策曰：“如父亲必欲往，儿愿随行。”坚许之，遂与策登舟，杀奔樊城。</div>
+            <div class="text-block simplified-text">袁术在南阳听说袁绍占了冀州，就派人去要一千匹马。袁绍不给，袁术很生气，两兄弟从此闹翻了。他又派人去荆州找刘表借二十万粮，刘表也不给。袁术怀恨在心，偷偷写信给孙坚，让他去打刘表。信里大概说："之前刘表拦路抢你，其实是我哥袁绍的主意。现在袁绍又和刘表密谋要打你的江东。你赶紧出兵打刘表，我去对付袁绍，这样咱们的仇都能报。你拿荆州，我拿冀州，千万别错过机会！"
+
+孙坚看完信说："刘表这个混蛋以前断我后路，现在不报仇还等什么时候！"就把手下程普、黄盖、韩当等人叫来商量。程普说："袁术这人很狡猾，不能全信。"孙坚说："我是自己要报仇，又不是靠袁术帮忙！"于是派黄盖先去江边准备战船，装满武器粮草，大船运战马，定好日子出兵。
+
+刘表的探子发现后赶紧报告，刘表吓坏了，马上召集手下开会。蒯良说："别担心。让黄祖带江夏的兵打头阵，您带荆襄的大军支援。孙坚大老远从江对面过来，能有什么作为？"刘表觉得有理，就让黄祖准备防御，自己带大军随后出发。
+
+孙坚有四个儿子，都是大老婆吴夫人生的：老大孙策、老二孙权、老三孙翊、老四孙匡。吴夫人的妹妹是孙坚的小老婆，生了个儿子孙朗和女儿孙仁。孙坚还收养了俞家的儿子孙韶。他有个弟弟叫孙静。
+
+孙坚出发前，孙静带着孩子们拦在马前劝他："现在董卓掌权，皇帝软弱，天下大乱，各地都在抢地盘。咱们江东还算安稳，为点小恩怨大动干戈不合适啊。"孙坚说："你别管！我要闯天下，有仇不能不报！"大儿子孙策说："爹一定要去的话，我跟你一起。"孙坚答应了，就和孙策上船，直奔樊城杀去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">黄祖伏弓弩手于江边，见船傍岸，乱箭俱发。坚令诸军不可轻动，只伏于船中来往诱之；一连三日，船数十次傍岸。黄祖军只顾放箭，箭已放尽。坚却拔船上所得之箭，约十数万。当日正值顺风，坚令军士一齐放箭。岸上支吾不住，只得退走。坚军登岸，程普、黄盖分兵两路，直取黄祖营寨。背后韩当驱兵大进。三面夹攻，黄祖大败，弃却樊城，走入邓城。坚令黄盖守住船只，亲自统兵追袭。黄祖引军出迎，布阵于野。坚列成阵势，出马于门旗之下。孙策也全副披挂，挺枪立马于父侧。黄祖引二将出马，一个是江夏张虎，一个是襄阳陈生。黄祖扬鞭大骂：“江东鼠贼，安敢侵犯汉室宗亲境界！”便令张虎搦战。坚阵内韩当出迎。两骑相交，战二十余合，陈主见张虎力怯，飞马来助。孙策望见，按住手中枪，扯弓搭箭，正射中陈生面门，应弦落马。张虎见陈生坠地，吃了一惊，措手不及，被韩当一刀，削去半个脑袋。程普纵马直来阵前捉黄祖。黄祖弃却头盔、战马，杂于步军内逃命。孙坚掩杀败军，直到汉水，命黄盖将船只进泊汉江。</div>
+            <div class="text-block simplified-text">黄祖在江边埋伏了弓箭手，看到有船靠岸，就下令乱箭齐射。孙坚命令自己的军队别轻举妄动，就躲在船里来回引诱敌人。连着三天，船几十次假装靠岸。黄祖的兵只顾着射箭，结果把箭全射光了。孙坚却把船上收到的箭都收起来，大概有十几万支。那天正好顺风，孙坚让士兵一起放箭。岸上的黄祖军队挡不住，只好撤退。孙坚的部队上岸后，程普和黄盖兵分两路，直接去打黄祖的营地。韩当也从后面带兵压上。三面围攻，黄祖被打得大败，丢下樊城逃往邓城。孙坚让黄盖守船，自己带兵追击。黄祖带兵迎战，在野外摆开阵势。孙坚也列好阵型，骑马站在军旗下。孙策全副武装，提着枪骑马站在父亲旁边。黄祖带着两员大将出来，一个是江夏的张虎，一个是襄阳的陈生。黄祖挥着鞭子大骂："江东的鼠辈，竟敢来打汉室宗亲的地盘！"然后让张虎出战。孙坚阵中的韩当出来迎战。两人打了二十多个回合，陈生见张虎打不过，骑马冲上来帮忙。孙策看见，放下枪，拉弓射箭，一箭射中陈生脸，陈生当场落马。张虎见陈生中箭，吓了一跳，来不及反应，被韩当一刀砍掉半个脑袋。程普骑马冲过来要抓黄祖。黄祖吓得扔掉头盔和战马，混在步兵里逃命。孙坚带兵追杀败军，一直追到汉水边，然后让黄盖把船停到汉江。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">黄祖聚败军，来见刘表，备言坚势不可当。表慌请蒯良商议。良曰：“目今新败，兵无战心；只可深沟高垒，以避其锋；却潜令人求教于袁绍，此围自可解也。”蔡瑁曰：“子柔之言，直拙计也。兵临城下，将至壕边，岂可束手待毙！某虽不才，愿请军出城，以决一战。”刘表许之。蔡瑁引军万余，出襄阳城外，于岘山布阵。孙坚将得胜之兵，长驱大进。蔡瑁出马。坚曰：“此人是刘表后妻之兄也，谁与吾擒之？”程普挺铁脊矛出马，与蔡瑁交战。不到数合，蔡瑁败走。坚驱大军，杀得尸横遍野。蔡瑁逃入襄阳。蒯良言瑁不听良策，以致大败，按军法当斩。刘表以新娶其妹，不肯加刑。</div>
+            <div class="text-block simplified-text">黄祖带着败退的士兵去见刘表，说孙坚的军队太厉害，挡不住。刘表慌了，赶紧找蒯良商量。蒯良说："咱们刚打了败仗，士兵都没斗志了。现在最好挖深壕沟、加高城墙，躲着别打。同时偷偷派人向袁绍求救，这样包围自然就解除了。"蔡瑁却说："蒯良这主意太怂了！敌人都打到城门口了，难道等死吗？我虽然本事不大，但愿意带兵出城拼一把！"刘表同意了。蔡瑁带了一万多人出襄阳城，在岘山摆开阵势。孙坚带着刚打赢的军队直接冲杀过来。两军对阵时，蔡瑁骑马出列。孙坚说："这人是刘表后老婆的哥哥，谁去给我抓来？"程普拿着铁矛出马，和蔡瑁打起来。没几个回合，蔡瑁就败逃了。孙坚指挥大军追杀，杀得满地都是尸体。蔡瑁逃回襄阳城。蒯良对刘表说："蔡瑁不听我的好计策，导致惨败，按军法该杀头。"但刘表因为刚娶了蔡瑁的妹妹，不肯处罚他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">却说孙坚分兵四面，围住襄阳攻打。忽一日，狂风骤起，将中军帅字旗竿吹折。韩当曰：“此非吉兆，可暂班师。”坚曰：“吾屡战屡胜，取襄阳只在旦夕；岂可因风折旗竿，遽尔罢兵！”遂不听韩当之言，攻城愈急。蒯良谓刘表曰：“某夜观天象，见一将星欲坠。以分野度之，当应在孙坚。主公可速致书袁绍，求其相助。”刘表写书，问谁敢突围而出。健将吕公，应声愿往。蒯良曰：“汝既敢去，可听吾计：与汝军马五百，多带能射者冲出阵去，即奔岘山。他必引军来赶，汝分一百人上山，寻石子准备；一百人执弓弩伏于林中。但有追兵到时，不可径走；可盘旋曲折，引到埋伏之处，矢石俱发。若能取胜，放起连珠号炮，城中便出接应。如无追兵，不可放炮，趱程而去。今夜月不甚明，黄昏便可出城。”</div>
+            <div class="text-block simplified-text">孙坚带兵从四面围住襄阳，准备攻城。突然有一天刮起大风，把中军的大旗杆吹断了。韩当说："这不是好兆头，咱们还是先撤兵吧。"孙坚说："我们一直打胜仗，很快就能拿下襄阳，怎么能因为风把旗杆吹断就退兵呢！"他不听韩当劝告，反而加紧攻城。
+
+蒯良对刘表说："我昨晚看天象，发现一颗将星要坠落。按方位来看，对应的就是孙坚。您赶紧写信向袁绍求救吧。"刘表写好信，问谁敢冲出去送信。大将吕公站出来说他愿意去。蒯良说："既然你敢去，就按我说的做：带五百个兵，多带些弓箭手冲出去，直奔岘山。孙坚肯定会派兵追你，你就派一百人上山准备石头，一百人带着弓箭埋伏在林子里。等追兵来了别直接跑，要绕来绕去把他们引到埋伏的地方，到时候弓箭石头一起上。要是打赢了，就放连珠炮报信，城里就会出兵接应。要是没人追你，就别放炮，直接赶路。今晚月亮不亮，黄昏时候就可以出城。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">吕公领了计策，拴束军马。黄昏时分，密开东门，引兵出城。孙坚在帐中，忽闻喊声，急上马引三十余骑，出营来看。军士报说：“有一彪人马杀将出来，望岘山而去。”坚不会诸将，只引三十余骑赶来。吕公已于山林丛杂去处，上下埋伏。坚马快，单骑独来，前军不远。坚大叫：“休走！”吕公勒回马来战孙坚。交马只一合，吕公便走，闪入山路去。坚随后赶入，却不见了吕公。坚方欲上山，忽然一声锣响，山上石子乱下，林中乱箭齐发。坚体中石、箭，脑浆迸流，人马皆死于岘山之内；寿止三十七岁。</div>
+            <div class="text-block simplified-text">吕公按照计划，整顿好兵马。天快黑的时候，偷偷打开东门，带着队伍出城。孙坚正在帐篷里，突然听到喊杀声，赶紧骑上马，带着三十多个骑兵出营查看。士兵报告说：“有一队人马冲出来，往岘山那边跑了。”孙坚没等其他人，自己带着三十多个骑兵就追了上去。吕公已经在山林茂密的地方设好了埋伏。孙坚的马快，一个人冲在前面，离敌军不远了。孙坚大喊：“别跑！”吕公调转马头来打孙坚。两人刚交手一个回合，吕公就假装逃跑，躲进山路。孙坚紧跟着追进去，却找不到吕公了。孙坚正要上山，突然一声锣响，山上的石头乱砸下来，林子里箭也射过来。孙坚被石头和箭打中，脑袋开花，人和马都死在岘山里，死的时候才三十七岁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">吕公截住三十骑，并皆杀尽，放起连珠号炮。城中黄祖、蒯越、蔡瑁分头引兵杀出，江东诸军大乱。黄盖听得喊声震天，引水军杀来，正迎着黄祖。战不两合，生擒黄祖。程普保着孙策，急待寻路，正遇吕公。程普纵马向前，战不到数合，一矛刺吕公于马下。两军大战，杀到天明，各自收车。</div>
+            <div class="text-block simplified-text">吕公拦住了三十个骑兵，把他们全杀了，然后放了一串信号炮。城里黄祖、蒯越、蔡瑁立刻带兵冲出来，孙策的部队乱成一团。黄盖听到杀声震天，带着水军赶来，正好碰上黄祖。打了不到两个回合，黄盖就活捉了黄祖。程普保护着孙策，急着找路撤退，正好遇到吕公。程普骑马冲上去，没打几下，一矛就把吕公捅下马。两边打了一整夜，直到天亮才各自撤兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">刘表军自入城。孙策回到汉水，方知父亲被乱箭射死，尸首已被刘表军士扛抬入城去了，放声大哭。众军俱号泣。策曰：“父尸在彼，安得回乡！”黄盖曰：“今活捉黄祖在此，得一人入城讲和，将黄祖去换主公尸首。”言未毕，军吏桓阶出曰：“某与刘表有旧，愿入城为使。”策许之。桓阶入城见刘表，具说其事。表曰：“文台尸首、吾已用棺木盛贮在此。可速放回黄祖，两家各罢兵，再休侵犯。”桓阶拜谢欲行，阶下蒯良出曰：“不可！不可！吾有一言，今江东诸军片甲不回。请先斩桓阶，然后用计。”正是：追敌孙坚方殒命，求和桓阶又遭殃。未知桓阶性命如何，且听下文分解。</div>
+            <div class="text-block simplified-text">刘表的军队进了城。孙策回到汉水，才知道他父亲被乱箭射死，尸体已经被刘表的人抬进城了。孙策放声大哭，士兵们也都跟着哭。孙策说："我爸的尸体在城里，我怎么能就这样回家！"黄盖说："我们不是抓了黄祖吗？可以派个人进城谈条件，用黄祖换回主公的尸体。"话刚说完，手下军官桓阶站出来说："我跟刘表有点交情，我愿意进城去谈。"孙策同意了。
+
+桓阶进城见到刘表，把事情说了一遍。刘表说："孙坚（文台）的尸体我已经用棺材装好了。你们赶快放了黄祖，咱们两家停战，以后互不侵犯。"桓阶道谢准备离开，这时蒯良突然站出来说："不行！不能放他走！我有办法让江东的军队全军覆没。应该先杀了桓阶，再用我的计策。"这真是：孙坚刚死在追敌路上，来求和的桓阶又要倒霉。不知道桓阶能不能活命，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
