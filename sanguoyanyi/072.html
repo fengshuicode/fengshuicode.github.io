@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十二回 诸葛亮智取汉中　曹阿瞒兵退斜谷</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./071.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十二回 诸葛亮智取汉中　曹阿瞒兵退斜谷</h1>
+        <a href="./073.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说徐晃引军渡汉水，王平苦谏不听，渡过汉水扎营。黄忠、赵云告玄德曰：“某等各引本部兵去迎曹兵。”玄德应允。二人引兵而行。忠谓云曰：“今徐晃恃勇而来，且休与敌；待日暮兵疲，你我分兵两路击之可也。”云然之，各引一军据住寨栅。徐晃引兵从辰时搦战，直至申时，蜀兵不动。晃尽教弓弩手向前，望蜀营射去。黄忠谓赵云曰：“徐晃令弓弩射者，其军必将退也：可乘时击之。”言未已，忽报曹兵后队果然退动。于是蜀营鼓声大震：黄忠领兵左出，赵云领兵右出。两下夹攻，徐晃大败，军士逼入汉水，死者无数。晃死战得脱，回营责王平曰：“汝见吾军势将危，如何不救？”平曰：“我若来救，此寨亦不能保。我曾谏公休去，公不肯所，以致此败。”晃大怒，欲杀王平。平当夜引本部军就营中放起火来，曹兵大乱，徐晃弃营而走。王平渡汉水来投赵云，云引见玄德。王平尽言汉水地理。玄德大喜曰：“孤得王子均，取汉中无疑矣。”遂命王平为偏将军，领向导使。却说徐晃逃回见操，说：“王平反去降刘备矣！”操大怒，亲统大军来夺汉水寨栅。赵云恐孤军难立，遂退于汉水之西。两军隔水相拒，玄德与孔明来观形势。孔明见汉水上流头，有一带土山，可伏千余人；乃回到营中，唤赵云分付：“汝可引五百人，皆带鼓角，伏于土山之下；或半夜，或黄昏，只听我营中炮响：炮响一番，擂鼓一番。只不要出战。”子龙受计去了。孔明却在高山上暗窥。次日，曹兵到来搦战，蜀营中一人不出，弓弩亦都不发。曹兵自回。当夜更深，孔明见曹营灯火方息，军士歇定，遂放号炮。子龙听得，令鼓角齐鸣。曹兵惊慌，只疑劫寨。及至出营，不见一军。方才回营欲歇，号炮又响，鼓角又鸣，呐喊震地，山谷应声。曹兵彻夜不安。一连三夜，如此惊疑，操心怯，拔寨退三十里，就空阔处扎营。孔明笑曰：“曹操虽知兵法，不知诡计。”遂请玄德亲渡汉水，背水结营。玄德问计，孔明曰：“可如此如此。”</div>
+            <div class="text-block simplified-text">话说徐晃带着军队渡过汉水，王平拼命劝他别过河，但徐晃不听，硬是在对岸扎营。黄忠和赵云对刘备说："我们各自带兵去对付曹军吧。"刘备同意了。两人带兵出发前，黄忠跟赵云商量："徐晃仗着自己勇猛打过来，咱们先别急着跟他打。等天快黑他们人困马乏时，咱俩兵分两路包抄他。"赵云觉得这主意不错，就各自带兵守住营地。
+
+徐晃从早上七点就开始叫阵，一直骂到下午三点，蜀军就是不动。徐晃急了，让弓箭手往前冲，对着蜀营放箭。黄忠对赵云说："你看徐晃让弓箭手射箭，说明他们准备撤了，现在正是打他们的好机会。"话还没说完，果然传来消息说曹军后队开始撤退。蜀营立刻擂响战鼓：黄忠带兵从左边杀出，赵云从右边杀出，两边夹击把徐晃打得大败。曹军被逼得跳进汉水，淹死无数。徐晃拼死才逃出来，回营后骂王平："眼看我军要败，你为什么不救？"王平说："我要是去救，大营也保不住。之前我就劝你别渡河，你不听才吃败仗。"徐晃气得要杀王平，结果王平当天晚上就带着自己人放火烧营，曹军乱成一团，徐晃只能弃营逃跑。王平渡过汉水投奔赵云，赵云带他去见刘备。王平把汉水一带的地形都详细说明，刘备高兴地说："有了王平帮忙，拿下汉中肯定没问题！"当场封王平当偏将军，负责带路。
+
+那边徐晃逃回去见曹操，报告说王平叛变投靠刘备了。曹操大怒，亲自带大军来抢汉水边的营寨。赵云怕自己兵力太少守不住，就退到汉水西边。两军隔河对峙时，刘备和诸葛亮来观察地形。诸葛亮发现汉水上游有座土山能藏千把人，回营后就对赵云说："你带五百人拿着锣鼓埋伏在山下，半夜或黄昏听到我军炮响，就使劲敲锣打鼓，但千万别出战。"赵云领命去了。诸葛亮自己躲在高山上偷偷观察。
+
+第二天曹军来挑战，蜀营没人应战，连弓箭都不放一支。曹军只好回去。到了深夜，诸葛亮看曹营熄灯睡觉了，就下令放信号炮。赵云听到后立刻让人敲锣打鼓，曹军吓得以为有人劫营，冲出来又看不到人影。刚回去想睡觉，信号炮又响，锣鼓又闹，喊杀声震得山谷都在响。曹军整晚没睡好。连续三晚这样折腾，曹操心里发虚，把营地往后撤了三十里。诸葛亮笑着说："曹操虽然懂兵法，但不会耍诈。"于是请刘备亲自渡河，在河边扎营。刘备问有什么计策，诸葛亮说："咱们就这么办......"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">曹操见玄德背水下寨，心中疑惑，使人来下战书。孔明批来日决战。次日，两军会于中路五界山前，列成阵势。操出马立于门旗下，两行布列龙凤旌旗，擂鼓三通，唤玄德答话。玄德引刘封、孟达并川中诸将而出。操扬鞭大骂曰：“刘备忘恩失义，反叛朝廷之贼！”玄德曰：“吾乃大汉宗亲，奉诏讨贼。汝上弑母后，自立为王，僭用天子銮舆，非反而何？”操怒，命徐晃出马来战，刘封出迎。交战之时，玄德先走入阵。封敌晃不住，拨马便走。操下令：“捉得刘备，便为西川之主。”大军齐呐喊杀过阵来。蜀兵望汉水而逃，尽弃营寨；马匹军器，丢满道上。曹军皆争取。操急鸣金收军。众将曰：“某等正待捉刘备，大王何故收军？”操曰：“吾见蜀兵背汉水安营，其可疑一也；多弃马匹军器，其可疑二也。可急退军，休取衣物。”遂下令曰：“妄取一物者立斩。火速退兵。”曹兵方回头时，孔明号旗举起：玄德中军领兵便出，黄忠左边杀来，赵云右边杀来。曹兵大溃而逃，孔明连夜追赶。</div>
+            <div class="text-block simplified-text">曹操看到刘备把军营扎在河边，觉得不对劲，就派人去下战书。诸葛亮回复说第二天开打。第二天，两军在五界山前碰头，摆开阵势。曹操骑马站在军旗下，两边插满龙凤旗，擂了三通鼓，叫刘备出来说话。刘备带着刘封、孟达和四川的将领们出来。曹操挥着鞭子大骂："刘备你个忘恩负义的东西，竟敢造反！"刘备回怼："我是汉朝皇亲，奉皇帝命令来打你这个反贼！你杀了皇后，自己称王，还敢用天子的排场，到底谁才是反贼？"曹操火了，派徐晃出战，刘封上去迎战。打着打着刘备先退回阵里。刘封打不过徐晃，掉头就跑。曹操下令："谁能抓住刘备，就让他当四川王！"曹军一起冲杀过来。蜀军往汉水方向逃命，连营寨都不要了，路上全是扔掉的马匹和武器。曹军士兵都忙着抢东西。曹操突然下令收兵。将领们问："眼看就要抓住刘备了，大王怎么突然收兵？"曹操说："第一，蜀军背水扎营很可疑；第二，他们扔下这么多装备更可疑。赶紧撤，别捡东西了！"随即下令："谁敢乱拿东西，立刻砍头！全军火速撤退。"曹军刚掉头，诸葛亮就举起令旗：刘备带主力杀出来，黄忠从左边杀来，赵云从右边杀来。曹军被打得大败逃跑，诸葛亮带兵连夜追击。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">操传令军回南郑，只见五路火起，原来魏延、张飞得严颜代守阆中，分兵杀来，先得了南郑。操心惊，望阳平关而走。玄德大兵追至南郑褒州。安民已毕，玄德问孔明曰：“曹操此来，何败之速也？”孔明曰：“操平生为人多疑，虽能用兵，疑则多败。吾以疑兵胜之。”玄德曰：“今操退守阳平关，其势已孤，先生将何策以退之？”孔明曰？“亮已算定了。”便差张飞、魏延分兵两路去截曹操粮道，令黄忠、赵云分兵两路去放火烧山。四路军将，各引向导官军去了。</div>
+            <div class="text-block simplified-text">曹操带着军队撤回南郑，突然看见五处地方起火。原来是魏延和张飞让严颜帮忙守着阆中，自己带兵打过来，先拿下了南郑。曹操吓了一跳，赶紧往阳平关逃跑。刘备的大军追到南郑褒州，安顿好百姓后，刘备问诸葛亮："曹操这次来，怎么败得这么快？"诸葛亮说："曹操这人一向疑心重，虽然会用兵，但疑心太重就容易吃败仗。我是用疑兵之计打败他的。"刘备又问："现在曹操退守阳平关，势力已经单薄了，先生打算怎么对付他？"诸葛亮回答："我早就想好办法了。"于是派张飞和魏延兵分两路去截断曹操的粮草运输，又让黄忠和赵云兵分两路去放火烧山。这四路兵马各自带着向导出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说曹操退守阳平关，令军哨探。回报曰：“今蜀兵将远近小路，尽皆塞断；砍柴去处，尽放火烧绝。不知兵在何处。”操正疑惑间，又报张飞、魏延分兵劫粮。操问曰：“谁敢敌张飞？”许褚曰：“某愿往！”操令许褚引一千精兵，去阳平关路上护接粮草。解粮官接着，喜曰：“若非将军到此，粮不得到阳平矣。”遂将车上的酒肉，献与许褚。褚痛饮，不觉大醉，便乘酒兴，催粮车行。解粮官曰：“日已暮矣，前褒州之地，山势险恶，未可过去。”褚曰：“吾有万夫之勇，岂惧他人哉！今夜乘着月色，正好使粮车行走。”许褚当先，横刀纵马，引军前进。二更已后，往褒州路上而来。行至半路，忽山凹里鼓角震天，一枝军当住。为首大将，乃张飞也，挺矛纵马，直取许褚。褚舞刀来迎，却因酒醉，敌不住张飞；战不数合，被飞一矛刺中肩膀，翻身落马；军士急忙救起，退后便走。张飞尽夺粮草车辆而回。却说众将保着许褚，回见曹操。操令医士疗治金疮，一面亲自提兵来与蜀兵决战。玄德引军出迎。两阵对圆，玄德令刘封出马。操骂曰：“卖履小儿，常使假子拒敌！吾若唤黄须儿来，汝假子为肉泥矣！”刘封大怒，挺枪骤马，径取曹操。操令徐晃来迎，封诈败而走。操引兵追赶。蜀兵营中，四下炮响，鼓角齐鸣。操恐有伏兵，急教退军。曹兵自相践踏，死者极多，奔回阳平关，方才歇定。蜀兵赶到城下：东门放火，西门呐喊；南门放火，北门擂鼓。操大惧，弃关而走。蜀兵从后追袭。操正走之间，前面张飞引一枝兵截住，赵云引一枝兵从背后杀来，黄忠又引兵从褒州杀来。操大败。诸将保护曹操，夺路而走。方逃至斜谷界口，前面尘头忽起，一枝兵到。操曰：“此军若是伏兵，吾休矣！”及兵将近，乃操次子曹彰也。彰字子文，少善骑射；膂力过人，能手格猛兽。操尝戒之曰：“汝不读书而好弓马，此匹夫之勇，何足贵乎？”彰曰：“大丈夫当学卫青、霍去病，立功沙漠，长驱数十万众，纵横天下；何能作博士耶？”操尝问诸子之志。彰曰：“好为将。”操问：“为将何如？”彰曰：“披坚执锐，临难不顾，身先士卒；赏必行，罚必信。”操大笑。建安二十三年，代郡乌桓反，操令彰引兵五万讨之；临行戒之曰：“居家为父子，受事为君臣。法不徇情，尔宜深戒。”彰到代北，身先战阵，直杀至桑干，北方皆平；因闻操在阳平败阵，故来助战。操见彰至，大喜曰：“我黄须儿来，破刘备必矣！”遂勒兵复回，于斜谷界口安营。有人报玄德，言曹彰到。玄德问曰：“谁敢去战曹彰？”刘封曰：“某愿往。”孟达又说要去。玄德曰：“汝二人同去，看谁成功。”各引兵五千来迎：“刘封在先，孟达在后，曹彰出马与封交战，只三合，封大败而回。孟达引兵前进，方欲交锋，只见曹兵大乱。原来马超、吴兰两军杀来，曹兵惊动。孟达引兵夹攻。马超士卒，蓄锐日久，到此耀武扬威，势不可当。曹兵败走。曹彰正遇吴兰，两个交锋，不数合，曹彰一戟刺吴兰于马下。三军混战。操收兵于斜谷界口扎住。操屯兵日久，欲要进兵，又被马超拒守；欲收兵回，又恐被蜀兵耻笑，心中犹豫不决。适庖官进鸡汤。操见碗中有鸡肋，因而有感于怀。正沉吟间，夏侯惇入帐，禀请夜间口号。操随口曰：“鸡肋！鸡肋！”惇传令众官，都称“鸡肋”。行军主簿杨修，见传“鸡肋”二字，便教随行军士，各收拾行装，准备归程。有人报知夏侯惇。惇大惊，遂请杨修至帐中问曰：“公何收拾行装？”修曰：“以今夜号令，便知魏王不日将退兵归也：鸡肋者，食之无肉，弃之有味。今进不能胜，退恐人笑，在此无益，不如早归：来日魏王必班师矣。故先收拾行装，免得临行慌乱。”夏侯惇曰：“公真知魏王肺腑也！”遂亦收拾行装。于是寨中诸将，无不准备归计。当夜曹操心乱，不能稳睡，遂手提钢斧，绕寨私行。只见夏侯惇寨内军士，各准备行装。操大惊，急回帐召惇问其故。惇曰：“主簿杨德祖先知大王欲归之意。”操唤杨修问之，修以鸡肋之意对。操大怒曰：“汝怎敢造言乱我军心！”喝刀斧手推出斩之，将首级号令于辕门外。原来杨修为人恃才放旷，数犯曹操之忌：操尝造花园一所；造成，操往观之，不置褒贬，只取笔于门上书一“活”字而去。人皆不晓其意。修曰：“门内添活字，乃阔字也。丞相嫌园门阔耳。”于是再筑墙围，改造停当，又请操观之。操大喜，问曰：“谁知吾意？”左右曰：“杨修也。”操虽称美，心甚忌之。又一日，塞北送酥一盒至。操自写“一合酥”三字于盒上，置之案头。修入见之，竟取匙与众分食讫。操问其故，修答曰：“盒上明书一人一口酥，岂敢违丞相之命乎？”操虽喜笑，而心恶之。操恐人暗中谋害己身，常分付左右：“吾梦中好杀人；凡吾睡着，汝等切勿近前。”一日，昼寝帐中，落被于地，一近侍慌取覆盖。操跃起拔剑斩之，复上床睡；半晌而起，佯惊问：“何人杀吾近侍？”众以实对。操痛哭，命厚葬之。人皆以为操果梦中杀人；惟修知其意，临葬时指而叹曰：“丞相非在梦中，君乃在梦中耳！”操闻而愈恶之。操第三子曹植，爱修之才，常邀修谈论，终夜不息。操与众商议，欲立植为世子，曹丕知之，密请朝歌长吴质入内府商议；因恐有人知觉，乃用大簏藏吴质于中，只说是绢匹在内，载入府中。修知其事，径来告操。操令人于丕府门伺察之。丕慌告吴质，质曰：“无忧也：明日用大簏装绢再入以惑之。”丕如其言，以大簏载绢入。使者搜看簏中，果绢也，回报曹操。操因疑修谮害曹丕，愈恶之。操欲试曹丕、曹植之才干。一日，令各出邺城门；却密使人分付门吏，令勿放出。曹丕先至，门吏阻之，丕只得退回。植闻之，问于修。修曰：“君奉王命而出，如有阻当者，竟斩之可也。”植然其言。及至门，门吏阻住。植叱曰：“吾奉王命，谁敢阻当！”立斩之。于是曹操以植为能。后有人告操曰：“此乃杨修之所教也。”操大怒，因此亦不喜植。修又尝为曹植作答教十余条，但操有问，植即依条答之。操每以军国之事问植，植对答如流。操心中甚疑。后曹丕暗买植左右，偷答教来告操。操见了大怒曰：“匹夫安敢欺我耶！”此时已有杀修之心；今乃借惑乱军心之罪杀之。修死年三十四岁。后人有诗曰：“聪明杨德祖，世代继簪缨。笔下龙蛇走，胸中锦绣成。开谈惊四座，捷对冠群英。身死因才误，非关欲退兵。”</div>
+            <div class="text-block simplified-text">曹操退守阳平关后，派人去打探敌情。探子回报说：“蜀军把附近的大小道路都堵死了，连砍柴的地方都烧光了，现在根本不知道他们的主力在哪儿。”曹操正纳闷呢，又接到报告说张飞、魏延分头来抢粮草。
+
+曹操问：“谁敢去对付张飞？”许褚站出来说：“我去！”曹操就派他带一千精兵去护送粮队。运粮官见到许褚特别高兴，说：“要不是将军来接应，这批粮肯定送不到。”还拿出酒肉招待许褚。许褚喝得大醉，借着酒劲催着粮队赶夜路。运粮官劝他：“天都黑了，前面褒州山路危险，明天再走吧。”许褚醉醺醺地说：“老子天不怕地不怕！正好趁着月亮赶路。”结果走到半路，突然从山沟里杀出张飞的伏兵。喝醉的许褚根本打不过，没几下就被张飞一矛刺中肩膀摔下马，粮草全被抢走了。
+
+曹操见许褚受伤回来，一边叫人给他治伤，一边亲自带兵找刘备决战。两军对阵时，刘备派干儿子刘封出战。曹操嘲讽道：“卖草鞋的就会让假儿子打头阵！要是我家黄胡子儿子（曹彰）在这儿，早把你碾成肉泥了！”刘封气得冲上去就打，假装打不过往回跑。曹操追到半路发现中计，蜀军伏兵四起，曹军乱成一团，死伤惨重，狼狈逃回阳平关。结果蜀军追到城下四面围攻，曹操吓得弃关逃跑，路上先后被张飞、赵云、黄忠截杀，差点全军覆没。
+
+正逃命时，突然看见前面尘土飞扬。曹操吓坏了：“要是再来伏兵我就完蛋了！”结果发现是二儿子曹彰带援兵来了。这曹彰从小不爱读书，就喜欢打仗，曾经空手打死过老虎。曹操以前总骂他：“光会打架有什么用？”曹彰却说：“大丈夫就该像卫青、霍去病那样建功立业！”之前北方叛乱时，曹彰带兵五万去平叛，出发前曹操特意交代：“现在咱们是君臣关系，军法无情你记住了。”曹彰果然厉害，一路打到桑干河，把叛军全收拾了。听说曹操吃败仗，赶紧带兵来支援。
+
+曹操见到儿子高兴坏了：“我黄胡子儿子来了，肯定能打败刘备！”于是重整军队在斜谷扎营。刘备听说曹彰来了，问谁敢应战。刘封和孟达抢着要去，结果刘封上去才三个回合就被打跑，孟达正要上，突然马超、吴兰从侧面杀出来。曹军大乱时，曹彰一戟就把吴兰刺死了。混战后双方在斜谷对峙。
+
+曹操在斜谷耗了很久，打又打不赢，撤兵又怕丢人，正纠结呢。厨师送来鸡汤，曹操看见鸡肋发呆。夏侯惇来问夜间口令，曹操随口说：“鸡肋！”杨修听到后马上叫人收拾行李，说：“鸡肋就是吃着没肉扔了可惜，大王肯定要撤兵了。”结果全军都开始打包。曹操发现后大怒，以扰乱军心为由把杨修杀了。
+
+原来杨修早就惹曹操不爽：有次曹操在花园门上写个“活”字，只有杨修看出是嫌门太宽；还有次曹操在点心盒写“一合酥”，杨修直接分给大家吃了，说丞相写的“一人一口酥”；最要命的是曹丕曹植争位时，杨修老帮曹植出主意，还揭发曹丕藏谋士。曹操早就想杀他，这次正好借题发挥。
+
+杨修死时才34岁。后人写诗说：“杨修聪明绝顶，可惜聪明反被聪明误，最后把命都搭进去了。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">曹操既杀杨修，佯怒夏侯惇，亦欲斩之。众官告免。操乃叱退夏侯惇，下令来日进兵。次日，兵出斜谷界口，前面一军相迎，为首大将乃魏延也。操招魏延归降，延大骂。操令庞德出战。二将正斗间，曹寨内火起。人报马超劫了中后二寨。操拔剑在手曰：“诸将退后者斩！”众将努力向前，魏延诈败而走。操方麾军回战马超，自立马于高阜处，看两军争战。忽一彪军撞至面前，大叫：“魏延在此！”拈弓搭箭，射中曹操。操翻身落马。延弃弓绰刀，骤马上山坡来杀曹操。刺斜里闪出一将，大叫：“休伤吾主！”视之，乃庞德也。德奋力向前，战退魏延，保操前行。马超已退。操带伤归寨：原来被魏延射中人中，折却门牙两个，急令医士调治。方忆杨修之言，随将修尸收回厚葬，就令班师；却教庞德断后。操卧于毡车之中，左右虎贲军护卫而行。忽报斜谷山上两边火起，伏兵赶来。曹兵人人惊恐。正是：依稀昔日潼关厄，仿佛当年赤壁危。未知曹操性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">曹操杀了杨修后，假装对夏侯惇发火，也要杀他。其他官员求情才放过。曹操骂了夏侯惇一顿，命令第二天继续进军。
+
+第二天，军队走到斜谷口，遇到魏延带兵拦路。曹操劝魏延投降，魏延破口大骂。曹操派庞德出战。两人打斗时，曹营突然起火——原来是马超偷袭了中后两座营寨。曹操拔剑威胁："谁敢后退就斩！"将士们拼命往前冲，魏延假装败退。
+
+曹操刚调头对付马超，站在高处观战。突然魏延带兵杀到跟前，一箭射中曹操，把他射下马。魏延扔了弓箭拿刀冲上山坡要杀曹操，庞德及时出现挡住魏延，护着曹操撤退。马超这时也退兵了。
+
+曹操带伤回营，这一箭射中人中位置，磕掉了两颗门牙。医生赶紧给他治疗。这时曹操才想起杨修当初的劝告，后悔不已，命人厚葬杨修，决定撤军，让庞德负责断后。
+
+曹操躺在马车里，由精锐部队保护着撤退。突然两边山坡起火，埋伏的敌军杀来，曹军乱作一团。这情景就像当年在潼关和赤壁的惨败。曹操这次能不能逃过一劫？故事下回继续。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
