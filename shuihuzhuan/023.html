@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十三回　横海郡柴进留宾　景阳冈武松打虎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./022.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十三回　横海郡柴进留宾　景阳冈武松打虎</h1>
+        <a href="./024.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句"诗曰"可以直白地翻译为：
+
+"这首诗说的是：" 或 "这首诗的意思是：" 
+
+这样既保留了原文引用诗句的功能，又用最通俗的现代口语表达出来，让任何人都能立即明白这是在引述诗歌内容。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">延士声华似孟尝，有如东阁纳贤良。</div>
+            <div class="text-block simplified-text">这个人招揽人才的名声特别好，就像古代孟尝君那样热情好客。他对待有才能的人非常大方，专门建了个东阁来招待这些贤能之士。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">武松雄猛千夫惧，柴进风流四海扬。</div>
+            <div class="text-block simplified-text">武松特别勇猛，上千个人都怕他；柴进为人豪爽大方，名声传遍天下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">自信一身能杀虎，浪言三碗不过冈。</div>
+            <div class="text-block simplified-text">我自信得很，觉得自己一个人就能打死老虎，还吹牛说喝三碗酒都走不过山冈。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">报兄诛嫂真奇特，赢得高名万古香。</div>
+            <div class="text-block simplified-text">哥哥为报杀兄之仇杀了嫂子，这事虽然做得极端，却因此出了名，被后人一直称赞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说宋江因躲一杯酒，去净手了，转出廊下来，跐了火锨柄，引得那汉焦躁，跳将起来，就欲要打宋江。柴进赶将出来，偶叫起宋押司，因此露出姓名来。那大汉听得是宋江，跪在地下，那里肯起，说道：“小人有眼不识泰山，一时冒渎兄长，望乞恕罪！”宋江扶起那汉，问道：“足下是谁？高姓大名？”柴进指着道：“这人是清河县人氏，姓武名松，排行第二。今在此间一年也。”宋江道：“江湖上多闻说武二郎名字，不期今日却在这里相会。多幸，多幸！”柴进道：“偶然豪杰相聚，实是难得。就请同做一席说话。”宋江大喜，携住武松的手，一同到后堂席上，便唤宋清与武松相见。柴进便邀武松坐地。宋江连忙让他一同在上面坐，武松那里肯坐。谦了半晌，武松坐了第三位。柴进教再整杯盘，来劝三人痛饮。宋江在灯下看那武松时，果然是一条好汉。但见：</div>
+            <div class="text-block simplified-text">故事是这样的：
+
+宋江为了躲酒，借口上厕所，走到走廊边，不小心踩到了火铲把子。这把一个壮汉惹火了，跳起来就要打宋江。柴进赶紧跑出来，无意中喊了一声"宋押司"，结果暴露了宋江的身份。
+
+那壮汉一听是宋江，立刻跪在地上不肯起来，说："我有眼不识泰山，冒犯了大哥，求您原谅！"宋江扶他起来问："你是谁？叫什么名字？"柴进介绍说："这位是清河县人，叫武松，排行老二。在这儿住了一年了。"
+
+宋江说："早就听说过武二郎的大名，没想到今天在这儿见面，真是太好了！"柴进说："英雄好汉能聚在一起不容易，咱们一起喝酒聊天吧。"宋江很高兴，拉着武松的手到后堂，又叫弟弟宋清来见武松。
+
+柴进请武松入座，宋江连忙让他坐上座，武松推辞半天，最后坐了第三位。柴进让人重新摆酒菜，三个人痛快地喝起来。宋江在灯下仔细看武松，果然是个好汉。只见他：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">身躯凛凛，相貌堂堂。一双眼光射寒星，两弯眉浑如刷漆。胸脯横阔，有万夫难敌之威风；语话轩昂，吐千丈凌云之志气。心雄胆大，似撼天狮子下云端；骨健筋强，如摇地貔貅临座上。如同天上降魔主，真是人间太岁神。</div>
+            <div class="text-block simplified-text">这个人长得高大威猛，相貌端正帅气。眼睛炯炯有神像寒星一样亮，两道浓眉又黑又直像刷了漆。胸膛宽厚结实，看起来一个能打一百个；说话声音洪亮，一听就知道志向远大。胆子特别大，像天上的狮子下凡一样霸气；身体强壮有力，像神兽貔貅坐在那儿似的。整个人看起来就像是天上下凡的降魔大神，简直就是人间的凶神太岁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">当下宋江看了武松这表人物，心中甚喜，便问武松道：“二郎因何在此？”武松答道：“小弟在清河县，因酒后醉了，与本处机密相争，一时间怒起，只一拳打得那斯昏沉。小弟只道他死了，因此一径地逃来，投奔大官人处躲灾避难，今已一年有余。后来打听得那厮却不曾死，救得活了。今欲正要回乡去寻哥哥，不想染患疟疾，不能勾动身回去。却才正发寒冷，在那廊下向火，被兄长跐了锨柄，吃了那一惊，惊出一身冷汗，觉得这病好了。”宋江听了大喜，当夜饮至三更。酒罢，宋江就留武松在西轩下做一处安歇。次日起来，柴进安排席面，杀羊宰猪，管待宋江，不在话下。</div>
+            <div class="text-block simplified-text">宋江一看见武松，就觉得这人不错，挺喜欢的。他问武松："兄弟，你怎么在这儿啊？"
+
+武松回答说："我在清河县的时候，有次喝多了，跟当地一个当官的吵起来。我一气之下给了他一拳，把他打晕了。我以为他死了，吓得赶紧逃跑，跑到柴大官人这儿躲了一年多。后来听说那人没死，被救活了。我正打算回老家找我哥，没想到突然得了疟疾，一直发烧发冷走不了。刚才我在走廊烤火取暖，突然被你踩到铁锹把儿吓一跳，吓出一身冷汗，这病倒好了。"
+
+宋江听了特别高兴，当晚俩人喝酒喝到半夜。喝完酒，宋江就让武松跟他一起在西厢房睡了。第二天早上，柴进准备了酒席，杀猪宰羊招待宋江，这些就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">过了数日，宋江将出些银两来，与武松做衣裳。柴进知道，那里肯要他坏钱，自取出一箱段匹绸绢，门下自有针工，便教做三人的称体衣裳。说话的，柴进因何不喜武松？原来武松初来投奔柴进时，也一般接纳管待。次后在庄上，但吃醉了酒，性气刚，庄客有些顾管不到处，他便要下拳打他们。因此，满庄里庄客没一个道他好。众人只是嫌他，都去柴进面前告诉他许多不是处。柴进虽然不赶他，只是相待得他慢了。却得宋江每日带挈他一处饮酒相陪，武松的前病都不发了。相伴宋江住了十数日，武松思乡，要回清河县看望哥哥。柴进、宋江两个，都留他再住几时。武松道：“小弟的哥哥多时不通信息，因此要去望他。”宋江道：“实是二郎要去，不敢苦留。如若得闲时，再来相会几时。”武松相谢了宋江。柴进取出些金银送与武松，武松射道：“实是多多相扰了大官人。”武松缚了包裹，拴了梢棒要行，柴进又治酒食送路。武松穿了一领新衲红绸袄，戴着个白范阳毡笠儿，背上包裹，提了杆棒，相辞了便行。宋江道：“弟兄之情，贤弟少等一等。”回到自己房内，取了些银两，赶出到庄门前来。说道：“我送兄弟一程。”宋江和兄弟宋清两个送武松，待他辞了柴大官人，宋江也道：“大官人，暂别了便来。”三个离了柴进东庄，行了五七里路。武松作别道：“尊兄，远了，请回。柴大官人必然专望。”宋江道：“何妨再送几步。”路上说些闲话。不觉又过了三二里。武松挽住宋江说道：“尊兄不必远送，常言道：送君千里，终须一别。”宋江指着道：“容我再行几步。兀那官道上有个小酒店，我们吃三锺了作别。”三个来到酒店里，宋江上首坐了，武松倚了梢棒，下席坐了，宋清横头坐定。便叫酒保打酒来，且买些盘馔果品菜蔬之类，都搬来摆在桌子上。三个人饮了几杯，看看红日平西，武松便道：“天色将晚，哥哥不弃武二时，就此受武二四拜，拜为义兄。”宋江大喜，武松纳头拜了四拜。宋江叫宋清身边取出一锭十两银子，送与武松。武松那里肯受，说道：“哥哥客中自用盘费。”宋江道：“贤弟不必多虑。你若推却，我便不认你做兄弟。”武松只得拜受了，收放缠袋里。宋江取些碎银子，还了酒钱。武松拿了梢棒，三个出酒店前来作别。武松堕泪，拜辞了自去。宋江和宋清立在酒店门前，望武松不见了，方才转身回来。行不到五里路头，只见柴大官人骑着马，背后牵着两匹空马来接。宋江望见了大喜，一同上马回庄上来。下了马，请入后堂饮酒。宋江弟兄两个，自此只在柴大官人庄上。话分两头。有诗为证：</div>
+            <div class="text-block simplified-text">过了几天，宋江拿出些银子要给武松做新衣服。柴进知道了，哪肯让宋江破费，自己拿出一箱绸缎布料，叫家里的裁缝给武松、宋江和自己各做了一套合身的衣服。
+
+（这里解释一下为什么柴进不太喜欢武松：当初武松刚来投靠时，柴进也是热情招待。但后来武松喝醉后脾气暴躁，庄客稍有伺候不周就要动手打人。所以全庄上下没人说他好话，都向柴进告状。柴进虽然没赶他走，但态度明显冷淡了。幸好有宋江天天带着他喝酒聊天，武松这才没再闹事。）
+
+武松在宋江身边住了十几天后想家了，要回清河县看哥哥。柴进和宋江都留他多住些日子。武松说："我好久没哥哥消息了，得去看看。"宋江说："既然二郎执意要走，我们也不强留。有空记得再来聚聚。"武松谢过宋江。柴进送他些金银，武松推辞说："已经给大官人添太多麻烦了。"
+
+武松收拾好行李，拿着棍棒准备出发。柴进又摆了送行酒。武松穿着新做的红绸袄，戴着白毡帽，背着包袱提着棍棒告辞。宋江说："好兄弟稍等，我送送你。"回屋拿了银子追到庄门口，坚持要送一程。
+
+宋江和弟弟宋清送武松走了五六里地，武松再三说："哥哥请回吧，柴大官人该等着急了。"宋江却说："再送几步。"又走了两三里，武松拉住宋江说："送再远终须一别。"宋江指着前面说："前面有个小酒馆，咱们喝三杯再分手。"
+
+三人在酒馆坐下喝酒，眼看太阳西斜，武松突然说："天快黑了，哥哥要是不嫌弃，我想认您做义兄。"说完跪下磕了四个头。宋江很高兴，让宋清拿出十两银子相赠。武松推辞，宋江说："你要是不收，就是不认我这个哥哥。"武松只好收下藏好。
+
+付完酒钱，三人酒馆外分别时武松掉了眼泪。宋江兄弟一直目送他走远才转身。结果没走五里地，就见柴进骑马带着两匹空马来接他们。三人高高兴兴骑马回庄，在后堂继续喝酒。从此宋江兄弟就在柴进庄上住下了。
+
+（故事先讲到这里。后文如何，有诗为证：）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">别意悠悠去路长，挺身直上景阳冈。</div>
+            <div class="text-block simplified-text">我舍不得你走，但你要去的地方很远。你挺直腰板，勇敢地走上了景阳冈。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">醉来打杀山中虎，扬得声名满四方。</div>
+            <div class="text-block simplified-text">喝醉了打死山里的老虎，名声传遍四面八方。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">只说武松自与宋江分别之后，当晚投客店歇了。次日早起来，打火吃了饭，还了房钱，拴束包裹，提了梢棒，便走上路。寻思道：“江湖上只闻说及时雨宋公明，果然不虚。结识得这般弟兄，也不枉了。”武松在路上行了几日，来到阳谷县地面。此去离县治还远。当日晌午时分，走得肚中饥渴，望见前面有一个酒店，挑着一面招旗在门前，上头写着五个字道：“三碗不过冈”。武松入到里面坐下，把梢棒倚了，叫道：“主人家，快把酒来吃。”只见店主人把三只碗、一双箸、一碟热菜，放在武松面前，满满筛一碗酒来。武松拿起碗，一饮而尽，叫道：“这酒好生有气力！主人家，有饱肚的买些吃酒。”酒家道：“只有熟牛肉。”武松道：“好的切二三斤来吃酒。”店家去里面切出二斤熟牛肉，做一大盘子将来，放在武松面前，随即再筛一碗酒。武松吃了道：“好酒！”又筛下一碗，恰好吃了三碗酒，再也不来筛。武松敲着桌子叫道：“主人家，怎的不来筛酒？”酒家道：“客官要肉便添来。”武松道：“我也要酒，也再切些肉来。”酒家道：“肉便切来，添与客官吃，酒却不添了。”武松道：“却又作怪。”便问主人家道：“你如何不肯卖酒与我吃？”酒家道：“客官，你须见我门前招旗，上面明明写道‘三碗不过冈’。”武松道：“怎地唤做三碗不过冈？”酒家道：“俺家的酒，虽是村酒，却比老酒的滋味。但凡客人来我店中吃了三碗的，便醉了，过不得前面的山冈去。因此唤做‘三碗不过冈’。若是过往客人到此，只吃三碗，更不再问。”武松笑道：“原来恁地。我却吃了三碗，如何不醉？”酒家道：“我这酒叫做‘透瓶香’，又唤做‘出门倒’。初入口时，醇好吃，少刻时便倒。”武松道：“休要胡说。没地不还你钱，再筛三碗来我吃。”酒家见武松全然不动，又筛三碗。武松吃道：“端的好酒！主人家，我吃一碗，还你一碗钱，只顾筛来。”酒家道：“客官休只管要饮，这酒端的要醉倒人，没药医。”武松道：“休得胡鸟说！便是你使蒙汗药在里面，我也有鼻子。”店家被他发话不过，一连又筛了三碗。武松道：“肉便再把二斤来吃。”酒家又切了二斤熟牛肉，再筛了三碗酒。武松吃得口滑，只顾要吃，去身边取出些碎银子，叫道：“主人家，你且来看我银子，还你酒肉钱勾么？”酒家看了道：“有余，还有些帖钱与你。”武松道：“不要你帖钱，只将酒来筛。”酒家道：“客官，你要吃酒时，还有五六碗酒哩，只怕你吃不的了。”武松道：“就有五六碗多时，你尽数筛将来。”酒家道：“你这条长汉，倘或醉倒了时，怎扶的你住？”武松答道：“要你扶的不算好汉。”酒家那里肯将酒来筛。武松焦躁道：“我又不白吃你的，休要引老爹性发，通教你屋里粉碎，把你这鸟店子倒翻转来！”酒家道：“这厮醉了，休惹他。”再筛了六碗酒与武松吃了，前后共吃了十五碗。绰了梢棒，立起身来道：“我却又不曾醉。”走出门前来，笑道：“却不说‘三碗不过冈’！”手提梢棒便走。</div>
+            <div class="text-block simplified-text">武松和宋江分开后，当晚住进一家旅店。第二天一早，他起床吃饭，付了房钱，收拾好行李，拿起棍棒就上路了。路上他想："江湖上都夸宋江仗义，果然名不虚传。能交到这样的兄弟，值了。"
+
+走了几天，武松来到阳谷县地界。这天中午，他走得又饿又渴，看见前面有家酒店，门口挂着个旗子，上面写着"三碗不过冈"。武松进去坐下，把棍棒靠在一边，喊道："老板，快拿酒来！"
+
+店家端来三只碗、一双筷子、一碟热菜，倒满一碗酒。武松一口喝完，赞道："这酒够劲儿！老板，有什么下酒菜？"店家说："只有熟牛肉。"武松说："切两三斤来。"店家切了两斤牛肉端上来，又倒了一碗酒。武松喝完又叫好，喝完第三碗后，店家不再倒酒了。
+
+武松拍桌子问："怎么不倒酒了？"店家说："您要肉可以再加，酒不能添了。"武松奇怪地问："为什么不卖酒给我？"店家指着门口的旗子说："我们这酒叫'三碗不过冈'，喝三碗就醉得翻不过前面山冈了。"
+
+武松笑道："我都喝三碗了，怎么没醉？"店家解释："这酒叫'透瓶香'，又叫'出门倒'，刚喝觉得香，一会儿就醉。"武松不信："少废话，又不是不给钱，再倒三碗！"店家见他没事，又倒了三碗。
+
+武松越喝越来劲："真是好酒！老板，喝一碗给一碗钱，尽管倒！"店家劝道："这酒真能醉死人，没药可解。"武松骂道："放屁！就算你下蒙汗药，我也闻得出来！"店家没办法，又倒了三碗。武松还要了两斤牛肉，又喝了三碗。
+
+武松掏出碎银子问："这些钱够吗？"店家说："还有找零。"武松说："不用找，继续倒酒！"店家说："还剩五六碗，怕您喝不了。"武松说："有多少倒多少！"店家担心："您这么高大，醉了扶不动啊。"武松说："要人扶算什么好汉！"
+
+店家不肯倒酒，武松发火道："又不是不给钱！别惹我生气，小心砸了你的店！"店家嘀咕："这人醉了，别惹他。"又给武松倒了六碗。
+
+武松前后喝了十五碗，拿起棍棒站起来说："我根本没醉！"走出店门还笑话："说什么'三碗不过冈'！"说完提着棍棒就走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">酒家赶出来叫道：“客官那里去？”武松立住了，问道：“叫我做甚么？我又不少你酒钱，唤我怎地？”酒家叫道：“我是好意。你且回来我家看官司榜文。”武松道：“甚么榜文？”酒家道：“如今前面景阳冈上，有只吊睛白额大中心，晚了出来伤人，坏了三二十条大汉性命。官司如今杖限打猎捕户，擒捉发落。冈子路口两边人民，都有榜文。可教往来客人，结伙成队，于巳、午、未三个时辰过冈，其余寅、卯、申、酉、戌、亥六个时辰，不许过冈。更兼单身客人，不许白日过冈，务要等伴结伙而过。这早晚正是未末申初时分，我见你走都不问人，枉送了自家性命。不如就我此间歇了，等明日慢慢凑的三二十人，一齐好过冈子。”武松听了，笑道：“我是清河县人氏，这条景阳冈上少也走过了一二十遭。几时见说有大虫！你休说这般鸟话来吓我！便有大虫，我也不怕。”酒家道：“我是好意救你。你不信时，进来看官司榜文。”武松道：“你鸟子声！便真个有虎，老爷也不怕。你留我在家里歇，莫不半夜三更要谋我财，害我性命，却把鸟大虫唬吓我？”酒家道：“你看么！我是一片好心，反做恶意，倒落得你恁地说。你不信我时，请尊便自行。”正是：</div>
+            <div class="text-block simplified-text">酒店老板追出来喊："客人你去哪儿啊？"武松停下问："叫我干啥？我又没欠你酒钱，喊我做什么？"老板说："我是为你好。你回来看看官府贴的告示吧。"武松问："什么告示？"老板解释："前面景阳冈上有只大白老虎，晚上出来咬人，已经害死二三十条大汉了。官府现在逼着猎户去抓老虎。路口都贴着告示，让过路人必须成群结队，在上午9点到下午3点这段时间过冈，其他时间都不许过。特别是单独赶路的，白天也不让过，必须等人多了一起走。现在都快下午4点了，我看你问都不问就往前走，不是白白送死吗？不如在我这儿住一晚，等明天凑够二三十人一起过冈。"
+
+武松听完笑了："我是清河县人，这景阳冈少说也走过一二十趟，什么时候听说有老虎？你别拿这种瞎话吓唬我！就算真有老虎，我也不怕。"老板说："我是好心救你。不信你进来看官府告示。"武松骂道："放屁！就算真有老虎，老子也不怕。你留我住店，该不是想半夜谋财害命，就拿老虎吓唬我吧？"老板无奈："你看你！我好心当成驴肝肺，反被你这么说。不信拉倒，您请便吧。"
+
+（最后两句原文"正是："属于说书人套话，现代白话可不译）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">前车倒了千千辆，后车过了亦如然。</div>
+            <div class="text-block simplified-text">前面的车已经翻了一千辆，后面的车开过去还是照样翻。  
+
+（解释：这句话用简单直白的说法，意思是前面已经有无数失败例子了，但后面的人还是不吸取教训，继续犯同样的错误。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">分明指与平川路，却把忠言当恶言。</div>
+            <div class="text-block simplified-text">原文翻译成大白话就是：
+
+"明明给你指了一条明路，你却把好心劝告当成坏话。" 
+
+简单说就是：别人好心给你建议，你不但不听，还觉得人家在害你。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">那酒店里主人摇着头，自进店里去了。这武松提了梢棒，大着步自过景阳冈来。约行了四五里路，来到冈子下，见一大树，刮去了皮，一片白，上写两行字。武松也颇识几字，抬头看时，上面写道：“近因景阳冈大虫伤人，但有过往客商，可于巳、午、未三个时辰，结伙成队过冈。请勿自误。”武松看了，笑道：“这是酒家诡诈，惊吓那等客人，便去那厮家里宿歇。我却怕甚么鸟！”横拖着梢棒，便上冈子来。那时已有申牌时分。这轮红日，厌厌地相傍下山。武松乘着酒兴，只管走上冈子来。走不到半里多路，见一个败落的山神庙。行到庙前，见这庙门上贴着一张印信榜文。武松住了脚读时，上面写道：</div>
+            <div class="text-block simplified-text">酒店老板摇着头，自己回店里去了。武松提着棍子，大步走上景阳冈。走了大概四五里路，到了山脚下，看见一棵被刮掉树皮的大树，露出白白的树干，上面写着两行字。武松认识几个字，抬头一看，上面写着："最近景阳冈有老虎伤人，来往的客人最好在上午九点到下午三点这段时间，结伴过冈。别自己找死。"武松看完笑着说："这肯定是店家耍的花招，吓唬客人好让他们去住店。我才不怕这鬼东西呢！"他横着拿棍子，继续往山上走。这时候太阳已经偏西，快下山了。武松借着酒劲，一个劲儿往山上走。走了不到半里路，看见一个破旧的山神庙。走到庙前，发现庙门上贴着一张盖着官印的告示。武松停下来读，上面写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">“阳谷县示：为这景阳冈上新有一只大虫，近来伤害人命。见今杖限各乡里正并猎户人等，打捕未获。如有过往客商人等，可于巳、午、未三个时辰，结伴过冈。其余时分及单身客人，白日不许过冈。恐被伤害性命不便。各宜知悉。”</div>
+            <div class="text-block simplified-text">阳谷县通知：最近景阳冈上出现一只大老虎，已经咬死了人。现在官府正要求各村负责人和猎户去抓老虎，但还没抓到。要过冈的人请注意：只能在上午9点到下午3点这段时间，而且要结伴才能过冈。其他时间或者单独一个人，白天也不准过冈。这是为了避免被老虎伤到。大家都互相转告一下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">武松读了印信榜文，分知端的有虎。欲待发步再回酒店里来，寻思道：“我回去时，须吃他耻笑，不是好汉，难以转去。”存想了一回，说道：“怕甚么鸟！且只顾上去，看怎地！”武松正走，看看酒涌上来，便把毡笠儿背在脊梁上，将梢棒绾在肋下，一步步上那冈子来。回头看这日色时，渐渐地坠下去了。此时正是十月间天气，日短夜长，容易得晚，武松自言说道：“那得甚么大虫！人自怕了，不敢上山。”武松走了一直，酒力发作，焦热起来，一只手提着梢棒，一只手把胸膛前袒开，踉踉跄跄，直奔过乱树林来。见一块光挞挞大青石，把那梢棒倚在一边，放翻身体，却待要睡，只见发起一阵狂风来。看那风时，但见：</div>
+            <div class="text-block simplified-text">武松看了官府的告示，这才知道山上真有老虎。他本想转身回酒店，但又想："我要是回去，肯定会被他们笑话，说我不是好汉，这脸往哪搁啊。"琢磨了一会儿，他干脆说："怕个屁！先上山看看再说！"
+
+武松走着走着，酒劲上来了。他把斗笠往后一甩，哨棒夹在胳肢窝底下，一步步往山上走。回头看看太阳，已经快落山了。这时候正是十月份，天黑得早。武松自言自语道："哪有什么老虎？都是人自己吓自己，不敢上山罢了。"
+
+武松又走了一段路，酒劲越来越大，浑身发热。他一手提着哨棒，一手扯开衣襟，摇摇晃晃地穿过树林。看见一块平整的大青石，就把哨棒往旁边一靠，躺下准备睡觉。突然刮起一阵大风。那风刮起来时——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">无形无影透人怀，四季能吹万物开。</div>
+            <div class="text-block simplified-text">这玩意儿看不见摸不着，却能钻进人心里。一年四季它都能吹，能让各种东西动起来、活过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">就树撮将黄叶去，入山推出白云来。</div>
+            <div class="text-block simplified-text">上山摘掉黄树叶，进山赶走白云朵。
+
+解释：
+1. 保留了原句"树-黄叶"和"山-白云"的核心意象
+2. 用"摘掉"替代"撮将"，"赶走"替代"推出"，更口语化
+3. "将"这种文言虚词全部去除
+4. 用最简单的动词"摘"和"赶"来表达动作
+5. 意思直白：在树林里摘枯叶，到山里看到云飘散
+6. 完全对应原文的两个场景描写，没有增减内容</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">原来但凡世上云生从龙，风生从虎。那一阵风过处，只听得乱树背后扑地一声响，跳出一只吊睛白额大虫来。武松见了，叫声：“呵呀！”从青石头上翻将下来，便拿那条梢棒在手里，闪在青石边。那个大虫又饥又渴，把两只爪在地下略按一按，和身望上一扑，从半空里撺将下来。武松被那一惊，酒都做冷汗出了。说时迟，那时快。武松见大虫扑来，只一闪，闪在大虫背后。那大虫背后看人最难，便把前爪搭在地下，把腰跨一掀，掀将起来。武松只一躲，躲在一边。大虫见掀他不着，吼一声，却似半天里起个霹雳，振得那山冈也动。把这铁棒也似虎尾倒竖起来，只一剪，武松却又闪在一边。原来那大虫拿人，只是一扑，一掀，一剪，三般提不着时，气性先自没一了半。那大虫又剪不着，再吼了一声，一兜兜将回来。武松见那大虫复翻身回来，双手轮起梢棒，尽平生气力，只一棒，从半空劈将下来。只听得一声响，簌簌地将那树连枝带叶劈脸打将下来。定睛看时，一棒劈不着大虫。原来慌了，正打在枯树上，把那条梢棒折做两截，只拿得一半在手里。那大虫咆哮，性发起来，翻身又只一扑，扑将来。武松又只一跳，却退了十步远。那大虫却好把两只前爪搭在武松面前。武松将半截棒丢在一边，两只手就势把大虫顶花皮肐地揪住，一按按将下来。那只大虫急要挣扎，早没有了气力。被武松尽气力纳定，那里肯放分半点儿松宽。武松把只脚望大虫面门上、眼睛里只照顾乱踢。那大虫咆哮起来，把身底下扒起两堆黄泥，做了一个土炕。武松把那大虫嘴直按下黄泥坑里去。那大虫吃武松奈何得没了些气力。武松把左手紧紧地揪住顶花皮，偷出右手来，提起铁锤般大小拳头，尽平生之力，只顾打。打得五七十拳，那大虫眼里、口里、鼻子里、耳朵里都迸出鲜血来。那武松尽平昔神威，仗胸中武艺，半歇儿把大虫打做一堆，却似躺着一个锦布袋。有一篇古风，单道景阳冈武松打虎。但见：</div>
+            <div class="text-block simplified-text">这段讲的是武松打虎的故事。简单来说：
+
+武松正在路上走，突然从树林里跳出一只大老虎。老虎又饿又渴，直接扑向武松。武松吓出一身冷汗，赶紧躲开。
+
+老虎抓人有三招：扑、掀、剪（用尾巴扫）。但三招都没打中武松，自己先累得够呛。武松趁机抡起棍子打老虎，结果打偏了，棍子还断成两截。
+
+老虎又扑过来，武松干脆扔掉断棍，直接抓住老虎头皮把它按在地上。老虎拼命挣扎，武松用脚猛踢老虎脸，还把老虎头按进土坑里。接着用拳头使劲打，打了五七十拳，打得老虎七窍流血，最后像一摊烂泥一样不动了。
+
+这就是著名的武松打虎的故事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">景阳冈头风正狂，万里阴云霾日光。</div>
+            <div class="text-block simplified-text">景阳冈上风刮得特别猛，满天乌云把太阳光都遮住了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">焰焰满川枫叶赤，纷纷遍地草芽黄。</div>
+            <div class="text-block simplified-text">看那满山的枫叶红得像火一样，遍地枯黄的草芽乱糟糟地长着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">触目晚霞挂林薮，侵入冷雾满穹苍。</div>
+            <div class="text-block simplified-text">傍晚的晚霞挂在树林上，寒冷的雾气慢慢布满天空。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">忽闻一声霹雳响，山腰飞出兽中王。</div>
+            <div class="text-block simplified-text">突然听到一声炸雷般的巨响，半山腰窜出一只最凶猛的野兽。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">昂头踊跃逞牙爪，谷口麋鹿皆奔忙。</div>
+            <div class="text-block simplified-text">鹿群在谷口狂奔逃命，因为那些猛兽正昂着头、张牙舞爪地朝它们扑来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">山中狐兔潜踪迹，涧内獐猿惊且慌。</div>
+            <div class="text-block simplified-text">山里的狐狸兔子都躲得没影了，山沟里的獐子和猿猴也都吓得乱跑乱跳。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">卞庄见后魂魄丧，存孝遇时心胆强。</div>
+            <div class="text-block simplified-text">卞庄子看到老虎后吓得魂都没了，李存孝碰上老虎时却胆大包天。
+
+（说明：1. 用"老虎"明确典故中的猛兽意象；2. "魂都没了"对应"魂魄丧"，"胆大包天"对应"心胆强"；3. 补充卞庄子、李存孝的姓名避免指代不明；4. 保持对比结构，用"却"字体现转折关系；5. 口语化表达如"吓得""碰上"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">清河壮士酒未醒，忽在冈头偶相迎。</div>
+            <div class="text-block simplified-text">有个来自清河地方的猛汉，酒还没醒透呢，突然就在山坡上跟人碰上了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">上下寻人虎饥渴，撞着狰狞来扑人。</div>
+            <div class="text-block simplified-text">老虎饿得发慌到处找人吃，正好碰上个倒霉蛋就扑了上去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">虎来扑人似山倒，人去迎虎如岩倾。</div>
+            <div class="text-block simplified-text">老虎扑向人时，像山塌下来一样凶猛；人冲向老虎时，像岩石倒下一样拼命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">臂腕落时坠飞炮，爪牙爬处成泥坑。</div>
+            <div class="text-block simplified-text">这句话的意思是：
+
+手臂一挥，像扔炸弹一样猛；爪子一抓，地上就挖出个大坑。
+
+（解释说明：用"扔炸弹"替代"坠飞炮"更易理解，"挖出个大坑"比"成泥坑"更口语化。保留了力量感和破坏效果的核心意象，将文言的比喻转化为现代人熟悉的表达方式。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">拳头脚尖如雨点，淋漓两手鲜血染。</div>
+            <div class="text-block simplified-text">他拳打脚踢像下雨一样密集，打得两手都是血。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">秽污腥风满松林，散乱毛须坠山奄。</div>
+            <div class="text-block simplified-text">松林里到处是又脏又臭的风，动物散乱的毛发掉得满山都是。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">近看千均势未休，远观八面威风敛。</div>
+            <div class="text-block simplified-text">近看时气势汹汹像要打起来，远看却悄悄收起了威风。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">身横野草锦斑销，紧闭双睛光不闪。</div>
+            <div class="text-block simplified-text">这个人躺在野草丛里，身上的花纹衣服都破了，眼睛紧紧闭着，一点光都没有。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">当下景阳冈上那只猛虎，被武松没顿饭之间，一顿拳脚打得那大虫动掸不得，使得口里兀自气喘。武松放了手，来松树边寻那打折的棒橛，拿在手里，只怕大虫不死，把棒橛又打了一回。那大虫气都没了。武松寻思道：“我就地拖得这死大虫下冈子去。”就血泊里双手来提时，那里提得动？原来使尽了气力，手脚都疏软了，动掸不得。</div>
+            <div class="text-block simplified-text">武松在景阳冈上遇到那只老虎，没花一顿饭的功夫，就用拳头和脚把老虎打得不能动弹，老虎只能趴在那里直喘气。武松松开手，到松树边找到那根打断的棍子，拿在手里，怕老虎没死透，又用棍子打了一通。这下老虎彻底断气了。武松想："我干脆直接把这只死老虎拖下山吧。"可当他伸手去拖的时候，发现根本拖不动——原来刚才打虎用光了力气，现在手脚发软，一点劲儿都没了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">武松再来青石坐了半歇，寻思道：“天色看看黑了，倘或又跳出一只大虫时，我却怎地斗得他过？”且挣扎下冈子去，明早却来理会。”就石头边寻了毡笠儿，转过乱树林边，一步步捱下冈子来。</div>
+            <div class="text-block simplified-text">武松又在青石上坐了一会儿，心想："天快黑了，要是再跳出一只老虎来，我可打不过它。还是先勉强下山，明天早上再来处理这事吧。"于是他在石头旁边找到斗笠，穿过杂乱的树林，慢慢一步步走下山去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">走不到半里多路，只见枯草丛中钻出两只大虫来。武松道：“呵呀，我今番死也！性命罢了！”只见那两个大虫于黑影里直立起来。武松定睛看时，却是两个人，把虎皮缝做衣衣裳，紧紧拼在身上。那两个人手里各拿着一条五股叉，见了武松，吃了一惊道：“你那人吃了【“忽聿”二字俱加“反犬”旁】心，豹子肝，狮子腿，胆倒包着身躯！如何敢独自一个，昏黑将夜，又没器械，走过冈子来！不知你是人？是鬼？”武松道：“你两个是甚么人？”那个人道：“我们是本处猎户。”武松道：“你们上岭来做甚么？”两个猎户失惊道：“你兀自不知哩！如今景阳冈上有一只极大的大虫，夜夜出来伤人。只我们猎户，也折了七八个。过往客人，不记其数，都被这畜生吃了。本县知县着落当乡里正和我们猎户人等捕捉。那业畜势大，难近得他，谁敢向前！我们为他正不知吃了多少限棒，只捉他不得。今夜又该我们两个捕猎，和十数个乡夫在此，上上下下放了窝弓药箭等他。正在这里埋伏，却见你大剌剌地从冈子上走将下来，我两个吃了一惊。你却正是甚人？曾见大虫么？”武松道：“我是清河县人氏，姓武，排行第二。却才冈子上乱树林边，正撞着那大虫，被我一顿拳脚打死了。”两个猎户听得痴呆了，说道：“怕没这话！”武松道：“你不信时，只看我身上兀自有血迹。”两个道：“怎地打来？”武松把那打大虫的本事，再说了一遍。两个猎户听了，又惊又喜，叫拢那十个乡夫来。</div>
+            <div class="text-block simplified-text">走了不到半里路，突然从枯草里窜出两只"老虎"。武松吓了一大跳："完了！这下要没命了！"仔细一看，原来是两个人穿着虎皮做的衣服。这两人手里拿着五齿叉，看到武松也吓了一跳："你这人是吃了熊心豹子胆吗？天都黑了，又没带武器，敢一个人过山岗！你是人是鬼啊？"
+
+武松问："你们是什么人？"对方回答："我们是本地猎户。"武松又问："你们上山干什么？"猎户惊讶地说："你还不知道吗？这景阳冈上有只特别凶的老虎，天天晚上出来伤人。光我们猎户就被咬死了七八个，过路的更是不计其数。县太爷命令我们和村民一起抓老虎，但这畜生太厉害，没人敢靠近。我们因为抓不到老虎，没少挨板子。今晚轮到我们俩带着十几个村民埋伏，到处都设了陷阱和毒箭，正等着老虎呢。没想到突然看见你大摇大摆从山上下来，吓我们一跳。你到底是什么人？看见老虎了吗？"
+
+武松说："我是清河县的武二郎。刚才在山上树林边碰到那只老虎，被我赤手空拳打死了。"两个猎户听傻了："真的假的？"武松说："不信你们看我身上的血。"两人问："怎么打的？"武松把打虎的经过又说了一遍。猎户们又惊又喜，赶紧叫来那十几个村民。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">只见这十个乡夫，都拿着钢叉、踏弩、刀枪，随即拢来。武松问道：“他们众人如何不随着你两个上山？”猎户道：“便是那畜生利害，他们如何敢上来！”一伙十数个人，都在面前。两个猎户把武松打杀大虫的事，说向众人。众人都不肯信。武松道：“你众人不肯信时，我和你去看便了。”众人身边都有火刀、火石，随即发出火来，点起五七个火把。众人都跟着武松，一同再上冈子来，看见那大虫做一堆儿死在那里。众人见了大喜，先叫一个去报知本县里正，并该管上户。这里五七个乡夫，自把大虫缚了，抬下冈子来。到得岭下，早有七八十人都哄将来，先把死大虫抬在前面，将一乘兜轿，抬了武松，径投本处一个上户家来。那上户、里正都在庄前迎接。把这大虫抬到草厅上。却有本乡上户、本乡猎户三二十人，都来相探武松。众人问道：“壮士高姓大名？贵乡何处？”武松道：“小人是此间邻郡清河县人氏，姓武名松，排行第二。因从沧州回乡来，昨晚在冈子那边酒店吃得大醉了，上冈子来，正撞见这畜生。”把那打虎的身分拳脚，细说了一遍。众上户道：“真乃英雄好汉！”众猎户先把野味将来与武松把杯。武松因打大虫困乏了，要睡。大户便教庄客打并客房，且教武松歇息。到天明，上户先使人去县里报知，一面合具虎床，安排端正，迎送县里去。</div>
+            <div class="text-block simplified-text">我看到十个村民拿着钢叉、弓箭和刀枪围了过来。武松问："他们怎么不跟你们一起上山？"猎户回答："那老虎太厉害了，他们哪敢上去啊！"这时十几个人都过来了。两个猎户把武松打死老虎的事告诉大家，可大家都不信。武松说："你们要是不信，跟我去看看就知道了。"大家身上都带着打火石，马上点起了五六个火把，跟着武松回到山上，果然看见那只老虎已经死在那儿了。
+
+大家高兴坏了，赶紧派一个人去通知村长和当地大户。几个村民把老虎捆好抬下山。到了山脚下，已经有七八十人围过来看热闹。他们把死老虎抬在前面，又用轿子抬着武松，直接去了一个大户家里。那个大户和村长早就在门口等着了。
+
+他们把老虎抬到大厅里，这时候本地的富户和猎户来了二三十人，都来看武松。大家问："好汉尊姓大名？家住哪里？"武松说："我是旁边清河县人，叫武松，排行老二。从沧州回家路上，昨晚在山下酒店喝多了，上山时正好碰到这畜生。"接着把打虎的经过详细说了一遍。大家都称赞："真是个大英雄！"
+
+猎户们先拿野味来招待武松喝酒。武松因为打虎太累想睡觉，大户就让仆人收拾好客房给他休息。天亮后，大户派人去县里报告，同时准备好抬老虎的架子，等着送老虎去县里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">天明，武松起来洗漱罢，众多上户牵一腔羊，挑一担酒，都在厅前伺候。武松穿了衣裳，整顿巾帻，出到前面，与众人相见。众上户把盏说道：“被这个畜生正不知害了多少人性命，连累猎户吃了几顿限棒。今日幸得壮士来到，除了这个大害。第一乡中人民有福，第二客侣通行，实出壮士之赐。”武松谢道：“非小子之能，托赖众长上福荫。”众人都来作贺，吃了一早晨酒食。抬出大虫，放在虎床上。众乡村上户都把段匹花红来挂与武松。武松有些行李包裹，寄在庄上，一齐都出庄门前来。早有阳谷县知县相公使人来接武松，都相见了。叫四个庄客，将乘凉轿来抬了武松，把那大虫扛在前面，挂着花红段匹，迎到阳谷县里来。</div>
+            <div class="text-block simplified-text">天亮了，武松起床洗漱完，村里的大户人家牵来一只羊，挑了一担酒，都在大厅等着。武松穿好衣服，整理好头巾，走到前面和大家见面。那些大户端着酒杯说："这畜生（老虎）不知道害了多少人的命，连累猎户挨了好几回板子。今天多亏好汉你来了，替我们除掉这个大祸害。第一是咱们老百姓有福气，第二是来往的客人能安全通行，这都是托你的福啊！"武松客气地说："这不是我的本事，全靠各位长辈的关照。"大家都来祝贺，一起喝酒吃菜到早上。他们把老虎抬出来放在架子上，村里的富户们还拿出绸缎和红布给武松披上。武松把行李寄放在村里，大家一块儿送他出村。阳谷县的县官早就派人来接武松，见面后叫四个村民用凉轿抬着武松，把老虎扛在前头，披着红绸缎，热热闹闹地往阳谷县去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">那阳谷县人民听得说一个壮士打死了景阳冈上大虫，迎喝将来，尽皆出来看。哄动了那个县治。武松在轿上看时，只见亚肩叠背，闹闹穰穰，屯街塞巷，都来看迎大虫。到县前衙门口，知县已在厅上专等。武松下了轿，扛着大虫，都到厅前，放在甬道上。知县看了武松这般模样，又见了这个老大锦毛大虫，心中自忖道：“不是这个汉，怎地打的这个猛虎！”便唤武松上厅来。武松去厅前声了喏。知县问道：“你那打虎的壮士，你却说怎生打了这个大虫？”武松就厅前将打虎的本事，说了一遍。厅上厅下众多人等，都惊的呆了。知县就厅上赐了几杯酒，将出上户凑的赏赐钱一千贯，赏赐与武松。武松禀道：“小人托赖相公的福荫，偶然侥幸，打死了这个大虫。非小人之能，如何敢受赏赐。小人闻知这众猎户因这个大虫受了相公责罚，何不就把这一千贯给散与众人去用？”知县道：“既是如此，任从壮士。”</div>
+            <div class="text-block simplified-text">阳谷县的老百姓听说有个好汉打死了景阳冈上的老虎，还抬着老虎进城，全都跑出来看热闹。整个县城都轰动了。武松坐在轿子里往外看，只见街上人挤人，密密麻麻的，把路都堵死了，都是来看打虎英雄的。到了县衙门口，县官早就在大堂上等着了。武松下轿，扛着老虎来到大堂前，把老虎放在过道上。县官看武松这身材，再看看这只毛色漂亮的大老虎，心里想："要不是这样的好汉，怎么可能打死这么凶的老虎！"就叫武松上堂说话。武松上前行礼。县官问："打虎的好汉，说说你是怎么打死这只老虎的？"武松就把打虎的经过详细说了一遍。在场所有人听了都惊呆了。县官当场赏了武松几杯酒，又把当地富户凑的一千贯赏钱给他。武松却说："小人托大人的福，运气好才打死这只老虎。这不是我的本事，不敢要赏钱。听说那些猎户因为没抓住老虎受了大人责罚，不如把这些钱分给他们吧？"县官说："既然这样，就按你说的办。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">武松就把这赏钱在厅上散与众人猎户。知县见他忠厚仁德，有心要抬举他，便道：“虽你原是清河县人氏，与我这阳谷县只在咫尺。我今日就参你在本县做个都头，如何？”武松跪谢道：“若蒙恩相抬举，小人终身受赐。”知县随即唤押司立了文案，当日便参武松做了步兵都头。众上户都来与武松作贺庆喜，连连吃了三五日酒。武松自心中想道：“我本要回清河县去看望哥哥，谁想倒来做了阳谷县都头！”自此上官见爱，乡里闻名。又过了三二日，那一日，武松心闲，走出县前来闲玩。只听得背后一个人叫声：“武都头，你今日发迹了，如何不看觑我则个？”武松回过头来看了，叫声：“阿也！你如何却在这里？”</div>
+            <div class="text-block simplified-text">武松把赏钱分给了在场的猎户们。县官看他为人老实厚道，想提拔他，就说："虽然你老家是清河县的，但离我们阳谷县很近。不如今天就让你在我们县当个都头（捕快头目），怎么样？"武松跪下感谢说："多谢大人提拔，我一辈子都记着您的恩情。"县官马上叫文书办了手续，当天就让武松当了步兵都头。当地的有钱人都来祝贺他，连着喝了三五天的酒。武松心里想："我本来要回清河县找哥哥的，没想到在这儿当上官了！"从此他在官场上很受重用，在当地也出了名。
+
+过了两三天，武松闲着没事在县衙门口溜达。忽然听见背后有人喊："武都头，你现在发达了，怎么也不来看看我啊？"武松回头一看，惊讶地叫道："哎呀！你怎么会在这儿？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">不是武松见了这个人，有分教：阳谷县里，尸横血染。直教钢刀响处人头滚，宝剑挥时热血流。正是：只因酒色忘家国，几见诗书误好人。毕竟叫唤武都头的正是甚人，且听下回分解。</div>
+            <div class="text-block simplified-text">武松见到这个人之后，事情可就闹大了：阳谷县接下来会死很多人，血流成河。到时候钢刀砍下去人头落地，宝剑一挥鲜血直流。说白了就是：贪酒好色会让人忘了家和国，读圣贤书的好人反而经常吃亏。那么到底是谁在喊武都头呢？咱们下回再说。  
+
+（说明：  
+1. "有分教"直接译为"事情可就闹大了"更直白  
+2. "尸横血染"用"死很多人，血流成河"更易理解  
+3. 保留原文"钢刀/宝剑"的具象化表达  
+4. 诗句翻译成口语化的"贪酒好色误事，好人反而吃亏"  
+5. 最后悬念句保留原有结构，用"咱们下回再说"替代文言句式）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
