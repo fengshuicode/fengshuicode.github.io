@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十回　梁山泊义士尊晁盖　郓城县月夜走刘唐</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./019.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十回　梁山泊义士尊晁盖　郓城县月夜走刘唐</h1>
+        <a href="./021.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句翻译成现代白话文：
+
+"诗里这样写道："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">豪杰英雄聚义间，罡星煞曜降尘寰。</div>
+            <div class="text-block simplified-text">一群好汉和英雄聚在一起，天上的星宿下凡来帮忙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">王伦奸诈遭诛戮，晁盖仁明主将班。</div>
+            <div class="text-block simplified-text">王伦这人阴险狡诈，结果被杀了；晁盖为人正直仁义，所以大家推举他当了头领。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">魂逐断云寒冉冉，恨随流水夜潺潺。</div>
+            <div class="text-block simplified-text">灵魂跟着散开的云慢慢飘远，心里头的怨恨就像夜里的流水声，哗哗响个不停。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">林冲火并真高谊，凛凛清风不可攀。</div>
+            <div class="text-block simplified-text">林冲干掉坏蛋是真讲义气，他那股子正气让人佩服得不得了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说林冲杀了王伦，手拿尖刀，指着众人说道：“据林冲虽系禁军，遭配到此，今日为众豪杰至此相聚，争奈王伦心胸狭隘，嫉贤妒能，推故不纳，因此火并了这厮，非林冲要图此位。据着我胸襟胆气，焉敢拒敌官军，剪除君侧元凶首恶。今有晁兄，仗义疏财，智勇足备。方今天下，人闻其名，无有不伏。我今日以义气为重，立他为山寨之主，好么？”众人道：“头领言之极当。”晁盖道：“不可！自古强兵不压主。晁盖强杀，只是个远来新到的人，安敢便来占上。”林冲把手向前，将晁盖推在交椅上，叫道：“今日事已到头，请勿推却。若有不从者，将此王伦为例！”再三再四扶晁盖坐了。林冲喝道：“众人就于亭前参拜了。”一面使小喽啰去大寨里摆下筵席；一面叫人抬过了王伦尸首；一面又着人去山前山后，唤众多小头目，都来大寨里聚义。</div>
+            <div class="text-block simplified-text">林冲杀了王伦，拿着刀对大家说："我林冲虽然是朝廷军官，被发配到这里。今天各位好汉聚在一起，可王伦这人小气，嫉妒有本事的人，找借口不肯收留大家。所以我干掉了他，不是我想当老大。凭我的胆量，哪敢跟朝廷作对、除掉那些大奸臣呢？现在有晁盖大哥，为人仗义大方，又有勇有谋。天下人都佩服他。我今天讲义气，推举他当山寨老大，大家觉得怎么样？"众人都说："大哥说得对！"
+
+晁盖连忙推辞："不行不行！自古以来没有新人压过旧主的道理。我晁盖再厉害，也只是个新来的，怎么敢当老大？"林冲直接把晁盖推到首领座位上，大喊："事情都到这份上了，别推辞了！谁要是不服，就看看王伦的下场！"硬是让晁盖坐上了老大位置。林冲又命令："所有人都在亭前行礼！"接着安排小喽啰们：一拨人去准备酒席，一拨人收拾王伦的尸体，还有一拨人去通知山里各处的小头目都来大寨集合。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">林冲等一行人请晁盖上了轿马，都投大寨里来。到得聚义厅前，下了马，都上厅来。众人扶晁天王正中第一位交椅上坐定，中间焚起一炉香来。林冲向前道：“小可林冲，只是个粗卤匹夫，不过只会些枪棒而已，无学无才，无智无术。今日山寨天幸得众豪杰相聚，大义既明，非比往日苟且。学究先生此，便请做军师，执掌兵权，调用将校，须坐第二位。”吴用答道：“吴某村中学究，胸次又无经纶济世之才，虽只读些孙吴兵法，未曾有半粒微功，怎敢占上。”林冲道：“事已到头，不必谦让。”吴用只得坐了第二位。林冲道：“公孙先生请坐第三位。”晁盖道：“却使不得。若是这等推让之时，晁盖必须退位。”林冲道：“晁兄差矣！公孙先生名闻江湖，善能用兵，有鬼神不测之机，呼风唤雨之法，谁能及也。”公孙胜道：“虽有些小之法，亦无济世之才，如何便敢占上。还是头领请坐。”林冲道：“今番克敌制胜，谁人及得先生良法。正是鼎分三足，缺一不可。先生不必推却。”公孙胜只得坐了第三位。林冲再要让时，晁盖、吴用、公孙胜都不肯。三人俱道：“适蒙头领所说，鼎分三足，以此不敢违命，我三人占上。头领再要让人时，晁盖等只得告退。”三人扶住林冲，只得坐了第四位。晁盖道：“今番须请宋、杜二头领来坐。”那杜迁、宋万见杀了王伦，寻思道：“自身本事低微，如何近的他们？不若做个人情。”苦苦地请刘唐坐了第五位，阮小二坐了第六位，阮小五坐了第七位，阮小七坐了第八位，杜迁坐了第九位，宋万坐了第十位，朱贵坐了第十一位。梁山泊自此是十一位好汉坐定。山前山后共有七八百人，都来厅前参拜了，分立在两下。</div>
+            <div class="text-block simplified-text">林冲他们带着晁盖骑马回到山寨。到了聚义厅前，大家下马进厅。众人扶着晁盖坐在正中间第一把交椅上，中间点了一炷香。
+
+林冲上前说："我林冲就是个粗人，只会耍枪弄棒，没文化没本事。今天山寨有幸聚集这么多好汉，咱们要干大事，不能再像以前那样混日子。请吴学究先生当军师，掌管兵权，排兵布阵，坐第二把交椅。"
+
+吴用推辞说："我就是个乡下教书先生，没什么大本事，虽然读过兵书，但没立过功，哪敢坐这么高的位置。"
+
+林冲说："都到这份上了，别推辞了。"吴用只好坐了第二位。
+
+林冲又说："请公孙先生坐第三位。"晁盖忙说："这可不行。要是再这么让来让去，我就得让位了。"
+
+林冲说："晁哥你错了！公孙先生在江湖上名声很大，会用兵，有神机妙算的本事，没人比得上。"
+
+公孙胜说："我虽然会点小法术，但没大才能，不敢坐这个位置。"
+
+林冲坚持说："这次能打败敌人全靠先生的妙计。咱们就像鼎的三条腿，缺一不可。先生别推辞了。"公孙胜只好坐了第三位。
+
+林冲还要让位，晁盖、吴用、公孙胜都不同意。三人说："刚才头领说了鼎足三分的话，我们不敢违抗。要是头领再让，我们只好退出了。"三人硬把林冲按在第四把交椅上。
+
+晁盖说："现在该请宋万、杜迁两位头领来坐。"杜迁、宋万见王伦被杀，心想："我们本事差，哪配跟他们平起平坐？不如做个顺水人情。"硬是让刘唐坐第五位，阮小二第六位，阮小五第七位，阮小七第八位，杜迁自己坐第九位，宋万第十位，朱贵第十一位。
+
+就这样，梁山泊十一位好汉排定了座次。山寨里七八百号人都来厅前拜见，分列两边站好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">晁盖道：“你等众人在此，今日林教头扶我做山寨之主，吴学究做军师，公孙胜同掌兵权，林敖头等共管山寨。汝等众人各依旧职，管领山前山后事务，守备寨栅滩头，休教有失。各人务要竭力同心，共聚大义。”再教收拾两边房屋，安顿了阮家老小。便教取出打劫得的生辰纲金珠宝贝，并自家庄上过活的金银财帛，就当厅赏赐众小头目并众多小喽啰。当下椎牛宰马，祭祀天地神明，庆贺重新聚义。众头领饮酒至半夜方散。次日，又办筵宴庆会。一连吃了数日筵席。晁盖与吴用等众头领计议：整点仓廒，修理寨栅，打造军器，枪刀弓箭，衣甲头盔，准备迎敌官军；安排大小船只，教演人兵水手，上船厮杀，好做提备。不在话下。自此梁山泊十一位头领聚义，真乃是交情浑似股肱，义气如同骨肉。有诗为证：</div>
+            <div class="text-block simplified-text">晁盖对大家说："各位兄弟听着，今天林教头推举我当山寨老大，吴学究当军师，公孙胜一起管军队，林教头他们共同管理山寨。你们原来干啥还干啥，管好山寨前后的事，守好寨子和码头，别出问题。大伙儿要团结一心，干大事。"然后叫人收拾好两边的房子，安顿好阮家老小。又把抢来的生辰纲金银财宝，还有自家带来的钱财，当场分给各个小头目和小喽啰们。接着杀牛宰马，祭拜天地神明，庆祝大家聚在一起干大事。头领们喝酒喝到半夜才散。第二天又摆酒庆祝，连着吃了好几天。晁盖和吴用等头领商量：清点仓库，修整寨子，打造兵器，像刀枪弓箭、盔甲这些，准备对付官兵；安排好大小船只，训练水军，练习水上打仗，提前做好准备。这些就不细说了。从这以后，梁山泊十一位头领聚在一起，感情好得像亲兄弟一样。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">古人交谊断黄金，心若同时谊亦深。</div>
+            <div class="text-block simplified-text">以前的人交朋友，就算把黄金弄断分着用，只要两人一条心，交情就会很深。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">水浒请看忠义士，死生能守岁寒心。</div>
+            <div class="text-block simplified-text">看看《水浒传》里的那些好汉，他们重情重义，就算面对生死考验，也能保持住自己的骨气和原则。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">因此，林冲见晁盖作事宽洪，疏财仗义，安顿各家老小在山，蓦然思念妻子在京师，存亡未保。遂将心腹备细诉与晁盖道：“小人自从上山之后，欲要搬取妻子上山来。因见王伦心术不定，难以过活，一向蹉跎过了。流落东京，不知死活。”晁盖道：“贤弟既有宝眷在京，如何不去取来完聚？你快写书，便教人下山去，星夜搬取上山来，以绝心念，多少是好。”林冲当下写了一封书，叫两个自身边心腹小喽啰下山去了。不过两个月回来，小喽啰还寨说道：“直至东京城内殿帅府前，寻到张教头家，闻说娘子被高太尉威逼亲事，自缢身死，已故半载。张教头亦为忧疑，半月之前染患身故。止剩得女使锦儿，已招赘丈夫在家过活。访问邻里，亦是如此说。打听得真实，回来报与头领。”林冲见说了，潸然泪下，自此杜绝了心中挂念。晁盖等见说了，怅然嗟叹。山寨中自此无话，每日只是操练人兵，准备拒敌官军。</div>
+            <div class="text-block simplified-text">林冲看到晁盖做事大方，讲义气，把大家的家人都安顿在山上，突然想起自己在京城的老婆，不知道她现在怎么样。他就把自己的心事详细告诉晁盖："我上山以后，一直想把老婆接过来。但看王伦这人靠不住，日子不好过，就一直拖着。现在老婆在东京，也不知道是死是活。"晁盖说："你老婆在京城，怎么不去接来团聚？你赶紧写信，我派人连夜下山去接，省得你老惦记着。"林冲马上写了封信，派了两个亲信下山去接人。过了不到两个月，两个手下回来说："我们到东京殿帅府前找到张教头家，听说林夫人被高太尉逼婚，半年前就上吊自杀了。张教头也因为伤心过度，半个月前病死了。现在家里就剩个丫鬟锦儿，已经招了个女婿过日子。我们问了邻居，说法都一样。消息确实可靠，这才回来报告。"林冲听完就哭了，从此断了念想。晁盖等人听了也很感慨。山寨里再没人提这事，每天就是操练兵马，准备对付官兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">忽一日，众头领正聚义厅上商议事务，只见小喽啰报上山来，说道：“济州府差拨军官，带领约有一千人马，乘驾大小船四五百只，见在石碣村湖荡里屯住，特来报知。”晁盖大惊，便请军师吴用商议道：“官军将至，如何迎敌？”吴用笑道：“不须兄长挂心，吴某自有措置。自古道：“水来土掩，兵到将迎。此乃兵家常事。”随即唤阮氏三雄，附耳低言道如此如此；又唤林冲、刘唐受计道，你两个便这般这般；再加杜迁、宋万也分付了。正是：西迎项羽三千阵，今日先施第一功。</div>
+            <div class="text-block simplified-text">一天，山寨的头领们正在聚义厅商量事情，突然有个小兵跑上山报告说："济州府派了军官，带着大约一千人，坐着四五百条大小船，现在停在石碣村的湖里，特地来报告这个消息。"  
+
+晁盖一听，吓了一跳，赶紧叫军师吴用过来商量："官兵快打过来了，我们怎么对付？"  
+
+吴用笑着说："大哥别担心，我有办法。老话说得好：'水来了用土挡，兵来了派将打。'打仗这种事很正常。"  
+
+接着，吴用把阮家三兄弟叫到跟前，小声告诉他们该怎么做；又叫来林冲和刘唐，安排他们这样行动；最后还吩咐了杜迁和宋万。  
+
+这正是：当年项羽摆下三千阵仗，今天我们要立第一功。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">且说济州府尹点差团练使黄安，并本府捕盗官一员，带领一千余人，拘刷本处船只，就石碣村湖荡调拨，分开船只，作两路来取泊子。</div>
+            <div class="text-block simplified-text">话说济州府的长官派了团练使黄安和一个负责抓强盗的官员，带着一千多人，征用了当地的船只，在石碣村的湖荡里分配船只，分成两路去攻打泊子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">且说团练使黄安带领人马上船，摇旗呐喊，杀奔金沙滩来。看看渐近滩头，只听得水面上呜呜咽咽吹将起来。黄安道：“这不是画角之声？”且把船来分作两路，去那芦花荡中湾住看时，只见水面上远远地三只船来。看那船时，每只船上只有五个人，四个人摇着双橹，船头上立着一个人，头带绛红巾，都一样身穿红罗绣袄，手里各拿着留客住，三只船上人都一般打扮。于内有人认得的，便对黄安说道：“这三只船上三个人，一个是阮小二，一个是阮小五，一个是阮小七。”黄安道：“你众人与我一齐并力向前，拿这三个人。”两边有四五十只船，一齐发着喊，杀奔前去。那三只船唿哨了一声，一齐便回。黄团练把手内枪拈搭动，向前来叫道：“只顾杀这贼，我自有重赏！”</div>
+            <div class="text-block simplified-text">话说黄安这个团练使带着一帮人上了船，摇着旗子大声喊叫，朝着金沙滩冲过去。眼看快到岸边了，忽然听到水面上传来"呜呜"的号角声。黄安说："这不是打仗用的号角声吗？"赶紧让船分成两队，躲进芦苇荡里观察。只见远处水面上来了三条船，每条船上就五个人：四个在摇橹，船头站着一个人。这三个人都扎着深红色头巾，穿着绣花红袄，手里拿着武器。有认识的人告诉黄安："这三条船上的人，一个是阮小二，一个是阮小五，一个是阮小七。"黄安立刻下令："大家一起上，抓住这三个人！"他们这边四五十条船一起喊叫着冲过去。那三条船的人吹了声口哨，掉头就跑。黄安举起手里的枪，大喊："给我追！抓住这些贼人有重赏！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">那三只船前面走，背后官军船上把箭射将去。那三阮去船舱里各拿起一片青狐皮来，遮那箭矢。后面船只只顾赶。赶不过三二里水港，黄安背后一只小船，飞也似划来报道：“且不要赶？我们那一条杀入去的船只，都被他杀下水里去后，把船都夺去了。”黄安问道：“怎的着了那厮的手？”小船上人答道：“我们正行船时，只见远远地两只船来，每船上各有五个人。我们并力杀去赶他，赶不过三四里水面，四下里小港钻出七八只小船来。船上弩箭似飞蝗一般射将来。我们急把船回时，来到窄狭港口，只见岸上约有二三十人，两头牵一条大篦索，横截在水面上。却待向前看索时，又被他岸上灰瓶石子如雨点一般打将来。众官军只得弃了船只，下水逃命。我众人逃得出来，到旱路边看时，那岸上人马皆不见了。马也被他牵去了，看马的军人都杀死在水里，我们芦花荡边寻得这只小船儿，径来报与团练。”</div>
+            <div class="text-block simplified-text">有三条船在前面跑，后面的官兵船上朝他们射箭。那三条船上的人从船舱里拿出青狐皮挡箭。官兵的船在后面紧追不放。追了不到两三里水路，黄安（官兵头领）后面有条小船飞快划过来报告："别追了！我们那条冲进去的船，船上的人都被他们杀了扔下水，船也被抢走了。"黄安问："怎么中招的？"小船上的士兵回答："我们正开船时，远远看见两条船过来，每条船上各有五个人。我们全力追过去，追了三四里水路，突然从旁边小河道里冲出七八条小船，箭像蝗虫一样射过来。我们赶紧掉头撤退，结果在狭窄的河口，发现岸上埋伏了二三十人，两头拉着一条大粗绳横在水面上。我们刚要上前查看，岸上又扔过来一堆石灰罐和石头。官兵们只能丢下船跳水逃命。我们几个逃上岸后，发现岸上的人和马都不见了，马被他们牵走了，看马的士兵都被杀死在水里。我们最后在芦苇荡里找到这条小船，赶紧来向您报告。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">黄安听得说了，叫苦不迭。便把白旗招动，教众船不要去赶，且一发回来。那众船才拨得转头，未曾行动，只见背后那三只船又引着十数只船，都只是这三五个人，把红旗摇着，口里吹着胡哨，飞也似赶来。黄安却待把船摆开迎敌时，只听得芦苇丛中炮响。黄安看时，四下里都是红旗摆满，慌了手脚。后面赶来的船上叫道：“黄安！留下了首级回去！”黄安把船尽力摇过芦苇岸边，却被两边小港里钻出四五十只小船来，船上弩箭如雨点射将来。黄安就箭林里夺路时，只剩得三四只小船了。黄安便跳过快船内，回头看时，只见后面的人一个个都扑桶的跳下水里去了。有和船被拖去的，大半都被杀死。黄安驾着小快船，正走之间，只见芦花荡边一只船上立着刘唐，一挠钩搭住黄安的船，托地跳将过来，只一把，拦腰提住，喝道：“不要挣扎！”别的军人能识水者，水里被箭射死；不敢下水的，就船里都活捉了。</div>
+            <div class="text-block simplified-text">黄安听到消息后，急得直跺脚。他赶紧挥动白旗，命令手下船只别追了，全部撤回来。那些船刚调头还没开走，就看见后面三只船带着十几只船追上来。每只船上就三五个敌人，他们摇着红旗、吹着口哨，飞快地逼近。黄安正要指挥船只迎战，突然芦苇丛里响起炮声。他一看四周，到处都是晃动的红旗，顿时手忙脚乱。后面追兵大喊："黄安！留下脑袋再走！" 
+
+黄安拼命把船划向芦苇岸边，结果两边小河道突然冲出四五十条小船，箭像雨点一样射过来。他在箭雨中拼命逃，最后只剩三四条小船了。黄安跳上一条快船逃跑，回头一看，手下士兵扑通扑通全跳进水里。有的连船带人被拖走，大部分都被杀了。 
+
+黄安驾着小船正跑着，突然芦苇荡里窜出一条船，站着刘唐。刘唐用钩子钩住黄安的船，猛地跳过来，一把抱住他的腰大喊："别动！"其他士兵会游泳的被箭射死，不敢跳水的全在船上被抓了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">黄安被刘唐扯到岸边，上了岸。远远的晁盖、公孙胜山边骑着马，挺着刀，引五六十人，三二十匹马，齐来接应。一行人生擒活捉得一二百人，夺的船只，尽数都收在山南水寨里安顿了。大小头领一齐都到山寨。晁盖下了马，来到聚义厅上坐定。众头领各去了戎装军器，团团坐下。捉那黄安绑在将军柱上。取过金银段匹，赏了小喽啰。点检共夺得六百余匹好马，这是林冲的功劳；东港是杜迁、宋万的功劳；西港是阮氏三雄的功劳；捉得黄安是刘唐的功劳。众头领大喜，杀牛宰马，山寨里筵会。自酝的好酒，水泊里出的新鲜莲藕，山南树上自有时新的桃、杏、梅、李、枇杷、山枣、柿、栗之类，鱼、肉、鹅、鸡品物，不必细说。众头领只顾庆赏。新到山寨，得获全胜，非同小可。有诗为证：</div>
+            <div class="text-block simplified-text">黄安被刘唐拽到岸边，上了岸。远处晁盖和公孙胜骑着马，拿着刀，带着五六十人和二三十匹马，赶来接应。他们活捉了一两百人，抢来的船都停在山南的水寨里。大小头领都回到山寨。晁盖下马，在聚义厅坐下。其他头领也脱了战甲放下武器，围坐在一起。他们把黄安绑在柱子上。拿出金银绸缎，赏给手下的小兵。清点战利品，共抢到六百多匹好马，这是林冲的功劳；东港是杜迁和宋万的功劳；西港是阮家三兄弟的功劳；抓住黄安是刘唐的功劳。头领们很高兴，杀牛宰羊，在山寨里摆酒庆祝。有自酿的好酒，湖里捞的新鲜莲藕，山上摘的应季水果像桃子、杏子、梅子、李子、枇杷、山枣、柿子、栗子什么的，还有鱼、肉、鹅、鸡这些吃的，就不用多说了。头领们尽情庆祝。刚来山寨就打了大胜仗，这可是件大事。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">水浒英锋不可当，黄安捕捉太诪张。</div>
+            <div class="text-block simplified-text">水浒英雄们太厉害了，黄安想抓他们简直是自不量力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">战船人马俱亏折，更把何颜见故乡。</div>
+            <div class="text-block simplified-text">打了败仗，士兵和战船都损失惨重，我还有什么脸面回家见乡亲们？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">正饮酒之间，只见小喽啰报道：“山下朱头领使人到寨。”晁盖便唤来问道：“有甚么事？”小喽啰说道：“朱头领探听得有一起客商，约有十数人结联一处，今夜晚间必从旱路经过，特来报知。”晁盖道：“正没金帛使用，谁可领人去走一遭？”三阮道：“我弟兄们去！”晁盖道：“好兄弟，小心在意，速去早来。我使刘唐随后来策应你们。”三阮便下厅去，换了衣裳，跨了腰刀，拿了朴刀、叉、留客住，点起一百余人，上厅来别了众头领，便下山去。就金沙滩把船载过朱贵酒店里去了。晁盖恐三阮担负不下，又使刘唐点起一百余人，教领了下山去接应；又分付道：“只可善取金帛财物，切不可伤害客商性命。”刘唐去了，晁盖到三更不见回报，又使杜迁、宋万引五十余人下山接应。</div>
+            <div class="text-block simplified-text">他们正在喝酒的时候，有个小兵跑来报告："山下朱头领派人来了。"晁盖就叫那人过来问："有啥事？"小兵说："朱头领打听到有一队商人，大概十几个人一起走，今晚一定会从陆路经过，特意来报告。"晁盖说："正好缺钱用，谁愿意带人去干这一票？"阮家三兄弟说："我们哥仨去！"晁盖说："好兄弟，小心点，快去快回。我让刘唐随后去支援你们。"三兄弟就离开大厅，换了衣服，带上腰刀，拿着朴刀、叉子等武器，召集了一百多人，跟大伙告别后就下山了。他们在金沙滩坐船到了朱贵的酒店。晁盖怕三兄弟搞不定，又派刘唐带一百多人下山支援，还特别交代："只要抢钱财就行，千万别伤人性命。"刘唐走后，到了半夜还没消息，晁盖又派杜迁、宋万带五十多人下山帮忙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">晁盖与吴用、公孙胜、林冲饮酒至天明，只见小喽啰报喜道：“三阮头领得了二十余辆车子金银财物，并四五十匹驴骡头口。”晁盖又问道：“不曾杀人么？”小喽啰答道：“那许多客人见我们来得势头猛了，都撇下车子、行李，逃命去了，并不曾伤害他一个。”晁盖见说大喜，“我等被到山寨，不可伤害于人。”取一锭白银，赏了小喽啰。四个将了酒果下山来，直接到金沙滩上。见众头领尽把车辆扛上岸来，再叫撑船去载头口马匹。众头领大喜。把盏已毕，教人去请朱贵上山来筵宴。晁盖等众头令都上到山寨聚义厅上，簸箕掌、栲栳圈坐定。叫小喽啰扛抬过许多财物，在厅上一包包打开，将彩帛衣服堆在一边，行货等物堆在一边，金银宝贝堆在正面。众头领看了打劫得许多财物，心中欢喜。便叫掌库的小头目，每样取一半收贮在库，听候支用；这一半分做两分，厅上十一位头领均分一分，山上山下众人均分一分。把这新拿到的军健，脸上刺了字号，选壮浪的分拨去各寨喂马砍柴，软弱的各处看车切草。黄安锁在后寨监房内。</div>
+            <div class="text-block simplified-text">晁盖和吴用、公孙胜、林冲一起喝酒到天亮，这时有小兵来报告好消息："阮家三兄弟抢到了二十多车金银财宝，还有四五十头驴和骡子。"晁盖又问："没杀人吧？"小兵回答："那些商人看我们人多势众，都扔下车子和行李逃命去了，我们一个人都没伤。"晁盖听了很高兴，说："咱们既然上了山，就不能随便伤人。"说完赏了小兵一锭银子。
+
+晁盖他们四个带着酒菜下山，来到金沙滩。看到其他头领正把抢来的车子搬上岸，又叫人划船去运牲口。大家都很高兴。喝完酒，就派人去请朱贵上山一起喝酒庆祝。
+
+晁盖带着所有头领来到山寨的聚义厅，围成一圈坐下。让人把抢来的财物都搬来，在厅里一包包打开：漂亮衣服放一边，货物放一边，金银财宝堆在中间。大家看到抢到这么多东西，都很开心。
+
+晁盖安排管仓库的小头目把财物分成两半：一半存进仓库备用，另一半再分成两份，一份由十一位头领平分，一份给山上山下所有弟兄分。新抓来的壮丁，脸上刺了字，身体强壮的分去各寨喂马砍柴，身体弱的分去看车切草。把黄安关在后寨的牢房里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">晁盖道：“我等今日初到山寨，当初只指望逃灾避难，投托王伦帐下为一小头目。多感林教头贤弟推让我为尊，不想连得了两场喜事：第一赢得官军，收得许多人马船只，捉了黄安；二乃又得了若干财物金银。此不是皆托众弟兄的才能？”众头领道：“皆托得大哥哥的福荫，以此得采。”晁盖再与吴用道：“俺们七人弟兄的性命，皆出于宋押司、朱都头两个。古人道：“知恩不报，非为人也。今日富贵安乐从何而来？早晚将些金银，可使人亲到郓城县走一遭，此是第一件要紧的事务。再有白胜陷在济州大牢里，我们必须要去救他出来。”吴用道：“兄长不必忧心，小生自有划。宋押司处酬谢之恩，早晚必用一个兄弟自去。白胜的事，可教蓦生人去那里使钱，买上嘱下，松宽他便好脱身。我等且商量屯粮造船，制办军器，安排寨栅城垣，添造房屋，整顿衣袍铠甲，打造刀枪弓箭，防备迎敌官军。”晁盖道：“既然如此，全仗军师妙策指教。”吴用当下调拔众头领，分派去办，不在话下。</div>
+            <div class="text-block simplified-text">晁盖说："咱们刚来山寨的时候，本来只想躲灾避难，能在王伦手下当个小头目就不错了。多亏林冲兄弟让位给我当老大，没想到连着碰上两件好事：一是打败了官兵，收了很多人马船只，还抓了黄安；二是抢到不少金银财宝。这不都是靠各位兄弟的本事吗？" 
+
+大伙儿说："都是托大哥您的福气，咱们才有这好运气。"
+
+晁盖又对吴用说："咱们七个人的命都是宋江和朱仝救的。老话说'知道报恩才是人'。咱们现在吃香喝辣的是从哪儿来的？得赶紧派人带些金银去郓城县谢谢他们，这是头等大事。还有白胜关在济州大牢里，咱们必须把他救出来。"
+
+吴用回答："大哥别担心，我有办法。感谢宋江的事，这两天就派个兄弟亲自去办。白胜那边，可以找生面孔去牢里花钱打点，上下打点好了就能放人。咱们现在该准备粮食、造船只、做武器，修围墙盖房子，置办衣服盔甲，打造刀枪弓箭，防备官兵来打。"
+
+晁盖说："好，就听军师安排。"吴用立刻分派各位头领去办事，这就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">且不说梁山泊自从晁盖上山，好生兴旺。却说济州府太守，见黄安手下逃回的军人，备说梁山泊杀死官军、生擒黄安一事。又说梁山泊好汉十分英雄了得，无人近傍得他，难以收捕；抑且水路难认，港汊多杂，以此不能取胜。府尹听了，只叫得苦。向太师府干办说道：“何涛先折了许多人马，独自一个是逃得性命回来，已被割了两个耳朵，自回家将息，至今不能痊。去的五百人，无一个回来。因此又差团练使黄安并本府捕盗官，带领军兵前去追捉，亦皆失陷。黄安已被活捉上山，杀死官军不知其数，又不能取胜，怎生是好？”太守肚里正怀着鬼胎，没个道理处，只见承局来报说：“东门接官亭上有新官到来，飞报到此。”太守慌忙上马，来到东门外接官亭上，望见尘土起处，新官已到亭子前下马。府尹接上亭子，相见已了。那新官取出中书省更替文书来度与府尹。太守看罢，随即和新官到州衙里交割牌印、一应府库钱粮等项。当下安排筵席管待新官。旧太守备说梁山泊贼盗浩大，杀死官军一节。说罢，新官面如土色，心中思忖道：“蔡太师将这件勾当抬举我，却是此等地面，这般府分。又没强兵猛将，如何收捕得这伙强人？倘或这厮们来城里借粮时，却生奈何？”旧官太守次日收拾了衣装行李，自回东京听罪。不在话下。</div>
+            <div class="text-block simplified-text">咱们先不说梁山泊自从晁盖上山后有多红火。单说济州府的太守，听那些从黄安手下逃回来的士兵报告，说梁山泊的人杀了官兵，活捉了黄安。还说梁山好汉特别厉害，没人能靠近他们，加上水路复杂难认，根本打不赢。太守一听，愁得直叹气。他对太师府派来的人说："何涛上次带兵去剿匪，结果损兵折将，自己逃回来还被割了耳朵，现在还在家养伤。派去的五百人一个都没回来。后来我又派团练使黄安和本府的捕盗官带兵去抓人，结果全栽了。黄安被抓上山，官兵死伤无数，还是打不赢，这可怎么办？"
+
+太守正愁得团团转，突然有人来报："东门接官亭有新官到任！"太守赶紧骑马去迎接。刚到东门外，就看见新官已经下马。两人见面后，新官拿出中书省的调任文书。太守看完，就带新官回衙门办交接手续，把官印、钱粮这些都清点清楚。接着设宴招待新官。
+
+前任太守把梁山泊势力强大、杀害官兵的事都告诉了新官。新官听完脸都吓白了，心里直打鼓："蔡太师让我来当官，没想到是这么个鬼地方。这里要兵没兵，要将没将，怎么对付得了那帮强盗？要是他们来城里抢粮，那可怎么办？"第二天，前任太守收拾行李回京城请罪去了。这事就先说到这儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">且说新官宗府尹到任之后，请将一员新调来镇守济州的军官来，当下商议招军买马，集草屯粮，招募悍勇民夫，智谋贤士，准备收捕梁山泊好汉。一面申呈中书省，转行牌仰附近州郡，并力剿捕；一面自行下文书所属州县，知会收剿，及仰属县着令守御本境。这个都不在话下。</div>
+            <div class="text-block simplified-text">新来的宗府尹上任后，叫来一个刚调到济州驻守的军官，一起商量招兵买马、囤积粮草的事。他们打算招募一些勇猛的百姓和有头脑的人才，准备对付梁山泊的好汉。一方面向上级中书省打报告，要求附近州县一起出兵围剿；另一方面给下属州县发公文，通知他们准备配合剿匪，并命令各县加强本地防守。这些准备工作都按部就班地进行着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">且说本州孔目，差人赍一纸公文，行下所属郓城县，教守御本境，防备梁山泊贼人。郓城县知县看了公文，教宋江迭成文案，行下各乡村，一体守备。正是：</div>
+            <div class="text-block simplified-text">话说这个州的孔目（相当于现在的文书官员），派人送了一份公文到它管的郓城县，要求加强当地防守，提防梁山泊的强盗。郓城县的县长看了公文后，就让宋江把这事写成正式文件，发到各个村子，让大家都做好准备。简单来说就是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">一纸文书火急催，官司严督势如雷。</div>
+            <div class="text-block simplified-text">官府发来的紧急公文催得很紧，像打雷一样严厉地督促着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">只因造下迷天罪，何日金鸡放赦回？</div>
+            <div class="text-block simplified-text">我犯了大罪被关在这里，什么时候才能等到大赦放我出去啊？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">且说宋江见了公文，心内寻思道：“晁盖等众人不想做下这般大事，犯了大罪，劫了生辰纲，杀了做公的，伤了何观察，又损害了许多官军人马，又把黄安活捉上山。如此之罪，是灭九族的勾当！虽是被人逼迫，事非得已，于法度上却饶不得。倘有疏失，如之奈何？”自己一个心中纳闷，分付贴书后司张文远，将此文书立成文案，行下各乡各保，自理会文卷。</div>
+            <div class="text-block simplified-text">宋江看到公文后，心里琢磨着："晁盖这帮人胆子也太大了，居然敢抢生辰纲，杀了公差，打伤了何观察，还伤了不少官兵，连黄安都被他们活捉上山。这种罪过是要诛九族的大罪啊！虽说他们是被人逼得没办法才这么干的，但国法难容。万一出了差错可怎么办？"他一个人越想越烦，就吩咐手下的文书张文远，让他把这份公文整理好，发到各个乡村和保甲去，让他们自己看着处理。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">宋江却信步走出县来，去对过茶房里坐定吃茶。只见一个大汉，头戴白范阳毡笠儿，身穿一领黑绿罗袄，下面腿絣护膝，八搭麻鞋，腰里跨着一口腰刀，背着一个大包，走得汗雨通流，气急喘促，把脸别转着看那县里。宋江见了这个大汉走得跷蹊，慌忙起身赶出茶坊来，跟着那汉走。约走了二三十步，那汉回过头来看了宋江，却不认得。宋江见了这人，略有些面熟，“莫不是那里曾厮会来？”心中一时思量不起。那汉见宋江，看了一回，也有些认得，立住了脚，定睛看那宋江，又不敢问。宋江寻思道：“这个人好作怪，却怎地只顾看我？”宋江亦不敢问他。</div>
+            <div class="text-block simplified-text">宋江随便走出县衙，到对面的茶馆坐下喝茶。突然看见一个大汉，头上戴着白色毡帽，身穿黑绿色绸袄，腿上绑着护膝，脚穿麻鞋，腰间挂着一把刀，背个大包袱，走得满头大汗，气喘吁吁，还扭着头往县衙里张望。宋江觉得这人行为古怪，赶紧起身跟了出去。跟了二三十步，那大汉突然回头盯着宋江看，但好像不认识他。宋江觉得这人有点眼熟，心想："是不是在哪见过？"一时又想不起来。那大汉盯着宋江看了一会儿，似乎也有点认出他来，停下脚步仔细打量，但又不敢开口问。宋江心里嘀咕："这人真奇怪，怎么老盯着我看？"也不敢主动搭话。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">只见那汉去路边一个篦头铺里问道：“大哥，前面那个押司是谁？”篦头待诏应道：“这位正是宋押司。”那汉提着朴刀，走到面前，唱个大喏，说道：“押司认得小弟么？”宋江道：“足下有些面善。”那汉道：“可借一步说话。”宋江便和那汉入一条僻静小巷。那汉道：“这个酒店里好说话。”两个上到酒楼，拣个僻静阁儿里坐下。那汉倚了朴刀，解下包裹，撇在桌子底下。那汉扑翻身便拜。宋江慌忙答礼道：“不敢拜问足下高姓？”那人道：“大恩人如何忘了小弟？”宋江道：“兄长是谁？真个有些面熟。小人失忘了。”那汉道：“小弟便是晁保正庄上曾拜识尊颜、蒙恩救了性命的赤发鬼刘唐便是。”宋江听了大惊，说道：“贤弟，你好大胆！早是没做公的看见，险些儿惹出事来！”刘唐道：“感承大恩，不惧怕死，特地来酬谢大恩。”宋江道：“晁保正弟兄们近日如何？兄弟，谁教你来？”刘唐道：“晁头领哥哥再三拜上大恩人，得蒙救了性命，如何不报。见今做了梁山泊主都头领，吴学究做了军师，公孙胜同掌兵权。林冲一力维持，火并了王伦。山寨里原有杜迁、宋万、朱贵，和俺弟兄七个，共是十一个头领。见今山寨里聚集得七八百人，粮食不计其数。只想兄长大恩，无可报答，特使刘唐赍书一封，并黄金一百两相谢押司，并朱、雷二都头。”刘唐便打开包裹，取出书来递与。宋江看罢，拽起褶子前襟，摸出招文袋。打开包儿时，刘唐取出金子放在桌上。宋江把那封书——就取了一条金子，和这书包了——插在招文袋内。放下衣襟，便道：“贤弟将此金子依旧包了，还放桌了。且坐。”随即便唤量酒的打酒来。叫大块切一盘肉来，铺下些菜蔬果子之类，叫量酒的筛酒与刘唐吃。看看天色晚了，刘唐吃了酒，把桌子上金子包打开，要取出来。宋江慌忙拦住道：“贤弟，你听我说：你们七个弟兄，初到山寨，正要金银使用。宋江家中颇有些过活，且放在你山寨里，等宋江缺少盘缠时，却教兄弟宋清来取。今日非是宋江见外，于内受了一条。朱仝那人也有些家私，不用与他，我自与他说知人情便了。雷横这人，又不知我报与保正。况兼这人贪赌，倘或将些出去赌时，他便惹出事来，不当稳便，金子切不可与他。贤弟，我不敢留你相请去家中住，倘或有人认得时，不是耍处。今夜月色必然明朗，你便可回山寨去，莫在此担阁。宋江再三申意众头领，不能前来庆贺，切乞恕罪。”刘唐道：“哥哥大恩，无可报答。特令小弟送些人情来与押司，微表孝顺之心。保正哥哥今做头领，学究军师号令，非比旧日，小弟怎敢将回去？到山寨中必然受责。”宋江道：“既是号令严明，我便写一封回书，与你将去便了。”刘唐苦苦相央宋江收受，宋江那里肯接。随即取一幅纸来，借酒家笔砚，备细写了一封回书，与刘唐收在包内。刘唐是个直性的人，见宋江如此推却，想是不肯受了，便将金子依前包了。</div>
+            <div class="text-block simplified-text">我看到一个男的走到路边一家理发店问："大哥，前面那位押司是谁？"理发师傅回答："那位就是宋押司。"那男的提着刀走到宋江面前，行了个礼说："押司还记得我吗？"宋江说："看你有点面熟。"男的说："咱们找个安静地方说话。"两人就走进一条小巷。男的说："去酒楼说话方便。"他们上了酒楼，找了个安静包间坐下。男的把刀靠在墙边，解下包袱扔在桌下，突然跪下磕头。宋江赶紧扶他："别这样，请问您贵姓？"男的说："恩人怎么不记得我了？"宋江说："您是哪位？看着眼熟，我一时想不起来了。"男的说："我就是晁保正庄上那个被您救过命的刘唐啊，外号赤发鬼。"宋江吓一跳："兄弟你胆子也太大了！幸亏没被官府的人看见，差点惹出大麻烦！"刘唐说："您的大恩我不敢忘，拼死也要来谢您。"宋江问："晁保正他们最近怎么样？谁让你来的？"刘唐说："晁大哥现在是梁山老大，吴用当军师，公孙胜管兵马。林冲出力帮忙，干掉了王伦。现在山寨有十一个头领，七八百号人，粮食多得数不清。晁大哥特地让我带一封信和一百两黄金来谢您，还有给朱仝、雷横的份。"刘唐打开包袱拿出信。宋江看完，从衣服里掏出钱包，刘唐把金子放桌上。宋江拿了一根金条，把信和金条一起塞进钱包，说："兄弟把金子收好，先坐着。"然后叫店小二上酒上肉。天快黑时，刘唐要拿金子给宋江，宋江拦住说："你们刚上山寨正需要用钱。我家底还行，金子先放你们那儿，等我缺钱时让我弟弟去取。今天我拿一根意思下就行。朱仝有钱不用给，雷横爱赌，给他金子容易惹事，千万别给。兄弟，我就不留你过夜了，怕被人认出来。趁着月色明亮，你赶紧回山寨吧。替我向各位头领问好。"刘唐说："大哥的大恩不能不报。晁大哥现在规矩严，我要是带回去肯定挨骂。"宋江说："既然规矩严，我写封回信你带回去。"刘唐再三要让宋江收下金子，宋江坚决不要，写了回信让刘唐收好。刘唐是个直性子，看宋江真不要，只好把金子重新包好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">看看天色晚来，刘唐道：“既然兄长有了回书，小弟连夜便去。”宋江道：“贤弟，不及相留，以心相照。”刘唐又下了四拜。宋江唤量酒人来道：“有此位官人留下白银一两在此，你且权收了，我明日却自来算。”刘唐背上包裹，拿了朴刀，跟着宋江下楼来。离了酒楼，出到巷口，天色昏黄，是八月半天气，月轮上来。宋江携住刘唐的手，分付道：贤弟保重，再不可来。此间做公的多，不是耍处。我更不远送，只此相别。”刘唐见月色明朗，拽开脚步，望西路便走，连夜回梁山泊来。</div>
+            <div class="text-block simplified-text">天快黑了，刘唐说："大哥既然已经回信了，我今晚就赶回去。"宋江说："兄弟，我就不留你了，咱们心里明白就行。"刘唐又跪下磕了四个头。宋江叫来酒保说："这位客人放了一两银子在这儿，你先收着，明天我再来结账。"刘唐背好包袱，拿起刀，跟着宋江下楼。走出酒楼到了巷口，天已经暗了，正是八月十五，月亮刚升起来。宋江拉着刘唐的手嘱咐："兄弟多保重，千万别再来了。这儿当差的很多，不是闹着玩的。我就不远送了，就此别过。"刘唐看月亮很亮，迈开大步就往西边走，连夜赶回梁山泊去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">再说宋江与刘唐别了，自慢慢行回下处来。一头走，一面肚里寻思道：“早是没做公的看见，争些儿惹出一场大事来！”一头想：“那晁盖倒去落了草，直如此大弄！”转不过两个湾，只听得背后有人叫一声：“押司，那里去来？老身甚处不寻遍了？”</div>
+            <div class="text-block simplified-text">宋江和刘唐分开后，自己慢悠悠地往回走。他边走边想："幸好没被当差的看见，差点儿就闹出大乱子！"又琢磨着："晁盖那家伙居然跑去当强盗了，搞得这么轰轰烈烈！"
+
+刚拐过两个弯，就听见背后有人喊："宋押司，这是去哪儿啊？让我老婆子好找，到处都找遍了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">不是这个人来寻宋押司，有分教：宋江小胆翻为大胆，善心变为恶心。正是：言谈好似钩和线，从头钓出是非来。毕竟来叫宋押司的是甚么人，且听下回分解。</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+不是这个人来找宋江，结果会这样：本来胆小的宋江会变得胆大，善良的心会变坏。说白了就是：说的话像鱼钩和线，一点点引出麻烦事。到底是谁来找宋江呢？咱们下回再说。
+
+说明：
+1. 保留了原文所有关键信息（宋江性格转变、言语引发事端、悬念设置）
+2. 把"有分教"改为"结果会这样"，"正是"改为"说白了就是"等口语表达
+3. "钩和线"保留比喻但加了"鱼"字更易懂
+4. "毕竟...且听下回分解"转为日常疑问句+下回再说
+5. 加入了"咱们"更符合现代讲述习惯
+6. 没有添加或删减任何原始情节信息</div>
+        </div>
+    
+    </main>
+</body>
+</html>
