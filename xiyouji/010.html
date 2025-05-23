@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九回　袁守诚妙算无私曲　老龙王拙计犯天条</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./009.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第九回　袁守诚妙算无私曲　老龙王拙计犯天条</h1>
+        <a href="./011.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：都城大国实堪观，八水周流绕四山。多少帝王兴此处，古来天下说长安。</div>
+            <div class="text-block simplified-text">你看这长安城真是气派啊！四条大河绕着四面山，多少皇帝在这儿发家，自古以来大家都夸长安好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">此单表陕西大国长安城，乃历代帝王建都之地。自周、秦、汉以来，三州花似锦，八水绕城流。三十六条花柳巷，七十二座管弦楼。华夷图上看，天下最为头，真是奇胜之方。今却是大唐太宗文皇帝登基，改元龙集贞观。此时已登极十三年，岁在己巳。且不说他驾前有安邦定国的英豪，与那创业争疆的杰士。</div>
+            <div class="text-block simplified-text">这段话讲的是陕西的长安城，那可是古代很多朝代建都的地方。从周朝、秦朝、汉朝开始，这里就特别繁华。城里城外风景很美，有三州开满鲜花，八条河绕着城流。城里有三十六条热闹的街道，七十二座歌舞表演的楼台。从地图上看，这地方在全世界都是数一数二的好地方，特别厉害。
+
+现在是大唐太宗文皇帝当政，年号叫贞观。这时候他已经当了十三年皇帝，这一年是己巳年。先不说他手下那些能治国安邦的厉害人物，还有帮他打江山、开疆拓土的英雄好汉们。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说长安城外泾河岸边，有两个贤人：一个是渔翁，名唤张稍；一个是樵子，名唤李定。他两个是不登科的进士，能识字的山人。</div>
+            <div class="text-block simplified-text">在长安城外的泾河边，住着两个有本事的人：一个是打鱼的，叫张稍；一个是砍柴的，叫李定。这两个人虽然没考上功名，但都是有文化的隐士。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">一日，在长安城里，卖了肩上柴，货了篮中鲤，同入酒馆之中，吃了半酣，各携一瓶，顺泾河岸边，徐步而回。张稍道：“李兄，我想那争名的，因名丧体；夺利的，为利亡身；受爵的，抱虎而眠；承恩的，袖蛇而去。算起来，还不如我们水秀山青，逍遥自在，甘淡薄，随缘而过。”李定道：“张兄说得有理。但只是你那水秀，不如我的山青。”张稍道：你山青不如我的水秀。有一《蝶恋花》词为证，词曰：</div>
+            <div class="text-block simplified-text">有一天，在长安城里，张稍和李定两个人卖掉了肩上扛的柴和篮子里装的鲤鱼，一起进了酒馆喝酒。喝到半醉的时候，每人拿着一瓶酒，沿着泾河岸边慢慢往回走。张稍说："李哥，我觉得那些争名夺利的人，为了名声把命都搭上了；贪图钱财的，为了钱连命都不要了；当官的，就像抱着老虎睡觉；受皇帝重用的，就像袖子里藏着毒蛇。这么一想，还不如我们这样，看看山水，自由自在，过点清闲日子，随遇而安。"李定说："张哥你说得对。不过你那儿的水好看，不如我这儿的山好看。"张稍不服气："你的山好看，还不如我的水好看呢！"他还念了一首《蝶恋花》的词来证明。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">烟波万里扁舟小，静依孤篷，西施声音绕。涤虑洗心名利少，闲攀蓼穗蒹葭草。</div>
+            <div class="text-block simplified-text">在广阔的水面上，漂着一只小船。船静静地靠着孤单的船篷，耳边仿佛能听到西施动人的歌声。这时候，什么功名利禄都不重要了，心里特别清净。闲着没事，就随手摘摘水边的蓼花和芦苇玩。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">数点沙鸥堪乐道，柳岸芦湾，妻子同欢笑。一觉安眠风浪俏，无荣无辱无烦恼。”</div>
+            <div class="text-block simplified-text">你看那几只沙鸥多自在，在柳树岸边、芦苇湾里飞来飞去。我和老婆孩子一起看着这景色，开心地笑着。晚上睡得香，风浪也温柔。这样的日子，没有名利争夺，没有烦心事，多好啊！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">李定道：你的水秀，不如我的山青。也有个《蝶恋花》词为证，词曰：</div>
+            <div class="text-block simplified-text">李定说："你的水虽然好看，但比不上我的山漂亮。"他还写了一首《蝶恋花》来证明，词的内容是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">云林一段松花满，默听莺啼，巧舌如调管。红瘦绿肥春正暖，倏然夏至光阴转。又值秋来容易换，黄花香，堪供玩。迅速严冬如指拈，逍遥四季无人管。</div>
+            <div class="text-block simplified-text">这段文字可以这样用大白话来说：
+
+春天来了，松树上开满花，静静听黄莺唱歌，叫声像音乐一样好听。花草树木正茂盛，天气暖和，一眨眼就到夏天了。很快秋天也来了，菊花开了可以赏玩。冬天来得特别快，四季轮转没人能管得住。
+
+（说明：完全保留原文描写的四季景象和时光飞逝的意境，用"一眨眼"对应"倏然"，"来得特别快"对应"迅速如指拈"，"没人能管得住"替代"无人管"等，确保每个信息点都完整呈现。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">渔翁道：你山青不如我水秀，受用些好物，有一《鹧鸪天》为证：</div>
+            <div class="text-block simplified-text">渔夫说：你们山上风景好，但不如我们水边景色美，我们这儿还有不少好东西。有首《鹧鸪天》词可以证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">仙乡云水足生涯，摆橹横舟便是家。活剖鲜鳞烹绿鳖，旋蒸紫蟹煮红虾。青芦笋，水荇芽，菱角鸡头更可夸。娇藕老莲芹叶嫩，慈菇茭白鸟英花。</div>
+            <div class="text-block simplified-text">住在风景如画的水乡，划船打鱼就是我的生活。现捞现做新鲜的鱼鳖螃蟹虾，芦笋水草嫩芽都是美味，菱角芡实更是好东西。脆藕老莲子配上嫩芹菜叶，还有慈菇茭白和野菜花，样样都好吃。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">樵夫道：你水秀不如我山青，受用些好物，亦有一《鹧鸪天》为证：</div>
+            <div class="text-block simplified-text">砍柴的说：你那儿水再美也比不上我这儿山好，好东西多着呢。我也有首《鹧鸪天》可以证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">崔巍峻岭接天涯，草舍茅庵是我家。腌腊鸡鹅强蟹鳖，獐把兔鹿胜鱼虾。香椿叶，黄楝芽，竹笋山茶更可夸。紫李红桃梅杏熟，甜梨酸枣木樨花。</div>
+            <div class="text-block simplified-text">高高的山连着天边，
+茅草小屋就是我的家。
+腌的鸡鸭鹅比螃蟹鳖好吃，
+野味獐子兔子鹿肉赛过鱼虾。
+香椿叶，黄楝芽，
+竹笋和山茶更是好东西。
+紫的李子红的桃，梅子杏子都熟了，
+甜甜的梨，酸酸的枣，还有桂花香。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">渔翁道：你山青真个不如我的水秀，又有《天仙子》一首：</div>
+            <div class="text-block simplified-text">渔夫说：你们那儿的山景真比不上我这儿的河水美，还写了一首《天仙子》的词：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">一叶小舟随所寓，万迭烟波无恐惧。垂钩撒网捉鲜鳞，没酱腻，偏有味，老妻稚子团圆会。鱼多又货长安市，换得香醪吃个醉。蓑衣当被卧秋江，鼾鼾睡，无忧虑，不恋人间荣与贵。</div>
+            <div class="text-block simplified-text">一条小船漂在水上，走到哪儿算哪儿，就算遇到大风大浪也不害怕。每天钓鱼撒网抓活鱼，就算没有调料配着吃，也觉得特别香。老婆孩子热热闹闹聚在一起，多开心。鱼打多了就拉到城里卖，换钱买好酒喝个痛快。披着蓑衣躺在秋天的江边睡觉，呼噜打得响，啥烦心事都没有，根本不稀罕人间的富贵荣华。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">樵子道：你水秀还不如我的山青，也有《天仙子》一首：</div>
+            <div class="text-block simplified-text">砍柴的说：你那儿水好看，可不如我这儿的山漂亮。我也来一首《天仙子》：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">茆舍数椽山下盖，松竹梅兰真可爱。穿林越岭觅干柴，没人怪，从我卖，或少或多凭世界。将钱沽酒随心快，瓦钵磁瓯殊自在。窍菘醉了卧松阴，无挂碍，无利害，不管人间兴与败。</div>
+            <div class="text-block simplified-text">山脚下有几间茅草屋，周围种着松树、竹子、梅花和兰花，特别好看。我经常穿过树林、翻过山岭去找干柴来卖，没人管我，想卖多少都随我。卖了柴火换钱买酒喝，痛快得很。用瓦罐和瓷碗喝酒，自由自在。喝醉了就躺在松树底下睡觉，无忧无虑，不在乎人世间那些成败得失。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">渔翁道：李兄，你山中不如我水上生意快活，有一《西江月》为证：</div>
+            <div class="text-block simplified-text">渔夫说：老李啊，你在山里干活可没我在水上自在快活。不信你听我唱首《西江月》来证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">红蓼花繁映月，黄芦叶乱摇风。碧天清远楚江空，牵搅一潭星动。入网大鱼作队，吞钩小鳜成丛。得来烹煮味偏浓，笑傲江湖打哄。</div>
+            <div class="text-block simplified-text">月光下红蓼花开得正艳，黄色芦苇叶被风吹得乱晃。蓝天又高又远，江面空荡荡的，搅动水面时映在水里的星星也跟着晃动。大鱼一群群撞进渔网，贪吃的小鳜鱼接连咬钩。抓到的鱼煮起来特别鲜美，逍遥自在地在江湖边吃喝说笑。
+
+（说明：完全保留捕鱼场景、自然景物和闲适心境的核心信息。将"碧天清远"译为"蓝天又高又远"，"牵搅一潭星动"转化为"搅动水面时映在水里的星星也跟着晃动"等，均采用生活化表达。最后两句用"逍遥自在""吃喝说笑"替代原文的典故化表达，确保现代读者即刻理解渔夫收获后的快乐心情。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">樵夫道：张兄，你水上还不如我山中的生意快活，亦有《西江月》为证：</div>
+            <div class="text-block simplified-text">砍柴的说：老张啊，你在水上干活还不如我在山里自在快活呢。我也有首《西江月》可以证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">败叶枯藤满路，破梢老竹盈山。女萝干葛乱牵攀，折取收绳杀担。虫蛀空心榆柳，风吹断头松楠。采来堆积备冬寒，换酒换钱从俺。</div>
+            <div class="text-block simplified-text">路上全是枯枝败叶，山上长满老竹破藤。野藤杂草胡乱缠绕，砍下来捆好当柴担。被虫蛀空的榆树柳树，被风吹断的松树楠树。采来堆着准备过冬，拿去换酒换钱随我。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">渔翁道：你山中虽可比过，还不如我水秀的幽雅，有一《临江仙》为证：</div>
+            <div class="text-block simplified-text">老渔夫说：你山里风景虽然不错，但比不上我这水边的景色好看。我这儿有首《临江仙》词可以证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">潮落旋移孤艇去，夜深罢棹歌来。蓑衣残月甚幽哉，宿鸥惊不起，天际彩云开。困卧芦洲无个事，三竿日上还捱。随心尽意自安排，朝臣寒待漏，争似我宽怀？</div>
+            <div class="text-block simplified-text">潮水退去，我划着小船离开。夜深了，停下船桨，有歌声传来。披着蓑衣看残月，景色真美啊。睡着的海鸥没被惊动，天边的云彩散开了。
+
+我困了就躺在芦苇荡里，太阳老高了还赖着不起。想干嘛就干嘛，自由自在。那些当官的清早冒着寒风等上朝，哪像我这么舒坦？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">樵夫道：你水秀的幽雅，还不如我山青更幽雅，亦有《临江仙》可证：</div>
+            <div class="text-block simplified-text">砍柴的人说：你那儿水景好看是清幽，可不如我这儿山色更清幽呢。我也有首《临江仙》词能证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">苍径秋高拽斧去，晚凉抬担回来。野花插鬓更奇哉，拨云寻路出，待月叫门开。稚子山妻欣笑接，草床木枕尚捱。蒸梨炊黍旋铺排，瓮中新酿熟，真个壮幽怀！”</div>
+            <div class="text-block simplified-text">秋天，天高气爽，我扛着斧头去山里砍柴。傍晚凉快的时候，挑着柴火回家。顺手采些野花插在头发上，还挺有意思的。扒开云雾找路出来，等着月亮升起来才到家敲门。老婆孩子高兴地笑着迎接我，家里虽然只有草床木枕，也能凑合着用。赶紧生火做饭，蒸梨子煮小米。酒缸里新酿的酒正好能喝了，这日子真是痛快！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">渔翁道：这都是我两个生意，赡身的勾当，你却没有我闲时节的好处，有诗为证，诗曰：</div>
+            <div class="text-block simplified-text">渔翁说：这些都是我赚钱养家的工作，你没看到我空闲时候的舒服日子。有首诗可以证明，诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">闲看天边白鹤飞，停舟溪畔掩苍扉。倚篷教子搓钓线，罢棹同妻晒网围。</div>
+            <div class="text-block simplified-text">我悠闲地看着天上的白鹤飞来飞去，把船停在溪边，顺手关上柴门。靠着船篷教孩子搓钓鱼线，停下船桨和老婆一起晒渔网。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">性定果然知浪静，身安自是觉风微。绿蓑青笠随时着，胜挂朝中紫绶衣。</div>
+            <div class="text-block simplified-text">心里平静了，自然觉得风浪也不大了；身体安定了，连微风都能感觉到。穿着普通的蓑衣斗笠，自由自在过日子，比在朝廷里当大官穿官服还强。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">樵夫道：“你那闲时又不如我的闲时好也，亦有诗为证，诗曰：</div>
+            <div class="text-block simplified-text">砍柴的人说："你那种空闲怎么能比得上我的悠闲自在呢？我也有诗可以证明，诗里说："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">闲观缥缈白云飞，独坐茅庵掩竹扉。无事训儿开卷读，有时对客把棋围。</div>
+            <div class="text-block simplified-text">我悠闲地看着天上飘来飘去的白云，一个人坐在茅草屋里，关着竹门。没事的时候就教孩子读书，有时候来了客人就一起下下棋。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">喜来策杖歌芳径，兴到携琴上翠微。草履麻绦粗布被，心宽强似着罗衣。</div>
+            <div class="text-block simplified-text">高兴了就拄着拐杖在花间小路唱歌，来劲了就带着琴爬上山坡。穿着草鞋系着麻绳腰带，盖着粗布被子，心里舒坦比穿绫罗绸缎还强。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">张稍道：“李定，我两个真是微吟可相狎，不须檀板共金樽。但散道词章，不为稀罕，且各联几句，看我们渔樵攀话何如？”李定道：张兄言之最妙，请兄先吟。</div>
+            <div class="text-block simplified-text">张稍说：“李定，咱俩随便哼几句诗就行，用不着那些正式的乐器酒杯。光写点诗词没啥意思，不如一人接几句，学学打渔砍柴的人聊天咋样？”李定回答：“张哥说得对，你先来。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">舟停绿水烟波内，家住深山旷野中。偏爱溪桥春水涨，最怜岩岫晓云蒙。</div>
+            <div class="text-block simplified-text">船停在碧绿的河面上，家住在深山的荒野里。特别喜欢小溪涨水时的春景，最爱上清晨山间云雾缭绕的样子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">龙门鲜鲤时烹煮，虫蛀干柴日燎烘。钓网多般堪赡老，担绳二事可容终。</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+新鲜鲤鱼经常煮着吃，被虫蛀的干柴天天用来烧火。钓鱼和撒网这些活计足够养活自己，挑担和搓绳这两样手艺也能过一辈子。
+
+（说明：1. "龙门鲜鲤"直译为"龙门的新鲜鲤鱼"会显得突兀，根据上下文简化为"新鲜鲤鱼"更自然；2. "多般"译为"这些活计"更符合口语；3. "堪赡老"意译为"足够养活自己"；4. "容终"意译为"过一辈子"更易懂；5. 保留了对仗结构和四个生活场景的原始信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">小舟仰卧观飞雁，草径斜尚听唳鸿。口舌场中无我分，是非海内少吾踪。</div>
+            <div class="text-block simplified-text">我躺在小船上看天上飞的大雁，走在斜斜的小路上听野鹤叫。那些吵吵闹闹、说人闲话的地方没我的份，乱七八糟的是非圈子里也找不到我。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">溪边挂晒缯如锦，石上重磨斧似锋。秋月晖晖常独钓，春山寂寂没人逢。</div>
+            <div class="text-block simplified-text">溪边挂着的渔网像彩布一样好看，石头上磨过的斧头亮得发亮。秋天月亮很亮的时候，常常一个人钓鱼，春天山上静悄悄的没人来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">鱼多换酒同妻饮，柴剩沽壶共子丛。自唱自斟随放荡，长歌长叹任颠风。</div>
+            <div class="text-block simplified-text">我打鱼多了就拿去换酒，和老婆一起喝；砍柴剩下的钱就买壶酒，跟孩子们一起分享。我想唱就唱，想喝就喝，自由自在；有时候大声唱歌，有时候叹气，随便风吹雨打都不在乎。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">呼兄唤弟邀船伙，挈友携朋聚野翁。行令猜拳频递盏，拆牌道字漫传钟。</div>
+            <div class="text-block simplified-text">兄弟们叫上船上的伙伴，朋友们拉着村里的老头。大家划拳喝酒一杯接一杯，玩牌猜谜闹到钟声敲响。
+
+（说明：1. "呼兄唤弟/挈友携朋"合并为"兄弟们/朋友们"的口语化表达；2. "野翁"译为"村里的老头"更直白；3. "行令猜拳"直接说"划拳喝酒"；4. "拆牌道字"译为"玩牌猜谜"更易理解；5. "频递盏"用"一杯接一杯"体现频繁；6. "漫传钟"意译为"闹到钟声敲响"保留时间推移感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">烹虾煮蟹朝朝乐，炒鸭毳鸡日日丰。愚妇煎茶情散诞，山妻造饭意从容。</div>
+            <div class="text-block simplified-text">每天都有好吃的虾和蟹，鸭肉鸡肉也经常吃。老婆悠闲地煮着茶，媳妇不慌不忙地做饭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">晓来举杖淘轻浪，日出担柴过大冲。雨后披蓑擒活鲤，风前弄斧伐枯松。</div>
+            <div class="text-block simplified-text">早上起来，我拄着拐杖趟过浅浅的溪水，太阳出来时挑着柴火走过大路。下雨后穿着蓑衣去抓活鲤鱼，刮风前拿着斧头砍干枯的松树。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">潜踪避世妆痴蠢，隐姓埋名作哑聋。</div>
+            <div class="text-block simplified-text">装傻充愣躲着人，改名换姓不出声。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">张稍道：李兄，我才僭先起句，今到我兄，也先起一联，小弟亦当续之。</div>
+            <div class="text-block simplified-text">张稍说：“李哥，刚才是我先开头说的诗句，现在轮到你了，你也先来一句，然后我再接着对。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">风月佯狂山野汉，江湖寄傲老余丁。清闲有分随潇洒，口舌无闻喜太平。</div>
+            <div class="text-block simplified-text">有个假装疯癫的山野汉子，整天在风月场里混日子；还有个在江湖上漂泊的老头，靠着给人打零工过活。他们日子过得挺自在，想干嘛就干嘛，也不用听别人闲言碎语，就喜欢这样平平淡淡的生活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">月夜身眠茅屋稳，天昏体盖箬蓑轻。忘情结识松梅友，乐意相交鸥鹭盟。</div>
+            <div class="text-block simplified-text">晚上在茅草屋里睡得踏实，天阴时披着蓑衣也不觉得重。和松树、梅花做朋友很自在，跟海鸥、白鹭一起玩也开心。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">名利心头无算计，干戈耳畔不闻声。随时一酌香醪酒，度日三餐野菜羹。</div>
+            <div class="text-block simplified-text">不在乎名声利益，也不关心打打杀杀的事。每天喝点小酒，吃点简单的饭菜，就这么过日子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">两束柴薪为活计，一竿钓线是营生。闲呼稚子磨钢斧，静唤憨儿补旧缯。</div>
+            <div class="text-block simplified-text">我平时靠砍柴和钓鱼过日子。闲着的时候就叫小儿子来磨磨斧头，或者让傻乎乎的大儿子帮忙补补破渔网。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">春到爱观杨柳绿，时融喜看荻芦青。夏天避暑修新竹，六月乘凉摘嫩菱。</div>
+            <div class="text-block simplified-text">春天来了，我最爱看杨柳变绿，也喜欢看芦苇发芽泛青。夏天为了避暑，就去种新竹子；到了六月天热，就摘些嫩菱角来解暑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">霜降鸡肥常日宰，重阳蟹壮及时烹。冬来日上还沉睡，数九天高自不蒸。</div>
+            <div class="text-block simplified-text">霜降的时候鸡正肥，平时就该宰来吃；重阳节螃蟹最壮，要趁新鲜赶紧煮。冬天太阳出来晚，人们还在睡懒觉；三九天虽然冷，但也不用蒸东西（因为天冷食物不容易坏）。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">八节山中随放性，四时湖里任陶情。采薪自有仙家兴，垂钓全无世俗形。</div>
+            <div class="text-block simplified-text">在八节山里想干嘛就干嘛，一年四季在湖上都能玩得开心。砍柴有神仙般的自在，钓鱼完全不像俗人那样拘束。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">门外野花香艳艳，船头绿水浪平平。身安不说三公位，性定强如十里城。</div>
+            <div class="text-block simplified-text">门外野花开得正艳，船头水波平静安稳。只要身体健康、心里踏实，比当大官还强；保持心态平和，比住在繁华城里更舒坦。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">十里城高防阃令，三公位显听宣声。乐山乐水真是罕，谢天谢地谢神明。</div>
+            <div class="text-block simplified-text">城墙又高又大，是为了保护城里的人；当大官的，要听皇帝的吩咐。能同时享受山水乐趣的人很少见，真要感谢老天爷和神仙的保佑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">他二人既各道词章，又相联诗句，行到那分路去处，躬身作别。张稍道：“李兄呵，途中保重！上山仔细看虎。假若有些凶险，正是明日街头少故人！”李定闻言，大怒道：“你这厮惫懒！好朋友也替得生死，你怎么咒我？我若遇虎遭害，你必遇浪翻江！”张稍道：“我永世也不得翻江。”李定道：“天有不测风云，人有暂时祸福。你怎么就保得无事？”张稍道：“李兄，你虽这等说，你还没捉摸。不若我的生意有捉摸，定不遭此等事。”李定道：“你那水面上营生，极凶极险，隐隐暗暗，有什么捉摸？”张稍道：“你是不晓得。这长安城里，西门街上，有一个卖卦的先生。我每日送他一尾金色鲤，他就与我袖传一课，依方位，百下百着。今日我又去买卦，他教我在泾河湾头东边下网，西岸抛钓，定获满载鱼虾而归。明日上城来，卖钱沽酒，再与老兄相叙。”二人从此叙别。</div>
+            <div class="text-block simplified-text">他们俩边走边聊诗词，又一起对了几句诗。到了分岔路口，两人互相行礼告别。张稍说："李哥啊，路上小心！上山多留神老虎。要是真碰上什么危险，明天街上可就少了个老朋友啦！"李定一听就火了："你这人真讨厌！好朋友应该互相照应，你怎么咒我？我要真被老虎吃了，你肯定得掉江里淹死！"张稍说："我一辈子都不会掉江里。"李定说："天有不测风云，人有旦夕祸福。你怎么敢保证没事？"张稍说："李哥，你虽然这么说，但你心里没底。我就不一样，我干这行心里有数，肯定不会出事。"李定问："你在江上打渔那么危险，整天提心吊胆的，能有什么把握？"张稍得意地说："这你就不懂了。长安城西门大街上有个算卦的先生，我每天送他一条金鲤鱼，他就给我算一卦，告诉我该去哪儿打渔，每次都特别准。今天我又去算卦，他让我在泾河湾东边撒网，西岸下钩，保证能捞到满满一船鱼。明天我进城卖鱼买酒，再来找你喝酒。"说完，两人就各自走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">这正是路上说话，草里有人。原来这泾河水府有一个巡水的夜叉，听见了百下百着之言，急转水晶宫，慌忙报与龙王道：“祸事了，祸事了！”龙王问：“有甚祸事？”夜叉道：“臣巡水去到河边，只听得两个渔樵攀话。相别时，言语甚是利害。那渔翁说：长安城里西门街上，有个卖卦先生，算得最准。他每日送他鲤鱼一尾，他就袖传一课，教他百下百着。若依此等算准，却不将水族尽情打了？何以壮观水府，何以跃浪翻波辅助大王威力？”龙王甚怒，急提了剑就要上长安城，诛灭这卖卦的。旁边闪过龙子、龙孙、虾臣、蟹士、鲥军师、鳜少卿、鲤太宰，一齐启奏道：“大王且息怒。常言道，过耳之言，不可听信。大王此去，必有云从，必有雨助，恐惊了长安黎庶，上天见责。大王隐显莫测，变化无方，但只变一秀士，到长安城内，访问一番。果有此辈，容加诛灭不迟；若无此辈，可不是妄害他人也？”</div>
+            <div class="text-block simplified-text">这真是"说悄悄话被偷听"了。原来泾河龙宫里有个巡逻的小兵夜叉，正好听到渔夫说的"百发百中"那些话，赶紧跑回龙宫报告龙王："出大事了！出大事了！"龙王问："出什么事了？"夜叉说："我在河边巡逻时，听见两个打鱼砍柴的聊天。他们分手时说的话可不得了。那渔夫说：长安城西门大街上有个算卦的，算得特别准。只要每天送他一条鲤鱼，他就偷偷教一招，保证每次打鱼都能百发百中。要是真这么准，咱们水族还不被他们打光啊？那咱们龙宫还怎么撑场面，还怎么帮大王您兴风作浪？"龙王一听气坏了，提着剑就要去长安城杀那个算卦的。这时龙太子、龙孙子、虾兵蟹将、鲥鱼军师、鳜鱼大臣、鲤鱼宰相都站出来劝："大王消消气。老话说，道听途说不能全信。您这样杀过去，肯定要呼风唤雨，会吓到长安百姓，到时候上天怪罪下来就不好了。您神通广大，不如变成个读书人，先去长安城里打听清楚。要真有这么个算卦的，再杀也不迟；要是没有，不是白白害了好人吗？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">龙王依奏，遂弃宝剑，也不兴云雨，出岸上，摇身一变，变作一个白衣秀士，真个——</div>
+            <div class="text-block simplified-text">龙王听了玉帝的话，马上放下宝剑，也不呼风唤雨了，直接上岸。他身子一晃，就变成了一个穿白衣服的书生，看起来——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">丰姿英伟，耸壑昂霄。步履端祥，循规蹈矩。语言遵孔孟，礼貌体周文。身穿玉色罗蝠服，头戴逍遥一字巾。</div>
+            <div class="text-block simplified-text">这个人长得又高又帅，气度不凡，走路稳稳当当，做事规规矩矩。说话像读书人一样有教养，待人接物特别讲礼貌。穿着淡青色的丝绸衣服，头上戴着逍遥巾（一种带"一"字的头巾）。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">上路来拽开云步，径到长安城西门大街上。只见一簇人，挤挤杂杂，闹闹哄哄，内有高谈阔论的道：“属龙的本命，属虎的相冲。寅辰巳亥，虽称合局，但只怕的是日犯岁君。”龙王闻言，情知是那卖卜之处，走上前，分开众人，望里观看，只见——</div>
+            <div class="text-block simplified-text">龙王在路上快步走着，直奔长安城西门的街道。到了那儿，看到一群人挤在一起，吵吵嚷嚷的。人群里有人大声说着：“属龙的人今年是本命年，属虎的和属龙的相冲。虽然龙、虎、蛇、猪这几个属相看起来合得来，但就怕日子冲撞了太岁神。”龙王一听就明白这是个算命摊子，于是挤进人群，往里面看去，只见——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">四壁珠玑，满堂绮绣。宝鸭香无断，磁瓶水恁清。两边罗列王维画，座上高悬鬼谷形。端溪砚，金烟墨，相衬着霜毫大笔；火珠林，郭璞数，谨对了台政新经。六爻熟谙，八卦精通。能知天地理，善晓鬼神情。一脖子午安排定，满腹星辰布列清。真个那未来事，过去事，观如月镜；几家兴，几家败，鉴若神明。知凶定吉，断死言生。开谈风雨迅，下笔鬼神惊。招牌有字书名姓，神课先生袁守诚。</div>
+            <div class="text-block simplified-text">这地方装饰得特别豪华，墙上挂满了名贵的字画，屋里摆着漂亮的绣品。香炉里的香一直烧着，瓷瓶里的水特别干净。两边挂着王维的画，座位上供着鬼谷子的像。桌上放着名贵的砚台、金烟墨，配着大毛笔；还有占卜用的火珠林和郭璞的卦书，专门用来算国家大事。这人精通六爻八卦，能算天地间的道理，连鬼神的事都知道。他把时辰方位算得清清楚楚，满脑子都是星象知识。他看未来和过去的事，就像照镜子一样清楚；谁家会兴旺，谁家会衰败，他看得明明白白。能算出吉凶，判断生死。他一开口就像刮风下雨那么快，写出来的东西连鬼神都吃惊。门口招牌上写着他的名字：算命先生袁守诚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">此人是谁？原来是当朝钦天监台正先生袁天罡的叔父，袁守诚是也。那先生果然相貌稀奇，仪容秀丽，名扬大国，术冠长安。龙王入门来，与先生相见。礼毕，请龙上坐，童子献茶。先生问曰：“公来问何事？”龙王曰：“请卜天上阴晴事如何。”先生即袖传一课，断曰：“云迷山顶，雾罩林梢。若占雨泽，准在明朝。”龙王曰：“明日甚时下雨？雨有多少尺寸？”先生道：“明日辰时布云，巳时发雷，午时下雨，未时雨足，共得水三尺三寸零四十八点”。龙王笑曰：“此言不可作戏。如是明日有雨，依你断的时辰数目，我送课金五十两奉谢。若无雨，或不按时辰数目，我与你实说，定要打坏你的门面，扯碎你的招牌，即时赶出长安，不许在此惑众！”先生欣然而答：“这个一定任你。请了，请了，明朝雨后来会。”</div>
+            <div class="text-block simplified-text">这人是谁呢？原来是朝廷里管天文历法的袁天罡台正的叔叔，叫袁守诚。这位先生长得确实不一般，又帅又有气质，在京城里名气很大，算命的本事数一数二。龙王进门来见他，两人行完礼，龙王坐下，小童端上茶。先生问："您来想问什么事？"龙王说："想请您算算明天天气怎么样。"先生马上掐指一算，说："山顶有云，树梢有雾。要问下雨的话，肯定在明天。"龙王又问："明天几点下雨？下多少？"先生说："明天早上七点到九点开始多云，九点到十一点打雷，十一点到下午一点下雨，一点到三点雨停，总共下三尺三寸零四十八滴雨。"龙王笑着说："这话可不是开玩笑。要是明天真像你说的那样下雨，我就送你五十两银子当谢礼。要是没下雨，或者时间、雨量对不上，我可跟你说清楚，非砸了你的店，拆了你的招牌，马上把你赶出长安城，不准你在这儿骗人！"先生痛快地回答："随你便。请回吧，明天雨后再见。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">龙王辞别，出长安，回水府。大小水神接着，问曰：“大王访那卖卦的如何？”龙王道：“有，有，有！但是一个掉嘴口讨春的先生。我问他几时下雨，他就说明日下雨；问他什么时辰，什么雨数，他就说辰时布云，巳时发雷，午时下雨，未时雨足，得水三尺三寸零四十八点，我与他打了个赌赛；若果如他言，送他谢金五十两；如略差些，就打破他门面，赶他起身，不许在长安惑众。”众水族笑曰：“大王是八河都总管，司雨大龙神，有雨无雨，惟大王知之，他怎敢这等胡言？那卖卦的定是输了，定是输了！”</div>
+            <div class="text-block simplified-text">龙王离开长安，回到自己的水底宫殿。手下的大小水神都围上来问："大王，您去找那个算命的，结果怎么样？"龙王说："别提了！就是个油嘴滑舌的江湖骗子。我问他什么时候下雨，他说明天就下；问他具体时辰和雨量，他说早上七点到九点开始多云，九点到十一点打雷，十一点到下午一点下雨，下午一点到三点雨停，总共下三尺三寸零四十八点雨。我就跟他打了个赌：要是他说准了，就给他五十两银子；要是有一点不对，我就砸了他的招牌，把他赶出长安，不准他在城里骗人。"手下们听了都笑着说："大王您可是管着所有江河的雨神，下不下雨只有您说了算，他竟敢胡说八道？那个算命的肯定要输，肯定要输！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">此时龙子龙孙与那鱼鲫蟹士，正欢笑谈此事未毕，只听得半空中叫：“泾河龙王接旨。”众抬头上看，是一个金衣力士，手擎玉帝敕旨，径投水府而来。慌得龙王整衣端肃，焚香接了旨。金衣力士回空而去。龙王谢恩，拆封看时，上写着：“敕命八河总，驱雷掣电行；明朝施雨泽，普济长安城。”旨意上时辰数目，与那先生判断者毫发不差，唬得那龙王魂飞魄散。少顷苏醒，对众水族曰：“尘世上有此灵人，真个是能通天彻地，却不输与他呵！”鲥军师奏曰：“大王放心。要赢他有何难处？臣有小计，管教灭那厮的口嘴。”龙王问计，军师道：“行雨差了时辰，少些点数，就是那厮断卦不准，怕不赢他？那时扌卒碎招牌，赶他跑路，果何难也？”龙王依他所奏，果不担忧。</div>
+            <div class="text-block simplified-text">这时候，龙王的儿子、孙子们正和一群鱼虾螃蟹精有说有笑地聊着刚才的事。突然，天上传来一声喊：“泾河龙王接旨！”大家抬头一看，只见一个穿金色衣服的天兵，手里拿着玉皇大帝的圣旨，直接朝龙宫飞来。龙王吓得赶紧整理衣服，恭恭敬敬地烧香接旨。那天兵送完圣旨就飞走了。
+
+龙王谢过恩，打开圣旨一看，上面写着：“命令你掌管八条河的降雨，明天要打雷闪电，给长安城下一场雨，救济百姓。”圣旨上写的下雨时间和雨量，和之前算命的先生说的分毫不差。龙王吓得魂都快没了，半天才缓过神来，对手下的水族们说：“没想到人间真有这么神的人，连天上地下的事都能算准，这下我可要输给他了！”
+
+这时候，鲥鱼军师出主意说：“大王别担心。要赢他还不简单？我有个办法——咱们故意把下雨的时间拖一拖，雨量也少下点。这样他算的卦就不准了，到时候砸了他的招牌，把他赶走，还不是轻而易举？”龙王听了觉得有道理，就不再担心了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">至次日，点札风伯、雷公、云童、电母，直至长安城九霄空上。他挨到那巳时方布云，午时发雷，未时落雨，申时雨止，却只得三尺零四十点，改了他一个时辰，克了他三寸八点，雨后发放众将班师。他又按落云头，还变作白衣秀士，到那西门里大街上，撞入袁守诚卦铺，不容分说，就把他招牌、笔、砚等一齐扌卒碎。那先生坐在椅上，公然不动。这龙王又轮起门板便打、骂道：“这妄言祸福的妖人，擅惑众心的泼汉！你卦又不灵，言又狂谬！说今日下雨的时辰点数俱不相对，你还危然高坐，趁早去，饶你死罪！”守诚犹公然不惧分毫，仰面朝天冷笑道：“我不怕，我不怕！我无死罪，只怕你倒有个死罪哩！别人好瞒，只是难瞒我也。我认得你，你不是秀士，乃是泾河龙王。你违了玉帝敕旨，改了时辰，克了点数，犯了天条。你在那剐龙台上，恐难免一刀，你还在此骂我？”龙王见说，心惊胆战，毛骨悚然，急丢了门板，整衣伏礼，向先生跪下道：“先生休怪。前言戏之耳，岂知弄假成真，果然违犯天条，奈何？望先生救我一救！不然，我死也不放你。”守诚曰：“我救你不得，只是指条生路与你投生便了。”龙曰：“愿求指教。”先生曰：“你明日午时三刻，该赴人曹官魏征处听斩。你果要性命，须当急急去告当今唐太宗皇帝方好。那魏征是唐王驾下的丞相，若是讨他个人情，方保无事。”龙王闻言，拜辞含泪而去。不觉红日西沉，太阴星上，但见——</div>
+            <div class="text-block simplified-text">第二天，龙王叫来风神、雷公、云童和电母，一起飞到长安城的高空中。他拖到上午九点才开始布云，中午打雷，下午一点下雨，三点雨停，但只下了三尺零四十点雨。龙王私自改了下雨的时辰，少下了三寸八点雨。雨停后，龙王让手下收兵回去。他又降下云头，变成白衣书生的样子，跑到西门大街，闯进袁守诚的算命铺子，二话不说就把招牌、毛笔、砚台全砸了。袁守诚坐在椅子上，一动也不动。龙王又抄起门板打他，骂道："你这个胡说八道的骗子！你的卦不准，说的话全是瞎扯！今天下雨的时间和雨量都不对，你还敢在这儿装模作样？赶紧滚蛋，饶你不死！"
+
+袁守诚一点也不害怕，抬头冷笑道："我不怕！我死不了，倒是你犯死罪了！别人好骗，可骗不了我。我认得你，你不是书生，是泾河龙王。你违抗玉帝的旨意，改了下雨时间，克扣雨量，犯了天条。你马上要被押上剐龙台砍头了，还敢在这儿骂我？"
+
+龙王一听，吓得腿都软了，赶紧扔下门板，整理衣服跪下说："先生别生气，我刚才都是开玩笑的。没想到真犯了天条，这可怎么办？求先生救救我！不然我死也不放过你。"袁守诚说："我救不了你，只能告诉你一个活命的办法。"龙王说："求您指点。"袁守诚说："明天中午十二点四十五分，你该被人曹官魏征处斩。要想活命，得赶紧去求当朝皇帝唐太宗。魏征是太宗的大臣，只要太宗肯帮忙说情，你就能保命。"龙王听完，哭着拜谢走了。这时太阳已经落山，月亮升了起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">烟凝山紫归鸦倦，远路行人投旅店。渡头新雁宿眭沙，银河现。催更筹，孤村灯火光无焰。风袅炉烟清道院，蝴蝶梦中人不见。月移花影上栏杆，星光乱。漏声换，不觉深沉夜已半。</div>
+            <div class="text-block simplified-text">天色渐暗，山色发紫，乌鸦也累了飞回巢。赶路的行人找旅店住下。河边沙滩上，新来的大雁停下休息。天上银河出现了，更夫敲着梆子报时。小村子里，灯亮着但不太亮。  
+
+微风吹着香炉的烟，道院里很清静。人睡着了，梦里没见到想见的人。月光把花影照在栏杆上，星星闪得有点乱。计时器的声音变了，不知不觉夜已深，到了半夜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">这泾河龙王也不回水府，只在空中，等到子时前后，收了云头，敛了雾角，径来皇宫门首。此时唐王正梦出宫门之外，步月花阴，忽然龙王变作人相，上前跪拜。口叫“陛下，救我，救我！”太宗云：“你是何人？朕当救你。”龙王云：“陛下是真龙，臣是业龙。臣因犯了天条，该陛下贤臣人曹官魏征处斩，故来拜求，望陛下救我一救！”太宗曰：“既是魏征处斩，朕可以救你。你放心前去。”龙王欢喜，叩谢而去。</div>
+            <div class="text-block simplified-text">泾河龙王没回水里，一直在天上等着。快到半夜的时候，他收起云雾，直接飞到皇宫门口。这时候唐太宗正在做梦，梦见自己在宫门外散步赏月。突然龙王变成人样，跑过来跪下就喊："皇上救命啊！"  
+
+太宗问："你是谁啊？我肯定救你。"  
+
+龙王说："皇上您是真龙天子，我是犯了错的龙。我因为触犯天条，该被您的大臣魏征处死，所以来求您救救我！"  
+
+太宗说："既然是魏征要杀你，我能救。你放心走吧。"  
+
+龙王高兴坏了，磕头道谢后就离开了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">却说那太宗梦醒后，念念在心。早已至五鼓三点，太宗设朝，聚集两班文武官员。但见那——</div>
+            <div class="text-block simplified-text">唐太宗做了个梦，醒来后一直想着这事。天还没亮，他就上朝了，把文武百官都召集来。只见——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">烟笼凤阙，香蔼龙楼。光摇丹郡动，云拂翠华流。君臣相契同尧舜，礼乐威严近汉周。侍臣灯，宫女扇，双双映彩；孔雀屏，麒麟殿，处处光浮。山呼万岁，华祝千秋。静鞭三下响，衣冠拜冕旒。宫花灿烂天香袭，堤柳轻柔御乐讴。珍珠帘，翡翠帘，金钩高控；龙凤扇，山河扇，宝辇停留。文官英秀，武将抖擞。御道分高下，丹墀列品流。金章紫绶乘三象，地久天长万万秋。</div>
+            <div class="text-block simplified-text">皇宫笼罩在烟雾中，殿楼飘着香气。灯光照得宫殿闪闪发亮，云彩掠过华丽的旗帜。皇帝和大臣们相处得像尧舜时代那样和谐，礼仪规矩像汉朝周朝一样庄重。侍从举着灯，宫女摇着扇，光彩相映；孔雀屏风、麒麟殿到处亮堂堂。百官高呼"万岁"，祝福国家长治久安。静鞭响了三下，官员们整齐跪拜皇帝。宫里的花又香又美，河边的柳树轻轻摇摆，乐声悠扬。珍珠帘、翡翠帘用金钩挂起；龙凤扇、山河扇摆在皇帝的车驾旁。文官个个精神，武将人人威武。皇宫大道分出等级，台阶上按官位站好。大官们佩戴金印紫绶，祝愿国家永远昌盛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">众官朝贺已毕，各各分班。唐王闪凤目龙睛，一一从头观看，只见那文官内是房玄龄、杜如晦、徐世卞、许敬宗、王圭等，武官内是马三宝、段志贤、殷开山、程咬金、刘洪纪、胡敬德、秦叔宝等，一个个威仪端肃，却不见魏征丞相。唐王召徐世勣上殿道：“朕夜间得一怪梦，梦见一人迎面拜谒，口称是泾河龙王，犯了天条，该人曹官魏征处斩，拜告寡人救他，朕已许诺。今日班前独不见魏征，何也？”世勣对曰：“此梦告准，须臾魏征来朝，陛下不要放他出门。过此一日，可救梦中之龙。”唐王大喜，即传旨，着当驾官宣魏征入朝。</div>
+            <div class="text-block simplified-text">文武百官上完朝，各自站好。唐王睁大眼睛仔细看了一圈，发现文官里有房玄龄、杜如晦、徐世卞、许敬宗、王圭这些人，武官里有马三宝、段志贤、殷开山、程咬金、刘洪纪、胡敬德、秦叔宝这些人，一个个都站得端端正正，但就是没看见丞相魏征。唐王把徐世勣叫上来说："我昨晚做了个怪梦，梦见有个人来拜见我，自称是泾河龙王，说他犯了天条，要被魏征处死，求我救他，我已经答应了。可今天上朝偏偏没看见魏征，这是怎么回事？"徐世勣回答说："这个梦是真的，等会儿魏征来上朝，皇上您千万别让他走。只要拖过今天，就能救那条龙了。"唐王很高兴，马上传令让值班官员叫魏征进宫。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">却说魏征丞相在府，夜观乾象，正爇宝香，只闻得九霄鹤唳，却是天差仙使，捧玉帝金旨一道，着他午时三刻，梦斩泾河老龙。这丞相谢了天恩，斋戒沐浴，在府中试慧剑，运元神，故此不曾入朝。一见当驾官赍旨来宣，惶惧无任；又不敢违迟君命，只得急急整衣束带，同旨入朝，在御前叩头请罪。唐王出旨道：“赦卿无罪。”那时诸臣尚未退朝，至此，却命卷帘散朝，独留魏征，宣上金銮，召入便殿，先议论安邦之策，定国之谋。将近巳末午初时候，却命宫人取过大棋来，“朕与贤卿对弈一局。”众嫔妃随取棋枰，铺设御案。魏征谢了恩，即与唐王对弈。毕竟不知胜负如何，且听下回分解。</div>
+            <div class="text-block simplified-text">魏征丞相晚上在家里看天象、烧香的时候，突然听到天上传来仙鹤的叫声。原来是玉皇大帝派了神仙送来圣旨，命令他在中午11点45分的时候，在梦里杀掉泾河龙王。魏征谢过玉帝后，就洗澡斋戒，在家里准备宝剑、调整精神，所以没去上朝。
+
+后来皇帝派人来叫他，魏征又慌又怕，但不敢违抗命令，赶紧穿好衣服跟着进宫，见到皇帝就磕头认错。唐太宗说："不怪你。"当时大臣们都还没走，皇帝就宣布退朝，单独把魏征叫到内殿。两人先商量了治国安邦的大事，快到11点时，皇帝让人拿来棋盘说："爱卿陪朕下一盘棋吧。"宫女们马上摆好棋盘，魏征谢恩后就和皇帝下起棋来。这盘棋谁输谁赢，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
