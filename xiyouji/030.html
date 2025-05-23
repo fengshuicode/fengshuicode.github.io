@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十九回 脱难江流来国土　承恩八戒转山林</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./029.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十九回 脱难江流来国土　承恩八戒转山林</h1>
+        <a href="./031.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">词曰：</div>
+            <div class="text-block simplified-text">歌词大意是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">妄想不复强灭，真如何必希求?本原自性佛前修，迷悟岂居前后?悟即刹那成正，迷而万劫沉流。若能一念合真修，灭尽恒沙罪垢。</div>
+            <div class="text-block simplified-text">别再去强行压制那些胡思乱想了，真正的觉悟哪需要刻意追求？只要按照自己本来的样子修行，哪还分什么先明白后明白？想通了瞬间就能成佛，想不通就永远在苦海里打转。要是能真心实意地修行，再多的罪过都能一笔勾销。
+
+（说明：译文采用口语化短句，用"胡思乱想"替代"妄想"，"想通/想不通"对应"悟/迷"，"苦海"比喻"万劫沉流"，"一笔勾销"替代"灭尽罪垢"。保留佛教核心概念时用"成佛""修行"等大众熟悉的词汇，确保菜场大妈也能听懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说那八戒、沙僧与怪斗经个三十回合，不分胜负。你道怎么不分胜负?若论赌手段，莫说两个和尚，就是二十个，也敌不过那妖精。只为唐僧命不该死，暗中有那护法神保着他；空中又有那六丁六甲、五方揭谛、四值功曹、一十八位护教伽蓝，助着八戒、沙僧。</div>
+            <div class="text-block simplified-text">话说猪八戒和沙僧跟那妖怪打了三十个回合，还是分不出输赢。你问为啥分不出输赢？要说真本事，别说他们两个和尚，就是二十个也打不过那妖怪。只因为唐僧命不该绝，暗中有神仙保护他；天上还有六丁六甲、五方揭谛、四值功曹和十八位护教伽蓝这些神仙在帮着八戒和沙僧打妖怪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">且不言他三人战斗。却说那长老在洞里悲啼，思量他那徒弟。眼中流泪道：“悟能啊，不知你在那个村中逢了善友，贪着斋供；悟净啊，你又不知在那里寻他，可能得会?岂知我遇妖魔，在此受难!几时得会你们，脱了大难，早赴灵山！”</div>
+            <div class="text-block simplified-text">先不说他们三个在外面打架的事。单说那唐僧在洞里伤心地哭，想着他的徒弟们。他一边流眼泪一边说："八戒啊，不知道你在哪个村子里遇到好心人，光顾着吃人家的斋饭；沙僧啊，也不知道你到哪里去找他了，能不能找到？你们哪知道我被妖怪抓了，在这里受苦啊！什么时候才能见到你们，逃出这个鬼地方，早点去西天啊！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">正当悲啼烦恼，忽见那洞里走出一个妇人来，扶着定魂桩，叫道：“那长老，你从何来?为何被他缚在此处？”长老闻言，泪眼偷看，那妇人约有三十年纪。遂道：“女菩萨，不消问了。我已是该死的，走进你家门来也。要吃就吃了罢，又问怎的？”那妇人道：“我不是吃人的。我家离此西下，有三百余里。那里有座城，叫做宝象国。我是那国王的第三个公主，乳名叫做百花羞。只因十三年前，八月十五日夜，玩月中间，被这妖魔，一阵狂风摄将来，与他做了十三年夫妻。在此生儿育女，杳无音信回朝。思量我那父母，不能相见。你从何来，被他拿住？”唐僧道：“贫僧乃是差往西天取经者。不期闲步，误撞在此。如今要拿住我两个徒弟，一齐蒸吃哩。”那公主陪笑道：“长老宽心。你既是取经的，我救得你。那宝象国是你西方去的大路。你与我捎一封书儿去，拜上我那父母，我就教他饶了你罢。”三藏点头道：“女菩萨，若还救得贫僧命，愿做捎书寄信人。”</div>
+            <div class="text-block simplified-text">唐僧正哭得伤心，突然看见洞里走出一个女人。她扶着柱子问：“和尚，你从哪儿来？怎么被绑在这儿？”唐僧偷偷看她，是个三十岁左右的女人，就说：“女施主，别问了。我反正要死了，既然进了你家门，你要吃就吃吧，还问啥？”  
+
+那女人说：“我不吃人。我家在西边三百多里的地方，那儿有个宝象国，我是国王的三公主，小名叫百花羞。十三年前八月十五晚上，我正在赏月，被这妖怪一阵风抓来，逼我做了十三年夫妻，还生了孩子。我一直没法给家里送信，想爹娘也见不到。你是从哪儿来被抓的？”  
+
+唐僧说：“我是去西天取经的和尚，不小心走到这儿。现在妖怪还要抓我两个徒弟，打算把我们一块儿蒸了吃。”  
+
+公主笑着说：“和尚别怕。既然是取经的，我救你。宝象国就在你西去的路上，你帮我带封信给我爹娘，我就让妖怪放了你。”  
+
+唐僧赶紧点头：“女施主要是救我一命，我一定帮你送信。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">那公主急转后面，即修了一纸家书，封固停当；到桩前解放了唐僧，将书付与。唐僧得解脱，捧书在手道：“女菩萨，多谢你活命之恩。贫僧这一去，过贵处，定送国王处。只恐日久年深，你父母不肯相认，奈何?切莫怪我贫僧打了诳语。”公主道：“不妨，我父王无子，止生我三个姊妹，若见此书，必有相看之意。”三藏紧紧袖了家书，谢了公主，就往外走。被公主扯住道：“前门里你出不去!那些大小妖精，都在门外摇旗呐喊，擂鼓筛锣，助着大王，与你徒弟厮杀哩。你往后门里去罢。若是大王拿住，还审问审问，只恐小妖儿捉了，不分好歹，挟生儿伤了你的性命。等我去他面前，说个方便。若是大王放了你啊，待你徒弟讨个示下，寻着你一同好走。”三藏闻言，磕了头，谨依吩咐，辞别公主，躲离后门之外，不敢自行，将身藏在荆棘丛中。</div>
+            <div class="text-block simplified-text">公主赶紧转身到后面，写了一封家信，封好交给唐僧，同时把他从柱子上放下来。唐僧重获自由，拿着信说：“姑娘，谢谢你救我一命。我这次路过你们国家，一定会把信交给国王。就怕时间久了，你父母认不出这信，不肯相信，那可怎么办？你可别怪我骗人。”公主回答：“没事，我父王没有儿子，只有我们姐妹三个。他看到这封信，肯定会想见你的。”唐僧小心收好信，谢过公主，转身要走。公主拉住他说：“前门你走不了！那些妖怪都在门外摇旗呐喊，敲锣打鼓，帮他们大王和你徒弟打架呢。你从后门走吧。要是被大王抓住，还能审问审问；要是被小妖抓住，他们可不管好坏，直接就要了你的命。我去大王面前帮你说情。要是他放了你，你就等徒弟们来找你，一起逃走。”唐僧听完，磕了个头，按公主说的做，告别后躲到后门外的荆棘丛里藏着，不敢乱动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说公主娘娘，心生巧计，急往前来，出门外，分开了大小群妖；只听得叮叮当当，兵刃乱响。原来是八戒、沙僧与那怪在半空里厮杀哩。这公主厉声高叫道：“黄袍郎！”那妖王听得公主叫唤，即丢了八戒、沙僧，按落云头，揪了钢刀，搀着公主道：“浑家，有甚话说？”公主道：“郎君啊，我才时睡在罗帏之内，梦魂中，忽见个金甲神人。”妖魔道：“那个金甲神?上我门怎的？”公主道：“是我幼时，在宫里，对神暗许下一桩心愿：若得招个贤郎驸马，上名山，拜仙府，斋僧布施。自从配了你，夫妻们欢会，到今不曾题起。那金甲神人来讨誓愿，喝我醒来，却是南柯一梦。因此，急整容来郎君处诉知，不期那桩上绑着一个僧人，万望郎君慈悯，看我薄意，饶了那个和尚罢。只当与我斋僧还愿。不知郎君肯否？”那怪道：“浑家，你却多心呐!甚么打紧之事。我要吃人，那里不捞几个吃吃。这个把和尚，到得那里，放他去罢。”公主道：“郎君，放他从后门里去罢。”妖魔道：“奈烦哩。放他去便罢，又管他甚么后门前门哩。”他遂绰了钢刀，高叫道：“那猪八戒，你过来。我不是怕你，不与你战；看着我浑家的分上，饶了你师父也。趁早去后门首，寻着他，往西方去罢。若再来犯我境界，断乎不饶！”</div>
+            <div class="text-block simplified-text">公主灵机一动，赶紧跑出门外，把围观的妖怪们都赶开。这时天上传来乒乒乓乓的打斗声，原来是猪八戒、沙僧正和妖怪在半空中打架。
+
+公主大声喊："黄袍郎！"妖怪一听老婆叫他，马上甩开八戒他们，降下云头提着刀过来搀住公主："老婆，有啥事？"
+
+公主说："老公啊，我刚才在床上睡觉，梦见一个穿金甲的神仙。"妖怪问："什么金甲神仙？来咱们家干啥？"
+
+公主解释："我小时候在宫里偷偷向神仙许过愿，说要是能嫁个好丈夫，就去名山仙庙烧香拜佛、施舍和尚。自从嫁给你，日子过得开心，就把这事忘了。结果这神仙来讨债，把我给吓醒了。所以赶紧来找你说这事——正好看见柱子上绑着个和尚，看在我的面子上，放了他吧，就当替我完成心愿。你看行不？"
+
+妖怪笑了："老婆你也太较真了！这算啥大事。我想吃人，哪儿不能抓几个？这和尚放了就放了。"
+
+公主又说："那让他从后门走吧。"妖怪不耐烦："真麻烦！放就放了，还管什么前后门！"说完提着刀冲天上喊："猪八戒！老子不是怕你，是给我老婆面子才放了你师父。赶紧去后门带着那和尚滚！再敢来捣乱，看我不弄死你们！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">那八戒与沙僧闻得此言，就如鬼门关上放回来的一般。即忙牵马挑担，鼠窜而行。转过那波月洞，后门之外，叫声“师父！”那长老认得声音，就在那荆棘中答应。沙僧就剖开草径，搀着师父，慌忙的上马。这里：狠毒险遭青面鬼，殷勤幸有百花羞。鳌鱼脱却金钩钓，摆尾摇头逐浪游。</div>
+            <div class="text-block simplified-text">八戒和沙僧听到这话，就像从鬼门关捡回一条命似的。他们赶紧牵马挑担，慌慌张张地往前跑。绕过波月洞后门，连声喊："师父！"唐僧听出是徒弟的声音，在荆棘丛里答应。沙僧赶忙拨开杂草开路，扶着师父上马逃命。这段讲的是：师徒差点被妖怪害死，多亏百花羞公主帮忙。现在他们就像脱钩的鱼，自由自在地逃走了。  
+
+（说明：  
+1. "狠毒险遭青面鬼"译为"差点被妖怪害死"更直白  
+2. "鳌鱼脱却金钩钓"用"脱钩的鱼"作比喻更易懂  
+3. 保留原文所有关键信息：遇险、营救、逃跑过程  
+4. 删除了"鼠窜而行""殷勤"等文言词汇  
+5. 最后两句用"这段讲的是"自然过渡解释）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">八戒当头领路，沙僧后随，出了那松林，上了大路。你看他两个哜哜嘈嘈，埋埋怨怨，三藏只是解和。遇晚先投宿，鸡鸣早看天。一程一程，长亭短亭，不觉的就走了二百九十九里。猛抬头，只见一座好城，就是宝象国。真好个处所也：</div>
+            <div class="text-block simplified-text">猪八戒在前面带路，沙僧跟在后面。他们走出松林，上了大路。一路上，八戒和沙僧不停地斗嘴抱怨，唐僧就在中间劝架。天黑了就找地方住，天一亮就继续赶路。他们走啊走，经过一个又一个驿站，不知不觉就走了二百九十九里。突然抬头一看，眼前出现一座漂亮的城池，那就是宝象国。这地方可真好啊！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">云渺渺，路迢迢；地虽千里外，景物一般饶。瑞霭祥烟笼罩，清风明月招摇。的远山，大开图画；潺潺的流水，碎溅琼瑶。可耕的连阡带陌，足食的密蕙新苗。渔钓的几家三涧曲，樵采的一担两峰椒。廓的廓，城的城，金汤巩固；家的家，户的户，只斗逍遥。九重的高阁如殿宇，万丈的层台似锦标。也有那太极殿、华盖殿、烧香殿、观文殿、宣政殿、延英殿：一殿殿的玉陛金阶，摆列着文冠武弁；也有那大明宫、昭阳宫、长乐宫、华清宫、建章宫、未央宫：一宫宫的钟鼓管，撒抹了闺怨春愁。也有禁苑的，露花匀嫩脸；也有御沟的，风柳舞纤腰。通衢上，也有个顶冠束带的，盛仪容，乘五马；幽僻中，也有个持弓挟矢的，拨云雾，贯双雕。花柳的巷，管弦的楼，春风不让洛阳桥。取经的长老，回首大唐肝胆裂；伴师的徒弟，息肩小驿梦魂消。看不尽宝象国的景致。师徒三众，收拾行李、马匹，安歇馆驿中。</div>
+            <div class="text-block simplified-text">远远望去，云朵飘在天边，道路长得看不到头。虽然离大唐有千里远，但这儿的风景一样美得不得了。祥云瑞气笼罩着大地，清风明月自在悠闲。远处的青山像一幅展开的画卷，哗哗流淌的溪水溅起珍珠般的水花。田野里庄稼连成片，到处是绿油油的新苗，一看就知道这儿粮食充足。河边有几户打鱼的人家，山里有樵夫挑着刚砍的柴火。城墙又高又结实，家家户户都过得挺自在。高大的楼阁像皇宫一样气派，层层高台壮观得很。这儿有各种豪华的宫殿：太极殿、华盖殿、烧香殿、观文殿、宣政殿、延英殿，每座宫殿前都站着文武百官；还有大明宫、昭阳宫、长乐宫、华清宫、建章宫、未央宫，宫里奏着音乐，早把那些闺怨闲愁赶跑了。皇家花园里，带着露珠的花儿像姑娘娇嫩的脸蛋；皇宫河边的柳树随风摇摆，像在扭动细腰。大街上，能看到穿着官服、骑着高头大马的官员；深山里头，也有箭术高超的猎人一箭射穿两只雕。热闹的街巷里满是青楼歌馆，春天的繁华景象比洛阳还热闹。唐僧回头望望大唐方向，心里难受得很；跟着他的两个徒弟在小旅馆放下行李休息时，也累得够呛。这宝象国的美景实在看不过来。安顿好行李和马匹后，师徒三人就在驿站住下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">唐僧步行至朝门外，对阁门大使道：“有唐朝僧人，特来面驾，倒换文牒。乞为转奏转奏。”那黄门奏事官，连忙走至白玉阶前奏道：“万岁，唐朝有个高僧，欲求见驾，倒换文牒。”那国王闻知是唐朝大国，且又说是个方上圣僧，心中甚喜，即时准奏。叫：“宣他进来。”把三藏宣至金阶，舞蹈山呼礼毕。两边文武多官，无不叹道：“上邦人物，礼乐雍容如此！”那国王道：“长老，你到我国中何事？”三藏道：“小僧是唐朝释子。承我天子敕旨，前往西方取经；原领有文牒，到陛下上国，理合倒换。故此不识进退，惊动龙颜。”国王道：“既有唐天子文牒，取上来看。”三藏双手捧上去，展开放在御案上。牒云：</div>
+            <div class="text-block simplified-text">唐僧走到皇宫大门外，对守门的官员说："我是从唐朝来的和尚，专门来拜见国王，交换通关文件。麻烦您帮忙通报一下。"那个负责传话的官员赶紧跑到台阶前向国王报告："陛下，有个从唐朝来的高僧想见您，说是要交换通关文件。"国王一听是来自大唐高僧，特别高兴，马上同意接见，下令说："快请他进来。"
+
+唐僧被带到殿前，按照礼节跪拜行礼。两边的文武官员都赞叹说："大唐来的人就是不一样，这礼仪气度真体面！"国王问他："高僧，你来我们国家有什么事？"唐僧回答："我是大唐的和尚，奉皇帝命令去西天取经。身上带着通关文件，到了贵国，按规定应该更换文件。所以冒昧求见，打扰您了。"国王说："既然有大唐皇帝的文件，拿上来给我看看。"唐僧双手捧着文件递上去，展开放在国王的桌子上。文件上写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">南赡部洲大唐国奉天承运唐天子牒行：切惟朕以凉德，嗣续丕基，事神治民，临深履薄，朝夕是惴。前者，失救泾河老龙，获谴于我皇皇后帝，三魂七魄，倏忽阴司，已作无常之客。因有阳寿未绝，感冥君放送回生，广陈善会，修建度亡道场。感蒙救苦观世音菩萨，金身出现，指示西方有佛有经，可度幽亡，超脱孤魂。特着法师玄奘，远历千山，询求经偈。倘到西邦诸国，不灭善缘，照牒放行。须至牒者。大唐贞观一十三年，秋吉日，御前文牒。（上有宝印九颗）国王见了，取本国玉宝，用了花押，递与三藏。</div>
+            <div class="text-block simplified-text">这是唐朝皇帝发的一份官方文件，主要内容是：
+
+我们大唐国的皇帝发话说：我这个人能力一般，继承了皇位，每天小心谨慎地管理国家、侍奉神灵。之前因为没救成泾河龙王，得罪了上天，差点死掉。后来因为阳寿没到，地府又把我放回来了。为了报答，我办了超度亡魂的法会。多亏观音菩萨指点，说西天有佛经能超度亡魂，所以特地派玄奘法师去西天取经。要是路过哪个国家，希望行个方便，放他通行。这份文件盖了九个皇帝印章，写于贞观十三年秋天。
+
+那个国家的国王看完后，盖了自己的印章，签了名，把文件交给了唐僧。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">三藏谢了恩，收了文牒。又奏道：“贫僧一来倒换文牒，二来与陛下寄有家书。”国王大喜道：“有甚书？”三藏道：“陛下第三位公主娘娘，被碗子山波月洞黄袍妖摄将去，贫僧偶尔相遇，故寄书来也。”国王闻言，满眼垂泪道：“自十三年前，不见了公主，两班文武官，也不知贬退了多少；宫内宫外，大小婢子、太监，也不知打死了多少。只说是走出皇宫，迷失路径，无处找寻；满城中百姓人家，也盘诘了无数，更无下落。怎知道是妖怪摄了去!今日乍听得这句话，故此伤情流泪。”三藏袖中取出书来献上。国王接了，见有“平安”二字，一发手软，拆不开书。传旨宣翰林院大学士上殿读书。学士随即上殿。殿前有文武多官，殿后有后妃宫女，俱侧耳听书。学士拆开朗诵。上写着：</div>
+            <div class="text-block simplified-text">唐僧谢过国王，接过通关文件。又说："我来这儿一是换文件，二是给您送封家信。"国王很高兴："什么信？"唐僧说："您家三公主被碗子山波月洞的黄袍妖怪抓走了，我碰巧遇见她，所以帮她把信带回来。"国王一听这话，眼泪哗哗往下掉："十三年前公主失踪后，我撤了好多官员的职，宫里宫外打死了不少太监宫女。大家都以为她是自己走丢的，全城百姓家都查遍了也没消息。哪知道是被妖怪抓走了！今天突然听到这消息，心里难受啊。"唐僧从袖子里掏出信递上去。国王看到信封上"平安"俩字，手抖得连信都拆不开，赶紧叫翰林院的大学士上殿读信。大学士上殿后，当着文武百官和后宫女眷的面拆信念道："（信的内容）"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">不孝女百花羞顿首百拜大德父王万岁龙凤殿前暨三宫母后昭阳宫下，及举朝文武贤卿台次：拙女幸托坤宫，感激劬劳万种。不能竭力怡颜，尽心奉孝。乃于十三年前，八月十五日，良夜佳辰，蒙父王恩旨，着各宫排宴，赏玩月华，共乐清霄盛会。正欢娱之间，不觉一阵香风，闪出个金睛蓝面青发魔王，将女擒住，驾祥光，直带至半野山中无人处，难分难辨，被妖倚强。霸占为妻。是以无奈捱了一十三年。产下两个妖儿，尽是妖魔之种。论此真是败坏人伦，有伤风化，不当传书玷辱；但恐女死之后，不显分明。正含怨思忆父母，不期唐朝圣僧，亦被魔王擒住。是女滴泪修书，大胆放脱，特托寄此片楮，以表寸心。伏望父王垂悯，遣上将早至碗子山波月洞捉获黄袍怪，救女回朝，深为恩念。草草欠恭，面听不一。逆女百花羞再顿首顿首。</div>
+            <div class="text-block simplified-text">女儿百花羞给尊敬的父王、母后和各位大臣磕头问安：
+
+女儿生在王宫，本该好好孝顺父母。可十三年前的中秋节，父王设宴赏月时，突然刮来一阵怪风，冒出个蓝脸妖怪把我抓到荒山野岭，逼我做了他老婆。这十三年我被迫生下两个小妖怪，实在丢人现眼。本不该写这种信让家里难堪，可又怕死了都没人知道真相。
+
+正想家的时候，碰巧有个唐朝和尚也被妖怪抓来。我偷偷写了这封信，求父王派兵来碗子山波月洞打妖怪，救我回家。信写得匆忙，请多包涵。
+
+不孝女百花羞 磕头再拜
+
+（说明：1.保留被掳时间地点、被迫成婚生子、托唐僧送信求救等核心信息 2.用"蓝脸妖怪""逼我做老婆"等口语替代原文修辞 3.将"劬劳万种""玷辱"等文言转换为"本该好好孝顺""丢人现眼" 4.采用书信口语体如"实在丢人现眼""求父王派兵" 5.关键时间（十三年/中秋节）、地点（碗子山）、人物（黄袍怪）等要素完整保留）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">那学士读罢家书，国王大哭，三宫滴泪，文武伤情，前前后后，无不哀念。</div>
+            <div class="text-block simplified-text">那个学士读完家信后，国王放声大哭，王后和妃子们都在流泪，大臣们也都很难过。宫里上上下下的人，没有一个不感到悲伤的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">国王哭之许久，便问两班文武：“那个敢兴兵领将，与寡人捉获妖魔，救我百花公主？”连问数声，更无一人敢答。真是木雕成的武将，泥塑就的文官。那国王心生烦恼，泪若涌泉。只见那多官齐俯伏奏道：“陛下且休烦恼。公主已失，至今一十三载无音，偶遇唐朝圣僧，寄书来此，未知的否。况臣等俱是凡人凡马，习学兵书武略，止可布阵安营，保国家无侵陵之患。那妖精乃云来雾去之辈，不得与他觌面相见，何以征救?想东土取经者，乃上邦圣僧。这和尚‘道高龙虎伏，德重鬼神钦’，必有降妖之术。自古道：‘来说是非者，就是是非人。’可就请这长老降妖邪，救公主，庶为万全之策。”</div>
+            <div class="text-block simplified-text">国王哭了很久，然后问满朝文武官员：“谁敢带兵去抓妖怪，救回我的百花公主？”他连着问了好几遍，没一个人敢吭声。那些武将文官就像木头雕的、泥巴捏的一样呆站着。国王又急又气，眼泪哗哗往下流。
+
+这时所有官员一起跪下说：“陛下别太难过。公主失踪已经十三年，一直没消息。今天碰巧遇到唐朝来的高僧带了封信，也不知道是真是假。再说我们都是普通人，学的都是带兵打仗的本事，最多能排兵布阵保卫国家。可那妖怪会腾云驾雾，我们连它面都见不着，怎么打？听说从东土大唐来取经的圣僧本事大，连龙虎都怕他，鬼神都敬他，肯定有降妖的办法。老话说得好：‘来管闲事的人，就是能解决事情的人。’不如请这位长老去降妖救公主，这才是最稳妥的办法。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">那国王闻言，急回头，便请三藏道：“长老若有手段，放法力，捉了妖魔，救我孩儿回朝，也不须上西方拜佛，长发留头，朕与你结为兄弟，同坐龙床，共享富贵如何？”三藏慌忙启上道：“贫僧粗知念佛，其实不会降妖。”国王道：“你既不会降妖，怎么敢上西天拜佛？”那长老瞒不过，说出两个徒弟来了。奏道：“陛下，贫僧一人，实难到此。贫僧有两个徒弟，善能逢山开路，遇水叠桥，保贫僧到此。”国王怪道：“你这和尚大没理。既有徒弟，怎么不与他一同进来见朕?若到朝中，虽无中意赏赐，必有随分斋供。”三藏道：“贫僧那徒弟丑陋，不敢擅自入朝，但恐惊伤了陛下的龙体。”国王笑道：“你看你这和尚说话，终不然朕当怕他？”三藏道：“不敢说。我那大徒弟姓猪，法名悟能八戒。他生得长嘴獠牙，刚鬃扇耳，身粗肚大，行路生风。第二个徒弟姓沙，法名悟净和尚。他生得身长丈二，臂阔三停，脸如蓝靛，口似血盆，眼光闪灼，牙齿排钉。他都是这等个模样，所以不敢擅领入朝。”国王道：“你既这等样说了一遍，寡人怕他怎的?宣进来。”随即着金牌至馆驿相请。</div>
+            <div class="text-block simplified-text">国王一听这话，赶紧转身对唐僧说："师父要是有本事，能用法力抓住妖怪，救回我的孩子，那你也不用去西天拜佛了。我让你留头发还俗，跟你结拜兄弟，一起当皇帝享福，怎么样？"唐僧连忙摆手："我只会念经，真不会抓妖怪啊。"
+
+国王不乐意了："你不会抓妖怪，怎么敢去西天？"唐僧没办法，只好说实话："陛下，其实不是我一个人来的。我有两个徒弟特别能干，一路上开山搭桥保护我，才能到这儿。"
+
+国王更不高兴了："你这和尚真不懂事！有徒弟怎么不带来见我？就算我没好东西赏他们，至少能管顿饭啊！"唐僧解释："我那俩徒弟长得太丑，怕吓着陛下。"
+
+国王笑了："你这说的什么话？难道我还能被吓着？"唐僧接着说："我大徒弟猪八戒，长着长嘴獠牙，大耳朵，挺着肚子走路带风。二徒弟沙和尚，身高两米多，蓝脸血盆大口，眼睛发亮牙齿像钉子。就因为他们这副模样，才不敢随便带进来。"
+
+国王听完说："你都这么说了，我还怕什么？快叫他们进来！"马上派人拿着金牌去驿站请人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">那呆子听见来请，对沙僧道：“兄弟，你还不教下书哩。这才见了下书的好处。想是师父下了书，国王道：捎书人不可怠慢，一定整治筵宴待他；他的食肠不济，有你我之心，举出名来，故此着金牌来请。大家吃一顿，明日好行。”沙僧道：“哥啊，知道是甚缘故，我们且去来。”遂将行李、马匹俱交付驿丞。各带随身兵器，随金牌入朝。早行到白玉阶前，左右立下，朝上唱个喏，再也不动。那文武多官，无人不怕。都说道：“这两个和尚，貌丑也罢，只是粗俗太甚!怎么见我王更不下拜，喏毕平身，挺然而立!可怪!可怪！”八戒听见道：“列位，莫要议论。我们是这般。乍看果有些丑，只是看下些时来，却也耐看。”</div>
+            <div class="text-block simplified-text">那呆子（猪八戒）听到有人来请，就对沙僧说："兄弟，你现在知道送信的好处了吧？肯定是师父送了信，国王觉得送信的人不能怠慢，一定要设宴招待。他怕自己一个人吃不够，就想到我们俩，所以派人拿金牌来请。咱们去吃一顿，明天好上路。"  
+
+沙僧说："哥啊，别管什么原因了，咱们先去再说。"于是他们把行李和马都交给驿站的人，带上随身兵器，跟着金牌使者进宫。到了大殿前，两人站定，朝上行了个礼，就直挺挺地站着不动。  
+
+那些官员看了都害怕，议论说："这两个和尚长得丑就算了，怎么这么没礼貌？见了国王也不跪拜，行完礼就站着不动，真是奇怪！"  
+
+八戒听见了，就说："各位别议论了。我们就这样。乍一看是有点丑，但看久了还挺顺眼的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">那国王见他丑陋，已是心惊；及听得那呆子说出话来，越发胆颤，就坐不稳，跌下龙床。幸有近侍官员扶起。慌得个唐僧，跪在殿前，不住的叩头道：“陛下，贫僧该万死!万死!我说徒弟丑陋，不敢朝见，恐伤龙体，果然惊了驾也。”那国王战兢兢，走近前，搀起道：“长老，还亏你先说过了；若未说，猛然见他，寡人一定唬杀了也！”</div>
+            <div class="text-block simplified-text">国王看到猪八戒长得那么丑，已经吓得不轻；再听到他说话，更是吓得直哆嗦，连龙椅都坐不稳，直接摔了下来。幸好旁边的官员赶紧把他扶起来。唐僧也吓坏了，跪在大殿上不停地磕头说："陛下，贫僧罪该万死！罪该万死！我之前就说我徒弟长得丑，不敢让他来见您，怕吓着您，结果真的把您给吓着了。"国王浑身发抖，走过来扶起唐僧说："长老啊，多亏你提前打了招呼；要是没打招呼突然看见他，我非得被活活吓死不可！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">国王定性多时，便问：“猪长老、沙长老，是那一位善于降妖？”那呆子不知好歹，答道：“老猪会降。”国王道：“怎么家降？”八戒道：“我乃是天篷元帅；只因罪犯天条，堕落下世，幸今皈正为僧。自从东土来此，第一会降妖的是我。”国王道：“既是天将临凡，必然善能变化。”八戒道：“不敢，不敢，也将就晓得几个变化儿。”国王道：“你试变一个我看看。”八戒道：“请出题目，照依样子好变。”国王道：“变一个大的罢。”</div>
+            <div class="text-block simplified-text">国王想了一会儿，就问：“猪长老、沙长老，你们俩谁更会打妖怪？”八戒这呆子不知天高地厚，抢着说：“老猪我会打！”国王问：“你怎么个打法？”八戒说：“我可是天上的天篷元帅，因为犯了天条被贬下凡，幸好现在改邪归正当了和尚。从东土大唐一路过来，打妖怪我可是头一号！”国王说：“既然是天上来的将军，肯定很会变法术吧？”八戒谦虚道：“还行吧，会变那么几招。”国王说：“那你变一个给我看看。”八戒说：“您出个题目，我好照着变。”国王说：“那就变个大的吧。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那八戒他也有三十六般变化，就在阶前，卖弄手段，却便捻诀念咒，喝一声叫“长！”把腰一躬，就长了有八九丈长，却似个开路神一般。吓得那两班文武，战战兢兢；一国君臣，呆呆挣挣。时有镇殿将军问道：“长老，似这等变得身高，必定长到甚么去处，才有止极？”那呆子又说出呆话来道：“看风。东风犹可，西风也将就；若是南风起，把青天也拱个大窟窿！”那国王大惊道：“收了神通罢。晓得是这般变化了。”八戒把身一矬，依然现了本相，侍立阶前。</div>
+            <div class="text-block simplified-text">猪八戒也会三十六变，就在台阶前显摆本事。他捏着手势念咒，大喊一声"长！"，一弯腰，身子就长到八九十丈高，像个开路神一样。把两边的文武官员吓得直发抖，国王和大臣们都看傻了。有个镇殿将军问他："长老，你变得这么高，到底能长到哪儿才算完啊？"这呆子又开始说傻话："看风向。东风还行，西风也能凑合；要是刮南风，我都能把天捅个大窟窿！"国王吓坏了，赶紧说："快收了神通吧，知道你厉害了。"八戒一缩身子，变回原样，站在台阶旁边。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">国王又问道：“长老此去，有何兵器与他交战？”八戒腰里掣出钯来道：“老猪使的是钉钯。”国王笑道：“可败坏门面!我这里有的是鞭、简、瓜、锤、刀、枪、钺、斧、剑、戟、矛、镰，随你选称手的拿一件去。那钯算做甚么兵器？”八戒道：“陛下不知。我这钯，虽然粗夯，实是自幼随身之器。曾在天河水府为帅，辖押八万水兵，全仗此钯之力。今临凡世，保护吾师，逢山筑破虎狼窝，遇水掀翻龙蜃穴，皆是此钯。”</div>
+            <div class="text-block simplified-text">国王又问："长老这次去打仗，用什么武器啊？"八戒从腰里抽出钉耙说："俺老猪就用这个耙子。"国王乐了："这也太寒碜了吧！我这儿鞭子、棍子、锤子、刀枪剑戟什么都有，你随便挑个顺手的用。这耙子算哪门子武器啊？"八戒解释说："陛下您不知道。我这耙子看着是糙了点，可从小就跟在身边。当年我在天河当水军元帅，管着八万水兵，全靠这耙子。现在下凡保护师父，上山能捣毁虎狼窝，下水能掀翻龙宫，都是靠它。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">国王闻得此言，十分欢喜心信。即命九嫔妃子：“将朕亲用的御酒，整瓶取来，权与长老送行。”遂满斟一爵，奉与八戒道：“长老，这杯酒，聊引奉劳之意，待捉得妖魔，救回小女，自有大宴相酬，千金重谢。”那呆子接杯在手，人物虽是粗鲁，行事倒有斯文。对三藏唱个大喏道：“师父，这酒本该从你饮起；但君王赐我，不敢违背，让老猪先吃了，助助兴头，好捉妖怪。”那呆子一饮而干，才斟一爵，递与师父。三藏道：“我不饮酒，你兄弟们吃罢。”沙僧近前接了。八戒就足下生云，直上空里。国王见了道：“猪长老又会腾云！”</div>
+            <div class="text-block simplified-text">国王听了这话，非常高兴，马上命令妃子们：“把我自己喝的御酒整瓶拿来，先给长老送行。”他倒满一杯酒，递给八戒说：“长老，这杯酒表示我的谢意。等你们抓到妖怪，救回我女儿，我一定设宴好好感谢你们，还有重金酬谢。”八戒接过酒杯，虽然平时粗鲁，这会儿倒挺有礼貌。他对唐僧行了个礼说：“师父，按规矩这酒该您先喝。但这是国王赏我的，我不敢推辞，就让我先喝了壮壮胆，好去抓妖怪。”说完一口干了，又倒了一杯递给唐僧。唐僧说：“我不喝酒，你们兄弟喝吧。”沙僧上前接过酒。八戒脚下升起云彩，直接飞上天去。国王看到后惊讶地说：“猪长老还会腾云驾雾啊！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">呆子去了，沙僧将酒亦一饮而干，道：“师父!那黄袍怪拿住你时，我两个与他交战，只战个手平；今二哥独去，恐战不过他。”三藏道：“正是，徒弟啊，你可去与他帮帮功。”沙僧闻言，也纵云跳将起去。那国王慌了，扯住唐僧道：“长老，你且陪寡人坐坐，也莫腾云去了。”唐僧道：“可怜，可怜!我半步儿也去不得！”此时二人在殿上叙话不题。</div>
+            <div class="text-block simplified-text">傻子走了，沙僧也一口气喝干了酒，说："师父！那黄袍怪抓你的时候，我们俩跟他打，只能打个平手；现在二哥一个人去，恐怕打不过他。"唐僧说："对啊，徒弟，你去帮帮他吧。"沙僧听了，也驾云追了上去。国王吓坏了，拉住唐僧说："高僧，你陪朕坐会儿吧，可别也飞走了。"唐僧说："唉，真可怜！我一步都走不了啊！"这时候，他们俩就在大殿上聊起天来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">却说那沙僧赶上八戒道：“哥哥，我来了。”八戒道：“兄弟，你来怎的？”沙僧道：“师父叫我来帮帮功的。”八戒大喜道：“说得是，来得好。我两个努力齐心，去捉那怪物；虽不怎的，也在此国扬扬姓名。”你看他：祥光辞国界，氤氲瑞气出京城。领王旨意来山洞，努力齐心捉怪灵。</div>
+            <div class="text-block simplified-text">沙僧追上八戒说："哥，我来了。"八戒问："兄弟，你来干啥？"沙僧答："师父让我来帮忙的。"八戒高兴地说："太好了！咱俩一起使劲儿，去抓那个妖怪。就算没啥大不了的，也能在这国家露个脸。"只见他俩：带着祥光离开国境，浑身瑞气走出京城。奉国王命令来到山洞，齐心协力要抓妖怪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">他两个不多时，到了洞口，按落云头。八戒掣钯，往那波月洞的门上，尽力气一筑，把他那石门筑了斗来大小的个窟窿。吓得那把门的小妖开门，看见是他两个，急跑进去报道：“大王，不好了!那长嘴大耳的和尚，与那晦气脸的和尚，又来把门都打破了！”那怪惊道：“这个还是猪八戒、沙和尚二人。我饶了他师父，怎么又敢复来打我的门！”小妖道：“想是忘了甚么物件，来取的。”老怪咄的一声道：“胡缠!忘了物件，就敢打上门来?必有缘故！”急整束了披挂，绰了钢刀，走出来问道：“那和尚，我既饶了你师父，你怎么又敢来打上我门？”八戒道：“你这泼怪干得好事儿！”老魔道：“甚么事？”八戒道：“你把宝象国三公主骗来洞内，倚强霸占为妻，住了一十三载，也该还他了。我奉国王旨意，特来擒你。你快快进去，自家把绳子绑缚出来，还免得老猪动手！”那老怪闻言，十分发怒。你看他屹迸迸，咬响钢牙；滴溜溜，睁圆环眼；雄纠纠，举起刀来；赤淋淋，拦头便砍。八戒侧身躲过，使钉钯劈面迎来；随后又有沙僧举宝杖赶上前齐打。这一场在山头上赌斗，比前不同。真个是：</div>
+            <div class="text-block simplified-text">他们俩很快就到了洞口，降下云头。八戒举起钉耙，使出吃奶的劲儿朝波月洞的石门砸去，硬生生砸出个斗大的窟窿。看门的小妖怪吓得赶紧开门，一见他俩就慌慌张张跑进去报告："大王不好啦！那个长嘴巴大耳朵的和尚和一脸倒霉相的和尚又来砸门了！"妖怪头子吃惊地说："这不还是猪八戒和沙和尚吗？我都放了他们师父，怎么还敢来砸我洞门？"小妖怪猜测："可能是忘了拿什么东西回来取的。"老妖怪呵斥道："胡说！忘了东西就能随便砸门？肯定有鬼！"他急忙穿好盔甲，提着钢刀冲出来质问："和尚！我都饶了你师父，你们怎么还敢打上门来？"八戒骂道："你这坏蛋干的好事！"妖怪问："什么事？"八戒说："你把宝象国的三公主骗到洞里，强行霸占了十三年，现在该还回去了！我们奉国王的命令来抓你。识相的就自己捆好出来，省得我老猪动手！"老妖怪一听火冒三丈，气得咬牙切齿、瞪圆双眼，举起钢刀就朝八戒砍去。八戒闪身躲开，抡起钉耙迎战，沙僧也挥着宝杖加入战斗。这回在山顶上的打斗可比之前更激烈了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">言差语错招人恼，意毒情伤怒气生。这魔王大钢刀，着头便砍；那八戒九齿钯，对面来迎。沙悟净丢开宝杖，那魔王抵架神兵。一猛怪，二神僧，来来往往甚消停。这个说：“你骗国理该死罪！”那个说：“你罗闲事报不平！”这个说：“你强婚公主伤国体！”那个说：“不干你事莫闲争！”算来只为捎书故，致使僧魔两不宁。</div>
+            <div class="text-block simplified-text">说话不注意惹人发火，心思狠毒更让人生气。这魔王抡起大刀，照着脑袋就砍；猪八戒挥着九齿钉耙，直接迎上去打。沙和尚也扔下宝杖，那魔王硬接他们的武器。一个凶猛的妖怪，两个厉害的和尚，打来打去没完没了。这边骂："你欺君犯上该杀头！"那边吼："你多管闲事活该！"这边喊："你强娶公主丢国家的脸！"那边嚷："关你屁事少插手！"说到底就为了送信这点破事，搞得和尚和妖怪都不得安生。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">他们在那山坡前，战经八九个回合，八戒渐渐不济将来，钉钯难举，气力不加。你道如何这等战他不过?当时初相战斗，有那护法诸神，为唐僧在洞，暗助八戒、沙僧，故仅得个平手；此时诸神都在宝象国护定唐僧，所以二人难敌。</div>
+            <div class="text-block simplified-text">他们在山坡前打了八九个回合，猪八戒渐渐撑不住了，钉耙都举不动，力气也不够。你问为什么打不过？刚开始打的时候，因为有神仙暗中帮忙保护唐僧，所以八戒和沙僧还能打个平手。现在那些神仙都去宝象国保护唐僧了，所以他们俩就打不过了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">那呆子道：“沙僧，你且上前来与他斗着，让老猪出恭来。”他就顾不得沙僧，一溜往那蒿草薜萝、荆棘葛藤里，不分好歹，一顿钻进，那管刮破头皮，搠伤嘴脸，一毂辘睡倒，再也不敢出来。但留半边耳朵，听着梆声。</div>
+            <div class="text-block simplified-text">那猪八戒说：“沙师弟，你先上去跟他打，让我去拉个屎。”说完就顾不上沙僧了，一头扎进乱草丛里，也不管那些杂草荆棘有多扎人，连滚带爬地钻进去，就算被刮破头、划伤脸也不在乎，直接躺倒装死，再也不敢出来了。只留半只耳朵在外面，听着外面的动静。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">那怪见八戒走了，就奔沙僧。沙僧措手不及，被怪一把抓住，捉进洞去。小妖将沙僧四马攒蹄捆住。</div>
+            <div class="text-block simplified-text">那妖怪看到八戒跑了，就冲沙僧来了。沙僧没来得及反应，被妖怪一把抓住，拖进了洞里。小妖怪们把沙僧手脚捆在一起，绑得结结实实。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">毕竟不知端的性命如何，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道他到底是死是活，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
