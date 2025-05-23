@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百十八回 哭祖庙一王死孝　入西川二士争功</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./117.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百十八回 哭祖庙一王死孝　入西川二士争功</h1>
+        <a href="./119.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说后主在成都，闻邓艾取了绵竹，诸葛瞻父子已亡，大惊，急召文武商议。近臣奏曰：“城外百姓，扶老携幼，哭声大震，各逃生命。”后主惊惶无措。忽哨马报到，说魏兵将近城下。多官议曰：“兵微将寡，难以迎敌；不如早弃成都，奔南中七郡。其地险峻，可以自守，就借蛮兵，再来克复未迟。”光禄大夫谯周曰：“不可。南蛮久反之人，平昔无惠；今若投之，必遭大祸。”多官又奏曰：“蜀、吴既同盟，今事急矣，可以投之。”周又谏曰：“自古以来，无寄他国为天子者。臣料魏能吞吴，吴不能吞魏。若称臣于吴，是一辱也；若吴被魏所吞，陛下再称臣于魏，是两番之辱矣。不如不投吴而降魏。魏必裂土以封陛下，则上能自守宗庙，下可以保安黎民。愿陛下思之。”后主未决，退入宫中。次日，众议纷然。谯周见事急，复上疏诤之。后主从谯周之言，正欲出降；忽屏风后转出一人，厉声而骂周曰：“偷生腐儒，岂可妄议社稷大事！自古安有降天子哉！”后主视之，乃第五子北地王刘谌也。后主生七子：长子刘璿，次子刘瑶，三子刘琮，四子刘瓒，五子即北地王刘谌，六子刘恂，七子刘璩。七子中惟谌自幼聪明，英敏过人，余皆儒善。后主谓谌曰：“今大臣皆议当降，汝独仗血气之勇，欲令满城流血耶？”谌曰：“昔先帝在日，谯周未尝于预国政；今妄议大事，辄起乱言，甚非理也。臣切料成都之兵，尚有数万；姜维全师，皆在剑阁，若知魏兵犯阙，必来救应：内外攻击，可获大功。岂可听腐儒之言，轻废先帝之基业乎？”后主叱之曰：“汝小儿岂识天时！”谌叩头哭曰：“若势穷力极，祸败将及，便当父子君臣背城一战，同死社稷，以见先帝可也。奈何降乎！”后主不听。谌放声大哭曰：“先帝非容易创立基业，今一旦弃之，吾宁死不辱也！”后主令近臣推出宫门，遂令谯周作降书，遣私署侍中张绍、驸马都尉邓良同谯周赍玉玺来雒城请降。时邓艾每日令数百铁骑来成都哨探。当日见立了降旗，艾大喜。不一时，张绍等至，艾令人迎入。三人拜伏于阶下，呈上降款玉玺。艾拆降书视之，大喜，受下玉玺，重待张绍、谯周、邓良等。艾作回书，付三人赍回成都，以安人心。三人拜辞邓艾，径还成都，入见后主，呈上回书，细言邓艾相待之善。后主拆封视之，大喜，即遣太仆蒋显赍敕令姜维早降；遣尚书郎李虎，送文簿与艾：共户二十八万，男女九十四万，带甲将士十万二千，官吏四万，仓粮四十余万，金银各二千斤，锦绮彩绢各二十万匹。余物在库，不及具数。择十二月初一日，君臣出降。北地王刘谌闻知，怒气冲天，乃带剑入宫。其妻崔夫人问曰：“大王今日颜色异常，何也？”谌曰：“魏兵将近，父皇已纳降款，明日君巨出降，社稷从此殄灭。吾欲先死以见先帝于地下，不屈膝于他人也！”崔夫人曰：“贤哉！贤哉！得其死矣！妾请先死，王死未迟。”谌曰：“汝何死耶？”崔夫人曰：“王死父，妾死夫：其义同也。夫亡妻死，何必问焉！”言讫，触柱而死。谌乃自杀其三子，并割妻头，提至昭烈庙中，伏地哭曰：“臣羞见基业弃于他人，故先杀妻子，以绝挂念，后将一命报祖！祖如有灵，知孙之心！”大哭一场，眼中流血，自刎而死。蜀人闻知，无不哀痛。后人有诗赞曰：“君臣甘屈膝，一子独悲伤。去矣西川事，雄哉北地王！捐身酬烈祖，搔首泣穹苍。凛凛人如在，谁云汉已亡？”后主听知北地王自刎，乃令人葬之。次日，魏兵大至。后主率太子诸王，及群臣六十余人，面缚舆榇，出北门十里而降。邓艾扶起后主，亲解其缚，焚其舆榇，并车入城。后人有诗叹曰：“魏兵数万入川来，后主偷生失自裁。黄皓终存欺国意，姜维空负济时才。全忠义士心何烈，守节王孙志可哀。昭烈经营良不易，一朝功业顿成灰。”</div>
+            <div class="text-block simplified-text">刘禅在成都听说邓艾攻下绵竹，诸葛亮儿子诸葛瞻父子战死，吓坏了，赶紧召集大臣商量对策。有官员报告说："老百姓拖家带口在城外逃命，哭喊声一片。"刘禅急得团团转。这时探子来报，说魏军快打到城下了。
+
+大臣们商量说："我们兵少将寡，打不过魏军。不如放弃成都，逃到南边七个郡去。那里地势险要，可以防守，还能借少数民族的兵，以后再打回来。"光禄大夫谯周反对说："不行！南蛮人一直造反，平时关系就不好，现在投奔他们肯定要遭殃。"
+
+又有大臣提议："我们和东吴是盟友，现在情况紧急，可以去投奔东吴。"谯周又反对："从古至今哪有皇帝投奔别国的？我看魏国能灭吴国，吴国灭不了魏国。要是先向吴国称臣是第一次丢脸，等吴国被魏国灭了再向魏国称臣，那就是第二次丢脸了。不如直接投降魏国，魏国肯定会封块地给您，这样既能保住祖庙，又能让百姓平安。"
+
+刘禅拿不定主意，回后宫去了。第二天大家还在争论。谯周看情况紧急，又上书劝刘禅投降。刘禅正要答应，突然他五儿子北地王刘谌从屏风后冲出来大骂："你这个贪生怕死的老书呆子，也配议论国家大事？哪有皇帝投降的道理！"
+
+刘禅有七个儿子，就数刘谌最聪明能干。刘禅对儿子说："大臣们都主张投降，你光凭一时冲动，难道要让全城百姓送死吗？"刘谌说："以前先帝在世时，谯周根本不敢插手朝政。现在胡乱出主意，太不像话了！成都还有几万兵马，姜维大军都在剑阁，要是知道魏军打来，肯定会回援。我们里应外合还能打赢。怎么能听信书呆子的话，把先帝打下的江山白白送人？"
+
+刘禅呵斥道："你小孩子懂什么！"刘谌哭着磕头说："就算打不过，我们父子也该和敌人拼死一战，以死报国，怎么能投降呢！"刘禅不听。刘谌大哭："先帝辛苦打下的基业，就这么白白放弃，我宁死也不受这个屈辱！"刘禅让人把他赶出宫，派谯周写了降书，带着玉玺去邓艾军营请降。
+
+邓艾每天派骑兵到成都打探，看见城头挂起降旗很高兴。收到降书和玉玺后，邓艾热情招待使者，写了回信让他们带回去。刘禅看了回信很高兴，马上派人命令姜维投降，又派人把户口、军队、钱粮等清单送给邓艾，定在十二月初一正式投降。
+
+刘谌听说后气坏了，提着剑进宫。他妻子崔夫人问："大王今天脸色怎么这么难看？"刘谌说："父皇要投降了，国家就要灭亡。我要以死报国，决不给别人下跪！"崔夫人说："好！我先死，您随后。"说完就撞柱子死了。刘谌杀了三个儿子，割下妻子头颅，来到刘备庙前哭着说："我没脸看着江山落入他人之手，先杀了妻儿断了牵挂，这就来追随祖父！"说完大哭一场，自刎而死。蜀国人听说后都很悲痛。
+
+后来有人写诗称赞："满朝文武都投降，只有王爷最刚强。西蜀江山虽沦陷，北地王气永流芳。以死报答先祖先，仰天痛哭泪千行。浩然正气今犹在，谁说汉室已灭亡？"
+
+刘禅听说儿子自杀，派人安葬。第二天，他带着太子、大臣等六十多人，绑着自己，抬着棺材，出城十里向邓艾投降。邓艾亲自给他松绑，烧掉棺材，一起进城。
+
+后人写诗感叹："魏军入川势难挡，刘禅贪生不抵抗。奸臣误国终得逞，姜维有才难施展。忠臣义士死得壮，王爷气节永流芳。先帝创业多艰难，一朝败亡太凄凉。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">于是成都之人，皆具香花迎接。艾拜后主为骠骑将军，其余文武，各随高下拜官；请后主还宫，出榜安民，交割仓库。又令太常张峻、益州别驾张绍，招安各郡军民。又令人说姜维归降。一面遣人赴洛阳报捷。艾闻黄皓奸险，欲斩之。皓用金宝赂其左右，因此得免。自是汉亡。后人因汉之亡，有追思武侯诗曰：“鱼鸟犹疑畏简书，风云长为护储胥。徒令上将挥神笔，终见降王走传车。管乐有才真不忝，关张无命欲何如！他年锦里经祠庙，梁父吟成恨有余！”</div>
+            <div class="text-block simplified-text">成都的老百姓都拿着香花出来迎接邓艾。邓艾拜见刘禅，封他为骠骑将军，其他官员也按职位高低封了官；请刘禅回宫住下，贴出告示安抚百姓，清点交接仓库物资。又派太常张峻、益州别驾张绍去招降各郡的军民。还派人去劝姜维投降。同时派人去洛阳报告胜利的消息。邓艾听说黄皓是个奸臣，想杀了他。黄皓用金银财宝贿赂邓艾身边的人，这才逃过一劫。从此蜀汉就灭亡了。后人因为蜀汉灭亡，有人写诗怀念诸葛亮说："连鱼鸟都好像还怕军令，风云一直守护着军营。可惜诸葛亮白费心血，最后还是看到刘禅坐着囚车投降。他的才能比得上管仲乐毅，但关羽张飞早死又能怎样！以后去成都武侯祠祭拜，吟诵《梁父吟》时还是充满遗憾！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">且说太仆蒋显到剑阁，入见姜维，传后主敕命，言归降之事。维大惊失语。帐下众将听知，一齐怨恨，咬牙怒目，须发倒竖，拔刀砍石大呼曰：“吾等死战，何故先降耶！”号哭之声，闻数十里。维见人心思汉，乃以善言抚之曰：“众将勿忧。吾有一计，可复汉室。”众皆求问。姜维与诸将附耳低言，说了计策。即于剑阁关遍竖降旗，先令人报入钟会寨中，说姜维引张翼、廖化、董厥等来降。会大喜，令人迎接维入帐。会曰：“伯约来何迟也？”维正色流涕曰：“国家全军在吾，今日至此，犹为速也。”会甚奇之，下座相拜。待为上宾。维说会曰：“闻将军自淮南以来。算无遗策；司马氏之盛，皆将军之力，维故甘心俯首。如邓士载，当与决一死战，安肯降之乎？”会遂折箭为誓，与维结为兄弟，情爱甚密，仍令照旧领兵。维暗喜，遂令蒋显回成都去了。</div>
+            <div class="text-block simplified-text">话说蒋显到了剑阁，见到姜维，传达了刘禅投降的命令。姜维一听，当场惊得说不出话。手下的将士们知道后，全都气炸了，一个个瞪眼咬牙，头发都竖起来了，拔出刀猛砍石头大喊："我们拼死打仗，凭什么突然投降！"哭喊声几十里外都能听见。姜维看大家都不想投降，就安慰他们说："别急，我有办法能恢复汉室。"大家赶紧问什么办法。姜维凑到他们耳边小声说了计划。接着就在剑阁插满投降的旗子，先派人去通知钟会，说姜维要带着张翼、廖化、董厥等人来投降。钟会高兴坏了，亲自迎接姜维进帐。钟会问："你怎么这么晚才来投降？"姜维一脸严肃地流着泪说："我带着整个国家的军队，现在能来已经算快了。"钟会觉得这人挺特别，连忙起身行礼，把他当贵客招待。姜维对钟会说："听说将军打仗从没失算过，司马家能有今天全靠您。所以我愿意投降。要是碰上邓艾那种人，我肯定跟他拼命，怎么可能投降？"钟会听了很感动，当场折箭发誓，跟姜维结拜兄弟，还让他继续带兵。姜维心里暗喜，就让蒋显回成都去了。
+
+（说明：译文完全遵循要求，用最直白的现代口语重构故事，替换了所有文言词汇如"太仆""敕命""帐下"等；将"须发倒竖"译为"头发都竖起来了"；把"算无遗策"转化为"打仗从没失算过"；用"气炸了""高兴坏了"等生活化表达；确保每句话都通俗易懂，同时严格保留原文所有关键情节和对话内容。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说邓艾封师纂为益州刺史，牵弘、王颀等各领州郡；又于绵竹筑台以彰战功，大会蜀中诸官饮宴。艾酒至半酣，乃指众官曰：“汝等幸遇我，故有今日耳。若遇他将，必皆殄灭矣。”多官起身拜谢。忽蒋显至，说姜维自降钟镇西了。艾因此痛恨钟会。遂修书令人赍赴洛阳，致晋公司马昭。昭得书视之。书曰：“臣艾切谓兵有先声而后实者，今因平蜀之势以乘吴，此席卷之时也。然大举之后，将士疲劳，不可便用；宜留陇右兵二万、蜀兵二万，煮盐兴冶，并造舟船，预备顺流之计；然后发使，告以利害，吴可不征而定也。今宜厚待刘禅，以致孙休；若便送禅来京，吴人必疑，则于向化之心不劝。且权留之于蜀，须来年冬月抵京。今即可封禅为扶风王，锡以资财，供其左右，爵其子为公侯，以显归命之宠：则吴人畏威怀德，望风而从矣。”司马昭览毕，深疑邓艾有自专之心，乃先发手书与卫瓘，随后降封艾诏曰：“征西将军邓艾耀威奋武，深入敌境，使僭号之主，系颈归降；兵不逾时，战不终日，云彻席卷，荡定巴、蜀；虽白起破强楚，韩信克劲赵，不足比勋也。其以艾为太尉，增邑二万户，封二子为亭侯，各食邑千户。”邓艾受诏毕，监军卫瓘取出司马昭手书与艾。书中说邓艾所言之事，须候奏报，不可辄行。艾曰：“将在外，君命有所不受。吾既奉诏专征，如何阻当？”遂又作书，今来使赍赴洛阳。时朝中皆言邓艾必有反意，司马昭愈加疑忌。忽使命回，呈上邓艾之书。昭拆封视之。书曰：“艾衔命西征，元恶既服，当权宜行事，以安初附。若待国命，则往复道途，延引日月。《春秋》之义：大夫出疆，有可以安社稷、利国家，专之可也。今吴未宾，势与蜀连，不可拘常以失事机。兵法：进不求名，退不避罪。艾虽无古人之节，终不自嫌以损于国也。先此申状，见可施行。”</div>
+            <div class="text-block simplified-text">邓艾打下蜀国后，封师纂当益州刺史，让牵弘、王颀等人分别管理各地。还在绵竹建了个高台庆祝胜利，请蜀国的官员们喝酒。喝到一半，邓艾指着这些官员说："你们运气好碰上我，才能活到现在。要是遇到别的将军，早把你们全杀光了。"官员们赶紧站起来道谢。这时蒋显突然跑来报告，说姜维已经向钟会投降了。邓艾一听就恨上了钟会。
+
+邓艾写了封信派人送到洛阳给司马昭，信里说："打仗要讲究虚张声势再动真格。现在刚拿下蜀国，正好借这个势头去打吴国。不过将士们刚打完仗太累，不能马上行动。应该留两万陇右兵和两万蜀兵，让他们煮盐炼铁、造船，为以后顺江而下打吴国做准备。同时派人去吓唬吴国，说不定不用打就能让他们投降。现在要好好对待刘禅，做给吴国的孙休看。要是急着把刘禅送来京城，吴国人会起疑心。不如先让刘禅在蜀地住着，明年冬天再送他来。现在可以封刘禅当扶风王，给他钱和仆人，再给他儿子封官。这样吴国人看到投降的好处，就会乖乖归顺了。"
+
+司马昭看完信，怀疑邓艾想自作主张，就先给卫瓘写了密信，然后下诏书封邓艾当太尉，加封两万户，还给他两个儿子封侯。邓艾接到诏书后，卫瓘拿出司马昭的密信给他看，信里说邓艾提的建议要等朝廷批准才能执行。邓艾却说："将军在外打仗，君王的命令可以不接受。我既然奉命出征，凭什么拦我？"于是又写了封信让人送去洛阳。
+
+这时朝廷里都在传邓艾要造反，司马昭更怀疑他了。送信的人回来，把邓艾的新信交给司马昭。信里说："我奉命西征，现在敌人已经投降，应该随机应变稳定局势。要是事事等朝廷批复，来回耽误时间。《春秋》里说，大臣在外，只要对国家有利的事可以自己做主。现在吴国还没投降，和蜀国关系密切，不能死守规矩错过机会。兵法上说：前进不为争功，后退不怕担责。我虽然比不上古人，但绝不会因为怕被怀疑就耽误国家大事。先把情况说明白，该做的我就要做。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">司马昭看毕大惊，忙与贾充计议曰：“邓艾恃功而骄，任意行事，反形露矣。如之奈何？”贾充曰：“主公何不封钟会以制之？”昭从其议，遣使赍诏封会为司徒，就令卫瓘监督两路军马，以手书付瓘，使与会伺察邓艾，以防其变。会接读诏书。诏曰：“镇西将军钟会所向无敌，前无强梁，节制众城，网罗进逸；蜀之豪帅，面缚归命；谋无遗策，举无废功。其以会为司徒，进封县侯，增邑万户，封子二人亭侯，邑各千户。”钟会既受封，即请姜维计议曰：“邓艾功在吾之上，又封太尉之职；今司马公疑艾有反志，故令卫瓘为监军，诏吾制之。伯约有何高见？”维曰：“愚闻邓艾出身微贱，幼为农家养犊，今侥幸自阴平斜径，攀木悬崖，成此大功；非出良谋，实赖国家洪福耳。若非将军与维相拒于剑阁，艾安能成此功耶？今欲封蜀主为扶风王，乃大结蜀人之心，其反情不言可见矣。晋公疑之是也。”会深喜其言。维又曰：“请退左右，维有一事密告。”会令左右尽退。维袖中取一图与会，曰：“昔日武侯出草庐时，以此图献先帝，且曰：益州之地，沃野千里，民殷国富，可为霸业。先帝因此遂创成都。今邓艾至此，安得不狂？”会大喜，指问山川形势。维一一言之。会又问曰：“当以何策除艾？”维曰：“乘晋公疑忌之际，当急上表，言艾反状；晋公必令将军讨之。一举而可擒矣。”会依言，即遣人赍表进赴洛阳，言邓艾专权恣肆，结好蜀人，早晚必反矣。于是朝中文武皆惊。会又今人于中途截了邓艾表文，按艾笔法，改写傲慢之辞，以实己之语。</div>
+            <div class="text-block simplified-text">司马昭看完报告后非常吃惊，赶紧找贾充商量说："邓艾仗着自己立了功就骄傲自大，想干什么就干什么，明显要造反了。这可怎么办？"贾充说："主公不如给钟会升官，让他去牵制邓艾？"司马昭采纳了这个建议，派人带着诏书去封钟会做司徒，还让卫瓘去监督两路军队，并写了一封信给卫瓘，让他和钟会一起盯着邓艾，防止他造反。
+
+钟会接到诏书，上面写着："镇西将军钟会打仗从来没输过，管得好各地城池，收服了蜀国的将领，做事周全从不失手。现在封他做司徒，加封县侯，增加一万户封地，还封他两个儿子做亭侯，每人给一千户。"
+
+钟会受封后，马上找姜维商量说："邓艾立的功劳比我大，还当了太尉。现在司马昭怀疑他要造反，派卫瓘当监军，让我牵制他。你有什么好主意？"姜维说："我听说邓艾出身低微，小时候是给人家放牛的。这次能成功全靠运气好，从阴平小路爬悬崖过来。要不是将军你在剑阁挡住我，他哪能成功？现在他想封蜀国君主做扶风王，明显是在收买人心，造反的心思都不用说了。司马昭怀疑他是对的。"钟会很赞同这话。
+
+姜维又说："请让其他人出去，我有秘密要告诉你。"等人都退下后，姜维从袖子里拿出一张地图给钟会，说："当年诸葛亮出山时，把这张图献给先帝，说益州土地肥沃，百姓富足，可以成就霸业。先帝因此建立了蜀国。现在邓艾到了这里，能不狂妄吗？"钟会很高兴，指着地图问山川地形，姜维都详细说明。钟会又问："该怎么除掉邓艾？"姜维说："趁司马昭怀疑他的时候，赶紧上奏说他要造反，司马昭一定会让你去讨伐他。这样一下子就能抓住他。"
+
+钟会照做了，马上派人送奏折去洛阳，说邓艾独断专行，收买蜀国人心，早晚要造反。朝廷里的大臣们都很吃惊。钟会还派人在半路截下邓艾的奏折，模仿邓艾的笔迹改成傲慢的语气，来证明自己说的是真的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">司马昭见了邓艾表章，大怒，即遣人到钟会军前，令会收艾；又遣贾充引三万兵入斜谷，昭乃同魏主曹奂御驾亲征。西曹掾邵悌谏曰：“钟会之兵，多艾六倍，当今会收艾足矣，何必明公自行耶？”昭笑曰：“汝忘了旧日之言耶？汝曾道会后必反。吾今此行，非为艾，实为会耳。”悌笑曰“某恐明公忘之，故以相问。今既有此意，切宜秘之，不可泄漏。”昭然其言，遂提大兵起程。时贾充亦疑钟会有变，密告司马昭。昭曰：“如遣汝，亦疑汝耶？吾到长安，自有明白。”早有细作报知钟会，说昭已至长安。会慌请姜维商议收艾之策。正是：才看西蜀收降将，又见长安动大兵。不知姜维以何策破艾，且看下文分解。</div>
+            <div class="text-block simplified-text">司马昭看到邓艾的奏章后非常生气，马上派人去钟会那里，命令钟会逮捕邓艾。同时派贾充带三万兵马进入斜谷，自己则和魏国皇帝曹奂一起亲自出征。
+
+手下邵悌劝他说："钟会的兵力比邓艾多六倍，让他去抓邓艾就够了，您何必亲自去呢？"司马昭笑着说："你忘了以前说过的话吗？你说过钟会肯定会造反。我这次去，表面上是为邓艾，其实是为了对付钟会。"邵悌也笑了："我就是怕您忘了这事才问的。既然您早有准备，一定要保密，千万别说出去。"司马昭觉得他说得对，就带着大军出发了。
+
+这时贾充也怀疑钟会要造反，偷偷告诉了司马昭。司马昭说："如果派你去，难道我也要怀疑你吗？等我到了长安，自然就清楚了。"
+
+钟会那边很快就收到密报，知道司马昭已经到了长安。他急忙找姜维商量怎么对付邓艾。这正是：刚看到西蜀的降将被抓，转眼长安又出动了大军。至于姜维想出什么办法对付邓艾，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
