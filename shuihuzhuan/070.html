@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十回　没羽箭飞石打英雄　宋公明弃粮擒壮士</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./069.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十回　没羽箭飞石打英雄　宋公明弃粮擒壮士</h1>
+        <a href="./071.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句"诗曰："可以改写成：
+
+"诗里这样说：" 或者 "有首诗这么写的："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">龙虎山中降敕宣，锁魔殿上散霄烟。</div>
+            <div class="text-block simplified-text">龙虎山里接到皇帝的命令，镇压妖魔的大殿上烟雾都散开了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">致令煞曜离金阙，故使罡星下九天。</div>
+            <div class="text-block simplified-text">结果：因为天上的凶星离开了皇宫，所以吉星才从天上下来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">战马频嘶杨柳岸，征旗布满藕花船。</div>
+            <div class="text-block simplified-text">河边的柳树下战马不停地叫，开满荷花的船上插满了军旗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">只因肝胆存忠义，留得清名万古传。</div>
+            <div class="text-block simplified-text">只要心里有忠诚和正义，就能留下好名声，永远被人记住。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说宋江打了东平府，收军回到安山镇，正待要回山寨，只见白胜前来报说：“卢俊义去打东昌府，连输了两阵。城中有个猛将，姓张名清，原是彰德府人，虎骑出身，善会飞石打人，百发百中，人呼为没羽箭。手下两员副将：一个唤做花项虎龚旺，浑身上刺着虎斑，脖项上吞着虎头，马上会使飞枪；一个唤做中箭虎丁得孙，面颊连项都有疤痕，马上会使飞叉。卢员外提兵临境，一连十日，不出厮杀。前日张清出城交锋，郝思文出马迎敌，战无数合，张清便走，郝思文赶去，被他额角上打中一石子，跌下马来。却得燕青一弩箭，射中张清战马，因此救得郝思文性命。输了一阵。次日，混世魔王樊瑞引项充、李衮，舞牌去迎，不期被丁得孙从肋窝里飞出标叉，正中项充。因此又输了一阵。二人见在船中养病。军师特令小弟来请哥哥早去救应。”宋江见说了，叹曰：“卢俊义直如此无缘！特地教吴学究、公孙胜帮他，只想要他见阵成功，山寨中也好眉目，谁想又逢敌手。既然如此，我等众弟兄引兵都去救应。”当时传令，便起三军。诸将上马，跟随宋江直到东昌境界。卢俊义等接着，具说前事，权且下寨。</div>
+            <div class="text-block simplified-text">宋江打下东平府后，带兵回到安山镇，正准备回梁山，这时白胜跑来报告："卢俊义去打东昌府，已经连输两场。城里有个厉害的大将叫张清，外号'没羽箭'，特别会用石头打人，百发百中。他有两个副将：一个叫花项虎龚旺，身上纹着老虎花纹，擅长用飞枪；另一个叫中箭虎丁得孙，脸上脖子上都是疤，擅长用飞叉。卢俊义带兵到城下，等了十天对方都不出战。前天张清终于出城，郝思文去迎战，没打几个回合张清假装逃跑，等郝思文追上去时，被他一石头打在额头上摔下马。幸好燕青用箭射中张清的马，才救了郝思文。这是第一次输。第二天，樊瑞带着项充、李衮举着盾牌出战，没想到丁得孙突然飞出叉子，正好刺中项充。这是第二次输。现在项充和郝思文都在船上养伤。军师特意让我来请大哥赶快去支援。"
+
+宋江听完叹气说："卢俊义怎么这么倒霉！我特意派吴用和公孙胜去帮他，就是想让他打个胜仗，在梁山也好有面子，没想到又遇到硬茬。既然这样，咱们兄弟们都去帮忙吧。"说完立刻下令全军出发。众将领跟着宋江赶到东昌地界，卢俊义出来迎接，把情况又说了一遍，先安营扎寨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">正商议间，小军来报：“没羽箭张清搦战。”宋江领众便起，向平川旷野摆开阵势。大小头领一齐上马，随到门旗下。宋江在马上看对阵时，阵排一字，旗分五色。三通鼓罢，没羽箭张清出马。怎生打扮？有一篇《水调歌》，赞张清的英勇：</div>
+            <div class="text-block simplified-text">他们正在商量的时候，小兵跑来报告："张清（外号没羽箭）在外面叫阵挑战。"宋江立刻带领人马出发，在开阔的平地上摆好阵型。所有头领都骑上马，跟着来到军旗下面。宋江骑在马上观察对方阵营，只见敌军排成一字长蛇阵，旗帜分成五种颜色。战鼓敲过三遍后，张清骑马出阵。他是什么打扮呢？有首《水调歌》专门称赞张清的勇猛：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">头巾掩映茜红缨，狼腰猿臂体彪形。锦衣绣袄，袍中微露透深青。雕鞍侧坐，青玉勒马轻迎。葵花宝镫，振响熟铜铃。倒拖雉尾，飞走四蹄轻。金环摇动，飘飘玉蟒撒朱缨。锦袋石子，轻轻飞动似流星。不用强弓硬弩，何须打弹飞铃。但着处，命归空。东昌马骑将，没羽箭张清。</div>
+            <div class="text-block simplified-text">头巾遮着红色缨穗，腰细臂长身材健壮。穿着绣花锦衣，袍子下隐约露出深青色。斜坐在雕花马鞍上，青玉马勒轻轻牵着马。马镫是葵花形状，铜铃铛叮当作响。背后插着野鸡尾羽，马儿四蹄轻快飞奔。金环晃动，玉色长枪上的红缨随风飘扬。锦囊里装着石子，扔出去快得像流星。不用弓箭，也不用弹弓响铃。只要他出手，敌人必死无疑。这是东昌府的骑兵将领，外号"没羽箭"的张清。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">宋江在门旗下见了喝采。张清在马上荡起征尘，往来驰走。门旗左边闪出那个花项虎龚旺。有诗为证：</div>
+            <div class="text-block simplified-text">宋江在队伍前看到这情景，忍不住叫好。张清骑着马扬起尘土，来回奔跑。队伍左边的旗帜后面突然跳出花项虎龚旺。有首诗形容这个场面：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">手执标枪惯飞舞，盖世英雄诚未睹。</div>
+            <div class="text-block simplified-text">这个人手里拿着标枪，玩得特别溜，动作又快又帅。像他这么厉害的人，我还真没见过！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">斑烂锦体兽吞头，龚旺名为花项虎。</div>
+            <div class="text-block simplified-text">龚旺的外号叫"花项虎"，因为他穿着色彩鲜艳的虎纹衣服，领口部分装饰着猛兽图案。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">又见张清阵内门旗影里，右边闪出这个中箭虎丁得孙。亦有诗为证：</div>
+            <div class="text-block simplified-text">张清的队伍里，右边突然冲出一个叫丁得孙的人，外号"中箭虎"。这里也有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">虎骑奔波出阵门，双腮连项露疤痕。</div>
+            <div class="text-block simplified-text">骑兵骑着马冲出战场，他两边脸颊连着脖子都有伤疤。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">到处人称中箭虎，手搦飞叉丁得孙。</div>
+            <div class="text-block simplified-text">大家都叫他"中箭虎"，他手里总拿着一把飞叉，这人叫丁得孙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">三骑马来到阵前。张清手指宋江骂道：“水洼草贼，愿决一阵！”宋江问道：“谁可去战张清？”傍边恼犯这个英雄，忿怒跃马，手舞钩镰枪，出到阵前。宋江看时，乃是金枪手徐宁。宋江暗喜，便道：“此人正是对手！”徐宁飞马直取张清，两马相交，双枪并举。斗不到五合，张清便走，徐宁去赶。张清把左手虚提长枪，右手便向锦袋中摸出石子，扭回身，觑得徐宁面门较近，只一石子，可怜悍勇徐宁，石子眉心早中，翻身落马。龚旺、丁得孙便来捉人。宋江阵上人多，早有吕方、郭盛，两骑马，两枝戟，救回本阵。宋江等大惊，尽皆失色。再问：“那个头领接着厮杀？”宋江言未尽，马后一将飞出。看时，却是锦毛虎燕顺。宋江却待阻当，那骑马已自去了。燕顺接住张清，斗无数合，遮拦不住，拨回马便走。张清望后赶来，手取石子，看燕顺后心一掷，打在镗甲护镜上，铮然有声，伏鞍而走。宋江阵上一人大叫：“匹夫何足惧哉！”拍马提槊飞出阵去。宋江看时，乃是百胜将韩滔，不打话便战张清。两马方交，喊声大举。韩滔要在宋江面前显能，抖擞精神，大战张清。不到十合，张清便走。韩滔疑他飞石打来，不去追赶。张清回头不见赶来，翻身勒马便转。韩滔却待挺槊来迎，被张清暗藏石子，手起，望韩滔鼻凹里打中。只见鲜血迸流，逃回本阵。彭玘见了大怒，“量这等小辈，何足惧哉！”不等宋公明将令，手舞三尖两刃刀，飞马直取张清。两个未曾交马，被张清暗藏石子在手，手起，正中彭玘面额，丢了三尖两刃刀，奔马回阵。</div>
+            <div class="text-block simplified-text">三匹马冲到阵前。张清指着宋江大骂："你这水沟里的草寇，敢不敢单挑！"宋江问："谁去对付张清？"这时一个猛将被激怒了，怒气冲冲地骑马冲出来，手里挥舞着钩镰枪。宋江一看，是金枪手徐宁，心里暗喜，说："他正好能对付！"徐宁骑马直冲张清，两人打在一起，两杆枪你来我往。打了不到五个回合，张清假装逃跑，徐宁追上去。张清左手假装提枪，右手从锦袋里摸出石子，转身看准徐宁的脸，一石子打过去，正中徐宁眉心，徐宁摔下马来。龚旺、丁得孙想抓人，宋江这边人多，吕方、郭盛立刻骑马拿戟把徐宁救了回来。宋江他们都吓坏了，脸色大变。又问："下一个谁上？"话还没说完，一个将领已经冲了出去，是锦毛虎燕顺。宋江想拦都来不及。燕顺和张清打了几下就招架不住，掉头就跑。张清追上去，掏出石子朝燕顺后背打去，打在护心镜上，"当"的一声，燕顺趴在马背上逃了回来。宋江这边又有人大喊："这小子有什么好怕的！"拿着长矛冲出去，是百胜将韩滔。两人刚交手，韩滔想在宋江面前表现，使出全力和张清打。不到十个回合，张清又假装逃跑。韩滔怕他用石子，没敢追。张清见没人追，又调转马头回来。韩滔正要举矛迎战，被张清偷偷扔出的石子打中鼻子，顿时血流满面，逃回本阵。彭玘看了大怒："这种小角色怕什么！"不等宋江下令，就拿着三尖两刃刀冲出去。还没交手，就被张清一石子打在脸上，丢了兵器逃回来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">宋江见输了数将，心内惊惶，便要将军马收转。只见卢俊义背后一人大叫：“今日将威折了，来日怎地厮杀！且看石子打得我么！”宋江看时，乃是丑郡马宣赞，拍马舞刀，直奔张清。张清便道：“一个来，一个走！两个来，两个逃！你知我飞石手段么？”宣赞道：“你打得别人，怎近得我！”说言未了，张清手起一石子，正中宣赞嘴边，翻身落马。龚旺、丁得孙却待来捉，怎当宋江阵上人多，众将救了回阵。</div>
+            <div class="text-block simplified-text">宋江看到自己这边接连败了几员大将，心里又慌又急，正打算下令撤兵。这时，卢俊义身后突然有人大喊："今天要是认怂撤退，以后还怎么打仗！我倒要看看你那破石子能不能打中我！"宋江一看，原来是长得丑的郡马宣赞。只见他挥着刀冲出战阵，直扑张清。张清笑道："来一个我打跑一个，来两个我打跑一双！你听说过我飞石子的本事吗？"宣赞不服："你能打中别人，可打不着我！"话还没说完，张清抬手一石子，正好打在宣赞嘴巴上，把他打下马来。龚旺、丁得孙刚要上去抓人，但宋江那边人多势众，一群将领赶紧把宣赞救回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">宋江见了，怒气在心，掣剑在手，割袍为誓：“我若不拿得此人，誓不回军！”呼延灼见宋江说誓，便道：“兄长此言，要我们弟兄何用！”就拍踢雪乌骓，直临阵前，大骂张清：“小儿得宠，一力一勇！认得大将呼延灼么？”张清便道：“辱国败将之人，也遭我毒手！”言未绝，一石子飞来。呼延灼见石子飞来，急把鞭来隔时，却中在手腕上。早着一下，便使不动钢鞭，回归本阵。</div>
+            <div class="text-block simplified-text">宋江一看就火了，拔出剑割下衣角发誓："我要是抓不住这家伙，绝不收兵！"呼延灼听见宋江发誓，马上说："大哥说这话就见外了，还有我们这帮兄弟呢！"说完就骑着乌骓马冲到阵前，对着张清大骂："小兔崽子别嚣张！认识你呼延灼爷爷吗？"张清回嘴："你个手下败将也敢来送死？"话还没说完，一块石头就飞了过来。呼延灼赶紧用鞭子挡，结果被打中手腕，疼得连鞭子都拿不稳，只好灰溜溜跑回自己队伍里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">宋江道：“马军头领，都被损伤。步军头领，谁敢捉这张清？”只见部下刘唐手拈朴刀，挺身出阵。张清见了大笑，骂道：“你那败将，马军尚且输了，何况步卒！”刘唐大怒，径奔张清。张清不战，跑马归阵。刘唐赶去，人马相迎。刘唐手疾，一朴刀砍去，却砍着张清战马。那马后蹄直踢起来，刘唐面门上扫着马尾，双眼生花，早被张清只一石子，打倒在地。急待挣扎，阵中走出军来，横拖倒拽，拿入阵中去了。宋江大叫：“那个去救刘唐？”只见青面兽杨志便舞刀直取张清。张清虚把枪来迎。杨志一刀刺去，张清镫里藏身，杨志却砍了个空。张清手拿石子，喝声道：“着！”石子从肋罗里飞将过去。张清又一石子，铮的打在盔上，吓得杨志胆丧心寒，伏鞍归阵。宋江看了，转转寻思：“若是今番输了锐气，怎生回梁山泊！谁与我出得这口气？”朱仝听得，目视雷横说道：“捉了刘唐去，却值甚的！一个不济事，我两个同去夹攻。”朱仝居左，雷横居右，两条朴刀，杀出阵前。张清笑道：“一个不济，又添一个！由你十个，更待如何！”全无惧色。在马上藏两个石子在手。雷横先到，张清手起，势如招宝七郎，石子来时，面门上怎生躲避，急待抬头看时，额上早中一石子，扑然倒地。朱仝急来快救，脖项上又一石子打着。关胜在阵上看见中伤，大挺神威，轮起青龙刀，纵开赤兔马，来救朱仝、雷横。刚抢得两个奔走还阵，张清又一石子打来。关胜急把刀一隔，正打着刀口，迸出火光。关胜无心恋战，勒马便回。</div>
+            <div class="text-block simplified-text">宋江说："骑兵将领都受伤了。步兵将领，谁敢去抓张清？"这时刘唐提着刀冲了出来。张清大笑道："你们骑兵都打不过我，步兵更不行！"刘唐气得直接冲过去，张清掉头就跑。刘唐追上去，一刀砍中张清的马屁股。马后腿一踢，正好踢在刘唐脸上，张清趁机一石头把刘唐打趴下，被对方士兵拖走了。
+
+宋江急喊："谁去救刘唐？"杨志挥刀冲上去。张清假装迎战，杨志一刀刺空，张清躲开后连扔两块石头，一块打在杨志盔甲上，吓得杨志赶紧逃回来。
+
+宋江发愁："今天要是输了，怎么有脸回梁山？谁去出这口气？"朱仝对雷横说："刘唐被抓太丢人了，咱俩一起上。"两人一左一右杀过去。张清笑道："来一个不行又来一个？来十个也没用！"说着藏了两块石头。雷横先到，被一石头打在脸上倒地。朱仝去救，也被一石头打中脖子。
+
+关胜看见两人受伤，骑马冲出来救人。刚把两人救回，张清又一石头飞来，关胜用刀挡住，火星四溅。关胜不想再打，赶紧撤回。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">双枪将董平见了，心中暗忖：“吾今新降宋江，若不显我些武艺，上山去必无光彩。”手提双枪，飞马出阵。张清看见，大骂董平：“我和你邻近州府，唇齿之邦，共同灭贼，正当其理。你今缘何反背朝廷？岂不自羞！”董平大怒，直取张清。两马相交，军器并举。两条枪阵上交加，四双臂环中撩乱。约斗五七合，张清拨马便走。董平道：“别人中你石子，怎近得我！”张清带住枪杆，去锦袋中摸出一个石子，手起处真如流星掣电，石子来吓得鬼哭神惊。董平眼明手快，拨过了石子。张清见打不着，再取第二个石子，又打将去，董平又闪过了。两个石子打不着，张清却早心慌。那马尾相衔，张清走到阵门左侧，董平望后心刺一枪来。张清一闪，镫里藏身，董平却搠了空，那条枪却搠将过来。董平的马和张清的马两厮并着。张清便撇了枪，双手把董平和枪连臂膊只一拖，却拖不动。两个搅做一块。宋江阵上索超望见，轮动大斧，便来解救。对阵龚旺、丁得孙两骑马齐出，截住索超厮杀。张清、董平又分拆不开。索超、龚旺、丁得孙三匹马搅做一团。林冲、花荣、吕方、郭盛四将，一齐尽出，两条枪、两枝戟来救董平、索超。张清见不是头，弃了董平，跑马入阵。董平不舍，直撞入去，却忘了提备石子。张清见董平追来，暗藏石子在手，待他马近，喝声道：“着！”董平急躲，那石子抹耳根上擦过去了。董平便回。索超撇了龚旺、丁得孙，也赶入阵来。张清停住枪，轻取石子，望索超打来。索超急躲不迭，打在脸上。鲜血迸流，提斧回阵。</div>
+            <div class="text-block simplified-text">双枪将董平看到这情况，心里想："我刚投靠宋江，要是不露两手真本事，上山后肯定没面子。"于是提着双枪骑马冲出去。张清看见就大骂："咱们俩的州府挨着，本该一起打贼人。你居然背叛朝廷，不觉得丢人吗？"董平听了火冒三丈，直接杀向张清。
+
+两人打在一起，四条胳膊挥舞，两杆枪你来我往。打了五七个回合，张清突然调转马头就跑。董平喊："别人怕你的飞石，我可不怕！"张清一手持枪，一手从锦袋里掏出石子，快得像流星一样扔出去。董平眼疾手快躲开了。张清又扔第二个，又被躲开。连扔两个都没中，张清开始慌了。
+
+张清跑到军阵左边，董平从背后刺来一枪。张清身子一闪藏在马肚子下，董平刺了个空。两匹马并排跑时，张清扔了枪想拽董平下马，但拽不动，两人扭打成一团。
+
+宋江这边的索超看见，抡着大斧来帮忙。对方龚旺、丁得孙也冲出来拦住索超。张清和董平还扭在一起，索超那边也打成一片。林冲、花荣等四个将领赶紧出来帮忙。
+
+张清见势不妙，丢下董平跑回自己阵中。董平紧追不舍，却忘了防石子。张清偷偷捏着石子，等董平靠近突然喊："看招！"石子擦着董平耳朵飞过。董平只好退回。
+
+索超也追过来，张清又掏出石子，这次正中索超脸上，打得他满脸是血，只好捂着伤口退回。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">却说林冲、花荣把龚旺截住在一边，吕方、郭盛把丁得孙也截住在一边。龚旺心慌，便把飞枪摽将来，却摽不着花荣、林冲。龚旺先没了军器，被林冲、花荣活捉归阵。这边丁得孙不敢弃叉，死命抵敌吕方、郭盛，不提防浪子燕青在阵门里看见，暗忖道：“我这里被他片时连打了一十五员大将！”手中弃了杆棒，身边取出弩弓，搭上弦，放一箭去，一声响，正中了丁得孙马蹄，那马便倒，却被吕方、郭盛捉过阵来。张清要来救时，寡不敌众，只得拿了刘唐，且回东昌府去。太守在城上看见张清前后打了梁山泊一十五员大将，虽然折了龚旺、丁得孙，也拿得这个刘唐。回到州衙，先把刘唐长枷送狱，却再商议。</div>
+            <div class="text-block simplified-text">林冲和花荣把龚旺拦住，吕方和郭盛也把丁得孙拦住。龚旺慌了，扔出飞枪想打他们，但没打中。结果龚旺没了武器，被林冲和花荣活捉了。另一边，丁得孙死死抓着叉子拼命抵抗吕方和郭盛。这时燕青在阵里看到，心想："我们这边一会儿工夫就被他们打倒了十五个大将！"他扔下棍子，拿出弩弓，搭上箭射出去，正好射中丁得孙的马腿。马一倒，丁得孙就被吕方和郭盛抓住了。张清想救人，但对方人太多打不过，只好抓住刘唐，退回东昌府。太守在城墙上看到张清前后打败了梁山十五个大将，虽然损失了龚旺和丁得孙，但抓到了刘唐。回到衙门后，先把刘唐戴上枷锁关进大牢，再商量下一步怎么办。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">张清神手拨天关，暗里能将石子攀。</div>
+            <div class="text-block simplified-text">张清这人的手特别快，能偷偷用石头打中天上的东西。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">一十五人都打坏，脚瘸手跛奔梁山。</div>
+            <div class="text-block simplified-text">十五个人全被打残了，瘸着腿、拐着手逃上梁山。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">且说宋江收军回寨，把龚旺、丁得孙先送上梁山泊。宋江再与卢俊义、吴用道：“我闻五代时，大梁王彦章，日不移影，连打唐将三十六员。今日张清无一时连打我一十五员大将，真是不在此人之下，也当是个猛将。”众人无语。宋江又道：“我看此人，全仗龚旺、丁得孙为羽翼。如今手足羽翼被擒，可用良策捉获此人。”吴用道：“兄长放心。小生见了此将出没，已自安排定了。虽然如此，且把中伤头领送回山寨，却教鲁智深、武松、孙立、黄信、李立，尽数引领水军，安排车仗船只，水陆并进，船骑相迎，赚出张清，便成大事。”吴用分拨已定。</div>
+            <div class="text-block simplified-text">宋江带着队伍回到营地，先把抓到的龚旺和丁得孙送上梁山。然后他对卢俊义和吴用说："我听说五代时候有个猛将王彦章，一天之内连杀三十六名唐将。今天张清一口气打伤我们十五个大将，简直跟王彦章一样厉害，真是个狠角色。"大家都说不出话。宋江接着说："我看张清主要靠龚旺、丁得孙帮忙。现在这两个帮手被抓了，咱们得想个好办法抓住他。"吴用回答："大哥别担心。我看过张清打仗的样子，已经想好办法了。不过先得把受伤的头领送回山寨。然后让鲁智深、武松、孙立、黄信、李立带着水军，准备好车马船只，水陆两路一起进攻，用船和骑兵配合，把张清引出来，就能搞定他。"吴用把计划都安排好了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">再说张清在城内与太守商议道：“虽是赢得，贼势根本未除，暗使人去探听虚实，却作道理。”只见探事人来回报：“寨后西北上，不知那里将许多粮米，有百十辆车子，河内又有粮草船，大小约有五百余只。水陆并进，船马同来。沿路有几头领监管。”太守道：“这厮们莫非有计？恐遭他毒手。再差人去打听，端的果是粮草也不是。”次日，小军回报说：“车上都是粮，尚且撒下米来。水中船只，虽是遮盖着，尽有米布袋露出将来。”张清道：“今晚出城，先截岸上车子，后去取他水中船只。太守助战，一鼓而得。”太守道：“此计甚妙，只可善觑方便。”叫军汉饱餐酒食，尽行披挂，捎驮锦袋。张清手执长枪，引一千军兵，悄悄地出城。</div>
+            <div class="text-block simplified-text">张清在城里和太守商量说："虽然我们打赢了，但敌人的主力还在。我派人去侦察一下情况，再决定怎么办。"这时探子回来报告："敌人营寨西北方向来了很多粮车，有一百多辆。河里还有运粮船，大大小小差不多五百多艘。他们从水路和陆路一起运粮，路上有几个头领押送。"
+
+太守说："这帮人是不是有诈？小心上当。再派人去查清楚，看看到底是不是真的运粮。"第二天，士兵回来报告："车上装的都是粮食，路上还撒出来不少。河里的船虽然盖着布，但能看见里面都是装米的袋子。"
+
+张清说："今晚我们出城，先把岸上的粮车抢了，再去夺河里的粮船。请太守带兵支援，咱们一次就能成功。"太守说："好主意，但要见机行事。"于是让士兵们吃饱喝足，全副武装，准备好装备。张清拿着长枪，带着一千士兵，悄悄出了城。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">是夜月色微明，星光满天。行不到十里，望见一簇车子，旗上明写“水浒寨忠义粮”。张清看了，见鲁智深担着禅杖，皂直裰拽扎起来，当头先走。张清道：“这秃驴脑袋上着我一下石子！”鲁智深担着禅杖，此时自望见了，只做不知，大踏步只顾走，却忘了提防他石子。正走之间，张清在马上喝声：“着！”一石子正飞在鲁智深头上，打得鲜血迸流，望后便倒。张清军马一齐呐喊，都抢将来。武松急挺两口戒刀，死去救回鲁智深，撇了粮车便走。张清夺得粮车，见果是粮米，心中欢喜，不来追赶鲁智深，且押送粮车，推入城来。太守见了大喜，自行收管。张清道：“再抢河中粮船。”太守道：“将军善觑方便。”张清上马，转到南门。此时望见河港内粮船不计其数。张清便叫开城门，一齐呐喊，抢到河边。只见阴云布满，黑雾遮天，马步军兵回头看时，你我对面不见。此是公孙胜行持道法。张清看见，心慌眼暗，却待要回，进退无路。四下里喊声乱起，正不知军兵从那里来。林冲引铁骑军兵，将张清连人和马都赶下水去了。河内却是李俊、张横、张顺、三阮、两童八个水军头领，一字儿摆在那里。张清便有三头六臂，也怎生挣扎得脱。被阮氏三雄捉住，绳缠索绑，送入寨中。水军头领飞报宋江。</div>
+            <div class="text-block simplified-text">那天晚上月亮有点亮，星星很多。走了不到十里路，看到一队运粮车，旗子上清清楚楚写着"水浒寨忠义粮"。张清看见鲁智深扛着禅杖走在最前面，衣服扎得紧紧的，心想："看我用石子打这秃驴的脑袋！"鲁智深其实也看见他了，但假装没注意，只顾大步往前走，忘了防备他的石子。正走着，张清在马上大喊一声："着！"一颗石子正好打在鲁智深头上，打得他头破血流，仰面倒下。张清的士兵一起喊叫着冲上来。武松赶紧拿着双刀拼命把鲁智深救回来，扔下粮车就跑。张清抢到粮车，看到真是粮食，很高兴，没去追鲁智深，押着粮车回城了。太守看到粮食特别高兴，让人收好。张清说："我再去抢河里的粮船。"太守说："将军看情况行事。"张清骑马来到南门，看到河里停着数不清的粮船。他下令打开城门，士兵们喊着冲往河边。这时突然阴云密布，天黑得伸手不见五指，士兵们互相都看不见。这是公孙胜在施法术。张清慌了神，想撤退却发现无路可走。四周突然喊声四起，根本不知道敌兵从哪来的。林冲带着骑兵把张清连人带马逼进河里。河里早埋伏着李俊、张横、张顺、阮家三兄弟和童威、童猛八个水军头领。张清就算有三头六臂也逃不掉，被阮家三兄弟抓住，捆得结结实实押回山寨。水军头领赶紧向宋江报告。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">吴用便催大小头领连夜打城。太守独自一个怎生支持得住。听得城外四面炮响，城门开了，吓得太守无路可逃。宋江军马杀入城中，先救了刘唐。次后便开仓库，就将钱粮一分发送梁山泊，一分给散居民。太守平日清廉，饶了不杀。</div>
+            <div class="text-block simplified-text">吴用赶紧命令大小头目连夜攻城。城里就太守一个人，根本顶不住。听到城外到处都在放炮，城门也被打开了，太守吓得没地方跑。宋江带着人马冲进城里，先救出了刘唐。接着打开仓库，把钱财粮食分成两份：一份运回梁山泊，一份分给老百姓。因为太守平时还算清正廉洁，就饶了他没杀。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">宋江等都在州衙里聚集，众人会面。只见水军头领早把张清解来。众多兄弟都被他打伤，咬牙切齿，尽要来杀张清。宋江见解将来，亲自直下堂阶迎接，便陪话道：“误犯虎威，请勿挂意。”邀上厅来。说言未了，只见阶下鲁智深，使手帕包着头，拿着铁禅杖，径奔来要打张清。宋江隔住，连声喝退：“怎肯教你下手！”张清见宋江如此义气，叩头下拜受降。宋江取酒奠地，折箭为誓：“众弟兄若要如此报仇，皇天不祐，死于刀剑之下。”众人听了，谁敢再言。也是天罡星合当聚会，自然义气相投。昔日老郎有一篇言语，赞张清道：</div>
+            <div class="text-block simplified-text">宋江他们都在州衙门里碰头。大伙儿刚见面，水军的头领就把张清押过来了。好多兄弟都被他打伤过，一个个恨得牙痒痒，都想杀了张清出气。宋江看见人押来了，赶紧走下台阶亲自迎接，陪着笑脸说："之前冒犯了您，千万别往心里去。"说着就把人往大厅里请。
+
+话还没说完，突然看见鲁智深头上缠着布条，提着铁禅杖冲过来要打张清。宋江连忙拦住，大声呵斥："不许你动手！"张清见宋江这么讲义气，马上跪下磕头投降。宋江倒了碗酒洒在地上，又折断箭发誓说："要是兄弟们还想报仇，老天爷都不答应，让我不得好死。"大家听了这话，谁还敢多说。
+
+这也是天意该让他们聚到一块儿，脾气对脾气。早先有说书人编了段词儿夸张清：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">祖代英雄播英武，义胆忠肝咸若古。</div>
+            <div class="text-block simplified-text">祖辈的英雄们个个勇猛威武，他们的忠诚和胆识都像古代豪杰一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">披坚自可为干城，佐郡应须是公辅。</div>
+            <div class="text-block simplified-text">穿上盔甲就能当护城墙，当个地方官也得是宰相的料。  
+
+（解释：这两句话意思是——能打仗的人自然可以保家卫国，能治理地方的人也应该有当大官的才能。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">东昌骁将名张清，豪气凌霄真可数。</div>
+            <div class="text-block simplified-text">东昌有个厉害的武将叫张清，他特别勇猛，本事大得数一数二。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">阵云冉冉飘征旗，劲气英英若痴虎。</div>
+            <div class="text-block simplified-text">战场上，云慢慢飘过军旗，士兵们精神抖擞，像发威的老虎一样勇猛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">龙鳞铁甲披凤毛，宫锦花袍明绣补。</div>
+            <div class="text-block simplified-text">这身衣服可真是华丽：外面穿着像龙鳞一样闪亮的铠甲，还装饰着凤凰羽毛；里面是宫廷特制的锦缎花袍，上面绣着精美的图案，在阳光下闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">坐骑一匹大宛驹，袖中暗器真难睹。</div>
+            <div class="text-block simplified-text">骑着一匹好马，袖子里藏着看不见的暗器。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">非鞭非简亦非枪，阵上陨石如星舞。</div>
+            <div class="text-block simplified-text">这不是鞭子，不是棍子，也不是枪，战场上飞来的石头像星星一样乱飞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">飞来猛将不能逃，中处应令倒旗鼓。</div>
+            <div class="text-block simplified-text">突然杀来的猛将也跑不掉，只要打中要害，就能让他军旗倒下、战鼓停歇。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">感人义气成大恩，此日归心甘受虏。</div>
+            <div class="text-block simplified-text">他因为重情重义做了件大好事，现在心甘情愿被抓也不后悔。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">天降罡星大泊中，烨烨英声传水浒。</div>
+            <div class="text-block simplified-text">天上掉下来个厉害人物，落在梁山泊里，他的英雄名声传遍了整个水浒故事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">宋江在东昌府州衙堂上折箭盟誓已罢，“众弟兄勿得伤情！”众皆大笑，人各听令，尽皆欢喜。收拾军马，都要回山。只见张清在宋公明面前举荐：“东昌府一个兽医，复姓皇甫，名端。此人善能相马，知得头口寒暑病症，下药用针，无不痊可，真有伯乐之才。原是幽州人氏。为他碧眼黄须，貌若番人，以此人称为紫髯伯。梁山泊亦有用他处。可唤此人带引妻小，一同上山。乞取钧旨。”宋江闻言大喜：“我虽在中原，不晓其理。若果皇甫端肯去相聚，大称予怀。”张清见宋江相爱甚厚，随即便去唤到兽医皇甫端来，拜见宋江并众头领。大小众将看了，尽皆欢喜。有篇七言古风诗，道皇甫端医术：</div>
+            <div class="text-block simplified-text">宋江在东昌府的衙门大堂上折箭发誓后，对兄弟们说："大伙儿别难过！"大家都笑了，各自领命，高高兴兴准备收拾兵马回梁山。这时张清向宋江推荐："东昌府有个兽医复姓皇甫，名端。这人特别会看马，能看出牲口的寒热病症，开药扎针没有治不好的，真有伯乐的本事。他本来是幽州人，因为长着蓝眼睛黄胡子，看起来像外族人，所以外号叫'紫胡子'。咱们梁山也用得上他。不如叫上他带着老婆孩子一起上山？请大哥定夺。"宋江听了很高兴："我虽然在中原长大，但不懂这些。要是皇甫端真愿意来，那可太好了。"张清看宋江很看重这事，马上去把兽医皇甫端叫来见宋江和各位头领。大家见了都很满意。有首诗专门夸皇甫端的医术：
+
+（说明：译文处理方式：1.将"折箭盟誓"译为通俗的"折箭发誓"；2."勿得伤情"译为"别难过"；3.保留"伯乐"这个常见典故；4.将"番人"译为现代人能理解的"外族人"；5."钧旨"译为"大哥定夺"；6.七言古诗因文学性较强，保留未译但作了转写说明）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">传家艺术无人敌，安骥年来有神力。</div>
+            <div class="text-block simplified-text">家里传下来的本事没人比得上，这匹叫"安骥"的马这些年力气大得吓人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">回生起死妙难言，拯惫扶危更多益。</div>
+            <div class="text-block simplified-text">这药能让死人活过来，效果特别神奇，还能救活快不行的人，用处大得很。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">鄂公乌骓人尽夸，郭公駬来渥洼。</div>
+            <div class="text-block simplified-text">鄂公骑的黑马人人都夸好，郭公骑的骏马是从渥洼来的。
+
+（说明：1. "乌骓"译为"黑马"更直观；2. "駬"是古代名马，现代人陌生，译为"骏马"；3. "渥洼"是古地名，保留专名但补充"来的"说明来源；4. 用"骑的"明确人物与马的关系；5. 保持对仗结构但用白话表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">吐蕃枣骝号神驳，北地又羡拳毛。</div>
+            <div class="text-block simplified-text">吐蕃有种红褐色的马叫"神驳"，北方的人又特别眼馋那种毛卷曲的马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">驣骧駝皆经见，衔橛背鞍亦多变。</div>
+            <div class="text-block simplified-text">我见过很多马和骆驼，它们戴的嚼子、背的鞍子也经常换花样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">天闲十二旧驰名，手到病除能应验。</div>
+            <div class="text-block simplified-text">这十二匹御马以前特别有名，只要经他手治疗，马病立马就能好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">古人已往名不刊，只今又见皇甫端。</div>
+            <div class="text-block simplified-text">过去的人虽然不在了，但他们的名声一直流传。现在又出了个像皇甫端这样厉害的人物。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">解治四百零八病，双瞳炯炯珠走盘。</div>
+            <div class="text-block simplified-text">这个人能治好408种病，眼睛又亮又有神，眼珠子转得飞快。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">天集忠良真有意，张清鹗荐诚良计。</div>
+            <div class="text-block simplified-text">老天爷专门把忠臣良将凑一块儿，这可不是瞎安排的。张清鹗举荐人才这招，确实是个靠谱的好主意！
+
+（说明：1.将"天集"译为"老天爷凑一块儿"，用拟人化表达更通俗；2."忠良"译为"忠臣良将"更具体；3."真有意"转译为"不是瞎安排的"更口语化；4."诚良计"拆解为"靠谱的好主意"，保留褒义且易懂；5.通过"这可不是""确实"等口语词增强对话感；6.完整保留"天意安排"和"举荐有效"两层核心信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">梁山泊内添一人，号名紫髯伯乐裔。</div>
+            <div class="text-block simplified-text">梁山泊又来了个新头领，外号叫"紫胡子"，据说是伯乐的后代。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">宋江看了皇甫一表非俗，碧眼重瞳，虬须过腹。皇甫端见了宋江如此义气，心中甚喜，愿从大义。宋江大喜。</div>
+            <div class="text-block simplified-text">宋江看皇甫端长得不一般，眼睛发绿，眼珠有两个瞳孔，胡子又长又密，一直垂到肚子。皇甫端见宋江这么讲义气，心里很高兴，愿意跟着他干大事。宋江开心极了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">抚谕已了，传下号令，诸多头领，收拾车仗、粮食、金银，一齐进发。鞍上将鞭敲金镫响，步下卒齐唱凯歌声。把这两府钱粮，运回山寨。前后诸军都起，于路无话。早回到梁山泊忠义堂上。宋江叫放出龚旺、丁得孙来，亦用好言抚慰。二人叩首拜降。又添了皇甫端，在山寨专工医兽。董平、张清亦为山寨头领。宋江欢喜，忙叫排宴庆贺。都在忠义堂上，各依次席而坐。宋江看了众多头领，却好一百单八员。宋江开言说道：“我等弟兄，自从上山相聚，但到处并无疏失，皆是上天护佑，非人之能。今来扶我为尊，皆托众弟兄英勇。一者合当聚义，二乃我再有句言语，烦你众兄弟共听。”吴用便道：“愿请兄长约束，共听号令。”</div>
+            <div class="text-block simplified-text">命令传达下去后，各位头领开始准备车辆、粮食和金银，大家一起出发。骑兵用鞭子敲着马镫叮当作响，步兵齐声唱着胜利的歌。他们把两地的钱财粮食都运回了山寨。一路上平安无事，很快就回到了梁山泊的忠义堂。
+
+宋江让人把龚旺和丁得孙放出来，好言安慰他们。两人磕头投降。皇甫端也加入了山寨，专门给牲口看病。董平和张清也成了山寨的头领。宋江很高兴，马上叫人摆酒庆祝。大家都在忠义堂上按顺序坐好。宋江数了数，正好一百零八个头领。
+
+宋江开口说道："咱们兄弟自从上山以来，一直都很顺利，这都是老天保佑，不是靠我们自己的本事。现在大家推举我当老大，全靠各位兄弟的本事。第一，咱们聚在一起是应该的；第二，我还有几句话要跟大家说。"
+
+吴用接着说："请大哥吩咐，我们都听你的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">宋江对着众头领，开口说这个主意下来。正是，有分教：三十六天罡临化地，七十二地煞闹中原。毕竟宋公明说出甚么主意，且听下回分解。</div>
+            <div class="text-block simplified-text">宋江对兄弟们说："我有个想法要告诉大家。"这下可好，三十六天罡星和七十二地煞星都要在人间闹腾了。到底宋江要说什么主意呢？咱们下次再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
