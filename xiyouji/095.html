@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九十四回 四僧宴乐御花园　一怪空怀情欲喜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./094.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第九十四回 四僧宴乐御花园　一怪空怀情欲喜</h1>
+        <a href="./096.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话表孙行者三人，随着宣召官至午门外，黄门官即时传奏宣进。他三个齐齐站定，更不下拜。国王问道：“那三位是圣僧驸马之高徒?姓甚名谁?何方居住?因甚事出家?取何经卷？”行者即近前，意欲上殿。旁有护驾的喝道：“不要走!有甚话，立下奏来。”行者笑道：“我们出家人，得一步就进一步。”随后八戒、沙僧亦俱近前。长老恐他村鲁惊驾，便起身叫道：“徒弟啊，陛下问你来因，你即奏上。”行者见他那师父在旁侍立，忍不住大叫一声道：“陛下轻人重己!既招我师为驸马，如何教他侍立?世间称女夫谓之‘贵人’，岂有贵人不坐之理！”国王听说，大惊失色。欲退殿，恐失了观瞻。只得硬着胆，教近侍的取绣墩来，请唐僧坐了。行者才奏道：</div>
+            <div class="text-block simplified-text">话说孙悟空、猪八戒、沙和尚三个人跟着传旨的官员来到皇宫门口，守门的官员立刻通报让他们进去。他们三个站得笔直，也不下跪行礼。国王问："你们三位就是圣僧驸马的高徒吧？叫什么名字？家住哪里？为什么出家？要取什么经书？"孙悟空一听就往殿上走，旁边护卫的侍卫立刻喝止："站住！有话就在下面说。"孙悟空笑着说："我们出家人啊，能往前走一步就往前一步。"猪八戒和沙和尚也跟着往前走。唐僧怕他们粗鲁惊扰了国王，赶紧站起来说："徒弟们，陛下问你们话呢，你们好好回答。"孙悟空看见师父站在旁边不能坐，忍不住大声说："陛下您太不尊重人了！既然招我师父当驸马，怎么还让他站着？世上管女婿都叫'贵人'，哪有贵人不让坐的道理！"国王一听脸都吓白了。想退朝又怕丢面子，只好壮着胆子让侍从搬来绣墩请唐僧坐下。孙悟空这才开始回话：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">“老孙祖居东胜神洲傲来国花果山水帘洞。父天母地，石裂吾生。曾拜至人，学成大道。复转仙乡，啸聚在洞天福地。下海降龙，登山擒兽。消死名，上生籍，官拜齐天大圣。玩赏琼楼，喜游宝阁。会天仙，日日歌欢；居圣境，朝朝快乐。只因乱却蟠桃宴，大反天宫，被佛擒伏，困压在五行山下，饥餐铁弹，渴饮铜汁，五百年未尝茶饭。幸我师出东土，拜西方，观音教令脱天灾，离大难，皈正在瑜伽门下。旧讳悟空，称名行者。”</div>
+            <div class="text-block simplified-text">我是孙悟空，老家在东胜神洲傲来国的花果山水帘洞。我是从石头里蹦出来的，拜了厉害的师父学了真本事。后来在天上当官，封了齐天大圣的名号，整天在天宫吃喝玩乐。因为大闹蟠桃会，跟天庭干仗，结果被如来佛祖抓住，压在了五行山下。五百年来只能吃铁丸子、喝铜汁，苦得要命。幸亏我师父唐僧从东土大唐去西天取经，观音菩萨让他救我出来。现在我跟师父当徒弟，以前叫悟空，现在大家都叫我孙行者。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">国王闻得这般名重，慌得下了龙床，走将来，以御手挽定长老道：“驸马，也是朕之天缘，得遇你这仙姻仙眷。”三藏满口谢恩，请国王登位。复问：“那位是第二高徒？”八戒掬嘴扬威道：</div>
+            <div class="text-block simplified-text">国王听说他的名声这么大，吓得赶紧从龙椅上下来，走过去用手拉住长老说：“驸马啊，这真是老天安排的缘分，让我能遇到你这样神仙般的女婿。”唐僧连声道谢，请国王回到座位上。国王又问：“哪位是你的二徒弟？”八戒撅着嘴，神气活现地说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">“老猪先世为人，贪欢爱懒。一生混沌，乱性迷心。未识天高地厚，难明海阔山遥。正在幽闲之际，忽然遇一真人。半句话，解开业网；两三言，劈破灾门。当时省悟，立地投师，谨修二八之工夫，敬炼三三之前后。行满飞升，得超天府。荷蒙玉帝厚恩，官赐天蓬元帅，管押河兵，逍遥汉阙。只因蟠桃酒醉，戏弄嫦娥，谪官衔，遭贬临凡；错投胎，托生猪像。住福陵山，造恶无边。遇观音，指明善道。皈依佛教，保护唐僧。径往西天，拜求妙典。法讳悟能，称为八戒。”国王听言，胆战心惊，不敢观觑。这呆子越弄精神，摇着头，掬着嘴，撑起耳朵“呵呵”大笑。三藏又怕惊驾，即叱道：“八戒收敛！”方才叉手拱立，假扭斯文。又问：“第三位高徒，因甚皈依？”沙和尚合掌道：</div>
+            <div class="text-block simplified-text">我来用最简单直白的白话重新说一遍：
+
+"我老猪上辈子是人，又贪玩又懒惰。一辈子糊里糊涂，脑子不清醒。不知道天有多高地有多厚，也不懂世界有多大。正闲着没事干的时候，突然遇到一位神仙。他几句话就让我想通了，帮我摆脱了烦恼。我立刻醒悟过来，马上拜师学艺。认真修炼了很久，终于功德圆满上了天。玉皇大帝对我很好，封我当天蓬元帅，管着天河的水兵，在天上过得挺自在。后来因为在蟠桃会上喝醉酒调戏嫦娥，被撤了官职，罚到人间投胎。结果投错了胎，变成了猪的样子。住在福陵山时做了不少坏事。后来遇到观音菩萨，她指点我改邪归正。我就跟着唐僧去西天取经。我的法名叫悟能，大家都叫我八戒。"
+
+国王听了吓得直哆嗦，都不敢正眼看他。这猪八戒反倒来劲了，摇头晃脑、撅着嘴、竖着耳朵"哈哈哈"大笑。唐僧怕吓着国王，赶紧喝止："八戒规矩点！"八戒这才装模作样地站好。
+
+国王又问："你第三个徒弟为什么出家？"沙和尚双手合十回答说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">“老沙原系凡夫，因怕轮回访道。云游海角，浪荡天涯。常得衣钵随身，每炼心神在舍。因此虔诚，得逢仙侣。养就孩儿，配缘姹女。工满三千，合和四相。超天界，拜玄穹，官授卷帘大将，侍御凤辇龙车。也为蟠桃会上，失手打破玻璃盏，贬在流沙河，改头换面，造孽伤生。幸喜菩萨远游东土，劝我皈依，等候唐朝佛子，往西天求经果正。从立自新，复修大觉。指河为姓，法讳悟净，称名沙僧。”</div>
+            <div class="text-block simplified-text">沙僧原本是个普通人，因为害怕生死轮回，就到处去寻仙访道。他走遍天下，随身带着行李，经常静心修炼。因为他诚心，终于遇到神仙指点。后来他修炼成功，娶了仙女，功德圆满，升上天庭当了卷帘大将，专门给玉帝驾车。可惜在蟠桃会上，他不小心打碎了玻璃杯，被罚到流沙河，变成妖怪害人。幸好观音菩萨路过，劝他改邪归正，等一个从唐朝去西天取经的和尚。后来他重新做人，专心修行，用流沙河的“沙”当姓，法号叫悟净，大家就叫他沙僧。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">国王见说，多惊多喜。喜的是女儿招了活佛，惊的是三个实乃妖神。正在惊喜之间，忽有正台阴阳官奏道：“婚期已定本年本月十二日。壬子辰良，周堂通利，宜配婚姻。”国王道：“今日是何日辰？”阴阳官奏：“今日初八，乃戊申之日，猿猴献果，正宜进贤纳事。”国王大喜，即着当驾官打扫御花园馆阁楼亭，且请驸马同三位高徒安歇，待后安排合卺佳筵，着公主匹配。众等钦遵，国王退朝，多官皆散不题。</div>
+            <div class="text-block simplified-text">国王听了又惊又喜。高兴的是女儿嫁了个活佛，害怕的是那三个其实是妖怪。正纠结时，负责算日子的官员报告说："婚礼定在这个月十二号，那天时辰吉利，适合结婚。"国王问："今天初几？"官员回答："今天初八，是个好日子，适合办喜事。"国王很高兴，马上命令手下打扫御花园的楼阁，安排驸马和他三个徒弟住下，准备婚礼酒席，让公主成亲。大家领命后，国王退朝，官员们也都散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说三藏师徒们都到御花园，天色渐晚，摆了素膳。八戒喜道：“这一日也该吃饭了。”管办人即将素米饭、面饭等物，整担挑来。那八戒吃了又添，添了又吃，直吃得撑肠拄腹，方才住手。少顷，又点上灯，设铺盖，各自归寝。长老见左右无人，却恨责行者，怒声叫道：“悟空!你这猢狲，番番害我!我说只去倒换关文，莫向彩楼前去，你怎么直要引我去看看?如今看得好么!却惹出这般事来，怎生是好？”行者陪笑道：“师父说，‘先母也是抛打绣球，遇旧缘，成其夫妇’。似有慕古之意，老孙才引你去。又想着那个给孤布金寺长老之言，就此检视真假。适见那国王之面，略有些晦暗之色，但只未见公主何如耳。”</div>
+            <div class="text-block simplified-text">话说唐僧师徒几个到了御花园，天快黑了，有人准备了素斋。猪八戒高兴地说："这一天总算能吃上饭了。"管事的立刻挑来好几担素米饭、面食什么的。猪八戒吃了又加，加了又吃，直到撑得肚子滚圆才停下。过了一会儿，点上灯，铺好床，大家各自睡觉。唐僧见旁边没人，就生气地骂孙悟空："悟空！你这猴子总害我！我说了只去换通关文书，别去彩楼那边，你非要带我去看。现在好了吧？惹出这么大麻烦，这可怎么办？"孙悟空陪着笑脸说："师父您说过'我母亲当年也是抛绣球遇到缘分，才成就了姻缘'。我看您好像对这事挺感兴趣，才带您去看看。再说也想验证一下布金寺老和尚说的话。刚才看那国王脸色有点不对劲，就是还没见到公主什么样。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">长老道：“你见公主便怎的？”行者道：“老孙的火眼金睛，但见面，就认得真假善恶，富贵贫穷，却好施为，辨明邪正。”沙僧与八戒笑道：“哥哥近日又学得会相面了。”行者道：“相面之士，当我孙子罢了。”三藏喝道：“且休调嘴!只是他如今定要招我，果何以处之？”行者道：“且到十二日会喜之时，必定那公主出来参拜父母，等老孙在旁观看。若还是个真女人，你就做了驸马，享用国内之荣华也罢。”三藏闻言，越生嗔怒，骂道：“好猢狲!你还害我哩!却是悟能说的，我们十节儿已上了九节七八分了，你还把热舌头铎我!快早夹着，你休开那臭口!再若无礼，我就念起咒来，教你了当不得！”行者听说念咒，慌得跪在面前道：“莫念，莫念!若是真女人，待拜堂时，我们一齐大闹皇宫，领你去也。”师徒说话，不觉早已入更。正是：</div>
+            <div class="text-block simplified-text">长老问："你见到公主能怎么样？"  
+孙悟空说："我这火眼金睛，只要看一眼，就能分出真假好坏、富贵贫贱，正好能帮忙辨明正邪。"  
+沙僧和猪八戒笑他："大哥最近还学会看相了？"  
+孙悟空不屑："那些看相的，给我当孙子都不配！"  
+
+唐僧喝止："别耍嘴皮子了！现在人家非要招我做驸马，到底怎么办？"  
+孙悟空出主意："等到十二日办喜事那天，公主肯定要出来拜见父母。我在旁边仔细看看，要是真公主，你就当驸马享福也行。"  
+
+唐僧一听更火了，骂道："死猴子！你存心害我是吧？悟能说得对，咱们取经都快完成了，你还拿这话烫我嘴！赶紧闭嘴，少放臭屁！再胡说我就念紧箍咒！"  
+
+孙悟空一听说要念咒，吓得赶紧跪下："别念别念！要是真公主，等拜堂时我们直接大闹皇宫，带你杀出去！"  
+师徒几人说着话，不知不觉天都黑透了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">沉沉宫漏，荫荫花香。绣户垂珠箔，闲庭绝火光。秋千索冷空留影，羌笛声残静四方。绕屋有花笼月灿，隔空无树显星芒。杜鹃啼歇，蝴蝶梦长。银汉横天宇，白云归故乡。正是离人情切处，风摇嫩柳更凄凉。八戒道：“师父，夜深了，有事明早再议。且睡，且睡！”师徒们果然安歇。</div>
+            <div class="text-block simplified-text">夜深了，皇宫里更漏声低沉，花香浓郁。华丽的门窗挂着珠帘，安静的院子里没有灯光。秋千的绳索冷冰冰的，只剩影子，羌笛声渐渐消失，四周一片寂静。屋外鲜花围绕，月光皎洁，但远处没有树木，星光显得格外明亮。杜鹃不再啼叫，蝴蝶还在梦中。银河横贯天空，白云飘向远方。这正是离别之人最伤感的时候，微风吹动嫩柳，更添凄凉。八戒说：“师父，太晚了，有事明天再说吧。快睡吧，快睡吧！”于是师徒几人安心睡下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">一宵夜景已题，早又金鸡唱晓。五更三点，国王即登殿设朝。但见：宫殿开轩紫气高，风吹御乐透青霄。云移豹尾旌旗动，日射螭头玉佩摇。香雾细添宫柳绿，露珠微润苑花娇。山呼舞蹈千官列，海晏河清一统朝。众文武百官朝罢，又宣：“光禄寺安排十二日会喜佳筵。今日且整春，请驸马在御花园中款玩。”吩咐仪制司领三位贤亲去会同馆少坐，着光禄寺安排三席素宴去彼奉陪。两处俱着教坊司奏乐，伏侍赏春景消迟日也。八戒闻得，应声道：“陛下，我师徒自相会，更无一刻相离。今日既在御花园饮宴，带我们去耍两日，好教师父替你家做驸马；不然，这个买卖生意弄不成。”那国王见他丑陋，说话粗俗，又见他扭头捏颈，掬嘴巴，摇耳朵，即像有些风气，犹恐搅破亲事，只得依从；便教：“在永镇华夷阁里安排二席，我与驸马同坐。留春亭上，安排三席，请三位别坐。恐他师徒们坐次不便。”那呆子才朝上唱个喏，叫声多谢。各各而退。又传旨教内宫官排宴，着三宫六院后妃与公主上头，就为添妆子，以待十二日佳配。</div>
+            <div class="text-block simplified-text">天刚亮，鸡就叫了。五更三点（凌晨四点左右），国王就上朝了。朝堂上场面很气派：宫殿大门敞开，紫气升腾，风吹着皇家音乐飘向天空。旗子上的豹尾图案随风摆动，阳光照在官员玉佩上闪闪发亮。宫里的柳树在香雾中显得更绿，花园里的花朵带着露珠格外娇艳。百官行礼高呼万岁，整个朝廷一派太平景象。
+
+下朝后，国王下令："光禄寺准备十二日的喜宴。今天先安排春游，请驸马到御花园游玩。"又让礼仪部门带三位客人去宾馆休息，并安排三桌素宴招待。两边都让乐队奏乐，让大家好好欣赏春景打发时间。
+
+猪八戒一听就喊："陛下！我们师徒从不分开。既然今天在御花园设宴，就带我们一起去玩两天嘛，这样我师父才能安心给你当驸马啊！不然这门亲事可成不了。"国王看他长得丑、说话粗鲁，还扭脖子、撅嘴、晃耳朵，像有毛病似的，但怕他搅黄婚事只好答应。就说："在华夷阁摆两桌，我和驸马坐。留春亭摆三桌，请三位客人坐。免得他们师徒坐一起不方便。"这呆子这才行礼道谢，大家各自退下。
+
+国王又下令让后宫准备宴席，叫嫔妃们给公主梳妆打扮，为十二日的婚礼做准备。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">将有巳时前后，那国王排驾，请唐僧都到御花园内观看。好去处：</div>
+            <div class="text-block simplified-text">快到上午九点的时候，国王带着随从，邀请唐僧他们一起去皇宫的花园里玩。那地方可漂亮了：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">径铺彩石，槛凿雕栏：径铺彩石，径边石畔长奇葩；槛凿雕栏，槛外栏中生异卉。夭桃迷翡翠，嫩柳闪黄鹂。步觉幽香来袖满，行沾清味上衣多。凤台龙沼，竹阁松轩。凤台之上，吹箫引凤来仪；龙沼之间，养鱼化龙而去。竹阁有诗，费尽推敲裁白雪；松轩文集，考成珠玉注青编。假山拳石翠，曲水碧波深。牡丹亭，蔷薇架，迭锦铺绒；茉藜槛，海棠畦，堆霞砌玉。芍药异香，蜀葵奇艳。白梨红杏斗芳菲，紫蕙金萱争烂熳。丽春花、木笔花、杜鹃花，夭夭灼灼；含笑花、凤仙花、玉簪花，战战巍巍。一处处红透胭脂润，一丛丛芳浓锦绣围。更喜东风回暖日，满园娇媚逞光辉。</div>
+            <div class="text-block simplified-text">这里有一条铺着彩色石子的小路，栏杆上雕刻着精美的花纹。路边石缝里长着稀奇的花草，栏杆外开着罕见的花朵。艳丽的桃花像翡翠一样迷人，嫩绿的柳枝间有黄鹂鸟飞来飞去。走在路上，花香沾满了衣袖，清新的气息扑面而来。
+
+这里有凤凰台、龙池、竹楼和松木亭子。凤凰台上，有人吹箫引来凤凰；龙池里养着鱼，传说能变成龙飞走。竹楼里挂着诗句，都是反复推敲写出的好作品；松木亭子里放着文集，里面的文章像珍珠美玉一样珍贵。假山上的石头翠绿，弯曲的小溪水深碧绿。
+
+园子里有牡丹亭、蔷薇架，像铺着彩色的绒毯；茉莉花栏、海棠花圃，像堆着彩霞和美玉。芍药香气特别，蜀葵颜色鲜艳。白梨和红杏争着开花，紫蕙和金萱比谁更灿烂。还有丽春花、木笔花、杜鹃花，开得红红火火；含笑花、凤仙花、玉簪花，长得娇娇嫩嫩。到处都是一片红艳艳，一丛丛花开得像锦绣一样。最让人高兴的是春风吹来，阳光温暖，整个园子里的花草都显得特别美丽动人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">一行君王几位，观之良久。早有仪制司官邀请行者三人入留春亭。国王携唐僧上华夷阁，各自饮宴。那歌舞吹弹，铺张陈设，真是：峥嵘阊阖曙光生，凤阁龙楼瑞霭横。春色细铺花草绣，天光遥射锦袍明。笙歌缭绕如仙宴，杯飞传玉液清。君悦臣欢同玩赏，华夷永镇世康宁。</div>
+            <div class="text-block simplified-text">国王带着几位大臣看了他们好一会儿。很快，礼仪官就来请孙悟空他们三个到留春亭去。国王和唐僧一起上了华夷阁，大家开始吃饭喝酒。阁楼里歌舞表演热闹得很，场面布置得特别豪华：高大的宫殿在晨光中显得格外气派，龙凤装饰的楼阁上飘着吉祥的云彩。春天景色像绣花一样精致，阳光照得锦缎衣服闪闪发亮。音乐声绕着梁转，像神仙的宴会，酒杯传来传去，里头都是好酒。国王高兴，大臣们也开心，大家一起玩乐，祝愿国家永远太平昌盛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">此时长老见那国王敬重，无计可奈，只得勉强随喜，诚是外喜而内忧也。坐间见壁上挂着四面金屏，屏上画着春夏秋冬四景，皆有题咏，皆是翰林名士之诗：</div>
+            <div class="text-block simplified-text">这时候，长老看到国王对他这么客气尊重，实在没办法推辞，只好硬着头皮应付。表面上看起来高兴，其实心里愁得很。坐着的时候，他注意到墙上挂着四面金色的屏风，每面屏风上分别画着春、夏、秋、冬四季的景色，还配有题诗，都是翰林院里那些有名的大才子写的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">春景诗曰：周天一气转洪钧，大地熙熙万象新。桃李争妍花烂熳，燕来画栋迭香尘。</div>
+            <div class="text-block simplified-text">春天来了，天气转暖，大自然一片生机勃勃的新景象。桃花李花开得正艳，燕子飞回屋檐下，到处都飘着花香。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">夏景诗曰：熏风拂拂思迟迟，宫院榴葵映日辉。玉笛音调惊午梦，芰荷香散到庭帏。</div>
+            <div class="text-block simplified-text">大热天的诗里说：暖风慢慢吹，让人懒洋洋的，皇宫院子里的石榴花和向日葵在太阳底下亮堂堂的。突然一阵笛声把午睡的人吵醒了，这时候池塘里的荷花香味也飘到了房间门帘这儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">秋景诗曰：金井梧桐一叶黄，珠帘不卷夜来霜。燕知社日辞巢去，雁折芦花过别乡。</div>
+            <div class="text-block simplified-text">秋天来了：井边的梧桐树叶变黄了，晚上不卷帘子都能感觉到霜气。燕子知道该搬家了就飞走了，大雁叼着芦苇飞向南方过冬。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">冬景诗曰：天雨飞云暗淡寒，朔风吹雪积千山。深宫自有红炉暖，报道梅开玉满栏。</div>
+            <div class="text-block simplified-text">冬天景色诗：
+
+天上飘着乌云，冷飕飕的，
+北风呼呼吹，大雪盖满山。
+皇宫里头有暖烘烘的火炉，
+这时候有人来报：梅花开了，雪白的梅花把栏杆都盖满了。
+
+（说明：把古诗翻译成大白话，保留了下雪天冷、皇宫取暖、梅花盛开这三个核心画面，用"冷飕飕""暖烘烘"这样的口语词，把"玉满栏"解释成"雪白的梅花盖满栏杆"，一看就懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">那国王见唐僧恣意看诗，便道：“驸马喜玩诗中之味，必定善于吟哦。如不吝珠玉，请依韵各和一首如何？”长老是个对景忘情，明心见性之意；见国王钦重，命和前韵，他不觉忽谈一句道：“日暖冰消大地钧。”国王大喜，即召侍卫官：“取文房四宝，请驸马和完录下，俟朕缓缓味之。”长老欣然不辞，举笔而和：</div>
+            <div class="text-block simplified-text">国王看唐僧一直在看诗，就说：“驸马这么喜欢琢磨诗里的意思，肯定很会写诗。不如你也照着这个格式，每首都和一首怎么样？”唐僧本来看到美景就忘了其他，心里很通透；见国王这么看重他，让他跟着写诗，他随口就念出一句：“太阳暖和了，冰雪融化，大地一片生机。”国王听了特别高兴，马上叫侍卫：“拿纸笔来，请驸马把诗写完，我要慢慢欣赏。”唐僧痛快地答应了，拿起笔就开始写。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">和春景诗曰：日暖冰消大地钧，御园花卉又更新。和风膏雨民沾泽，海晏河清绝俗尘。</div>
+            <div class="text-block simplified-text">春天来了，太阳暖和了，冰雪融化，大地复苏。皇家花园里的花花草草又长出了新芽。温和的风、滋润的雨让老百姓受益，天下太平，没有乱七八糟的烦心事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">和夏景诗曰：斗指南方白昼迟，槐云榴火斗光辉。黄鹂紫燕啼宫柳，巧转双声入绛帏。</div>
+            <div class="text-block simplified-text">夏天的诗这样写：  
+
+太阳到了南边，白天变得更长，槐树荫和石榴花争着比谁更好看。黄鹂和紫燕在宫柳上叫着，声音婉转动听，一直传到红色的帐子里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">和秋景诗曰：香飘橘绿与橙黄，松柏青青喜降霜。篱菊半开攒锦绣，笙歌韵彻水云乡。</div>
+            <div class="text-block simplified-text">秋天景色诗写道：  
+橘子绿、橙子黄，香味飘散。松树柏树依旧青翠，霜降下来反而显得精神。篱笆边的菊花半开着，像堆起来的锦绣一样好看。远处传来音乐声，一直飘到水边和云间的小村庄里。  
+
+（说明：用颜色和气味直白描述秋景；"喜降霜"转化为拟人化的"显得精神"；"攒锦绣"译为"像堆起来的锦绣"；"笙歌韵彻"拆解为"音乐声飘到"，保留水云乡的意境但用"小村庄"更易懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">和冬景诗曰：瑞雪初晴气味寒，奇峰巧石玉团山。炉烧兽炭煨酥酪，袖手高歌倚翠栏。国王见和大喜。称唱道：“好个‘袖手高歌倚翠栏’！”遂命教坊司以新诗奏乐，尽日而散。</div>
+            <div class="text-block simplified-text">冬天景色诗是这样写的：刚下完雪天气放晴，空气还很冷，山峰和石头被雪盖住，像白玉堆成的小山。人们烤着火炉吃热乎乎的奶制品，把手揣在袖子里，靠着栏杆高兴地唱歌。国王听了这首诗特别开心，连声夸赞："好一句‘揣着手靠着栏杆唱歌’！"马上让宫廷乐队把这首诗编成曲子演奏，大家玩了一整天就散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">行者三人在留春亭亦尽受用，各饮了几杯，也都有些酣意。正欲去寻长老，只见长老已同国王在一阁。八戒呆性发作，应声叫道：“好快活，好自在!今日也受用这一下了!却该趁饱儿睡觉去也！”沙僧笑道：“二哥忒没修养。这气饱饫，如何睡觉？”八戒道：“你那里知，俗语云‘吃了饭儿不挺尸，肚里没板脂’哩！”</div>
+            <div class="text-block simplified-text">孙悟空他们三人在留春亭也玩得很开心，各自喝了几杯酒，都有点微醺。正想去找师父，就看见师父已经和国王在一个楼阁里了。猪八戒老毛病又犯了，大声嚷嚷："真爽快！真自在！今天总算享受了一回！现在吃饱喝足该去睡大觉啦！"沙和尚笑着说："二哥你也太没出息了。刚吃饱撑着，怎么睡得着？"猪八戒说："你懂什么，老话说'吃饱饭不躺尸，肚里没油水'嘛！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">唐僧与国王相别，只谨言，只谨言。既至亭内，嗔责他三人道：“这夯货，越发村了!这是甚么去处，只管大呼小叫!倘或恼着国王，却不被他伤害性命？”八戒道：“没事，没事!我们与他亲家礼道的，他便不好生怪。常言道：‘打不断的亲，骂不断的邻。’大家耍子，怕他怎的？”长老叱道，教：“拿过呆子来，打他二十禅杖！”行者果一把揪翻，长老举杖就打。呆子喊叫道：“驸马爷爷!饶罪!饶罪！”旁有陪宴官劝住。呆子爬将起来，突突嚷嚷的道：“好贵人，好驸马，亲还未成，就行起王法来了！”行者侮着他嘴道：“莫胡说，莫胡说，快早睡去！”他们又在留春亭住了一宿。到明早，依旧宴乐。</div>
+            <div class="text-block simplified-text">唐僧和国王告别时，一直说"小心说话，小心说话"。回到亭子里后，他生气地骂三个徒弟："你们这群蠢货，越来越没规矩了！这是什么地方，还敢大呼小叫？要是惹恼了国王，他不杀了我们才怪！"  
+
+八戒满不在乎地说："没事儿，没事儿！咱们跟他客客气气的，他不会真生气。老话说得好：‘亲戚打不断，邻居骂不散。’一起玩玩而已，怕他干啥？"  
+
+唐僧更火了，喝道："把这呆子抓过来，打他二十禅杖！"孙悟空一把按住八戒，唐僧举起禅杖就要打。八戒赶紧求饶："驸马爷爷饶命啊！饶命啊！"旁边陪酒的官员连忙劝住。  
+
+八戒爬起来，嘟嘟囔囔地说："好个驸马爷，亲事还没成呢，就摆起国王的架子来了！"孙悟空捂住他的嘴说："别胡说八道，赶紧睡觉去！"  
+
+当晚他们又在留春亭住了一夜。第二天早上，照样吃喝玩乐。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">不觉乐了三四日，正值十二日佳辰。有光禄寺三部各官回奏道：“臣等自八日奉旨，驸马府已修完，专等妆奁铺设。合卺宴亦已完备，荤素共五百余席。”国王心喜，正欲请驸马赴席，忽有内宫官对御前启奏道：“万岁，正宫娘娘有请。”国王遂退入内宫，只见那三宫皇后，六院嫔妃，引领着公主，都在昭阳宫谈笑。真个是花团锦簇!那一片富丽妖娆，真胜似天堂月殿，不亚于仙府瑶宫。有喜会佳姻新词四首为证。</div>
+            <div class="text-block simplified-text">不知不觉高兴地过了三四天，正好赶上十二号这个好日子。管宴席的光禄寺三个部门的官员来报告说："我们从八号接到命令后，驸马府已经装修好了，就等着布置嫁妆。结婚酒席也准备好了，荤菜素菜加起来有五百多桌。"国王听了很高兴，正准备叫驸马来吃饭，突然有个太监过来报告："皇上，皇后娘娘请您过去。"国王就回到后宫，看见皇后、妃子们带着公主，都在昭阳宫里有说有笑。那场面真是热闹极了！整个宫殿装饰得特别豪华漂亮，比天上的月宫还好看，跟神仙住的地方差不多。为了证明这场喜事有多好，还专门写了四首新词来记录。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">喜词云：</div>
+            <div class="text-block simplified-text">（根据您提供的说明，我需要将"喜词云"这段文字转换成通俗易懂的白话文。但发现您只提供了"喜词云："这个开头，没有给出实际需要转换的正文内容。
+
+能否请您补充需要转换的具体文本内容？例如：
+
+"喜词云：红鸾星动，良缘天定，琴瑟和鸣于御沟"
+
+这样我才能根据原文进行准确的白话转换。否则仅凭"喜词云："这个开头，无法完成您要求的转换工作。
+
+期待您补充完整文本后，我会立即为您进行专业的白话文转换。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">喜，喜，喜!欣然乐矣!结婚姻，恩爱美。巧样宫妆，嫦娥怎比。龙钗与凤，艳艳飞金缕。樱唇皓齿朱颜，袅娜如花轻体。锦重重，五彩丛中；香拂拂，千金队里。</div>
+            <div class="text-block simplified-text">高兴，真高兴！开心得不得了！结了婚，夫妻恩爱甜蜜。新娘打扮得漂亮极了，比嫦娥还美。头上戴着龙凤金钗，金丝闪闪发亮。红唇白齿，脸蛋漂亮，身材像花一样轻盈好看。穿着华丽的衣服，站在一群打扮富贵的人中间，身上香气扑鼻。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">会词云：</div>
+            <div class="text-block simplified-text">原文只有一个词"会词云"，看起来像是一个标题或提示语。根据字面意思，最直白的解释就是：
+
+"这个词的意思是：关于'词云'的会议/内容"  
+或  
+"这里要讨论的是'词云'相关的话题"
+
+（注：由于原文信息量极少，直译后仍需结合上下文理解。如需更准确转换，建议提供完整原文内容）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">会，会，会!妖娆娇媚。赛毛嫱，欺楚妹。倾国倾城，比花比玉。妆饰更鲜妍，钗环多艳丽。兰心蕙性清高，粉脸冰肌荣贵。黛眉一线远山微，窈窕嫣攒锦队。</div>
+            <div class="text-block simplified-text">行行行！这姑娘真是美得不得了。比古代美女毛嫱还漂亮，连楚国的美人都比不上她。她长得太美了，简直能让整个国家的人都为她着迷。脸蛋像花一样好看，皮肤像玉一样光滑。打扮得特别精致，戴的首饰也都闪闪发亮。她不仅长得美，性格还特别高雅。皮肤白嫩嫩的，一看就是富贵人家的小姐。眉毛画得细细的，像远山一样好看。身材苗条又优雅，站在人群里特别显眼。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">佳词云：</div>
+            <div class="text-block simplified-text">好的，原文"佳词云："可以这样改写：
+
+"好词好句说：" 
+
+或者更口语化：
+"有句话说得好：" 
+
+这样既保留了原文引用优美词句的意思，又用最直白简单的现代白话表达出来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">佳，佳，佳!玉女仙娃。深可爱，实堪夸。异香馥郁，脂粉交加。天台福地远，怎似国王家。笑语纷然娇态，笙歌缭绕喧哗。花堆锦砌千般美，看遍人间怎若他。</div>
+            <div class="text-block simplified-text">好，好，真是好！仙女般的美人儿。真招人喜欢，实在让人夸。身上香气扑鼻，胭脂水粉衬得她更美。都说天台是神仙住的好地方，可哪比得上国王家？她娇声说笑，姿态动人，音乐声热闹非凡。这里鲜花似锦，处处精美，看遍天下也找不出比这儿更好的地方了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">姻词云：</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+歌词里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">姻，姻，姻!兰麝香喷。仙子阵，美人群。嫔妃换彩，公主妆新。云鬓堆鸦髻，霓裳压凤裙。一派仙音嘹，两行朱紫缤纷。当年曾结乘鸾信，今朝幸喜会佳姻。</div>
+            <div class="text-block simplified-text">看啊，这婚礼多热闹！香喷喷的胭脂水粉味儿，仙女似的新娘被伴娘们围着。妃子们换上鲜艳衣裳，公主打扮得格外漂亮。乌黑的发髻像云朵堆起来，彩裙比凤凰羽毛还华丽。仙乐奏得响亮，两排穿红着紫的人站得整整齐齐。以前就注定要结成夫妻，今天终于高高兴兴办喜事啦！
+
+（说明：译文通过以下方式实现要求：
+1. 用"婚礼"直接点明主题，保留所有核心元素：香气、装扮、音乐、喜庆氛围
+2. "香喷喷""围着""打扮""热闹"等全是口语词
+3. 将"云鬓堆鸦髻"转化为"乌黑的发髻像云朵堆起来"等具体比喻
+4. "仙女似的""比凤凰羽毛还华丽"等通俗比喻
+5. 最后两句直接翻译婚姻缘分和喜庆场景
+6. 原文所有意象：香气/人群/服饰/音乐/姻缘均完整保留）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">却说国王驾到，那后妃引着公主，并彩女、宫娥都来迎接。国王喜孜孜，进了昭阳宫坐下。后妃等朝拜毕，国王道：“公主贤女，自初八日结彩抛球，幸遇圣僧，想是心愿已足。各衙门官，又能体朕心，各项事俱已完备。今日正是佳期，可早赴合卺之宴，不要错过时辰。”</div>
+            <div class="text-block simplified-text">国王来了，王后带着公主和宫女们都出来迎接。国王高高兴兴地走进昭阳宫坐下。王后她们行完礼后，国王说："公主啊，从初八那天你抛绣球选驸马，正好选中了圣僧，看来你的心愿已经实现了。各位官员也明白我的心意，该准备的都准备好了。今天就是好日子，你们早点去喝喜酒吧，别耽误了吉时。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">那公主走近前，倒身下拜，奏道：“父王，乞赦小女万千之罪。有一言启奏：这几日闻得宫官传说，唐圣僧有三个徒弟，他生得十分丑恶，小女不敢见他，恐见时必生恐惧。万望父王将他发放出城方好，不然惊伤弱体，反为祸害也。”国王道：“孩儿不说，朕几乎忘了。果然生得有些丑恶。连日教他在御花园里留春亭管待。趁今日就上殿，打发他关文，教他出城，却好会宴。”公主叩头谢了恩。国王即出驾上殿，传旨：“请驸马共他三位。”</div>
+            <div class="text-block simplified-text">公主走过来跪下说："父王，请原谅女儿。有件事想跟您说：这几天我听宫里人说，唐僧的三个徒弟长得特别吓人。女儿不敢见他们，怕见了会害怕。求父王让他们赶紧出城吧，不然吓坏女儿就不好了。"国王说："你要不说，我差点忘了。那几个徒弟确实长得丑。这几天我让他们在御花园的留春亭住着。正好今天上朝，把通关文书给他们，让他们出城，这样还能赶上宴会。"公主磕头谢恩。国王就上朝去了，下令说："叫驸马和那三个人一起过来。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">原来那唐僧捏指头儿算日子，熬至十二日，天未明，就与他三人计较道：“今日却是十二了，这事如何区处？”行者道：“那国王我已识得他有些晦气，还未沾身，不为大害；但只不得公主见面，若得出来，老孙一觑，就知真假，方才动作。你只管放心。他如今一定来请，打发我等出城。你自应承莫怕。我闪闪身儿就来，紧紧随护你也。”</div>
+            <div class="text-block simplified-text">唐僧掰着手指头数日子，好不容易熬到第十二天。天还没亮，他就跟三个徒弟商量："今天已经是第十二天了，这事儿该怎么办啊？"孙悟空说："那国王我早看出来他有点倒霉相，不过还没真出事，问题不大。就是见不到公主本人，要是她能露面，我老孙一眼就能看出真假，到时候再动手。师父你尽管放心。今天国王肯定会来请我们，送我们出城。你就答应他别害怕。我会隐身跟着你，随时保护你。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">师徒们正讲，果见当驾官同仪制司来请。行者笑道：“去来!去来!必定是与我们送行，好留师父会合。”八戒道：“送行必定有千百两黄金白银，我们也好买些人事回去。到我那丈人家，也再会亲耍子儿去耶。”沙僧道：“二哥箝着口，休乱说，只凭大哥主张。”</div>
+            <div class="text-block simplified-text">师徒几个正说着话，果然看见朝廷的官员带着礼仪司的人来请他们。孙悟空笑着说："走吧走吧！肯定是来给我们送行的，好让师父留下来跟国王见面。"猪八戒说："送行的话肯定得给好多金银财宝，咱们也能买点东西带回去。到时候去我老丈人家，还能再串个门热闹热闹。"沙和尚提醒道："二哥你别乱说话，听大哥的安排就行。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">遂此将行李、马匹，俱随那些官到于丹墀下。国王见了，教请行者三位近前道：“汝等将关文拿上来，朕当用宝花押交付汝等，外多备盘缠，送你三位早去灵山见佛。若取经回来，还有重谢。留驸马在此，勿得悬念。”行者称谢。遂教沙僧取出关文递上。国王看了，即用了印，押了花字，又取黄金十锭，白金二十锭，聊达亲礼。八戒原来财色心重，即去接了。行者朝上唱个喏道：“聒噪，聒噪！”便转身要走，慌得个三藏一毂辘爬起，扯住行者，咬响牙根道：“你们都不顾我就去了！”行者把手捏着三藏手掌，丢个眼色道：“你在这里宽怀欢会，我等取了经，回来看你。”那长老似信不信的，不肯放手。多官都看见，以为实是相别而去。早见国王又请驸马上殿，着多官送三位出城。长老只得放了手上殿。</div>
+            <div class="text-block simplified-text">于是他们带着行李和马匹，跟着那些官员来到大殿台阶下。国王见了，让孙悟空他们三个上前，说："你们把通关文书拿上来，我这就盖章签字交给你们。另外再给你们多准备些路费，送你们三个早点去灵山见佛祖。等取经回来，还有重谢。驸马就留在这儿，你们不用惦记。"孙悟空道了谢，让沙僧拿出通关文书递上去。国王看完，盖了印章签了字，又拿出十锭黄金、二十锭白银，算是给亲戚的见面礼。猪八戒一向贪财，马上接了过去。孙悟空朝上面拱了拱手说："打扰了，打扰了！"转身就要走。唐僧急得咕噜一下爬起来，拉住孙悟空，咬着牙说："你们就这么不管我走了？！"孙悟空捏捏唐僧的手，使了个眼色说："你在这儿好好享福，等我们取了经就回来接你。"唐僧半信半疑，还是不肯松手。大臣们都看见了，以为他们真的要分别。这时国王又请驸马上殿，让大臣们送他们三个出城。唐僧没办法，只好松手上殿去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">行者三人，同众出了朝门，各自相别。八戒道：“我们当真的走哩？”行者不言语，只管走至驿中。驿丞接入，看茶，摆饭。行者对八戒、沙僧道：“你两个只在此，切莫出头。但驿丞问甚么事情，且含糊答应，莫与我说话。我保师父去也。”</div>
+            <div class="text-block simplified-text">孙悟空、猪八戒、沙和尚三个人和其他人一起出了皇宫大门，大家各自分开。猪八戒问："咱们真要走啊？"孙悟空没吭声，直接走到驿站。驿站管事的人接待他们，端茶上饭。孙悟空对猪八戒和沙和尚说："你俩就待在这儿，千万别出去。要是管事的人问什么，就随便应付几句，别跟我说话。我去保护师父了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">好大圣，拔一根毫毛，吹口仙气，叫“变！”即变作本身模样，与八戒、沙僧同在驿内。真身却幌的跳在半空，变作一个蜜蜂儿，其实小巧。但见：</div>
+            <div class="text-block simplified-text">孙悟空真厉害！他拔下一根毫毛，吹了口仙气，喊了声"变！"，那根毫毛就变成了和他一模一样的分身，和猪八戒、沙僧一起待在驿站里。而他的真身呢？轻轻一跳就飞到了半空中，变成了一只小蜜蜂，特别小巧可爱。你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">翅黄口甜尾利，随风飘舞颠狂。最能摘蕊与偷香，度柳穿花摇荡。辛苦几番淘染，飞来飞去空忙。酿成浓美自何尝，只好留存名状。你看他轻轻的飞入朝中。远见那唐僧在国王左边绣墩上坐着，愁眉不展，心存焦燥。径飞至他毗卢帽上，悄悄的爬及耳边，叫道：“师父，我来了，切莫忧虑。”这句话，只有唐僧听见，那伙凡人，莫想知觉。唐僧听见，始觉心宽。不一时，宫官来请道：“万岁，合卺嘉筵已排设在鹊宫中。娘娘与公主，俱在宫伺候。专请万岁同贵人会亲也。”国王喜之不尽，即同驸马进宫而去。正是那：邪主爱花花作祸，禅心动念念生愁。</div>
+            <div class="text-block simplified-text">这段文字可以这样改写：
+
+这只小虫翅膀黄黄的，嘴巴甜甜的，尾巴尖尖的，随风飞来飞去，动作轻快。它最擅长采花蜜偷花香，在柳枝花丛中穿梭。忙忙碌碌采了半天蜜，飞来飞去白忙活。酿出香甜的蜜自己却尝不到，只留下个采蜜的名声。你看它轻轻飞进皇宫，远远看见唐僧坐在国王左边的绣墩上，皱着眉头，一脸愁容。小虫飞到唐僧的帽子上，悄悄爬到他耳边说："师父，我来了，别担心。"这话只有唐僧听得见，其他人都不知道。唐僧听了，心里才放松些。不一会儿，太监来报告："陛下，婚宴已经在喜鹊宫准备好了。王后和公主都在那儿等着呢，请陛下和驸马过去吧。"国王高兴极了，马上带着驸马去赴宴。这真是：昏君贪恋美色惹祸端，高僧动了凡心添忧愁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">毕竟不知唐僧在内宫怎生解脱，且听下回分解。</div>
+            <div class="text-block simplified-text">不知道唐僧在皇宫里怎么脱身，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
