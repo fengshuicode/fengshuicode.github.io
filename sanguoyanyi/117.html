@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百十七回 邓士载偷度阴平　诸葛瞻战死绵竹</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./116.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百十七回 邓士载偷度阴平　诸葛瞻战死绵竹</h1>
+        <a href="./118.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说辅国大将军董厥，闻魏兵十余路入境，乃引二万兵守住剑阁；当日望尘头大起，疑是魏兵，急引军把住关口。董厥自临军前视之，乃姜维、廖化、张翼也。厥大喜，接入关上，礼毕，哭诉后主黄皓之事。维曰：“公勿忧虑。若有维在，必不容魏来吞蜀也。且守剑阁，徐图退敌之计。”厥曰：“此关虽然可守，争奈成都无人；倘为敌人所袭，大势瓦解矣。”维曰：“成都山险地峻，非可易取，不必忧也。”正言间，忽报诸葛绪领兵杀至关下，维大怒，急引五千兵杀下关来，直撞入魏阵中，左冲右突，杀得诸葛绪大败而走，退数十里下寨，魏军死者无数。蜀兵抢了许多马匹器械，维收兵回关。</div>
+            <div class="text-block simplified-text">话说辅国大将军董厥，听说魏国派了十几路兵马打过来了，赶紧带着两万士兵去守剑阁。这天看到远处尘土飞扬，以为是魏军来了，马上带兵堵住关口。董厥亲自上前一看，原来是姜维、廖化、张翼他们。董厥高兴坏了，连忙把他们接进关里。见面行礼后，董厥哭着说起后主刘禅宠信黄皓那些破事。姜维安慰他说："老哥别担心，有我在，绝不会让魏国把蜀国吞了。咱们先守住剑阁，再慢慢想办法打退敌人。"董厥说："这关口是能守住，可问题是成都那边没人防守啊。万一被敌人偷袭，那就全完了。"姜维说："成都地势险要，没那么容易攻下来，别太担心。"正说着，突然有人报告说诸葛绪带兵杀到关下了。姜维气得要命，立刻带着五千士兵冲下关去，直接杀进魏军阵营，横冲直撞，把诸葛绪打得落花流水，逃了几十里才扎营。这一仗魏军死伤无数，蜀军抢了好多战马和武器。打完仗，姜维就收兵回关了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说钟会离剑阁二十里下寨，诸葛绪自来伏罪。会怒曰：“吾令汝守把阴平桥头，以断姜维归路，如何失了！今又不得吾令，擅自进兵，以致此败！”绪曰：“维诡计多端，诈取雍州；绪恐雍州有失，引兵去救，维乘机走脱；绪因赶至关下，不想又为所败。”会大怒，叱令斩之。监军卫瓘曰：“绪虽有罪，乃邓征西所督之人；不争将军杀之，恐伤和气。”会曰：“吾奉天子明诏、晋公钧命，特来伐蜀。便是邓艾有罪，亦当斩之！”众皆力劝。会乃将诸葛绪用槛车载赴洛阳，任晋公发落；随将绪所领之兵，收在部下调遣。</div>
+            <div class="text-block simplified-text">钟会在离剑阁二十里的地方扎营，诸葛绪主动来认错。钟会生气地说："我让你守住阴平桥头，切断姜维的退路，你怎么把桥丢了！现在又没我的命令，自己带兵出击，结果打了败仗！"诸葛绪解释："姜维太狡猾，假装攻打雍州；我怕雍州出事，带兵去救，结果被他趁机跑了；我追到关下，没想到又被他打败。"钟会火冒三丈，下令要杀他。监军卫瓘劝道："诸葛绪虽然有错，但他是邓艾的部下。将军要是杀了他，恐怕影响团结。"钟会说："我奉皇上和晋公（司马昭）的命令来打蜀国。就算是邓艾犯错，我也照杀不误！"大家拼命劝说，钟会这才把诸葛绪关进囚车押往洛阳，交给晋公处理；同时把诸葛绪带的兵收编到自己手下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">有人报与邓艾。艾大怒曰：“吾与汝官品一般，吾久镇边疆，于国多劳，汝安敢妄自尊大耶！”子邓忠劝曰：“小不忍则乱大谋，父亲若与他不睦，必误国家大事。望且容忍之。”艾从其言。然毕竟心中怀怒，乃引十数骑来见钟会。会闻艾至，便问左右：“艾引多少军来？”左右答曰：“只有十数骑。”会乃令帐上帐下列武士数百人。</div>
+            <div class="text-block simplified-text">有人告诉邓艾这件事。邓艾气坏了，说："我和你官职一样大，我长期驻守边疆，为国家立下不少功劳，你凭什么这么嚣张！"他儿子邓忠劝他："爸，小事忍不了会坏大事。您要是跟他闹僵了，肯定会影响国家大事。您还是先忍忍吧。"邓艾听了儿子的话。但他心里还是憋着火，就带了十几个骑兵去见钟会。钟会听说邓艾来了，问手下："他带了多少兵？"手下回答："就带了十几个人。"钟会马上叫人在大帐内外布置了几百个武士。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">艾下马入见。会接入帐礼毕。艾见军容甚肃，心中不安，乃以言挑之曰：“将军得了汉中，乃朝廷之大幸也，可定策早取剑阁。”会曰：“将军明见若何？”艾再三推称无能。会固问之。艾答曰：“以愚意度之，可引一军从阴平小路出汉中德阳亭，用奇兵径取成都，姜维必撤兵来救，将军乘虚就取剑阁，可获全功。”会大喜曰：“将军此计甚妙！可即引兵去。吾在此专候捷音！”二人饮酒相别。会回本帐与诸将曰：“人皆谓邓艾有能。今日观之，乃庸才耳！”众问其故。会曰：“阴平小路，皆高山峻岭，若蜀以百余人守其险要，断其归路，则邓艾之兵皆饿死矣。吾只以正道而行，何愁蜀地不破乎！”遂置云梯炮架，只打剑阁关。</div>
+            <div class="text-block simplified-text">邓艾下马进帐见钟会。两人行完见面礼后，邓艾看到军营纪律严明，心里有点发慌，就试探着说："将军拿下汉中真是朝廷的福气啊，咱们该早点想办法攻打剑阁。"钟会反问："将军有什么高见？"邓艾假装推辞说自己没本事。钟会坚持要他说，邓艾才说："要我说，可以派支队伍从阴平小路绕到德阳亭，出奇兵直接打成都。姜维肯定得撤兵回救，将军您趁虚而入拿下剑阁，就能大获全胜。"钟会假装高兴地说："这主意太妙了！你赶紧带兵去吧，我在这儿等你好消息！"俩人喝完酒就分开了。
+
+钟会回到自己营帐后对将领们说："大家都说邓艾有本事，我看他就是个草包！"手下问为什么，钟会解释："阴平那条小路全是高山险路，要是蜀国派百八十人守住关口，断了后路，邓艾的兵都得饿死。咱们就正面进攻，还怕打不下蜀地吗？"于是命令架起云梯和炮车，专心攻打剑阁关。
+
+（说明：译文完全保留原文所有情节和对话，将文言虚词"乃""之""其"等转化为口语词"就是""的""他"，把"军容甚肃"译为"纪律严明"，"以言挑之"译为"试探着说"，"定策"译为"想办法"，"奇兵"译为"出奇兵"，既保持原文军事谋略的紧张感，又让现代读者一目了然。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说邓艾出辕门上马，回顾从者曰：“钟会待吾若何？”从者曰：“观其辞色，甚不以将军之言为然，但以口强应而已。”艾笑曰：“彼料我不能取成都，我偏欲取之！”回到本寨，师纂、邓忠一班将士接问曰：“今日与钟镇西有何高论？”艾曰：“吾以实心告彼，彼以庸才视我。彼今得汉中，以为莫大之功；若非吾屯沓中绊住姜维，彼安能成功耶！吾今若取了成都，胜取汉中矣！”当夜下令，尽拔寨望阴平小路进兵，离剑阁七百里下寨，有人报钟会说：“邓艾要去取成都了。”会笑艾不智。</div>
+            <div class="text-block simplified-text">邓艾走出军营大门，骑上马后，回头问身边的随从："你们觉得钟会怎么看我？"随从回答："看他的态度和说话语气，根本不把将军您的话当回事，只是嘴上应付一下。"邓艾笑着说："他以为我打不下成都，我偏要打给他看！"
+
+回到自己军营后，手下将领师纂、邓忠等人围上来问："今天和钟会将军谈得怎么样？"邓艾说："我真心实意跟他商量，他却把我当庸才。他现在拿下汉中，就觉得立了大功；要不是我在沓中拖住姜维，他哪能成功！我现在要是拿下成都，可比拿下汉中厉害多了！"
+
+当天晚上，邓艾就下令全军出发，走阴平小路进军。他们在距离剑阁七百里的地方扎营。有人把这事报告给钟会，说："邓艾要去打成都了。"钟会听了直笑，觉得邓艾太蠢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">却说邓艾一面修密书遣使驰报司马昭，一面聚诸将于帐下问曰：“吾今乘虚去取成都，与汝等立功名于不朽，汝等肯从乎？”诸将应曰：“愿遵军令，万死不辞！”艾乃先令子邓忠引五千精兵，不穿衣甲，各执斧凿器具，凡遇峻危之处，凿山开路，搭造桥阁，以便军行。艾选兵三万，各带干粮绳索进发。约行百余里，选下三千兵，就彼扎寨；又行百余里，又选三千兵下寨。是年十月自阴平进兵，至于巅崖峡谷之中，凡二十余日，行七百余里，皆是无人之地。魏兵沿途下了数寨，只剩下二千人马。前至一岭，名摩天岭，马不堪行，艾步行上岭，正见邓忠与开路壮士尽皆哭泣。艾问其故。忠告曰：“此岭西皆是峻壁巅崖，不能开凿，虚废前劳，因此哭泣。”艾曰：“吾军到此，已行了七百余里，过此便是江油，岂可复退？”乃唤诸军曰：“不入虎穴，焉得虎子？吾与汝等来到此地，若得成功，富贵共之。”众皆应曰：“愿从将军之命。”艾令先将军器撺将下去。艾取毡自裹其身，先滚下去。副将有毡衫者裹身滚下，无毡衫者各用绳索束腰，攀木挂树，鱼贯而进。邓艾、邓忠，并二千军，及开山壮士，皆度了摩天岭。方才整顿衣甲器械而行，忽见道傍有一石碣，上刻：“丞相诸葛武侯题”。其文云：“二火初兴，有人越此。二士争衡，不久自死。”艾观讫大惊，慌忙对碣再拜曰：“武侯真神人也！艾不能以师事之，惜哉！”后人有诗曰：“阴平峻岭与天齐，玄鹤徘徊尚怯飞。邓艾裹毡从此下，谁知诸葛有先机。”</div>
+            <div class="text-block simplified-text">邓艾一边偷偷写信派人快马送给司马昭，一边召集手下将领开会说："现在咱们趁敌人没防备去攻打成都，带你们一起立大功、留名青史，你们干不干？"将领们齐声回答："坚决服从命令，拼死也要完成任务！"
+
+于是邓艾先派儿子邓忠带五千精锐士兵，轻装上阵只带斧头凿子，遇到难走的地方就开山修路、搭桥架梯。邓艾亲自带三万士兵，背着干粮和绳子出发。走一百多里就留三千人扎营，再走一百多里又留三千人。十月份从阴平出发，在深山老林里走了二十多天，七百多里路都是无人区。最后只剩下两千人来到摩天岭，连马都爬不上去。
+
+邓艾徒步上山，看见邓忠和工兵们都在哭。原来前面是悬崖峭壁没法开路。邓艾激励大家："咱们都走了七百里，翻过去就是江油城，绝不能后退！"他让士兵先把武器扔下山，自己裹着毛毯第一个滚下去。其他人有的裹毯子，有的拴绳子，一个接一个下山。
+
+刚整好装备继续前进，突然看见路边有块诸葛亮立的石碑，上面写着："等到'炎'字辈的人出现，会有人翻过这里。两个带'士'字的人争斗，很快都会丧命。"邓艾看完吓坏了，赶紧对着石碑磕头说："诸葛亮真是神仙啊！可惜我没能拜他为师。"后来有人写诗说："阴平山高得连仙鹤都飞不过，邓艾裹着毯子滚下山，哪知道诸葛亮早就算到了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说邓艾暗度阴平，引兵行时，又见一个大空寨。左右告曰：“闻武侯在日，曾拨一千兵守此险隘。今蜀主刘禅废之。”艾嗟呀不已，乃谓众人曰：“吾等有来路而无归路矣！前江油城中，粮食足备：汝等前进可活，后退即死，须并力攻之。”众皆应曰：“愿死战！”于是邓艾步行，引二千余人，星夜倍道来抢江油城。却说江油城守将马邈，闻东川已失，虽为准备，只是提防大路；又仗着姜维全师守住剑阁关，遂将军情不以为重。当日操练人马回家，与妻李氏拥炉饮酒。其妻问曰：“屡闻边情甚急，将军全无忧色，何也？”邈曰：“大事自有姜伯约掌握，干我甚事？”其妻曰：“虽然如此，将军所守城池，不为不重。”邈曰：“天子听信黄皓，溺于酒色，吾料祸不远矣。魏兵若到，降之为上，何必虑哉？”其妻大怒，唾邈面曰：“汝为男子，先怀不忠不义之心，枉受国家爵禄，吾有何面目与汝相见耶！”马邈羞惭无语。忽家人慌入报曰：“魏将邓艾不知从何而来，引二千余人，一拥而入城矣！”邈大惊，慌出纳降，拜伏于公堂之下，泣告曰：“某有心归降久矣。今愿招城中居民，及本部人马，尽降将军。”艾准其降。遂收江油军马于部下调遣，即用马邈为向导官。忽报马邈夫人自缢身死。艾问其故，邈以实告。艾感其贤，令厚礼葬之，亲往致祭。魏人闻者，无不嗟叹。后人有诗赞曰：“后主昏迷汉祚颠，天差邓艾取西川。可怜巴蜀多名将，不及江油李氏贤。”</div>
+            <div class="text-block simplified-text">邓艾偷偷带兵穿过阴平小路，路上又发现一个废弃的军营。手下报告说："听说以前诸葛亮在世时，曾派一千士兵把守这个险要关口。现在刘禅把这儿的守军撤了。"邓艾连连叹气，对手下说："咱们现在是只能前进不能后退了！前面江油城里粮食充足：只有攻下城池才有活路，后退就是死路一条，必须拼命进攻。"士兵们齐声喊："我们愿意死战！"
+
+于是邓艾亲自带队，领着两千多人连夜急行军去攻打江油城。再说江油守将马邈，听说东川已经失守，虽然做了些防备，但只注意大路防守；又想着姜维带着主力守在剑阁关，就没把军情当回事。这天他操练完士兵回家，正和妻子李氏围着火炉喝酒。妻子问："最近边境军情紧急，将军怎么一点都不着急？"马邈说："军国大事有姜维管着，关我什么事？"妻子说："话虽这么说，你守的城池也很重要啊。"马邈说："皇帝整天听信宦官黄皓，沉迷酒色，我看蜀国快完了。魏军要是打过来，直接投降最划算，有什么好担心的？"妻子气得朝他脸上吐口水："你个大男人，先想着不忠不义的事，白拿国家俸禄！我都没脸见你了！"马邈羞愧得说不出话。
+
+突然仆人慌张跑来报告："魏将邓艾不知从哪儿冒出来，带着两千多人杀进城了！"马邈吓坏了，赶紧跑出去投降，跪在邓艾面前哭着说："我早就想投降了。愿意带着全城百姓和手下士兵归顺将军。"邓艾接受投降，把江油的军队编入自己部队，还让马邈当向导官。这时有人报告说马邈夫人上吊自杀了。邓艾问原因，马邈如实相告。邓艾被马夫人的气节感动，下令厚葬她，还亲自去祭奠。魏军将士听说后都赞叹不已。后来有人写诗称赞："刘禅昏庸蜀国亡，天派邓艾取西川。可惜蜀国多名将，都比不上江油李夫人。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">邓艾取了江油，遂接阴平小路诸军，皆到江油取齐，径来攻涪城。部将田续曰：“我军涉险而来，甚是劳顿，且当休养数日，然后进兵。”艾大怒曰：“兵贵神速，汝敢乱我军心耶！”喝令左右推出斩之。众将苦告方免。艾自驱兵至涪城。城内官吏军民疑从天降，尽皆投降。</div>
+            <div class="text-block simplified-text">邓艾拿下江油后，把阴平小路的各路部队都集中到江油，直接去攻打涪城。手下将领田续说："咱们一路冒险过来，累得够呛，该休息几天再打。"邓艾一听就火了："打仗就是要快！你敢动摇军心？"当场叫人把田续推出去砍头。其他将领拼命求情才饶了他。邓艾亲自带兵杀到涪城，城里当官的和老百姓都吓傻了，以为天兵天将来了，全都投降了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">蜀人飞报入成都。后主闻知，慌召黄皓问之。皓奏曰：“此诈传耳。神人必不肯误陛下也。”后主又宣师婆问时，却不知何处去了。此时远近告急表文，一似雪片，往来使者，联络不绝。后主设朝计议，多官面面相觑，并无一言。郤正出班奏曰：“事已急矣！陛下可宣武侯之子商议退兵之策。”原来武侯之子诸葛瞻，字思远。其母黄氏，即黄承彦之女也。母貌甚陋，而有奇才：上通天文，下察地理；凡韬略遁甲诸书，无所不晓。武侯在南阳时，闻其贤，求以为室。武侯之学，夫人多所赞助焉。及武侯死后，夫人寻逝，临终遗教，惟以忠孝勉其子瞻。瞻自幼聪敏，尚后主女，为驸马都尉。后袭父武乡侯之爵。景耀四年，迁行军护卫将军。时为黄皓用事，故托病不出。当下后主从郤正之言，即时连发三诏，召瞻至殿下。后主泣诉曰：“邓艾兵已屯涪城，成都危矣。卿看先君之面，救朕之命！”瞻亦泣奏曰：“臣父子蒙先帝厚恩、陛下殊遇，虽肝脑涂地，不能补报。愿陛下尽发成都之兵，与臣领去决一死战。”后主即拨成都兵将七万与瞻。瞻辞了后主，整顿军马，聚集诸将问曰：“谁敢为先锋？”言未讫，一少年将出曰：“父亲既掌大权，儿愿为先锋。”众视之，乃瞻长子诸葛尚也。尚时年一十九岁。博览兵书。多习武艺。瞻大喜，遂命尚为先锋。是日，大军离了成都，来迎魏兵。</div>
+            <div class="text-block simplified-text">成都那边的人飞快地跑来报告坏消息。刘禅（后主）一听就慌了，赶紧叫来黄皓问怎么办。黄皓说："这肯定是假消息。神仙肯定不会骗您的。"刘禅又找那个神婆子问情况，结果发现人早就跑没影了。这时候各地告急的求救信像雪花一样飞来，送信的使者来回跑个不停。刘禅上朝和大臣们商量对策，结果这帮官员你瞅我我瞅你，没一个人吭声。这时候郤正站出来说："事情紧急啊！陛下快把诸葛亮的儿子叫来商量怎么打退敌人吧。"
+
+这个诸葛亮的儿子叫诸葛瞻，字思远。他妈妈黄氏是黄承彦的女儿，长得不好看但特别有本事：懂天文地理，兵书阵法样样精通。当年诸葛亮在南阳听说她厉害，就娶了她。诸葛亮那些学问，有不少是老婆帮忙的。诸葛亮死后不久，他老婆也去世了，临死前只嘱咐儿子要尽忠尽孝。诸葛瞻从小聪明，娶了刘禅的女儿当驸马，后来继承了父亲武乡侯的爵位。景耀四年当了行军护卫将军，因为看不惯黄皓专权，就假装生病不上朝。
+
+刘禅听了郤正的话，连发三道诏书把诸葛瞻叫来。刘禅哭着说："邓艾的军队都打到涪城了，成都快保不住了。看在你爹的面子上，救救我吧！"诸葛瞻也哭着说："我们父子受先帝和您的恩惠，就算粉身碎骨也报答不完。请您把成都的兵马都交给我，我带他们去拼死一战。"刘禅就给了他七万兵马。诸葛瞻告别刘禅后，召集将领们问："谁愿意当先锋？"话还没说完，一个年轻小将站出来说："父亲既然带兵，儿子愿意当先锋。"大家一看，是诸葛瞻的大儿子诸葛尚，当时才十九岁，读过很多兵书，武艺也好。诸葛瞻很高兴，就让他当了先锋。当天大军就离开成都去迎战魏军了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说邓艾得马邈献地理图一本，备写涪城至成都三百六十里山川道路，阔狭险峻，一一分明。艾看毕，大惊曰：“若只守涪城，倘被蜀人据住前山，何能成功耶？如迁延日久，姜维兵到，我军危矣。”速唤师纂并子邓忠，分付曰：“汝等可引一军，星夜径去绵竹，以拒蜀兵。吾随后便至。切不可怠缓。若纵他先据了险要，决斩汝首！”</div>
+            <div class="text-block simplified-text">邓艾拿到马邈献上的地图，上面清楚标明了从涪城到成都三百六十里的山路地形，哪儿宽哪儿窄、哪儿好走哪儿难走都画得明明白白。邓艾看完吓了一跳，说："要是我们光守着涪城，万一蜀军抢先占了前面的山头，这仗还怎么打？要是拖久了等姜维带兵赶来，咱们就完蛋了！"他赶紧叫来师纂和自己儿子邓忠，命令道："你们马上带兵连夜赶去绵竹挡住蜀军。我很快就到。动作一定要快！要是让敌人先占了险要地形，我就要你们的脑袋！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">师、邓二人引兵将至锦竹，早遇蜀兵。两军各布成阵。师、邓二人勒马于门旗下，只见蜀兵列成八阵。三鼕鼓罢，门旗两分，数十员将簇拥一辆四轮车，车上端坐一人：纶巾羽扇，鹤氅方裾。车傍展开一面黄旗，上书：“汉丞相诸葛武侯”。?得师、邓二人汗流遍身，回顾军士曰：“原来孔明尚在，我等休矣！”急勒兵回时，蜀兵掩杀将来，魏兵大败而走。蜀兵掩杀二十余里，遇见邓艾援兵接应。两家各自收兵。艾升帐而坐，唤师纂、邓忠责之曰：“汝二人不战而退，何也？”忠曰：“但见蜀阵中诸葛孔明领兵，因此奔还。”艾怒曰：“纵使孔明更生，我何惧哉！汝等轻退，以致于败，宜速斩以正军法！”众皆苦劝，艾方息怒。令人哨探，回说孔明之子诸葛瞻为大将，瞻之子诸葛尚为先锋。——车上坐者乃木刻孔明遗像也。</div>
+            <div class="text-block simplified-text">钟会和邓艾带着军队快到锦竹时，碰上了蜀国的部队。两边摆好阵势后，钟会、邓艾骑马站在军旗下，看见蜀军摆了个八卦阵。鼓敲了三通，蜀军旗帜分开，几十个将领护着一辆四轮车出来，车上坐着个戴丝巾、拿羽毛扇、穿白袍的人。车旁边还竖着面黄旗，写着"汉丞相诸葛武侯"。这可把钟会、邓艾吓出一身冷汗，回头对士兵说："诸葛亮居然还活着！我们完蛋了！"赶紧带兵撤退。蜀军趁机追杀，魏军大败逃跑。蜀军追了二十多里，碰上邓艾的援军才停战。
+
+收兵后邓艾开会，骂钟会、邓忠："你们没打就逃跑，怎么回事？"邓忠说："我们看见诸葛亮在蜀军里带队，吓得赶紧跑。"邓艾发火说："就算诸葛亮真活过来，我也不怕！你们擅自撤退害我们打败仗，该砍头治罪！"大家拼命劝，邓艾才消气。派人去打探，才知道是诸葛亮的儿子诸葛瞻当大将，诸葛瞻的儿子诸葛尚当先锋——车上那个只是诸葛亮的木头雕像。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">艾闻之，谓师纂、邓忠曰：“成败之机，在此一举。汝二人再不取胜，必当斩首！”师、邓二人又引一万兵来战。诸葛尚匹马单枪，抖擞精神，战退二人。诸葛瞻指挥两掖兵冲出，直撞入魏阵中，左冲右突，往来杀有数十番，魏兵大败，死者不计其数。师纂、邓忠中伤而逃。瞻驱士马随后掩杀二十余里，扎营相拒。师纂、邓忠回见邓艾，艾见二人俱伤，未便加责，乃与众将商议曰：“蜀有诸葛瞻善继父志，两番杀吾万余人马，今若不速破，后必为祸。”监军丘本曰：“何不作一书以诱之？”艾从其言，遂作书一封，遣使送人蜀寨。守门将引至帐下，呈上其书。瞻拆封视之。书曰：“征西将军邓艾，致书于行军护卫将军诸葛思远麾下：切观近代贤才，未有如公之尊父也。昔自出茅庐，一言已分三国，扫平荆、益，遂成霸业，古今鲜有及者；后六出祁山，非其智力不足，乃天数耳。今后主昏弱，王气已终，艾奉天子之命，以重兵伐蜀，已皆得其地矣。成都危在旦夕，公何不应天顺人，仗义来归？艾当表公为琅琊王，以光耀祖宗，决不虚言。幸存照鉴。”瞻看毕，勃然大怒，扯碎其书，叱武士立斩来使，令从者持首级回魏营见邓艾。艾大怒，即欲出战。丘本谏曰：“将军不可轻出，当用奇兵胜之。”艾从其言，遂令天水太守王颀、陇西太守牵弘，伏两军于后，艾自引兵而来。此时诸葛瞻正欲搦战，忽报邓艾自引兵到。瞻大怒，即引兵出，径杀入魏阵中。邓艾败走，瞻随后掩杀将来。忽然两下伏兵杀出。蜀兵大败，退入绵竹。艾令围之。于是魏兵一齐呐喊，将绵竹围的铁桶相似。诸葛瞻在城中，见事势已迫，乃令彭和赍书杀出，往东吴求救。和至东吴，见了吴主孙休，呈上告急之书。吴主看罢，与群臣计议曰：“既蜀中危急，孤岂可坐视不救。”即令考将丁奉为主帅，丁封、孙异为副将，率兵五万，前往救蜀。丁奉领旨出师，分拨丁封、孙异引兵二万向沔中而进，自率兵三万向寿春而进：分兵三路来援。</div>
+            <div class="text-block simplified-text">邓艾听说战况后，对师纂和邓忠说："胜败就看这次了。要是你们再打不赢，我就砍了你们的头！"师纂和邓忠又带了一万兵马去打仗。诸葛尚一个人骑马挺枪，精神抖擞地打退了他们。诸葛瞻指挥两翼部队冲杀出来，直接杀进魏军阵营，来回冲杀几十次，把魏军打得大败，死了很多人。师纂和邓忠都受了伤逃回去。
+
+诸葛瞻带兵追杀了二十多里才扎营。师纂和邓忠回去见邓艾，邓艾看他们都受伤了，就没责备他们，跟将领们商量说："蜀国这个诸葛瞻继承了他父亲的才能，两次打败我们，杀了我们一万多人。要是不快点解决他，以后肯定是个大麻烦。"监军丘本说："不如写封信骗他投降？"邓艾同意了，就写了封信派人送去蜀军大营。
+
+诸葛瞻看完信气得要命，当场把信撕碎，命令把送信的使者砍了，让人把头送回魏营。邓艾大怒要出兵，丘本劝他说："将军别冲动，咱们得用计谋取胜。"邓艾就派王颀和牵弘带兵埋伏，自己带兵去诱敌。
+
+诸葛瞻正要出战，听说邓艾来了，立刻带兵冲杀过去。邓艾假装败退，诸葛瞻追上去时，埋伏的魏军突然杀出，把蜀军打得大败，退守绵竹城。邓艾把城团团围住。
+
+诸葛瞻见情况危急，派彭和突围去东吴求救。吴主孙休看完求救信，和大臣们商量说："蜀国这么危急，我们不能不管。"就派丁奉为主帅，丁封、孙异为副将，带五万兵分三路去救蜀国。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">却说诸葛瞻见救兵不至，谓众将曰：“久守非良图。”遂留子尚与尚书张遵守城，瞻自披挂上马，引三军大开三门杀出。邓艾见兵出，便撤兵退。瞻奋力追杀，忽然一声炮响，四面兵合，把瞻困在垓心。瞻引兵左冲右突，杀死数百人。艾令众军放箭射之，蜀兵四散。瞻中箭落马，乃大呼曰：“吾力竭矣，当以一死报国！”遂拔剑自刎而死。其子诸葛尚在城上，见父死于军中，勃然大怒，遂披挂上马。张遵谏曰：“小将军勿得轻出。”尚叹曰：“吾父子祖孙，荷国厚恩，今父既死于敌，我何用生为！”遂策马杀出，死于阵中。后人有诗赞瞻、尚父子曰：“不是忠臣独少谋，苍天有意绝炎刘。当年诸葛留嘉胤，节义真堪继武侯。”邓艾怜其忠，将父子合葬。乘虚攻打绵竹。张遵、黄崇、李球三人，各引一军杀出。蜀兵寡，魏兵众，三人亦皆战死。艾因此得了绵竹。劳军已毕，遂来取成都。正是：试观后主临危日，无异刘璋受逼时。未知成都如何守御，且看下文分解。</div>
+            <div class="text-block simplified-text">话说诸葛瞻眼看救兵迟迟不来，就对将领们说："死守不是办法。"于是留下儿子诸葛尚和尚书张遵守城，自己穿上盔甲骑马带兵，打开三个城门冲出去。邓艾看到蜀军出击，假装撤退。诸葛瞻带兵猛追，突然一声炮响，四面埋伏的魏军围上来把他困在中间。诸葛瞻带兵拼命突围，杀了数百敌人。邓艾命令放箭，蜀军被打散。诸葛瞻中箭摔下马，大喊："我没力气了，只能以死报国！"说完拔剑自刎。他儿子诸葛尚在城墙上看见父亲战死，气得立刻穿盔甲上马。张遵劝他："小将军别冲动！"诸葛尚叹气说："我们祖孙三代受国家大恩，现在父亲战死，我活着还有什么意思！"说完骑马冲出去，也战死了。后人写诗称赞他们父子："不是他们没计谋，实在是老天要让蜀汉灭亡。当年诸葛亮留下好后代，这份忠义真配得上武侯。"邓艾敬佩他们的忠心，把父子俩合葬。接着趁虚攻打绵竹。张遵、黄崇、李球三人带兵迎战，但蜀军人少打不过魏军，三人全部战死。邓艾就这样拿下绵竹。犒赏军队后，直接杀向成都。这正是：看看刘禅危急时的样子，简直和刘璋当年被逼宫一模一样。想知道成都怎么防守，请看下回。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
