@@ -10,7 +10,7 @@
             --body-bg-color: #fdfdfd;
             --text-color: #333333;
             --title-color: #1a1a1a;
-            --link-color: #333333; /* For general links if any, book titles use text-color */
+            --link-color: #333333;
             --link-hover-color: #0056b3;
             --base-font-size: 17px;
             --line-height: 1.7;
@@ -20,12 +20,12 @@
             --content-max-width: 1100px;
 
             /* Book gallery specific */
-            --book-item-gap: 1.8rem; /* Gap between book items */
+            --book-item-gap: 1.8rem;
             --book-cover-width: 150px;
-            --book-cover-height: 220px; /* Approx 2:3 aspect ratio */
+            --book-cover-height: 220px;
             --book-title-margin-top: 0.75rem;
-            --book-item-padding: 0.5rem; /* Padding inside the 'a' tag of a book item */
-            --book-item-hover-bg: #f0f0f0; /* Subtle background on hover for the item */
+            --book-item-padding: 0.5rem;
+            --book-item-hover-bg: #f0f0f0;
         }
 
         body {
@@ -63,17 +63,16 @@
             display: flex;
             flex-wrap: wrap;
             gap: var(--book-item-gap);
-            justify-content: center; /* Center items if the last row is not full */
-            padding-top: 1rem; /* Some space above the books */
+            justify-content: flex-start; /* MODIFIED: Aligns items to the start (left) */
+            padding-top: 1rem;
         }
 
         .book-item {
-            /* Default: 5 columns for larger screens */
             flex: 0 0 calc(20% - var(--book-item-gap) * 4 / 5);
             box-sizing: border-box;
-            display: flex; /* Added to help structure the 'a' tag if needed, but 'a' is flex */
-            flex-direction: column; /* Ensure vertical layout if 'a' wasn't display:flex */
-            align-items: center; /* Center content if item is wider than content */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .book-item a {
@@ -85,7 +84,7 @@
             padding: var(--book-item-padding);
             border-radius: 4px;
             transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-            width: 100%; /* Make 'a' take up the space given by flex-basis */
+            width: 100%;
             box-sizing: border-box;
         }
 
@@ -98,11 +97,11 @@
         .book-cover-container {
             width: var(--book-cover-width);
             height: var(--book-cover-height);
-            overflow: hidden; /* Ensures image crops to fit */
-            background-color: #e9e9e9; /* Placeholder bg if image is missing/transparent */
-            border-radius: 3px; /* Slightly rounded corners for the cover */
+            overflow: hidden;
+            background-color: #e9e9e9;
+            border-radius: 3px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex; /* To center image if it's smaller (e.g. object-fit: contain) */
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -110,23 +109,21 @@
         .book-cover-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Scales image to fill, crops if aspect ratio mismatch */
-            display: block; /* Removes any extra space below the image */
+            object-fit: cover;
+            display: block;
         }
 
         .book-title {
             font-size: 0.9em;
             margin-top: var(--book-title-margin-top);
             text-align: center;
-            line-height: 1.4; /* Adjust for potentially two-line titles */
-            /* Limit width and handle overflow if titles can be very long */
-            max-width: var(--book-cover-width); /* Keep title width similar to cover */
+            line-height: 1.4;
+            max-width: var(--book-cover-width);
         }
 
         /* Responsive adjustments for book gallery */
         @media (max-width: 1200px) {
             .book-item {
-                /* 4 columns */
                 flex-basis: calc(25% - var(--book-item-gap) * 3 / 4);
             }
         }
@@ -134,7 +131,6 @@
         @media (max-width: 992px) {
              body { padding: 2rem; }
              .book-item {
-                 /* 3 columns */
                 flex-basis: calc(33.333% - var(--book-item-gap) * 2 / 3);
             }
         }
@@ -143,36 +139,16 @@
              body { padding: 1.5rem; }
              .main-title { font-size: 1.9em; letter-spacing: 0.05em; }
              .book-item {
-                 /* 2 columns */
                 flex-basis: calc(50% - var(--book-item-gap) * 1 / 2);
             }
-            /* Adjust cover size for smaller screens if needed */
-            /*
-            :root {
-                --book-cover-width: 130px;
-                --book-cover-height: 190px;
-            }
-            */
         }
 
          @media (max-width: 480px) {
              body { padding: 1.5rem 1rem; }
              .main-title { font-size: 1.7em; }
              .book-item {
-                 /* 2 columns, or 1 if preferred - let's try 2 for a bit more density */
                  flex-basis: calc(50% - var(--book-item-gap) * 1 / 2);
              }
-             /* For very small screens, you might want smaller covers or single column: */
-             /*
-             .book-item {
-                 flex-basis: 100%;
-             }
-             :root {
-                --book-cover-width: 120px;
-                --book-cover-height: 175px;
-             }
-             .book-title { font-size: 0.85em; }
-             */
         }
     </style>
 </head>
