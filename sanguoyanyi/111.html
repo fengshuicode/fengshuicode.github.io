@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百十一回 邓士载智败姜伯约　诸葛诞义讨司马昭</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./110.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百十一回 邓士载智败姜伯约　诸葛诞义讨司马昭</h1>
+        <a href="./112.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说姜维退兵屯于钟提，魏兵屯于狄道城外。王经迎接陈泰、邓艾入城，拜谢解围之事，设宴相待，大赏三军。泰将邓艾之功，申奏魏主曹髦，髦封艾为安西将军，假节，领护东羌校尉，同陈泰屯兵于雍、凉等处。邓艾上表谢恩毕，陈泰设席与邓艾作贺曰：“姜维夜遁，其力已竭，不敢再出矣。”艾笑曰：“吾料蜀兵必出有五。”泰问其故，艾曰：“蜀兵虽退，终有乘胜之势；吾兵终有弱败之实：其必出一也。蜀兵皆是孔明教演，精锐之兵，容易调遣；吾将不时更换，军又训练不熟：其必出二也。蜀人多以船行，吾军皆在旱地，劳逸不同；其必出三也。狄道、陇西、南安、祁山四处皆是守战之地；蜀人或声东击西，指南攻北，吾兵必须分头守把；蜀兵合为一处而来，以一分当我四分：其必出四也。若蜀兵自南安、陇西，则可取羌人之谷为食；若出祁山，则有麦可就食：其必出五也。”陈泰叹服曰；“公料敌如神，蜀兵何足虑哉！”于是陈泰与邓艾结为忘年之交。艾遂将雍、凉等处之兵，每日操练；各处隘口，皆立营寨，以防不测。</div>
+            <div class="text-block simplified-text">姜维带兵退到钟提驻扎，魏国军队则驻扎在狄道城外。王经把陈泰、邓艾接进城，感谢他们解了围，摆酒席招待他们，还犒赏了全军。陈泰把邓艾的功劳报告给魏国皇帝曹髦，曹髦封邓艾为安西将军，给他兵权，让他管东羌那边的事，跟陈泰一起在雍州、凉州这些地方驻军。邓艾上表谢恩后，陈泰摆酒给邓艾庆祝，说："姜维连夜逃跑，看来是打不动了，肯定不敢再来。"邓艾笑着说："我倒觉得蜀军还会再来，有五个原因。"陈泰问他为啥，邓艾说："第一，蜀军虽然退了，但还带着打赢的气势；咱们的兵其实还是弱。第二，蜀军都是诸葛亮训练出来的精兵，调动方便；咱们的将领老换人，士兵也没练熟。第三，蜀军习惯走水路，咱们只会旱路行军，体力消耗不一样。第四，狄道、陇西、南安、祁山这四个地方都得防守，蜀军可能玩声东击西的把戏，咱们得分兵守着；他们要是集中兵力打一个地方，咱们就得用四倍兵力应付。第五，蜀军要是从南安、陇西来，能抢羌人的粮食吃；要是从祁山来，那边有现成的麦子可以收割。"陈泰佩服地说："您真是料事如神，蜀军确实没啥好怕的！"从此陈泰和邓艾成了好朋友。邓艾开始天天操练雍州、凉州的军队，在各个关口都建了营寨，以防万一。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说姜维在钟提大设筵宴，会集诸将，商议伐魏之事。令史樊建谏曰：“将军屡出，未获全功；今日洮西之捷，魏人已服威名，何故又欲出也？万一不利，前功尽弃。”维曰：“汝等只知魏国地宽人广，急不可得；却不知攻魏者有五可胜。”众问之，维答曰：“彼洮西一败，挫尽锐气，吾兵虽退，不曾损折：今若进兵，一可胜也。吾兵船载而进，不致劳困，彼兵皆从旱地来迎：二可胜也。吾兵久经训练之众，彼皆乌合之徒，不曾有法度：三可胜也。吾兵自出祁山，掠抄秋谷为食：四可胜也。彼兵须各守备，军力分开，吾兵一处而去，彼安能救：五可胜也。不在此时伐魏，更待何日耶？”夏侯霸曰：“艾年虽幼，而机谋深远；近封为安西将军之职，必于各处准备，非同往日矣。”维厉声曰：“吾何畏彼哉！公等休长他人锐气，灭自己威风！吾意已决，必先取陇西。”众不敢谏。维自领前部，令众将随后而进，于是蜀兵尽离钟提，杀奔祁山来。哨马报说魏兵已先在祁山立下九个寨栅。维不信，引数骑凭高望之，果见祁山九寨势如长蛇，首尾相顾。维回顾左右曰：“夏侯霸之言，信不诬矣。此寨形势绝妙。止吾师诸葛丞相能之；今观邓艾所为，不在吾师之下。”遂回本寨。唤诸将曰：“魏人既有准备，必知吾来矣。吾料邓艾必在此间。汝等可虚张吾旗号，据此谷口下寨；每日令百余骑出哨，每出哨一回，换一番衣甲、旗号、按青、黄、赤、白、黑五方旗帜相换。吾却提大兵偷出董亭，径袭南安去也。”遂令鲍素屯兵于祁山谷口。维尽率大兵，望南安进发。</div>
+            <div class="text-block simplified-text">姜维在钟提大摆宴席，召集将领们商量攻打魏国的事。文书官樊建劝他说：“将军您多次出兵，都没能彻底取胜。这次洮西打了胜仗，魏国已经怕了咱们，为什么还要出兵？万一输了，之前的功劳就全白费了。”姜维回答：“你们光知道魏国地盘大、人多，一时打不下来。其实现在打魏国有五个必胜条件：第一，他们刚在洮西吃了败仗，士气低落，咱们的部队撤退时没损失；第二，咱们走水路行军不累，他们得从旱路赶来；第三，咱们的兵训练有素，他们临时凑的人马没纪律；第四，咱们从祁山出兵能抢收秋粮当军粮；第五，他们兵力分散防守，咱们集中攻打一处他们来不及救。现在不打魏国还等什么时候？”
+
+夏侯霸提醒说：“邓艾年纪虽轻但很有谋略，最近刚当上安西将军，肯定做了周密准备，和以前不一样了。”姜维大声说：“我怕他干什么！你们别长别人志气灭自己威风！我决定了，先打陇西！”大家不敢再劝。
+
+姜维亲自带先锋部队出发，其他将领跟着。蜀军离开钟提杀向祁山。探子报告说魏军已经在祁山扎了九个营寨。姜维不信，带几个人登高查看，果然看见九个营寨像长蛇一样首尾相连。他对身边人说：“夏侯霸说得没错。这营寨布置得太精妙了，以前只有我老师诸葛亮能这么排兵布阵，没想到邓艾也有这本事。”
+
+回营后，姜维对将领们说：“魏军有准备，肯定知道我们要来。我猜邓艾就在这儿。你们打着我的旗号在谷口扎营，每天派百来个骑兵巡逻，每次巡逻都要换不同颜色的衣服和旗号，按青、黄、红、白、黑五种颜色轮着换。我带着主力悄悄从董亭绕过去，直接打南安。”于是让鲍素带兵守在祁山谷口，自己率领大军向南安进发。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说邓艾知蜀兵出祁山，早与陈泰下寨准备；见蜀兵连日不来搦战，一日五番哨马出寨，或十里或十五里而回。艾凭高望毕。慌入帐与陈泰曰：“姜维不在此间，必取董亭袭南安去了。出寨哨马只是这几匹。更换衣甲，往来哨探，其马皆困乏，主将必无能者。陈将军可引一军攻之，其寨可破也。破了寨栅，便引兵袭董亭之路，先断姜维之后。吾当先引一军救南安，径取武城山。若先占此山头，姜维必取上邽。上邽有一谷，名曰段谷，地狭山险，正好埋伏。彼来争武城山时，吾先伏两军于段谷，破维必矣。”泰曰：“吾守陇西二三十年，未尝如此明察地理。公之所言，真神算也！公可速去，吾自攻此处寨栅。”于是邓艾引军星夜倍道而行，径到武城山；下寨已毕，蜀兵未到。即令子邓忠，与帐前校尉师篡，各引五千兵，先去段谷埋伏，如此如此而行。二人受计而去。艾令偃旗息鼓，以待蜀兵。却说姜维从董亭望南安而来，至武城山前，谓夏侯霸曰：“近南安有一山，名武城山；若先得了，可夺南安之势。只恐邓艾多谋，必先提防。”正疑虑间，忽然山上一声炮响，喊声大震，鼓角齐鸣，旌旗遍竖，皆是魏兵；中央风飘起一黄旗，大书邓艾字样。蜀兵大惊。山上数处精兵杀下，势不可当，前军大败。维急率中军人马去救时，魏兵已退。维直来武城山下搦邓艾战，山上魏兵并不下来。维令军士辱骂。至晚，方欲退军，山上鼓角齐鸣，却又不见魏兵下来。维欲上山冲杀，山上炮石甚严，不能得进。守至三更，欲回，山上鼓角又鸣，维移兵下山屯扎。比及令军搬运木石，方欲竖立为寨，山上鼓角又鸣，魏兵骤至。蜀兵大乱，自相践踏，退回旧寨。次日，姜维令军士运粮草车仗，至武城山，穿连排定，欲立起寨栅，以为屯兵之计。是夜二更，邓艾令五百人，各执火把，分两路下山，放火烧车仗。两兵混杀了一夜，营寨又立不成。</div>
+            <div class="text-block simplified-text">邓艾发现蜀军从祁山出兵，就早早和陈泰扎营准备。但连着几天蜀军都没来挑战，只是每天派几队侦察兵在营地周围十里到十五里的地方转悠。邓艾站在高处看完后，赶紧回营帐对陈泰说："姜维肯定不在这儿，他一定是去董亭偷袭南安了。这些侦察兵就这几匹马来回跑，马都累坏了，带队的肯定不是什么厉害角色。你带兵去打，准能攻破他们的营地。破了营地后，直接去董亭那条路，断了姜维的后路。我先带兵去救南安，直接拿下武城山。只要占了这座山，姜维肯定会去上邽。上邽有个叫段谷的山谷，地势险要，最适合埋伏。等姜维来抢武城山时，我提前在段谷埋伏两支军队，肯定能打败他。"陈泰佩服地说："我在陇西待了二三十年，从没像您这样把地形看得这么清楚。您真是神机妙算！您快去吧，我来攻打这个营地。"
+
+于是邓艾连夜急行军赶到武城山，扎好营寨时蜀军还没到。他马上派儿子邓忠和校尉师篡各带五千兵去段谷埋伏，交代了具体安排。等两人出发后，邓艾让部队保持安静，等着蜀军到来。
+
+这边姜维从董亭往南安走，到了武城山前对夏侯霸说："南安附近有座武城山，要是我们先拿下，就能占据优势。就怕邓艾狡猾，已经提前防备了。"正说着，突然山上炮声一响，喊杀声震天，魏军旗帜全都竖了起来，中间一面大黄旗上写着"邓艾"两个大字。蜀军吓坏了，山上冲下来好几支精锐部队，势不可挡，前锋部队被打得大败。姜维赶紧带主力救援时，魏军已经撤回山上。姜维到山下叫阵，山上魏军就是不出来。蜀军骂到晚上准备撤退时，山上又响起战鼓声，但还是没人下来。姜维想冲上山，结果被滚石砸得没法前进。守到半夜想撤兵时，山上战鼓又响，姜维只好带兵到山下驻扎。刚让士兵搬运木头石头准备建营寨，山上战鼓又响，魏军突然杀到。蜀军乱成一团，自相踩踏，只能退回原来的营地。
+
+第二天姜维让人运来粮草车辆，想在武城山连起来建营寨。结果半夜邓艾派五百人举着火把分两路下山，把粮车全烧了。双方混战一夜，蜀军的营寨又没建成。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">维复引兵退，再与夏侯霸商议曰：“南安未得，不如先取上邽。上邽乃南安屯粮之所；若得上邽，南安自危矣。”遂留霸屯于武城山，维尽引精兵猛将，径取上邽。行了一宿，将及天明，见山势狭峻，道路崎岖，乃问向导官曰：“此处何名？”答曰：“段谷。”维大惊曰：“其名不美：段谷者，断谷也。倘有人断其谷口，如之奈何？”正踌躇未决，忽前军来报：“山后尘头大起，必有伏兵。”维急令退兵。师篡、邓忠两军杀出，维且战且走，前面喊声大震，邓艾引兵杀到：三路夹攻，蜀兵大败。幸得夏侯霸引兵杀到，魏兵方退，救了姜维，欲再往祁山。霸曰：“祁山寨已被陈泰打破，鲍素阵亡，全寨人马皆退回汉中去了。”维不敢取董亭，急投山僻小路而回。后面邓艾急追，维令诸军前进，自为断后。正行之际，忽然山中一军突出，乃魏将陈泰也。魏兵一声喊起，将姜维困在垓心。维人马困乏，左冲右突，不能得出。荡寇将军张嶷，闻姜维受困，引数百骑杀入重围。维因乘势杀出。嶷被魏兵乱箭射死。维得脱重围，复回汉中，因感张嶷忠勇，殁于王事，乃表赠其子孙。于是，蜀中将士多有阵亡者，皆归罪于姜维。维照武侯街亭旧例，乃上表自贬为后将军，行大将军事。</div>
+            <div class="text-block simplified-text">姜维带兵撤退后，又和夏侯霸商量说："南安打不下来，不如先去打上邽。上邽是南安存粮食的地方，要是拿下上邽，南安就危险了。"于是让夏侯霸守在武城山，自己带着精锐部队直奔上邽。
+
+走了一夜，天快亮时，看到山路又窄又陡，就问带路的人："这地方叫什么？"对方回答："段谷。"姜维一听就慌了："这名字不吉利啊！'段谷'听着像'断谷'，要是敌人在谷口堵住我们怎么办？"正犹豫时，前面士兵来报："山后面尘土飞扬，肯定有埋伏！"姜维赶紧下令撤退。
+
+这时魏国的师纂、邓忠带兵杀出来，姜维边打边退，前面又传来喊杀声——邓艾带兵杀到。三路夹击下，蜀军大败。幸好夏侯霸带兵来救，魏军才退去。姜维想去祁山，夏侯霸说："祁山大营已经被陈泰攻破，鲍素战死，守军都退回汉中了。"姜维不敢去董亭，赶紧走小路撤退。邓艾在后面紧追，姜维让部队先走，自己断后。
+
+半路上，陈泰的部队突然从山里杀出，把姜维团团围住。姜维的人马又累又乏，怎么冲都冲不出去。张嶷将军听说姜维被围，带着几百骑兵杀进来救援。姜维趁机突围，张嶷却被乱箭射死。
+
+姜维脱险回到汉中，被张嶷的忠勇感动，就上奏朝廷封赏他的子孙。这次打仗死了不少蜀国将士，大家都怪姜维。姜维学诸葛亮当年在街亭战败后的做法，主动上书请求降职为后将军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说邓艾见蜀兵退尽，乃与陈泰设宴相贺，大赏三军。泰表邓艾之功，司马昭遣使持节，加艾官爵，赐印绶；并封其子邓忠为亭侯。时魏主曹髦，改正元三年为甘露元年。司马昭自为天下兵马大都督，出入常令三千铁甲骁将前后簇拥，以为护卫；一应事务，不奏朝廷，就于相府裁处：自此常怀篡逆之心。有一心腹人，姓贾，名充，字公闾，乃故建威将军贾逵之子，为昭府下长史。充语昭曰：“今主公掌握大柄，四方人心必然未安；且当暗访，然后徐图大事。”昭曰：“吾正欲如此。汝可为我东行。只推慰劳出征军士为名，以探消息。”贾充领命，径到淮南，入见镇东大将军诸葛诞。诞字公休，乃琅琊南阳人，即武侯之族弟也；向事于魏，因武侯在蜀为相，因此不得重用；后武侯身亡，诞在魏历任重职，封高平侯。总摄两淮军马。当日，贾充托名劳军，至淮南见诸葛诞。诞设宴待之。酒至半酣，充以言挑诞曰：“近来洛阳诸贤，皆以主上懦弱，不堪为君。司马大将军三辈辅国，功德弥天，可以禅代魏统。未审钧意若何？”诞大怒曰：“汝乃贾豫州之子，世食魏禄，安敢出此乱言！”充谢曰：“某以他人之言告公耳。”诞曰：“朝廷有难，吾当以死报之。”充默然，次日辞归，见司马昭细言其事。昭大怒曰：“鼠辈安敢如此！”充曰：“诞在淮南，深得人心，久必为患，可速除之。”</div>
+            <div class="text-block simplified-text">邓艾看到蜀国军队全撤了，就和陈泰一起摆酒庆祝，犒赏全军。陈泰上报了邓艾的功劳，司马昭派使者带着任命书来，给邓艾升官加爵，还发给他官印；同时封他儿子邓忠当亭侯。这时候魏国皇帝曹髦把年号从"正元三年"改成"甘露元年"。司马昭自己当上了全国兵马总指挥，出门总让三千精锐铁甲兵前呼后拥保护他；所有事情都不请示皇帝，直接在自己丞相府里处理：从这时候起，他就开始想着要篡位了。
+
+司马昭有个亲信叫贾充，是已故将军贾逵的儿子，现在在司马昭手下当官。贾充对司马昭说："您现在掌了大权，各地的人心肯定不稳；应该先暗中调查，再慢慢谋划大事。"司马昭说："我也是这么想的。你替我去东边走一趟，就说是去慰问出征的将士，顺便打探消息。"贾充领命后直接去了淮南，见到镇东大将军诸葛诞。诸葛诞是诸葛亮的堂弟，以前在魏国当官，因为诸葛亮在蜀国当丞相，所以一直没被重用；后来诸葛亮死了，诸葛诞在魏国当上了大官，封为高平侯，管着两淮的军队。
+
+贾充假借慰问军队的名义见到诸葛诞，诸葛诞设宴招待。喝到一半，贾充试探说："最近洛阳的官员们都说皇上太软弱，当不了君主。司马大将军祖孙三代辅佐国家，功劳比天还大，应该接替魏国当皇帝。不知道您怎么看？"诸葛诞一听就火了："你是贾豫州的儿子，世代吃魏国的俸禄，怎么敢说这种大逆不道的话！"贾充赶紧道歉："我就是把别人的话转告给您。"诸葛诞说："朝廷要是有难，我一定拼死效忠。"贾充没吭声，第二天回去把这事详细告诉了司马昭。司马昭大怒："这小子竟敢这样！"贾充说："诸葛诞在淮南很得人心，时间长了肯定是个祸害，得赶快除掉他。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">昭遂暗发密书与扬州刺史乐綝。一面遣使赍诏征诞为司空。诞得了诏书，已知是贾充告变，遂捉来使拷问。使者曰：“此事乐綝知之。”诞曰：“他如何得知？”使者曰：“司马将军已令人到扬州送密书与乐綝矣。”诞大怒，叱左右斩了来使，遂起部下兵千人，杀奔扬州来。将至南门，城门已闭，吊桥拽起。诞在城下叫门，城上并无一人回答。诞大怒曰：“乐綝匹夫，安敢如此！”遂令将士打城。手下十余骁骑，下马渡壕，飞身上城，杀散军士，大开城门，于是诸葛诞引兵入城，乘风放火，杀至綝家。綝慌上楼避之。诞提剑上楼，大喝曰：“汝父乐进，昔日受魏国大恩！不思报本，反欲顺司马昭耶！”綝未及回言，为诞所杀。一面具表数司马昭之罪，使人申奏洛阳；一面大聚两淮屯田户口十余万，并扬州新降兵四万余人，积草屯粮，准备进兵；又令长史吴纲，送子诸葛靓入吴为质求援，务要合兵诛讨司马昭。</div>
+            <div class="text-block simplified-text">司马昭偷偷给扬州刺史乐綝送了密信。同时派人带着圣旨去召诸葛诞当司空。诸葛诞接到圣旨后，猜到是贾充告密了，就把使者抓起来审问。使者说："这事乐綝知道。"诸葛诞问："他怎么会知道？"使者回答："司马将军已经派人到扬州给乐綝送密信了。"诸葛诞气坏了，立刻叫人杀了使者，带着一千多士兵杀向扬州。
+
+快到南门时，发现城门关着，吊桥也拉起来了。诸葛诞在城下喊门，城上没人答应。他大骂："乐綝这个混蛋，竟敢这样对我！"命令士兵攻城。十几个勇猛的骑兵下马游过护城河，翻上城墙，杀散守军，打开城门。诸葛诞带兵冲进城，趁乱放火，直接杀到乐綝家。乐綝吓得躲上楼。诸葛诞提着剑追上楼，大骂道："你爹乐进当年受魏国大恩！不想着报答，反而投靠司马昭！"没等乐綝回话，就把他杀了。
+
+之后诸葛诞做了三件事：一是写奏折列举司马昭的罪状，派人送到洛阳；二是召集两淮十多万种田的百姓和扬州新投降的四万多士兵，囤积粮草准备打仗；三是派长史吴纲送自己儿子诸葛靓去东吴当人质，请求东吴出兵一起讨伐司马昭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">此时东吴丞相孙峻病亡，从弟孙綝辅政。綝字子通，为人强暴，杀大司马滕胤、将军吕据、王惇等，因此权柄皆归于綝。吴主孙亮，虽然聪明，无可奈何。于是吴纲将诸葛靓至石头城，入拜孙綝。綝问其故，纲曰：“诸葛诞乃蜀汉诸葛武侯之族弟也，向事魏国；今见司马昭欺君罔上，废主弄权，欲兴师讨之，而力不及，故特来归降。诚恐无凭，专送亲子诸葛靓为质。伏望发兵相助。”綝从其请，便遣大将全怿、全端为主将，于诠为合后，朱异、唐咨为先锋，文钦为向导，起兵七万，分三队而进。吴纲回寿春报知诸葛诞。诞大喜，遂陈兵准备。却说诸葛诞表文到洛阳，司马昭见了大怒，欲自往讨之。贾充谏曰：“主公乘父兄之基业，恩德未及四海，今弃天子而去，若一朝有变，悔之何及？不如奏请太后及天子一同出征，可保无虞。”昭喜曰：“此言正合吾意。”遂入奏太后曰：“诸葛诞谋反，臣与文武官僚，计议停当：请太后同天子御驾亲征，以继先帝之遗意。”太后畏惧，只得从之。次日，昭请魏主曹髦起程。髦曰：“大将军都督天下军马，任从调遣，何必朕自行也？”昭曰：“不然。昔日武祖纵横四海，文帝、明帝有包括宇宙之志，并吞八荒之心，凡遇大敌，必须自行。陛下正宜追配先君，扫清故孽。何自畏也？”髦畏威权，只得从之。昭遂下诏，尽起两都之兵二十六万，命镇南将军王基为正先锋，安东将军陈骞为副先锋，监军石苞为左军，兖州刺史州泰为右军，保护车驾，浩浩荡荡，杀奔淮南而来。</div>
+            <div class="text-block simplified-text">东吴的丞相孙峻病死了，他的堂弟孙綝接掌大权。孙綝这个人特别凶狠，杀了大官滕胤、将军吕据、王惇等人，把权力都抓在自己手里。吴国皇帝孙亮虽然聪明，但也拿他没办法。  
+
+这时，吴纲带着诸葛靓来见孙綝。孙綝问他们来干嘛，吴纲说：“诸葛诞是蜀汉诸葛亮的族弟，原本在魏国当官。现在他看到司马昭欺负皇帝、独揽大权，想出兵讨伐，但力量不够，所以来投靠吴国。为了表示诚意，特意把自己的儿子诸葛靓送来当人质，希望吴国能派兵帮忙。”孙綝答应了，派大将全怿、全端带兵，于诠、朱异、唐咨打头阵，文钦带路，总共七万大军，分三路出发。吴纲回去告诉诸葛诞，诸葛诞很高兴，立刻准备迎战。  
+
+另一边，诸葛诞造反的消息传到洛阳，司马昭大怒，想亲自带兵去打。贾充劝他说：“您继承了父兄的基业，但恩德还没遍及天下。如果丢下皇帝自己出征，万一出事就晚了。不如请太后和皇帝一起出征，这样更稳妥。”司马昭觉得有理，就去见太后，说：“诸葛诞造反了，我和大臣们商量好了，请太后和皇帝一起亲征，完成先帝的遗愿。”太后害怕，只好答应。  
+
+第二天，司马昭请魏国皇帝曹髦出发。曹髦说：“大将军统领全国兵马，你调兵就行了，何必让我亲自去？”司马昭说：“不行！当年武帝（曹操）、文帝（曹丕）、明帝（曹叡）遇到强敌都是亲自出征。陛下也该效仿先辈，平定叛乱，怎么能怕呢？”曹髦不敢反抗，只好同意。  
+
+于是司马昭下令，调集二十六万大军，命王基、陈骞打先锋，石苞、州泰分别统领左右军，保护皇帝，浩浩荡荡杀向淮南。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">东吴先锋朱异，引兵迎敌。两军对圆，魏军中王基出马，朱异来迎。战不三合，朱异败走：唐咨出马，战不三合，亦大败而走。王基驱兵掩杀，吴兵大败，退五十里下寨，报入寿春城中。诸葛诞自引本部锐兵，会合文钦并二子文鸯、文虎，雄兵数万，来敌司马昭。正是：方见吴兵锐气堕。又看魏将劲兵来。未知胜负如何，且看下文分解。</div>
+            <div class="text-block simplified-text">东吴的先锋大将朱异带兵迎战魏军。两军摆开阵势，魏军这边王基出马，朱异上前交手。打了不到三个回合，朱异就败退逃跑；接着吴将唐咨出战，也是不到三个回合就被打得大败而逃。王基乘势带兵追杀，吴军惨败，后退五十里才扎营，并向寿春城里的主帅报告战况。诸葛诞亲自率领精锐部队，联合文钦和他的两个儿子文鸯、文虎，带着几万大军来对抗司马昭。这正是：刚看到吴军士气受挫，又见魏军增援杀到。到底谁胜谁负，咱们接着往下看。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
