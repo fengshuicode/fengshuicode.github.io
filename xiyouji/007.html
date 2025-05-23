@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七回　八卦炉中逃大圣　五行山下定心猿</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./006.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七回　八卦炉中逃大圣　五行山下定心猿</h1>
+        <a href="./008.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">富贵功名，前缘分定，为人切莫欺心。正大光明，忠良善果弥深。些些狂妄天加谴，眼前不遇待时临。问东君因甚，如今祸害相侵。只为心高图罔极，不分上下乱规箴。</div>
+            <div class="text-block simplified-text">富贵和功名，都是命中注定的，做人千万别昧着良心。做人光明正大，善良忠厚才会有好报。要是太狂妄自大，老天就会惩罚你，现在没遭报应只是时候未到。你问老天爷为什么现在灾祸不断？就是因为有些人太贪心，总想得到不该得的东西，不懂规矩、不分尊卑惹的祸。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">话表齐天大圣被众天兵押去斩妖台下，绑在降妖柱上，刀砍斧剁，枪刺剑刳，莫想伤及其身。南斗星奋令火部众神，放火煨烧，亦不能烧着。又着雷部众神，以雷屑钉打，越发不能伤损一毫。那大力鬼王与众启奏道：“万岁，这大圣不知是何处学得这护身之法，臣等用刀砍斧剁，雷打火烧，一毫不能伤损，却如之何？”玉帝闻言道：“这厮这等，这等，如何处治？”太上老君即奏道：“那猴吃了蟠桃，饮了御酒，又盗了仙丹。我那五壶丹，有生有熟，被他都吃在肚里，运用三昧火，锻成一块，所以浑做金钢之躯，急不能伤。不若与老道领去，放在八卦炉中，以文武火锻炼。炼出我的丹来，他身自为灰烬矣。”玉帝闻言，即教六丁、六甲将他解下，付与老君。老君领旨去讫，一壁厢宣二郎显圣，赏赐金花百朵，御酒百瓶，还丹百粒，异宝明珠，锦绣等件，教与义兄弟分享。真君谢恩，回灌江口不题。</div>
+            <div class="text-block simplified-text">话说孙悟空被天兵天将抓到斩妖台，绑在柱子上，用刀砍、斧劈、枪刺、剑扎，都伤不了他。南斗星君叫火神放火烧，也烧不着。雷神用雷电劈打，还是一点用都没有。大力鬼王和众神仙向玉帝报告："陛下，这猴子不知从哪儿学了护身法，我们刀砍雷劈火烧都伤不了他，怎么办？"玉帝听了说："这猴子这么厉害，该怎么收拾他？"
+
+太上老君上前说："这猴子偷吃了蟠桃、仙酒，还偷了我的仙丹。我那五葫芦仙丹，有生的有熟的，都被他吃下肚，用体内真火炼成一块，现在全身像金刚一样结实，根本伤不了。不如交给我，把他放进八卦炉里，用文武火慢慢炼。等把我的仙丹炼出来，他自然就烧成灰了。"玉帝同意，就叫六丁六甲神把孙悟空解下来交给老君。老君领命带着孙悟空走了。
+
+另一边，玉帝赏赐二郎神一百朵金花、一百瓶御酒、一百颗仙丹，还有各种珍宝绸缎，让他和结拜兄弟们分享。二郎神谢恩后，就回灌江口去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">那老君到兜率宫，将大圣解去绳索，放了穿琵琶骨之器，推入八卦炉中，命看炉的道人，架火的童子，将火扇起锻炼。原来那炉是乾、坎、艮、震、巽、离、坤、兑八卦。他即将身钻在巽宫位下。巽乃风也，有风则无火，只是风搅得烟来，把一双眼刍红了，弄做个老害病眼，故唤作“火眼金睛”。</div>
+            <div class="text-block simplified-text">太上老君把孙悟空带到兜率宫，解开他身上的绳子，拿掉穿在琵琶骨上的刑具，把他推进八卦炉里。老君让管炉子的道士和烧火的童子扇火炼他。这个炉子按照八卦分为八个方位。孙悟空钻到"巽"位下面，"巽"代表风，有风的地方就没火。但是风把烟吹得到处都是，把他的眼睛熏红了，搞得像得了眼病似的，所以后来就叫"火眼金睛"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">真个光阴迅速，不觉七七四十九日，老君的火候俱全。忽一日，开炉取丹。那大圣双手侮着眼，正自揉搓流涕，只听得炉头声响，猛睁睛看见光明，他就忍不住将身一纵，跳出丹炉，唿喇一声，蹬倒八卦炉，往外就走。慌得那架火看炉与丁甲一班人来扯，被他一个个都放倒，好似癫痫的白额虎，风狂的独角龙。老君赶上抓一把，被他一扌卒，扌卒了个倒栽葱，脱身走了。即去耳中掣出如意棒，迎风幌一幌，碗来粗细，依然拿在手中，不分好歹，却又大乱天宫，打得那九曜星闭门闭户，四天王无影无形。好猴精！有诗为证。诗曰：</div>
+            <div class="text-block simplified-text">时间过得真快，转眼四十九天过去，太上老君的炼丹火候到了。这天，老君打开炉子准备取仙丹。孙悟空正用手揉着被烟熏红的眼睛，突然听见炉子响动，一睁眼看到亮光，立刻忍不住跳了出来。他"哗啦"一声踢翻八卦炉，直接往外冲。那些看炉子的道士和天兵天将慌忙来拦，被他一个个打倒在地，就像发疯的老虎和狂躁的龙。太上老君追上来想抓住他，结果被孙悟空一推，摔了个四脚朝天，让他跑了。孙悟空马上从耳朵里掏出金箍棒，迎风一晃变成碗口那么粗，握在手里见人就打，把天宫搅得天翻地覆。那些天兵天将吓得关门闭户，四大天王也躲得没影儿。这猴子真厉害！有首诗说得好：（这里原诗保留）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">混元体正合先天，万劫千番只自然。渺渺无为浑太乙，如如不动号初玄。</div>
+            <div class="text-block simplified-text">这段话的大意是说：
+
+这东西本来就完美，天生就该这样，不管经历多少灾难变化，它还是老样子。它安静得几乎感觉不到存在，但又包含一切；它稳稳当当一点都不变，是最原始最根本的东西。
+
+（解释说明：用"这东西"指代原文玄学术语"混元体"，将"万劫千番"译为"多少灾难变化"，"无为浑太乙"意译为"安静得几乎感觉不到存在"，"初玄"译为"最原始最根本的东西"，全部采用口语化表达，保留了宇宙本源永恒不变的核心理念）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">炉中久炼非铅汞，物外长生是本仙。变化无穷还变化，三皈五戒总休言。</div>
+            <div class="text-block simplified-text">这诗的大意是说：
+
+炼丹炉里炼了很久的，根本不是铅和汞这些普通东西（暗指真正的修炼不在外物）。想超脱生死得长生，关键在修成神仙本身。神通变化多得数不清，但说来说去都是虚的。连那些佛教的戒律规矩（三皈五戒），也都别提了——意思是真正的修行不在这些表面功夫。
+
+用大白话总结就是：
+真正的修炼不在外物和形式，别整那些花里胡哨的，成仙关键在自身修行。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">又诗：</div>
+            <div class="text-block simplified-text">诗又说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">一点灵光彻太虚，那条拄杖亦如之。或长或短随人用，横竖横排任卷舒。</div>
+            <div class="text-block simplified-text">这段话的意思是：
+
+人的智慧就像一道光，能看透世间万物。手里的拐杖也是这样，能长能短，随你怎么用。横着放竖着放都行，收起来展开来都随便。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">又诗：</div>
+            <div class="text-block simplified-text">（根据您提供的格式，我注意到原文可能因技术原因未完整显示。以下是根据标题和格式要求提供的通用改写示范。若您能补充完整原文，我将为您精准改写）
+
+若原文是古诗词或文言文，改写示范如下：
+"另外还有一首诗这样写道："
+
+若原文是其他内容，改写原则如下：
+1. 把"又"换成"另外"或"还有"
+2. 把"诗"换成"诗歌"或"诗句"
+3. 整体改为："另外还有一首诗说的是："
+
+请提供完整原文，我将为您：
+- 逐句解读核心意思
+- 转换成自然的口语表达
+- 确保信息完整不增减
+- 使用像聊天一样的简单词汇
+
+（例如若原句是"又诗云：人生如逆旅"，会改为："还有首诗说：人生就像住旅馆一样短暂"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">猿猴道体配人心，心即猿猴意思深。大圣齐天非假论，官封弼马是知音。</div>
+            <div class="text-block simplified-text">猴子天生像人一样聪明，  
+"心猿"这说法很有道理。  
+"齐天大圣"可不是吹牛，  
+让他管马其实是懂他的人。  
+
+（说明：  
+1. 用"猴子"替代"猿猴"更口语化  
+2. "道体配人心"转化为"像人一样聪明"  
+3. "意思深"译为"很有道理"更直白  
+4. "非假论"用"可不是吹牛"保留否定语气  
+5. "知音"译为"懂他的人"更易理解  
+6. 保留原著中"齐天大圣""弼马温"两个关键称号）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">马猿合作心和意，紧缚牢拴莫外寻。万相归真从一理，如来同契住双林。</div>
+            <div class="text-block simplified-text">猴子（心）和马（意）要互相配合，牢牢管住别乱跑。所有道理其实都一样，佛祖和咱们都在同一个地方修行。
+
+（说明：用"猴子"对应"心猿"，"马"对应"意马"的俗语说法；"双林"用"同一个地方"解释；"如来同契"转化为"佛祖和咱们一起"；保留"修行"的核心概念但去掉"万相归真"等术语）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">这一番，那猴王不分上下，使铁棒东打西敌，更无一神可挡。只打到通明殿里，灵霄殿外。幸有佑圣真君的佐使王灵官执殿。他看大圣纵横，掣金鞭近前挡住道：“泼猴何往！有吾在此，切莫猖狂！”这大圣不由分说，举棒就打，那灵官鞭起相迎。两个在灵霄殿前厮浑一处。好杀——</div>
+            <div class="text-block simplified-text">这一次，孙悟空不管三七二十一，抡起金箍棒到处打，没有一个神仙能拦住他。他一直打到通明殿，冲到灵霄殿外面。幸好佑圣真君的手下王灵官在殿里值班。他看见孙悟空横冲直撞，就拿起金鞭上前拦住，喊道："你这泼猴往哪儿跑！有我在这儿，别太嚣张！"孙悟空根本不跟他废话，举起棒子就打，王灵官也挥鞭迎战。两个人在灵霄殿前打成一团。这场架打得真厉害——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">赤胆忠良名誉大，欺天诳上声名坏。一低一好幸相持，豪杰英雄同赌赛。铁棒凶，金鞭快，正直无私怎忍耐？这个是太乙雷声应化尊，那个是齐天大圣猿猴怪。金鞭铁棒两家能，都是神宫仙器械。今日在灵霄宝殿弄威风，各展雄才真可爱。一个欺心要夺斗牛宫，一个竭力匡扶玄圣界。苦争不让显神通，鞭棒往来无胜败。</div>
+            <div class="text-block simplified-text">这段话说的是：  
+
+一边是忠心正直、名声很好的神仙，另一边是狂妄自大、名声很差的猴精。他俩一个正派一个反派，正好对上，像英雄豪杰比试一样。一个拿着铁棒凶狠，一个挥着金鞭迅速，两边都正直刚烈，谁也不让谁。这边是太乙雷神，那边是齐天大圣孙悟空。金鞭和铁棒都是神仙用的厉害武器。今天在玉帝的灵霄宝殿上大显身手，各自展示本事，还挺精彩。一个想造反抢天宫，一个拼命保护天庭。打得难分难解，鞭来棒去，不分胜负。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">他两个斗在一处，胜败未分，早有佑圣真君，又差将佐发文到雷府，调三十六员雷将齐来，把大圣围在垓心，各骋凶恶鏖战。那大圣全无一毫惧色，使一条如意棒，左遮右挡，后架前迎。一时，见那众雷将的刀枪剑戟、鞭简挝锤、钺斧金瓜、旄镰月铲，来的甚紧。他即摇身一变，变做三头六臂；把如意棒幌一幌，变作三条；六只手使开三条棒，好便似纺车儿一般，滴流流，在那垓心里飞舞，众雷神莫能相近。真个是——</div>
+            <div class="text-block simplified-text">他俩打得难分胜负的时候，佑圣真君早就派人去雷部传令，调来三十六名雷将，把孙悟空团团围住，一起凶狠地围攻。可孙悟空一点儿也不害怕，拿着金箍棒左右抵挡，前后招架。眼看雷将们的各种兵器——刀枪剑戟、鞭棍锤斧等等密密麻麻地攻过来，他立刻变成三头六臂的模样，把金箍棒一晃变成三根。六只手挥舞着三根棒子，转得像纺车似的，在包围圈里飞快地旋转，雷将们根本靠不近身。那场面真是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">圆陀陀，光灼灼，亘古常存人怎学？入火不能焚，入水何曾溺？光明一颗摩尼珠，剑戟刀枪伤不着。也能善，也能恶，眼前善恶凭他作。善时成佛与成仙，恶处披毛并带角。无穷变化闹天宫，雷将神兵不可捉。</div>
+            <div class="text-block simplified-text">这段文字可以这样用现代白话文重新表达：
+
+这东西圆溜溜、亮闪闪，自古以来一直存在，人怎么学得来？火烧不坏它，水淹不了它。这颗明亮的宝珠，刀枪剑戟都伤不到。它既能做好事，也能干坏事，眼前是善是恶全看它怎么表现。行善时能成佛成仙，作恶时就变成禽兽模样。它大闹天宫变化无穷，天兵天将都拿它没办法。
+
+（说明：1.将"摩尼珠"译为"宝珠"更易懂 2."披毛并带角"意译为"变成禽兽模样" 3."雷将神兵"译为"天兵天将"更符合现代认知 4.保留所有原始意象和核心信息 5.使用"这东西"开头更口语化）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">当时众神把大圣攒在一处，却不能近身，乱嚷乱斗，早惊动玉帝。遂传旨着游奕灵官同翊圣真君上西方请佛老降伏。</div>
+            <div class="text-block simplified-text">那时候，一群神仙围住孙悟空打，但根本靠不近他，只能瞎喊乱打。这动静惊动了玉皇大帝，他马上下令，派游奕灵官和翊圣真君去西天请如来佛祖来收拾孙悟空。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">那二圣得了旨，径到灵山胜境，雷音宝刹之前，对四金刚、八菩萨礼毕，即烦转达。众神随至宝莲台下启知，如来召请。二圣礼佛三匝，侍立台下。如来问：“玉帝何事烦二圣下临？”二圣即启道：“向时花果山产一猴，在那里弄神通，聚众猴搅乱世界。玉帝降招安旨，封为弼马温，他嫌官小反去。当遣李天王、哪吒太子擒拿未获，复招安他，封做齐天大圣，先有官无禄。着他代管蟠桃园，他即偷桃；又走至瑶池，偷肴、偷酒，搅乱大会；仗酒又暗入兜率宫，偷老君仙丹，反出天宫。玉帝复遣十万天兵，亦不能收伏。后观世音举二郎真君同他义兄弟追杀，他变化多端，亏老君抛金钢琢打重，二郎方得拿住。解赴御前，即命斩之。刀砍斧剁，火烧雷打，俱不能伤，老君奏准领去，以火锻炼。四十九日开鼎，他却又跳出八卦炉，打退天丁，径入通明殿里，灵霄殿外；被佑圣真君的佐使王灵官挡住苦战，又调三十六员雷将，把他困在垓心，终不能相近。事在紧急，因此玉帝特请如来救驾。”如来闻诏，即对众菩萨道：“汝等在此稳坐法堂，休得乱了禅位，待我炼魔救驾去来。”</div>
+            <div class="text-block simplified-text">两位神仙接到命令，直接来到灵山雷音寺。他们先向门口的金刚和菩萨行礼，请他们帮忙通报。众神仙带他们到如来佛祖的莲花宝座前说明来意，如来请他们进来。两位神仙向佛祖行礼后站在一旁。如来问："玉帝派你们来有什么事？"
+
+两位神仙回答："之前花果山出了个猴子精，本事很大，带着一群猴子到处捣乱。玉帝本想招安他，封他当弼马温，他嫌官小就跑了。后来派李天王和哪吒去抓也没抓到，只好又招安他，封他做齐天大圣，但只给名号不发工资。让他管蟠桃园，他就偷桃子；跑到瑶池偷吃偷喝，搅乱宴会；喝醉了还溜进太上老君的兜率宫偷仙丹，最后直接反出天庭。玉帝派了十万天兵都抓不住他。后来观音菩萨推荐二郎神带着兄弟去追捕，那猴子太能变，幸亏老君用金刚琢打中他，二郎神才抓住。押到玉帝面前要处死，结果刀砍火烧雷劈都伤不了他。老君把他带回去用炼丹炉烧了四十九天，他反而跳出来打伤天兵，一直打到灵霄殿外。佑圣真君的手下王灵官拼命挡住他，又调来三十六员雷将围住，可还是拿他没办法。情况紧急，玉帝特地请佛祖去帮忙。"
+
+如来听完，对菩萨们说："你们在这儿好好坐着，别乱跑，我去收拾那个妖怪救玉帝。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">如来即唤</div>
+            <div class="text-block simplified-text">佛祖马上叫</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">阿傩、迦叶二尊者相随，离了雷音，径至灵霄门外。忽听得喊声振耳，乃三十六员雷将围困着大圣哩。佛祖传法旨：“教雷将停息干戈，放开营所，叫那大圣出来，等我问他有何法力。”众将果退，大圣也收了法象，现出原身近前，怒气昂昂，厉声高叫道：“你是那方善士，敢来止住刀兵问我？”如来笑道：“我是西方极乐世界释迦牟尼尊者，南无阿弥陀佛。今闻你猖狂村野，屡反天宫，不知是何方生长，何年得道，为何这等暴横？”大圣道：我本——</div>
+            <div class="text-block simplified-text">阿难和迦叶两位尊者跟着如来，离开雷音寺，直接到了灵霄门外。忽然听到喊声震天，原来是三十六位雷神大将把孙悟空团团围住。如来下令说："让雷神们停手，撤开包围，叫孙悟空出来，我要问问他有什么本事。"雷神们立刻退下，孙悟空也收了神通，变回原来的样子，气呼呼地走到如来面前，大声喊道："你是哪来的？敢叫他们停手，还来问我话？"如来笑着说："我是西方极乐世界的释迦牟尼，阿弥陀佛。听说你无法无天，多次大闹天宫，不知道你是什么来历，什么时候修成的本事，为什么这么嚣张？"孙悟空说："我本是——"  
+
+（说明：最后"我本是——"保留原文未完句式，因后续内容未提供）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">天地生成灵混仙，花果山中一老猿。水帘洞里为家业，拜友寻师悟太玄。</div>
+            <div class="text-block simplified-text">这段文字可以这样改写成大白话：
+
+天地间生出一只有灵性的石猴，它住在花果山的水帘洞里。后来它离开家去拜师学艺，想弄明白那些高深的道理。
+
+解释改写要点：
+1. "灵混仙"改成"有灵性的石猴"（西游记常识）
+2. "老猿"直接说"石猴"（更准确）
+3. "为家业"改成"住在"
+4. "悟太玄"改成"弄明白高深道理"
+5. 保留了拜师学艺的核心情节
+6. 整体变成现代人一听就懂的叙述方式</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">炼就长生多少法，学来变化广无边。因在凡间嫌地窄，立心端要住瑶天。</div>
+            <div class="text-block simplified-text">他学会了很多长生不老的方法，本事大得没边儿。觉得人间地方太小待着憋屈，一心想搬到天上去住。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">灵霄宝殿非他久，历代人王有分传。强者为尊该让我，英雄只此敢争先。</div>
+            <div class="text-block simplified-text">天庭不是他一个人的，历代皇帝轮流坐。谁厉害谁当老大，是英雄就站出来跟我比一比！  
+
+（说明：用"天庭"替代"灵霄宝殿"，"皇帝"替代"人王"，"老大"替代"尊"，最后一句用口语化挑战句式，完整保留"强者竞争"的核心信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">佛祖听言，呵呵冷笑道：“你那厮乃是个猴子成精，焉敢欺心，要夺玉皇上帝尊位？他自幼修持，苦历过一千七百五十劫。每劫该十二万九千六百年。你算，他该多少年数，方能享受此无极大道？你那个初世为人的畜生，如何出此大言！不当人子，不当人子！折了你的寿算！趁早皈依，切莫胡说！但恐遭了毒手，性命顷刻而休，可惜了你的本来面目！”大圣道：“他虽年劫修长，也不应久占在此。常言道，皇帝轮流做，明年到我家。只教他搬出去，将天宫让与我，便罢了；若还不让，定要搅攘，永不清平！”佛祖道：“你除了长生变化之法，再有何能，敢占天宫胜境？”大圣道：“我的手段多哩！我有七十二般变化，万劫不老长生。会驾筋斗云，一纵十万八千里。如何坐不得天位？”佛祖道：“我与你打个赌赛：你若有本事，一筋斗打出我这右手掌中，算你赢，再不用动刀兵苦争战，就请玉帝到西方居住，把天宫让你；若不能打出手掌，你还下界为妖，再修几劫，却来争吵。”</div>
+            <div class="text-block simplified-text">佛祖听了，冷笑着说："你这猴子成精的东西，胆子不小，敢妄想抢玉皇大帝的位子？他从小学道修行，经历了一千七百五十次大劫难。每次劫难要十二万九千六百年。你算算，他花了多少年才有今天的地位？你一个刚变成人的畜生，也敢说这种大话！真是不知天高地厚，会折寿的！赶紧认错吧，别胡说八道！小心丢了性命，可惜了你这一身本事！"
+
+孙悟空说："他就算修行时间长，也不能一直霸占这个位置。俗话说得好，皇帝轮流做，明年到我家。让他搬出去，把天宫让给我就行了；要是不让，我就闹个没完！"
+
+佛祖问："你除了会变来变去和长生不老，还有什么本事敢占天宫？"
+
+孙悟空说："我本事大着呢！我会七十二变，长生不老，一个跟头能翻十万八千里，怎么就不能当玉帝？"
+
+佛祖说："那咱们打个赌：你要是一个跟头能翻出我的右手掌心，就算你赢，不用打仗，我让玉帝搬去西天，把天宫让给你；要是翻不出去，你就回凡间当妖怪，再修炼几劫，别再来闹。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">那大圣闻言，暗笑道：“这如来十分好呆！我老孙一筋斗去十万八千里。他那手掌，方圆不满一尺，如何跳不出去？”急发声道：“既如此说，你可做得主张？”佛祖道：“做得，做得！”伸开右手，却似个荷叶大小。那大圣收了如意棒，抖擞神威，将身一纵，站在佛祖手心里，却道声：“我出去也！”你看他一路云光，无影无形去了。佛祖慧眼观看，见那猴王风车子一般相似不住，只管前进。大圣行时，忽见有五根肉红柱子，撑着一股青气。他道：“此间乃尽头路了。这番回去，如来作证，灵霄宫定是我坐也。”又思量说：“且住！等我留下些记号，方好与如来说话。”拔下一根毫毛，吹口仙气，叫：“变！”变作一管浓墨双毫笔，在那中间柱子上写一行大字云：“齐天大圣到此一游。”写毕，收了毫毛。又不庄尊，却在第一根柱子根下撒了一泡猴尿。翻转筋斗云，径回本处，站在如来掌内道：“我已去，今来了。你教玉帝让天宫与我。”如来骂道：“我把你这个尿精猴子！你正好不曾离了我掌哩！”大圣道：“你是不知。我去到天尽头，见五根肉红柱，撑着一股青气，我留个记在那里，你敢和我同去看么！”如来道：“不消去，你只自低头看看。”那大圣睁圆火眼金睛，低头看时，原来佛祖右手中指写着“齐天大圣到此一游”。大指丫里，还有些猴尿臊气，大圣吃了一惊道：“有这等事，有这等事！我将此字写在撑天柱子上，如何却在他手指上？莫非有个未卜先知的法术。我决不信，不信！等我再去来！”</div>
+            <div class="text-block simplified-text">孙悟空听了，心里暗笑：“这如来真够傻的！我一个跟头能翻十万八千里。他的手撑开还不到一尺宽，我怎么可能跳不出去？”马上大声说：“你这话算数吗？”如来回答：“算数，算数！”说完伸出右手，手掌也就荷叶那么大。孙悟空把金箍棒收好，使出全力一跳，站在如来手心里，喊道：“我走啦！”只见他驾着筋斗云，一溜烟没影了。如来用慧眼盯着，看见孙悟空像风车似的拼命往前飞。飞着飞着，孙悟空忽然看见五根红彤彤的肉柱子，撑着青天。他想：“这就是天边了。等我回去，如来作证，玉帝的宝座该轮到我坐了。”又一想：“等等！我得留个记号，好跟如来对质。”拔了根毫毛，吹口气变成毛笔，在中间柱子上写了“齐天大圣到此一游”。写完收回毫毛，还觉得不够，又在第一根柱子底下撒了泡尿。然后翻个跟头飞回来，站在如来手心说：“我去过了，现在回来了。你快叫玉帝把天宫让给我吧！”如来骂道：“你这尿精猴子！压根就没跳出我的手掌心！”孙悟空说：“你哪知道！我飞到天边看见五根红柱子撑着天，还留了记号在那儿。不信你去看！”如来说：“不用看，你自己低头瞧瞧。”孙悟空瞪大眼睛一看——如来右手中指上写着“齐天大圣到此一游”，大拇指缝里还有猴尿的骚味。他吓一跳：“不可能！我明明写在撑天的柱子上，怎么跑他手指头上了？难道他会算命？我不信！让我再去一趟！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">好大圣，急纵身又要跳出，被佛祖翻掌一扑，把这猴王推出西天门外，将五指化作金木水火土五座联山，唤名“五行山”，轻轻的把他压住。众雷神与阿傩、迦叶一个个合掌称扬道：善哉，善哉！</div>
+            <div class="text-block simplified-text">孙悟空一看情况不妙，赶紧想跳走。如来佛祖一抬手，一巴掌把他打出了西天门，又把五根手指变成金、木、水、火、土五座连在一起的大山，叫做"五行山"，轻轻松松就把孙悟空压在了下面。旁边的雷神和阿傩、迦叶这些神仙见了，都拍手叫好，连声说："太好了！太好了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">当年卵化学为人，立志修行果道真。万劫无移居胜境，一朝有变散精神。</div>
+            <div class="text-block simplified-text">当年我从一个普通生物修炼成人，下决心要真正修成大道。经过无数劫难都没动摇，一直住在仙境里。但突然有一天出了意外，我的精气神全散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">欺天罔上思高位，凌圣偷丹乱大伦。恶贯满盈今有报，不知何日得翻身。</div>
+            <div class="text-block simplified-text">这人胆子真大，连老天爷和皇帝都敢骗，就想着往上爬。他还欺负圣人、偷仙丹，把规矩全搞乱了。现在坏事做太多，终于遭报应了。谁知道他哪天才能翻身呢？  
+
+（说明：  
+1. "欺天罔上"译为"连老天爷和皇帝都敢骗"  
+2. "凌圣偷丹"用"欺负圣人、偷仙丹"直白对应  
+3. "乱大伦"意译为"把规矩全搞乱了"  
+4. 末句保留反问语气，用口语"谁知道"开头  
+5. 全文保持7-12岁可理解的词汇量，如用"坏事做太多"替代"恶贯满盈"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">如来佛祖殄灭了妖猴，即唤阿傩、迦叶同转西方极乐世界。时有天蓬、天佑急出灵霄宝殿道：“请如来少待，我主大驾来也。”佛祖闻言，回首瞻仰。须臾，果见八景鸾舆，九光宝盖；声奏玄歌妙乐，咏哦无量神章；散宝花，喷真香，直至佛前谢曰：“多蒙大法收殄妖邪，望如来少停一日，请诸仙做一会筵奉谢。”如来不敢违悖，即合掌谢道：“老僧承大天尊宣命来此，有何法力？还是天尊与众神洪福。敢劳致谢？”玉帝传旨，即着雷部众神，分头请三清、四御、五老、六司、七元、八极、九曜、十都，千真万圣，来此赴会，同谢佛恩。又命四大天师、九天仙女，大开玉京金阙、太玄宝宫、洞阳玉馆，请如来高座七宝灵台，调设各班坐位，安排龙肝凤髓，玉液蟠桃。</div>
+            <div class="text-block simplified-text">如来佛祖消灭了孙悟空后，就叫上阿傩、迦叶一起回西天。这时天蓬元帅和天佑元帅赶紧跑出灵霄宝殿说："请如来稍等一下，我们玉帝马上就来。"如来一听，转身等着。不一会儿，果然看见玉帝坐着华丽的车驾来了，周围有各种宝物装饰，还有美妙的仙乐伴奏。玉帝来到如来面前感谢说："多亏您出手降服了妖怪，请如来留下来一天，我们设宴感谢您。"如来客气地说："我是奉玉帝的命令来的，哪有什么功劳？都是托玉帝和各位神仙的福。怎么敢当这样的感谢？"玉帝立刻下令，让雷部众神去请各路神仙——包括三清、四御、五老等等所有大神仙，都来参加宴会一起感谢如来。还命令四大天师和九天仙女打开天宫各处宫殿，请如来坐在最尊贵的七宝灵台上，安排好所有神仙的座位，准备了最珍贵的龙肝、凤髓、仙酒和蟠桃来招待。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">不一时，那玉清元始天尊、上清灵宝天尊、太清道德天尊、五跂真君、五斗星君、三官四圣、九曜真君、左辅、右弼、天王、哪吒，玄虚一应灵通，对对旌旗，双双幡盖，都捧着明珠异宝，寿果奇花，向佛前拜献曰：“感如来无量法力，收伏妖猴。蒙大天尊设宴呼唤，我等皆来陈谢。请如来将此会立一名，如何？”如来领众神之托曰：“今欲立名，可作个安天大会。”各仙老异口同声，俱道：“好个‘安天大会’！好个‘安天大会’！”言讫，各坐座位，走枿传觞，簪花鼓瑟，果好会也。有诗为证，诗曰：</div>
+            <div class="text-block simplified-text">没过多久，元始天尊、灵宝天尊、道德天尊这三位大神仙，还有五跂真君、五斗星君、三官四圣、九曜真君、左辅右弼、天王哪吒这些神仙，都带着各种宝贝、寿桃和奇花，举着旗子、打着华盖，一起来到如来佛祖面前行礼说："多亏如来佛祖法力无边，收服了那妖猴。承蒙玉帝设宴邀请，我们都来道谢。请如来给这次聚会起个名字吧？"
+
+如来答应大家的请求，说："既然要起名，就叫'安天大会'吧。"所有神仙都齐声称赞："好一个'安天大会'！真是个好名字！"说完大家各自入座，喝酒吃菜，弹琴赏花，这场宴会真是热闹极了。有首诗为证，诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">宴设蟠桃猴搅乱，安天大会胜蟠桃。龙旗鸾辂祥光蔼，宝节幢幡瑞气飘。</div>
+            <div class="text-block simplified-text">王母娘娘摆蟠桃宴，被孙悟空闹得天翻地覆。后来开的安天大会，比蟠桃宴还要热闹。只见彩旗仪仗闪闪发光，各种吉祥的旗子随风飘舞，整个场面喜气洋洋。
+
+（说明：根据口语化要求做了以下处理：
+1. "宴设蟠桃"译为"摆蟠桃宴"更符合口语
+2. "猴搅乱"明确为"被孙悟空闹"避免歧义
+3. "龙旗鸾辂"等专业词汇译为"彩旗仪仗"等常见词
+4. 添加"整个场面"等连接词使描述更连贯
+5. 保留所有关键元素：蟠桃宴、大闹、安天大会、旗帜祥瑞等
+6. 用"喜气洋洋"替代"瑞气飘"更易理解）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">仙乐玄歌音韵美，凤箫玉管响声高。琼香缭绕群仙集，宇宙清平贺圣朝。</div>
+            <div class="text-block simplified-text">天上传来好听的音乐，箫笛吹得响亮动听。香气飘绕中神仙们都来了，天下太平，一起庆祝这盛世。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">众皆畅然喜会，只见王母娘娘引一班仙子、仙娥、美姬、毛女，飘飘荡荡舞向佛前，施礼曰：“前被妖猴搅乱蟠桃嘉会，请众仙众佛，俱未成功。今蒙如来大法链锁顽猴，喜庆安天大会，无物可谢，今是我净手亲摘大株蟠桃数颗奉献。”真个是——</div>
+            <div class="text-block simplified-text">大家都特别高兴地聚在一起，这时候王母娘娘带着一群仙女、漂亮姑娘，轻飘飘地飞到佛祖面前行礼说："之前被那猴精捣乱，搞砸了蟠桃会，请了各路神仙佛祖来都没能制服他。现在多亏如来佛祖用大法力把那泼猴锁住了，这才开成了安天大会。我没什么好东西谢您，刚才专门亲手摘了几个大蟠桃献上。"真的是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">半红半绿喷甘香，艳丽仙根万载长。堪笑武陵源上种，争如天府更奇强。</div>
+            <div class="text-block simplified-text">这果子一半红一半绿，闻着特别香甜，是棵能活上万年的神奇仙树。说起来好笑，就连有名的武陵源桃树，也比不上咱们天府这棵的神奇厉害！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">紫纹娇嫩寰中少，缃核清甜世莫双。延寿延年能易体，有缘食者自非常。</div>
+            <div class="text-block simplified-text">这桃子长得特别好看，紫红色的皮儿嫩得世上少见，淡黄色的果核清甜无比，没人能比得上。吃了它能延年益寿，还能让人脱胎换骨，不过只有有缘的人才能吃到这么稀罕的东西。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">佛祖合掌向王母谢讫。王母又着仙姬、仙子唱的唱，舞的舞。满会群仙，又皆赏赞。正是——</div>
+            <div class="text-block simplified-text">佛祖双手合十，向王母娘娘道谢。王母娘娘又让仙女们唱歌跳舞助兴。在场的所有神仙都看得高兴，纷纷夸赞。那场面真是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">缥缈天香满座，缤纷仙蕊仙花。玉京金阙大荣华，异品奇珍无价。</div>
+            <div class="text-block simplified-text">天上飘着若有若无的香味，周围开满了各种漂亮的神仙花朵。这神仙住的地方真是豪华得不得了，到处都是人间见不到的宝贝，每样都珍贵得没法用钱衡量。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">对对与天齐寿，双双万劫增加。桑田沧海任更差，他自无惊无讶。</div>
+            <div class="text-block simplified-text">这对人儿活得跟天一样长，一起经历无数劫难也不分开。不管世界怎么变，他们都不慌不忙，一点儿也不惊讶。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">王母正着仙姬仙子歌舞，觥筹交错，不多时，忽又闻得——</div>
+            <div class="text-block simplified-text">王母娘娘正和仙女们一起喝酒看跳舞，大家玩得正高兴的时候，突然又听到——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">一阵异香来鼻噢，惊动满堂星与宿。天仙佛祖把杯停，各各抬头迎目候。</div>
+            <div class="text-block simplified-text">突然闻到一股特别的香味，惊动了天上的神仙们。玉帝、佛祖都停下酒杯，一个个抬头张望，想看看到底是怎么回事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">霄汉中间现老人，手捧灵芝飞蔼绣。葫芦藏蓄万年丹，宝箓名书千纪寿。</div>
+            <div class="text-block simplified-text">天上有个老神仙，手里拿着仙草，周围飘着彩云。他带着个装有不老仙丹的葫芦，还有本写着长寿秘诀的宝书。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">洞里乾坤任自由，壶中日月随成就。遨游四海乐清闲，散淡十洲容辐辏。</div>
+            <div class="text-block simplified-text">山洞里想干啥就干啥，酒壶里时间过得快。到处游玩真开心，自由自在走天下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">曾赴蟠桃醉几遭，醒时明月还依旧。长头大耳短身躯，南极之方称老寿。</div>
+            <div class="text-block simplified-text">我之前去蟠桃会喝醉了好几回，醒来时月亮还是老样子。我脑袋大耳朵长个子矮，在南方被人叫作老寿星。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">寿星又到。见玉帝礼毕，又见如来，申谢曰：“始闻那妖猴被老君引至兜率宫锻炼，以为必致平安，不期他又反出。幸如来善伏此怪，设宴奉谢，故此闻风而来。更无他物可献，特具紫芝瑶草，碧藕金丹奉上。”诗曰：</div>
+            <div class="text-block simplified-text">寿星又来了。他先拜见了玉帝，然后又见了如来佛祖，感谢说：“之前听说那妖猴被太上老君带到兜率宫去收拾，以为肯定没事了，没想到他又逃出来了。多亏如来佛祖降服了这个妖怪，所以特地设宴感谢。我听说这事就赶来了。也没别的好东西，就带了点紫芝仙草、碧藕和金丹献给您。”还念了首诗说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">碧藕金丹奉释迦，如来万寿若恒沙。清平永乐三乘锦，康泰长生九品花。</div>
+            <div class="text-block simplified-text">这段话用大白话说就是：  
+
+佛祖释迦牟尼收到了碧藕和金丹这些珍贵的供品。如来佛的寿命长得像恒河的沙子一样数不清。天下太平，永远快乐，佛法（三乘）像锦绣一样美好。人们健康平安，长生不老，修行的功德（九品）像花儿一样灿烂。  
+
+简单来说：就是赞美佛祖长寿，佛法美好，祝愿天下太平、人们健康幸福。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">无相门中真法主，色空天上是仙家。乾坤大地皆称祖，丈六金身福寿赊。</div>
+            <div class="text-block simplified-text">在佛教修行中，真正得道的高人，超越了物质和虚幻的境界，成了天上的神仙。天地万物都尊他为祖师，他那高大的金身象征着无边的福气和长寿。  
+
+（说明：原文用佛家术语描述得道者的崇高境界，翻译时保留了“修行得道”“神仙”“祖师”“福寿”等核心概念，用“超越物质和虚幻”“高大金身”等白话替代了“无相门”“色空”“丈六金身”等专业词汇，确保普通读者能直观理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">如来欣然领谢。寿星得座，依然走棨传觞。只见赤脚大仙又至。向玉帝前礼毕，又对佛祖谢道：“深感法力，降伏妖猴。无物可以表敬，特具交梨二颗，火枣数枚奉献。”诗曰：</div>
+            <div class="text-block simplified-text">如来高兴地接受了谢意。寿星坐下后，大家又开始喝酒聊天。这时候赤脚大仙也来了。他先给玉帝行礼，然后又对如来道谢说："多亏您法力高强，收服了那只妖猴。我没什么好东西表示敬意，特意带来两个仙梨和几颗火枣献给您。"有诗写道：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">大仙赤脚枣梨香，敬献弥陀寿算长。七宝莲台山样稳，千金花座锦般妆。</div>
+            <div class="text-block simplified-text">这位大仙光着脚，拿着香甜的枣和梨，献给弥陀佛祝他长寿。弥陀佛的七宝莲台像山一样稳稳当当，那贵重的花座装饰得像锦绣一样漂亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">寿同天地言非谬，福比洪波话岂狂。福寿如期真个是，清闲极乐那西方。</div>
+            <div class="text-block simplified-text">你的寿命和天地一样长，这话可一点不假；你的福气比大海还大，这可不是吹牛。福气和长寿都实实在在的，就像西方极乐世界那样逍遥快活。
+
+（说明：通过以下方式实现白话转换：
+1. "言非谬/话岂狂"转为"一点不假/可不是吹牛"等口语否定句式
+2. "洪波"译为"大海"更直观
+3. "清闲极乐那西方"拆解为"逍遥快活"+"西方极乐世界"双重解释
+4. 添加"你的"作为主语使指代明确
+5. 保留所有原始意象：天地/大海/西方极乐世界
+6. 使用"实实在在"对应"真个是"的口语化表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">如来又称谢了，叫阿傩、迦叶，将各所献之物，一一收起，方向玉帝前谢宴。众各酩酊，只见个巡视灵官来报道：“那大圣伸出头来了。”佛祖道：“不妨，不妨”。袖中只取出一张帖子，上有六个金字：“奄嘛呢叭嵒牜递与阿傩，叫贴在那山顶上。这尊者即领帖子，拿出天门，到那五行山顶上，紧紧的贴在一块四方石上。那座山即生根合缝。可运用呼吸之气，手儿爬出，可以摇挣摇挣。阿傩回报道：“已将帖子贴了。”</div>
+            <div class="text-block simplified-text">如来佛祖连声道谢，让阿傩、迦叶把大家送的礼物都收好，然后去向玉帝告辞。这时候大家都喝得醉醺醺的，突然有个巡逻的天兵跑来报告："不好了！孙悟空的头从山下伸出来了！"
+
+佛祖摆摆手说："没事没事。"说着从袖子里掏出一张符，上面写着六个金光闪闪的字："唵嘛呢叭咪吽"。他把符交给阿傩，吩咐道："去把这符贴在山顶上。"
+
+阿傩拿着符走出天门，来到五行山顶，把符牢牢贴在一块四方的大石头上。这座山立刻像长了根一样严丝合缝。孙悟空虽然还能呼吸，手脚也能稍微动一动，但再也逃不出来了。
+
+阿傩回去报告："佛祖，符已经贴好了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">如来即辞了玉帝众神，与二尊者出天门之外，又发一个慈悲心，念动真言咒语，将五行山召一尊土地神祗，会同五方揭谛，居住此山监押。但他饥时，与他铁丸子吃；渴时，与他溶化的铜汁饮。待他灾愆满日，自有人救他。正是——</div>
+            <div class="text-block simplified-text">如来告别了玉帝和其他神仙，带着两位尊者走出天门。他又起了善心，念了一段咒语，叫来五行山的土地神，让他和五方揭谛一起住在这座山里看管那猴子。猴子饿了就给他铁球吃，渴了就给他喝熔化的铜汁。等他的惩罚期满，自然会有人来救他。这就叫——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">妖猴大胆反天宫，却被如来伏手降。渴饮溶铜捱岁月，饥餐铁弹度时光。</div>
+            <div class="text-block simplified-text">这猴子胆子真大，敢跟天宫对着干，结果被如来佛祖一巴掌给收拾了。被关起来后，渴了就喝滚烫的铜汁，饿了就吃铁丸子，日子过得那叫一个惨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">天灾苦困遭磨折，人事凄凉喜命长。若得英雄重展挣，他年奉佛上西方。</div>
+            <div class="text-block simplified-text">老天爷降下灾难，日子过得又苦又难，人世间也冷清凄凉，但好在命还在。要是能有英雄重新振作起来，以后就能拜佛修行，去往西方极乐世界。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">又诗曰：</div>
+            <div class="text-block simplified-text">以下是转换后的白话文：
+
+还有一首诗这样说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">伏逞豪强大势兴，降龙伏虎弄乖能。偷桃偷酒游天府，受箓承恩在玉京。</div>
+            <div class="text-block simplified-text">这个人仗着自己本事大，特别嚣张。他能降龙伏虎，耍各种花招。曾经偷过王母的仙桃和仙酒，在天宫到处逛。后来被天庭看中，封了官，在玉皇大帝那儿当差。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">恶贯满盈身受困，善根不绝气还升。果然脱得如来手，且待唐朝出圣僧。</div>
+            <div class="text-block simplified-text">这个人坏事做尽终于遭了报应，但因为他还有点善心，所以还有一线生机。只要他能熬过如来佛这一关，就等着唐僧来救他吧。  
+
+（说明：用"坏事做尽"替代"恶贯满盈"，"遭了报应"替代"身受困"，"还有点善心"解释"善根不绝"，"一线生机"对应"气还升"。最后两句直接点明"如来佛"和"唐僧"，避免使用"圣僧"等文言词汇。整体采用口语化因果句式，保留"等待被救"的核心情节。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">毕竟不知向后何年何月，方满灾殃，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道要过多久才能熬过这场灾祸，咱们下次再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
