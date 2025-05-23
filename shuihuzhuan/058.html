@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十八回　三山聚义打青州　众虎同心归水泊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./057.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十八回　三山聚义打青州　众虎同心归水泊</h1>
+        <a href="./059.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句翻译：
+
+这首诗说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">一事参差百事难，一人辛苦众人安。</div>
+            <div class="text-block simplified-text">一件事没做好，其他事也跟着难办；一个人多辛苦点，大家都能过得安稳。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">英雄天地彰名誉，鹰隼云霄振羽翰。</div>
+            <div class="text-block simplified-text">英雄做了大事，名声传遍天下；就像雄鹰展翅高飞，直冲云霄一样威风。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">孔亮弟兄容易救，青州城郭等闲看。</div>
+            <div class="text-block simplified-text">救出孔亮兄弟很容易，拿下青州城也不在话下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">牢笼又得呼延灼，联辔同归大将坛。</div>
+            <div class="text-block simplified-text">他们又抓住了呼延灼，把他和大将们一起押回军营。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">当有武松引孔亮拜告鲁智深、杨志，求救哥哥孔明并叔叔孔宾。鲁智深便要聚集三山人马，前去攻打。杨志便道：“若要打青州，须用大队军马方可打得。俺知梁山泊宋公明大名，江湖上都唤他做及时雨宋江，更兼呼延灼是他那里仇人。俺们弟兄和孔家弟兄的人马，都并做一处。洒家这里再等桃花山人马齐备，一面且去攻打青州。孔亮兄弟，你可亲身星夜去梁山泊，请下宋公明来并力攻城，此为上计。亦且宋三郎与你至厚。你们弟兄心下如何？”鲁智深道：“正是如此。我只见今日也有人说宋三郎好，明日也有人说宋三郎好，可惜洒家不曾相会。众人说他的名字，聒的洒家耳朵也聋了，想必其人是个真男子，以致天下闻名。前番和花知寨在清风山时，洒家有心要去和他厮会，及至洒家去时，又听得说道去了，以此无缘不得相见。罢了，孔亮兄弟，你要救你哥哥时，快亲自去那里告请他们。洒家等先在这里和那撮鸟们厮杀。”孔亮交付小喽啰与了鲁智深，只带一个伴当，扮做客商，星夜投梁山泊来。</div>
+            <div class="text-block simplified-text">武松带着孔亮来求鲁智深和杨志帮忙，想救出孔亮的哥哥孔明和叔叔孔宾。鲁智深一听就要召集三山的人马去攻打。杨志说："要打青州得人多才行。我知道梁山泊的宋江很有名，外号及时雨，而且呼延灼正好是他的仇人。不如把我们的人和孔家的人马合在一起，等桃花山的人也到齐了，一边准备攻打青州。孔亮兄弟你亲自连夜去梁山泊请宋江来一起攻城，这才是最好的办法。再说宋江跟你关系很好。你们觉得怎么样？"
+
+鲁智深说："说得对。我天天听人说宋江怎么怎么好，可惜没见过。大伙老提他的名字，我耳朵都快听出茧子了，这人肯定是个真汉子才能这么出名。之前在清风山时我就想见他，结果去的时候听说他已经走了，一直没机会见。算了，孔亮兄弟你要救你哥就赶紧去请他们。我们先在这儿跟那帮混蛋打。"
+
+孔亮把手下留给鲁智深，只带了一个随从，打扮成商人模样，连夜赶往梁山泊。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">且说鲁智深、杨志、武松三人去山寨里，唤将施恩、曹正再带一二百人下山来相助。桃花山李忠、周通得了消息，便带本山人马，尽数起点，只留三五十个小喽啰看守寨栅，其余都带下山来青州城下聚集，一同攻打城池。不在话下。</div>
+            <div class="text-block simplified-text">话说鲁智深、杨志、武松三个人回到山寨，叫上施恩、曹正，又带了百来号人下山帮忙。桃花山的李忠、周通听说后，也带着山上所有人马出动，只留了三五十个小兵看家，其他人都拉到青州城下集合，准备一起攻城。这事儿就这么定了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说孔亮自离了青州，迤逦来到梁山泊边催命判官李立酒店里买酒吃问路。李立见他两个来得面生，便请坐地，问道：“客人从那里来？”孔亮道：“从青州来。”李立问道：“客人要去梁山泊寻谁？”孔亮答道：“有个相识在山上，特来寻他。”李立道：“山上寨中都是大王住处，你如何去得？”孔亮道：“便是要寻宋大王。”李立道：“既是来寻宋头领，我这里有分例。”便叫火家快去安排分例酒来相待。孔亮道：“素不相识，如何见款？”李立道：“客官不知。但是来寻山寨头领，必然是社火中人故旧交友，岂敢有失祗应。便当去报。”孔亮道：“小人便是白虎山前庄户孔亮的便是。”李立道：“曾听得宋公明哥哥说大名来，今日且请上山。”二人饮罢分例酒，随即开窗，就水亭上放了一枝响箭，见对港芦苇深处，早有小喽啰棹过船来，到水亭下。李立便请孔亮下了船，一同摇到金沙滩上岸，却上关来。孔亮看见三关雄壮，枪刀剑戟如林，心下想道：“听得说梁山泊兴旺，不想做下这等大事业！”已有小喽啰先去报知，宋江慌忙下来迎接。孔亮见了，连忙下拜。宋江问道：“贤弟缘何到此？”孔亮拜罢，放声大哭。宋江道：“贤弟心中有何危厄不决之难，但请尽说不妨。便当不避水火，力为救解，与汝相助。贤弟且请起来。”孔亮道：“自从师父离别之后，老父亡化。哥哥孔明与本乡上户争些闲气起来，杀了他一家老小。官司来捕捉得紧，因此反上白虎山，聚得五七百人，打家劫舍。青州城里却有叔父孔宾，被慕容知府捉了，重枷钉在狱中。因此我弟兄两个去打城子，指望救取叔叔孔宾。谁想去到城下，正撞了一个使双鞭的呼延灼，哥哥与他交锋，致被他捉了，解送青州，下在牢里，存亡未保。小弟又被他追杀一阵。次日，正撞着武松，说起师父大名来，见在梁山泊做头领。他便引我去拜见同伴的，一个是花和尚鲁智深，一个是青面兽杨志。他二人一见如故，便商议救兄一事。他道：‘我请鲁、杨二头领并桃花山李忠、周通，聚集三山人马攻打青州。你可连夜快去梁山泊内，告你师父宋公明来救你叔兄两个。’以此今日一径到此。万望师父觑先父之面，垂救性命，生死不敢有忘。”宋江道：“此是易为之事，你且放心。先来拜见晁头领，共同商议。”</div>
+            <div class="text-block simplified-text">话说孔亮离开青州后，一路来到梁山泊附近，在李立开的酒店里买酒喝顺便问路。李立看他们面生，就请他们坐下问："两位客人从哪儿来？"孔亮说："从青州来。"李立又问："来梁山泊找谁？"孔亮回答："有个熟人在山上，特地来找他。"李立说："山上都是大王们住的地方，你怎么能上去？"孔亮说："我就是来找宋江大哥的。"
+
+李立一听就说："既然是找宋头领，我们这儿有规矩。"马上让伙计准备招待酒。孔亮客气道："咱们又不认识，怎么好意思让你破费？"李立解释道："你不知道，凡是来找山寨头领的，肯定都是自己人，我们哪敢怠慢。我这就去通报。"孔亮这才说："我就是白虎山前庄的孔亮。"李立说："听宋大哥提起过你，今天先请你上山。"
+
+两人喝完酒，李立打开窗户，朝水亭射了支响箭。不一会儿，芦苇丛里划出条小船。李立带孔亮上船，划到金沙滩上岸，然后过关。孔亮看到山寨关卡森严，兵器林立，心想："早就听说梁山泊厉害，没想到这么威风！"
+
+早有喽啰去报信，宋江急忙出来迎接。孔亮见到宋江，立刻下跪磕头。宋江扶起他问："兄弟怎么来了？"孔亮忍不住大哭起来。宋江安慰道："有什么难处尽管说，我一定帮忙。先起来说话。"
+
+孔亮这才说："自从上次分别后，我父亲去世了。我哥孔明跟当地大户发生争执，失手杀了对方全家。官府追捕得紧，我们只好上白虎山落草，聚集了五六百人。青州城里我叔叔孔宾被知府抓了，关在大牢里。我们兄弟去攻城想救叔叔，结果遇到个使双鞭的呼延灼。我哥跟他交手被抓，现在生死不明。我也被打败，第二天遇到武松，他说起您在梁山泊当首领。武松带我去见了鲁智深和杨志，他们决定联合桃花山的人马攻打青州，让我赶紧来找您求救。求师父看在我父亲面子上，救救我们吧！"
+
+宋江说："这事好办，别担心。先跟我去见晁盖大哥，咱们一起商量。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">宋江便引孔亮参见晁盖、吴用、公孙胜并众头领，备说呼延灼走在青州，投奔慕容知府，今来捉了孔明，以此孔亮来到，恳告求救。晁盖道：“既然他两处好汉尚兀自仗义行仁救叔，今者三郎和他至爱交友，如何不去！三郎贤弟，你连次下山多遍，今番权且守寨，愚兄替你走一遭。”宋江道：“哥哥是山寨之主，不可轻动。这个是兄弟的事，既是他远来相投，哥哥若自去，恐他弟兄们心下不安。小可情愿请几位弟兄同走一遭。”说言未了，厅上厅下一齐都道：“愿效犬马之劳，跟随同去。”宋江大喜。有诗为证：</div>
+            <div class="text-block simplified-text">宋江带着孔亮去见晁盖、吴用、公孙胜和其他头领，详细说明了情况：呼延灼逃到青州投靠了慕容知府，现在抓了孔明，所以孔亮特地来求救。晁盖说："既然他们两家好汉都讲义气来救叔叔，现在三郎（宋江）又和他们是好朋友，怎么能不去！三郎老弟，你之前已经下山很多次了，这次就留在山寨吧，让我替你去一趟。"宋江说："大哥你是山寨之主，不能随便出动。这是我兄弟的事，既然他大老远来投奔，要是大哥亲自去，恐怕他们心里过意不去。我自愿带几个兄弟走一趟。"话还没说完，大厅上下的人全都喊起来："我们愿意出力，跟你一起去！"宋江很高兴。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">孔明行事太匆忙，轻引喽啰犯犬羊。</div>
+            <div class="text-block simplified-text">诸葛亮做事太着急，随便带着小兵去打那些弱小的对手。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">赖有宋江豪侠在，便将军马救危亡。</div>
+            <div class="text-block simplified-text">多亏有宋江这样的好汉在，带着人马及时赶来救人脱险。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">当日设筵管待孔亮。饮筵中间，宋江唤铁面孔目裴宣定拨下山人数，分作五军起行。前军便差花荣、秦明、燕顺、王矮虎开路作先锋，第二队便差穆弘、杨雄、解珍、解宝，中军便是主将宋江、吴用、吕方、郭盛，第四队便是朱仝、柴进、李俊、张横，后军便差孙立、杨林、欧鹏、凌振催军作合后。梁山泊点起五军，共计二十个头领，马步军兵三千人马。其余头领，自与晁盖守把寨栅。</div>
+            <div class="text-block simplified-text">那天宋江摆酒席招待孔亮。喝酒的时候，宋江叫来铁面判官裴宣安排下山的人手，分成五队出发：
+
+第一队先锋：花荣、秦明、燕顺、王矮虎
+第二队：穆弘、杨雄、解珍、解宝
+中军主队：宋江、吴用、吕方、郭盛
+第四队：朱仝、柴进、李俊、张横
+第五队断后：孙立、杨林、欧鹏、凌振
+
+梁山这次总共派出二十个头领，带着三千步兵骑兵。剩下的头领跟着晁盖留守山寨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">当下宋江别了晁盖，自同孔亮下山来。梁山人马分作五军起发。正是：</div>
+            <div class="text-block simplified-text">宋江跟晁盖告别后，带着孔亮一起下山。梁山的队伍分成五路出发。情况是这样的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">初离水泊，浑如海内纵蛟龙；乍出梁山，却似风中奔虎豹。五军并进，前后列二十辈英雄；一阵同行，首尾分三千名士卒。绣彩旗如云似雾，朴刀枪灿雪铺霜。鸾铃响，战马奔驰；画鼓振，征夫踊跃。卷地黄尘霭霭，漫天土雨蒙蒙。宝纛旗中，簇拥着多智足谋吴学究；碧油幢下，端坐定替天行道宋公明。过去鬼神皆拱手，回来民庶尽歌谣。</div>
+            <div class="text-block simplified-text">刚离开水泊梁山时，他们就像龙入大海一样自在；才走出梁山寨，又像虎豹在风中狂奔。五路军队一起前进，前后排着二十位好汉；队伍整齐行进，从头到尾有三千士兵。彩旗多得遮天蔽日，刀枪亮得像雪片霜花。马铃叮当响，战马飞奔；战鼓咚咚敲，士兵们精神抖擞。马蹄卷起的尘土满天飞，就像下起了黄沙雨。在华丽的大旗下，围着足智多谋的军师吴用；在青绿色的军帐前，正坐着替天行道的宋江。这阵仗，连鬼神见了都得让路，等他们回来时，老百姓都会高兴地传唱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">话说宋江引了梁山泊二十个头领，三千人马，分作五军前进。于路无事。所过州县，秋毫无犯。已到青州。孔亮先到鲁智深等军中报知，众好汉安排迎接。宋江中军到了，武松引鲁智深、杨志、李忠、周通、施恩、曹正都来相见了。宋江让鲁智深坐地。鲁智深道：“久闻阿哥大名，无缘不曾拜会，今日且喜相认得阿哥。”宋江答道：“不才何足道哉。江湖上义士甚称吾师清德，今日得识慈颜，平生甚幸！”杨志也起身再拜道：“杨志旧日经过梁山泊，多蒙山寨重意相留，为是洒家愚迷，不曾肯住。今日幸得义士壮观山寨，此是天下第一好事！”宋江答道：“制使威名播于江湖，只恨宋江相会太晚！”鲁智深便令左右置酒管待，一一都相见了。</div>
+            <div class="text-block simplified-text">宋江带着梁山泊的二十个头领和三千人马，分成五队往青州走。一路上没惹事，经过的地方都没骚扰老百姓。到了青州后，孔亮先跑去通知鲁智深他们，大伙儿赶紧准备迎接。等宋江带着主力部队到了，武松就领着鲁智深、杨志、李忠、周通、施恩、曹正来见面。宋江请鲁智深坐下，鲁智深说："早就听说大哥的名声，一直没机会见面，今天总算认得了！"宋江回他："我这点本事不值一提。江湖上好汉们都夸师父您德高望重，今天能见到您真是我的福气！"杨志也站起来行礼说："我以前路过梁山泊，承蒙各位盛情挽留，都怪我当时糊涂没留下。现在看到山寨这么兴旺，真是天大的好事！"宋江说："杨制使的威名江湖上谁不知道，只恨咱们认识得太晚了！"鲁智深马上叫人摆酒招待，大家热热闹闹地互相认识。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">次日，宋江问青州一节，胜败如何。杨志道：“自从孔亮去了，前后也交锋三五次，各无输赢。如今青州只凭呼延灼一个，若是拿得此人，觑此城子，如汤泼雪。”吴学究笑道：“此人不可力敌，可用智擒。”宋江道：“用何智可获此人？”吴学究道；“只除如此如此。”宋江大喜道：“此计大妙！”当日分拨了人马，次早起军，前到青州城下，四面尽着军马围住，擂鼓摇旗，呐喊搦战。城里慕容知府见报，慌忙教请呼延灼商议：“今次群贼又去报知梁山泊宋江到来，似此如之奈何？”呼延灼道：“恩相放心。群贼到来，先失地利。这厮们只好在水泊里张狂，今却擅离巢穴，一个来，捉一个，那厮们如何施展得？请知府上城看呼延灼厮杀。”</div>
+            <div class="text-block simplified-text">第二天，宋江问起攻打青州的情况，问仗打得怎么样。杨志说："自从孔亮走后，我们和对方打了三五次，都没分出胜负。现在青州就靠呼延灼一个人撑着，要是能抓住他，拿下这座城就跟热水浇雪一样容易。"吴用笑着说："这个人不能硬拼，得用计策抓他。"宋江问："用什么计策能抓住他？"吴用说："只要这样这样......"宋江高兴地说："这主意太好了！"当天就安排好兵马，第二天一早出发，把青州城团团围住，擂鼓摇旗，大声叫阵。城里的慕容知府听说后，急忙请来呼延灼商量："这次土匪又勾结了梁山泊的宋江来犯，这可怎么办？"呼延灼说："大人别担心。土匪来攻城，首先就失了地利。这帮人只会在水泊里逞威风，现在居然敢离开老巢，来一个抓一个，他们能有什么办法？请大人上城看我如何收拾他们。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">呼延灼连忙披挂衣甲上马，叫开城门，放下吊桥，引了一千人马，近城摆开。宋江阵中一将出马。那人手搦狼牙棍，厉声高骂知府：“滥官害民贼徒！把我全家诛戮，今日正好报仇雪恨！”慕容知府认得秦明，便骂道：“你这厮是朝廷命官，国家不曾负你，缘何敢造反？若拿住你时，碎尸万段！可先下手拿这贼！”呼延灼听了，舞起双鞭，纵马直取秦明。秦明也出马，舞动狼牙大棍来迎呼延灼。二将交马，正是对手。有《西江月》为证：</div>
+            <div class="text-block simplified-text">呼延灼赶紧穿上盔甲骑上马，下令打开城门放下吊桥，带着一千士兵出城列阵。宋江那边冲出一员大将，这人手握狼牙棒，对着知府破口大骂："你这狗官害老百姓的混蛋！杀了我全家，今天正好报仇！"慕容知府认出是秦明，回骂道："你这家伙本来是朝廷命官，国家没亏待你，凭什么造反？要是抓住你，非把你剁成肉酱不可！快给我拿下这反贼！"呼延灼一听，抡起双鞭策马冲向秦明。秦明也骑马迎战，挥舞狼牙棒和呼延灼打在一起。两人打得难分高下。有首《西江月》为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">鞭舞两条龙尾，棍横一串狼牙。三军看得眼睛花，二将纵横交马。使棍的闻名寰海，使鞭的声播天涯。龙驹虎将乱交加，这厮杀堪描堪画。</div>
+            <div class="text-block simplified-text">这段文字描述的是两个猛将激烈打斗的场景，用大白话来说就是：
+
+两个人打起来了，一个耍着双鞭像两条龙尾巴，一个挥着狼牙棒。士兵们都看花了眼。这两个将军骑在马上你来我往地厮杀，使棍的那个全国闻名，使鞭的名气也很大。他们骑着骏马打成一团，这场面真是又精彩又好看，简直跟画出来似的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">秦明与呼延灼厮杀，正是对手。两个斗到四五十合，不分胜败。慕容知府见斗得多时，恐怕呼延灼有失，慌忙鸣金，收军入城。秦明也不追赶，退回本阵。宋江教众头领军校且退十五里下寨。</div>
+            <div class="text-block simplified-text">秦明和呼延灼打了起来，两人武艺相当。打了四五十个回合还是分不出胜负。慕容知府看他们打了这么久，怕呼延灼出事，赶紧敲锣收兵回城。秦明也没追，退回自己队伍。宋江让手下将领带着士兵往后撤了十五里安营扎寨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">却说呼延灼回到城中，下马来见慕容知府，说道：“小将正要拿那秦明，恩相如何收军？”知府道：“我见你斗了许多合，但恐劳困，因此收军暂歇。秦明那厮，原是我这里统制，与花荣一同背反。这厮亦不可轻敌。”呼延灼道：“恩相放心，小将必要擒此背义之贼。适间和他斗时，棍法已自乱了。来日教恩相看我立斩此贼。”知府道：“既是将军如此英雄，来日若临敌之时，可杀开条路，送三个人出去。一个教他去往东京求救，两个教他去邻近府州会合起兵，相助剿捕。”呼延灼道：“恩相高见极明。”当日知府写了求救文书，选了三个军官，都发放了当。</div>
+            <div class="text-block simplified-text">呼延灼回到城里，下马去见慕容知府，问道："我正要抓住秦明，大人为什么下令收兵？"知府说："我看你打了这么久，怕你太累，所以先收兵休息。秦明这家伙以前是我们这儿的军官，和花荣一起造反的，不能小看他。"呼延灼说："大人放心，我一定能抓住这个叛徒。刚才和他交手时，他的棍法已经乱了。明天您就看我砍了他。"知府说："将军这么厉害，明天打仗时，你杀开一条路，送三个人出去。一个去东京求救，两个去附近州府调兵来帮忙。"呼延灼说："大人高明。"当天知府写好求救信，挑了三名军官，把事情都安排好了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">只说呼延灼回到歇处，卸了衣甲暂歇。天色未明，只听的军校来报道：“城北门外土坡上有三骑私自在那里看城。中间一个穿红袍骑白马的；两边两个，只认得右边的是小李广花荣，左边那个道装打扮。”呼延灼道：“那个穿红的眼见是宋江了，道装的必是军师吴用。你们且休惊动了他。便点一百马军，跟我捉这三个。”呼延灼连忙披挂上马，提了双鞭，带领一百余骑马军，悄悄地开了北门，放下吊桥，引军赶上坡来。宋江、吴用、花荣三个只顾呆了脸看城。呼延灼拍马上坡，三个勒转马头，慢地走去。呼延灼奋力赶到前面几株枯树边厢，宋江、吴用、花荣三个齐齐的勒住马。呼延灼方才赶到枯树边，只听得呐声喊，呼延灼正踏着陷坑，人马都跌将下坑去了。两边走出五六十个挠钩手，先把呼延灼钩将起来，绑缚了拿去，后面牵着那匹马。这许多赶来的马军，却被花荣拈弓搭箭，射倒当头五七个，后面的勒转马，一哄都走了。</div>
+            <div class="text-block simplified-text">呼延灼回到住处，脱了盔甲休息。天还没亮，就有士兵来报告："城北门外的土坡上有三个人骑马偷偷观察城里。中间那个穿红袍骑白马，右边的是小李广花荣，左边那个穿着道士衣服。"呼延灼说："穿红袍的肯定是宋江，道士打扮的一定是军师吴用。别惊动他们，调一百骑兵跟我去抓这三人。"
+
+呼延灼赶紧穿上盔甲上马，拿着双鞭，带了一百多骑兵，悄悄打开北门放下吊桥，带兵冲上土坡。宋江、吴用、花荣三人正专心看城。呼延灼骑马冲上坡，三人这才调转马头慢慢走。呼延灼拼命追到几棵枯树旁边时，三人突然一齐勒住马。呼延灼刚追到树边，就听见一声喊，连人带马掉进了陷阱。两边冲出五六十个拿钩子的士兵，先把呼延灼钩上来绑走，后面的人牵走了他的马。那些追来的骑兵，被花荣开弓射倒前面五六个，剩下的赶紧调头逃跑了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">宋江回到寨里坐，左右群刀手却把呼延灼推将过来。宋江见了，连忙起身，喝叫快解了绳索，亲自扶呼延灼上帐坐定，宋江拜见。呼延灼慌忙跪下道：“义士何故如此？”宋江道：“小可宋江，怎敢背负朝廷。盖为官吏污滥，威逼得紧，误犯大罪，因此权借水泊里随时避难，只待朝廷赦罪招安。不想起动将军，致劳神力，实慕将军虎威。今者误有冒犯，切乞恕罪。”呼延灼道：“呼延灼被擒之人，万死尚轻，义士何故重礼陪话？”宋江道：“量宋江怎敢坏得将军性命。皇天可表寸心。”只是恳告哀求。呼延灼道：“兄长尊意，莫非教呼延灼往东京告请招安，到山赦罪？”宋江道：“将军如何去得！高太尉那厮是个心地匾窄之徒，忘人大恩，记人小过。将军折了许多军马钱粮，他如何不见你罪责？如今韩滔、彭玘、凌振已都在敝山入伙。倘蒙将军不弃山寨微贱，宋江情愿让位与将军。等朝廷见用，受了招安，那时尽忠报国，未为晚矣。”呼延灼沉思了半晌，一者是天罡之数，自然义气相投；二者见宋江礼貌甚恭，叹了一口气，跪下在地道：“非是呼延灼不忠于国，实慕兄长义气过人，不容呼延灼不依，愿随鞭镫。事既如此，决无还理。”有诗为证：</div>
+            <div class="text-block simplified-text">宋江回到山寨坐下，手下人把呼延灼押了上来。宋江赶紧站起来，让人解开绳子，亲自扶着呼延灼坐下，还向他行礼。呼延灼慌忙跪下说："好汉为什么这样对我？"宋江说："我宋江哪敢和朝廷作对。都是因为贪官污吏逼得太狠，我才犯了罪，暂时躲在水泊梁山，等着朝廷招安。没想到惊动了将军，让您费这么大劲，其实我一直很佩服您。今天冒犯了您，请您千万别见怪。"
+
+呼延灼说："我是被抓的人，死一万次都不够，您为什么还这么客气？"宋江说："我哪敢害您性命，老天可以作证。"一个劲儿地求他原谅。呼延灼问："大哥的意思，是不是想让我去东京帮你们求招安？"宋江说："将军您怎么去得了！高俅那人心眼小，记仇不记恩。您损失了这么多兵马钱粮，他肯定要治您的罪。现在韩滔、彭玘、凌振都加入我们山寨了。要是您不嫌弃，我愿意把寨主的位置让给您。等朝廷招安了，咱们再一起报效国家也不迟。"
+
+呼延灼想了一会儿，一来觉得和宋江意气相投，二来看他这么诚恳，叹了口气跪下说："不是我不忠，实在是大哥您太讲义气，我不得不服。我愿意跟着您干，既然这样，就不回头了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">亲受泥书讨不庭，虚张声势役生灵。</div>
+            <div class="text-block simplified-text">你写信来让我去打那些不听话的人，其实你就是在装模作样吓唬人，白白让老百姓受苦。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">如何世禄英雄士，握手同归聚义厅？</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+为什么那些有钱有势的英雄好汉，会互相握手合作，一起加入聚义厅呢？
+
+或者更口语化一点：
+
+这些有钱有地位的英雄人物，为啥会互相合作，一起加入聚义厅？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">宋江大喜。请呼延灼和众头领相见了。叫问李忠、周通讨这匹踢雪乌骓马还将军骑坐。众人再商议救孔明之计。吴用道：“只除教呼延灼将军赚开城门，唾手可得。更兼绝了呼延指挥念头。”宋江听了，来与呼延灼陪话道：“非是宋江贪劫城池，实因孔明叔侄陷在缧绁之中，非将军赚开城门，必不可得。”呼延灼答道：“小将既蒙兄长收录，理当效力。”当晚点起秦明、花荣、、孙立、燕顺、吕方、郭盛、解珍、解宝、欧鹏、王英十个头领，都扮作军士衣服模样，跟了呼延灼，共是十一骑军马，来到城边，直至濠堑上，大叫：“城上开门！我逃得性命回来！”城上人听得是呼延灼声音，慌忙报与慕容知府。此时知府为折了呼延灼，正纳闷间，听得报说呼延灼逃得回来，心中欢喜，连忙上马，奔到城上。望见呼延灼有十数骑马跟着，又不见面颜，只认得呼延灼声音。知府问道：“将军如何走得回来？”呼延灼道：“我被那厮的陷马捉了我到寨里，却有原跟我的头目，暗地盗这匹马与我骑，就跟我来了。”知府只听得呼延灼说了，便叫军士开了城门，放下吊桥。十个头领跟到城门里，迎着知府，早被秦明一棍，把慕容知府打下马来。解珍、解宝便放起火来。欧鹏、王矮虎奔上城，把军士杀散。宋江大队人马见城上火起，一齐拥将入来。宋江急急传令，休教残害百姓，且收仓库钱粮。就大牢里救出孔明并他叔叔孔宾一家老小。便教救灭了火。把慕容知府一家老幼尽皆斩首，抄扎家私，分俵众军。天明，计点在城百姓被火烧之家，给散粮米救济。把府库金帛，仓廒米粮，装载五六百车。又得了二百余匹好马。就青州府里做个庆喜筵席，请三山头领同归大寨。有诗为证：</div>
+            <div class="text-block simplified-text">宋江特别高兴。他请呼延灼和其他头领见了面，还让李忠、周通把那匹踢雪乌骓马还给呼延灼骑。大家接着商量怎么救孔明。吴用说："只要让呼延灼将军骗开城门，就能轻松拿下。这样还能断了呼延灼回朝廷的念头。"宋江听了，就去对呼延灼说："不是我想抢城池，实在是孔明叔侄被抓了，只有将军你能骗开城门救他们。"呼延灼回答："既然大哥收留我，我肯定出力。"
+
+当天晚上，他们让秦明、花荣、孙立、燕顺、吕方、郭盛、解珍、解宝、欧鹏、王英这十个头领穿上士兵衣服，跟着呼延灼，一共十一人骑马来到城下。他们站在护城河边大喊："快开城门！我逃回来了！"城上的人听出是呼延灼的声音，赶紧报告慕容知府。知府正为丢了呼延灼发愁，听说他逃回来了特别高兴，马上骑马到城墙上。他看到呼延灼带着十几个人，看不清脸，但听声音确实是呼延灼。知府问："将军怎么逃回来的？"呼延灼骗他说："我被抓到山寨里，幸好有原来跟着我的手下偷偷放了我，还给我马骑，就一起逃回来了。"
+
+知府信了，叫人打开城门放下吊桥。十个头领跟着进了城，见到知府，秦明一棍子就把他打下马。解珍、解宝马上放火，欧鹏、王英冲上城墙把守军打跑。宋江的大部队看见城里起火，立刻冲进来。宋江赶紧下令不许伤害百姓，先去接管仓库的钱粮。他们从大牢里救出孔明和他叔叔孔宾一家，又把火扑灭。把慕容知府全家都杀了，抄了他的家产分给士兵们。
+
+天亮后，他们统计了被火烧的百姓人家，发粮食救济。把官府的金银、粮仓的粮食装了五六百车，还得到两百多匹好马。在青州府里摆庆功宴，请三山的头领们一起回梁山。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">呼延逃难不胜羞，忘却君恩事寇仇。</div>
+            <div class="text-block simplified-text">这段话可以这样简单直白地说：
+
+呼延（这个人）逃命的时候觉得特别丢脸，因为他忘了皇帝的恩情，反而去帮敌人做事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">因是天罡并地煞，故为乡导破青州。</div>
+            <div class="text-block simplified-text">这是因为有天罡星和地煞星的帮助，才能带路攻破青州城。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">且说李忠、周通使人回桃花山，尽数收拾人马钱粮下山，放火烧毁寨栅。鲁智深也使施恩、曹正回二龙山，与张青、孙二娘收拾人马钱粮，也烧了宝珠寺寨栅。数日这间，三山人马都皆完备。宋江领了大队人马，班师回山。先叫花荣、秦明、呼延灼、朱仝四将开路。所过州县，分毫不扰。乡村百姓，扶老挈幼，烧香罗拜迎接。数日这间，已到梁山泊边。众多水军头领具舟迎接。晁盖引领山寨马步头领，都在金沙滩迎接。直至大寨，向聚义厅上列位坐定。大排筵席，庆贺新到山寨头领：呼延灼、鲁智深、杨志、武松、施恩、曹正、张青、孙二娘、李忠、周通、孔明、孔亮，共十二位新上山头领。坐间林冲说起相谢鲁智深相救一事，鲁智深动问道：“洒家自与教头沧州别后，曾知阿嫂信息否？”林冲答道：“小可自火并王伦之后，使人回家搬取老小，已知拙妇被高太尉逆子所逼，随即自缢而死；妻父亦为忧疑，染病而亡。”杨志举起旧日王伦手内上山相会之事，众人皆道：“此皆注定，非偶然也。”晁盖说起黄冈动取生辰纲一事，众皆大笑。次日轮流做筵席，不在话下。</div>
+            <div class="text-block simplified-text">话说李忠和周通派人回桃花山，把山上的人马、钱财和粮食全都搬下山，然后一把火烧了山寨。鲁智深也让施恩和曹正回二龙山，和张青、孙二娘一起收拾人马钱粮，同样烧了宝珠寺的山寨。几天之内，三座山的人马都集合完毕。宋江带着大部队返回梁山，先派花荣、秦明、呼延灼、朱仝四员大将打头阵。一路上经过州县，秋毫无犯。老百姓们扶老携幼，烧香磕头迎接他们。没过几天，队伍就到了梁山泊边。水军的头领们划船来接应。晁盖带着山寨的步兵和骑兵头领，都在金沙滩迎接。众人一路回到大寨，在聚义厅按位次坐好。接着大摆宴席，庆祝新加入的十二位头领：呼延灼、鲁智深、杨志、武松、施恩、曹正、张青、孙二娘、李忠、周通、孔明、孔亮。酒席上，林冲提起感谢鲁智深救命之恩的事，鲁智深问他："自从在沧州和教头分别后，可知道嫂子的消息吗？"林冲回答："我火并王伦之后，派人回家接老小，才知道我妻子被高太尉的混蛋儿子逼得上了吊，老丈人也因为忧愤得病死了。"杨志说起当初王伦在位时自己上山的事，大家都说："这都是天意，不是巧合。"晁盖又提起智取生辰纲的往事，众人听了哈哈大笑。第二天开始轮流摆酒庆祝，这些就不细说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">且说宋江见山寨又添了许多人马，如何不喜。便叫汤隆做铁匠总管，提督打造诸般军器，并铁叶连环等甲；侯健管做旌旗袍服总管，添造三才九曜四斗五方二十八宿等旗，飞龙飞虎飞熊飞豹旗，黄钺白旄，朱缨皂盖；山边四面筑起墩台；重造西路、南路二处酒店，招接往来上山好汉，一就探听飞报军情；山西路酒店今令张青、孙二娘夫妻二人原是酒家，前去看守；山南路酒店仍令孙新、顾大嫂夫妻看守；山东路酒店依旧朱贵、乐和；山北路酒店还是李立、时迁看守；三关之人，添造寨栅，分调头领看守。部领已定，各宜遵守，不许违误。有诗为证：</div>
+            <div class="text-block simplified-text">话说宋江看到山寨里又来了不少新人马，心里特别高兴。他马上安排：让汤隆当铁匠头儿，负责打造各种武器和盔甲；让侯健管做旗帜衣服的头儿，多做些各种花样的旗子，比如飞龙旗、飞虎旗这些，还有各种颜色的仪仗旗；在山边修了几个瞭望台；重新建了西路和南路的两家酒店，用来接待上山的好汉，顺便打探消息。具体分工是：山西路的酒店让原来开酒馆的张青、孙二娘夫妇去管；南路还是让孙新、顾大嫂夫妇管；山东路酒店照旧由朱贵、乐和负责；北路酒店还是李立、时迁看着。各个关卡也都加修了栅栏，安排了头领把守。任务都分好了，大家都要照办，不许出错。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">天将摧锋已受降，许多军马更精强。</div>
+            <div class="text-block simplified-text">老天爷要灭掉敌人，敌人已经投降了。我们这边还有很多更厉害的军队。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">凭陵欲作恢宏计，须仗公明作主张。</div>
+            <div class="text-block simplified-text">"要想干一番大事业，还得靠你这样的明白人来拿主意。"  
+
+（解释：原句用"凭陵""恢宏计""公明"等文言词汇表达"依靠他人谋划大事"的意思。改写后：  
+1. "凭陵欲作"→"要想干"（直接表达目的性）  
+2. "恢宏计"→"大事业"（用常见词替代抽象表达）  
+3. "公明"→"明白人"（既保留"公正明智"原义又通俗化）  
+4. 补充"你这样的"使指代更明确  
+5. 整体改为口语中常见的"拿主意"句式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">数月之后，忽一日花和尚鲁智深来对宋公明说道：“智深有个相识，李忠兄弟也曾认的，唤做九纹龙史进。见在华州华阴县少华山上，和那一个神机军师朱武，又有一个跳涧虎陈达，一个白花蛇杨春，四个在那里聚义。洒家常常思念他。昔日在瓦罐寺救助洒家恩念，不曾有忘。今洒家要去那里探望他一遭，就取他四个同来入伙，未知尊意如何？”宋江道：“我也曾闻得史进大名。若得吾师去请他来最好。然是如此，不可独自去，可烦武松兄弟相伴走一遭。他是行者，一般出家人，正好同行。”武松应道：“我和师父去。”当日便收拾腰包行李掤头笠，只做禅和子打扮；武松妆做随侍行者。两个相辞了众头领下山，过了金沙滩，晓行夜住，不止一日，来到华州华阴县界，径投少华山来。</div>
+            <div class="text-block simplified-text">过了几个月，有一天，鲁智深突然来找宋江说："我有个老朋友叫史进，外号九纹龙，李忠兄弟也认识他。现在他和朱武、陈达、杨春四个人在少华山上聚义。我经常想起他，以前在瓦罐寺他救过我，这份恩情我一直没忘。现在我想去看看他，顺便叫他们四个一起来入伙，你觉得怎么样？"
+
+宋江说："我也听说过史进的名号。师父你去请他最好。不过你一个人去不安全，让武松陪你走一趟吧。他是行者打扮，你们都是出家人，一起走也方便。"武松马上答应："我陪师父去。"
+
+当天他们就收拾好行李，鲁智深打扮成游方僧人，武松扮成随行行者。跟大伙告别后，两人下山过了金沙滩，白天赶路晚上住店，走了好几天，终于到了华阴县地界，直奔少华山而去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">且说宋江自鲁智深、武松去后，一时容他下山，常自放心不下，便唤神行太保戴宗，随后跟来，探听消息。</div>
+            <div class="text-block simplified-text">简单直白的说法：
+
+话说宋江自从鲁智深和武松走后，虽然同意让他们下山，但心里一直不踏实。于是就叫来戴宗（外号神行太保），让他跟在后面打探消息。
+
+（说明：1. "且说"改为"话说"更口语化 2. "一时容他下山"改为"虽然同意让他们下山"更直白 3. "常自放心不下"改为"心里一直不踏实"更通俗 4. "探听消息"改为"打探消息"更常用 5. 保留了所有关键信息：宋江担心、派戴宗跟随、戴宗外号）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">再说鲁智深、武松两个来到少华山下，伏路小喽啰出来拦住，问道：“你两个出家人那里来？”武松便答道：“这山上有史大官人么？”小喽啰说道：“既是要寻史大王的，且在这里少等。我上山报知头领，便下来迎接。”武松道：“你只说鲁智深到来相探。”小喽啰去不多时，只见神机军师朱武并跳涧虎陈达、白花蛇杨春，三个下山来接鲁智深、武松，却不见有史进。鲁智深便问道：“史大官人在那里？却如何不见他？”朱武近前上复道：“吾师不是延安府鲁提辖么？”鲁智深道：“洒家便是。这行者便是景阳冈打虎都头武松。”三个慌忙剪拂道：“闻名久矣！听知二位在二龙山扎寨，今日缘何到此？”鲁智深道：“俺们如今不在二龙山了，投托梁山泊宋公明大寨入伙。今者特来寻史大官人。”朱武道：“既是二位到此，且请到山寨中容小可备细告诉。”鲁智深道：“有话便说，待一待谁鸟奈烦！”武松道：“师父是个性急的人，有话便说何妨。”</div>
+            <div class="text-block simplified-text">鲁智深和武松来到少华山脚下，巡逻的小兵拦住他们问："你们两个和尚从哪儿来的？"武松反问："山上有个史大官人吗？"小兵说："你们要找史大王啊，在这儿等一下。我上山通知头领，马上下来接你们。"武松说："你就说鲁智深来找他。"
+
+小兵去了没多久，朱武、陈达、杨春三个头领下山来迎接，但没看见史进。鲁智深直接问："史大官人呢？怎么不见他？"朱武上前问："您是不是延安府的鲁提辖？"鲁智深说："就是我。这位是景阳冈打虎的武松。"三个头领赶紧行礼："久仰大名！听说你们在二龙山落脚，今天怎么到这儿来了？"鲁智深说："我们早不在二龙山了，现在投奔了梁山泊宋江。专门来找史大官人的。"
+
+朱武说："既然二位来了，先上山寨里坐，我慢慢跟你们说。"鲁智深不耐烦："有话直说！等来等去烦不烦！"武松打圆场："我师父性子急，有话直说就行。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">朱武道：“小人等三个在此山寨，自从史大官人上山之后，好生兴旺。近日史大官人下山，正撞见一个画匠，原是北京大名府人氏，姓王名义，因许下西岳华山金天圣帝庙内装画影壁，前去还愿。因为带将一个女儿，名唤玉娇枝同行。却被本州贺太守原是蔡太师门人，那厮为官贪滥，非理害民。一日因来庙里行香，不想正见了玉娇枝有些颜色，累次着人来说，要娶他为妾。王义不从。太守将他女儿强夺了去为妾，又把王义刺配远恶军州。路经这里过，正撞见史大官人，告说这件事。史大官人把王义救在山上，将两个防送公人杀了。直去府里要刺贺太守，被人知觉，倒吃拿了，见监在牢里。又要聚起军马，扫荡山寨。我等正在这里进退无路，无计可施。端的是苦！”有诗为证：</div>
+            <div class="text-block simplified-text">朱武说："我们三个在这山寨里，自从史大官人来了之后，山寨发展得很好。最近史大官人下山，正好碰到一个画匠。这人叫王义，是北京大名府人，本来要去西岳华山的金天圣帝庙画影壁还愿，还带着女儿玉娇枝一起。没想到当地的贺太守（这人是蔡太师的门生，当官又贪又坏）来庙里烧香时，看上了玉娇枝的美色，多次派人来说要娶她做小老婆。王义不答应，贺太守就强行抢走他女儿，还把王义发配到偏远荒凉的地方。路过我们这儿时，正好遇到史大官人，王义就把这事说了。史大官人把王义救上山，杀了押送的两个差人，还直接去府里想刺杀贺太守，结果被人发现，反被抓起来关在牢里。现在贺太守还要派兵来打我们山寨。我们真是走投无路，一点办法都没有，实在太难了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">花颜云鬓玉娇枝，太守行香忽见之。</div>
+            <div class="text-block simplified-text">有个姑娘长得特别好看，头发像云一样柔美，身姿像玉一样娇嫩。太守去烧香的时候，突然看见了她。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">不畏宪章强夺取，黄童白叟亦相嗤。</div>
+            <div class="text-block simplified-text">他们连法律都不怕，明目张胆地强抢东西，连小孩和老人都看不起这种行为。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">鲁智深听了道：“这撮鸟敢如此无礼，倒恁么利害。洒家与你结果了那厮！”朱武道：“且请二位到寨里商议。”一行五个头领，都到少华山寨中坐下。便叫王义见鲁智深、武松，诉说贺太守贪酷害民，强占良家女子。朱武等一面杀牛宰马，管待鲁智深、武松。饮筵间，鲁智深道：“贺太守那厮好没道理！我明日与你去州里打死那厮罢。”武松道：“哥哥不得造次！我和你星夜回梁山泊去报知，请宋公明领大队人马来打华州，方可救得史大官人。”鲁智深叫道：“等俺们去山寨里叫得人来，史家兄弟性命不知那里去了！”武松道：“便杀太守，也怎地救得史大官人？”武松却断然不肯放鲁智深去。朱武又劝道：“吾师且息怒！武都头也论得是。”鲁智深焦躁起来，便道：“都是你这般慢性的人，以此送了俺史家兄弟！你也休去梁山泊报知，看洒家去如何！”众人那里劝得住，当晚又谏不从。明早，起个四更，提了禅杖，带了戒刀，径奔华州去了。武松道：“不听我说，此去必然有失。”朱武随即差两个精细的小喽啰前去打听消息。</div>
+            <div class="text-block simplified-text">鲁智深一听就火了："这混蛋竟敢这么嚣张，这么欺负人！我去弄死他！"朱武劝道："先请两位到山寨里商量商量。"于是五个头领一起回到少华山山寨。王义见到鲁智深和武松，哭诉贺太守如何贪污害民、强抢民女。朱武他们杀牛宰羊招待鲁智深和武松。喝酒时，鲁智深说："贺太守这王八蛋太不是东西！明天我就去城里打死他！"武松赶紧劝："大哥别冲动！咱们连夜回梁山找宋江大哥，带大队人马来打华州，这样才能救出史进。"鲁智深急得大叫："等咱们从梁山叫人回来，史进兄弟早没命了！"武松反问："就算杀了太守，怎么救史进？"死活拦着不让鲁智深去。朱武也劝："师父消消气，武松说得对。"鲁智深急得直跺脚："都怪你们这么磨蹭，害了我史进兄弟！你们别去梁山报信，看我自己去！"谁也劝不住，当晚说啥都不听。第二天天没亮，他就拿着禅杖和戒刀直奔华州去了。武松叹气："不听劝，这次肯定要出事。"朱武赶紧派了两个机灵的手下去打探消息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">却说鲁智深奔到华州城里，路傍借问州衙在那里，人指道：“只过州桥，投东便是。”鲁智深却好来到浮桥上，只见人都道：“和尚且躲一躲，太守相公过来！”鲁智深道：“俺正要寻他，却好正撞在洒家手里，那厮多敢是当死！”贺太守头踏一对对摆将过来。看见太守那乘轿子，却是暖轿，轿窗两边各有十个虞候簇拥着，人人手执鞭枪铁链，守护两边。鲁智深看了寻思道：“不好打那撮鸟。若打不着，倒吃他笑！”贺太守却在轿窗眼里看见了鲁智深欲进不进。过了滑桥，到府中下了轿，便叫两个虞候分付道：“你与我去请桥上那个胖大和尚到府里赴斋。”虞候领了言语，来到桥上，对鲁智深说道：“太守相公请你赴斋。”鲁智深想道：“这厮正合当死在洒家手里！俺却才正要打他，只怕打不着，让他过去了。俺要寻他，他却来请洒家！”鲁智深便随了虞候径到府里。太守已自分付下了。一见鲁智深进到厅前，太守叫放了禅杖，去了戒刀，请后堂赴斋。鲁智深初时不肯。众人说道：“你是出家人，好不晓事！府堂深处，如何许你带刀杖入去？”鲁智深想道：“只俺两个拳头也打碎了那厮脑袋！”廊下放了禅杖、戒刀，跟虞候入来。</div>
+            <div class="text-block simplified-text">鲁智深跑到华州城里，在路边问州衙门在哪儿。有人告诉他："过了州桥，往东走就是。"鲁智深刚走上浮桥，就听见人们喊："和尚快让开，太守大人来了！"鲁智深心想："我正要找他，正好撞到我手里，这家伙死定了！"
+
+只见太守的仪仗队排着队过来。太守坐的是带暖棚的轿子，轿子两边各有十个护卫，人人拿着武器戒备。鲁智深一看这架势，心里琢磨："不好动手啊，要是打不中，反倒被他笑话。"
+
+轿子里的太守透过窗户看见鲁智深想上前又没动的样子。过了桥回到府里，太守下轿就叫两个护卫："去把桥上那个胖大和尚请来吃饭。"护卫跑到桥上对鲁智深说："太守大人请你去吃饭。"鲁智深暗想："这家伙就该死在我手里！刚才想打他又怕打不中，现在倒自己送上门来了！"
+
+鲁智深跟着护卫来到府里。太守早就安排好了，一见鲁智深进来，就让他放下禅杖和戒刀，请他去后堂吃饭。鲁智深开始不肯。旁边人说："你一个出家人怎么不懂规矩？衙门重地怎么能带武器进去？"鲁智深心想："光用拳头也能打烂他的脑袋！"就把武器放在走廊，跟着护卫进去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">贺太守正在后堂坐定，把手一招，喝声：“捉下这秃贼！”两边壁衣内走出三四十个做公的来，横拖倒拽，捉了鲁智深。你便是那吒太子，怎逃出地网天罗；火首金刚，难脱龙潭虎窟！正是：飞蛾投火身倾丧，蝙蝠遭竿命必伤。毕竟鲁智深被贺太守拿下性命如何，且听下回分解。</div>
+            <div class="text-block simplified-text">贺太守在后堂坐着，一挥手就喊："抓住这个秃驴！"立刻从两边帘子后面冲出三四十个衙役，连拉带拽地把鲁智深绑了。就算你是哪吒三太子，也逃不出这重重包围；就算是金刚罗汉，也难逃这龙潭虎穴！这就好比：飞蛾扑火自找死，蝙蝠撞竿定没命。想知道鲁智深被贺太守抓住后是死是活，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
