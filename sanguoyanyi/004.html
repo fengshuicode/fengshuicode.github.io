@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四回 废汉帝陈留践位　谋董贼孟德献刀</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./003.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第四回 废汉帝陈留践位　谋董贼孟德献刀</h1>
+        <a href="./005.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">且说董卓欲杀袁绍，李儒止之曰：“事未可定，不可妄杀。”袁绍手提宝剑，辞别百官而出，悬节东门，奔冀州去了。卓谓太傅袁隗曰：“汝侄无礼，吾看汝面，姑恕之。废立之事若何？”隗曰：“太尉所见是也。”卓曰：“敢有阻大议者，以军法从事！”群臣震恐，皆云一听尊命。宴罢，卓问侍中周毖、校尉伍琼曰：“袁绍此去若何？”周毖曰：“袁绍忿忿而去，若购之急，势必为变。且袁氏树恩四世，门生故吏遍于天下；倘收豪杰以聚徒众，英雄因之而起，山东非公有也。不如赦之，拜为一郡守，则绍喜于免罪，必无患矣。”伍琼曰：“袁绍好谋无断，不足为虑；诚不若加之一郡守，以收民心。”卓从之，即日差人拜绍为渤海太守。</div>
+            <div class="text-block simplified-text">话说董卓想杀袁绍，李儒拦住他说："现在情况还不明朗，不能随便杀人。"袁绍提着宝剑，跟百官告别后就走了，把官印挂在东门上，直接跑去了冀州。董卓对太傅袁隗说："你侄子太不懂规矩，我看在你的面子上先饶了他。关于废立皇帝的事你怎么看？"袁隗赶紧说："太尉您说得对。"董卓威胁道："谁要是敢反对，按军法处置！"大臣们都吓坏了，纷纷表示听他的。
+
+喝完酒后，董卓问侍中周毖和校尉伍琼："袁绍跑了，你们看怎么办？"周毖说："袁绍是带着气走的，要是逼得太紧，肯定会造反。再说袁家四代人都在朝廷做官，学生、老部下到处都是。要是他召集人才招兵买马，各地英雄跟着闹起来，那山东一带就不是您的地盘了。不如饶了他，给他个郡守当当，他肯定高兴，也就不会闹事了。"伍琼也说："袁绍这人光会想不会做，不用太担心。不如真给他个郡守，还能收买人心。"董卓觉得有道理，当天就派人封袁绍当渤海太守。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">九月朔，请帝升嘉德殿，大会文武。卓拔剑在手，对众曰：“天子暗弱，不足以君天下。今有策文一道，宜为宣读。”乃命李儒读策曰：“孝灵皇帝，早弃臣民；皇帝承嗣，海内侧望。而帝天资轻佻，威仪不恪，居丧慢惰：否德既彰，有忝大位。皇太后教无母仪，统政荒乱。永乐太后暴崩，众论惑焉。三纲之道，天地之纪，毋乃有阙？陈留王协，圣德伟懋，规矩肃然；居丧哀戚，言不以邪；休声美誉，天下所闻，宜承洪业，为万世统。兹废皇帝为弘农王，皇太后还政，请奉陈留王为皇帝，应天顺人，以慰生灵之望。”李儒读策毕，卓叱左右扶帝下殿，解其玺绶，北面长跪，称臣听命。又呼太后去服候敕。帝后皆号哭，群臣无不悲惨。</div>
+            <div class="text-block simplified-text">九月初一，董卓请皇帝到嘉德殿，召集文武百官开会。董卓拿着剑对大家说："皇上太无能，不配当天下之主。这里有一份诏书，该当众宣读。"于是让李儒念诏书："先帝去世早，新皇帝继位时大家都对他寄予厚望。但这皇帝举止轻浮，不懂规矩，守丧期间吊儿郎当——实在不配当皇帝。皇太后也不会管教，把朝政搞得一团糟。永乐太后突然去世，大家都觉得可疑。这还有没有天理王法了？陈留王刘协品德高尚，守丧时真心悲痛，说话做事都很正派，名声很好，应该让他当皇帝。现在废掉现任皇帝，降为弘农王，皇太后也别管朝政了，改立陈留王为新皇帝，这才顺应天意民心。"李儒念完诏书，董卓就命令侍卫把皇帝拉下龙椅，摘掉他的玉玺，逼他跪着听令。又叫皇太后脱掉礼服听候发落。皇帝和皇后都大哭，在场官员没有不伤心的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">阶下一大臣，愤怒高叫曰：“贼臣董卓，敢为欺天之谋，吾当以颈血溅之！”挥手中象简，直击董卓。卓大怒，喝武士拿下：乃尚书丁管也。卓命牵出斩之。管骂不绝口，至死神色不变。后人有诗叹之曰：“董贼潜怀废立图，汉家宗社委丘墟。满朝臣宰皆囊括，惟有丁公是丈夫。”</div>
+            <div class="text-block simplified-text">台阶下有个大官气得大喊："奸贼董卓，竟敢做这种无法无天的事，我跟你拼了！"说完就举起手里的象牙板子朝董卓打去。董卓气坏了，马上叫卫兵把他抓起来——这人原来是尚书丁管。董卓下令把他拉出去砍头。丁管一路骂个不停，到死都没怂。后来有人写诗夸他："董卓偷偷想换皇帝，汉朝江山差点完蛋。满朝文武都装孙子，只有丁管是真汉子。"
+
+（说明：译文完全保留原文情节和人物关系，将"欺天之谋"译为"无法无天的事"，"象简"译为"象牙板子"，"神色不变"译为"没怂"，用"装孙子""真汉子"等口语化表达替代原文诗句的文言表述，确保现代读者能立即理解故事内容。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">卓请陈留王登殿。群臣朝贺毕，卓命扶何太后并弘农王及帝妃唐氏永安宫闲住，封锁宫门，禁群臣无得擅入。可怜少帝四月登基，至九月即被废。卓所立陈留王协，表字伯和，灵帝中子，即献帝也；时年九岁。改元初平。董卓为相国，赞拜不名，入朝不趋，剑履上殿，威福莫比。</div>
+            <div class="text-block simplified-text">董卓让陈留王刘协登上皇位。大臣们行礼祝贺后，董卓派人把何太后、弘农王刘辩和少帝的妃子唐氏送到永安宫软禁起来，锁上宫门，不准大臣随便进去。可怜的少帝刘辩四月刚当上皇帝，九月就被废了。董卓新立的皇帝陈留王刘协，小名叫伯和，是汉灵帝的二儿子，也就是后来的汉献帝，当时才九岁。改年号为初平。董卓自己当了相国，享受特殊待遇：大臣拜见他不用喊他名字，上朝不用小步快走，可以带剑穿鞋进大殿，权力大得没人能比。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">李儒劝卓擢用名流，以收人望，因荐蔡邕之才。卓命徵之，邕不赴。卓怒，使人谓邕曰：“如不来，当灭汝族。”邕惧，只得应命而至。卓见邕大喜，一月三迁其官，拜为侍中，甚见亲厚。</div>
+            <div class="text-block simplified-text">李儒劝董卓任用有名望的人，这样能赢得大家的好感。他推荐了蔡邕，说这人很有才华。董卓就让蔡邕来做官，但蔡邕不肯来。董卓火了，派人威胁蔡邕说："你要是不来，我就杀你全家。"蔡邕害怕了，只好答应去。董卓见到蔡邕特别高兴，一个月内给他连升三级，让他当了侍中这个官，对他非常好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">却说少帝与何太后、唐妃困于永安宫中，衣服饮食，渐渐少缺；少帝泪不曾干。一日，偶见双燕飞于庭中，遂吟诗一首。诗曰：“嫩草绿凝烟，袅袅双飞燕。洛水一条青，陌上人称羡。远望碧云深，是吾旧宫殿。何人仗忠义，泄我心中怨！”董卓时常使人探听。是日获得此诗，来呈董卓。卓曰：“怨望作诗，杀之有名矣。”遂命李儒带武士十人，入宫弑帝。帝与后、妃正在楼上，宫女报李儒至，帝大惊。儒以鸩酒奉帝，帝问何故。儒曰：“春日融和，董相国特上寿酒。”太后曰：“既云寿酒，汝可先饮。”儒怒曰：“汝不饮耶？”呼左右持短刀白练于前曰：“寿酒不饮，可领此二物！”唐妃跪告曰：“妾身代帝饮酒，愿公存母子性命。”儒叱曰：“汝何人，可代王死？”乃举酒与何太后曰：“汝可先饮？”后大骂何进无谋，引贼入京，致有今日之祸。儒催逼帝，帝曰：“容我与太后作别。”乃大恸而作歌，其歌曰：“天地易兮日月翻，弃万乘兮退守藩。为臣逼兮命不久，大势去兮空泪潸！”唐妃亦作歌曰：“皇天将崩兮后土颓，身为帝姬兮命不随。生死异路兮从此毕，奈何茕速兮心中悲！”歌罢，相抱而哭，李儒叱曰：“相国立等回报，汝等俄延，望谁救耶？”太后大骂：“董贼逼我母子，皇天不佑！汝等助恶，必当灭族！”儒大怒，双手扯住太后，直撺下楼；叱武士绞死唐妃；以鸩酒灌杀少帝。</div>
+            <div class="text-block simplified-text">话说小皇帝和何太后、唐妃被关在永安宫里，吃穿用度越来越差，小皇帝整天以泪洗面。有一天，他看见院子里有两只燕子飞来飞去，就写了一首诗："青草挂着露珠，燕子成双飞舞。洛水碧绿清澈，路上人人羡慕。遥望天边云彩，那里是我从前的皇宫。谁能忠心帮我，解我心头怨恨？"
+
+董卓一直派人监视他们。这天手下把诗拿给董卓看，董卓说："写诗发牢骚，正好有理由杀他们了。"于是派李儒带着十个武士去杀皇帝。
+
+当时皇帝和太后、妃子正在楼上，宫女报告李儒来了，皇帝吓坏了。李儒端来毒酒，皇帝问为什么。李儒假惺惺说："春天到了，董相国特意送来祝寿的酒。"太后说："既然是祝寿酒，你先喝。"李儒发火："你们不想喝？"就让手下拿出刀和白绫威胁："不喝酒，就选这两样！"
+
+唐妃跪下哀求："我替皇上喝，求你放过他们。"李儒骂："你算什么东西，也配替皇上死？"又把酒递给太后："你先喝？"太后大骂何进没脑子，把董卓引进京城才害得他们这样。
+
+李儒逼皇帝喝，皇帝说："让我和太后道个别。"然后哭着唱："天地颠倒日月变，皇帝不当变囚犯。臣子逼宫命不长，大势已去泪汪汪！"唐妃也唱："天塌地陷江山倒，身为皇妃难自保。今日一别阴阳隔，孤零零走心好痛！"
+
+唱完三人抱头痛哭。李儒催："相国等着回话呢，你们拖时间，等谁来救？"太后大骂："董贼害我们母子，老天不会放过你们！帮凶都得死全家！"李儒气得把太后拽下楼摔死，让武士勒死唐妃，硬给皇帝灌了毒酒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">还报董卓，卓命葬于城外。自此每夜入宫，奸淫宫女，夜宿龙床。尝引军出城，行到阳城地方，时当二月，村民社赛，男女皆集。卓命军士围住，尽皆杀之，掠妇女财物，装载车上，悬头千余颗于车下，连轸还都，扬言杀贼大胜而回；于城门外焚烧人头，以妇女财物分散众军。越骑校尉伍孚，字德瑜，见卓残暴，愤恨不平，尝于朝服内披小铠，藏短刀，欲伺便杀卓。一日，卓入朝，孚迎至阁下，拔刀直刺卓。卓气力大，两手抠住；吕布便入，揪倒伍孚。卓问曰：“谁教汝反？”孚瞪目大喝曰：“汝非吾君，吾非汝臣，何反之有？汝罪恶盈天，人人愿得而诛之！吾恨不车裂汝以谢天下！”卓大怒，命牵出剖剐之。孚至死骂不绝口。后人有诗赞之曰：“汉末忠臣说伍孚，冲天豪气世间无。朝堂杀贼名犹在，万古堪称大丈夫！”董卓自此出入常带甲士护卫。</div>
+            <div class="text-block simplified-text">董卓知道事情后，让人把尸体埋在城外。从此他每天晚上都闯进皇宫，糟蹋宫女，还睡皇帝的龙床。有一次他带兵出城，走到阳城一带。当时是二月，村民正在办庙会，男女老少都聚在一起。董卓直接让士兵包围人群，把所有人杀光，抢走妇女和财物，装满了车子。还把一千多颗人头挂在车下面，排成长队回京城，吹嘘说是打了胜仗杀光叛贼。进城后，他让人在城门外烧掉那些人头，把抢来的女人和财物分给手下士兵。
+
+有个叫伍孚的军官（字德瑜），看到董卓这么残暴，气得不行。他经常在朝服里面穿铠甲、藏短刀，想找机会干掉董卓。有一天董卓上朝，伍孚在宫门口拦住他，突然拔刀就刺。董卓力气大，两手死死抓住刀。吕布冲过来把伍孚按倒。董卓问："谁指使你造反的？"伍孚瞪着眼睛大骂："你不是我的君主，我不是你的臣子，造反个屁！你干的坏事天理难容，所有人都想宰了你！我恨不得把你五马分尸给天下人报仇！"董卓气疯了，命令把伍孚拖出去千刀万剐。伍孚直到断气还在骂。后来有人写诗夸他："汉末忠臣伍孚最刚，冲天胆量没人比得上。金殿杀贼留英名，真汉子万古流芳！"这事之后，董卓出门都带着全副武装的保镖。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">时袁绍在渤海，闻知董卓弄权，乃差人赍密书来见王允。书略曰：“卓贼欺天废主，人不忍言；而公恣其跋扈，如不听闻，岂报国效忠之臣哉？绍今集兵练卒，欲扫清王室，未敢轻动。公若有心，当乘间图之。如有驱使，即当奉命。”王允得书，寻思无计。一日，于侍班阁子内见旧臣俱在，允曰：“今日老夫贱降，晚间敢屈众位到舍小酌。”众官皆曰：“必来祝寿。”当晚王允设宴后堂，公卿皆至。酒行数巡，王允忽然掩面大哭。众官惊问曰：“司徒贵诞，何故发悲？”允曰：“今日并非贱降，因欲与众位一叙，恐董卓见疑，故托言耳。董卓欺主弄权，社稷旦夕难保。想高皇诛秦灭楚，奄有天下；谁想传至今日，乃丧于董卓之手：此吾所以哭也。”于是众官皆哭。坐中一人抚掌大笑曰：“满朝公卿，夜哭到明，明哭到夜，还能哭死董卓否？”允视之，乃骁骑校尉曹操也。允怒曰：“汝祖宗亦食禄汉朝，今不思报国而反笑耶？”操曰：“吾非笑别事，笑众位无一计杀董卓耳。操虽不才，愿即断董卓头，悬之都门，以谢天下。”允避席问曰：“孟德有何高见？”操曰：“近日操屈身以事卓者，实欲乘间图之耳。今卓颇信操，操因得时近卓。闻司徒有七宝刀一口，愿借与操入相府刺杀之，虽死不恨！”允曰：“孟德果有是心，天下幸甚！”遂亲自酌酒奉操。操沥酒设誓，允随取宝刀与之。操藏刀，饮酒毕，即起身辞别众官而去。众官又坐了一回，亦俱散讫。</div>
+            <div class="text-block simplified-text">当时袁绍在渤海那边，听说董卓专权乱政，就派人偷偷送信给王允。信里大概说："董卓这混蛋无法无天，连皇帝都敢废，简直人神共愤。您作为大臣却任由他胡作非为，这哪是忠臣该做的事？我现在正在招兵买马，准备除掉这个祸害，但不敢轻举妄动。您要是有心，咱们可以找机会干掉他。需要我帮忙的话，随时听您吩咐。"
+
+王允收到信后很发愁。有一天在值班的地方看见老同事们都在，就说："今天是我生日，晚上请大家来我家喝两杯。"大家都说一定来贺寿。晚上王允在后院摆酒，大臣们都来了。喝了几轮后，王允突然捂着脸大哭。大家吃惊地问："司徒大人过生日怎么哭起来了？"王允说："其实今天不是我生日，我是想找大家商量事，又怕董卓起疑心才这么说。董卓欺压皇上独揽大权，国家都快完了。想到当年高祖皇帝打下的江山，如今要毁在董卓手里，我实在忍不住啊！"说完大家都跟着哭。
+
+这时有个人拍手大笑："满朝大臣从早哭到晚，能把董卓哭死吗？"王允一看是曹操，生气地说："你们家世代受汉朝恩惠，不想着报国还好意思笑？"曹操说："我不是笑别的，是笑你们光知道哭却想不出办法。我虽然没啥本事，但愿意砍下董卓的脑袋挂在城门上，给天下人出气！"
+
+王允赶紧起身问："孟德有什么好主意？"曹操说："我最近假装投靠董卓，就是为了找机会下手。现在他很信任我，我能经常接近他。听说您有把七宝刀，借给我去相府刺杀他，就算死也值了！"王允激动地说："你要真这么想，真是天下人的福气！"亲自给曹操敬酒。曹操洒酒起誓后，王允就把宝刀给了他。曹操藏好刀，喝完酒就告辞走了。其他官员又坐了一会儿也各自回家。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">次日，曹操佩着宝刀，来至相府，问：“丞相何在？”从人云：“在小阁中。”操径入。见董卓坐于床上，吕布侍立于侧。卓曰：“孟德来何迟？”操曰：“马羸行迟耳。”卓顾谓布曰：“吾有西凉进来好马，奉先可亲去拣一骑赐与孟德。”布领令而出。操暗忖曰：“此贼合死！”即欲拔刀刺之，惧卓力大，未敢轻动。卓胖大不耐久坐，遂倒身而卧，转面向内。操又思曰：“此贼当休矣！”急掣宝刀在手，恰待要刺，不想董卓仰面看衣镜中，照见曹操在背后拔刀，急回身问曰：“孟德何为？”时吕布已牵马至阁外。操惶遽，乃持刀跪下曰：“操有宝刀一口，献上恩相。”卓接视之，见其刀长尺余，七宝嵌饰，极其锋利，果宝刀也；遂递与吕布收了。操解鞘付布。卓引操出阁看马，操谢曰：“愿借试一骑。”卓就教与鞍辔。操牵马出相府，加鞭望东南而去。</div>
+            <div class="text-block simplified-text">第二天，曹操带着一把宝刀来到董卓的相府，问：“丞相在哪儿？”手下人说：“在小阁楼里。”曹操直接进去，看见董卓坐在床上，吕布站在旁边。董卓问：“孟德（曹操的字），你怎么来这么晚？”曹操回答：“马太瘦弱，走得慢。”董卓转头对吕布说：“我有从西凉弄来的好马，你去挑一匹送给孟德。”吕布领命出去了。曹操心里想：“这老贼该死了！”正要拔刀刺杀，又怕董卓力气大，没敢动手。董卓因为太胖坐久了不舒服，就转身躺下，脸朝里面。曹操又想：“这老贼死定了！”赶紧握住宝刀准备下手，没想到董卓抬头从衣镜里看见曹操在背后拔刀，立刻转身问：“孟德你要干什么？”这时吕布已经牵着马到了门外。曹操慌了，赶紧跪下举着刀说：“我有把宝刀，特地献给丞相。”董卓接过来一看，刀长一尺多，镶着宝石，非常锋利，确实是好刀，就交给吕布收下。曹操解下刀鞘递给吕布。董卓带曹操出去看马，曹操道谢说：“我想试试这匹马。”董卓让人配上马鞍。曹操骑马出了相府，立刻快马加鞭往东南方向跑了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">布对卓曰：“适来曹操似有行刺之状，及被喝破，故推献刀。”卓曰：“吾亦疑之。”正说话间，适李儒至，卓以其事告之。儒曰：“操无妻小在京，只独居寓所。今差人往召，如彼无疑而便来，则是献刀；如推托不来，则必是行刺，便可擒而问也。”卓然其说，即差狱卒四人往唤操。去了良久，回报曰：“操不曾回寓，乘马飞出东门。门吏问之，操曰‘丞相差我有紧急公事’，纵马而去矣。”儒曰：“操贼心虚逃窜，行刺无疑矣。”卓大怒曰：“我如此重用，反欲害我！”儒曰：“此必有同谋者，待拿住曹操便可知矣。”卓遂令遍行文书，画影图形，捉拿曹操：擒献者，赏千金，封万户侯；窝藏者同罪。</div>
+            <div class="text-block simplified-text">吕布对董卓说："刚才曹操好像想刺杀您，被我们喊破后，就假装是来献刀的。"董卓说："我也觉得可疑。"正说着，李儒来了，董卓把这事告诉他。李儒说："曹操在京城没有家眷，一个人住在出租房。现在派人去叫他，如果他心里没鬼来了，就是真献刀；如果找借口不来，那肯定是刺客，直接抓来审问就行。"董卓觉得有道理，马上派四个衙役去叫曹操。过了很久，衙役回报："曹操没回家，骑马从东门跑了。守门的问他，他说'丞相派我去办急事'，直接冲出去了。"李儒说："这混蛋做贼心虚逃跑，肯定是刺客！"董卓气坏了："我这么重用他，他居然想杀我！"李儒说："肯定有同伙，抓到曹操就清楚了。"董卓立刻下令全国通缉曹操：谁抓住曹操，赏一千两黄金，封大官；谁敢包庇，同罪处理。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">且说曹操逃出城外，飞奔谯郡。路经中牟县，为守关军士所获，擒见县令。操言：“我是客商，覆姓皇甫。”县令熟视曹操，沉吟半晌，乃曰：“吾前在洛阳求官时，曾认得汝是曹操，如何隐讳！且把来监下，明日解去京师请赏。”把关军士赐以酒食而去。至夜分，县令唤亲随人暗地取出曹操，直至后院中审究；问曰：“我闻丞相待汝不薄，何故自取其祸？”操曰：“燕雀安知鸿鹄志哉！汝既拿住我，便当解去请赏。何必多问！”县令屏退左右，谓操曰：“汝休小觑我。我非俗吏，奈未遇其主耳。”操曰：“吾祖宗世食汉禄，若不思报国，与禽兽何异？吾屈身事卓者，欲乘间图之，为国除害耳。今事不成，乃天意也！”县令曰：“孟德此行，将欲何往？”操曰：“吾将归乡里，发矫诏，召天下诸侯兴兵共诛董卓：吾之愿也。”县令闻言，乃亲释其缚，扶之上坐，再拜曰：“公真天下忠义之士也！”曹操亦拜，问县令姓名。县令曰：“吾姓陈，名宫，字公台。老母妻子，皆在东郡。今感公忠义，愿弃一官，从公而逃。”操甚喜。是夜陈宫收拾盘费，与曹操更衣易服，各背剑一口，乘马投故乡来。</div>
+            <div class="text-block simplified-text">话说曹操逃出城外，一路快马加鞭往谯郡跑。路过中牟县时，被守关的士兵抓住，押去见县令。曹操撒谎说："我是做生意的，姓皇甫。"县令盯着曹操看了半天，想了想说："我以前在洛阳谋官时，认得你是曹操，别装了！先关起来，明天押到京城领赏。"守关士兵得了赏赐的酒饭就走了。
+
+到了半夜，县令悄悄叫亲信把曹操带到后院审问："听说丞相待你不薄，你为啥自找麻烦？"曹操说："小麻雀哪懂大雁的志向！你既然抓了我，直接押去领赏就行了，问这么多干嘛！"县令让手下退下，对曹操说："你别瞧不起我。我不是那种糊涂官，只是没遇到明主罢了。"曹操这才说实话："我家世代受汉朝恩惠，不想着报效国家，那还是人吗？我跟着董卓做事，是想找机会除掉他。现在事情败露，是天意啊！"
+
+县令问："你现在打算去哪儿？"曹操说："我准备回老家，假传圣旨，召集各地诸侯一起讨伐董卓。"县令听完，亲自给他松绑，扶他上座，行礼说："您真是忠义之人！"
+曹操也回礼，问县令姓名。县令说："我叫陈宫，字公台。家眷都在东郡。今天被您的忠义感动，我愿意辞官跟您一起走。"曹操很高兴。当晚陈宫收拾盘缠，两人换了衣服，各带一把剑，骑马往曹操老家赶去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">行了三日，至成皋地方，天色向晚。操以鞭指林深处谓宫曰：“此间有一人姓吕，名伯奢，是吾父结义弟兄；就往问家中消息，觅一宿，如何？”宫曰：“最好。”二人至庄前下马，入见伯奢。奢曰：“我闻朝廷遍行文书，捉汝甚急，汝父已避陈留去了。汝如何得至此？”操告以前事，曰：“若非陈县令，已粉骨碎身矣。”伯奢拜陈宫曰：“小侄若非使君，曹氏灭门矣。使君宽怀安坐，今晚便可下榻草舍。”说罢，即起身入内。良久乃出，谓陈宫曰：“老夫家无好酒，容往西村沽一樽来相待。”言讫，匆匆上驴而去。</div>
+            <div class="text-block simplified-text">走了三天，到了成皋这个地方，天快黑了。曹操用马鞭指着树林深处对陈宫说：“这儿有个人叫吕伯奢，是我爸的结拜兄弟。咱们去他家打听下家里的消息，顺便住一晚，怎么样？”陈宫说：“好啊。”
+
+两人到庄子前下马，进去见了吕伯奢。吕伯奢说：“我听说朝廷到处发通缉令抓你，抓得很紧。你爸已经躲到陈留去了。你怎么到这儿来了？”曹操把之前的事告诉了他，说：“要不是陈县令（陈宫），我早就没命了。”吕伯奢向陈宫行礼说：“要不是您帮忙，我这侄子全家都要遭殃了。您别客气，今晚就在我家住下吧。”说完就进屋去了。
+
+过了好一会儿，吕伯奢出来对陈宫说：“我家没好酒，我去西村买点酒来招待你们。”说完就急急忙忙骑驴走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">操与宫坐久，忽闻庄后有磨刀之声。操曰：“吕伯奢非吾至亲，此去可疑，当窃听之。”二人潜步入草堂后，但闻人语曰：“缚而杀之，何如？”操曰：“是矣！今若不先下手，必遭擒获。”遂与宫拔剑直入，不问男女，皆杀之，一连杀死八口。搜至厨下，却见缚一猪欲杀。宫曰：“孟德心多，误杀好人矣！”急出庄上马而行。行不到二里，只见伯奢驴鞍前鞒悬酒二瓶，手携果菜而来，叫曰：“贤侄与使君何故便去？”操曰：“被罪之人，不敢久住。”伯奢曰：“吾已分付家人宰一猪相款，贤侄、使君何憎一宿？速请转骑。”操不顾，策马便行。行不数步，忽拔剑复回，叫伯奢曰：“此来者何人？”伯奢回头看时，操挥剑砍伯奢于驴下。宫大惊曰：“适才误耳，今何为也？”操曰：“伯奢到家，见杀死多人，安肯干休？若率众来追，必遭其祸矣。”宫曰：“知而故杀，大不义也！”操曰：“宁教我负天下人，休教天下人负我。”陈宫默然。</div>
+            <div class="text-block simplified-text">曹操和陈宫坐了一会儿，突然听到后院有磨刀的声音。曹操说："吕伯奢跟我又不是特别亲，他这一走有点可疑，咱们去偷听一下。"两人偷偷走到后屋，听见有人说："绑起来杀掉，怎么样？"曹操说："果然！现在不动手，肯定要被他们抓住。"就和陈宫提剑冲进去，不管男女老少，全杀了，一共杀了八口人。搜到厨房时，发现绑着一头猪准备杀。陈宫说："孟德（曹操）你太多心了，错杀好人了！"赶紧骑马离开庄子。
+
+走了不到两里地，看见吕伯奢骑着驴过来，驴背上挂着两瓶酒，手里拿着水果蔬菜，喊道："贤侄和使君怎么这就走了？"曹操说："我们是有罪在身的人，不敢久留。"吕伯奢说："我已经让家人杀猪招待你们，怎么连住一晚都不肯呢？快回来吧。"曹操不理他，骑马就走。走了没几步，突然拔剑掉头回来，喊吕伯奢："那边来的是谁？"吕伯奢一回头，曹操一剑把他砍下驴来。
+
+陈宫大惊："刚才已经杀错了，现在又杀人？"曹操说："他回家看见死了这么多人，能放过我们吗？要是带人来追，我们就完了。"陈宫说："明知道还杀人，太不仁义了！"曹操说："宁可我对不起天下人，也不能让天下人对不起我。"陈宫听完不说话了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">当夜，行数里，月明中敲开客店门投宿。喂饱了马，曹操先睡。陈宫寻思：“我将谓曹操是好人，弃官跟他；原来是个狼心之徒！今日留之，必为后患。”便欲拔剑来杀曹操。正是：设心狠毒非良士，操卓原来一路人。毕竟曹操性命如何，且听下文分解。</div>
+            <div class="text-block simplified-text">那天晚上，他们走了几里路，趁着月光找到一家客店敲门投宿。喂饱马后，曹操先去睡了。陈宫心里琢磨："我原以为曹操是个好人，才辞官跟他走；没想到他这么狠毒！今天要是放过他，以后肯定是个祸害。"就拔出剑想杀曹操。这正是：狠毒的人不是好东西，曹操和董卓原来是一路货色。曹操到底死没死，咱们下回再说。  
+
+（说明：完全遵循口语化要求，用"琢磨"代替"寻思"，"狠毒"替代"狼心之徒"，"祸害"替代"后患"，并用"不是好东西/一路货色"翻译诗句。关键情节如拔剑动作、人物心理活动均完整保留，结尾悬念也沿用传统说书句式。）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
