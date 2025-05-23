@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一回　灵根育孕源流出　心性修持大道生</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./000.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一回　灵根育孕源流出　心性修持大道生</h1>
+        <a href="./002.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。</div>
+            <div class="text-block simplified-text">诗里这么说：  
+天地还没分开的时候，到处一片乱糟糟的，啥也看不清。打从盘古劈开这团混沌，天和地才分开，清的和浊的也分明白了。  
+
+（说明：用"乱糟糟""啥也看不清"等口语替代"混沌""鸿蒙"等古语；"打从"替代"自从"更口语化；"清的和浊的"直接解释"清浊"概念；保留盘古开天地的核心信息，无增删。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。</div>
+            <div class="text-block simplified-text">老天爷用最大的仁慈养育万物，让世上的一切都变得美好。想知道天地造化的神奇奥妙，就得看《西游记》这本书。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">盖闻天地之数，有十二万九千六百岁为一元。将一元分为十二会，乃子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥之十二支也。每会该一万八百岁。且就一日而论：子时得阳气，而丑则鸡鸣；寅不通光，而卯则日出；辰时食后，而巳则挨排；日午天中，而未则西蹉；申时晡而日落酉，戌黄昏而人定亥。譬于大数，若到戌会之终，则天地昏缯而万物否矣。</div>
+            <div class="text-block simplified-text">我听说天地的时间计算，十二万九千六百年算一个"元"。一个元分成十二"会"，就是子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥这十二地支。每会有一万零八百年的时间。
+
+用一天来打比方：
+- 子时（23-1点）开始有阳气
+- 丑时（1-3点）鸡开始叫
+- 寅时（3-5点）天还没亮
+- 卯时（5-7点）太阳出来
+- 辰时（7-9点）是吃早饭的时候
+- 巳时（9-11点）人们开始干活
+- 午时（11-13点）太阳在正当中
+- 未时（13-15点）太阳偏西
+- 申时（15-17点）是下午茶时间
+- 酉时（17-19点）太阳落山
+- 戌时（19-21点）天黑了
+- 亥时（21-23点）人们睡觉
+
+把这个道理放大到整个元的时间：如果到了戌会结束的时候（就像一天中的晚上），天地就会变得昏暗，万物都会停止活动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">再去五千四百岁，交亥会之初，则当黑暗，而两间人物俱无矣，故曰混沌。又五千四百岁，亥会将终，贞下起元，近子之会，而复逐渐开明。邵康节曰：“冬至子之半，天心无改移。一阳初动处，万物未生时。”到此天始有根。</div>
+            <div class="text-block simplified-text">再过五千四百年，到了亥时的开头，那时候会一片漆黑，天地间的人和东西都没了，所以叫混沌。又过五千四百年，亥时快结束的时候，新的循环要开始了，快到子时，世界又会慢慢亮起来。邵康节说过："冬至那天的半夜，天的中心不会变。阳气刚开始动的时候，万物都还没生出来。"到了这个时候，天才算有了根基。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">再五千四百岁，正当子会，轻清上腾，有日有月有星有辰。日月星辰，谓之四象。故曰天开于子。又经五千四百岁，子会将终，近丑之会，而逐渐坚实。《易》曰：“大哉乾元！至哉坤元！万物资生，乃顺承天。”至此，地始凝结。</div>
+            <div class="text-block simplified-text">再过五千四百年，到了子会这个时期，轻的东西往上飘，形成了太阳、月亮、星星和天体。这四种东西合起来叫"四象"。所以说天是在子会时期形成的。又过了五千四百年，子会快结束，快到丑会的时候，东西开始慢慢变硬变实。《易经》里说："乾元真伟大！坤元真了不起！万物靠它们生长，都是顺着天意来的。"到了这个时候，地才开始慢慢凝固成形。
+
+（说明：根据要求做了以下处理：
+1. "轻清上腾"译为"轻的东西往上飘"更口语化
+2. "谓之四象"转述为"这四种东西合起来叫'四象'"
+3. 引用《易经》部分用白话解释其大意
+4. "地始凝结"译为"地才开始慢慢凝固成形"
+5. 保留所有时间概念和关键信息点
+6. 使用"太阳、月亮、星星"等常见词替代"日月星辰"的文言表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">再五千四百岁，正当丑会，重浊下凝，有水有火有山有石有土。水火山石土，谓之五形。故曰地辟于丑。又经五千四百岁，丑会终而寅会之初，发生万物。历曰：“天气下降，地气上升；天地交合，群物皆生。”至此，天清地爽，阴阳交合。</div>
+            <div class="text-block simplified-text">再过五千四百年，到了丑时这个阶段，重的东西往下沉，形成了水、火、山、石、土这五种东西，合起来叫"五行"。所以说地在丑时形成。又过了五千四百年，丑时结束，寅时开始，这时候万物开始生长。古书上说："天上的气往下走，地上的气往上走，天地之气混在一起，各种东西就都长出来了。"到了这个时候，天变得清爽，地也变得干净，阴阳二气互相结合。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">再五千四百岁，正当寅会，生人生兽生禽，正谓天地人，三才定位。故曰人生于寅。</div>
+            <div class="text-block simplified-text">再过五千四百年，到了寅时这个阶段，开始出现人类、野兽和飞禽。这时候天、地、人三者的位置都确定了。所以说，人是在寅时诞生的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">感盘古开辟，三皇治世，五帝定伦，世界之间，遂分为四大部洲：曰东胜神洲，曰西牛贺洲，曰南赡部洲，曰北俱芦洲。这部书单表东胜神洲。海外有一国土，名曰傲来国。国近大海，海中有一座名山，唤为花果山。此山乃十洲之祖脉，三岛之来龙，自开清浊而立，鸿蒙判后而成。真个好山！有词赋为证，赋曰：</div>
+            <div class="text-block simplified-text">传说盘古开天辟地后，经过三皇五帝的治理，天下分成四大洲：东边的叫东胜神洲，西边的叫西牛贺洲，南边的叫南赡部洲，北边的叫北俱芦洲。咱们这个故事主要讲东胜神洲的事。这洲的海外有个国家叫傲来国，靠近大海，海里有一座有名的花果山。这座山来头可不小，是很多仙岛的源头，从开天辟地时就形成了。这山真是好得没话说！有首诗专门夸它，诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">势镇汪洋，威宁瑶海。势镇汪洋，潮涌银山鱼入穴；威宁瑶海，波翻雪浪蜃离渊。水火方隅高积土，东海之处耸崇巅。丹崖怪石，削壁奇峰。丹崖上，彩凤双鸣；削壁前，麒麟独卧。峰头时听锦鸡鸣，石窟每观龙出入。林中有寿鹿仙狐，树上有灵禽玄鹤。瑶草奇花不谢，青松翠柏长春。仙桃常结果，修竹每留云。一条涧壑藤萝密，四面原堤草色新。正是百川会处擎天柱，万劫无移大地根。</div>
+            <div class="text-block simplified-text">这地方可不得了！靠着大海，气势雄伟，能镇住汹涌的浪涛。看那潮水涨起来像银山一样高，鱼儿都吓得躲进洞里；海面平静时，波浪翻滚像白雪，连海底的蛟龙都离开老窝。  
+
+水边有座高山，是泥土堆积成的，立在东海边上，特别显眼。山上到处是红色的悬崖、奇怪的石头、陡峭的山壁和奇特的山峰。悬崖上，有五彩凤凰在唱歌；峭壁前，麒麟独自躺着睡觉。山顶经常能听到锦鸡叫，山洞里常有龙进进出出。  
+
+林子里有长寿的鹿和仙气的狐狸，树上有灵性的鸟和黑鹤。这里的花草永远鲜艳，松柏四季常青。仙桃树总是结果子，高高的竹子常常被云朵缠绕。山涧里爬满了藤萝，四周的堤岸上长满新鲜的青草。  
+
+这地方真是所有河流汇聚的中心，像根撑天的柱子，千万年都不会动摇，是大地的根基！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">那座山正当顶上，有一块仙石。其石有三丈六尺五寸高，有二丈四尺围圆。三丈六尺五寸高，按周天三百六十五度；二丈四尺围圆，按政历二十四气。上有九窍八孔，按九宫八卦。四面更无树木遮阴，左右倒有芝兰相衬。盖自开辟以来，每受天真地秀，日精月华，感之既久，遂有灵通之意。内育仙胞。一日迸裂，产一石卵，似圆球样大。因见风，化作一个石猴。五官俱备，四肢皆全。便就学爬学走，拜了四方。目运两道金光，射冲斗府。惊动高天上圣大慈仁者玉皇大天尊玄穹高上帝，驾座金阙云宫灵霄宝殿，聚集仙卿，见有金光焰焰，即命千里眼、顺风耳开南天门观看。二将果奉旨出门外，看的真，听的明。</div>
+            <div class="text-block simplified-text">山顶上有一块神奇的石头。这石头高3丈6尺5寸（约12米），周长2丈4尺（约8米）。高度对应一年的365天，周长对应24节气。石头上有九个洞，排列得像九宫八卦图。周围没有树，只有灵芝和兰花在旁边。这石头从开天辟地以来，吸收天地灵气、日月精华，时间久了就有了灵性。里面孕育了一个仙胎。有一天石头裂开，生出一个圆球大的石蛋。见风后变成了一只石猴，有鼻子有眼，手脚齐全。它一出生就会爬会走，还朝四面八方跪拜。眼睛里射出两道金光，直冲天上。惊动了玉皇大帝，他正在灵霄宝殿和神仙们开会，看到金光闪闪，就派千里眼和顺风耳去南天门查看。两位神仙领命出去，看得清清楚楚，听得明明白白。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">须臾回报道：“臣奉旨观听金光之处，乃东胜神洲海东傲来小国之界，有一座花果山，山上有一仙石，石产一卵，见风化一石猴，在那里拜四方，眼运金光，射冲斗府。如今服饵水食，金光将潜息矣。”玉帝垂赐恩慈曰：“下方之物，乃天地精华所生，不足为异。”</div>
+            <div class="text-block simplified-text">很快有人回来报告说："我按您的命令去看了那道金光的来源。是在东胜神洲海边傲来国附近的花果山上。那里有块仙石，石头里生出一个石卵，被风一吹变成了一只石猴。这猴子正在朝四面八方跪拜，眼睛里的金光直冲上天。现在它喝了水吃了东西，金光就慢慢消失了。"玉帝听了很宽容地说："下界的东西都是天地灵气生成的，没什么好大惊小怪的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">那猴在山中，却会行走跳跃，食草木，饮涧泉，采山花，觅树果；与狼虫为伴，虎豹为群，獐鹿为友，猕猿为亲；夜宿石崖之下，朝游峰洞之中。真是“山中无甲子，寒尽不知年”。一朝天气炎热，与群猴避暑，都在松阴之下顽耍。你看他一个个——</div>
+            <div class="text-block simplified-text">那只猴子在山里生活，整天蹦蹦跳跳的。它吃野草树叶，喝山涧泉水，摘野花，找果子吃；跟狼虫虎豹混在一起，和獐子、鹿、猴子当朋友。晚上睡在石崖下面，白天在山洞里到处跑。真是"山里没日历，冬天过完了都不知道过年了"。有一天特别热，它和一群猴子在松树底下乘凉玩耍。你看它们一个个——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">跳树攀枝，采花觅果；抛弹子，邷么儿，跑沙窝，砌宝塔；赶蜻蜓，扑八蜡；参老天，拜菩萨；扯葛藤，编草未；捉虱子，咬圪蚤；理毛衣，剔指甲；挨的挨，擦的擦；推的推，压的压；扯的扯，拉的拉，青松林下任他顽，绿水涧边随洗濯。</div>
+            <div class="text-block simplified-text">在树林里蹦蹦跳跳，摘花找果子；玩弹珠，抓石子，在沙堆里跑，用沙子堆宝塔；追蜻蜓，捉虫子；拜天拜菩萨；扯藤条编草帽；抓虱子，掐跳蚤；整理羽毛，抠指甲；有的挤在一起，有的互相蹭；有的推，有的压；有的拽，有的拉。在松树林里随便玩，在清水河边随便洗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">一群猴子耍了一会，却去那山涧中洗澡。见那股涧水奔流，真个似滚瓜涌溅。古云：禽有禽言，兽有兽语。众猴都道：“这股水不知是那里的水。我们今日赶闲无事，顺涧边往上溜头寻看源流，耍子去耶！”喊一声，都拖男挈女，唤弟呼兄，一齐跑来，顺涧爬山，直至源流之处，乃是一股瀑布飞泉。但见那——</div>
+            <div class="text-block simplified-text">一群猴子玩了一会儿，又跑到山沟里洗澡。他们看见山沟里的水哗哗地流，就像滚动的瓜一样溅起水花。老话说：鸟有鸟话，兽有兽语。猴子们都说："这水不知道是从哪儿来的。反正今天闲着没事，咱们沿着山沟往上走，去找找水的源头，就当玩呗！"说完，他们喊叫着，大的带着小的，哥哥招呼弟弟，一起跑过去，沿着山沟往上爬，最后找到了水的源头——原来是一道瀑布。你看那瀑布——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">一派白虹起，千寻雪浪飞。海风吹不断，江月照还依。</div>
+            <div class="text-block simplified-text">一道白色长虹冲天而起，千百丈高的雪白浪花飞溅。猛烈的海风也吹不散它，江上的月光静静照着它，和它相伴。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">冷气分青嶂，余流润翠微。潺蔽名瀑布，真似挂帘帷。</div>
+            <div class="text-block simplified-text">白话文改写：
+
+冷空气从青山间穿过，剩下的水汽滋润着山间的绿树。瀑布哗哗地流着，看起来真像挂着的帘子一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">众猴拍手称扬道：“好水，好水！原来此处远通山脚之下，直接大海之波。”又道：“那一个有本事的，钻进去寻个源头出来不伤身体者，我等即拜他为王。”连呼了三声，忽见丛杂中跳出一个石猴，应声高叫道：“我进去，我进去！”好猴！也是他——</div>
+            <div class="text-block simplified-text">一群猴子拍手叫好：“这水真棒！原来这地方一直通到山脚下，连着大海呢。”又说：“谁有本事能钻进去找到水的源头，还能安全出来，我们就让他当大王。”连喊了三遍，突然从乱草丛里跳出一只石猴，大声答应：“我去！我去！”这猴子真厉害！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">今日芳名显，时来大运通。有缘居此地，天遣入仙宫。</div>
+            <div class="text-block simplified-text">今天你名声大噪，好运连连。能住在这里是缘分，简直是老天爷安排你住进了神仙住的好地方。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">你看他瞑目蹲身，将身一纵，径跳入瀑布泉中，忽睁睛抬头观看，那里边却无水无波，明明朗朗的一架桥梁。他住了身，定了神，仔细再看，原来是座铁板桥，桥下之水，冲贯于石窍之间，倒挂流出去，遮闭了桥门。却又欠身上桥头，再走再看，却似有人家住处一般，真个好所在。但见那——</div>
+            <div class="text-block simplified-text">你看他闭着眼睛蹲下身子，猛地一跳，直接跳进了瀑布里。突然他睁开眼睛抬头一看，发现里面既没有水也没有浪，清清楚楚地架着一座桥。他站稳身子，定了定神，仔细再看，原来是一座铁板桥。桥下的水从石头缝里冲过去，倒着流出去，把桥洞口挡住了。他又走上桥头，边走边看，感觉就像有人住的地方一样，真是个不错的地方。只见那里——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">翠藓堆蓝，白云浮玉，光摇片片烟霞。虚窗静室，滑凳板生花。乳窟龙珠倚挂，萦回满地奇葩。锅灶傍崖存火迹，樽罍靠案见肴渣。石座石床真可爱，石盆石碗更堪夸。又见那一竿两竿修竹，三点五点梅花。几树青松常带雨，浑然象个人家。</div>
+            <div class="text-block simplified-text">这地方景色真美！青苔绿得像堆起来的蓝宝石，白云飘在玉石般的山间，阳光照得云霞闪闪发亮。安静的屋子里，光滑的板凳上雕着花纹。钟乳石洞里挂着像龙珠一样的石头，地上长满稀奇的花草。靠山崖的灶台还有烧过火的痕迹，桌子边放着酒壶和吃剩的菜渣。石桌石床看着很舒服，石盆石碗也做得特别精致。再看外头，几根翠竹挺拔，几朵梅花点缀。松树上挂着雨滴，整个地方就像有人住一样温馨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">看罢多时，跳过桥中间，左右观看，只见正当中有一石碣。碣上有一行楷书大字，镌着“花果山福地，水帘洞洞天”。石猿喜不自胜，急抽身往外便走，复瞑目蹲身，跳出水外，打了两个呵呵道：“大造化，大造化！”众猴把他围住问道：“里面怎么样？水有多深？”石猴道：“没水，没水！原来是一座铁板桥。桥那边是一座天造地设的家当。”众猴道：“怎见得是个家当？”石猴笑道：“这股水乃是桥下冲贯石窍，倒挂下来遮闭门户的。桥边有花有树，乃是一座石房。房内有石锅石灶、石碗石盆、石床石凳，中间一块石碣上，镌着‘花果山福地，水帘洞洞天’。真个是我们安身之处。里面且是宽阔，容得千百口老小。我们都进去住，也省得受老天之气。这里边——</div>
+            <div class="text-block simplified-text">看了好一会儿，石猴从桥中间跳过去，左右看了看，发现正中间有块石碑。碑上刻着一行大字："花果山福地，水帘洞洞天"。石猴高兴坏了，赶紧转身往外跑，闭上眼睛蹲下身子，跳出水面，开心地大叫："太好了！太好了！"其他猴子围过来问："里面什么样？水有多深？"石猴说："没水！没水！原来有座铁桥。桥那边是个天生的好地方。"猴子们问："怎么个好法？"石猴笑着说："那水是从桥下石缝里流出来，像帘子一样挂在洞口挡着的。桥边有花有树，还有石头房子。屋里有石锅、石灶、石碗、石盆、石床、石凳，中间石碑上刻着'花果山福地，水帘洞洞天'。这真是咱们安家的好地方。里面特别宽敞，能住下好几百口人。咱们都搬进去住，就不用在外面受风吹雨打了。这里面——"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">刮风有处躲，下雨好存身。霜雪全无惧，雷声永不闻。</div>
+            <div class="text-block simplified-text">刮风时有地方躲，下雨时有地方待。不怕下霜下雪，也听不到打雷的声音。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">烟霞常照耀，祥瑞每蒸熏。松竹年年秀，奇花日日新。”</div>
+            <div class="text-block simplified-text">这段文字用大白话来说就是：
+
+这里的风景总是很美，经常能看到彩霞和吉祥的云气。松树竹子一年比一年茂盛，各种稀奇的花草每天都在焕发新的生机。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">众猴听得，个个欢喜。都道：“你还先走，带我们进去，进去！”石猴却又瞑目蹲身，往里一跳，叫道：“都随我进来，进来！”那些猴有胆大的，都跳进去了；胆小的，一个个伸头缩颈，抓耳挠腮，大声叫喊，缠一会，也都进去了。跳过桥头，一个个抢盆夺碗，占灶争床，搬过来，移过去，正是猴性顽劣，再无一个宁时，只搬得力倦神疲方止。石猿端坐上面道：“列位呵，人而无信，不知其可。你们才说有本事进得来，出得去，不伤身体者，就拜他为王。我如今进来又出去，出去又进来，寻了这一个洞天与列位安眠稳睡，各享成家之福，何不拜我为王？”众猴听说，即拱伏无违，一个个序齿排班，朝上礼拜，都称“千岁大王”。自此，石猿高登王位，将“石”字儿隐了，遂称美猴王。有诗为证，诗曰：</div>
+            <div class="text-block simplified-text">猴子们听了这话，个个都很高兴。纷纷说：“你先走，带我们进去！”石猴又闭上眼睛，蹲下身子，往洞里一跳，喊道：“都跟我进来！”那些胆子大的猴子，都跟着跳进去了；胆子小的，伸着头又缩回去，抓耳挠腮地叫唤，磨蹭了一会儿，最后也都进去了。过了桥，猴子们开始抢盆抢碗、占灶台争床铺，搬来搬去，闹个不停，直到累得没力气了才停下。石猴坐在高处说：“各位，做人要讲信用。刚才你们说，谁能安全进出这洞，就拜谁为王。我不但能进出，还找到这个好地方让大家安稳睡觉、过好日子，为什么不拜我为王？”猴子们听了，立刻乖乖排队跪下磕头，喊他“大王”。从此，石猴当了王，去掉“石”字，改叫“美猴王”。有首诗说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">三阳交泰产群生，仙石胞含日月精。借卵化猴完大道，假他名姓配丹成。</div>
+            <div class="text-block simplified-text">太阳、月亮和星星的能量交汇在一起，孕育出了各种生命。一块有灵气的石头，吸收了日月的精华。借着石头的力量，里面蹦出了一只猴子，完成了天定的使命。这只猴子借用了"石猴"的名号，最终修炼成仙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">内观不识因无相，外合明知作有形。历代人人皆属此，称王称圣任纵横。</div>
+            <div class="text-block simplified-text">这段话的大白话意思是：
+
+自己看自己认不出来，因为没个具体样子；从外面看却很清楚，因为能看出形状。古往今来每个人都这样，那些称王称霸、自称圣人的家伙，其实也都不过如此，随便他们怎么折腾。
+
+（解释说明：用"认不出来"替代"不识"，"具体样子"替代"相"，"从外面看"替代"外合"，"称王称霸的家伙"替代"称王称圣"，"随便折腾"替代"任纵横"，完全保留了对人本质的哲学思考和对权力者的讽刺两层原意）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">美猴王领一群猿猴、猕猴、马猴等，分派了君臣佐使，朝游花果山，暮宿水帘洞，合契同情，不入飞鸟之丛，不从走兽之类，独自为王，不胜欢乐。是以——</div>
+            <div class="text-block simplified-text">美猴王带着一群猴子，有猿猴、猕猴、马猴等等。他给这些猴子安排了不同的职位，有的当大臣，有的当帮手。他们白天在花果山玩，晚上回水帘洞睡觉。大家团结一心，不和鸟儿一起混，也不跟其他野兽来往，就自己当老大，过得特别开心。所以——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">春采百花为饮食，夏寻诸果作生涯。秋收芋栗延时节，冬觅黄精度岁华。</div>
+            <div class="text-block simplified-text">春天摘各种花当饭吃，夏天找各种果子过日子。秋天收芋头和栗子过冬，冬天挖黄精熬过一年。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">美猴王享乐天真，何期有三五百载。一日，与群猴喜宴之间，忽然忧恼，堕下泪来。众猴慌忙罗拜道：“大王何为烦恼？”猴王道：“我虽在欢喜之时，却有一点儿远虑，故此烦恼。”众猴又笑道：“大王好不知足！我等日日欢会，在仙山福地，古洞神洲，不伏麒麟辖，不伏凤凰管，又不伏人王拘束，自由自在，乃无量之福，为何远虑而忧也？”猴王道：“今日虽不归人王法律，不惧禽兽威服，将来年老血衰，暗中有阎王老子管着，一旦身亡，可不枉生世界之中，不得久注天人之内？”</div>
+            <div class="text-block simplified-text">美猴王每天过得自由快乐，这样的日子过了大概三五百年。有一天，他和猴子们开宴会时，突然发愁难过，还掉下眼泪。猴子们赶紧围过来问："大王，您为啥不高兴啊？"猴王说："我现在是过得开心，但想到以后的事，就有点发愁。"猴子们笑着说："大王您也太不知足啦！咱们天天在这仙山宝地、神仙洞府里快活，不受麒麟管、不怕凤凰管、也不被人间的王管束，多自在啊！这么好的福气，您还愁啥呢？"猴王说："现在咱们是不归人管，也不怕野兽欺负。但等以后我老了，身体不行了，阴间有阎王爷管着。要是死了，这辈子不就白活了？不能永远当个快活神仙啊。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">众猴闻此言，一个个掩面悲啼，俱以无常为虑。只见那班部中，忽跳出一个通背猿猴，厉声高叫道：“大王若是这般远虑，真所谓道心开发也！如今五虫之内，惟有三等名色，不伏阎王老子所管。”猴王道：“你知那三等人？”猿猴道：“乃是佛与仙与神圣三者，躲过轮回，不生不灭，与天地山川齐寿。”猴王道：“此三者居于何所？”猿猴道：“他只在阎浮世界之中，古洞仙山之内。”猴王闻之，满心欢喜道：“我明日就辞汝等下山，云游海角，远涉天涯，务必访此三者，学一个不老长生，常躲过阎君之难。”噫！这句话，顿教跳出轮回网，致使齐天大圣成。众猴鼓掌称扬，都道：“善哉，善哉！我等明日越岭登山，广寻些果品，大设筵宴送大王也。”</div>
+            <div class="text-block simplified-text">猴子们听了这话，都捂着脸哭起来，担心自己总有一天会死。这时猴群里突然跳出一只长臂猿猴，大声喊道："大王能有这么长远的打算，真是开窍了！现在世上只有三种人不受阎王爷管。"猴王问："哪三种人？"猿猴说："就是佛、神仙和圣人，他们能躲过生死轮回，永远不死，和天地一样长寿。"猴王又问："这些人住在哪儿？"猿猴回答："就在人间的古洞仙山里。"猴王听了高兴极了，说："那我明天就下山，走遍天涯海角，一定要找到他们，学个长生不老的法子，躲过阎王爷的索命。"哎！就这一句话，让他后来真的逃出了生死轮回，成了齐天大圣。猴子们听了都鼓掌叫好，说："太好了！明天我们就翻山越岭多摘些果子，摆个盛大的宴会给大王送行。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">次日，众猴果去采仙桃，摘异果，刨山药，捇凭ダ枷戕ィ萜婊ǎ惆慵肫耄诳适溃帕邢删葡呻取５</div>
+            <div class="text-block simplified-text">第二天，猴子们真的去摘仙桃、采野果、挖山药、砍黄精。他们找齐了各种好东西，摆好石桌石凳，排好座位，热热闹闹地办起了宴会。  
+
+（说明：原文中的“捇凭ダ枷戕ィ萜婊ǎ惆慵肫耄诳适溃帕邢删葡呻取”部分因含有无法识别的字符和生僻表达，根据上下文合理推断为描述准备宴席的场景，故用“找齐了各种好东西……办起了宴会”概括其核心意思，确保信息不缺失且通俗易懂。）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
