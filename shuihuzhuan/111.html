@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百一十一回　张顺夜伏金山寺　宋江智取润州城</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./110.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百一十一回　张顺夜伏金山寺　宋江智取润州城</h1>
+        <a href="./112.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句"诗曰："可以改写成：
+
+"诗里这样说："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">万里长江似建瓴，东归大海若雷鸣。</div>
+            <div class="text-block simplified-text">长江的水势浩大，从高处奔流而下，一路向东汇入大海，声势如同雷鸣一般。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">浮天雪浪人皆惧，动地烟波鬼亦惊。</div>
+            <div class="text-block simplified-text">天上翻着吓人的大雪浪，地上滚着可怕的浓烟波，连鬼看了都害怕。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">竭力只因清国难，勤王端拟耀天兵。</div>
+            <div class="text-block simplified-text">拼死拼活就为了平定国家的灾难，带兵打仗是想让朝廷的军队威风起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">潜踪敛迹金山下，斩将搴旗在此行。</div>
+            <div class="text-block simplified-text">偷偷摸摸来到金山脚下，这次行动就是要干掉敌人、夺取胜利。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说这九千三百里扬子大江，远接三江，却是汉阳江、浔阳江、扬子江。从四川直至大海，中间通着多少去处，以此呼为万里长江。地分吴、楚，江心内有两座山：一座唤做金山，一座唤做焦山。金山上有一座寺，绕山起盖，谓之寺裹山；焦山上一座寺，藏在山凹里，不见形势，谓之山裹寺。这两座山，生在江中，正占着楚尾吴头，一边是淮东扬州，一边是浙西润州，今时镇江是也。</div>
+            <div class="text-block simplified-text">话说这条九千三百里长的长江，连着三条支流：汉阳江、浔阳江和扬子江。它从四川一直流到大海，中间经过很多地方，所以也叫万里长江。  
+
+长江是吴地和楚地的分界线，江中心有两座山：一座叫金山，一座叫焦山。金山的寺庙围着山建，叫"寺裹山"；焦山的寺庙藏在山坳里，外面看不见，叫"山裹寺"。  
+
+这两座山正好在吴楚交界处，一边是淮东的扬州，一边是浙西的润州，也就是现在的镇江。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">且说润州城郭，却是方腊手下东厅枢密使吕师囊守把江岸。此人原是歙州富户，因献钱粮与方腊，官封为东厅枢密使。幼年曾读兵书战策，惯使一条丈八蛇矛，武艺出众。部下管领着十二个统制官，名号“江南十二神”，协同守把润州江岸。那十二神是：</div>
+            <div class="text-block simplified-text">话说润州城这个地方，是方腊手下一个叫吕师囊的大官在管。这个吕师囊本来是歙州的有钱人，因为给方腊送钱送粮，就当上了东厅枢密使这个官。他小时候读过兵书，会打仗，最拿手的武器是一支一丈八长的蛇矛，武功很厉害。他手下有十二个将军，号称"江南十二神"，一起帮他守着润州江边。这十二个将军分别是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">擎天神福州沈刚、游奕神歙州潘文得、遁甲神睦州应明、六丁神明州徐统、霹雳神越州张近仁、巨灵神杭州沈泽、太白神湖州赵毅、太岁神宣州高可立、吊客神常州范畴、黄幡神润州卓万里、豹尾神江州和潼、丧门神苏州沈抃。</div>
+            <div class="text-block simplified-text">这是十二位神将的名字和对应的地区：
+
+1. 擎天神 - 福州的沈刚
+2. 游奕神 - 歙州的潘文得
+3. 遁甲神 - 睦州的应明
+4. 六丁神 - 明州的徐统
+5. 霹雳神 - 越州的张近仁
+6. 巨灵神 - 杭州的沈泽
+7. 太白神 - 湖州的赵毅
+8. 太岁神 - 宣州的高可立
+9. 吊客神 - 常州的范畴
+10. 黄幡神 - 润州的卓万里
+11. 豹尾神 - 江州的和潼
+12. 丧门神 - 苏州的沈抃
+
+简单说就是列出了十二位神仙的名字和他们各自掌管的地方。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">话说枢密使吕师囊，统领着五万南兵，据住江岸。甘露亭下，摆列着战船三千余只，江北岸却是瓜洲渡口，净荡荡地无甚险阻。</div>
+            <div class="text-block simplified-text">话说大官吕师囊，带着五万南方兵，守在江边。在甘露亭那儿，停着三千多艘战船。江对面是瓜洲渡口，江面很宽，没什么能挡路的东西。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">此时先锋使宋江，奉着诏敕，征剿方腊，兵马战船，五军诸将，水陆并进，船骑同行，已到淮安了，约至扬州取齐。当日宋先锋在帐中，与军师吴用等计议：“此去大江不远，江南岸便是贼兵守把。谁人与我先去探路一遭，打听隔江消息，可以进兵？”帐下转过四员战将，皆云愿往。那四个？一个是小旋风柴进，一个是浪里白跳张顺，一个是拚命三郎石秀，一个是活阎罗阮小七。宋江道：“你四人分作两路：张顺和柴进，阮小七和石秀，可直到金、焦二山上宿歇，打听润州贼巢虚实，前来扬州回话。”四人辞了宋江，各带了两个伴当，扮做客人，取路先投扬州来。此时于路百姓，听得大军来征剿方腊，都挈家搬在村里躲避了。四个人在扬州城里分别，各办了些干粮。石秀自和阮小七带了两个伴当，投焦山去了。</div>
+            <div class="text-block simplified-text">这时候，宋江作为先锋官，正按照皇帝的命令带兵攻打方腊。他的部队分水陆两路一起前进，战船和骑兵同时开拔，已经到了淮安，准备在扬州集合。这天，宋江在军营里和军师吴用等人商量："这里离长江不远了，江南岸就是敌军的地盘。谁能先去打探一下对岸的情况，好让我们决定怎么进攻？"话音刚落，队伍里就站出来四位将领，都说愿意去。这四个人是谁呢？分别是柴进、张顺、石秀和阮小七。宋江安排道："你们四人分成两组：张顺和柴进一组，阮小七和石秀一组。直接去金山和焦山住下，摸清润州敌军的底细，然后回扬州向我报告。"四人领命后，各自带着两个随从，打扮成普通客商的样子，先往扬州去了。沿途老百姓听说朝廷派大军来打方腊，都带着全家躲到乡下去了。四人在扬州城里分开，各自准备了干粮。石秀和阮小七带着随从往焦山方向去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">却说柴进和张顺也带了两个伴当，将干粮捎在身边，各带把锋芒快尖刀，提了朴刀，四个奔瓜洲来。此时正是初春天气，日暖花香，到得扬子江边，凭高一望，淘淘雪浪，滚滚烟波，是好江景也！有诗为证：</div>
+            <div class="text-block simplified-text">柴进和张顺带着两个手下，随身带着干粮，每人拿了一把锋利的尖刀，还提着朴刀，四个人一起往瓜洲赶去。这时候正是初春，天气暖和，到处是花香。他们来到扬子江边，站在高处一看，只见江水翻着白浪，雾气弥漫，江景真是美极了！有首诗形容这景色：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">万里烟波万里天，红霞遥映海东边。</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+一眼望去，水天相连，无边无际。远处的红霞倒映在海面上，把东边的海水都染红了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">打鱼舟子浑无事，醉拥青簑自在眠。</div>
+            <div class="text-block simplified-text">渔夫没啥事可忙，  
+喝醉了裹着蓑衣，  
+舒舒服服睡大觉。  
+
+（说明：用"渔夫"替代古语"打鱼舟子"，"没啥事可忙"直译"浑无事"，"蓑衣"保留但加"裹着"更形象，"醉"和"眠"直接保留，用"舒舒服服"口语化表达"自在"的意境，整体符合现代人说话习惯。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">这柴进二人，望见北固山下，一带都是青白二色旌旗，岸边一字儿摆着许多船只，江北岸上，一根木头也无。柴进道：“瓜州路上，虽有屋宇，并无人住，江上又无渡船，怎生得知隔江消息？”张顺道：“须得一间屋儿歇下，看兄弟赴水过去对江金山脚下，打听虚实。”柴进道：“也说得是。”当下四个人奔到江边，见一带数间草房，尽皆关闭，推门不开。张顺转过侧首，掇开一堵壁子，钻将入去，见个白头婆婆，从灶边走起来。张顺道：“婆婆，你家为甚不开门？”那婆婆答道：“实不瞒客人说，如今听得朝廷起大军来与方腊厮杀，我这里正是风门水口。有些人家都搬了别处去躲，只留下老身在这里看屋。”张顺道：“你家男子汉那里去了？”婆婆道：“村里去望老小去了。”张顺道：“我有四个人，要渡江过去，那里有船觅一只？”婆婆道：“船却那里去讨？近日吕师囊听得大军来和他厮杀，都把船只拘管过润州去了。”张顺道：“我四人自有粮食，只借你家宿歇两日，与你些银子作房钱，并不搅扰你。”婆婆道：“歇却不防，只是没床席。”张顺道：“我们自有措置。”婆婆道：“客人，只怕早晚有大军来！”张顺道：“我们自有回避。”于是开门，放柴进和伴当入来，都倚了朴刀，放了行李，取些干粮烧饼出来吃了。张顺再来江边，望那江景时，见金山寺正在江心里。但见：</div>
+            <div class="text-block simplified-text">柴进他们俩看到北固山下全是青色和白色的旗子，江边整整齐齐排着好多船，但江北岸连根木头都没有。柴进说："去瓜州这一路虽然有房子，但都没人住，江上也没有渡船，怎么打听对岸的消息呢？"张顺说："咱们先找间屋子住下，我游水去对面金山脚下打探情况。"柴进说："也行。"
+
+于是四个人跑到江边，看见几间草屋都关着门，推也推不开。张顺绕到旁边，拆开一段墙钻进去，看见一个白头发的老太太从灶台边站起来。张顺问："婆婆，你家怎么不开门？"老太太回答："不瞒你说，听说朝廷派大军来打方腊，我们这儿正好是打仗要道。好多人都搬走了，就剩我这个老太婆看家。"张顺问："你家男人呢？"老太太说："去村里看老人孩子了。"张顺说："我们四个人想过江，哪儿能找到船？"老太太说："现在哪还有船？最近吕师囊听说官兵要来打仗，把船都扣在润州那边了。"张顺说："我们带着干粮，就在你家住两天，给你点银子当房钱，绝不打扰你。"老太太说："住倒是没问题，就是没床铺。"张顺说："我们自己想办法。"老太太又说："就怕官兵随时会打过来啊！"张顺说："我们会躲开的。"于是老太太开门让柴进他们进来，大家都把刀靠在墙边，放下行李，拿出干粮烧饼吃起来。
+
+张顺又到江边看风景，只见金山寺正好在江心。你看那景象：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">江吞鳌背，山耸龙鳞。烂银盘涌出青螺，软翠帷远拖素练。遥观金殿，受八面之大风；远望钟楼，倚千层之石壁。梵塔高侵沧海日，讲堂低映碧波云。无边阁，看万里征帆；飞步亭，纳一天爽气。郭璞墓中龙吐浪，金山寺里鬼移灯。</div>
+            <div class="text-block simplified-text">江水像巨鳌一样翻滚，山峰如龙鳞般高耸。银白的月亮像从青螺壳里冒出来，翠绿的山影远远地拖出一条白练般的雾气。远远看去，金殿被八面来风吹着；望见钟楼，紧靠着层层叠叠的石壁。佛塔高得几乎碰到海上的太阳，讲经堂低低地映着云彩和碧波。在无边阁上，能看到万里外航行的船只；飞步亭里，能享受到满天的清爽气息。郭璞墓那儿有龙在浪里翻腾，金山寺里有鬼火般的灯影在移动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">张顺在江边看了一回，心中思忖道：“润州吕枢过密，必然时常到这山上。我且今夜去走一遭，必知消息。”回来和柴进商量道：“如今来到这里，一只小船也没，怎知隔江之事。我今夜把衣服打拴了两个大银，顶在头上，直赴过金山寺去，把些贿赂与那和尚，讨个虚实，回报先锋哥哥。你只在此间等候。”柴进道：“早干了事便回。”</div>
+            <div class="text-block simplified-text">张顺在江边看了一会儿，心里想："润州的吕枢密使肯定经常来这座山。我今天晚上去一趟，一定能打听到消息。"他回来跟柴进商量说："我们现在到了这里，连条小船都没有，怎么知道江对岸的情况？我今晚把衣服绑好，带两大锭银子顶在头上，直接游到金山寺去。用钱买通那里的和尚，打听清楚情况，回来报告给先锋大哥。你就在这儿等着。"柴进说："办完事早点回来。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">是夜星月交辉，风恬浪静，水天一色。黄昏时分，张顺脱膊了，匾扎起一腰白绢水裩儿，把这头巾衣服裹了两个大银，拴缚在头上，腰间带一把尖刀，从瓜洲下水，直赴开江心中来。那水淹不过他胸脯，在水中如走早路。看看赴到金山脚下，见石峰边缆着一只小船。张顺扒到船边，除下头上衣包，解了湿衣，抹拭了身上，穿上衣服，坐在船中，听得润州更鼓正打三更。张顺伏在船内望时，只见上溜头一只小船摇将过来。张顺看了道：“这只船来得跷蹊，必有奸细。”便要放船开去。不想那只船一条大索锁了，又无橹篙。张顺只得又脱了衣服，拔出尖刀，再跳下江里，只赴到那船边。船上两个人摇着橹，只望北岸，不提防南边，只顾摇。张顺却从水底下一钻，钻到船边，扳住船舫，把尖刀一削，两个摇橹的撒了橹，倒撞下江里去了。张顺早跳在船上。那船舱里钻出两个人来。张顺手起一刀，砍得一个下水去，那个吓得倒入舱里去。张顺喝道：“你是甚人？那里来的船只？实说，我便饶你！”那人道：“好汉听禀：小人是此间扬州城外定浦村陈将士家干人，使小人过润州投拜吕枢密那里献粮，准了，使人虞候和小人同回，索要白粮米五万石，船三百只，作进奉之礼。”张顺道：“那个虞候姓甚名谁？见在那里？”干人道：“虞候姓叶名贵，却才好汉砍下江里去的便是。”张顺道：“你却姓甚？甚么名字？几时过去投拜？船里有甚物件？”干人道：“小人姓吴名成，今年正月初七日渡江。吕枢密直叫小人去苏州，见了御弟三大王方貌，关了号色旌旗三百面，并主人陈将士官诰，封做扬州府尹，正授中明大夫名爵，更有号衣一千领，及吕枢密札付一道。”张顺又问道：“你的主人家有多少人马？”吴成道：“人有数千，马有百十余匹。嫡亲有两个孩儿，好生了得，长子陈益，次子陈泰。”张顺都问了备细来情去意，一刀也把吴成剁下水里去了。船尾上装了，一径摇到瓜洲。</div>
+            <div class="text-block simplified-text">那天晚上星星月亮都很亮，风平浪静，水和天连成一片。天刚黑的时候，张顺脱光上衣，在腰上系了一条白布短裤，把衣服包着两大锭银子绑在头上，腰间别了把尖刀，从瓜洲下水，直接往江心游去。水只淹到他胸口，他在水里就像在平地上走路一样轻松。
+
+游到金山脚下时，他看到岩石边拴着一条小船。张顺爬到船边，取下头上的衣服包袱，脱掉湿衣服擦干身子，换上干衣服坐在船里。这时听见润州城传来三更的鼓声。
+
+张顺趴在船里往外看，发现上游划来一条小船。张顺心想："这船来得古怪，肯定有问题。"正要开船离开，却发现那条船被大铁链锁住了，船上也没有船桨。张顺只好又脱了衣服，拔出尖刀跳进江里，朝那条船游去。
+
+船上两个人正摇着桨往北岸划，完全没注意南边。张顺从水下潜过去，抓住船帮，挥刀就砍。两个摇桨的人丢了桨，栽进江里。张顺立刻跳上船。这时船舱里又钻出两个人，张顺抬手一刀砍翻一个，另一个吓得跌回船舱。
+
+张顺喝道："你是什么人？船从哪儿来的？老实交代就饶你不死！"那人回答："好汉饶命！小人是扬州城外定浦村陈将士家的仆人，奉命去润州给吕枢密送粮。事情办妥后，吕枢密派了个姓叶的虞候和我一起回来，要五万石白米和三百条船当贡品。"
+
+张顺问："那个虞候叫什么？人在哪儿？"仆人答："叫叶贵，就是刚才被好汉砍下江的那个。"张顺又问："你叫什么？什么时候去投诚的？船上有什么东西？"仆人答："小人叫吴成，正月初七过的江。吕枢密还派我去苏州见了御弟三大王方貌，领了三百面旗子。我家主人陈将士被封为扬州知府，还赏了一千套军装和吕枢密的公文。"
+
+张顺最后问："你家主人有多少人马？"吴成说："有几千人，一百多匹马。他两个儿子很厉害，大的叫陈益，小的叫陈泰。"张顺问清楚所有情况后，一刀把吴成也砍下江去。他在船尾找到桨，直接把船划回了瓜洲。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">柴进听橹声响，急忙出来看时，见张顺摇只船来。柴进便问来由。张顺把前事一一说了，柴进大喜，去船舱里取处一包袱文书，并三百面红绢号旗，杂声号衣一千领，做两担打叠了。张顺道：“我却去取了衣裳来。”把船再摇到金山脚下，取了衣裳、巾帻、银子，再摇到瓜洲岸边，天色方晓，重雾罩地。张顺把船砍漏，推开江里去沉了。来到屋下，把二三两银子与了婆婆，两个伴当挑了担子，径回扬州来。此时宋先锋军马，俱屯扎在扬州城外。本州官员置宴设席，迎接宋先锋入城，馆驿内安下。连日筵宴，供给军士。</div>
+            <div class="text-block simplified-text">柴进听到摇船的声音，赶紧出来看，发现是张顺划着船来了。柴进问他怎么回事，张顺把之前发生的事情详细说了一遍。柴进非常高兴，从船舱里拿出一个包袱，里面装着文件、三百面红色绢布做的旗子，还有一千件带编号的衣服，分成两担装好。张顺说："我去拿些衣服来。"他又把船划到金山脚下，拿了衣服、头巾和银子，再划到瓜洲岸边。这时天刚亮，江面上全是浓雾。张顺把船凿了个洞，推到江里让它沉了。回到住处，他给了老婆婆二三两银子，然后让两个同伴挑着担子，直接回扬州去了。这时候宋江带领的军队都驻扎在扬州城外。当地的官员准备了酒席，迎接宋江进城，安排他们在驿站住下。连着几天设宴招待，还供应士兵们吃喝。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">却说柴进、张顺伺候席散，在馆驿内见了宋江，备说：“陈将士陈观交结方腊，早晚诱引贼兵渡江，来打扬州。天幸江心里遇见，教主公成这件功劳。”宋江听了大喜，便请军师吴用商议：“如何定计？用甚良策？”吴用道：“既有这个机会，觑润州城易如反掌。先拿了陈观，大事便定。只除如此如此。”宋江道：“正合吾意。”即时唤浪子燕青扮做叶虞候，教解珍、解宝扮做南军。问了定浦村路头，解珍、解宝挑着担子，燕青都领了备细言语。三个出扬州城来，取路投定浦村。离城四十余里，早问到陈将士庄前。见其家门首二三十庄客，都整整齐齐，一般打扮。但见：</div>
+            <div class="text-block simplified-text">柴进和张顺等酒席散了之后，在宾馆里见到宋江，详细报告说："陈将士和陈观勾结方腊，准备引敌人过江来攻打扬州。幸好我们在江上碰巧遇到，让大哥有机会立这个大功。"宋江听了非常高兴，马上找军师吴用商量："该怎么行动？有什么好办法？"吴用说："既然有这个机会，拿下润州城就像翻手掌一样容易。先把陈观抓住，事情就成功一大半。只要这样这样做..."宋江说："正合我意。"立刻让燕青假扮成叶虞候，解珍、解宝装扮成南方士兵。问清楚去定浦村的路后，解珍、解宝挑着担子，燕青也记熟了要说的话。三个人出了扬州城，往定浦村方向走。走了四十多里路，很快就找到了陈将士的庄园。只见大门口站着二三十个家丁，都穿得整整齐齐，打扮一模一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">攒竹笠子，上铺着一把黑缨；细线衲袄，腰系着八尺红绢。牛膀鞋，登山似箭；獐皮袜，护脚如绵。人人都带雁翎刀，个个尽提鸦嘴槊。</div>
+            <div class="text-block simplified-text">他们头上戴着竹编斗笠，斗笠上挂着一束黑色穗子；身上穿着细线缝的厚棉袄，腰间系着八尺长的红绸带。脚上穿着牛皮靴，爬山快得像射箭；腿上套着獐皮袜，保护脚像裹了棉花一样舒服。每人腰里都别着大雁羽毛装饰的刀，手里都拿着乌鸦嘴形状的长矛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">当下燕青改作浙人乡谈，与庄客喝喏道：“将士宅上有么？”庄客道：“客人那里来？”燕青道：“从润州来。渡江错走了路，半日盘旋，问得到此。”庄客见说，便引入客房里去，教歇了担子，带燕青到后厅来见陈将士。燕青便下拜道：“叶贵就此参见！”拜罢，陈将士问道：“足下何处来？”燕青打浙音道：“回避闲人，方敢对相公说。”陈将士道：“这几个都是我心腹人，但说不妨。”燕青道：“小人姓叶名贵，是吕枢密帐前虞候。正月初七日，接得吴成密书，枢密甚喜，特差叶贵送吴成到苏州，见御弟三大王，备说相公之意。三大王使人启奏，降下官诰，就封相公为扬州府尹。两位直舍人，待吕枢密相见了时，再定官爵。今欲使令吴成回程，谁想感冒风寒病症，不能动止。枢密怕误了大事，特差叶贵送到相公官诰，并枢密文书，关防牌面，号旗三百面，号衣一千领。克日定时，要相公粮食船只，前赴润州江岸交割。”便取官诰文书递与。陈将士看了大喜，忙摆香案，望南谢恩已了。便唤陈益、陈泰出来相见。燕青叫解珍、解宝取出号衣号旗，入后厅交付。陈将士便邀燕青请坐。燕青道：“小人是个走卒，相公处如何敢坐？”陈将士道：“足下是那壁恩相差来的人，又与小官赍诰敕，怎敢轻慢？权坐无妨。”燕青再三谦让了，远远地坐下。陈将士叫取酒来，把盏劝燕青。燕青推却道：“小人天戒不饮酒。”待他把过三两巡酒，两个儿子都来与父亲庆贺递酒。燕青把眼使叫解珍、解宝行事。解宝身边取出不按君臣的药头，张人眼慢，放在酒壶里。燕青便起身说道：“叶贵虽然不曾将酒过江，借相公酒果，权为上贺之意。”便斟一大钟酒，上劝陈将士满饮此杯。随即便劝陈益、陈泰，两个各饮了一杯。当面有几个心腹庄客，都被燕青劝了一杯。燕青那嘴一努，解珍出来外面，寻了火种，身边取出号旗号炮，就庄前放起。左右两边，已有头领等候，只听号炮响，前来策应。燕青在堂里，见一个个都倒了，身边掣出短刀，和解宝一齐动手，早都割下头来。庄门外哄动十个好汉，从前面打将入来。那十员将佐？花和尚鲁智深，行者武松，九纹龙史进，病关索杨雄，黑旋风李逵，八臂那吒项充，飞天大圣李衮，丧门神鲍旭，锦豹子杨林，病大虫薛永。门前众庄客那里迎敌得住。里面燕青、解珍、解宝早提出陈将士父子首级来。庄门外又早一彪人马官军到来，为首六员将佐。那六员？美髯公朱仝，急先锋索超，没羽箭张清，混世魔王樊瑞，打虎将李忠，小霸王周通。当下六员首将，引一千军马，围住庄院，把陈将士一家老幼，尽皆杀了。拿住庄客，引去浦里看时，傍庄傍港，泊着三四百只船，却满满装载粮米在内。众将得了数目，飞报主将宋江。</div>
+            <div class="text-block simplified-text">燕青假装成浙江人，用当地口音跟庄客打招呼："将军在家吗？"庄客问："客人从哪儿来？"燕青答："从润州来。过江时走错路，绕了半天才找到这儿。"庄客就带他去客房放行李，然后领他去见陈将军。
+
+燕青行礼说："叶贵拜见将军！"陈将军问："你从哪儿来？"燕青用浙江口音说："请让其他人回避，我才敢说。"陈将军说："这些都是自己人，直说无妨。"燕青就说："我叫叶贵，是吕枢密手下的。正月初七收到吴成的密信，吕大人很高兴，派我送吴成去苏州见三大王，转达您的心意。三大王上报后，朝廷封您做扬州知府。现在吴成生病走不了，吕大人怕耽误事，就让我把委任状、文书、令牌和三百面旗、一千套军服送来，让您按时运粮到润州交接。"说完就把文书递给陈将军。
+
+陈将军很高兴，马上设香案谢恩，又叫两个儿子出来见面。燕青让解珍、解宝把军服旗帜搬进来。陈将军请燕青坐，燕青假装推辞："我只是个小兵，哪敢坐？"陈将军坚持让他坐，燕青就坐远了些。
+
+喝酒时燕青推说不会喝，等陈将军父子喝了几杯，燕青使眼色让解珍、解宝在酒里下药。燕青起身敬酒："借您的酒，祝贺您高升！"劝陈将军父子和其他人都喝了。然后他使个眼色，解珍出去放信号弹，埋伏的人马立刻杀进来。
+
+这时鲁智深、武松等十个好汉从正门杀入，庄客根本挡不住。燕青他们在屋里把被药倒的陈将军父子杀了。外面朱仝等六员将领也带兵赶到，把陈家满门杀光。清点后发现庄里停着几百艘装满粮食的船，赶紧报告了宋江。
+
+（说明：原文中"直舍人"的""是缺失字符，根据上下文推测为"阁"字，译为"两位随从官员"；其他官职名称保留原称谓以便理解）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">宋江听得杀了陈将士，便与吴用计议进兵。收拾行李，辞了总督张招讨，部领大队人马，亲到陈将士庄上，分拨前队将校，上船行计，一面使人催攒战船过去。吴用道：“选三百只快船，船上各插着方腊降来的旗号。着一千军汉，各穿了号衣，其余三四千人，衣服不等。三百只船内，埋伏二万余人。更差穆弘扮做陈益，李俊扮做陈泰，各坐一只大船，其余分拨将佐。”</div>
+            <div class="text-block simplified-text">宋江听说陈将士被杀后，立刻和吴用商量出兵的事。他们收拾好东西，告别了张招讨总督，带着大批人马赶到陈将士的庄子上。宋江先安排好先头部队的将领，让他们上船准备行动，同时派人催促战船尽快出发。  
+
+吴用建议说："挑三百艘快船，每艘船都插上从方腊那边投降来的旗子。派一千名士兵穿上统一军服，剩下的三四千人穿普通衣服。这三百艘船里，藏着两万多人。再让穆弘假扮成陈益，李俊假扮成陈泰，各自坐一艘大船，其他将领也按计划分配好。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">第一拨船上，穆弘、李俊管领。穆弘身边，拨与十个偏将簇拥着。那十个？</div>
+            <div class="text-block simplified-text">第一艘船上，由穆弘和李俊负责管理。穆弘身边还安排了十个副将跟着他。这十个人是谁呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">项充、李衮、鲍旭、薛永、杨林、杜迁、宋万、邹渊、邹润、石勇</div>
+            <div class="text-block simplified-text">这些都是《水浒传》里梁山好汉的名字。简单说就是：项充、李衮、鲍旭、薛永、杨林、杜迁、宋万、邹渊、邹润、石勇这十个人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">李俊身边，也拨与十个偏将簇拥着。那十个？</div>
+            <div class="text-block simplified-text">李俊身边，还给他配了十个副将跟着。是哪十个呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">童威、童猛、孔明、孔亮、郑天寿、李立、李云、施恩、白胜、陶宗旺</div>
+            <div class="text-block simplified-text">这些都是《水浒传》里的人物名字，包括：
+
+童威、童猛、
+孔明、孔亮、
+郑天寿、
+李立、李云、
+施恩、
+白胜、
+陶宗旺
+
+（注：完全保留原文信息，仅通过分行提升可读性。因原文仅为专有名词罗列，故采用最简处理方式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">第二拨船上，差张横、张顺管领。张横船上拨与四个偏将簇拥着。那四个？</div>
+            <div class="text-block simplified-text">第二批船队，由张横和张顺负责管理。张横的船上还配了四个副将跟着他。这四个副将是谁呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">曹正、杜兴、龚旺、丁得孙</div>
+            <div class="text-block simplified-text">这是四个人名，分别是：曹正、杜兴、龚旺、丁得孙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">张顺船上拨与四个偏将簇拥着。那四个？</div>
+            <div class="text-block simplified-text">张顺的船上有四个副将跟着他。是哪四个呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">孟康、侯健、汤隆、焦挺、</div>
+            <div class="text-block simplified-text">这是《水浒传》里的四个人名，分别是：孟康、侯健、汤隆、焦挺。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">第三拨船上便差十员正将管领，也分作两船进发。那十个？</div>
+            <div class="text-block simplified-text">第三批船上安排了十位主要将领带队，分成两条船出发。这十个人是谁呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">史进、雷横、杨雄、刘唐、蔡庆、张清、李逵、解珍、解宝、柴进、</div>
+            <div class="text-block simplified-text">这是《水浒传》里的一些好汉名字，简单说就是：史进、雷横、杨雄、刘唐、蔡庆、张清、李逵、解珍、解宝、柴进。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">这三百船上，分派大小正偏将佐共计四十二员渡江。次后宋江等，却把战船装载马匹，游龙飞鲸等船一千只，打着宋朝先锋使宋江旗号，大小马步将佐，一发载船渡江。两个水军头领，一个是阮小二，一个是阮小五，总行催督。</div>
+            <div class="text-block simplified-text">三百条船上，安排了四十二名大小将领一起过江。接着宋江他们又用战船运马，还有一千只像游龙飞鲸那样的大船，船上挂着宋江作为宋朝先锋的旗号，所有骑马的、步行的将领都一起坐船渡江。负责指挥水军的是两个头领：阮小二和阮小五。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">且不说宋江中军渡江，却说润州北固山上，哨见对港三百来只战船，一齐出浦，船上却插着护送衣粮先锋红旗号。南军连忙报入行省里来，吕枢密聚集十二个统制官，都全副披挂，弓弩上弦，刀剑出鞘，带领精兵，自来江边观看。见前面一百只船，先傍岸拢来。船上望着两个为头的，前后簇拥着的，都披着金锁子号衣，一个个都是那彪形大汉。吕枢密下马，坐在银交椅上，十二个统制官两行把住江岸。穆弘、李俊见吕枢密在江岸上坐地，起身声喏。左右虞候喝令住船，一百只船一字儿抛定了锚。背后那二百只船，乘着顺风，都到了；分开在两下拢来，一百只在左，一百只在右，做三下均匀摆定了。客帐司下船来问道：“船从那里来？”穆弘答道：“小人姓陈名益，兄弟陈泰。父亲陈观特遣某等弟兄，献纳白米五万石，船三百只，精兵五千，来谢枢密恩相保奏之恩。”客帐司道：“前日枢密相公使叶虞候去来，见在何处？”穆弘道：“虞候和吴成各染伤寒时疫，见在庄上养病，不能前来。今将关防文书，在此呈上。”客帐司接了文书，上江岸来禀复吕枢密道：“扬州定浦村陈府尹男陈益、陈泰，纳粮献兵，呈上原赍去关防文书在此。”吕枢密看，果是原领公文，传钧旨，教唤二人上岸。客帐司唤陈益、陈泰上来参见。</div>
+            <div class="text-block simplified-text">咱们先不说宋江带着主力部队过江的事。单说润州北固山上的哨兵，看到对面江港突然开出三百多艘战船，船上都插着"护送粮草先锋"的红旗。南军赶紧报告给上级，吕枢密立刻召集十二名将领，全副武装带着精锐部队到江边查看。
+
+只见前面一百艘船先靠岸，船头站着两个领头的，周围跟着一群穿金色锁子甲的高大汉子。吕枢密下马坐在银交椅上，十二名将领分列两岸。穆弘、李俊看见吕枢密在岸边，赶紧起身行礼。卫兵喝令停船，一百艘船整齐地抛锚停下。
+
+这时后面两百艘船也顺风赶到，分成左右两边各一百艘，三队船均匀排开。一个军官下船问："你们从哪儿来的？"穆弘回答："我叫陈益，这是我兄弟陈泰。父亲陈观派我们送来五万石白米、三百艘船和五千精兵，感谢枢密大人的提拔。"军官又问："之前枢密大人派叶虞候去过，他现在在哪儿？"穆弘说："叶虞候和吴成都得了伤寒，正在庄上养病不能来。这是通关文书。"军官拿着文书上岸报告吕枢密："扬州定浦村陈府尹的儿子陈益、陈泰来送粮草兵马，还带来了您之前发的通关文书。"吕枢密核对文书无误后，下令让两人上岸。军官就叫陈益、陈泰上岸拜见。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">穆弘、李俊上得岸来，随后二十个偏将，都跟上去。排军喝道：“卿相在此，闲杂人不得近前！”二十个偏将都立住了。穆弘、李俊躬身叉手，远远侍立。客帐司半晌方才引二人过去参拜了，跪在面前。吕枢密道：“你父亲陈观，如何不自来？”穆弘禀道：“父亲听知是梁山泊宋江等领兵到来，诚恐贼人下乡搅扰，在家支吾，未敢擅离。”吕枢密道：“你两个那个是兄？”穆弘道：“陈益是兄。”吕枢密道：“你弟兄两个，曾习武艺么？”穆弘道：“托赖恩相福荫，颇曾训练。”吕枢密道：“你将来白粮，怎地装载？”穆弘道：“大船装粮三百石，小船装粮一百石。”吕枢密道：“你两个来到，恐有他意！”穆弘道：“小人父子，一片孝顺之心，怎敢怀半点外意？”吕枢密道：“虽然是你好心，吾观你船上军汉，模样非常，不由人不疑。你两个只在这里。吾差四个统制官，引一百军人下船搜看，但有分外之物，决不轻恕。”穆弘道：“小人此来，指望恩相重用，何必见疑！”吕师囊正欲点四个统制下船搜看，只见探马报道：“有圣旨到南门外了，请枢相便上马迎接。”吕枢密急上了马，便分付道：“且与我把住江岸，这两个陈益、陈泰随将我来。”穆弘把眼看李俊一觉。等吕枢密先行去了，穆弘、李俊随后招呼二十个偏将，便入城门。守门将校喝道：“枢密相公只叫这两个为头的入来，其余人伴，休放进去！”穆弘、李俊过去了，二十个偏将都被当住在城边。</div>
+            <div class="text-block simplified-text">穆弘和李俊上了岸，后面跟着二十个副将。卫兵大喊："大官人在这儿，闲杂人等不许靠近！"那二十个副将就都站住了。穆弘和李俊弯腰行礼，远远地站着等。过了好一会儿，接待的人才带他俩过去拜见。他们跪在地上，吕枢密问："你爹陈观怎么不自己来？"穆弘回答："我爹听说梁山泊宋江带兵来了，怕土匪下乡捣乱，在家守着，不敢随便离开。"吕枢密又问："你们两个谁是哥哥？"穆弘说："陈益是哥哥。"吕枢密接着问："你们俩练过武吗？"穆弘说："托大人的福，练过一些。"吕枢密问："你们运粮的船怎么装的？"穆弘答："大船装三百石，小船装一百石。"吕枢密突然怀疑地说："你们来这儿，该不会有什么别的目的吧？"穆弘赶紧说："我们父子对您忠心耿耿，哪敢有二心？"吕枢密说："就算你们是好意，但我看你们船上那些士兵，长得就不像好人。你们俩在这儿等着，我派四个军官带一百个兵去船上检查，要是发现有问题，绝不轻饶！"穆弘说："我们专程来投靠大人，您何必怀疑我们呢！"就在吕枢密要点人去查船时，探子跑来报告："皇上的圣旨到南门外了，请大人快去接旨。"吕枢密急忙上马，临走前命令："把江岸给我守好了，这两个叫陈益、陈泰的跟着我。"穆弘悄悄给李俊使了个眼色。等吕枢密先走了，穆弘和李俊招呼那二十个副将，想一起进城。守门的军官大喊："大人只让这两个领头的进去，其他人不许进！"结果穆弘和李俊进去了，二十个副将被拦在城门外。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">且说吕枢密到南门外，接着天使，便问道：“缘何来得如此要急？”那天使是方腊面前引进使冯喜，悄悄地对吕师囊道：“近日司天太监浦文英奏道：‘夜观天象，有无数罡星入吴地分野，中间杂有一半无光，就里为祸不小。’天子特降圣旨，教枢密紧守江岸。但有北边来的人，须要仔细盘诘，磨问实情；如是形影奇异者，随即诛杀，勿得停留。”吕枢密听了大惊：“却才这一班人，我十分疑忌，如今却得这话。且请到城中开读。”冯喜同吕枢密都到行省，开读圣旨已了，只见飞马又报：“苏州又有使命，赍擎御弟三大王令旨到来。言说‘你前日扬州陈将士投降一节，未可准信，诚恐有诈。近奉圣旨，近来司天监内，照见罡星入于吴地分野。可以牢守江岸。我早晚自差人到来监督。’”吕枢密道：“大王亦为此事挂心，下官已奉圣旨。”随即令人牢守江面，来的船上人，一个也休放上岸。一面设宴管待两个使命。有诗为证：</div>
+            <div class="text-block simplified-text">话说吕枢密在南门外接到朝廷派来的使者，赶忙问："怎么来得这么急？"那使者是方腊身边的亲信冯喜，他偷偷告诉吕师囊："最近管天象的太监浦文英报告说，晚上看星星，发现好多凶星跑到咱们吴地这块儿，里头还有一半星星发暗，恐怕要出大乱子。皇上特地下了命令，让你把江边守严实了。凡是北方来的人，都要仔细盘查审问；要是看到长相可疑的，直接杀掉别犹豫。"吕枢密一听吓坏了："刚才过去那帮人我就觉得不对劲，现在听你这么一说更可疑了。走，咱们进城细说。"
+
+两人到了衙门，刚宣读完圣旨，又有人快马来报："苏州也派使者来了，带着三大王的命令。说是'之前扬州陈将士投降的事不能轻信，可能有诈。最近皇上也下令说天象显示凶星进入吴地，要严守江岸。我这两天会亲自派人来监督。'"吕枢密回答："大王也为这事操心，下官已经接到圣旨了。"马上派人严密封锁江面，不许任何船上的人上岸。同时设宴招待两位使者。
+
+（后面附的诗省略不译）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">奸党三陈已被伤，假乘服色进军粮。</div>
+            <div class="text-block simplified-text">三个姓陈的坏蛋头子已经完蛋了，现在有人冒充官兵偷偷运送军粮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">因观形貌生猜忌，揭地掀天起战场。</div>
+            <div class="text-block simplified-text">看长相就瞎猜疑，闹得天翻地覆打起来。
+
+（解析：用"看长相就瞎猜疑"替代"因观形貌生猜忌"，"闹得天翻地覆打起来"对应"揭地掀天起战场"，保留"因外貌产生误会引发冲突"的核心信息。使用"瞎猜疑""闹得""打起来"等口语化表达，避免"揭地掀天"等文言词汇，整体符合日常吵架场景的表达习惯。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">却说那三百只船上人，见半日没些动静。左边一百只船上张横、张顺，带八个偏将，提军器上岸；右边一百只船上十员正将，都拿了枪刀，钻上岸来。守江面南军，拦当不住。黑旋风李逵和解珍、解宝，便抢入城。守门官军急出拦截，李逵轮起双斧，一砍一剁，早杀翻两个把门军官。城边发起喊来，解珍、解宝各挺钢叉入城，都一时发作，那里关得城门迭？李逵横身在门底下，寻人砍杀，先在城边二十个偏将，各夺了军器，就杀起来。吕枢密急使人传令来，教牢守江面时，城门边已自杀入城了。十二个统制官听得城边发喊，各提动军马时，史进、柴进早招起三百只船内军兵，脱了南军的号衣，为首先上岸，船舱里埋伏军兵，一齐都杀上岸来。为首统制官沈刚、潘文得两路军马来保城门时，沈刚被史进一刀剁下马去，潘文得被张横刺斜里一枪搠倒。众军混杀。那十个统制官都望城门里退入去，保守家眷。穆弘、李俊在城中听得消息，就酒店里夺得火种，便放起火来。吕枢密急上马时，早得三个统制官到来救应。城里降天也似火起。瓜洲望见，先发一彪军马过来接应。城里四门，混战良久，城上早竖起宋先锋旗号。四面八方，混杀人马，难以尽说，下来便见。</div>
+            <div class="text-block simplified-text">话说那三百条船上的人，等了半天也没见动静。左边一百条船上的张横、张顺带着八个副将，拿着武器上了岸；右边一百条船上的十个主将也提着刀枪冲上岸来。守江的南军根本挡不住。李逵和解珍、解宝直接杀进城里。守城门的官兵赶紧出来拦，李逵抡起两把斧头，咔咔两下就砍翻了两个守门军官。城边顿时乱成一团，解珍、解宝举着钢叉冲进城，这时候城门想关都关不上了。李逵堵在城门底下见人就砍，先前埋伏在城边的二十个副将也抢了兵器开始杀人。
+
+吕枢密慌忙派人传令死守江面，可城门这边早就被攻破了。十二个统制官听到城边喊杀声，刚带兵过来，史进和柴进就带着三百条船上的士兵脱掉南军衣服冲上岸，船舱里埋伏的士兵也一齐杀出来。统制官沈刚、潘文得带兵来守城门，结果沈刚被史进一刀砍下马，潘文得被张横一枪捅倒。两边人马混战成一团，剩下十个统制官赶紧退进城里保护家眷。
+
+穆弘、李俊在城里听到动静，从酒馆抢了火把到处放火。吕枢密刚上马逃命，三个统制官赶来救他。城里火光冲天，连瓜洲那边都看见，赶紧派兵来支援。四个城门打成一锅粥，没多久城头上就插满了宋江的旗子。这仗打得乱七八糟，具体细节后面再说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">且说江北岸早有一五百十只战船傍岸，一齐牵上战马，为首十员战将登岸，却是全副披挂。那十员大将？关胜、呼延灼、花荣、秦明、郝思文、宣赞、单廷圭、韩滔、彭玘、魏定国。正偏战将一十员，部领二千军马，冲杀入城。此时吕枢密方才大败，引着中伤人马，径奔丹徒县去了。大军夺得润州，且教救灭了火，分拨把住四门，却来江边迎接宋先锋船，正见江面上游龙飞鲸船只，乘着顺风，都到南岸。大小将佐迎接宋先锋入城，预先出榜，安抚百姓，点本部将佐，都到中军请功。史进献沈刚首级，张横献潘文得首级，刘唐献沈泽首级，孔明、孔亮生擒卓万里，项充、李衮生擒和潼，郝思文箭射死徐统。得了润州，杀了四个统制官，生擒两个统制官，杀死牙将官兵，不计其数。</div>
+            <div class="text-block simplified-text">江北岸早就停着五百多只战船，士兵们把战马都拉上岸。领头的是十个全副武装的将军：关胜、呼延灼、花荣、秦明、郝思文、宣赞、单廷圭、韩滔、彭玘、魏定国。他们带着两千士兵杀进城里。
+
+这时候吕枢密刚打了败仗，带着受伤的士兵逃往丹徒县。大军拿下润州后，先派人灭火，安排士兵把守四个城门，然后去江边迎接宋江的船队。只见江面上大大小小的战船顺风驶来，都到了南岸。
+
+将领们迎接宋江进城，贴出告示安抚百姓，然后都到军营里报功。史进交上沈刚的人头，张横交上潘文得的人头，刘唐交上沈泽的人头。孔明、孔亮活捉了卓万里，项充、李衮活捉了和潼，郝思文用箭射死了徐统。
+
+这一仗拿下润州，杀了四个统制官，活捉两个，还杀了无数小军官和士兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">宋江点本部将佐，折了三个偏将，都是乱军中被箭射死，马踏身亡。那三个？一个是云里金刚宋万，一个是没面目焦挺，一个是九尾龟陶宗旺。宋江见折了三将，心中烦恼，怏怏不乐。吴用劝道：“生死人之分定。虽折了三个兄弟，且喜得了江南第一个险隘州郡，何故烦恼，有伤玉体？要与国家干功，且请理论大事。”宋江道：“我等一百八人，天文所载，上应星曜。当初梁山泊发愿，五台山设誓，但愿同生同死。回京之后，谁想道先去了公孙胜，御前留了金大坚、皇甫端，蔡太师又用了萧让，王都尉又要了乐和。今日方渡江，又折了我三个弟兄。想起宋万这人，虽然不曾立得奇功，当初梁山泊开创之时，多亏此人。今日作泉下之客！”宋江传令，叫军士就宋万死处，搭起祭仪，列了银钱，排下乌猪白羊，宋江亲自祭祀奠酒。就押生擒到伪统制卓万里、和潼，就那里斩首沥血，享祭三位英魂。宋江回府治里，支给功赏，一面写了申状，使人报捷，亲请张招讨，不在话下。沿街杀的死尸，尽教收拾出城烧化。收拾三个偏将尸骸，葬于润州东门外。</div>
+            <div class="text-block simplified-text">宋江清点手下将领，发现死了三个副将，都是在混战中被箭射死或被马踩死的。哪三个？一个是外号"云里金刚"的宋万，一个是"没面目"焦挺，一个是"九尾龟"陶宗旺。宋江见死了三个兄弟，心里特别难受，闷闷不乐。
+
+军师吴用劝他说："生死都是命里注定的。虽然死了三个兄弟，但咱们拿下了江南最重要的军事要塞，这是好事啊，何必难过伤身体？要为朝廷立功，还是先商量正事要紧。"
+
+宋江说："我们一百零八将，是天上的星宿下凡。当初在梁山聚义时发过誓，要同生共死。没想到回京城后，先是公孙胜走了，金大坚、皇甫端被皇上留下，蔡太师调走了萧让，王都尉又要走了乐和。今天刚过长江，又折了三个兄弟。特别是宋万，虽然没立过大功，但梁山创业时全靠他帮忙。现在他却先走了！"
+
+宋江下令在宋万战死的地方设灵堂，摆上纸钱和祭品，亲自祭奠。又把抓到的敌军将领卓万里、和潼当场砍头，用他们的血来祭奠三位兄弟。
+
+回到城里后，宋江论功行赏，写了捷报派人送去，又亲自去见张招讨（这些就不细说了）。城里街上的尸体都清理出城烧掉。三个副将的遗体，安葬在润州东门外。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">且说吕枢密折了大半人马，引着六个统制官，退守丹徒县，那里敢再进兵。申将告急文书，去苏州报与三大王方貌求救。闻有探马报来，苏州差元帅邢政领军到来了。吕枢密接见邢元帅，问慰了。来到县治，备说陈将士诈降缘由，以致透漏宋江军马渡江。“今得元帅到此，可同恢复润州。”邢政道：“三大王为知罡星犯吴地，特差下官领军到来，巡守江面。不想枢密失利。下官与你报仇，枢密当以助战。”次日，邢政引军来恢夺润州。</div>
+            <div class="text-block simplified-text">话说吕枢密打了败仗，损失了一大半士兵，带着六个将领退到丹徒县，根本不敢再出兵。他赶紧写了求救信，派人去苏州向三大王方貌求救。这时探子来报，说苏州派元帅邢政带兵来支援了。吕枢密见了邢元帅，两人互相问候。到了县衙，吕枢密详细说了陈将士假装投降、结果让宋江的部队趁机过江的事。"现在元帅来了，咱们可以一起夺回润州。"邢政说："三大王听说有灾星冲犯吴地，特意派我带兵来防守江面。没想到枢密你吃了败仗。我来替你报仇，你要配合我作战。"第二天，邢政就带兵去攻打润州，想把它抢回来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">却说宋江在润州衙内，与吴用商议，差童威、童猛引百余人去焦山寻取石秀、阮小七。一面调兵出城，来取丹徒县。点五千军马，为首差十员正将。那十人？关胜、林冲、秦明、呼延灼、董平、花荣、徐宁、朱仝、索超、杨志。当下十员正将，部领精兵五千，离了润州，望丹徒县来。关胜等正行之次，路上正迎着邢政军马。两军相对，各把弓箭射住阵脚，排成阵势。花腔鞭鼓擂，杂彩绣旗摇。南军阵上，邢政挺枪出马，六个统制官分在两下。宋军阵中，关胜见了，纵马舞青龙偃月刀，来战邢政。两员将荡起一天杀气，两匹马骤遍地征尘。斗到十四五合，一将翻身落马。正是：只云会使英雄勇，怎敌将军一智谋。全凭捉将拿人手，来夺江南第一州。毕竟二将厮杀输了的是谁，且听下回分解。</div>
+            <div class="text-block simplified-text">宋江在润州的衙门里和吴用商量，派童威、童猛带一百多人去焦山找石秀和阮小七。同时调兵出城，准备攻打丹徒县。他们点了五千兵马，派了十名大将带队。这十人是：关胜、林冲、秦明、呼延灼、董平、花荣、徐宁、朱仝、索超、杨志。这十位大将带着五千精兵离开润州，向丹徒县进发。  
+
+关胜他们走到半路，正好碰上邢政的军队。两边军队摆开阵势，弓箭手压住阵脚。战鼓咚咚响，彩旗迎风飘。南军阵前，邢政挺枪出马，六个副将分列两边。宋军这边，关胜看见后，骑马挥着青龙偃月刀冲上去和邢政打了起来。两人打得天昏地暗，尘土飞扬。斗了十几个回合，其中一人被打落马下。  
+
+这正是：都说英雄靠勇猛，哪比将军有智谋。全靠真本事抓人，才能拿下江南第一州。  
+
+到底是谁被打败了？咱们下回再说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">此一回内，折了三员将佐：</div>
+            <div class="text-block simplified-text">这一回里，我们损失了三名大将：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">宋万、焦挺、陶宗旺</div>
+            <div class="text-block simplified-text">这是《水浒传》里的三个人名：
+1. 宋万 - 梁山好汉之一，外号"云里金刚"
+2. 焦挺 - 梁山好汉之一，外号"没面目"
+3. 陶宗旺 - 梁山好汉之一，外号"九尾龟"
+
+他们都是梁山108将中的成员。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
