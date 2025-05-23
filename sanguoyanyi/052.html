@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十二回 诸葛亮智辞鲁肃　赵子龙计取桂阳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./051.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十二回 诸葛亮智辞鲁肃　赵子龙计取桂阳</h1>
+        <a href="./053.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说周瑜见孔明袭了南郡，又闻他袭了荆襄，如何不气？气伤箭疮，半晌方苏，众将再三劝解。瑜曰：“若不杀诸葛村夫，怎息我心中怨气！程德谋可助我攻打南郡，定要夺还东吴。”正议间，鲁肃至。瑜谓之曰：“吾欲起兵与刘备、诸葛亮共决雌雄，复夺城池。子敬幸助我。”鲁肃曰：“不可。方今与曹操相持，尚未分成败；主公现攻合淝不下。不争自家互相吞并，倘曹兵乘虚而来，其势危矣。况刘玄德旧曾与曹操相厚，若逼得紧急，献了城池，一同攻打东吴，如之奈何？”瑜曰：“吾等用计策，损兵马，费钱粮，他去图现成，岂不可恨！”肃曰：“公瑾且耐。容某亲见玄德，将理来说他。若说不通，那时动兵未迟。”诸将曰：“子敬之言甚善。”</div>
+            <div class="text-block simplified-text">话说周瑜听说诸葛亮占了南郡，又抢了荆襄，气得不行。这一气，箭伤发作，半天才缓过劲来。手下将领们好说歹说才把他劝住。周瑜咬牙说："不杀了诸葛亮这个乡巴佬，我这口恶气实在咽不下去！程德谋，你帮我打南郡，一定要把咱们东吴的地盘抢回来。"正商量着，鲁肃来了。周瑜对他说："我要发兵跟刘备、诸葛亮决一死战，把城池夺回来。子敬你可要帮我。"鲁肃连忙劝阻："千万别！现在咱们跟曹操正僵持着，胜负还没分；主公那边打合淝也没打下来。要是自己人先打起来，曹操趁机偷袭可就危险了。再说刘备以前跟曹操关系不错，要是把他逼急了，他带着城池投靠曹操，反过来打咱们，那可怎么办？"周瑜拍桌子："我们费尽心机，损兵折将又花钱，他倒好，直接捡现成的，能不气人吗！"鲁肃劝道："公瑾你先消消气。让我去找刘备当面讲道理，要是说不通再打也不迟。"将领们都说："子敬说得对。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">于是鲁肃引从者径投南郡来，到城下叫门。赵云出问，肃曰：“我要见刘玄德有话说。”云答曰：“吾主与军师在荆州城中。”肃遂不入南郡，径奔荆州。见旌旗整列，军容甚盛，肃暗羡曰：“孔明真非常人也！”军士报入城中，说鲁子敬要见。孔明令大开城门，接肃入衙。讲礼毕，分宾主而坐。茶罢，肃曰：“吾主吴侯，与都督公瑾，教某再三申意皇叔，前者，操引百万之众，名下江南，实欲来图皇叔；幸得东吴杀退曹兵，救了皇叔。所有荆州九郡，合当归于东吴。今皇叔用诡计，夺占荆襄，使江东空费钱粮军马，而皇叔安受其利，恐于理未顺。”孔明曰：“子敬乃高明之士，何故亦出此言？常言道：物必归主。荆襄九郡，非东吴之地，乃刘景升之基业。吾主固景升之弟也。景升虽亡，其子尚在；以叔辅侄，而取荆州，有何不可？”肃曰：“若果系公子刘琦占据，尚有可解；今公子在江夏，须不在这里！”孔明曰：“子敬欲见公子乎？”便命左右：“请公子出来。”只见两从者从屏风后扶出刘琦。琦谓肃曰：“病躯不能施礼，子敬勿罪。”鲁肃吃了一惊，默然无语，良久，言曰：“公子若不在，便如何？”孔明曰：“公子在一日，守一日；若不在，别有商议。”肃曰：“若公子不在，须将城池还我东吴。”孔明曰：“子敬之言是也。”遂设宴相待。</div>
+            <div class="text-block simplified-text">鲁肃带着人直接去南郡，到了城下叫门。赵云出来问，鲁肃说：“我要见刘备，有话要说。”赵云回答：“我家主公和军师在荆州城里。”鲁肃就没进南郡，直接去了荆州。看到军队整齐，气势很足，鲁肃心里佩服：“诸葛亮真不是一般人！”士兵进城报告说鲁肃来了，诸葛亮让人打开城门，把他请进去。两人客气完，坐下喝茶。鲁肃说：“我家主公孙权和大都督周瑜，让我来传话。之前曹操带着百万大军打江南，其实是想对付刘备。幸好东吴打退曹兵，救了刘备。荆州这块地方，按理该归东吴。现在刘备用计占了荆州，让东吴白费钱粮兵马，自己却得了好处，这说不过去吧？”  
+
+诸葛亮说：“您这么明白的人，怎么也这么说？老话说：东西该归原主。荆州本来就不是东吴的，是刘表的地盘。我家主公是刘表的弟弟，刘表虽然死了，他儿子还在。叔叔帮侄子拿回荆州，有什么不对？”  
+
+鲁肃说：“要是刘琦公子在这儿，还能说得过去，可他现在在江夏，不在这儿啊！”  
+
+诸葛亮问：“您想见公子吗？”就叫人：“请公子出来。”两个随从扶着刘琦从后面出来。刘琦对鲁肃说：“我病着不能行礼，您别见怪。”鲁肃吓了一跳，半天说不出话，最后说：“要是公子不在了，怎么办？”  
+
+诸葛亮说：“公子在一天，我们守一天；要是哪天不在了，再商量。”  
+
+鲁肃说：“要是公子不在了，你们就得把荆州还给东吴。”  
+
+诸葛亮说：“您说得对。”然后摆酒招待他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">宴罢，肃辞出城，连夜归寨，具言前事。瑜曰：“刘琦正青春年少，如何便得他死？这荆州何日得还？”肃曰：“都督放心。只在鲁肃身上，务要讨荆襄还东吴。”瑜曰：“子敬有何高见？”肃曰：“吾观刘琦过于酒色，病入膏肓，现今面色羸瘦，气喘呕血，不过半年，其人必死。那时往取荆州，刘备须无得推故。”周瑜犹自忿气未消，忽孙权遣使至。瑜令请入。使曰：“主公围合淝，累战不捷。特令都督收回大军，且拨兵赴合淝相助。”周瑜只得班师回柴桑养病，令程普部领战船士卒，来合淝听孙权调用。</div>
+            <div class="text-block simplified-text">宴会结束后，鲁肃告辞离开城池，连夜赶回军营，把之前的事情详细告诉了周瑜。周瑜说："刘琦年纪轻轻，怎么才能让他早点死？这样我们什么时候才能拿回荆州？"鲁肃回答："将军别担心，这事包在我身上，我一定想办法把荆州要回来给东吴。"周瑜问："你有什么好主意？"鲁肃说："我看刘琦整天沉迷酒色，病得很重，现在脸色苍白，又喘又吐血，活不过半年。等他死了，咱们再去要荆州，刘备就没理由推脱了。"
+
+周瑜还在生气，这时孙权派来的使者到了。周瑜让人请使者进来。使者说："主公攻打合淝，打了几次都没成功。特地命令将军撤军回去，还要调些兵去合淝帮忙。"周瑜只好带兵回柴桑养病，让程普带着战船和士兵去合淝听候孙权调遣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说刘玄德自得荆州、南郡、襄阳，心中大喜，商议久远之计。忽见一人上厅献策，视之，乃伊籍也。玄德感其旧日之恩，十分相敬，坐而问之。籍曰：“要知荆州久远之计，何不求贤士以问之？”玄德曰：“贤士安在？”籍曰：“荆襄马氏，兄弟五人并有才名：幼者名谡，字幼常；其最贤者，眉间有白毛，名良，字季常。乡里为之谚曰：‘马氏五常，白眉最良。’公何不求此人而与之谋？”玄德遂命请之。马良至，玄德优礼相待，请问保守荆襄之策。良曰：“荆襄四面受敌之地，恐不可久守；可令公子刘琦于此养病，招谕旧人以守之，就表奏公子为荆州刺史，以安民心。然后南征武陵、长沙、桂阳、零陵四郡，积收钱粮，以为根本。此久远之计也。”玄德大喜，遂问：“四郡当先取何郡？”良曰：“湘江之西，零陵最近，可先取之；次取武陵。然后湘江之东取桂阳；长沙为后。”玄德遂用马良为从事，伊籍副之。请孔明商议送刘琦回襄阳，替云长回荆州。便调兵取零陵，差张飞为先锋，赵云合后，孔明；玄德为中军，人马一万五千；留云长守荆州、糜竺、刘封守江陵。却说零陵太守刘度，闻玄德军马到来，乃与其子刘贤商议。贤曰：“父亲放心。他虽有张飞、赵云之勇，我本州上将邢道荣，力敌万人，可以抵对。”刘度遂命刘贤与邢道荣引兵万余，离城三十里，依山靠水下寨。探马报说：“孔明自引一军到来。”道荣便引军出战。两阵对圆，道荣出马，手使开山大斧，厉声高叫：“反贼安敢侵我境界！”只见对阵中，一簇黄旗出。旗开处，推出一辆四轮车，车中端坐一人，头戴纶巾，身披鹤氅，手执羽扇，用扇招邢道荣曰：“吾乃南阳诸葛孔明也。曹操引百万之众，被吾聊施小计，杀得片甲不回。汝等岂堪与我对敌？我今来招安汝等，何不早降？”道荣大笑曰：“赤壁鏖兵，乃周郎之谋也，干汝何事，敢来诳语！”轮大斧竟奔孔明。孔明便回车，望阵中走，阵门复闭。道荣直冲杀过来，阵势急分两下而走。道荣遥望中央一簇黄旗，料是孔明，乃只望黄旗而赶。抹过山脚，黄旗扎住，忽地中央分开，不见四轮车，只见一将挺矛跃马，大喝一声，直取道荣，乃张翼德也。道荣轮大斧来迎，战不数合，气力不加，拨马便走。翼德随后赶来，喊声大震，两下伏兵齐出。道荣舍死冲过，前面一员大将，拦住去路，大叫：“认得常山赵子龙否！”道荣料敌不过，又无处奔走，只得下马请降。子龙缚来寨中见玄德、孔明。玄德喝教斩首。孔明急止之，问道荣曰：“汝若与我捉了刘贤，便准你投降。”道荣连声愿往。孔明曰：“你用何法捉他？”道荣曰：“军师若肯放某回去，某自有巧说。今晚军师调兵劫寨，某为内应，活捉刘贤，献与军师。刘贤既擒，刘度自降矣。”玄德不信其言。孔明曰：“邢将军非谬言也。”遂放道荣归。道荣得放回寨，将前事实诉刘贤。贤曰：“如之奈何？”道荣曰：“可将计就计。今夜将兵伏于寨外，寨中虚立旗幡，待孔明来劫寨，就而擒之。”刘贤依计。</div>
+            <div class="text-block simplified-text">刘备拿下荆州、南郡、襄阳后特别高兴，正琢磨以后怎么发展。这时伊籍来献计，刘备很看重他，请他坐下聊。伊籍说："想管好荆州，为啥不找能人问问？"刘备问："能人在哪儿？"伊籍说："马家五兄弟最有名，老五叫马谡，最厉害的是眉毛里有白毛的马良。当地人都说'马家五兄弟，白毛的最行'。您为啥不找他？"
+
+刘备就把马良请来了，客气地问他怎么守荆州。马良说："荆州四面都是敌人，不好守。不如让生病的刘琦在这儿养病，顺便管事儿，您上表让他当荆州刺史，先稳住人心。然后往南打武陵、长沙、桂阳、零陵四个地方，攒钱攒粮，这才是长久之计。"刘备很高兴，问："先打哪个？"马良说："零陵离得近先打，再打武陵，接着打桂阳，最后打长沙。"
+
+刘备就让马良当参谋，伊籍当副手。找诸葛亮商量后，送刘琦回襄阳，换关羽回荆州。派张飞打头阵，赵云压后，诸葛亮和刘备带一万五千人当中军，留关羽守荆州，糜竺、刘封守江陵。
+
+零陵太守刘度听说刘备来了，和儿子刘贤商量。刘贤说："别怕，咱们有猛将邢道荣，一个打一万个！"刘度就让刘贤和邢道荣带一万多人，在城外三十里扎营。
+
+探子报告诸葛亮带兵来了，邢道荣就冲出去骂："反贼敢来打我们！"看见对面黄旗下一辆四轮车，诸葛亮摇着扇子说："曹操百万大军都被我打跑了，你们还不投降？"邢道荣大笑："赤壁之战是周瑜的功劳，关你啥事？"抡着斧子就冲。
+
+诸葛亮掉头回阵，邢道荣追着黄旗跑，转过山脚突然黄旗分开，张飞冲出来大喊："燕人张飞在此！"没打几下邢道荣就跑了，结果被埋伏的赵云堵住，只好投降。
+
+刘备要杀邢道荣，诸葛亮拦住说："你能抓住刘贤就饶你。"邢道荣说："放我回去，今晚你们来劫营，我当内应。"刘备不信，诸葛亮说："他没骗人。"就放了他。
+
+邢道荣回去跟刘贤说实话，刘贤问怎么办。邢道荣说："咱们将计就计，今晚在营外埋伏，留个空营等他们来。"刘贤照办了。
+
+（注：原文后半段"刘贤依计"之后的内容未提供，故译文至此结束）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">当夜二更，果然有一彪军到寨口，每人各带草把，一齐放火。刘贤、道荣两下杀来，放火军便退。刘贤、道荣两军乘势追赶，赶了十余里，军皆不见。刘贤、道荣大惊，急回本寨，只见火光未灭，寨中突出一将，乃张翼德也。刘贤叫道荣：“不可入寨，却去劫孔明寨便了。”于是复回军。走不十里，赵云引一军刺斜里杀出，一枪刺道荣于马下。刘贤急拨马奔走，背后张飞赶来，活捉过马，绑缚见孔明。贤告曰：“邢道荣教某如此，实非本心也。”孔明令释其缚，与衣穿了，赐酒压惊，教人送入城说父投降；如其不降，打破城池，满门尽诛。刘贤回零陵见父刘度，备述孔明之德，劝父投降。度从之，遂于城上竖起降旗，大开城门，赍捧印绶出城，竟投玄德大寨纳降。孔明教刘度仍为郡守，其子刘贤赴荆州随军办事。零陵一郡居民，尽皆喜悦。</div>
+            <div class="text-block simplified-text">那天晚上二更天（约晚上9点到11点），真的有一队人马来到营寨门口，每人手里都拿着草把子，一起放火。刘贤和邢道荣立刻带兵从两边杀出来，放火的敌军马上撤退了。刘贤和邢道荣乘胜追击，追了十几里地，突然发现敌人全都不见了。两人吓坏了，赶紧往回跑，结果发现自家营寨的火还没灭，寨子里突然冲出一员大将——正是张飞！刘贤赶紧喊邢道荣："别进寨了！咱们改去偷袭诸葛亮的营寨吧！"于是又掉头往回跑。  
+
+还没跑出十里地，赵云突然带着一队人马从斜刺里杀出来，一枪就把邢道荣挑下马。刘贤吓得调头就跑，结果张飞从后面追上来，一把将他活捉，捆起来带去见诸葛亮。刘贤连忙求饶："这都是邢道荣出的主意，不是我的本意啊！"诸葛亮让人给他松绑，换了干净衣服，还请他喝酒压惊，然后派人送他回城劝他父亲投降，说："要是不降，等我们攻破城池，全家杀光！"  
+
+刘贤回到零陵见到父亲刘度，把诸葛亮如何宽厚对待他说了一遍，劝父亲投降。刘度同意了，就在城头竖起白旗，大开城门，捧着官印出城向刘备投降。诸葛亮让刘度继续当零陵太守，他儿子刘贤则去荆州军中任职。零陵的老百姓知道后，全都欢天喜地。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">玄德入城安抚已毕，赏劳三军。乃问众将曰：“零陵已取了，桂阳郡何人敢取？”赵云应曰：“某愿往。”张飞奋然出曰：“飞亦愿往！”二人相争。孔明曰：“终是子龙先应，只教子龙去。”张飞不服，定要去取。孔明教拈阉，拈着的便去。又是子龙拈着。张飞怒曰：“我并不要人相帮，只独领三千军去，稳取城池。”赵云曰：“某也只领三千军去。如不得城，愿受军令。”孔明大喜，责了军令状，选三千精兵付赵云去。张飞不服，玄德喝退。赵云领了三千人马，径往桂阳进发。早有探马报知桂阳太守赵范。范急聚众商议。管军校尉陈应、鲍隆愿领兵出战。原来二人都是桂阳岭山乡猎户出身，陈应会使飞叉，鲍隆曾射杀双虎。二人自恃勇力，乃对赵范曰：“刘备若来，某二人愿为前部。”赵范曰：“我闻刘玄德乃大汉皇叔；更兼孔明多谋，关、张极勇；今领兵来的赵子龙，在当阳长坂百万军中，如入无人之境。我桂阳能有多少人马？不可迎敌，只可投降。”应曰：“某请出战。若擒不得赵云，那时任太守投降不迟。”赵范拗不过，只得应允。陈应领三千人马出城迎敌，早望见赵云领军来到。陈应列成阵势，飞马绰叉而出。赵云挺枪出马，责骂陈应曰：“吾主刘玄德，乃刘景升之弟，今辅公子刘琦同领荆州，特来抚民。汝何敢迎敌！”陈应骂曰：“我等只服曹丞相，岂顺刘备！”赵云大怒，挺枪骤马，直取陈应。应捻叉来迎，两马相交，战到四五合，陈应料敌不过，拨马便走。赵云追赶。陈应回顾赵云马来相近，用飞叉掷去，被赵云接住。回掷陈应。应急躲过，云马早到，将陈应活捉过马，掷于地下，喝军士绑缚回寨。败军四散奔走。云入寨叱陈应曰：“量汝安敢敌我！我今不杀汝，放汝回去；说与赵范，早来投降。”陈应谢罪，抱头鼠窜，回到城中，对赵范尽言其事。范曰：“我本欲降，汝强要战，以致如此。”遂叱退陈应，赍捧印绶，引十数骑出城投大寨纳降。云出寨迎接，待以宾礼，置酒共饮，纳了印绶，酒至数巡，范曰：“将军姓赵，某亦姓赵，五百年前，合是一家。将军乃真定人，某亦真定人，又是同乡。倘得不弃，结为兄弟，实为万幸。”云大喜，各叙年庚。云与范同年。云长范四个月，范遂拜云为兄。二人同乡，同年，又同姓，十分相得。至晚席散，范辞回城。次日，范请云入城安民。云教军士休动，只带五十骑随入城中。居民执香伏道而接。云安民已毕，赵范邀请入衙饮宴。酒至半酣，范复邀云入后堂深处，洗盏更酌。云饮微醉。范忽请出一妇人，与云把酒。子龙见妇人身穿缟素，有倾国倾城之色，乃问范曰：“此何人也？”范曰：“家嫂樊氏也。”子龙改容敬之。樊氏把盏毕，范令就坐。云辞谢。樊氏辞归后堂。云曰：“贤弟何必烦令嫂举杯耶？”范笑曰：“中间有个缘故，乞兄勿阻：先兄弃世已三载，家嫂寡居，终非了局，弟常劝其改嫁。嫂曰：‘若得三件事兼全之人，我方嫁之：第一要文武双全，名闻天下；第二要相貌堂堂，威仪出众；第三要与家兄同姓。’你道天下那得有这般凑巧的？今尊兄堂堂仪表，名震四海，又与家兄同姓，正合家嫂所言。若不嫌家嫂貌陋，愿陪嫁资，与将军为妻，结累世之亲，如何？”云闻言大怒而起，厉声曰：“吾既与汝结为兄弟，汝嫂即吾嫂也，岂可作此乱人伦之事乎！”赵范羞惭满面，答曰：“我好意相待，如何这般无礼！”遂目视左右，有相害之意。云已觉，一拳打倒赵范，径出府门，上马出城去了。</div>
+            <div class="text-block simplified-text">刘备进城安抚百姓后，犒赏了军队。他问将领们："零陵已经拿下，谁愿意去取桂阳？"赵云立刻说："我去！"张飞也跳出来喊："我也要去！"两人争了起来。诸葛亮说："是子龙先答应的，就让他去吧。"张飞不干，非要自己去。诸葛亮提议抽签决定，结果又是赵云抽中。张飞气得大叫："我不用别人帮忙！只要三千兵马，保证拿下城池！"赵云也说："我也只要三千兵。如果拿不下城，甘愿受罚。"诸葛亮很高兴，让他们立下军令状，派赵云带三千精兵出发。张飞还在闹，被刘备喝退了。
+
+赵云带兵向桂阳进发。桂阳太守赵范听说后，急忙召集部下商量。军官陈应、鲍隆主动请战——他俩本是猎户出身，陈应会使飞叉，鲍隆曾打死过两只老虎。两人对赵范说："让我们打头阵吧！"赵范却说："刘备是皇叔，诸葛亮足智多谋，关羽张飞勇猛无敌。现在来的赵云更是在百万军中七进七出的猛将，我们这点兵力怎么打得过？不如投降。"陈应坚持要打："让我试试！要是抓不住赵云，您再投降也不迟。"赵范只好同意。
+
+陈应带三千兵出城，正遇赵云部队。两军对阵，陈应骑马挺叉出战。赵云骂道："我主公刘备是刘表之弟，现在辅佐刘琦治理荆州，特来安抚百姓。你竟敢抵抗！"陈应回骂："我们只服曹丞相，谁听刘备的！"两人交手不到五回合，陈应打不过想跑，被赵云追上。陈应回头扔飞叉偷袭，反被赵云接住扔回来。赵云活捉陈应，放他回去传话："告诉赵范赶紧投降！"
+
+陈应狼狈逃回城里，赵范叹气："我本来就想投降，你非要打。"于是带着官印出城投降。赵云设宴招待，两人喝酒时，赵范套近乎："咱们都姓赵，又是同乡，不如结为兄弟？"赵云很高兴，两人一算年纪，赵云大四个月，就当哥哥。第二天赵范请赵云进城安抚百姓，又设宴款待。喝到一半，赵范把守寡的嫂子樊氏叫出来敬酒——这樊氏穿着素衣，长得特别漂亮。赵云连忙起身行礼。等樊氏退下后，赵范笑着说："我嫂子守寡三年，她说要嫁就嫁三种人：一要文武双全的名将，二要相貌堂堂，三要和我哥同姓。这不正好是您吗？"赵云一听就炸了，拍桌子骂道："我和你结为兄弟，你嫂子就是我嫂子！怎么能干这种乱伦的事！"赵范恼羞成怒想使坏，被赵云察觉，一拳打翻后骑马跑了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">范急唤陈应、鲍隆商议。应曰：“这人发怒去了，只索与他厮杀。”范曰：“但恐赢他不得。”鲍隆曰：“我两个诈降在他军中，太守却引兵来搦战，我二人就阵上擒之。”陈应曰：“必须带些人马。”隆曰：“五百骑足矣。”当夜二人引五百军径奔赵云寨来投降。云已心知其诈，遂教唤入。二将到帐下，说：“赵范欲用美人计赚将军，只等将军醉了，扶入后堂谋杀，将头去曹丞相处献功：如此不仁。某二人见将军怒出，必连累于某，因此投降。”赵云佯喜，置酒与二人痛饮。二人大醉，云乃缚于帐中，擒其手下人问之，果是诈降。云唤五百军入，各赐酒食，传令曰：“要害我者，陈应、鲍隆也；不干众人之事。汝等听吾行计，皆有重赏。”众军拜谢。将降将陈、鲍二人当时斩了；却教五百军引路，云引一千军在后，连夜到桂阳城下叫门。城上听时，说陈、鲍二将军杀了赵云回军，请太守商议事务。城上将火照看，果是自家军马。赵范急忙出城。云喝左右捉下，遂入城，安抚百姓已定，飞报玄德。</div>
+            <div class="text-block simplified-text">赵范赶紧找来陈应和鲍隆商量对策。陈应说："那家伙气冲冲走了，咱们只能跟他干一架。"赵范担心："就怕打不过他啊。"鲍隆出主意："我俩假装去投降，等您带兵来叫阵的时候，我们就在战场上把他抓住。"陈应补充："得带点兵去。"鲍隆说："五百骑兵就够了。"  
+
+当晚，两人带着五百士兵跑到赵云军营假装投降。赵云早就看出有诈，还是放他们进来。两人进帐后说："赵范想用美人计骗您，等您喝醉后拖到后堂杀害，拿您脑袋去曹操那儿请功。这人太坏了！我俩见您生气离开，怕连累到自己，所以来投奔您。"赵云假装高兴，摆酒和他们喝到烂醉。等他们醉倒，赵云把人绑了，审问随行士兵后确认果然是诈降。  
+
+赵云把五百降兵叫进来，请他们吃喝，宣布："要害我的是陈应、鲍隆，跟你们没关系。只要按我说的做，都有重赏。"士兵们连忙道谢。赵云处决了陈应、鲍隆，让这五百人在前面带路，自己带一千兵马连夜赶到桂阳城下叫门。  
+
+城上守军听见喊声，对方说"陈应、鲍隆将军杀了赵云回来了，请太守出来商量事情"。守军用火把一照，确实是自己人。赵范急忙出城，赵云立刻下令把他拿下，顺利进城安抚百姓后，火速向刘备报捷。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">玄德与孔明亲赴桂阳。云迎接入城，推赵范于阶下。孔明问之，范备言以嫂许嫁之事。孔明谓云曰：“此亦美事，公何如此？”云曰：“赵范既与某结为兄弟，今若娶其嫂，惹人唾骂，一也；其妇再嫁，使失大节，二也；赵范初降，其心难测，三也。主公新定江汉，枕席未安，云安敢以一妇人而废主公之大事？”玄德曰：“今日大事已定，与汝娶之，若何？”云吾：“天下女子不少，但恐名誉不立，何患无妻子乎？”玄德曰：“子龙真丈夫也！”遂释赵范，仍令为桂阳太守，重赏赵云。张飞大叫曰：“偏子龙干得功！偏我是无用之人！只拨三千军与我去取武陵郡，活捉太守金旋来献！”孔明大喜曰：“翼德要去不妨，但要依一件事。”正是：军师决胜多奇策，将士争先立战功。未知孔明说出那一件事来，且看下文分解。</div>
+            <div class="text-block simplified-text">刘备和诸葛亮亲自去了桂阳。赵云迎接他们进城，把赵范押到台阶下。诸葛亮问怎么回事，赵范详细说了想把嫂子嫁给赵云的事。诸葛亮对赵云说："这是好事啊，你为啥不同意？"赵云说："第一，赵范已经和我结拜为兄弟，要是娶他嫂子，会被人骂；第二，他嫂子改嫁会坏了名节；第三，赵范刚投降，心思还摸不透。现在主公刚拿下江汉地区，局势还不稳，我怎么能因为一个女人耽误主公的大事？"刘备说："现在大局已定，让你娶她怎么样？"赵云回答："天下女人多的是，我只怕自己名声不好，还怕找不到老婆吗？"刘备赞叹："子龙真是大丈夫啊！"于是放了赵范，让他继续当桂阳太守，重赏了赵云。张飞大喊："就赵云能立功！就我没用！给我三千兵马，我去拿下武陵郡，活捉太守金旋来献功！"诸葛亮高兴地说："翼德要去也行，但得答应一个条件。"这正是：军师妙计定胜负，将士争抢立战功。想知道诸葛亮提了什么条件，且听下回分解。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
