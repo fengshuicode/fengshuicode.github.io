@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十一回 急兄仇张飞遇害　雪弟恨先主兴兵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./080.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十一回 急兄仇张飞遇害　雪弟恨先主兴兵</h1>
+        <a href="./082.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说先主欲起兵东征，赵云谏曰：“国贼乃曹操，非孙权也。今曹丕篡汉，神人共怒。陛下可早图关中，屯兵渭河上流，以讨凶逆，则关东义士，必裹粮策马以迎王师；若舍魏以伐吴，兵势一交，岂能骤解。愿陛下察之。”先主曰：“孙权害了朕弟；又兼傅士仁、糜芳、潘璋、马忠皆有切齿之仇：啖其肉而灭其族，方雪朕恨！卿何阻耶？”云曰：“汉贼之仇，公也；兄弟之仇，私也。愿以天下为重。”先主答曰：“朕不为弟报仇，虽有万里江山，何足为贵？”遂不听赵云之谏，下令起兵伐吴；且发使往五溪，借番兵五万，共相策应；一面差使往阆中，迁张飞为车骑将军，领司隶校尉，封西乡侯，兼阆中牧。使命赍诏而去。却说张飞在阆中，闻知关公被东吴所害，旦夕号泣，血湿衣襟。诸将以酒解劝，酒醉，怒气愈加。帐上帐下，但有犯者即鞭挞之；多有鞭死者。每日望南切齿睁目怒恨，放声痛哭不已。忽报使至，慌忙接入，开读诏旨。飞受爵望北拜毕，设酒款待来使。飞曰：“吾兄被害，仇深似海；庙堂之臣，何不早奏兴兵？”使者曰：“多有劝先灭魏而后伐吴者。”飞怒曰：“是何言也！昔我三人桃园结义，誓同生死；今不幸二兄半途而逝，吾安得独享富贵耶！吾当面见天子，愿为前部先锋，挂孝伐吴，生擒逆贼，祭告二兄，以践前盟！”言讫，就同使命望成都而来。却说先主每日自下教场操演军马，克日兴师，御驾亲征。于是公卿都至丞相府中见孔明，曰：“今天子初临大位，亲统军伍，非所以重社稷也。丞相秉钧衡之职，何不规谏？”孔明曰：“吾苦谏数次，只是不听。今日公等随我入教场谏去。”当下孔明引百官来奏先主曰：“陛下初登宝位，若欲北讨汉贼，以伸大义于天下，方可亲统六师；若只欲伐吴，命一上将统军伐之可也，何必亲劳圣驾？”先主见孔明苦谏，心中稍回。忽报张飞到来，先主急召入。飞至演武厅拜伏于地，抱先主足而哭。先主亦哭。飞曰：“陛下今日为君，早忘了桃园之誓！二兄之仇，如何不报？”先主曰：“多官谏阻，未敢轻举。”飞曰：“他人岂知昔日之盟？若陛下不去，臣舍此躯与二兄报仇！若不能报时，臣宁死不见陛下也！”先主曰：“朕与卿同往：卿提本部兵自阆州而出，朕统精兵会于江州，共伐东吴，以雪此恨！”飞临行，先主嘱曰：“朕素知卿酒后暴怒，鞭挞健儿，而复令在左右：此取祸之道也。今后务宜宽容，不可如前。”飞拜辞而去。次日，先主整兵要行。学士秦宓奏曰：“陛下舍万乘之躯，而徇小义，古人所不取也。愿陛下思之。”先主曰：“云长与朕，犹一体也。大义尚在，岂可忘耶？”宓伏地不起曰：“陛下不从臣言，诚恐有失。”先主大怒曰：“朕欲兴兵，尔何出此不利之言！”叱武士推出斩之，宓面不改色，回顾先主而笑曰：“臣死无恨，但可惜新创之业，又将颠覆耳！”众官皆为秦宓告免。先主曰：“暂且囚下，待朕报仇回时发落。”孔明闻知，即上表救秦宓。其略曰：“臣亮等窃以吴贼逞奸诡之计，致荆州有覆亡之祸；陨将星于斗牛，折天柱于楚地：此情哀痛，诚不可忘。但念迁汉鼎者，罪由曹操；移刘祚者，过非孙权。窃谓魏贼若除，则吴自宾服。愿陛下纳秦宓金石之言，以养士卒之力，别作良图，则社稷幸甚！天下幸甚！”先主看毕，掷表于地曰：“朕意已决，无得再谏！”遂命丞相诸葛亮保太子守两川；骠骑将军马超并弟马岱，助镇北将军魏延守汉中，以当魏兵；虎威将军赵云为后应，兼督粮草；黄权、程畿为参谋；马良、陈震掌理文书；黄忠为前部先锋；冯习、张南为副将；傅彤、张翼为中军护尉；赵融、廖淳为合后。川将数百员，并五溪番将等，共兵七十五万，择定章武元年七月丙寅日出师。却说张飞回到阆中，下令军中；限三日内制办白旗白甲，三军挂孝伐吴。次日，帐下两员末将范疆、张达，入帐告曰：“白旗白甲，一时无措，须宽限方可。飞大怒曰：“吾急欲报仇，恨不明日便到逆贼之境，汝安敢违我将令！”叱武士缚于树上，各鞭背五十。鞭毕，以手指之曰：“来日俱要完备！若违了限，即杀汝二人示众！”打得二人满口出血。回到营中商议，范疆曰：“今日受了刑责，着我等如何办得？其人性暴如火，倘来日不完，你我皆被杀矣！”张达曰：“比如他杀我，不如我杀他。”疆曰：“怎奈不得近前。”达曰：“我两个若不当死，则他醉于床上；若是当死，则他不醉。”二人商议停当。</div>
+            <div class="text-block simplified-text">刘备要出兵打东吴，赵云劝他说："曹操才是国家的大敌，不是孙权。现在曹丕篡夺汉朝皇位，天怒人怨。您应该先去打关中，在渭河上游驻扎军队，这样关东的义士们肯定会带着粮食马匹来投奔。要是放着魏国不打去打吴国，一旦开战就很难收场了，您再考虑考虑吧。"
+
+刘备说："孙权杀了我兄弟，还有傅士仁、糜芳、潘璋、马忠这些人都是我的仇人，不吃了他们的肉灭了他们全族，我这口气咽不下去！你别拦着我。"赵云说："打汉贼是为公，报私仇是为私，您应该以国家大事为重。"刘备回答："要是不给兄弟报仇，就算得了天下又有什么意思？"不听赵云的劝，下令出兵打吴国。
+
+刘备派人去五溪借了五万少数民族的兵，又派人去阆中升张飞当车骑将军。张飞在阆中听说关羽被害，天天哭得衣服都被血泪浸湿了。手下人用酒劝他，结果喝醉后脾气更暴，动不动就打人，还打死不少。每天咬牙切齿地望着南方痛哭。
+
+使者来宣读圣旨，张飞接完旨就问："我哥哥被害，这么大的仇，朝廷怎么还不发兵？"使者说："很多人都劝先打魏国再打吴国。"张飞大怒："放屁！当年我们桃园三结义说好同生共死，现在两个哥哥都死了，我怎么能一个人享福？我要去见皇上，当先锋戴孝出征，活捉孙权来祭奠哥哥！"说完就跟使者去成都了。
+
+刘备每天练兵准备亲征。大臣们找诸葛亮说："皇上刚登基就亲自带兵打仗不合适，您得劝劝。"诸葛亮说："我劝了好几次都没用，现在大家跟我一起去劝吧。"见到刘备后，诸葛亮说："皇上要是打魏国可以亲自去，打吴国派个大将去就行了。"刘备有点动摇。
+
+这时张飞来了，抱着刘备的腿哭："皇上现在当了皇帝就忘了当年的誓言了吗？哥哥的仇不报了吗？"刘备说："大臣们都劝我别去。"张飞说："他们懂什么？您要是不去，我自己去报仇！报不了仇我就死在外面！"刘备说："我跟你一起去！你从阆中出兵，我从江州出兵。"临走时刘备嘱咐张飞："我知道你喝完酒爱打士兵，这样会惹祸的，以后要改。"
+
+第二天刘备要出兵，秦宓劝道："皇上为了私仇不顾安危，这不值得。"刘备说："关羽跟我亲如手足，这仇不能不报。"秦宓跪着不起来："不听劝会出事的。"刘备大怒要杀他，被众人劝住关了起来。诸葛亮上书劝刘备先打魏国，说："曹操才是罪魁祸首，打完魏国吴国自然就服了。"刘备把奏章扔在地上："我心意已决，谁再劝就杀谁！"
+
+刘备让诸葛亮留守，派马超、魏延防魏国，赵云管粮草，黄忠当先锋，总共七十五万大军，定于七月出兵。
+
+张飞回阆中后命令三天内准备好白旗白甲全军戴孝出征。手下范疆、张达说三天来不及，张飞把他们绑树上各打五十鞭，说："明天必须准备好，不然杀了你们！"两人回去商量："他脾气这么暴，明天完不成咱俩都得死，不如趁他喝醉先下手杀了他。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说张飞在帐中，神思昏乱，动止恍惚，乃问部将曰：“吾今心惊肉颠，坐卧不安，此何意也？”部将答曰：“此是君侯思念关公，以致如此。”飞令人将酒来，与部将同饮，不觉大醉，卧于帐中。范、张二贼，探知消息，初更时分，各藏短刀，密入帐中，诈言欲禀机密重事，直至床前。原来张飞每睡不合眼；当夜寝于帐中，二贼见他须竖目张，本不敢动手。因闻鼻息如雷，方敢近前，以短刀刺入飞腹。飞大叫一声而亡。时年五十五岁。后人有诗叹曰：“安喜曾闻鞭督邮，黄巾扫尽佐炎刘。虎牢关上声先震，长坂桥边水逆流。义释严颜安蜀境，智欺张郃定中州。伐吴未克身先死，秋草长遗阆地愁。”却说二贼当夜割了张飞首级，便引数十人连夜投东吴去了。次日，军中闻知，起兵追之不及。时有张飞部将吴班，向自荆州来见先主，先主用为牙门将，使佐张飞守阆中。当下吴班先发表章，奏知天子；然后令长子张苞具棺椁盛贮，令弟张绍守阆中，苞自来报先主。时先主已择期出师。大小官僚，皆随孔明送十里方回。孔明回至成都，怏怏不乐，顾谓众官曰：“法孝直若在，必能制主上东行也。”</div>
+            <div class="text-block simplified-text">张飞在军营里，心里乱糟糟的，坐也不是站也不是，就问手下将领："我这会儿心慌得厉害，总觉得要出事，这是咋回事啊？"手下说："估计是您想关羽将军想的。"张飞叫人拿酒来，和手下一起喝，结果喝得烂醉，倒在床上睡着了。
+
+范疆、张达这两个叛徒打听到消息，半夜带着刀偷偷溜进帐篷，假装有重要军情要报告。其实张飞睡觉从来不合眼，这天晚上俩人看他胡子炸着、眼睛瞪着，本来不敢动手。后来听见他打呼噜像打雷，才敢靠近，用刀捅进他肚子。张飞大叫一声就死了，那年他55岁。后来有人写诗说他："当年在安喜县鞭打督邮，跟着刘备打黄巾军。虎牢关打仗威名远扬，长坂桥吼一声吓退曹兵。讲义气放了严颜，用计谋赢了张郃。可惜还没打到东吴就死了，只留下阆中的秋草让人伤心。"
+
+那两个叛徒当晚砍了张飞脑袋，带着几十个人连夜逃往东吴。第二天军队发现时，追都追不上了。张飞的部下吴班从荆州赶来见刘备（当时刘备已经称帝），被任命为牙门将，帮着守阆中。吴班先写了奏折报告皇帝，然后让张飞大儿子张苞准备棺材装殓，让弟弟张绍留守阆中，张苞自己去给刘备报信。
+
+这时候刘备已经定好日子要出兵打东吴。大小官员都跟着诸葛亮送出十里地才回去。诸葛亮回到成都后闷闷不乐，对官员们说："要是法正（字孝直）还活着，肯定能劝住皇上不去打这一仗。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说先主是夜心惊肉颤，寝卧不安。出帐仰观天文，见西北一星，其大如斗，忽然坠地。先主大疑，连夜令人求问孔明。孔明回奏曰：“合损一上将。三日之内，必有惊报。”先主因此按兵不动。忽侍臣奏曰：“阆中张车骑部将吴班，差人赍表至。”先主顿足曰：“噫！三弟休矣！”及至览表，果报张飞凶信。先主放声大哭，昏绝于地。众官救醒。</div>
+            <div class="text-block simplified-text">那天晚上，刘备心里发慌，浑身不自在，怎么也睡不着。他走出帐篷看天象，发现西北方有颗像斗那么大的星星突然掉了下来。刘备觉得不对劲，赶紧连夜派人去问诸葛亮。诸葛亮回复说："这预示我们要损失一位大将。三天之内，肯定会有坏消息。"刘备听了就没敢轻举妄动。
+
+突然有侍从报告："驻守阆中的张飞将军部下吴班派人送信来了。"刘备跺着脚说："唉！我三弟完了！"打开信一看，果然是张飞的死讯。刘备当场嚎啕大哭，直接哭晕过去。旁边的大臣们赶紧把他救醒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">次日，人报一队军马骤风而至。先主出营观之。良久，见一员小将，白袍银铠，滚鞍下马，伏地而哭，乃张苞也。苞曰：“范疆、张达杀了臣父，将首级投吴去了！”先主哀痛至甚，饮食不进。群臣苦谏曰：“陛下方欲为二弟报仇，何可先自摧残龙体？”先主方才进膳，遂谓张苞曰：“卿与吴班，敢引本部军作先锋，为卿父报仇否？”苞曰：“为国为父，万死不辞！”先主正欲遣苞起兵，又报一彪军风拥而至。先主令侍臣探之。须臾，侍臣引一小将军，白袍银铠，入营伏地而哭。先主视之，乃关兴也。先主见了关兴，想起关公，又放声大哭。众官苦劝。先主曰：“朕想布衣时，与关、张结义，誓同生死；今朕为天子，正欲与两弟同享富贵，不幸俱死于非命！见此二侄，能不断肠！”言讫又哭。众官曰：“二小将军且退。容圣上将息龙体。”侍臣奏曰：“陛下年过六旬，不宜过于哀痛。”先主曰：“二弟俱亡，朕安忍独生！”言讫，以头顿地而哭。</div>
+            <div class="text-block simplified-text">第二天，有人报告说一队人马飞快地赶来。刘备走出军营查看。等了一会儿，看见一个年轻将领穿着白袍银甲，翻身下马，跪在地上大哭——原来是张苞。张苞哭着说："范疆、张达杀了我父亲，还把他的头砍下来送到东吴去了！"刘备听了悲痛欲绝，连饭都吃不下。大臣们劝他说："陛下正要为二弟报仇，怎么能先把自己的身体搞垮呢？"刘备这才勉强吃了点饭，然后对张苞说："你和吴班敢不敢带领自己的部队当先锋，为你父亲报仇？"张苞回答："为了国家和父亲，我死都不怕！"
+
+刘备正要派张苞出兵，又有人报告说另一队人马赶到了。刘备让侍从去查看。不一会儿，侍从带着一个同样穿白袍银甲的年轻将领进来，那人跪在地上就哭。刘备一看，原来是关兴。见到关兴，刘备又想起关羽，忍不住放声大哭。官员们极力劝阻。刘备说："我想起当年还是平民的时候，和关羽、张飞结拜，发誓同生共死。现在我当了皇帝，本想和两个弟弟一起享福，没想到他们都惨死！看到这两个侄子，我怎么能不伤心！"说完又哭起来。官员们说："请两位小将军先退下，让皇上好好休息。"侍从也劝道："陛下已经六十多岁了，不能太伤心。"刘备却说："两个弟弟都死了，我怎么能一个人活着！"说完就用头撞地，痛哭不止。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">多官商议曰：“今天子如此烦恼，将何解劝？”马良曰：“主上亲统大兵伐吴，终日号泣，于军不利。”陈震曰：“吾闻成都青城山之西，有一隐者，姓李，名意。世人传说此老已三百余岁，能知人之生死吉凶，乃当世之神仙也。何不奏知天子，召此老来，问他吉凶，胜如吾等之言。”遂入奏先主。先主从之，即遣陈震赍诏，往青城山宣召。震星夜到了青城，令乡人引入出谷深处，遥望仙庄，清云隐隐，瑞气非凡。忽见一小童来迎曰：“来者莫非陈孝起乎？”震大惊曰：“仙童如何知我姓字！”童子曰：“吾师昨者有言：今日必有皇帝诏命至；使者必是陈孝起。”震曰：“真神仙也！人言信不诬矣！”遂与小童同入仙庄，拜见李意，宣天子诏命。李意推老不行。震曰：“天子急欲见仙翁一面，幸勿吝鹤驾。”再三敦请，李意方行。即至御营，入见先主。先主见李意鹤发童颜，碧眼方瞳，灼灼有光，身如古柏之状，知是异人，优礼相待。李意曰：“老夫乃荒山村叟，无学无识。辱陛下宣召，不知有何见谕？”先主曰：“朕与关、张二弟生死之交，三十余年矣。今二弟被害，亲统大军报仇，未知休咎如何。久闻仙翁通晓玄机，望乞赐教。”李意曰：“此乃天数，非老夫所知也。”先主再三求问，意乃索纸笔画兵马器械四十余张，画毕便一一扯碎。又画一大人仰卧于地上，傍边一人掘土埋之，上写一大“白”字，遂稽首而去。先主不悦，谓群臣曰：“此狂叟也！不足为信。”即以火焚之，便催军前进。</div>
+            <div class="text-block simplified-text">一群官员商量说："皇上现在这么伤心难过，咱们怎么劝劝他？"马良说："皇上亲自带兵打东吴，整天哭哭啼啼的，对军队不好。"陈震说："我听说成都青城山西边住着个隐士，叫李意。大家都说这老头活了三百多岁，能预知人的生死祸福，是个活神仙。不如告诉皇上，把他请来问问吉凶，比我们劝管用多了。"
+
+于是他们去报告刘备。刘备同意了，马上派陈震带着圣旨去青城山请人。陈震连夜赶到青城山，让当地人带路到深山，远远看见一座仙庄，云雾缭绕，气象不凡。突然有个小童出来迎接说："您就是陈震先生吧？"陈震吃惊地问："小仙童怎么知道我的名字？"童子说："我师父昨天就说，今天会有皇上的使者来，一定是陈震。"陈震感叹："真是神仙啊！传言不假！"
+
+陈震跟着童子进庄拜见李意，宣读了圣旨。李意推说自己年纪大不肯去。陈震说："皇上急着见您一面，请您务必走一趟。"再三请求后，李意才答应。
+
+到了军营，刘备见李意白发童颜，眼睛发亮，身板硬朗，知道不是普通人，很客气地接待。李意说："我就是个乡下老头，没什么学问。不知皇上找我来有什么事？"刘备说："我和关羽、张飞是生死之交，三十多年的兄弟。现在他们被害，我亲自带兵报仇，不知道结果会怎样。听说您能预知未来，请您指点。"
+
+李意说："这是天意，我可说不准。"刘备再三追问，李意就要来纸笔，画了四十多张兵马武器的图，画完就一张张撕碎。又画了个大人躺在地上，旁边有人挖土埋他，上面写了个"白"字，然后行礼走了。
+
+刘备不高兴，对大臣们说："这老头疯疯癫癫的，别信他。"把画烧了，下令军队继续前进。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">张苞入奏曰：“吴班军马已至。小臣乞为先锋。”先主壮其志，即取先锋印赐张苞。苞方欲挂印，又一少年将奋然出曰：“留下印与我！”视之，乃关兴也。苞曰：“我已奉诏矣。”兴曰：“汝有何能，敢当此任？”苞曰：“我自幼习学武艺，箭无虚发。”先主曰：“朕正要观贤侄武艺，以定优劣。”苞令军士于百步之外，立一面旗，旗上画一红心。苞拈弓取箭，连射三箭，皆中红心。众皆称善。关兴挽弓在手曰：“射中红心何足为奇？”正言间，忽值头上一行雁过。兴指曰：“吾射这飞雁第三只。”一箭射去，那只雁应弦而落。文武官僚，齐声喝采。苞大怒，飞身上马，手挺父所使丈八点钢矛，大叫曰：“你敢与我比试武艺否？”兴亦上马，绰家传大砍刀纵马而出曰：“偏你能使矛！吾岂不能使刀！”</div>
+            <div class="text-block simplified-text">张苞进来报告说：“吴班的军队已经到了。我想当先锋。”刘备觉得他有志气，就把先锋印给了他。张苞正要接印，突然又有个年轻将领站出来说：“把印给我！”一看是关兴。张苞说：“皇上已经批准我了。”关兴说：“你有什么本事敢当先锋？”张苞说：“我从小练武，射箭百发百中。”刘备说：“正好让我看看你们俩谁更厉害。”张苞让士兵在百步外立了面旗，旗上画了个红心。他连射三箭，都正中红心。大家都叫好。关兴拿起弓说：“射中红心算什么？”这时天上飞过一群大雁。关兴指着说：“我射第三只。”一箭射去，那只雁应声掉下来。官员们齐声喝彩。张苞气坏了，跳上马拿起父亲的长矛大喊：“敢不敢跟我比试？”关兴也上马，抄起家传大刀冲出来说：“就你会用矛？我也会用刀！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">二将方欲交锋，先主喝曰：“二子休得无礼！”兴、苞二人慌忙下马，各弃兵器，拜伏请罪。先主曰：“朕自涿郡与卿等之父结异姓之交，亲如骨肉；今汝二人亦是昆仲之分，正当同心协力，共报父仇；奈何自相争竞，失其大义！父丧未远而犹如此，况日后乎？”二人再拜伏罪。先主问曰：“卿二人谁年长？”苞曰：“臣长关兴一岁。”先主即命兴拜苞为兄。二人就帐前折箭为誓，永相救护。先主下诏使吴班为先锋，令张苞、关兴护驾。水陆并进，船骑双行，浩浩荡荡，杀奔吴国来。却说范疆、张达将张飞首级，投献吴侯，细告前事。孙权听罢，收了二人，乃谓百官曰：“今刘玄德即了帝位，统精兵七十余万，御驾亲征，其势甚大，如之奈何？”百官尽皆失色，面面相觑。诸葛瑾出曰：“某食君侯之禄久矣，无可报效，愿舍残生，去见蜀主，以利害说之，使两国相和，共讨曹丕之罪。”权大喜，即遣诸葛瑾为使，来说先主罢兵。正是：两国相争通使命，一言解难赖行人。未知诸葛瑾此去如何，且看下文分解。</div>
+            <div class="text-block simplified-text">刘备正要和东吴打仗，关兴和张苞两个小将准备单挑。刘备赶紧喝止："你们两个别胡闹！"两人吓得赶紧下马，扔了武器跪下认错。
+
+刘备说："当年在涿郡，我和你们的父亲就像亲兄弟一样。现在你们也是兄弟，应该一起报仇才对，怎么自己人打起来了？你们父亲才去世不久就这样，以后还得了？"两人再次认错。
+
+刘备问："你们谁年纪大？"张苞说："我比关兴大一岁。"刘备就让关兴认张苞当哥哥。两人当场折箭发誓要互相照应。
+
+刘备派吴班当先锋，让张苞、关兴保护自己。大军分水陆两路，浩浩荡荡杀向东吴。
+
+这边范疆、张达带着张飞的人头来见孙权，说了事情经过。孙权收留了他们，对大臣们说："刘备当了皇帝，带着七十万大军亲自来报仇，这可怎么办？"大臣们都吓傻了。
+
+诸葛瑾站出来说："我吃您的俸禄这么久，也该报答了。我愿意去劝刘备停战，两家和好一起打曹丕。"孙权很高兴，马上派他去当说客。
+
+这正是：两国打仗派使者，全靠说客来解决。不知道诸葛瑾这趟去能不能成功，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
