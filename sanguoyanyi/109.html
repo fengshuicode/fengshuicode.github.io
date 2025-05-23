@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百九回 困司马汉将奇谋　废曹芳魏家果报</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./108.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百九回 困司马汉将奇谋　废曹芳魏家果报</h1>
+        <a href="./110.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">蜀汉延熙十六年秋，将军姜维起兵二十万，令廖化、张翼为左右先锋，夏侯霸为参谋，张嶷为运粮使，大兵出阳平关伐魏。维与夏侯霸商议曰：“向取雍州，不克而还；今若再出，必又有准备。公有何高见？”霸曰：“陇上诸郡，只有南安钱粮最广；若先取之，足可为本。向者不克而还，盖因羌兵不至。今可先遣人会羌人于陇右，然后进兵出石营，从董亭直取南安。”维大喜曰：“公言甚妙！”遂遣郤正为使，赍金珠蜀锦入羌，结好羌王。羌王迷当，得了礼物，便起兵五万，令羌将俄何烧戈为大先锋，引兵南安来。</div>
+            <div class="text-block simplified-text">蜀汉延熙十六年秋天，大将姜维带着二十万军队出征，让廖化、张翼当左右先锋，夏侯霸当军师，张嶷管运粮草，大军从阳平关出发去打魏国。姜维和夏侯霸商量说："上次打雍州没打赢就撤了，现在再去，敌人肯定有防备。你有什么好主意？"夏侯霸说："陇西这几个郡里，南安的钱粮最多；要是先拿下它，就有了根基。上次没打赢是因为羌族援兵没来。这次可以先派人去陇右联系羌人，然后从石营出兵，经过董亭直接去打南安。"姜维很高兴："这主意太棒了！"就派郤正当使者，带着金银珠宝和蜀地锦缎去羌族那里送礼，跟羌王搞好关系。羌王迷当收了礼，立刻派五万羌兵，让大将俄何烧戈当先锋，带兵往南安来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">魏左将军郭淮闻报，飞奏洛阳。司马师问诸将曰：“谁敢去敌蜀兵？”辅国将军徐质曰：“某愿往。”师素知徐质英勇过人，心中大喜，即令徐质为先锋，令司马昭为大都督，领兵望陇西进发。军至董亭，正遇姜维，两军列成阵势。徐质使开出大斧，出马挑战。蜀阵中廖化出迎。战不数合，化拖刀败回。张翼纵马挺枪而迎，战不数合，又败入阵。徐质驱兵掩杀，蜀兵大败，退三十余里。司马昭亦收兵回，各自下寨。</div>
+            <div class="text-block simplified-text">魏国的左将军郭淮接到报告，赶紧向洛阳汇报。司马师问手下的将领们："谁敢去对付蜀国的军队？"辅国将军徐质说："我愿意去。"司马师一直知道徐质特别勇猛，非常高兴，立刻让徐质当先锋，派司马昭当总指挥，带兵往陇西方向前进。
+
+军队到了董亭，正好碰上姜维的部队，两边摆开阵势准备打仗。徐质拿着大斧头出来叫阵。蜀军这边廖化先出来应战，没打几个回合，廖化就假装打不过逃回去了。接着张翼骑马挺枪来战，也没打多久又假装败退回阵。徐质趁机带兵追杀，蜀军大败，后退了三十多里。司马昭也下令收兵回营，双方各自扎营休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">姜维与夏侯霸商议曰：“徐质勇甚，当以何策擒之？”霸曰：“来日诈败，以埋伏之计胜之。”维曰：“司马昭乃仲达之子，岂不知兵法？若见地势掩映，必不肯追。吾见魏兵累次断吾粮道，今却用此计诱之，可斩徐质矣。”遂唤廖化分付如此如此，又唤张翼分付如此如此：二人领兵去了。一面令军士于路撒下铁蒺藜，寨外多排鹿角，示以久计。</div>
+            <div class="text-block simplified-text">姜维和夏侯霸商量说：“徐质这家伙挺能打的，咱们怎么抓住他？”夏侯霸说：“明天假装打不过，设个埋伏干他。”姜维说：“司马昭是司马懿的儿子，懂兵法。要是看到地形复杂，肯定不追。我发现魏军老断咱们粮道，这次反过来用这招引他们上钩，准能干掉徐质。”于是叫来廖化和张翼，分别交代了任务：廖化去干这个，张翼去干那个。两人带兵走了。又让士兵在路上撒铁蒺藜（带刺的障碍物），营寨外多放鹿角（防御工事），假装要长期驻扎。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">徐质连日引兵搦战，蜀兵不出。哨马报司马昭说：“蜀兵在铁笼山后，用木牛流马搬运粮草，以为久计，只待羌兵策应。”昭唤徐质曰：“昔日所以胜蜀者，因断彼粮道也。今蜀兵在铁笼山后运粮，汝今夜引兵五千，断其粮道，蜀兵自退矣。”徐质领令，初更时分，引兵望铁笼山来，果见蜀兵二百余人，驱百余头木牛流马，装载粮草而行。魏兵一声喊起，徐质当先拦住。蜀兵尽弃粮草而走。质分兵一半，押送粮草回寨；自引兵一半追来。追不到十里，前面车仗横截去路。质令军士下马拆开车仗，只见两边忽然火起。质急勒马回走，后面山僻窄狭处，亦有车仗截路，火光迸起。质等冒烟突火，纵马而出。一声炮响，两路军杀来：左有廖化，右有张翼，大杀一阵，魏兵大败。</div>
+            <div class="text-block simplified-text">连着好几天，徐质带着兵去叫阵，蜀军就是不出来打。探子向司马昭报告说："蜀军在铁笼山后面，正用木牛流马运粮食，看样子是要打持久战，就等着羌族援军来帮忙呢。"司马昭把徐质叫来说："以前咱们能打赢蜀军，就是因为他们粮道被断了。现在蜀军在铁笼山后面运粮，你今晚带五千兵去，把他们的粮道断了，蜀军自然就撤退了。"徐质接了命令，晚上七点多带着兵往铁笼山去，果然看见两百多个蜀军赶着一百多头木牛流马，驮着粮食往前走。魏军一声喊冲出来，徐质带头拦住去路。蜀军扔下粮食就跑了。徐质分出一半士兵把粮食押回大营，自己带着另一半兵追上去。追了不到十里地，前面被车辆拦住了路。徐质让士兵下马去搬开车辆，突然两边烧起了大火。徐质赶紧调转马头往回跑，结果后面山路上也被车辆堵住，火光冲天。徐质他们冒着烟、穿过火堆，骑马冲了出来。突然一声炮响，两边杀出两支军队：左边是廖化，右边是张翼，一顿猛打，魏军大败。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">徐质奋死只身而走，人困马乏，正奔走间，前面一枝兵杀到，乃姜维也。质大惊无措，被维一枪刺倒座下马，徐质跌下马来，被众军乱刀砍死。质所分一半押粮兵，亦被夏侯霸所擒，尽降其众。霸将魏兵衣甲马匹，令蜀兵穿了，就令骑坐，打着魏军旗号，从小路径奔回魏寨来。魏军见本部兵回，开门放入，蜀兵就寨中杀起。司马昭大惊，慌忙上马走时，前面廖化杀来。昭不能前进，急退时，姜维引兵从小路杀到。昭四下无路，只得勒兵上铁笼山据守。原来此山只有一条路，四下皆险峻难上；其上惟有一泉，止够百人之饮，——此时昭手下有六千人，被姜维绝其路口，山上泉水不敷，人马枯渴。昭仰天长叹曰：“吾死于此地矣！”后人有诗曰：“妙算姜维不等闲，魏师受困铁笼间：庞涓始入马陵道，项羽初围九里山。”</div>
+            <div class="text-block simplified-text">徐质拼命逃跑，又累又饿。正跑着，突然遇到姜维带兵杀过来。徐质吓坏了，还没反应过来，就被姜维一枪刺中马匹摔下来，被乱刀砍死。他手下运粮的士兵也被夏侯霸抓住投降了。  
+
+夏侯霸让蜀兵穿上魏兵的衣服，骑着魏军的马，打着魏军的旗号，从小路直奔魏军大营。魏军以为是自家部队，就开门放他们进去。结果蜀兵一进营就开始砍杀。司马昭吓坏了，赶紧骑马逃跑，结果前面廖化又杀过来。他往后退，姜维又从小路包抄过来。司马昭没路可走，只能带兵逃上铁笼山死守。  
+
+这山只有一条路，四周陡峭难爬，山上只有一口泉水，勉强够一百人喝。可司马昭有六千人马，姜维堵住路口，山上没水，士兵和马都快渴死了。司马昭抬头望天叹气：“我要死在这儿了！”  
+
+后来有人写诗说：“姜维计谋真厉害，魏军困在铁笼山；就像庞涓中埋伏，又似项羽被围困。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">主簿王韬曰：“昔日耿恭受困，拜井而得甘泉。将军何不效之？”昭从其言，遂上山顶泉边，再拜而祝曰：“昭奉诏来退蜀兵，若昭合死，令甘泉枯竭，昭自当刎颈，教部军尽降；如寿禄未终，愿苍天早赐甘泉，以活众命！”祝毕，泉水涌出，取之不竭，因此人马不死。</div>
+            <div class="text-block simplified-text">王韬对郭昭说："以前耿恭被围困时，对着水井跪拜就得到了清水。将军你为啥不学他试试？"郭昭听了他的话，就爬到山顶泉水边，跪下祷告说："我郭昭奉皇帝命令来打退蜀军。如果我该死，就让泉水干涸，我马上自杀，让部下全部投降；如果我命不该绝，求老天爷赶快让泉水冒出来，救救大家的命！"说完，泉水真的喷涌而出，怎么取都用不完，军队这才活了下来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说姜维在山下困住魏兵，谓众将曰：“昔日丞相在上方谷，不曾捉住司马懿，吾深为恨；今司马昭必被吾擒矣。”</div>
+            <div class="text-block simplified-text">姜维把魏国的军队围困在山下，对手下的将领们说："以前诸葛亮在上方谷没抓住司马懿，我一直觉得很遗憾；这次司马昭肯定跑不掉了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说郭淮听知司马昭困于铁笼山上，欲提兵来。陈泰曰：“姜维会合羌兵，欲先取南安。今羌兵已到，将军若撤兵去救，羌兵必乘虚袭我后也。可先令人诈降羌人，于中取事；若退了此兵，方可救铁笼之围。”郭淮从之，遂令陈泰引五千兵，径到羌王寨内，解甲而入，泣拜曰：“郭淮妄自尊大，常有杀泰之心，故来投降。郭淮军中虚实，某俱知之。只今夜愿引一军前去劫寨，便可成功。如兵到魏寨，自有内应。”迷当大喜，遂令俄何烧戈同陈泰来劫魏寨。俄何烧戈教泰降兵在后，令泰引羌兵为前部。是夜二更，竟到魏寨，寨门大开。陈泰一骑马先入。俄何烧戈骤马挺枪入寨之时，只叫得一声苦，连人带马，跌在陷坑里。陈泰兵从后面杀来，郭淮从左边杀来，羌兵大乱，自相践踏，死者无数，生者尽降。俄何烧戈自刎而死。郭淮、陈泰引兵直杀到羌人寨中，迷当大王急出帐上马时，被魏兵生擒活捉，来见郭淮。淮慌下马，亲去其缚，用好言抚慰曰：“朝廷素以公为忠义，今何故助蜀人也？”迷当惭愧伏罪。淮乃说迷当曰：“公今为前部，去解铁笼山之围，退了蜀兵，吾奏准天子，自有厚赐。”</div>
+            <div class="text-block simplified-text">郭淮听说司马昭被围困在铁笼山上，想带兵去救。陈泰说："姜维联合了羌族军队，打算先打南安。现在羌兵已经到了，将军要是撤兵去救铁笼山，羌兵肯定会趁机偷袭我们后方。不如先派人假装投降羌人，趁机搞点动作；等打退羌兵，再去救铁笼山。"郭淮同意了，就让陈泰带五千士兵去羌王营地，脱掉盔甲进去，哭着跪拜说："郭淮狂妄自大，一直想杀我，所以我来投降。我知道郭淮军队的底细，今晚愿意带兵去偷袭，一定能成功。等我们打到魏军营寨，里面会有人接应。"羌王迷当很高兴，派俄何烧戈和陈泰一起去偷袭魏营。俄何烧戈让投降的魏军跟在后面，叫陈泰带羌兵打头阵。半夜二更天，他们到了魏营，发现营门大开。陈泰骑马先进去。俄何烧戈骑马冲进去时，突然大叫一声不好，连人带马掉进了陷阱。陈泰的部队从后面杀过来，郭淮从左边杀过来，羌兵乱成一团，互相踩踏，死的数不清，活着的都投降了。俄何烧戈自杀而死。郭淮、陈泰带兵直接杀到羌人营地，迷当大王慌忙上马要跑，被魏兵活捉。郭淮赶紧下马，亲自给他松绑，好言安慰说："朝廷一直觉得您是个忠义之人，怎么现在帮蜀国呢？"迷当羞愧认错。郭淮就对迷当说："您现在带兵打头阵，去解铁笼山之围，打退蜀军，我一定上报皇上，重重赏赐您。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">迷当从之，遂引羌兵在前，魏兵在后，径奔铁笼山。时值三更，先令人报知姜维。维大喜，教请入相见。魏兵多半杂在羌人部内；行到蜀寨前，维令大兵皆在寨外屯扎，迷当引百余人到中军帐前。姜维、夏侯霸二人出迎。魏将不等迷当开言，就从背后杀将起来。维大惊，急上马而走。羌、魏之兵，一齐杀入。蜀兵四分五落，各自逃生。维手无器械，腰间止有一副弓箭，走得慌忙，箭皆落了，只有空壶。维望山中而走，背后郭淮引兵赶来；见维手无寸铁，乃骤马挺枪追之。看看至近，维虚拽弓弦，连响十余次。淮连躲数番，不见箭到，知维无箭，乃挂住钢枪，拈弓搭箭射之。维急闪过，顺手接了，就扣在弓弦上；待淮追近，望面门上尽力射去，淮应弦落马。维勒回马来杀郭淮，魏军骤至。维下手不及，只掣得淮枪而去。魏兵不敢追赶，急救淮归寨，拔出箭头，血流不止而死。司马昭下山引兵追赶，半途而回。夏侯霸随后逃至，与姜维一齐奔走。维折了许多人马，一路收扎不住，自回汉中。虽然兵败，却射死郭淮，杀死徐质，挫动魏国之威，将功补罪。却说司马昭犒劳羌兵，发遣回国去讫，班师还洛阳，与兄司马师专制朝权，群臣莫敢不服。魏主曹芳每见师入朝，战栗不已，如针刺背。一日，芳设朝，见师带剑上殿，慌忙下榻迎之。师笑曰：“岂有君迎臣之礼也，请陛下稳便。”须臾，群臣奏事，司马师俱自剖断，并不启奏魏主。少时朝退，师昂然下殿，乘车出内，前遮后拥，不下数千人马。</div>
+            <div class="text-block simplified-text">迷当听了建议，带着羌兵走在前面，魏兵跟在后面，直奔铁笼山。当时是半夜，先派人通知了姜维。姜维很高兴，请他们进来见面。魏兵大多混在羌人队伍里；走到蜀军营前，姜维让大部队在营外等着，迷当带了一百多人到中军帐前。姜维和夏侯霸出来迎接。魏将不等迷当开口，就从背后杀了出来。姜维吓了一大跳，赶紧上马逃跑。羌兵和魏兵一起冲杀进来。蜀兵被打得七零八落，各自逃命。姜维手里没武器，腰上只挂着一副弓箭，跑得太急，箭都掉了，只剩个空箭筒。姜维往山里跑，后面郭淮带兵追来；看到姜维手无寸铁，就骑马挺枪追他。眼看快追上了，姜维假装拉弓，空弹了十几次弓弦。郭淮躲了好几次，发现没箭射来，知道姜维没箭了，就把枪挂在马上，拿弓搭箭射姜维。姜维急忙躲开，顺手接住箭，扣在自己的弓上；等郭淮追近，对准他脸一箭射去，郭淮中箭落马。姜维调转马头想杀郭淮，魏军突然冲过来。姜维来不及动手，只抢了郭淮的枪就跑。魏兵不敢再追，赶紧救郭淮回营，但箭拔出来后血流不止，郭淮死了。司马昭从山上带兵追来，半路又回去了。夏侯霸后来逃出来，和姜维一起跑。姜维损失了不少人马，一路上收拢不住残兵，只好退回汉中。虽然打了败仗，但射死了郭淮，杀了徐质，打击了魏国的威风，算是将功补过。  
+
+另一边，司马昭犒赏羌兵，打发他们回国后，自己也带兵回洛阳，和哥哥司马师一起把持朝政，大臣们都不敢不服。魏国皇帝曹芳每次见到司马师上朝，都吓得发抖，像针扎后背一样难受。一天上朝，曹芳看见司马师带着剑上殿，赶紧从座位上起来迎接。司马师笑着说："哪有君主迎接臣子的道理？陛下请坐。"一会儿，大臣们汇报事情，司马师全都自己决定，根本不请示皇帝。没多久退朝，司马师大摇大摆走下殿，坐车出宫，前后簇拥着好几千人马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">芳退入后殿，顾左右止有三人：乃太常夏侯玄，中书令李丰，光禄大夫张缉，缉乃张皇后之父，曹芳之皇丈也。芳叱退近侍，同三人至密室商议。芳执张缉之手而哭曰：“司马师视朕如小儿，觑百官如草芥，社稷早晚必归此人矣！”言讫大哭。李丰奏曰：“陛下勿忧。臣虽不才，愿以陛下之明诏，聚四方之英杰，以剿此贼。”夏侯玄奏曰：“臣叔夏侯霸降蜀，因惧司马兄弟谋害故耳；今若剿除此贼，臣叔必回也。臣乃国家旧戚，安敢坐视奸贼乱国，愿同奉诏讨之。”芳曰：“但恐不能耳。”三人哭奏曰：“臣等誓当同心灭贼，以报陛下！”芳脱下龙凤汗衫，咬破指尖，写了血诏，授与张缉，乃嘱曰：“朕祖武皇帝诛董承，盖为机事不密也。卿等须谨细，勿泄于外。”丰曰：“陛下何出此不利之言？臣等非董承之辈，司马师安比武祖也？陛下勿疑。”</div>
+            <div class="text-block simplified-text">曹芳回到后殿，身边只剩三个人：太常夏侯玄、中书令李丰和光禄大夫张缉（张缉是张皇后的父亲，曹芳的老丈人）。曹芳让其他侍从退下，和这三人躲进密室商量。他拉着张缉的手哭道："司马师把我当小孩耍，把大臣们当野草踩，咱们曹家的江山迟早要被他抢走啊！"说完放声大哭。
+
+李丰赶紧说："皇上别急！我虽然没啥大本事，但愿意带着您的圣旨，召集天下能人，干掉这个反贼！"夏侯玄接着说："我叔叔夏侯霸投奔蜀国，就是被司马兄弟逼的。要是能除掉他们，我叔肯定回来帮忙。我是皇亲国戚，绝不能看着奸贼祸害国家，一定听您指挥！"曹芳犹豫道："就怕咱们干不成啊......"三人哭着表忠心："我们发誓同心协力，一定灭了反贼报答皇上！"
+
+曹芳脱下绣着龙凤的贴身衣服，咬破手指写了血书交给张缉，叮嘱道："当年我爷爷武皇帝（曹操）杀董承，就是因为事情没保密。你们千万要小心，别走漏风声。"李丰立刻说："皇上别说丧气话！我们可不是董承那种废物，司马师也比不上武皇帝（曹操）。您就放心吧！"
+
+（说明：根据要求做了以下处理：
+1. 将"芳""朕"等古称改为"曹芳""我""皇上"
+2. "社稷"译为"江山"，"觑如草芥"译为"当野草踩"等口语化表达
+3. 补充"老丈人"等现代称谓帮助理解人物关系
+4. 用"反贼""干掉"等直白词汇替代原文雅称
+5. 血诏部分增加"咬破手指"等细节使场景更具体
+6. 保留所有人物对话和关键动作信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">三人辞出，至东华门左侧，正见司马师带剑而来，从者数百人，皆持兵器。三人立于道傍。师问曰：“汝三人退朝何迟？”李丰曰：“圣上在内廷观书，我三人侍读故耳。”师曰：“所看何书？”丰曰：“乃夏、商、周三代之书也。”师曰：“上见此书，问何故事？”丰曰：“天子所问伊尹扶商、周公摄政之事，我等皆奏曰：今司马大将军，即伊尹、周公也。”师冷笑曰：“汝等岂将吾比伊尹、周公！其心实指吾为王莽、董卓！”三人皆曰：“我等皆将军门下之人，安敢如此？”师大怒曰：“汝等乃口谀之人！适间与天子在密室中所哭何事？”三人曰：“实无此状。”师叱曰：“汝三人泪眼尚红，如何抵赖！”夏侯玄知事已泄，乃厉声大骂曰：“吾等所哭者，为汝威震其主，将谋篡逆耳！”师大怒，叱武士捉夏侯玄。玄揎拳裸袖，径击司马师，却被武士擒住。师令将各人搜检，于张缉身畔搜出一龙凤汗衫，上有血字。左右呈与司马师。师视之，乃密诏也。诏曰：“司马师弟兄，共持大权，将图篡逆。所行诏制，皆非朕意。各部官兵将士，可同仗忠义，讨灭贼臣，匡扶社稷。功成之日，重加爵赏。”司马师看毕，勃然大怒曰：“原来汝等正欲谋害吾兄弟！情理难容！”遂令将三人腰斩于市，灭其三族。三人骂不绝口。比临东市中，牙齿尽被打落，各人含糊数骂而死。</div>
+            <div class="text-block simplified-text">三个人从宫里出来，走到东华门左边时，正好碰见司马师带着剑走过来，后面跟着好几百个拿着武器的随从。三个人赶紧站在路边让道。
+
+司马师问："你们三个怎么这么晚才退朝？"
+李丰回答："皇上在书房看书，我们三个在旁边陪着。"
+司马师又问："看什么书？"
+李丰说："是夏朝、商朝、周朝的历史书。"
+司马师继续问："皇上看了这些书，问了些什么？"
+李丰说："皇上问起伊尹辅佐商朝、周公代理朝政的事，我们都回答说：现在的司马大将军就是当代的伊尹、周公啊。"
+
+司马师冷笑说："你们真把我比作伊尹、周公？其实心里是在骂我像王莽、董卓吧！"
+三个人连忙说："我们都是您的手下，怎么敢这么想？"
+
+司马师大怒："你们这些马屁精！刚才在密室里跟皇上哭什么？"
+三人说："没有这回事。"
+司马师吼道："你们眼睛还红着呢，还想抵赖！"
+
+这时夏侯玄知道事情瞒不住了，大声骂道："我们哭的就是你欺负皇上，想造反！"
+司马师气坏了，命令士兵抓住夏侯玄。夏侯玄挥拳要打司马师，结果被士兵按住了。
+
+司马师让人搜身，在张缉身上搜出一件绣着龙凤的汗衫，上面有血写的字。手下把汗衫递给司马师看，原来是一道密旨，上面写着："司马师兄弟把持朝政，想造反。他们下的命令都不是我的意思。所有官兵将士要一起讨伐叛贼，保卫国家。事成之后重重有赏。"
+
+司马师看完暴跳如雷："原来你们真要害我们兄弟！绝不能饶！"立刻下令把三个人在街市上腰斩，还要杀光他们全家。
+
+三个人一直骂个不停。等到被押到刑场时，牙齿都被打掉了，还在含含糊糊地骂，最后就这样死了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">师直入后宫。魏主曹芳正与张皇后商议此事。皇后曰：“内廷耳目甚多，倘事泄露，必累妾矣！”正言间，忽见师入，皇后大惊。师按剑谓芳曰：“臣父立陛下为君，功德不在周公之下；臣事陛下，亦与伊尹何别乎？今反以恩为仇，以功为过，欲与二三小臣，谋害臣兄弟，何也？”芳曰：“朕无此心。”师袖中取出汗衫，掷之于地曰：“此谁人所作耶！”芳魂飞天外，魄散九霄，战栗而答曰：“此皆为他人所逼故也。朕岂敢兴此心？”师曰：“妄诬大臣造反，当加何罪？”芳跪告曰：“朕合有罪，望大将军恕之！”师曰：“陛下请起。国法未可废也。”乃指张皇后曰：“此是张缉之女，理当除之！”芳大哭求免，师不从，叱左右将张后捉出，至东华门内，用白练绞死。后人有诗曰：“当年伏后出宫门，跌足哀号别至尊。司马今朝依此例，天教还报在儿孙。”</div>
+            <div class="text-block simplified-text">司马师直接闯进后宫。当时魏国皇帝曹芳正和张皇后商量对付司马家的事。皇后说："宫里到处是司马家的眼线，要是走漏风声，我就完了！"正说着，司马师突然进来，把皇后吓坏了。
+
+司马师握着剑质问曹芳："我爹当年立你当皇帝，功劳比周公还大；我为你做事，和古代贤臣伊尹有什么两样？你现在恩将仇报，想联合几个小官害我们兄弟，什么意思？"曹芳连忙说："我没这想法。"司马师从袖子里掏出一件血衣扔在地上："那这是谁干的？！"曹芳吓得魂都快飞了，哆嗦着说："都是别人逼我干的，我哪敢有这种心思啊？"
+
+司马师逼问："诬陷大臣造反该当何罪？"曹芳跪下来求饶："是我的错，求大将军饶命！"司马师说："皇上请起。但国法不能废。"然后指着张皇后说："她是叛贼张缉的女儿，必须处死！"曹芳哭着求情，司马师根本不听，命令手下把张皇后拖到东华门，用白绫勒死了。
+
+后来有人写诗说："当年汉献帝的伏皇后被拖出宫门，哭喊着和皇帝诀别。如今司马家照样行事，真是天道轮回，报应不爽。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">次日，司马师大会群臣曰：“今主上荒淫无道，亵近娼优，听信谗言，闭塞贤路：其罪甚于汉之昌邑，不能主天下。吾谨按伊尹、霍光之法，别立新君，以保社稷，以安天下，如何？”众皆应曰：“大将军行伊、霍之事，所谓应天顺人，谁敢违命？”师遂同多官入永宁宫，奏闻太后。太后曰：“大将军欲立何人为君？”师曰：“臣观彭城王曹据，聪明仁孝，可以为天下之主。”太后曰：“彭城王乃老身之叔，今立为君，我何以当之？今有高贵乡公曹髦，乃文皇帝之孙；此人温恭克让，可以立之。卿等大臣，从长计议。”一人奏曰：“太后之言是也。便可立之。”众视之，乃司马师宗叔司马孚也。师遂遣使往元城召高贵乡公；请太后升太极殿，召芳责之曰：“汝荒淫无度，亵近娼优，不可承天下；当纳下玺绶，复齐王之爵，目下起程，非宣召不许入朝。”芳泣拜太后，纳了国宝，乘王车大哭而去。只有数员忠义之臣，含泪而送。后人有诗曰：“昔日曹瞒相汉时，欺他寡妇与孤儿。谁知四十余年后，寡妇孤儿亦被欺。”却说高贵乡公曹髦，字彦士，乃文帝之孙，东海定王霖之子也。当日，司马师以太后命宣至，文武官僚备銮驾于西掖门外拜迎。髦慌忙答礼。太尉王肃曰：“主上不当答礼。”髦曰：“吾亦人臣也，安得不答礼乎？”文武扶髦上辇入宫，髦辞曰：“太后诏命，不知为何，吾安敢乘辇而入？”遂步行至太极东堂。司马师迎着，髦先下拜，师急扶起。问候已毕，引见太后。后曰：“吾见汝年幼时，有帝王之相；汝今可为天下之主：务须恭俭节用，布德施仁，勿辱先帝也。”髦再三谦辞。师令文武请髦出太极殿，是日立为新君，改嘉平六年为正元元年，大赦天下，假大将军司马师黄钺，入朝不趋，奏事不名，带剑上殿。文武百官，各有封赐。</div>
+            <div class="text-block simplified-text">第二天，司马师召集大臣们开会说："现在皇上整天吃喝玩乐，亲近戏子，听信小人谗言，排挤贤能的人。他比汉朝的昌邑王还昏庸，不配当皇帝。我打算学古代伊尹、霍光的做法，换个新皇帝来保住国家安定，大家觉得怎么样？"大臣们都说："大将军您这是顺应天意民心的好事，我们谁敢反对？"
+
+于是司马师带着百官去见太后。太后问："你们想立谁当新皇帝？"司马师说："我觉得彭城王曹据聪明又孝顺，可以当皇帝。"太后说："彭城王是我叔叔辈的，要是他当皇帝，我这辈分不就乱了吗？我看高贵乡公曹髦不错，他是文帝的孙子，为人谦虚有礼，你们再好好商量商量。"这时司马师的叔叔司马孚站出来说："太后说得对，就立曹髦吧。"
+
+司马师就派人去接曹髦。太后在太极殿召见被废的皇帝曹芳，训斥道："你整天花天酒地亲近戏子，不配当皇帝。现在交出玉玺，恢复你齐王的爵位，马上离开京城，没命令不准回来。"曹芳哭着交出玉玺，坐车离开时，只有几个忠心的大臣含泪送行。后人写诗讽刺说："当年曹操欺负孤儿寡母，没想到四十年后，他家的孤儿寡母也被人欺负。"
+
+再说曹髦，他是文帝的孙子。这天接到太后诏书，文武百官都在宫门外跪迎。曹髦赶紧回礼，太尉王肃说："皇上不用回礼。"曹髦说："我现在还是臣子，怎么能不回礼？"百官要扶他坐车进宫，曹髦推辞说："太后突然召见，我哪敢摆架子坐车？"就步行到太极殿。见到司马师先行礼，司马师连忙扶起他。见过太后，太后说："我从小看你就有帝王相。现在要你当皇帝，一定要勤俭爱民，别给你爷爷丢脸。"曹髦再三推辞不过，当天就登基当了新皇帝，改年号为正元元年，大赦天下。给司马师特殊待遇：上朝不用小跑、奏事不用报名、可以带剑上殿。文武百官也都得了封赏。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">正元二年春正月，有细作飞报，说镇东将军毋丘俭、扬州刺史文钦，以废主为名，起兵前来。司马师大惊。正是：汉臣曾有勤王志，魏将还兴讨贼师。未知如何迎敌，且看下文分解。</div>
+            <div class="text-block simplified-text">公元255年正月，探子突然来报，说镇东将军毋丘俭和扬州刺史文钦打着废除皇帝的旗号，带兵打过来了。司马师听到后吓了一大跳。这情况就像当年汉朝忠臣为保国家出兵，现在魏国将领也要带兵平乱。接下来司马师要怎么对付他们呢？咱们继续往下看。  
+
+（说明：根据要求做了以下处理：  
+1. 将"正元二年"换算为公元纪年  
+2. "细作"改为"探子"  
+3. "飞报"译为"突然来报"  
+4. "废主"解释为"废除皇帝"  
+5. "大惊"译为"吓了一大跳"  
+6. 诗句转化为白话类比  
+7. 结尾保留说书人口吻但更口语化）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
