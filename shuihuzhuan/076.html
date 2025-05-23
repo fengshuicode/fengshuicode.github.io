@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十六回　吴加亮布四斗五方旗　宋公明排九宫八卦阵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./075.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十六回　吴加亮布四斗五方旗　宋公明排九宫八卦阵</h1>
+        <a href="./077.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">廊庙徽猷岂不周，山林却有过人谋。</div>
+            <div class="text-block simplified-text">朝廷的计谋策略难道不周全吗？但民间也有更高明的办法。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">凤无六翮难高举，虎入深山得自由。</div>
+            <div class="text-block simplified-text">凤凰没有大翅膀就飞不高，老虎进了深山才能自由自在。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">四斗五方排阵势，九宫八卦运兵筹。</div>
+            <div class="text-block simplified-text">这个排兵布阵的方法很厉害：用四斗五方来安排军队的位置，用九宫八卦来指挥调动兵力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">陷兵损将军容失，犬马从知是寇仇。</div>
+            <div class="text-block simplified-text">士兵打了败仗，将军也丢了面子，连狗和马都知道这些人是敌人了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说枢密使童贯，受了天子统军大元帅之职，径到枢密院中，便发调兵符验，要拨东京管下八路军州，各起军一万，就差本处兵马都监统率；又于京师御林军内选点二万，守护中军。枢密院下一应事务，尽委副枢密使掌管。御营中选两员良将为左羽、右翼。号令已定，不旬日之间诸事完备。一应接续军粮，并是高太尉差人趱运。那八路军马？</div>
+            <div class="text-block simplified-text">故事说的是：
+
+朝廷大官童贯被皇帝任命为全国军队总指挥后，立刻到军事指挥部办理手续。他下令调集京城附近的八个州，每个州派出一万士兵，由当地驻军长官带队；又从京城卫戍部队里挑了两万人当中央护卫军。军事指挥部所有日常工作都交给副手处理。他还从皇家卫队选了两名优秀将领当左右副手。命令下达后，不到十天就全安排妥当了。所有军粮供应都由高太尉派人负责运送。到底是哪八个州的部队呢？
+
+（说明：改写时做了这些处理：
+1. "枢密使"改为"朝廷大官"，"统军大元帅"改为"全国军队总指挥"
+2. "枢密院"改为"军事指挥部"，"符验"改为"手续"
+3. "东京管下八路军州"译为"京城附近的八个州"
+4. "御林军"译为"京城卫戍部队"，"中军"译为"中央护卫军"
+5. "趱运"这类生僻词改为"负责运送"
+6. 保持原文的设问句式，但用更直白的"到底是哪八个州的部队呢？"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">睢州兵马都监段鹏举、郑州兵马都监陈翥、陈州兵马都监吴秉彝、唐州兵马都监韩天麟、许州兵马都监李明、邓州兵马都监王义、洳州兵马都监马万里、嵩州兵马都监周信</div>
+            <div class="text-block simplified-text">这是几个地方军队负责人的名单，包括：
+
+1. 睢州的段鹏举
+2. 郑州的陈翥
+3. 陈州的吴秉彝
+4. 唐州的韩天麟
+5. 许州的李明
+6. 邓州的王义
+7. 洳州的马万里
+8. 嵩州的周信
+
+他们都是各自州府的军事指挥官。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">御营中选到左羽、右翼良将二员为中军，那二人？</div>
+            <div class="text-block simplified-text">从军队里挑了两个最能打的将军，一个叫左羽，一个叫右翼，让他们当主力部队的指挥官。这两个人是谁呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">御前飞龙大将酆美、御前飞虎大将毕胜</div>
+            <div class="text-block simplified-text">皇上身边有两个很厉害的大将：一个叫酆美，外号"飞龙将军"；另一个叫毕胜，外号"飞虎将军"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">童贯掌握中军为主帅，号令大小三军齐备，武库拨降军器，选定吉日出师。高太尉、杨太尉设筵饯行。朝廷着仰中书省一面赏军。且说童贯已令众将次日先驱军马出城，然后拜辞天子，飞身上马，出这新曹门外，五里短亭，只见高、杨二太尉为首，率领众官先在那里等候。童贯下马，高太尉执盏擎杯，与童贯道：“枢密相公此行，与朝廷必建大功，早奏凯歌。此寇潜伏水洼，不可轻进，只须先截四边粮草，坚固寨栅，诱此贼下山。先差的当的人打听消息，贼情动静，然后可以进兵。那时一个个生擒活捉，庶不负朝廷委用。望乞枢密相公裁之。”童贯道：“重蒙教诲，刻骨铭心，不敢有忘。”各饮罢酒。杨太尉也来执锺，与童贯道：“枢相素读兵书，深知韬略，剿擒此寇，易如反掌。争奈此贼潜伏水泊，地利未便。枢相到彼，必有良策。”童贯道：“下官到彼，见机而作，自有法度。”高、杨二太尉一齐进酒，贺道：“都门之外，悬望凯旋。”相别之后，各自上马。</div>
+            <div class="text-block simplified-text">童贯作为主帅统领全军，准备好了所有士兵和武器装备，选了个好日子出发。高太尉和杨太尉设宴为他送行，朝廷还让中书省犒赏军队。出发前一天，童贯先让将领们带兵出城，然后自己向皇帝告别，骑马来到城外五里的短亭。高太尉和杨太尉已经带着一群官员在那里等着了。童贯下马后，高太尉端着酒杯对他说："您这次出征一定能立大功，早日凯旋。那些贼寇躲在水边，不要轻易进攻。应该先切断他们的粮草供应，加固营地，引他们下山。先派人打探清楚敌人的情况，再出兵攻打，这样就能活捉他们，不辜负朝廷的重托。请您考虑。"童贯回答："您的教导我一定牢记在心。"喝完酒后，杨太尉也举杯说："您精通兵法，对付这些贼寇轻而易举。只是他们占据水泊有利地形。您到了那里，肯定有好办法。"童贯说："我到那里会随机应变，自有办法。"两位太尉一起敬酒祝贺："我们在京城等着您胜利归来。"告别后，大家各自上马离开。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">不说高、杨二太尉并众官回京。有各衙门合属官员送路的，不知其数，或回，或送半路途回京，皆不必说。大小三军一齐进发，人人要斗，个个欲争。一行人马各随队伍，甚是严整。前军四队，先锋总领行军；后军四队，合后将军监督；左右八路军马，羽翼旗牌催督；童贯镇握中军，总统马步羽林军二万，都是御营选拣的人。童贯执鞭指点军兵进发。怎见得军容整肃？但见：</div>
+            <div class="text-block simplified-text">咱们就不说高、杨两位大官和其他官员回京城的事了。那些来送行的各部门官员多得数不清，有的送到半路就回去了，这些都不细说了。现在所有军队一起出发，士兵们个个摩拳擦掌，斗志昂扬。队伍排列得整整齐齐，前面的先锋部队分成四队开路，后面的部队也有四队压阵，左右两边各有八队人马，由旗牌官督促前进。童贯坐镇中军，亲自指挥两万精锐的御林军。只见他挥着马鞭指挥军队前进。要说这军容有多整齐？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">兵分九队，旗列五方。绿沉枪，点钢枪，鸦角枪，布遍野光芒；青龙刀，偃月刀，雁翎刀，生满天杀气。雀画弓，铁胎弓，宝雕弓，对插飞鱼袋内；射虎箭，狼牙箭，柳叶箭，齐攒狮子壶中。车弩，漆抹弩，脚登弩，排满前军；开山斧，偃月斧，宣花斧，紧随中队。竹节鞭，虎眼鞭，水磨鞭，齐悬在肘上；流星锤，鸡心锤，飞抓锤，各带在身边。方天戟豹尾翩翻，丈八矛珠缠错落。龙文剑掣一汪秋水，虎头牌画几缕春云。先锋猛勇，领拔山开路之精兵；元帅英雄，统喝水断桥之壮士。左统军振举威风，有斩将夺旗之手段；右统军恢弘胆略，怀安邦济世之才能。碧油幢下，东厅枢密总中军；宝纛旗边，护驾亲军为羽翼。震天鼙鼓摇山岳，映日旌旗避鬼神。</div>
+            <div class="text-block simplified-text">军队分成九队，旗帜排成五个方向。各种长枪密密麻麻地插在地上，闪着寒光；不同样式的刀高高举起，杀气腾腾。弓箭手们把漂亮的弓都插在箭袋里，各种厉害的箭支装满了箭壶。前排士兵架好了重型弩机，中间队伍扛着开山大斧。军官们腰间挂着各式鞭子，随身带着各种铁锤。有的举着装饰华丽的方天画戟，有的握着缠着珠宝的长矛。宝剑亮得像秋天的湖水，盾牌上画着云彩图案。
+
+先锋官带着能移山开路的精锐部队，大元帅统领着勇猛无比的战士。左边的将军威风凛凛，有斩杀敌将的本事；右边的将军胆识过人，有治国安邦的才能。中军大帐前，主帅坐镇指挥；帅旗旁边，精锐亲兵负责护卫。战鼓声震得地动山摇，阳光下飘扬的军旗连鬼神见了都要躲开。
+
+（说明：原文描写古代军队列阵场景，通过兵器、旗帜、人员配置展现军威。译文保留所有兵器种类和布阵信息，用"密密麻麻""高高举起"等口语化表达替代原文的铺陈排比，将"秋水""春云"等比喻转化为直白描述，确保现代读者能立即理解每个细节所指的实际物品和场景。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">当日童贯离了东京，军马上路，正是枪刀流水急，人马撮风行。兵行五十里屯住。次日又起行，迤逦前进。不一二日已到济州界分，太守张叔夜出城迎接，大军屯住城外。只见童贯引轻骑入城，至州衙前下马。张叔夜邀请至堂上，拜罢，起居已了，侍立在面前。童枢密道：“水洼草贼，杀害良民，邀劫商旅，造恶非止一端。往往剿捕，盖为不得其人，</div>
+            <div class="text-block simplified-text">那天童贯带着军队从东京出发，一路上刀枪闪亮，人马走得飞快。走了五十里地就停下扎营。第二天接着赶路，一路走走停停。没过一两天就到了济州地界，太守张叔夜出城迎接，大部队在城外驻扎。童贯只带着一小队骑兵进城，到州衙门口下马。张叔夜把他请到大堂上，行完礼寒暄过后，就站在旁边听候吩咐。童贯说："梁山那帮草寇，杀害老百姓，抢劫商人，干的坏事多了去了。之前老是剿灭不了，主要是没找对人。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">致容滋蔓。吾今统率大军十万，战将百员，刻日要扫清山寨，擒拿众贼，以安兆民。”张叔夜答道：“枢相在上：此寇潜伏水泊，虽然是山林狂寇，中间多有智谋勇烈之士。枢相勿以怒气自激，引军长驱；必用良谋，可成功绩。”童贯听了大怒，骂道：“都似你这等畏惧懦弱匹夫，畏刀避剑，贪生怕死，误了国家大事，以致养成贼势。吾今到此，有何惧哉！”张叔夜那里敢再言语，且备酒食供送。童枢密随即出城，次日驱领大军，近梁山泊下寨。</div>
+            <div class="text-block simplified-text">我帮你把这段古文改写成简单直白的现代话：
+
+"别让这些土匪继续壮大了。我现在带着十万大军，上百名将领，马上要扫平梁山，抓住那些强盗，让老百姓过上好日子。"张叔夜回答说："大人您听我说：这些土匪藏在水边，虽然看起来是山里的强盗，但里面有不少聪明又厉害的人。您别光顾着生气就带兵硬闯，得想个好办法才能成功。"童贯一听就火了，骂道："都像你这样胆小怕事，怕打仗怕死，才会耽误国家大事，让土匪越来越猖狂。我现在亲自来了，还有什么好怕的！"张叔夜不敢再多嘴，只好准备酒菜招待。童贯当天就带兵出城，第二天带着大军到梁山附近扎营。
+
+（说明：完全保留了原文所有关键信息，包括人物对话、军队数量、时间顺序等，只是用最通俗的日常口语重新表达，去掉了"兆民""枢相"等难懂的古语，改用"老百姓""大人"等现代人能立即理解的词汇。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">且说宋江等已有细作人探知多日了。宋江与吴用已自铁桶般商量下计策，只等大军到来。告示诸将，各要遵依，毋得差错。</div>
+            <div class="text-block simplified-text">宋江他们早就派探子打听清楚了。宋江和吴用已经商量好了周密的计划，就等大部队过来。他们通知所有将领，要求大家必须按计划行事，不能出任何差错。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">再说童枢密调拨军兵，点差睢州兵马都监段鹏举为正先锋，郑州都监陈翥为副先锋，陈州都监吴秉彝为正合后，许州都监李明为副合后，唐州都监韩天麟、邓州都监王义二人为左哨，洳州都监马万里、嵩州都监周信二人为右哨，龙虎二将酆美、毕胜为中军羽翼。童贯为元帅，统领大军，全身披挂，亲自监督。战鼓三通，诸军尽起。行不过十里之外，尘土起处，早有敌军哨路，来的渐近。鸾铃响处，约有三十余骑哨马，都戴青包巾，各穿绿战袄，马上尽系着红缨，每边拴挂数十个铜铃，后插一把雉尾，都是钏银细杆长枪，轻弓短箭。为头的战将是谁？怎生打扮？但见：</div>
+            <div class="text-block simplified-text">童贯调派军队，安排将领：睢州的段鹏举当先锋队长，郑州的陈翥当副先锋，陈州的吴秉彝负责后军主队，许州的李明管后军副队。唐州的韩天麟和邓州的王义带左路部队，洳州的马万里和嵩州的周信带右路部队。酆美、毕胜两位猛将保护中军。童贯当总指挥，全副武装亲自带队。战鼓敲响三遍后，全军出发。
+
+走了不到十里地，前面扬起尘土——敌人的侦察兵来了。随着铃铛声，大约三十个骑兵出现。他们都包着青色头巾，穿着绿色战衣，马脖子上系着红穗子，两边挂满铜铃铛，背后插着野鸡尾毛，拿着银杆长枪，带着轻便弓箭。领头的将军是谁？长啥样？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">枪横鸦角，刀插蛇皮。销金的巾帻佛头青，挑绣的战袍鹦哥绿。腰系绒绦真紫色，足穿气袴软香皮。雕鞍后对悬锦袋，内藏打将的石子；战马边紧挂铜铃，后插招风的雉尾。骠骑将军没羽箭，张清哨路最当先。</div>
+            <div class="text-block simplified-text">这段文字描述的是一个威风凛凛的将军形象，用现代白话来说就是：
+
+这人头上包着青色头巾，身穿绣花绿战袍，腰间系着紫色腰带，脚蹬软皮靴。马鞍上挂着装石子的锦囊，战马旁边挂着铜铃铛，马屁股上插着野鸡尾毛。这位将军外号"没羽箭"，名叫张清，是专门在前面探路开道的猛将。
+
+（说明：将古代服饰术语转化为"头巾/腰带/皮靴"等现代人熟悉的物品；"销金/挑绣/绒绦"等专业词汇简化为"绣花/系着"；保留核心元素"石子/铜铃/雉尾"；用"外号/专门探路"解释特殊称谓和职能）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">马上来的将军，号旗上写的分明：“巡哨都头领没羽箭张清。”左有龚旺，右有丁得孙。直哨到童贯军前，相离不远，只隔百十步，勒马便回。前军先锋二将不得军令，不敢乱动，报至中军主帅。童贯亲到军前，观犹未尽，张清又哨将来。童贯欲待遣人追战，左右说道：“此人鞍后锦袋中都是石子，去不放空，不可追赶。”张清连哨了三遭，不见童贯进兵，返回。行不到五里，只见山背后锣声响动，早转出五百步军来。当先四个步军头领，乃是黑旋风李逵、混世魔王樊瑞、八臂那吒项充、飞天大圣李衮，直奔前来。但见：</div>
+            <div class="text-block simplified-text">很快，一位将军骑马过来，旗子上清清楚楚写着：“巡逻队长 没羽箭张清。”他左边是龚旺，右边是丁得孙。他们一直冲到童贯军队前面，离得很近，大概只有百来步远，然后突然勒住马掉头回去。童贯军队的前锋两位将领因为没有接到命令，不敢随便行动，赶紧报告给主帅童贯。童贯亲自到阵前查看，还没看明白，张清又带人冲过来了。童贯想派人去追击，手下人劝他：“这人马鞍后面的锦袋里装的全是石子，百发百中，不能追啊。”张清这样来回冲了三次，见童贯的军队没动静，就撤了。走了不到五里路，忽然听到山后传来锣声，一下子冒出五百步兵。带头的四个步兵头领是：黑旋风李逵、混世魔王樊瑞、八臂哪吒项充、飞天大圣李衮，他们直接冲杀过来。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">人人虎体，个个彪形。当先两座恶星神，随后二员真杀曜。李逵手持双斧，樊瑞腰掣龙泉。项充牌画玉爪狻猊，李衮牌描金睛獬豸。五百人绛衣赤袄，一部从红旆朱缨。青山中走出一群魔，绿林内迸开三昧火。</div>
+            <div class="text-block simplified-text">这群人个个长得高大威猛，像老虎一样壮实。领头的是两个凶神恶煞般的家伙，后面跟着两个特别能打的狠角色。李逵手里拿着两把斧头，樊瑞腰间别着龙泉宝剑。项充的盾牌上画着玉爪狮子，李衮的盾牌上画着金眼怪兽。五百个小喽啰都穿着大红色的衣服，举着红旗红缨。他们就像从山里冲出来的一群魔鬼，又像绿林好汉突然放了一把大火。
+
+（说明：翻译时做了以下处理：
+1. "虎体彪形"译为"像老虎一样壮实"
+2. "恶星神""真杀曜"用"凶神恶煞""狠角色"替代
+3. 兵器名称保留但加"宝剑"说明
+4. 狻猊/獬豸译为常见神兽形象
+5. "绛衣赤袄"统一为"大红色衣服"
+6. "迸开三昧火"意译为"放了一把大火"
+7. 保持原文的比喻和画面感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">那五百步军就山坡下一字儿摆开，两边团牌齐齐扎住。童贯领军在前见了，便将玉麈尾一招，大队军马冲击前去。李逵、樊瑞引步军分开两路，都倒提着蛮牌，踅过山脚便走。童贯大军赶出山嘴，只见一派平川旷野之地，就把军马列成阵势。遥望李逵、樊瑞，度岭穿林，都不见了。童贯中军立起攒木将台，令拨法官二员上去，左招右展，一起一伏，摆作四门斗底阵。阵势才完，只听得山后炮响，就后山飞出一彪军马来。前面先锋摆布已定，只等敌军到来相战。童贯令左右拢住战马，自上将台看时，只见山东一路军马涌出来，前一队军马红旗，第二队杂采旗，第三队青旗，第四队又是杂采旗；只见山西一路人马也涌来，前一队人马是杂采旗，第二队白旗，第三队是杂采旗，第四队皂旗。旗背后尽是黄旗。大队军将，急先涌来，占住中央，里面列成阵势。远观未实，近睹分明。正南上这队人马，尽都是火焰红旗，红甲红袍，朱缨赤马。前面一把引军红旗，上面金销南斗六星，下绣朱雀之状。那把旗招展动处，红旗中涌出一员大将，怎生结束？但见：</div>
+            <div class="text-block simplified-text">五百个步兵在山坡下排成一排，两边用盾牌牢牢挡住。童贯带着军队在前面看见这情况，就挥动指挥棒，命令大部队冲上去。李逵和樊瑞带着步兵分成两队，手里提着盾牌，绕过山脚就跑了。童贯的大军追到山口，前面是一片开阔的平地，就把军队摆好阵型。远远看见李逵、樊瑞翻山穿林，已经跑没影了。童贯在军队中间搭了个木头瞭望台，派了两个指挥官上去，左右指挥，军队摆成个四面包围的阵型。刚摆好阵，就听见山后炮响，一队人马从后山冲出来。前面的先锋部队已经准备好，就等敌人来打。童贯让手下拉住战马，自己上瞭望台一看：只见山东方向冲出一队人马，第一队举红旗，第二队举彩旗，第三队举青旗，第四队又是彩旗；山西方向也冲来一队人马，第一队举彩旗，第二队举白旗，第三队举彩旗，第四队举黑旗。这些旗后面全是黄旗。大批人马快速冲过来，占住中间位置，摆好阵势。远处看不清，近处看得明白。正南方向那队人马，全是火红的旗子，穿着红甲红袍，骑着红马，马脖子上挂着红缨。最前面是一面红旗，上面绣着南斗六星的图案，下面绣着朱雀。那面红旗一挥动，队伍里冲出一员大将，他是什么打扮呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">盔顶朱缨飘一颗，猩猩袍上花千朵。</div>
+            <div class="text-block simplified-text">头盔顶上挂着一根红缨子，随风飘啊飘的。身上穿着大红袍子，上面绣满了各种花。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">狮蛮带束紫玉团，狻猊甲露黄金锁。</div>
+            <div class="text-block simplified-text">腰带用狮子图案装饰，中间镶着紫色玉石，铠甲上露出金色的锁扣，上面刻着神兽花纹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">狼牙木棍铁钉排，龙驹遍体胭脂抹。</div>
+            <div class="text-block simplified-text">这根棍子上全是狼牙一样的铁钉，那匹好马全身都涂得像抹了胭脂一样红。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">红旗招展半天霞，正按南方丙丁火。</div>
+            <div class="text-block simplified-text">红旗在天空中飘扬，映红了半边天空，就像南方的火一样红艳热烈。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">号旗上写的分明：“先锋大将霹雳火秦明”。左右两员副将，左手是圣水将单廷珪，右边是神火将魏定国。三员大将手搦兵器，都骑赤马，立于阵前。东壁一队人马尽是青旗，青甲青袍，青缨青马。前面一把引军青旗，上面金销东斗四星，下绣青龙之状。那把旗招展动处，青旗中涌出一员大将，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚：“先锋大将霹雳火秦明”。他两边各有一名副将，左边是圣水将单廷珪，右边是神火将魏定国。三位大将手里拿着武器，都骑着红马，站在队伍最前面。东边有一队人马全是青色，青色的盔甲、青色的战袍、青色的马鬃、青色的战马。队伍最前面有一面青色军旗，旗上绣着金色的东斗四星图案，下面绣着青龙。那面旗子一挥动，青色旗子中就冲出一员大将，他是啥打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">蓝靛包巾光满目，翡翠征袍花一簇。</div>
+            <div class="text-block simplified-text">头上包着亮蓝色的头巾，身上穿着绣满花朵的翠绿色战袍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">铠甲穿连兽吐环，宝刀闪烁龙吞玉。</div>
+            <div class="text-block simplified-text">盔甲一片片连起来，上面有兽头咬着铁环；宝刀亮闪闪的，刀柄上雕着龙吞宝玉的图案。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">青遍体粉团花，战袄护身鹦鹉绿。</div>
+            <div class="text-block simplified-text">这个人全身都穿着青绿色的衣服，衣服上绣满了花朵图案。外面还套着一件绿色的战袍，绿得像鹦鹉的羽毛一样鲜艳。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">碧云旗动远山明，正按东方甲乙木。</div>
+            <div class="text-block simplified-text">蓝蓝的天空飘着白云，远处的山看得清清楚楚。这正好对应着东方的五行属木。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">号旗上写得分明：“左军大将大刀关胜”。左右两员副将，左手是丑郡马宣赞，右手是井木犴郝思文。三员大将手搦兵器，都骑青马，立于阵前。西壁一队人马尽是白旗，白甲白袍，白缨白马。前面一把引军白旗，上面金销西斗五星，下绣白虎之状。那把旗招展动处，白旗中涌出一员大将，怎生结束？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚：“左军主将是大刀关胜”。他两边各有一名副将，左边是丑郡马宣赞，右边是井木犴郝思文。三位将军手握武器，都骑着青马，站在队伍最前面。西边那队人马全是白色，白旗、白盔甲、白战袍，连马都是白的。队伍最前面有一面白色领军旗，旗子顶上绣着金色的北斗七星图案，下面绣着白虎。那面旗一挥动，白旗队伍里就冲出一位大将，他是啥打扮？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">漠漠寒云护太阴，梨花万朵叠层琛。</div>
+            <div class="text-block simplified-text">寒冷的阴云层层叠叠，像千万朵梨花堆积在一起。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">素色罗袍光闪闪，烂银铠甲冷森森。</div>
+            <div class="text-block simplified-text">这件白绸袍子亮闪闪的，银色铠甲看起来冷冰冰的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">赛霜骏马骑狮子，出白长枪搦绿沉。</div>
+            <div class="text-block simplified-text">骑着像霜一样白的骏马，马壮得像狮子，手里拿着闪亮的长枪，枪尖直指绿沉沉的敌人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">一簇旗幡飘雪练，正按西方庚辛金。</div>
+            <div class="text-block simplified-text">看那面旗子，白得像雪一样，正好代表五行中的西方金行。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">号旗上写的分明：“右军大将豹子头林冲”。左右两员副将，左手是镇三山黄信，右手是病尉迟孙立。三员大将手搦兵器，都骑白马，立于阵前。后面一簇人马尽是皂旗，黑甲黑袍，黑缨黑马。前面一把引军黑旗，上面金销北斗七星，下绣玄武之状。那把旗招展动处，黑旗中涌出一员大将，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚："右军主将是豹子头林冲"。他左右两边各有一名副将，左边是镇三山黄信，右边是病尉迟孙立。这三位将军都拿着武器，骑着白马，站在队伍最前面。后面跟着一大队人马，举的全是黑旗，穿的黑盔甲黑战袍，连马都是黑的，马鬃也是黑的。最前面有一面黑色军旗，旗上用金线绣着北斗七星，下面绣着玄武图案。这面黑旗一挥动，队伍里就冲出一位大将。他是什么打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">堂堂卷地乌云起，铁骑强弓势莫比。</div>
+            <div class="text-block simplified-text">天上突然黑压压地卷来大片乌云，就像一支装备精良的强大骑兵部队，那气势简直无人能敌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">皂罗袍穿龙虎躯，乌油甲挂豺狼体。</div>
+            <div class="text-block simplified-text">这人穿着绣有龙虎图案的黑色长袍，披着像豺狼皮一样油亮的黑色铠甲。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">鞭似乌龙搦两条，马如泼墨行千里。</div>
+            <div class="text-block simplified-text">这两条鞭子像黑龙一样挥舞，黑马跑得像泼出去的墨一样快，能跑千里远。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">七星旗动玄武摇，正按北方壬癸水。</div>
+            <div class="text-block simplified-text">七颗星的旗子飘动，玄武星也在摇晃，正好对应着北方的壬癸水。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">号旗上写得分明：“合后大将双鞭呼延灼”。左右两员副将，左手是百胜将韩滔，右手是天目将彭玘。三员大将手持兵器，都骑黑马，立于阵前。东南方门旗影里，一队军马，青旗红甲。前面一把引军绣旗，上面金销巽卦，下绣飞龙。那把旗招展动处，捧出一员大将，怎生结束？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚：“副帅双鞭呼延灼”。他两边各有一名副将，左边是常胜将军韩滔，右边是天目将军彭玘。三位将军拿着武器，都骑着黑马，站在队伍最前面。东南角上，有一队人马举着青色旗子、穿着红色盔甲。队伍最前面有一面绣着图案的指挥旗，旗子上面画着八卦中的“巽”字，下面绣着飞龙。当这面旗子挥动时，队伍中走出一位大将。他是什么打扮呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">擐甲披袍出战场，手中拈着两条枪。</div>
+            <div class="text-block simplified-text">穿着盔甲披着战袍上战场，手里拿着两杆枪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">雕弓鸾凤壶中插，宝剑沙鱼鞘内藏。</div>
+            <div class="text-block simplified-text">弓上雕着凤凰，插在壶里；宝剑装在鲨鱼皮做的剑鞘里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">束雾衣飘黄锦带，腾空马顿紫丝缰。</div>
+            <div class="text-block simplified-text">黄绸带在雾气中飘动，像是系在衣服上；紫色的缰绳勒住腾空而起的马儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">青旗红焰龙蛇动，独据东南守巽方。</div>
+            <div class="text-block simplified-text">红旗飘飘火光闪，像龙蛇一样舞动，独自守在东南角，守着那个方向。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">号旗上写得分明：“虎军大将双枪将董平”。左右两员副将，左手是摩云金翅欧鹏，右手是火眼狻猊邓飞。手扶兵器，都骑战马，立于阵前。西南方门旗影里，一队军马，红旗白甲。前面一把引军绣旗，上面金销坤卦，下绣飞熊。那把旗招展动处，捧出一员大将，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚："虎军大将双枪将董平"。他两边各有一个副将，左边是欧鹏，外号"摩云金翅"；右边是邓飞，外号"火眼狻猊"。他们都拿着武器，骑着战马，站在队伍最前面。在西南方向的旗子后面，有一支穿着白色盔甲、举着红旗的军队。队伍最前面有一面绣着金色八卦图案和飞熊图案的指挥旗。当这面旗子晃动的时候，走出来一位大将，他是怎么打扮的呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">当先涌出英雄将，赳赳威风添气象。</div>
+            <div class="text-block simplified-text">最先冲出来的是个威风凛凛的大将，那气势真是让人精神一振！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">鱼鳞铁甲紧遮身，凤翅金盔拴护项。</div>
+            <div class="text-block simplified-text">这人穿着像鱼鳞一样紧密的铁甲保护身体，戴着有凤凰翅膀装饰的金色头盔保护脖子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">冲波战马似龙形，开山大斧如弓样。</div>
+            <div class="text-block simplified-text">这匹马冲过波浪时像龙一样威猛，那把开山用的大斧头形状弯得像张弓。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">红旗白甲火光飞，正据西南坤位上。</div>
+            <div class="text-block simplified-text">红旗红甲火光冲天，正从西南方向杀过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">号旗上写得分明：“骠骑大将急先锋索超”。左右两员副将，左手是锦毛虎燕顺，右手是铁笛仙马麟。三员大将手持兵器，都骑战马，立于阵前。东北方门旗影里，一队军马，皂旗青甲。前面一把引军绣旗，上面金销艮卦，下绣飞豹。那把旗招展动处，捧出一员大将，怎生结束？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚：“骠骑大将急先锋索超”。他左右两边各有一名副将，左边是锦毛虎燕顺，右边是铁笛仙马麟。三位大将手里拿着武器，骑着战马，站在队伍最前面。东北方向的旗帜后面，有一队穿黑旗青甲的士兵。队伍最前面有一面绣旗，旗上面画着金色的艮卦图案，下面绣着飞豹。当那面旗子迎风展开时，队伍中走出一位大将，他是什么打扮呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">虎坐雕鞍胆气昂，弯弓插箭鬼神慌。</div>
+            <div class="text-block simplified-text">那老虎蹲在雕花的马鞍上，胆子大得很，气势十足。它拉开弓，搭上箭，连鬼神见了都吓得发抖。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">朱缨银盖遮刀面，绒缕金铃贴马旁。</div>
+            <div class="text-block simplified-text">红缨穗和银罩子挡在刀前面，带毛的穗子和金铃铛挂在马旁边。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">盔顶穰花红错落，甲穿柳叶翠遮藏。</div>
+            <div class="text-block simplified-text">头盔上装饰的红花乱七八糟地插着，铠甲上像柳叶一样的绿色甲片层层叠叠地挡着身体。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">皂旗青甲烟云内，东北天山守艮方。</div>
+            <div class="text-block simplified-text">在烟雾缭绕中，有一支举着黑旗、穿着青色盔甲的军队，他们镇守在东北方向的天山一带。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">号旗上写得分明：“骠骑大将九纹龙史进”。左右两员副将，左手是跳涧虎陈达，右手是白花蛇杨春。三员大将手持兵器，都骑战马，立于阵前。西北方门旗影里，一队军马，白旗黑甲。前面一把引军旗，上面金销乾卦，下绣飞虎。那把旗招展动处，捧出一员大将，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚：“先锋大将九纹龙史进”。左右两边各有一名副将，左边是跳涧虎陈达，右边是白花蛇杨春。三位大将手拿武器，骑着战马，站在队伍最前面。西北方向的门旗下，有一队人马，举着白旗穿着黑甲。队伍最前面有一面领头的旗子，旗子上面绣着金色的八卦符号，下面绣着飞虎图案。那面旗子随风摆动时，走出一位大将，他是怎么打扮的呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">雕鞍玉勒马嘶风，介胄棱层黑雾濛。</div>
+            <div class="text-block simplified-text">穿着华丽马鞍的马在风中嘶叫，披着厚重铠甲的士兵黑压压一片。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">豹尾壶中银镞箭，飞鱼袋内铁胎弓。</div>
+            <div class="text-block simplified-text">腰上挂着豹尾装饰的箭壶，里面插着银箭头的箭；身上背着飞鱼花纹的箭袋，里头装着铁把子的硬弓。
+
+（说明：1.将"镞"译为"箭头"、"胎弓"译为"铁把子的硬弓"更易懂 2."豹尾壶""飞鱼袋"保留原意象但添加"装饰""花纹"解释 3.用"挂着""背着"等动作词使画面更生动 4.保持了两件武器的对应关系）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">甲边翠缕穿双凤，刀面金花嵌小龙。</div>
+            <div class="text-block simplified-text">这根簪子一边用绿丝线绣着两只凤凰，另一边在刀面上用金线镶着一条小龙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">一簇白旗飘黑甲，天门西北是乾宫。</div>
+            <div class="text-block simplified-text">一群穿着黑盔甲的士兵举着白旗，在天门西北方向的乾宫那里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">号旗上写得分明：“骠骑大将青面兽杨志”。左右两员副将，左手是锦豹子杨林，右手是小霸王周通。三员大将手持兵器，都骑战马，立于阵前。八方摆布的铁桶相似，阵门里马军随马队，步军随步队，各持钢刀大斧，阔剑长枪，旗幡齐整，队伍威严。去那八阵中央，只见团团一遭都是杏黄旗，间着六十四面长脚旗，上面金销六十四卦，亦分四门。南门都是马军。正南上黄旗影里，捧出两员上将，一般结束。怎生披挂？但见：</div>
+            <div class="text-block simplified-text">旗子上写得清清楚楚："骠骑大将青面兽杨志"。两边各有一名副将，左边是锦豹子杨林，右边是小霸王周通。三位大将拿着武器，骑着战马，站在队伍最前面。整个队伍排得像铁桶一样严密，骑兵跟着骑兵，步兵跟着步兵，人人拿着钢刀、大斧、阔剑、长枪，旗帜整齐，队伍威风。往队伍正中间看，只见一圈都是杏黄色旗子，中间插着六十四面长条旗，旗上用金线绣着六十四卦图案，分成四个方向。南边全是骑兵。正南方向的黄旗下面，走出来两位主将，穿着打扮一模一样。他们怎么穿戴的呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">熟铜锣间花腔鼓，簇簇攒攒分队伍。</div>
+            <div class="text-block simplified-text">原文翻译成白话文：
+
+铜锣敲得当当响，花鼓打得咚咚锵，一群人排着整齐的队伍挤在一起。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">戗金铠甲赭黄袍，剪绒战袄葵花舞。</div>
+            <div class="text-block simplified-text">金光闪闪的铠甲配着红黄相间的战袍，绣着葵花的毛料战衣随风飘扬。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">垓心两骑马如龙，阵内一双人似虎。</div>
+            <div class="text-block simplified-text">战场中间有两匹马跑得像龙一样快，阵里有两个人打得像老虎一样猛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">周围绕定杏黄旗，正按中央戊己土。</div>
+            <div class="text-block simplified-text">杏黄色的旗子围成一圈，正好摆在正中间的位置。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">那两员首将都骑黄马，上首是美髯公朱仝，下手是插翅虎雷横。一遭人马尽都是黄旗，黄袍铜甲，黄马黄缨。中央阵四门，东门是金眼彪施恩，西门是白面郎君郑天寿，南门是云里金刚宋万，北门是病大虫薛永。那黄旗中间，立着那面“替天行道”杏黄旗。旗杆上拴着四条绒绳，四个长壮军士晃定。中间马上有那一个守旗的壮士，怎生模样？但见：</div>
+            <div class="text-block simplified-text">有两个领头的将军都骑着黄马，上面那个是胡子很漂亮的朱仝，下面那个是外号叫"插翅虎"的雷横。这队人马全都用黄色：黄旗子、黄战袍、铜铠甲、黄马配黄缰绳。队伍中间分四个方向：东边是外号"金眼彪"的施恩，西边是外号"白面郎君"的郑天寿，南边是外号"云里金刚"的宋万，北边是外号"病大虫"的薛永。在黄旗队伍正中间，竖着一面写着"替天行道"的杏黄色大旗。旗杆上绑着四条粗绳子，由四个高大强壮的士兵稳稳扶着。旗子下面有个骑马负责守护旗子的壮汉，他长什么样呢？让我告诉你：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">冠簪鱼尾圈金线，甲皱龙鳞护锦衣。</div>
+            <div class="text-block simplified-text">头上戴着鱼尾形状的金线发簪，身上穿着龙鳞花纹的铠甲和锦缎衣服。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">67.</span>
+            <div class="text-block original-text">凛凛身躯长一丈，中军守定杏黄旗。</div>
+            <div class="text-block simplified-text">这个人个子特别高，有一丈那么长，站在军队中间，牢牢守着那面杏黄色的大旗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">68.</span>
+            <div class="text-block original-text">这个守旗的壮士便是险道神郁保四。那簇黄旗后，便是一丛炮架，立着那个炮手轰天雷凌振，引着副手二十余人，围绕着炮架。架子后，一带都摆着挠钩套索，准备捉将的器械。挠钩手后，又是一遭杂采旗幡，团团便是七重围子手，四面立着二十八面绣旗，上面销金二十八宿星辰，中间立着一面堆绒绣就、真珠圈边、脚缀金铃、顶插雉尾、鹅黄帅字旗。那一个守旗的壮士怎生模样？但见：</div>
+            <div class="text-block simplified-text">这个拿旗的大汉叫郁保四，外号"险道神"。那排黄旗后面摆着一堆炮架，炮手凌振（外号"轰天雷"）带着二十多个帮手站在炮架周围。炮架后面摆满了挠钩、套索这些抓人用的工具。再往后是五颜六色的旗子，周围站着七层护卫，四面插着二十八面绣旗，旗上绣着二十八星宿的图案。正中间立着一面特别华丽的帅旗：鹅黄色旗面绣着"帅"字，旗边镶着珍珠，底下挂着金铃铛，顶上插着野鸡毛。这个扛旗的大汉长啥样呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">69.</span>
+            <div class="text-block original-text">铠甲斜拴海兽皮，绛罗巾帻插花枝。</div>
+            <div class="text-block simplified-text">他斜着绑了一身用海兽皮做的铠甲，头上扎着深红色的丝巾，还插着花。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">70.</span>
+            <div class="text-block original-text">茜红袍袄香绵甲，定守中军帅字旗。</div>
+            <div class="text-block simplified-text">穿着红色棉甲战袍，稳稳守住中军大旗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">71.</span>
+            <div class="text-block original-text">这个守旗的壮士便是没面目焦挺。去那帅字旗边，设立两个护旗的将士，都骑战马，一般结束。但见：</div>
+            <div class="text-block simplified-text">这个举旗的壮汉叫"没面目"焦挺。他在主将的大旗旁边，安排了两个护旗的士兵，都骑着战马，穿着同样的装备。你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">72.</span>
+            <div class="text-block original-text">一个战袍披锦绮，一个铠甲绣狻猊。一个稳把骅骝跨，一个能将骏马骑。一个钢枪威气重，一个利剑雪光飞。一个紧护中军帐，一个常依宝纛旗。</div>
+            <div class="text-block simplified-text">这段文字描述了两个威风凛凛的武将形象，用大白话来说就是：
+
+一个穿着华丽战袍，一个套着绣有神兽的铠甲。一个稳稳地骑着骏马，一个擅长驾驭战马。一个拿着沉甸甸的钢枪气势逼人，一个挥舞着寒光闪闪的宝剑。一个牢牢守着主帅营帐，一个始终站在军旗旁边站岗。
+
+（说明：原文通过对仗句式描写两位武将的英姿，改写时拆解了文言句式，将"骅骝"等古语替换为"骏马"等常用词，用"牢牢守着""始终站在"等口语化表达替代"紧护""常依"等文言词汇，同时完整保留了战袍、武器、站位等所有细节信息。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">73.</span>
+            <div class="text-block original-text">这两个守护帅旗的壮士，一个是毛头星孔明，一个是独火星孔亮。马前马后，排着二十四个把狼牙棍的铁甲军士。后面两把领战绣旗，两边排着二十四枝方天画戟。左手十二枝画戟丛中，捧着一员骁将，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这两个负责保护帅旗的勇士，一个叫毛头星孔明，一个叫独火星孔亮。他们前后左右站着二十四个身穿铁甲、手拿狼牙棒的士兵。后面还有两面指挥战斗的彩旗，两边排列着二十四杆方天画戟。左边十二杆画戟中间，站着一个勇猛的将领，他是什么打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">74.</span>
+            <div class="text-block original-text">踞鞍立马天风里，铠甲辉煌光焰起。</div>
+            <div class="text-block simplified-text">骑在马上，站在风中，身上的铠甲闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">75.</span>
+            <div class="text-block original-text">麒麟束带称狼腰，獬豸吞胸当虎体。</div>
+            <div class="text-block simplified-text">这个人系着麒麟花纹的腰带，腰细得像狼腰一样。胸前戴着獬豸图案的护甲，身材壮得像老虎似的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">76.</span>
+            <div class="text-block original-text">冠上明珠嵌晓星，鞘中宝剑藏秋水。</div>
+            <div class="text-block simplified-text">头上戴的珠宝像早上的星星一样闪亮，剑鞘里的宝剑像秋天的湖水一样清冷锋利。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">77.</span>
+            <div class="text-block original-text">方天画戟雪霜寒，风动金钱豹子尾。</div>
+            <div class="text-block simplified-text">这把方天画戟冷得像冰雪，风一吹，戟上的金钱豹尾装饰就跟着摆动。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">78.</span>
+            <div class="text-block original-text">绣旗上写得分明：“小温候吕方”。那右手十二枝画戟丛中，也捧着一员骁将，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">旗子上清清楚楚写着："小温候吕方"。右边十二支画戟中间，也站着一员猛将，他是怎么打扮的呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">79.</span>
+            <div class="text-block original-text">三叉宝冠珠灿烂，两条雉尾锦斓斑。</div>
+            <div class="text-block simplified-text">这顶王冠有三个分叉，上面镶满了闪亮的珠宝，还有两根野鸡尾羽做的装饰，羽毛上的花纹像彩色的锦缎一样漂亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">80.</span>
+            <div class="text-block original-text">柿红战袄遮银镜，柳绿征裙压绣鞍。</div>
+            <div class="text-block simplified-text">她穿着柿子红的战袍，遮住了银色的铠甲；柳绿色的战裙，盖住了绣花的马鞍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">81.</span>
+            <div class="text-block original-text">束带双跨鱼獭尾，护心甲挂下连环。</div>
+            <div class="text-block simplified-text">他腰间系着一条装饰着双排鱼皮和獭尾的腰带，胸前挂着一件由小铁环连成的护甲。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">82.</span>
+            <div class="text-block original-text">手持画杆方天戟，飘动金钱五色幡。</div>
+            <div class="text-block simplified-text">他手里拿着一根画着图案的方天画戟，身边飘着五颜六色、带着铜钱图案的旗子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">83.</span>
+            <div class="text-block original-text">绣旗上写得分明：“赛仁贵郭盛”。两员将各持画戟，立马两边。画戟中间一簇钢叉，两员步军骁将，一般结束。但见：</div>
+            <div class="text-block simplified-text">旗子上清清楚楚写着："赛仁贵郭盛"。两个将领都拿着画戟，骑在马上分别站在两边。画戟中间有一排钢叉，两个步兵猛将，打扮得一模一样。看起来是这样的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">84.</span>
+            <div class="text-block original-text">虎皮磕脑豹皮裩，衬甲衣笼细织金。手内钢叉光闪闪，腰间利剑冷森森。冲剑窟，入刀林。弟兄端的有胸襟。两只盖地包天胆，一对诛龙斩虎人。</div>
+            <div class="text-block simplified-text">这人穿着虎皮帽子豹皮裤，铠甲里面衬着金线织的衣服。手里钢叉闪闪发亮，腰上挂的剑寒气逼人。敢往刀剑堆里冲，兄弟们确实有胆量。两人胆子大得能包住天，都是能杀龙斩虎的好汉。  
+
+（说明：  
+1. "磕脑"译为"帽子"，"裩"译为"裤"以符合现代用语  
+2. "细织金"意译为"金线织的衣服"更直观  
+3. "冷森森"转译为"寒气逼人"保留威慑感  
+4. "冲剑窟，入刀林"转化为白话动作描写  
+5. "胸襟"在此语境下实际指"胆量"  
+6. 末句用"杀龙斩虎"替代"诛龙斩虎"，"诛"字文言色彩过重）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">85.</span>
+            <div class="text-block original-text">一个是两头蛇解珍，一个是双尾蝎解宝。弟兄两个各执着三股莲花叉，引着一行步战军士，守护着中军。随后两匹锦鞍马上，两员文士，掌管定赏功罚罪的人。左手那一个怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这段话说的是两个人：一个叫两头蛇解珍，一个叫双尾蝎解宝。他俩是兄弟，手里都拿着三股莲花叉，带着一队步兵，保护着中军。后面还有两匹披着漂亮马鞍的马，马上坐着两个文官，专门负责记功和处罚的事。左边那个人是什么打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">86.</span>
+            <div class="text-block original-text">乌纱唐帽通犀带，素白罗襕干皂靴。</div>
+            <div class="text-block simplified-text">头上戴着乌纱唐帽，腰上系着犀牛皮带，身上穿着素白罗襕衣，脚上蹬着黑靴子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">87.</span>
+            <div class="text-block original-text">慷慨胸中藏秀气，纵横笔下走龙蛇。</div>
+            <div class="text-block simplified-text">这个人胸襟开阔又有才华，写起字来笔走龙蛇特别潇洒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">88.</span>
+            <div class="text-block original-text">这个乃是梁山泊掌文案的秀士圣手书生萧让。右手那一个怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这个人就是梁山泊管文书的秀才，外号叫"圣手书生"的萧让。右边那个人是什么打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">89.</span>
+            <div class="text-block original-text">绿纱巾插玉螳螂，香皂罗衫紫带长。</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+她头上插着绿色纱巾和玉做的螳螂头饰，身上穿着带香味的薄纱衣服，腰间系着长长的紫色腰带。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">90.</span>
+            <div class="text-block original-text">为吏敢欺萧相国，声名寰海把名扬。</div>
+            <div class="text-block simplified-text">当官的人竟敢欺骗萧相国，结果他的名声传遍了天下，人人都知道了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">91.</span>
+            <div class="text-block original-text">这个乃是梁山泊掌吏事的豪杰铁面孔目裴宣。这两个马后，摆着紫衣持节的人二十四个，当路将二十四把麻札刀。那刀林中立着两个锦衣三串行刑刽子，怎生结束？但见：</div>
+            <div class="text-block simplified-text">这是梁山泊管文书的好汉"铁面孔目"裴宣。他身后跟着二十四个穿紫衣服、拿着令牌的人，路上摆着二十四把麻绳捆扎的大刀。刀丛里站着两个穿锦衣、负责行刑的刽子手。他们是什么打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">92.</span>
+            <div class="text-block original-text">一个皮主腰干红簇就，一个罗踢串彩色装成。一个双环扑兽戗金明，一个头巾畔花枝掩映。一个白纱衫遮笼锦体，一个皂秃袖半露鸦青。一个将漏尘斩鬼法刀擎，一个把水火棍手中提定。</div>
+            <div class="text-block simplified-text">这段文字描述的是两个人的穿着打扮和手里拿的东西。用大白话说就是：
+
+第一个人：
+- 腰上系着一条鲜红色的皮腰带
+- 戴着有双环图案、镶金边的兽形装饰品
+- 头巾旁边插着花
+- 穿着白纱衫，隐约露出里面华丽的衣服
+
+第二个人：
+- 穿着黑色短袖衣服，露出里面深青色的衣服
+- 腰间挂着彩色装饰的带子
+- 手里拿着一把专门对付恶鬼的法刀
+- 另一只手握着一根用来打人的水火棍
+
+简单来说就是描写两个打扮得很花哨的人，一个穿白衣戴花，一个穿黑衣拿武器。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">93.</span>
+            <div class="text-block original-text">上首是铁臂膊蔡福，下手是一枝花蔡庆。弟兄两个立于阵前，左右都是擎刀手。背后两边摆着二十四枝金枪银枪，每边设立一员大将领队。左边十二枝金枪队里，马上一员骁将，手执金枪，侧坐战马。怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这段话可以这样改：
+
+站在最前面的是蔡福和蔡庆两兄弟。蔡福外号"铁臂膊"，蔡庆外号"一枝花"。他们俩站在队伍最前面，左右两边都站着拿刀的士兵。后面两边各摆着二十四杆金银长枪，每边都有一个大将带队。左边十二杆金枪的队伍里，有个很厉害的将军骑在马上，手里拿着金枪，侧身坐在战马上。他是什么打扮呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">94.</span>
+            <div class="text-block original-text">锦鞍骏马紫丝缰，金翠花枝压鬓傍。</div>
+            <div class="text-block simplified-text">漂亮的马配着紫色缰绳，马鞍也很华丽。姑娘头上戴着金光闪闪的首饰，鲜花插在鬓角边。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">95.</span>
+            <div class="text-block original-text">雀画弓悬一弯月，龙泉剑挂九秋霜。</div>
+            <div class="text-block simplified-text">弓上画着鸟雀，弯得像个月亮；宝剑名叫龙泉，亮得像秋天的霜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">96.</span>
+            <div class="text-block original-text">绣袍巧制鹦哥绿，战服轻裁柳叶黄。</div>
+            <div class="text-block simplified-text">这件绣花长袍做得很精巧，是鹦哥羽毛那种绿色；那件打仗穿的衣服裁剪得很轻便，用的是柳叶一样的黄色。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">97.</span>
+            <div class="text-block original-text">顶上缨花红灿烂，手执金丝铁杆枪。</div>
+            <div class="text-block simplified-text">头上戴着红艳艳的穗子，手里拿着金光闪闪的铁杆长枪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">98.</span>
+            <div class="text-block original-text">这员骁将乃是梁山泊金枪手徐宁。右手十二枝银枪队里，马上一员骁将，手执银枪，也侧坐骏马。怎生披挂？但见：</div>
+            <div class="text-block simplified-text">这位猛将是梁山泊的金枪手徐宁。他右手边有十二个拿着银枪的骑兵，他自己也骑着一匹好马，手里握着银枪。他穿什么装备呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">99.</span>
+            <div class="text-block original-text">蜀锦鞍鞯宝镫光，五明骏马玉玎珰。</div>
+            <div class="text-block simplified-text">这匹骏马打扮得特别漂亮：马鞍垫着名贵的蜀锦，马镫闪闪发亮。它是一匹罕见的五明马，身上挂的玉饰叮当作响。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">100.</span>
+            <div class="text-block original-text">虎筋弦扣雕弓硬，燕尾梢攒羽箭长。</div>
+            <div class="text-block simplified-text">弓弦是用老虎的筋做的，拉起来特别有劲；箭尾装饰着燕尾形状的翎毛，整支箭显得又长又直。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">101.</span>
+            <div class="text-block original-text">绿锦袍明金孔雀，红鞓带束紫鸳鸯。</div>
+            <div class="text-block simplified-text">这人穿着件绿袍子，上面绣着闪闪发光的金孔雀图案，腰上系着红腰带，腰带扣上装饰着紫色的鸳鸯花纹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">102.</span>
+            <div class="text-block original-text">参差半露黄金甲，手执银丝铁杆枪。</div>
+            <div class="text-block simplified-text">盔甲只穿了一半，金色的甲片露在外面，手里拿着一根银色的长枪，枪杆是铁做的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">103.</span>
+            <div class="text-block original-text">这员骁将乃是梁山泊小李广花荣。两势下都是风流威猛二将。金枪手，银枪手，各带皂罗巾，鬓边都插翠叶金花。左手十二个金枪手穿绿，右手十二个银枪手穿紫。背后又是锦衣对对，花帽双双，绯袍簇簇，绣袄攒攒。两壁厢碧幢翠幕，朱幡皂盖，黄钺白旄，青萍紫电，两行二十四把钺斧，二十四对鞭挝。中间一字儿三把销金伞盖，三匹绣鞍骏马。正中马前立着两个英雄。左手那个壮士，端的是仪容济楚，世上无双。有《西江月》为证：</div>
+            <div class="text-block simplified-text">这位勇猛的将军就是梁山泊的小李广花荣。两边站着两位威风凛凛的大将。一边是拿金枪的，一边是拿银枪的，都戴着黑头巾，鬓角插着金花绿叶。左边十二个金枪手穿着绿衣服，右边十二个银枪手穿着紫衣服。后面还有成对的锦衣护卫，戴花帽的，穿红袍的，披绣袄的，站得整整齐齐。两边挂着青绿色的旗帜和帷幕，红色的幡旗，黑色的伞盖，黄色的斧钺，白色的旌旗，青色的宝剑，紫色的闪电，排列着二十四把斧钺和二十四对鞭杖。正中间并排摆着三把金边伞盖，拴着三匹披着绣花马鞍的骏马。最中间那匹马前站着两位好汉。左边那位壮士，长得真是英俊潇洒，天下难找第二个。有首《西江月》词可以证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">104.</span>
+            <div class="text-block original-text">头巾侧一根雉尾，束腰下四颗铜铃。黄罗衫子晃金明，飘带绣裙相称。兜小袜麻鞋嫩白，压腿絣护膝深青。旗标令字号神行，百十里登时取应。</div>
+            <div class="text-block simplified-text">这个人头上歪戴着头巾，插着一根野鸡毛。腰上系着四条铜铃铛。穿着亮闪闪的黄绸衣服，配上绣花飘带裙子很搭。脚上是白净的麻布袜子和鞋子，腿上绑着深青色的护膝。背上的旗子写着"神行"两个大字，跑个百八十里路立马就能到。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">105.</span>
+            <div class="text-block original-text">这个便是梁山泊能行快走的头领神行太保戴宗，手持鹅黄令字绣旗，专管大军中往来飞报军情、调兵遣将一应事务。右手那个对立的壮士，打扮得出众超群，人中罕有。也有《西江月》为证：</div>
+            <div class="text-block simplified-text">这个人就是梁山泊跑得最快的头领，外号叫"神行太保"的戴宗。他手里拿着一面鹅黄色的令旗，专门负责在军队里快速传递军情、调动兵马这些事。站在他右边那个特别显眼的大汉，打扮得与众不同，普通人里很少见到这样的。有首《西江月》词可以证明：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">106.</span>
+            <div class="text-block original-text">褐衲袄满身锦簇，青包巾遍体金销。鬓边一朵翠花娇，鸂鶒玉环光耀。红串绣裙裹肚，白裆素练围腰。落生弩子棒头挑，百万军中偏俏。</div>
+            <div class="text-block simplified-text">这人穿得特别花哨：棕色的袍子上绣满花纹，青色的头巾镶着金边。鬓角还插着一朵翠绿的假花，腰上挂的玉环亮闪闪的。红腰带系着绣花裙，白布带扎在腰间。手里拿着打鸟的弩弓和棍棒，站在千军万马里头就数他最扎眼。
+
+（说明：通过以下方式实现白话转换：
+1. "褐衲袄"译为"棕色的袍子"等具体颜色+衣物
+2. "锦簇""金销"等抽象词转为"绣满花纹""镶着金边"等直观描述
+3. 拆解"鸂鶒玉环"这类生僻词为"腰上挂的玉环"
+4. "百万军中偏俏"意译为"千军万马里头就数他最扎眼"的口语表达
+5. 保留所有原始元素：衣着、饰品、武器、场景描写）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">107.</span>
+            <div class="text-block original-text">这个便是梁山泊风流子弟，能干机密的头领浪子燕青。背着强弩，插着利箭，手提着齐眉杆棒，专一护持中军。远望着中军，去那右边销金青罗伞盖底下，绣鞍马上坐着那个道德高人，有名羽士。怎生打扮？有《西江月》为证：</div>
+            <div class="text-block simplified-text">这就是梁山泊那个又帅又能干的头领，外号叫浪子燕青。他背着硬弓，插着快箭，手里拿着齐眉高的棍子，专门保护大本营。远远望过去，大本营右边有个青罗伞盖，伞下面骑着马、坐在绣花马鞍上的，就是那位有名的道士高人。他穿成啥样呢？有首《西江月》词是这么说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">108.</span>
+            <div class="text-block original-text">如意冠玉簪翠笔，绛绡衣鹤舞金霞。火神朱履映桃花，环珮玎珰斜挂。背上雌雄宝剑，匣中微喷光华。青罗伞盖拥高牙，紫骝马雕鞍稳跨。</div>
+            <div class="text-block simplified-text">这个人打扮得特别华丽：头上戴着如意形状的玉簪子，簪子上还装饰着翠鸟羽毛，穿着深红色的纱衣，衣服上绣着仙鹤在金色云霞中飞舞的图案。脚上穿着火红色的神仙鞋子，鞋面上绣着桃花。腰间斜挂着叮当作响的玉佩，背后背着两把雌雄宝剑，剑鞘里隐约闪着寒光。有人给他撑着青罗伞，伞盖下露出高大的仪仗旗帜。他骑着一匹紫色骏马，马鞍雕刻精美，坐得稳稳当当。
+
+（说明：译文完全保留原文描述的服饰装备细节，用"戴着""穿着""绣着"等口语化表达替代文言句式，将"绛绡衣"译为"深红色纱衣"、"紫骝马"译为"紫色骏马"等通俗说法，并通过"特别华丽""叮当作响"等补充说明使画面更直观，确保每个元素都得到准确传达。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">109.</span>
+            <div class="text-block original-text">这个便是梁山泊呼风唤雨，役使鬼神，行法真师入云龙公孙胜。马上背着两口宝剑，手中按定紫丝缰。去那左边销金青罗伞盖底下，锦鞍马上坐着那个足智多谋全胜军师。怎生打扮？有《西江月》为证：</div>
+            <div class="text-block simplified-text">这个人就是梁山泊那个能呼风唤雨、驱使鬼神、会法术的军师公孙胜，外号"入云龙"。他骑在马上，背着两把宝剑，手里握着紫色缰绳。在他左边那个金色伞盖下面，骑着装饰华丽马匹的，就是那个特别聪明、总能打胜仗的军师。他具体是什么打扮呢？有首《西江月》词是这么形容的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">110.</span>
+            <div class="text-block original-text">白道服皂罗沿襈，紫丝绦碧玉钩环。手中羽扇动天关头上纶巾微岸。贴里暗穿银甲，垓心稳坐雕鞍。一双铜链挂腰间，文武双全师范。</div>
+            <div class="text-block simplified-text">这个人穿着黑白相间的衣服，腰间系着紫色丝带和碧玉带钩。他手里摇着羽毛扇子，头上戴着略微歪斜的头巾。衣服里面偷偷穿着银甲，稳稳地坐在雕花的马鞍上。腰上挂着一对铜链，看起来能文能武，是个厉害人物。
+
+（说明：译文完全保留原文描述的服饰、装备和人物特征，用"黑白相间"替代"白道服皂罗沿襈"等专业服饰术语，"偷偷穿着银甲"更口语化，"能文能武"替代"文武双全师范"更通俗。所有关键信息：服饰、羽扇、头巾、银甲、马鞍、铜链等要素均完整保留。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">111.</span>
+            <div class="text-block original-text">这个便是梁山泊能通韬略，善用兵机，有道军师智多星吴学究。马上手擎羽扇，腰悬两条铜链。去那正中销金大红罗伞盖底下，那照夜玉狮子金鞍马上，坐着那个有仁有义统军大元帅。怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这个人就是梁山泊的军师智多星吴用，他懂兵法，会打仗。你看他骑在马上，手里拿着羽毛扇，腰上挂着两条铜链。在正中间那把金色装饰的大红罗伞下面，那匹雪白的高头大马上，坐着他们仁义的大元帅。他穿什么呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">112.</span>
+            <div class="text-block original-text">凤翅盔高攒金宝，浑金甲密砌龙鳞。锦征袍花朵簇阳春，锟吾剑腰悬光喷。绣腿絣绒圈翡翠，玉玲珑带束麒麟。真珠伞盖展红云，第一位天罡临阵。</div>
+            <div class="text-block simplified-text">这位将军打扮得特别威风：头上戴着镶金的高顶头盔，身上的金色铠甲像龙鳞一样紧密排列。他的战袍上绣满了鲜艳的花纹，腰间挂着一把闪闪发光的宝剑。腿上绑着绣有翡翠图案的护腿，玉带扣上雕着麒麟。他举着一把红云般的珍珠伞盖，在战场上格外显眼——这就是三十六天罡星之首的装扮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">113.</span>
+            <div class="text-block original-text">这个正是梁山泊主，济州郓城县人氏，山东及时雨呼保义宋公明。全身结束，自仗锟吾宝剑，坐骑金鞍白马，立于阵前监战，掌握中军。马后大戟长戈，锦鞍骏马，整整齐齐三五十员牙将，都骑战马，手执枪刀，全副弓箭。马后又设二十四枝画角，全部军鼓大乐。阵后又设两队游兵，伏于两侧，以为护持。中军羽翼，左是没遮拦穆弘，引兄弟小遮拦穆春，管领马步军一千五百人；右是赤发鬼刘唐，引着九尾鱼陶宗旺，管领马步军一千五百人，伏在两胁。后阵又是一队阴兵，簇拥着马上三个女头领，中间是一丈青扈三娘，左边是母大虫顾大嫂，右边是母夜叉孙二娘。押阵后是他三个丈夫，中间矮脚虎王英，左是小尉迟孙新，右是菜园子张青。总管马步军兵二千。那座阵势，非同小可。怎见得好阵？但见：</div>
+            <div class="text-block simplified-text">这人就是梁山泊的老大，山东郓城县的宋江，外号"及时雨""呼保义"。他全副武装，拿着宝剑，骑着金鞍白马，站在队伍最前面督战，指挥全军。他后面跟着几十个将领，都骑着战马，拿着刀枪弓箭，整整齐齐排着队。还有二十四支号角和军鼓在奏乐。队伍后面还埋伏着两队人马保护左右两边。
+
+左右两边各有一千五百人的步兵骑兵：左边是穆弘带着他弟弟穆春，右边是刘唐带着陶宗旺。最后面还有一支特别的队伍，是三个女头领：中间是扈三娘，左边是顾大嫂，右边是孙二娘。她们后面跟着各自的丈夫：王英、孙新和张青，带着两千步兵骑兵。
+
+这个阵势可不得了！到底有多厉害？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">114.</span>
+            <div class="text-block original-text">明分八卦，暗合九宫。占天地之机关，夺风云之气象。前后列龟蛇之状，左右分龙虎之形。出奇正之甲兵，按阴阳之造化。丙丁前进，如万条烈火烧山；壬癸后随，似一片乌云覆地。左势下盘旋青气，右手下贯串白光。金霞遍满中央，黄道全依戊己。东西有序，南北多方。四维有二十八宿之分，周回有六十四卦之变。先锋猛勇，合后英雄。左统军皆夺旗斩将之徒，右统军尽举鼎拔山之辈。盘盘曲曲，乱中队伍变长蛇；整整齐齐，静里威仪如伏虎。马军则一冲一突，步卒是或后或前。人人果敢，争前出阵夺头功；个个才能，掠阵监军擒大将。休夸八阵成功，谩说六韬取胜。孔明施妙计，李靖播神机。</div>
+            <div class="text-block simplified-text">这段文字描述的是一个古代军队布阵的场景，用现代大白话可以这样解释：
+
+这个阵法明面上按八卦排列，暗地里符合九宫布局。能利用天时地利，掌控战场形势。阵型前后像龟蛇盘踞，左右如龙虎对峙。既有正兵奇兵配合，又暗合阴阳变化。
+
+进攻时像烈火燎原（丙丁方位），防守时如乌云压顶（壬癸方位）。左边有青色云气盘旋，右边有白光贯穿。中央金光笼罩，核心区域（黄道）稳如泰山。整个阵法东西南北各方向都安排有序，四周分布着二十八宿的方位，循环变化如同六十四卦。
+
+阵中将士个个勇猛：先锋部队敢打敢冲，后援部队都是好汉。左边统领带着能夺旗斩将的猛人，右边统帅领着力大无穷的壮士。阵型变化时像长蛇游走灵活多变，静止时又像猛虎蹲伏气势逼人。骑兵来回冲锋，步兵前后接应。人人奋勇争先，个个本事高强，都想冲在前面立头功，在战场上活捉敌将。
+
+这阵法可比传说中的"八阵图"还厉害，什么"六韬"兵法都比不上。就像诸葛亮的神机妙算，李靖的用兵如神。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">115.</span>
+            <div class="text-block original-text">枢密使童贯在阵中将台上，定睛看了梁山泊兵马，无移时摆成这个九宫八卦阵势，军马豪杰，将士英雄，惊得魂飞魄散，心胆俱落，不住声道：“可知但来此间收捕的官军便大败而回，原来如此利害！”看了半晌，只听得宋江军中催战的锣鼓不住声发擂。童贯且下将台，骑上战马，再出前军，来诸将中问道：“那个敢厮杀的出去打话？”先锋队里转过一员猛将，挺身跃马而出，就马上欠身禀童贯道：“小将愿往，乞取钧旨。”看乃是郑州都监陈翥，白袍银甲，青马绛缨，使一口大杆刀，见充副先锋之职。童贯便教军中金鼓旗下发三通擂，将台上把红旗招展兵马。陈翥从门旗下飞马出阵，两军一齐呐喊。陈翥兜住马，横着刀，厉声大叫：“无端草寇，背逆狂徒，天兵到此，尚不投降，直待骨肉为泥，悔之何及！”宋江正南阵中，先锋头领虎将秦明，飞马出阵，更不打话，舞起狼牙棍直取陈翥。两马相交，兵器并举，一个使棍的当头便打，一个使刀的劈面砍来。四条臂膊交加，八只马蹄撩乱。二将来来往往，翻翻复复，斗了二十余合。秦明卖个破绽，放陈翥赶将入来，一刀却砍个空。秦明趁势手起棍落，把陈翥连盔带顶，正中天灵。陈翥翻身死于马下。秦明的两员副将单廷圭、魏定国，飞马直冲出阵来，先抢了那匹好马，接应秦明去了。东南方门旗里，虎将双枪将董平见秦明得了头功，在马上寻思：“大军已踏动锐气，不就这里抢将过去，捉了童贯，更待何时！”大叫一声，如阵前起了霹雳，两手持两条枪，把马一拍，直撞过阵来。童贯见了，勒回马望中军便走。西南方门旗里，骠骑将急先锋索超也叫道：“不就这里捉了童贯，更待何时！”手轮大斧杀过阵来。中央秦明见了两边冲杀过去，也招动本队红旗军马，一齐抢入阵中，来捉童贯。正是：从前作过事，没幸一齐来。直使数只皂雕追紫燕，一群猛虎啖羊羔。毕竟枢使童贯性命如何，且听下回分解。</div>
+            <div class="text-block simplified-text">童贯站在指挥台上，仔细看了看梁山泊的军队。没过多久，对方就摆出了九宫八卦阵，士兵们个个勇猛，将领们人人威武。童贯吓得魂都快没了，心里直发慌，不停地说："怪不得之前来剿匪的官兵都大败而归，原来他们这么厉害！"他看了半天，只听见宋江那边战鼓敲个不停，催着开战。
+
+童贯走下指挥台，骑上战马，来到前线问将领们："谁敢出去迎战？"这时先锋队里冲出一员猛将，骑着马上前请命："末将愿往！"这人叫陈翥，是郑州都监，穿着白袍银甲，骑着青马，拿着大刀，是副先锋。童贯就命令擂鼓三通，挥动红旗指挥军队。
+
+陈翥骑马冲出阵去，两边军队都大声呐喊。他勒住马，横着刀大喊："你们这些无法无天的强盗！朝廷大军来了还不投降？等被打成肉泥就晚了！"宋江这边，先锋大将秦明二话不说，骑着马就冲出来，抡起狼牙棒就打。两人打了二十多个回合，秦明假装露出破绽，陈翥一刀砍空，被秦明一棒打在头上，当场毙命。秦明的两个副将立刻冲出来，抢了陈翥的好马，接应秦明回去了。
+
+这时东南边的董平见秦明立了功，心想："现在士气正旺，不趁现在抓住童贯还等什么时候？"他大喊一声，像打雷一样，拿着双枪就冲了过去。童贯一看，调转马头就往中军跑。西南边的索超也喊道："现在不抓童贯更待何时！"抡着大斧杀过来。中央的秦明见两边都冲过去了，也带着自己的红旗军一起杀入敌阵要抓童贯。
+
+这可真是：以前做的坏事，现在报应都来了。就像一群黑鹰追燕子，猛虎吃羊羔一样。童贯到底能不能活命？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
