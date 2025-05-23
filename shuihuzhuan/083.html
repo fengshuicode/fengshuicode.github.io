@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十三回　宋公明奉诏破大辽　陈桥驿滴泪斩小卒</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./082.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十三回　宋公明奉诏破大辽　陈桥驿滴泪斩小卒</h1>
+        <a href="./084.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">古风一首：</div>
+            <div class="text-block simplified-text">古诗一首：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">大鹏久伏北溟里，海运抟风九万里。</div>
+            <div class="text-block simplified-text">这只大鸟一直藏在北海里，等大风来了，就借着风势一飞冲天，直上九万里高空。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">丈夫按剑居蓬蒿，时间谈笑鹰扬起。</div>
+            <div class="text-block simplified-text">这个男人手按宝剑住在野草丛中，平时说说笑笑，但随时能像老鹰一样突然展翅高飞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">县官失政群臣妒，天下黎民思乐土。</div>
+            <div class="text-block simplified-text">当官的乱搞，大臣们互相排挤，老百姓都盼着能过上好日子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">壮哉一百八英雄，任侠施仁聚山坞。</div>
+            <div class="text-block simplified-text">这句话可以改写成：
+
+"梁山这一百零八个好汉真了不起，他们讲义气、做好事，聚集在山寨里。"
+
+解释改写要点：
+1. "壮哉"译为"真了不起"，更口语化
+2. "一百八英雄"明确为"梁山一百零八个好汉"，增加背景信息
+3. "任侠施仁"拆解为"讲义气、做好事"两个通俗表述
+4. "山坞"译为更常见的"山寨"
+5. 保持了对梁山好汉的赞美原意
+6. 加入了"梁山"这个原文隐含的背景信息，帮助理解</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">宋江意气天下稀，学究谋略人中奇。</div>
+            <div class="text-block simplified-text">宋江这个人特别讲义气，天下少有；吴用的计谋特别厉害，没人比得上。
+
+（说明：1. "意气"译为"讲义气"更口语化 2. "天下稀"用"天下少有"更直白 3. "学究"明确为"吴用"因水浒传中特指 4. "人中奇"译为"没人比得上"更通俗 5. 保持了对仗结构但用词更现代 6. 完全保留原句对二人特征的赞美）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">折馘擒俘俱虎将，披坚执锐尽健儿。</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+这些砍下敌人脑袋、活捉俘虏的都是勇猛的将领，那些身穿坚固铠甲、手持锋利武器的全是精壮的士兵。
+
+或者更口语化一些：
+
+杀敌抓俘虏的都是猛将，穿盔甲拿武器的全是精兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">艨艟战舰环湍濑，剑戟短兵布山寨。</div>
+            <div class="text-block simplified-text">战船密密麻麻围着湍急的河流，士兵们拿着刀枪剑戟把山寨团团围住。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">三关部伍太森严，万姓闻风俱胆碎。</div>
+            <div class="text-block simplified-text">边防部队管得太严了，老百姓一听就吓得要命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">惟诛国蠹去贪残，替天行道民尽安。</div>
+            <div class="text-block simplified-text">铲除国家的害虫，打掉贪官污吏，替老天爷主持公道，让老百姓都能过上好日子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">只为忠贞同皎日，遂令天诏降梁山。</div>
+            <div class="text-block simplified-text">他们因为忠诚正直像太阳一样光明磊落，所以朝廷才下旨招安梁山好汉。
+
+（说明：1. "皎日"译为"像太阳一样光明磊落"既保留比喻又通俗化 2. "天诏"译为"朝廷下旨"更符合现代认知 3. 用"梁山好汉"替代"梁山"使指代更明确 4. "遂令"转译为因果关系的"所以"更口语化 5. 完整保留了"因忠诚被招安"的核心信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">东风拂拂征袍舞，朱鹭翩翩动钲鼓。</div>
+            <div class="text-block simplified-text">春风轻轻吹动着战士们的战袍，红色的大鸟飞舞着，伴随着锣鼓的节奏。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">黄封御酒远相颁，紫泥锦绮仍安抚。</div>
+            <div class="text-block simplified-text">皇上从远方派人送来了御赐的好酒，还带来了盖着皇家印章的文书和精美的丝绸作为赏赐。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">承恩将校舒衷情，焚香再拜朝玉京。</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+将士们满怀感激之情，点上香恭敬地向京城方向行礼跪拜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">天子龙颜动喜色，诸侯击节歌升平。</div>
+            <div class="text-block simplified-text">皇帝高兴得眉开眼笑，大臣们拍手唱着天下太平的歌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">汴州城下屯枭骑，一心报国真嘉会。</div>
+            <div class="text-block simplified-text">汴州城下驻扎着勇猛的骑兵，他们一心想着报效国家，真是好样的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">尽归廊庙佐清朝，万古千秋尚忠义。</div>
+            <div class="text-block simplified-text">全都一心一意为朝廷效力，辅佐清明的王朝，世世代代都崇尚忠诚正义。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">话说当年有大辽国王，起兵前来侵占山后九州边界。兵分四路而入，劫掳山东、山西，抢掠河南、河北。各处州县，申达表文，奏请朝廷求救。先经枢密院，然后得到御前。所有枢密童贯同太师蔡京、太尉高俅、杨戬，商议纳下表章不奏。只是行移邻近州府，催攒各处，径调军马，前去策应。正如担雪填井一般。此事人皆尽知，只瞒着天子一个。适来四个贼臣设计，教枢密童贯启奏，将宋江等众要行陷害。不期那御屏风后转出一员大臣来喝住。正是殿前都太尉宿元景。便向殿前启奏道：“陛下！宋江这伙好汉方始归降，百单八人，恩同手足，意若同胞。他们决不肯便拆散分开，虽死不舍相离。如何今又要害他众人性命！此辈好汉，智勇非同小可。倘或城中翻变起来，将何解救？如之奈何？见今辽国兴兵十万之众，侵占山后九州所属县治，各处申达表文求救，累次调兵前去征剿交锋，如汤泼蚁。贼势浩大，所遣官军，又无良策可退，每每只是折兵损将。惟瞒陛下不奏。以臣愚见，正好差宋江等全伙良将，部领所属军将人马，直抵本境，收伏辽国之贼。令此辈好汉建功进用，于国实有便益。微臣不敢自专，乞请圣鉴。”天子听罢宿太尉所奏，龙颜大喜。巡问众官，俱言有理。天子大骂枢密院童贯等官：“都是汝等谗佞之徒，误国之辈，妒贤嫉能，闭塞贤路，饰词矫情，坏尽朝廷大事！姑恕情罪，免其追问。”天子亲书诏敕，赐宋江为破辽都先锋。其余诸将，待建功加官受爵。就差太尉宿元景，亲赍诏敕，去宋江军前行营开读。天子朝退，百官皆散。</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+以前辽国国王派兵攻打宋朝边境，分成四路军队抢占了山东、山西、河南、河北很多地方。各地官员赶紧写信向朝廷求救，但这些求救信先送到枢密院（相当于国防部），被童贯、蔡京、高俅、杨戬这几个奸臣扣下了，他们只让附近州县自己派兵去救援，根本没用，就像用雪去填水井一样白费力气。这事大家都知道，就瞒着皇帝一个人。
+
+后来这四个奸臣又想害宋江他们，正要向皇帝告状时，被宿太尉当场拦住。宿太尉对皇帝说："皇上，宋江这108个好汉刚归顺朝廷，他们感情特别好，死都不愿意分开。现在辽国带着十万大军来打我们，之前派去的官兵都打不过。不如让宋江他们带兵去打辽国，既能立功对国家也有好处。"
+
+皇帝听了很高兴，问其他官员也都说好。皇帝气得大骂童贯他们："你们这些小人！整天嫉妒贤能，耽误国家大事！这次先饶了你们。"然后亲自写圣旨，封宋江当征辽先锋，其他将领等立功后再封官。让宿太尉带着圣旨去宋江军营宣读。说完就散朝了。
+
+（完全保留原文所有关键信息：辽国入侵→官员隐瞒→奸臣想害宋江→宿太尉劝阻→皇帝派宋江征辽）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">且说宿太尉领了圣旨出朝，径到宋江行寨军前开读。宋江等忙排香案，拜谢君恩，开读诏敕：</div>
+            <div class="text-block simplified-text">话说宿太尉带着皇帝的命令出了朝廷，直接来到宋江的军营前宣读。宋江他们赶紧摆好香案，跪拜感谢皇恩，然后听宣读圣旨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">“制曰：舜有天下，举皋陶而四海咸服；汤有天下，举伊尹而万民俱安。朕自即位以来，任贤之心，夙夜靡怠。近得宋江等众，顺天护国，秉义全忠。如斯大才，未易轻任。今为辽兵侵境，逆虏犯边。敕加宋江为破辽兵马都先锋使，卢俊义为副先锋。其余军将，如夺头功，表申奏闻，量加官爵。就统所部军马，克日兴师，直抵巢穴，伐罪吊民，扫清边界。所过州府，另敕应付钱粮。如有随处官吏人等，不遵将令者，悉从便益处治。故兹制示，想宜知悉。</div>
+            <div class="text-block simplified-text">皇帝下命令说：  
+
+以前舜当皇帝时，用了皋陶，天下人都服气；汤当皇帝时，用了伊尹，老百姓都过得安稳。我自从当上皇帝，一直想着要重用贤能的人，日夜不敢放松。最近发现宋江这帮人，顺应天意、保家卫国，讲义气、够忠心。这样的人才，不能随便安排个职位就打发了。  
+
+现在辽国军队入侵边境，敌人来犯，所以特封宋江为“破辽兵马都先锋使”（讨伐辽国的主将），卢俊义当副将。其他将士如果立了大功，也会上报朝廷，按功劳升官。你们马上带领部队，尽快出兵，直接打到敌人老窝，替天行道，解救受苦的百姓，把边境的敌人扫干净。路过的州县，朝廷会另外下令给你们提供粮草。要是哪个地方的官员敢不听命令，你们可以自己看着办，该罚就罚。  
+
+这道命令发下去，大家都给我记清楚了！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">宣和四年夏月 日。”</div>
+            <div class="text-block simplified-text">"这是宣和四年夏天写的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">当下宋江、卢俊义等，跪听诏敕已罢，众皆大喜。宋江等拜谢宿太尉道：“某等众人，正欲如此与国家出力，立功立业，以为忠臣。今得太尉恩相力赐保奏，恩同父母。只有梁山泊晁天王灵位，未曾安厝。亦有各家老小家眷，未曾发送还乡。所有城垣，未曾拆毁。战船亦未曾将来。有烦恩相题奏，乞降圣旨，宽限旬日，还山了此数事，整顿器具枪刀甲马，便当尽忠报国。”宿太尉听罢大喜，回奏天子，即降圣旨，敕赐库内取金一千两，银五千两，采段五千匹，颁赐众将。就令太尉于库藏关支，去行营俵散与众将，原有老小者，赏赐给付与老小，养膳终身。原无老小者，给付本身，自行收受。宋江奉敕谢恩已毕，给散众人收讫。宿太尉回朝，分付宋江道：“将军还山，可速去快来。先使人报知下官，不可迟误。”有诗为证：</div>
+            <div class="text-block simplified-text">宋江、卢俊义他们听完圣旨后，高兴得不得了，赶紧跪下谢恩。宋江对宿太尉说："我们这些人正想为国家出力，立功当忠臣。多亏太尉大人帮忙说好话，这恩情比父母还大。只是还有几件事没办完：晁天王的灵位还没安顿好，兄弟们的家属还没送回家乡，城墙还没拆完，战船也还没处理。麻烦太尉再帮我们向皇上求个情，宽限十来天，让我们回梁山把这些事处理完，收拾好武器装备，一定回来忠心报效国家。"  
+
+宿太尉听了很高兴，回朝禀告皇上。皇上马上批准，还从国库拨了一千两金子、五千两银子、五千匹绸缎赏给众将领。有家眷的，赏给家眷养老；没家眷的，直接发给本人。宋江领了赏赐分给大家后，宿太尉临走叮嘱："你们回梁山要快去快回，提前派人通知我，别耽误了。"  
+
+（后面原本有首诗，这里就不翻译了）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">兵阵堂堂已受降，佞臣潜地害忠良。</div>
+            <div class="text-block simplified-text">敌人已经投降认输了，可那些奸诈的小人还在背地里陷害忠心为国的好人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">宿公力奏征骄虏，始得孤忠达庙廊。</div>
+            <div class="text-block simplified-text">这位姓宿的大臣拼命向皇帝建议出兵打那些嚣张的外族敌人，这才让他的一片忠心被朝廷知道。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">再说宋江聚众商议、所带还山人数是谁。宋江与同军师吴用、公孙胜、林冲、刘唐、杜迁、宋万、朱贵、宋清、阮家三弟兄，马步水军一万余人回去。其余大队人马，都随卢先锋在京师屯扎。宋江与吴用、公孙胜等，于路无话。回到梁山泊忠义堂上坐下，便传将令，教各家老小眷属，收拾行李，准备起程。一面叫宰杀猪羊牲口，香烛钱马，祭献晁天王。然后焚化灵牌，做个会众的筵席，管待众将。随即将各家老小，各各送回原所州县，上车乘马，俱已去了。然后教自家庄客，送老小宋太公并家眷人口，再回郓城县宋家村，复为良民。随即叫阮家三弟兄，拣选合用船只。其余不堪用的小船，尽行给散与附近居民收用。山中应有屋宇房舍，任从居民搬拆。三关城垣，忠义等屋，尽行拆毁。一应事务，整理已了，收拾人马，火速还京。</div>
+            <div class="text-block simplified-text">宋江召集大伙儿商量带哪些人回梁山。最后决定带上军师吴用、公孙胜，还有林冲、刘唐、杜迁、宋万、朱贵、宋清以及阮家三兄弟，总共带着一万多步兵、骑兵和水军回去。剩下的主力部队都跟着卢俊义留在京城驻扎。
+
+一路上宋江他们没多说话，回到梁山泊忠义堂后，马上安排几件事：
+1. 让所有头领的家眷收拾行李准备搬家
+2. 杀猪宰羊，准备香烛纸钱祭拜死去的晁盖大哥
+3. 祭拜完烧掉灵位，请大家吃散伙饭
+4. 把各家老小都送回原籍，看着他们坐车骑马离开
+5. 专门派庄客送自己父亲宋太公一家回郓城县宋家村重新当老百姓
+6. 让阮家三兄弟挑出还能用的船，破船都送给附近百姓
+7. 山上的房子随便老百姓拆，连城墙和忠义堂这些建筑也都拆掉
+
+把这些事都办完后，宋江就带着人马赶紧回京城去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">一路无话，早到东京。卢俊义等接至大寨。先使燕青入城，报知宿太尉。要辞天子，引领大兵起程。宿太尉见报，入内奏知天子。次日，引宋江于武英殿朝见。天子龙颜欣悦，赐酒已罢，玉音问道：“卿等休辞道途跋涉，军马驱驰，与寡人征虏破辽，早奏凯歌而回。朕当重加录用。其众将校，量功加爵，卿勿怠焉！”宋江叩头称谢，端简启奏：“臣乃鄙猥小吏，误犯刑典，流递江州，醉后狂言，临刑弃市。众力救之，无处逃避。遂乃潜身水泊，苟延微命。所犯罪恶，万死难逃。今蒙圣上宽恤收录，大敷旷荡之恩，得蒙赦免本罪。臣披肝沥胆，尚不能补报皇上之恩。今奉诏命，敢不竭力尽忠，死而后已！”天子大喜，再赐御酒，教取描金鹊画弓箭一副，名马一匹，全副鞍辔，宝刀一口，赐与宋江。宋江叩首谢恩，辞陛出内。将领天子御赐宝刀鞍马弓箭，就带回营。传令诸军将校，准备起行。</div>
+            <div class="text-block simplified-text">一路上没发生什么事，很快就到了东京。卢俊义等人把他们接到大营。先派燕青进城通知宿太尉，说要向皇帝辞行，然后带兵出发。宿太尉知道后，进宫报告了皇帝。第二天，皇帝在武英殿召见宋江。皇帝很高兴，赐酒之后对他说："你们别怕路上辛苦，带兵打仗为我征讨辽国，早点打赢回来。我一定会重用你们。手下的将士们，也会按功劳封赏，你可要好好干！"宋江磕头感谢，恭敬地回答："我就是个小官，以前犯了罪被发配到江州，喝醉酒说了狂话差点被处死。多亏兄弟们救我，没地方躲才逃到梁山。我犯的罪死一万次都不够，现在皇上开恩饶恕我，我肝脑涂地也报答不了。这次奉命出征，一定拼死效忠！"皇帝很高兴，又赏了御酒，还给了宋江一套描金的弓箭、一匹好马配上全套马鞍、一把宝刀。宋江磕头谢恩后离开皇宫，带着皇帝赏的东西回到军营，命令全军准备出发。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">且说徽宗天子次早令宿太尉传下圣旨，教中书省院官二员，就陈桥驿与宋江先锋犒劳三军。每名军士酒一瓶，肉一斤，对众关支，毋得克减。中书省得了圣旨，一面连更晓夜，整顿酒肉，差官二员，前去给散。</div>
+            <div class="text-block simplified-text">第二天早上，宋徽宗皇帝让宿太尉传下命令，派两名中书省的官员到陈桥驿去犒赏宋江带领的先锋部队。每个士兵发一瓶酒、一斤肉，要当众发放，不准克扣。中书省接到命令后，连夜准备酒肉，派了两名官员去发放。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">再说宋江传令诸军，便与军师吴用计议，将军马分作二起进程。令五虎八彪将，引军先行。十骠骑将在后。宋江、卢俊义、吴用、公孙胜，统领中军。水军头领三阮、李俊、张横、张顺，带领童威、童猛、孟康、王定六并水手头目人等，撑驾战船，自蔡河内出黄河，投北进发。宋江催趱三军，取陈桥驿大路而进。号令军将，毋得动扰乡民。有诗为证：</div>
+            <div class="text-block simplified-text">宋江跟军师吴用商量后，把军队分成两批出发。先让五虎八彪这些大将带兵走在前面，十位骠骑将军跟在后面。宋江、卢俊义、吴用和公孙胜坐镇中军指挥。水军头领三阮、李俊、张横、张顺他们，带着童威、童猛、孟康、王定六这些人和水手们，驾着战船从蔡河进入黄河，往北边开去。宋江催促全军加快速度，走陈桥驿那条大路前进。他特别下令：不许士兵骚扰老百姓。有首诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">招摇旌旆出天京，受命专师事远征。</div>
+            <div class="text-block simplified-text">大张旗鼓地离开京城，奉命专门带兵去远方打仗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">虎视龙骧从此去，区区北虏等闲平。</div>
+            <div class="text-block simplified-text">看他们像老虎和龙一样威风凛凛地出发，收拾那些北方的小毛贼根本不在话下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">且说中书省差到二员厢官，在陈桥驿给散酒肉，赏劳三军。谁想这伙官员，贪滥无厌，徇私作弊，克减酒肉。都是那等谗佞之徒，贪爱贿赂的人，却将御赐的官酒，每瓶克减只有半瓶，肉一斤，克减六两。前队军马，尽行给散过了。后军散到一队皂军之中，都是头上黑盔，身披玄甲，却是项充、李衮所管的牌手。那军汉中一个军校，接得酒肉过来看时，酒只半瓶，肉只十两，指着厢官骂道：“都是你这等好利之徒，坏了朝廷恩赏！”厢官喝道：“我怎得是好利之徒？”那军校道：“皇帝赐俺一瓶酒，一斤肉，你都克减了。不是我们争嘴，堪恨你这厮们无道理！佛面上去刮金！”厢官骂道：“你这大胆！剐不尽杀不绝的贼！梁山泊反性尚不改！”军校大怒，把这酒和肉劈脸都打将去。厢官喝道：“捉下这个泼贼！”那军校就团牌边掣出刀来。厢官指着手大骂道：“腌臜草寇，拔刀敢杀谁！”军校道：“俺在梁山泊时，强似你的好汉，被我杀了万千。量你这等赃官，何足道哉！”厢官喝道：“你敢杀我？”那军校走入一步，手起一刀飞去，正中厢官脸上剁着，扑地倒了。众人发声喊，都走了。那军汉又赶将入来，再剁了几刀，眼见的不能勾活了。众军汉簇住了不行。</div>
+            <div class="text-block simplified-text">话说朝廷派了两个官员到陈桥驿发放酒肉犒赏军队。谁知道这些官儿贪得无厌，暗中搞鬼克扣物资。他们都是些贪财受贿的小人，把皇上赏赐的美酒每瓶偷偷倒掉半瓶，一斤肉只给十两（注：古代一斤为十六两）。前面的部队都领完走了，轮到后面项充、李衮带领的黑盔黑甲牌刀手部队时，有个士兵领到酒肉一看：酒只有半瓶，肉只有十两。他立刻指着官员大骂："就是你们这些贪官污吏，把朝廷的恩赏都给糟蹋了！"
+
+官员还嘴硬："我怎么就贪了？"士兵怒道："皇上明明赏每人一瓶酒一斤肉，你们竟敢克扣！不是我们计较这些吃喝，实在是你们太不要脸了，连佛像脸上都要刮层金！"官员反骂："你好大胆子！杀不完的梁山贼寇，到现在还贼性不改！"
+
+士兵气得把酒肉全砸在官员脸上。官员大喊："给我拿下这个土匪！"士兵直接从盾牌后面抽出刀。官员还在叫嚣："你个下流土匪，拿刀想吓唬谁？"士兵冷笑："我在梁山泊的时候，比你厉害的好汉都不知道杀了多少，你这种贪官算老几？"官员还在挑衅："你敢杀我？"士兵上前一步，抬手就是一刀，直接把官员砍翻在地。旁边的人吓得四散逃跑，士兵又追上去补了几刀，眼看这贪官是活不成了。其他士兵见状都围了上来，现场乱作一团。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">当下项充、李衮飞报宋江。宋江听的大惊，便与吴用商议：“此事如之奈何？”吴学究道：“省院官甚是不喜我等，今又做出这件事来，正中了他的机会。只可先把那军校斩首号令，一面申复省院，勒兵听罪。急急可叫戴宗、燕青悄悄进城，备细告知宿太尉。烦他预先奏知委曲，令中书省院谗害不得，方保无事。”宋江计议定了，飞马亲到陈桥驿边。那军校立在死尸边不动。宋江自令人于馆驿内，搬出酒肉，赏劳三军。都教进前，却唤这军校直到馆驿中，问其情节。那军校答道：“他千梁山泊反贼，万梁山泊反贼，骂俺们杀剐不尽，因此一时性起杀了他，专待将军听罪。”宋江道：“他是朝廷命官，我兀自惧他，你如何便把他来杀了？须是要连累我等众人。俺如今方始奉诏去破大辽，未曾见尺寸之功，倒做下这等的勾当，如之奈何？”那军校叩首伏死。宋江哭道：“我自从上梁山泊以来，大小兄弟，不曾坏了一个。今日一身入官，事不由我，当守法律。虽是你强气未灭，使不的旧时性格。”这军校道：“小人只是伏死。”宋江令那军校痛饮一醉，教他树下缢死。却斩头来号令。将厢官尸首，备棺椁盛贮，然后动文书申呈中书省院。院官都已知了，不在话下。有诗为证：</div>
+            <div class="text-block simplified-text">宋江的手下项充、李衮急忙跑来报告情况。宋江一听吓坏了，赶紧找军师吴用商量："这事儿可咋整啊？"吴用说："朝廷那帮大官本来就看咱们不顺眼，现在又闹出这档子事，正好让他们逮着把柄。咱们得赶紧把惹事的那个兵砍头示众，一边向朝廷打报告认错，管好部队等着处分。得马上派戴宗和燕青偷偷进城，把详细情况告诉宿太尉。请他提前跟皇上说明原委，别让中书省那帮人借机陷害，这样才能平安过关。"
+
+宋江拿定主意后，立刻骑马赶到陈桥驿。那个闹事的兵还站在被他杀死的官员尸体旁边。宋江先让人从驿站搬出酒肉犒赏全军，把士兵们都叫到跟前，单独把那个惹事的兵带进驿站问话。那兵说："那狗官左一个'梁山反贼'右一个'梁山反贼'地骂我们，说我们该千刀万剐，我一时气不过就把他杀了，现在就等将军发落。"宋江急得直跺脚："人家可是朝廷命官啊！连我都得让着他，你怎么说杀就杀？这下可把我们都害惨了！咱们刚接到圣旨要去打辽国，仗还没打就先闹出人命，这可怎么办？"那兵跪下磕头认罪。
+
+宋江哭着说："自从上梁山到现在，咱们兄弟一个都没折损过。如今归顺朝廷，很多事情由不得咱们胡来，必须守法。虽然你血性还在，但不能再像以前那样冲动了。"那兵说："小人甘愿受死。"宋江让他痛痛快快喝了个大醉，叫人把他吊死在树上，然后砍下脑袋示众。又把被杀官员的尸体装进棺材，这才写公文向朝廷报告。朝廷那边早就知道这事了，这里就不多说了。有诗为证：（此处省略原诗）"
+
+（说明：译文完全保留原文所有情节和对话，将文言转化为口语化表达。比如"如之奈何"译作"这可咋整"，"一时性起"译作"一时气不过"，"缢死"译作"吊死"等，确保文化程度不高的读者也能立即理解。同时保持原文的叙事顺序和细节，如犒赏三军、单独问话、饮酒赴死等情节均完整呈现。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">克减官人不自羞，被人刀砍一身休。</div>
+            <div class="text-block simplified-text">当官的不觉得自己丢人，结果被人用刀砍，命都没了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">宋江军令多严肃，流泪军前斩卒头。</div>
+            <div class="text-block simplified-text">宋江带兵特别严格，有个士兵在军队前哭，他就下令把那个士兵的头砍了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">再说戴宗、燕青潜地进城，径到宿太尉府内，备细诉知衷情。当晚，宿太尉入内，将上项事务奏知天子。次日，皇上于文德殿设朝，龙楼振鼓，凤阁鸣钟，殿下净鞭三下响，阶前文武两班齐。当有中书省院官出班启奏：“新降将宋江部下兵卒，杀死省院差去监散酒肉命官一员，乞圣旨拿问。”天子曰：“寡人待不委你省院来，事却该你这衙门！盖因委用不得其人，以致惹起事端。赏军酒肉，必然大破小用。梁山军士虚受其名，以致如此。”省院等官又奏道：“御酒之物，谁敢克减！”是时天威震怒，喝道：“寡人已自差人暗行体察，深知备细。尔等尚自巧言令色，对朕支吾！寡人御赐之酒，一瓶克减半瓶，赐肉一斤，只有十两。以致壮士一怒，目前流血！”天子喝问：“正犯安在？”省院官奏道：“宋江已自将本犯斩首号令示众，申呈本院，勒兵听罪。”天子曰：“他既斩了正犯军士，待报听罪。宋江禁治不严之罪，权且纪录。待破辽回日，量功理会。”省院官默然无言而退。天子当时传旨，差官前去催督宋江提兵前去。所杀军校，就于陈桥驿枭首示众。</div>
+            <div class="text-block simplified-text">戴宗和燕青偷偷进城，直接跑到宿太尉家里，把事情经过详细告诉了他。当天晚上，宿太尉进宫向皇帝报告了这件事。  
+
+第二天，皇帝上朝，文武百官都到齐了。有个中书省的官员站出来说："新投降的宋江手下士兵，杀死了朝廷派去发放酒肉的官员，请皇上治罪。"  
+
+皇帝说："这事本来不该你们管，但你们用人不当，才闹出乱子。赏给军队的酒肉，肯定被克扣了。梁山好汉名义上受了赏赐，实际上没拿到多少，所以才闹出事来。"  
+
+官员们狡辩说："御赐的酒肉，谁敢克扣？"  
+
+皇帝大怒，说："朕已经派人暗中调查，全都清楚了！你们还敢狡辩？朕赐的酒，一瓶被克扣半瓶；赐的肉，一斤只给十两。士兵们忍无可忍，才闹出人命！"  
+
+皇帝问："杀人的士兵在哪儿？"  
+
+官员回答："宋江已经把那士兵斩首示众，并且向朝廷请罪。"  
+
+皇帝说："既然宋江已经处死了凶手，就先记下他管教不严的罪，等打完辽国回来再说。"  
+
+官员们不敢再说话，退了下去。皇帝随即下令，派人催促宋江赶紧带兵出发。至于那个被杀的军校，就在陈桥驿砍头示众。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">却说宋江正在陈桥驿勒兵听罪，只见驾上差官来到，着宋江等进兵征辽。违犯军校，枭首示众。宋江谢恩已毕，将军校首级挂于陈桥驿号令，将尸埋了。宋江大哭一场，垂泪上马，提兵望北而进。每日兵行六十里，扎营下寨。所过州县，秋毫无犯。沿路无话。将次相近大辽境界，宋江便请军师吴用商议道：“即日辽兵分作四路，侵犯大宋州郡。我等分兵前去征讨的是，只打城池的是？”吴用道：“若是分兵前去，奈缘地广人稀，首尾不能救应。不如只是打他几个城池，去再商量。若还攻击的紧，他自然收兵。”宋江道：“军师此计甚高。”随即唤过段景住来分付道：“你走北路甚熟，你可引领军马前进。近的是甚州县？”段景住禀道：“前面便是檀州，正是辽国紧要隘口。有条水路，港汊最深，唤做潞水，团团绕著城池。这潞水直通渭河，须用战船征进。宜先趱水军头领船只到了，然后水陆并进，船骑相连，可取檀州。”宋江听罢，便使戴宗催趱水军头领李俊等，晓夜趱船至潞水取齐。</div>
+            <div class="text-block simplified-text">话说宋江正在陈桥驿整顿军队、等候发落，忽然朝廷派来传令官，命令宋江立刻带兵去打辽国。之前闹事的那个军官，被砍头示众。宋江领旨谢恩后，把那军官的脑袋挂在陈桥驿警示众人，尸体埋了。宋江大哭一场，擦着眼泪上马，带着部队往北走。每天行军六十里就安营扎寨。经过的地方从不骚扰百姓。一路无事。
+
+快到大辽边境时，宋江找军师吴用商量："现在辽兵分四路攻打我们大宋地盘。咱们是分头去救各州县好，还是直接攻打他们的城池好？"吴用说："分兵不行，这地方太大、人太少，前后照应不过来。不如先攻下几座城，再看情况。把他们打疼了，自然就退兵。"宋江点头："军师这主意妙。"
+
+接着叫来熟悉地形的段景住问："你常走北路，带部队往前探探。最近的是辽国哪个城？"段景住报告："前面就是檀州，是辽国重要关口。城边有条很深的潞水河，弯弯曲曲围着城池。这河直通渭河，得用战船进攻。最好先等水军头领李俊他们的船队到了，再水陆夹攻，船队和骑兵配合，就能拿下檀州。"
+
+宋江听完，马上派戴宗去催水军头领李俊他们连夜开船到潞水河集合。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">却说宋江整点人马水军船只，约会日期，水陆并行，杀投檀州来。且说檀州城内守把城池番官，却是辽国洞仙侍郎孛堇相公。手下四员猛将，一个唤做阿里奇，一个唤做咬儿惟康，一个唤做楚明玉，一个唤做曹明济。此四员战将，皆有万夫不当之勇。闻知宋朝差宋江全伙到来，一面写表申奏郎主，一面关报邻近蓟州、霸州、涿州、雄州求救，一面调兵出城迎敌。便差阿里奇、楚明玉两个，引兵三万，辞了总兵侍郎，领兵出战。</div>
+            <div class="text-block simplified-text">宋江清点好手下的人马和战船，约好时间，从水路和陆路同时出发，向檀州杀去。  
+
+檀州城里负责防守的辽国将领，是洞仙侍郎孛堇相公。他手下有四员猛将：阿里奇、咬儿惟康、楚明玉、曹明济，个个都勇猛无比。  
+
+他们听说宋江带着全部人马打过来了，一边写奏折向辽国皇帝报告，一边向附近的蓟州、霸州、涿州、雄州求救，同时调兵出城迎战。最后派了阿里奇和楚明玉，带着三万兵马，告别主将孛堇侍郎，出城和宋江的人马交战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">且说大刀关胜在于前部先锋，引军杀近檀州所属密云县来。县官闻的，飞报与两个番将，说道：“宋朝军马大张旗号，乃是梁山泊新受招安宋江这伙。”阿里奇听了，笑道：“既是这伙草寇，何足道哉！”传令教番兵扎掂已了，来日出密云县与宋江交锋。次日宋江听报辽兵来近，即时传令诸军将士：“首先交锋，要看个头势，休要失支脱节。”众将得令，欣然披挂上马。宋江、卢俊义俱各戎装擐带，亲在军前监战，远远望见辽兵盖地而来，黑洞洞地遮天蔽地，都是皂雕旗。两下齐把弓弩射住阵脚。只见对阵皂旗开处，正中间捧出一员番将，骑着一匹达马，弯环踢跳。宋江看那番将时，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">话说关胜带着先锋部队，杀到檀州附近的密云县。县官听说后，赶紧报告给两个辽国将领："宋朝军队打着大旗来了，领头的是刚被招安的梁山泊宋江那帮人。"阿里奇听完笑道："不就是一群土匪嘛，有什么好怕的！"随即命令士兵做好准备，第二天出城迎战。
+
+第二天，宋江接到报告说辽兵快到了，马上传令给将士们："第一仗要探清对方虚实，千万别乱了阵脚。"将领们接到命令，高高兴兴地穿上盔甲上马。宋江和卢俊义也都全副武装，亲自到前线督战。远远望去，只见辽兵黑压压地涌来，遮天蔽日，全是黑色军旗。两边先用弓箭稳住阵脚。这时辽军阵中黑旗分开，中间冲出一员辽将，骑着一匹高头大马，蹦蹦跳跳的。宋江仔细打量这个辽将，看他怎么打扮？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">戴一顶三叉紫金冠，冠口内拴两根雉尾。穿一领衬甲白罗袍，袍背上绣三个凤凰。披一副连环镔铁铠，系一条嵌宝狮蛮带，着一对云根鹰爪靴，挂一条护项销金帕，带一张雀画铁胎弓，悬一壶雕翎鈚子箭。手搦梨花点钢枪，坐骑银色拳花马。</div>
+            <div class="text-block simplified-text">这个人打扮得特别威风：头上戴着三叉紫金冠，帽子上插着两根野鸡尾毛。身上穿着白色绸缎战袍，袍子背面绣着三只凤凰。外面套着一副铁甲，腰间系着镶宝石的狮蛮腰带，脚上蹬着一双鹰爪纹厚底靴，脖子上围着金色护颈巾。他带着一张画着鸟雀的铁弓，背着一壶雕花箭。手里握着一杆银光闪闪的钢枪，骑着一匹银色带花纹的高头大马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">那番官面白唇红，须黄眼碧，身长九尺，力敌万人。旗号上写的分明：“大辽战将阿里奇”。宋江看了，与诸将道：“此番将不可轻敌。”言未绝，金枪手徐宁出战，横着钩镰枪，骤坐下马，直临阵前。番将阿里奇见了，大骂道：“宋朝合败，命草寇为将！敢来侵犯大国，尚不知死！”徐宁喝道：“辱国小将，敢出秽言！”两军呐喊，徐宁与阿里奇抢到垓心交战。两马相逢，手中兵器并举。二将斗不过三十余合，徐宁敌不住番将，望本阵便走。花荣急取弓箭在手。那番将正赶将来，张清又早按住鞍鞒，探手去锦袋内取个石子，看着番将较亲，照面门上只一石子。却似流星飞坠，弩箭离弦，正中阿里奇左眼，翻筋斗落于马下。这里花荣、林冲、秦明、索超四将齐出，先抢了那匹好马，活捉了阿里奇归阵。副将楚明玉见折了阿里奇，急要向前去救时，被宋江大队军马前后掩杀将来，就弃了密云县，大败亏输，奔檀州来。宋江且不追赶，就在密云县屯扎下营。看番将阿里奇时，打破眉梢，损其一目，负痛身死。宋江传令，教把番官尸骸烧化，功绩簿上标写张清第一功。就将阿里奇连环镔铁铠、出白梨花枪、嵌宝狮蛮带、银色拳花马，并靴袍弓箭，都赐了张清。是日，且就密云县中，众皆作贺，设宴饮酒，不在话下。有诗为证：</div>
+            <div class="text-block simplified-text">改写后的白话文：
+
+那个辽国将军长得白脸、红嘴唇、黄胡子、绿眼睛，身高九尺，力气大得能顶一万个人。他的旗子上清清楚楚写着："大辽战将阿里奇"。宋江看了，对手下将领们说："这个敌将不好对付。"话还没说完，金枪手徐宁就骑马冲出去，手里拿着钩镰枪，直奔战场。辽将阿里奇看见他，大骂道："你们宋朝要完蛋了，居然派个土匪当将军！敢来打我们大国，真是不知死活！"徐宁回骂："你这个不要脸的小将，嘴巴放干净点！"两边士兵大声助威，两人就在战场中间打了起来。打了不到三十个回合，徐宁打不过阿里奇，掉头就往回跑。花荣赶紧拿出弓箭。阿里奇正追过来时，张清早就准备好，从锦袋里掏出石子，对准阿里奇的脸就是一石子。石子像流星一样快，正好打中阿里奇左眼，把他从马上打了下来。花荣、林冲、秦明、索超四个将军一起冲出去，抢了阿里奇的好马，活捉了他。副将楚明玉看阿里奇被抓，想去救，结果被宋江的大军前后夹击，只好放弃密云县，大败逃往檀州。宋江没追他们，就在密云县安营扎寨。再看阿里奇，眉骨被打碎，瞎了一只眼，疼死了。宋江下令把辽将尸体火化，记功劳时给张清记头功。还把阿里奇的铁铠甲、梨花枪、宝石腰带、银马，连靴子衣服弓箭都赏给了张清。当天大家在密云县庆祝，摆酒吃饭，这些就不多说了。有首诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">大辽闰位非天命，累纵狼狐寇北疆。</div>
+            <div class="text-block simplified-text">大辽这个朝代不是老天爷认可的，他们老是派那些像狼和狐狸一样凶狠的军队来侵犯我们北方的边境。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">阿里可怜无勇略，交锋时下一身亡。</div>
+            <div class="text-block simplified-text">阿里这个人真是又可怜又没用，打仗的时候一个照面就死了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">次日，宋江升帐，传令起军，调兵遣将，都离密云县，直抵檀州来。却说檀州洞仙侍郎，听的报来，折了一员主将，坚闭城门，不出迎敌。又听的报有水军战船在于城下，遂乃引众番将上城观看。只见宋江阵中猛将，摇旗呐喊，耀武扬威，搦战厮杀。洞仙侍郎见了，说道：“似此，怎不输了小将军阿里奇！”当下副将楚明玉答应道：“小将军那里是输与那厮！蛮兵先输了，俺小将军赶将过去，被那里一个穿绿的蛮子一石子打下马去。那厮队里四个蛮子四条枪，便来攒住了。俺这壁厢措手不及，以此输与他了。”洞仙侍郎道：“那个打石子的蛮子怎地模样？”左右有认得的，指着说道：“城下兀那个带青包巾，见今披着小将军的衣甲，骑着小将军的马，那个便是。”洞仙侍郎攀着女墙边看时，只见张清已自先见了，趱马向前，见一石子飞来。左右齐叫一声躲时，那石子早从洞仙侍郎当耳根边擦过，把耳轮擦了一片皮。洞仙侍郎负疼道：“这个蛮子直这般利害！”下城来一面写表申奏大辽郎主，一面行报外境各州提备。</div>
+            <div class="text-block simplified-text">第二天，宋江召集部队下令出发，带着兵马离开密云县，直奔檀州。檀州的守将洞仙侍郎接到报告，得知自己这边折了一员大将，就紧闭城门不敢出战。又听说有水军战船开到城下，就带着手下将领上城墙查看。只见宋江那边的猛将们摇着旗子大声叫阵，摆出威风凛凛的样子要打仗。洞仙侍郎看了说："照这架势，难怪小将军阿里奇会输！"副将楚明玉马上解释："咱们小将军哪是输给那帮人！是他们的蛮兵先败退，小将军追上去时，被一个穿绿衣服的家伙用石头打下马。他们那边四个拿枪的蛮子立刻围上来，咱们这边来不及救援，这才吃了亏。"洞仙侍郎问："那个扔石头的长什么样？"旁边有认识的人指着说："就城下那个戴青色头巾的，现在穿着小将军的盔甲、骑着小将军马的那个。"洞仙侍郎扒着城墙仔细看时，张清早就发现他了，催马向前一石头扔过来。旁边人齐喊"快躲"，石头已经擦着洞仙侍郎的耳朵飞过，擦掉一块皮。洞仙侍郎疼得直叫："这蛮子也太厉害了！"赶紧下城，一边写奏折向辽国皇帝报告，一边通知周边各州加强防备。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">却说宋江引兵在城下，一连打了三五日，不能取胜。再引军马回密云县屯住。帐中坐下，计议破城之策。只见戴宗报来，取到水军头领，乘驾战船，都到潞水。宋江便唤李俊等到中军商议，着戴宗传令下去。李俊等都到密云县中，帐前参见宋江。宋江道：“今次厮杀，不比在梁山泊时，可要先探水势深浅，然后方可进兵。我看这条潞水，水势甚急，倘或一失，难以救应。尔等可宜仔细，不可托大。将船只盖伏的好着，只扮作运粮船相似。你等头领各带暗器，潜伏于船内。止着三五人撑驾摇橹，岸上着两人牵拽，一步步捱到城下，把船泊在两岸，待我这里进兵。城中知道，必开水门来抢粮船。尔等伏兵却起，夺他水门，可成大功。”李俊等听令去了。只见探水小校报道：“西北上有一彪军马，卷杀而来，都打着皂雕旗，约有一万余人，望檀州来了。”吴用道：“必是辽国调来救兵。我这里先差几将拦截厮杀，杀的散时，免令城中得他壮胆。”宋江便差张清、董平、关胜、林冲，各带十数个小头领，五千军马，飞奔前来。</div>
+            <div class="text-block simplified-text">宋江带着部队在城下连续攻打了三五天，一直打不下来，只好撤兵回到密云县驻扎。他在营帐里和大家商量怎么攻破城池。这时戴宗来报告说，水军的头领们已经带着战船到达潞水了。宋江就叫李俊等人来中军帐商量，让戴宗传令下去。李俊等人来到密云县，进帐见了宋江。宋江说："这次打仗和咱们在梁山泊时不一样，得先摸清水流深浅才能进攻。我看这条潞水水流很急，万一出事很难救援。你们一定要小心，别大意。把战船伪装好，假装成运粮船。你们头领都带着暗器藏在船里，只留三五个人划船，岸上再派两个人拉纤，慢慢靠近城下，把船停在两岸。等我们这边开始攻城，城里守军肯定会开水门来抢粮船。你们就突然杀出来，夺下水门，这样就能立大功。"李俊等人领命去了。
+
+这时侦察兵来报告："西北方向来了一支军队，大约有一万多人，打着黑色雕旗，正朝檀州杀过来。"吴用说："这肯定是辽国派来的援军。咱们得先派几员大将去拦截，把他们打散了，免得城里守军仗着援军壮胆。"宋江立刻派张清、董平、关胜、林冲四位大将，每人带着十几个小头领和五千兵马，火速前去迎敌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">原来大辽郎主闻知说是梁山泊宋江这伙好汉，领兵杀至檀州，围了城子，特差这两个皇侄，前来救应。一个唤做耶律国珍，一个唤做国宝。两个乃是辽国上将，又是皇侄，皆有万夫不当之勇。引起一万番军，来救檀州。看看至近，迎着宋兵。两边摆开阵势，两员番将一齐出马，都一般打扮。但见：</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+原来辽国的皇帝听说梁山泊宋江这帮好汉带兵打到檀州，把城围住了，就派了两个皇侄来救援。一个叫耶律国珍，一个叫耶律国宝。这两人是辽国的猛将，又是皇帝的侄子，都特别能打。他们带了一万辽国兵马来救檀州。快到地方时，遇上了宋江的军队。两边摆开阵势，两个辽国将领一起出马，穿得一模一样。你看他们：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">头戴妆金嵌宝三叉紫金冠，身披锦边珠嵌锁子黄金铠。身上猩猩血染战红袍，袍上斑斑锦织金翅雕。腰系白玉带，背插虎头牌。左边袋内插雕弓，右手壶中攒硬箭。手中搦丈二绿沉枪，坐下骑九尺银鬃马。</div>
+            <div class="text-block simplified-text">这个人头上戴着镶金嵌宝石的紫金三叉头盔，身上穿着金线锁子甲，甲边上还装饰着珠宝。他披着一件鲜红如血的战袍，袍子上用金线绣着大雕图案。腰间系着白玉腰带，背后插着虎头令牌。左边口袋里装着雕花弓，右边箭筒里插满硬箭。他手里握着一丈二长的绿杆长枪，骑着一匹九尺高的银鬃战马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">那番将是弟兄两个，都一般打扮，都一般使枪。宋兵迎着，摆开阵势。双枪将董平出马，厉声高叫：“两者甚处番官？”那耶律国珍大怒，喝道：“水洼草寇，敢来犯吾大国，倒问俺那里来的！”董平也不再问，跃马挺枪直抢耶律国珍。那番官年少的将军，气性正刚，那里肯饶人一步，挺起钢枪直迎过来。二马相交，三枪乱举。二将正在征尘影里，杀气丛中，使双枪的另有枪法，使单枪的各有神机。两个斗过五十合，不分胜败。那耶律国宝见哥哥战了许多时，恐怕力怯，就中军筛起锣来。耶律国珍正斗到热处，听的鸣锣，急要脱身，被董平两条枪绞住，那里肯放。耶律国珍此时心忙，枪法慢了些，被董平右手逼过绿沉枪，使起左手枪来，望番将项根上只一枪，搠个正着。可怜耶律国珍金冠倒卓，两脚登空，落于马下。兄弟耶律国宝看见哥哥落马，便抢出阵来，一骑马一条枪，奔来救取。宋兵阵上，没羽箭张清见他过来，这里那得放空，在马上约住梨花枪，探只手去锦袋内拈出一个石子。那石子百发百中。把马一拍，飞出阵前。说时迟，那时快，这耶律国宝飞也似来，张清迎头扑将去，两骑马隔不的十来丈远近。番将不提防，只道他来交战。只见张清手起，喝声道：“着！”那石子望耶律国宝面上打个正着，翻筋斗落马。关胜、林冲拥兵掩杀，辽兵无主，东西乱撺，只一阵杀散辽兵万余人马。把两个番官全副鞍马，两面金牌，收拾宝冠袍甲，仍割下两颗首级。当时夺了战马一千余匹，解到密云县来，见宋江献纳。宋江大喜，赏劳三军，书写董平、张清第二功，等打破檀州一并申奏。</div>
+            <div class="text-block simplified-text">这段讲的是宋朝军队和辽国军队打仗的故事。
+
+当时辽国有两个兄弟将军，穿着一样的衣服，都用长枪。宋朝军队摆好阵势，双枪将董平出来喊话："你们是哪来的辽国军官？"哥哥耶律国珍听了很生气，骂道："你们这些水洼里的土匪，敢来打我们大国，还敢问我是谁！"
+
+董平不再废话，骑马冲上去就打。耶律国珍年轻气盛，也举枪迎战。两人打了五十回合不分胜负。弟弟耶律国宝看哥哥打了这么久怕他体力不支，就敲锣想让他撤退。可耶律国珍正打得激烈，想退却被董平的双枪缠住脱不了身。一着急枪法就乱了，被董平一枪刺中脖子，摔下马死了。
+
+耶律国宝见哥哥死了，赶紧骑马冲出来救人。宋军这边的张清早有准备，掏出弹弓，等耶律国宝靠近时一石子打在他脸上，把他打下马。关胜、林冲趁机带兵冲杀，辽兵没了主帅乱成一团，被宋军杀了一万多人。
+
+宋军缴获了两兄弟的全套装备、金牌，砍下他们的脑袋，还抢了一千多匹战马。战后向宋江汇报战果，宋江很高兴，奖励了全军，记下董平和张清的功劳，准备等攻下檀州后一起上报朝廷。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">宋江与吴用商议，到晚写下军帖，差调林冲、关胜引领一彪军马，从西北上去取檀州；再调呼延灼、董平也引一彪军马，从东北上进发；却教卢俊义引一彪军马，从西南上取路进兵。“我等中军，从东南上进发。只听的炮响，一齐进发。”却差炮手凌振、黑旋风李逵、混世魔王樊瑞、丧门神鲍旭，并牌手项充、李衮，将带滚牌军一千余人，直至城下，施放号炮。至二更为期，水陆并进。各路军兵，都要厮应。号令已下，诸军各各准备取城。且说洞仙侍郎正在檀州坚守，专望救兵到来。却有皇侄败残人马，逃命奔入城中，备细告说：“两个皇侄大王，耶律国珍被个使双枪的害了，耶律国宝被个戴青包巾的使石子打下马来拿去。”洞仙侍郎跌脚骂道：“又是这蛮子！不争损了二位皇侄，教俺有甚面目去见郎主！拿住那个青包巾的蛮子时，碎碎的割那厮。”至晚，番兵报洞仙侍郎道：“潞水河内有五七百只粮船泊在两岸，远远处又有军马来也。”洞仙侍郎听了道：“那蛮子不识俺的水路，错把粮船直行到这里。岸上人马一定是来寻粮船。”便差三员番将楚明玉、曹明济、咬儿惟康前来分付道：“那宋江等蛮子，今晚又调许多人马来也。却有若干粮船在俺河里，可教咬儿惟康引一千军马出城冲突，却教楚明玉、曹明济开放水门，从紧溜里放船出去，三停之内，截他二停粮船也好，便是汝等干大功也。”不知成败何如，有诗为证：</div>
+            <div class="text-block simplified-text">宋江和吴用商量好了作战计划。到了晚上，他们写好了调兵命令：派林冲、关胜带一支队伍从西北方向攻打檀州；再派呼延灼、董平带另一支队伍从东北方向进攻；让卢俊义带一支队伍从西南方向进军。宋江自己率领主力部队从东南方向进攻。约定听到炮响就一起行动。还派了凌振、李逵、樊瑞、鲍旭、项充、李衮带着一千多名盾牌兵到城下放信号炮。总攻时间定在半夜二更天，水陆两路同时进攻。所有部队都要互相配合。命令下达后，各部队都做好了攻城准备。
+
+再说檀州守将洞仙侍郎，正在城里等着援军。这时辽国两位皇子的残兵败将逃回城里，报告说："两位皇子殿下出事了，耶律国珍被一个用双枪的杀了，耶律国宝被一个戴青头巾的用石子打下马抓走了。"洞仙侍郎气得直跺脚："又是这些梁山强盗！两位皇子出了事，我还有什么脸去见皇上！要是抓到那个戴青头巾的，非把他千刀万剐不可。"到了晚上，辽兵来报告："潞水河两岸停着五六百艘粮船，远处还有军队往这边来。"洞仙侍郎说："这些强盗不熟悉水路，把粮船误开到这儿来了。岸上的军队肯定是来护粮的。"于是派了三员辽将楚明玉、曹明济、咬儿惟康，命令道："宋江那帮强盗今晚又派兵来了。他们有不少粮船在我们河里，让咬儿惟康带一千兵马出城突袭，楚明玉和曹明济去开水门，趁水流湍急时把船放出去，能截下他们三分之二的粮船就是大功一件。"这一仗结果如何，且看下文分解。
+
+（说明：1.将文言句式改为口语化表达；2.用"梁山强盗"替代"蛮子"更易理解；3.简化了部分官职称谓；4.将"二更为期"译为"半夜二更天"；5.保留了所有人物和关键情节；6.删除了原文末尾的诗句提示，因现代白话文一般不保留这种格式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">妙算从来迥不同，檀州城下列艨艟。</div>
+            <div class="text-block simplified-text">他的计谋向来与众不同，在檀州城外摆满了战船。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">侍郎不识兵家意，反自开门把路通。</div>
+            <div class="text-block simplified-text">这个当官的根本不懂打仗的策略，反而自己打开城门给敌人让路。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">再说宋江人马，当晚黄昏左侧，李逵、樊瑞为首，将引步兵，在城下大骂番人。洞仙侍郎叫咬儿惟康催趱军马，出城冲杀。城门开处，放下吊桥，辽兵出城。却说李逵、樊瑞、鲍旭、项充、李衮五个好汉，引一千步军，尽是悍勇刀牌手，就吊桥边冲住，番军人马那里能勾出的城来。凌振却在军中搭起炮架，准备放炮，只等时候来到。由他城上放箭，自有牌手左右遮抵着。鲍旭却在后面呐喊，虽是一千余人，却有万余人的气象。洞仙侍郎在城中见军马冲突不出，急叫楚明玉、曹明济开了水门抢船。此时宋江水军头领，都已先自伏在船中准备，未曾动掸。见他水门开了，一片片绞起闸板，放出战船来。凌振得了消息，便先点起一个风火炮来。炮声响处，两边战船厮迎将来，抵敌番船。左边踊出李俊、张横、张顺，摇动战船杀来；右边踊出阮家三弟兄，使着战船，杀入番船队里。番将楚明玉、曹明济见战船踊跃而来，抵敌不住，料道有埋伏军兵，急待要回船，早被这里水手军兵都跳过船来，只得上岸而走。宋江水军那六个头领，先抢了水门。管门番将，杀的杀了，走的走了，这楚明玉、曹明济各自逃生去了。水门上预先一把火起，凌振又放一个车箱炮来，那炮直飞在半天里响。洞仙侍郎听的火炮连天声响，吓的魂不附体。李逵、樊瑞、鲍旭引领牌手项充、李衮等众，直杀入城。洞仙侍郎和咬儿惟康在城中看见城门已都被夺了，又见四路宋兵人马一齐都杀到来，只得上马，弃了城池，出北门便走。未及二里，正撞着大刀关胜、豹子头林冲两员上将拦住去路。洞仙侍郎怎生奈何，只得教咬儿惟康到此迎敌。正是：天罗密布难移步，地网高张怎脱身？毕竟洞仙侍郎怎生脱身，且听下回分解。</div>
+            <div class="text-block simplified-text">那天傍晚，宋江的部队让李逵和樊瑞带着一队步兵在城下骂阵。辽国守将洞仙侍郎急了，派咬儿惟康带兵出城迎战。城门一开，吊桥刚放下，李逵他们五个猛将就带着一千名拿盾牌大刀的步兵堵在桥头，辽兵根本冲不出来。
+
+这时凌振在后方架好大炮等着开火，城上射箭也都被盾牌挡下。鲍旭在后面摇旗呐喊，虽然只有一千人，气势却像有上万人。洞仙侍郎在城里见军队冲不出去，赶紧让楚明玉、曹明济开水门派战船。没想到宋江的水军早就埋伏好了，等水门一开，凌振立刻开炮。李俊、张横他们从左边杀出，阮家三兄弟从右边包抄。辽国水军见势不妙想掉头，宋江的人已经跳上他们的船，楚明玉他们只好弃船逃跑。
+
+宋江的水军趁机占领水门，放火烧城。凌振又打了一发冲天炮，洞仙侍郎听见炮声吓得半死。这时李逵他们已经杀进城里，洞仙侍郎见城门失守，宋军从四面杀来，赶紧和咬儿惟康骑马往北门逃。结果跑出不到两里地，就被关胜和林冲拦住去路。洞仙侍郎没办法，只好让咬儿惟康去挡着。
+
+这正是：天罗地网无处逃，看他们怎么脱身？要知后事如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
