@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第十一回　朱贵水亭施号箭　林冲雪夜上梁山</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./010.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第十一回　朱贵水亭施号箭　林冲雪夜上梁山</h1>
+        <a href="./012.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">词曰：</div>
+            <div class="text-block simplified-text">改成这样：
+
+歌词大意是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">天丁震怒，掀翻银海，散乱珠箔。六出奇花飞滚滚，平填了山中丘壑。皓虎颠狂，素麟猖獗，掣断珍珠索。玉龙酣战，鳞甲满天飘落。谁念万里关山，征夫僵立，缟带沾旗脚。色映戈矛，光摇剑戟，杀气横戎幕。貔虎豪雄，偏裨英勇，共与谈兵略。须拚一醉，看取碧空寥廓。</div>
+            <div class="text-block simplified-text">我帮你用大白话改写成这样：
+
+老天爷发火了，把整个银白色的大海都掀翻了，珍珠串成的帘子散落一地。鹅毛大雪滚滚而下，把山里的沟沟坎坎全都填平了。白色的老虎疯了似地乱跑，白麒麟也发狂了，把珍珠串成的链子都扯断了。玉龙打群架打得正欢，身上的鳞片（雪花）满天乱飞。
+
+这时候谁还记得远在万里之外的边防战士呢？他们冻得直挺挺地站着，雪把军旗都染白了。雪光映着刀枪，剑戟闪着寒光，整个军营杀气腾腾。那些像猛兽一样勇猛的将军们，带着手下英勇的副将，正在一起讨论打仗的事。这时候就该痛快地喝个烂醉，抬头看看这辽阔的雪后晴空。
+
+（说明：1.保留了所有原始意象和场景 2.把"天丁"译为更易懂的"老天爷" 3."六出奇花"译为常见的"鹅毛大雪" 4.把"皓虎""素麟"等比喻直接点明是形容雪景 5.用"打群架"翻译"酣战"更生动 6.保持原文从雪景到边关的转折结构）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">话说这篇词章名《百字令》，乃是大金完颜亮所作，单题着大雪，壮那胸中杀气。为是自家所说东京那筹好汉，姓林名冲，绰号豹子头，只因天降大雪，险些儿送了性命。那林冲当夜醉倒在雪里地上，挣扎不起，被众庄客向前绑缚了，解送来一个庄院。只见一个庄客从院里出来，说道：“大官人未起。”众人且把林冲高吊起在门楼下。看看天色晓来，林冲酒醒，打一看时，果然好个大庄院。林冲大叫道：“甚么人敢吊我在这里？”那庄客听得叫，手拿柴棍，从门房里走出来，喝道：“你这厮还自好口！”那个被烧了髭须的老庄家说道：“休要问他，只顾打。等大官人起来，好生推问。”众庄客一齐上。林冲被打，挣扎不得，只叫道：“不妨事，我有分辨处。”只见一个庄客来叫道：“大官人来了。”林冲看时，见那个官人背叉着手，行将出来，在廊下问道：“你等众人打甚么人？”众庄客答道：“昨夜捉得个偷米贼人。”那官人向前来看时，认得是林冲，慌忙喝退庄客，亲自解下，问道：“教头缘何被吊在这里？”众庄客看见，一齐走了。林冲看时，不是别人，却是柴进。连忙叫道：“大官人救我。”柴进道：教头为何到此，被村夫耻辱？”林冲道：“一言难尽。”两个且到里面坐下，把这火烧草料场一事，备细告诉。柴进听罢，道：“兄长如此命蹇！今日天假其便，但请放心。这里是小弟的东庄，且住几时，却再商议。”叫庄客取一笼衣裳出来，叫林冲彻里至外都换了，请去暖阁里坐地，安排酒食杯盘管待。自此林冲只在柴进东庄上，住了五七日。</div>
+            <div class="text-block simplified-text">这段讲的是《百字令》这首词，是金国完颜亮写的，专门描写大雪，用来显示他心里的杀伐之气。故事说的是东京好汉林冲（外号豹子头），因为一场大雪差点丢了命。那天晚上林冲喝醉了倒在雪地里，爬不起来，被一群庄客绑起来送到一个庄园。有个庄客出来说："主人还没起床。"他们就把林冲吊在大门楼下。天亮后林冲酒醒了，一看是个大庄园，就喊："谁把我吊在这儿的？"庄客们拿着棍子出来骂："你这家伙还敢嘴硬！"有个胡子被烧过的老庄客说："别跟他废话，先打一顿。等主人起来了再好好审问。"庄客们一拥而上打林冲，林冲没法反抗，只能喊："别打，我有话说！"这时有人喊："主人来了。"林冲一看，那人背着手走出来问："你们在打谁？"庄客们说："昨晚抓了个偷米的贼。"那人走近一看是林冲，赶紧赶走庄客，亲自给他松绑问："教头怎么被吊在这儿？"庄客们一看这情形都溜了。林冲一看不是别人，正是柴进，连忙喊："大官人救我！"柴进问："教头怎么到这儿，还被这些乡下人欺负？"林冲说："说来话长。"两人进屋坐下，林冲把火烧草料场的事详细说了。柴进听完说："大哥真是倒霉！不过今天遇到我算你运气，别担心。这是我的东庄，你先住几天，咱们慢慢想办法。"他让庄客拿来整套衣服给林冲里外都换了，请到暖阁里坐着，摆酒菜招待。之后林冲就在柴进的东庄住了五六天。
+
+（说明：完全按照要求改写，保留了所有关键信息：1.词牌背景 2.林冲醉酒被绑 3.庄客虐待 4.柴进解救 5.换衣招待 6.暂住安排。用最直白的口语表达，如"差点丢了命""说来话长""别担心"等，确保任何文化程度的读者都能立即理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">沧州牢城营里管营，首告林冲杀死差拨、陆虞候、富安等三人，放火延烧大军草料场。州尹大惊，随即押了公文帖，仰缉捕人员，将带做公的，沿乡历邑，道店村坊，画影图形，出三千贯信赏钱，捉拿正犯林冲。看看挨捕甚紧，各处村坊讲动了。</div>
+            <div class="text-block simplified-text">沧州监狱的负责人报告说，林冲杀死了差拨、陆虞候和富安这三个人，还放火烧了大军的草料场。州长知道后吓坏了，马上发了通缉令，命令所有办案人员带着公文，挨个村子、城镇搜查，还画了林冲的画像，悬赏三千贯钱抓他。现在到处都在加紧搜捕，每个地方都在传这件事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">且说林冲在柴大官人东庄上，听得这话，如坐针毡。伺候柴进回庄，林冲便说道：“非是大官人不留小弟，争奈官司追捕甚紧，排家搜捉，倘或寻到大官人庄上时，须负累大官人不好。既蒙大官人仗义疏财，求借林冲些小盘缠，投奔他处栖身。异日不死，当以犬马之报。”柴进道：“既是兄长要行，小人有个去处。作书一封与兄长去，如何？”</div>
+            <div class="text-block simplified-text">话说林冲在柴大官人的东庄上听到风声，急得坐立不安。等柴进回到庄上，林冲赶紧说："不是大官人不肯收留我，实在是官府查得太紧，挨家挨户搜查。万一找到您庄上来，肯定会连累您。既然您这么讲义气，能不能借我点路费，我好逃到别处去躲躲。将来要是能活下来，一定报答您的大恩。"柴进回答说："大哥既然要走，我倒知道个好去处。我写封信给你带着去，你看怎么样？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">豪杰蹉跎运未通，行藏随处被牢笼。</div>
+            <div class="text-block simplified-text">有本事的人不走运的时候，干啥都不顺，处处受限制。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">不因柴进修书荐，焉得驰名水浒中？</div>
+            <div class="text-block simplified-text">要不是柴进写信推荐他，他哪能在《水浒传》里这么出名？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">林冲道：“若得大官人如此赒济，教小人安身立命，只不知投何处去？”柴进道：“是山东济州管下一个水乡，地名梁山泊，方圆八百余里，中间是宛子城、蓼儿洼。如今有三个好汉在那里扎寨。为头的唤做白衣秀士王伦，第二个唤做摸着天杜迁，第三个唤做云里金刚宋万。那三个好汉聚集着七八百小喽啰，打家劫舍，多有做下迷天大罪的人，都投奔那里躲灾避难，他都收留在彼。三位好汉亦与我交厚，常寄书缄来。我今修一封书与兄长，去投那里入伙如何？”林冲道：“若得如此顾盼，最好。深谢主盟。”柴进道：“只是沧州道口，见今官司张挂榜文，又差两个军官，在那里搜检，把住道口。兄长必用从那里经过。”柴进低头一想道：“再有个计策，送兄长过去。”林冲道：“若蒙周全，死而不忘。”柴进当日先叫庄客背了包裹出关去等。柴进却备了三二十匹马，带了弓箭旗枪，驾了鹰雕，牵着猎狗，一行人马都打扮了，却把林冲杂在里面，一齐上马，都投关外。</div>
+            <div class="text-block simplified-text">林冲说："要是大官人您能这样帮我找个落脚的地方，让我能安定下来，那真是太好了。只是不知道该去哪儿好？"  
+
+柴进回答："山东济州那边有个水乡叫梁山泊，地方很大，方圆八百多里，中间有宛子城、蓼儿洼。现在有三个好汉在那儿占山为王。领头的叫白衣秀士王伦，老二叫摸着天杜迁，老三叫云里金刚宋万。他们手下有七八百号人，专门打劫富户。很多犯了大罪的人都会逃到那儿躲藏，他们也都收留。我跟这三位好汉交情不错，经常有书信来往。我现在写封信给你带上，你去投奔他们入伙怎么样？"  
+
+林冲说："要是真能这样安排，那就太好了。真是太感谢您了。"  
+
+柴进又说："只是沧州路口现在有官府贴的通缉令，还派了两个军官在那儿搜查，把守得很严。你肯定得从那儿经过。"  
+
+柴进低头想了想，说："我还有个办法能送你过去。"  
+
+林冲感激地说："要是您能帮我这个忙，我这辈子都不会忘记。"  
+
+当天，柴进先让手下背着行李出关等着。然后准备了二三十匹马，带着弓箭、长枪，架着猎鹰，牵着猎狗，带着一队人马，把林冲混在里面，一起骑马出了关卡。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说把关军官坐在关上，看见是柴大官人，却都认得。原来这军官未袭职时，曾到柴进庄上，因此识熟。军官起身道：“大官人又去快活。”柴进下马问道：“二位官人缘何在此？”军官道：“沧州大尹行移文书，画影图形，捉拿犯人林冲，特差某等在此守把。但有过往客商，一一盘问，才放出关。”柴进笑道：“我这一伙人内，中间夹带着林冲，你缘何不认得？”军官也笑道：“大官人是识法度的，不到得肯挟带了出去。请尊便上马。”柴进又笑道：“只恁地相托得过，拿得野味回来相送。”作别了，一齐上马出关去了。行得十四五里，却见先去的庄客在那里等候。柴进叫林冲下了马，脱去打猎的衣服，却穿上庄客带来的自己衣裳，系了腰刀，戴上红缨毡笠，背上包裹，提了衮刀，相辞柴进，拜别了便行。</div>
+            <div class="text-block simplified-text">守关的军官坐在关口，看到来人是柴大官人，都认识他。原来这军官还没当官时，曾经去过柴进家，所以认识。军官站起来说："大官人又出去找乐子啊？"柴进下马问道："两位长官怎么在这儿守着？"军官回答："沧州知府发了通缉令，要抓犯人林冲，专门派我们在这儿检查。所有过路的人都要查问清楚才放行。"柴进开玩笑说："我这一群人里就藏着林冲，你们怎么认不出来？"军官也笑着说："大官人是懂规矩的，肯定不会干这种事。您请便吧。"柴进又说："那就多谢了，等我打猎回来送你们野味。"说完告别，带着人骑马出关了。
+
+走了十几里地，看见之前先走的家仆在路边等着。柴进让林冲下马，脱掉打猎穿的衣服，换上家仆带来的平常衣服，挂上腰刀，戴上红缨毡帽，背上包袱，提着刀，跟柴进道别后就独自上路了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">林冲与柴大官人别后，上路行了十数日，时遇暮冬天气，彤云密布，朔风紧起，又早纷纷扬扬下着满天大雪。行不到二十余里，只见满地如银。但见：</div>
+            <div class="text-block simplified-text">林冲和柴大官人分开后，独自赶路走了十多天。这时正是深冬，天上乌云密布，北风呼呼地刮，很快就下起了鹅毛大雪。走了不到二十里地，就看到满地雪白，像铺了一层银子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">冬深正清冷，昏晦路行难。长空皎洁，争看莹净，埋没遥山。反复风翻絮粉，缤纷轻点林峦。清沁茶烟湿，平铺濮水船。楼台银压瓦，松壑玉龙蟠。苍松髯发皓，拱星攒，珊瑚圆。轻柯渺漠，汀滩孤艇，独钓雪漫漫。村墟情冷落，凄惨少欣欢。</div>
+            <div class="text-block simplified-text">天儿正冷，冬深了，天昏地暗的，路不好走。天空倒是干净透亮，远远的山被雪盖住了。风一阵阵的，把雪吹得像棉花似的乱飞，轻轻落在树林和山头上。煮茶的烟湿乎乎的，河里的船也被雪盖住了。楼台的屋顶压着厚厚的雪，松树像白龙一样盘在山沟里。老松树的树枝白花花的，像老头子的白胡子，树枝上挂满了雪，像星星似的。小树枝光秃秃的，河滩上孤零零地停着条小船，有个老头儿独自在雪里钓鱼。村子里冷冷清清的，没啥高兴事儿，看着怪凄凉的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">林冲踏着雪只顾走，看看天色冷得紧切，渐渐晚了。远远望见枕溪靠湖一个酒店，被雪漫漫地压着。但见：</div>
+            <div class="text-block simplified-text">林冲在雪地里一直往前走，发现天气冷得厉害，天也慢慢黑了。远远看见湖边有个小酒店，被厚厚的雪盖着。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">银迷草舍，玉映茅檐。数十株老树杈枒，三五处小窗关闭。疏荆篱落，浑如腻粉轻铺；黄土绕墙，却似铅华布就。千团柳絮飘帘幕，万片鹅毛舞酒旗。</div>
+            <div class="text-block simplified-text">这地方看起来破旧但挺别致。破旧的茅草屋在雪中闪着银光，屋檐像玉一样白。几十棵老树光秃秃的枝丫伸着，几扇小窗户都关得紧紧的。稀疏的篱笆上盖着雪，像撒了一层白粉；黄土墙被雪覆盖，就像抹了白粉似的。柳絮般的雪花飘在门帘上，鹅毛大的雪片在酒旗周围飞舞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">林冲看见，奔入那酒店里来，揭起芦帘，拂身入去。到侧首看时，都是座头，拣一处坐下。倚了衮刀，解放包裹，抬了毡笠，把腰刀也挂了。只见一个酒保来问道：“客官打多少酒？”林冲道：“先取两角酒来。”酒保将个桶儿，打两角酒，将来放在桌上。林冲又问道：“有甚么下酒？”酒保道：“有生熟牛肉、肥鹅、嫩鸡。”林冲道：“先切二斤熟牛肉来。”酒保去不多时，将来铺下一大盘牛肉，数般菜蔬，放个大碗，一面筛酒。林冲吃了三四碗酒，只见店里一个人背叉着手，走出来门前看雪。那人问酒保道：“甚么人吃酒？”林冲看那人时，头戴深檐暖帽，身穿貂鼠皮袄，脚着一双獐皮窄靿靴，身材长大，貌相魁宏，双拳骨脸，三丫黄髯，只把头来摸着看雪。</div>
+            <div class="text-block simplified-text">林冲走进一家酒店，掀开草帘子，弯腰进去。他转头看了看，发现都是座位，就随便找了个地方坐下。他把大刀靠在一边，放下行李，摘下斗笠，又把腰刀挂好。这时店小二过来问："客官要多少酒？"林冲说："先来两壶。"小二用桶打了酒，端来放在桌上。林冲又问："有什么下酒菜？"小二说："有生熟牛肉、肥鹅、嫩鸡。"林冲说："先切两斤熟牛肉来。"没过多久，小二就端来一大盘牛肉，几样小菜，还拿了个大碗，一边倒酒。林冲喝了三四碗酒，看见店里有个背着手的人走出来看雪。那人问小二："谁在喝酒？"林冲打量这人：戴着厚帽子，穿着貂皮袄，脚上是双鹿皮靴子，个子高大，长相威武，方脸盘，留着三缕黄胡子，正摸着脑袋看雪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">林冲叫酒保只顾筛酒。林冲说道：“酒保，你也来吃碗酒。”酒保吃了一碗。林冲问道：“此间去梁山泊还有多少路？”酒保答道：“此间要去梁山泊，虽只数里，却是水路，全无旱路。若要去时，须用船去，方才渡得到那里。”林冲道：“你可与我觅只船儿。”酒保道：“这般大雪，天色又晚了，那里去寻船只？”林冲道：“我与你些钱，央你觅只船来，渡我过去。”酒保道：“却是没讨处。”林冲寻思道：“这般怎的好？”又吃了几碗酒，闷上心来，蓦然间想起：“以先在京师做教头，禁军中每日六街三市游玩吃酒，谁想今日被高俅这贼坑陷了我这一场，文了面，直断送到这里。闪得我有家难奔，有国难投，受此寂寞。”因感伤怀抱，问酒保借笔砚来，乘着一时酒兴，向那白粉壁上写下八句五言诗。写道：</div>
+            <div class="text-block simplified-text">林冲让店小二只管倒酒。他对店小二说："小二，你也来喝一碗。"店小二喝了一碗。林冲问他："从这里到梁山泊还有多远？"店小二回答："到梁山泊虽然只有几里地，但都是水路，没有陆路。要去的话得坐船才能到。"林冲说："那你能帮我找条船吗？"店小二说："这么大的雪，天又黑了，上哪儿去找船啊？"林冲说："我给你钱，麻烦你帮我找条船送我过去。"店小二说："实在找不到啊。"
+
+林冲心里发愁："这可怎么办？"又喝了几碗酒，越想越郁闷，突然想起："以前在京城当教头的时候，每天都能在街上吃喝玩乐，哪想到现在被高俅那个混蛋害成这样，脸上刺了字，被发配到这儿。搞得我有家不能回，有国不能投，孤零零一个人。"越想越难过，就问店小二借了纸笔，趁着酒劲，在墙上写了一首八句诗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">“仗义是林冲，为人最朴忠。</div>
+            <div class="text-block simplified-text">林冲这个人特别讲义气，为人老实又忠诚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">江湖驰闻望，慷慨聚英雄。</div>
+            <div class="text-block simplified-text">江湖上大家都知道他的名声，各路好汉都被他的豪爽吸引过来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">身世悲浮梗，功名类转蓬。</div>
+            <div class="text-block simplified-text">我这辈子就像水上的小树枝一样漂泊不定，想建功立业吧，又像风里的蒲公英一样抓不住机会。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">他年若得志，威镇泰山东！”</div>
+            <div class="text-block simplified-text">等我以后成功了，一定要在泰山这一带混出名堂来！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">林冲题罢诗，撇下笔，再取酒来。正饮之间，只见那汉子走向前来，把林冲劈腰揪住，说道：“你好大胆！你在沧州做下迷天大罪，却在这里。见今官司出三千贯信赏钱捉你，却是要怎的？”林冲道：“你道我是谁？”那汉道：“你不是林冲！”林冲道：“我自姓张。”那汉笑道：“你莫胡说。见今壁上写下名字，你脸上文着金印，如何耍赖得过。”林冲道：“你真个要拿我？”那汉笑到：“我却拿你做甚么。你跟我进来，到里面和你说话。”那汉放了手，林冲跟着，到后面一个水亭上，叫酒保点起灯来，和林冲施礼，对面坐下。那汉问道：“却才见兄长只顾问梁山泊路头，要寻船去。那里是强人山寨，你待要去做甚么？”林冲道：“实不相瞒，如今官司追捕小人紧急，无安身处，特投这山寨里好汉入伙，因此要去。”那汉道：“虽然如此，必有个人荐兄长来入伙。”林冲道：“沧州横海郡故友举荐将来。”那汉道：“莫非柴进么？”林冲道：“足下何以知之？”那汉道：“柴大官人与山寨中大王头领交厚，常有书信往来。”原来王伦当初不得地之时，与杜迁投奔柴进，多得柴进留在庄子上住了几时；临起身又赍发盘缠银两，因此有恩。林冲听了便拜道：“有眼不识泰山。愿求大名。”那汉慌忙答礼，说道：“小人是王头领手下耳目。小人姓朱名贵，原是沂州沂水县人氏。山寨里教小弟在此间开酒店为名，专一探听往来客商经过。但有财帛者，便去山寨里报知。但是孤单客人到此，无财帛的放他过去；有财帛的来到这里，轻则蒙汗药麻翻，重则登时结果，将精肉片为羓子，肥肉煎油点灯。却才见兄长只顾问梁山泊路头，因此不敢下手。次后见写出大名来，曾有东京来的人，传说兄长的豪杰，不期今日得会。既有柴大官人书缄相荐，亦是兄长名震寰海，王头领必当重用。”随即叫酒保安排分例酒来相待。林冲道：“何故重赐分例酒食？拜扰不当。”朱贵道：“山寨中留下分例酒食，但有好汉经过，必教小弟相待。既是兄长来此入伙，怎敢有失祗应。”随即安排鱼肉盘馔酒肴，到来相待。两个在水亭上吃了半夜酒。林冲道：“如何能勾船来渡过去？”朱贵道：“这里自有船只，兄长放心。且暂宿一霄，五更却请起来同往。”</div>
+            <div class="text-block simplified-text">林冲写完诗，放下笔，又拿起酒喝。正喝着，突然有个汉子走过来，一把抓住他的腰，说："你胆子真大！在沧州犯了那么大的罪，还敢在这儿晃悠。现在官府悬赏三千贯抓你呢，你想怎样？"林冲反问："你认错人了吧？"汉子说："你不是林冲？"林冲装傻："我姓张。"汉子笑了："别装了！墙上写着你的名字，脸上还刺着金印呢，赖不掉的。"林冲问："你真要抓我？"汉子摇头："抓你干嘛？跟我进来聊聊。"
+
+汉子松开手，带林冲到后面水亭，让伙计点灯，客气地请林冲坐下。汉子问："刚才听你一直打听去梁山泊的路，想找船过去。那是强盗窝，你去干啥？"林冲坦白："实话说吧，官府追得紧，我没地方躲，想去投奔那里的好汉。"汉子问："总该有人介绍你入伙吧？"林冲答："沧州的老朋友推荐的。"汉子猜："是柴进吗？"林冲惊讶："你怎么知道？"汉子解释："柴大官人和我们寨主交情好，常通信。"原来寨主王伦当年落魄时，和杜迁投靠过柴进，柴进不仅收留他们，临走还给了盘缠。
+
+林冲赶紧行礼："我有眼不识泰山！请问大哥尊姓大名？"汉子回礼："我是王头领的手下，叫朱贵，山东沂水人。寨里派我在这儿开酒店打探消息。有钱的客商就报给山寨，没钱的放走，有钱的要么下药迷倒，要么直接干掉——肥肉熬油点灯，瘦肉做成肉干。刚才听你打听梁山泊，我没敢动手，后来看到你写的诗，又听东京来人说过你的名声，没想到今天见到真人。既然有柴大官人推荐，加上你名声大，王头领肯定重用你。"说完让伙计上酒菜。
+
+林冲推辞："怎么好意思让你破费？"朱贵说："山寨规矩，有好汉路过都要招待。你要入伙，我更不能怠慢。"两人喝酒到半夜。林冲问："怎么找船过去？"朱贵说："船有的是，别担心。先睡一觉，天亮我带你去。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">当时两个各自去歇息。睡到五更时分，朱贵自来叫林冲起来。洗漱罢，再取三五杯酒相待，吃了些肉食之类。此时天尚未明。朱贵把水亭上窗子开了，取出一张鹊画弓，搭上那一枝响箭，觑着对港败芦折苇里面射将去。林冲道：“此是何意？”朱贵道：“此是山寨里的号箭。少刻便有船来。”没多时，只见对过芦苇泊里，三五个小喽啰摇着一只快船过来，径到水亭下。朱贵当时引了林冲，取了刀仗、行李下船。小喽啰把船摇开，望泊子里去。奔金沙滩来。林冲看时，见那八百里梁山水泊，果然是个陷人去处。但见：</div>
+            <div class="text-block simplified-text">那时候两人各自去睡觉。睡到五更天（凌晨3-5点），朱贵来叫林冲起床。林冲洗完脸，两人又喝了几杯酒，吃了点肉。天还没亮，朱贵打开水亭的窗户，拿出一张画着喜鹊的弓，搭上一支会响的箭，朝着对面芦苇丛射过去。林冲问："这是干啥？"朱贵解释："这是山寨的信号箭，马上就会有船过来。"果然没多久，对面芦苇荡里就划出来一条快船，三五个小喽啰摇着船来到水亭下。朱贵带着林冲拿上刀枪行李上了船，小喽啰把船摇进水泊，朝金沙滩驶去。林冲看到这八百里宽的梁山水泊，真是个容易让人中埋伏的地方。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">山排巨浪，水接摇天。乱芦攒万万队刀枪，怪树列千千层剑戟。濠边鹿角，俱将骸骨攒成；寨内碗瓢，尽使骷髅做就。剥下人皮蒙战鼓，截来头发做缰绳。阻当官军，有无限断头港陌；遮拦盗贼，是许多绝径林峦。鹅卵石叠叠如山，苦竹枪森森如雨。战船来往，一周回埋伏有芦花；深港停藏，四壁下窝盘多草木。断金亭上愁云起，聚义厅前杀气生。</div>
+            <div class="text-block simplified-text">这段文字描述了一个阴森恐怖、杀气腾腾的强盗山寨。用大白话来说就是：
+
+山势像翻滚的巨浪，水面连着晃动的天空。杂乱的芦苇丛像无数排列的刀枪，古怪的树木像层层叠叠的剑戟。壕沟边的防御工事全是用人骨头堆成的，寨子里的碗和瓢都是骷髅做的。他们剥下人皮来蒙战鼓，割下头发搓成缰绳。这里地形复杂，到处都是能挡住官兵的死路；山林密布，很容易拦住盗贼。鹅卵石堆得像山一样高，竹枪密密麻麻像下雨似的。战船来来往往，芦苇丛里到处都藏着埋伏；深水港里停着船，四周草木中躲满了人。断金亭上笼罩着愁云，聚义厅前充满了杀气。
+
+简单来说就是：这地方地势险要，强盗们用各种可怕的东西做器具，到处都藏着埋伏，整个山寨充满恐怖和杀气。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">当时小喽啰把船摇到金沙滩岸边。朱贵同林冲上了岸，小喽啰背了包裹，拿了刀仗，两个好汉上山寨来。那几个小喽啰自把船摇去小港里去了。林冲看岸上时，两边都是合抱的大树，半山里一座断金亭子。再转将上来，见座大关。关前摆着刀枪剑戟，弓弩戈矛，四边都是擂木炮石。小喽啰先去报知。二人进得关来，两边夹道遍摆着队伍旗号。又过了两座关隘，方才到寨门口。林冲看见四面高山，三关雄壮，团团围定，中间里镜面也似一片平地，可方三五百丈；靠着山口才是正门，两边都是耳房。朱贵引着林冲来到聚义厅上。中间交椅上坐着王伦，左边交椅上坐着杜迁，右边交椅上坐着宋万。朱贵、林冲向前声喏了。林冲立在朱贵侧边。朱贵便道：“这位是东京八十万禁军教头，姓林名冲。因被高太尉陷害，刺配沧州，那里又被火烧了大军草料场。争奈杀死三人，逃走在柴大官人家，好生相敬。因此特写书来，举荐入伙。”林冲怀中取书递上。王伦接来拆开看了，便请林冲来坐第四位交椅，朱贵坐了第五位。一面叫小喽啰取酒来，把了三巡。动问柴大官人近日无恙。林冲答道：“每日只在郊外猎较乐情。”</div>
+            <div class="text-block simplified-text">那时候，几个手下划船把朱贵和林冲送到了金沙滩。上岸后，手下背着行李、拿着武器，跟着两位好汉往山寨走。其他手下把船划回小港口了。
+
+林冲看到岸边全是粗壮的大树，半山腰有座断金亭。再往上走，看到一座大关卡，前面摆满了各种武器，四周还堆着滚木和石块。手下先去通报，两人进了关卡，只见两边站满了举着旗子的小兵。又过了两道关卡，才到山寨大门。
+
+林冲看到周围都是高山，三座关卡很气派，把中间围出一片像镜子一样平的场地，有三五百丈宽。正门就在山口那儿，两边有小房子。朱贵带着林冲来到聚义厅，王伦坐在中间头把交椅，左边是杜迁，右边是宋万。
+
+朱贵和林冲上前行礼后，林冲站在朱贵旁边。朱贵介绍说："这位是东京八十万禁军教头林冲。他被高太尉陷害，发配到沧州，结果又遇上草料场着火。无奈杀了三个人，逃到柴大官人那里，受到热情招待。所以柴大官人特地写信推荐他入伙。"林冲掏出信递上去。
+
+王伦看完信，就让林冲坐第四把交椅，朱贵坐第五把。然后叫人上酒，大家喝了几杯。王伦问起柴大官人近况，林冲回答说："他整天在城外打猎取乐呢。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">王伦动问了一回，蓦地寻思道：“我却是个不及第的秀才，因鸟气合着杜迁来这里落草，续后宋万来，聚集这许多人马伴当。我又没十分本事，杜迁、宋万武艺也只平常。如今不争添了这个人，他是京师禁军教头，必然好武艺。倘若被他识破我们手段，他须占强，我们如何迎敌人。不若只是一怪，推却事故，发付他下山去便了，免致后患；只是柴进面上却不好看，忘了日前之恩，如今也顾他不得。”有诗为证：</div>
+            <div class="text-block simplified-text">王伦问完话后，突然想到："我不过是个没考上功名的秀才，因为受气才和杜迁来这儿当山贼，后来宋万也来了，聚集了这么多人马。我没什么大本事，杜迁、宋万的武艺也一般。现在突然来了这么个人，他可是京城禁军的教头，肯定很能打。要是让他看出我们的底细，他仗着本事大，我们怎么对付得了？不如找个借口，把他打发下山算了，省得以后麻烦。只是这样对不住柴进的面子，忘了他以前的恩情，但现在也顾不了那么多了。"后面还附了首诗作为证明。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">英勇多推林教头，荐贤柴进亦难俦。</div>
+            <div class="text-block simplified-text">林冲这个人特别勇猛，柴进虽然喜欢推荐人才，但也比不上他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">斗筲可笑王伦量，抵死推辞不肯留。</div>
+            <div class="text-block simplified-text">王伦这人小气又可笑，死活不肯留人，拼命找借口推脱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">当下王伦叫小喽啰一面安排酒食，整理筵宴，请林冲赴席。众好汉一同吃酒。将次席终，王伦叫小喽啰把一个盘子托出五十两白银，两匹纻丝来。王伦起来说道：“柴大官人举荐将教头来敝寨入伙，争奈小寨粮食缺少，屋宇不整，人力寡薄，恐日后误了足下，亦不好看。略有些薄礼，望乞笑留，寻个大寨安身歇马，切勿见怪。”林冲道：“三位头领容复：小人千里投名，万里投主，凭托柴大官人面皮，径投大寨入伙。林冲虽然不才，望赐收录，当以一死向前，并无谄佞，实为平生之幸。不为银两赍发而来，乞头领照察。”王伦道：“我这里是个小去处，如何安着得你。休怪，休怪！”朱贵见了，便谏道：“哥哥在上，莫怪小弟多言。山寨中粮食虽少，近村远镇，可以去借。山场水泊，木植广有，便要盖千间房屋却也无妨。这位是柴大官人力举荐来的人，如何教他别处去。抑且柴大官人自来与山上有恩，日后得知不纳此人，须不好看。这位又是有本事的人，他必然来出气力。”杜迁道：“山寨中那争他一个。哥哥若不收留，柴大官人知道时见怪，显的我们忘恩背义。日前多曾亏了他，今日荐个人来，便恁推却，发付他去。”宋万也劝道：“柴大官人面上，可容他在这里做个头领也好。不然见的我们无意气，使江湖上好汉见笑。”王伦道：“兄弟们不知。他在沧州虽是犯了迷天大罪，今日上山，却不知心腹。倘或来看虚实，如之奈何？”林冲道：“小人一身犯了死罪，因此来投入伙，何故相疑。”王伦道：“既然如此，你若真心入伙时，把一个投名状来。”林冲便道：“小人颇识几字，乞纸笔来便写。”朱贵笑道：“教头，你错了。但凡好汉们入伙，须要纳投名状。是教你下山去杀得一个人，将头献纳，他便无疑心。这个便谓之投名状。”林冲道：“这事也不难。林冲便下山去等，只怕没人过。”王伦道：“与你三日限。若三日内有投名状来，便容你入伙；若三日内没时，只得休怪。”林冲应承了，自回房中宿歇。闷闷不已。正是：</div>
+            <div class="text-block simplified-text">王伦让小喽啰准备酒菜，摆好宴席请林冲喝酒。大家正喝着，快吃完时，王伦让人端出五十两银子和两匹绸缎，站起来说："柴大官人推荐教头来我们山寨入伙，但我们这儿粮食少、房子破、人手缺，怕以后耽误了你。这点小礼物请你收下，还是去个大寨子落脚吧，别见怪。"
+
+林冲回答："三位头领听我说：我大老远来投奔，全靠柴大官人的面子。我虽然没啥本事，但愿意拼死效力，绝不是为了钱来的，请头领明察。"
+
+王伦推脱："我们这小地方哪配得上你？别见怪！"
+
+朱贵看不下去了，劝道："大哥，粮食不够我们可以去附近借，木材有的是，盖房子也不难。这可是柴大官人推荐来的好汉，不能赶走啊。再说柴大官人对咱们有恩，要是传出去我们不收他的人，多难看。这位教头本事大，肯定能帮上忙。"
+
+杜迁也说："山寨多他一个不多。大哥要是不收，柴大官人知道了会说我们忘恩负义。以前人家帮过我们，现在推荐个人来，怎么能推脱呢？"
+
+宋万也劝："看在柴大官人面子上，让他当个头领也行啊。不然显得我们不讲义气，让江湖上好汉笑话。"
+
+王伦却说："你们不知道，他在沧州犯了大罪，现在上山，谁知道他安的什么心？万一是来打探虚实的怎么办？"
+
+林冲赶紧说："我就是因为犯了死罪才来投奔的，头领何必怀疑？"
+
+王伦说："那好，你要真心入伙，就交个'投名状'来。"
+
+林冲以为要写字据："我认得几个字，拿纸笔来就能写。"
+
+朱贵笑着解释："教头误会了。好汉入伙要的'投名状'是下山杀个人，把人头献上来，这样才放心。"
+
+林冲说："这也不难。我这就下山等着，就怕没人经过。"
+
+王伦说："给你三天时间。三天内交来投名状就收你，交不来就别怪我们了。"林冲答应后回房休息，心里很郁闷。
+
+（最后诗句省略未译）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">愁怀郁郁苦难开，可恨王伦忒弄乖。</div>
+            <div class="text-block simplified-text">心里特别憋屈难受，都怪王伦这人心眼太坏。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">明日早寻山路去，不知那个送头来？</div>
+            <div class="text-block simplified-text">明天一大早我就走山路去，不知道哪个倒霉蛋会来送死？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">当晚席散。朱贵相别下山，自去守店。林冲到晚，取了刀仗、行李，小喽啰引去客房内歇了一夜。次日早起来，吃些茶饭，带了腰刀，提了朴刀，叫一个小喽啰领路下山，把船渡过去，僻静小路上等候客人过往。从朝至暮，等了一日，并无一个孤单客人经过。林冲闷闷不已，和小喽啰再过渡来，回到山寨中。王伦问道：“投名状何在？”林冲答道：“今日并无一个过往，以此不曾取得。”王伦道：“你明日若无投名状时，也难在这里了。”林冲再不敢答应，心内自已不乐。来到房中，讨些饭吃了。又歇了一夜。</div>
+            <div class="text-block simplified-text">那天晚上酒席散了。朱贵告别下山，回去看店。林冲晚上拿了刀枪和行李，由一个小喽啰带着去客房睡了一夜。第二天一早起来，吃了点早饭，腰间别着刀，手里提着长刀，叫一个小喽啰带路下山。他们坐船过河，在一条偏僻小路上等着打劫过路的客人。从早等到晚，等了一整天，连一个单独赶路的人都没碰到。林冲心里很烦，和小喽啰又坐船回来，回到山寨。王伦问他："叫你交的投名状呢？"林冲回答："今天一个过路的人都没有，所以没拿到。"王伦说："要是明天还拿不到投名状，你也别想在这儿待了。"林冲不敢顶嘴，心里很不痛快。回到自己屋里，随便吃了点饭。又睡了一夜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">次日清早起来，和小喽啰吃了早饭，拿了朴刀，又下山来。小喽啰道：“俺们今日投南山路去等。”两个来到林里潜伏等候，并不见一个客人过往。伏到午时后，一伙客人约有三百余人，结踪而过。林冲又不敢动手，让他过去。又等了一歇，看看天色晚来，又不见一个客人过。林冲对小喽啰道：“我恁地晦气，等了两日，不见一个孤单客人过往，何以是好？”小喽啰道：“哥哥且宽心。明日还有一日限，我和哥哥去东山路上等候。”当晚依旧上山。王伦说道：“今日投名状如何？”林冲不敢答应，只叹了一口气。王伦笑道：“想是今日又没了。我说与你三日限，今已两日了。若明日再无，不必相见了，便请那步下山，投别处去。”林冲回到房中，端的是心内好闷。有《临江仙》词一篇云：</div>
+            <div class="text-block simplified-text">第二天一大早起来，林冲和小喽啰一起吃了早饭，拿着刀又下山去了。小喽啰说："咱们今天去南山路上等着。"两人躲在树林里等了好久，一个过路的人都没看见。一直等到中午过后，才看见一大帮人，大概有三百多个，结队走过。林冲不敢动手，放他们过去了。又等了一阵子，天都快黑了，还是没人经过。林冲对小喽啰说："我真倒霉，等了两天连个落单的行人都没等到，这可怎么办？"小喽啰安慰他："大哥别着急，明天还有最后一天，我陪你去东山路上等。"晚上他们又回到山上。王伦问："今天交投名状了吗？"林冲不敢吭声，只是叹了口气。王伦笑着说："看来今天又没成。我给你三天期限，现在已经过去两天了。要是明天再完不成，咱们就别见面了，你直接下山另谋出路吧。"林冲回到自己屋里，心里特别憋闷。还写了一首《临江仙》的词。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">闷似蛟龙离海岛，愁如猛虎困荒田，悲秋宋玉泪涟涟。江淹初去笔，霸王恨无船。高祖荥阳遭困厄，昭关伍相受忧煎，曹公赤壁火连天。李陵台上望，苏武陷居延。</div>
+            <div class="text-block simplified-text">这段文字用各种比喻和历史典故表达了极度苦闷、忧愁的心情。我试着用大白话重新说一遍：
+
+我现在的心情啊，就像龙被困在小岛上，老虎被关在荒野里，难受得很。像那个爱悲秋的宋玉一样眼泪哗哗地流。江淹没了写诗的灵感，项羽在江边没船可渡。刘邦在荥阳被人围困，伍子胥过昭关急得一夜白头。曹操在赤壁被火烧得惨败。李陵在异乡天天望家乡，苏武在塞外牧羊受苦。
+
+简单说就是：我现在特别郁闷，跟历史上这些倒霉蛋一样惨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">当晚林冲仰天长叹道：“不想我今日被高俅那贼陷害，流落到此，直如此命蹇时乖！”过了一夜，次日天明起来，讨些饭食吃了，打拴了那包裹，撇在房中，跨了腰刀，提了朴刀，又和小喽啰下山过渡，投东山路上来。林冲道：“我今日若还取不得投名状时，只得去别处安身立命。”两个来到山下东路林子里潜伏等候。看看日头中了，又没一个人来。时遇残雪初晴，日色明朗。林冲提着朴刀，对小喽啰道：“眼见得又不济事了，不如趁早，天色未晚，取了行李，只得往别处去寻个所在。”小校用手指道：“好了，兀的不是一个人来！”林冲看时，叫声：“惭愧！”只见那个人远远在山坡下，望见行来。待他来得较近，林冲把朴刀杆剪了一下，蓦地跳将出来。那汉子见了林冲，叫声：“阿也！”撇了担子，转身便走。林冲赶将去，那里赶得上，那汉子闪过山坡去了。林冲道：“你看我命苦么！等了三日，甫能等得一个人来，又吃他走了。”小校道：“虽然不杀得人，这一担财帛可以抵当。”林冲道：“你先挑了上山去，我再等一等。”小喽啰先把担儿挑上山去。只见山坡下转出一个大汉来。林冲见了，说道：“天赐其便！”只见那人挺着朴刀，大叫如雷，喝道：“泼贼，杀不尽的强徒！将俺行李那里去！洒家正在捉你这厮们，倒来拔虎须！”飞也似踊跃将来。林冲见他来得势猛，也使步迎他。</div>
+            <div class="text-block simplified-text">那天晚上，林冲抬头望着天叹气说："没想到我今天被高俅那个混蛋害成这样，落到这步田地，真是倒霉透顶！"过了一夜，第二天天亮后，他随便吃了点饭，收拾好行李放在屋里，带上腰刀，提着朴刀，又跟着小喽啰下山坐船，往东山方向走。林冲说："今天我要是再搞不到投名状，就只能去别的地方混了。"两人来到山下东路的林子里藏着等人。等到中午了，还是没人经过。这时雪刚停，太阳很好。林冲提着朴刀对小喽啰说："看来又没戏了，趁天还没黑，我们收拾东西去别处找机会吧。"突然小喽啰指着说："太好了，那边不是来人了嘛！"林冲一看，高兴地喊："太好了！"
+
+只见那人远远地从山坡下走过来。等他走近些，林冲用朴刀杆一挡，猛地跳出来。那人看见林冲，"哎呀"一声，扔下担子转身就跑。林冲追过去，但根本追不上，那人一溜烟跑没影了。林冲说："看我多倒霉！等了三天好不容易等来个人，又让他跑了。"小喽啰说："虽然没杀人，但这担财物也能顶数。"林冲说："你先挑上山，我再等等。"小喽啰刚把担子挑走，山坡下突然转出个大汉。林冲一见就说："真是天助我也！"
+
+只见那人举着朴刀，像打雷一样大吼："该死的强盗！把我东西抢哪儿去了？老子正要找你们算账，你们倒自己送上门来了！"说着就猛冲过来。林冲看他来势汹汹，也迎了上去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">不是这个人来斗林冲，有分教：梁山泊内，添这个弄风白额大虫；水浒寨中，辏几只跳涧金晴猛兽。直教掀翻天地重扶起，戳破苍穹再补完。毕竟来与林冲斗的正是甚人，且听下回分解。</div>
+            <div class="text-block simplified-text">要不是这个人来找林冲打架，事情就不会闹这么大：梁山泊里，从此多了个能呼风唤雨的白额老虎；水泊梁山上，又聚集了几只凶猛过人的猛兽。这一打可不得了，简直要把天捅个窟窿、把地掀个底朝天。到底是谁来跟林冲干架？咱们下回接着说。
+
+（说明：译文通过以下方式实现口语化转换：
+1. "斗"改为"打架"
+2. "弄风白额大虫"译为"能呼风唤雨的白额老虎"并添加"从此"衔接
+3. "辏"用"聚集"替代
+4. 夸张句式转化为"把天捅个窟窿"等俗语
+5. 结尾保留传统说书句式但改用口语词"干架"
+6. 添加"咱们"增强讲述感
+完全保留原信息的因果链条和悬念设置）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
