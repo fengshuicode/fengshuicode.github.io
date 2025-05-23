@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十九回 黄狮精虚设钉钯宴　金木土计闹豹头山</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./089.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十九回 黄狮精虚设钉钯宴　金木土计闹豹头山</h1>
+        <a href="./091.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说那院中几个铁匠，因连日辛苦，夜间俱自睡了。及天明起来打造，篷下不见了三般兵器，一个个呆挣神惊，四下寻找。只见那三个王子出宫来看，那铁匠一齐磕头道：“小主啊，神师的三般兵器，都不知那里去了！”</div>
+            <div class="text-block simplified-text">院子里有几个铁匠，连着干了好几天活，晚上都累得睡着了。第二天早上起来干活，发现棚子里的三件兵器不见了，一个个都吓傻了，慌慌张张到处找。这时候正好三个王子从宫里出来看情况，铁匠们赶紧跪下说："殿下啊，神仙师父的三件兵器，不知道去哪儿了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">小王子听言，心惊胆战道：“想是师父今夜收拾去了。”急奔暴纱亭看时，见白马尚在廊下，忍不住叫道：“师父还睡哩！”沙僧道：“起来了。”即将房门开了，让王子进里看时，不见兵器，慌慌张张问道：“师父的兵器都收来了？”行者跳起道：“不曾收啊！”王子道：“三般兵器，今夜都不见了。”八戒连忙爬起道：“我的钯在么？”小王道：“适才我等出来，只见众人前后找寻不见，弟子恐是师父收了，却才来问。老师的宝贝，俱是能长能消，想必藏在身边哄弟子哩。”行者道：“委的未收。都寻去来。”</div>
+            <div class="text-block simplified-text">小王子一听，吓得够呛，说："该不会是师父今晚把东西都收走了吧？"他赶紧跑到暴纱亭去看，发现白马还在走廊下，就忍不住喊："师父还在睡觉呢！"沙僧说："已经起来了。"说着就打开房门，让小王子进去看。结果发现兵器都不见了，小王子慌慌张张地问："师父的兵器都收好了吗？"孙悟空跳起来说："没收拾啊！"小王子说："三件兵器今晚全都不见了。"猪八戒赶紧爬起来问："我的钉钯还在吗？"小王子说："刚才我们出来时，看见大家都在到处找，就是找不着。我以为是师父收起来了，这才来问。师父的宝贝都能变大变小，说不定是藏在身上逗我们玩呢。"孙悟空说："真没收拾，咱们快去找找。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">随至院中篷下，果然不见踪影。八戒道：“定是这伙铁匠偷了!快拿出来!略迟了些儿，就都打死!打死！”那铁匠慌得磕头滴泪道：“爷爷!我们连日辛苦，夜间睡着，及至天明起来，遂不见了。我等乃一概凡人，怎么拿得动，望爷爷饶命!饶命！”行者无语，暗恨道：“还是我们的不是。既然看了式样，就该收在身边，怎么却丢放在此!那宝贝霞彩光生，想是惊动甚么歹人，今夜窃去也。”八戒不信道：“哥哥说那里话!这般个太平境界，又不是旷野深山，怎得个歹人来!定是铁匠欺心，他见我们的兵器光彩，认得是三件宝贝，连夜走出王府，伙些人来，抬的抬，拉的拉，偷出去了!拿过来打呀!打呀！”众匠只是磕头发誓。</div>
+            <div class="text-block simplified-text">他们来到院子里的棚子下，果然发现东西不见了。八戒嚷嚷道："肯定是这些铁匠偷的！快交出来！再磨蹭，就把你们全打死！"铁匠们吓得直磕头，哭着说："大爷啊！我们连着几天干活累得要死，晚上睡死了，早上起来东西就不见了。我们都是普通人，哪搬得动那些东西啊！求大爷饶命！"悟空没说话，心里暗骂："还是我们不对。既然看了样子，就该随身带着，怎么能随便放这儿！那宝贝闪闪发光的，肯定是招来了坏人，昨晚被偷了。"八戒不信："哥你说啥呢！这地方这么太平，又不是荒山野岭，哪来的坏人！肯定是铁匠起了贪心，看咱们的兵器发光，知道是宝贝，连夜叫人来偷走了！打他们！"铁匠们只能拼命磕头发誓。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">正嚷处，只见老王子出来，问及前事，却也面无人色，沉吟半晌，道：“神师兵器，本不同凡，就有百十余人也禁挫不动；况孤在此城，今已五代，不是大胆海口，孤也颇有个贤名在外；这城中军民匠作人等，也颇惧孤之法度，断是不敢欺心。望神师再思可矣。”</div>
+            <div class="text-block simplified-text">大家正吵吵嚷嚷的时候，老国王出来了。他问清楚事情的来龙去脉后，吓得脸色发白，低着头想了半天才说："神仙用的兵器本来就不是普通东西，就算有一百多个人也搬不动啊。再说我在这城里当国王已经传了五代，不是我吹牛，我在外面还是有点好名声的。这城里的老百姓、士兵和工匠们也都怕我定的规矩，绝对不敢起坏心思。神仙您还是再好好想想吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">行者笑道：“不用再思，也不须苦赖铁匠。我问殿下：你这州城四面，可有甚么山林妖怪？”王子道：“神师此问，甚是有理。孤这州城之北，有一座豹头山。山中有一座虎口洞。往往人言洞内有仙，又言有虎狼，又言有妖怪。孤未曾访得端的，不知果是何物。”行者笑道：“不消讲了，定是那方歹人，知道俱是宝贝，一夜偷将去了。”叫：“八戒、沙僧，你都在此保着师父，护着城池，等老孙寻访去来。”又叫铁匠们不可住了炉火，一一炼造。</div>
+            <div class="text-block simplified-text">孙悟空笑着说："别想了，也别为难铁匠了。我问太子：你们这城周围，有没有什么山里有妖怪？"太子回答："师父问得对。我们城北有座豹头山，山里有个虎口洞。有人说洞里有神仙，有人说有野兽，也有人说有妖怪。我没亲自去看过，不知道到底是什么。"孙悟空笑道："不用多说了，肯定是那帮坏蛋知道这些都是宝贝，连夜偷走了。"他吩咐："八戒、沙僧，你们在这儿保护师父和城池，等我去查查。"又让铁匠们继续生火打铁，别停手。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">好猴王，辞了三藏，唿哨一声，形影不见。早跨到豹头山上。原来那城相去只有三十里，一瞬即到。径上山峰观看，果然有些妖气。真是：</div>
+            <div class="text-block simplified-text">这猴哥跟唐僧打了个招呼，嗖的一下就没影了。眨眼功夫就飞到了三十里外的豹头山。他跑到山顶一看，果然有妖怪活动的迹象。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">龙脉悠长，地形远大。尖峰挺挺插天高，陡涧沉沉流水急。山前有瑶草铺茵，山后有奇花布锦。乔松老柏，古树修篁。山鸦山鹊乱飞鸣，野鹤野猿皆啸唳。悬崖下，麋鹿双双；峭壁前，獾狐对对。一起一伏远来龙，九曲九湾潜地脉。埂头相接玉华州，万古千秋兴胜处。行者正然看时，忽听得山背后有人言语，急回头视之，乃两个狼头妖怪，朗朗的说着话，向西北上走。行者揣道：“这定是巡山的怪物，等老孙跟他去听听，看他说些甚的。”</div>
+            <div class="text-block simplified-text">这段文字描述了一座雄伟奇特的山景，还有孙悟空遇到两个妖怪的情景。用大白话来说就是：
+
+这座山又长又大，山峰尖尖的直插天空，山沟很深水流很急。山前长满仙草像铺了地毯，山后开满奇花像铺了彩缎。到处都是高大的松柏和翠竹，山鸟叽叽喳喳乱飞，野鹤野猴叫声不断。悬崖下有成群的麋鹿，峭壁前有结对的狐狸獾子。山势起伏像一条巨龙，河流弯弯曲曲在地下穿行。这座山连着玉华州，是个风景绝佳的好地方。
+
+孙悟空正看着呢，突然听见山后有人说话。他回头一看，原来是两个长着狼头的妖怪，一边大声聊天一边往西北方向走。孙悟空心想："这肯定是巡山的小妖，我跟上去听听他们在说啥。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">捻着诀，念个咒，摇身一变，变做个蝴蝶儿，展开翅，翩翩翻翻，径自赶上。果然变得有样范：</div>
+            <div class="text-block simplified-text">他念了几句咒语，身子一晃，就变成了一只蝴蝶。他扇着翅膀，轻快地飞着追了上去。这变化还真像那么回事：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">一双粉翅，两道银须。乘风飞去急，映日舞来徐。渡水过墙能疾俏，偷香弄絮甚欢娱。体轻偏爱鲜花味，雅态芳情任卷舒。他飞在那个妖精头直上，飘飘荡荡，听他说话。那妖猛的叫道：“二哥，我大王连日侥幸：前月里得了一个美人儿，在洞内盘桓，十分快乐。昨夜里又得了三般兵器，果然是无价之宝。明朝开宴庆‘钉钯会’哩。我们都有受用。”这个道：“我们也有些侥幸：拿这二十两银子买猪羊去。如今到了乾方集上，先吃几壶酒儿。把东西开个花帐儿，落他二三两银子，买件绵衣过寒，却不是好？”两个怪说说笑笑的，上大路急走如飞。</div>
+            <div class="text-block simplified-text">一对白翅膀，两根银胡子。飞起来快得像一阵风，阳光下慢慢飘着。能轻松飞过水面和墙头，喜欢偷花香、玩柳絮，特别开心。身子轻飘飘的，就爱闻花香，飞来飞去很自在。它停在那妖精头顶上，晃晃悠悠听他们说话。
+
+突然那妖精大声说：“二哥！我家大王最近运气真好：上个月抓了个漂亮姑娘，在洞里玩得可高兴了。昨晚又弄到三件宝贝兵器，真是值钱货。明天要摆酒席庆祝‘钉钯会’呢，咱们都能沾光。”另一个说：“咱们也挺走运，拿着这二十两银子去买猪羊。现在先到乾方集上喝几杯酒。报账时多写点钱，能贪个二三两银子，买件棉袄过冬，多好啊！”两个妖怪有说有笑，在大路上飞快地走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">行者听得要庆钉钯会，心中暗喜；欲要打杀他，争奈不管他事；况手中又无兵器。他即飞向前边，现了本相，在路口上立定。那怪看看走到身边，被他一口法唾喷将去，念一声“咤”，即使个定身法，把两个狼头精定住。眼睁睁，口也难开；直挺挺，双脚站住。又将他扳翻倒，揭衣搜捡，果是有二十两银子，着一条搭包儿打在腰间裙带上，又各挂着一个粉漆牌儿，一个上写着“刁钻古怪”，一个上写着“古怪刁钻”。</div>
+            <div class="text-block simplified-text">孙悟空听说要开钉钯会，心里偷着乐。他本来想打死妖怪，但又觉得不关自己的事，而且手上也没武器。他就赶紧飞到前面，变回原样站在路口。等那两个妖怪走到跟前，他"呸"地吐了口仙气，喊了声"定"，就用定身法把两个狼精给定住了。妖怪眼珠子能转却说不了话，直挺挺地站在原地。孙悟空把他们推倒，翻他们衣服找东西，果然找到二十两银子，用个布包包着系在裤腰带上。两个妖怪还各挂着一块漆牌，一块写着"刁钻古怪"，另一块写着"古怪刁钻"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">好大圣，取了他银子，解了他牌儿，返跨步回至州城。到王府中，见了王子、唐僧并大小官员、匠作人等，具言前事。八戒笑道：“想是老猪的宝贝，霞彩光明，所以买猪羊，治筵席庆贺哩。但如今怎得他来？”行者道：“我兄弟三人俱去。这银子是买办猪羊的，且将这银子赏了匠人，教殿下寻几个猪羊。八戒，你变做刁钻古怪，我变做古怪刁钻，沙僧装做个贩猪羊的客人，走进那虎口洞里，得便处，各人拿了兵器，打绝那妖邪，回来却收拾走路。”沙僧笑道：“妙，妙，妙!不宜迟，快走！”老王果依此计，即教管事的买办了七八口猪，四五腔羊。</div>
+            <div class="text-block simplified-text">孙悟空拿了妖怪的银子和腰牌，大步走回城里。到了王府，见到王子、唐僧和大小官员、工匠们，把之前的事都说了。猪八戒笑着说："估计是我的宝贝太亮眼，妖怪才买猪羊准备酒席庆祝呢。但现在怎么让他出来呢？"孙悟空说："我们三个一起去。这银子本来是妖怪买猪羊用的，现在先拿它赏给工匠们，让王子派人准备些猪羊。八戒，你变成刁钻古怪，我变成古怪刁钻，沙师弟扮成卖猪羊的商人。我们进妖怪洞里，找机会拿出兵器打死那些妖怪，再回来收拾行李上路。"沙僧连声说："好主意！别耽误，赶紧走！"老国王照这个计划，立刻让手下买了七八头猪、四五只羊。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">他三人辞了师父，在城外大显神通。八戒道：“哥哥，我未曾看见那刁钻古怪，怎生变得他模样？”行者道：“那怪被老孙使了定身法定住在那里，直到明日此时方醒。我记得他的模样，你站下，等我教你变。如此如彼，就是他的模样了。”那呆子真个口里念着咒，行者吹口仙气，霎时就变得与那刁钻古怪一般无二，将一个粉牌儿带在腰间。行者即变做古怪刁钻，腰间也带了一个牌儿。沙僧打扮得像个贩猪羊的客人。一起儿赶着猪羊，上大路，径奔山来。不多时，进了山凹里，又遇见一个小妖。他生得嘴脸也恁地凶恶!看那：</div>
+            <div class="text-block simplified-text">他们三个告别了师父，在城外大显身手。八戒说：“哥啊，我没见过那个刁钻古怪的家伙，怎么变成他的样子？”行者回答：“那妖怪被我用了定身法，定在那儿，到明天这时候才会醒。我记得他的模样，你站好，我来教你变。这样那样，就跟他一模一样了。”那呆子真的念起咒语，行者吹了口仙气，转眼间就变得和刁钻古怪完全一样，腰上还挂了个牌子。行者自己变成古怪刁钻，腰上也挂了个牌子。沙僧打扮成个卖猪羊的商人。他们一起赶着猪羊，沿着大路往山里走。没多久，进了山坳，又碰到一个小妖怪。那家伙长得可真吓人！你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">圆滴溜两只眼，如灯幌亮；红刺一头毛，似火飘光。糟鼻子，口，獠牙尖利；查耳朵，砍额头，青脸泡浮。身穿一件浅黄衣，足踏一双莎蒲履。雄雄纠纠若凶神，急急忙忙如恶鬼。那怪左胁下挟着一个彩漆的请书匣儿，迎着行者三人叫道：“古怪刁钻，你两个来了?买了几口猪羊？”行者道：“这赶的不是？”那怪朝沙僧道：“此位是谁？”行者道：“就是贩猪羊的客人。还少他几两银子，带他来家取的。你往那里去？”那怪道：“我往竹节山去请老大王明早赴会。”行者绰他的口气儿，就问：“共请多少人？”那怪道：“请老大王坐首席，连本山大王共头目等众，约有四十多位。”正说处，八戒道：“去罢，去罢。猪羊都四散走了。”行者道：“你去邀着，等我讨他帖儿看看。”那怪见自家人，即揭开取出，递与行者。行者展开看时，上写着：</div>
+            <div class="text-block simplified-text">这家伙长着两只圆溜溜的大眼睛，亮得像灯笼；一头红毛竖着，像火苗一样飘动。酒糟鼻，歪嘴巴，尖牙露在外面；招风耳，大脑门，青脸浮肿。身上穿着浅黄色衣服，脚上踩着草鞋。看起来凶神恶煞，走路风风火火像恶鬼。他左胳膊下夹着个彩漆的请帖盒子，冲着孙悟空三人喊："古怪刁钻，你俩来啦？买了多少猪羊？"孙悟空指着后面说："这不都赶来了吗？"那妖怪又看着沙僧问："这位是谁？"孙悟空说："是卖猪羊的商人。还欠他点钱，带他回家取。你这是去哪儿？"妖怪回答："我去竹节山请老大王明早来吃饭。"孙悟空顺着话问："总共请了多少人？"妖怪说："请老大王坐主桌，加上本山大王的头领们，大概四十多人。"正说着，猪八戒插嘴："快走吧快走吧，猪羊都要跑散了。"孙悟空说："你先去赶着，我看看他的请帖。"妖怪以为是自家人，就打开盒子拿出请帖递给孙悟空。打开一看，上面写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">明辰敬治肴酌，庆‘钉钯嘉会’，屈尊过山一叙。幸勿外，至感。右启祖翁九灵元圣老大人尊前。门下孙黄狮顿首百拜。行者看毕，仍递与那怪。那怪放在匣内，径往东南上去了。</div>
+            <div class="text-block simplified-text">明天早上我准备了酒菜，庆祝"钉耙大会"，请您赏脸来山上聚一聚。千万别推辞，非常感谢。这封信是写给九灵元圣老大人的。您的晚辈黄狮磕头敬上。孙悟空看完信，又还给那妖怪。妖怪把信放进盒子里，直接往东南方向去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">沙僧问道：“哥哥，帖儿上是甚么话头？”行者道：“乃庆钉钯会的请帖。名字写着‘门下孙黄狮顿首百拜’。请的是祖翁九灵元圣老大人。”沙僧笑道：“黄狮想必是个金毛狮子成精。但不知九灵元圣是个何物？”八戒听言，笑道：“是老猪的货了！”行者道：“怎见得是你的货？”八戒道：“古人云：‘癞母猪专赶金毛狮子。’故知是老猪之货物也。”他三人说说笑笑，赶着猪羊。却就望见虎口洞门。但见那门儿外：周围山绕翠，一脉气连城。峭壁扳青蔓，高崖挂紫荆。鸟声深树匝，花影洞门迎。不亚桃源洞，堪宜避世情。</div>
+            <div class="text-block simplified-text">沙僧问：“大哥，帖子上写的啥？”孙悟空说：“是请我们去参加钉耙会的帖子。落款是‘孙黄狮磕头百拜’，请的是他爷爷九灵元圣老大人。”沙僧笑着说：“这黄狮估计是个金毛狮子变的妖怪。不过九灵元圣是个啥东西？”猪八戒一听就乐了：“这是冲我老猪来的！”孙悟空问：“怎么就是冲你来的？”猪八戒说：“老话讲‘癞皮母猪专追金毛狮子’，所以肯定是找我的。”他们三个边聊边走，赶着猪羊。不一会儿就看见虎口洞了。只见洞外：四面青山环绕，云雾连着城墙。陡峭的石壁上爬满青藤，高崖上挂着紫荆花。树林里鸟叫声不断，洞口前花影摇曳。简直像世外桃源，真是个隐居的好地方。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">渐渐近于门口，又见一丛大大小小的杂项妖精，在那花树之下顽耍。忽听得八戒“呵呵”赶猪羊到时，都来迎接，便就捉猪的猪，捉羊的捉羊，一齐捆倒。</div>
+            <div class="text-block simplified-text">快到门口的时候，又看到一群大大小小的妖怪在花树下玩耍。突然听到猪八戒“呵呵”地赶着猪羊过来，妖怪们全都跑过来迎接，抓猪的抓猪，抓羊的抓羊，一下子就把它们全捆起来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">早惊动里面妖王，领十数个小妖，出来问道：“你两个来了?买了多少猪羊？”行者道：“买了八口猪，七腔羊，共十五个牲口。猪银该一十六两，羊银该九两。前者领银二十两，仍欠五两。这个就是客人，跟来找银子的。”妖王听说，即唤：“小的们，取五两银子，打发他去。”行者道：“这客人，一则来找银子，二来要看看嘉会。”那妖大怒，骂道：“你这个刁钻儿惫懒!你买东西罢了，又与人说甚么会不会！”八戒上前道：“主人公得了宝贝，诚是天下之奇珍，就教他看看怕怎的？”那怪咄的一声道：“你这古怪也可恶!我这宝贝，乃是玉华州城中得来的，倘这客人看了，去那州中传说，说得人知，那王子一时来访求，却如之何？”行者道：“主公，这个客人，乃乾方集后边的人，去州许远，又不是他城中人也，那里去传说?二则他肚里也饥了，我两个也未曾吃饭。家中有现成酒饭，赏他些吃了，打发他去罢。”说不了，有一小妖，取了五两银子，递与行者。行者将银子递与沙僧道：“客人，收了银子，我与你进后面去吃些饭来。”</div>
+            <div class="text-block simplified-text">里面的妖怪大王听到动静，带着十几个小妖出来问：“你们俩回来了？买了多少猪羊？”孙悟空回答：“买了八头猪，七只羊，一共十五头。猪钱该给十六两，羊钱九两。之前拿了二十两，还差五两。这位客人是来要钱的。”  
+
+妖怪大王听了，马上喊：“小的们，拿五两银子给他们打发走。”孙悟空又说：“这客人不光来要钱，还想看看你们这儿的热闹。”妖怪一听就火了，骂道：“你这狡猾的懒鬼！买东西就买东西，还扯什么热闹不热闹！”猪八戒插嘴说：“主人得了宝贝，确实是天下少有的好东西，让他看看怎么了？”妖怪吼道：“你这丑八怪真讨厌！我这宝贝是从玉华州城里弄来的，要是这客人看了，回去到处说，传开了，那王子找上门来怎么办？”  
+
+孙悟空赶紧说：“大王，这客人是乾方集那边的人，离州城远着呢，又不是城里人，他能传哪儿去？再说他也饿了，我们俩也没吃饭。家里有现成的酒饭，赏他吃点再打发走吧。”正说着，一个小妖拿了五两银子递给孙悟空。孙悟空转手把钱给沙僧，说：“客人，收了钱，我带你去后面吃点东西。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">沙僧仗着胆，同八戒、行者进于洞内。到二层厂厅之上，只见正中间桌上，高高的供养着一柄九齿钉钯，真个是光彩映目；东山头靠着一条金箍棒，西山头靠着一条降妖杖。那怪王随后跟着道：“客人，那中间放光亮的就是钉钯。你看便看，只是出去千万莫与人说。”沙僧点头称谢了。</div>
+            <div class="text-block simplified-text">沙僧鼓起勇气，和八戒、孙悟空一起走进洞里。到了第二层大厅，看见正中间的桌子上高高地供着一把九齿钉耙，闪闪发光特别显眼；东边靠墙放着金箍棒，西边靠着降妖杖。妖怪头目跟在他们后面说："几位客人，中间发亮的就是钉耙。你们可以随便看，但出去后千万别告诉别人。"沙僧点点头表示感谢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">噫!这正是“物见主，必定取”。那八戒一生是个鲁夯的人，他见了钉钯，那里与他叙甚么情节，跑上去，拿下来，轮在手中，现了本相。丢了解数，望妖精劈脸就筑。这行者、沙僧也奔至两山头各拿器械，现了原身。三弟兄一齐乱打，慌得那怪王急抽身闪过，转入后边，取一柄四明铲，杆长利，赶到天井中，支住他三般兵器，厉声喝道：“你是甚么人，敢弄虚头，骗我宝贝！”行者骂道：“我把你这个贼毛团!你是认我不得!我们乃东土圣僧唐三藏的徒弟。因至玉华州倒换关文，蒙贤王教他三个王子拜我们为师，学习武艺，将我们宝贝作样，打造如式兵器。因放在院中，被你这贼毛团夤夜入城偷来，倒说我弄虚头骗你宝贝。不要走，就把我们这三件兵器，各奉承你几下尝尝！”那妖精就举铲来敌。这一场，从天井中斗出前门。看他三僧攒一怪!好杀：</div>
+            <div class="text-block simplified-text">哎呀！这不就是“东西见了主人，肯定要拿回来”嘛！猪八戒本来就是个莽撞人，一看到自己的钉耙，哪还顾得上跟妖怪讲道理，冲上去就抢回来，抡在手里，变回原来的样子。他二话不说，照着妖怪的脸就打。孙悟空和沙和尚也跑到两边山头，拿起武器，现出真身。三兄弟一起围攻，吓得那妖怪赶紧躲开，跑到后面拿出一把四明铲（杆子又长又锋利），冲到院子里，架住他们三个的兵器，大声喝道：“你们是什么人？竟敢耍花招骗我的宝贝！”孙悟空骂道：“你这个毛贼！连我们都不认识？我们是东土大唐圣僧唐三藏的徒弟。因为到玉华州换通关文书，承蒙这里的贤王让他三个儿子拜我们为师，学习武艺。他们照着我们的兵器样子打造了同样的武器。我们的兵器放在院子里，被你这毛贼半夜进城偷走，你反倒说我们骗你宝贝？别跑！今天就让你尝尝我们这三件兵器的厉害！”那妖怪举起铲子就打。这一架，从院子里一直打到前门。看他们三个和尚打一个妖怪！真是场恶战：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">呼呼棒若风，滚滚钯如雨。降妖杖举满天霞，四明铲伸云生绮。好似三仙炼大丹，火光彩幌惊神鬼。行者施威甚有能，妖精盗宝多无礼!天蓬八戒显神通，大将沙僧英更美。弟兄合意运机谋，虎口洞中兴斗起。那怪豪强弄巧乖，四个英雄堪厮比。当时杀至日头西，妖邪力软难相抵。他们在豹头山战斗多时，那妖精抵敌不住，向沙僧前喊一声：“看铲！”沙僧让个身法躲过，妖精得空而走，向东南巽宫上乘风飞去。八戒拽步要赶，行者道：“且让他去。自古道：‘穷寇勿追。’且只来断他归路。”八戒依言。</div>
+            <div class="text-block simplified-text">棒子舞得像刮风，钉耙挥得像下雨。降妖杖一抡满天红光，铲子一伸云彩都发光。就像三个神仙在炼丹，火光闪闪吓跑鬼神。孙悟空本事大显威风，妖怪偷宝贝太不要脸！猪八戒使出真本事，沙僧更是个猛将。兄弟三个一起想办法，在虎口洞打得热火朝天。那妖怪耍花招逞强，哪比得上四个大英雄。打到太阳偏西，妖怪没力气扛不住了。他们在豹头山打了半天，妖怪打不过，朝沙僧喊了声"看铲！"沙僧一闪躲开，妖怪趁机溜了，驾着风往东南方向逃。猪八戒想追，孙悟空说："别追了。老话说'别追逃跑的敌人'，咱们只管堵他后路。"猪八戒听了就没追。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">三人径至洞口，把那百十个若大若小的妖精，尽皆打死。原来都是些虎狼彪豹，马鹿山羊。被大圣使个手法，将他那洞里细软物件并打死的杂项兽身与赶来的猪羊，通皆带出。沙僧就取出干柴放起火来。八戒使两个耳朵风，把一个巢穴霎时烧得干净，却将带出的诸物，即转州城。</div>
+            <div class="text-block simplified-text">三个人直接来到洞口，把那一百多个大大小小的妖怪全都打死了。这些妖怪其实都是老虎、狼、豹子、马、鹿、山羊之类的动物变的。孙悟空用了个法术，把洞里值钱的东西、打死的各种野兽尸体，还有赶来的一群猪羊，全都带了出来。沙僧拿出干柴点起了火。猪八戒用两个大耳朵扇风，一下子就把妖怪的老窝烧了个精光。然后他们带着弄出来的东西，转身回了州城。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">此时城门尚开，人家未睡。老王父子与唐僧俱在暴纱亭盼望。只见他们扑哩扑剌的丢下一院子死兽、猪羊及细软物件。一齐叫道：“师父，我们已得胜回来也！”那殿下喏喏相谢。唐长老满心欢喜。三个小王子跪拜于地，沙僧搀起道：“且莫谢，都近前看看那物件。”王子道：“此物俱是何来？”行者笑道：“那虎狼彪豹，马鹿山羊，都是成精的妖怪。被我们取了兵器，打出门来。那老妖是个金毛狮子。他使一柄四明铲，与我等战到天晚，败阵逃生，往东南上走了。我等不曾赶他，却扫除他归路，打杀这些群妖，搜寻他这些物件，带将来的。”</div>
+            <div class="text-block simplified-text">这时候城门还开着，人们都没睡。老王和他儿子们跟唐僧一起在暴纱亭等着。突然听见"扑通扑通"一阵响，院子里掉下来一大堆死掉的野兽、猪羊和一些值钱东西。只听他们喊道："师父！我们打赢回来啦！"王子连连道谢，唐僧高兴得不得了。三个小王子跪在地上磕头，沙僧赶紧扶他们起来说："先别急着谢，过来看看这些东西吧。"王子问："这些都是哪儿来的？"孙悟空笑着说："那些老虎、狼、豹子、马鹿、山羊，都是成了精的妖怪。我们抢了它们的兵器，把它们打跑了。那个老妖怪是个金毛狮子，拿着把四明铲跟我们打到天黑，打不过就逃到东南方向去了。我们没追它，倒是把它的老窝端了，杀了这些小妖怪，把这些好东西都搜刮来啦。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">老王听说，又喜又忧。喜的是得胜而回，忧的是那妖日后报仇。行者道：“殿下放心。我已虑之熟，处之当矣。一定与你扫除尽绝，方才起行，决不至贻害于后。我午间去时，撞见一个青脸红毛的小妖送请书。我看他帖子上写着：‘明辰敬治肴酌庆钉钯嘉会，屈尊车从过山一叙。幸勿外，万感!右启祖翁九灵元圣老大人尊前。’名字是‘门下孙黄狮顿首百拜’。才子那妖精败阵，必然向他祖翁处去会话。明辰断然寻我们报仇，当情与你扫荡干净。”老王称谢了，摆上晚斋。师徒们斋毕，各归寝处不题。</div>
+            <div class="text-block simplified-text">老王听了这消息，又高兴又担心。高兴的是打赢了妖怪能平安回来，担心的是那妖怪以后会来报仇。孙悟空说："殿下别担心。这事我已经想好了，也安排妥当了。我肯定会把妖怪收拾干净再走，绝不会留下后患。中午我去的时候，碰见一个青脸红毛的小妖怪送请帖。我看帖子上写着：‘明天早上准备酒席庆祝钉钯大会，请您赏脸来山里聚一聚。千万别推辞，万分感谢！’落款是‘您的手下孙子黄狮磕头百拜’。刚才那妖怪打了败仗，肯定会去找他爷爷告状。明天一定会来找我们报仇，到时候我一定帮你把他们全消灭。"老王连忙道谢，摆上晚饭。师徒几个吃完饭后，各自回房睡觉去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">却说那妖精果然向东南方奔到竹节山。那山中有一座洞天之处，唤名九曲盘桓洞。洞中的九灵元圣是他的祖翁。当夜足不停风，行至五更时分，到于洞口，敲门而进。小妖见了道：“大王，昨晚有青脸儿下请书，老爷留他住到今早，欲同他去赴你钉钯会，你怎么又绝早亲来邀请？”妖精道：“不好说，不好说!会成不得了！”正说处，见青脸儿从里边走出道：“大王，你来怎的?老大王爷爷起来就同我去赴会哩。”妖精慌张张的，只是摇手不言。</div>
+            <div class="text-block simplified-text">话说那妖怪真的往东南方向跑到了竹节山。山里有个好地方叫九曲盘桓洞，洞里住着他的老祖宗九灵元圣。他一晚上没停脚，天快亮的时候到了洞口，敲门进去。小妖怪看见他就说："大王，昨晚有个青脸妖怪送来请帖，老爷留他住到今早，说要和他一起去参加你的钉耙大会，你怎么大清早自己跑来请了？"妖怪着急地说："别提了别提了！这会开不成了！"正说着，那个青脸妖怪从里面走出来说："大王，你怎么来了？老爷爷刚起床正要和我一起去赴会呢。"这妖怪慌慌张张的，光摆手不说话。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">少顷，老妖起来了，唤入。这妖精丢了兵器，倒身下拜，止不住腮边泪落。老妖道：“贤孙，你昨日下柬，今早正欲来赴会，你又亲来，为何发悲烦恼？”</div>
+            <div class="text-block simplified-text">过了一会儿，老妖怪起床了，叫小妖进去。这小妖怪放下武器，跪下来磕头，眼泪不停地往下掉。老妖怪问："好孙子，你昨天送了请帖，今天早上我正要去参加聚会，你又亲自来了，为啥这么伤心难过啊？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">妖精叩头道：“小孙前夜对月闲行，只见玉华州城中有光彩冲空。急去看时，乃是王府院中三般兵器放光：一件是九齿渗金钉钯，一件是宝杖，一件是金箍棒。小孙即使神法摄来，立名‘钉钯嘉会’，着小的们买猪羊果品等物，设宴庆会，请祖爷爷赏之，以为一乐。昨差青脸来送柬之后，只见原差买猪羊的刁钻儿等赶着几个猪羊，又带了一个贩卖的客人来找银子。他定要看看会去，是小孙恐他外面传说，不容他看。他又说肚中饥饿，讨些饭吃，因教他后边吃饭。他走到里边，看见兵器，说是他的。三人就各抢去一件，现出原身：一个是毛脸雷公嘴的和尚，一个是长嘴大耳朵的和尚，一个是晦气色脸的和尚。他都不分好歹，喊一声乱打。是小孙急取四明铲赶出与他相持，问是甚么人敢弄虚头。他道是东土大唐差往西天去的唐僧之徒弟，因过州城，倒换关文，被王子留住，习学武艺，将他这三件兵器作样子打造，放在院内，被我偷来：遂此不忿相持。不知那三个和尚叫做甚各，却真有本事。小孙一人敌他三个不过，所以败走祖爷处。望拔刀相助，拿那和尚报仇，庶见我祖爱孙之意也！”</div>
+            <div class="text-block simplified-text">妖怪磕头说："我前天晚上出来溜达看月亮，看见玉华州城里有光往天上照。跑过去一看，原来是王府院子里三件兵器在发光：一个是九齿钉耙，一个是宝杖，一个是金箍棒。我马上用法术把它们偷来了，还起了个名字叫'钉耙大会'，让手下买猪买羊买水果，准备摆酒席庆祝，想请爷爷您来看看热闹。昨天派青脸怪送请帖之后，之前派去买猪羊的刁钻儿他们赶着几头猪羊回来，还带了个卖东西的要来拿钱。那人非要看看我们的聚会，我怕他出去乱说，没让他看。他又说肚子饿要吃饭，我就让他在后面吃饭。结果他走到里面看见兵器，说是他的。他们三个人就各自抢走一件兵器，现出原形：一个毛脸雷公嘴的和尚，一个长嘴大耳朵的和尚，一个脸色难看的和尚。他们二话不说，上来就打。我赶紧拿四明铲跟他们打起来，问他们是谁敢来捣乱。他们说自己是东土大唐派去西天取经的唐僧徒弟，路过城里换通关文书，被王子留下教武功，这三件兵器是放在院子里让人照着打造的，被我偷来了，所以来找我算账。我也不知道那三个和尚叫啥，但确实厉害。我一个人打不过他们三个，所以败退到爷爷您这儿。求爷爷帮我报仇，把那几个和尚抓来，也好显出爷爷疼孙子啊！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">老妖闻言，默想片时，笑道：“原来是他。我贤孙，你错惹了他也！”妖精道：“祖爷知他是谁？”老妖道：“那长嘴大耳者，乃猪八戒；晦气色脸者，乃沙和尚；这两个犹可。那毛脸雷公嘴者，叫做孙行者。这个人其实神通广大：五百年前曾大闹天宫，十万天兵也不曾拿得住。他专意寻人的。他便就是个搜山揭海，破洞攻城，闯祸的个都头!你怎么惹他?也罢，等我和你去，把那厮连玉华王子都擒来替你出气！”那妖精听说，即叩头而谢。</div>
+            <div class="text-block simplified-text">老妖怪听了，想了一会儿，笑着说："原来是他。我的好孙子，你可惹错人了！"小妖精问："爷爷知道他是谁吗？"老妖怪说："那个长嘴巴大耳朵的是猪八戒；脸色难看的是沙和尚；这两个还好对付。那个满脸毛、雷公嘴的，叫孙悟空。这家伙本事可大了：五百年前大闹天宫，十万天兵天将都抓不住他。他专门找人麻烦，就是个到处惹事、砸场子的主儿！你怎么敢惹他？算了，我跟你一起去，把那家伙和玉华王子都抓来给你出气！"小妖精听了，赶紧磕头道谢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">当时老妖点猱狮、雪狮、狻猊、白泽、伏狸、抟象诸孙，各执锋利器械，黄狮引领，各纵狂风，径至豹头山界。只闻得烟火之气扑鼻，又闻得有哭泣之声。仔细看时，原来是刁钻、古怪二人在那里叫主公哭主公哩。妖精近前喝道：“你是真刁钻儿，假刁钻儿？”二怪跪倒，噙泪叩头道：“我们怎是假的?昨日这早晚领了银子去买猪羊，走至山西边大冲之内，见一个毛脸雷公嘴的和尚，他啐了我们一口，我们就脚软口强，不能言语，不能移步；被他扳倒，把银子搜了去，牌儿解了去，我两个昏昏沉沉，直到此时才醒。及到家，见烟火未息，房舍尽皆烧了。又不见主公并大小头目。故在此伤心痛哭。不知这火是怎生起的？”</div>
+            <div class="text-block simplified-text">那时候，老妖怪叫来猱狮、雪狮、狻猊、白泽、伏狸、抟象这几个孙子，让他们拿着锋利的武器，由黄狮带头，驾着狂风直奔豹头山。刚到那儿就闻到一股烧焦的味道，还听到有人在哭。仔细一看，原来是刁钻和古怪两个人正哭着喊"主公"。妖怪走上前大声问："你们是真刁钻古怪还是假的？"两个家伙赶紧跪下，含着眼泪磕头说："我们怎么可能是假的？昨天这时候我们拿着银子去买猪羊，走到山西边的大路上，碰见一个毛脸雷公嘴的和尚。他朝我们吐了口唾沫，我们就腿发软说不出话，动也动不了。他把我们推倒，抢走了银子和令牌。我们昏昏沉沉到现在才醒。回到家发现房子都烧光了，火还没灭，主公和其他人都不见了。我们正伤心地哭呢，也不知道这火是怎么烧起来的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">那妖精闻言，止不住泪如泉涌，双脚齐跌，喊声振天，恨道：“那秃厮!十分作恶!怎么干出这般毒事，把我洞府烧尽，美人烧死，家当老小一空。气杀我也，气杀我也！”老妖叫猱狮扯他过来道：“贤孙，事已至此，徒恼无益。且养全锐气，到州城里拿那和尚去。”那妖精犹不肯住哭，道：“老爷!我那们个山场，非一日治的；今被这秃厮尽毁，我却要此命做甚的！”挣起来，往石崖上撞头磕脑；被雪狮、猱狮等苦劝方止。当时丢了此处，都奔州城。</div>
+            <div class="text-block simplified-text">那妖怪听了这话，眼泪哗哗地流，气得直跺脚，扯着嗓子大喊："那个死秃驴！太狠毒了！居然干出这么恶毒的事，把我的山洞全烧了，漂亮姑娘也烧死了，家里东西和手下都没了。气死我了！气死我了！"  
+
+老妖怪叫猱狮把他拉过来，说："好孙子，事情已经这样了，光生气也没用。你先养好精神，咱们去城里抓那个和尚报仇。"  
+
+小妖怪还是哭个不停："爷爷啊！我那座山可是花了好多年才建起来的，现在全被那秃驴毁了，我还活着干什么！"说完就要往石头上撞头寻死，被雪狮、猱狮他们拼命拉住才停下。  
+
+最后他们扔下这个地方，全都往城里冲去抓和尚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">只听得那风滚滚，雾腾腾，来得甚近。唬得那城外各关厢人等，拖男挟女，顾不得家私，都往州城中走。走入城门，将门闭了。有人报入王府中道：“祸事!祸事！”那王子唐僧等，正在暴纱亭吃早斋，听得人报祸事，却出门来问。众人道：“一群妖精，飞沙走石，喷雾掀风的，来近城了！”老王大惊道：“怎么好？”行者笑道：“都放心，都放心。这是虎口洞妖精，昨日败阵，往东南方去伙了那甚么九灵元圣儿来也。等我同兄弟们出去。吩咐教关了四门，汝等点人夫看守城池。”那王子果传令把四门闭了，点起人夫上城。他父子并唐僧在城楼上点札，旌旗蔽日，炮火连天。行者三人，却半云半雾，出城迎敌。这正是：失却慧兵缘不谨，顿教魔起众邪凶。</div>
+            <div class="text-block simplified-text">只听外面狂风呼呼地刮，大雾滚滚地涌，越来越近。吓得城外的人拖家带口，连家当都顾不上拿，全都往城里跑。人们刚进城就赶紧关上城门。有人慌慌张张跑到王府报告："不好了！出大事了！"当时唐僧师徒正在亭子里吃早饭，一听有祸事，连忙出来问情况。百姓们说："有一群妖怪，又是刮风又是扬沙，眼看就要杀到城下了！"老国王吓得直问："这可怎么办啊？"孙悟空笑着说："别怕别怕！这是昨天被我们打跑的虎口洞妖怪，跑去东南边搬来了个叫九灵元圣的帮手。我和师弟们这就去收拾他们。你们把城门都关好，派兵守城就行。"国王立刻下令关闭所有城门，调兵上城墙防守。他和太子、唐僧一起在城楼上坐镇，只见城头旗帜招展，火炮轰鸣。孙悟空师兄弟三人驾着云雾出城迎战。这正是：一时大意丢了法宝，惹得妖魔更猖狂。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">毕竟不知这场胜败如何，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道这场比试谁输谁赢呢，咱们下次接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
