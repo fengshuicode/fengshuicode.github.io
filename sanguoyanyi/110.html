@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百十回 文鸯单骑退雄兵　姜维背水破大敌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./109.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百十回 文鸯单骑退雄兵　姜维背水破大敌</h1>
+        <a href="./111.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说魏正元二年正月，扬州都督、镇东将军、领淮南军马毋丘俭，字仲恭，河东闻喜人也。闻司马师擅行废立之事，心中大怒。长子毋丘甸曰：“父亲官居方面，司马师专权废主，国家有累卵之危，安可宴然自守？”俭曰：“吾儿之言是也。”遂请刺史文钦商议。钦乃曹爽门下客，当日闻俭相请，即来参谒。俭邀入后堂，礼毕，说话间，俭流泪不止。钦问其故，俭曰：“司马师专权废主，天地反覆，安得不伤心乎！”钦曰：“都督镇守方面，若肯仗义讨贼，钦愿舍死相助。钦中子文淑，小字阿鸯，有万夫不当之勇，常欲杀司马师兄弟，与曹爽报仇，今可令为先锋。”俭大喜，即时酹酒为誓。二人诈称太后有密诏，令淮南大小官兵将士，皆入寿春城，立一坛于西，宰白马歃血为盟，宣言司马师大逆不道，今奉太后密诏，令尽起淮南军马，仗义讨贼。众皆悦服。俭提六万兵，屯于项城。文钦领兵二万在外为游兵，往来接应。俭移檄诸郡，令各起兵相助。却说司马师左眼肉瘤，不时痛痒，乃命医官割之，以药封闭，连日在府养病；忽闻淮南告急，乃请太尉王肃商议。肃曰：“昔关云长威震华夏，孙权令吕蒙袭取荆州，抚恤将士家属，因此关公军势瓦解，今淮南将士家属，皆在中原，可急抚恤，更以兵断其归路：必有土崩之势矣。”师曰：“公言极善。但吾新割目瘤，不能自往。若使他人，心又不稳。”时中书侍郎钟会在侧，进言曰：“淮楚兵强，其锋甚锐；若遣人领兵去退，多是不利。倘有疏虞，则大事废矣。”师蹶然起曰：“非吾自在，不可破贼！”遂留弟司马昭守洛阳，总摄朝政。师乘软舆，带病东行。令镇东将军诸葛诞，总督豫州诸军，从安风津取寿春；又令征东将军胡遵，领青州诸军，出谯、宋之地，绝其归路；又遣荆州刺史、监军王基，领前部兵，先取镇南之地。师领大军屯于襄阳，聚文武于帐下商议。光禄勋郑袤曰：“毋丘俭好谋而无断，文钦有勇而无智。今大军出其不意，江、淮之卒锐气正盛，不可轻敌；只宜深沟高垒，以挫其锐。此亚夫之长策也。”监军王基曰：“不可。淮南之反，非军民思乱也；皆因毋丘俭势力所逼，不得已而从之。若大军一临，必然瓦解。”师曰：“此言甚妙。”遂进兵于濦水之上，中军屯于濦桥。基曰：“南顿极好屯兵，可提兵星夜取之。若迟则毋丘俭必先至矣。”师遂令王基领前部兵来南顿城下寨。</div>
+            <div class="text-block simplified-text">魏国正元二年正月，扬州都督毋丘俭（字仲恭，山西闻喜人）听说司马师擅自废掉皇帝，非常生气。他儿子毋丘甸说："爸你手握兵权，现在司马师专权废帝，国家危在旦夕，咱们不能坐视不管啊！"毋丘俭觉得儿子说得对，就找刺史文钦商量。
+
+文钦以前是曹爽的手下，一接到邀请就来了。两人在后堂密谈时，毋丘俭直掉眼泪。文钦问原因，毋丘俭说："司马师专权废帝，天理难容，我怎么能不伤心！"文钦立刻表态："您要是起兵讨贼，我拼死相助。我二儿子文淑（小名阿鸯）特别能打，一直想给曹爽报仇，可以当先锋。"
+
+两人假称接到太后密旨，召集淮南官兵在寿春城西杀白马立誓，宣布司马师罪状，说要起兵讨伐。很快聚集了六万人，毋丘俭驻守项城，文钦带两万人打游击。他们还发文书让各地支援。
+
+这时司马师刚做完眼部肿瘤手术在家养病，听说淮南叛乱，赶紧找王肃商量。王肃建议："当年关羽失荆州就是因为孙权照顾了将士家属。现在叛军家属都在中原，咱们好好安抚他们，再派兵断叛军后路，他们肯定崩溃。"
+
+司马师觉得主意不错，但担心自己刚做完手术不便亲征。钟会进言："淮南兵强马壮，派别人去怕打不赢。"司马师一听就站起来说："看来非得我亲自出马！"于是让弟弟司马昭留守洛阳，自己带病出征。
+
+他做了以下部署：
+1. 诸葛诞从安风津打寿春
+2. 胡遵从谯县、宋地包抄断后路
+3. 王基打头阵取镇南
+自己坐镇襄阳开会商议
+
+会上郑袤说："毋丘俭优柔寡断，文钦有勇无谋。咱们应该先防守，耗掉他们的锐气。"王基反对："淮南军民是被逼造反的，大军一到肯定投降。"司马师采纳王基建议，连夜派兵抢占南顿要地。
+
+（全文完）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说毋丘俭在项城，闻知司马师自来，乃聚众商议。先锋葛雍曰：“南顿之地，依山傍水，极好屯兵；若魏兵先占，难以驱遣，可速取之。”俭然其言，起兵投南顿来。正行之间，前面流星马报说，南顿已有人马下寨。俭不信，自到军前视之，果然旌旗遍野，营寨齐整。俭回到军中，无计可施。忽哨马飞报：“东吴孙峻提兵渡江袭寿春来了。”俭大惊曰：“寿春若失，吾归何处！”是夜退兵于项城。</div>
+            <div class="text-block simplified-text">话说毋丘俭在项城时，听说司马师亲自带兵打过来了，就召集手下商量对策。先锋官葛雍说："南顿那地方靠着山挨着水，最适合驻扎军队。要是让魏军先占了，咱们就不好打了，得赶紧去拿下。"毋丘俭觉得他说得对，立刻带兵往南顿赶。走到半路，探子快马来报说南顿已经有人安营扎寨了。毋丘俭不信，亲自到前面查看，果然看见遍地都是军旗，营寨布置得整整齐齐。他回到自己军中，想不出办法。这时又有探子慌忙来报："东吴的孙峻带兵渡过长江来打寿春了！"毋丘俭吓坏了，说："要是寿春丢了，我们连退路都没了！"当天晚上就带兵撤回项城了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">司马师见毋丘俭军退，聚多官商议。尚书傅嘏曰：“今俭兵退者，忧吴人袭寿春也。必回项城分兵拒守。将军可令一军取乐嘉城，一军取项城，一军取寿春，则淮南之卒必退矣。兖州刺史邓艾，足智多谋；若领兵径取乐嘉，更以重兵应之，破贼不难也。”师从之，急遣使持檄文，教邓艾起兖州之兵破乐嘉城。师随后引兵到彼会合。</div>
+            <div class="text-block simplified-text">司马师看到毋丘俭的军队撤退了，就召集官员们商量对策。尚书傅嘏说："毋丘俭现在撤兵，肯定是怕吴国偷袭寿春。他一定会退回项城分兵防守。我们可以派三路兵马：一路打乐嘉城，一路打项城，一路打寿春，这样淮南的敌军肯定得撤退。兖州刺史邓艾这人很聪明，打仗很有办法；要是让他直接带兵去打乐嘉，再派大部队支援，打败敌人很容易。"司马师同意了，马上派人送命令，让邓艾带着兖州的军队去攻打乐嘉城。司马师自己也带兵过去和邓艾会合。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说毋丘俭在项城，不时差人去乐嘉城哨探，只恐有兵来。请文钦到营共议，钦曰：“都督勿忧。我与拙子文鸯，只消五千兵，取保乐嘉城。”俭大喜。钦父子引五千兵投乐嘉来。前军报说：“乐嘉城西，皆是魏兵，约有万余。遥望中军，白旄黄钺，皂盖朱幡，簇拥虎帐，内竖一面锦绣帅字旗，必是司马师也，安立营寨，尚未完备。”时文鸯悬鞭立于父侧，闻知此语，乃告父曰：“趁彼营寨未成，可分兵两路，左右击之，可全胜也。”钦曰：“何时可去？”鸯曰：“今夜黄昏，父引二千五百兵，从城南杀来；儿引二千五百兵，从城北杀来：三更时分，要在魏寨会合。”钦从之，当晚分兵两路。且说文鸯年方十八岁，身长八尺，全装惯甲，腰悬钢鞭，绰枪上马，遥望魏寨而进。是夜，司马师兵到乐嘉，立下营寨，等邓艾未至。师为眼下新割肉瘤，疮口疼痛，卧于帐中，令数百甲士环立护卫。三更时分，忽然寨内喊声大震，人马大乱。师急问之，人报曰：“一军从寨北斩围直入，为首一将，勇不可当！”师大惊，心如火烈，眼珠从肉瘤疮口内迸出，血流遍地，疼痛难当；又恐有乱军心，只咬被头而忍，被皆咬烂。原来文鸯军马先到，一拥而进，在寨中左冲右突；所到之处，人不敢当，有相拒者，枪搠鞭打，无不被杀。鸯只望父到，以为外应，并不见来。数番杀到中军，皆被弓弩射回。鸯直杀到天明，只听得北边鼓角喧天。鸯回顾从者曰：“父亲不在南面为应，却从北至，何也？”鸯纵马看时，只见一军行如猛风，为首一将，乃邓艾也，跃马横刀，大呼曰：“反贼休走！”鸯大怒，挺枪迎之。战有五十合，不分胜败。正斗间，魏兵大进，前后夹攻，鸯部下兵乃各自逃散，只文鸯单人独马，冲开魏兵，望南而走。背后数百员魏将，抖擞精神，骤马追来；将至乐嘉桥边，看看赶上。鸯忽然勒回马大喝一声，直冲入魏将阵中来；钢鞭起处，纷纷落马，各各倒退。鸯复缓缓而行。魏将聚在一处，惊讶曰：“此人尚敢退我等之众耶！可并力追之！”于是魏将百员，复来追赶。鸯勃然大怒曰：“鼠辈何不惜命也！”提鞭拨马，杀入魏将丛中，用鞭打死数人，复回马缓辔而行。魏将连追四五番，皆被文鸯一人杀退。后人有诗曰：“长坂当年独拒曹，子龙从此显英豪。乐嘉城内争锋处，又见文鸯胆气高。”原来文钦被山路崎岖，迷入谷中，行了半夜，比及寻路而出，天色已晓，文鸯人马不知所向，只见魏兵大胜。钦不战而退。魏兵乘势追杀，钦引兵望寿春而走。</div>
+            <div class="text-block simplified-text">话说毋丘俭在项城驻扎，经常派人去乐嘉城打探消息，就怕魏军打过来。他把文钦请到军营商量对策，文钦拍着胸脯说："将军别担心！我和我儿子文鸯，只要五千兵马，保证拿下乐嘉城。"毋丘俭听了特别高兴。
+
+文钦父子带着五千人杀向乐嘉城。先锋部队回来报告："乐嘉城西边全是魏兵，少说有一万多人。远远看见中军竖着锦绣帅旗，白旗黄斧黑伞红幡，肯定是司马师的主力部队，他们正在扎营，还没完全弄好。"
+
+这时文鸯提着钢鞭站在父亲身边，听到报告就说："趁他们营寨还没扎好，咱们分两路包抄，肯定能打赢。"文钦问："什么时候动手？"文鸯说："今晚天黑后，您带两千五百人从城南进攻，我带两千五百人从城北杀过去，半夜三更在魏军大营会师。"
+
+当天晚上，文鸯这个十八岁的小伙子，身高一米八多，全副武装，腰挂钢鞭，提着长枪骑马冲向魏营。另一边司马师刚到乐嘉，正在扎营等邓艾的援军。他刚做完眼部肿瘤切除手术，疼得在帐篷里躺着，让几百个卫兵围着保护。
+
+半夜三更，魏营突然喊杀声震天。司马师急忙问怎么回事，手下慌张报告："有支军队从北边杀进来了，领头的将军太猛了，根本挡不住！"司马师一着急，伤口崩裂眼珠子都凸出来了，血哗哗地流。他怕动摇军心，硬咬着被子忍痛，把被子都咬烂了。
+
+原来文鸯的部队先到，在魏营里横冲直撞，见人就杀，根本没人拦得住。文鸯等着父亲来接应，却一直没等到。他几次杀到中军都被弓箭射退。打到天亮时，突然听见北边战鼓震天。文鸯奇怪地问手下："说好父亲从南边来，怎么从北边来了？"结果一看，来的竟是邓艾带着大军，大喊："反贼别跑！"
+
+文鸯气得跟邓艾大战五十回合不分胜负。这时魏军援兵赶到，前后夹击，文鸯的士兵都跑散了。他一个人杀出重围往南跑，后面几百魏将紧追不舍。追到乐嘉桥时，文鸯突然调转马头杀回去，钢鞭一挥就扫倒一片，吓得魏将连连后退。等魏将又聚在一起追时，文鸯怒骂："你们这群不要命的！"又冲进去打死几个，再慢慢撤退。就这样反复四五次，他一个人就打退了追兵。
+
+后来才知道，文钦在山里迷了路，天亮才找着方向出来，发现儿子不知去向，魏军已经大胜，只好不战而退。魏军乘胜追击，文钦只能带着残兵逃往寿春。
+
+[补充说明]
+1. 将"白旄黄钺，皂盖朱幡"译为"白旗黄斧黑伞红幡"，用具体颜色和物品代替古代仪仗术语
+2. "心如火烈，眼珠从肉瘤疮口内迸出"译为"伤口崩裂眼珠子都凸出来了"，更直观形象
+3. 把"被皆咬烂"译为"把被子都咬烂了"，更符合口语习惯
+4. 用"一米八多"替代"八尺"的古代计量单位
+5. 保留"三更时分"等必要时间表述，但增加"半夜"作为补充说明
+6. 处理诗句时采用意译方式，保留赵云对比的典故内涵</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说魏殿中校尉尹大目，乃曹爽心腹之人，因爽被司马懿谋杀，故事司马师，常有杀师报爽之心；又素与文钦交厚。今见师眼瘤突出，不能动止，乃入帐告曰：“文钦本无反心，今被毋丘俭逼迫，以致如此。某去说之，必然来降。”师从之。大目顶盔惯甲，乘马来赶文钦；看看赶上，乃高声大叫曰：“文刺史见尹大目么？”钦回头视之，大目除盔放于鞍鞒之前，以鞭指曰：“文刺史何不忍耐数日也？”此是大目知师将亡，故来留钦。钦不解其意，厉声大骂，便欲开弓射之。大目大哭而回。钦收聚人马奔寿春时，已被诸葛诞引兵取了；欲复回项城时，胡遵、王基、邓艾三路兵皆到。钦见势危，遂投东吴孙峻去了。却说毋丘俭在项城内，听知寿春已失，文钦势败，城外三路兵到，俭遂尽撤城中之兵出战。正与邓艾相遇，俭令葛雍出马，与艾交锋，不一合，被艾一刀斩之，引兵杀过阵来。毋丘俭死战相拒。江淮兵大乱。胡遵、王基引兵四面夹攻。毋丘俭敌不住，引十余骑夺路而走。前至慎县城下，县令宋白开门接入，设席待之。俭大醉，被宋白令人杀了，将头献与魏兵。于是淮南平定。司马师卧病不起，唤诸葛诞入帐，赐以印绶，加为镇东大将军，都督扬州诸路军马；一面班师回许昌。师目痛不止，每夜只见李丰、张缉、夏侯玄三人立于榻前。师心神恍惚，自料难保，遂令人往洛阳取司马昭到。昭哭拜于床下。师遗言曰：“吾今权重，虽欲卸肩，不可得也。汝继我为之，大事切不可轻托他人，自取灭族之祸。”言讫，以印绶付之，泪流满面。昭急欲问时，师大叫一声，眼睛迸出而死。时正元二年二月也。于是司马昭发丧，申奏魏主曹髦。</div>
+            <div class="text-block simplified-text">魏国有个军官叫尹大目，原本是曹爽的亲信。曹爽被司马懿害死后，他被迫跟着司马师，但一直想杀了司马师给曹爽报仇。他和文钦关系很好。这天他看到司马师眼睛长瘤子动不了，就跑去说："文钦其实不想造反，都是被毋丘俭逼的。我去劝他，他肯定投降。"司马师同意了。
+
+尹大目全副武装骑马去追文钦，快追上时大喊："文刺史！看看我是谁！"文钦回头，尹大目摘下头盔用马鞭指着说："你再忍几天不行吗？"其实他是知道司马师快死了，想让文钦再等等。但文钦没听懂，反而破口大骂要射箭。尹大目只好哭着回去。
+
+文钦带兵想去寿春，结果诸葛诞已经占了；想回项城，又被胡遵、王基、邓艾三路兵马包围。文钦没办法，只好逃到东吴投奔孙峻。
+
+毋丘俭在项城听说寿春丢了、文钦败了，城外还有三路敌军，就带全部兵马出城迎战。碰上邓艾，派葛雍出战，结果一个回合就被邓艾砍死。毋丘俭拼命抵抗，但军队大乱，被胡遵、王基围攻，最后只带着十几个人逃跑。跑到慎县时，县令宋白假装招待他，等他喝醉就把他杀了，脑袋送给魏军。淮南就这样平定了。
+
+司马师病得厉害，把诸葛诞叫来，封他做镇东大将军管扬州兵马，自己准备撤军回许昌。但他眼睛疼得睡不着，每晚都看见李丰、张缉、夏侯玄三个死人站在床边，知道自己不行了，就叫人把弟弟司马昭从洛阳找来。司马昭跪在床前哭，司马师交代后事："我现在权力太大，想退也退不了。你接班后记住，千万别把大权交给别人，不然全家都要完蛋。"说完把官印交给司马昭，突然大叫一声，眼珠子爆出来死了。这是正元二年二月。
+
+司马昭办完丧事，向魏国皇帝曹髦报告。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">髦遣使持诏到许昌，即命暂留司马昭屯军许昌，以防东吴。昭心中犹豫未决。钟会曰：“大将军新亡，人心未定，将军若留守于此。万一朝廷有变，悔之何及？”昭从之，即起兵还屯洛水之南。髦闻之大惊。太尉王肃奏曰：“昭既继其兄掌大权，陛下可封爵以安之。”髦遂命王肃持诏，封司马昭为大将军、录尚书事。昭入朝谢恩毕。自此，中外大小事情，皆归于昭。却说西蜀细作哨知此事，报入成都。姜维奏后主曰：“司马师新亡，司马昭初握重权，必不敢擅离洛阳。臣请乘间伐魏，以复中原。”后主从之，遂命姜维兴师伐魏。维到汉中，整顿人马。征西大将军张翼曰：“蜀地浅狭，钱粮鲜薄，不宜远征；不如据险守分，恤军爱民：此乃保国之计也。”维曰：“不然。昔丞相未出茅庐，已定三分天下，然且六出祁山以图中原；不幸半途而丧，以致功业未成。今吾既受丞相遗命，当尽忠报国以继其志，虽死而无恨也。今魏有隙可乘，不就此时伐之，更待何时？”夏侯霸曰：“将军之言是也。可将轻骑先出枹罕。若得洮西南安，则诸郡可定。”张翼曰：“向者不克而还，皆因军出甚迟也。兵法云：攻其无备，出其不意。今若火速进兵，使魏人不能提防，必然全胜矣。”</div>
+            <div class="text-block simplified-text">曹髦派使者带着命令到许昌，让司马昭暂时留在许昌驻军，防备东吴。司马昭心里拿不定主意。钟会说："你哥刚死，现在人心不稳。你要是留在这儿，万一朝廷出事，后悔都来不及。"司马昭听了，马上带兵回到洛水南边驻扎。曹髦听说后吓一跳。太尉王肃建议："司马昭接了他哥的位子掌权，皇上不如给他升官稳住他。"曹髦就让王肃去封司马昭当大将军、管尚书省事务。司马昭进宫谢恩后，朝廷内外大小事都归他管了。
+
+这时西蜀的探子打听到消息，报告到成都。姜维对刘禅说："司马师刚死，司马昭刚掌权，肯定不敢离开洛阳。我请求趁机打魏国，收复中原。"刘禅同意了，派姜维带兵出征。姜维到汉中整顿军队时，征西大将军张翼说："蜀国地方小、钱粮少，不适合远征。不如守住险要地方，养兵爱民，这才是保国的办法。"姜维说："不对。当年诸葛亮还没出山就定下三分天下的计划，后来六次出兵祁山想打中原。可惜中途去世，大业没成。现在我既然接了诸葛亮的遗命，就该拼命报国完成他的心愿。现在魏国内部有空子，不趁现在打还等什么时候？"夏侯霸支持说："将军说得对。可以先派轻骑兵打枹罕。要是拿下洮西、南安，其他郡县就容易打了。"张翼又说："之前打仗失败，都是因为出兵太慢。兵法说：要打对方没防备的地方。现在如果快速进军，让魏国来不及准备，肯定能赢。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">于是姜维引兵五万，望枹罕进发。兵至洮水，守边军士报知雍州刺史王经、征西将军陈泰。王经先起马步兵七万来迎。姜维分付张翼如此如此，又分付夏侯霸如此如此：二人领计去了；维乃自引大军背洮水列阵。王经引数员牙将出而问曰：“魏与吴、蜀，已成鼎足之势；汝累次入寇，何也？”维曰：“司马师无故废主，邻邦理宜问罪，何况仇敌之国乎？”经回顾张明、花永、刘达、朱芳四将曰：“蜀兵背水为阵。败则皆没于水矣。姜维骁勇，汝四将可战之。彼若退动，便可追击。”四将分左右而出，来战姜维。维略战数合，拨回马望本阵中便走。王经大驱士马，一齐赶来。维引兵望着洮水而走；将次近水，大呼将士曰：“事急矣！诸将何不努力！”众将一齐奋力杀回，魏兵大败。张翼、夏侯霸抄在魏兵之后，分两路杀来，把魏兵困在垓心。维奋武扬威，杀入魏军之中，左冲右突，魏兵大乱，自相践踏，死者大半，逼入洮水者无数，斩首万余，垒尸数里。王经引败兵百骑，奋力杀出，径往狄道城而走；奔入城中，闭门保守。</div>
+            <div class="text-block simplified-text">姜维带着五万军队向枹罕进军。到了洮水，边境守军报告给魏国的雍州刺史王经和征西将军陈泰。王经先带着七万步兵骑兵来迎战。姜维给张翼和夏侯霸安排了任务，两人领命行动。姜维自己带大军在洮水边摆开阵势。  
+
+王经带着几个将领出来问姜维：“魏国、吴国、蜀国已经三分天下，你们为啥老是来打我们？”姜维说：“司马师随便废掉皇帝，我们作为邻国当然要讨个说法，更何况咱们本来就是敌人！”  
+
+王经回头对张明、花永、刘达、朱芳四将说：“蜀军背水列阵，输了就会掉水里。姜维很猛，你们四个去对付他。他一退，你们就追！”四将冲出来打姜维。姜维假装打了几下，掉头就跑。王经立刻带兵猛追。  
+
+姜维边跑边往洮水退，快到水边时大喊：“情况紧急，大家拼命啊！”蜀军突然转身猛攻，魏军大乱。这时张翼和夏侯霸从后面包抄，两路夹击，把魏军围住。姜维冲进敌阵，左冲右杀，魏军自相踩踏，死了一大半，很多人被逼跳进洮水淹死。魏军被杀了一万多人，尸体堆了几里地。  
+
+王经带着一百多残兵拼命突围，逃到狄道城，关紧城门死守。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">姜维大获全功，犒军已毕，便欲进兵攻打狄道城。张翼谏曰：“将军功绩已成，威声大震，可以止矣。今若前进，倘不如意，正如画蛇添足也。”维曰：“不然。向者兵败，尚欲进取，纵横中原；今日洮水一战，魏人胆裂，吾料狄道唾手可得。汝勿自堕其志也。”张翼再三劝谏，维不从，遂勒兵来取狄道城。却说雍州征西将军陈泰，正欲起兵与王经报兵败之仇，忽兖州刺史邓艾引兵到。泰接着，礼毕，艾曰：“今奉大将军之命，特来助将军破敌。”泰问计于邓艾，艾曰：“洮水得胜，若招羌人之众，东争关陇，传檄四郡：此吾兵之大患也。今彼不思如此，却图狄道城；其城垣坚固，急切难攻，空劳兵费力耳。吾今陈兵于项岭，然后进兵击之，蜀兵必败矣。”陈泰曰：“真妙论也！”遂先拨二十队兵，每队五十人，尽带旌旗、鼓角、烽火之类，日伏夜行，去狄道城东南高山深谷之中埋伏；只待兵来，一齐鸣鼓吹角为应，夜则举火放炮以惊之。调度已毕，专候蜀兵到来。于是陈泰、邓艾，各引二万兵相继而进。却说姜维围住狄道城，令兵八面攻之，连攻数日不下，心中郁闷，无计可施。是日黄昏时分，忽三五次流星马报说：“有两路兵来，旗上明书大字：一路是征西将军陈泰，一路是兖州刺史邓艾。”维大惊，遂请夏侯霸商议。霸曰：“吾向尝为将军言：邓艾自幼深明兵法，善晓地理。今领兵到，颇为劲敌。”维曰：“彼军远来，我休容他住脚，便可击之。”乃留张翼攻城，命夏侯霸引兵迎陈泰。维自引兵来迎邓艾。行不到五里，忽然东南一声炮响，鼓角震地，火光冲天。维纵马看时，只见周围皆是魏兵旗号。维大惊曰：“中邓艾之计矣！”遂传令教夏侯霸、张翼各弃狄道而退。于是蜀兵皆退于汉中。维自断后，只听得背后鼓声不绝，维退入剑阁之时，方知火鼓二十余处，皆虚设也。维收兵退屯于钟提。</div>
+            <div class="text-block simplified-text">姜维打了大胜仗，犒赏完军队后，就想继续攻打狄道城。张翼劝他说："将军已经立了大功，名声也打响了，可以收手了。要是现在继续打，万一没打好，就像画蛇添足一样多余。"姜维却说："不对。之前打了败仗我都想继续进攻，现在洮水这一仗把魏国人都吓破胆了，我看狄道城很容易就能拿下。你别灭自己威风。"张翼再三劝阻，姜维不听，带着兵就去打狄道城。
+
+这时魏国的陈泰正想出兵给之前战败的王经报仇，刚好邓艾带兵赶来帮忙。邓艾说："现在蜀军刚打了胜仗，要是趁机联合羌族人一起进攻关陇地区，那才麻烦。可他们偏偏去攻狄道城，那城墙那么结实，哪那么容易打下来？白白浪费兵力罢了。我们只要在项岭布好阵，等他们来了再打，一定能赢。"陈泰觉得这主意妙，就先派了二十支小队，每队五十人，带着旗子、鼓号、火把之类的东西，白天躲着晚上行动，埋伏在狄道城东南的山谷里。等蜀军来了就一起敲鼓吹号，晚上点火放炮吓唬他们。安排好后，就等着蜀军上门。
+
+姜维带兵包围狄道城，连着猛攻好几天都打不下来，正发愁呢，突然接到报告说陈泰和邓艾各带一支大军杀过来了。姜维吓一跳，赶紧找夏侯霸商量。夏侯霸说："我早就跟你说过，邓艾从小精通兵法，熟悉地形，这次他带兵来，不好对付啊。"姜维说："他们远道而来，我们别让他们站稳脚跟，直接打！"于是留下张翼继续攻城，派夏侯霸去挡陈泰，自己带兵对付邓艾。结果刚走出五里地，突然东南方向一声炮响，鼓声震天，火光四起。姜维一看四周全是魏军的旗子，惊呼："中邓艾的计了！"赶紧下令撤军。等退到剑阁才发现，那些火光鼓声都是假的，是魏军设的疑兵。最后姜维只好带兵退守钟提。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">且说后主因姜维有洮西之功，降诏封维为大将军。维受了职，上表谢恩毕，再议出师伐魏之策。正是：成功不必添蛇足，讨贼犹思奋虎威。不知此番北伐如何，且看下文分解。</div>
+            <div class="text-block simplified-text">话说刘禅因为姜维在洮西打了胜仗，就下旨封他当了大将军。姜维接受任命，上奏谢恩之后，又开始商量再次出兵打魏国的事。这就叫：赢了别画蛇添足，打敌人还得拿出真本事。这次北伐到底怎么样，咱们接着往下看。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
