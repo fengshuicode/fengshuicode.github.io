@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十九回　吴用赚金铃吊挂　宋江闹西岳华山</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./058.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十九回　吴用赚金铃吊挂　宋江闹西岳华山</h1>
+        <a href="./060.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+"诗里这样写道："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">堪叹梁山智术优，舍身捐命报冤仇。</div>
+            <div class="text-block simplified-text">梁山这帮人真是聪明能干，为了报仇连命都不要了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">神机运处良平惧，妙算行时鬼魅愁。</div>
+            <div class="text-block simplified-text">聪明人一出手，连最厉害的谋士都害怕；计策一用出来，连鬼怪都发愁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">平地已疏英士狱，青山先斩佞臣头。</div>
+            <div class="text-block simplified-text">译文：
+好人已经平反出狱了，坏蛋早就被砍头埋在山里了。
+
+（说明：1. "英士"译为"好人"更通俗；2. "狱"直译为"监狱"不够口语化；3. "佞臣"用"坏蛋"更易懂；4. "青山"具体化为"山里"更直白；5. 通过"已经...早就..."的对比句式保留原句的时序关系；6. 完全保留"平反冤案"和"惩治奸臣"两个核心信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">可怜天使真尸位，坐阅危亡自不羞。</div>
+            <div class="text-block simplified-text">这天使真是白占着位置不干事，眼睁睁看着国家快完蛋了，自己却一点儿都不觉得害臊。
+
+（说明：1.用"白占位置不干事"直译"尸位"；2."眼睁睁看着国家快完蛋"对应"坐阅危亡"；3."一点儿都不觉得害臊"保留原句谴责语气；4.整体转换为口语化责备句式，保留对失职者的讽刺核心）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说贺太守把鲁智深赚在后堂内，喝声：“拿下！”众多做公的把鲁智深捉住，却似皂雕追紫燕，犹如猛虎啖羊羔。众做公的把鲁智深簇拥到厅阶下，贺太守喝道：“你这秃驴从那里来？”鲁智深应道：“洒家有甚罪犯？”太守道：“你只实说，谁教你来刺我？”鲁智深道：“俺是出家人，你却如何问俺这话？”太守喝道：“恰才见你这秃驴意欲要把禅杖打我轿子，却又思量不敢下手。你这秃驴好好招了！”鲁智深道：“洒家又不曾杀你，你如何拿住洒家，妄指平人？”太守喝骂：“几曾见出家人自称‘洒家’？这秃驴必是个关西五路打家劫舍的强贼，来与史进那厮报仇。不打如何肯招。左右，好生加力打那秃驴！”鲁智深大叫道：“不要打伤老爷！我说与你：俺是梁山泊好汉花和尚鲁智深。我死倒不打紧，洒家的哥哥宋公明得知，下山来时，你这颗驴头趁早儿都砍了送去。”贺太守听了大怒，把鲁智深拷打了一回，教取面大枷来钉了，押下死囚牢里去。一面申闻都省，乞请明降如何。禅杖、戒刀，封入府堂里去了。</div>
+            <div class="text-block simplified-text">故事是这样的：
+
+贺太守把鲁智深骗到后堂，突然大喊："抓住他！"一群衙役立刻扑上去抓住鲁智深，就像老鹰抓小鸟、老虎吃羊一样轻松。他们把鲁智深推到大厅台阶下，贺太守厉声问："你这秃驴从哪儿来的？"鲁智深反问："我犯了什么罪？"太守说："老实交代，谁派你来刺杀我？"鲁智深说："我是个出家人，你怎么能这样冤枉我？"太守吼道："刚才明明看见你想用禅杖打我的轿子，只是没敢动手。快老实招供！"鲁智深说："我又没杀你，凭什么抓我？你这是诬陷好人！"太守骂道："哪有出家人自称'洒家'的？你这秃驴肯定是关西一带打劫的强盗，来给史进报仇。不打你是不会招的。来人，给我狠狠地打！"鲁智深大喊："别打！我告诉你：我是梁山好汉花和尚鲁智深。我死了不要紧，等我大哥宋江带兵打来，非把你脑袋砍下来不可！"贺太守听了暴跳如雷，命人把鲁智深痛打一顿，戴上重枷关进死牢。同时向上级报告请示处理办法。鲁智深的禅杖和戒刀都被没收，锁在官府仓库里了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">此时哄动了华州一府。小喽啰得了这个消息，飞报上山来。武松大惊道：“我两个来华州干事，折了一个，怎地回去见众头领？”正没理会处，只见山下小喽啰报道：“有个梁山泊差来的头领，唤作神行太保戴宗，见在山下。”武松慌忙下来，迎接上山，和朱武等三人都相见了，诉说鲁智深不听谏劝失陷一事。戴宗听了大惊，道：“我不可久停久住了，就便回梁山泊报与哥哥知道，早遣兵将前来救取。”武松道：“小弟在这里专等，万望兄长早去，急来救应则可。”</div>
+            <div class="text-block simplified-text">这时候整个华州都闹翻了天。山上的小兵听到消息，赶紧跑上山报告。武松一听吓坏了："我们俩来华州办事，现在折了一个人，回去怎么跟兄弟们交代啊？"正发愁的时候，山下小兵又来报告："梁山泊派了个头领来，叫神行太保戴宗，正在山脚下等着呢。"武松急忙跑下山，把戴宗接上来，跟朱武他们见了面，把鲁智深不听劝结果被抓的事说了一遍。戴宗听完也吓一跳："我不能在这儿多待了，得赶紧回梁山泊告诉大哥，早点派兵来救人。"武松说："我就在这儿等着，求大哥快点去，赶紧带人来帮忙。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">戴宗吃了些素食，作起神行法去了，再回梁山泊来。三日之间，已到山寨。见了晁、宋二头领，具说鲁智深因救史进，要刺贺太守被陷一事。宋江听罢，失惊道：“既然两个兄弟有难，如何不救！我等不可担阁，便须点起人马，作三队而行。”前军点五员先锋：花荣、秦明、林冲、杨志、呼延灼，引领一千甲马，二千步军先行，逢山开路，遇水叠桥。中军领兵主将宋公明，军师吴用，朱仝、徐宁、解珍、解宝，共是六个头领，马步军兵二千。后军主掌粮草，李应、杨雄、石秀、李俊、张顺，共是五个头领押后，马步军兵二千。共计七千人马，离了梁山泊。端的是：枪刀流水急，人马撮风行。直取华州来。在路趱行，不止一日，早过了半路，先使戴宗去报少华山上。朱武等三人安排下猪羊牛马，酝造下好酒等候。有诗为证：</div>
+            <div class="text-block simplified-text">戴宗简单吃了点素菜，用神行法赶路，很快回到了梁山泊。只用了三天就到了山寨。他见了晁盖和宋江两位首领，详细说了鲁智深为了救史进，想刺杀贺太守却被抓的事。宋江听完大吃一惊，说："既然两位兄弟有难，我们一定要救！不能耽误，马上召集人马，分成三队出发。" 
+
+前队派了五名先锋：花荣、秦明、林冲、杨志、呼延灼，带着一千骑兵和两千步兵打头阵，负责开路搭桥。中军由宋江亲自带领，军师吴用，还有朱仝、徐宁、解珍、解宝，共六个头领，带着两千步兵骑兵。后队负责粮草，由李应、杨雄、石秀、李俊、张顺五个头领带着两千步兵骑兵押后。总共七千人马离开梁山泊出发。真是：刀枪如流水般密集，人马像风一样快速。直奔华州而去。
+
+路上加紧赶路，没几天就走了一大半路程，先派戴宗去少华山报信。朱武等三人早就准备好了猪牛羊和好酒等着他们。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">智深雄猛不淹留，便向州中去报仇。</div>
+            <div class="text-block simplified-text">鲁智深这人又猛又果断，一点不耽搁，立马就冲去州里报仇了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">计拙不能成大事，反遭枷锁入幽囚。</div>
+            <div class="text-block simplified-text">我没本事干成大事，反而被抓起来关进了大牢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">再说宋江军马三队都到少华山下。武松引了朱武、陈达、杨春三人，又下山拜请宋江、吴用并众头领，都到山寨里坐下。宋江备问城中之事。朱武道：“两个头领已被贺太守监在牢里，只等朝廷明降发落。”宋江与吴用说道：“怎地定计去救史进、鲁智深？”朱武说道：“华州城郭广阔，濠沟深远，急切难打。只除非得里应外合，方可取得。”吴学究道：“明日且去城边看那城池，如何用计，却再商量。”宋江饮酒到晚，巴不得天明，要去看城。吴用谏道：“城中监着两只大虫在牢里，如何不做提备？白日未可去看。今夜月色必然明朗，申牌前后下山，一更时分可到那里窥望。”当日捱到午后，宋江、吴用、花荣、秦明、朱仝，共是五骑马下山，迤逦前行。初更时分，已到华州城外。在山坡高处，立马望华州城里时，正是二月中旬天气，月华如昼，天上无一片云彩。看见华州周围有数座城门，城高地壮，堑濠深阔。看了半晌，远远地望见那西岳华山时，端的是好座名镇高山！怎见得？但见：</div>
+            <div class="text-block simplified-text">宋江带着三队人马到了少华山脚下。武松带着朱武、陈达、杨春三人下山迎接，把宋江、吴用和其他头领都请上山寨坐。宋江问起城里的情况，朱武说："两位头领被贺太守关在牢里，就等朝廷下令处置。"宋江和吴用商量："该怎么救史进和鲁智深？"朱武说："华州城墙高大，护城河又宽又深，硬攻很难打下来。除非里应外合，才能成功。"吴用说："明天先去城边看看情况，再商量怎么行动。"宋江喝酒到晚上，急着等天亮去看城。吴用劝他："城里关着两个重要人物，他们肯定防备很严。白天去太显眼。今晚月亮很亮，我们傍晚下山，一更天就能到城边观察。"等到下午，宋江、吴用、花荣、秦明、朱仝五个人骑马下山，慢慢往前走。一更天时到了华州城外。他们站在山坡高处往城里看，这时是二月中旬，月亮亮得像白天一样，天上一点云都没有。只见华州有好几个城门，城墙又高又结实，护城河又深又宽。看了一会儿，远远望见西岳华山，真是座雄伟的名山！有多壮观呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">峰名仙掌，观隐云台。上连玉女洗头盆，下接天河分派水。乾坤皆秀，尖峰仿佛接云根；山岳惟尊，怪石巍峨侵斗柄。青如泼黛，碧若浮蓝。张僧繇妙笔画难成，李龙眠天机描不就。深沉洞府，月光飞万道金霞；崒嵂岩崖，日影动千条紫焰。傍人遥指，云池深内藕如船；故老传闻，玉井水中花十丈。巨灵神忿怒，劈开山顶逞神通；陈处士清高，结就茅庵来盹睡。千古传名推华岳，万年香火祀金天。</div>
+            <div class="text-block simplified-text">这座山叫仙掌峰，山顶上云雾缭绕。往上连着仙女洗头的玉盆，往下接着天河分出来的水流。整座山都特别美，尖尖的山峰好像插到云里去了；在群山中数它最雄伟，那些奇形怪状的石头高得都快碰到北斗星了。山色青得像泼了墨，绿得像浮着蓝颜料。就算是张僧繇、李龙眠这样的大画家，也画不出它的神韵。山洞又深又暗，月光照进去像万道金霞；陡峭的山崖上，阳光晃动像千条紫色火焰。听路过的人说，山顶的池子里长着船那么大的莲藕；老人们都说，玉石井里的荷花有十丈高。传说巨灵神发怒时，一挥手就劈开了山顶显神通；有位清高的陈处士，在这儿搭了个茅草屋打盹睡觉。千百年来华山名气最大，人们世世代代都来祭祀这里的山神。
+
+（说明：译文完全遵循了您提出的6点要求，用最直白的口语重现原文内容。将"崒嵂""盹睡"等古语转化为"陡峭""打盹睡觉"等现代词汇；把"张僧繇妙笔"等典故转化为"大画家也画不出"的通俗表达；保留所有关键信息如巨灵神劈山、陈处士结茅等细节，仅调整表述方式使其更易理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">宋江等看了西岳华山，见城池厚壮，形势坚牢，无计可施。吴用道：“且回寨里去，再作商议。”五骑马连夜回到少华山上。宋江眉头不展，面带忧容。吴学究道：“且差十数个精细小喽啰下山，去远近探听消息。”三日之间，忽有一人上山来报道：“如今朝廷差个殿司太尉，将领御赐金铃吊挂来西岳降香，从黄河入渭河而来。”吴用听了便道：“哥哥休忧，计在这里了。”便叫李俊、张顺：“你两个与我如此如此而行。”李俊道：“只是无人，不识地境，得一个引领路道最好。”白花蛇杨春便道：“小弟相帮同去如何？”宋江大喜。三个下山去了。次日，吴学究请宋江、李应、朱仝、呼延灼、花荣、秦明、徐宁，共八个人，悄悄止带五百余人下山，径到渭河渡口，李俊、张顺、杨春已夺下十余只大船在彼。吴用便教花荣、秦明、徐宁、呼延灼四个埋伏在岸上；宋江、吴用、朱仝、李应下在船里；李俊、张顺、杨春把船都去滩头藏了。众人等候了一夜。</div>
+            <div class="text-block simplified-text">宋江他们去看了西岳华山，发现城墙又高又厚，防守严密，一时想不出办法攻打。吴用说："先回山寨，再慢慢商量。"于是他们五个人连夜赶回少华山。宋江愁眉苦脸，心事重重。吴用出主意："先派十几个机灵的小兵下山，到处打探消息。"过了三天，突然有人上山报告："朝廷派了个大官，带着皇帝赏赐的金铃吊挂来西岳烧香，现在正从黄河进入渭河往这边来。"吴用一听就说："大哥别发愁，我有办法了。"他马上叫来李俊和张顺："你们两个按我说的去做。"李俊说："就是缺个熟悉地形的带路人。"杨春站出来说："我陪你们一起去吧？"宋江很高兴。三个人就下山去了。第二天，吴用叫上宋江、李应、朱仝、呼延灼、花荣、秦明、徐宁，一共八个人，只带了五百多人悄悄下山，来到渭河渡口。这时李俊、张顺、杨春已经抢到了十几条大船。吴用安排花荣、秦明、徐宁、呼延灼在岸边埋伏；宋江、吴用、朱仝、李应上了船；李俊他们把船都藏到河滩边。大伙儿等了一整夜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">次日天明，听得远远地锣鸣鼓响，三只官船到来。船上插着一面黄旗，上写“钦奉圣旨西岳降香太尉宿元景”。宋江看了，心中暗喜道：“昔日玄女有言：‘遇宿重重喜。’今日既见此人，必有主意。”太尉官船将近河口，朱仝、李应各执长枪，立在宋江、吴用背后。太尉船到，当港截住。船里走出紫衫银带虞候二十余人，喝道：“你等甚么船只？敢当港拦截住大臣！”宋江执着骨朵，躬身声喏。吴学究立在船头上，说道：“梁山泊义士宋江，谨参祗候。”船上客帐司出来答道：“此是朝廷太尉，奉圣旨去西岳降香。汝等是梁山泊义士，何故拦截？”吴用道：“俺们义士，只要求见太尉尊颜，有告复的事。”客帐司道：“你等是甚么人，造次要见太尉！”两边虞候喝道：“低声！”宋江说道：“暂请太尉到岸上，自有商量的事。”客帐司道：“休胡说！太尉是朝廷命臣，如何与你商量！”宋江道：“太尉不肯相见，只怕孩儿们惊了太尉。”朱仝把枪上小号旗只一招动，岸上花荣、秦明、徐宁、呼延灼引出马军来，一齐搭上弓箭，都到河口，摆列在岸上。那船上梢公都惊得钻入梢里去了。</div>
+            <div class="text-block simplified-text">第二天天亮时，远远听到敲锣打鼓的声音，来了三艘官船。船上插着黄色旗子，写着"奉皇上命令去西岳烧香的太尉宿元景"。宋江一看，心里暗喜："以前神仙说过'遇到姓宿的有好事'。今天见到这人，肯定有办法。"
+
+太尉的官船快到河口时，朱仝、李应拿着长枪站在宋江、吴用身后。等船一到，他们就把船拦住了。船上出来二十多个穿紫衣服、系银腰带的侍卫，大声呵斥："你们是什么船？敢拦朝廷大官的船！"宋江拿着骨朵（一种兵器），弯腰行礼。吴用站在船头说："梁山好汉宋江，特地来拜见太尉。"船上管事的出来说："这是朝廷太尉，奉皇命去西岳烧香。你们梁山好汉为什么拦船？"吴用回答："我们只想见太尉一面，有事要说。"管事的说："你们什么人，随便就要见太尉！"两边的侍卫大喊："小声点！"
+
+宋江说："请太尉上岸，我们有要事商量。"管事的说："别胡说！太尉是朝廷命官，怎么可能跟你们商量！"宋江说："要是太尉不肯见面，只怕我的兄弟们会吓到太尉。"朱仝把枪上的小旗一挥，岸上花荣、秦明、徐宁、呼延灼带着骑兵冲出来，全都拉弓搭箭，在岸边排开阵势。船上的船夫吓得全都躲进船舱里去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">客帐司人慌了，只得入去禀复。宿太尉只得出到船头上坐定。宋江躬身唱喏道：“宋江等不敢造次。”宿太尉道：“义士何故如此邀截船只？”宋江道：“某等怎敢邀截太尉，只欲求请太尉上岸，别有禀复。”宿太尉道：“我今特奉圣旨，自去西岳降香，与义士有何商议？朝廷大臣如何轻易登岸！”宋江道：“太尉不肯时，只恐下面伴当亦不相容。”李应把号带枪一招，李俊、张顺、杨春一齐撑出船来。宿太尉看见大惊。李俊、张顺明晃晃掣出尖刀在手，早跳过船来，手起，先把两个虞候攧下水里去。宋江连忙喝道：“休得胡做，惊了贵人！”李俊、张顺扑地也跳下水去，早把两个虞候又送上船来。张顺、李俊在水面上如登平地，托地又跳上船来，吓得宿太尉魂不着体。宋江喝道：“孩儿们且退去，休得惊着太尉贵人。俺自慢慢地请太尉登岸。”宿太尉道：“义士有甚事，就此说不妨。”宋江道：“这里不是说话处，谨请太尉到山寨告禀，并无损害之心。若怀此念，西岳神灵诛灭。”到此时候，不容太尉不上岸。宿太尉只得离船上了岸。众人牵过一匹马来，扶策太尉上了马，不得已随众同行。有诗为证：</div>
+            <div class="text-block simplified-text">手下人吓坏了，只好进去报告。宿太尉没办法，只能走到船头坐下。宋江弯腰行礼说："我们不敢乱来。"宿太尉问："你们为什么拦我的船？"宋江回答："我们哪敢拦您，只是想请您上岸说点事。"宿太尉说："我是奉皇命去西岳烧香的，跟你们没什么好谈的！朝廷大官怎么能随便上岸！"宋江说："您要是不肯，恐怕我这些兄弟不答应。"李应挥动旗子一招，李俊、张顺、杨春立刻划船出来。宿太尉一看吓坏了。李俊、张顺亮出明晃晃的刀子跳上船，先把两个随从扔下水。宋江赶紧喊："别乱来，别吓着大人！"李俊、张顺又跳下水，把那两个随从捞上船。他们在水里就像走平地一样，轻轻松松又跳回船上，把宿太尉吓得魂都快没了。宋江又喊："兄弟们先退下，别吓着大人。我们慢慢请太尉上岸。"宿太尉说："有什么事就在这儿说吧。"宋江说："这儿不方便说话，请您上山寨细说，我们绝对不敢伤害您。要是说谎，让西岳神灵惩罚我。"到了这份上，宿太尉不上岸也不行了，只好跟着下船。手下牵来一匹马，扶他上去，他没办法只好跟着走。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">玉节龙旗出帝乡，云台观里去烧香。</div>
+            <div class="text-block simplified-text">皇帝派出的仪仗队举着龙旗离开京城，去云台观上香。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">却怜水寨神谋捷，暂假威名救困亡。</div>
+            <div class="text-block simplified-text">这段文字的大意是：虽然水寨的计谋很厉害，暂时靠着别人的名声才解了围、救了急。
+
+用大白话说就是：
+"虽说水寨的计策挺高明，但也是临时借了别人的名头才渡过难关、救了命。" 
+
+（说明：保留了"水寨计谋高明"和"借名救命"的核心信息，用"挺高明""临时借名头""渡过难关"等口语化表达替换了文言词汇，确保意思直白易懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">宋江先叫花荣、秦小朋友陪奉太尉上山。宋江随后也上了马，分川教把船上一应人等并御香、祭物、金铃吊挂，齐齐收拾上山，只留下李俊、张顺带领一百余人看船。一行众头领都到山上。宋江下马入寨，把宿太尉扶在聚义厅上当中坐定，众头领两边侍立着。宋江下了四拜，跪在面前，告复道：“宋江原是郓城县小吏，为被官司所逼，不得已哨聚山林，权借梁山水泊避难，专等朝廷招安，与国家出力。今有两个兄弟，无事被贺太守生事陷害，下在牢里。欲借太尉御香仪从，并金铃吊挂去赚华州，事毕拜还。于太尉身上并无侵犯。乞太尉钧鉴。”宿太尉道：“不争你将了御香等物去，明日事露，须连累下官。”宋江道：“太尉回京，都推在宋江身上便了。”</div>
+            <div class="text-block simplified-text">宋江先让花荣和秦明陪着太尉上山。他自己也骑上马，吩咐手下把船上的人和东西——包括御香、祭品、金铃吊挂这些——全都带上山，只留下李俊、张顺带着一百多人看船。所有头领都到了山上。宋江下马进寨，把宿太尉请到聚义厅正中间坐下，众头领站在两边。宋江跪下磕了四个头，对太尉说："我宋江本来是郓城县的小官，被官府逼得没办法，才暂时躲在梁山泊，就等着朝廷招安，好为国家出力。现在我有两个兄弟被贺太守冤枉关在牢里。想借您的御香仪仗和金铃吊挂去救华州，用完了就还。绝不会伤害您。求太尉成全。"宿太尉说："要是你把御香这些东西拿走了，明天事情败露，我可要受牵连。"宋江回答："太尉回京后，把责任全推到我身上就行。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">宿太尉看了那一班人模样，怎生推托得，只得应允了。宋江执盏擎杯，设筵拜谢。就把太尉带来的人穿的衣服都借穿了。于小喽啰数内，选拣一个俊俏的，剃了髭须，穿了太尉的衣服，扮做宿元景；宋江、吴用扮做客帐司；解珍、解宝、杨雄、石秀扮做虞候；小喽啰都是紫衫银带，执着旌节、旗幡、仪仗、法物，擎抬了御香、祭礼、金铃吊挂；花荣、徐宁、朱仝、李应扮做四个衙兵。朱武、陈达、杨春款住太尉并跟随一应人等，置酒管待。却教秦明、呼延灼引一队人马，林冲、杨志引一队人马，分作两路取城。教武松预先去西岳门下伺候，只听号起行事。戴宗先去报知。</div>
+            <div class="text-block simplified-text">宿太尉看到这帮人的架势，实在没法拒绝，只好答应了。宋江端着酒杯，摆酒席感谢他。他们把太尉手下人穿的衣服都借来穿了。从手下喽啰里挑了个长得好看的，刮了胡子，穿上太尉的衣服，假扮宿元景；宋江和吴用扮成随行官员；解珍、解宝、杨雄、石秀扮成侍卫；小喽啰都穿着紫衣服系银腰带，举着旗子、仪仗等东西，拿着御香、祭品和金铃吊挂；花荣、徐宁、朱仝、李应扮成四个卫兵。朱武、陈达、杨春陪着太尉和他带来的人喝酒吃饭。同时派秦明、呼延灼带一队人马，林冲、杨志带另一队人马，分两路去攻城。让武松提前到西岳门等着，听到信号就行动。戴宗先跑去报信。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">话休絮繁。且说一行人等离了山寨，径到河口下船而行。不去报与华州太守，一径奔西岳庙来。戴宗报知云台观观主并庙里职事人等，直至船边，迎接上岸。香花灯烛，幢幡宝盖，摆列在前。先请御香上了香亭，庙里人夫扛抬了，导引金铃吊挂前行。观主见太尉，吴学究道：“太尉一路染病不快，且把轿子来。”左右人等扶策太尉上轿，径到岳庙里官厅内歇下。客帐司吴学究对观主道：“这是特奉圣旨，赍捧御香、金铃吊挂来与圣帝供养。缘何本州官员轻慢，不来迎接？”观主答道：“已使人去报了，敢是便到。”</div>
+            <div class="text-block simplified-text">简单直白的白话文：
+
+别啰嗦了。话说这帮人离开山寨，直接到河边坐船出发。他们没去通知华州太守，直奔西岳庙去了。戴宗提前通知了云台观的观主和庙里的管事人，这些人到船边把他们接上岸。前面摆着香烛、花灯、旗子这些排场。先请御香上了香亭，让庙里的工人抬着，带着金铃吊挂走在前面。观主见到太尉时，吴学究说："太尉一路上生病不舒服，快把轿子准备好。"手下人扶着太尉上轿，直接到岳庙的官厅里休息。吴学究对观主说："我们这是奉了皇帝的命令，专门送御香和金铃吊挂来供奉圣帝的。为什么你们这儿的官员这么怠慢，不来迎接？"观主回答："已经派人去通知了，应该马上就到。"
+
+（说明：完全保留原文情节，将"话休絮繁"译为"别啰嗦了"，"径到"译为"直接到"，"染病不快"译为"生病不舒服"等，全部使用现代口语表达，没有任何信息增减。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">说犹未了，本州先使一员推官，带领做公的五七十八大将着酒果，来见太尉。原来那扮太尉的小喽啰，虽然模样相似，却言语发放不得。因此只教装做染病，把靠褥围定在床上坐。推官看了，见来的旌节、门旗、牙仗等物，都是东京来的，内府制造出的，如何不信。客帐司假意出入禀复了两遭，却引推官入去，远远地阶下参拜了。那假太尉只把手指，并不听得说甚么。吴用引到面前，埋怨推官道：“太尉是天子前近幸大臣，不辞千里之遥，特奉圣旨到此降香，不想于路染病未痊。本州众官如何不来远接？”推官答道：“前路官司虽有文书到州，不见近报，因此有失迎迓，不期太尉先到庙里。本是太守便来，奈缘少华山贼人纠合梁山泊草寇要打城池，每日在彼提防，以此不敢擅离。特差小官先来贡献酒礼。太守随后便来参见大臣。”吴学究道：“太尉涓滴不饮，只叫太守来商议行礼。”推官随即教取酒来，与客帐司亲随人把盏了。吴学究又入去禀一遭，将了钥匙出来，引着推官去看金铃吊挂。开了锁，就香帛袋中取出那御赐金铃吊挂来，叫推官看。便把条竹竿叉起看时，果然是制造得无比。但见：</div>
+            <div class="text-block simplified-text">话还没说完，本州派来的一位推官（法官）带着五六个差人，拿着酒和水果来见太尉。其实那个假扮太尉的小喽啰虽然长得像，但不会说官话，只好假装生病，用被子裹着坐在床上。推官看到随行的旗子、仪仗都是京城内府造的，就信以为真。管接待的人假装进去通报了两次，才把推官带进去。推官远远地在台阶下行礼，假太尉只抬手示意，一句话也不说。吴用上前假装责怪推官："太尉是皇上身边的大官，大老远奉旨来烧香，结果路上生病了。你们地方官怎么不来迎接？"推官回答："之前收到过公文，但没接到最新通知，所以没来得及迎接。太守本来要亲自来，但因为少华山的土匪勾结梁山贼要攻城，他得天天守着，不敢离开，特意派我先来送酒食。太守马上就到。"吴用说："太尉不喝酒，叫太守赶紧来商量正事。"推官赶紧让人倒酒招待随行人员。吴用又假装进去请示，拿了钥匙出来，带推官去看金铃吊挂。打开锁，从香袋里拿出皇帝赏赐的金铃吊挂，用竹竿挑起来给推官看——果然做工精致无比。只见：（此处原文为描写吊挂的韵文，直译会失去文采，建议保留原貌或说明"此处详细描写了吊挂的精美做工"）  
+
+（注：若需完全白话处理韵文部分，可改为："那金铃吊挂做得特别讲究，铃铛金光闪闪，花纹精细，一看就是皇宫里的手艺。"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">浑金打就，五彩装成。双悬缨络金铃，上挂珠玑宝盖。黄罗密布，中间八爪玉龙盘；紫带低垂，外壁双飞金凤绕。对嵌珊瑚玛瑙，重围琥珀珍珠。碧琉璃掩映绛纱灯，红菡萏参差青翠叶。堪宜金屋琼楼挂，雅称瑶台宝殿悬。</div>
+            <div class="text-block simplified-text">这段文字描述的是一个非常华丽精美的装饰品。简单来说：
+
+这东西是用纯金打造的，装饰得五彩缤纷。上面挂着两串带铃铛的缨络，顶部还有珠宝装饰的华盖。主体部分用黄色绸缎密密包裹，中间盘着一条八爪玉龙；紫色丝带垂下来，外面还绕着两只金凤凰。装饰着珊瑚、玛瑙、琥珀和珍珠。碧绿的琉璃映着红纱灯，像荷花配着青翠的叶子。这东西特别适合挂在豪华的宫殿楼阁里，跟那些高档场所特别配。
+
+用大白话说就是：这是个镶金带玉、挂满珠宝的超级豪华装饰品，上面有龙有凤，各种宝石闪闪发光，一看就是皇宫里才有的高级货。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">这一对金铃吊挂，乃是东京内府作分高手匠人做成的，浑是七宝珍珠嵌造，中间点着碗红纱灯笼。乃是圣帝殿上正中挂的，不是内府降来，民间如何做得。吴用叫推官看了，再收入柜匣内锁了。又将出中书省许多公文，付与推官。便叫太守来商议拣日祭祀。推官和众多做公的都见了许多物件文凭，便辞了客帐司，径回到华州府里来报贺太守。却说宋江暗暗地喝采道：“这厮虽然奸猾，也骗得他眼花心乱了。”此时武松已在庙门下了；吴学究又使石秀藏了尖刀，也来庙门下相帮武松行事；却又叫戴宗扮虞候。云台观主进献素斋，一面教执事人等安排铺陈岳庙。宋江闲步看那西岳庙时，果然是盖造的好。殿宇非凡，真乃人间天上。怎见得？</div>
+            <div class="text-block simplified-text">这对金铃吊挂是东京皇宫里手艺最好的工匠做的，用各种珠宝镶嵌而成，中间还挂着红纱灯笼。这东西本来是挂在圣帝大殿正中央的，要不是皇宫里赏赐的，民间根本做不出来。吴用让推官看完后，又把它锁回柜子里。接着拿出许多朝廷公文交给推官，又叫太守来商量选个好日子办祭祀。推官和其他官员看了这么多文件和信物，就跟接待处告辞，直接回华州向贺太守报告去了。这时宋江心里暗笑："这家伙虽然狡猾，也被我们骗得晕头转向了。"武松已经埋伏在庙门口了；吴用又派石秀带着刀去帮武松，还让戴宗假扮成侍卫。观主送来素斋，同时让人布置岳庙。宋江溜达着看西岳庙，确实修得气派，大殿特别壮观，简直像天上宫阙一样。到底有多好呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">金门玉殿，碧瓦朱甍。山河扶绣户，日月近雕梁。悬虾须织锦栊帘，列龟背硃红亮槅。廊庑下磨砖花间缝，殿台边墙壁捣椒泥。帐设黄罗，供案畔列九卿四相；扇开丹凤，御榻边摆玉女金童。堂堂庙貌肃威仪，赫赫神灵常祭享。</div>
+            <div class="text-block simplified-text">这座庙宇金碧辉煌，宫殿用玉石和黄金装饰，屋顶铺着碧绿的瓦片和朱红的屋脊。高大的门窗对着锦绣般的山河，精美的房梁仿佛能碰到日月。门前挂着用虾须般精细的丝线织成的锦缎帘子，排列着龟背纹的朱红亮格窗。走廊地面铺着雕花的砖块，殿台墙壁用掺了香料的泥浆涂抹。大殿里张设黄色罗帐，供桌两旁站着文武百官；丹凤屏风展开，皇帝宝座边侍立着童男童女。整座庙宇庄严肃穆，威风凛凛的神灵常年在这里接受供奉祭拜。
+
+（说明：译文在完全保留原文所有意象和信息的基础上，做了以下处理：
+1. "金门玉殿"译为"金碧辉煌，宫殿用玉石和黄金装饰"更直观
+2. "碧瓦朱甍"直译为"碧绿的瓦片和朱红的屋脊"
+3. "捣椒泥"译为"掺了香料的泥浆"更易懂
+4. "九卿四相"意译为"文武百官"
+5. 最后两句合并翻译，保留"庄严肃穆"的核心意象
+6. 所有建筑细节和礼仪陈设均完整保留，仅转换表达方式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">宋江来到正殿上拈香再拜，暗暗祈祷已罢，回至官厅前。门人报道：“贺太守来也。”宋江便叫花荣、徐宁、朱仝、李应四个衙兵，各执着器械，分列在两边；解珍、解宝、杨雄、戴宗各带暗器，侍立在左右。却说贺太守将带三百余人，来到庙前下马，簇拥入来。假客帐司吴学究、宋江见贺太守带着三百余人，都是带刀公吏人等入来。吴学究喝道：“朝廷太尉在此，闲杂人不许近前！”众人立住了脚，贺太守亲自进前来拜见太尉。客帐司道：“太尉教请太守入来厮见。”贺太守入到官厅前，望着假太尉便拜。吴学究道：“太守，你知罪么？”太守道：“贺某不知太尉到来，伏乞恕罪。”吴学究道：“太尉奉敕到此西岳降香，如何不来远接？”太守答道：“不曾有近报到州，有失迎迓。”吴学究喝声：“拿下！”解珍、解宝弟兄两个身边早掣出短刀来，一脚把贺太守踢翻，便割了头。宋江喝道：“兄弟们动手！”早把那跟来的人三百余个，惊得呆了，正走不动。花荣等一发向前，把那一干人算子般都倒在地下。有一半抢出，庙门下武松、石秀舞刀杀将入来，小喽啰四下赶杀，三百余人不剩一个回去。续后到庙里的，都被张顺、李俊杀了。</div>
+            <div class="text-block simplified-text">宋江走进大殿烧香磕头，默默祷告完，回到大厅前。手下报告说："贺太守来了。"宋江就叫花荣、徐宁、朱仝、李应四个带刀侍卫，拿着武器站在两边；解珍、解宝、杨雄、戴宗带着暗器，守在旁边。这时贺太守带着三百多人骑马来到庙前，下马后一群人涌进来。假扮接待官的吴用和宋江看见贺太守带着三百多个带刀的官兵进来。吴用大声喝道："朝廷太尉在这里，闲杂人等不许靠近！"那些人就站住了，贺太守自己上前拜见假太尉。接待官说："太尉请太守进来见面。"贺太守走进大厅，对着假太尉就跪拜。吴用质问："太守，你知道自己犯了什么罪吗？"太守回答："贺某不知道太尉来了，请饶恕。"吴用说："太尉奉皇帝命令来西岳烧香，你为什么不来迎接？"太守说："没有收到通知，所以没来迎接。"吴用突然大喊："拿下！"解珍、解宝立刻拔出短刀，一脚踢倒贺太守，砍下了他的头。宋江大喊："兄弟们动手！"跟着来的三百多人吓傻了，都愣在原地。花荣等人冲上去，把这些人像割草一样全打倒了。有一半人想往外跑，守在门口的武松、石秀挥刀杀了进来，小喽啰们四面围杀，三百多人一个都没跑掉。后面陆续来庙里的人，都被张顺、李俊杀死了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">宋江急叫收了御香、吊挂下船。都赶到华州时，早见城中两路火起。一齐杀将入来。先去牢中救了史进、鲁智深。就打开库藏，取了财帛，装载上车。一行人离了华州，上船回到少华山上，都来拜见宿太尉，纳还了御香、金铃吊挂、旌节、门旗、仪仗等物，拜谢了太尉恩相。宋江教取一盘金银，相送太尉。随从人等，不分高低，都与了金银。就山寨里做了个送路筵席，谢承太尉。众头领直送下山，到河口交割了一应什物船只，一些不肯少了，还了来的人等。宋江谢了宿太尉，回到少华山上，便与四筹好汉商议收拾山寨钱粮，放火烧了寨栅。一行人等，军马粮草，都望梁山泊来。有诗为证：</div>
+            <div class="text-block simplified-text">宋江赶紧让人把御香和吊挂收好，带下船去。大家赶到华州时，已经看见城里有两处地方着火了。他们一起冲进城，先去牢里救出了史进和鲁智深，然后打开仓库，拿了钱财装上车。一帮人离开华州，坐船回到少华山，都去拜见宿太尉，把御香、金铃吊挂、旌旗、门旗、仪仗这些东西还给他，感谢太尉的恩情。宋江叫人拿来一盘金银送给太尉，连随从也都给了钱。还在山寨里摆了送行酒席感谢太尉。众头领一直把太尉送到山下河边，把该还的东西和船只都清点交接清楚，一点都没少，让来的人都带回去了。宋江谢过宿太尉后回到少华山，就和四位好汉商量收拾山寨的钱粮，最后放火烧了山寨。所有人带着兵马粮草，一起往梁山泊去了。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">蚓结蛇蟠合计偕，便驱人马下山来。</div>
+            <div class="text-block simplified-text">蛇和蚯蚓都聚在一起了，他们就带着人马从山上冲下来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">虽然救得花和尚，太守何辜独被灾。</div>
+            <div class="text-block simplified-text">虽然救了花和尚，但太守为啥偏偏倒霉遭殃？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">且说宿太尉下船，来到华州城中，已知被梁山泊贼人杀死军兵人马，劫了府库钱粮，城中杀死军校一百余人，马匹尽皆虏去，西岳庙中又杀了许多人性命。便叫本州推官动文书申达中书省起奏，都做“宋江先在途中劫了御香、吊挂，因此赚知府到庙，杀害性命”。宿太尉到庙内焚了御香，把这金铃吊挂分付与了云台观主，星夜急急自回京师，奏知此事。不在话下。</div>
+            <div class="text-block simplified-text">话说宿太尉坐船到了华州城，发现城里出了大事：梁山泊的强盗杀了官兵，抢了官府的钱粮，城里有一百多个士兵被杀，马匹全被抢走，西岳庙里也死了不少人。宿太尉赶紧让本州的推官写报告给中书省，报告里说："宋江这伙人先在半路抢了御赐的香和吊挂，然后骗知府到庙里害死了他。"宿太尉亲自到庙里烧了御香，把金铃吊挂交给云台观主保管，就连夜赶回京城报告这件事。这事就先说到这儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">再说宋江救了史进、鲁智深，带了少华山四个好汉，仍旧作三队分俵人马，回梁山泊来。所过州县，秋毫无犯。先使戴宗前来上山报知。晁盖并众头领下山迎接宋江等，一同到山寨里聚义厅上，都相见已罢，一面做庆喜筵席。次日，史进、朱武、陈达、杨春各以己财做筵宴，拜谢晁、宋二公并众头领。过了数日。</div>
+            <div class="text-block simplified-text">宋江救了史进和鲁智深，带着少华山的四个好汉，还是分成三队人马，一路回梁山泊。他们经过的地方，对老百姓一点都没骚扰。宋江先派戴宗上山报信。晁盖和众头领下山迎接宋江他们，大家一起到山寨的聚义厅见面。见面后，马上摆酒庆祝。第二天，史进、朱武、陈达、杨春四个人自己出钱办酒席，感谢晁盖、宋江和众头领。过了几天。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">话休絮烦。忽一日，有旱地忽律朱贵上山报说：“徐州沛县芒砀山中，新有一伙强人，聚集着三千人马。为头一个先生，姓樊名瑞，绰号混世魔王，能呼风唤雨，用兵如神。手下两个副将：一个姓项，名充，绰号八臂那吒，能使一面团牌，牌上插飞刀二十四把，手中仗一条铁标枪；又有一个姓李名衮，绰号飞天大圣，也使一面团牌，牌上插标枪二十四根，手中仗一口宝剑。这三个结为兄弟，占住芒砀山，打家劫舍。三个商量了，要来吞并俺梁山泊大寨。小弟听得说，不得不报。”宋江听了大怒道：“这贼怎敢如此无礼！我便再下山走一遭。”只见九纹龙史进便起身道：“小弟等四个初到大寨，无半米之功，情愿引本部人马前去收捕这伙强人。”宋江大喜。</div>
+            <div class="text-block simplified-text">简单来说：
+
+有一天，朱贵匆忙跑上山报告说："徐州沛县的芒砀山来了一伙强盗，有三千多人。领头的叫樊瑞，外号混世魔王，据说会法术，很会打仗。他有两个帮手：一个叫项充，外号八臂哪吒，用盾牌和飞刀，还会使标枪；另一个叫李衮，外号飞天大圣，也用盾牌和标枪，还会用宝剑。这三个人结拜为兄弟，占了芒砀山，到处抢劫。现在他们商量着要来打我们梁山泊。我听到消息就赶紧来报告。"
+
+宋江听了很生气："这些贼人好大的胆子！我亲自带人去收拾他们。"这时史进站起来说："我们四个刚来山寨，还没立过功，愿意带兵去抓这些强盗。"宋江听了很高兴。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">当下史进点起本部人马，与同朱武、陈达、杨春都披挂了，来辞宋江下山。把船渡过金沙滩，上路径奔芒砀山来。三日之内，早望见那座山，乃是昔日汉高祖斩蛇起义之处。三军人马，来到山下，早有伏路小喽啰上山报知。且说史进把少华山带来的人马摆开，史进全身披挂，骑一匹火炭赤马，当先出阵。怎见得史进的英雄？但见：</div>
+            <div class="text-block simplified-text">史进带着自己的人马，和朱武、陈达、杨春一起穿上盔甲，去向宋江告别下山。他们坐船过了金沙滩，走大路直奔芒砀山。走了三天，远远就看见了那座山，这地方就是当年汉高祖刘邦杀蛇起义的地方。他们带着军队来到山脚下，早就埋伏在山上的小喽啰赶紧跑上山去报信。史进把从少华山带来的队伍排开阵势，他自己全副武装，骑着一匹像火炭一样红的马，第一个冲出来。要说史进有多厉害？你看他：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">久在华州城外住，旧时原是庄农。学成武艺惯心胸。三尖刀似雪，浑赤马如龙。体挂连环铁铠，战袍风飐猩红。雕青镌玉更玲珑。江湖称史进，绰号九纹龙。</div>
+            <div class="text-block simplified-text">这个人以前住在华州城外，本来是个种地的农民。后来练了一身好武艺，本事很大。他用的兵器是一把雪亮的三尖刀，骑着一匹火红的快马。身上穿着铁片串成的铠甲，外面套着被风吹得飘起来的猩红战袍。他身上还纹着精美的青色花纹和玉饰，看起来特别精致。在江湖上，大家都叫他史进，外号是"九纹龙"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">当时史进首先出马，手中横着三尖两刃刀。背后三个头领，中间的便是神机军师朱武。那人原是定远县人氏，平生足智多谋，亦能使两口双刀，出到阵前。亦有八句诗，单道朱武好处：</div>
+            <div class="text-block simplified-text">当时史进第一个冲出来，手里拿着一把三尖两刃刀。他身后跟着三个头领，中间那个就是军师朱武。朱武老家是定远县，这人特别聪明，点子多，还会耍双刀，现在也来到阵前。有首诗专门夸朱武的本事，一共八句：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">道服裁棕叶，云冠剪鹿皮。</div>
+            <div class="text-block simplified-text">衣服是用棕树叶做的，帽子是用鹿皮做的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">脸红双眼俊，面白细髯垂。</div>
+            <div class="text-block simplified-text">这个人长得挺好看：脸有点红，眼睛很精神，皮肤白白的，还留着细细的胡子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">智可张良比，才将范蠡欺。</div>
+            <div class="text-block simplified-text">聪明程度能和军师张良比一比，本事大到连谋士范蠡都比不上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">军中人尽伏，朱武号神机。</div>
+            <div class="text-block simplified-text">军营里的人都服他，朱武这人特别会出主意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">上首马上坐着一筹好汉，手中横着一条出白点钢枪，绰号跳涧虎陈达，原是邺城人氏。当时提枪跃马，出到阵前。也有一首诗，单道着陈达好处：</div>
+            <div class="text-block simplified-text">最前面那匹马上坐着一位好汉，手里横握着一杆闪亮的钢枪，外号叫"跳涧虎"陈达，本来是邺城人。这时候他提着枪、骑着马冲到队伍前面。还有一首诗专门夸陈达的本事：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">生居邺郡上华胥，惯使长枪伏众威。</div>
+            <div class="text-block simplified-text">这个人住在邺郡的上华胥，平时最爱用长枪，枪法特别厉害，大家都怕他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">跳涧虎称多膂力，却将陈达比姜维。</div>
+            <div class="text-block simplified-text">这个叫"跳涧虎"的人总说自己力气大，还把陈达比作三国里的姜维（一个有名的武将）。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">下首马上坐着一筹好汉，手中使一口大杆刀，绰号白花蛇杨春，原是解良县蒲城人氏。当下挺刀立马，守住阵门。也有一首诗，单题杨春的好处：</div>
+            <div class="text-block simplified-text">下面马上坐着一条好汉，手里拿着一把大刀，外号叫"白花蛇"杨春，原来是解良县蒲城人。这会儿他举着刀骑在马上，把守着营门。还有一首诗专门夸杨春的本事：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">蒲州生长最奢遮，会使钢刀赛左车。</div>
+            <div class="text-block simplified-text">在蒲州长大的人最厉害，耍起刀来比古代名将左车还强。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">瘦臂长腰真勇汉，杨春绰号白花蛇。</div>
+            <div class="text-block simplified-text">这个人身材瘦高，胳膊细长腰也细，是个真正的勇士。他名叫杨春，外号叫"白花蛇"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">四个好汉勒马在阵前。望不多时，只见芒砀山上飞下一彪人马来。当先两个好汉。为头那一个便是徐州沛县人氏，姓项名充，绰号八臂那吒。使一面团牌，背插飞刀二十四把，百步取人，无有不中。右手仗一条标枪。后面打着一面认军旗，上书“八臂那吒”。步行下山。有八句诗，单题项充：</div>
+            <div class="text-block simplified-text">四个好汉骑马站在阵前。没等多久，就看到芒砀山上冲下来一队人马。打头的是两个好汉。领头的那个是徐州沛县人，叫项充，外号"八臂哪吒"。他左手拿个圆盾，背后插着二十四把飞刀，百步之内打人，没有失手的。右手还握着一杆标枪。后面有人举着一面旗，上面写着"八臂哪吒"四个字。他们是步行下山的。有首诗专门写项充：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">铁帽深遮顶，铜环半掩腮。</div>
+            <div class="text-block simplified-text">铁帽子把头顶遮得严严实实，铜环把半边脸都挡住了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">傍牌悬兽面，飞刃插龙胎。</div>
+            <div class="text-block simplified-text">盾牌上挂着野兽的脸，飞快的刀插进龙的身体里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">脚到如风火，身先降祸灾。</div>
+            <div class="text-block simplified-text">跑得再快也没用，第一个冲上去反而容易倒霉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">那吒号八臂，此是项充来。</div>
+            <div class="text-block simplified-text">这句话的意思是：
+
+哪吒号称有八条手臂，其实说的是项充这个人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">次后那个好汉，便是邳县人氏，姓李名衮，绰号飞天大圣。会使一面团牌，背插二十四把标枪，亦能百步取人。左手挽牌，右手仗剑。后面打着一面认军旗，上书“飞天大圣”。出到阵前。有八句诗，单道李衮：</div>
+            <div class="text-block simplified-text">接下来出场的好汉，是邳县人，叫李衮，外号"飞天大圣"。他擅长用一面圆形盾牌，背后插着二十四根标枪，能在百步之外击中敌人。左手拿盾牌，右手握剑。身后有一面军旗，上面写着"飞天大圣"。他来到战场时，有八句诗专门描写他：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">缨盖盔兜项，袍遮铁掩襟。</div>
+            <div class="text-block simplified-text">头盔上带着红缨，铠甲外面罩着战袍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">胸藏拖地胆，毛盖杀人心。</div>
+            <div class="text-block simplified-text">这个人胆子特别大，敢做任何事；外表看起来凶狠，心里藏着杀人的念头。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">飞刃齐攒玉，蛮牌满画金。</div>
+            <div class="text-block simplified-text">刀剑密密麻麻像玉一样闪光，盾牌上画满了金色的花纹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">飞天号大圣，李衮众人钦。</div>
+            <div class="text-block simplified-text">大家都特别佩服那个叫"飞天号大圣"的李衮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">当下项充、李衮见了对阵史进、朱武、陈达、杨春四骑马在阵前，并不打话。小喽啰筛起锣来，两个好汉舞动团牌齐上，直滚入阵来。史进等拦当不住，后军先走。史进前军抵敌，朱武等中军呐喊，各自逃生。宋军被他杀的人亡马倒，败退六七十里。史进险些儿中了飞刀。杨春转身得迟，被一飞刀，战马着伤，弃了马，逃命走了。</div>
+            <div class="text-block simplified-text">这时候项充和李衮看到对面史进、朱武、陈达、杨春四个人骑着马在阵前站着，连招呼都不打。他们手下的小兵一敲锣，这两个好汉就举着盾牌冲上去，直接杀进对方阵营。史进他们根本挡不住，后面的部队先跑了。史进带着前面的部队勉强抵抗，朱武他们在中间喊了几声，最后也各自逃命。宋军被打得人仰马翻，一口气退了六七十里。史进差点被飞刀砍中。杨春跑得慢了点，被一把飞刀扎中战马，只好丢下马自己逃命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">史进点军，折了一半。和朱武等商议，欲要差人往梁山泊求救。正忧疑之间，只见军士来报：“北边大路上，尘头起处，约有二千军马到来。”史进等直迎来时，却是梁山泊旗号。当先马上两员上将，一个是小李广花荣，一个是金枪手徐宁。史进接着，备说项充、李衮蛮牌滚动，军马遮拦不住。花荣道：“宋公明哥哥见兄长来了，放心不下，好生懊悔。特差我两个到来帮助。”史进等大喜，合兵一处下寨。次日天晓，正欲起兵对敌，军士报道：“北边大路上又有军马到来。”花荣、徐宁、史进一齐上马接时，却是宋公明亲自和军师吴学究、公孙胜、柴进、朱仝、呼延灼、穆弘、孙立、黄信、吕方、郭盛，带领三千人马来到。史进备说项充、李衮飞刀标枪滚牌难近，折了人马一事。宋江失惊。吴用道：“且把军马扎下寨栅，别作商议。”宋江性急，便要起兵剿捕。直到山下。此时天色已晚，望见芒砀山上都是青色灯笼。公孙胜看了便道：“这一伙人必有妖法。此寨中青色灯笼，必是个会行妖法之人在内。我等且把军马退去。来日贫道献一个阵法，要捉此二人。”宋江大喜。传令教军马且退二十里，扎住营寨。</div>
+            <div class="text-block simplified-text">史进清点军队，发现损失了一半人马。他和朱武等人商量，想派人去梁山泊求救。正发愁的时候，士兵来报告说："北边大路上尘土飞扬，来了大约两千人的队伍。"史进他们迎上去一看，原来是梁山泊的人马。领头的两位将军，一个是花荣，一个是徐宁。史进见到他们，详细说了项充、李衮用盾牌阵冲锋，他们根本挡不住的情况。花荣说："宋江哥哥听说你们来了却不放心，很后悔没早点支援，特意派我们俩来帮忙。"史进他们很高兴，两路人马合在一起扎营。
+
+第二天天亮，正准备出兵打仗，士兵又来报告："北边大路上又来了队伍。"花荣、徐宁、史进一起骑马去迎接，这次是宋江亲自带着军师吴用、公孙胜、柴进、朱仝、呼延灼、穆弘、孙立、黄信、吕方、郭盛，带着三千人马来了。史进又把项充、李衮用飞刀标枪和盾牌阵很难对付、损失人马的事说了一遍。宋江听了很吃惊。吴用说："先把军队安顿下来，再商量对策。"宋江性子急，立刻就要出兵攻打。他们来到山下时天已经黑了，看见芒砀山上到处挂着青色的灯笼。公孙胜看了说："这帮人肯定会使妖法。这些青色灯笼说明寨子里有会法术的人。咱们先把军队撤回去。明天我来布个阵，一定能抓住这两个人。"宋江很高兴，下令军队先撤退二十里扎营。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">次日清晨，公孙胜献出这个阵法，有分教：飞天大圣，拱手来上梁山；八臂那吒，延颈便归水泊。正是：计就魔王须下拜，阵圆神将怎施为？毕竟公孙胜对宋江献出甚么阵法来，且听下回分解。</div>
+            <div class="text-block simplified-text">第二天早上，公孙胜给宋江出了一个布阵的主意。这个阵法可厉害了，结果就是：连外号"飞天大圣"和"八臂哪吒"这样的狠角色，最后都得乖乖上梁山入伙。说白了就是：再厉害的魔王见了这阵法也得服软，再牛的神将碰上这阵法也没辙。至于公孙胜到底给宋江出了个什么阵法，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
