@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十八回　颜统军阵列混天象　宋公明梦授玄女法</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./087.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十八回　颜统军阵列混天象　宋公明梦授玄女法</h1>
+        <a href="./089.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">古风：</div>
+            <div class="text-block simplified-text">好的，请提供需要转换的原文内容，我会按照您的要求将其改写为最直白的现代白话文。  
+
+（由于您提供的原文只有“古风：”这个开头，没有实际需要转换的文本内容，我暂时无法进行改写。请您补充完整的原文，我会立即为您处理！）  
+
+例如，如果原文是类似这样的古文：  
+“吾欲与君相知，长命无绝衰。”  
+
+我可以将其转换为：  
+“我想和你在一起，永远不分开。”  
+
+请提供具体文本，我会按要求改写！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">羊角风旋天地黑，黄沙漠漠云阴涩。</div>
+            <div class="text-block simplified-text">大风卷着沙土刮得天昏地暗，漫天黄沙把云都遮得阴沉沉的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">大辽兵发山岳摧，万里乾坤皆失色。</div>
+            <div class="text-block simplified-text">辽国大军出动，声势大得连山都要崩塌，整个天下都吓得变了颜色。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">皂雕旗展乌云飞，沙柳箭发流星驰。</div>
+            <div class="text-block simplified-text">旗帜一展像乌云翻滚，箭射出去快得像流星。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">连环骏马超风急，虎臂强弓缩地追。</div>
+            <div class="text-block simplified-text">骏马一匹接一匹跑得像风一样快，壮汉拉开强弓射箭，好像能把远方的目标一下子拉到眼前来追。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">千池荷叶青毡笠，铁甲铺兵映寒日。</div>
+            <div class="text-block simplified-text">很多池塘里的荷叶像青色的毡帽一样铺在水面上，穿着铁甲的巡逻士兵在寒冷的阳光下显得格外醒目。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">朱缨棍摆豹狼牙，宝雕弓挽乌龙脊。</div>
+            <div class="text-block simplified-text">这根棍子上装饰着红色的穗子，棍头尖得像豹狼的牙齿；那把弓雕刻精美，弓背弯曲得像乌龙的脊背。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">胡笳共贺天山歌，鼓声振起白骆驼。</div>
+            <div class="text-block simplified-text">大家一起用胡笳伴奏庆祝天山之歌，鼓声震天响，连白骆驼都跟着兴奋起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">番王左右持钺斧，统军前后横金戈。</div>
+            <div class="text-block simplified-text">番王身边站着拿斧头的护卫，军队前后都是拿着武器的士兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">瀚海风翻动人马，乳酪香飘宴君罢。</div>
+            <div class="text-block simplified-text">大风吹过沙漠，人马都被吹得摇晃；酒席上飘着奶酒的香味，宴会结束了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">海青放起鸿雁愁，豹子鸣时神鬼怕。</div>
+            <div class="text-block simplified-text">海东青一飞起来，连大雁都害怕；豹子一吼叫，连鬼神都吓跑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">番奴平掩貂鼠袍，健儿戏舞鱼腹刀。</div>
+            <div class="text-block simplified-text">翻译成现代白话文：
+
+那些外族士兵随便披着貂皮大衣，士兵们玩闹着挥舞像鱼肚子一样弯弯的刀。
+
+解释说明：
+1. "番奴"译为"外族士兵"更易理解，指古代中原对北方游牧民族的称呼
+2. "平掩"用"随便披着"来表达那种随意感
+3. 保留"貂鼠袍"的原始意象，因为现代人也知道貂皮大衣
+4. "健儿"译为"士兵们"更直白
+5. "戏舞"译为"玩闹着挥舞"更口语化
+6. "鱼腹刀"保留原比喻，用"像鱼肚子一样弯弯的"来解释形状特征
+7. 整体保持了对古代军旅生活的描写，没有增减信息</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">十万番兵耀英武，虎筋弦劲悲声号。</div>
+            <div class="text-block simplified-text">十万大军威风凛凛，强弓拉满发出凄厉的呼啸声。
+
+（说明：1. "番兵"转译为现代人能理解的"大军"；2. "耀英武"用口语化表达"威风凛凛"；3. "虎筋弦劲"简化为"强弓拉满"的日常表述；4. "悲声号"转化为更直白的"凄厉的呼啸声"；5. 完整保留原句两部分的战场肃杀意象）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">幽州城下人兵攘，连珠炮发轰天响。</div>
+            <div class="text-block simplified-text">幽州城下士兵们乱成一团，连续发射的火炮发出震天的巨响。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">神兵飞下九天来，四野茫茫万人仰。</div>
+            <div class="text-block simplified-text">神仙用的兵器从天上飞下来，四面八方的人都抬头看，觉得特别神奇。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">当时宋江在高阜处看了辽兵势大，慌忙回马来到本阵。且教将军马退回永清县山口屯扎。便就帐中与卢俊义、吴用、公孙胜等商议道：“今日虽是赢了他一阵，损了他两个先锋，我上高阜处观望辽兵，其势浩大，满天遍地而来。此乃是大队番军人马，来日必用与他大战交锋。恐寡不敌众，如之奈何？”吴用道：“兵微将寡，古之善用兵者，能使寡敌众，斯为美矣。昔晋谢玄五万人马，战退苻坚百万雄兵，似此寡能敌众者多矣，先锋何为惧哉！可传令与三军众将，来日务要旗幡严整，弓弩上弦，刀剑出鞘，深栽鹿角，警守营寨，濠堑齐备，军器并施，整顿云梯炮石之类，预先伺候。还只摆九宫八卦阵势，如若他来打阵，依次而起。从他有百万之众，安敢冲突！”宋江道：“军师言之甚妙。”随即传令已毕，各将三军尽皆听令。五更造饭，平明拔寨都起。前抵昌平县界，即将军马摆开阵势，扎下营寨。前面摆列马军：还是虎军大将秦明在前，呼延灼在后，关胜居左，林冲居右，东南索超，东北徐宁，西南董平，西北杨志。宋江守领中军，其余众将各依旧职。后面步军，另作一处，做一阵在后，卢俊义、鲁智深、武松三个为主。数万之中，都是能征惯战之将，个个磨拳擦掌，准备厮杀。阵势已完，专候番军。</div>
+            <div class="text-block simplified-text">宋江在高坡上看到辽军人多势众，赶紧骑马回营，下令部队先撤到永清县的山口驻扎。然后召集卢俊义、吴用、公孙胜等人开会说："今天虽然打赢了一仗，杀了他们两员先锋，但我看辽军铺天盖地杀过来，明天肯定要打大仗。咱们人少打不过他们，怎么办？"
+
+吴用说："人少打人多，古代名将常有的事。当年谢玄五万兵就能打败苻坚百万大军。让全军明天把旗帜插整齐，弓箭上弦，刀剑出鞘，营寨周围多设障碍物，把壕沟挖好，准备好云梯火炮。还是摆九宫八卦阵，他们敢来攻就按计划打。就算来百万大军也不怕！"
+
+宋江说："军师说得对。"马上传令下去。第二天天没亮就做饭，天亮拔营出发。到了昌平县地界就摆开阵势：骑兵前排是秦明，后排呼延灼，左边关胜，右边林冲，东南西北四个方向分别是索超、徐宁、董平、杨志。宋江坐镇中军，其他将领各就各位。步兵由卢俊义、鲁智深、武松带队殿后。几万精兵都摩拳擦掌准备开战。阵型摆好，就等辽军来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">未及良久，遥望辽兵远远而来。前面六队番军人马，又号哨路，又号压阵。番兵六队，每队各有五百，左设三队，右设三队，循环往来，其势不定。前看游兵，次后大队盖地来时，前军尽是皂纛旗，一带有七座旗门，每门有千匹马，各有一员大将。怎生打扮？头顶黑盔，身披玄甲，上穿皂袍，坐骑乌马，手中一般军器，正按北方斗、牛、女、虚、危、室、壁。七门之内总设一员把总大将，按上界北方玄武水星。怎生打扮？头披青丝细发，黄抹额紧束乌云。身穿秃袖皂袍，银压铠半兜冷气。狮蛮带紧扣乌油甲，锦雕鞍稳跨乌骓马。挂一副走兽飞鱼沙柳硬弓长箭，擎一口三尖两刃四楞八环刀。乃是番将曲利出清，引三千披发黑甲人马，按北辰五气星君。皂旗下军兵不计其数。正是：冻云截断东方日，黑气平吞北海风。有诗为证：</div>
+            <div class="text-block simplified-text">没过多久，就看见辽兵从远处过来了。最前面是六队探路的辽国骑兵，这些队伍既是侦察兵也是先锋部队。这六队人马，每队大约五百人，左边三队，右边三队，来回巡逻走动，阵型不断变化。
+
+先头部队过去后，接着来了黑压压的大部队。最前面的军队都举着黑色大旗，整支队伍分成七个方阵，每个方阵有一千名骑兵，由一名大将带领。这些大将的打扮是：头戴黑铁盔，身穿黑铠甲，外面套着黑袍，骑着黑马，拿着统一的武器，分别对应天上的北斗七星。
+
+在这七个方阵后面，还有一名总指挥大将，代表天上的玄武星。他的打扮是：披散着黑头发，额头上扎着黄色抹额，穿着无袖黑袍，银色铠甲闪着寒光。腰间紧束着狮蛮腰带，骑着黑色战马。背着一把雕花硬弓和一壶箭，手里提着一把三尖两刃的大刀。这个辽国大将叫曲利出清，带着三千个披头散发的黑甲士兵，代表北极星。
+
+黑色军旗下，士兵多得数不清。整个场面就像：乌云遮住了太阳，黑雾笼罩着北风。有首诗形容这个场面说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">兵按北方玄武象，黑旗黑铠黑刀枪。</div>
+            <div class="text-block simplified-text">军队按照北方玄武的形象来装扮，士兵们举着黑旗，穿着黑铠甲，拿着黑色的刀枪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">乌云影里玄冥降，凛凛威风不可当。</div>
+            <div class="text-block simplified-text">天上乌云密布，雨神降临，那气势汹汹的样子，真是让人害怕。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">左军尽是青龙旗，一带也有七座旗门，每门有千匹马，各有一员大将。怎生打扮？头戴四缝盔，身披柳叶甲，上穿翠色袍，下坐青鬃马，手拿一般军器，正按东方角、亢、氐、房、心、尾、箕。七门之内总设一员把总大将，按上界东方苍龙木星。怎生打扮？头戴狮子盔，身披狻猊铠。堆翠绣青袍，缕金碧玉带。坐雕鞍腰悬弓箭，踏宝镫鹰嘴花靴。手中月斧金丝杆，身坐龙驹玉块青。乃是番将只儿拂郎，引三千青色宝幡人马，按东震九气星君。青旗下左右围绕军兵不计其数。正似：翠色点开黄道路，青霞截断紫云根。有诗为证：</div>
+            <div class="text-block simplified-text">左边的军队全打着青色龙旗，排成一排有七个旗门，每个旗门有一千骑兵，各由一名大将带领。这些大将怎么打扮？头上戴着有四条缝的头盔，身上穿着柳叶形状的铠甲，上身是翠绿色的战袍，骑着青鬃马，手里拿着同样的武器，分别对应东方七宿：角、亢、氐、房、心、尾、箕。七个旗门由一名总大将统领，代表天上的东方苍龙木星。这个总大将怎么打扮？头戴狮子头盔，身穿狻猊铠甲，披着翠绿绣花的青袍，系着镶金边的碧玉腰带。骑着雕花马鞍的战马，腰间挂着弓箭，脚踩鹰嘴花纹的宝镫靴。手里拿着金丝杆的月牙斧，骑着一匹青色龙驹。这个人是番邦将领只儿拂郎，带领三千举着青色宝幡的士兵，代表东方的九气星君。青色旗帜周围还有数不清的士兵。看起来就像：青色点缀在黄土路上，青霞切断了紫云的根基。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">青龙驱阵下天曹，青盖青旗青战袍。</div>
+            <div class="text-block simplified-text">青色的龙带着天兵天将冲下来，他们都穿着青色的盔甲，举着青色的旗帜，披着青色的战袍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">共向山前呈武勇，堂堂杀气拂云霄。</div>
+            <div class="text-block simplified-text">这群人在山前展示自己的武艺，气势特别强，连天上的云都能感觉到那股威风劲儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">右军尽是白虎旗，一带也有七座旗门，每门有千匹马，各有一员大将。怎生打扮？头带水磨盔，身披烂银铠，上穿素罗袍，坐骑雪白马，各拿伏手军器，正按西方奎、娄、胃、昴、毕、觜、参。七门之内总设一员把总大将，按上界西方咸池金星。怎生打扮？头顶兜鍪凤翅盔，身披花银双钩甲。腰间玉带迸寒光，称体素袍飞雪练。骑一匹照夜玉狻猊马，使一枝纯钢银枣槊。乃是番将乌利可安，引三千白缨素旗人马，按西兑七气星君。白旗下前后护御军兵不计其数。正似：征驼卷尽阴山雪，番将斜披玉井冰。有诗为证：</div>
+            <div class="text-block simplified-text">右边军队全是白旗，排成一排有七个旗门，每个旗门有一千匹马，各有一名大将带队。这些大将怎么打扮？头戴磨得发亮的头盔，身穿闪亮的银色铠甲，外套白色战袍，骑着雪白战马，手里拿着顺手的兵器，分别代表西方的奎、娄、胃、昴、毕、觜、参这七个星宿。七个旗门由一名总将领管，象征天上的西方咸池金星。这位总将怎么打扮？头戴凤翅形状的头盔，身穿花纹银甲。腰间的玉带闪着寒光，合身的白袍像雪一样白。骑着一匹夜间会发光的白色骏马，使一杆纯钢打造的银色长矛。这人是番邦将领乌利可安，带领三千穿白衣、拿白旗的士兵，对应西方七位星君。白旗前后护卫的士兵多得数不清。整个场面就像：骆驼队踏平了阴山的积雪，番邦大将身上披着寒冰。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">太白分兵下九天，白云光拥素袍鲜。</div>
+            <div class="text-block simplified-text">李白带着军队从天上下来，穿着白袍在云里闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">巨灵翻海人难敌，扰得苍龙夜不眠。</div>
+            <div class="text-block simplified-text">这巨人掀起海浪谁都挡不住，闹得海里的龙晚上都睡不着觉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">后军尽是绯红旗，一带亦有七座旗门，每门有千匹马，各有一员大将。怎生打扮？头戴鏆箱朱红漆笠，身披猩猩血染征袍，桃红锁甲现鱼鳞，冲阵龙驹名赤兔，各搦伏手军器，正按南方井、鬼、柳、星、张、翼、轸。七门之内总设一员把总大将，按上界南方朱雀火星。怎生打扮？头顶着绛冠，朱缨粲烂。身穿绯红袍，茜色光辉。甲披一片红霞，靴刺数条花缝。腰间宝带红鞓，臂挂硬弓长箭。手持八尺火龙刀，坐骑一匹胭脂马。乃是番将洞仙文荣，引三千红罗宝幡人马，按南离三气星君。红旗下朱缨绛衣军兵不计其数。正似：离宫走却六丁神，霹雳震开三昧火。有诗为证：</div>
+            <div class="text-block simplified-text">后面的部队全是红色旗帜，连成一片共有七个旗门，每个旗门有一千匹马，各有一名大将带领。他们是什么打扮呢？头上戴着大红漆竹笠，身上披着猩红战袍，桃红色的铠甲像鱼鳞一样闪闪发亮，骑的是冲锋陷阵的赤兔马，每人手里都拿着顺手的武器，按照南方七宿（井、鬼、柳、星、张、翼、轸）的方位排列。七个旗门由一名主将统一指挥，对应天上的南方朱雀火星。这位主将的打扮是：头戴深红冠，红缨鲜艳夺目；身穿大红袍，红光闪闪；铠甲像一片红霞，靴子上绣着花纹；腰系红色宝带，背着硬弓和长箭；手握八尺长的火龙刀，骑着一匹胭脂马。他是番将洞仙文荣，带领三千举着红罗宝幡的士兵，对应南方火神星君。红旗下面穿红衣的士兵多得数不清。那场面就像：天宫的六丁神将跑出来了，霹雳闪电点燃了熊熊烈火。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">祝融飞令下南宫，十万貔貅烈火红。</div>
+            <div class="text-block simplified-text">玉皇大帝派火神祝融带着天兵天将下凡，那些天兵穿着红衣服像火一样红。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">闪闪赤云涧谷，阵前谁敢去当锋？</div>
+            <div class="text-block simplified-text">看那红红的云彩在山谷里闪啊闪，打仗的时候谁敢冲在最前面？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">阵前左有一队五千猛兵，人马尽是金缕弁冠，镀金铜甲，绯袍朱缨，火焰红旗，绛鞍赤马。簇拥着一员大将：头戴簇芙蓉如意缕金冠，身披结连环兽面锁子黄金甲，猩红烈火绣花袍，碧玉嵌金七宝带。使两口日月双刀，骑一匹五明赤马。乃是辽国御弟大王耶律得重，正按上界太阳星君。正似：“金乌拥出扶桑国，火伞初离东海洋。有诗为证：</div>
+            <div class="text-block simplified-text">战场上左边有五千精锐士兵，个个戴着金线装饰的头盔，穿着镀金铜甲，披着大红战袍，系着红色帽缨，举着火焰图案的红旗，骑着深红色的战马。队伍中间护着一员大将：他头戴镶有莲花图案的金冠，身穿连环兽纹的黄金锁子甲，外罩猩红色绣花战袍，腰系镶金嵌玉的宝石腰带。双手使一对日月双刀，骑着一匹名叫"五明"的红色战马。这人是辽国皇帝的弟弟耶律得重大王，传说他是天上的太阳星君下凡。那场面就像："太阳从扶桑国升起，火红的日轮刚离开东海。"有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">海神英武出扶桑，耶律提兵准太阳。</div>
+            <div class="text-block simplified-text">海神威风凛凛地从东方出来，耶律带兵朝着太阳方向前进。
+
+（说明：1. "扶桑"用"东方"替代，符合现代人理解；2. "英武"译为"威风凛凛"更口语化；3. "提兵"直译为"带兵"更易懂；4. "准太阳"意译为"朝着太阳方向"避免歧义；5. 完整保留了两句诗的战场意象和人物动作）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">雄略嘉谋播辽国，源源兵阵远鹰扬。</div>
+            <div class="text-block simplified-text">这个人打仗很厉害，计谋又多，在辽国特别出名。他带的军队能打胜仗，名声传得很远。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">阵前右设一队五千女兵，人马尽是银花弁冠，银钩锁甲，素袍素缨，白旗白马，银杆刀枪。簇拥着一员女将：头上凤钗对插青丝，红罗抹额乱铺珠翠，云肩巧衬锦裙，绣袄深笼银甲，小小花靴金镫稳，翩翩翠袖玉鞭轻。使一口七星宝剑，骑一匹银鬃白马。乃是辽国天寿公主答里孛，按上界太阴星君。正似：玉兔团团离海角，冰轮皎皎照瑶台。有诗为证：</div>
+            <div class="text-block simplified-text">战场右边有一支五千人的女兵队伍，这些女兵都戴着银花帽子，穿着银色铠甲，白色战袍，拿着白旗，骑着白马，武器也是银色的刀枪。队伍中间有位女将军：她头发上插着凤凰发钗，额头上戴着红色头巾和珠宝首饰，肩上披着云纹披肩，穿着锦绣战裙，银色铠甲外面套着绣花战袍，脚蹬小巧的金马靴，轻挥翠绿衣袖甩着玉鞭。她手持一把七星宝剑，骑着一匹银鬃白马。这就是辽国的天寿公主答里孛，传说她是月亮上的仙女下凡。看起来就像：月亮从海边升起，皎洁的月光照亮了仙宫。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">貌似春烟笼芍药，颜如秋水浸芙蓉。</div>
+            <div class="text-block simplified-text">看起来像春天的薄雾罩着芍药花，脸蛋儿像秋天的清水泡着荷花一样好看。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">玉纤轻搦龙泉剑，到处交兵占上风。</div>
+            <div class="text-block simplified-text">她纤细的手握着锋利的宝剑，每次打仗都能打赢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">两队阵中，团团一遭尽是黄旗簇簇，军将尽骑黄马，都披金甲。衬甲袍起一片黄云，绣包巾散半天黄雾。黄军队中有军马大将四员，各领兵三千，分于四角。每角上一员大将，团团守护。东南一员大将，青袍金甲，三叉金冠，兽面束带，全副弓箭，青缨宝枪，坐骑粉青马，立于阵前，按上界罗貂星君，乃是辽国皇侄耶律得荣；西南一员大将，紫袍银甲，宝冠束带，硬弓长箭，使一口宝刀，坐骑海骝马，立于阵前，按上界计都星君，乃是辽国皇侄耶律得华；东北一员大将，绿袍银甲，紫冠宝带，腰悬龙弓凤箭，手执方天画戟，坐骑五明黄马，立于阵前，按上界紫气星君，乃是辽国皇侄耶律得忠；西北一员大将，白袍铜甲，红抹额青丝乱撒，金厢带七宝妆成，腰悬雕箭画弓，手仗七星宝剑，坐骑踢雪乌骓马，立于阵前，按上界月孛星君，乃是辽国皇侄耶律得信。黄军阵内簇拥着那员上将，按上界中央镇星，左有执青旗，右有持白钺，前有擎朱幡，后有张皂盖。周回旗号按二十四气六十四卦，南辰，北斗，飞龙，飞虎，飞熊，飞豹，明分阴阳左右，暗合旋玑玉衡乾坤混沌之象。那员上将怎生打扮？头戴七宝紫金冠，耀日黄金龟背甲，西川蜀锦绣征袍，蓝田美玉玲珑带。左悬金画铁胎弓，右带凤翎鈚子箭。足穿鹰嘴云根靴，坐骑铁脊银鬃马。锦雕鞍稳踏金镫，紫丝缰牢绊山鞒。腰间挂剑驱番将，手内挥鞭同统大军。马前一将，擎着朱红画杆方天戟。这簇军马光辉，四边浑如金色，按中宫土星一气天君。乃是大辽国都统军大元帅兀颜光上将军。黄旗之后，中军是凤辇龙车，前后左右七重剑戟枪刀围绕。九重之内，又有三十六对黄巾力士推捧车驾。前有九骑金鞍骏马驾辕，后有八对锦衣力士随阵。辇上中间坐着大辽郎主，头戴冲天唐巾，身穿九龙黄袍，腰系蓝田玉带，足穿朱履朝靴。左右两个大臣：左丞相幽西孛瑾，右丞相太师褚坚，各戴貂蝉冠，火裙朱服，紫绶金章，象简玉带。龙床两边，金童玉女执简捧圭。龙车前后左右两边，簇拥护驾天兵。大辽国主自按上界北极紫微大帝总领镇星。左右二丞相，按上界左辅右弼星君。正是：一天星斗离乾位，万象森罗降世间。有诗为证：</div>
+            <div class="text-block simplified-text">两队人马站得密密麻麻，全是黄旗黄马，士兵都穿着金色铠甲。远远看去就像一片黄云，头巾飘动像黄色雾气。黄军里有四个大将，每人带三千兵，守在四个角上。
+
+东南角的大将：穿青袍金甲，戴三叉金冠，系兽面腰带，拿着青缨枪，骑粉青马。这人叫耶律得荣，号称"罗貂星君"。
+
+西南角的大将：穿紫袍银甲，戴宝冠，拿宝刀，骑红鬃马。这人叫耶律得华，号称"计都星君"。
+
+东北角的大将：穿绿袍银甲，戴紫冠，拿方天画戟，骑黄马。这人叫耶律得忠，号称"紫气星君"。
+
+西北角的大将：穿白袍铜甲，额头扎红巾，拿七星剑，骑黑马。这人叫耶律得信，号称"月孛星君"。
+
+中间有个主将更威风：戴紫金冠，穿黄金甲，披蜀锦战袍，系玉带。左边挂铁胎弓，右边带凤翎箭，脚蹬云纹靴，骑银鬃马。马前有人帮他扛着方天戟。这人叫兀颜光，号称"土星天君"，是大辽元帅。
+
+后面有辆豪华龙车，周围七层护卫，还有36对黄巾力士推车。车前9匹金鞍马拉车，车后8对锦衣力士跟着。车里坐着辽国国王，戴唐巾，穿龙袍，系玉带，蹬红靴。左右两个丞相陪着，一个穿红衣服戴貂蝉帽，一个穿紫衣服拿玉板。车两边还有金童玉女伺候。
+
+整个阵势摆得像天上的紫微大帝下凡，左右丞相像辅弼星君。这架势，简直是把天上的星星都搬到人间来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">旗幡铠甲与刀枪，正按中央土德黄。</div>
+            <div class="text-block simplified-text">旗子、盔甲和刀枪这些打仗用的东西，都按照五行中属土的中央方位来安排，颜色用的是黄色。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">天意岂能人力胜，枉将生命苦相戕。</div>
+            <div class="text-block simplified-text">老天爷的意思哪是咱们人能硬抗的，白白搭上性命互相伤害真不值当。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">那辽国番军摆列天阵已定，正如鸡卵之形，屯扎定时，团团似覆盆之状。旗排四角，枪摆八方，循环无定，进退有则，摆下阵势。</div>
+            <div class="text-block simplified-text">辽国的军队已经摆好了一个叫"天阵"的阵型。这个阵型看起来就像个鸡蛋的形状，士兵们驻扎好后，整个阵型圆圆的像个倒扣的盆子。阵型的四个角都插着旗子，四面八方都架着长枪。整个阵型会不停地变换移动，但进退都有规矩，是个布置得很严密的阵势。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">再说宋江便教强弓硬弩射住阵脚，压阵轻骑。就中军竖起云梯将台，引吴用、朱武上台观望。宋江看了惊讶不已。吴用看了，也不识的。朱武看了，认的是天阵。便对宋江、吴用道：“此乃是太乙混天象阵也。”宋江问道：“如何攻击？”朱武道：“此天阵变化无穷，交加莫测，不可造次攻打。”宋江道：“若不打得开阵势，如何得他军退？”吴用道：“急切不知他阵内虚实，如何便去打的？”正商议间，兀颜统军在中军传令：“今日属金，可差亢金龙张起、牛金牛薛雄、娄金狗阿哩义、鬼金羊王景四将，跟随太白金星番将乌利可安，离阵攻打宋兵。”</div>
+            <div class="text-block simplified-text">宋江让弓箭手用强弓压住阵脚，骑兵在后面压阵。他在中军搭起一座高台，带着吴用和朱武上去观察敌阵。宋江一看就惊呆了，吴用也看不懂。朱武认出这是"天阵"，就说："这是太乙混天象阵。"宋江问："怎么打？"朱武说："这阵法变化多端，深不可测，不能随便进攻。"宋江着急道："不破阵怎么让他们退兵？"吴用说："现在连他们阵里的情况都不清楚，怎么打啊？"正商量着，敌将兀颜在中军下令："今天属金，派亢金龙张起、牛金牛薛雄、娄金狗阿哩义、鬼金羊王景四将，跟着太白金星乌利可安，出阵攻打宋军。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">宋江众将在阵前，望见对阵右军七门，或开或闭，军中雷响，阵势团团。那引军旗在阵内自东转北，北转西，西投南。朱武见了，在马上道：“此乃是天盘左旋之象。今日属金，天盘左动，必有兵来。”说犹未了，五炮齐响，早见对阵踊出军来。中是金星，四下是四宿，引动五旗军马卷杀过来，势如山倒，力不可当。宋江军马措手不及，望后急退，大队压住阵脚。辽兵两面夹攻，宋军大败。急忙退兵回到本寨。辽兵也不来追赶。点视军中头领：孔亮伤刀，李云中箭，朱富着炮，石勇着枪，中伤军卒不计其数。随即发付上车，去后寨令安道全医治。宋江教前军下了铁蒺藜，深栽鹿角，坚守寨门。</div>
+            <div class="text-block simplified-text">宋江带着将领们在战场上，看到对面敌军的右翼有七个阵门，有的开着有的关着，军队里雷声大作，阵型转来转去。那面指挥旗在阵里从东转到北，又从北转到西，再从西转向南。朱武骑在马上看到后说："这是天象左转的征兆。今天属金，天象左转，肯定有敌军要来。"话还没说完，就听见五声炮响，对面敌军已经冲杀过来。中间是金星旗，四面是四星宿旗，带着五支旗号的军队像山崩一样压过来，根本挡不住。宋江的军队来不及反应，赶紧往后撤，主力部队勉强稳住阵脚。辽兵从两边包抄，宋军被打得大败，慌忙撤退回营。辽兵也没追过来。清点伤亡发现：孔亮被刀砍伤，李云中箭，朱富被炮打中，石勇被枪刺伤，普通士兵受伤的更是数不清。赶紧把伤员抬上车，送到后营让安道全治疗。宋江命令前军在营寨前撒下铁蒺藜，埋好鹿角，死死守住寨门。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">宋江在中军纳闷，与卢俊义等商议：“今日折了一阵，如之奈何？再若不出交战，必来攻打。”卢俊义道：“来日着两路军马撞住他那压阵军兵，再调两路军马撞那厮正北七门，却教步军从中间打将入去，且看里面虚实如何。”宋江道：“也是。”</div>
+            <div class="text-block simplified-text">宋江在军营里发愁，跟卢俊义他们商量："今天打了败仗，这可咋办？要是再不出去打，敌人肯定要攻过来了。"卢俊义说："明天派两队人马牵制住他们压阵的部队，再派两队人马攻打北面七个城门，让步兵从中间冲进去，看看他们里面到底啥情况。"宋江说："行。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">次日，便依卢俊义之言，收拾起寨，前至阵前准备，大开寨门，引兵前进。遥望辽兵不远，六队压阵辽兵远探将来。送江便差关胜在左，呼延灼在右，引本部军马撞退压阵辽兵，大队前进，与辽兵相接。宋江再差花荣、秦明、董平、杨志在左，林冲、徐宁、索超、朱仝在右，两队军兵来撞皂旗七门。果然撞开皂旗阵势，杀败皂旗人马。正北七座旗门，队伍不整。宋江阵中却转过李逵、樊瑞、鲍旭、项充、李衮五百牌手向前，背后鲁智深、武松、杨雄、石秀、解珍、解宝将带应有步军头目，撞杀入去。混天阵内，只听四面炮响，东西两军，正面黄旗军，撞杀将来。宋江军马抵当不住，转身便走。后面架隔不定，大败奔走，退回原寨。急点军时，折其大半。杜迁、宋万又带重伤。于内不见了黑旋风李逵。原来李逵杀的性起，只顾砍入他阵里去，被他挠钩搭住，活捉去了。宋江在寨中听的，心中纳闷。传令教先送杜迁、宋万去后寨，令安道全调治。带伤马匹叫牵去与皇甫端料理。宋江又与吴用等商议：“今日又折了李逵，输了这一陈，似此怎生奈何？”吴用道：“前日我这里活捉的他那个小将军，是兀颜统军的孩儿，正好与他打换。”宋江道：“这番换了，后来倘若折将，何以解救？”吴用道：“兄长何故执迷，且顾眼下。”说犹未了，小校来报：“有辽将遣使到来打话。”宋江唤入中军。那番官来与宋江厮见，说道：“俺奉元帅将令，今日拿得你的一个头目，到俺总兵面前，不肯杀害，好生与他酒肉管待在那里。统军要送来与你换他孩儿小将军还他，如是将军肯时，便送那个头目来还。”宋江道：“既是恁地，俺明日取小将军来到阵前，两相交换。”番官领了宋江言语，上马去了。有诗为证：</div>
+            <div class="text-block simplified-text">第二天，宋江按照卢俊义的建议，收拾好营地，带兵前进到战场。远远看见辽国军队离得不远，六队辽兵正压着阵脚慢慢逼近。宋江立刻派关胜带左路军、呼延灼带右路军，各自率领部队打退辽国的压阵部队，然后大部队继续前进，跟辽军正面交锋。
+
+接着宋江又派花荣、秦明、董平、杨志从左路，林冲、徐宁、索超、朱仝从右路，两队人马冲击辽军的黑色旗帜七门阵。果然冲破了敌阵，打败了黑旗部队。这时正北面的七座旗门阵型已经乱了，宋江立刻调派李逵、樊瑞、鲍旭、项充、李衮带着五百牌刀手冲杀过去，后面跟着鲁智深、武松、杨雄、石秀、解珍、解宝率领的步兵队伍。
+
+没想到辽军混天阵里突然四面炮响，东西两路和正面的黄旗军一起杀过来。宋江部队顶不住，转身就跑。后面队伍也乱了阵脚，大败撤退回营地。清点人数发现损失大半，杜迁、宋万还受了重伤，更糟的是李逵不见了——原来他杀红了眼，一个人冲进敌阵太深，被对方用挠钩抓住活捉了。
+
+宋江在营里听到消息很发愁，先安排把杜迁、宋万送到后营让安道全治疗，受伤的马匹交给皇甫端照料。然后和吴用商量："今天又折了李逵，还打了败仗，这可怎么办？"吴用说："前几天我们不是活捉了辽国统帅的儿子吗？正好用来交换。"宋江担心："这次换了人，以后要是再有人被抓怎么办？"吴用劝道："大哥别想那么远，先解决眼前的事。"
+
+正说着，士兵报告辽国派使者来了。使者见到宋江说："我们元帅说了，今天抓到你们一个头目，我们将军没杀他，还好吃好喝招待着。想用他换回我们小将军，你们要是同意，我们就把人送回来。"宋江回答："那好，明天我把小将军带到阵前，咱们交换。"使者听完就骑马回去了。
+
+（最后那首诗我就不翻译了，因为你要的是白话文，而且诗的内容通常需要保持原貌）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">宋江前日擒王子，番将今朝捉李逵。</div>
+            <div class="text-block simplified-text">前几天宋江抓了个王子，今天敌方将领把李逵给逮住了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">此是乾坤消息理，不须惆怅苦生悲。</div>
+            <div class="text-block simplified-text">这句话的意思是：这是天地万物自然变化的道理，没必要因为生活中的苦难而过度悲伤烦恼。就像季节轮转一样，好坏都是正常现象，想开点别太难过。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">宋江再与吴用商议道：“我等无计破他阵势，不若取将小将军来，就这里解和这阵，两边各自罢战。”吴用道：“且将军马暂歇，别生良策再来破敌，未为晚矣。”到晓，差人星夜去取兀颜小将军来，也差个人直往兀颜统军处，说知就里。</div>
+            <div class="text-block simplified-text">宋江又跟吴用商量说："咱们想不出办法破他们的阵，不如把他们的小将军带过来，就在这儿讲和停战吧。"吴用说："先让部队休息，等想出好办法再来打也不迟。"天一亮，他们就派人连夜去接兀颜小将军，同时也派人直接去兀颜统军那儿说明情况。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">且说兀颜统军正在帐中坐地，小军来报：“宋先锋使人来打话。”统军传令教唤入来。到帐前见了兀颜统军说道：“俺的宋先锋拜意统军麾下，今送小将军回来，换俺这个头目。即今天气严寒，军士劳苦，两边权且罢战，待来春别作商议，俱免人马冻伤，请统军将令。”兀颜统军听了大喝道：“无智辱子被汝生擒，纵使得活，有何面目见咱！不用相换，便拿下替俺斩了。若要罢战权歇，教你宋江束首来降，免汝一死；若不如此，吾引大兵一到，寸草不留！”大喝一声：“退去！”使者飞马回寨报复，将这话诉与宋江。</div>
+            <div class="text-block simplified-text">话说兀颜将军正在营帐里坐着，手下小兵来报告："宋朝的先锋派人来传话。"将军下令让来人进帐。使者见了兀颜将军说："我们宋先锋向将军问好。今天把您的小将军送回来，想换回我们被抓的头领。现在天寒地冻，士兵们都很辛苦，建议两边暂时停战，等明年春天再商量。这样双方士兵都能避免冻伤，请将军下令。"兀颜将军听完大怒："那个没用的废物被你们活捉，就算活着回来还有什么脸见我！不用交换，直接给我拉出去砍了。要想停战，除非宋江自己捆着来投降，我还能饶你们不死；要是不答应，等我大军杀到，叫你们片甲不留！"说完大吼："滚出去！"使者赶紧骑马回营报告，把这话原原本本告诉了宋江。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">宋江慌速，只怕救不得李逵，拔寨便起，带了兀颜小将军，直抵前军。隔阵大叫：“可放过俺的头目来，我还你小将军。不罢战不妨，自与你对阵厮杀。”只见辽兵阵中，无移时把李逵一骑马送出阵前来，这里也牵一匹马送兀颜小将军出阵去。两家如此一言为定，两边一齐同收同放。李将军回寨，小将军也骑马过去了。当日两边都不厮杀。宋江退兵回寨，且与李逵贺喜。</div>
+            <div class="text-block simplified-text">宋江急得要命，生怕救不了李逵，立刻带着队伍出发，押着辽将兀颜小将军冲到前线。他隔着战场大喊："只要放了我的兄弟李逵，我就把你们的小将军还回去。要打要停都行，咱们可以接着打！"不一会儿，辽兵就把李逵连人带马送了出来，宋江这边也把兀颜小将军放回去了。两边说好同时放人，说到做到。李逵安全回营，小将军也骑马回去了。当天两边都没再打仗。宋江带兵回营后，还专门给李逵庆祝了一番。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">宋江在帐中与诸将商议道：“辽兵势大，无计可破，使我忧煎，度日如年。怎生奈何？”呼延灼道：“我等来日可分十队军马，两路去当压阵军兵，八路一齐撞击，决此一战。”宋江道：“全靠你等众弟兄同心戮力，来日必行。”吴用道：“两番撞击不动，不如守等他来交战。”宋江道：“等他来也不是良法，只是众弟兄当以力敌，岂有连败之理。”</div>
+            <div class="text-block simplified-text">宋江在帐篷里和将领们商量说："辽国军队太强了，我们想不出办法打败他们，愁得我每天像过年一样难熬。这可怎么办啊？"
+
+呼延灼说："明天我们可以把军队分成十队，两队在后面压阵，剩下八队一起冲上去拼命，跟他们决一死战。"
+
+宋江说："就靠兄弟们齐心协力了，明天就这么干。"
+
+吴用说："要是冲了两次还打不动，不如等他们来打我们。"
+
+宋江说："等他们来打也不是好办法。兄弟们只要拼命打，哪有一直输的道理。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">当日传令，次早拔寨起军，分作十队飞抢前去。两路先截住后背压阵军兵，八路军马更不打话，呐喊摇旗，撞入混天阵去。听的里面雷声高举，四七二十八门一齐分开，变作一字长蛇之阵，便杀出来。宋江军马措手不及，急令回军，大败而走。旗枪不整，金鼓偏斜，速退回来。到得本寨，于路损折军马数多。宋江传令，教军将紧守山口寨栅，深掘濠堑，牢栽鹿角，坚闭不出，且过冬寒。</div>
+            <div class="text-block simplified-text">那天下了命令，第二天一早军队就收拾营地出发，分成十队快速前进。先派两队人马绕到敌人后方堵住援军，剩下的八队人马二话不说，大喊大叫摇着旗子就冲进了敌人的混天阵。结果阵里突然响起雷声，二十八个阵门同时打开，敌人变成一字长蛇阵杀了出来。宋江的部队完全没防备，赶紧下令撤退，结果被打得大败。队伍乱七八糟，连旗子鼓号都歪歪斜斜的，只能慌忙撤退。回到自己营地时，一路上损失了不少人马。宋江只好命令部队死守山口的营寨，挖深壕沟，加固防御工事，坚决不出战，准备先熬过这个冬天再说。
+
+（说明：改写时完全保留原文的作战部署、交战过程、败退细节和后续防御措施等核心信息，用"二话不说""大喊大叫""乱七八糟"等口语化表达替换原文的文言词汇，确保每个军事动作都清晰易懂，同时保持叙事的连贯性。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">却说副枢密赵安抚累次申达文书赴京，奏请索取衣袄等件。因此朝廷特差御前八十万禁军枪棒教头，正受郑州团练使，姓王，双名文斌，此人文武双全，智勇足备，将带京师一万余人，起差民夫车辆，押运衣袄五十万领，前赴宋先锋军前交割；就行催并军将向前交战，早奏凯歌，毋得违慢，取罪不便。王文斌领了圣旨文书，将带随行军器，拴束衣甲鞍马，催攒人夫军马，起运车仗，出东京望陈桥驿进发。监押着一二百辆车子，上插黄旗，书“御赐衣袄”，迤逦前进。经过去处，自有官司供给口粮。</div>
+            <div class="text-block simplified-text">话说副枢密使赵安抚多次给京城送文件，申请调拨棉衣等物资。朝廷就派了御前八十万禁军的总教头王文斌去办这事。这王文斌是现任郑州团练使，能文能武，很有本事。他带着京城一万多士兵，征调民夫和车辆，押送五十万件棉衣，送到宋江的部队那里。朝廷还命令他督促部队抓紧打仗，早点得胜，别拖延误事，否则要追究责任。王文斌接到命令后，带上武器装备，整理好盔甲马匹，催促士兵民夫们赶紧出发。车队从东京出发，往陈桥驿方向走。押送的一两百辆车上都插着黄旗，写着"御赐衣袄"几个字，一路慢慢前进。经过的地方，都有当地官府提供粮草。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">在路非则一日，来到边庭，参见了赵枢密，呈上中书省公文。赵安抚看了，大喜道：“将军来的正好！目今宋先锋被大辽兀颜统军把兵马摆成混天阵势，连输了数阵。头目人等，中伤者多，见今发在此间将养，令安道全医治。宋先锋扎寨在永清县地方，并不敢出战，好生纳闷。”王文斌禀道：“朝廷因此就差某来催并军士前向，早要取胜。今日既然累败，王某回京师见省院官，难以回奏圣上。文斌不才，自幼颇读兵书，略晓些阵法。就到军前，略施小策，愿决一阵，与宋先锋分忧。未知枢相钧命若何？”赵枢密大喜，致酒宴赏，就军中犒劳押车人夫，就教王文斌转运衣袄解付宋江军前给散。赵安抚先使人报知宋先锋去了。有诗为证：</div>
+            <div class="text-block simplified-text">改写成现代白话文：
+
+在路上走了不止一天，终于到了边境。王文斌去见了赵枢密，交上中书省的公函。赵枢密看完后非常高兴，说："将军来得正是时候！现在宋江将军被辽国的兀颜统帅用混天阵困住，已经连败了好几场。很多将领和士兵都受了伤，现在都在这里休养，由安道全大夫负责治疗。宋江将军的部队驻扎在永清县，一直不敢出战，非常发愁。"
+
+王文斌报告说："朝廷就是派我来催促部队前进，尽快打赢这场仗。现在接连吃败仗，我要是回京城见上级官员，实在不好向皇上交代。我虽然没什么大本事，但从小读过不少兵书，也懂些阵法。不如让我去前线，稍微出点主意，打上一仗，帮宋江将军分担压力。不知道您觉得怎么样？"
+
+赵枢密听了很高兴，设宴招待他，还犒劳了运送物资的车夫。随后就派王文斌押送军装物资去宋江的部队发放。赵枢密先派人去通知了宋江。后面还附了一首诗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">文斌天使解衣装，共仰才名世少双。</div>
+            <div class="text-block simplified-text">文斌脱下衣服，大家都佩服他的才华，世上没人能比。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">自逞英雄冲大阵，辽兵不日便归降。</div>
+            <div class="text-block simplified-text">自己逞能装英雄，冲进敌人阵地打仗，辽国的军队很快就要投降了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">且说宋江在中军帐中纳闷，闻知赵枢密使人来，转报东京差教头郑州团练使王文斌押送衣袄五十万领，就来军前催并用功。宋江差人接至寨中下马，请入帐内，把酒接风。数杯酒后，询问缘由。宋江道：“宋某自蒙朝廷差遣到边，上托天子洪福齐天，得了四个大郡。今到幽州，不想被大辽兀颜统军设此混天象阵，屯兵二十万，整整齐齐，按周天星象，请启大辽国主御驾亲征。宋江连败数阵，坚守不出，无计可施，屯驻不敢轻动。今幸得将军降临，愿赐指教。”王文斌道：“量这个混天阵何足为奇！王某不才，同到军前一观，别有主见。”宋江大喜，先令裴宣且将衣袄给散军将。众人穿罢，望南谢恩，口呼万岁。当日中军置酒，殷勤管待，就行赏劳三军。</div>
+            <div class="text-block simplified-text">话说宋江正在军营里发愁，听说朝廷派了赵枢密的人来传话，说是东京那边派了个叫王文斌的教官，押送了五十万件棉衣过来，顺便督促前线战事。宋江赶紧派人把他接到营寨，请他进帐喝酒接风。几杯酒下肚，宋江就问起正事。宋江说："我奉皇命来边境打仗，托皇上的福，已经打下了四座大城。现在打到幽州这儿，没想到辽国那个叫兀颜的元帅摆了个什么'混天象阵'，带着二十万大军整整齐齐地守着，还请了辽国皇帝亲自督战。我们连输了好几仗，现在只能死守营地，不敢轻举妄动。幸好您来了，希望能指点指点。"王文斌满不在乎地说："这破阵有什么了不起的！我虽然本事不大，但到阵前看看，肯定能想出办法。"宋江听了特别高兴，先让手下把棉衣发给士兵们。大家穿上新棉衣，都朝着南边磕头谢恩，高喊"万岁"。当天军营里大摆酒席，热情招待王文斌，还犒赏了全军将士。
+
+（说明：翻译时做了以下处理：
+1. "中军帐"译为"军营"，"纳闷"译为"发愁"更口语化
+2. 官职名如"郑州团练使"简化为"教官"
+3. "把酒接风"译为"喝酒接风"更直白
+4. "洪福齐天"等文言表达转为"托皇上的福"
+5. "混天象阵"保留原名但加引号表示特殊称谓
+6. "望南谢恩"具体化为"朝着南边磕头谢恩"更形象
+7. 保持原文所有关键信息：送棉衣、战况、阵法、饮酒等情节完整）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">来日，结束五军都起。王文斌取过带来的头盔衣甲，全副披挂上马，都到阵前。对阵辽兵望见宋兵出战，报入中军，金鼓齐鸣，喊声大举。六队战马哨出阵来，宋江分兵杀退。王文斌上将台亲自看一回，下云梯来说道：“这个阵势也只如常，不见有甚惊人之处。”不想王文斌自己不识，且图诈人要誉，便叫前军擂鼓搦战。对阵番军也挝鼓鸣金，宋江立马大喝道：“不要狐朋狗党，敢出来挑战么？”说犹未了，黑旗队里第四座门内飞出一将，那番官披头散头，黄罗抹额，衬着金箍乌油铠甲，秃袖皂袍，骑匹乌骓马，挺三尖刀，直临阵前。背后牙将不记其数。引军皂旗上书银字：“大将曲利出清”，跃马阵前搦战。王文斌寻思道：“我不就这里显扬本事，再于何处施逞？”便挺枪跃马出阵，与番官更不打话，骤马相交。王文斌使枪便搠，番将舞刀来迎。斗不到二十余合，番将回身便走，王文斌见了，便骤马飞枪直赶将去。原来番将不输，特地要卖个破绽漏他来赶。番将轮起罩刀，觑着王文斌较亲，翻身背砍一刀，把王文斌连肩和胸脯砍做两段，死于马下。宋江见了，急叫收军。那辽兵撞掩过来，又折了一阵，慌慌忙忙收拾还寨。众多军将看见立马斩了王文斌，都面面厮觑，俱各骇然。</div>
+            <div class="text-block simplified-text">第二天，五路大军全部出动。王文斌穿上带来的头盔铠甲，全副武装骑上马，来到阵前。辽兵看到宋军出战，赶紧报告主帅，战场上锣鼓齐响，喊杀声震天。辽军六队骑兵冲出来，被宋江派兵打退。王文斌登上指挥台看了一会儿，下来后说："这阵势也就一般，没什么特别的。"其实他根本不懂，只是想装样子显摆，就命令前军擂鼓挑战。辽军那边也敲锣打鼓回应，宋江骑马大喊："别躲着当缩头乌龟，有种出来单挑！"话音刚落，辽军黑旗队伍里冲出一员大将。这人披头散发，扎着黄色头巾，穿着镶金边的黑铠甲，套着黑袖袍子，骑着黑马，提着三尖刀冲到阵前。身后跟着数不清的副将，黑旗上写着银色大字"大将曲利出清"。王文斌心想："不在这儿露两手，更待何时？"立刻挺枪骑马出战。两人二话不说就打起来，不到二十个回合，辽将假装败退。王文斌不知是计，紧追不舍。其实辽将根本没输，故意引他上钩，突然回身一刀，把王文斌从肩膀到胸口劈成两半，当场毙命。宋江急忙下令撤军，辽军趁机追杀，宋军又吃了败仗，慌慌张张逃回营地。将士们亲眼看见王文斌被秒杀，全都吓得目瞪口呆，面面相觑。
+
+（说明：译文严格遵循原文情节，用口语化表达替换了"搦战""牙将"等古语；将"诈人要誉"译为"装样子显摆"，"面面厮觑"译为"面面相觑"等；保留所有关键信息如人物动作、交战过程、阵亡细节等；采用"缩头乌龟""露两手"等生活化表达；确保每句话都通俗易懂，如"披头散发，扎着黄色头巾"比原文描述更直观。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">宋江回到寨中，动纸文书，申复赵枢密说：“王文斌自愿出战身死，发付带来人伴回京。”赵枢密听知此事，辗转忧闷，甚是烦恼。只得写了申呈奏本，关会省院，打发来的人伴回京去了。有诗为证：</div>
+            <div class="text-block simplified-text">宋江回到山寨后，写了份报告给赵枢密，说："王文斌是自己主动要求出战才死的，现在让他带来的人回京城去吧。"赵枢密听说这事后，心里特别烦闷，愁得翻来覆去睡不着。没办法，只好写了份奏折上报朝廷，然后打发那些人回京了。有首诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">赵括徒能读父书，文斌诡计又何愚。</div>
+            <div class="text-block simplified-text">赵括只会死读他父亲写的兵书（没有真本事），文斌耍的那些花招更是蠢得要命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">轻生容易论兵策，无怪须臾丧厥躯。</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+随便就想着去死，还爱乱讲打仗的事，
+难怪这么快就把小命给丢了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">且说宋江自在寨中纳闷，百般寻思无计可施，怎生破的辽兵？寝食俱废，梦寐不安，坐卧忧煎。是夜严冬，天气甚冷。宋江闭上帐房，秉烛沉吟闷坐。时已二鼓，神思困倦，和衣隐几而卧。觉道寨中狂风忽起，冷气侵入。宋江起身，见一青衣女童向前打个稽首，宋江便问：“童子自何而来？”童子答曰：“小童奉娘娘法旨，有请将军，便烦移步。”宋江道：“娘娘见在何处？”童子指道：“离此间不远。”宋江遂随童子出的帐房。但见上下天光一色，金碧交加，香风细细，瑞霭飘飘，有如二三月间天气。行不过三二里多路，见座大林，青松茂盛，翠柏森然，紫桂亭亭，石栏隐隐，两边都是茂林修竹，垂柳夭桃，曲折阑干。转过石桥，朱红棂星门一座。仰观四面，萧墙粉壁，画栋雕梁，金钉朱户，碧瓦重檐，四边帘卷虾须，正面窗横龟背。女童引宋江从左廊下而进，到东向一个阁子前，推开朱户，教宋江里面少坐。举目望时，四面云窗寂静，霞彩满阶，天花缤纷，异香缭绕。童子进去，复又出来，传旨道：“娘娘有请，星主便行。”宋江坐未暖席，即时起身。又见外面两个仙女入来，头戴芙蓉碧玉冠，身穿金缕绛绡衣，面如满月，体貌轻盈，手似春笋，与宋江施礼。宋江不敢仰视。那两个仙女道：“将军何故作谦，娘娘更衣便出，请将军议论国家大事。便请同行。”宋江唯然而行。有诗为证：</div>
+            <div class="text-block simplified-text">话说宋江在营寨里发愁，想不出办法对付辽兵，吃不下睡不着，坐立不安。这天晚上特别冷，宋江关好帐篷，点着蜡烛发呆。到了二更天（晚上9-11点），他困得穿着衣服趴在桌子上睡着了。突然一阵冷风吹来，把他冻醒了。他看见一个穿青衣的小姑娘对他行礼，宋江问："小姑娘从哪儿来的？"小姑娘说："我家娘娘请将军过去一趟。"宋江问："娘娘在哪儿？"小姑娘指着外面说："就在附近。"宋江跟着她走出帐篷，发现外面像春天一样暖和，到处金光闪闪，还有香味。走了两三里路，看见一片大树林，松柏茂密，还有石桥栏杆。过了桥有座红漆大门，四面都是漂亮的房子。小姑娘带宋江到东边一间屋子，让他稍等。屋里很安静，装饰华丽，香气扑鼻。小姑娘进去又出来说："娘娘请星主进去。"宋江刚坐下就赶紧起来。这时又进来两个仙女，戴着玉冠，穿着金线红衣，长得特别漂亮，向宋江行礼。宋江不敢抬头看。仙女说："将军别客气，娘娘换好衣服就出来，要和您商量国家大事，请跟我们走吧。"宋江乖乖跟着去了。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">蕊珠仙子碧霞衣，绰约姿容世亦稀。</div>
+            <div class="text-block simplified-text">这位仙女穿着青绿色的漂亮衣服，长得特别好看，世上很少见到这么美的人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">口奉九天玄女命，夜深飞梦入灵扉。</div>
+            <div class="text-block simplified-text">九天玄女让我传话，半夜里托梦进了神仙的门。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">听的殿上金钟声响，玉磬音鸣，青衣迎请宋江上殿。二仙女前进，奉引宋江自东阶而上。行至珠帘之前，宋江只听的帘内玎珰隐隐，玉珮锵锵。青衣请宋江入帘内，跪在香案之前。举目观望殿上，祥云霭霭，紫雾腾腾，正面九龙床上坐着九天玄女娘娘。头戴九龙飞凤冠，身穿七宝龙凤绛绡衣，腰系山河日月裙，足穿云霞珍珠履，手执无瑕白玉圭璋。两边侍从女仙约有三二十个。玄女娘娘与宋江曰：“吾传天书与汝，不觉又早数年矣。汝能忠义坚守，未尝少怠。今宋天子令汝破辽，胜负如何？”宋江俯伏在地，拜奏曰：“臣自得蒙娘娘赐与天书，未尝轻慢泄漏于人。今奉天子敕命破辽，不期被兀颜统军设此混天象阵，累败数次，臣无计可施得破天阵，正在危急存亡之际。”玄女娘娘曰：“汝知混天象阵法否？”宋江再拜奏道：“臣乃下土愚人，不晓其法，望乞娘娘赐教。”玄女娘娘曰：“此阵之法，聚阳象也。只此攻打，永不能破。若欲要破，须取相生相克之理。且如前面皂旗军马内设水星，按上界北方五气辰星。你宋兵中可选大将七员，黄旗、黄甲、黄衣、黄马，撞破辽兵皂旗七门。续后命猛将一员，身披黄袍，直取水星。此乃土克水之义也。却以白袍军马，选将八员，打透大辽左边青旗军阵。此乃金克木之义也。却以红袍军马，选将八员，打透大辽右边白旗军阵，此乃火克金之义也。却以皂旗军马，选将八员，打透大辽后军红旗军阵，此乃水克火之义也。却命一枝青旗军马，选将九员，直取中央黄旗军阵主将，此乃木克土之义也。再选两枝军马，命一枝绣旗花袍军马，扮作罗，独破辽兵太阳军阵。命一枝素旗银甲军马，扮作计都，直破辽兵太阴军阵。再造二十四部雷车，按二十四气，上放火石火炮，直推入辽兵中军。令公孙胜布起风雷天罡正法，径奔入大辽国主驾前。可行此计，足取全胜。日间不可行兵，须是夜黑可进。汝当亲自领兵，掌握中军，催动人马，一鼓而可成功。吾之所言，汝当秘受。保国安民，勿生退悔。天凡有限，从此永别。他日琼楼金阙，别当重会。汝宜速还，不可久留。”特命青衣献茶。宋江吃罢。令青衣即送星主还寨。有诗为证：</div>
+            <div class="text-block simplified-text">听到大殿上金钟玉磬的声音响起，穿青衣的侍女来请宋江上殿。两位仙女在前面带路，领着宋江从东边的台阶走上去。到了珠帘前面，宋江听到帘子里传来叮叮当当的玉佩声。侍女请宋江进到帘子里，让他在香案前跪下。宋江抬头一看，只见殿上飘着祥云紫雾，正中间的九龙宝座上坐着九天玄女娘娘。她头上戴着九龙飞凤冠，身上穿着镶满珠宝的龙凤红纱衣，腰间系着绣有山河日月的裙子，脚上穿着云霞珍珠鞋，手里拿着白玉圭璋。两边站着二三十个仙女。
+
+玄女娘娘对宋江说："我把天书传给你，一晃已经好几年了。你一直坚持忠义，没有懈怠。现在宋朝皇帝派你去打辽国，战况怎么样？"宋江趴在地上回答："自从得到娘娘赐的天书，我从不敢随便给别人看。这次奉皇命去打辽国，没想到遇到兀颜统军摆下的混天象阵，连败了好几次。我实在没办法破这个阵，正处在生死存亡的关头。"
+
+玄女娘娘问："你知道混天象阵的破法吗？"宋江又磕头说："我是个凡夫俗子，不懂这个阵法，请娘娘指点。"玄女娘娘说："这个阵用的是聚阳之法。光靠硬攻永远破不了。要破阵必须用五行相生相克的道理。比如前面穿黑旗的辽兵代表水星，对应天上的北方五气辰星。你从宋军中选七个大将，穿黄色衣服、举黄旗、骑黄马，去攻破辽兵黑旗的七个阵门。再派一员猛将穿黄袍，直接攻打水星方位。这就是土克水的道理。"
+
+"然后派八员白袍将领，攻打辽军左边的青旗阵营，这是金克木。再派八员红袍将领，攻打右边的白旗阵营，这是火克金。再派八员黑袍将领，攻打后军的红旗阵营，这是水克火。再派九员青旗将领，直取中央的黄旗主将，这是木克土。"
+
+"还要派两支队伍：一支穿花袍举彩旗，假装是罗睺星，专破辽军的太阳阵；一支穿银甲举白旗，假装是计都星，专破太阴阵。再准备二十四辆雷车，对应二十四节气，装上火炮，直接冲进辽军主阵。让公孙胜施展风雷法术，直取辽国皇帝。这样就能大获全胜。"
+
+"记住白天不能出兵，一定要趁夜行动。你要亲自指挥中军，督促将士们一鼓作气打赢。我说的这些你要牢牢记住。保家卫国，不要退缩。仙凡有别，我们就此永别。将来天宫再见。你快回去吧，不要久留。"说完让侍女端茶给宋江。宋江喝完茶，侍女就送他回军营了。后面还附了一首诗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">玉女虚无忽下来，严祠特请叙高怀。</div>
+            <div class="text-block simplified-text">仙女突然从天上飞下来，特意来到庄严的祠堂里，和大家畅快地聊天谈心。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">当时传得幽玄秘，辽阵堂堂顷刻开。</div>
+            <div class="text-block simplified-text">当时这件事传得神神秘秘的，谁知道辽军的阵仗一下子就摆开了，特别突然。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">宋江再拜，恳谢娘娘，出离殿庭。青衣前引宋江下殿，从西阶而出，转过棂星红门，再登旧路。才过石桥松径，青衣用手指道：“辽兵在那里，汝当可破。”宋江回顾，青衣用手一推，猛然惊觉，就帐中做了一梦。静听军中更鼓，已打四更。</div>
+            <div class="text-block simplified-text">宋江又向娘娘行礼道谢，然后走出大殿。有个穿青衣的人在前面带路，领着他从西边的台阶下去，拐过一道红色大门，重新走上原来的路。刚走过石桥和松树小路，青衣人用手指着说："辽兵就在那边，你能打败他们。"宋江回头看时，青衣人推了他一把，他突然惊醒，原来是在军营里做了个梦。仔细听外面的打更声，已经到四更天了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">宋江便叫请军师圆梦。吴用来到中军帐内，宋江道：“军师有计破混天阵否？”吴学究道：“未有良策可施。”宋江道：“我已梦玄女娘娘传与秘诀，寻思定了，特请军师商议。可以会集诸将，分拨行事。尽此一阵，须用大将。”吴用道：“愿闻良策如何破敌？”宋江言无数句，话不一席，有分教：大辽国主拱手归降，兀颜统军死于非命。正是：动达天机施妙策，摆开星斗破迷关。毕竟宋江用甚计策，怎生打阵，且听下回分解。</div>
+            <div class="text-block simplified-text">宋江叫军师来解梦。吴用进了帐篷，宋江问："军师有办法破混天阵吗？"吴用说："现在还没好主意。"宋江说："我梦见玄女娘娘教了我破阵的招，想好了，特意找你来商量。咱们把将领们叫来，分派任务。这次必须派大将出马。"吴用问："快说说怎么破敌？"宋江简单说了几句，结果就是：辽国皇帝投降认输，敌军统帅兀颜丢了性命。简单说就是：用妙计看穿天机，布阵破关。具体宋江用了什么计策、怎么破的阵，咱们下回再说。
+
+（说明：1.将"中军帐"译为更易懂的"帐篷" 2."分拨行事"译为"分派任务" 3.用"教了破阵的招"替代"传与秘诀" 4.将"拱手归降"译为更口语的"投降认输" 5.保留原文"下回分解"的经典表述方式 6.完全保留原文所有关键信息点）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
