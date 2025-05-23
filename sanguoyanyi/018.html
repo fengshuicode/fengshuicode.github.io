@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十八回 贾文和料敌决胜　夏侯惇拔矢啖睛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./017.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第十八回 贾文和料敌决胜　夏侯惇拔矢啖睛</h1>
+        <a href="./019.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说贾诩料知曹操之意，便欲将计就计而行，乃谓张绣曰：“某在城上见曹操绕城而观者三日。他见城东南角砖土之色，新旧不等，鹿角多半毁坏，意将从此处攻进，却虚去西北上积草，诈为声势，欲哄我撤兵守西北，彼乘夜黑必爬东南角而进也。绣曰：“然则奈何？”诩曰：“此易事耳。来日可今精壮之兵，饱食轻装，尽蒙于东南房屋内，却教百姓假扮军士，虚守西北。夜间任他在东南角上爬城。俟其爬进城时，一声炮响，伏兵齐起，操可擒矣。”绣喜，从其计。</div>
+            <div class="text-block simplified-text">贾诩看穿了曹操的计谋，决定反过来算计他。他对张绣说："我在城墙上观察了三天，发现曹操总围着城转悠。他看到东南角的城墙砖新旧不齐，防御工事也破破烂烂，肯定想从这里进攻。他故意在西北角堆草料装样子，就是想骗我们把兵力调去西北，他好趁天黑从东南角爬进来。"
+
+张绣问："那怎么办？"贾诩说："简单！明天让我们最厉害的士兵吃饱饭，轻装上阵，偷偷藏在东南角的房子里。再让老百姓假扮士兵去西北角装样子。等曹操的人半夜从东南角爬进来，我们放个炮当信号，埋伏的士兵一起杀出来，肯定能活捉曹操。"张绣听了很高兴，就按这个计划做了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">早有探马报曹操，说张绣尽撤兵在西北角上，呐喊守城，东南却甚空虚。操曰：“中吾计矣！”遂命军中密备锹钁爬城器具。日间只引军攻西北角。至二更时分，却领精兵于东南角上爬过壕去，砍开鹿角。城中全无动静，众军一齐拥入。只听得一声炮响，伏兵四起。曹军急退，背后张绣亲驱勇壮杀来。曹军大败，退出城外，奔走数十里。张绣直杀至天明方收军入城。曹操计点败军，折兵五万余人，失去辎重无数。吕虔、于禁俱各被伤。却说贾诩见操败走，急劝张绣遗书刘表，使起兵截其后路。表得书，即欲起兵。忽探马报孙策屯兵湖口。蒯良曰：“策屯兵湖口，乃曹操之计也。今操新败，若不乘势击之，后必有患。”表乃令黄祖坚守隘口，自己统兵至安众县截操后路；一面约会张绣。绣知表兵已起，即同贾诩引兵袭操。</div>
+            <div class="text-block simplified-text">探子早就报告曹操，说张绣把大部分兵力都调到了城西北角，在那儿大喊大叫地守城，东南角却没什么人防守。曹操一听就说："他们上当了！"于是暗中让士兵准备铲子、镐头这些爬城墙的工具。白天假装只攻打西北角，到了半夜两点左右，却带着精锐部队从东南角爬过护城河，砍开防御栅栏。城里一点动静都没有，曹军就全部冲了进去。结果突然一声炮响，埋伏的士兵从四面八方杀出来。曹军赶紧撤退，张绣亲自带着精锐部队追杀过来。曹军被打得大败，逃出城外，一口气跑了上百里地。张绣一直追杀到天亮才收兵回城。
+
+曹操清点残兵，发现损失了五万多人，粮草物资丢了一大堆。吕虔、于禁也都受了伤。这时候贾诩看到曹操败退，赶紧劝张绣写信给刘表，让他出兵断曹操的后路。刘表收到信正要出兵，突然探子来报说孙策在湖口驻扎军队。谋士蒯良说："孙策在湖口驻军，肯定是曹操的计谋。现在曹操刚吃了败仗，如果不趁机打他，以后肯定要遭殃。"于是刘表让黄祖守住要塞，自己带兵到安众县去截断曹操退路，同时约张绣一起行动。张绣知道刘表出兵了，就和贾诩带兵去追击曹操。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">且说操军缓缓而行，至襄城，到清水，操忽于马上放声大哭。众惊问其故，操曰：“吾思去年于此地折了吾大将典韦，不由不哭耳！”因即下令屯住军马，大设祭筵，吊奠典韦亡魂。操亲自拈香哭拜，三军无不感叹。祭典韦毕，方祭侄曹安民及长子曹昂，并祭阵亡军士；连那匹射死的大宛马，也都致祭。次日，忽荀彧差人报说：“刘表助张绣屯兵安众，截吾归路。”操答彧书曰：“吾日行数里，非不知贼来追我；然吾计划已定，若到安众，破绣必矣。君等勿疑。”便催军行至安众县界。刘表军已守险要，张绣随后引军赶来。操乃令众军黑夜凿险开道，暗伏奇兵。及天色微明，刘表、张绣军会合，见操兵少，疑操遁去，俱引兵入险击之。操纵奇兵出，大破两家之兵。曹兵出了安众隘口，于隘外下塞。刘表、张绣各整败兵相见。表曰：“何期反中曹操奸计！”绣曰：“容再图之。”于是两军集于安众。且说荀彧探知袁绍欲兴兵犯许都，星夜驰书报曹操。操得书心慌，即日回兵。细作报知张绣，绣欲追之。贾诩曰：“不可追也，追之必败。”刘表曰：“今日不追，坐失机会矣。”力劝绣引军万余同往追之。约行十余里，赶上曹军后队。曹军奋力接战，绣、表两军大败而还。绣谓诩曰：“不用公言，果有此败。”诩曰：“今可整兵再往追之。”绣与表俱曰：“今已败，奈何复追？”诩曰：“今番追去，必获大胜；如其不然，请斩吾首。”绣信之。刘表疑虑，不肯同往。绣乃自引一军往追。操兵果然大败，军马辎重，连路散弃而走。绣正往前追赶。忽山后一彪军拥出。绣不敢前追，收军回安众。刘表问贾诩曰：“前以精兵追退兵，而公曰必败；后以败卒击胜兵，而公曰必克：究竟悉如公言。何其事不同而皆验也？愿公明教我。”诩曰：“此易知耳。将军虽善用兵，非曹操敌手。操军虽败，必有劲将为后殿，以防追兵；我兵虽锐，不能敌之也：故知必败。夫操之急于退兵者，必因许都有事；既破我追军之后，必轻车速回，不复为备；我乘其不备而更追之：故能胜也。”刘表、张绣俱服其高见。诩劝表回荆州，绣守襄城，以为唇齿。两军各散。且说曹操正行间，闻报后军为绣所追，急引众将回身救应，只见绣军已退。败兵回告操曰：“若非山后这一路人马阻住中路，我等皆被擒矣。”操急问何人。那人绰枪下马，拜见曹操，乃镇威中郎将，江夏平春人，姓李，名通，字文达。操问何来。通曰：“近守汝南，闻丞相与张绣、刘表战，特来接应。”操喜，封之为建功侯，守汝南西界，以防表、绣。李通拜谢而去。操还许都，表奏孙策有功，封为讨逆将军，赐爵吴侯，遣使赍诏江东，谕令防剿刘表。</div>
+            <div class="text-block simplified-text">曹操带着军队慢慢往前走，到了襄城附近的清水时，突然在马上大哭起来。手下人吓了一跳，问他怎么回事。曹操说："我想起去年在这儿死了大将典韦，忍不住伤心啊！"于是下令停下军队，大办祭奠仪式悼念典韦。曹操亲自上香跪拜，全军都很感动。祭完典韦，又接着祭奠侄子曹安民、大儿子曹昂和战死的士兵，连那匹被射死的好马也一起祭拜了。
+
+第二天，荀彧突然派人来报告："刘表帮张绣在安众驻兵，要断我们的退路。"曹操回信说："我每天只走几里路，不是不知道敌人会追来。但我早有打算，只要到了安众，一定能打败张绣。你们别担心。"于是带兵赶到安众地界。这时刘表已经占据险要地形，张绣也从后面追来。曹操让部队连夜挖山路开路，暗中埋伏。天快亮时，刘表和张绣的军队会合，看曹操兵少，以为他要逃跑，就一起攻进山路。结果曹操的伏兵杀出，把两家军队打得大败。
+
+曹操的军队过了安众险关后扎营。刘表和张绣收拾残兵见面，刘表说："没想到中了曹操的奸计！"张绣说："以后再想办法。"这时荀彧又派人紧急报告：袁绍要攻打许都。曹操赶紧撤兵。张绣知道后想追击，谋士贾诩说："不能追，追了肯定输。"刘表却说："现在不追就错过机会了。"硬是拉着张绣带一万多人去追。追了十几里赶上曹军后卫，结果被打得大败而归。张绣对贾诩说："没听你的话，果然输了。"贾诩却说："现在可以整顿兵马再去追。"张绣和刘表都懵了："刚打败仗怎么还追？"贾诩说："这次去追一定能赢，要是输了砍我脑袋！"张绣信了，刘表却不敢去。结果张绣带兵追击，曹军果然大败，丢下物资逃跑。张绣正要继续追，突然山路杀出一支队伍，吓得他赶紧撤兵。
+
+刘表问贾诩："之前用精兵追撤退的曹军，你说会输；后来用败兵追打赢的曹军，你却说能赢，结果都应验了。这是为什么？"贾诩解释："很简单。曹操虽然撤退，但肯定会留猛将断后，咱们打不过。后来曹操急着回许都，打败追兵后肯定放松警惕，这时突然追击就能赢。"刘表和张绣都心服口服。贾诩建议刘表回荆州，张绣守襄城，互相照应。
+
+曹操撤退时听说后面被张绣追击，正要回救，发现追兵已经退了。败兵报告说："要不是半路杀出一支人马挡住，我们就被抓了。"曹操问是谁，原来是把守汝南的李通带兵来接应。曹操很高兴，封他做建功侯，让他守汝南防备刘表、张绣。回到许都后，曹操又上表封孙策为讨逆将军、吴侯，让他防备刘表。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">操回府，众官参见毕，荀彧问曰：“丞相缓行至安众，何以知必胜贼兵？”操曰：“彼退无归路，必将死战，吾缓诱之而暗图之，是以知其必胜也。”荀彧拜服。郭嘉入，操曰：“公来何暮也？”嘉袖出一书，白操曰：“袁绍使人致书丞相，言欲出兵攻公孙瓒，特来借粮借兵。”操曰：“吾闻绍欲图许都，今见吾归，又别生他议。”遂拆书观之。见其词意骄慢，乃问嘉曰：“袁绍如此无状，吾欲讨之，恨力不及，如何？”嘉曰：“刘、项之不敌，公所知也。高祖惟智胜，项羽虽强，终为所擒。今绍有十败，公有十胜，绍兵虽盛，不足惧也：绍繁礼多仪，公体任自然，此道胜也；绍以逆动，公以顺率，此义胜也；桓、灵以来，政失于宽，绍以宽济，公以猛纠，此治胜也；绍外宽内忌，所任多亲戚，公外简内明，用人惟才，此度胜也；绍多谋少决，公得策辄行，此谋胜也；绍专收名誉，公以至诚待人，此德胜也；绍恤近忽远，公虑无不周，此仁胜也；绍听谗惑乱，公浸润不行，此明胜也；绍是非混淆，公法度严明，此文胜也；绍好为虚势，不知兵要，公以少克众，用兵如神，此武胜也。公有此十胜，于以败绍无难矣。”操笑曰：“如公所言，孤何足以当之！”荀彧曰：“郭奉孝十胜十败之说，正与愚见相合。绍兵虽众，何足惧耶！”嘉曰：“徐州吕布，实心腹大患。今绍北征公孙瓒，我当乘其远出，先取吕布，扫除东南，然后图绍，乃为上计；否则我方攻绍，布必乘虚来犯许都，为害不浅也。”操然其言，遂议东征吕布。荀彧曰：“可先使人往约刘备，待其回报，方可动兵。”操从之，一面发书与玄德，一面厚遣绍使，奏封绍为大将军、太尉，兼都督冀、青、幽、并四州，密书答之云：“公可讨公孙瓒。吾当相助。”绍得书大喜，便进兵攻公孙瓒。</div>
+            <div class="text-block simplified-text">曹操回到府里，手下官员都来拜见。荀彧问他："丞相您故意慢悠悠地走到安众，怎么就知道一定能打赢敌人？"曹操说："他们退路被断，肯定要拼命。我故意慢慢走引他们上钩，暗中布置，所以知道必胜。"荀彧听了很佩服。
+
+这时郭嘉进来，曹操说："你怎么才来？"郭嘉从袖子里掏出一封信说："袁绍派人送信来，说要打公孙瓒，找我们借粮借兵。"曹操说："我听说袁绍本来想打许都，看我回来了又改主意。"看完信发现语气很傲慢，就问郭嘉："袁绍这么嚣张，我想收拾他，但怕打不过，怎么办？"
+
+郭嘉说："当年刘邦打不过项羽是事实，但靠智谋赢了。现在袁绍有十个弱点，您有十个优势：第一，他爱摆架子，您做事自然；第二，他师出无名，您名正言顺；第三，现在管得太松，他更宽松，您严格治理；第四，他任人唯亲，您唯才是用；第五，他光想不做，您说干就干；第六，他假仁假义，您真心待人；第七，他顾头不顾尾，您考虑周全；第八，他听信谗言，您明辨是非；第九，他是非不分，您法纪严明；第十，他虚张声势不懂打仗，您以少胜多会用兵。有这十个优势，打败袁绍不难。"
+
+曹操笑着说："我哪有你说得这么好！"荀彧也说同意郭嘉的分析。郭嘉接着说："现在该先打吕布。等袁绍去打公孙瓒时，我们趁机解决吕布这个心腹大患。不然我们打袁绍时，吕布肯定来偷袭。"曹操觉得有理，准备打吕布。荀彧建议："先联系刘备，等他回信再出兵。"曹操照办，一边给刘备写信，一边厚待袁绍的使者，还上表封袁绍当大将军，暗中写信说支持他打公孙瓒。袁绍收到信很高兴，立刻出兵攻打公孙瓒。
+
+（说明：全文采用口语化短句，将"拜服"译为"很佩服"，"无状"译为"嚣张"，"体任自然"译为"做事自然"等；把十胜十败的长篇论述转化为分条列举的通俗表达；保留所有人物对话和关键决策信息，未删改原文情节。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">且说吕布在徐州，每当宾客宴会之际，陈珪父子必盛称布德。陈宫不悦，乘间告布曰：“陈珪父子面谀将军，其心不可测，宜善防之。”布怒叱曰：“汝无端献谗，欲害好人耶？”宫出叹曰：“忠言不入，吾辈必受殃矣！”意欲弃布他往，却又不忍；又恐被人嗤笑。乃终日闷闷不乐。一日，带领数骑去小沛地面围猎解闷，忽见官道上一骑驿马，飞奔前去。宫疑之，弃了围场，引从骑从小路赶上，问曰：“汝是何处使命？”那使者知是吕布部下人，慌不能答。陈宫令搜其身，得玄德回答曹操密书一封。宫即连人与书，拿见吕布。布问其故。来使曰：“曹丞相差我往刘豫州处下书，今得回书，不知书中所言何事。”布乃拆书细看。书略曰：“奉明命欲图吕布，敢不夙夜用心。但备兵微将少，不敢轻动。丞相兴大师，备当为前驱。谨严兵整甲，专待钧命。”</div>
+            <div class="text-block simplified-text">话说吕布在徐州的时候，每次请客吃饭，陈珪父子总是使劲拍他马屁。陈宫看不过去，私下对吕布说："陈珪父子当面吹捧您，谁知道他们安什么心？您得防着点。"吕布生气地骂他："你没事挑拨离间，想害好人吗？"陈宫出来叹气说："好话听不进去，我们迟早要倒霉！"他想离开吕布又舍不得，又怕别人笑话，整天愁眉苦脸。
+
+有一天，陈宫带着几个骑兵去小沛打猎散心，突然看见大路上有个送信的骑马飞奔而过。他觉得可疑，就丢下打猎的事，抄近路追上那人问："你是哪儿来的信使？"那人见是吕布的人，吓得说不出话。陈宫让人搜身，搜出刘备给曹操的密信，就连人带信抓去见吕布。
+
+吕布问怎么回事，信使说："曹丞相派我给刘豫州送信，这是回信，我也不知道信里写的啥。"吕布拆开信仔细看，大意是说："接到您的命令要对付吕布，我日夜都在准备。只是我兵少将寡，不敢轻举妄动。等丞相大军出动，我一定打头阵。现在正整顿兵马，就等您下令了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">吕布见了，大骂曰：“操贼焉敢如此！”遂将使者斩首。先使陈宫、臧霸、结连泰山寇孙观、吴敦、尹礼、昌稀，东取山东兖州诸郡。令高顺、张辽取沛城，攻玄德。令宋宪、魏续西取汝、颍。布自总中军为三路救应。</div>
+            <div class="text-block simplified-text">吕布看到后，气得大骂："曹操这个混蛋，竟敢这么干！"说完就把使者杀了。他先派陈宫和臧霸去联合泰山一带的土匪孙观、吴敦、尹礼、昌稀，往东攻打山东兖州各地。又派高顺、张辽去打沛城，进攻刘备。再让宋宪、魏续往西攻打汝南和颍川。吕布自己带领主力部队，随时支援这三路人马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">且说高顺等引兵出徐州，将至小沛，有人报知玄德。玄德急与众商议。孙乾曰：“可速告急于曹操。”玄德曰：“谁可去许都告急？”阶下一人出曰：“某愿往。”视之，乃玄德同乡人，姓简，名雍，字宪和，现为玄德幕宾。玄德即修书付简雍，使星夜赴许都求援；一面整顿守城器具。玄德自守南门，孙乾守北门，云长守西门，张飞守东门，令糜竺与其弟糜芳守护中军。原来糜竺有一妹，嫁与玄德为次妻。玄德与他兄弟有郎舅之亲，故令其守中军保护妻小。高顺军至，玄德在敌楼上问曰：“吾与奉先无隙，何故引兵至此？”顺曰：“你结连曹操，欲害吾主，今事已露，何不就缚！”言讫，便麾军攻城。玄德闭门不出。次日，张辽引兵攻打西门。云长在城上谓之曰：“公仪表非俗，何故失身于贼？”张辽低头不语。云长知此人有忠义之气，更不以恶言相加，亦不出战。辽引兵退至东门，张飞便出迎战。早有人报知关公。关公急来东门看时，只见张飞方出城，张辽军已退。飞欲追赶，关公急召入城。飞曰：“彼惧而退，何不追之。”关公曰：“此人武艺不在你我之下。因我以正言感之，颇有自悔之心，故不与我等战耳。”飞乃悟，只令士卒坚守城门，更不出战。</div>
+            <div class="text-block simplified-text">话说高顺带兵从徐州出发，快到小沛时，有人报告了刘备。刘备赶紧和大家商量对策。孙乾说："得赶快向曹操求救。"刘备问："谁能去许都送信？"这时有个人站出来说："我去！"一看，是刘备的老乡，叫简雍，现在是刘备的谋士。刘备马上写好信交给简雍，让他连夜赶去许都搬救兵；同时安排人准备守城的工具。
+
+刘备自己守南门，孙乾守北门，关羽守西门，张飞守东门。糜竺和他弟弟糜芳负责保护大本营。原来糜竺的妹妹嫁给了刘备当二房，所以他们算是亲戚，刘备才让他们保护家眷。
+
+高顺的部队到了，刘备在城楼上问："我和吕布无冤无仇，为什么带兵来打我们？"高顺说："你和曹操勾结要害我主公，现在事情败露了，还不快投降！"说完就下令攻城。刘备关紧城门不出战。
+
+第二天，张辽带兵打西门。关羽在城上说："看你一表人才，怎么跟了坏人？"张辽低着头不说话。关羽看出他是个讲义气的人，就没再骂他，也没出战。张辽转到东门，张飞冲出去要打。关羽听说后赶紧跑到东门，看见张飞刚出城，张辽已经撤兵了。张飞想追，关羽把他叫回城里。张飞说："他们害怕跑了，为啥不追？"关羽说："这人武功不比我们差。我刚才用道理劝他，他好像有点后悔跟我们打，所以才撤的。"张飞这才明白，就让士兵好好守城，不再出战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说简雍至许都见曹操，具言前事。操即聚众谋士议曰：“吾欲攻吕布，不忧袁绍掣肘，只恐刘表、张绣议其后耳。”荀攸曰：“二人新破，未敢轻动。吕布骁勇，若更结连袁术，纵横淮、泗，急难图矣。”郭嘉曰：“今可乘其初叛，众心未附，疾往击之。”操从其言。即命夏侯惇与夏侯渊、吕虔、李典领兵五万先行，自统大军陆续进发，简雍随行。早有探马报知高顺。顺飞报吕布。布先令侯成、郝萌、曹性引二百余骑接应高顺，使离沛城三十里去迎曹军，自引大军随后接应。玄德在小沛城中见高顺退去，知是曹家兵至，乃只留孙乾守城，糜竺、糜芳守家，自己却与关、张二公，提兵尽出城外，分头下寨，接应曹军。却说夏侯惇引军前进，正与高顺军相遇，便挺枪出马搦战。离顺迎敌。两马相交，战有四五十合，高顺抵敌不住，败下阵来。惇纵马追赶，顺绕阵而走。惇不舍，亦绕阵追之。阵上曹性看见，暗地拈弓搭箭，觑得亲切，一箭射去，正中夏侯惇左目。惇大叫一声，急用手拔箭，不想连眼珠拨出，乃大呼曰：“父精母血，不可弃也！”遂纳于口内啖之，仍复挺枪纵马，直取曹性。性不及提防，早被一枪搠透面门，死于马下。两边军士见者，无不骇然。夏侯惇既杀曹性，纵马便回。高顺从背后赶来，麾军齐上，曹兵大败。夏侯渊救护其兄而走。吕虔、李典将败军退去济北下寨。高顺得胜，引军回击玄德。恰好吕布大军亦至，布与张辽、高顺分兵三路，来攻玄德、关、张三寨，正是：啖睛猛将虽能战，中箭先锋难久持。未知玄德胜负如何，且听下文分解。</div>
+            <div class="text-block simplified-text">话说简雍到了许都见到曹操，把之前的事情详细说了一遍。曹操马上召集谋士们商量说："我想去打吕布，不担心袁绍捣乱，就怕刘表、张绣在背后搞小动作。"荀攸说："这两个人刚吃了败仗，不敢乱来。吕布很能打，要是再和袁术联手，在淮河、泗水一带活动，以后就更难对付了。"郭嘉说："现在正好趁他刚造反，手下人心还不稳，赶紧去打他。"曹操采纳了这个建议。
+
+曹操立刻派夏侯惇带着夏侯渊、吕虔、李典，率领五万兵马打头阵，自己带着大部队随后出发，简雍也跟着一起走。探子很快把消息报告给高顺，高顺赶紧通知吕布。吕布先派侯成、郝萌、曹性带着两百多骑兵接应高顺，让他们在离沛城三十里的地方迎战曹军，自己带着大部队在后面支援。
+
+刘备在小沛城里看到高顺撤兵，知道是曹操的军队来了，就让孙乾守城，糜竺、糜芳看家，自己和关羽、张飞带着全部兵马出城，分头扎营，准备接应曹军。
+
+夏侯惇带兵前进，正好遇上高顺的部队，立刻挺枪出战。高顺出来迎战，两人打了四五十个回合，高顺打不过，掉头就跑。夏侯惇骑马紧追，高顺绕着军阵跑，夏侯惇也跟着绕圈追。曹性在阵中看见，偷偷拉弓搭箭，瞄准后一箭射中夏侯惇左眼。夏侯惇大叫一声，急忙用手拔箭，没想到连眼珠子都带出来了，他大喊："这是父母给的血肉，不能扔！"说完就把眼珠塞进嘴里吃了，接着又挺枪冲上去杀曹性。曹性来不及躲闪，被一枪刺穿脑袋，当场毙命。两边士兵看到这场景都吓傻了。
+
+夏侯惇杀了曹性后骑马撤回。高顺从后面追上来，指挥部队一起进攻，曹军大败。夏侯渊保护着哥哥撤退，吕虔、李典带着败军退到济北扎营。高顺打了胜仗，带兵回头去打刘备。正好吕布的大部队也到了，吕布和张辽、高顺兵分三路，进攻刘备、关羽、张飞的营寨。这正是：吃眼珠的猛将虽然能打，可中箭的先锋也撑不了多久。不知道刘备能不能打赢，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
