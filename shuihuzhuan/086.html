@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十六回　宋公明大战独鹿山　卢俊义兵陷青石峪</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./085.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十六回　宋公明大战独鹿山　卢俊义兵陷青石峪</h1>
+        <a href="./087.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句可以直白地翻译为：
+
+"有首诗这样说："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">莫逞区区智力余，天公原自有乘除。</div>
+            <div class="text-block simplified-text">别总觉得自己那点小聪明有多厉害，老天爷早就把一切都安排好了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">谢玄真得擒王技，赵括徒能读父书。</div>
+            <div class="text-block simplified-text">谢玄是真的会打仗，能抓住敌人的首领；赵括只会死读他父亲写的兵书，其实没啥真本事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">青石兵如沙上雁，幽州势若釜中鱼。</div>
+            <div class="text-block simplified-text">幽州的敌军就像锅里的鱼，跑不掉了；我们的士兵像沙滩上的大雁，人多势众。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">败军损将深堪愧，辽主行当坐陷车。</div>
+            <div class="text-block simplified-text">我们打了败仗，损失了很多士兵和将领，真是让人羞愧。辽国的皇帝很快就会被我们抓住关进囚车里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说贺统军，姓贺名重宝，是大辽国中兀颜统军部下副统军之职。身长一丈，力敌万人，善行妖法，使一口三尖两刃刀，见今守住幽州，就行提督诸路军马。当时贺重宝奏郎主道：“奴婢这幽州地面，有个去处，唤做青石峪，只一条路入去，四面尽是高山，并无活路。臣拨十数骑人马，引这伙蛮子直入里面。却调军马外面围住。教这厮前无出路，后无退步，必然饿死。”兀颜统军道：“怎生便得这厮们来？”贺统军道：“他打了俺三个大郡，气满志骄，必然想着幽州。俺这里分兵去诱引他，他必然乘势来赶。引入陷坑山内，走那里去！”兀颜统军道：“你的计策怕不济事，必还用俺大兵扑杀。且看你去如何。”</div>
+            <div class="text-block simplified-text">这段说的是辽国有个大将叫贺重宝，身高一丈（约三米多），力气大得能顶一万人，还会些邪门法术，用一把三尖两刃刀。现在他负责镇守幽州，管着各路军队。
+
+贺重宝给辽国皇帝出主意说："我管的幽州这块儿有个叫青石峪的地方，就一条路能进去，周围全是高山，进去就出不来。我派十几个骑兵假装败退，把那帮梁山好汉引进去，再派兵把外面围住。让他们前进没路，后退无门，活活饿死在里面。"
+
+他的上司兀颜将军问："怎么才能让他们上钩呢？"贺重宝说："他们刚打下我们三座城，正得意着呢，肯定想打幽州。我们假装败退引他们，他们一定会追。只要把他们引进这个山沟，就完蛋了！"
+
+兀颜将军不太放心："你这计策行不行啊？实在不行还得我派大军收拾他们。你先试试看吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">当下贺统军辞了国主，带了盔甲刀马，引了一行步从兵卒，回到幽州城内。将军点起，分作三队。一队守住幽州，二队望霸州、蓟州进发。传令已下，便驱遣两队军马出城，差两个兄弟前去领兵。大兄弟贺拆，去打霸州。小兄弟贺云，去打蓟州。都不要赢他，只佯输诈败，引入幽州境界，自有计策。</div>
+            <div class="text-block simplified-text">贺统军告别国王后，带着武器和装备，领着一队步兵回到幽州城。他召集军队，分成三部分：一部分留守幽州，另外两部分分别向霸州和蓟州进军。命令下达后，两队人马立刻出城，由他的两个兄弟带领：大哥贺拆去打霸州，小弟贺云去打蓟州。贺统军特意嘱咐他们不要打赢，只要假装打不过、故意败退，把敌人引到幽州地界，他自有办法对付。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说宋江等守住霸州，有人来报：“辽兵侵犯蓟州，恐有疏失，望调军兵救护。”宋江道：“既然来打，那有干罢之理。就此机会，去取幽州。”宋江留下些少军马，守定霸州，其余大队军兵，拔寨都起，引军前去蓟州。会合卢俊义军马，约日进兵。</div>
+            <div class="text-block simplified-text">宋江他们正守着霸州，突然有人来报告："辽国的军队打到蓟州了，那边可能要撑不住，请求派兵支援。"宋江一听就说："人家都打上门来了，我们哪能就这么算了？正好趁这个机会，把幽州打下来。"于是宋江留下少量士兵守霸州，带着大部队出发去蓟州。到了蓟州和卢俊义的部队会合，商量好日子一起进攻。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">且说番将贺拆，引兵霸州来。宋江正调军马出来，却好半路里接着。不曾斗的三合，贺拆引军败走。宋江不去追赶。却说贺云去打蓟州，正迎着呼延灼，不战自退。</div>
+            <div class="text-block simplified-text">话说敌将贺拆带兵攻打霸州。宋江正好带兵出来，在半路上碰上了。两边还没打几下，贺拆就带着兵逃跑了。宋江也没去追。再说另一边的贺云去打蓟州，正好撞上呼延灼的部队，还没开打就自己撤兵了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">宋江会合卢俊义，一同上帐，商议攻取幽州之策。吴用、朱武便道：“幽州分兵两路而来，此必是诱引之计，且未可行。”卢俊义道：“军师错矣！那厮连输了数次，如何是诱敌之计？当取不取，过后难取。不就这里去取幽州，更待何时！”宋江道：“这厮势穷力尽，有何良策可施。正好乘此机会。”遂不从吴用、朱武之言，引兵往幽州便进。将两处军马，分作大小三路起行。只见前军报来说：“辽兵在前拦住。”宋江遂到军前看时，山坡后转出一彪皂旗来。宋江便教前军摆开人马。只见那番军番将，盖地而来。皂雕旗分作四路，向山坡前摆开。宋江、卢俊义与众将看时，如黑云踊出千百万人马相似，簇拥着一员大将番官，横着三尖两刃刀，立马阵前。那番官怎生打扮？但见：</div>
+            <div class="text-block simplified-text">宋江和卢俊义一起到军帐里商量怎么打幽州。吴用和朱武说："幽州兵分两路过来，这肯定是想骗我们上当，现在不能打。"卢俊义反驳："军师说错了！他们连输了好几场，哪还有本事设埋伏？现在不打，以后更难打。不趁现在拿下幽州，还等什么时候！"宋江也说："他们现在没招了，正是好机会。"就没听吴用和朱武的劝，直接带兵去打幽州。
+
+他们把部队分成三路前进。这时前锋来报告："辽兵在前面拦路。"宋江到前面一看，山坡后面突然冲出一队举着黑旗的军队。宋江赶紧让部队摆开阵势。只见辽国士兵铺天盖地冲过来，黑旗分成四路，在山坡前摆开阵势。宋江、卢俊义和将领们看到，敌军像黑压压的乌云一样涌出无数人马，中间簇拥着一个辽国大将，手里拿着三尖两刃刀，骑马站在阵前。
+
+这辽国大将长什么样呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">头戴明霜镔铁盔，身披耀日连环甲，足穿抹绿云根靴，腰系龟背狻猊带，衬着锦绣绯红袍，执着铁杆狼牙棒，手持三尖两刃八环刀，坐下四蹄双翼千里马。</div>
+            <div class="text-block simplified-text">这个人全副武装：头上戴着闪亮的铁头盔，身上穿着亮闪闪的连环铠甲，脚上蹬着绿色高筒靴，腰间系着带兽头图案的宽腰带，里面套着大红绣花战袍。他一手拿着带铁刺的狼牙棒，一手握着三尖两刃带铁环的大刀，骑着一匹长着翅膀、能日行千里的神骏战马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">前面引军旗上，写的分明：“大辽副统军贺重宝。”跃马横刀，出于阵前。宋江看了道：“辽国统军，必是上将。谁敢出马？”说犹未了，大刀关胜舞起青龙偃月刀，纵坐下赤兔马，飞出阵来。也不打话，便与贺统军相并。正似两条龙竞宝，一对虎争餐。一来一往凤翻身，一上一下鸾展翅。刀斗刀，迸数丈寒光，马荡马，动半天杀气。关胜与贺统军斗到三十余合，贺统军气力不加，拨回刀望本阵便走。关胜骤马追赶。贺统军引了败兵，奔转山坡。宋江便调军马追赶，约有四五十里，听的四下里战鼓齐响。宋江急叫回军时，山坡左边早撞过一彪番军拦路。宋江急分兵迎敌时，右手下又早撞出一支大辽军马。前面贺统军勒兵回来夹攻。宋江兵马四下救应不迭，被番兵撞做两段。</div>
+            <div class="text-block simplified-text">辽军阵前，旗帜上清楚写着："大辽副统帅贺重宝"。他骑马提刀，冲到阵前。宋江见了说："辽军统帅肯定是厉害角色，谁敢去迎战？"话还没说完，关胜就挥舞着青龙偃月刀，骑着赤兔马冲了出去。两人二话不说直接开打，就像两条龙抢宝、两只虎夺食。他们打得难分难解，刀光闪闪，战马奔腾，杀气冲天。打了三十多个回合后，贺重宝力气不支，调转马头就往回跑。关胜立刻骑马追赶。贺重宝带着败兵逃往山坡。宋江下令全军追击，追了四五十里地时，突然四周战鼓齐鸣。宋江赶紧下令撤退，但左边山坡突然杀出一队辽军拦住去路。宋江正要分兵抵挡，右边又冲出一支辽军。前面逃跑的贺重宝也带兵杀回来夹击。宋江的部队来不及应对，被辽军截成两段。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">却说卢俊义引兵在后面厮杀时，不见了前面军马。急寻门路要杀回来，只见胁窝里又撞出番军来厮并。辽兵喊杀连天，四下里撞击，左右被番军围住在垓心。卢俊义调拨众将，左右冲突，前后卷杀，寻路出去。众将扬威耀武，抖擞精神，正奔四下里厮杀，忽见阴云闭合，黑雾遮天，白昼如夜，不分东西南北。卢俊义心慌，急引一支军马，死命杀出。大辽兵马听的前面鸾铃声响，纵马引军赶杀过去。至一山口，卢俊义听的里面人语马嘶，领兵赶将入去。只见狂风大作，走石飞沙，对面不见。卢俊义杀到里面，约莫二更前后，方才风静云开，复见一天星斗。众人打一看时，四面尽是高山，左右是悬崖峭壁。只见山川峻岭，无路可登。随行人马，只见徐宁、索超、韩滔、彭玘、陈达、杨春、周通、李忠、邹渊、邹润、杨林、白胜大小十二个头领，有五千军马。星光之下，待寻归路。四下高山围匝，不能得出。卢俊义道：“军士厮杀了一日，神思困倦，且就这里权歇一宵，暂停战马，明日却寻归路。”未知脱离何如，有诗为证：</div>
+            <div class="text-block simplified-text">话说卢俊义带着兵在后面打仗时，突然发现前面的部队不见了。他急着想找路杀回去，结果两边又冒出辽兵来围攻。辽兵喊杀声震天，从四面八方冲过来，把卢俊义的人马团团围住。卢俊义指挥手下将领们左冲右突，拼命想杀出一条路来。将领们个个精神抖擞，正打得激烈时，忽然天色大变，乌云密布，黑雾遮天，大白天变得像黑夜一样，连方向都分不清了。卢俊义心里发慌，赶紧带着一支队伍拼死突围。辽兵听到前面有铃铛声，就骑马追了上来。追到一个山口时，卢俊义听到里面有人喊马叫，就带兵冲了进去。结果突然狂风大作，飞沙走石，面对面都看不见人。卢俊义带兵在风沙里厮杀，直到深夜二更天左右，风才停、云才散，又看见了满天星星。大家仔细一看，四面都是高山，左右都是悬崖峭壁，根本无路可走。清点人马，只剩下徐宁、索超等十二个将领和五千士兵。在星光下，他们想找回去的路，但四周高山环绕，根本出不去。卢俊义说："将士们打了一天仗，都累坏了，今晚就在这里凑合睡一觉，让战马也休息休息，明天再找路出去。"后面会怎么样呢？有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">四山环绕路难通，原是阴陵死道中。</div>
+            <div class="text-block simplified-text">四面都是山，路很难走，这地方原本就是条死路。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">若要犬军相脱释，除非双翼驾天风。</div>
+            <div class="text-block simplified-text">要想让狗军队放过你，除非你长出翅膀飞上天。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">再说宋江正厮杀间，只见黑云四起，走石飞沙，军士对面都不相见。随军内却有公孙胜，在马上见了，知道此是妖法。急拔宝剑在手，就马上作用，口中念念有词，喝声道：“疾！”把宝剑指点之处，只见阴云四散，狂风顿息，大辽军马，不战自退。遥望漫漫阴气，尽皆四边散了。宋江驱兵杀透重围，退到一座高山，迎着本部军马，且把粮车头尾相衔，权做寨栅。计点大小头领，于内不见了卢俊义等一十三人，并五千余军马。至天明，宋江便遣呼延灼、林冲、秦明、关胜，各带军兵，四下里去寻了一日，不知些消息。回复宋江。宋江便取玄女课焚香占卜已罢，说道：“大象不妨，只是陷在幽阴之处。急切难得出来。”宋江放心不下，遂遣解珍、解宝，扮作猎户，绕出来寻。又差时迁、石勇、段景住、曹正，四下里去打听消息。</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+宋江正带兵打仗，突然天黑了，刮起大风沙，士兵们互相都看不见。队伍里的公孙胜一看就知道是敌人用了妖法。他马上拔出宝剑，嘴里念咒，大喊一声"破！"用剑一指，乌云就散了，风也停了，辽国军队自己就撤退了。宋江带兵冲出包围，退到一座高山上，把粮车连起来当围墙。清点人数时发现卢俊义等13个头领和五千多士兵不见了。天亮后，宋江派呼延灼、林冲、秦明、关胜带兵四处找了一天，没找到。宋江用玄女课算了一卦，说："人应该没事，就是被困在阴暗的地方，一时出不来。"宋江还是不放心，又派解珍、解宝假扮猎人去找，还派时迁、石勇、段景住、曹正分头打探消息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">且说解珍、解宝披上虎皮袍，拕了钢叉，只望深山里行。看看天色向晚，两个行到山中，四边只一望不见人烟，都是乱山叠障。解珍、解宝又行了几个山头。是夜，月色朦胧，远远地望见山畔一点灯光。弟兄两个道：“那里有灯光之处，必是有人家。我两个且寻去讨些饭吃。”望着灯光处拽开脚步奔将来。未得一里多路，来到一个去处，傍着树林，破二作三数间草屋下，破壁里闪出灯光来。解珍、解宝推开扇门，灯光之下，见是个婆婆，年老六旬之上。弟兄两个放下钢叉，纳头便拜。那婆婆道：“我只道是俺孩儿来家，不想却是客人到此。客人休拜。你是那里猎户？怎生到此？”解珍道：“小人原是山东人氏，旧日是猎户人家。因来此间做些买卖，不想正撞着军马热闹，连连厮杀，以此消折了本钱，无甚生理。弟兄两个只得来山中寻讨些野味养口。谁想不识路径，迷踪失迹，来到这里，投宅上暂宿一宵。望老奶奶收留则个。”那婆婆道：“自古云：谁人顶着房子走哩。我家两个孩儿，也是猎户，敢如今便回来也。客人少坐，我安排些晚饭与你两个吃。”解珍、解宝谢道：“多感老奶奶。”那婆婆入里面去了。弟兄两个，却坐在门前。不多时，只见门外两个人，扛着一个獐子入来，口里呼道：“娘，娘，你在那里？”只见那婆婆出来道：“孩儿，你们回了。且放下獐子，与这两位客人厮见。”解珍、解宝慌忙下拜。那两个答礼已罢，便问：“客人何处？因甚到此？”解珍、解宝便把却才的话，再说一遍。那两个道：“俺祖居在此。俺是刘二，兄弟刘三。父是刘一，不幸死了。止有母亲。专靠打猎营生，在此二三十年了。此间路径甚杂，俺们尚有不认的去处。你两个是山东人氏，如何到此间讨得衣饭吃？”你休瞒我，你二位敢不是打猎户么？”解珍、解宝道：“既到这里，如何藏的！实诉与兄长。”有诗为证：</div>
+            <div class="text-block simplified-text">话说解珍、解宝穿上虎皮外套，拿着钢叉，往深山里走。天快黑的时候，他们走到山里，四周荒无人烟，全是乱糟糟的山头。兄弟俩又翻过几个山头。这天晚上月光昏暗，远远看见山边有一点灯光。兄弟俩说："有灯的地方肯定有人家，咱们去讨口饭吃吧。"就朝着灯光快步走去。
+
+走了不到一里路，来到一个地方，靠着树林有几间破草屋，破墙缝里透出灯光。兄弟俩推开门，看见一个六十多岁的老太太。他们放下钢叉，赶紧行礼。老太太说："我还以为是我儿子回来了，原来是客人啊。别客气了，你们是哪儿的猎户？怎么到这儿来了？"
+
+解珍说："我们是山东人，以前也是猎户。来这儿做买卖，正好赶上打仗，赔光了本钱，没活路了。只好到山里打点野味糊口。结果迷了路，走到这儿来了。想在您这儿借住一晚，求您收留。"
+
+老太太说："老话说得好，谁出门还背着房子走啊。我两个儿子也是猎户，应该快回来了。你们先坐会儿，我去做晚饭。"兄弟俩连忙道谢。
+
+过了一会儿，门外进来两个人，扛着一只獐子，喊着："娘，我们回来了！"老太太出来说："儿子回来啦，先把獐子放下，见见这两位客人。"兄弟俩赶紧行礼。
+
+那两人回礼后问："两位从哪儿来？怎么到这儿了？"解珍、解宝又把刚才的话说了一遍。那两人说："我们祖辈都住这儿。我是刘二，这是我弟弟刘三。父亲刘一去世了，就剩老母亲。我们靠打猎为生，在这儿住了二三十年了。这山路复杂，连我们都有不认得的地方。你们山东人怎么跑这儿来谋生？说实话，你们真不是猎户吧？"
+
+解珍、解宝说："都到这份上了，也不瞒你们了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">峰峦重叠绕周遭，兵陷垓心不可逃。</div>
+            <div class="text-block simplified-text">群山环绕层层叠叠，军队被困在中间根本跑不掉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">二解欲知消息实，便将踪迹混渔樵。</div>
+            <div class="text-block simplified-text">想知道事情的真实情况，就假装成打鱼砍柴的人混进去打听。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">当时解珍、解宝跪在地下，说道：“小人们果是山东猎户，弟兄两个，唤做解珍、解宝。在梁山泊跟随宋公明哥哥许多时落草。今来受了招安，随着哥哥来破大辽。前日正与贺统军大战，被他冲散一支军马，不知陷在那里。特差小人弟兄两个，来打探消息。”那两个弟兄笑道：“你二位既是好汉，且请起，俺指与你路头。你两个且少坐，俺煮一腿獐子肉，暖杯社酒，安排请你二位。”没一个更次，煮的肉来。刘二、刘三管待解珍、解宝。饮酒之间，动问道：“俺们久闻你梁山泊宋公明，替天行道，不损良民，直传间到俺辽国。”解珍、解宝便答道：“俺哥哥以忠义为主，誓不扰害善良，单杀滥官酷吏，倚强凌弱之人。”那两个道：“俺们只听的说，原来果然如此。”尽皆欢喜，便有相爱不舍之情。解珍、解宝道：“我那支军马，有十数个头领，三五千兵卒，正不知下落何处。我想也得好一片地来排陷他。”那两个道：“你不知俺这北边去处。只此间是幽州管下，有个去处，唤做青石峪。只有一条路入去，四面尽是悬崖峭壁的高山。若是填塞了那条入去的路，再也出不来。多定只是陷在那里了，此间别无这般宽阔去处。如今你那宋先锋屯军之处，唤做独鹿山。这山前平坦地面，可以厮杀，若山顶上望时，都见四边来的军马。你若要救那支军马，舍命打开青石峪，方才可以救出。那青石峪口，必然多有军马截断这条路口。此山柏树极多，惟有青石峪口两株大柏树最大的好，形如伞盖，四面尽皆望见。那大树边，正是峪口。更提防一件：贺统军会行妖法。教宋先锋破他这一件要紧。”解珍、解宝得了这言语，拜谢了刘家弟兄两个，连夜回寨来。宋江见了，问道：“你两个打听的些分晓么？”</div>
+            <div class="text-block simplified-text">解珍和解宝跪在地上说："我们俩是山东的猎户，亲兄弟，叫解珍、解宝。之前在梁山泊跟着宋江大哥混了很久，后来接受朝廷招安，现在跟着大哥来打辽国。前几天跟贺统军打仗时，我们一支队伍被冲散了，不知道困在哪里，特地派我们兄弟来打听消息。"
+
+那两兄弟笑着说："你们既然是梁山好汉，快请起来。我们告诉你们怎么走。先坐会儿，我们煮点獐子肉，热些酒招待你们。"没多久肉就煮好了。刘二、刘三招待解珍、解宝喝酒。
+
+喝酒时他们问："我们早就听说梁山泊宋江替天行道，不欺负老百姓，连我们辽国都传遍了。"解珍、解宝回答："我们大哥最讲忠义，专门杀贪官恶霸和欺负人的坏蛋，绝不伤害好人。"那两人说："原来真是这样。"大家越聊越高兴。
+
+解珍、解宝说："我们那支队伍有十几个头领，三五千士兵，不知道困在哪里。估计得有个大地方才能困住这么多人。"那两人说："你们不熟悉这里。这附近是幽州地界，有个叫青石峪的地方，只有一条路能进去，四周都是高山悬崖。要是把入口堵住，根本出不来。你们的人肯定困在那儿了，这附近再没别处能困住这么多人。"
+
+"现在你们宋江驻扎的独鹿山前面有块平地适合打仗，站在山顶能看到四面来的军队。要救你们的人，必须拼命打开青石峪才行。不过峪口肯定有重兵把守。另外要小心，贺统军会妖法，让宋江大哥千万提防这点。"
+
+解珍、解宝谢过刘家兄弟，连夜赶回营寨。宋江问："打听到什么消息了吗？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">解珍、解宝却把刘家弟兄的言语，备细说了一遍。宋江失惊，便请军师吴用商议。正说之间，只见小校报道：“段景住、石勇引将白胜来了。”宋江道：“白胜是与卢先锋一同失陷，他此来必是有异。”随即唤来帐下问时，段景住先说：“我和石勇正在高山涧边观望，只见山顶上一个大毡包滚将下来。我两个看时，看看滚到山脚下，却是一团毡衫，里面四围裹定，上用绳索紧拴。直到树边看时，里面却是白胜。”白胜便道：“卢头领与小弟等一十三人，正厮杀间，只见天昏地暗，日色无光，不辨东西南北。只听的人语马嘶之间，卢头领便教只顾杀将入去。谁想深入重地。那里尽是四围高山，无计可出，又无粮草接济。一行人马，实是艰难。卢头领差小人从山顶上滚将下来，寻路报信。不想正撞着石勇、段景住二人。望哥哥早发救兵，前去接应。迟则诸将必然死矣。”有诗为证：</div>
+            <div class="text-block simplified-text">解珍和解宝把刘家兄弟说的话，原原本本地告诉了宋江。宋江一听就慌了，赶紧叫军师吴用来商量。正说着呢，突然有小兵来报告："段景住和石勇带着白胜来了！"宋江说："白胜不是和卢先锋一起被困住了吗？他这时候来，肯定有情况。"马上叫人把白胜带进来问话。
+
+段景住先开口说："我和石勇正在山沟边上看情况，突然看见山顶上滚下来一个大毡布包。我们盯着看它滚到山脚下，发现是一团用绳子捆得严严实实的毡布衣服。等我们解开一看，里面竟然是白胜！"
+
+白胜接着说："卢头领带着我们十三个人正打仗呢，突然天就黑了，连太阳都看不见，根本分不清方向。只听见人喊马叫的声音，卢头领就带着我们往敌人堆里冲。谁知道冲得太深，被围在一个四面都是高山的地方，根本出不去，粮食也吃完了。我们实在撑不住了，卢头领就让我裹着毡布从山顶滚下来报信。幸好半路遇到石勇和段景住。大哥你快派兵去救他们吧，再晚就来不及了！"
+
+（后面本来还有首诗，但按你的要求就不翻译了）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">青石峪中人马陷，绝无粮草济饥荒。</div>
+            <div class="text-block simplified-text">青石峪这地方被敌人包围了，里面的人马完全断了粮草，饿得不行。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">暗将白胜重毡裹，滚下山来报宋江。</div>
+            <div class="text-block simplified-text">他们偷偷用厚毛毯把白胜裹起来，然后让他顺着山坡滚下去，好去向宋江报告消息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">宋江听罢，连夜点起军马，令解珍、解宝为头引路，望这大柏树，便是峪口。传令教马步军兵，并力杀去，务要杀开峪口。人马行到天明，远远的望见山前两株大柏树，果然形如伞盖。当下解珍、解宝引着军马，杀到山前峪口。贺统军便将军马摆开。两个兄弟，争先出战。宋江军将要抢峪口，一齐向前。豹子头林冲飞马先到，正迎着贺拆。交马只两合，从肚皮上一枪搠着，把那贺拆搠于马下。步军头领见马军先到赢了，一发都奔将入去。黑旋风李逵手轮双斧，一路里砍杀辽兵。背后便是混世魔王樊瑞，丧门神鲍旭，引着牌手项充、李衮，并众多蛮牌，直杀入辽兵队里。李逵正迎着贺云，抢到马下，一斧砍断马脚，当时倒了。贺云落马，李逵双斧如飞，连人带马，只顾乱剁。辽兵正拥将来，却被樊瑞、鲍旭两下众牌手撞住。贺统军见折了两个兄弟，便口中念念有词，作起妖法，不知道些甚么，只见狂风大起，就地生云，黑暗暗罩住山头，昏惨惨迷合峪口。正作用间，宋军中转过公孙胜来，在马上掣出宝剑在手，口中念不过数句，大喝一声道：“疾！”只见四面狂风扫退浮云，现出明朗朗一轮红日。马步三军众将，向前舍死并杀辽兵。贺统军见作法不行，敌军冲突的紧，自舞刀拍马杀过阵来。只见两军一齐混战。宋江杀的辽兵东西乱窜。</div>
+            <div class="text-block simplified-text">宋江听完报告，当晚就带兵出发。他让解珍、解宝带路，朝着那两棵大柏树的方向前进，那里就是山谷入口。他命令所有士兵全力进攻，一定要拿下这个山口。部队走到天亮时，远远看见山前有两棵大柏树，树冠果然像伞一样大。解珍、解宝带兵冲到山口，敌将贺统军已经摆开阵势。两兄弟冲在最前面交战。宋江的部队要抢占山口，全都往前冲。林冲骑马最快，正好碰上敌将贺拆，才打了两个回合，就一枪刺中对方肚子，把贺拆挑下马。步兵们看到骑兵打赢了，全都跟着冲上去。李逵抡着两把斧头，一路砍杀辽兵。后面跟着樊瑞、鲍旭，带着项充、李衮和一群盾牌兵，直接杀进辽兵队伍。李逵遇到敌将贺云，冲到马前一斧头砍断马腿，贺云摔下马，李逵抡起斧头对着人和马一顿乱砍。辽兵正要围上来，被樊瑞、鲍旭带的盾牌兵挡住。贺统军看到两个弟弟被杀，嘴里念起咒语施展妖法。只见突然刮起大风，地上冒黑云，整个山头被黑雾罩住，山口也变得昏暗。这时宋江军中的公孙胜骑马出来，抽出宝剑念了几句咒，大喊一声"破！"，顿时大风吹散黑云，太阳又出来了。宋军将士们拼命追杀辽兵。贺统军见法术被破，敌军攻势凶猛，只好自己挥刀冲杀过来。两军混战成一团，宋江的部队杀得辽兵四处逃窜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">马军追赶辽兵，步军便去扒开峪口。原来被这辽兵重重叠叠，将大块青石填塞住这条出路。步军扒开峪口，杀进青石峪内。卢俊义见了宋江军马，皆称惭愧。宋江传令，教：“且休赶辽兵，收军回独鹿山，将息被困人马。”卢俊义见了宋江，放声大哭道：“若不得仁兄垂救，几丧兄弟性命！”宋江、卢俊义同吴用、公孙胜并马回寨，将息三军，解甲暂歇。次日，军师吴学究说道：“可乘此机会，就好取幽州。若得了幽州，辽国之亡，唾手可待。”宋江便叫卢俊义等一十三人军马，且回蓟州权歇。宋江自领大小诸将军卒人等，离了独鹿山，前来攻打幽州。</div>
+            <div class="text-block simplified-text">马军去追辽兵，步兵就去挖开山谷出口。原来辽兵用大块大块的青石头把路堵得死死的。步兵挖开出口，冲进山谷里。卢俊义看到宋江的部队来了，连说"谢天谢地"。宋江下令："别追辽兵了，先撤回独鹿山，让被困的兄弟们好好休息。"卢俊义见到宋江，哇的一声哭出来："要不是大哥来救，我们兄弟几个差点就没命了！"宋江、卢俊义和吴用、公孙胜一起骑马回营，让部队休整，卸下盔甲休息。第二天，军师吴用说："现在正是打幽州的好机会。拿下幽州，灭掉辽国就容易了。"宋江就让卢俊义带着十三路人马先回蓟州休息。他自己带着大队人马，离开独鹿山去打幽州。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">贺统军正退回在城中，为折了两个兄弟，心中好生纳闷。又听得探马报道：“宋江军马来打幽州。”番军越慌。众辽兵上城观望，见东北下一簇红旗，西北下一簇青旗，两彪军马奔幽州来。即报与贺统军。贺统军听的大惊。亲自上城来看时，认的是辽国来的旗号，心中大喜。来的红旗军马，尽写银字。这支军乃是大辽国驸马太真胥庆，只有五千余人。这一支青旗军马，旗上都是金字，尽插雉尾，乃是李金吴大将。原来那个番官，正受黄门侍郎，左执金吾上将军，姓李名集，呼为李金吾。乃李陵之后，荫袭金吾之爵。见在雄州屯扎，部下有一万来军马。侵犯大宋边界，正是此辈。听的辽主折了城子，因此调兵前来助战。贺统军见了，使人去报两路军马：“且休入城，教去山背后埋伏暂歇。待我军马出城，一面等宋江兵来，左右掩杀。”贺统军传报已了，遂引军兵出幽州迎敌。</div>
+            <div class="text-block simplified-text">贺统军刚退回城里，因为死了两个兄弟，心情特别郁闷。这时又听探子来报："宋江的军队要来打幽州了。"辽兵们更加慌乱。士兵们上城墙查看，看见东北边有一队红旗军，西北边有一队青旗军，两路人马都朝幽州赶来。他们赶紧报告贺统军。
+
+贺统军一听吓坏了，亲自上城墙查看，发现是辽国自己的旗号，这才高兴起来。那支红旗部队的旗帜上都绣着银字，是大辽驸马太真胥庆带的五千多人。那支青旗部队的旗帜都是金字，还插着野鸡尾毛，是李金吾将军的部队。这个李金吾本名叫李集，是汉代李陵的后代，继承了金吾将军的爵位，现在驻守在雄州，手下有一万多士兵。之前侵犯宋朝边境的就是他们。听说辽国丢了城池，特地调兵来支援。
+
+贺统军看完后，派人通知这两支援军："先别进城，到山后面埋伏等着。等我的部队出城后，等宋江军队来了，咱们一起前后夹击。"传完命令后，贺统军就带兵出城迎战去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">宋江诸将已近幽州。吴用便道：“若是他闭门不出，便无准备。若是他引兵出城迎敌，必有埋伏。我军可先分兵两路，作三路而进。一路直往幽州进发，迎敌来军。两路如羽翼相似，左右护持。若有埋伏军起，便教这两路军去迎敌。”正是：水来土掩，兵至将迎。有诗为证：</div>
+            <div class="text-block simplified-text">宋江带着部队快到幽州了。军师吴用说："要是他们关着城门不出来，说明没防备。要是他们带兵出来打，肯定有埋伏。我们可以把部队分成三部分：一部分直接往幽州打，对付出来的敌军；另外两部分像翅膀一样，在左右两边保护。要是真有埋伏，就让这两支部队去对付。"简单说就是：见招拆招，兵来将挡。有首诗可以证明这个道理：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">堂堂金鼓振天台，知是援兵特地来。</div>
+            <div class="text-block simplified-text">战鼓声震天响，原来是咱们的救兵到了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">莫向阵前干打哄，血流漂杵更堪哀。</div>
+            <div class="text-block simplified-text">别在战场上瞎起哄凑热闹了，打仗打得血流成河，连木棒都能漂起来，这种惨状真让人难受啊！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">宋江便拨调关胜，带宣赞、郝思文，领兵在左。再调呼延灼，带单廷圭、魏定国，领兵在右。各领一万余人，从山后小路，慢慢而行。宋江等引大军前来，径往幽州进发。</div>
+            <div class="text-block simplified-text">宋江派关胜带着宣赞和郝思文，领一队兵走左边小路。又派呼延灼带着单廷圭和魏定国，领一队兵走右边小路。两边各带一万多人，从山后悄悄前进。宋江自己带着大部队，直接往幽州方向走。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">却说贺统军引兵前来，正迎着宋江军马。两军相对，林冲出马与贺统军交战。斗不到五合，贺统军回马便走。宋江军马追赶。贺统军分兵两路，不入幽州，绕城而走。吴用在马上便叫：“休赶！”说犹未了，左边撞出太真驸马来。已有关胜恰好迎住。右边撞出李金吾来，又有呼延灼恰好迎住。正来三路军马遇住大战，杀的尸横遍野，流血成河。</div>
+            <div class="text-block simplified-text">话说贺统军带兵过来，正好碰上宋江的部队。两边一照面，林冲就骑马出来跟贺统军打。才打了不到五个回合，贺统军掉头就跑。宋江的人马立刻追了上去。贺统军把兵分成两路，不进城，绕着城墙跑。吴用在马上赶紧喊："别追了！"话还没说完，左边突然杀出太真驸马，关胜正好拦住他；右边又冲出李金吾，呼延灼也刚好截住。三路人马撞在一起打得昏天黑地，地上全是尸体，血都流成河了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">贺统军情知辽兵不胜，欲回幽州时，撞过二将，接住便杀。乃是花荣、秦明、死战定。贺统军欲退回西门城边，又撞见双枪将董平，又杀了一阵。转过南门，撞见朱仝，接着又杀一阵。贺统军不敢入城，撞条大路，望北而去。不提防前面撞着镇三山黄信，舞起大刀，直取贺统军。贺统军心慌，措手不及，被黄信一刀正砍在马头上。贺统军弃马而走。不想胁窝里撞出杨雄、石秀两个步军头领齐上，把贺统军拈翻在肚皮下。宋万挺枪，又赶将来。众人只怕争功坏了义气，就把贺统军乱枪戳死。那队辽兵已自先散，各自逃生。太真驸马见统军队里倒了帅字旗，军校漫散，情知不济，便引了这彪红旗军，从山背后走了。李金吾正战之间，不见了这红旗军，料道不济事，也引了这彪青旗军望山后退去。</div>
+            <div class="text-block simplified-text">贺统军发现自己的辽兵打不过了，想撤回幽州。半路上遇到花荣和秦明，被他们拦住一顿猛打。贺统军想改道从西门进城，又碰上双枪将董平，双方又厮杀一阵。他转到南门，遇到朱仝，又是一场恶战。贺统军不敢进城了，干脆往北边大路逃命。没想到突然杀出镇三山黄信，抡起大刀就砍过来。贺统军慌了手脚，来不及躲闪，被黄信一刀砍中马头，只好弃马逃跑。更倒霉的是，杨雄和石秀两个步兵头目从旁边冲出来，直接把他按倒在地。这时宋万也提着枪追上来。大伙儿怕抢功劳伤和气，干脆乱枪把贺统军捅死了。他带的辽兵早就四散逃命去了。太真驸马看见主帅的旗子倒了，士兵全跑光了，知道大势已去，赶紧带着红旗部队从山后溜走。李金吾打着打着发现红旗部队不见了，知道要完蛋，也带着青旗部队往山后撤退。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">宋江见这三路军兵，尽皆退了。大驱宋军人马，奔来夺取幽州。不动声色，一鼓而收。来到幽州城内，扎驻三军。便出榜安抚百姓。随即差人急往檀州报捷，请赵枢密移兵蓟州把守。就取这支水军头领并船只，前来幽州听调。却教副先锋卢俊义，分守霸州。又得了四个大郡，赵安抚见了来文大喜。一面申奏朝廷，一面行移蓟、霸二州。说此大辽国渐渐危矣。便差水军头领，收拾进发。堪叹北方大郡，一时收复归宋。有诗为证：</div>
+            <div class="text-block simplified-text">宋江看到三路敌军都撤退了，立刻带着宋军大部队冲向幽州。他们没费多大力气，一下子就拿下了幽州。进城后安顿好军队，马上贴出告示安抚老百姓。接着派人火速去檀州报捷，请赵枢密调兵驻守蓟州，还让水军头领带着船来幽州待命。又派副将卢俊义去守霸州。这样一连拿下四个重要城池，赵枢密看到捷报高兴坏了，一边上报朝廷，一边通知蓟州、霸州两地。都说辽国这下要完蛋了。于是立刻派水军准备出发。真没想到北方这些大城市这么快就被宋朝收复了。有诗为证：（后面诗句省略）  
+
+（说明：最后一句"有诗为证"是古代章回小说的固定格式，现代白话中通常直接省略不译。如需保留，可处理为"就像诗中写的那样"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">胡雏卤莽亦机谋，三路军兵布列稠。</div>
+            <div class="text-block simplified-text">那个胡人小子虽然莽撞，但也有点心眼儿。他手下的三路大军排得密密麻麻的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">堪羡宋江能用武，等闲谈笑取幽州。</div>
+            <div class="text-block simplified-text">真佩服宋江这么能打，随便说说笑笑就拿下了幽州。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">且说大辽国主升登宝殿，会集文武番官，左丞相幽西孛瑾，右丞相太师褚坚，统军大将等众，当廷商议。“即目宋江侵夺边界，占了俺四座大郡，如今又犯幽州，早晚必来侵犯皇城，燕京难保！贺统军弟兄三个已亡，幽州又失。汝等文武群臣，当国家多事之秋，如何处置？”有大辽国都统军兀颜光奏道：“郎主勿忧。前者奴婢累次只要自去领兵，往往被人阻当，以致养成贼势，成此大祸。伏乞亲降圣旨，任臣选调军马，会合诸处军兵，克日兴师。务要擒获宋江等头领，恢复原夺城池。”郎主准奏。遂赐出明珠虎牌，金印敕旨，黄钺白旄，朱幡皂盖，尽付与兀颜统军。“不问金枝玉叶，皇亲国戚，不拣是何军马，并听爱卿调遣。速便起兵，前去征进。”</div>
+            <div class="text-block simplified-text">话说辽国皇帝上朝，召集文武官员开会。左边站着丞相幽西孛瑾，右边站着太师褚坚，还有统军大将等人。皇帝说："现在宋江抢了我们四个州，又打到幽州了，眼看就要打到京城来，燕京快守不住了！贺统军他们三兄弟都战死了，幽州也丢了。你们这些当官的，现在国家有难，该怎么办？"
+
+这时辽国都统军兀颜光站出来说："皇上别急。之前我老想带兵去打，总被人拦着，结果让敌人越来越猖狂，搞成现在这样。请您下命令，让我调兵遣将，联合各地部队，尽快出兵。我一定活捉宋江那帮头目，把丢掉的城池都夺回来。"
+
+皇帝同意了，当场给他发了调兵的虎符、金印、圣旨，还有代表军权的仪仗队旗号装备，对他说："不管是什么皇亲国戚，还是哪里的军队，都归你管。赶紧带兵出发去打仗吧。"
+
+（说明：原文中"黄钺白旄，朱幡皂盖"等仪仗用品直接译为"代表军权的仪仗队旗号装备"，既保留原意又便于理解；"金枝玉叶"等典故性表述转换为"皇亲国戚"；全文采用口语化短句，如"皇上别急""老想带兵去打"等，符合现代白话文要求。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">兀颜统军领了圣旨兵符，便下教场，会集诸多番将，传下将令，调遣诸处军马，前来策应。却才传令已罢，有统军长子兀颜延寿，直至演武亭上禀父亲道：“父亲一面整点大军，孩儿先带数员猛将，会集太真驸马、李金吾将军二处军马，先到幽州，杀败这蛮子们八分。待父亲来时，瓮中捉鳖，一鼓扫清宋兵。不知父亲钧意如何？”兀颜统军道：“吾儿言见得是。与汝突骑五千，精兵二万，就做先锋。即便会同太真驸马、李金吾，刻下便行。如有捷音，羽檄飞报。”小将军欣然领了号令，整点三军人马，径奔幽州来。</div>
+            <div class="text-block simplified-text">白话文翻译：
+
+兀颜统帅接到皇帝的命令和兵符后，立刻去练兵场集合各路将领，下达命令，调集各地军队前来支援。刚传完令，他的大儿子兀颜延寿跑到指挥台对父亲说："爹，您先整顿大军。儿子我先带几个猛将，联合太真驸马和李金吾将军的部队，先去幽州打垮那群宋军（"蛮子"是当时对宋军的蔑称）。等您大军一到，咱们就能轻松消灭剩下的宋兵，就像瓮中捉鳖一样简单。您看这主意行不？" 
+
+兀颜统帅回答："儿子你说得对。给你五千精锐骑兵、两万精兵当先锋。马上和太真驸马、李金吾会合出发。有战报立刻飞马传信。"小将军高兴地接了命令，清点好部队直奔幽州而去。
+
+（说明：1.将古代官职"统军"译为现代人能理解的"统帅"；2."钧意"改为"您看行不"；3."羽檄飞报"译为"飞马传信"；4.保留"瓮中捉鳖"这个常见成语；5.补充说明"蛮子"的历史语境；6.所有军事指令都转化为口语化表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">不是这个兀颜小将军前来搦战，有分教：幽州城下，变为九里山前；湾水河边，翻作三江渡口。正是：万马奔驰天地怕，千军踊跃鬼神愁。毕竟兀颜小将军怎生搦战，且听下回分解。</div>
+            <div class="text-block simplified-text">翻译成现代白话文：
+
+这个叫兀颜的小将军不是来挑战的吗？这下可有好戏看了：幽州城下要变成古代打仗的九里山前线，湾水河边要变成大军渡江的三江渡口。那场面真是：千军万马冲杀过来，连天地都害怕；大军激烈交战，连鬼神都发愁。至于这个小将军到底怎么挑战的，咱们下回再说。
+
+（说明：1.将文言虚词"兀颜小将军前来搦战"改为口语化表达；2.用"有好戏看"替代"有分教"这种古代说书套话；3.将"九里山前""三江渡口"这类典故直白说明；4.保留原文的比喻和排比修辞；5.最后一句保持传统章回体悬念风格但改用口语）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
