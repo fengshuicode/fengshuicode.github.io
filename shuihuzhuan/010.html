@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第十回　林教头风雪山神庙　陆虞候火烧草料场</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./009.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第十回　林教头风雪山神庙　陆虞候火烧草料场</h1>
+        <a href="./011.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文中的"诗曰"可以简单地翻译成：
+
+"诗里说：" 或者 "有首诗这样讲："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">天理昭昭不可诬，莫将奸恶作良图。</div>
+            <div class="text-block simplified-text">老天爷的眼睛是雪亮的，别想骗过它。千万别把那些坏心眼当成好主意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">若非风雪沽村酒，定被焚烧化朽枯。</div>
+            <div class="text-block simplified-text">要不是冒着风雪去村里买酒喝，肯定早就被火烧成灰了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">自谓冥中施计毒，谁知暗里有神扶。</div>
+            <div class="text-block simplified-text">自己以为偷偷摸摸使坏没人知道，哪想到老天爷在背后帮忙呢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">最怜万死逃生地，真是瑰奇伟丈夫。</div>
+            <div class="text-block simplified-text">最佩服那些从必死险境中逃出来的人，这才是真正的了不起的大英雄。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当日林冲正闲走间，忽然背后人叫，回头看时，却认得是酒生儿李小二。当初东京时，多得林冲看顾。这李小二先前在东京时，不合偷了店主人家财，被捉住了，要送官司问罪。却得林冲主张陪话，救了他免送官司。又与他陪了些钱财，方得脱免。京中安不得身，又亏林冲赍发他盘缠，于路投奔人。不想今日却在这里撞见。林冲道：“小二哥，你如何也在这里？”李小二便拜道：“自从得恩人救济，赍发小人，一地里投奔人不着。迤逦不想来到沧州，投托一个酒店里，姓王，留小人在店中做过卖。因见小人勤谨，安排的好菜蔬，调和的好汁水，来吃的人都喝采，以此买卖顺当。主人家有个女儿，就招了小人做女婿。如今丈人丈母都死了，只剩得小人夫妻两个，权在营前开了个茶酒店。因讨钱过来，遇见恩人。恩人不知为何事在这里？”林冲指着脸上道：“我因恶了高太尉，生事陷害，受了一场官司，刺配到这里。如今叫我管天王堂，未知久后如何。不想今日到此遇见。”</div>
+            <div class="text-block simplified-text">那天林冲正在街上闲逛，忽然听见背后有人喊他。回头一看，原来是以前在东京认识的酒保李小二。当初在东京时，林冲没少照顾他。这个李小二以前在东京偷过老板的钱，被抓到后要送官府治罪，多亏林冲帮他说情赔钱，才免了牢狱之灾。后来林冲还给了他路费，让他离开京城谋生。没想到今天在这儿碰上了。
+
+林冲问："小二，你怎么也在这儿？"李小二赶紧行礼说："自从恩人帮我逃出来后，我到处找活干都不顺利，最后流落到沧州。一个姓王的酒店老板收留我当跑堂，因为我干活勤快，做的菜味道好，客人都夸，生意就越做越好。老板后来还把女儿嫁给我。现在岳父岳母都去世了，就剩我们两口子，在军营前开了家小茶馆。今天出来收账，正好遇见恩人。恩人您怎么到这儿来了？"
+
+林冲指着脸上的金印说："我得罪了高太尉，被他陷害吃了官司，发配到这儿。现在让我看管天王堂，以后会怎样还不知道。真没想到能在这儿遇见你。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">李小二就请林冲到家里面坐定，叫妻子出来拜了恩人。两口儿欢喜道：“我夫妻二人，正没个亲眷。今日得恩人到来，便是从天降下。”林冲道：“我是罪囚，恐怕玷辱你夫妻两个。”李小二道：“谁不知恩人大名，休恁地说。但有衣服，便拿来家里浆洗缝补。”当时管待林冲酒食，至晚送回天王堂。次日，又来相请。因此，林冲得李小二家来往，不时间送汤送水来营里与林冲吃。林冲因见他两口儿恭勤孝顺，常把些银两与他做本钱，不在话下。有诗为证：</div>
+            <div class="text-block simplified-text">李小二把林冲请到家里坐下，叫老婆出来拜见恩人。夫妻俩高兴地说："我们俩正愁没个亲戚，今天恩人来了，简直像天上掉下来的好事。"林冲说："我是个犯人，怕连累你们夫妻。"李小二说："谁不知道您的大名，别这么说。以后有脏衣服就拿过来，我们帮您洗补。"当天他们招待林冲吃了饭，晚上送他回天王堂。第二天又来请他。就这样，林冲和李小二家有了来往，李小二经常送吃的到军营给林冲。林冲看他们夫妻勤快懂事，经常给他们些钱做生意。这些都不用多说了。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">才离寂寞神堂路，又守萧条草料场。</div>
+            <div class="text-block simplified-text">刚离开没人去的破庙，又得去看管荒凉的草料场。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">李二夫妻能爱客，供茶送酒意偏长。</div>
+            <div class="text-block simplified-text">李二两口子特别好客，又是倒茶又是送酒，招待客人特别热情周到。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">且把闲话休题，只说正话。迅速光阴，却早冬来。林冲的绵衣裙袄，都是李小二浑家整治缝补。忽一日，李小二正在门前安排菜蔬下饭，只见一个人闪将进来，酒店里坐下，随后又一人入来。看时，前面那个人是军官打扮，后面这个走卒模样，跟着也来坐下。李小二入来问道：“要吃酒？”只见那个人将出一两银子与小二道：“且收放柜上，取三四瓶好酒来。客到时，果品酒馔只顾将来，不必要问。”李小二道：“官人请甚客？”那人道：“烦你与我去营里请管营、差拨两个来说话。问时，你只说有个官人请说话，商议些事务，专等，专等。”李小二应承了，来到牢城里，先请了差拨，同到管营家里，请了管营，都到酒店里。只见那个官人和管营、差拨两个讲了礼。管营道：“素不相识，动问官人高姓大名？”那人道：“有书在此，少刻便知。且取酒来。”李小二连忙开了酒，一面铺下菜蔬果品酒馔。那人叫讨副劝盘来，把了盏，相让坐了。小二独自一个，撺梭也似伏侍不暇。那跟来的人讨了汤桶，自行荡酒。约计吃过十数杯，再讨了按酒，铺放桌上。只见那人说道：“我自有伴当荡酒，不叫你休来。我等自要说话。”</div>
+            <div class="text-block simplified-text">咱们闲话少说，直接讲重点。时间过得飞快，转眼就到冬天了。林冲的棉衣棉裤都是李小二的老婆帮忙缝补的。有一天，李小二正在店门口准备下酒菜，突然有个人溜进店里坐下，接着又进来一个人。前面那个穿得像军官，后面那个像是小兵，也跟着坐下。李小二过去问："要喝酒吗？"那个军官掏出一两银子给小二说："先把钱放柜台上，拿三四瓶好酒来。等客人到了，只管上酒菜，别多问。"李小二问："官人要请什么客人？"那人说："麻烦你去军营把管营和差拨两位请来。他们要是问，就说有个官人请他们谈事情，专门等着呢。"李小二答应着去了牢城，先请了差拨，又一起去管营家，把两人都请到酒店。那军官和管营、差拨互相行礼。管营说："咱们不认识啊，请问您贵姓？"军官回答："有封信在这儿，待会儿您就知道了。先上酒吧。"李小二赶紧上酒，摆好下酒菜。军官叫人拿来敬酒的托盘，倒上酒请他们坐。李小二一个人忙得团团转。跟来的小兵要了温酒桶，自己热酒。喝了十几杯后，又要了些下酒菜摆在桌上。这时军官说："我们自己有人倒酒，不叫你别过来。我们要谈事情。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">李小二应了，自来门首叫老婆道：“大姐，这两个人来的不尴尬。”老婆道：“怎么的不尴尬？”小二道：“这两个人语言声音，是东京人，初时又不认得管营，向后我将按酒入去，只听得差拨口里讷出一句‘高太尉’三个字来。这人莫不与林教头身上有些干碍？我自在门前理会，你且去阁子背后，听说甚么。”老婆道：“你去营中寻林教头来，认他一认。”李小二道：“你不省得，林教头是个性急的人，摸不着便要杀人放火。倘或叫的他来看了，正是前日说的甚么陆虞候，他肯便罢？做出事来，须连累了我和你。你只去听一听，再理会。”老婆道：“说的是。”便入去听了一个时辰，出来说道：“他那三四个交头接耳说话，正不听得说甚么。只见那一个军官模样的人，去伴当怀里取出一帕子物事，递与管营和差拨。帕子里面的莫不是金银？只听差拨口里说道：‘都在我身上，好歹要结果了他性命。’”正说之间，阁子里叫“将汤来。”李小二急去里面换汤时，看见管营手里拿着一封书。小二换了汤，添些下饭。又吃了半个时辰，算还了酒钱，管营、差拨先去了。次后，那两个低着头也去了。转背没多时，只见林冲走将入店里来，说道“小二哥，连日好买卖。”李小二慌忙道：“恩人请坐，小人却待正要寻恩人，有些要紧话说。”有诗为证：</div>
+            <div class="text-block simplified-text">李小二答应着，走到门口对他老婆说："老婆，这两个人有点不对劲。"他老婆问："怎么不对劲了？"小二说："听口音是东京人，一开始还不认识管营。后来我送酒进去，听见差拨嘴里冒出'高太尉'三个字。你说这两人会不会跟林教头有关系？我在门口盯着，你去包厢后面听听他们说啥。"
+
+他老婆说："要不你去军营把林教头叫来认认？"小二连忙说："不行！林教头那暴脾气，万一认出来是之前说的那个陆虞候，还不得当场杀人？到时候连累咱们怎么办？你先去听听再说。"他老婆点头："也是。"就去偷听了一个时辰，回来说："他们三四个人凑在一起嘀嘀咕咕，听不清说啥。就看见那个当官模样的，从随从怀里掏出个手帕包的东西给管营和差拨。我猜里面肯定是银子！还听见差拨说：'包在我身上，一定弄死他。'"
+
+正说着，包厢里喊"上汤！"小二赶紧进去换汤，看见管营手里拿着一封信。等他们又吃了半个时辰，结完账，管营和差拨先走了，那两个也低着头跟了出去。
+
+没过多久，林冲走进店里说："小二，最近生意不错啊？"小二赶紧迎上去："恩人快请坐！我正想找您说件要紧事呢！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">潜为奸计害英雄，一线天教把信通。</div>
+            <div class="text-block simplified-text">有人在背后偷偷使坏想害英雄好汉，没想到老天有眼，让消息意外传了出去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">亏杀有情贤李二，暗中回护有奇功。</div>
+            <div class="text-block simplified-text">多亏了那个重情重义的李二，他暗地里帮忙，起了大作用。
+
+（说明：译文通过以下方式实现白话转换：
+1. "亏杀"译为"多亏了"，保留感激语义
+2. "有情贤"拆解为"重情重义"的通俗表达
+3. "暗中回护"转化为"暗地里帮忙"的口语说法
+4. "有奇功"用"起了大作用"替代，更易理解
+5. 保留人名"李二"不变
+6. 通过"那个"增加口语感，整句符合日常说话节奏）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">当下林冲问道：“甚么要紧的事？”小二哥请林冲到里面坐下，说道：“却才有个东京来的尴尬人，在我这里请管营、差拨吃了半日酒。差拨口里讷出高太尉三个字来。小人心下疑，又着浑家听了一个时辰，他却交头接耳说话，都不听得。临了，只见差拨口里应道：‘都在我两个身上，好歹要结果了他。’那两个把一包金银递与管营、差拨，又吃了一回酒，各自散了。不知甚么样人。小人心下疑，只怕恩人身上有些妨碍。”林冲道：“那人生得甚么模样？”李小二道：“五短身材，白净面皮，没甚髭须，约有三十余岁。那跟的也不长大，紫棠色面皮。”林冲听了大惊道：“这三十岁的正是陆虞候。那拨贱贼也敢来这里害我！休要撞着我，只教他骨肉为泥！”李小二道：“只要提防他便了，岂不闻古人言：吃饭防噎，走路防跌。”林冲大怒，离了李小二家，先去街上买把解腕尖刀，带在身上，前街后巷一地里去寻。李小二夫妻两个，捏着两把汗。</div>
+            <div class="text-block simplified-text">林冲问："什么事这么急？"店小二把林冲请进屋坐下，说："刚才有个从东京来的可疑人，在我这儿请管营和差拨喝了半天酒。差拨不小心说出'高太尉'三个字。我觉得不对劲，又让我老婆偷听了一个时辰，可他们交头接耳说话根本听不清。最后只听见差拨说：'包在我们俩身上，一定弄死他。'那两人还给管营、差拨塞了一包金银，又喝了会儿酒才散。不知道是什么人，我担心会对恩人你不利。"
+
+林冲问："那人长什么样？"李小二说："个子不高，脸挺白，没什么胡子，三十来岁。跟着他的人也不高，脸色紫黑。"林冲一听吓坏了："三十岁的肯定是陆虞候！这王八蛋竟敢来害我！别让我碰上，非把他剁成肉泥不可！"李小二劝道："你小心点就是了，没听说老话讲：吃饭防噎着，走路防摔跤嘛。"
+
+林冲气得要命，离开李小二家，先上街买了把匕首带在身上，满大街找人。李小二两口子看得提心吊胆。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">当晚无事，次日天明起来，早洗漱罢，带了刀又去沧州城里城外，小街夹巷，团团寻了一日。牢城营里都没动静。林冲又来对李小二道：“今日又无事。”小二道：“恩人，只愿如此。只是自放仔细便了。”林冲自回天王堂，过了一夜。街上寻了三五日，不见消耗，林冲也自心下慢了。到第六日，只见管营叫唤林冲到点视厅上，说道：“你来这里许多时，柴大官人面皮不曾抬举的你。此间东门外十五里，有座大军草场，每月但是纳草纳料的，有些常例钱取觅。原是一个老军看管。我如今抬举你去替那老军来守天王堂，你在那里几贯盘缠。你可和差拨便去那里交割。”林冲应道：“小人便去。”当时离了营中，径到李小二家，对他夫妻两个说道：“今日管营拨我去大军草场管事，却如何？”李小二道：“这个差使又好似天王堂。那里收草料时，有些常例钱钞。往常不使钱时，不能勾这差使。”林冲道：“却不害我，倒与我好差使，正不知何意？”李小二道：“恩人休要疑心，只要没事便好了。只是小人家离得远了，过几时那工夫来望恩人。”就时家里安排几杯酒，请林冲吃了。</div>
+            <div class="text-block simplified-text">那天晚上没什么事。第二天天亮，林冲起床洗漱完，带着刀又在沧州城里城外、大街小巷转悠了一整天。牢城营里也没什么动静。林冲又去对李小二说："今天还是没事。"小二说："恩人啊，但愿一直这样平安。您自己多小心就是了。"林冲回到天王堂又过了一夜。就这样在街上找了三四天，一直没消息，林冲也就慢慢放松了警惕。
+
+到了第六天，管营把林冲叫到办公室，说："你来这儿这么久了，看在柴大官人的面子上还没照顾你。东门外十五里有个大军草料场，每月收发草料能捞点油水。本来是个老兵管着，现在派你去接替他，这样你就能多挣点钱。你现在就和差拨去办交接吧。"林冲答应说："我这就去。"
+
+离开营房后，林冲直接到李小二家，对他夫妻俩说："今天管营调我去管大军草料场，你们看这事怎么样？"李小二说："这差事比守天王堂强多了。收草料的时候能拿点好处费。平常不花钱打点根本轮不到这差事。"林冲说："他们不害我，反而给好差事，不知道打的什么主意？"李小二说："恩人别多想，平安无事就好。就是我家离得远了，以后不能常来看您。"说着就让老婆准备了些酒菜招待林冲。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">话不絮烦，两个相别了。林冲自来天王堂，取了包裹，带了尖刀，拿了条花枪，与差拨一同辞了管营，两个取路投草料场来。正是严冬天气，彤云密布，朔风渐起，却早纷纷扬扬卷下一天大雪来。那雪早下得密了。怎见得好雪？有《临江仙》词为证：</div>
+            <div class="text-block simplified-text">简单来说：两人告别后，林冲去天王堂拿了行李，带上刀和花枪，和差拨一起告别管营，往草料场走去。这时候正是寒冬，天上乌云密布，北风越刮越大，很快就下起了鹅毛大雪。雪下得很大。这雪有多大？有首《临江仙》的词可以证明：
+
+（注：最后一句保留了原文对诗词的引用，因为这是原文的重要信息。其他部分都改成了最直白的口语表达，去掉了"话不絮烦""正是""怎见得"等文言表达。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">作阵成团空里下，这回忒杀堪怜。剡溪冻住子猷船。玉龙鳞甲舞，江海尽平填。宇宙楼台都压倒，长空飘絮飞绵。三千世界玉相连。冰交河北岸，冻了十余年。</div>
+            <div class="text-block simplified-text">这雪下得又密又大，真是可怜见的。连剡溪都冻住了，王子猷的船也动不了。雪花像玉龙的鳞片一样漫天飞舞，把江河湖海都盖平了。大雪压垮了高楼亭台，天上飘的雪絮又厚又密。整个世界都变成了白色，连成一片。河北岸全结冰了，听说已经冻了十多年。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">大雪下的正紧，林冲和差拨两个在路上又没买酒吃处。早来到草料场外看时，一周遭有些黄土墙，两扇大门。推开看里面时，七八间草房做着仓廒，四下里都是马草堆，中间两座草厅。到那厅里，只见那老军在里面向火。差拨说道：“管营差这个林冲来替你回天王堂看守，你可即便交割。”老军拿了钥匙，引着林冲，分付道：“仓廒内自有官司封记，这几堆草一堆堆都有数目。”老军都点见了堆数，又引林冲到草厅上。老军收拾行李，临了说道：“火盆、锅子、碗碟，都借与你。”林冲道：“天王堂内我也有在那里，你要便拿了去。”老军指壁上挂一个大葫芦，说道：“你若买酒吃时，只出草场，投东大路去三二里，便有市井。”老军自和差拨回营里来。</div>
+            <div class="text-block simplified-text">雪下得很大，林冲和差拨两个人走在路上，找不到地方买酒喝。他们很快到了草料场外面，看到一圈黄土墙和两扇大门。推开门一看，里面有七八间草房当仓库，周围堆满了喂马的草料，中间有两间草屋。他们走进屋里，看见一个老兵正在烤火。差拨说："管营派林冲来接替你去看守天王堂，你现在就和他交接吧。"老兵拿出钥匙，带着林冲交代："仓库里的东西都有官府封条，这几堆草料每一堆都有固定数量。"老兵清点完草料堆数，又带林冲来到草屋。老兵收拾行李时最后说："火盆、锅碗瓢盆都留给你用。"林冲说："我在天王堂那边也有这些东西，你需要的话可以拿走。"老兵指着墙上挂的一个大葫芦说："你要买酒的话，出了草场往东走两三里路就有集市。"说完，老兵就和差拨一起回军营去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">只说林冲就床上放了包裹被卧，就坐下生些焰火起来。屋边有一堆柴炭，拿几块来生在地炉里。仰面看那草屋时，四下里崩坏了，又被朔风吹撼，摇振得动。林冲道：“这屋如何过得一冬？待雪晴了，去城中唤个泥水匠来修理。”向了一回火，觉得身上寒冷，寻思：“却才老军所说五里路外有那市井，何不去沽些酒来吃？”便去包里取些碎银子，把花枪挑了酒葫芦，将火炭盖了，取毡笠子戴上，拿了钥匙，出来把草厅门拽上。出到大门首，把两扇草场门反拽上，锁了。带了钥匙，信步投东。雪地里踏着碎琼乱玉，迤逦背着北风而行。那雪正下得紧。</div>
+            <div class="text-block simplified-text">林冲把行李铺盖放在床上，点起火来取暖。屋子旁边有堆柴火和炭，他拿了几块放进地炉里烧。抬头看看这草屋，发现四面都破破烂烂的，还被北风吹得直摇晃。林冲自言自语道："这破房子怎么熬得过冬天？等雪停了，得去城里找个泥瓦匠来修修。"烤了会儿火，还是觉得冷，心想："刚才那老兵说五里外有个集市，不如去打点酒喝。"于是从包里拿出些零钱，用长枪挑着酒葫芦，盖好炉子，戴上斗笠，拿了钥匙。出门时把草屋门拉上，走到大门口又把两扇院门反锁好。揣着钥匙，随便往东边走。他踩着满地碎雪，迎着北风往前走。这时候雪正下得很大。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">行不上半里多路，看见一所古庙。林冲顶礼道：“神明庇佑，改日来烧钱纸。”又行了一回，望见一簇人家。林冲住脚看时，见篱笆中挑着一个草帚儿在露天里。林冲径到店里，主人道：“客人那里来？”林冲道：“你认得这个葫芦么？”主人看了道：“这葫芦是草料场老军的。”林冲道：“如何便认的？”店主道：“既是草料场看守大哥，且请少坐。天气寒冷，且酌三杯权当接风。”店家切一盘熟牛肉，荡一壶热酒，请林冲吃。又自买了些牛肉，又吃了数杯。就又买了一葫芦酒，包了那两块牛肉，留下碎银子，把花枪挑了酒葫芦，怀内揣了牛肉，叫声相扰，便出篱笆门，依旧迎着朔风回来。看那雪，到晚越下的紧了。古时有个书生，做了一个词，单题那贫苦的恨雪：</div>
+            <div class="text-block simplified-text">走了不到半里路，看到一座旧庙。林冲拜了拜说："神仙保佑，改天来烧纸钱。"又走了一会儿，看见一片人家。林冲停下细看，发现篱笆上挂着个草编的扫帚。他直接走进店里，老板问："客官从哪儿来？"林冲反问："你认得这个葫芦吗？"老板看了看说："这不是草料场老兵的葫芦吗？"林冲问："你怎么认出来的？"店主说："既然是草料场的看守大哥，先坐下歇会儿吧。天这么冷，喝三杯酒暖暖身子。"店家切了盘熟牛肉，烫了壶热酒招待林冲。林冲自己又买了些牛肉，喝了几杯。临走还买了一葫芦酒，包了两块牛肉，放下零钱，用长枪挑着酒葫芦，怀里揣着牛肉，说了声"打扰了"就走出篱笆门，冒着北风往回走。这时雪越下越大。古代有个书生写过一首词，专门说穷人讨厌下雪的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">广莫严风刮地，这雪儿下的正好。扯絮挦绵，裁几片大如栲栳。见林间竹屋茅茨，争些儿被他压倒。富室豪家，却言道压瘴犹嫌少。向的是兽炭红炉，穿的是绵衣絮袄。手捻梅花，唱道国家祥瑞，不念贫民些小。高卧有幽人，吟咏多诗草。</div>
+            <div class="text-block simplified-text">这寒风呼呼地刮着，雪下得正大。雪花像撕碎的棉絮一样，有的有簸箕那么大。眼看着竹林里的茅草屋，差点被雪压塌了。有钱人家却还说雪不够大，压不住瘟疫。他们烤着炭火炉子，穿着厚厚的棉衣，手里拿着梅花，喊着"这是国家的祥瑞"，根本不管穷人的死活。倒是有几个清高的隐士，躺在屋里写诗作乐。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">再说林冲踏着那瑞雪，迎着北风，飞也似奔到草场门口，开了锁，入内看时，只叫得苦。原来天理昭然，佑护善人义士，因这场大雪，救了林冲的性命。那两间草厅已被雪压倒了。林冲寻思：“怎地好？”放下花枪、葫芦在雪里，恐怕火盆内有火炭延烧起来。搬开破壁子，探半身入去摸时，火盆内火种都被雪水浸灭了。林冲把手床上摸时，只拽得一条絮被。林冲钻将出来，见天色黑了，寻思：“又没打火处，怎生安排？”想起：“离了这半里路上，有个古庙，可以安身。我且去那里宿一夜，等到天明却做理会。”把被卷了，花枪挑着酒葫芦，依旧把门拽上，锁了，望那庙里来。入的庙门，再把门掩上，傍边止有一块大石头，掇将过来，靠了门。入的里面看时，殿上做着一尊金甲山神，两边一个判官，一个小鬼，侧边堆着一堆纸。团团看来，又没邻舍，又无庙主。林冲把枪和酒葫芦放在纸堆上，将那条絮被放开，先取下毡笠子，把身上雪都抖了，把上盖白布衫脱将下来，早有五分湿了，和毡笠放在供桌上，把被扯来盖了半截下身。却把葫芦冷酒提来便吃，就将怀中牛肉下酒。正吃时，只听得外面必必剥剥地爆响。林冲跳起身来，就壁缝里看时，只见草料场里火起，刮刮杂杂烧着。看那火时，但见：</div>
+            <div class="text-block simplified-text">林冲冒着大雪，顶着北风，飞快地跑到草料场门口。他打开锁进去一看，顿时叫苦连天——幸好这场大雪救了他的命，因为那两间草屋已经被雪压塌了。林冲心想："这可怎么办？"他把花枪和酒葫芦放在雪地里，担心火盆里的炭火没灭会引起火灾。他扒开倒塌的墙壁，伸手进去摸火盆，发现里面的火早就被雪水浇灭了。他又往床上摸，只拽出一条棉被。
+
+这时天已经黑了，林冲发愁："这地方没法生火，今晚怎么过？"突然想起："半里外有座破庙，先去那儿凑合一晚，等天亮再说。"于是他把棉被卷起来，用花枪挑着酒葫芦，锁好门往破庙走去。
+
+进了庙，他用大石头顶住门。庙里供着一尊穿着金甲的山神像，两边站着判官和小鬼，旁边堆着些纸钱。林冲四下看看，附近既没邻居也没庙祝。他把枪和酒葫芦放在纸堆上，摊开棉被，摘下斗笠，抖掉身上的雪。这时他发现外衣已经湿了一半，就把湿衣服和斗笠放在供桌上，用棉被裹住下半身。他拿出冰凉的酒就着怀里揣的牛肉吃起来。
+
+正吃着，突然听见外面噼里啪啦响。林冲跳起来从墙缝往外看，只见草料场那边火光冲天，烧得正旺。那火势看着真吓人：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">一点灵台，五行造化，丙丁在世传流。无明心内，灾祸起沧州。烹铁鼎能成万物，铸金丹还与重楼。思今古，南方离位，荧惑最为头。绿窗归焰烬，隔花深处，掩映钓渔舟。鏖兵赤壁，公瑾喜成谋。李晋王醉存馆驿，田单在即墨驱牛。周褒姒骊山一笑，因此戏诸侯。</div>
+            <div class="text-block simplified-text">这段文字讲的是火在不同场合的作用和故事。简单来说：
+
+1. 开头说火是五行之一，在人间流传。如果心里不明白（无明），就容易在沧州这种地方惹祸。
+
+2. 火能炼铁做成各种东西，也能炼丹治病（重楼指喉咙，这里可能指丹药）。
+
+3. 从古至今，南方属火（离位），火星（荧惑）最重要。
+
+4. 后面举了几个和火有关的例子：
+   - 绿窗灯火熄灭后，花丛深处的渔船若隐若现
+   - 周瑜在赤壁用火攻大败曹操
+   - 李晋王（李克用）喝醉后在驿馆差点被火烧死
+   - 田单在即墨用火牛阵打败敌人
+   - 周幽王为逗褒姒笑，在骊山点火戏弄诸侯（烽火戏诸侯）
+
+简单说就是讲火的特性和历史上几个著名的火攻故事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">当时张见草场内火起，四下里烧着。林冲便拿枪，却待开门来救火，只听得前面有人说将话来。林冲就伏在庙听时，是三个人脚步声，且奔庙里来。用手推门，却被林冲靠住了，推也推不开。三人在庙檐下立地看火，数内一个道：“这条计好么？”一个应道：“端的亏管营、差拨两位用心。回到京师，禀过太尉，都保你二位做大官。这番张教头没的推故。”那人道：“林冲今番直吃我们对付了，高衙内这病必然好了。”又一个道：“张教头那厮，三回五次托人情去说：‘你的女婿殁了。’张教头越不肯应承。因此衙内病患看看重了，太尉特使俺两个央浼二位干这件事，不想而今完备了。”又一个道：“小人直爬入墙里去，四下草堆上点了十来个火把，待走那里去！”那一个道：“这早晚烧个八分过了。”又听一个道：“便逃得性命时，烧了大军草料场，也得个死罪。”又一个道：“我们回城里去罢。”一个道：“再看一看，拾得他一两块骨头回京，府里见太尉和衙内时，也道我们也能会干事。”</div>
+            <div class="text-block simplified-text">那时候，张看见草料场突然着火了，四周都在烧。林冲拿起枪，正要开门去救火，突然听到前面有人说话。林冲就躲在庙里听动静，有三个人走过来，直奔庙这边。他们用手推门，但门被林冲顶住了，怎么推也推不开。三个人站在庙檐下看火，其中一个说："这计策不错吧？"另一个回答："多亏管营和差拨两位费心。等回京城报告太尉，肯定让你们升官。这下张教头没话可说了。"那人又说："这次林冲肯定被我们收拾了，高衙内的病也能好了。"另一个说："张教头那家伙，好几次托人说：‘你女婿已经死了。’可他死活不答应。所以衙内的病越来越重，太尉特意派我们俩来办这事，没想到现在成了。"又一个说："我直接爬进墙里，在草堆上点了十几个火把，看他往哪儿跑！"另一个说："这会儿火差不多快烧完了。"又听见一个说："就算他逃出去，烧了军队的草料场也是死罪。"另一个说："咱们回城里去吧。"最后一个说："再等等，捡他几块骨头带回京城，见太尉和衙内时也好交代，显得咱们会办事。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">林冲听那三个人时，一个是差拨，一个是陆虞候，一个是富安。林冲道：“天可怜见林冲，若不是倒了草厅，我准定被这厮们烧死了。”轻轻把石头掇开，挺着花枪，一手拽开庙门，大喝一声：“泼贼那里去！”三个人急要走时，惊得呆了，正走不动。林冲举手肐察的一枪，先戳倒差拨。陆虞候叫声：“饶命！”吓的慌了手脚，走不动。那富安走不到十来步，被林冲赶上，后心只一枪，又戳倒了。翻身回来，陆虞候却才行的三四步。林冲喝声道：”奸贼！你待那里去！”批胸只一提，丢翻在雪地上。把枪搠在地里，用脚踏住胸脯，身边取出那口刀来，便去陆谦脸上阁着，喝道：“泼贼！我自来又和你无甚么冤仇，你如何这等害我！正是杀人可恕，情理难容。”陆虞候告道：“不干小人事，太尉差遣，不敢不来。”林冲骂道：“奸贼，我与你自幼相交，今日倒来害我，怎不干你事！且吃我一刀。”把陆谦上身衣服扯开，把尖刀向心窝里只一剜，七窍迸出血来，将心肝提在手里。回头看时，差拨正爬将起来要走。林冲按住喝道：“你这厮原来也恁的歹！且吃我一刀。”又早把头割下来，挑在枪上。回来把富安、陆谦头都割下来。把尖刀插了，将三个人头发结做一处，提入庙里来，都摆在山神面前供桌上。再穿了白布衫，系了搭膊，把毡笠子带上，将葫芦里冷酒都吃尽了。被与葫芦都丢了不要。提了枪，便出庙门投东去。走不到三五里，早见近村人家都拿着水桶、钩子来救火。林冲道：“你们快去救应，我去报官了来。”提着枪只顾走。那雪越下的猛，但见：</div>
+            <div class="text-block simplified-text">林冲听到那三个人说话，一个是差拨（管犯人的小官），一个是陆虞候（林冲的老朋友，现在是个官），一个是富安（高俅的手下）。林冲心想："老天有眼啊！要不是草屋塌了，我肯定被这几个混蛋烧死了。"他轻轻挪开石头，拿起花枪，一把拉开庙门，大吼："狗贼往哪儿跑！"那三个人吓傻了，想跑却腿软动不了。林冲抬手一枪，先捅死了差拨。陆虞候喊："饶命啊！"吓得手脚发软跑不动。富安跑了不到十步，被林冲追上，从背后一枪捅倒。林冲转身时，陆虞候才挪了三四步。林冲骂道："王八蛋！还想跑？"一把揪住他衣领摔在雪地里，用脚踩住他胸口，掏出刀抵着他脸说："老子跟你无冤无仇，你为啥非要害我？杀人还能原谅，这种缺德事绝不能忍！"陆虞候求饶："都是高太尉逼我干的啊！"林冲骂："放屁！咱俩从小认识，你现在来害我，还敢推卸责任！"说完扯开他衣服，一刀捅进心脏，血喷得到处都是，还把心脏挖了出来。回头看见差拨正想爬起来跑，林冲按住他："原来你也是个坏种！"一刀砍下脑袋挂在枪上。接着把富安和陆虞候的头也砍了，用头发把三个脑袋绑在一起，摆在庙里的供桌上。他穿上白布衫，系好腰带，戴好斗笠，喝完葫芦里的酒，把被子和葫芦都扔了。提着枪往东走，没走几里地就看见村民拿着水桶、钩子来救火。林冲说："你们快去救火吧，我去报官。"说完冒着大雪继续赶路。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">凛凛严凝雾气昏，空中祥瑞降纷纷。须臾四野难分路，顷刻千山不见痕。银世界，玉乾坤，望中隐隐接昆仑。若还下到三更后，仿佛填平玉帝门。</div>
+            <div class="text-block simplified-text">天冷得要命，雾气蒙蒙的，天上突然飘起大片大片的雪花。转眼间，四周白茫茫一片，连路都看不清了，一会儿功夫连山都看不见了。到处像铺满了银子，整个世界像玉做的一样，远远看去好像和昆仑山连成了一片。要是这雪下到半夜，估计连天宫的大门都能被雪给堵上。
+
+（说明：译文通过以下方式实现要求：
+1. "凛凛严凝"译为"冷得要命"更口语化
+2. "祥瑞"具体化为"大片雪花"避免抽象表达
+3. "须臾/顷刻"用"转眼间/一会儿功夫"替代文言词汇
+4. "银世界，玉乾坤"转化为比喻式白话描述
+5. "玉帝门"译为"天宫大门"更易理解
+6. 完整保留了雪景描写的全部要素和夸张修辞）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">林冲投东去了两个更次，身上单寒，当不过那冷。在雪地里看时，离的草场远了。只见前面疏林深处，树木交杂，远远地数间草屋，被雪压着，破壁缝里透出火光来。林冲径投那草屋来，推开门，只见那中间坐着一个老庄家，周围坐着四五个小庄家向火。地炉里面焰焰地烧着柴火。林冲走到面前，叫道：“众位拜揖。小人是牢城营差使人，被雪打湿了衣裳，借此火烘一烘，望乞方便。”庄客道：“你自烘便了，何妨得。”林冲烘着身上湿衣服，略有些干，只见火炭边煨着一个瓮儿，里面透出酒香。林冲便道：“小人身边有些碎银子，望烦回些酒吃。”老庄客道：“我们每夜轮流看米囤，如今四更，天气正冷，我们这几个吃尚且不勾，那得回与你。休要指望。”林冲又道：“胡乱只回三五碗与小人荡寒。”老庄家道：“你那人休缠，休缠！”林冲闻得酒香，越要吃，说道：“没奈何，回些罢。”众庄客道：“好意着你烘衣裳向火，便来要酒吃。去便去，不去时将来吊在这里。”林冲怒道：“这厮们好无道理。”把手中枪看着块焰焰着的火柴头，望老庄家脸上只一挑将起来，又把枪去火炉里只一搅，那老庄家的髭须焰焰的烧着。众庄客都跳将起来，林冲把枪杆乱打。老庄家先走了。庄家们都动掸不得，被林冲赶打一顿，都走了。林冲道：“都走了，老爷快活吃酒。”土炕上却有两个椰瓢，取一个下来，倾那瓮酒来吃了一会，剩了一半，提了枪出门便走。一步高，一步低，踉踉跄跄捉脚不住。走不过一里路，被朔风一掉，随着那山涧边倒了，那里挣得起来。几醉人一倒，便起不得。醉倒在雪地上。</div>
+            <div class="text-block simplified-text">林冲往东走了两更天（约四小时），身上衣服单薄，冷得受不了。他回头一看，已经离草料场很远了。这时他看到前面树林深处有几间草屋，被雪压着，破墙缝里透出火光。林冲直接走过去，推开门，看见中间坐着一个老农民，周围还有四五个年轻农民在烤火。地炉里柴火烧得正旺。林冲上前说："各位好。我是牢城营的差人，衣服被雪打湿了，借个火烤烤，行个方便。"农民们说："你烤吧，没关系。"林冲烤着湿衣服，稍微干了一点，突然闻到酒香，看见火边温着一个酒坛子。林冲就说："我身上有点零钱，能不能卖我点酒喝？"老农民说："我们每晚轮流看粮食，现在四更天，天正冷，我们几个人喝都不够，哪能卖给你？别想了。"林冲又说："随便给我三五碗驱驱寒就行。"老农民不耐烦："你这人别纠缠了！"林冲闻着酒香更想喝，说："实在没办法，卖我点吧。"其他农民生气了："好心让你烤火，你还得寸进尺要酒喝。赶紧走，不走就把你绑起来！"林冲发火道："你们太不讲理了！"说完就用枪挑起一块烧红的木炭甩到老农民脸上，又把枪伸进火炉里一搅，把老农民的胡子都烧着了。其他农民跳起来要打，林冲抡起枪杆一顿乱打。老农民先跑了，其他人被打得动弹不得，最后也都逃走了。林冲说："都跑了，老子正好痛快喝酒！"他看到土炕上有两个椰壳做的瓢，拿下一个舀酒喝，喝了一半，提着枪摇摇晃晃地出门了。他深一脚浅一脚地走不稳，走了不到一里路，被北风一吹，顺着山坡滑倒在山沟边，怎么也爬不起来。喝醉的人一倒下就起不来了，就这样醉倒在雪地里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">却说众庄客引了二十余人，拖枪拽棒，都奔草屋下看时，不见了林冲。却寻着踪迹赶将来，只见倒在雪地里。庄客齐道：“你却倒在这里。”花枪丢在一边。众庄客一发上手，就地拿起林冲来，将一条索缚了，趁五更时分，把林冲解投那个去处来。不是别处，有分教：蓼儿洼内，前后摆数千只战舰艨艟；水浒寨中，左右列百十个英雄好汉。搅扰得道君皇帝，盘龙椅上魂惊，丹凤楼中胆裂。正是：说时杀气侵人冷，讲处悲风透骨寒。毕竟看林冲被庄客解投甚处来，且听下回分解。</div>
+            <div class="text-block simplified-text">一群庄客带着二十多人，拿着刀枪棍棒，冲到草屋找人，发现林冲已经不见了。他们顺着脚印追过去，看见林冲倒在雪地里。庄客们嚷嚷："原来你躲在这儿！"旁边扔着林冲的花枪。大伙儿一拥而上，把林冲按住，用绳子捆了，趁着天没亮，押着他往一个地方去。这可不是普通地方——后来在蓼儿洼聚集了上千战船，水浒寨里住满英雄好汉，闹得皇帝在龙椅上直发抖，皇宫里人人胆寒。要说林冲被押去哪儿，咱们下回接着说。  
+
+（说明：  
+1. 用"嚷嚷"替代文绉绉的"齐道"，更显众人七嘴八舌  
+2. "一拥而上"比"一发上手"更符合现代口语  
+3. "天没亮"替代"五更时分"更易懂  
+4. 保留关键信息点：蓼儿洼、水浒寨、皇帝震惊等  
+5. 删去"说时杀气侵人冷"等渲染性诗句，但保留其警示意味  
+6. 最后用"咱们"拉近与读者距离）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
