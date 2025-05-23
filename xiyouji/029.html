@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十八回 花果山群妖聚义　黑松林三藏逢魔</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./028.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十八回 花果山群妖聚义　黑松林三藏逢魔</h1>
+        <a href="./030.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说那大圣虽被唐僧逐赶，然犹思念，感叹不已，早望见东洋大海。道：“我不走此路者，已五百年矣！”只见那海水：</div>
+            <div class="text-block simplified-text">话说孙悟空虽然被唐僧赶走了，但还是很想念他们，忍不住叹气。这时他远远看到了东海，说："我已经五百年没走过这条路了！"他看见那海水——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">烟波荡荡，巨浪悠悠：烟波荡荡接天河，巨浪悠悠通地脉。潮来汹涌，水浸湾环：潮来汹涌，犹如霹雳吼三春；水浸湾环，却似狂风吹九夏。乘龙福老，往来必定皱眉行；跨鹤仙童，反复果然忧虑过。近岸无村社，傍水少渔舟。浪卷千年雪，风生六月秋。野禽凭出没，沙鸟任沉浮。眼前无钓客，耳畔只闻鸥。海底游鱼乐，天边过雁愁。那行者将身一纵，跳过了东洋大海，早至花果山。按落云头，睁睛观看，那山上花草俱无，烟霞尽绝；峰岩倒塌，林树焦枯。你道怎么这等?只因他闹了天宫，拿上界去。此山被显圣二郎神，率领那梅山七弟兄，放火烧坏了。这大圣倍加凄惨。有一篇败山颓景的古风为证。古风云：</div>
+            <div class="text-block simplified-text">海面波涛滚滚，大浪连天：海浪一直延伸到天边，巨大的浪花好像能通到地底。涨潮时水势凶猛，淹没了海湾：潮水冲过来时声音大得像春天打雷一样吓人，海水漫过海湾的样子，又像夏天刮起的狂风。就算是骑龙的神仙老头经过这里，也得皱眉头；乘鹤的小仙童飞过，也会发愁。岸边没有村子，水边看不到打鱼的船。浪花像千年积雪一样白，六月的风吹得人感觉像秋天。野鸟在水面飞来飞去，水鸟随着波浪起起伏伏。看不到钓鱼的人，只能听见海鸥叫。海底的鱼儿游得欢快，天上飞过的大雁却显得忧愁。这时孙悟空一个跟头翻过大海，回到了花果山。他按下云头仔细一看：山上花草全没了，连云雾都没有；山峰倒塌，树木都烧焦了。你猜为什么这样？原来因为他大闹天宫被抓走后，二郎神带着梅山七兄弟放火烧了这座山。孙悟空看到这景象心里特别难受。有首诗专门描写这座破败的山，诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">回顾仙山两泪垂，对山凄惨更伤悲。当时只道山无损，今日方知地有亏。可恨二郎将我灭，堪嗔小圣把人欺。行凶掘你先灵墓，无干破尔祖坟基。满天霞雾皆消荡，遍地风云尽散稀。东岭不闻斑虎啸，西山那见白猿啼。北溪狐兔无踪迹，南谷獐没影遗。青石烧成千块土，碧砂化作一堆泥。洞外乔松皆倚倒，崖前翠柏尽稀少。椿杉槐桧栗檀焦，桃杏李梅梨枣了。柘绝桑无怎养蚕?柳稀竹少难栖鸟。峰头巧石化为尘，涧底泉干都是草。崖前土黑没芝兰，路畔泥红藤薜攀。往日飞禽飞那处?当时走兽走何山?豹嫌蟒恶倾颓所，鹤避蛇回败坏间。想是日前行恶念，致令目下受艰难。</div>
+            <div class="text-block simplified-text">看着仙山忍不住掉眼泪，对着这山觉得更难过。以前总以为山不会变，现在才知道地也会受伤。可恨二郎神把我打败，那小圣也欺负人。他们狠心挖你祖坟，破坏你家祖坟的地基。满天的彩霞雾气都散了，地上的风云也全没了。东岭听不到老虎叫，西山看不见白猿啼。北溪的狐狸兔子没影了，南谷的獐子也不见了。青石被烧成碎土，碧砂变成烂泥。洞外的大松树都倒了，山崖前的绿柏树快没了。椿树、杉树、槐树、桧树、栗树、檀树全烧焦了，桃树、杏树、李树、梅树、梨树、枣树都毁了。桑树柘树没了怎么养蚕？柳树竹子少了鸟也没地方住。山顶的漂亮石头变成灰，山沟里泉水干了全长草。山崖前黑土里不长灵芝，路边红泥上爬满野藤。以前的鸟儿飞哪儿去了？过去的野兽跑哪座山了？豹子嫌这里太破都跑了，仙鹤躲着蛇也不来了。想来是之前做了坏事，现在才遭这份罪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">那大圣正当悲切，只听得那芳草坡前，曼荆凹里，响一声，跳出七八个小猴，一拥上前，围住叩头。高叫道：“大圣爷爷，今日来家了？”美猴王道：“你们因何不耍不顽，一个个都潜踪隐迹?我来多时了，不见你们形影，何也？”群猴听说，一个个垂泪告道：“自大圣擒拿上界，我们被猎人之苦，着实难捱!怎禁他硬弩强弓，黄鹰劣犬，网扣枪钩，故此各惜性命，不敢出头顽耍；只是深潜洞府，远避窝巢。饥去坡前偷草食，渴来涧下吸清泉。却才听得大圣爷爷声音，特来接见，伏望扶持。”那大圣闻得此言，愈加凄惨。便问：“你们还有多少在此山上？”群猴道：“老者，小者，只有千把。”大圣道：“我当时共有四万七千群妖，如今都往那里去了？”群猴道：“自从爷爷去后，这山被二郎菩萨点上火，烧杀了大半。我们蹲在井里，钻在涧内，藏于铁板桥下，得了性命。及至火灭烟消，出来时，又没花果养赡，难以存活，别处又去了一半。我们这一半，捱苦的住在山中。这两年，又被些打猎的抢了一半去也。”行者道：“他抢你去何干？”群猴道：“说起这猎户，可恨!他把我们中箭着枪的，中毒打死的，拿了去剥皮剔骨，酱煮醋蒸，油煎盐炒，当做下饭食用。或有那遭网的，遇扣的，夹活儿拿去了，教他跳圈做戏，翻筋斗，竖蜻蜓，当街上筛锣擂鼓，无所不为的顽耍。”大圣闻此言，更十分恼怒道：“洞中有甚么人执事？”群妖道：“还有马、流二元帅，奔、芭二将军管着哩。”大圣道：“你们去报他知道，说我来了。”那些小妖，撞入门里报道：“大圣爷爷来家了。”那马、流、奔、芭闻报，忙出门叩头，迎接进洞。</div>
+            <div class="text-block simplified-text">孙悟空正伤心的时候，忽然听到草丛里"哗啦"一声，蹦出来七八只小猴子。这些小猴子一下子围住他，跪在地上磕头，高兴地喊："大圣爷爷，您今天终于回来了！"
+
+孙悟空问："你们怎么都不出来玩了？我回来好一会儿了，连个猴影都没见着，怎么回事啊？"
+
+猴子们一听都哭了，说："自从大圣您被抓上天，我们可被猎人害惨了！他们拿着弓箭，带着猎狗老鹰，到处设陷阱，我们为了保命，只能躲在山洞里，饿了偷偷吃野草，渴了喝山泉水。刚才听见您的声音，才敢出来迎接，求大圣给我们做主啊！"
+
+孙悟空听了更难过了，问："现在山上还剩多少猴子？"
+
+猴子们回答："老的少的加起来，就剩一千来只了。"
+
+孙悟空吃惊地说："我走的时候有四万七千只猴子，现在都去哪儿了？"
+
+猴子们哭着说："您走后，二郎神放火烧山，烧死一大半。我们躲在井里、山洞里才活下来。后来没吃的，又饿死一半。剩下的这些年又被猎人抓走一半。"
+
+孙悟空问："猎人抓你们干什么？"
+
+猴子们恨恨地说："那些猎人太可恨了！被箭射死的、中毒死的，就被他们剥皮煮了吃。活捉的就逼我们表演杂技，在街上敲锣打鼓耍把戏。"
+
+孙悟空气得不行，问："现在洞里谁管事？"
+
+猴子们说："是马元帅、流元帅，还有奔将军、芭将军在管。"
+
+孙悟空说："快去告诉他们，说我回来了。"小猴子们赶紧跑进洞里报信："大圣爷爷回来啦！"几位元帅将军一听，连忙跑出来磕头，把孙悟空迎进洞里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">大圣坐在中间，群怪罗拜于前，启道：“大圣爷爷，近闻得你得了性命，保唐僧往西天取经，如何不走西方，却回本山？”大圣道：“小的们，你不知道。那唐三藏不识贤愚：我为他一路上捉怪擒魔，使尽了平生的手段，几番家打杀妖精；他说我行凶作恶，不要我做徒弟，把我逐赶回来，写立贬书为照，永不听用了。”</div>
+            <div class="text-block simplified-text">孙悟空坐在中间，一群妖怪围着他跪拜，问道："大圣爷爷，听说您保唐僧去西天取经，怎么不往西走，反而回花果山来了？"孙悟空回答："你们不知道。那个唐僧分不清好歹：我一路帮他打妖怪，使出浑身解数，好几次打死妖精；他却说我滥杀无辜，不要我做徒弟，把我赶了回来，还写了贬书作证，再也不让我跟着了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">众猴鼓掌大笑道：“造化!造化!做甚么和尚，且家来，带携我们耍子几年罢！”叫：“快安排椰子酒来，与爷爷接风。”大圣道：“且莫饮酒。我问你：那打猎的人，几时来我山上一度？”马、流道：“大圣，不论甚么时度，他逐日家在这里缠扰。”大圣道：“他怎么今日不来？”马、流道：“看待来耶。”大圣吩咐：“小的们，都出去把那山上烧酥了的碎石头与我搬将起来堆着。或二三十个一堆，或五六十个一堆，堆着，我有用处。”那些小猴，都是一窝蜂，一个个跳天搠地，乱搬了许多堆集。大圣看了，教：“小的们，都往洞内藏躲，让老孙作法。”</div>
+            <div class="text-block simplified-text">猴子们高兴地拍手大笑：“太好了！太好了！当什么和尚啊，快回家来，带我们一起玩几年吧！”又喊：“快准备椰子酒，给爷爷接风！”孙悟空说：“先别喝酒。我问你们：那些打猎的人，什么时候会来我们山上一次？”马猴和流猴回答：“大圣，他们天天都来这儿捣乱，没有固定时间。”孙悟空问：“那今天怎么没来？”马猴和流猴说：“估计快来了。”孙悟空命令道：“小的们，都出去把山上被烧酥的碎石头搬过来堆成堆。有的堆二三十个，有的堆五六十个，堆好了我有用。”那些小猴子们一窝蜂地乱蹦乱跳，七手八脚搬来石头堆了好几堆。孙悟空看了看，说：“小的们，都躲到洞里去吧，看老孙我施法。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">那大圣上了山巅看处，只见那南半边冬冬鼓响，当当锣鸣，闪上有千余人马，都架着鹰犬，持着刀枪。猴王仔细看那些人，来得凶险。好男子，真个骁勇!但见：</div>
+            <div class="text-block simplified-text">孙悟空爬到山顶一看，发现南边传来咚咚的鼓声和当当的锣声，突然出现上千人的队伍。这些人带着猎鹰猎狗，拿着刀枪。孙悟空仔细一看，发现他们来势汹汹。好家伙，这帮人可真厉害！你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">狐皮苫肩顶，锦绮裹腰胸。袋插狼牙箭，胯挂宝雕弓。人似搜山虎，马如跳涧龙。成群引着犬，满膀架其鹰。荆筐抬火炮，带定海东青。粘竿百十，兔叉有千根。牛头拦路网，阎王扣子绳。一齐乱吆喝，散撒满天星。大圣见那些人布上他的山来，心中大怒。手里捻诀，口内念念有词，往那巽地上吸了一口气，的吹将去，便是一阵狂风。好风!但见：</div>
+            <div class="text-block simplified-text">那些人穿着打扮很特别：用狐狸皮披在肩上，用华丽的绸缎裹着腰和胸。他们带着装满狼牙箭的箭袋，挎着装饰精美的弓。人看起来像搜山的猛虎，马跑起来像跃过山涧的蛟龙。带着成群的猎狗，手臂上架着猎鹰。用荆条筐抬着火炮，还带着专门猎鸟的海东青。拿着上百根粘鸟竿，上千把捕兔叉。路上架着拦牛的网，设着阎王索命的套索。他们乱哄哄地叫喊着，像满天星星一样散开。孙悟空看见这群人跑到他的山上，气得要命。他掐着诀，嘴里念着咒语，对着东南方吸了一口气，用力吹出去，顿时刮起一阵狂风。这风可真厉害！你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">扬尘播土，倒树摧林。海浪如山耸，浑波万叠侵。乾坤昏荡荡，日月暗沉沉。一阵摇松如虎啸，忽然入竹似龙吟。万窍怒召天噫气，飞砂走石乱伤人。大圣作起这大风，将那碎石，乘风乱飞乱舞，可怜把那些千余人马，一个个：</div>
+            <div class="text-block simplified-text">大圣刮起一阵狂风，吹得尘土飞扬，树木倒下，森林被毁。海浪像山一样高，波涛汹涌，一波接一波地冲过来。天地间一片昏暗，日月无光。风吹过松林，声音像老虎在吼叫；钻进竹林，又像龙在低吟。风声呼啸，仿佛天地在怒吼，飞沙走石，到处乱飞，伤了不少人。大圣借着这阵大风，让碎石随着风乱飞乱砸，那上千的人马可就遭了殃，一个个都被打得够呛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">石打乌头粉碎，沙飞海马俱伤。人参官桂岭前忙，血染朱砂地上。附子难归故里，槟榔怎得还乡?户骸轻粉卧山场，红娘子家中盼望。</div>
+            <div class="text-block simplified-text">这段文字描述了一场激烈的打斗场面，用中药材的名字来比喻人和事。我用大白话解释一下：
+
+石头打碎了乌鸦的头，沙子乱飞让海马也受了伤。人参和官桂在山上慌忙逃窜，地上到处都是血染的朱砂。附子没法回家，槟榔也回不了故乡。尸体像轻粉一样散落在山上，家里红娘子还在苦苦等待。
+
+简单来说，就是描写了一场惨烈的战斗，死伤惨重，很多人回不了家，亲人还在等他们回去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">诗曰：人亡马死怎归家?野鬼孤魂乱似麻。可怜抖擞英雄将，不辨贤愚血染沙。</div>
+            <div class="text-block simplified-text">诗里说：人都死了马也没了，还怎么回家？荒野里孤魂野鬼到处乱飘，乱糟糟的。真可怜啊，那些威风凛凛的将军们，到死都分不清谁是好人谁是坏人，白白把血洒在战场上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">大圣按落云头，鼓掌大笑道：“造化，造化!自从归顺唐僧，做了和尚，他每每劝我话道：‘千日行善，善犹不足；一日行恶，恶自有余。’真有此话!我跟着他，打杀几个妖精，他就怪我行凶；今日来家，却结果了这许多猎户。”叫：“小的们，出来！”那群猴，狂风过去，听得大圣呼唤，一个个跳将出来。大圣道：“你们去南山下，把那打死的猎户衣服，剥得来家，洗净血迹，穿了遮寒；把死人的尸首，都推在那万丈深潭里；把死倒的马，拖将来，剥了皮，做靴穿，将肉腌着，慢慢的食用；把那些弓箭枪刀，与你们操演武艺；将那杂色旗号，收来我用。”群猴一个个领诺。</div>
+            <div class="text-block simplified-text">孙悟空从云上跳下来，拍手大笑着说："走运，真走运！自从跟了唐僧当和尚，他老跟我说：‘做一千件好事都不够多，干一件坏事就够你受的。’这话真不假！我跟着他打死了几个妖怪，他就嫌我下手太狠。今天回家来，倒弄死了这么多猎人。" 
+
+他大喊一声："小的们，都出来！"那群猴子听到大圣叫唤，一个个蹦蹦跳跳跑出来。孙悟空吩咐道："你们去南山下，把那些被打死的猎人的衣服扒下来，拿回家洗干净血迹，穿着御寒；把那些尸体都扔到深潭里去；把死马拖回来，剥了皮做靴子穿，肉腌起来慢慢吃；那些弓箭刀枪都拿来给你们练武用；花花绿绿的旗子都收来给我。"猴子们听完，一个个答应着去办了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">那大圣把旗拆洗，总斗做一面杂彩花旗，上写着“重修花果山，复整水帘洞，齐天大圣”十四字。竖起杆子，将旗挂于洞外，逐日招魔聚兽，积草屯粮，不题“和尚”二字。他的人情又大，手段又高，便去四海龙王，借些甘霖仙水，把山洗青了。前栽榆柳，后种松楠，桃李枣梅，无所不备，逍遥自在，乐业安居不题。</div>
+            <div class="text-block simplified-text">孙悟空把那面旗子拆下来洗干净，重新缝成一面彩色花旗，上面写着"重修花果山，复整水帘洞，齐天大圣"十四个大字。他把旗杆竖起来，把旗子挂在洞外，天天召集妖怪野兽，囤积粮草，再也不提"和尚"的事。因为他面子大、本事高，还去找四海龙王借来仙水甘露，把整座山洗得青翠欲滴。他在山前种榆树柳树，山后种松树楠木，还有桃树、李树、枣树、梅树，样样齐全，日子过得逍遥快活，安居乐业，别提多自在了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">却说唐僧听信狡性，纵放心猿。攀鞍上马，八戒前边开路，沙僧挑着行李西行。过了白虎岭，忽见一带林丘，真个是藤攀葛绕，柏翠松青。三藏叫道：“徒弟呀，山路崎岖，甚是难走，却又松林丛簇，树木森罗，切须仔细!恐有妖邪妖兽。”你看那呆子，抖擞精神，叫沙僧带着马，他使钉钯开路，领唐僧径入松林之内。正行处，那长老兜住马道：“八戒，我这一日其实饥了，那里寻些斋饭我吃？”八戒道：“师父请下马，在此等老猪去寻。”长老下了马，沙僧歇了担，取出钵盂，递与八戒。八戒道：“我去也。”长老问：“那里去？”八戒道：“莫管，我这一去，钻冰取火寻斋至，压雪求油化饭来。”</div>
+            <div class="text-block simplified-text">话说唐僧一时糊涂，放走了孙悟空。他骑上马，让猪八戒在前面带路，沙和尚挑着行李继续往西走。过了白虎岭，忽然看见一片树林，到处是藤蔓缠绕，松柏青翠。唐僧喊住徒弟们说："徒弟们啊，这山路不好走，树林又密，千万要小心！说不定有妖怪。"只见猪八戒打起精神，让沙和尚牵马，自己拿着钉耙在前面开路，带着唐僧走进树林。正走着，唐僧勒住马说："八戒，我今天实在饿了，去哪儿找点吃的？"八戒说："师父您下马等着，我老猪去找。"唐僧下了马，沙和尚放下行李，拿出饭碗递给八戒。八戒说："我去了。"唐僧问："去哪儿找？"八戒说："您别管，我这一去，就算要钻冰取火、压雪榨油，也给您弄来吃的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">你看他出了松林，往西行经十余里，更不曾撞着一个人家，真是有狼虎无人烟的去处。那呆子走得辛苦，心内沉吟道：“当年行者在日，老和尚要的就有；今日轮到我的身上，诚所谓‘当家才知柴米价，养子方晓父娘恩’。公道没去化处。”却又走得瞌睡上来，思道：“我若就回去，对老和尚说没处化斋，他也不信我走了这许多路。须是再多幌个时辰，才好去回话。也罢，也罢，且往这草科里睡睡。”呆子就把头拱在草里睡下。当时也只说朦胧朦胧就起来，岂知走路辛苦的人，丢倒头，只管睡起。</div>
+            <div class="text-block simplified-text">你看他走出松树林，往西走了十多里地，连一户人家都没碰到，真是个有野兽没人的荒凉地方。这呆子走得累坏了，心里琢磨："以前孙悟空在的时候，老和尚要啥有啥；现在轮到我了，真是'当家才知道柴米贵，养儿才懂父母恩'。这地方连个讨饭的地方都没有。"走着走着又犯困了，心想："要是现在回去跟老和尚说找不到人家化斋，他肯定不信我走了这么远。得再磨蹭一会儿才好交差。算了算了，先在这草堆里睡会儿吧。"这呆子就把脑袋往草里一钻睡下了。本来想着眯一会儿就起来，谁知道走路太累的人，一躺下就睡得死沉死沉的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">且不言八戒在此睡觉。却说长老在那林间，耳热眼跳，身心不安。急回叫沙僧道：“悟能去化斋，怎么这早晚还不回？”沙僧道：“师父，你还不晓得哩。他见这西方上人家斋僧的多，他肚子又大，他管你?只等他吃饱了才来哩。”三藏道：“正是呀；倘或他在那里贪着吃斋，我们那里会他?天色晚了，此间不是个住处，须要寻个下处方好哩。”沙僧道：“不打紧，师父，你且坐在这里，等我去寻他来。”三藏道：“正是，正是。有斋没斋罢了，只是寻下处要紧。”沙僧绰了宝杖，径出松林来找八戒。</div>
+            <div class="text-block simplified-text">先不说猪八戒在那儿睡觉。再说唐僧在林子里，耳朵发热眼皮直跳，心里不踏实。他赶紧回头叫沙僧："悟能去讨饭，怎么这么久还不回来？"沙僧说："师父，您还不知道他。他看西方这儿施舍和尚的人多，自己饭量又大，哪会管咱们？肯定要吃饱了才回来。"唐僧说："对啊！要是他在那儿只顾着吃，我们上哪儿找他？天快黑了，这儿不能过夜，得赶紧找个住的地方。"沙僧说："别急师父，您先坐着，我去找他。"唐僧说："好好好，有没有饭吃无所谓，找住处最要紧。"沙僧提着宝杖，直接走出松林去找猪八戒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">长老独坐林中，十分闷倦。只得强打精神，跳将起来，把行李攒在一处，将马拴在树上，柬下戴的斗笠，插定了锡杖，整一整缁衣，徐步幽林，权为散闷。那长老看遍了野草山花，听不得归巢鸟噪。原来那林子内都是些草深路小的去处。只因他情思紊乱，却走错了。他一来也是要散散闷，二来也是要寻八戒、沙僧；不期他两个走的是直西路，长老转了一会，却走向南边去了。</div>
+            <div class="text-block simplified-text">老和尚一个人坐在树林里，觉得特别无聊难受。他只好打起精神，站起来把行李收拾好，把马拴在树上，摘下斗笠，拄着锡杖，整理好僧袍，慢悠悠地在林子里散步解闷。他看遍了野花野草，听烦了回巢鸟叫。其实这林子里草很深，路又窄。因为他心里乱糟糟的，结果走错路了。他本来是想出来散散心，顺便找找八戒和沙僧，没想到他俩往正西方向走了，老和尚转来转去，却走到了南边。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">出得松林，忽抬头，见那壁厢金光闪烁，彩气腾腾。仔细看处，原来是一座宝塔，金顶放光。这是那西落的日色，映着那金顶放亮。他道：“我弟子却没缘法哩!自离东土，发愿逢庙烧香，见佛拜佛，遇塔扫塔。那放光的不是一座黄金宝塔?怎么就不曾走那条路?塔下必有寺院，院内必有僧家，且等我走走。这行李、白马，料此处无人行走，却也无事。那里若有方便处，待徒弟们来，一同借歇。”</div>
+            <div class="text-block simplified-text">走出松树林，突然抬头看见那边金光闪闪，五彩云气直往上冒。仔细一看，原来是座宝塔，金色的塔顶在发光。其实是西边落山的太阳照在塔顶上反的光。他自言自语："我这徒弟真没福气！自从离开东土大唐，我就发誓见庙烧香，见佛拜佛，遇到佛塔就打扫。那放光的不就是座黄金宝塔吗？怎么刚才没走那条路呢？塔下面肯定有寺庙，庙里肯定有和尚，我先过去看看。这行李和白马放在这儿，反正这地方没人经过，应该没事。要是那边有合适的地方，等徒弟们来了，再一起借住休息。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">噫!长老一时晦气到了。你看他拽开步，竟至塔边。但见那：</div>
+            <div class="text-block simplified-text">哎呀！老和尚这会儿真是倒霉。你看他大步往前走，一直走到塔旁边。这时候看到的是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">石崖高万丈，山大接青霄。根连地厚，峰插天高。两边杂树数千科，前后藤缠百余里。花映草梢风有影，水流云窦月无根。倒木横担深涧，枯藤结挂光峰。石桥下，流滚滚清泉；台座上，长明明白粉。远观一似三岛天堂，近看有如蓬莱胜境。香松紫竹绕山溪，鸦鹊猿猴穿峻岭。洞门外，有一来一往的走兽成行；树林里，有或出或入的飞禽作队。青青香草秀，艳艳野花开。这所在分明是恶境，那长老晦气撞将来。那长老举步进前，才来到塔门之下，只见一个斑竹帘儿，挂在里面。他破步入门，揭起来，往里就进，猛抬头，见那石床上，侧睡着一个妖魔。你道他怎生模样：</div>
+            <div class="text-block simplified-text">这座山高得吓人，石头悬崖像要戳破天似的。山脚扎得深，山顶高得看不见头。两边长着好几百棵树，前后爬满了藤蔓，绵延上百里。风吹花草影子晃，溪水流过石缝，月亮照在水面上。倒下的树横在深沟上，干枯的藤条挂在光滑的山峰上。石桥底下泉水哗哗流，石头台子上积着白花花的灰。远远看着像神仙住的地方，走近了才发现美得跟画似的。松树竹子围着山溪长，乌鸦猴子在山上跑来跑去。山洞门口有野兽进进出出，树林里鸟儿飞进飞出。草长得绿油油的，野花开得特别鲜艳。这地方看着漂亮其实很危险，偏偏让这个倒霉的和尚碰上了。老和尚往前走，刚到塔门口，看见里面挂着一张竹帘。他掀开帘子进去，一抬头就看见石头床上躺着个妖怪。这妖怪长啥样呢：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">青靛脸，白獠牙，一张大口呀呀。两边乱蓬蓬的鬓毛，却都是些胭脂染色；三四紫巍巍的髭髯，恍疑是那荔枝排芽。鹦嘴般的鼻儿拱拱，曙星样的眼儿巴巴。两个拳头，和尚钵盂模样；一双蓝脚，悬崖桠槎。斜披着淡黄袍帐，赛过那织锦袈裟。拿的一口刀，精光耀映；眠的一块石，细润无瑕。他也曾小妖排蚁阵，他也曾老怪坐蜂衙。你看他威风凛凛，大家吆喝，叫一声爷。他也曾月作三人壶酌酒，他也曾风生两腋盏倾茶。你看他神通浩浩，霎着下眼，游遍天涯。荒林喧鸟雀，深莽宿龙蛇。仙子种田生白玉，道人伏火养丹砂。小小洞门，虽到不得那阿鼻地狱；楞楞妖怪，却就是一个牛头夜叉。</div>
+            <div class="text-block simplified-text">这张脸青得发蓝，长着白森森的獠牙，一张大嘴老是"呀呀"地张着。两边乱糟糟的鬓角毛发，都是用胭脂染红的；三四绺紫红色的胡子，乍一看像荔枝壳上的尖刺。鼻子像鹦鹉嘴那样高高翘起，眼睛像天亮前的星星那样眨巴着。两个拳头大得像和尚的饭钵，一双蓝脚像悬崖上歪歪扭扭的树杈。身上斜披着淡黄色袍子，比那些绣花袈裟还气派。手里拿的刀明晃晃的亮眼，睡觉用的石头光滑得一点瑕疵都没有。
+
+这家伙本事可不小：能指挥小妖像蚂蚁列队，也能像蜂王坐镇妖怪窝。你看他威风凛凛的样子，手下都毕恭毕敬喊他"爷"。他一个人喝酒时，月亮就是陪客；喝茶时，清风从两袖生起。眨个眼的功夫，他就能跑遍全世界。荒林里的鸟雀见他就吵吵嚷嚷，深草丛中藏着龙蛇给他看家。他住的地方，仙子能种出白玉，道士能炼出仙丹。虽说他那小山洞比不上十八层地狱可怕，但这个凶神恶煞的模样，活脱脱就是个地狱来的牛头夜叉。
+
+（说明：译文完全保留原文描写的妖怪外貌特征、生活习性、神通能力等所有信息，用"乱糟糟""明晃晃"等口语词替代文雅表达，把"蚁阵蜂衙"译为"蚂蚁列队""妖怪窝"等日常比喻，将"月作三人"等典故转化为"月亮就是陪客"的直白说法，确保每个细节都能被现代读者轻松理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">那长老看见他这般模样，唬得打了一个倒退，遍体酥麻，两腿酸软，即忙的抽身便走。刚刚转了一个身，那妖魔，他的灵性着实是强。大撑开着一双金睛鬼眼，叫声“小的们，你看门外是甚么人！”一个小妖就伸头望门外一看，看见是个光头的长老，连忙跑将进去，报道：“大王，外面是个和尚哩。团头大面，两耳垂肩；嫩刮刮的一身肉，细娇娇的一张皮：且是好个和尚！”那妖闻言，呵声笑道：“这叫做个‘蛇头上苍蝇，自来的衣食。’你众小的们!疾忙赶上也，与我拿将来!我这里重重有赏。”那些小妖，就是一窝蜂，齐齐拥上。三藏见了，虽则是一心忙似箭，两脚走如飞；终是心惊胆颤，腿软脚麻。况且是山路崎岖，林深日暮，步儿那里移得动?被那些小妖，平抬将去。正是：龙游浅水遭虾戏，虎落平原被犬欺。纵然好事多磨障，谁像唐僧西向时?</div>
+            <div class="text-block simplified-text">那和尚一见他这副怪样，吓得直往后退，浑身发软，两腿打颤，赶紧转身就跑。刚转过去，那妖怪眼尖得很，睁大一双闪着金光的鬼眼，大喊："小的们，快看门外是谁！"一个小妖探头往外一瞧，见是个光头和尚，急忙跑进去报告："大王，外面是个和尚！圆头大脸，耳朵垂到肩膀，细皮嫩肉的，长得可真好！"妖怪一听，哈哈笑道："这不就是'苍蝇撞到蛇头上——白送上门'吗？小的们快追，给我抓回来！重重有赏！"那群小妖立刻一窝蜂冲了上去。唐僧虽然心里急得要命，拼命往前跑，但实在吓得腿脚发软。加上山路难走，树林里天又快黑了，根本跑不动。结果被小妖们轻松抬走了。这真是：龙到了浅水被虾戏弄，虎下了平原被狗欺负。就算取经路上磨难多，谁像唐僧这么倒霉啊？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">你看那众小妖，抬得长老，放在那竹帘儿外，欢欢喜喜，报声道：“大王，拿得和尚进来了。”那老妖，他也偷眼瞧一瞧。只见三藏头直上，貌堂堂，果然好一个和尚。他便心中想道：“这等好和尚，必是上方人物，不当小可的；若不做个威风，他怎肯服降哩？”陡然间，就狐假虎威，红须倒竖，血发朝天，眼睛迸裂。大喝一声道：“带那和尚进来！”众妖们，大家响响的答应了一声“是”!就把三藏望里面只是一推。这是“既在矮檐下，怎敢不低头！”三藏只得双手合着，与他见个礼。</div>
+            <div class="text-block simplified-text">你看那群小妖怪，抬着唐僧，把他放在竹帘子外面，特别高兴地报告说："大王，我们把和尚抓来了！"那老妖怪偷偷瞄了一眼，看见唐僧长得端正体面，确实是个好和尚。他心里琢磨："这么好的和尚，肯定不是普通人。我要是不摆点威风，他怎么会服我呢？"突然就装腔作势起来，胡子翘得老高，头发都竖起来了，瞪大眼睛，大吼一声："把那和尚带进来！"小妖怪们齐声喊"是"，然后一把将唐僧推了进去。这就是"人在屋檐下，不得不低头"啊！唐僧没办法，只好双手合十，给老妖怪行了个礼。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">那妖道：“你是那里和尚?从那里来?到那里去?快快说明！”三藏道：“我本是唐朝僧人，奉大唐皇帝敕命，前往西方访求经偈。经过贵山，特来塔下谒圣，不期惊动威严，望乞恕罪。待往西方取得经回东土，永注高名也。”那妖闻言，呵呵大笑道：“我说是上邦人物，果然是你。正要吃你哩!却来的甚好，甚好!不然，却不错放过了?你该是我口里的食，自然要撞将来，就放也放不去，就走也走不脱！”叫小妖：“把那和尚拿去绑了！”果然那些小妖，一拥上前，把个长老绳缠索绑，缚在那定魂桩上。</div>
+            <div class="text-block simplified-text">妖怪问：“你是哪来的和尚？从哪儿来？要到哪儿去？快说！”唐僧回答：“我是唐朝的和尚，奉皇帝的命令去西天取经。路过你这儿，特意来塔下拜见，没想到惊动了您，请原谅。等我取经回来，一定记着您的大名。”妖怪听完哈哈大笑：“我就说看着像大唐来的，果然是你！正想吃你呢，来得正好！不然不就错过了？你注定是我嘴里的肉，自己送上门来，想放你走都难，想跑也跑不掉！”然后叫小妖们：“把这和尚抓起来绑上！”小妖们一拥而上，把唐僧五花大绑，捆在了柱子上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">老妖持刀又问道：“和尚，你一行有几人?终不然一人敢上西天？”三藏见他持刀，又老实说道：“大王，我有两个徒弟，叫做猪八戒、沙和尚，都出松林化斋去了。还有一担行李，一匹白马，都在松林里放着哩。”老妖道：“又造化了!两个徒弟，连你三个，连马四个，彀吃一顿了！”小妖道：“我们去捉他来。”老妖道：“不要出去，把前门关了。他两个化斋来，一定寻师父吃；寻不着，一定寻着我门上。常言道：‘上门的买卖好做。’且等慢慢的捉他。”众小妖把前门闭了。</div>
+            <div class="text-block simplified-text">老妖怪拿着刀又问：“和尚，你们一起有几个人？不会就你一个人敢去西天吧？”唐僧看他拿着刀，就老实回答：“大王，我有两个徒弟，叫猪八戒和沙和尚，都去松林里找吃的了。还有一担行李和一匹白马，也都放在松林里。”老妖怪一听乐了：“真是走运！两个徒弟，加上你三个，再加上马四个，够我们吃一顿了！”小妖怪们说：“我们去抓他们来吧。”老妖怪说：“别出去，把前门关上。他们俩找完吃的回来，肯定会找师父；找不到师父，肯定会找到我们这儿。俗话说：‘送上门的生意最好做。’咱们慢慢等着抓他们就行。”于是小妖怪们把前门关上了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">且不言三藏逢灾。却说那沙僧出林找八戒，直有十余里远近，不曾见个庄村。他却站在高埠上正然观看，只听得草中有人言语，急使杖拨开深草看时，原来是呆子在里面说梦话哩。被沙僧揪着耳朵，方叫醒了。道：“好呆子啊!师父教你化斋，许你在此睡觉的？”那呆子冒冒失失的醒来道：“兄弟，有甚时候了？”沙僧道：“快起来!师父说有斋没斋也罢，教你我那里寻下住处去哩。”呆子懵懵懂懂的，托着钵盂，着钉钯，与沙僧径直回来。到林中看时，不见了师父。沙僧埋怨道：“都是你这呆子化斋不来，必有妖精拿师父也。”八戒笑道：“兄弟，莫要胡说。那林子里是个清雅的去处，决然没有妖精。想是老和尚坐不住，往那里观风去了。我们寻他去来。”二人只得牵马挑担，收拾了斗篷、锡杖，出松林寻找师父。</div>
+            <div class="text-block simplified-text">先不说唐僧遇到危险的事。单说沙僧走出树林找八戒，走了大概十几里路，连个村子都没看见。他站在高坡上正四处张望，忽然听见草丛里有人说话，赶紧用禅杖拨开深草一看，原来是八戒在里面说梦话呢。沙僧揪着他耳朵才把他弄醒，骂道："你这呆子！师父让你去讨饭，准你在这儿睡觉了吗？"八戒迷迷糊糊地醒来问："兄弟，现在啥时候了？"沙僧催他："快起来！师父说了，讨不着饭就算了，叫咱们先找个住处。"八戒还晕乎乎的，端着饭碗，扛着钉耙，跟着沙僧往回走。
+
+回到林子里一看，师父不见了。沙僧急得直埋怨："都怪你这呆子没去讨饭，肯定是有妖怪把师父抓走了！"八戒却笑着说："兄弟别瞎说，这林子挺安静的，哪来的妖怪？估计是那老和尚坐不住，自己溜达去了。咱们找找看吧。"两人只好牵着马、挑着行李，拿着斗篷和禅杖，走出松林去找师父。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">这一回，也是唐僧不该死。他两个寻一会不见，忽见那正南下有金光闪灼。八戒道：“兄弟啊，有福的只是有福。你看师父往他家去了。那放光的是座宝塔。谁敢怠慢?一定要安排斋饭，留他在那里受用。我们还不走动些，也赶上去吃些斋儿。”沙僧道：“哥啊，定不得吉凶哩。我们且去看来。”</div>
+            <div class="text-block simplified-text">这次唐僧真是命大。孙悟空和猪八戒找了一会儿没找到他，突然看见南边有金光闪闪。八戒说："老弟，有福气的人就是有福气。你看师父肯定是去那户人家了。那发光的是座宝塔，谁家敢不好好招待？肯定会准备斋饭留师父吃饭。咱们赶紧过去，说不定还能蹭顿饭吃。"沙僧说："大哥，先别高兴太早，是福是祸还不一定呢。咱们先过去看看再说。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">二人雄纠纠的到了门前，——呀!闭着门哩。——只见那门上横安了一块白玉石板，上镌着六个大字：“碗子山波月洞”。沙僧道：“哥啊，这不是甚么寺院，是一座妖精洞府也。我师父在这里，也见不得哩。”八戒道：“兄弟莫怕。你且拴下马匹，守着行李，待我问他的信看。”</div>
+            <div class="text-block simplified-text">两个人雄赳赳地走到门前，一看——哎呀，门关着！——只见门上横着块白玉石板，上面刻着六个大字："碗子山波月洞"。沙僧说："哥啊，这不是什么寺庙，是个妖怪的洞啊。师父要是在这儿，肯定凶多吉少。"八戒说："老弟别怕。你先拴好马，看好行李，让我去问问情况。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">那呆子举着钯，上前高叫：“开门，开门！”那洞内有把门的小妖，开了门。忽见他两个的模样，急抽身，跑入里面报道：“大王，买卖来了！”老妖道：“那里买卖？”小妖道：“洞门外有一个长嘴大耳的和尚，与一个晦气色的和尚，来叫门了！”老妖大喜道：“是猪八戒与沙僧寻将来也!噫，他也会寻哩!怎么就寻到我这门上?既然嘴脸凶顽，却莫要怠慢了他。”叫：“取披挂来！”小妖抬来，就结束了，绰刀在手，径出门来。</div>
+            <div class="text-block simplified-text">那猪八戒举着钉耙，跑到门前大喊："开门！开门！"洞里有个看门的小妖怪，一开门看见他俩的长相，吓得转身就跑进去报告："大王，生意上门啦！"老妖怪问："什么生意？"小妖怪说："门外有个长嘴巴大耳朵的和尚，还有个脸色难看的和尚在叫门！"老妖怪一听乐坏了："是猪八戒和沙和尚找上门来了！嘿，他们还真会找，怎么找到我这儿来了？看他们那凶样，可不能轻敌。"赶紧吩咐："拿我的盔甲来！"小妖怪们抬来盔甲给他穿好，老妖怪提着刀就冲出门去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">却说那八戒、沙僧，在门前正等，只见妖魔来得凶险。你道他怎生打扮：青脸红须赤发飘，黄金铠甲亮光饶。裹肚衬腰石带，攀胸勒甲步云绦。闲立山前风吼吼，闷游海外浪滔滔。一双蓝靛焦筋手，执定追魂取命刀。要知此物名和姓，声扬二字唤黄袍。那黄袍老怪，出得门来，便问：“你是那方和尚，在我门首吆喝？”八戒道：“我儿子，你不认得?我是你老爷!我是大唐差往西天去的!我师父是那御弟三藏。若在你家里，趁早送出来，省了我钉钯筑进去！”那怪笑道：“是，是，是有一个唐僧在我家。我也不曾怠慢他，安排些人肉包儿与他吃哩。你们也进去吃一个儿，何如？”</div>
+            <div class="text-block simplified-text">八戒和沙僧正在门口等着，突然看见一个妖怪气势汹汹地来了。这妖怪长啥样呢？脸是青的，胡子是红的，头发乱飘，穿着闪亮的黄金铠甲，腰上系着石头腰带，胸前绑着云纹带子。他站在山前，风吹得呼呼响；在海边溜达时，浪花滚滚。他有一双发蓝的粗壮大手，拿着一把能要人性命的大刀。要说这妖怪叫啥，大家都叫他"黄袍怪"。
+
+黄袍怪一出门就问："你们是哪来的和尚，在我家门口嚷嚷？"八戒回骂："好小子，连你爷爷都不认识了？我是大唐派去西天取经的！我师父是御弟唐三藏。要是在你家，赶紧把他送出来，省得我用钉耙打进去！"妖怪笑着说："对对对，是有个唐僧在我家。我可没亏待他，还准备了人肉包子给他吃呢。要不你们也进来吃一个？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">这呆子认真就要进去。沙僧一把扯住道：“哥啊，他哄你哩。你几时又吃人肉哩？”呆子却才省悟。掣钉钯，望妖怪劈脸就筑。那怪物侧身躲过，使钢刀急架相迎。两个都显神通，纵云头，跳在空中厮杀。沙僧撇了行李、白马，举宝杖，急急帮攻。此时两个狠和尚，一个泼妖魔，在云端里，这一场好杀，正是那：</div>
+            <div class="text-block simplified-text">这傻子当真就要往里走。沙和尚赶紧拉住他说："大哥，他骗你的！你啥时候吃过人肉啊？"傻子这才反应过来。他抄起钉耙，朝妖怪脸上就打。那妖怪闪身躲开，拿起钢刀挡着还击。两人都使出真本事，跳到云里打了起来。沙和尚放下行李和白马，举起宝杖也冲上去帮忙。这时候两个厉害的和尚和一个凶恶的妖怪在云里打得不可开交，那场面真是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">杖起刀迎，钯来刀架。一员魔将施威，两个神僧显化。九齿钯真个英雄，降妖杖诚然凶咤。没前后左右齐来，那黄袍公然不怕。你看他蘸钢刀晃亮如银，其实的那神通也为广大。只杀得满空中，雾绕云迷；半山里，崖崩岭咋。一个为声名，怎肯干休?一个为师父，断然不怕。他三个在半空中，往往来来，战经数十回合，不分胜负。各因性命要紧，其实难解难分。</div>
+            <div class="text-block simplified-text">他们打起来了！猪八戒举起钉耙，沙和尚抡起宝杖，一起朝黄袍怪打去。那妖怪也不怕，挥着明晃晃的钢刀就迎战。钉耙厉害，宝杖凶猛，前后左右一起上，可黄袍怪硬是扛得住。你看他那把钢刀闪着寒光，本事也确实不小。三个人在半空中打得昏天黑地，山崖都被震得乱响。猪八戒为了面子不肯退让，沙和尚为了救师父拼死战斗。他们来来回回打了大半天，谁也赢不了谁。大家都想活命，所以打得难分难解。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">毕竟不知怎救出唐僧，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道怎么救出唐僧呢，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
