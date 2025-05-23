@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百四回 陨大星汉丞相归天　见木像魏都督丧胆</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./103.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百四回 陨大星汉丞相归天　见木像魏都督丧胆</h1>
+        <a href="./105.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说姜维见魏延踏灭了灯，心中忿怒，拔剑欲杀之。孔明止之曰：“此吾命当绝，非文长之过也。”维乃收剑。孔明吐血数口，卧倒床上，谓魏延曰：“此是司马懿料吾有病，故令人来探视虚实。汝可急出迎敌。”魏延领命，出帐上马，引兵杀出寨来。夏侯霸见了魏延，慌忙引军退走。延追赶二十余里方回。孔明令魏延自回本寨把守。</div>
+            <div class="text-block simplified-text">姜维看到魏延把灯踩灭了，气得拔剑要杀他。诸葛亮拦住说："这是我命该如此，不怪魏延。"姜维这才把剑收起来。诸葛亮吐了几口血，躺在床上对魏延说："司马懿猜到我有病，派人来打探情况。你赶紧出去迎战。"魏延领命，骑马带兵冲出营寨。夏侯霸看见魏延，吓得赶紧带兵撤退。魏延追了二十多里才回来。诸葛亮让魏延回自己营寨防守。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">姜维入帐，直至孔明榻前问安。孔明曰：“吾本欲竭忠尽力，恢复中原，重兴汉室；奈天意如此，吾旦夕将死。吾平生所学，已著书二十四篇，计十万四千一百一十二字，内有八务、七戒、六恐、五惧之法。吾遍观诸将，无人可授，独汝可传我书。切勿轻忽！”维哭拜而受。孔明又曰：“吾有‘连弩’之法，不曾用得。其法矢长八寸，一弩可发十矢，皆画成图本。汝可依法造用。”维亦拜受。孔明又曰：“蜀中诸道，皆不必多忧；惟阴平之地，切须仔细。此地虽险峻，久必有失。”又唤马岱入帐，附耳低言，授以密计；嘱曰：“我死之后，汝可依计行之。”岱领计而出。少顷，杨仪入。孔明唤至榻前，授与一锦囊，密嘱曰：“我死，魏延必反；待其反时，汝与临阵，方开此囊。那时自有斩魏延之人也。”孔明一一调度已毕，便昏然而倒，至晚方苏，便连夜表奏后主。后主闻奏大惊，急命尚书李福，星夜至军中问安，兼询后事。李福领命，趱程赴五丈原，入见孔明，传后主之命，问安毕。孔明流涕曰：“吾不幸中道丧亡，虚废国家大事，得罪于天下。我死后，公等宜竭忠辅主。国家旧制，不可改易；吾所用之人，亦不可轻废。吾兵法皆授与姜维，他自能继吾之志，为国家出力。吾命已在旦夕，当即有遗表上奏天子也。”李福领了言语，匆匆辞去。孔明强支病体，令左右扶上小车，出寨遍观各营；自觉秋风吹面，彻骨生寒，乃长叹曰：“再不能临阵讨贼矣！悠悠苍天，曷此其极！”叹息良久。回到帐中，病转沉重，乃唤杨仪分付曰：“王平、廖化、张嶷、张翼、吴懿等，皆忠义之士，久经战阵，多负勤劳，堪可委用。我死之后，凡事俱依旧法而行。缓缓退兵，不可急骤。汝深通谋略，不必多嘱。姜伯约智勇足备，可以断后。”杨仪泣拜受命。孔明令取文房四宝，于卧榻上手书遗表，以达后主。表略曰：“伏闻生死有常，难逃定数；死之将至，愿尽愚忠：臣亮赋性愚拙，遭时艰难，分符拥节，专掌钧衡，兴师北伐，未获成功；何期病入膏肓，命垂旦夕，不及终事陛下，饮恨无穷！伏愿陛下：清心寡欲，约己爱民；达孝道于先皇，布仁恩于宇下；提拔幽隐，以进贤良；屏斥奸邪，以厚风俗。臣家成都有桑八百株，薄田十五顷，子弟衣食，自有余饶。至于臣在外任，别无调度，随身衣食，悉仰于官，不别治生，以长尺寸。臣死之日，不使内有余帛，外有赢财，以负陛下也。”孔明写毕，又嘱杨仪曰：“吾死之后，不可发丧。可作一大龛，将吾尸坐于龛中；以米七粒，放吾口内；脚下用明灯一盏；军中安静如常，切勿举哀：则将星不坠。吾阴魂更自起镇之。司马懿见将星不坠，必然惊疑。吾军可令后寨先行，然后一营一营缓缓而退。若司马懿来追，汝可布成阵势，回旗返鼓。等他来到，却将我先时所雕木像，安于车上，推出军前，令大小将士，分列左右。懿见之必惊走矣。”杨仪一一领诺。</div>
+            <div class="text-block simplified-text">姜维走进帐篷，直接到诸葛亮床前问候。诸葛亮说："我本来想拼尽全力，收复中原，复兴汉朝。但老天爷不答应，我马上就要死了。我这辈子学的东西，已经写成二十四本书，总共十万四千一百一十二个字，里面有八种任务、七条戒律、六种担心和五种害怕的方法。我看了一圈手下的将领，只有你能继承我的学问。千万别不当回事！"姜维哭着跪下接受了。
+
+诸葛亮又说："我有个'连弩'的发明，一直没用上。这种箭八寸长，一把弩能连发十支箭，我都画好图纸了。你照着做就行。"姜维又跪下接过。
+
+诸葛亮接着说："蜀国各个关口都不用太担心，唯独阴平那个地方一定要小心。虽然地势险要，但时间长了肯定会出问题。"又叫马岱进来，凑到他耳边悄悄说了个计策，交代道："我死后，你就按这个计策行事。"马岱听完就出去了。
+
+过了一会儿，杨仪进来。诸葛亮把他叫到床边，给他一个锦囊，小声说："我死后，魏延肯定会造反。等他造反时，你上阵前再打开这个袋子，到时候自然有人会杀魏延。"
+
+诸葛亮安排完这些事，就昏过去了，到晚上才醒，连夜给皇帝写了奏折。皇帝看了大惊，立刻派尚书李福连夜赶去军营问候，顺便询问后事。李福赶到五丈原见到诸葛亮，转达了皇帝的问候。诸葛亮流泪说："我半路就要死了，耽误了国家大事，对不起天下人。我死后，你们要好好辅佐皇上。国家的规矩不要随便改，我用的人也不要轻易撤换。我的兵法都传给姜维了，他能继承我的志向，为国效力。我马上就不行了，这就写遗书给皇上。"李福听完赶紧回去了。
+
+诸葛亮勉强撑起身子，让人扶着坐上小车，到各军营转了一圈。秋风吹在脸上，他觉得浑身发冷，长叹道："再也不能上阵杀敌了！老天爷啊，为什么这么对我！"叹气很久才回帐篷，病情更重了。
+
+他把杨仪叫来交代："王平、廖化、张嶷、张翼、吴懿这些人都是忠臣，打仗经验丰富，可以重用。我死后，一切按老规矩办。撤军要慢慢来，别着急。你很有谋略，我就不多说了。姜维有勇有谋，可以断后。"杨仪哭着答应了。
+
+诸葛亮让人拿来纸笔，在床上写了遗书给皇帝。大致意思是："我知道生死有命，快死了想说几句真心话：我诸葛亮能力有限，赶上艰难时世，带兵北伐没成功。没想到病得这么重，来不及继续为陛下效力，实在遗憾！希望陛下能清心寡欲，爱护百姓；孝敬先皇，善待天下；提拔人才，远离小人。我家在成都有八百棵桑树、十五顷薄田，够家里人过日子了。我在外当官，吃穿都是公家的，没置办私产。我死的时候，家里不会有多余的财物，不会对不起陛下。"
+
+写完又嘱咐杨仪："我死后先别发丧。做个大棺材，让我坐在里面；在我嘴里放七粒米；脚边点一盏灯；军营保持安静别哭丧，这样我的将星就不会掉下来。司马懿看到将星不落，肯定起疑。我们先悄悄撤后营，然后一营一营慢慢退。要是司马懿追来，你就摆好阵势，把之前刻的我的木头像放在车上推出去，让士兵们列队站在两边。司马懿看见肯定吓跑。"杨仪全都记下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">是夜，孔明令人扶出，仰观北斗，遥指一星曰：“此吾之将星也。”众视之，见其色昏暗，摇摇欲坠。孔明以剑指之，口中念咒。咒毕急回帐时，不省人事。众将正慌乱间，忽尚书李福又至；见孔明昏绝，口不能言，乃大哭曰：“我误国家之大事也！”须臾，孔明复醒，开目遍视，见李福立于榻前。孔明曰：“吾已知公复来之意。福谢曰：“福奉天子命，问丞相百年后，谁可任大事者。适因匆遽，失于谘请，故复来耳。”孔明曰：“吾死之后，可任大事者：蒋公琰其宜也。”福曰：“公琰之后，谁可继之？”孔明曰：“费文伟可继之。”福又问：“文伟之后，谁当继者？”孔明不答。众将近前视之，已薨矣。时建兴十二年秋八月二十三日也，寿五十四岁。后杜工部有诗叹曰：“长星昨夜坠前营，讣报先生此日倾。虎帐不闻施号令，麟台惟显著勋名。空余门下三千客，辜负胸中十万兵。好看绿阴清昼里，于今无复雅歌声！”白乐天亦有诗曰：“先生晦迹卧山林，三顾那逢圣主寻。鱼到南阳方得水，龙飞天汉便为霖。托孤既尽殷勤礼，报国还倾忠义心。前后出师遗表在，令人一览泪沾襟。”初，蜀长水校尉廖立，自谓才名宜为孔明之副，尝以职位闲散，怏怏不平，怨谤无已。于是孔明废之为庶人，徒之汶山。及闻孔明亡，乃垂泣曰：“吾终为左衽矣！”李严闻之，亦大哭病死，盖严尝望孔明复收己，得自补前过；度孔明死后，人不能用之故也。后元微之有赞孔明诗曰：“拨乱扶危主，殷勤受托孤。英才过管乐，妙策胜孙吴。凛凛《出师表》，堂堂八阵图。如公全盛德，应叹古今无！”</div>
+            <div class="text-block simplified-text">那天晚上，诸葛亮让人扶他出去，抬头看北斗星，指着其中一颗说："这颗是我的将星。"大家一看，那颗星光很暗，好像快掉下来了。诸葛亮用剑指着星星，嘴里念咒语。念完赶紧回帐篷，结果昏过去了。将领们正乱作一团时，尚书李福又来了，看到诸葛亮昏迷不能说话，大哭说："我把国家大事耽误了！"过了一会儿，诸葛亮醒过来，看见李福站在床前，就说："我知道你为什么再来。"李福说："皇上让我来问，丞相百年之后谁能接替您？刚才太匆忙忘了问，所以又回来了。"诸葛亮说："我死后，蒋琬可以接班。"李福问："蒋琬之后呢？"诸葛亮说："费祎可以接替。"李福又问："费祎之后呢？"诸葛亮没回答。大家上前一看，他已经去世了。这是建兴十二年八月二十三日，享年54岁。
+
+后来杜甫写诗感叹："昨晚将星坠落，今天传来死讯。军营里再也听不到他的命令，只留下他的功绩。那么多门客都白收了，满肚子兵法也没用上。现在再也看不到他在树荫下悠闲吟诗了。"白居易也写诗说："诸葛亮本来隐居山林，刘备三顾茅庐请他出山。就像鱼得了水，龙上了天。他尽心尽力辅佐幼主，忠心报国。留下的《出师表》，让人看了就掉眼泪。"
+
+之前有个叫廖立的官员，觉得自己很有才能应该当诸葛亮的副手，因为没被重用一直抱怨。结果被诸葛亮撤职流放。听说诸葛亮死了，他哭着说："我这辈子只能当老百姓了！"还有个叫李严的，听说后大哭病死了，因为他本来指望诸葛亮能重新用他，让他将功补过，现在知道没人会用他了。
+
+后来元稹写诗称赞诸葛亮："辅佐危难中的君主，尽心尽力照顾孤儿。才能超过管仲乐毅，计谋胜过孙子吴起。留下感人的《出师表》，创出厉害的八阵图。像他这样德才兼备的人，古今都找不出第二个！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">是夜，天愁地惨，月色无光，孔明奄然归天。姜维、杨仪遵孔明遗命，不敢举哀，依法成殓，安置龛中，令心腹将卒三百人守护；随传密令，使魏延断后，各处营寨一一退去。</div>
+            <div class="text-block simplified-text">那天晚上，天色阴沉，月亮也暗得很，诸葛亮去世了。姜维和杨仪按照诸葛亮生前的安排，不敢公开办丧事，悄悄给他穿好寿衣装进棺材，派了三百个亲信士兵守着。然后秘密下令，让魏延在后面掩护，各处的军营都悄悄撤退了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说司马懿夜观天文，见一大星，赤色，光芒有角，自东北方流于西南方，坠于蜀营内，三投再起，隐隐有声。懿惊喜曰：“孔明死矣！”即传令起大兵追之。方出寨门，忽又疑虑曰：“孔明善会六丁六甲之法，今见我久不出战，故以此术诈死，诱我出耳。今若追之，必中其计。”遂复勒马回寨不出，只令夏侯霸暗引数十骑，往五丈原山僻哨探消息。</div>
+            <div class="text-block simplified-text">那天晚上，司马懿抬头看天象，看见一颗又红又亮、带着尖角的大星星，从东北往西南方向飞，最后掉进蜀军的营地里。那星星弹起来又掉下去，来回三次，还隐隐约约发出响声。司马懿高兴坏了，大喊："诸葛亮死了！"立刻下令派大军去追。  
+
+可刚出军营大门，他又犯嘀咕了："诸葛亮最会装神弄鬼，肯定是看我一直不出战，故意装死骗我出去。现在要是追上去，肯定中计。"于是他又调转马头回营，只派夏侯霸偷偷带几十个骑兵，去五丈原打探消息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">却说魏延在本寨中，夜作一梦，梦见头上忽生二角，醒来甚是疑异。次日，行军司马赵直至，延请入问曰：“久知足下深明《易》理，吾夜梦头生二角，不知主何吉凶？烦足下为我决之。”赵直想了半晌，答曰：“此大吉之兆：麒麟头上有角，苍龙头上有角，乃变化飞腾之象也。”延大喜曰：“如应公言，当有重谢！”直辞去，行不数里，正遇尚书费祎。祎问何来。直曰：“适至魏文长营中，文长梦头生角，令我决其吉凶。此本非吉兆，但恐直言见怪，因以麒麟苍龙解之。”祎曰：“足下何以知非吉兆？”直曰：“角之字形，乃刀下用也。今头上用刀，其凶甚矣！”祎曰：“君且勿泄漏。”直别去。费祎至魏延寨中，屏退左右，告曰：“昨夜三更，丞相已辞世矣。临终再三嘱付，令将军断后以当司马懿，缓缓而退，不可发丧。今兵符在此，便可起兵。”延曰：“何人代理丞相之大事？”祎曰：“丞相一应大事，尽托与杨仪；用兵密法，皆授与姜伯约。此兵符乃杨仪之令也。”延曰：“丞相虽亡，吾今现在。杨仪不过一长史，安能当此大任？他只宜扶柩入川安葬。我自率大兵攻司马懿，务要成功。岂可因丞相一人而废国家大事耶？”祎曰：“丞相遗令，教且暂退，不可有违。”延怒曰：“丞相当时若依我计，取长安久矣！吾今官任前将军、征西大将军、南郑侯，安肯与长史断后！“祎曰：“将军之言虽是，然不可轻动，令敌人耻笑。待吾往见杨仪，以利害说之，令彼将兵权让与将军，何如？”延依其言。</div>
+            <div class="text-block simplified-text">魏延在军营里晚上做了个梦，梦见自己头上突然长出两只角，醒来后觉得特别奇怪。第二天，军师赵直来了，魏延请他进来问："早就听说你懂算命，我昨晚梦见头上长角，不知道是吉是凶？麻烦你给我解解梦。"赵直想了一会儿说："这是大吉兆啊！麒麟和龙头上都有角，这是要飞黄腾达的征兆。"魏延高兴地说："要是真像你说的这样，我一定重谢你！"
+
+赵直离开后，没走多远碰到了尚书费祎。费祎问他从哪儿来，赵直说："刚去了魏延那儿，他梦见头上长角让我解梦。其实这不是好兆头，但怕直说会得罪他，就用麒麟、龙这些好话来应付。"费祎问："你怎么知道不是好兆头？"赵直解释："'角'这个字拆开看就是'刀'在'用'上面，头上动刀多不吉利啊！"费祎叮嘱："这事先别往外说。"
+
+费祎随后到魏延军营，让其他人退下后说："昨天半夜丞相（诸葛亮）去世了。临死前特别交代，让你负责断后抵挡司马懿，慢慢撤退，先不要发丧。这是调兵的印信，可以开始行动了。"魏延问："那现在谁接替丞相管事？"费祎说："丞相把所有大事都交给杨仪处理，打仗的事交给姜维。这个兵符就是杨仪让送来的。"
+
+魏延不服气："丞相虽然不在了，还有我呢！杨仪就是个文书官，哪能担此重任？他应该去护送灵柩回四川。我要带兵去打司马懿，怎么能因为丞相去世就耽误国家大事？"费祎劝他："这是丞相的遗命，让我们先撤退，不能违抗。"魏延生气地说："当初要是听我的，早就拿下长安了！我现在是前将军、征西大将军、南郑侯，凭什么给一个文书官打掩护？"费祎又劝："将军说得有道理，但不能轻举妄动让敌人看笑话。要不我去找杨仪谈谈，让他把兵权交给你？"魏延这才同意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">祎辞延出营，急到大寨见杨仪，具述魏延之语。仪曰：“丞相临终，曾密嘱我曰：魏延必有异志。今我以兵符往，实欲探其心耳。今果应丞相之言。吾自令伯约断后可也。”于是杨仪领兵扶柩先行，令姜维断后；依孔明遗令，徐徐而退。魏延在寨中，不见费祎来回覆，心中疑惑，乃令马岱引十数骑往探消息。回报曰：“后军乃姜维总督，前军大半退入谷中去了。”延大怒曰：“竖儒安敢欺我！我必杀之！”因顾谓岱曰：“公肯相助否？”岱曰：“某亦素恨杨仪，今愿助将军攻之。”延大喜，即拔寨引本部兵望南而行。</div>
+            <div class="text-block simplified-text">费祎从魏延那儿出来，赶紧跑回大营见杨仪，把魏延说的话都告诉了他。杨仪说："丞相临死前偷偷跟我说过，魏延肯定有反叛的心思。现在我拿兵符去试探，就是想看看他的真实想法。果然跟丞相说的一样。我这就让姜维在后面掩护撤退。"于是杨仪带着部队护送棺材先走，让姜维在后面压阵；按照诸葛亮的遗嘱，慢慢撤退。
+
+魏延在营里等不到费祎回来报告，觉得不对劲，就让马岱带十几个骑兵去打探消息。马岱回来报告说："后面的部队是姜维在指挥，前面的大部队已经退到山谷里去了。"魏延气得大骂："这个书呆子敢耍我！我非宰了他不可！"转头问马岱："你愿意帮我吗？"马岱说："我也早就看杨仪不顺眼，愿意帮将军对付他。"魏延很高兴，立刻带着自己的部队往南边去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说夏侯霸引军至五丈原看时，不见一人，急回报司马懿曰：“蜀兵已尽退矣。”懿跌足曰：“孔明真死矣！可速追之！”夏侯霸曰：“都督不可轻追。当令偏将先往。”懿曰：“此番须吾自行。”遂引兵同二子一齐杀奔五丈原来；呐喊摇旗，杀入蜀寨时，果无一人。懿顾二子曰：“汝急催兵赶来，吾先引军前进。”于是司马师、司马昭在后催军；懿自引军当先，追到山脚下，望见蜀兵不远，乃奋力追赶。忽然山后一声炮响，喊声大震，只见蜀兵俱回旗返鼓，树影中飘出中军大旗，上书一行大字曰：“汉丞相武乡侯诸葛亮”。懿大惊失色。定睛看时，只见中军数十员上将，拥出一辆四轮车来；车上端坐孔明：纶巾羽扇，鹤氅皂绦。懿大惊曰：“孔明尚在！吾轻入重地，堕其计矣！”急勒回马便走。背后姜维大叫：“贼将休走！你中了我丞相之计也！”魏兵魂飞魄散，弃甲丢盔，抛戈撇戟，各逃性命，自相践踏，死者无数。司马懿奔走了五十余里，背后两员魏将赶上，扯住马嚼环叫曰：“都督勿惊。”懿用手摸头曰：“我有头否？”二将曰：“都督休怕，蜀兵去远了。”懿喘息半晌，神色方定；睁目视之，乃夏侯霸、夏侯惠也；乃徐徐按辔，与二将寻小路奔归本寨，使众将引兵四散哨探。</div>
+            <div class="text-block simplified-text">夏侯霸带兵到五丈原查看，发现一个人都没有，赶紧回去报告司马懿："蜀军已经全撤了！"司马懿急得跺脚："诸葛亮真的死了！快追！"夏侯霸劝他："将军别急着追，先派副将去打探吧。"司马懿却说："这次我得亲自去。"于是带着两个儿子和部队杀向五丈原。他们冲进蜀军营地，果然空无一人。
+
+司马懿对两个儿子说："你们带兵跟上，我先往前追。"司马师和司马昭在后面压阵，司马懿带头追到山脚下，看见蜀军就在前面不远，拼命追赶。突然山后"轰"的一声炮响，杀声震天，蜀军突然调转方向杀回来，树林中飘出中军大旗，上面写着"汉丞相武乡侯诸葛亮"。司马懿吓得脸都白了。仔细一看，几十名大将护着一辆四轮车出来，车上坐的正是诸葛亮，还是那身打扮。司马懿惊呼："诸葛亮还活着！我中计了！"赶紧调头就跑。
+
+后面姜维大喊："别跑！你中了我家丞相的计了！"魏军吓得魂都没了，扔了武器盔甲各自逃命，互相踩踏，死伤无数。司马懿一口气跑了五十多里，两个魏将追上拉住他的马："将军别怕。"司马懿摸着自己的头问："我的头还在吗？"两人说："将军放心，蜀军早追不上了。"司马懿喘了半天才缓过神，看清是夏侯霸和夏侯惠。这才慢慢骑马，跟着他们找小路逃回大营，派兵四处打探消息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">过了两日，乡民奔告曰：“蜀兵退入谷中之时，哀声震地，军中扬起白旗：孔明果然死了，止留姜维引一千兵断后。前日车上之孔明，乃木人也。”懿叹曰：“吾能料其生，不能料其死也！”因此蜀中人谚曰：“死诸葛能走生仲达。”后人有诗叹曰：“长星半夜落天枢，奔走还疑亮未殂。关外至今人冷笑，头颅犹问有和无！”司马懿知孔明死信已确，乃复引兵追赶。行到赤岸坡，见蜀兵已去远，乃引还，顾谓众将曰：“孔明已死，我等皆高枕无忧矣！”遂班师回。一路上见孔明安营下寨之处，前后左右，整整有法，懿叹曰：“此天下奇才也！”于是引兵回长安，分调众将，各守隘口，懿自回洛阳面君去了。</div>
+            <div class="text-block simplified-text">过了两天，有老百姓跑来报告说："蜀军撤退进山谷的时候，哭声震天，军队里还竖起了白旗。诸葛亮真的死了，只留下姜维带着一千人断后。前几天车上的诸葛亮，原来是个木头人。"司马懿叹气说："我能猜到他活着时候的事，却猜不到他死了以后的事！"所以蜀地流传一句话："死了的诸葛亮还能吓跑活着的司马懿。"后来有人写诗感叹："半夜看见星星掉下来，跑去看还以为诸葛亮没死。到现在关外的人还在笑话，问司马懿的脑袋还在不在！"
+
+司马懿确认诸葛亮真的死了，又带兵去追。追到赤岸坡，发现蜀军已经走远了，就撤兵回去。他对将领们说："诸葛亮死了，咱们终于可以睡安稳觉了！"于是带兵返回。路上看到诸葛亮扎营的地方，安排得井井有条，司马懿感叹："这真是天下少有的能人啊！"然后他就带兵回长安，安排将领们把守各个关口，自己回洛阳向皇帝汇报去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说杨仪、姜维排成阵势，缓缓退入栈阁道口，然后更衣发丧，扬幡举哀。蜀军皆撞跌而哭，至有哭死者。蜀兵前队正回到栈阁道口，忽见前面火光冲天，喊声震地，一彪军拦路。众将大惊，急报杨仪。正是：已见魏营诸将去，不知蜀地甚兵来。未知来者是何处军马，且看下文分解。</div>
+            <div class="text-block simplified-text">话说杨仪和姜维带着军队摆好阵型，慢慢退到栈道口。等安顿好了，他们才换衣服办丧事，挂起白幡开始哭丧。蜀军士兵们一个个捶胸顿足地哭，有的甚至哭昏过去。正当先头部队退到栈道口时，突然看见前面火光冲天，喊杀声震天响，一支队伍挡住了去路。将领们都吓坏了，赶紧报告杨仪。这可真是：刚甩掉魏国的追兵，哪知道又从蜀地冒出队伍来。要问来的是哪路人马，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
