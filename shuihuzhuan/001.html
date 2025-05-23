@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第一回　张天师祈禳瘟疫　洪太尉误走妖魔</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./000.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第一回　张天师祈禳瘟疫　洪太尉误走妖魔</h1>
+        <a href="./002.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">绛帻鸡人报晓筹，尚衣方进翠云裘。</div>
+            <div class="text-block simplified-text">天还没大亮，戴红头巾的报时官就敲着更筹喊天亮了。这时候，专门管衣服的官员刚好给皇帝送上了那件绣着绿色云纹的皮大衣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">九天阊阖开宫殿，万国衣冠拜冕旒。</div>
+            <div class="text-block simplified-text">皇宫的大门一扇扇打开，各国的使臣都来朝拜皇帝。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">日色才临仙掌动，香烟欲傍衮龙浮。</div>
+            <div class="text-block simplified-text">太阳刚出来，皇宫里的仪仗就开始动了；香炉的烟飘着，好像要绕着皇帝龙袍上的龙图案打转。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">朝罢须裁五色诏，佩声归到凤池头。</div>
+            <div class="text-block simplified-text">退朝后要赶着写皇帝的命令文书，衣服上的玉佩叮当响着回到了中书省。  
+
+（说明：  
+1. "朝罢"译为"退朝后"，直白易懂  
+2. "五色诏"用"皇帝的命令文书"解释古代专用名词  
+3. "佩声"转化为现代人容易理解的"玉佩叮当响"  
+4. "凤池头"译为唐代人熟知的中书省，并保留"回到"的动作  
+5. 完整保留"退朝-写诏书-返回"的事件链条  
+6. 添加"赶着"体现原文隐含的紧迫感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说大宋仁宗天子在位，嘉祐三年三月三日五更三点，天子驾坐紫宸殿，受百官朝贺。但见：</div>
+            <div class="text-block simplified-text">话说宋朝仁宗皇帝在位的时候，嘉祐三年三月初三这天早上五更三点（大约凌晨3点48分），皇帝坐在紫宸殿上，接受文武百官的朝拜。当时的情景是这样的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">祥云迷凤阁，瑞气罩龙楼。含烟御柳拂旌旗，带露宫花迎剑戟。天香影里，玉簪珠履聚丹墀；仙乐声中，绣袄锦衣扶御驾。珍珠帘卷，黄金殿上现金舆；凤尾扇开，白玉阶前停宝辇。隐隐净鞭三下响，层层文武两班齐。</div>
+            <div class="text-block simplified-text">皇宫笼罩在祥云瑞气中。烟雾里的柳枝轻拂着仪仗旗，沾着露水的宫花迎着刀枪剑戟。殿前广场上，香气缭绕，官员们穿着华服整齐列队；仙乐声中，锦衣侍卫簇拥着皇帝到来。珍珠帘子卷起，金殿上现出御驾；凤尾扇展开，白玉台阶前停着龙辇。随着三声清脆的净鞭响，文武百官分列两旁，整齐肃立。
+
+（说明：译文完全保留原文描写的皇宫早朝场景，将"凤阁龙楼"译为"皇宫"，"丹墀"译为"殿前广场"，"玉簪珠履"译为"穿着华服"，用"龙辇"替代"宝辇"更易懂。所有意象都转化为现代人熟悉的表达，如"净鞭三下响"译为"三声清脆的净鞭响"，既保留仪式感又通俗明白。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">当有殿头官喝道：“有事出班早奏，无事卷帘退朝。”只见班部丛中，宰相赵哲、参政文彦博出班奏曰：“目今京师瘟疫盛行，民不聊生，伤损军民多矣。伏望陛下释罪宽恩，省刑薄税，以禳天灾，救济万民。”天子听奏，急敕翰林院随即草诏：一面降赦天下罪囚，应有民间税赋悉皆赦免；一面命在京宫观寺院，修设好事禳灾。不料其年瘟疫转盛。仁宗天子闻知，龙体不安。复会百官，众皆计议。向那班部中，有一大臣越班启奏。天子看时，乃是参知政事范仲淹。拜罢起居，奏曰：“目今天灾盛行，军民涂炭，日夕不能聊生，人遭缧绁之厄。以臣愚意，要禳此灾，可宣嗣汉天师星夜临朝，就京师禁院修设三千六百分罗天大醮，奏闻上帝，可以禳保民间瘟疫。”仁宗天子准奏。急令翰林学士草诏一道，天子御笔亲书，并降御香一炷，钦差内外提点殿前太尉洪信为天使，前往江西信州龙虎山，宣请嗣汉天师张真人星夜临朝，祈禳瘟疫。就金殿上焚起御香，亲将丹诏付与洪太尉为使，即便登程前去。</div>
+            <div class="text-block simplified-text">朝廷上，值班官员喊道："有事的赶紧出来报告，没事的就退朝了。"这时，宰相赵哲和副宰相文彦博站出来说："现在京城闹瘟疫，老百姓活不下去，死了很多士兵和百姓。请皇上开恩，少判刑、减税收，消灾救人。"皇帝听了，马上让翰林院写圣旨：一是赦免全国犯人，免除百姓欠的税；二是让京城的寺庙道观办法事消灾。没想到那年瘟疫更严重了。仁宗皇帝听说后急得生病，又召集百官商量。这时副宰相范仲淹站出来说："现在灾情严重，军民遭殃。依我看，要消灾得赶紧请龙虎山的张天师来京城，办一场三千六百分的大法事，求老天爷保佑。"皇帝同意了，立刻让人写圣旨，亲自盖章，还拿出一炷御香，派洪太尉马上去江西龙虎山请张天师。洪太尉接过圣旨和御香，立刻出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">洪信领了圣敕，辞别天子，不敢久停。从人背了诏书，金盒子盛了御香，带了数十人，上了铺马，一行部从，离了东京，取路径投信州贵溪县来。于路上但见：</div>
+            <div class="text-block simplified-text">洪信接到皇帝的命令，告别皇上，不敢耽搁。随从背着诏书，用金盒子装着御赐的香，带着几十个人，骑着驿站的马，一行人离开东京，直奔信州贵溪县。路上看到：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">遥山叠翠，远水澄清。奇花绽锦绣铺林，嫩柳舞金丝拂地。风和日暖，时过野店山村；路直沙平，夜宿邮亭驿馆。罗衣荡漾红尘内，骏马驱驰紫陌中。</div>
+            <div class="text-block simplified-text">远处的山层层叠叠，绿意浓浓；远方的河水清澈透明。奇异的花朵盛开，像锦绣一样铺满树林；嫩绿的柳枝随风摇摆，像金丝一样轻拂地面。天气暖和，微风轻吹，一路经过乡野山村；道路又直又平，晚上住在驿站旅馆里。穿着轻薄的衣衫在尘土飞扬的路上行走，骑着骏马在大道上飞奔。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">且说太尉洪信赍擎御书丹诏，一行人从上了路途，夜宿邮亭，朝行驿站，远程近接，渴饮饥餐，不止一日，来到江西信州。大小官员出郭迎接，随即差人报知龙虎山上清宫住持道众，准备接诏。次日，众位官同送太尉到于龙虎山下。只见上清宫许多道众，鸣钟击鼓，香花灯烛，幢幡宝盖，一派仙乐，都下山来迎接丹诏，直至上清宫前下马。太尉看那宫殿时，端的是好座上清宫。但见：</div>
+            <div class="text-block simplified-text">话说洪太尉带着皇帝的诏书，和一帮人一起上路。他们晚上住客栈，白天赶路，饿了就吃，渴了就喝。走了好些天，终于到了江西信州。当地的大小官员都出城迎接，还派人通知龙虎山上清宫的道士们准备接圣旨。第二天，官员们一起送洪太尉到龙虎山。只见上清宫的道士们敲钟打鼓，拿着香烛、花灯、旗子、华盖，奏着仙乐，下山来迎接圣旨，一直把洪太尉迎到上清宫门前下马。洪太尉一看这宫殿，真是气派极了。你看那上清宫：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">青松屈曲，翠柏阴森。门悬敕额金书，户列灵符玉篆。虚皇坛畔，依稀垂柳名花；炼药炉边，掩映苍松老桧。左壁厢天丁力士，参随着太乙真君；右势下玉女金童，簇捧定紫微大帝。披发仗剑，北方真武踏龟蛇；靸履顶冠，南极老人伏龙虎。前排二十八宿星君，后列三十二帝天子。阶砌下流水潺湲，墙院后好山环绕。鹤生丹顶，龟长绿毛。树梢头献果苍猿，莎草内衔芝白鹿。三清殿上鸣金钟，道士步虚；四圣堂前敲玉磬，真人礼斗。献香台砌，彩霞光射碧琉璃；召将瑶坛，赤日影摇红玛瑙。早来门外祥云现，疑是天师送老君。</div>
+            <div class="text-block simplified-text">这座道观环境清幽，松树柏树长得茂密。大门上挂着皇帝亲笔题写的金字匾额，门上贴着神仙用的符咒。道观里的空地上，隐约能看到垂柳和名贵花草；炼丹炉旁边，有苍松古树遮阴。左边墙上画着天兵天将，跟着太乙真君；右边画着仙童玉女，围着紫微大帝。还有披头散发、手持宝剑的真武大帝踩在龟蛇上；穿拖鞋戴帽子的寿星老头骑着龙虎。前面供着二十八星宿，后面供着三十二位天帝。台阶下有流水声，后院被青山环绕。这里有红顶仙鹤，长绿毛的老龟。树梢上有摘果子的猴子，草丛里有叼着灵芝的白鹿。三清殿上敲着金钟，道士在诵经；四圣堂前击打玉磬，真人在祭拜。烧香的台子闪着彩光，像琉璃一样；招神的祭坛在阳光下，红得像玛瑙。早上门外出现吉祥的云彩，好像是张天师送太上老君来了。
+
+（说明：译文完全保留原文描写的道观场景和供奉的神仙形象，用"挂着""贴着""画着"等口语化表达替换文言句式，将"虚皇坛""炼药炉"等专业词汇转化为"空地""炼丹炉"等常见词，用"红顶仙鹤""摘果子的猴子"等生活化比喻替代典故性表达，确保每个细节都能被现代读者直观理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">当下上至住持真人，下及道童侍从，前迎后引，接至三清殿上，请将诏书，居中供养着。洪太尉便问监宫真人道：“天师今在何处？”住持真人向前禀道：“好教太尉得知：这代祖师号曰‘虚靖天师’，性好清高，倦于迎送，自向龙虎山顶，结一茅庵，修真养性。因此不住本宫。”太尉道：“目今天子宣诏，如何得见？”真人答道：“容禀：诏敕权供在殿上，贫道等亦不敢开读。且请太尉到方丈献茶，再烦计议。”当时将丹诏供养在三清殿上，与众官都到方丈。太尉居中坐下，执事人等献茶，就进斋供，水陆俱备。斋罢，太尉再问真人道：“既然天师在山顶庵中，何不着人请将下来相见，开宣丹诏？”真人禀道：“太尉，这代祖师虽在山顶，其实道行非常，清高自在，倦惹凡尘。能驾雾兴云，踪迹不定，未尝下山。贫道等如常亦难得见，怎生教人请得下来！”太尉道：“似此如何得见！目今京师瘟疫盛行，今上天子特遣下官为使，赍捧御书丹诏，亲奉龙香，来请天师，要做三千六百分罗天大醮，以禳天灾，救济万民。似此怎生奈何？”真人禀道：“朝廷天子要救万民，只除是太尉办一点志诚心，斋戒沐浴，更换布衣，休带从人，自背诏书，焚烧御香，步行上山礼拜，叩请天师，方许得见。如若心不志诚，空走一遭，亦难得见。”太尉听说便道：“俺从京师食素到此，如何心不志诚！既然恁地，依着你说，明日绝早上山。”当晚各自权歇。</div>
+            <div class="text-block simplified-text">现在从住持到小道童，所有人都在前后招呼着，把洪太尉接到三清殿，把皇帝的诏书放在正中间供着。洪太尉问住持："天师现在在哪儿？"住持上前回答："跟您说，这一代的天师叫'虚靖天师'，喜欢清净，不爱应酬，自己在龙虎山顶搭了个草屋修行，所以不住在道观里。"太尉问："现在皇上派人来传旨，怎么才能见到他？"住持说："您先把圣旨供在殿上，我们也不敢随便打开看。请您先到方丈室喝茶，咱们再商量。"于是他们把圣旨供在三清殿，大家都去了方丈室。太尉坐在中间，有人端茶上斋饭，荤素都有。吃完饭，太尉又问："既然天师在山顶的草屋里，为什么不派人请他下来接旨？"住持回答："太尉，这一代天师虽然住在山顶，但道行高深，喜欢清净自在，能腾云驾雾，行踪不定，从不下山。我们平时都很难见到他，更别说请下来了！"太尉说："那怎么办？现在京城闹瘟疫，皇上特地派我带着圣旨和御香来请天师，要做场大法事消灾救人。这不见人可怎么交差？"住持说："皇上要救百姓，除非太尉您诚心诚意，先吃素洗澡，换上布衣，别带随从，自己背着圣旨，拿着御香，步行上山跪拜求见，这样才有可能见到天师。要是心不诚，白跑一趟也见不着。"太尉听了说："我从京城一路吃素过来，怎么会不诚心！既然这样，就照你说的，明天一早就上山。"当晚大家各自休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">次日五更时分，众道士起来，备下香汤斋供。请太尉起来，香汤沐浴，换了一身新鲜布衣，脚下穿上麻鞋草履，吃了素斋，取过丹诏，用黄罗包袱背在脊梁上，手里提着银手炉，降降地烧着御香。许多道众人等，送到后山，指与路径。真人又禀道：“太尉要救万民，休生退悔之心，只顾志诚上去。”太尉别了众人，口诵天尊宝号，纵步上山来。将至半山，望见大顶直侵霄汉，果然好座大山。正是：</div>
+            <div class="text-block simplified-text">第二天天还没亮，道士们就起床准备了热水和素斋。他们请太尉起床，用热水洗了澡，换上一身干净的布衣服，脚上穿着草鞋，吃了素斋。太尉把圣旨用黄绸布包好背在背上，手里拿着银香炉，里面点着皇帝赐的香。很多道士送他到后山，给他指了上山的路。道长又叮嘱说："太尉要救老百姓，千万别打退堂鼓，一定要诚心诚意上山去。"太尉告别众人，嘴里念着天尊的名号，大步往山上走。走到半山腰时，抬头看见山顶高耸入云，真是座了不起的高山。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">根盘地角，顶接天心。远观磨断乱云痕，近看平吞明月魄。高低不等谓之山，侧石通道谓之岫，孤岭崎岖谓之路，上面极平谓之顶，头圆下壮谓之峦，隐虎藏豹谓之穴，隐风隐云谓之岩，高人隐居谓之洞，有境有界谓之府，樵人出没谓之径，能通车马谓之道，流水有声谓之涧，古渡源头谓之溪，岩崖滴水谓之泉。左壁为掩，右壁为映。出的是云，纳的是雾。锥尖象小，崎峻似峭，悬空似险，削磁如平。千峰竞秀，万壑争流。瀑布斜飞，藤萝倒挂。虎啸时风生谷口，猿啼时月坠山腰。恰似青黛染成千块玉，碧纱笼罩万堆烟。</div>
+            <div class="text-block simplified-text">这段文字描述了一座雄伟的高山及其周围的自然景观。下面是直白的现代白话文翻译：
+
+这座山根基庞大，山顶高耸入云。从远处看，山峰穿破云层；近处看，山体高大得仿佛能吞下月亮。高低不平的叫山，侧面有石头通道的叫山洞，单独崎岖的山岭叫山路，山顶平坦的叫峰顶，上头圆下面粗的叫山峦，能藏野兽的叫洞穴，常有云雾的叫山崖，高人隐居的叫山洞，有明确范围的叫洞府，樵夫常走的叫小路，能走车马的叫大路，有流水声的叫山涧，古渡口源头的叫溪流，山崖滴水的叫山泉。左边的山壁遮挡，右边的山壁映衬。山里冒出的是云，吸收的是雾。有的山峰尖得像锥子，有的陡得像峭壁，有的悬在半空很危险，有的像被刀削过一样平。无数山峰争相比美，无数山谷都有流水。瀑布斜着飞泻，藤萝倒挂着生长。老虎吼叫时山谷生风，猿猴啼叫时月亮挂在山腰。整座山就像用青黑色染成的美玉，又像被绿纱罩住的烟雾。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">这洪太尉独自一个，行了一回，盘坡转径，揽葛攀藤。约莫走过了数个山头，三二里多路，看看脚酸腿软，正走不动，口里不说，肚里踌躇，心中想道：“我是朝廷贵官公子，在京师时重茵而卧，列鼎而食，尚兀自倦怠；何曾穿草鞋，走这般山路！知他天师在那里，却教下官受这般苦！”又行不到三五十步，掇着肩气喘。只见山凹里起一阵风，风过处，向那松树背后奔雷也似吼一声，扑地跳出一个吊睛白额锦毛大虫来。洪太尉吃了一惊，叫声：“阿呀！”扑地望后便倒。偷眼看那大虫时，但见：</div>
+            <div class="text-block simplified-text">洪太尉一个人走啊走，爬坡绕路，抓着藤条往上爬。大概翻过了几座山，走了两三里路，累得腿脚发软，实在走不动了。他嘴上不说，心里直犯嘀咕："我可是京城里的大官，平时躺着软垫子，吃饭用金盘子，哪受过这种罪！谁听说过我穿草鞋走这种破山路？那天师到底在哪儿啊？非要让我遭这份罪！"又勉强走了几十步，累得直喘粗气，肩膀都垮了。突然山坳里刮起一阵风，风过后，松树后面轰隆一声巨响，猛地跳出一只金毛白额大老虎。洪太尉吓得大叫"哎呀！"，一屁股摔在地上。他偷偷瞄那老虎，只见——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">毛披一带黄金色，爪露银钩十八只。</div>
+            <div class="text-block simplified-text">这段文字描述的是某种动物的外貌特征。用大白话说就是：
+
+它身上的毛像披着一条金黄色的带子，闪闪发亮；爪子又尖又白，像银钩子一样，总共有十八只。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">睛如闪电尾如鞭，口似血盆牙似戟。</div>
+            <div class="text-block simplified-text">眼睛亮得像闪电，尾巴甩起来像鞭子。嘴巴大得像个血盆，牙齿尖得像长矛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">伸腰展臂势狰狞，摆尾摇头声霹雳。</div>
+            <div class="text-block simplified-text">伸开腰、张开手臂，样子很凶恶；摇着尾巴、晃着脑袋，声音像打雷一样响。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">山中狐兔尽潜藏，涧下獐狍皆敛迹。</div>
+            <div class="text-block simplified-text">山里的狐狸兔子都躲起来了，山沟里的獐子狍子也全都不见了踪影。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那大虫望着洪太尉，左盘右旋，咆哮了一回，托地望后山坡下跳了去。洪太尉倒在树根底下，唬的三十六个牙齿捉对儿厮打，那心头一似十五个吊桶，七上八落的响，浑身却如重风麻木，两腿一似斗败公鸡，口里连声叫苦。大虫去了一盏茶时，方才爬将起来，再收拾地上香炉，还把龙香烧着，再上山来，务要寻见天师。又行过三五十步，口里叹了数口气，怨道：皇帝御限，差俺来这里，教我受这场惊恐。”说犹未了，只觉得那里又一阵风，吹得毒气直冲将来。太尉定睛看时，山边竹藤里簌簌地响，抢出一条吊桶大小、雪花也似蛇来。太尉见了，又吃一惊，撇了手炉，叫一声：“我今番死也！”望后便倒在盘砣石边。微闪开眼来看那蛇时，但见：</div>
+            <div class="text-block simplified-text">那只老虎盯着洪太尉，来回转了几圈，大吼几声，突然往后山跳下去跑了。洪太尉瘫在树根旁边，吓得牙齿直打颤，心里像十五个水桶七上八下乱晃，全身发麻像中风似的，两条腿抖得像斗败的公鸡，嘴里不停叫苦。老虎跑了一顿饭的工夫，他才敢爬起来，捡起地上的香炉，重新点好龙香，硬着头皮继续上山找天师。又走了几十步，他连叹几口气抱怨道："皇帝硬派我来这儿，害我受这种惊吓。"话还没说完，突然又刮来一阵腥风。太尉仔细一看，只见山边竹藤哗哗响，蹿出一条水桶粗、白得像雪的蟒蛇。太尉吓得扔了手炉，大喊："这回真要死了！"直接往后倒在石头边上。他勉强眯着眼看那蛇，只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">昂首惊飙起，掣目电光生。动荡则折峡倒冈，呼吸则吹云吐雾。鳞甲乱分千片玉，尾梢斜卷一堆银。</div>
+            <div class="text-block simplified-text">抬头突然刮起狂风，眨眼间闪电划过。风一吹，山峡崩塌山岗倾倒；呼吸之间，云雾翻腾。鳞片般的冰雹像碎玉乱飞，尾巴似的闪电像银堆斜挂天空。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">那条大蛇径抢到盘砣石边，朝着洪太尉盘做一堆，两只眼迸出金光，张开巨口，吐出舌头，喷那毒气在洪太尉脸上。惊得太尉三魂荡荡，七魄悠悠。那蛇看了洪太尉一回，望山下一溜，却早不见了。太尉方才爬得起来，说道：“惭愧！惊杀下官！”看身上时，寒粟子比馉饳儿大小。口里骂那道士：“叵耐无礼，戏弄下官，教俺受这般惊恐！若山上寻不见天师，下去和他别有话说。”再拿了银提炉，整顿身上诏敕并衣服巾帻，却待再要上山去。正欲移步，只听得松树背后隐隐地笛声吹响，渐渐近来。太尉定睛看时，只见那一个道童，倒骑着一头黄牛，横吹着一管铁笛，转出山凹来。太尉看那道童时，但见：</div>
+            <div class="text-block simplified-text">一条大蛇猛地窜到盘砣石旁边，在洪太尉面前盘成一团，两只眼睛闪着金光，张开大嘴吐着信子，对着洪太尉脸上喷毒气。吓得洪太尉魂都快没了。那蛇盯着洪太尉看了一会儿，突然往山下溜走，转眼就不见了。洪太尉这才哆哆嗦嗦爬起来，说："吓死我了！差点要了我的命！"低头一看，自己浑身起的鸡皮疙瘩有汤圆那么大。他气得大骂那道士："这混账太不像话，故意耍我，害我受这么大惊吓！要是在山上找不到天师，下山非得跟他算账不可。"说完捡起银香炉，整理好圣旨和衣帽，准备继续上山。刚要抬脚，忽然听见松树后面传来一阵隐约的笛声，越来越近。洪太尉仔细一看，只见一个道童倒骑在黄牛背上，横吹着一支铁笛，从山坳里转出来。洪太尉打量那道童，只见他：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">头绾两枚丫髻，身穿一领青衣；腰间绦结草来编，脚下芒鞋麻间隔。明眸皓齿，飘飘并不染尘埃；绿鬓朱颜，耿耿全然无俗态。</div>
+            <div class="text-block simplified-text">这个人的打扮是这样的：头上扎着两个小辫子，穿着一件青色衣服；腰上系着用草编的带子，脚上穿着草鞋，鞋底是用麻绳做的。他眼睛明亮，牙齿洁白，整个人干干净净，一点灰尘都不沾；头发乌黑，脸色红润，看起来特别精神，一点都没有俗气的感觉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">昔日吕洞宾有首牧童诗道得好：</div>
+            <div class="text-block simplified-text">以前吕洞宾写过一首关于牧童的诗，说得特别好：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">草铺横野六七里，笛弄晚风三四声。</div>
+            <div class="text-block simplified-text">翻译成现代白话文：
+
+野地里长满了草，一眼望去看不到头。傍晚的风里，传来几声断断续续的笛声。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">归来饱饭黄昏后，不脱蓑衣卧月明。</div>
+            <div class="text-block simplified-text">傍晚回家吃饱饭，
+披着蓑衣就躺下，
+看着月亮慢慢睡。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">只见那个道童，笑吟吟地骑着黄牛，横吹着那管铁笛，正过山来。洪太尉见了，便唤那个道童：“你从那里来？认得我么？”道童不采，只顾吹笛。太尉连问数声，道童呵呵大笑，拿着铁笛，指着洪太尉说道：“你来此间，莫非要见天师么？”太尉大惊，便道：“你是牧童，如何得知？”道童笑说：“我早间在草庵中伏侍天师，听得天师说道：‘朝中今上仁宗天子，差个洪太尉赍擎丹诏御香，到来山中，宣我往东京做三千六百分罗天大醮，祈禳天下瘟疫。我如今乘鹤驾云去也。’这早晚想是去了，不在庵中。你休上去，山内毒虫猛兽极多，恐伤害了你性命。”太尉再问道：“你不要说谎？”道童笑了一声，也不回应，又吹着铁笛转过山坡去了。太尉寻思道：“这小的如何尽知此事？想是天师分付他，已定是了。”欲待再上山去，方才惊唬的苦，争些儿送了性命，不如下山去罢。</div>
+            <div class="text-block simplified-text">我看到一个笑嘻嘻的小道士，骑着一头黄牛，横着吹一根铁笛子，正从山那边过来。洪太尉看见了，就叫他："喂，小孩，你从哪儿来的？认识我吗？"小道士不理他，只管吹笛子。太尉连着问了好几遍，小道士突然哈哈大笑，拿着铁笛指着洪太尉说："你跑到这儿来，是不是想找天师啊？"
+
+太尉吓了一大跳，问："你一个放牛娃，怎么知道这事？"小道士笑着说："早上我在草屋里伺候天师，听他说：'当今皇上派了个洪太尉带着圣旨和御香来山里，要请我去京城做场大法事，给天下人消灾治病。我现在要驾着仙鹤飞走了。'这会儿估计早走了，不在屋里。你别上去了，山里毒蛇猛兽多得很，小心丢了性命。"
+
+太尉又问："你没骗我吧？"小道士笑了一声，也不回答，吹着笛子转过山坡走了。太尉心里琢磨："这小家伙怎么啥都知道？肯定是天师告诉他的，准没错。"本来想再上山，但刚才差点吓死，想想还是下山算了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">太尉拿着提炉，再寻旧路，奔下山来。众道士接着，请至方丈坐下。真人便问太尉道：“曾见天师么？”太尉说道：“我是朝廷中贵官，如何教俺走得山路，吃了这般辛苦，争些儿送了性命！为头上至半山里，跳出一只吊睛白额大虫，惊得下官魂魄都没了。又行不过一个山嘴，竹藤里抢出一条雪花大蛇来，盘做一堆，拦住去路。若不是俺福分大，如何得性命回京。尽是你这道众，戏弄下官！”真人复道：“贫道等怎敢轻慢大臣，这是祖师试探太尉之心。本山虽有蛇虎，并不伤人。”太尉又道：“我正走不动，方欲再上山坡，只见松树傍边转出一个道童，骑着一头黄牛，吹着管铁笛，正过山来。我便问他：‘那里来识得俺么？’他道：‘已都知了。’说天师分付，早晨乘鹤驾云望东京去了。下官因此回来。”真人道：“太尉可惜错过，这个牧童正是天师。”太尉道：“他既是天师，如何这等猥獕？”真人答道：“这代天师非同小可，虽然年幼，其实道行非常。他是额外之人，四方显化，极是灵验。世人皆称为道通祖师。”洪太尉道：“我直如此有眼不识真师，当面错过！”真人道：“太尉但请放心，既然祖师法旨道是去了，比及太尉回京之日，这场醮事祖师已都完了。”太尉见说，方才放心。真人一面教安排筵宴，管待太尉；请将丹诏收藏于御书匣内放了，留在上清宫中，龙香就三清殿上烧了。当日方丈内大排斋供，设宴饮酌。至晚席罢，止宿到晓。</div>
+            <div class="text-block simplified-text">太尉拿着香炉，按原路跑下山。道士们迎上来，请他到方丈室坐下。道长问太尉："见到天师了吗？"太尉抱怨说："我是朝廷大官，你们却让我走山路受罪，差点把命都丢了！走到半山腰，突然跳出一只白额大老虎，吓得我魂都飞了。刚转过山脚，又窜出一条大白蛇盘在路中间。要不是我命大，哪能活着回来？都是你们这群道士在耍我！"
+
+道长连忙解释："我们哪敢戏弄大人？这是祖师在考验您的心意。山里的蛇虎从不伤人。"太尉接着说："我实在走不动了，正要歇会儿，看见松树后面走出个放牛娃，骑着黄牛吹笛子。我问他认不认识我，他说都知道，还说天师早上就骑鹤飞去东京了，所以我只好回来。"
+
+道长惋惜地说："太尉您错过了，那放牛娃就是天师啊！"太尉惊讶道："他要是天师，怎么打扮得这么寒酸？"道长解释："这位天师可不一般，虽然年纪小，但法力高深。他能化身千万，特别灵验，大家都尊称他道通祖师。"
+
+太尉懊悔地说："我真是有眼不识泰山，把真人当面错过了！"道长安慰他："您别担心，既然祖师说已经去东京了，等您回京时，法事肯定都办好了。"太尉这才放心。
+
+道长马上让人准备酒席招待太尉，把圣旨收进御用书匣存在上清宫，在三清殿烧了龙香。当天摆开素宴，吃到晚上才休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">次日早膳已后，真人道众并提点执事人等请太尉游山。太尉大喜。许多人从跟随着，步行出方丈，前面两个道童引路，行至宫前宫后，看玩许多景致。三清殿上，富贵不可尽言。左廊下，九天殿、紫微殿、北极殿；右廊下，太乙殿、三官殿、驱邪殿。诸宫看遍，行到右廊后一所去处。洪太尉看时，另外一所殿宇：一遭都是捣椒红泥墙；正面两扇朱红槅子；门上使着胳膊大锁锁着，交叉上面贴着十数道封皮，封皮上又是重重叠叠使着朱印；檐前一面朱红漆金字牌额，上书四个金字，写道：“伏魔之殿”。太尉尉指着门道：“此殿是甚么去处？”真人答道：“此乃是前代老祖天师锁镇魔王之殿。”太尉又问道：“如何上面重重叠叠贴着许多封皮？”真人答道：“此是祖老大唐洞玄国师封锁魔王在此。但是经传一代天师，亲手便添一道封皮，使其子子孙孙不敢妄开。走了魔君，非常利害。今经八九代祖师，誓不敢开。锁用铜汁灌铸，谁知里面的事。小道自来住持本宫三十余年，也只听闻。”洪太尉听了，心中惊怪，想道：“我且试看魔王一看。”便对真人说道：“你且开门来，我看魔王甚么模样。”真人告道：“太尉，此殿决不敢开。先祖天师叮咛告戒：今后诸人不许擅开。”太尉笑道：“胡说！你等要妄生怪事，煽惑百姓良民，故意安排这等去处，假称锁镇魔王，显耀你们道术。我读一鉴之书，何曾见锁魔之法。神鬼之道，处隔幽冥，我不信有魔王在内。快疾与我打开，我看魔王如何。”真人三回五次禀说：“此殿开不得，恐惹利害，有伤于人。”太尉大怒，指着道众说道：“你等不开与我看，回到朝廷，先奏你们众道士阻当宣诏，违别圣旨，不令我见天师的罪犯；后奏你等私设此殿，假称锁镇魔王，煽惑军民百姓。把你都追了度牒，刺配远恶军州受苦。”真人等惧怕太尉权势，只得唤几个火工道人来，先把封皮揭了，将铁锤打开大锁。众人把门推开，看里面时，黑洞洞地，但见：</div>
+            <div class="text-block simplified-text">第二天吃完早饭，道士们带着管事的人请太尉参观山景。太尉很高兴，带着一大帮随从走出方丈室，由两个小道童带路，前后游览了各处宫殿景点。三清殿豪华得没法形容，左边走廊有九天殿、紫微殿、北极殿；右边走廊有太乙殿、三官殿、驱邪殿。看完所有宫殿，来到右廊后面一个特别的地方。
+
+太尉看见一座与众不同的殿堂：四周都是红泥墙，正面两扇大红门，门上挂着胳膊粗的大锁，交叉贴着十几道封条，盖满红印章；屋檐下挂着红底金字的牌匾，写着"伏魔之殿"四个大字。太尉指着门问："这是干什么用的？"道长回答："这是祖师爷关押魔王的地方。"太尉又问："为什么贴这么多封条？"道长说："这是唐朝祖师爷封的。每代天师接班时都要亲手加一道封条，警告后人不能乱开。要是放出妖魔，后果不堪设想。传到如今八九代了，谁都不敢开。锁眼都灌了铜水，里面情况没人知道。我在这儿当了三十多年住持，也只是听说而已。"
+
+太尉听了觉得奇怪，心想："我倒要看看魔王长啥样。"就对道长说："把门打开让我瞧瞧。"道长急忙说："太尉，这殿真不能开。祖师爷交代过，谁都不准开。"太尉冷笑道："胡说！你们就是装神弄鬼吓唬老百姓，搞这种假把戏显摆本事。我读遍圣贤书，从没听过锁魔王的说法。鬼神之事虚无缥缈，哪有什么魔王！赶紧给我打开！"
+
+道长再三解释："开了会出大事，伤到人就完了。"太尉发火指着道士们骂："再不开门，我回朝廷就告你们两条罪：一是违抗圣旨不让我见天师，二是私设假神殿欺骗百姓。把你们统统抓去充军！"
+
+道士们害怕太尉权势，只好叫来几个杂工，先撕封条再用铁锤砸开大锁。众人推开门，只见里面黑咕隆咚的......</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">昏昏默默，查查冥冥。数百年不见太阳光，亿万载难瞻明月影。不分南北，怎辨东西。黑烟霭霭扑人寒，冷气阴阴侵体颤。人迹不到之处，妖精往来之乡。闪开双目有如盲，伸出两手不见掌。常如三十夜，却似五更时。</div>
+            <div class="text-block simplified-text">这里黑咕隆咚的，啥也看不清。几百年来见不着太阳，几万年看不到月亮。分不清东南西北，到处乌烟瘴气，冷飕飕的让人直打哆嗦。这地方从来没人来过，只有妖怪出没。就算睁大眼睛也跟瞎了一样，伸手连自己的手掌都看不见。整天就像大年三十的深夜，又像天快亮前最黑的时候。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">众人一齐都到殿内，黑暗暗不见一物。太尉教从人取十数个火把点着，将来打一照时，四边并无别物，只中央一个石碑，约高五六尺，下面石龟趺坐，太半陷在泥里。照那碑碣上时，前面都是龙章凤篆，天书符箓，人皆不识。照那碑后时，却有回个真字大书，凿着“遇洪而开”。却不是一来天罡星合当出世，二来宋朝必显忠良，三来凑巧遇着洪信。岂不是天数！洪太尉看了这四个字，大喜，便对真人说道：“你等阻当我，却怎地数百年前已注我姓字在此？‘遇洪而开’，分明是教我开看，却何妨！我想这个魔王，都只在石碑底下。汝等从人与我多唤几个火工人等，将锄头铁锹来掘开。”真人慌忙谏道：“太尉，不可掘动！恐有利害，伤犯于人，不当稳便。”太尉大怒，喝道：“你等道众，省得甚么！碑上分明凿着遇我教开，你如何阻当！快与我唤人来开。”真人又三回五次禀道：“恐有不好。”太尉那里肯听。只得聚集众人，先把石碑放倒，一齐并力掘那石龟，半日方才掘得起。又掘下去，约有三四尺深，见一片大青石板，可方丈围。洪太尉叫再掘起来。真人又苦禀道：“不可掘动！”太尉那里肯听。众人只得把石板一齐扛起，看时，石板底下却是一个万丈深浅地穴。只见穴内刮剌剌一声响亮，那响非同小可，恰似：</div>
+            <div class="text-block simplified-text">大伙儿一起进了大殿，里面黑漆漆的什么都看不见。太尉叫人点了十几个火把，往四周一照，发现殿里空荡荡的，只有正中间立着一块五六尺高的石碑，下面驮着个石龟，大半截都陷在泥里。
+
+火把照到石碑正面，上面刻满了像龙凤一样的古怪文字，谁也看不懂。转到背面一看，倒是刻着四个大字："遇洪而开"。这可真是巧了——第一，这是天意要让天罡星现世；第二，大宋朝注定要出忠臣良将；第三，偏偏就遇上这个姓洪的太尉。这不是老天安排好的吗？
+
+洪太尉一看这四个字就乐坏了，对道长说："你们刚才拦着我，可这石碑几百年前就写着要等我姓洪的来打开！'遇洪而开'，摆明了就是让我看的，有什么不能动？我看那些妖魔鬼怪肯定就压在这石碑底下。来人啊，多叫些杂工带着锄头铁锹来挖！"
+
+道长赶紧劝："太尉大人千万不能挖啊！万一放出什么祸害伤到人，那可不得了！"太尉气得大骂："你们这些道士懂个屁！碑上白纸黑字写着要我打开，还敢拦着？赶紧叫人给我挖！"道长又苦苦哀求了好几次："真的会出事的。"太尉根本不理。
+
+没办法，众人只好先推倒石碑，然后一起挖那个石龟，挖了半天才挖出来。继续往下挖了三四尺深，露出一块一丈见方的大青石板。洪太尉喊着要继续挖，道长又哭着劝阻，太尉还是不听。大家只得合力掀开石板——下面竟是个深不见底的大洞。突然洞里"轰隆"一声巨响，那动静大得吓人，就像是...（此处省略比喻）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">天摧地塌，岳撼山崩。钱塘江上，潮头浪拥出海门来；泰华山头，巨灵神一劈山峰碎。共工奋怒，去盔撞倒了不周山；力士施威，飞锤击碎了始皇辇。一风撼折千竿竹，十万军中半夜雷。</div>
+            <div class="text-block simplified-text">天崩地裂，山摇地动。钱塘江的大潮，浪头一个接一个从入海口涌来；华山上的巨灵神，一巴掌就把山峰劈碎了。共工发怒撞倒了不周山，大力士抡起铁锤砸碎了秦始皇的车驾。狂风吹断了上千根竹子，就像半夜三更十万大军突然打雷那么吓人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">那一声响亮过处，只见一道黑气，从穴里滚将起来，掀塌了半个殿角。那道黑气直冲上半天里，空中散作百十道金光，望四面八方去了。众人吃了一惊，发声喊，都走了，撇下锄头铁锹，尽从殿内奔将出来，推倒攧翻无数。惊得洪太尉目睁痴呆，罔知所措，面色如土。奔到廊下，只见真人向前叫苦不迭。太尉问道：“走了的却是甚么妖魔？”那真人言不过数句，话不过一席，说出这个缘由。有分教：一朝皇帝，夜眠不稳，昼食忘餐。直使宛子城中藏猛虎，蓼儿洼内聚飞龙。毕竟龙虎山真人说出甚言语来，且听下回分解。</div>
+            <div class="text-block simplified-text">突然一声巨响，只见一股黑烟从洞里冲出来，把大殿的一角都掀塌了。那黑烟直冲到半空中，散成上百道金光，朝四面八方飞走了。大家吓得大叫，扔下锄头铁锹，全都从殿里往外逃，你推我挤乱成一团。洪太尉吓得目瞪口呆，脸色发白，完全不知道该怎么办。他跑到走廊下，看见道士正在连连叫苦。太尉问："跑掉的到底是什么妖怪？"道士简单说了几句话，解释了事情的来龙去脉。这下可要出大事了：皇帝以后晚上睡不着觉，白天吃不下饭。这直接导致了宛子城里藏着猛虎，蓼儿洼中聚着飞龙。到底道士说了什么？咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
