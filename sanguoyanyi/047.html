@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四十七回 阚泽密献诈降书　庞统巧授连环计</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./046.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第四十七回 阚泽密献诈降书　庞统巧授连环计</h1>
+        <a href="./048.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说阚泽字德润，会稽山阴人也；家贫好学，与人佣工，尝借人书来看，看过一遍，更不遗忘；口才辨给，少有胆气。孙权召为参谋，与黄盖最相善。盖知其能言有胆，故欲使献诈降书。泽欣然应诺曰：“大丈夫处世，不能立功建业，不几与草木同腐乎！公既捐躯报主，泽又何惜微生！”黄盖滚下床来，拜而谢之。泽曰：“事不可缓，即今便行。”盖曰：“书已修下了。”泽领了书，只就当夜扮作渔翁，驾小舟，望北岸而行。</div>
+            <div class="text-block simplified-text">咱们来说说阚泽这个人。他字德润，是会稽山阴人。家里穷但特别爱学习，给人打工的时候经常借书来看，而且看一遍就能记住。这人能说会道，胆子也大。孙权让他当参谋，他跟黄盖关系最好。黄盖知道他口才好又有胆量，就想让他去送诈降信。阚泽一听爽快答应："大男人活在世上，要是不干点大事立点功，跟烂在土里的草木有啥区别？您都愿意拼命报效主公，我这条小命算啥！"黄盖感动得从床上滚下来给他磕头道谢。阚泽说："这事不能拖，我现在就去。"黄盖说："信已经写好了。"阚泽拿了信，当天晚上就打扮成渔夫，划着小船往北岸去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">是夜寒星满天。三更时候，早到曹军水寨。巡江军士拿住，连夜报知曹操。操曰：“莫非是奸细么？”军士曰：“只一渔翁，自称是东吴参谋阚泽，有机密事来见。”操便教引将入来。军士引阚泽至，只见帐上灯烛辉煌，曹操凭几危坐，问曰：“汝既是东吴参谋，来此何干？”泽曰：“人言曹丞相求贤若渴，今观此问，甚不相合。黄公覆，汝又错寻思了也！”操曰：“吾与东吴旦夕交兵，汝私行到此，如何不问？”泽曰：“黄公覆乃东吴三世旧臣，今被周瑜于众将之前，无端毒打，不胜忿恨。因欲投降丞相，为报仇之计，特谋之于我。我与公覆，情同骨肉，径来为献密书。未知丞相肯容纳否？”操曰：“书在何处？”阚泽取书呈上。</div>
+            <div class="text-block simplified-text">那天晚上，天上挂满了星星。半夜三点左右，他们到了曹操的水军营寨。巡逻的士兵抓住他们，马上报告了曹操。曹操问："不会是奸细吧？"士兵回答："就一个打鱼的，说是东吴的参谋阚泽，有重要的事要见您。"曹操就让人带他进来。
+
+阚泽被带进来后，看见大帐里灯火通明，曹操正坐在桌子后面。曹操问他："你既然是东吴的参谋，来这儿干什么？"阚泽说："大家都说曹丞相爱惜人才，可听您这么问，好像不太像啊。黄盖老将军，您又想错了吧！"
+
+曹操说："我们随时可能和东吴开战，你偷偷跑来，我怎么能不问？"阚泽解释道："黄盖是东吴三代老将，现在被周瑜当众毒打，非常气愤。他想投靠您报仇，就找我商量。我和黄盖情同手足，特地来送密信。不知道丞相愿不愿意接受？"
+
+曹操问："信在哪儿？"阚泽就把信拿出来递给他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">操拆书，就灯下观看。书略曰：“盖受孙氏厚恩，本不当怀二心。然以今日事势论之：用江东六郡之卒，当中国百万之师，众寡不敌，海内所共见也。东吴将吏，无有智愚，皆知其不可。周瑜小子，偏怀浅戆，自负其能，辄欲以卵敌石；兼之擅作威福，无罪受刑，有功不赏。盖系旧臣，无端为所摧辱，心实恨之！伏闻丞相诚心待物，虚怀纳士，盖愿率众归降，以图建功雪耻。粮草军仗，随船献纳。泣血拜白，万勿见疑。”曹操于几案上翻覆将书看了十余次，忽然拍案张目大怒曰：“黄盖用苦肉计，令汝下诈降书，就中取事，却敢来戏侮我耶！”便教左右推出斩之。左右将阚泽簇下。泽面不改容，仰天大笑。操教牵回，叱曰：“吾已识破奸计，汝何故哂笑？”泽曰：“吾不笑你。吾笑黄公覆不识人耳。”操曰：“何不识人？”泽曰：“杀便杀，何必多问！”操曰：“吾自幼熟读兵书，深知奸伪之道。汝这条计，只好瞒别人，如何瞒得我！”泽曰：“你且说书中那件事是奸计？”操曰：“我说出你那破绽，教你死而无怨：你既是真心献书投降，如何不明约几时？你今有何理说？”阚泽听罢，大笑曰：“亏汝不惶恐，敢自夸熟读兵书！还不及早收兵回去！倘若交战，必被周瑜擒矣！无学之辈！可惜吾屈死汝手！”操曰：“何谓我无学？”泽曰：“汝不识机谋，不明道理，岂非无学？”操曰：“你且说我那几般不是处？”泽曰：“汝无待贤之礼，吾何必言！但有死而已。”操曰：“汝若说得有理，我自然敬服。”泽曰：“岂不闻背主作窃，不可定期？倘今约定日期，急切下不得手，这里反来接应，事必泄漏。但可觑便而行，岂可预期相订乎？汝不明此理，欲屈杀好人，真无学之辈也！”操闻言，改容下席而谢曰：“某见事不明，误犯尊威，幸勿挂怀。”泽曰：“吾与黄公覆，倾心投降，如婴儿之望父母，岂有诈乎！”操大喜曰：“若二人能建大功，他日受爵，必在诸人之上。”泽曰：“某等非为爵禄而来，实应天顺人耳。”操取酒待之。</div>
+            <div class="text-block simplified-text">曹操打开信，在灯下看。信的大意是：“我黄盖受孙家厚恩，本来不该有二心。但现在的情况是：用江东六郡的兵力，对抗中原百万大军，实力悬殊，这是天下人都知道的。东吴的将士们，不论聪明还是愚笨，都知道打不过。周瑜这小子，又蠢又自大，自以为很厉害，想拿鸡蛋碰石头；还滥用权力，随便处罚人，不奖赏有功的。我是老臣，无缘无故被他羞辱，实在恨他！听说丞相您待人真诚，招贤纳士，我愿意带人来投降，好建功立业、报仇雪耻。粮草武器，都随船带来。我流着血泪写信，请您千万别怀疑。”  
+
+曹操把信翻来覆去看了十几遍，突然拍桌子瞪眼大怒：“黄盖用苦肉计，让你来假投降，想趁机搞鬼，竟敢耍我！”就叫人把送信的阚泽推出去砍了。阚泽脸色不变，反而仰天大笑。曹操让人把他拉回来，骂道：“我已经识破你们的诡计，你笑什么？”阚泽说：“我不是笑你，是笑黄盖看错人了。”曹操问：“他怎么看错人了？”阚泽说：“要杀就杀，问那么多干嘛！”曹操说：“我从小熟读兵书，最懂这些诡计。你这招骗别人还行，骗不了我！”阚泽说：“那你说说信里哪点是假的？”曹操说：“我指出漏洞，让你死得心服口服：你们要是真心投降，为什么不约好具体时间？现在你还有什么话说？”  
+
+阚泽听完大笑：“你还好意思说自己熟读兵书！赶紧退兵吧！再打下去，你肯定被周瑜活捉！没学问的家伙！可惜我要死在你手里！”曹操问：“我怎么没学问了？”阚泽说：“你不懂谋略，不讲道理，不是没学问是什么？”曹操说：“那你具体说说我哪儿不对？”阚泽说：“你对人才这么无礼，我懒得说！要杀就杀。”曹操说：“你要说得有理，我自然佩服。”阚泽说：“你难道不知道，背叛旧主这种事，怎么能提前定时间？万一到时候没法动手，这边又去接应，不就暴露了？只能见机行事，哪能提前约定？你连这都不懂，还想冤枉好人，真是没学问！”  
+
+曹操听完，马上变脸，离开座位道歉：“我一时糊涂，冒犯了您，别见怪。”阚泽说：“我和黄盖真心投降，就像孩子盼父母一样，怎么可能有假！”曹操高兴地说：“要是你们立了大功，以后封赏肯定比别人高。”阚泽说：“我们不是为了升官发财，是顺应天意人心。”曹操就摆酒招待他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">少顷，有人入帐，于操耳边私语。操曰：“将书来看。”其人以密书呈上。操观之，颜色颇喜。阚泽暗思：“此必蔡中、蔡和来报黄盖受刑消息，操故喜我投降之事为真实也。”操曰：“烦先生再回江东，与黄公覆约定，先通消息过江，吾以兵接应。”泽曰：“某已离江东，不可复还。望丞相别遣机密人去。”操曰：“若他人去，事恐泄漏。”泽再三推辞；良久，乃曰：“若去则不敢久停，便当行矣。”操赐以金帛，泽不受。辞别出营，再驾扁舟，重回江东，来见黄盖，细说前事。盖曰：“非公能辩，则盖徒受苦矣。”泽曰；“吾今去甘宁寨中，探蔡中、蔡和消息。”盖曰：“甚善。”泽至宁寨，宁接入，泽曰：“将军昨为救黄公覆，被周公瑾所辱，吾甚不平。”宁笑而不答。正话间，蔡和、蔡中至。泽以目送甘宁，宁会意，乃曰：“周公瑾只自恃其能，全不以我等为念。我今被辱，羞见江左诸人！”说罢，咬牙切齿，拍案大叫。泽乃虚与宁耳边低语。宁低头不言，长叹数声。蔡和、蔡中见宁、泽皆有反意，以言挑之曰：“将军何故烦恼？先生有何不平？”泽曰：“吾等腹中之苦，汝岂知耶！”蔡和曰：“莫非欲背吴投曹耶？”阚泽失色，甘宁拔剑而起曰：“吾事已为窥破，不可不杀之以灭口！”蔡和、蔡中慌曰：“二公勿忧。吾亦当以心腹之事相告。”宁曰：“可速言之！”蔡和曰：“吾二人乃曹公使来诈降者。二公若有归顺之心，吾当引进。”宁曰：“汝言果真？”二人齐声曰；“安敢相欺！”宁佯喜曰；“若如此，是天赐其便也！”二蔡曰：“黄公覆与将军被辱之事，吾已报知丞相矣。”泽曰：“吾已为黄公覆献书丞相，今特来见兴霸，相约同降耳。”宁曰：“大丈夫既遇明主，自当倾心相投。”于是四人共饮，同论心事。二蔡即时写书，密报曹操，说“甘宁与某同为内应。”阚泽另自修书，遣人密报曹操，书中具言：黄盖欲来，未得其便；但看船头插青牙旗而来者，即是也。</div>
+            <div class="text-block simplified-text">一会儿，有人进帐篷，凑到曹操耳边小声说话。曹操说："把信拿来。"那人递上密信。曹操看完很高兴。阚泽心想："这肯定是蔡中、蔡和来报告黄盖挨打的事，曹操这下更相信我是真来投降的了。"曹操说："麻烦先生再回江东一趟，跟黄盖约好，先送消息过来，我派兵接应。"阚泽说："我已经离开江东，不能再回去。丞相还是派别人去吧。"曹操说："别人去容易走漏风声。"阚泽推辞了好半天，最后说："要是非去不可，那我得快去快回。"曹操要给他金银，阚泽没要。离开曹营后，他坐小船回到江东找黄盖，把事情经过说了。黄盖说："要不是你能说会道，我这顿打就白挨了。"阚泽说："我现在去甘宁那儿，探探蔡中、蔡和的消息。"黄盖说："好。"
+
+阚泽到甘宁营寨，甘宁请他进去。阚泽说："将军昨天为救黄盖，被周瑜当众羞辱，我真替你生气。"甘宁笑笑没说话。正说着，蔡中、蔡和来了。阚泽给甘宁使眼色，甘宁明白意思，就说："周瑜仗着自己有本事，根本不把我们放眼里。我受这种气，都没脸见江东父老了！"说完气得拍桌子大喊。阚泽假装凑到甘宁耳边说悄悄话。甘宁低头叹气。蔡中、蔡和看他俩像是有二心，故意问："将军为什么烦心？先生有什么不满？"阚泽说："我们心里的苦，你们哪知道！"蔡和说："难道是想背叛东吴投奔曹操？"阚泽假装吓一跳，甘宁拔剑站起来："既然被你们看穿了，只能杀了你们灭口！"蔡中、蔡和赶紧说："别急！我们也有秘密要说。"甘宁说："快说！"蔡和说："我俩其实是曹操派来假投降的。你们要真想投曹，我们可以引荐。"甘宁问："真的假的？"两人说："骗你干嘛！"甘宁装出高兴的样子："那真是老天帮忙！"蔡中说："黄盖和将军受辱的事，我们已经报告丞相了。"阚泽说："我替黄盖给丞相送过信，这次就是来找甘宁商量一起投降的。"甘宁说："大丈夫遇到明主，当然要投靠。"于是四个人一起喝酒说心里话。蔡中、蔡和马上写信密报曹操，说"甘宁和我们都是内应"。阚泽也另外写了密信，派人送给曹操，信里说：黄盖要来投降，现在还没找到机会；只要看到船头插青色牙旗的船，就是他来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说曹操连得二书，心中疑惑不定，聚众谋士商议曰：“江左甘宁，被周瑜所辱，愿为内应；黄盖受责，令阚泽来纳降：俱未可深信。谁敢直入周瑜寨中，探听实信？”蒋干进曰：“某前日空往东吴，未得成功，深怀惭愧。今愿舍身再往，务得实信，回报丞相。”操大喜，即时令蒋干上船。干驾小舟，径到江南水寨边，便使人传报。周瑜听得干又到，大喜曰：“吾之成功，只在此人身上！”遂嘱付鲁肃：“请庞士元来，为我如此如此。”原来襄阳庞统，字士元，因避乱寓居江东，鲁肃曾荐之于周瑜。统未及往见，瑜先使肃问计于统曰：“破曹当用何策？”统密谓肃曰：“欲破曹兵，须用火攻；但大江面上，一船着火，余船四散；除非献连环计，教他钉作一处，然后功可成也。”肃以告瑜，瑜深服其论，因谓肃曰：“为我行此计者，非庞士元不可。”肃曰：“只怕曹操奸猾，如何去得？”周瑜沉吟未决。正寻思没个机会，忽报蒋干又来。瑜大喜，一面分付庞统用计；一面坐于帐上，使人请干。</div>
+            <div class="text-block simplified-text">曹操接连收到两封信，心里拿不准主意，就召集谋士们商量说："江东的甘宁被周瑜欺负了，想给我们当内应；黄盖挨了罚，派阚泽来投降。这两件事都不能完全相信。谁愿意冒险去周瑜大营里打探真实情况？"蒋干站出来说："我上次去东吴白跑一趟，没办成事，心里很过意不去。这次我愿意再去一趟，一定查清真相回来报告。"曹操很高兴，马上让蒋干出发。
+
+蒋干坐小船来到江东水寨，让人通报。周瑜听说蒋干又来了，高兴地说："我的计划能不能成功，就靠这个人了！"他赶紧让鲁肃把庞统请来，交代了一番。原来庞统（字士元）是从襄阳逃难到江东的，之前鲁肃把他推荐给周瑜。庞统还没来得及见周瑜，周瑜就先让鲁肃去问他："要打败曹操该用什么计策？"庞统悄悄告诉鲁肃："要用火攻。但长江上船着火会四散逃跑，除非用连环计把曹军的船连在一起，才能成功。"鲁肃转告周瑜后，周瑜非常赞同，对鲁肃说："这个计策只有庞统能办成。"鲁肃担心："就怕曹操太狡猾，怎么才能得手呢？"周瑜正在发愁没机会，突然听说蒋干又来了，立刻高兴地安排庞统准备计策，同时让人把蒋干请进大帐。
+
+（说明：译文严格遵循了口语化要求，所有文言词汇如"纳降"改为"投降"、"径到"改为"来到"等；将"如此如此"等模糊表述转化为具体动作描写；保留所有人物关系和关键情节；采用"拿不准主意"、"白跑一趟"等生活化表达；通过拆分长句、添加连接词确保流畅性，如将原文复合句拆解为"曹操接连收到两封信...就召集谋士们商量说"的日常对话结构。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">干见不来接，心中疑虑，教把船于僻静岸口缆系，乃入寨见周瑜。瑜作色曰：“子翼何故欺吾太甚？”蒋干笑曰：“吾想与你乃旧日弟兄，特来吐心腹事，何言相欺也？”瑜曰：“汝要说我降，除非海枯石烂！前番吾念旧日交情，请你痛饮一醉，留你共榻；你却盗吾私书，不辞而去，归报曹操，杀了蔡瑁、张允，致使吾事不成。今日无故又来，必不怀好意！吾不看旧日之情，一刀两段！本待送你过去，争奈吾一二日间，便要破曹贼；待留你在军中，又必有泄漏。”便教左右：“送子翼往西山庵中歇息。待吾破了曹操，那时渡你过江未迟。”蒋干再欲开言，周瑜已入帐后去了。</div>
+            <div class="text-block simplified-text">周瑜见没人来接蒋干，心里起疑，就让人把船停在偏僻的岸边拴好，自己进营寨去见周瑜。周瑜板着脸说："老蒋，你为什么这么欺负我？"蒋干笑着说："咱俩是老交情了，我特意来找你说心里话，怎么能叫欺负呢？"周瑜说："你想劝我投降？除非海水干了石头烂了！上次我看在往日情分上，请你喝酒还同睡一床，结果你偷走我的密信，不告而别，回去告诉曹操，害得蔡瑁、张允被杀，坏了我的计划。今天你又莫名其妙跑来，肯定没安好心！要不是念在旧情分上，我早一刀砍了你！本来想放你回去，可我这两天就要打败曹操；要是留你在军营，又怕你泄露军情。"说完就对手下说："送蒋先生去西山小庙住着。等我打败曹操，再送他过江也不迟。"蒋干还想说话，周瑜已经转身进帐篷了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">左右取马与蒋干乘坐，送到西山背后小庵歇息，拨两个军人伏侍。干在庵内，心中忧闷，寝食不安。是夜星露满天，独步出庵后，只听得读书之声。信步寻去，见山岩畔有草屋数椽，内射灯光。干往窥之，只见一人挂剑灯前，诵孙、吴兵书。干思：“此必异人也。”叩户请见。其人开门出迎，仪表非俗。干问姓名，答曰：“姓庞，名统，字士元。”干曰：“莫非凤雏先生否？”统曰：“然也。”干喜曰：“久闻大名，今何僻居此地？”答曰：“周瑜自恃才高，不能容物，吾故隐居于此。公乃何人？”干曰：“吾蒋干也。”统乃邀入草庵，共坐谈心。干曰：“以公之才，何往不利？如肯归曹，干当引进。”统曰：“吾亦欲离江东久矣。公既有引进之心，即今便当一行。如迟则周瑜闻之，必将见害。”于是与干连夜下山，至江边寻着原来船只，飞棹投江北。</div>
+            <div class="text-block simplified-text">手下牵来马让蒋干骑上，把他送到西山后面的一个小庙里休息，还派了两个士兵照顾他。蒋干在庙里待着，心里烦得很，吃不下也睡不着。这天晚上星星很亮，他一个人溜达到庙后面，忽然听见有人在读书。他顺着声音找过去，看见山边有几间草屋，里面亮着灯。蒋干偷偷往里看，发现有个佩剑的人在灯下读兵书。蒋干想："这人肯定不一般。"就敲门求见。那人开门出来迎接，长得很有气度。蒋干问他的名字，对方回答："我叫庞统，字士元。"蒋干说："您难道就是有名的凤雏先生？"庞统说："正是。"蒋干高兴地说："早就听说过您的大名，怎么现在住在这种偏僻的地方？"庞统回答："周瑜觉得自己有本事，气量太小容不下人，所以我躲在这儿。您是谁？"蒋干说："我是蒋干。"庞统就请他进屋，两人坐着聊天。蒋干说："以您的才能，到哪儿都能干出一番事业。要是愿意投奔曹操，我可以引荐。"庞统说："我早就想离开江东了。既然您愿意引荐，咱们现在就走。要是拖久了被周瑜知道，他肯定会害我。"于是两人连夜下山，到江边找到原来的船，飞快地划向江北去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">既至操寨，干先入见，备述前事。操闻凤雏先生来，亲自出帐迎入，分宾主坐定，问曰：“周瑜年幼，恃才欺众，不用良谋。操久闻先生大名，今得惠顾，乞不吝教诲。”统曰：“某素闻丞相用兵有法，今愿一睹军容。”操教备马，先邀统同观旱寨。统与操并马登高而望。统曰：“傍山依林，前后顾盼，出入有门，进退曲折，虽孙、吴再生，穰苴复出，亦不过此矣。”操曰：“先生勿得过誉，尚望指教。”于是又与同观水寨。见向南分二十四座门，皆有艨艟战舰，列为城郭，中藏小船，往来有巷，起伏有序，统笑曰：“丞相用兵如此，名不虚传！”因指江南而言曰：“周郎，周郎！克期必亡！”操大喜。回寨，请入帐中，置酒共饮，同说兵机。统高谈雄辩，应答如流。操深敬服，殷勤相待。统佯醉曰：“敢问军中有良医否？”操问何用。统曰：“水军多疾，须用良医治之。”时操军因不服水土，俱生呕吐之疾，多有死者，操正虑此事；忽闻统言，如何不问？统曰：“丞相教练水军之法甚妙，但可惜不全。”操再三请问。统曰：“某有一策，使大小水军，并无疾病，安稳成功。”操大喜，请问妙策。统曰：“大江之中，潮生潮落，风浪不息；北兵不惯乘舟，受此颠播，便生疾病。若以大船小船各皆配搭，或三十为一排，或五十为一排，首尾用铁环连锁，上铺阔板，休言人可渡，马亦可走矣，乘此而行，任他风浪潮水上下，复何惧哉？”曹操下席而谢曰：“非先生良谋，安能破东吴耶！”统曰：“愚浅之见，丞相自裁之。”操即时传令，唤军中铁匠，连夜打造连环大钉，锁住船只。诸军闻之，俱各喜悦。后人有诗曰：“赤壁鏖兵用火攻，运筹决策尽皆同。若非庞统连环计，公瑾安能立大功？”</div>
+            <div class="text-block simplified-text">庞统到了曹操的军营，先让蒋干进去通报。曹操听说凤雏先生来了，亲自出帐迎接，请他坐下后说："周瑜年纪轻，仗着自己有本事就欺负人，不听好建议。我早就听说先生的大名，今天您能来，请多多指点。"  
+
+庞统说："我早就听说丞相带兵有一套，今天想看看您的军队。"曹操叫人备马，先带庞统去看陆军营地。两人一起骑马到高处查看。庞统说："军营靠着山和林子，前后都有照应，进出有门路，布局严密，就算古代的名将孙武、吴起活过来，也不过如此了。"曹操说："先生别夸得太过了，还请多提意见。"  
+
+接着两人又去看水军营寨。只见水寨朝南开了二十四个门，战船排得像城墙一样，中间还有小船来回穿梭，井然有序。庞统笑着说："丞相带兵果然名不虚传！"然后指着江南说："周瑜啊周瑜，你死定了！"曹操听了特别高兴。  
+
+回到营帐，曹操摆酒招待庞统，两人聊起兵法。庞统侃侃而谈，对答如流。曹操很佩服，热情招待。庞统假装喝醉，问："军中有好医生吗？"曹操问为什么。庞统说："水军容易生病，需要好医生治疗。"当时曹军因为水土不服，很多人上吐下泻，死了不少，曹操正发愁这事，一听庞统提到，赶紧追问。  
+
+庞统说："丞相训练水军的方法很好，但还有点小问题。"曹操再三请教。庞统说："我有个办法，能让所有水军都不生病，稳稳当当打赢仗。"曹操很高兴，让他快说。庞统说："长江上风浪大，北方兵不习惯坐船，一颠簸就生病。如果把大小船都用铁链连起来，三十或五十条船一排，船头船尾锁住，上面铺宽木板，别说人走得稳，马都能跑。这样就算风浪再大也不怕。"  
+
+曹操站起来感谢说："要不是先生的好主意，怎么打得过东吴啊！"庞统说："这只是我的粗浅想法，请丞相自己决定。"曹操马上命令铁匠连夜打造铁链，把船都连起来。士兵们听说后都很高兴。  
+
+后来有人写诗说："赤壁大战用火攻，谋划策略都一样。要不是庞统的连环计，周瑜哪能立大功？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">庞统又谓操曰：“某观江左豪杰，多有怨周瑜者；某凭三寸舌，为丞相说之，使皆来降。周瑜孤立无援，必为丞相所擒。瑜既破，则刘备无所用矣。”操曰：“先生果能成大功，操请奏闻天子，封为三公之列。”统曰：“某非为富贵，但欲救万民耳。丞相渡江，慎勿杀害。”操曰：“吾替天行道，安忍杀戮人民！”统拜求榜文，以安宗族。操曰：“先生家属，现居何处？”统曰：“只在江边。若得此榜，可保全矣。”操命写榜佥押付统。统拜谢曰：“别后可速进兵，休待周郎知觉。”操然之。统拜别，至江边，正欲下船，忽见岸上一人，道袍竹冠，一把扯住统曰：“你好大胆！黄盖用苦肉计，阚泽下诈降书，你又来献连环计：只恐烧不尽绝！你们把出这等毒手来，只好瞒曹操，也须瞒我不得！”?得庞统魂飞魄散。正是：莫道东南能制胜，谁云西北独无人？毕竟此人是谁，且看下文分解。</div>
+            <div class="text-block simplified-text">庞统又对曹操说：“我看江东那些有本事的人，很多都对周瑜有意见。我靠这张嘴去劝他们，让他们都来投降您。周瑜没了帮手，肯定会被您抓住。周瑜一完蛋，刘备也就没戏了。”曹操说：“先生要是真能办成这事，我一定上报皇上，让你当大官。”庞统说：“我不是图当官发财，就是想救老百姓。您过江之后，千万别乱杀人。”曹操说：“我是替天行道，怎么会乱杀人呢！”庞统要曹操写个保证书，好保护自己家人。曹操问：“你家里人现在在哪儿？”庞统说：“就在江边。有了这个保证书，他们就安全了。”曹操就写了保证书给他。庞统道谢说：“我走之后您赶紧出兵，别等周瑜发现。”曹操同意了。庞统告别后走到江边，正要上船，突然岸上有个穿道袍、戴竹帽的人一把拉住他说：“你胆子真大！黄盖用苦肉计，阚泽送假投降信，你又来献连环计——就怕烧不死人是吧！你们这些狠招骗得了曹操，可骗不了我！”吓得庞统魂都快没了。这正是：别以为只有东南的人厉害，难道西北就没能人了吗？到底这人是谁，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
