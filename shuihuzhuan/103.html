@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百零三回　张管营因妾弟丧身　范节级为表兄医脸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./102.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百零三回　张管营因妾弟丧身　范节级为表兄医脸</h1>
+        <a href="./104.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话说王庆在龚家村龚端庄院内，乘着那杲日初升，清风徐来的凉晨，在打麦场上柳阴下，点拨龚端兄弟使拳拽腿。忽的有个大汉子，秃着头，不带巾帻，绾个丫髻，穿一领雷州细葛布短敞衫，紧一条单纱裙子，拖一只草凉鞋儿，捏着一把三角细蒲扇，仰昂着脸，背叉着手摆进来。见是个配军在那里点拨。他昨日已知道邙东镇上，有个配军，赢了使枪棒的。恐龚端兄弟学了觔节，开口对王庆骂道：“你是个罪人，如何在路上挨脱，在这里哄骗人家子弟？”王庆只道是龚氏亲戚，不敢回答。</div>
+            <div class="text-block simplified-text">王庆在龚家村的龚端庄院子里，趁着早上太阳刚出来、凉风轻轻吹的时候，在打麦场的柳树底下教龚端兄弟俩练拳脚。突然有个光头大汉闯进来，他没戴头巾，头发扎成个髻，穿着雷州产的细葛布短衫，系着一条单纱裙子，趿拉着一双草凉鞋，手里摇着把三角蒲扇，昂着头，背着手大摇大摆地走进来。他看见是个发配的犯人在教人练武（昨天就听说邙东镇有个发配的犯人打赢了耍枪棒的），怕龚端兄弟学坏了，就冲着王庆骂："你一个犯人，怎么半路逃到这儿来骗人家孩子？"王庆以为是龚家的亲戚，没敢吭声。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">原来这个人，正是东村黄达。他也乘早凉，欲到龚家村西尽头柳大郎处讨赌帐，听得龚端村里吆吆喝喝，他平日欺惯了龚家弟兄，因此迳自闯将进来。龚端见是黄达，心头一把无明火，高举三千丈，按纳不住，大骂道：“驴牛射出来的贼亡八！前日赖了我赌钱，今日又上门欺负人！”黄达大怒，骂道：“捣你娘的肠子！”丢了蒲扇，提了拳头，抢上前，望龚端劈脸便打。王庆听他两个出言吐气，也猜着是黄达了，假意上前来劝，只一枷望黄达膀上打去。黄达扑通的颠个脚梢天，挣紥不迭，被龚端、龚正并两个庄客，一齐上前按住，拳头脚尖，将黄达脊背胸脯，肩胛胁肋，膀子脸颊，头额四肢，无处不着拳脚，只空得个舌尖儿。</div>
+            <div class="text-block simplified-text">这个人原来是东村的黄达。他趁着早上凉快，想去龚家村西头的柳大郎那儿要赌债，听到龚端村里吵吵嚷嚷的。他平时欺负龚家兄弟惯了，就直接闯了进来。龚端一看是黄达，火气一下子就上来了，压不住怒火，大骂道："你这王八蛋！前天赖我赌钱，今天又来欺负人！"黄达也火了，回骂："去你妈的！"扔了扇子，抡起拳头就朝龚端脸上打去。王庆听他俩说话，猜到是黄达，假装过来劝架，实际上用枷板朝黄达肩膀打去。黄达"扑通"一声摔了个四脚朝天，还没反应过来，就被龚端、龚正和两个村民一起按住，拳头脚踢往他身上招呼，全身上下挨了个遍，就剩舌头没挨打了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">当下众人将黄达踢打一个没算数，把那葛敞衫、纱裙子，扯的粉碎。黄达口里只叫道：“打得好，打得好！”赤条条的一毫丝线儿也没有在身上。当有防送公人孙琳、贺吉再三来劝，龚端等方才住手。黄达被他每打坏了，只在地上喘气，那里挣紥得起。龚端叫三四个庄客，把黄达扛到东村半路上草地里撇下。赤日中晒了半日。黄达那边的邻舍庄家，出来芸草，遇见了，扶他到家，卧床将息，央人写了状词，去新安县投递报辜，不在话下。</div>
+            <div class="text-block simplified-text">一群人围着黄达拳打脚踢，根本数不清打了多少下，把他那件葛布长衫和纱裙都撕成了破布条。黄达被打得光溜溜的，身上连根线头都不剩，嘴里还不停喊着："打得好！打得好！"押送犯人的公差孙琳、贺吉拼命拦着，龚端他们才停手。
+
+黄达被打得半死不活，瘫在地上直喘粗气，根本爬不起来。龚端叫来三四个村民，把黄达抬到东村半路的荒草地上一扔。大中午的太阳毒辣辣晒了他好几个时辰。后来黄达那边的邻居出来锄草，发现了他，才把人扶回家躺着养伤。黄达还托人写了状纸，到新安县衙门告状去了。这些后话就不细说了。
+
+（说明：译文完全保留原文情节，将"防送公人"译为现代人理解的"押送犯人的公差"，"芸草"译为"锄草"，"报辜"译为"告状"。用"光溜溜""破布条""毒辣辣"等口语化表达增强画面感，拆分长句为短句，符合现代汉语表达习惯。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说龚端等闹了一个早起，叫庄客搬出酒食，请王庆等吃早膳。王庆道：“那厮日后必来报仇厮闹。”龚端道：“这贼亡八穷出乌来！家里只有一个老婆，左右邻里只碍他的膂力，今日见那贼亡八打坏了，必不肯替他出力气。叵是死了，拼个庄客偿他的命，便吃官司也说不得。若是不死，只是个互相厮打的官司。今日全赖师父报了仇。师父且喝杯酒，放心在此，一发把枪棒教导了愚弟兄，必当补报。”龚端取出两锭角，各重五两，送与两个公人，求他再宽几日。孙琳、贺吉得了钱，只得应允。自此一连住了十余日，把枪棒觔节，尽传与龚端、龚正。</div>
+            <div class="text-block simplified-text">那天一大早，龚端他们就忙活开了，叫手下人摆好酒菜，请王庆他们吃早饭。王庆说："那家伙以后肯定会来报仇闹事。"龚端回答："那个王八蛋能折腾出什么花样！他家里就一个老婆，邻居们平时怕他力气大才让着他。现在他被师父打趴下了，肯定没人愿意帮他。要是他死了，大不了让个手下抵命，吃官司也认了。要是没死，也就是个打架斗殴的小案子。今天多亏师父帮我们出了这口气。师父先喝杯酒，安心在这儿住着，顺便把枪棒功夫都教给我们兄弟，我们一定好好报答。"
+
+龚端拿出两个五两重的银锭，塞给两个差役，求他们宽限几天。孙琳、贺吉收了钱，只好答应。就这样又住了十几天，王庆把枪棒功夫的要领都教给了龚端、龚正两兄弟。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">因公人催促起身，又听得黄达央人到县里告准，龚端取出五十两白银，送与王庆到陕州使用。起个半夜，收拾行囊包裹，天未明时，离了本庄。龚端叫兄弟带了若干银两，又来护送。于路无话。不则一日，来到陕州。孙琳、贺吉带了王庆到州衙，当厅投下了开封府文牒。州尹看验明白，收了王庆，押了回文，与两个公人回去，不在话下。州尹随即把王庆帖发本处牢城营来。公人讨收管回话，又不必说。</div>
+            <div class="text-block simplified-text">因为差役一直催着上路，又听说黄达已经托人去县里告状获准，龚端就拿出五十两银子，给王庆带到陕州用。他们半夜就起床收拾行李，天还没亮就离开了庄子。龚端让他弟弟带了些银子，一路护送王庆。路上没什么特别的事。没过多久，他们就到了陕州。孙琳、贺吉带着王庆到州衙门，当场交上了开封府的公文。州官看完确认无误，就收押了王庆，写了回执让两个差役带回去，这事就算完了。州官马上把王庆转押到当地的牢城营。差役办了交接手续回去复命，这些就不用多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">当下龚正寻个相识，将些银两，替王庆到管营、差拨处，买上嘱下的使用了。那个管营姓张，双名世开，得了龚正贿赂，将王庆除了行枷，也不打什么杀威棒，也不来差他做生活，发下单身房内，由他自在出入。</div>
+            <div class="text-block simplified-text">现在龚正找了个熟人，花钱帮王庆打点管营和差拨。那个管营叫张世开，收了龚正的钱后，就给王庆摘了枷锁，也没打他什么杀威棒，还不让他干活，安排他住单人房，随便他自由进出。  
+
+（说明：  
+1. "将些银两" → "花钱"  
+2. "买上嘱下" → "打点"  
+3. "除了行枷" → "摘了枷锁"  
+4. "也不来差他做生活" → "还不让他干活"  
+5. 保留所有人物关系和关键动作，完全遵循原文情节）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">不觉的过了两个月，时遇秋深天气。忽一日，王庆正在单身房里闲坐，只见一个军汉走来说道：“管营相公唤你。”王庆随了军汉，来到点视厅上，磕了头。管营张世开说道：“你来这里许多时，不曾差遣你做什么。我要买一张陈州来的好角弓。那陈州是东京管下，你是东京人，必知价直真假。”说罢，便向袖中摸出一个纸包儿，亲手递与王庆道：“纹银二两，你去买了来回话。”王庆道：“小的理会得。”接了银子，来到单身房里，拆开纸包，看那银子，果是雪厾。将等子称时，反重三四分。</div>
+            <div class="text-block simplified-text">不知不觉过了两个月，已经到了深秋时节。有一天，王庆正在自己的房间里闲着，突然有个士兵进来说："管营大人叫你去。"王庆跟着士兵来到大厅，给管营张世开磕了头。张世开对他说："你来这儿这么久了，还没让你办过事。现在我想买一张陈州产的好弓。陈州归东京管，你是东京人，应该知道价钱和真假。"说完就从袖子里拿出一个纸包，亲手交给王庆说："这是二两银子，你去买了回来复命。"王庆回答："小的明白。"他接过银子回到自己房间，打开纸包一看，果然是上等银子。用秤一称，还多了三四分。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">王庆出了本营，到府北街市上，弓箭铺中，止用得一两七钱银子，买了一张真陈州角弓将回来。张管营已不在厅上了，王庆将弓交与内宅亲随伴当送进去。喜得落了他三钱银子。</div>
+            <div class="text-block simplified-text">王庆离开军营，到城北街上的弓箭店里，花了一两七钱银子，买了一张上好的陈州角弓带回来。张管营已经不在大厅了，王庆就把弓交给内宅的亲信随从送进去。他暗自高兴，因为这次省下了三钱银子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">明日，张世开又唤王庆到点视厅上，说道：“你却干得事来。昨日买的角弓甚好。”王庆道：“相公须教把火来放在弓厢里，不住的焙，方好。”张世开道：“这个晓得。”从此张世开日日差王庆买办食用供应。却是不比前日发出现银来。给了一本帐簿，教王庆将日逐买的，都登记在簿上。那行铺人家，那个肯赊半文？王庆只得取出己财，买了送进衙内去。张世开嫌好道歉，非打即骂。及至过了十日，将簿呈递，禀支价银，那里有毫忽儿发出来。如是月余，被张管营或五棒，或十棒，或二十，或三十，前前后后，总计打了三百余棒，将两腿都打烂了。把龚端送的五十两银子赔费得罄尽。</div>
+            <div class="text-block simplified-text">第二天，张世开又把王庆叫到办公室，说："你还挺能干。昨天买的弓箭不错。"王庆回答："大人，得用火烤着弓箱，经常烘着才行。"张世开说："知道了。"  
+
+从那以后，张世开天天让王庆去买吃的用的，但不像以前直接给现金了。他给了王庆一个账本，让王庆把每天买的东西都记下来。那些店铺谁愿意赊账啊？王庆只好自己掏钱买了送进衙门。张世开还挑三拣四，动不动就打骂。  
+
+过了十天，王庆拿着账本去要钱，结果一分钱都没给。就这样过了一个多月，张管营找各种理由打他，有时打五棍，有时打十棍，最多一次打了三十棍，前前后后总共打了三百多棍，把王庆两条腿都打烂了。之前龚端给的五十两银子，全被这样折腾光了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">一日，王庆到营西武功牌坊东侧首一个修合丸散，卖饮片、兼内外科、撮熟药，又卖杖疮膏药的张医士铺里，买了几张膏药，贴疗杖疮。张医士一头与王庆贴膏药，一头口里说道：“张管营的舅爷庞大郎，前日也在这里取膏药贴治右手腕。他说在邙东镇上跌坏的。咱看他手腕，像个打坏的。”王庆听了这句话，忙问道：“小人在营中，如何从不曾见面？”张医士道：“他是张管营小夫人的同胞兄弟，单讳个元字儿。那庞夫人是张管营最得意的。那庞大郎好的是赌钱，又要使枪棒耍子。亏了这个姐姐常照顾他。”王庆听了这一段话，九分猜是：“前日在柏树下被俺打的那厮，一定是庞元了。怪道张世开寻罪过摆布俺。”王庆别了张医士，回到营中，密地与管营的一个亲随小厮，买酒买肉的请他，又把钱与他。慢慢的密问庞元详细。那小厮的说话，与前面张医士一般；更有两句备细的话，说道：“那庞元前日在邙东镇上被你打坏了，常在管营相公面前恨你。你的毒棒，只恐兀是不能免哩。”正是：</div>
+            <div class="text-block simplified-text">有一天，王庆到军营西边武功牌坊东头的一家药铺买膏药，治他挨板子的伤。这家药铺是个姓张的大夫开的，既配药卖药，也看内外科，还卖治棒伤的膏药。张大夫一边给王庆贴膏药，一边随口说："张管营的小舅子庞大郎，前两天也来这儿买膏药治右手腕。他说是在邙东镇摔伤的。可我瞧他那手腕，倒像是被人打伤的。"王庆一听这话，赶紧问："我在军营当差，怎么从来没见过这人？"张大夫说："他是张管营小老婆的亲弟弟，大名叫庞元。那庞夫人最得张管营宠爱。这庞大郎最爱赌钱，还喜欢舞枪弄棒。多亏他姐姐经常接济他。"王庆听完，心里猜了个八九不离十："前几天在柏树下被我揍的那家伙，准是庞元。怪不得张世开变着法子找茬整我。"王庆离开药铺后，偷偷找来管营身边的一个亲信小兵，请他喝酒吃肉还塞钱，慢慢套出庞元的底细。那小兵说的和张大夫讲的一样，还多透露了两句："庞元前几天在邙东镇被你打伤后，老在管营面前说你坏话。你这顿毒打啊，怕是躲不过喽。"这可真是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">好胜夸强是祸胎，谦和守分自无灾。只因一棒成仇隙，如今加利奉还来。</div>
+            <div class="text-block simplified-text">爱逞强、好争胜容易惹麻烦，谦虚和气、安守本分才能平安无事。就因为当初那一棒子结下了仇，现在人家连本带利全还回来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">当下王庆问了小厮备细，回到单身房里，叹口气道：“不怕官，只怕管。前日偶尔失口，说了那厮，赢了他棒，却不知道是管营心上人的兄弟。他若摆布得我要紧，只索逃走他处，再作道理。”便悄地到街坊买了一把解手尖刀，藏在身边，以防不测。如此又过十数日，幸得管营不来呼唤，棒疮也觉好了些。</div>
+            <div class="text-block simplified-text">王庆仔细问了那个小厮具体情况后，回到自己房间，叹气说："不怕当官的，就怕直接管你的。前几天不小心说漏嘴，骂了那家伙一顿，还打赢了他，没想到他竟然是管营心腹的兄弟。要是他真要整我，我只能逃到别的地方再说了。"于是他偷偷到街上买了把防身用的小刀，随身带着以防万一。就这样又过了十几天，幸好管营没来找他麻烦，之前挨打的伤也好了一些。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">忽一日，张管营又叫他买两疋段子。王庆有事在心，不敢怠惰，急急的到铺中买了回营。张管营正坐在点视厅上，王庆上前回话。张世开嫌那段子颜色不好，尺头又短，花样又是旧的，当下把王庆大骂道：“大胆的奴才！你是个囚徒，本该差你挑水搬石，或锁禁在大链子上。今日差遣你奔走，是十分抬举你。你这贼骨头，却是不知好歹！”骂得王庆顿口无言，插烛也似磕头求方便。张世开喝道：“权且寄着一顿棒。速将段疋换上好的来。限你今晚回话。若稍迟延，你须仔细着那条贼性命。”王庆只得脱下身上衣服，向解库中典了两贯钱，添钱买换上好的段子，抱回营来。跋涉久了，已是上灯后了，只见营门闭着。当直军汉说：“黑夜里谁肯担这干系，放你进去。”王庆分说道：“蒙管营相公遣差的。”那当直军汉那里肯听。王庆身边尚有剩下的钱，送与当直的，方才放他进去。却是又被他缠了一回，捧了两疋段子，来到内宅门外。那守内宅门的说道：“管营相公和大奶奶厮闹，在后面小奶奶房里去了。大奶奶却是利害得紧。谁敢与你传话，惹是招非？”王庆思想道：“他限着今晚回话，如何又恁般阻拒我？却不是故意要害我！明日那顿恶棒，怎脱得过！这条性命，一定送在那贼亡八手里。俺被他打了三百余棒，报答那一棒的仇恨也够了。前日又受了龚正许多银两。今日直恁如此翻脸摆布俺！”</div>
+            <div class="text-block simplified-text">有一天，张管营又叫王庆去买两匹绸缎。王庆心里有事，不敢耽误，赶紧去店里买了回来。张管营正坐在大厅里，王庆上前交差。张世开嫌绸缎颜色不好、尺寸不够、花样太老，立刻大骂王庆："你这大胆的奴才！你一个犯人，本该让你去挑水搬石头，或者用铁链锁起来。现在让你跑腿办事，已经是看得起你了。你这贱骨头，居然不识好歹！"王庆被骂得不敢还嘴，只能像捣蒜一样磕头求饶。张世开吼道："这次先记下一顿打。马上去换好的绸缎来，今晚必须交差。要是敢拖延，小心你的狗命！"王庆只好脱下自己的衣服，去当铺当了点钱，加钱买了更好的绸缎抱回军营。来回跑得太久，回来时天都黑了，营门已经关了。值班的士兵说："大晚上的谁敢担责任放你进去？"王庆解释："是管营大人派我办事的。"值班的根本不听。王庆只好把身上剩下的钱塞给他，这才被放进去。结果又被他刁难了半天，才抱着两匹绸缎来到内院门口。守内院的人说："管营大人正和大老婆吵架，躲到小老婆房里去了。大老婆凶得很，谁敢替你通报惹麻烦？"王庆心想："他明明要我今晚交差，现在又这样刁难，这不是存心害我吗！明天那顿毒打肯定躲不过了，这条命要送在那王八蛋手里。我已经被他打了三百多棍，早就还清当初那一棍的仇了。前几天还收了龚正那么多银子，今天就翻脸不认人算计我！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">那王庆从小恶逆，生身父母也再不来触犯他的。当下逆性一起，道是：恨小非君子，无毒不丈夫。一不做，二不休。挨到更余，营中人及众囚徒都睡了，悄地踅到内宅后边，爬过墙去，轻轻的拔了后门的拴儿，藏过一边。那星光之下，照见墙垣内东边有个马厩，西边小小一间屋。看时，乃是个坑厕。王庆掇那马厩里一扇木栅，竖在二重门的墙边，从木栅爬上墙去。从墙上抽起木栅，竖在里面，轻轻溜将下去。先拔了二重门栓，藏过木栅，里面又是墙垣。只听得墙里边笑语喧哗。王庆踅到墙边伏着，侧耳细听。认得是：张世开的声音，一个妇人声音，又是一个男子声音。却在那里喝酒闲话。王庆窃听多时，忽听得张世开说道：“舅子，那厮明日来回话，那条性命，只在棒下。”又听得那个男子说道：“我算那厮身边东西也七八分了。姐夫须决意与我下手，出这口乌气。”张世开答道：“只在明后日，教你快活罢了。”那妇人道：“也够了！你每也索罢休！”那男子道：“姐姐说那里话！你莫管！”王庆在墙外听他每三个，一递一句，说得明白，心中大怒。那一把无名业火，高举三千丈，按纳不住。恨不得有金刚般神力，推倒那粉墙，抢进去杀了那厮每。正是：</div>
+            <div class="text-block simplified-text">王庆从小就是个坏种，连亲生父母都不敢惹他。这会儿他脾气上来了，心想：对仇人不狠就不是好汉，要干就干到底。等到半夜，军营里的人和犯人都睡了，他偷偷溜到后院，翻过墙，轻轻拔开后门的门闩，藏到一边。借着星光，他看见院子东边有个马棚，西边有间小屋，原来是个厕所。王庆搬来马棚的一块木板，靠在二道门的墙边，踩着木板爬上墙。再把木板抽上来，放到墙里面，轻轻滑下去。他先拔开二道门的门闩，藏好木板，里面又是一道墙。这时听见墙里有人说说笑笑。王庆趴到墙边仔细听，认出是张世开的声音，还有一个女人和一个男人的声音，他们正在喝酒聊天。王庆偷听了好久，突然听见张世开说："小舅子，那家伙明天来回复，他的小命就等着挨棍子吧。"又听见那男的说："我算准那家伙身上带的钱差不多有七八成了。姐夫你下决心帮我动手，出了这口恶气。"张世开回答："就这一两天，让你痛快痛快。"那女人说："够了吧！你们也该收手了！"那男的说："姐你说啥呢！别管！"王庆在墙外听见他们三个你一句我一句，听得清清楚楚，气得要命。他怒火冲天，实在压不住，恨不得有天神般的力量，推倒这墙冲进去杀了这几个家伙。真是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">爽口物多终作病，快心事过必为殃。金风未动蝉先觉，无常暗送怎堤防！</div>
+            <div class="text-block simplified-text">直白翻译：
+
+好吃的东西吃太多早晚会生病，太开心的事过后往往会有麻烦。秋风还没刮呢蝉就先感觉到了，灾祸偷偷来的时候哪能防得住啊！
+
+解释说明：
+1. 保留了"过度享乐会带来恶果"和"灾祸难防"的核心意思
+2. 用"好吃的东西""太开心的事"等日常词汇
+3. 把"爽口物""快心事"等文言词换成大白话
+4. "金风未动蝉先觉"用更形象的"秋风还没刮"来表达
+5. 最后一句直接点明"灾祸难防"的主旨
+6. 完全遵循原文的四句话信息量</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">当下王庆正在按纳不住，只听得张世开高叫道：“小厮，点灯照我往后面去登东厕。”王庆听了这句，连忙掣出那把解手尖刀，将身一堆儿蹲在那株梅树后，只听得呀的一声，那里面两扇门儿开了。王庆在黑地里观看，却是日逐透递消息的那个小厮，提个行灯。后面张世开摆将出来，不知暗里有人，望着前只顾走，到了那二重门边，骂道：“那些奴才每，一个也不小心！如何这早晚不将这拴儿拴了？”那小厮开了门，照张世开。方才出得二重门，王庆悄悄的挨将上来。张世开听得后面脚步响，回转头来，只见王庆右手掣刀，左手叉开五指，抢上前来。张世开把那心肝五脏，都提在九霄云外，叫声道：“有贼！”说时迟，那时快，被王庆早落一刀，把张世开齐耳根连脖子砍着，扑地便倒。那小厮虽是平日与王庆厮熟，今日见王庆拿了明晃晃一把刀，在那里行凶，怎的不怕。却待要走，两只脚一似钉住了的，再要叫时，口里又似哑了的，喊不出为。端的惊得呆了。张世开正在挣命，王庆赶上，照后心又刺一刀，结果了性命。庞元正在姐姐房中吃酒，听得外面隐隐的声唤，点灯不迭。急跑出来看视。王庆见里面有人出来，把那提灯的小厮只一脚，那小厮连身带灯跌去，灯火也灭了。庞元只道张世开打小厮，他便叫道：“姐夫，如何打那小厮？”却待上前来劝，被王庆飞抢上前，暗地里望着庞元，一刀刺去，正中胁肋。庞元杀猪也似喊了一声，颠翻在地。王庆揪住了头发，一刀割下头来。庞氏听得外面喊声凶险，急叫丫环点灯，一同出来照看。王庆看见庞氏出来，也要上前来杀。你道有恁般怪事，说也不信。王庆那时，转眼间便见庞氏背后，有十数个亲随伴当，都执器械，赶喊出来。王庆慌了手脚，抢出外去。开了后门，越过营中后墙，脱下血污衣服，揩净解手刀，藏在身边，听得更鼓已是三更，王庆乘那街坊人静，踅到城边。那陕州是座土城，城垣不甚高，濠堑不甚深，当夜被王庆越城去了。</div>
+            <div class="text-block simplified-text">王庆正憋着一肚子火，突然听见张世开大喊："小子，点灯带我去后面茅房！"王庆一听这话，立刻掏出那把随身带的尖刀，猫着腰躲到梅树后面。只听"吱呀"一声，里面两扇门开了。王庆在暗处看见，正是平时给他们传话的那个小厮提着灯笼，后面跟着张世开。张世开完全没发现有人藏着，只顾往前走，到了二道门那儿还骂："这帮懒货，这么晚了门都不锁！"小厮开门给他照明。等张世开刚走出二道门，王庆悄悄跟了上去。张世开听见后面有脚步声，一回头，就见王庆右手举刀，左手张开五指扑过来，吓得魂都飞了，刚喊出"有贼——"，王庆已经一刀砍在他耳朵和脖子上，张世开当场倒地。那小厮虽然平时跟王庆熟，但看见他拿着明晃晃的刀行凶，吓得腿像钉在地上，想喊又发不出声，完全吓傻了。张世开还在挣扎，王庆追上去朝后背又捅一刀，结果了他。这时庞元正在姐姐屋里喝酒，听见外面有动静，连灯都来不及点就跑出来看。王庆见有人出来，一脚踹翻提灯笼的小厮，灯也灭了。庞元还以为是张世开在打小厮，喊着："姐夫，打他干什么？"正要上前劝架，王庆突然冲过来，对着他肋下就是一刀。庞元像杀猪似的嚎叫一声倒在地上，王庆揪住他头发，一刀割下了脑袋。庞氏听到外面惨叫，赶紧叫丫鬟点灯出来看。王庆正要连庞氏一起杀，突然看见她身后冲出十几个拿着武器的随从。王庆吓坏了，转身就跑，从后门翻过围墙，脱掉血衣，擦干净刀藏好。这时已经三更天，他趁街上没人，溜到城墙边——陕州是土城墙，不高也不深，当晚就被王庆翻墙逃走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">且不说王庆越城。再说张世开的妾庞氏，只同得两个丫环，点灯出来照看，原无什么伴当同他出来。他先看见了兄弟庞元血渌渌的头在一边，体在一边，唬得庞氏与丫环都面面厮觑，正如分开八片顶阳骨，倾下半桶冰雪水。半晌价说不出话。当下庞氏三个，连跌带滚，战战兢兢的跑进去，声张起来。叫起里面亲随，外面当值的军牢，打着火把，执着器械，都到后面照看。只见二重门外，又杀死张管樱攥眼见得不能够活了。众人见后门开了，都道是贼在后面来的，一拥到门外照看，火光下照见两疋采段抛在地下。众人齐声道：“是王庆。”连忙查点各囚徒，只有王庆不在。</div>
+            <div class="text-block simplified-text">咱们先不提王庆翻墙逃跑的事。再说张世开的小老婆庞氏，只带了两个丫鬟，点着灯出来查看。她身边本来就没别人跟着。庞氏先看见弟弟庞元的脑袋血淋淋地滚在一边，身子在另一边，吓得她和两个丫鬟你瞪我、我瞪你，就像脑袋被人劈开、一桶冰水浇下来似的，半天说不出话。
+
+这三人吓得腿都软了，连滚带爬地往回跑，一边跑一边喊人。里面的随从和外面值班的狱卒听见动静，举着火把、拿着家伙赶过来查看。结果发现二道门外，张管营也被杀了，眼瞅着已经没救了。大伙儿看见后门开着，都以为贼是从后面进来的，一窝蜂冲到门外查看。火把一照，发现地上扔着两匹彩缎。所有人立刻喊起来："是王庆干的！"赶紧清点犯人，果然发现只有王庆不见了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">当下闹动了一营，及左右前后邻舍。众人在营后墙外照着血污衣服，细细检认，件件都是王庆的。众人都商议，趁着未开城门，去报知州尹，急差人搜捉。此时已是五更时分了。州尹闻报大惊，火速差县尉简验杀死人数，及行凶人出没去处。一面差人教将陕州四门闭着，点起军兵，并缉捕人员，城中坊厢里正，逐一排门搜捉儿人王庆。</div>
+            <div class="text-block simplified-text">这时候整个军营和附近邻居都被惊动了。大伙儿在军营后墙外发现带血的衣服，仔细查看后，认出全是王庆的。人们商量着趁城门还没开，赶紧去报告州官，派人抓人。这会儿天都快亮了。州官听说后吓坏了，马上派县尉去查死了多少人、凶手往哪儿跑了。同时下令关闭陕州所有城门，调集士兵和捕快，让街道负责人挨家挨户搜查捉拿王庆。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">闭门闹了两日，家至户到，逐一挨查，并无影迹。州尹押了文书，委官下该管地方各处乡保都村，排家搜捉，缉捕凶首。写了王庆乡贯年甲、貌相模样，画影图形，出一千贯信赏钱。'如有人知得王庆下落，赴州告报，随文给赏。如有人藏匿犯人在家食宿者，事发到官，与犯人同罪。'遍行邻近州县，一同缉捕。</div>
+            <div class="text-block simplified-text">关起门来查了两天，挨家挨户搜查，一点线索都没找到。州官发了文件，派官员到各个乡镇村庄，一家家搜查抓捕凶手。还写了王庆的籍贯、年龄、长相特征，画了画像，悬赏一千贯钱。公告说："如果有人知道王庆的下落，到州里报告，马上给赏钱。要是谁敢藏犯人在家里吃住，被发现了就和犯人同罪。"这个通缉令发到了附近所有州县，一起抓人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">且说王庆当夜越出陕州城，抓紥起衣服，从城濠浅处，走过对岸，心下思想道：“虽是逃脱了性命，却往那里去躲避好？”此时是仲冬将近，叶落草枯。星光下看得出路径。王庆当夜转过了三四条小路，方才有条大路。急忙忙的奔走，到红日东升，约行了六七十里，却是望着南方行走，望见前有人家稠密去处。王庆思想身边尚有一贯钱，且到那里买些酒食吃了，再算计投那里去。不多时，走到市里。天气尚早，酒肉店还未开哩。只有朝东一家屋檐下，挂个安歇客商的破灯笼儿，是那家昨晚不曾收得。门儿兀是半开半掩。</div>
+            <div class="text-block simplified-text">话说王庆那天晚上逃出陕州城，卷起衣服，从护城河浅的地方蹚水过河。他一边走一边想："虽然逃出来了，可接下来去哪儿躲呢？"那时候快到冬天了，树叶掉光，野草枯黄。借着星光还能看清路。王庆一晚上绕了好几条小道，才找到一条大路。他拼命赶路，到太阳出来时，已经往南走了六七十里地，远远看见前面有个挺热闹的村子。王庆摸摸身上还有一贯钱，打算先去那儿买点吃的喝的，再想下一步怎么办。不一会儿他走到集市上，天还早，卖酒肉的铺子都没开门。只有朝东一家店门口挂着个破灯笼，是给过路客人歇脚用的，看样子昨晚没收进去，门还半掩着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">王庆上前，呀的一声，推进门层。只见一个人兀未梳洗，从里面走将出来。王庆看时，认得：“这个乃是我母姨表兄院长范全。他从小随父亲在房州经纪得利，因此就充做本州两院押牢节级。今春三月中，到东京公干，也在我家住过几日。”当下王庆叫道：“哥哥别来无恙！”范全也道：“是像王庆兄弟。”见他这般模样，脸上又刺了两行金印，正在疑虑，未及回答。</div>
+            <div class="text-block simplified-text">王庆走上前去，"呀"地一声推开门。看见一个人还没洗脸梳头，从里面走出来。王庆仔细一看，认出来了："这不是我姨妈家的表哥范全吗？他从小跟着父亲在房州做生意赚了钱，后来当了本州监狱的看守长。今年三月还去东京办事，在我家住过几天。"王庆马上打招呼："哥，好久不见，你还好吧？"范全也认出他："是王庆老弟啊。"但看他这副样子，脸上还刺着两行犯人金印，心里正犯嘀咕，一时没顾上回话。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">那边王庆见左右无人，托地跪下道：“哥哥，救兄弟则个！”范全慌忙扶起道：“你果是王庆兄弟么？”王庆摇手道：“禁声！”范全会意，一把挽住王庆袖子，扯他到客房中。却好范全昨晚拣赁的是独宿房儿。范全悄地忙问：“兄弟何故如此模样？”王庆附耳低言的，将那吃官司刺配陕州的事，述了一遍。次后脱张世开报仇忒狠毒，昨夜已是如此如此。范全听罢大惊。踌躇了一回，急急的梳洗吃饭，算还了房钱饭钱，商议教王庆只做军牢跟随的人，离了饭店，投奔房州来。</div>
+            <div class="text-block simplified-text">王庆看周围没人，扑通一声跪下说："大哥，救救我吧！"范全赶紧扶他起来："你真是王庆兄弟？"王庆赶紧摆手："小声点！"范全明白过来，一把拉住王庆的袖子，把他拽进客房。正好范全昨晚租的是单人间。范全小声问："兄弟你怎么搞成这样？"王庆凑到他耳边，把自己吃官司被发配到陕州的事说了一遍，又说张世开报复太狠毒，昨晚已经怎么怎么样。范全听完吓坏了。想了想，赶紧洗漱吃饭，结了房钱饭钱，商量让王庆假装成押送的士兵，一起离开饭店往房州去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">王庆于路上问范全为何到此。范全说道：“蒙本处州尹差往陕州州尹处投递书札。昨日方讨得回书，随即离了陕州。因天晚在此歇宿。却不知兄弟正在陕州，又做出恁般的事来。”范全同了王庆，夜止晓行，潜奔到房州。才过得两日，陕州行文挨捕凶人王庆。范全捏了两把汗。回家与王庆说知：“城中必不可安身。城外定山堡东，我有几间草房，又有二十余亩田地，是前年买下的。如今发几个庄客在那里耕种。我兄弟到那里躲避几日，却再算计。”范全到黑夜里，引王庆出城，到定山堡东草房内藏匿。却把王庆改姓更名，叫做李德。</div>
+            <div class="text-block simplified-text">王庆在路上问范全为啥来这儿。范全说："我们那儿的州官派我去陕州送信。昨天刚拿到回信，就赶紧离开陕州。因为天黑了在这儿住一晚。没想到兄弟你也在陕州，还闹出这么大的事。" 
+
+范全带着王庆，白天赶路晚上休息，偷偷跑到房州。才过了两天，陕州就发通缉令抓王庆。范全吓出一身冷汗，回家告诉王庆："城里肯定待不了了。城外定山堡东边，我有几间草房和二十多亩地，是前年买的。现在有几个雇工在那儿种地。你先去那儿躲几天，咱们再想办法。"
+
+晚上，范全偷偷带王庆出城，把他藏在定山堡东边的草房里。还给王庆改了个假名，叫李德。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">范全思想：王庆脸上金印不稳。幸得昔年到建康，闻得神医安道全的名，用厚币交结他，学得个疗金印的法儿。却将毒药与王庆点去了。后用好药调治，起了红疤。再将金玉细末涂搽，调治二月有余，那疤痕也消磨了。</div>
+            <div class="text-block simplified-text">范全心里琢磨：王庆脸上的犯人刺青太显眼，容易惹麻烦。幸好以前去过建康，听说有个神医叫安道全。他当时花大钱跟安道全搞好关系，学会了去掉刺青的法子。现在他就先用毒药把王庆脸上的刺青腐蚀掉，等伤口结疤后，再用好药慢慢治。等长出红疤后，又抹上金玉磨的细粉。这样治了两个多月，最后连疤也消得干干净净了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">光阴荏苒，过了百余日，却是宣和元年的仲春了。官府挨捕的事，已是虎头蛇尾，前紧后慢。王庆脸上没了金印，也渐渐的闯将出来。衣服鞋袜，都是范全周济他。一日，王庆在草房内闷坐，忽听得远远地有喧哗厮闹的声。王庆便来问庄客：“何处恁般热闹？”庄客道：“李大官不知，这里西去一里有余，乃是定山堡内段家庄。段氏兄弟向本州接得个粉头，搭戏台说唱诸般品调。那粉头是西京来新打踅的行院，色艺双绝，赚得人山人海价看。大官人何不到那里睃一睃？”王庆听了这话，那时耐得脚住。一迳来到定山堡。只因王庆走到这个所在，有分教：配军村妇谐姻眷，地虎民殃毒一方。毕竟王庆到那里观看，真个有粉头说唱也不？且听下回分解。</div>
+            <div class="text-block simplified-text">时间过得很快，一百多天过去了，现在到了宣和元年的春天。官府追捕逃犯的事，开头抓得紧，后来就慢慢放松了。王庆脸上的金印已经没了，胆子也渐渐大起来，敢出门走动了。他的衣服鞋子都是范全给他的。  
+
+有一天，王庆在草屋里待着无聊，忽然听见远处传来吵闹的声音。他就问旁边的村民：“哪儿这么热闹啊？”村民说：“李大哥你还不知道吧？往西走一里多地，是定山堡的段家庄。段家兄弟从城里请了个唱戏的姑娘，搭了戏台表演，那姑娘是从西京新来的，长得漂亮，唱得又好，吸引了一大堆人去看。你要不要也去瞧瞧？”  
+
+王庆一听这话，心里痒痒，坐不住了，立马就往定山堡跑。可谁能想到，他这一去，就惹出大祸来——一个逃犯和一个村妇勾搭上，害得当地百姓遭了殃。  
+
+至于王庆到了那儿，到底有没有看到那个唱戏的姑娘？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
