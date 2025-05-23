@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十回 勤王室马腾举义　报父仇曹操兴师</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./009.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第十回 勤王室马腾举义　报父仇曹操兴师</h1>
+        <a href="./011.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说李、郭二贼欲弑献帝。张济、樊稠谏曰：“不可。今日若便杀之，恐众人不服，不如仍旧奉之为主，赚诸侯入关，先去其羽翼，然后杀之，天下可图也。”李、郭二人从其言，按住兵器。帝在楼上宣谕曰：“王允既诛，军马何故不退？”李傕、郭汜曰：“臣等有功王室，未蒙赐爵，故不敢退军。”帝曰：“卿欲封何爵？”李、郭、张、樊四人各自写职衔献上，勒要如此官品，帝只得从之。封李傕为车骑将军池阳侯领司隶校尉假节钺，郭汜为后将军美阳侯假节钺，同秉朝政；樊稠为右将军万年侯，张济为骠骑将军平阳侯，领兵屯弘农。其余李蒙、王方等，各为校尉。然后谢恩，领兵出城。又下令追寻董卓尸首，获得些零碎皮骨，以香木雕成形体，安凑停当，大设祭祀，用王者衣冠棺椁，选择吉日，迁葬郿坞。临葬之期，天降大雷雨，平地水深数尺，霹雳震开其棺，尸首提出棺外。李傕候晴再葬，是夜又复如是。三次改葬，皆不能葬，零皮碎骨，悉为雷火消灭。天之怒卓。可谓甚矣！</div>
+            <div class="text-block simplified-text">话说李傕、郭汜这两个坏蛋本来想杀掉汉献帝。张济、樊稠劝他们说："现在杀皇帝不合适，大家肯定不服。不如先假装继续让他当皇帝，把各地诸侯骗到京城来，收拾掉他的帮手，再杀他也不迟。"李傕、郭汜觉得有道理，就把刀收起来了。
+
+皇帝在城楼上问："王允已经死了，你们怎么还不退兵？"李傕、郭汜厚着脸皮说："我们为朝廷立了功，还没封官呢，所以不能退兵。"皇帝没办法，问他们想要什么官。这四个人马上把自己想要的官职写下来，硬逼着皇帝答应。结果李傕当了车骑将军兼司隶校尉，封池阳侯；郭汜当了后将军，封美阳侯，两人一起把持朝政；樊稠封右将军、万年侯；张济封骠骑将军、平阳侯，带兵驻守弘农。其他小喽啰也都当了校尉。他们谢恩后就带兵出城了。
+
+这些人又下令找董卓的尸体，结果只找到些碎骨头。他们就用香木刻了个假尸体，穿上王侯的衣服，选了吉利日子准备下葬。结果下葬当天突然电闪雷鸣，暴雨把墓地都淹了，雷直接把棺材劈开，尸体被掀到外面。李傕等天晴了再埋，晚上又发生同样的事。前后折腾三次都没埋成，最后董卓的碎骨头全被雷劈得渣都不剩。老天爷对董卓的愤怒，可真是到了极点啊！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">且说李傕、郭汜既掌大权，残虐百姓；密遣心腹侍帝左右，观其动静。献帝此时举动荆棘。朝廷官员，并由二贼升降。因采人望，特宣朱儁入朝封为太仆，同领朝政。一日，人报西凉太守马腾；并州刺史韩遂二将引军十余万，杀奔长安来，声言讨贼。原来二将先曾使人入长安，结连侍中马宇、谏议大夫种邵、左中郎将刘范三人为内应，共谋贼党。三人密奏献帝，封马腾为征西将军、韩遂为镇西将军，各受密诏，并力讨贼。当下李傕、郭汜、张济、樊稠闻二军将至，一同商议御敌之策。谋士贾诩曰：“二军远来www.xyyuedu.com ，只宜深沟高垒，坚守以拒之。不过百日，彼兵粮尽，必将自退，然后引兵追之，二将可擒矣。”李蒙、王方出曰：“此非好计。愿借精兵万人，立斩马腾、韩遂之头，献于麾下。”贾诩曰：“今若即战，必当败绩。”李蒙、王方齐声曰：“若吾二人败，情愿斩首；吾若战胜，公亦当输首级与我。”诩谓李傕、郭汜曰：“长安西二百里盩厔山，其路险峻，可使张、樊两将军屯兵于此，坚壁守之；待李蒙、王方自引兵迎敌，可也。”李傕、郭汜从其言，点一万五千人马与李蒙、王方。二人忻喜而去，离长安二百八十里下寨。</div>
+            <div class="text-block simplified-text">话说李傕和郭汜掌权后，对百姓非常残暴。他们还偷偷派亲信监视皇帝的一举一动。汉献帝这时候做什么都提心吊胆，朝廷里所有官员的任免都由这两个奸贼说了算。为了装样子收买人心，他们特意把朱儁召进朝廷，封他做太仆，一起管理朝政。
+
+有一天，有人报告说西凉太守马腾和并州刺史韩遂带着十几万大军杀向长安，说要讨伐奸贼。其实马腾和韩遂早就派人到长安，暗中联系了侍中马宇、谏议大夫种邵和左中郎将刘范这三个人做内应，一起对付李傕他们。这三个人偷偷向献帝报告，献帝就封马腾为征西将军、韩遂为镇西将军，给他们秘密诏书，让他们合力讨伐奸臣。
+
+李傕、郭汜、张济、樊稠听说马腾和韩遂的军队快到了，就一起商量怎么对付。谋士贾诩说："他们从大老远赶来，我们只要挖深壕沟、筑高城墙，死守不出战。用不了一百天，他们的粮草吃完就自己撤退了，到时候我们再出兵追击，一定能抓住这两个将军。"可是李蒙和王方跳出来说："这算什么好主意！给我们一万精兵，我们马上砍了马腾、韩遂的脑袋来见您。"贾诩说："现在开战肯定会输。"李蒙和王方不服气地说："要是我们打输了，甘愿被砍头；要是打赢了，你就得把脑袋给我们！"
+
+贾诩就对李傕、郭汜说："长安西边二百里的盩厔山地势险要，可以让张济、樊稠两位将军在那里驻兵防守；同时让李蒙、王方自己带兵去迎战也行。"李傕、郭汜听了他的建议，派给李蒙、王方一万五千人马。这两个人高高兴兴地带兵出发，在离长安二百八十里的地方扎营。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">西凉兵到，两个引军迎去。西凉军马拦路摆开阵势。马腾、韩遂联辔而出，指李蒙、王方骂曰：“反国之贼！谁去擒之？”言未绝，只见一位少年将军，面如冠玉，眼若流星，虎体猿臂，彪腹狼腰；手执长枪，坐骑骏马，从阵中飞出。原来那将即马腾之子马超，字孟起，年方十七岁，英勇无敌。王方欺他年幼，跃马迎战。战不到数合，早被马超一枪刺于马下。马超勒马便回。李蒙见王方刺死，一骑马从马超背后赶来。超只做不知。马腾在阵门下大叫：“背后有人追赶！”声犹未绝，只见马超已将李蒙擒在马上。原来马超明知李蒙追赶，却故意俄延；等他马近举枪刺来，超将身一闪，李蒙搠个空，两马相并，被马超轻舒猿臂，生擒过去。军士无主，望风奔逃。马腾、韩遂乘势追杀，大获胜捷，直逼隘口下寨，把李蒙斩首号令。李傕、郭汜听知李蒙、王方皆被马超杀了，方信贾诩有先见之明，重用其计，只理会紧守关防，由他搦战，并不出迎。果然西凉军未及两月，粮草俱乏，商议回军。恰好长安城中马宇家僮出首家主与刘范、种邵，外连马腾、韩遂，欲为内应等情。李傕、郭汜大怒，尽收三家老少良贱斩于市，把三颗首级，直来门前号令。马腾、韩遂见军粮已尽，内应又泄，只得拔寨退军。李傕、郭汜令张济引军赶马腾，樊稠引军赶韩遂，西凉军大败。马超在后死战，杀退张济。樊稠去赶韩遂，看看赶上，相近陈仓，韩遂勒马向樊稠曰：“吾与公乃同乡之人，今日何太无情？”樊稠也勒住马答道：“上命不可违！”韩遂曰：“吾此来亦为国家耳，公何相逼之甚也？”樊稠听罢，拨转马头，收兵回寨，让韩遂去了。</div>
+            <div class="text-block simplified-text">西凉军队来了，马腾和韩遂带兵迎战。西凉军在路上摆开阵势。马腾、韩遂骑马出来，指着敌将李蒙、王方大骂："你们这些叛徒！谁去收拾他们？"话音刚落，一个年轻将军冲出来。这人长得英俊，眼睛有神，身材健壮，拿着长枪骑着好马。他就是马腾的儿子马超，才十七岁，但非常厉害。王方看他年纪小，冲上去打，结果没几下就被马超一枪捅死了。马超调转马头往回走。李蒙见同伴被杀，从后面追上来。马超假装不知道。马腾在阵前大喊："小心后面！"话还没说完，马超已经活捉了李蒙。原来马超早就发现李蒙追来，故意放慢速度等李蒙靠近。当李蒙举枪刺来时，马超一闪身躲开，顺手就把李蒙抓了过来。敌军见主将被抓，吓得四散逃跑。马腾、韩遂乘胜追击，一直打到关口才扎营，还把李蒙的头砍下来示众。
+
+李傕、郭汜听说手下两员大将被杀，这才明白谋士贾诩有先见之明，决定死守城池不出战。果然不到两个月，西凉军粮草用尽准备撤退。这时长安城里有人告发马宇、刘范、种邵三人私通马腾、韩遂做内应。李傕、郭汜大怒，把这三家老小全杀了，把人头挂在城门口示众。
+
+马腾、韩遂眼看粮草没了，内应也被发现，只好撤军。李傕、郭汜派张济追马腾，樊稠追韩遂。西凉军大败，全靠马超拼死断后才打退张济。樊稠快追上韩遂时，韩遂回头说："咱们是同乡，何必这么绝情？"樊稠回答："军令难违！"韩遂说："我来打仗也是为了国家，你何必这么逼我？"樊稠听了就调头撤兵，放走了韩遂。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">不提防李傕之侄李别，见樊稠放走韩遂，回报其叔。李傕大怒，便欲兴兵讨樊稠。贾翊曰：“目今人心未宁，频动干戈，深为不便；不若设一宴，请张济、樊稠庆功，就席间擒稠斩之，毫不费力。”李傕大喜，便设宴请张济、樊稠。二将忻然赴宴。酒半阑，李傕忽然变色曰：“樊稠何故交通韩遂，欲谋造反？”稠大惊，未及回言；只见刀斧手拥出，早把樊稠斩首于案下。吓得张济俯伏于地。李傕扶起曰：“樊稠谋反，故尔诛之；公乃吾之心腹，何须惊惧？”将樊稠军拨与张济管领。张济自回弘农去了。李傕、郭汜自战败西凉兵，诸侯莫敢谁何。贾诩屡劝抚安百姓，结纳贤豪。自是朝廷微有生意。不想青州黄巾又起，聚众数十万，头目不等，劫掠良民。太仆朱儁保举一人，可破群贼。李傕、郭汜问是何人。朱儁曰：“要破山东群贼，非曹孟德不可。”李傕曰：“孟德今在何处？”儁曰：“现为东郡太守，广有军兵。若命此人讨贼，贼可克日而破也。”李傕大喜，星夜草诏，差人赍往东郡，命曹操与济北相鲍信一同破贼。操领了圣旨，会合鲍信，一同兴兵，击贼于寿阳。鲍信杀入重地，为贼所害。操追赶贼兵，直到济北，降者数万。操即用贼为前驱，兵马到处，无不降顺。不过百余日，招安到降兵三十余万、男女百余万口。操择精锐者，号为“青州兵”，其余尽令归农。操自此威名日重。捷书报到长安，朝廷加曹操为镇东将军。操在兖州，招贤纳士。有叔侄二人来投操：乃颍川颍阴人，姓荀，名彧，字文若，荀绲之子也；旧事袁绍，今弃绍投操；操与语大悦，曰：“此吾之子房也！”遂以为行军司马。其侄荀攸，字公达，海内名士，曾拜黄门侍郎，后弃官归乡，今与其叔同投曹操，操以为行军教授。荀彧曰：“某闻兖州有一贤士，今此人不知何在。”操问是谁，彧曰：“乃东郡东阿人，姓程，名昱，字仲德。”操曰：“吾亦闻名久矣。”遂遣人于乡中寻问。访得他在山中读书，操拜请之。程昱来见，曹操大喜。昱谓荀彧曰：“某孤陋寡闻，不足当公之荐。公之乡人姓郭，名嘉，字奉孝，乃当今贤士，何不罗而致之？”彧猛省曰：“吾几忘却！”遂启操徵聘郭嘉到兖州，共论天下之事。郭嘉荐光武嫡派子孙，淮南成德人，姓刘，名晔，字子阳。操即聘晔至。晔又荐二人：一个是山阳昌邑人，姓满，名宠，字伯宁；一个是武城人，姓吕，名虔，字子恪。曹操亦素知这两个名誉，就聘为军中从事。满宠、吕虔共荐一人，乃陈留平邱人，姓毛，名玠，字孝先。曹操亦聘为从事。</div>
+            <div class="text-block simplified-text">李傕的侄子李别发现樊稠放走了韩遂，就跑去告诉李傕。李傕气得要发兵打樊稠。贾翊说："现在大家心里都不踏实，老打仗不好。不如请张济、樊稠来吃庆功宴，直接在饭桌上把樊稠抓起来杀掉，省事儿。"李傕觉得这主意好，就摆酒请客。张济和樊稠高高兴兴来吃饭。酒喝到一半，李傕突然变脸说："樊稠你为啥私通韩遂想造反？"樊稠吓傻了，话都没来得及说，就被埋伏的刀斧手当场砍死。张济吓得趴在地上。李傕扶起他说："樊稠造反才杀他，你是自己人怕什么？"然后把樊稠的兵交给张济管。张济赶紧带兵回弘农去了。
+
+李傕和郭汜打败西凉兵后，没人敢惹他们。贾诩老劝他们安抚百姓、招揽人才，朝廷这才稍微有点起色。没想到青州黄巾军又闹起来，聚了几十万人到处抢。太仆朱儁推荐说："要打山东这帮土匪，非得曹操不可。"李傕问曹操在哪儿，朱儁说："他现在是东郡太守，兵多。让他去打，很快就能赢。"李傕连夜写诏书派人送去，让曹操和济北相鲍信一起剿匪。曹操接旨后和鲍信出兵，在寿阳打土匪。鲍信冲太猛被杀了，曹操一直追到济北，好几万人投降。曹操让降兵打头阵，走到哪儿都有人投降。不到一百天就收编了三十多万降兵和一百多万老百姓。曹操挑出精壮的组成"青州兵"，剩下的都回家种地。这下曹操名声大振。捷报传到长安，朝廷封他当镇东将军。
+
+曹操在兖州招人才，来了叔侄俩：荀彧（字文若）和他侄子荀攸（字公达）。荀彧原来跟袁绍混，现在跳槽来曹操这儿。曹操跟他聊完特别高兴，说："你就是我的张良啊！"让他当行军司马。荀攸是名人，以前当过黄门侍郎，现在也来投奔，曹操让他当行军教授。荀彧说："兖州还有个能人程昱（字仲德）。"曹操派人去山里请来程昱。程昱对荀彧说："我水平一般，你老乡郭嘉（字奉孝）才是真厉害，怎么不请他？"荀彧一拍脑袋："差点忘了！"于是把郭嘉也请来。郭嘉又推荐了刘晔（字子阳），刘晔又推荐了满宠（字伯宁）和吕虔（字子恪），这俩人又推荐了毛玠（字孝先）。曹操把他们都招到手下干活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">又有一将引军数百人，来投曹操：乃泰山巨平人，姓于，名禁，字文则。操见其人弓马熟娴，武艺出众，命为点军司马。一日，夏侯惇引一大汉来见，操问何人，惇曰：“此乃陈留人，姓典，名韦，勇力过人。旧跟张邈，与帐下人不和，手杀数十人，逃窜山中。惇出射猎，见韦逐虎过涧，因收于军中。今特荐之于公。”操曰：“吾观此人容貌魁梧，必有勇力。”惇曰：“他曾为友报仇杀人，提头直出闹市，数百人不敢近。只今所使两枝铁戟，重八十斤，挟之上马，运使如飞。”操即令韦试之。韦挟戟骤马，往来驰骋。忽见帐下大旗为风所吹，岌岌欲倒，众军士挟持不定；韦下马，喝退众军，一手执定旗杆，立于风中，巍然不动。操曰：“此古之恶来也！”遂命为帐前都尉，解身上锦袄，及骏马雕鞍赐之。</div>
+            <div class="text-block simplified-text">有个叫于禁（字文则）的泰山巨平人，带着几百号士兵来投奔曹操。曹操看他骑马射箭很厉害，武功高强，就让他当了管练兵的小官。
+
+有一天，夏侯惇带了个大个子来见曹操。曹操问这是谁，夏侯惇说："这人是陈留的典韦，力气特别大。以前跟张邈混，因为和同事处不来，一个人干掉了好几十人，逃到山里去了。我打猎时看见他追着老虎跳过山沟，觉得是个人才就收编了，现在特意推荐给您。"
+
+曹操打量说："看这大块头，肯定有两下子。"夏侯惇补充："他曾经为朋友报仇，杀了人提着脑袋从菜市场走出来，几百号人都不敢靠近。现在用的两把铁戟有八十斤重，骑马耍起来跟玩儿似的。"
+
+曹操让典韦当场表演。典韦骑马耍戟，来回跑得飞快。突然军营大旗被风吹得快要倒了，一群士兵都扶不住。典韦跳下马，吼开士兵，单手抓着旗杆站在风里，纹丝不动。曹操惊呼："这简直是古代的猛将恶来啊！"当场封他当贴身护卫队长，还把自己穿的锦缎棉袄和好马配的高级马鞍赏给他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">自是曹操部下文有谋臣，武有猛将，威镇山东。乃遣泰山太守应劭，往瑯琊郡取父曹嵩。嵩自陈留避难，隐居瑯琊；当日接了书信，便与弟曹德及一家老小四十余人，带从者百余人，车百余辆，径望兖州而来。道经徐州，太守陶谦，字恭祖，为人温厚纯笃，向欲结纳曹操，正无其由；知操父经过，遂出境迎接，再拜致敬，大设筵宴，款待两日。曹嵩要行，陶谦亲送出郭，特差都尉张闿，将部兵五百护送。曹嵩率家小行到华、费间，时夏末秋初，大雨骤至，只得投一古寺歇宿。寺僧接入。嵩安顿家小，命张闿将军马屯于两廊。众军衣装，都被雨打湿，同声嗟怨。张闿唤手下头目于静处商议曰：“我们本是黄巾余党，勉强降顺陶谦，未有好处。如今曹家辎重车辆无数，你们欲得富贵不难，只就今夜三更，大家砍将入去，把曹嵩一家杀了，取了财物，同往山中落草。此计何如？”众皆应允。是夜风雨未息，曹嵩正坐，忽闻四壁喊声大举。曹德提剑出看，就被搠死。曹嵩忙引一妾奔入方丈后，欲越墙而走；妾肥胖不能出，嵩慌急，与妾躲于厕中，被乱军所杀。应劭死命逃脱，投袁绍去了。张闿杀尽曹嵩全家，取了财物，放火烧寺，与五百人逃奔淮南去了。后人有诗曰：“曹操奸雄世所夸，曾将吕氏杀全家。如今阖户逢人杀，天理循环报不差。”当下应劭部下有逃命的军士，报与曹操。操闻之，哭倒于地。众人救起。操切齿曰：“陶谦纵兵杀吾父，此仇不共戴天！吾今悉起大军，洗荡徐州，方雪吾恨！”遂留荀彧、程昱领军三万守鄄城、范县、东阿三县，其余尽杀奔徐州来。夏侯惇、于禁、典韦为先锋。操令：但得城池，将城中百姓，尽行屠戮，以雪父仇。当有九江太守边让，与陶谦交厚，闻知徐州有难，自引兵五千来救。操闻之大怒，使夏侯惇于路截杀之。时陈宫为东郡从事，亦与陶谦交厚；闻曹操起兵报仇，欲尽杀百姓，星夜前来见操。操知是为陶谦作说客，欲待不见，又灭不过旧恩，只得请入帐中相见。宫曰：“今闻明公以大兵临徐州，报尊父之仇，所到欲尽杀百姓，某因此特来进言。陶谦乃仁人君子，非好利忘义之辈；尊父遇害，乃张闿之恶，非谦罪也。且州县之民，与明公何仇？杀之不祥。望三思而行。”操怒曰：“公昔弃我而去，今有何面目复来相见？陶谦杀吾一家，誓当摘胆剜心，以雪吾恨！公虽为陶谦游说，其如吾不听何！”陈宫辞出，叹曰：“吾亦无面目见陶谦也！”遂驰马投陈留太守张邈去了。</div>
+            <div class="text-block simplified-text">曹操手下有很多厉害的谋士和武将，势力强大，控制了山东一带。他派泰山太守应劭去琅琊接他父亲曹嵩。曹嵩之前在陈留避难，后来住在琅琊。接到信后，曹嵩带着弟弟曹德和全家四十多口人，还有一百多个随从、一百多辆车，往兖州去。路过徐州时，徐州太守陶谦（字恭祖）为人厚道，一直想巴结曹操，但没机会。听说曹操父亲路过，就亲自出城迎接，热情招待了两天。曹嵩要走时，陶谦还特意派都尉张闿带五百兵护送。
+
+走到华县和费县之间时，赶上夏末秋初的大雨，曹嵩一家只好到一座古寺躲雨。寺里的和尚接待了他们。曹嵩让张闿把兵马安排在两边的走廊。士兵们的衣服都被雨淋湿了，个个抱怨。张闿偷偷对手下说："我们原本是黄巾军的人，勉强投降陶谦，也没捞到好处。现在曹家带的财物这么多，咱们今晚半夜动手，杀了曹嵩一家，抢了东西，上山当土匪，怎么样？"手下都同意了。
+
+当晚雨还没停，曹嵩正坐着，突然听到四周喊杀声大作。曹德拿剑出去看，直接被捅死了。曹嵩赶紧拉着一个小妾往后院跑，想翻墙逃走，但小妾太胖翻不过去。曹嵩慌慌张张和她躲在厕所里，结果被乱兵杀了。应劭拼命逃出来，投奔了袁绍。张闿杀光曹嵩全家，抢了财物，放火烧寺，带着五百人逃到淮南去了。
+
+后来有人写诗说："曹操奸诈人人夸，曾经杀光吕氏家。如今自己全家死，天道轮回不饶他。"
+
+逃回来的士兵把这事报告给曹操。曹操一听，当场哭晕过去。被人救醒后，他咬牙切齿地说："陶谦纵容手下杀我爹，这仇不共戴天！我要带大军踏平徐州，才能解恨！"于是留下荀彧、程昱带三万人守城，自己带其余人马杀向徐州，让夏侯惇、于禁、典韦打头阵。曹操下令：攻下城池后，杀光城里百姓，给父亲报仇。
+
+九江太守边让和陶谦关系好，听说徐州有难，带五千兵来救。曹操大怒，派夏侯惇半路截杀了他。这时陈宫（在东郡当官，也和陶谦交好）听说曹操要杀百姓报仇，连夜赶来见曹操。曹操知道他是来当说客的，本来不想见，但碍于旧情还是见了。陈宫说："听说您要打徐州报仇，还要杀百姓。陶谦是个好人，您父亲遇害是张闿干的，不是陶谦的错。老百姓和您无冤无仇，杀他们不吉利，您再想想。"曹操怒道："你当初抛弃我，现在还有脸来？陶谦杀我全家，我要挖他的心肝报仇！你尽管替他说好话，我就是不听！"陈宫走后叹气："我也没脸见陶谦了！"于是骑马投奔陈留太守张邈去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">且说操大军所到之处，杀戮人民，发掘坟墓。陶谦在徐州，闻曹操起军报仇，杀戮百姓，仰天恸哭曰：“我获罪于天，致使徐州之民，受此大难！”急聚众官商议。曹豹曰：“曹兵既至，岂可束手待死！某愿助使君破之。”陶谦只得引兵出迎，远望操军如铺霜涌雪，中军竖起白旗二面，大书报仇雪恨四字。军马列成阵势，曹操纵马出阵，身穿缟素，扬鞭大骂。陶谦亦出马于门旗下，欠身施礼曰：“谦本欲结好明公，故托张闿护送。不想贼心不改，致有此事。实不干陶谦之故。望明公察之。”操大骂曰：“老匹夫！杀吾父，尚敢乱言！谁可生擒老贼？”夏侯惇应声而出。陶谦慌走入阵。夏侯惇赶来，曹豹挺枪跃马，前来迎敌。两马相交，忽然狂风大作，飞沙走石，两军皆乱，各自收兵。</div>
+            <div class="text-block simplified-text">话说曹操的军队打到哪里，就杀老百姓、挖人家的坟。陶谦在徐州听说曹操带兵来报仇，到处杀人，急得对着天大哭说："我这是造了什么孽啊，害得徐州老百姓遭这么大罪！"他赶紧把手下官员叫来商量。曹豹说："曹操都打到家门口了，总不能等死吧！我愿意帮您打退他们。"陶谦只好带兵出去迎战，远远看见曹军白花花一片像铺了霜雪似的，队伍中间竖着两面白旗，上面写着"报仇雪恨"四个大字。曹军摆好阵势，曹操骑马出来，穿着孝服，挥着鞭子破口大骂。陶谦也骑马到军旗下面，弯着腰行礼说："我本来想跟您交好，特意派张闿护送。哪知道这家伙贼性不改，闹出这种事。真不是我陶谦指使的，您明察啊！"曹操大骂："老东西！杀了我爹还敢狡辩！谁去给我活捉这老贼？"夏侯惇立刻冲出来。陶谦吓得赶紧躲回队伍里。夏侯惇追上来，曹豹挺着枪骑马迎战。两人刚打上，突然刮起狂风，飞沙走石，两边军队都乱了阵脚，只好各自收兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">陶谦入城，与众计议曰：“曹兵势大难敌，吾当自缚往操营，任其剖割，以救徐州一郡百姓之命。”言未绝，一人进前言曰：“府君久镇徐州，人民感恩。今曹兵虽众，未能即破我城。府君与百姓坚守勿出；某虽不才，愿施小策，教曹操死无葬身之地！”众人大惊，便问计将安出。正是：本为纳交反成怨，那知绝处又逢生。毕竟此人是谁，且听下文分解。</div>
+            <div class="text-block simplified-text">陶谦进了城，和大家商量说："曹操的兵太多太强，我们打不过。我打算把自己绑起来去曹操军营，随便他怎么处置，只要能救徐州老百姓的命。"话还没说完，有个人站出来说："大人您治理徐州这么久，百姓都感激您。现在曹兵虽然多，但一时半会儿也攻不下我们。您带着百姓坚守城池别出去；我虽然没什么大本事，但有个主意，保证让曹操死得很难看！"大家听了都很吃惊，赶紧问是什么办法。这可真是：本来想讨好反而结仇，没想到绝境里又看到希望。到底这人是谁呢？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
