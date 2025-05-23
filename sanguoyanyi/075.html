@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十五回 关云长刮骨疗毒　吕子明白衣渡江</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./074.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十五回 关云长刮骨疗毒　吕子明白衣渡江</h1>
+        <a href="./076.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说曹仁见关公落马，即引兵冲出城来；被关平一阵杀回，救关公归寨，拔出臂箭。原来箭头有药，毒已入骨，右臂青肿，不能运动。关平慌与众将商议曰：“父亲若损此臂，安能出敌？不如暂回荆州调理。”于是与众将入帐见关公。公问曰：“汝等来有何事？”众对曰：“某等因见君侯右臂损伤，恐临敌致怒，冲突不便。众议可暂班师回荆州调理。”公怒曰：“吾取樊城，只在目前；取了樊城，即当长驱大进，径到许都，剿灭操贼，以安汉室。岂可因小疮而误大事？汝等敢慢吾军心耶！”平等默然而退。众将见公不肯退兵，疮又不痊，只得四方访问名医。忽一日，有人从江东驾小舟而来，直至寨前。小校引见关平。平视其人：方巾阔服，臂挽青囊；自言姓名，乃沛国谯郡人，姓华，名伦，字元化。因闻关将军乃天下英雄，今中毒箭，特来医治。平曰：“莫非昔日医东吴周泰者乎？”佗曰：“然。”平大喜，即与众将同引华佗入帐见关公。时关公本是臂疼，恐慢军心，无可消遣，正与马良弈棋；闻有医者至，即召入。礼毕，赐坐。茶罢，佗请臂视之。公袒下衣袍，伸臂令佗看视。佗曰：“此乃弩箭所伤，其中有乌头之药，直透入骨；若不早治，此臂无用矣。”公曰：“用何物治之？”佗曰：“某自有治法，但恐君侯惧耳。”公笑曰：“吾视死如归，有何惧哉？”佗曰：“当于静处立一标柱，上钉大环，请君侯将臂穿于环中，以绳系之，然后以被蒙其首。吾用尖刀割开皮肉，直至于骨，刮去骨上箭毒，用药敷之，以线缝其口，方可无事。但恐君侯惧耳。”公笑曰：“如此，容易！何用柱环？”令设酒席相待。</div>
+            <div class="text-block simplified-text">话说曹仁看到关羽从马上摔下来，立刻带兵冲出城来。结果被关平带兵打退，救回了关羽。回到军营后，他们拔出了关羽手臂上的箭。原来箭头有毒，毒已经渗入骨头，右臂又青又肿，动不了了。关平着急地和其他将领商量说："父亲要是伤了这条胳膊，还怎么打仗？不如先回荆州养伤。"于是大家一起去见关羽。
+
+关羽问："你们来有什么事？"众人回答："我们看您右臂受伤，怕打仗时影响发挥。大家商量着建议先撤兵回荆州养伤。"关羽生气地说："我马上就能拿下樊城！拿下樊城后，还要直接打到许都，消灭曹操这个奸贼，振兴汉朝。怎么能因为这点小伤耽误大事？你们这是在动摇军心！"关平他们不敢再劝，默默退下了。
+
+将领们看关羽不肯撤兵，伤又不好，只好到处打听名医。有一天，突然有个人从江东坐小船来到军营。关平接见了他。这人戴着方巾，穿着宽大的衣服，背着个青布包。他自我介绍说是沛国谯郡人，叫华佗，字元化。听说关羽将军中了毒箭，特地来医治。关平问："您就是以前给东吴周泰治病的那位医生吗？"华佗说："正是。"关平很高兴，带着华佗去见关羽。
+
+当时关羽因为手臂疼，又怕影响士气，正闲着没事跟马良下棋。听说有医生来了，马上请进来。互相行礼后，关羽让华佗坐下喝茶。喝完茶，华佗要求看看伤口。关羽脱下袖子伸出胳膊。华佗检查后说："这是弩箭的伤，箭头上涂了乌头毒，已经深入骨头。再不治，这条胳膊就废了。"关羽问："怎么治？"华佗说："我有办法，就怕您害怕。"关羽笑着说："我连死都不怕，还怕这个？"华佗解释："要在安静的地方立根柱子，上面钉个大铁环。把您的手臂穿过铁环绑住，用被子蒙住头。我用刀划开皮肉，刮掉骨头上的毒，敷上药，再缝好伤口。就怕您受不了。"关羽笑着说："这有什么难的？还用得着柱子铁环？"说完就让人准备酒菜招待华佗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">公饮数杯酒毕，一面仍与马良弈棋，伸臂令佗割之。佗取尖刀在手，令一小校捧一大盆于臂下接血。佗曰：“某便下手，君侯勿惊。”公曰：“任汝医治，吾岂比世间俗子惧痛者耶！”佗乃下刀，割开皮肉，直至于骨，骨上已青；佗用刀刮骨，悉悉有声。帐上帐下见者，皆掩面失色。公饮酒食肉，谈笑弈棋，全无痛苦之色。须臾，血流盈盆。佗刮尽其毒，敷上药，以线缝之。公大笑而起，谓众将曰：“此臂伸舒如故，并无痛矣。先生真神医也！”佗曰：“某为医一生，未尝见此。君侯真天神也！”后人有诗曰：“治病须分内外科，世间妙艺苦无多。神威罕及惟关将，圣手能医说华佗。”</div>
+            <div class="text-block simplified-text">关羽喝了几杯酒，一边继续跟马良下棋，一边伸出手臂让华佗开刀。华佗拿着刀，叫一个士兵端个大盆在下面接血。华佗说："我要动手了，将军别害怕。"关羽说："你尽管治，我可不是那些怕疼的胆小鬼！"华佗就下刀割开皮肉，一直割到骨头，骨头都发青了；华佗用刀刮骨头，沙沙作响。旁边看的人全都吓得捂着脸变了脸色。关羽却照样喝酒吃肉，有说有笑地下棋，一点不觉得疼。一会儿工夫，血就流了满满一盆。华佗刮干净毒，上好药，用线缝好伤口。关羽大笑着站起来，对手下将领们说："我这胳膊活动自如，一点都不疼了。华大夫真是神医啊！"华佗说："我当医生这么多年，从没见过像您这样的人。将军真是天神下凡啊！"后来有人写诗说："治病要分内外科，世上好医生不多。威武当属关将军，神医还得说华佗。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">关公箭疮既愈，设席款谢华佗。佗曰：“君侯箭疮虽治，然须爱护。切勿怒气伤触。过百日后，平复如旧矣。”关公以金百两酬之。佗曰：“某闻君侯高义，特来医治，岂望报乎！”坚辞不受，留药一帖，以敷疮口，辞别而去。</div>
+            <div class="text-block simplified-text">关羽的箭伤好了以后，摆酒席感谢华佗。华佗说："将军的箭伤虽然治好了，但还是要小心保养。千万别生气发火，碰到伤口。过一百天，就能完全好了。"关羽拿出一百两黄金酬谢他。华佗说："我听说将军为人仗义，特地来给你治伤，哪能要报酬呢！"坚决不要，留下一副外敷的药，就告辞走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说关公擒了于禁，斩了庞德，威名大震，华夏皆惊。探马报到许都，曹操大惊，聚文武商议曰：“某素知云长智勇盖世，今据荆襄，如虎生翼。于禁被擒，庞德被斩，魏兵挫锐；倘彼率兵直至许都，如之奈何？孤欲迁都以避之。”司马懿谏曰：“不可。于禁等被水所淹，非战之故；于国家大计，本无所损。今孙、刘失好，云长得志，孙权必不喜；大王可遣使去东吴陈说利害，令孙权暗暗起兵蹑云长之后，许事平之日，割江南之地以封孙权，则樊城之危自解矣。”主簿蒋济曰：“仲达之言是也。今可即发使往东吴，不必迁都动众。”操依允，遂不迁都；因叹谓诸将曰：“于禁从孤三十年，何期临危反不如庞德也！今一面遣使致书东吴，一面必得一大将以当云长之锐。”言未毕，阶下一将应声而出曰：“某愿往。”操视之，乃徐晃也。操大喜，遂拨精兵五万，令徐晃为将，吕建副之，克日起兵，前到阳陵坡驻扎；看东南有应，然后征进。</div>
+            <div class="text-block simplified-text">话说关羽活捉了于禁，杀了庞德，名声大振，全国都震惊了。消息传到许都，曹操吓坏了，赶紧召集手下商量说："我一直知道关羽这人智勇双全，现在他占了荆襄地区，简直如虎添翼。于禁被抓，庞德被杀，咱们的军队士气低落；要是他直接带兵打到许都来，那可怎么办？我想干脆搬家躲开他算了。"
+
+司马懿劝道："别急。于禁他们是遭了水灾才败的，不是打仗打不过，对国家大局没啥影响。现在孙权和刘备闹翻了，关羽这么得意，孙权肯定不高兴。大王可以派人去东吴，跟孙权说明利害关系，让他偷偷出兵在关羽背后搞事情。咱们答应他，等事情平息后，把江南地盘分给他，这样樊城的危机自然就解除了。"
+
+蒋济也说："司马懿说得对。现在就该派人去东吴，没必要兴师动众迁都。"曹操同意了，决定不搬家。他感慨地对将领们说："于禁跟了我三十年，没想到关键时刻还不如庞德！现在一方面要派人去东吴送信，另一方面还得找个厉害的将军去对付关羽。"
+
+话还没说完，底下就有人站出来说："我去！"曹操一看，是徐晃。曹操很高兴，马上拨了五万精兵，让徐晃当主将，吕建当副将，立刻出发去阳陵坡驻扎，等东吴那边有动静了再进攻。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说孙权接得曹操书信，览毕，欣然应允，即修书发付使者先回，乃聚文武商议。张昭曰：“近闻云长擒于禁，斩庞德，威震华夏，操欲迁都以避其锋。今樊城危急，遣使求救，事定之后，恐有反覆。”权未及发言，忽报吕蒙乘小舟自陆口来，有事面禀。权召入问之，蒙曰：“今云长提兵围樊城，可乘其远出，袭取荆州。”权曰：“孤欲北取徐州，如何？”蒙曰：“今操远在河北，未暇东顾，徐州守兵无多，往自可克；然其地势利于陆战，不利水战，纵然得之，亦难保守。不如先取荆州，全据长江，别作良图。”权曰：“孤本欲取荆州，前言特以试卿耳。卿可速为孤图之。孤当随后便起兵也。”</div>
+            <div class="text-block simplified-text">孙权收到曹操的信，看完后很高兴地答应了，马上写好回信让使者先带回去，然后召集文武官员商量。张昭说："最近听说关羽抓了于禁，杀了庞德，名声大震，曹操都想迁都躲开他。现在樊城危急，曹操派人来求救，但事情结束后，恐怕他会反悔。"孙权还没说话，突然有人报告说吕蒙坐小船从陆口来了，有重要事情要说。孙权叫他进来问，吕蒙说："现在关羽带兵围攻樊城，我们可以趁他不在，偷袭拿下荆州。"孙权问："我想先去打徐州，怎么样？"吕蒙回答："曹操现在远在河北，顾不上这边，徐州守军不多，打下来很容易。但那地方适合陆战，不适合水战，就算打下来也难守住。不如先拿下荆州，完全控制长江，再作打算。"孙权说："我本来就想打荆州，刚才那么说是试探你的。你赶快去准备吧，我马上派兵支援。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">吕蒙辞了孙权，回至陆口，早有哨马报说：“沿江上下，或二十里，或三十里，高阜处各有烽火台。”又闻荆州军马整肃，预有准备，蒙大惊曰：“若如此，急难图也。我一时在吴侯面前劝取荆州，今却如何处置？”寻思无计，乃托病不出，使人回报孙权。权闻吕蒙患病，心甚怏怏。陆逊进言曰：“吕子明之病，乃诈耳，非真病也。”权曰：“伯言既知其诈，可往视之。”陆逊领命，星夜至陆口寨中，来见吕蒙，果然面无病色。逊曰：“某奉吴侯命，敬探子明贵恙。”蒙曰：“贱躯偶病，何劳探问。”逊曰：“吴侯以重任付公，公不乘时而动，空怀郁结，何也？”蒙目视陆逊，良久不语。逊又曰：“愚有小方，能治将军之疾，未审可用否？”蒙乃屏退左右而问曰：“伯言良方，乞早赐教。”逊笑曰：“子明之疾，不过因荆州兵马整肃，沿江有烽火台之备耳。予有一计，令沿江守吏，不能举火；荆州之兵，束手归降，可乎？”蒙惊谢曰：“伯言之语，如见我肺腑。愿闻良策。”陆逊曰：“云长倚恃英雄，自料无敌，所虑者惟将军耳。将军乘此机会，托疾辞职，以陆口之任让之他人，使他人卑辞赞美关公，以骄其心，彼必尽撤荆州之兵，以向樊城。若荆州无备，用一旅之师，别出奇计以袭之，则荆州在掌握之中矣。”蒙大喜曰：“真良策也！”</div>
+            <div class="text-block simplified-text">吕蒙告别孙权，回到陆口。这时探子来报告说："长江沿岸每隔二三十里，在高地上都设有烽火台。"又听说荆州的军队戒备森严，早有防备。吕蒙大吃一惊，心想："这样看来，荆州很难打下来啊。我之前在吴侯面前说要拿下荆州，现在该怎么办？"他想了半天也没主意，就假装生病不出门，派人回去报告孙权。
+
+孙权听说吕蒙病了，很不高兴。陆逊进言说："吕蒙的病是装的，不是真病。"孙权说："既然你知道是装的，就去看看他吧。"陆逊连夜赶到陆口军营，见到吕蒙果然面色如常。陆逊说："我奉吴侯之命，来看望您。"吕蒙说："小病而已，怎敢劳您大驾。"陆逊说："吴侯把重任交给您，您却不抓住时机行动，一个人发愁，这是为什么？"吕蒙盯着陆逊看了很久，不说话。
+
+陆逊又说："我有个小办法，也许能治好将军的病，不知能不能用？"吕蒙就让左右退下，问道："请快告诉我您的妙计。"陆逊笑着说："您的病，不就是因为荆州守备森严，沿江有烽火台吗？我有个办法，能让沿江守军点不了烽火，让荆州守军乖乖投降，怎么样？"吕蒙惊讶地说："您真是说到我心坎里了。快说是什么办法？"
+
+陆逊说："关羽仗着自己厉害，目中无人，现在唯一顾忌的就是您。您可以趁这个机会，假装生病辞职，把陆口的职务交给别人。让新来的人对关羽说好话奉承他，让他骄傲。这样他一定会调走荆州的守军去打樊城。等荆州防备空虚，我们派一支奇兵突袭，就能轻松拿下荆州。"吕蒙高兴地说："这真是个好主意！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">由是吕蒙托病不起，上书辞职。陆逊回见孙权，具言前计。孙权乃召吕蒙还建业养病。蒙至，入见权，权问曰：“陆口之任，昔周公谨荐鲁子敬以自代，后子敬又荐卿自代，今卿亦须荐一才望兼隆者，代卿为妙。”蒙曰：“若用望重之人，云长必然提备。陆逊意思深长，而未有远名，非云长所忌；若即用以代臣之任，必有所济。”权大喜，即日拜陆逊为偏将军、右都督，代蒙守陆口。逊谢曰：“某年幼无学，恐不堪重任。”权曰：“子明保卿，必不差错。卿毋得推辞。”逊乃拜受印绶，连夜往陆口；交割马步水三军已毕，即修书一封，具名马、异锦、酒礼等物，遣使赍赴樊城见关公。</div>
+            <div class="text-block simplified-text">于是吕蒙假装生病不上班，写信给孙权说要辞职。陆逊回来见孙权，详细说了他们之前的计划。孙权就把吕蒙调回建业养病。吕蒙回来后见了孙权，孙权问他："以前周瑜推荐鲁肃接替他的位置，后来鲁肃又推荐你接替他。现在你也得推荐一个又有能力又有名望的人来接替你才好啊。"吕蒙说："要是用太有名的人，关羽肯定会防备。陆逊这人很有谋略，但没什么名气，关羽不会防着他。要是让他接替我，一定能成事。"孙权很高兴，当天就封陆逊为偏将军、右都督，接替吕蒙守陆口。陆逊推辞说："我年纪轻没经验，怕干不好这么重要的工作。"孙权说："吕蒙这么推荐你，肯定错不了。你别推辞了。"陆逊这才接受了任命，连夜赶往陆口。等他把陆军、水军的交接工作都办完后，就写了封信，准备了好马、贵重布料和酒等礼物，派人送到樊城给关羽。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">时公正将息箭疮，按兵不动。忽报：“江东陆口守将吕蒙病危，孙权取回调理，近拜陆逊为将，代吕蒙守陆口。今逊差人赍书具礼，特来拜见。”关公召入，指来使而言曰：“仲谋见识短浅，用此孺子为将！”来使伏地告曰：“陆将军呈书备礼：一来与君侯作贺，二来求两家和好。幸乞笑留。”公拆书视之，书词极其卑谨。关公览毕，仰面大笑，令左右收了礼物，发付使者回去。使者回见陆逊曰：“关公欣喜，无复有忧江东之意。”</div>
+            <div class="text-block simplified-text">当时关羽正在养箭伤，按兵不动。突然有人报告说："江东陆口的守将吕蒙病重，孙权把他调回去养病，最近任命陆逊当将军，接替吕蒙驻守陆口。现在陆逊派人带着书信和礼物，特意来拜见您。"关羽叫使者进来，指着他说："孙权眼光太差，居然让这么个毛头小子当将军！"使者跪在地上说："陆将军送上书信和礼物，一是祝贺您，二是希望两家和好。请您收下。"关羽拆开信看，信里写得特别恭敬。关羽看完，仰头大笑，让手下收了礼物，打发使者回去。使者回去告诉陆逊："关羽很高兴，完全没把江东放在心上了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">逊大喜，密遣人探得关公果然撤荆州大半兵赴樊城听调，只待箭疮痊可，便欲进兵。逊察知备细，即差人星夜报知孙权，孙权召吕蒙商议曰：“今云长果撤荆州之兵，攻取樊城，便可设计袭取荆州。卿与吾弟孙皎同引大军前去，何如？”孙皎字叔明，乃孙权叔父孙静之次子也。蒙曰：“主公若以蒙可用则独用蒙；若以叔明可用则独用叔明。岂不闻昔日周瑜、程普为左右都督，事虽决于瑜，然普自以旧臣而居瑜下，颇不相睦；后因见瑜之才，方始敬服？今蒙之才不及瑜，而叔明之亲胜于普，恐未必能相济也。”</div>
+            <div class="text-block simplified-text">陆逊非常高兴，暗中派人打听到关羽果然把荆州一大半的兵力调往樊城待命，只等箭伤好了就要出兵。陆逊摸清情况后，立刻连夜派人报告孙权。孙权召来吕蒙商量说："现在关羽真的撤走了荆州的兵去打樊城，咱们正好可以想办法偷袭荆州。你和我的堂弟孙皎一起带大军去，怎么样？"（注：孙皎字叔明，是孙权叔叔孙静的第二个儿子。）
+
+吕蒙回答："主公要是觉得我能行就只用我，要是觉得孙皎能行就只用孙皎。您难道没听说过当年周瑜和程普分别当左右都督，虽然事情都由周瑜决定，但程普觉得自己是老臣却要听周瑜的，两人闹得很不愉快？后来程普见识到周瑜的才能才心服口服。现在我的才能比不上周瑜，而孙皎和您的关系比当年程普还亲近，恐怕我们俩配合不好啊。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">权大悟，遂拜吕蒙为大都督，总制江东诸路军马；令孙皎在后接应粮草。蒙拜谢，点兵三万，快船八十余只，选会水者扮作商人，皆穿白衣，在船上摇橹，却将精兵伏于【舟冓】【舟鹿】船中。次调韩当、蒋钦、朱然、潘璋、周泰、徐盛、丁奉等七员大将，相继而进。其余皆随吴侯为合后救应。一面遣使致书曹操，令进兵以袭云长之后；一面先传报陆逊，然后发白衣人，驾快船往浔阳江去。昼夜趱行，直抵北岸。江边烽火台上守台军盘问时，吴人答曰：“我等皆是客商，因江中阻风，到此一避。”随将财物送与守台军士。军士信之，遂任其停泊江边。约至二更，【舟冓】【舟鹿】中精兵齐出，将烽火台上官军缚倒，暗号一声，八十余船精兵俱起，将紧要去处墩台之军，尽行捉入船中，不曾走了一个。于是长驱大进，径取荆州，无人知觉。将至荆州，吕蒙将沿江墩台所获官军，用好言抚慰，各各重赏，令赚开城门，纵火为号。众军领命，吕蒙便教前导。比及半夜，到城下叫门。门吏认得是荆州之兵，开了城门。众军一声喊起，就城门里放起号火。吴兵齐入，袭了荆州。吕蒙便传令军中：“如有妄杀一人，妄取民间一物者，定按军法。”原任官吏，并依旧职。将关公家属另养别宅，不许闲人搅扰。一面遣人申报孙权。</div>
+            <div class="text-block simplified-text">孙权终于想通了，立刻任命吕蒙当总司令，管江东所有兵马；让孙皎在后面负责运粮草。吕蒙谢过，带着三万兵、八十多条快船，挑会游泳的士兵装成商人，穿白衣服在船上划船，把精锐部队藏在货船里。接着派韩当、蒋钦、朱然、潘璋、周泰、徐盛、丁奉七名大将分批出发。其他人跟着孙权当后备队。同时派人送信给曹操，让他从背后打关羽；又通知陆逊，然后让那些穿白衣的士兵开快船去浔阳江。日夜赶路到长江北岸，守烽火台的士兵问时，吴兵说："我们是商人，遇到大风来躲一躲。"还送钱给守军。守军信了，让他们停船。半夜两点，货船里的精兵冲出来绑了守军，发个暗号，八十多条船上的士兵一起动手，把重要岗哨的守军全抓了，一个没跑。接着直奔荆州，没人发现。快到荆州时，吕蒙安慰被抓的守军，给重赏，让他们骗开城门，点火为信号。半夜到城下叫门，守门的认出是荆州兵就开了门。吴兵大喊着冲进去点火，占了荆州。吕蒙下令："谁乱杀人抢东西，军法处置！"原来官员照旧上班。把关羽家人单独安置，不许打扰。同时派人报告孙权。  
+
+（说明：【舟冓】【舟鹿】是古籍中的生僻字，指当时一种货船，直接译为"货船"便于理解）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">一日大雨，蒙上马引数骑点看四门。忽见一人取民间箸笠以盖铠甲，蒙喝左右执下问之，乃蒙之乡人也。蒙曰：“汝虽系我同乡，但吾号令已出，汝故犯之，当按军法。”其人泣告曰：“其恐雨湿官铠，故取遮盖，非为私用。乞将军念同乡之情！”蒙曰：“吾固知汝为覆官铠，然终是不应取民间之物。”叱左右推下斩之。枭首传示毕，然后收其尸首，泣而葬之。自是三军震肃。不一日，孙权领众至。吕蒙出郭迎接入衙。权慰劳毕，仍命潘浚为治中，掌荆州事；监内放出于禁，遣归曹操；安民赏军，设宴庆贺。权谓吕蒙曰：“今荆州已得，但公安傅士仁、南郡糜芳，此二处如何收复？”言未毕，忽一人出曰：“不须张弓只箭，某凭三寸不烂之舌，说公安傅士仁来降，可乎？”众视之，乃虞翻也。权曰：“仲翔有何良策，可使傅士仁归降？”翻曰：“某自幼与士仁交厚；今若以利害说之，彼必归矣。”权大喜，遂令虞翻领五百军，径奔公安来。</div>
+            <div class="text-block simplified-text">有一天下了大雨，吕蒙骑马带着几个士兵去巡查四个城门。突然看见一个人拿了老百姓的斗笠来盖公家的铠甲，吕蒙立刻让手下把他抓来审问，发现这人竟然是自己老乡。吕蒙说："你虽然是我老乡，但我已经下了命令（不许拿百姓东西），你还故意违反，必须按军法处置。"那人哭着说："我是怕雨水淋坏了公家的铠甲，才拿来盖的，不是给自己用。求将军看在老乡份上饶了我吧！"吕蒙说："我知道你是为了保护公家铠甲，但再怎么说也不该拿老百姓的东西。"说完就命令手下把他推出去砍了。把人头挂起来示众后，吕蒙又哭着把尸体埋了。从此全军纪律严明。
+
+没过几天，孙权带着大部队来了。吕蒙出城迎接，孙权慰劳完军队后，任命潘浚管理荆州，把关着的于禁放回曹操那边，又犒赏三军、设宴庆祝。宴会上孙权问吕蒙："现在荆州已经拿下了，但公安的傅士仁和南郡的糜芳这两处怎么收服？"话还没说完，突然有个人站出来说："不用动刀动枪，让我用这张嘴去说服傅士仁投降，行不行？"大家一看，说话的是虞翻。孙权问："仲翔（虞翻的字）有什么好办法能让傅士仁投降？"虞翻说："我和傅士仁从小就是好朋友，现在我去跟他分析利害关系，他肯定会投降。"孙权很高兴，马上让虞翻带着五百士兵直奔公安去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">却说傅士仁听知荆州有失，急令闭城坚守。虞翻至，见城门紧闭，遂写书拴于箭上，射入城中。军士拾得，献与傅士仁。士仁拆书视之，乃招降之意。览毕，想起“关公去日恨吾之意，不如早降。”即令大开城门，请虞翻入城。二人礼毕，各诉旧情。翻说吴侯宽洪大度，礼贤下土；士仁大喜，即同虞翻赍印绶来荆州投降。孙权大悦，仍令去守公安。吕蒙密谓权曰：“今云长未获，留士仁于公安，久必有变；不若使往南郡招糜芳归降。”权乃召傅士仁谓曰：“糜芳与卿交厚，卿可招来归降，孤自当有重赏。”傅士仁慨然领诺，遂引十余骑，径投南郡招安糜芳。正是：今日公安无守志，从前王甫是良言。未知此去如何，且看下文分解。</div>
+            <div class="text-block simplified-text">话说傅士仁听说荆州丢了，赶紧下令关紧城门死守。虞翻到了城下，见城门关得严实，就写了封信绑在箭上射进城里。守城士兵捡到信，交给傅士仁。傅士仁拆开一看，原来是劝他投降的。看完信，想起"当初关羽走的时候恨透了我，不如早点投降算了"，立刻下令大开城门，请虞翻进城。两人见面客套几句，聊了聊旧交情。虞翻说孙权气量大、看重人才，傅士仁听了很高兴，马上带着官印跟虞翻去荆州投降。孙权很开心，仍让他回去守公安。吕蒙偷偷对孙权说："现在关羽还没抓到，让傅士仁长期守公安迟早要出事，不如派他去南郡劝糜芳投降。"孙权就把傅士仁叫来说："你和糜芳关系好，去劝他投降，我重重有赏。"傅士仁爽快答应，带着十几个骑兵直奔南郡去劝降糜芳。这正是：现在公安守将没骨气，当初王甫的忠告真没错。不知这次去结果如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
