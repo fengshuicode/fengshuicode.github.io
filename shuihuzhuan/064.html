@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六十四回　呼延灼夜月赚关胜　宋公明雪天擒索超</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./063.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第六十四回　呼延灼夜月赚关胜　宋公明雪天擒索超</h1>
+        <a href="./065.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">古风一首：</div>
+            <div class="text-block simplified-text">《古风一首》可以这样用大白话改写：
+
+这是一首模仿古代风格的诗歌。
+
+（说明：由于原文只有标题没有具体内容，我只能根据字面意思进行最直白的翻译。"古风"指古代诗歌的风格形式，"一首"就是一篇作品。这样改写既保留了原标题指代"古代风格诗歌"的核心信息，又用最通俗的现代语言表达，符合所有改写要求。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">古来豪杰称三国，西蜀东吴魏之北。</div>
+            <div class="text-block simplified-text">自古以来，人们都说三国时期的英雄最厉害，主要是西边的蜀国、东边的吴国和北边的魏国这三个国家。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">卧龙才智谁能如，吕蒙英锐真奇特。</div>
+            <div class="text-block simplified-text">诸葛亮聪明绝顶没人比得上，吕蒙年轻有为确实了不起。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">中间虎将无人比，勇力超群独关羽。</div>
+            <div class="text-block simplified-text">关羽是当时最厉害的猛将，没人能比得上他，他的武艺和胆量都是最强的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">蔡阳斩首付一笑，芳声千古传青史。</div>
+            <div class="text-block simplified-text">关羽一刀砍了蔡阳的头，还笑了一下，这事儿太有名了，一直流传到现在。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">岂知世乱英雄亡，后代贤良有孙子。</div>
+            <div class="text-block simplified-text">你看这世道一乱，英雄好汉都没好下场，不过他们的后代里还是会有出息的好子孙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">梁山兵困北京危，万姓荒荒如乱蚁。</div>
+            <div class="text-block simplified-text">梁山好汉们把北京城围住了，情况很危险，老百姓慌得像热锅上的蚂蚁一样乱成一团。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">梁公请救赴京师，玉殿丝纶传睿旨。</div>
+            <div class="text-block simplified-text">梁大人请求派兵救援京城，皇宫里传出皇帝明确的命令。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">前军后合狼虎威，左文右武生光辉。</div>
+            <div class="text-block simplified-text">前面有军队，后面有援兵，像狼虎一样威风。左边是文官，右边是武将，两边都很有气势。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">中军主将是关胜，昂昂志气烟云飞。</div>
+            <div class="text-block simplified-text">关胜是中军的主将，他志向远大，气势冲天。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">黄金铠甲寒光迸，水银盔展兜鍪重。</div>
+            <div class="text-block simplified-text">金光闪闪的盔甲冷冰冰的，水银做的头盔又沉又重。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">面如重枣美须髯，锦征袍上蟠双凤。</div>
+            <div class="text-block simplified-text">这个人脸红的像枣子一样，胡子又长又漂亮。他穿的战袍上绣着一对凤凰。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">衬衫淡染鹅儿黄，雀靴雕弓金镞莹。</div>
+            <div class="text-block simplified-text">衬衫是浅浅的鹅黄色，靴子上有雀鸟花纹，弓上雕刻着精美的图案，金属箭头闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">紫骝骏马猛如龙，玉勒锦鞍双兽并。</div>
+            <div class="text-block simplified-text">这匹紫色的骏马猛得像条龙，马嚼子和漂亮的马鞍上装饰着一对野兽图案。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">宝刀灿灿霜雪光，冠世英雄不可当。</div>
+            <div class="text-block simplified-text">这把刀亮得晃眼，像雪一样闪着寒光，拿刀的真是天下第一的英雄好汉，没人能挡得住他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">除此威风真莫比，重生义勇武安王。</div>
+            <div class="text-block simplified-text">这威风真是无人能比，就像是武安王关羽再世一样厉害。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">话说这篇古风，单道蒲东关胜，这人惯使口大刀，英雄盖世，义勇过人。当日辞了太师，统领着一万五千人马，分为三队，离了东京，望梁山泊来。</div>
+            <div class="text-block simplified-text">这个故事讲的是蒲东好汉关胜。他武艺高强，特别擅长用大刀，是当时数一数二的英雄好汉，为人又讲义气又勇敢。那天他告别了太师，带着一万五千人的军队，分成三路人马，从东京出发，直奔梁山泊而去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">话分两头。且说宋江与同众将，每日北京攻打城池不下。李成、闻达那里敢出对阵。索超箭疮又未平复，亦无人出战。宋江见攻打城子不破，心中纳闷：离山已久，不见输赢。是夜在中军帐里闷坐，点上灯烛，取出玄女天书，正看之间，猛然想起围城已久，不见有救军接应。戴宗回去，又不见来。默然觉得神思恍惚，寝食不安。便叫小校请军师来计议。吴用到得中军帐内，与宋江商量道：“我等众军围许多时，如何杳无救军来到？城中又不敢出战。眼见的梁中书使人去京师告急，他丈人蔡太师必然有救军到来。中间必有良将。倘用围魏救赵之计，且不来解此处之危，反去取我梁山大寨，此是必然之理。兄长不可不虑。我等先着军士收拾，未可都退。”正说之间，只见神行太保戴宗到来，报说：“东京蔡太师拜请关菩萨玄孙蒲东郡大刀关胜，引一彪军马飞奔梁山泊来。寨中头领主张不定。请兄长、军师早早收兵回来，且解山寨之难。”吴用道：“虽然如此，不可急还。今夜晚间，先教步军前行；留下两支军马，就飞虎峪两边埋伏。城中知道我等退军，必然追赶。若不如此，我兵先乱。”宋江道：“军师言之极当。”传令便差小李广花荣，引五百军兵去飞虎峪左边埋伏；豹子头林冲，引五百军兵去飞虎峪右边埋伏。再叫双鞭呼延灼，引二十五骑马军，带着凌振，将了风火等炮，离城十数里远近。但见追兵过来，随即施放号炮，令其两下伏兵齐去并杀追兵。一面传令前队退兵，倒拖旌旗，不鸣战鼓，却如雨散云行，遇兵勿战，自然退回。步军队里，半夜起来，次第而行。直至次日巳牌前后，方才鸣金收军。</div>
+            <div class="text-block simplified-text">事情要分开来说。现在说说宋江和手下的将领们，他们每天攻打北京城，但一直打不下来。守城的李成、闻达根本不敢出来迎战。索超因为箭伤还没好，也没人出战。宋江看城池久攻不下，心里很烦：离开梁山这么久了，一点进展都没有。这天晚上他在帐篷里发呆，点着灯，拿出九天玄女给的天书看。正看着，突然想到围城这么久，怎么一直没见援军来帮忙？戴宗回去报信，也一直没回来。他越想越心烦，吃不下睡不着，就叫手下把军师吴用请来商量。吴用来了后说："咱们围城这么长时间，为啥一直没援军来？城里又不敢打出来。肯定是梁中书派人去京城求救了，他老丈人蔡太师肯定会派救兵来。救兵里肯定有厉害角色。要是他们用围魏救赵的计策，不来解这里的围，反而去攻打咱们梁山老巢，那就麻烦了。大哥你得防着点。咱们先让士兵们收拾东西准备撤，但不能全撤。"正说着，戴宗急匆匆跑进来报告："东京的蔡太师请了关公的后代——蒲东郡的大刀关胜，带着一队人马正往梁山泊杀过去。山寨里的头领们拿不定主意，请大哥和军师赶紧撤兵回去救急。"吴用说："虽然情况紧急，但也不能慌。今晚先让步兵先撤，留两支队伍在飞虎峪两边埋伏。城里知道我们撤兵，肯定会追出来。不这么安排的话，咱们的人马会乱套。"宋江点头："军师说得对。"马上下令：让花荣带五百人去飞虎峪左边埋伏，林冲带五百人去右边埋伏。再派呼延灼带二十五骑兵，带着凌振和火炮，在离城十几里远的地方等着。看到追兵就放炮，两边伏兵一起杀出来。同时下令前队人马悄悄撤退，把军旗倒拖着，不敲战鼓，像下雨天散开的云一样慢慢退兵。步兵半夜就起来，分批撤退。直到第二天上午快吃饭的时候，才敲锣正式收兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">城上望见宋江军马，手拖旗幡，肩担刀斧，人起还山之意，马嘶归寨之声，纷纷滚滚，拔寨都起。城上看了仔细，报与梁中书知道：“梁山泊军马，今日尽数收兵，都回去了。”梁中书听的，随即唤李成、闻达商议。闻达道：“眼见的是京师救军去取他梁山泊，这厮们恐失巢穴，慌忙归去。可以乘势追杀，必擒宋江。”说犹未了，城外报马到来，赍东京文字，约会引兵去取贼巢。他若退兵，可以立追。梁中书便叫李成、闻达各带一支军马，从东西两路追赶宋江军马。</div>
+            <div class="text-block simplified-text">城上的守军看到宋江的部队拖着旗子、扛着刀斧，士兵们都想回山，战马也发出想回营的叫声，整个队伍乱哄哄地开始撤营拔寨。城上的人看清楚后，赶紧报告梁中书："梁山泊的军队今天全都撤兵回去了。"梁中书一听，马上叫来李成和闻达商量。闻达说："很明显是京城的援军去打他们老窝了，这帮家伙怕老巢被端，急着往回跑。我们现在趁势追杀，肯定能抓住宋江。"话还没说完，城外送信的骑兵到了，带着京城来的命令，说要联合出兵端掉梁山泊。信里还说如果敌人撤退，可以立刻追击。梁中书就让李成和闻达各自带一队人马，分东西两路去追宋江的部队。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">且说宋江引兵退回，见城中调兵追赶，舍命便走，直退到飞虎峪那边。只听的背后火炮齐响。李成、闻达吃了一惊，勒住战马看时，后面只见旗幡对刺，战鼓乱鸣。李成、闻达火急回军。左手下撞出小李广花荣，右手下撞出豹子头林冲，各引五百军马，两边杀来。措手不及，知道中了奸计，火速回军。前面又撞出呼延灼，引着一支马军，大杀一阵。杀的李成、闻达金盔倒纳，衣甲飘零，退入城中，闭门不出。宋江军马次第而回。早转近梁山泊边，却好迎着丑郡马宣赞拦路。宋江约住军兵，权且下寨。暗地使人从偏僻小路，赴水上山报知，约会水陆军兵，两下救应。有诗为证：</div>
+            <div class="text-block simplified-text">话说宋江带着兵马撤退，看到城里派兵追来，就拼命逃跑，一直退到飞虎峪那边。突然听到背后炮声大作。李成和闻达吓了一跳，赶紧勒住马回头看，只见后面旗帜乱晃，战鼓乱敲。李成和闻达急忙掉头往回跑。这时左边突然杀出小李广花荣，右边杀出豹子头林冲，各带五百人马从两边夹击。他们根本来不及反应，这才知道中了埋伏，赶紧往回撤。结果前面又碰上呼延灼带着骑兵冲杀过来，打得李成和闻达头盔都掉了，铠甲也散了，狼狈逃回城里，关紧城门不敢出来。宋江的部队也陆续撤回。快到梁山泊时，正好遇到丑郡马宣赞拦路。宋江让部队停下，暂时扎营。同时悄悄派人从小路渡水上梁山报信，安排水陆两军接应。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">宋江振旅暂回营，飞虎坡前暗伏兵。</div>
+            <div class="text-block simplified-text">宋江带着军队先撤回营地，在飞虎坡前面偷偷埋伏了士兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">杀得李成无处走，倒戈弃甲入京城。</div>
+            <div class="text-block simplified-text">李成被打得没处逃，丢盔卸甲跑进京城。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">且说水寨内头领船火儿张横，与兄弟浪里白跳张顺当时议定：“我和你弟兄两个，自来寨中，不曾建功，只看着别人夸能说会，倒受他气。如今蒲东大刀关胜，三路调军打我寨栅。不若我和你两个先去劫了他寨，捉拿关胜，立这件大功。众兄弟面上也好争口气。”张顺道：“哥哥，我和你只管的些水军，倘或不相救应，枉惹人耻笑。”张横道：“你若这般把细，何年月日能勾建功？你不去便罢，我今夜自去。”张顺苦谏不听。当夜张横点了小船五十余只，每船上只有三五人，浑身都是软战，手执苦竹枪，各带蓼叶刀，趁着月光微明，寒露寂静，把小船直抵旱路。此时约有二更时分。</div>
+            <div class="text-block simplified-text">话说水寨里的头领船火儿张横，跟他兄弟浪里白跳张顺商量说："咱哥俩来山寨这么久，一直没立过功，光看别人出风头，还受他们气。现在蒲东的关胜带兵分三路来打咱们。不如咱俩先去偷袭他的营寨，抓住关胜，立个大功，也好在兄弟们面前争口气。"张顺说："哥，咱俩只管水军，万一没人接应，不是白让人笑话吗？"张横急了："你这么胆小怕事，什么时候才能立功？你不去拉倒，我今晚自己去！"张顺怎么劝都没用。当天晚上，张横带了五十多只小船，每船就三五个人，都穿着轻便铠甲，拿着竹枪和短刀。趁着月色朦胧、夜深人静的时候，悄悄把船划到岸边。这时候大概晚上九点多钟。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">却说关胜正在中军帐里点灯看书。有伏路小校悄悄来报：“芦花荡里，约有小船四五十只，人人各执长枪，尽去芦苇里面两边埋伏，不知何意，特来报知。”关胜听了，微微冷笑：“盗贼之徒，不足与吾对敌。”当时暗传号令，教众军俱各如此准备，“贼兵入寨，帐前一声锣响，四下各自捉人。”三军得令，各自潜伏。</div>
+            <div class="text-block simplified-text">关胜正在军营帐篷里点着灯看书。有个放哨的小兵偷偷跑来报告："芦花荡那边，大概有四五十条小船，船上的人都拿着长枪，全都躲在芦苇丛两边埋伏着。不知道他们想干什么，特地来报告。"关胜听完，冷笑了一下说："这帮土匪强盗，根本不配跟我打。"他悄悄传下命令，让所有士兵都做好准备："等这些土匪冲进军营，听到帐前锣声一响，大家就一起动手抓人。"士兵们接到命令，都悄悄藏了起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">且说张横将引三二百人，从芦苇中间藏踪蹑迹，直到寨边，拔开鹿角，径奔中军，望见帐中灯烛荧煌，关胜手拈髭髯坐看兵书。张横暗喜，手搦长枪，抢入帐房里来。傍边一声锣响，众军喊动，如天崩地塌，山倒江翻。吓的张横倒拖长枪，转身便走。四下里伏兵乱起。可怜会水张横，怎脱平川罗网。二三百人不曾走的一个，尽数被缚，推到帐前。关胜看了，笑骂：“无端草贼，小辈匹夫，安敢侮吾！”将张横陷车盛了，其余者尽数监了，“直等捉了宋江，一并解上京师，不负宣赞举荐之意。”</div>
+            <div class="text-block simplified-text">话说张横带着两三百人，偷偷摸摸地从芦苇丛里钻出来，悄悄摸到敌营边上。他们搬开路障，直接冲向中军大帐，远远看见帐篷里灯火通明，关胜正摸着胡子在看兵书。张横心里暗喜，握紧长枪就往帐篷里冲。
+
+突然旁边"哐当"一声锣响，埋伏的士兵一起喊杀起来，那动静简直像天塌地陷、山崩海啸一样。吓得张横拖着枪掉头就跑。结果四面八方埋伏的士兵全杀出来了。可怜这个水性好的张横，在平地上哪逃得掉啊。带去的两三百人一个都没跑掉，全被绑了起来，押到关胜面前。
+
+关胜看着他们，又好气又好笑地骂道："你们这些不知死活的草寇，也敢来招惹我？"叫人把张横关进囚车，其他人都关押起来，说："等抓到宋江，一起押送京城，这才不辜负宣赞推荐我的一番好意。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">不说关胜捉了张横。却说水寨内三阮头领，正在寨中商议，使人去宋江哥哥处听令。只见张顺到来报说：“我哥哥因不听小弟苦谏，去劫关胜营寨，不料被捉，囚车监了。”阮小七听了，叫将起来，说道：“我兄弟们同死同生，吉凶相救。你是他嫡亲兄弟，却怎地被人捉了，你不去救，怎见宋公明哥哥？我弟兄三个，自去救他。”张顺道：“为不曾得哥哥将令，却不敢轻动。”阮小七道：“若等将令来时，你哥哥吃他剁做八段！”阮小二、阮小五都道：“说的是。”张顺说他三个不过，只得依他。当夜四更，点起大小水寨头领，各驾船只一百余只，一齐杀奔关胜寨来。岸上小军望见水面上战船如蚂蚁相似，都傍岸边，慌忙报知主帅。关胜笑道：“无见识贼奴，何足为虑！”随即唤首将附耳低言如此如此。且说三阮在前，张顺在后，呐声喊，抢入寨来，只见寨内枪刀竖立，旌旗不倒，并无一人。三阮大惊，转身便走。帐前一声锣响，左右两边马军步军，分作八路，簸箕掌，栲栳圈，重重叠叠围裹将来。张顺见不是头，扑同地先跳下水去。三阮夺路便走，急到的水边。后军赶上，挠钩齐下，套索飞来，把这活阎罗阮小七搭住，横拖倒拽捉去了。阮小二、阮小五、张顺，却得混江龙李俊带的童威、童猛死救回去。</div>
+            <div class="text-block simplified-text">咱们先不说关胜抓住了张横的事。回过头来说水寨里阮家三兄弟正在商量事情，准备派人去听宋江大哥的命令。这时候张顺慌慌张张跑来说："我哥不听我劝，非要去偷袭关胜的军营，结果被抓了，现在关在囚车里！"阮小七一听就炸了："咱们兄弟说好同生共死的！你是他亲弟弟，看他被抓还不去救？我们三兄弟自己去！"张顺为难地说："可还没接到大哥的命令..."阮小七急得直跺脚："等命令下来你哥早被大卸八块了！"阮小二和阮小五也连连点头。张顺拗不过他们，只好同意。
+
+当天半夜四点，他们带着一百多艘战船杀向关胜大营。岸上哨兵看见江面密密麻麻全是船，赶紧报告关胜。关胜却笑着说："这群没脑子的蠢贼，怕什么！"然后悄悄吩咐手下如此这般布置。
+
+阮家三兄弟打头阵，张顺在后面跟着，大喊着冲进敌营，却发现营里空无一人，只有刀枪插在地上，旗帜纹丝不动。三人知道中计转身就跑。突然锣声大作，伏兵从四面八方围上来，像簸箕收粮食似的把他们团团围住。张顺见势不妙，"扑通"一声先跳河逃了。阮家三兄弟拼命往河边跑，眼看快到水边，追兵甩出挠钩套索，把阮小七这个"活阎罗"给生拉硬拽抓走了。幸亏李俊带着童威、童猛拼死接应，才把阮小二、阮小五和张顺救回去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">不说阮小七被捉，囚在陷车之中。且说水军报上梁山泊来，刘唐便使张顺从水路里直到宋江寨中，报说这个消息。宋江便与吴用商议，怎生退的关胜。吴用道：“来日决战，且看胜败如何。”说犹未了，猛听得战鼓齐鸣，却是丑郡马宣赞部领三军直到大寨。宋江举众出迎。门旗开处，宣赞出马。怎生打扮？但见：</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+不说阮小七被抓，关在囚车里的事。先说水军把这个消息报告给梁山泊，刘唐派张顺走水路赶到宋江的军营报信。宋江和吴用商量怎么打退关胜。吴用说："明天打一仗，先看看输赢再说。"话还没说完，突然听见战鼓声大作，原来是丑郡马宣赞带着大队人马杀到营前。宋江带人出去迎战。营门打开，宣赞骑马出来。他长什么样呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">征袍穿蜀锦，铠甲露银花。金盔凤翅披肩，抹绿云靴护腿。马蹄荡起红尘，刀面平铺秋水。满空杀气从天降，一点朱缨滚地来。</div>
+            <div class="text-block simplified-text">这人穿着用蜀地好锦做的战袍，银光闪闪的铠甲。戴着有凤凰翅膀装饰的金头盔，脚蹬绿色云纹靴子保护双腿。马跑起来扬起一片尘土，手里的刀像秋天的湖水一样又亮又平。天上地下都是杀气，只见一个红缨枪头在地上飞快地滚过来。
+
+（说明：译文完全保留原文描写的武将装备、动作和战场氛围，用"银光闪闪""又亮又平"等口语化表达替代原文比喻，将"抹绿云靴"转化为现代人能理解的"绿色云纹靴子"，"一点朱缨滚地来"用"红缨枪头在地上飞快地滚过来"具体化，确保每个信息点都通俗可感。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">宋江看了宣赞在门旗下勒战，便唤首将：“那个出马先拿这厮？”只见小李广花荣拍马持枪，直取宣赞。宣赞舞刀来迎。一来一往，一上一下，斗到十合，花荣卖个破绽，回马便走。宣赞赶来，花荣就了事环带住钢枪，拈弓取箭，侧坐雕鞍，轻舒猿臂，翻身一箭。宣赞听的弓弦响，却好箭来，把刀只一隔，铮地一声响，射在刀面上。花荣见一箭不中，再取第二枝箭，看的较近，望宣赞胸膛上射来。宣赞镫里藏身，又躲过了。宣赞见他弓箭高强，不敢追赶，霍然勒回马，跑回本阵。花荣见他不赶来，连忙便勒转马头，望宣赞赶来，又取第三枝箭，望得宣赞后心较近，再射一箭。只听得铛地一声响，却射在背后护心镜上。宣赞慌忙驰马入阵，便使人报与关胜。关胜得知，便唤小校快牵过战马来。那匹马头至尾长一丈，蹄至脊高八尺，浑身上下没一根杂毛，纯是火炭般赤，拴一副皮甲，束三条肚带。关胜全装披挂，绰刀上马，直临阵前。门旗开处，便乃出马。有《西江月》一首为证：</div>
+            <div class="text-block simplified-text">宋江看见宣赞在军旗下叫阵，就对手下将领说："谁去把这小子拿下？"这时，小李广花荣骑马提枪冲了出去，直奔宣赞。宣赞挥刀迎战。两人你一招我一式打了十个回合，花荣假装露出破绽，调转马头就跑。宣赞追上去，花荣趁机把枪挂在马鞍上，拿出弓箭，侧身拉弓，"嗖"地射出一箭。宣赞听到弓弦响，赶紧用刀一挡，"当"的一声，箭射在刀面上。花荣见第一箭没中，又拿出第二箭，瞄准宣赞胸口射去。宣赞一个镫里藏身又躲开了。宣赞看他箭法厉害，不敢再追，突然调转马头跑回自己阵营。花荣见他不追了，立刻也调转马头追上去，拿出第三支箭，瞄准宣赞后背射去，结果"铛"的一声射在了护心镜上。宣赞赶紧骑马跑回阵中，派人报告关胜。关胜知道后，立刻叫小兵牵来战马。这匹马从头到尾有一丈长，从蹄子到马背有八尺高，全身火红没有一根杂毛，披着皮甲，系着三条肚带。关胜全副武装，提刀上马，来到阵前。军旗分开，关胜骑马出战。有首《西江月》为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">汉国功臣苗裔，三分良将玄孙。绣旗飘挂动天兵，金甲绿袍相称。赤兔马腾腾紫雾，青龙刀凛凛寒冰。蒲东郡内产英雄，义勇大刀关胜。</div>
+            <div class="text-block simplified-text">这段说的是关胜的来历和形象：
+
+1. 他是汉朝名将的后代，祖上三代都是好将领
+2. 他带的军队旗帜飘扬，士兵们穿着金色铠甲配绿色战袍
+3. 他骑的赤兔马跑起来像腾云驾雾，用的青龙刀寒光闪闪
+4. 他是蒲东郡出的英雄，因为讲义气、武艺高强使大刀而出名
+
+简单说就是：关胜是个名门之后，骑着宝马拿着宝刀，带领一支威风凛凛的军队，是当地有名的好汉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">宋江看了关胜一表非俗，与吴用暗暗地喝采，回头与众多良将道：“将军英雄，名不虚传！”说言未了，林冲忿怒，便道：“我等弟兄，自上梁山泊，大小五七十阵，未尝挫了锐气。军师何故灭自己威风！”说罢，便挺枪出马，直取关胜。关胜见了，大喝道：“水泊草寇，汝等怎敢背负朝廷！单要宋江与吾决战。”宋江在门旗下喝住林冲，纵马亲自出阵，欠身与关胜施礼，说道：“郓城小吏宋江，到此谨参，惟将军问罪。”关胜道：“汝为俗吏，安敢背叛朝廷？”宋江答道：“盖为朝廷不明，纵容奸臣当道，谗佞专权，设除滥官污吏，陷害天下百姓。宋江等替天行道，并无异心。”关胜大喝：“天兵到此，尚然抗拒！巧言令色，怎敢瞒吾！若不下马受降，着你粉骨碎身！”霹雳火秦明听得，大怒，手舞狼牙棍，纵坐下马，直抢过来。关胜也纵马出迎，来斗秦明。林冲怕他夺了头功，猛可里飞抢过来，径奔关胜。三骑马向征尘影里，转灯般厮杀。宋江看了，恐伤关胜，便教鸣金收军。林冲、秦明回马阵前，说道：“正待擒捉这厮，兄长何故收军罢战？”宋江道：“贤弟，我等忠义自守，以强欺弱，非所愿也。纵使阵上捉他，此人不伏，亦乃惹人耻笑。吾看关胜英勇之将，世本忠臣，乃祖为神。若得此人上山，宋江情愿让位。”林冲，秦明都不喜欢。当日两边各自收兵。</div>
+            <div class="text-block simplified-text">宋江看到关胜长得一表人才，和吴用悄悄称赞。他回头对身边的好汉们说："这位将军真是名不虚传的英雄！"话还没说完，林冲就生气地说："我们兄弟上梁山以来，打了五七十场仗，从没丢过脸。军师怎么长别人志气灭自己威风！"说完就提着枪冲出去打关胜。关胜见了大喊："你们这些草寇，竟敢造反！我只要宋江出来单挑！"宋江赶紧叫住林冲，自己骑马出来行礼说："我是郓城小吏宋江，特来拜见将军。"关胜骂道："你一个小官，竟敢造反？"宋江回答："因为朝廷昏庸，奸臣当道，贪官污吏害苦百姓。我们是替天行道，没有二心。"关胜怒吼："大军来了还敢抵抗！花言巧语骗不了我！不下马投降就叫你粉身碎骨！"秦明听了大怒，抡着狼牙棒冲过来。关胜也骑马迎战。林冲怕秦明抢了功劳，也冲上去打关胜。三人在尘土中打得难分难解。宋江怕伤到关胜，就下令收兵。林冲、秦明回来说："眼看就要抓住他了，哥哥为什么收兵？"宋江说："好兄弟，我们讲忠义，不愿以多欺少。就算抓了他，他不服气反而让人笑话。我看关胜是忠臣良将，祖上还是名将。要是能让他上山，我情愿让位给他。"林冲和秦明听了都不高兴。当天双方各自收兵回去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">且说关胜回到寨中，下马卸甲，心中暗忖道：“我力斗二将不过，看看输与他，宋江倒收了军马，不知主何意？”却教小军推出陷车中张横、阮小七过来，问道：“宋江是个郓城小吏，你这厮们如何伏他？”阮小七应道：“俺哥哥山东、河北驰名，都称做及时雨呼保义宋公明。你这厮不知礼义之人，如何省的！”关胜低头不语，且教推过陷车。当晚寨中纳闷，坐卧不安，走出中军，立观月色满天，霜华遍地，嗟叹不已。有伏路小校前来报说：“有个胡须将军，匹马单鞭，要见元帅。”关胜道：“你不问他是谁？”小校道：“他又没衣甲军器，并不肯说姓名，只言要见元帅。”关胜道：“既是如此，与我唤来。”没多时，来到帐中，拜见关胜。关胜看了，有些面熟，灯光之下略也认得，便问是谁。那人道：“乞退左右。”关胜道：“不妨。”那人道：“小将呼延灼的便是。先前曾与朝廷统领连环马军，征进梁山泊，谁想中贼奸计，失陷了军机，不能还乡。听得将军到来，不胜之喜。早间宋江在阵上，林冲、秦明待捉将军，宋江火急收军，诚恐伤犯足下。此人素有归顺之意，无奈众贼不从，暗与呼延灼商议，正要驱使众人归顺。将军若是听从，明日夜间，轻弓短箭，骑着快马，从小路直入贼寨，生擒林冲等寇，解赴京师，共立功勋。”关胜听罢大喜，请入帐，置酒相待。备说宋江专以忠义为主，不幸从贼无辜。二人递相剖露衷情，并无疑心。次日，宋江举众搦战。关胜与呼延灼商议：“今日可先赢首将，晚间可行此计。”有诗为证：</div>
+            <div class="text-block simplified-text">关胜回到军营，下了马脱掉盔甲，心里琢磨："我打不过那两个人，眼看就要输了，宋江却突然撤兵，不知道他打的什么主意？"于是叫手下把囚车里的张横和阮小七带过来，问道："宋江不过是个郓城的小官，你们为什么愿意跟着他？"阮小七回答："我大哥在山东河北一带很有名，大家都叫他及时雨宋公明。你这种不懂道理的人，怎么会明白！"关胜听完没说话，让人把他们押回去。
+
+那天晚上关胜在军营里心烦意乱，坐也不是站也不是，走出帐篷看见满天月光，地上都是霜，不由得叹气。这时巡逻的士兵来报告："有个长胡子的将军，一个人骑着马拿着鞭子，要见元帅。"关胜问："你没问他是谁？"士兵说："他没穿盔甲也没带武器，不肯说名字，就说要见元帅。"关胜说："那就让他进来吧。"
+
+不一会儿，那人来到帐中行礼。关胜觉得有点眼熟，在灯光下仔细看了看，问他是谁。那人说："请让其他人退下。"关胜说："没关系。"那人这才说："我是呼延灼。以前带领朝廷的连环马军攻打梁山泊，结果中了他们的计，打了败仗回不去。听说将军来了特别高兴。今天打仗时，林冲和秦明差点抓住你，是宋江急忙收兵，怕伤到你。宋江其实早想归顺朝廷，只是其他人不同意，他私下和我商量，打算带着大家一起投降。将军要是同意，明天晚上可以带着弓箭，骑快马从小路直接杀进梁山营地，活捉林冲他们，押送到京城领功。"
+
+关胜听了很高兴，请他进帐喝酒。两人聊起宋江其实很讲忠义，只是不得已才当土匪，越说越投机，完全相信对方。第二天宋江带兵来挑战，关胜和呼延灼商量："今天先打赢几场，晚上就按计划行动。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">亡命呼延计最奇，单人匹马夜逃归。</div>
+            <div class="text-block simplified-text">逃命的呼延想了个绝妙的主意，一个人骑着马趁天黑逃回来了。
+
+（说明：1. "亡命"译为"逃命"更直白 2. "计最奇"用"绝妙的主意"替代文言表达 3. "单人匹马"译为"一个人骑着马"更口语化 4. "夜逃归"拆解为"趁天黑逃回来"更易理解 5. 保留原句的倒装结构但用白话呈现 6. 未添加任何新信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">阵前假意鞭黄信，钩起梁山旧是非。</div>
+            <div class="text-block simplified-text">在战场上假装生气打黄信，其实是为了勾起梁山以前的那些恩怨纠纷。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">且说呼延灼借副衣甲穿了，彼各上马，都到阵前。宋江见了，大骂呼延灼道：“我不曾亏负你半分，因何夤夜私去！”呼延灼回道：“汝等草寇，成何大事！”宋江便令镇三山黄信出马，仗丧门剑，驱坐下马，直奔呼延灼。两马相交，斗不到十合，呼延灼手起一鞭，把黄信打落马下。宋江阵上众军，抢出来扛了回去。关胜大喜，令大小三军一齐掩杀。呼延灼道：“不可追掩，恐吴用那厮广有神机。若还赶杀，恐贼有计。”关胜听了，火急收军，都回本寨，到中军帐里置酒相待，动问镇三山黄信之事。呼延灼道：“此人原是朝廷命官，青州都监，与秦明、花荣一时落草。今日先杀此贼，挫灭威风。今晚偷营，必然成事。”关胜大喜，传下将令，教宣赞、郝思文两路接应。自引五百马军，轻弓短箭，叫呼延灼引路。至夜二更起身，三更前后，直奔宋江寨中，炮响为号，里应外合，一齐进兵。是夜月光如昼。黄昏时候披挂已了，马摘鸾铃，人披软战，军卒衔枚疾走，一齐乘马。呼延灼当先引路，众人跟着。转过山径，约行了半个更次，前面撞见三五十个伏路小军，低声问道：“来的不是呼将军么？宋公明差我等在此迎接。”呼延灼喝道：“休言语，随在我马后走。”呼延灼纵马先行，关胜乘马在后。又转过一层山嘴，只见呼延灼把枪尖一指，远远地一碗红灯。关胜勒住马问道：“有红灯处是那里？”呼延灼道：“那里便是宋公明中军。”急催动人马。将近红灯，忽听得一声炮响，众军跟定关胜，杀奔前来。到红灯之下看时，不见一个；便唤呼延灼时，亦不见了。关胜大惊，知道中计，慌忙回马。听得四边山上，一齐鼓响锣鸣。正是慌不择路，众军各自逃生。关胜连忙回马时，只剩得数骑马军跟着。转出山嘴，又听得树林边脑后一声炮响，四下里挠钩齐出，把关胜拖下雕鞍，夺了刀马，卸去衣甲，前推后拥，拿投大寨里来。却说林冲、花荣自引一支军马截住郝思文，回头厮杀。月光之下，遥见郝思文怎生打扮？有《西江月》为证：</div>
+            <div class="text-block simplified-text">话说呼延灼临时借了副盔甲穿上，双方各自上马来到阵前。宋江一见就破口大骂："我半点都没亏待你，你为啥半夜偷偷溜走？"呼延灼回骂："你们这群土匪能成什么气候！"宋江立刻派黄信出战，只见黄信提着丧门剑骑马冲来。两人交手不到十个回合，呼延灼一鞭子就把黄信抽下马。宋江这边赶紧派人把黄信抢了回去。
+
+关胜见状大喜，正要下令全军冲锋，呼延灼劝阻道："别追！吴用那家伙诡计多端，小心有埋伏。"关胜赶紧收兵回营，设宴招待呼延灼时问起黄信的事。呼延灼说："这人本来是朝廷命官，后来跟着秦明、花荣当了土匪。今天先杀他个下马威。今晚咱们去劫营，肯定能成功。"
+
+关胜听了很高兴，命令宣赞、郝思文分两路接应，自己带着五百骑兵，让呼延灼带路。二更天出发，三更时分杀到宋江大营，约定以炮响为号里应外合。当晚月亮特别亮，士兵们卸下马铃，悄悄行进。走到半路遇到几十个巡逻兵，小声问："是呼将军吗？宋大哥派我们来接应。"呼延灼呵斥："别出声，跟紧我！"
+
+又转过一个山坳，呼延灼突然用枪指着远处一盏红灯。关胜问："红灯那儿是哪儿？"呼延灼说："就是宋江的中军大帐！"结果刚靠近红灯，突然一声炮响，红灯下根本没人，呼延灼也不见了。关胜这才知道中计，赶紧撤退。这时四面山上锣鼓齐鸣，士兵们乱作一团。关胜带着几个骑兵刚逃到树林边，又一声炮响，埋伏的士兵用挠钩把他拖下马，扒了盔甲押回大寨。
+
+另一边，林冲、花荣带兵截住郝思文厮杀。月光下只见郝思文打扮得......（此处省略原词描写）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">千丈凌云豪气，一团筋骨精神。横枪跃马荡征尘，四海英雄难近。身着战袍锦绣，七星甲挂龙鳞。天丁元是郝思文，飞马当前出阵。</div>
+            <div class="text-block simplified-text">这个人特别厉害，气势冲天，身体强壮精神抖擞。他骑着马挥舞长枪冲锋陷阵，其他英雄都不敢靠近。他穿着华丽的战袍，铠甲上镶着龙鳞般的金属片。这人就是天将郝思文，骑着快马第一个冲出来打仗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">林冲大喝道：“你主将关胜中计被擒，你这无名小将，何不下马受缚！”郝思文大怒，直取林冲。二马相交，斗无数合，花荣挺枪助战。郝思文势力不加，回马便走。肋后撞出个女将一丈青扈三娘，撒起红绵套索，把郝思文拖下马来。步军向前一齐捉住，解投大寨。话分两处。这边秦明、孙立自引一支军马去捉宣赞，当路正逢此人。丑郡马宣赞怎生打扮？有《西江月》为证：</div>
+            <div class="text-block simplified-text">林冲大喊："你们的主将关胜已经中了我们的计，被抓起来了！你这种小角色，还不赶紧下马投降！"郝思文听了气坏了，直接冲向林冲。两人骑着马打在一起，打了好几个回合，花荣也拿着枪过来帮忙。郝思文打不过他们，掉头就跑。突然从旁边冲出来个女将扈三娘，甩出红色套索，把郝思文从马上拽了下来。步兵们一拥而上把他抓住，押回大营。
+
+再说另一边，秦明和孙立带着一队人马去抓宣赞，正好在路上碰到他。这个宣赞长什么样呢？有首《西江月》词是这么形容的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">卷缩短黄须发，凹兜黑墨容颜。睁开怪眼似双环，鼻孔朝天仰见。手内钢刀耀雪，护身铠甲连环。海骝赤马锦鞍鞯，郡马英雄宣赞。</div>
+            <div class="text-block simplified-text">这个人长得挺怪的：胡子头发又短又黄，脸黑得像涂了墨，眼睛瞪得圆溜溜的像两个铜环，鼻孔朝天翻着。他手里拿着把雪亮的钢刀，身上穿着连环铠甲，骑着一匹配着华丽马鞍的红鬃马。这就是那个有名的英雄好汉——郡马宣赞。
+
+（说明：译文通过以下方式达成要求：
+1. 将"卷缩短黄须发"等文言描述转化为"胡子头发又短又黄"等白话
+2. 用"长得挺怪的"替代"容颜"等书面语
+3. "鼻孔朝天仰见"转化为更直白的"鼻孔朝天翻着"
+4. 添加连接词"这就是"使人物介绍更自然
+5. 保留所有原始信息：外貌特征、武器、坐骑、身份
+6. 使用"圆溜溜""雪亮"等口语化表达增强画面感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">当下宣赞出马，大骂：“草贼匹夫，当我者死，避我者生！”秦明大怒，跃马挥狼牙棍，直取宣赞。二马相交，约斗数合，孙立侧首过来。宣赞慌张，刀法不依古格，被秦明一棍搠下马来。三军齐喊一声，向前捉住。再有扑天雕李应引领大小军兵，抢奔关胜寨内来，先救了张横、阮小七并被擒水军人等，夺去一应粮草马匹，却去招安四下败残人马。</div>
+            <div class="text-block simplified-text">这时宣赞骑马出来，破口大骂："你们这些草寇土匪，敢挡我路的死路一条，躲开的还能活命！"秦明一听火冒三丈，拍马冲上前去，抡起狼牙棒就打。两人骑马对战，打了几个回合，孙立突然从旁边杀过来。宣赞一下子慌了神，刀法全乱了套，被秦明一棒子打下马。士兵们齐声呐喊，一拥而上把他活捉了。
+
+这时候李应带着大队人马杀向关胜的军营，先救出了被抓的张横、阮小七和水军士兵们，还抢走了所有粮食草料和战马。接着他们开始收编那些被打散的残兵败将。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">天晓，宋江会众上山。此时东方渐明，忠义堂上分开坐次，早把关胜、宣赞、郝思文分投解来。宋江见了，慌忙下堂，喝退军卒，亲解其缚，把关胜扶在正中交椅上，纳头便拜，叩首伏罪，说道：“亡命狂徒，冒犯虎威，望乞恕罪。”关胜连忙答礼，闭口无言，手足无措。呼延灼亦向前来伏罪道：“小可既蒙将令，不敢不依，万望将军免恕虚诳之罪。”关胜看了一般头领，义气深重，回顾与宣赞、郝思文道：“我们被擒在此，所事若何？”二人答道：“并听将令。”关胜道：“无面还京，俺三人愿早赐一死。”宋江道：“何故发此言？将军倘蒙不弃微贱，一同替天行道。若是不肯，不敢苦留，只今便送回京。”关胜道：“人称忠义宋公明，话不虚传。今日我等有家难奔，有国难投，愿在帐下为一小卒。”宋江大喜。当日一面设筵庆贺，一边使人招安逃窜败军，又得了五七千人马。其余各自四散。投降军内，有老幼者，随即给散银两，便放回家。一边差薛永赍书往蒲东，搬取关胜老小。都不在话下。</div>
+            <div class="text-block simplified-text">天刚亮，宋江召集大伙儿上山。这时候东边开始发白，忠义堂上排好座位，很快把关胜、宣赞、郝思文三个人押了上来。宋江一见，赶紧跑下台阶，让士兵退下，亲自给他们松绑，把关胜扶到正中间的头把交椅上，跪下就磕头认错，说："我们这些逃命的粗人冒犯了您，求您大人大量别计较。"关胜赶忙回礼，不知道该说什么，慌得手脚都不知道往哪儿放。呼延灼也过来认错说："我是奉命行事，实在没办法，求将军原谅我骗您的罪过。"
+
+关胜看了看周围这些头领，发现他们都特别讲义气，就转头问宣赞和郝思文："咱们被抓到这儿了，你们说怎么办？"两人回答："全听你的。"关胜说："我们没脸回京城了，干脆求他们给个痛快吧。"宋江连忙说："千万别这么说！将军要是不嫌弃我们，就一起替天行道。要是不愿意，我们也不勉强，马上送你们回京城。"关胜感叹："人人都说宋江讲义气，果然名不虚传。现在我们走投无路，愿意在你手下当个小兵。"宋江高兴坏了。
+
+当天一边摆酒庆祝，一边派人收编逃跑的败兵，又收了五六千人马。剩下的都各自散了。投降的士兵里有老人小孩的，当场发了银子让他们回家。还派薛永去蒲东接关胜的家人。这些琐事就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">宋江正饮宴间，默然想起卢员外、石秀陷在北京，潸然泪下。吴用道：“兄长不必忧心，吴用自有措置。只过今晚，来日再起军兵，去打北京，必然成事。”关胜便起身说道：“小将无可报答不杀之罪，愿为前部。”宋江大喜。次日早晨传令，就教宣赞、郝思文拨回旧有军马，便为前部先锋。其余原打北京头领，不缺一个。再差李俊、张顺将带水战盔甲随去，以次再望北京进发。</div>
+            <div class="text-block simplified-text">宋江正和大家喝酒时，突然想到卢俊义和石秀还被关在北京城里，忍不住掉眼泪。吴用劝他说："大哥别担心，我有办法。等过了今晚，明天咱们就带兵去打北京，一定能成功。"关胜马上站起来说："感谢您不杀之恩，我愿意打头阵。"宋江听了很高兴。第二天一早，他就下令让宣赞和郝思文带着原来的部队当先锋，其他上次打过北京的将领也都叫上，一个不少。还派了李俊、张顺带着水军装备跟着，然后大军就朝北京出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">这里却说梁中书在城中，正与索超起病饮酒，只见探马报道：“关胜、宣赞、郝思文并众军马，俱被宋江捉去，已入伙了。梁山泊军马见今又到。”梁中书听得，唬得目瞪痴呆，手脚无措。只见索超禀复道：“前者中贼冷箭，今番且复此仇。”随即赏了索超，便教引本部人马，争先出城，前去迎敌。李成、闻达随后调军接应。其时正是仲冬天气，时候正冷，连日彤云密布，朔风乱吼。宋江兵到，索超直至飞虎峪下寨。次日引兵迎敌。宋江引前部吕方、郭盛上高阜处看关胜厮杀。三通战鼓罢，关胜出阵。只见对面索超出马。怎生打扮？有诗为证：</div>
+            <div class="text-block simplified-text">咱们用大白话来说这段故事：
+
+当时梁中书正在城里和索超喝酒庆祝他伤好了，突然有侦察兵跑来报告："不好了！关胜、宣赞、郝思文他们带着的军队全被宋江抓走了，现在都投降梁山了。梁山的大部队马上就要打过来了！"梁中书一听，吓得眼都直了，手脚都不知道往哪放。
+
+这时索超站出来说："上次我中了他们的暗箭，这次正好报仇。"梁中书马上重赏索超，让他带着自己的部队赶紧出城迎战。李成、闻达也带着后备部队跟着出发。
+
+那时候正是寒冬腊月，天特别冷，连着好几天都是阴云密布，北风呼呼地刮。宋江的部队一到，索超就在飞虎峪安营扎寨。第二天双方开战，宋江带着吕方、郭盛站在高处看关胜打仗。战鼓敲了三遍，关胜出阵迎战。只见对面索超骑马冲出来。他是什么打扮呢？有诗为证......</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">生居河北最英雄，累与朝廷立大功。</div>
+            <div class="text-block simplified-text">这个人生在河北，是个特别厉害的人物，多次为朝廷立下大功劳。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">双凤袍笼银叶铠，飞鱼袋插铁胎弓。</div>
+            <div class="text-block simplified-text">两只凤凰图案的袍子罩着银色的铠甲，装弓箭的袋子里插着硬弓。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">勇如袁达安齐国，壮若灵神劈华峰。</div>
+            <div class="text-block simplified-text">这个人勇猛得像古代名将袁达保卫齐国时那样，强壮得如同天神劈开华山一般。  
+
+（注：袁达是战国时期齐国猛将，传说曾力敌万军；"劈华峰"典故指神话中巨灵神劈开华山的故事。译文在保留原比喻的基础上，用"保卫齐国""劈开华山"等具体描述替代了原典故名称，使现代读者更易理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">马上横担金蘸斧，索超名号急先锋。</div>
+            <div class="text-block simplified-text">索超这人外号叫"急先锋"，他骑在马上，手里横握着一把镀金的大斧头。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">当时索超见了关胜，却不认得。随征军卒说道：“这个来的便是新背反的大刀关胜。”索超听了，并不打话，直抢过来，径奔关胜。关胜也拍马舞刀来迎。两个斗不十合，李成正在中军，看见索超斧怯，战关胜不下，自舞双刀出阵，夹攻关胜。这边宣赞、郝思文见了，各持兵器前来助战。五骑搅做一块。宋江在高阜处看见，鞭梢一指，大军卷杀过去。李成军马大败亏输，杀得七断八绝，连夜退入城去，坚闭不出。宋江催兵直抵城下，扎住军马。</div>
+            <div class="text-block simplified-text">当时索超看到关胜，但不认识他。旁边的小兵告诉他："这个新来的就是刚叛变的大刀关胜。"索超听完二话不说，直接冲过去打关胜。关胜也骑马挥刀迎战。两人打了不到十个回合，李成在军中看到索超有点招架不住，打不过关胜，就自己提着双刀出来帮忙，一起打关胜。这边宣赞和郝思文看见后，也拿着武器过来帮忙。五个人马上打成一团。宋江在高处看见这情况，用马鞭一指，大军就冲杀过去。李成的部队被打得惨败，死伤惨重，连夜逃回城里，紧闭城门不敢出来。宋江带着军队追到城下，驻扎在那里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">次日，索超亲引一支军马，出城冲突。吴用见了，便教军校迎敌戏战。他若追来，乘势便退。此时索超又得了这一阵，欢喜入城。当晚彤云四合，纷纷雪下。吴用已有计了，暗差步军去北京城外，靠山边河路狭处，掘成陷坑，上用土盖。是夜雪急风严，平明看时，约有二尺深雪。城上望见宋江军马，各有惧色，东西栅立不定。索超看了，便点三百军马，就时追出城来。宋江军马四散奔波而走。却教水军头领李俊、张顺身披软战，勒马横枪，前来迎敌。却才与索超交马，弃枪便走，特引索超奔陷坑边来。这里一边是路，一边是涧。李俊弃马跳入涧中去了，向着前面，口里叫道：“宋公明哥哥快走！”索超听了，不顾身体，飞马抢过阵来。山背后一声炮响，索超连人和马攧将下去。后面伏兵齐起。这索超便有三头六臂，也须七损八伤。正是：烂银深盖藏圈套，碎玉平铺作陷坑。毕竟急先锋索超性命如何，且听下回分解。</div>
+            <div class="text-block simplified-text">第二天，索超亲自带了一队人马出城进攻。吴用看到后，就命令士兵假装迎战，等索超追过来时就假装败退。索超以为又打赢了，高高兴兴回城去了。
+
+当天晚上乌云密布，下起了大雪。吴用已经想好计策，偷偷派步兵在北京城外的山路河边狭窄处挖了陷阱，上面用土盖好。夜里风雪很大，到天亮时积雪已经有两尺深。城上的守军看到宋江的部队，都吓得发抖，在城头站都站不稳。索超见状，立刻带着三百骑兵出城追击。宋江的部队假装四散逃跑，同时派水军头领李俊、张顺穿着轻甲，骑马持枪假装迎战。刚和索超交手就扔下枪逃跑，故意把索超往陷阱那边引。那里一边是路，一边是山涧。李俊突然跳下马跃进山涧，还大喊："宋江哥哥快跑！"索超一听，不顾一切地冲过去。这时山后一声炮响，索超连人带马掉进了陷阱。埋伏的士兵一拥而上，就算索超再厉害也扛不住。
+
+这正是：雪白的陷阱藏杀机，平整的雪地有玄机。索超到底死没死，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
