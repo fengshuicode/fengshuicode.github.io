@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十五回　活阎罗倒船偷御酒　黑旋风扯诏谤徽宗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./074.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十五回　活阎罗倒船偷御酒　黑旋风扯诏谤徽宗</h1>
+        <a href="./076.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">祸福渊潜未易量，两人行事太猖狂。</div>
+            <div class="text-block simplified-text">这句话的意思是：
+
+祸福就像深水里的东西，很难预测；这两个人做事太嚣张了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">售奸暗抵黄封酒，纵恶明撕彩凤章。</div>
+            <div class="text-block simplified-text">卖假酒偷偷换掉好酒，  
+纵容坏人公开撕毁重要文件。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">爽口物多终作疾，快心事过必为殃。</div>
+            <div class="text-block simplified-text">好吃的东西吃太多早晚会生病，太高兴的事情过去后往往会倒霉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">距堙轒辒成虚谬，到此翻为傀儡场。</div>
+            <div class="text-block simplified-text">原文翻译成大白话就是：
+
+以前那些打仗用的攻城器械和计谋现在都没用了，这个地方反而变成了被人操控的傀儡戏台。
+
+解释：
+1. "距堙轒辒"指古代攻城战具，用"打仗用的攻城器械"替代
+2. "成虚谬"意思是变得没用，直接说"都没用了"
+3. "傀儡场"比喻被人操控的场所，用"被人操控的戏台"更直白
+4. 保留原文对比关系（"以前...现在..."）和被动意味（"被操控"）
+5. 完全遵循原文信息，没有增减内容
+6. 使用"打仗""戏台"等日常词汇，确保一听就懂</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说陈宗善领了诏书，回到府中，收拾起身。多有人来作贺：“太尉此行，一为国家干事，二为百姓分忧，军民除害。梁山泊以忠义为主，只待朝廷招安。太尉可着些甜言美语，加意抚恤。留此清名，以传万代。”正话间，只见太师府干人来请，说道：“太师相邀太尉说话。”陈宗善上轿，直到新宋门大街太师府前下轿。干人直引进节堂内书院中，见了太师，侧边坐下。茶汤已罢，蔡太师问道：“听得天子差你去梁山泊招安，特请你来说知：到那里不要失了朝廷纲纪，乱了国家法度。你曾闻《论语》有云：‘行己有耻，使于四方，不辱君命，可谓使矣。’”陈太尉道：“宗善尽知。承太师指教。”蔡京又道：“我叫这个干人跟随你去。他多省得法度，怕你见不到处，就与你提拨。”陈太尉道：“深感恩相厚意。”辞了太师，引着干人，离了相府，上轿回家。方才歇定，门吏来报：“高殿帅下马。”陈太尉慌忙出来迎接，请到厅上坐定。叙问寒温已毕，高太尉道：“今日朝廷商量招安宋江一事，若是高俅在内，必然阻住。况此贼辈，累辱朝廷，罪恶滔天。今更赦宥罪犯，引入京城，必成后患。欲待回奏，玉音已出。且看大意何如。若还此寇仍昧良心，怠慢圣旨，太尉早早回京，不才奏过天子，整点大军，亲身到彼，剪草除根，是吾之愿。太尉此去，下官手下有个虞候，能言快语，问一答十，好与太尉提拨事情。”陈太尉谢道：“感蒙殿帅忧心。”高俅起身，陈太尉送至府前，上马去了。</div>
+            <div class="text-block simplified-text">陈宗善接到皇帝的命令后，回到家里收拾行李准备出发。很多人来祝贺他："您这次去梁山，一是为国家办事，二是帮百姓解决问题，除掉祸害。梁山那帮人自称忠义，就等着朝廷招安。您多说些好话，好好安抚他们。这样能留下好名声，流传后世。"正说着，太师府派人来请，说："太师请陈大人过去说话。"
+
+陈宗善坐轿子来到太师府。下人带他到书房见蔡太师。喝过茶后，蔡太师说："听说皇上派你去梁山招安，特意叫你来说说：到了那儿不能坏了朝廷规矩，乱了国家法度。《论语》里说过：'做事要知廉耻，出使外国要不辱使命。'你要记住。"陈宗善回答："我都明白，谢谢太师指点。"蔡太师又说："我派个手下跟你一起去。他懂规矩，遇到你不清楚的地方可以提醒你。"陈宗善感谢后告辞回家。
+
+刚到家，门卫报告："高太尉来了。"陈宗善赶紧出来迎接。两人寒暄后，高太尉说："今天朝廷讨论招安宋江的事，要是我在场肯定反对。这帮反贼多次冒犯朝廷，罪大恶极。现在不但赦免他们，还要让他们进京，以后肯定出事。但皇上已经决定了，先看看情况。要是他们不识好歹，对圣旨不敬，你就赶紧回来。我会禀报皇上，亲自带兵去把他们彻底消灭。我手下有个能说会道的虞候，让他跟你去，有事可以帮你出主意。"陈宗善道谢后，送高太尉离开。
+
+（说明：原文中"不才"是古人自谦说法，相当于"我"；"玉音"指皇帝的话；"虞候"是古代武官名。这些在译文中都用现代说法替换了。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">次日，蔡太师府张干办，高殿帅府李虞候，二人都到了。陈太尉拴束马匹，整点人数，十将捧十瓶御酒，装在龙凤担内挑了，前插黄旗。陈太尉上马，亲随五六人，张干办、李虞候都乘马匹，丹诏背在前面，引一行人出新宋门。以下官员亦有送路的，都回去了。迤逦来到济州，太守张叔夜晚接着，请到府中，设筵相待，动问招安一节。陈太尉都说了备细。张叔夜道：“论某愚意，招安一事最好。只是一件：太尉到那里须是陪些和气，用甜言美语抚恤他众人。好共歹，只要成全大事。太尉留个清名于万古。他数内有几个性如烈火的汉子，倘或一言半语冲撞了他，便坏了大事。”张干办、李虞候道：“放着我两个跟着太尉，定不致差迟。太守，你只管教小心和气，须坏了朝廷纲纪。小辈人常压着不得一半，若放他头起，便做模样。”张叔夜道：“这两个是甚么人？”陈太尉道：“这一个人是蔡太师府内干办，这一个是高太尉府虞候。”张叔夜道：“只好教这两位干办不去罢。”陈太尉道：“他是蔡府、高府心腹人，不带他去，须然疑心。”张叔夜道：“下官这话，只是要好。恐怕劳而无功。”张干办道：“放着我两个，万丈水无涓滴漏。”张叔夜再不敢言语，一面安排筵宴，送至馆驿内安歇。有诗为证：</div>
+            <div class="text-block simplified-text">第二天，蔡太师府的张干办和高太尉府的李虞候都到了。陈太尉准备好马匹，清点人数，手下将领捧着十瓶皇帝赏赐的酒，装在龙凤花纹的担子里挑着，前面插着黄旗。陈太尉骑上马，带着五六个随从，张干办、李虞候也都骑马，皇帝的诏书背在最前面，一行人出了新宋门。其他送行的官员到这里就回去了。
+
+他们一路走到济州，太守张叔夜连夜接待，请到府里设宴招待。席间问起招安的事，陈太尉详细说了一遍。张叔夜说："照我看，招安是好事。但有一点：太尉您到了那边一定要态度和气，说些好话安抚他们。不管怎样，先把大事办成。太尉您也能留个好名声。他们当中有几个暴脾气的，万一说话得罪了他们，事情就砸了。"
+
+张干办和李虞候插嘴说："有我们俩跟着太尉，保证不会出错。太守你就别操心了，光说小心和气，反倒会坏了朝廷规矩。对这些小辈不能太客气，要是让他们占了上风，以后就更难管了。"
+
+张叔夜问："这两位是？"陈太尉回答："这位是蔡太师府里的干办，那位是高太尉府的虞候。"张叔夜说："要不就让这两位别去了吧？"陈太尉说："他们是蔡府、高府的心腹，不带去的话，上头会起疑心。"
+
+张叔夜说："我这话是为您好，怕白跑一趟。"张干办拍胸脯说："有我们在，天大的事也出不了岔子。"张叔夜不敢再多说，只好继续安排酒宴，送他们到驿站休息。
+
+（后面本来有首诗，但按您要求只翻译原文，就不译诗了）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">一封丹诏下青云，特地招安水浒军。</div>
+            <div class="text-block simplified-text">朝廷下了圣旨，专门来招降梁山好汉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">可羡明机张叔夜，预知难以策华勋。</div>
+            <div class="text-block simplified-text">真佩服那个聪明的张叔夜，他早就知道这事成不了，白费力气。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">且说次日，济州先使人去梁山泊报知。却说宋江每日在忠义堂上聚众相会，商议军情。早有细作人报知此事，未见真实，心中甚喜。当日，有一人同济州报信的直到忠义堂上，说道：“朝廷今差一个太尉陈宗善，赍到十瓶御酒，赦罪招安丹诏一道，已到济州城内。这里准备迎接。”宋江大喜，遂取酒食并彩段二表里，花银十两，打发报信人先回。宋江与众人道：“我们受了招安，得为国家臣子，不枉吃了许多时磨难，今日方成正果。”吴用说道：“论吴某的意，这番必然招安不成。纵使招安，也看得俺们如草芥。等这厮引将大军来，到教他着些毒手，杀得他人亡马倒，梦里也怕。那时方受招安，才有些气度。”宋江道：“你们若如此说时，须坏了‘忠义’二字。”林冲道：“朝廷中贵官来时，有多少装幺。中间未必是好事。”关胜便道：“诏书上必然写着些唬吓的言语，来惊我们。”徐宁又道：“来的人必然是高太尉门下。”宋江道：“你们都休要疑心，且只顾安排接诏。”先令宋清、曹正准备筵席，委柴进都管提调，“务要十分齐整。”铺设下太尉幕次，列五色绢段，堂上堂下，搭彩悬花。先使裴宣、萧让、吕方、郭盛预前下山，离二十里伏道迎接。水军头领准备大船傍岸。吴用传令：“恁们尽依我行。不如此，行不得。”</div>
+            <div class="text-block simplified-text">第二天，济州府派人到梁山泊送信。宋江每天都会在忠义堂召集兄弟们商量事情。有探子提前报告了招安的消息，但还没确定真假，宋江听了很高兴。当天，济州送信的人直接来到忠义堂说："朝廷派了陈宗善太尉，带了十瓶御酒和赦免招安的圣旨，已经到济州城了。这边要准备迎接。"宋江特别高兴，马上准备了酒菜、两匹绸缎和十两银子，先打发报信的人回去。
+
+宋江对大家说："咱们接受招安，就能当朝廷的官员，这些年的苦没白吃，总算熬出头了。"吴用却说："要我说，这次招安肯定成不了。就算成了，朝廷也不会把我们当回事。等他们带大军来，咱们得狠狠打一仗，杀得他们屁滚尿流，做梦都害怕。到那时候再接受招安，才有面子。"宋江说："你们这么想，就对不起'忠义'两个字了。"林冲说："朝廷大官来的时候，肯定摆架子。这事未必是好事。"关胜说："圣旨上肯定写了不少吓唬人的话。"徐宁又说："来的人八成是高俅的手下。"宋江说："你们都别瞎猜了，先准备接圣旨吧。"
+
+他让宋清、曹正负责摆酒席，柴进总管调度，要求必须办得漂漂亮亮。给太尉搭好帐篷，挂上五颜六色的绸缎，大堂上下都装饰了彩带鲜花。先派裴宣、萧让、吕方、郭盛提前下山，在二十里外路边等着迎接。水军头领准备好靠岸的大船。吴用传令："所有人都得听我指挥，不这样安排不行。"
+
+（说明：翻译时做了以下处理：
+1. 将"细作人"译为"探子"
+2. "彩段二表里"译为"两匹绸缎"
+3. "装幺"译为"摆架子"
+4. "唬吓的言语"译为"吓唬人的话"
+5. 保留了"招安"这个关键专有名词
+6. 将"恁们"译为"所有人"以符合现代用语习惯
+7. 调整了部分句序使表达更自然）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">且说萧让引着三个随行，带引五六人，并无寸铁，将着酒果，在二十里外迎接。陈太尉当日在途中，张干办、李虞候不乘马匹，在马前步行。背后从人，何止三二百。济州的军官约有十数骑，前面摆列导引人马，龙凤担内挑担御酒，骑马的背着诏匣。济州牢子前后也有五六十人，都要去梁山泊内，指望觅个小富贵。萧让、裴宣、吕方、郭盛在半路上接着，都俯伏跪在道傍迎接。那张干办便问道：“你那宋江大似谁？皇帝诏敕到来，如何不亲自来接？甚是欺君！你这伙本是该死的人，怎受得朝廷招安！请太尉回去。”萧让、裴宣、吕方、郭盛府伏在地，请罪道：“自来朝廷不曾有诏到寨，未见真实，宋江与大小头领都在金沙滩迎接。万望太尉暂息雷霆之怒，只要与国家成全好事，恕免则个。”李虞候便道：“不成全好事，也不愁你这伙贼飞上天去了！”有诗为证：</div>
+            <div class="text-block simplified-text">话说萧让带着三个随从，领着五六个人，手里拿着酒和水果，在二十里外等着迎接。他们身上都没带武器。陈太尉一行人正往这边走，张干办和李虞候这两个人没骑马，在马前面走着。后面跟着的人，少说也有两三百。济州来的军官骑着十几匹马，在前面开路。有人用龙凤担子挑着御赐的酒，骑马的背着装圣旨的盒子。济州的衙役前后也有五六十人，都想去梁山泊捞点好处。
+
+萧让、裴宣、吕方、郭盛在半路迎上他们，都跪在路边行礼。张干办一见就质问："你们那个宋江算老几？皇上圣旨到了，他为什么不亲自来迎接？太不把皇上放在眼里了！你们这帮本该杀头的土匪，哪有资格接受招安？太尉，咱们回去吧！"
+
+萧让他们四个赶紧趴在地上请罪："朝廷的圣旨从来没到过山寨，我们也不知道是真是假。宋江和所有头领都在金沙滩那边等着迎接呢。求太尉消消气，以国家大事为重，饶了我们吧。"
+
+李虞候在旁边冷笑："就算不成全你们，难道还怕你们这群土匪能飞上天不成？"
+
+（后面本来有首诗，这里就不翻译了）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">贝锦生谗自古然，小人凡事不宜先。</div>
+            <div class="text-block simplified-text">自古以来，小人就爱搬弄是非，这种人什么事都爱抢先出头。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">九天恩雨宣布，抚谕招安未十全。</div>
+            <div class="text-block simplified-text">老天爷下了场好雨（表示恩惠），但朝廷招安安抚的政策还没完全做到位。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">当时吕方、郭盛道：“是何言语？只如此轻看人！”萧让、裴宣只得恳请他。捧去酒果，又不肯吃。众人相随来到水边，梁山泊已摆着三只战船在彼，一只装载马匹，一只装裴宣等一干人，一只请太尉下船，并随从一应人等。先把诏书、御酒放在船头上，那只船正是活阎罗阮小七监督。</div>
+            <div class="text-block simplified-text">当时吕方和郭盛说："这叫什么话？也太看不起人了！"萧让和裴宣只好求他们。端上酒和水果，他们也不肯吃。大家跟着来到水边，梁山泊已经准备好了三只战船：一只运马，一只载裴宣他们那些人，还有一只请太尉和他的随从上船。他们把皇帝的诏书和御酒先放在船头，这只船正好由活阎罗阮小七负责看着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">当日阮小七坐在船梢上，分拨二十余个军健棹船，一家带一口腰刀。陈太尉初下船时，昂昂而已，旁若无人，坐在中间。阮小七招呼众人把船棹动，两边水手齐唱起歌来。李虞候便骂道：“村驴！贵人在此，全无忌惮！”那水手那里采他，只顾唱歌。李虞候拿起藤条来打，两边水手众人并无惧色，有几个为头的回话道：“我们自唱歌，干你甚事！”李虞候道：“杀不尽的反贼，怎敢回我话！”便把藤条去打。两边水手都跳在水里去了。阮小七在梢上说道：“直这般打我水手下水里面去了，这船如何得去！”只见上流头两只快船下来接。原来阮小七预先积下两舱水，见后头来船相近，阮小七便去拔了楔子，叫一声“船漏了”，水早滚上舱里来。急叫救时，船里有一尺多水。那两只船帮将拢来，众人急救陈太尉过船去。各人且把船只顾摇开，那里来顾御酒、诏书。两只快船先行去了。</div>
+            <div class="text-block simplified-text">那天，阮小七坐在船尾，指挥二十多个士兵划船，每人腰间都别着一把刀。陈太尉刚上船时，摆出一副高高在上的样子，目中无人地坐在船中间。阮小七让手下划船，两边的水手一起唱起歌来。李虞候就骂开了：“乡巴佬！大人物在这儿呢，一点规矩都没有！”水手们根本不搭理他，继续唱歌。李虞候抄起藤条就打，水手们一点也不怕，领头的几个直接顶回去：“我们唱我们的歌，关你屁事！”李虞候吼道：“你们这些造反的贼骨头，还敢顶嘴！”说着又挥藤条打人。结果两边水手全跳水里去了。阮小七在船尾喊：“你把我的人都打下水了，这船还怎么走！”这时上游突然冲下来两条快船接应。原来阮小七早就偷偷在船舱里灌了两舱水，等后面的船靠近了，他一把拔掉船底的塞子，大喊“船漏了”，水瞬间漫进船舱。等他们慌着救人时，船舱里的水已经一尺多深了。那两条快船靠过来，大伙儿赶紧把陈太尉转移到另一条船上。所有人都只顾着开船逃命，谁还管什么御酒、圣旨。两条快船抢先溜走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">阮小七叫上水手来，舀了舱里水，把展布都拭抹了。却叫水手道：“你且掇一瓶御酒过来，我先尝一尝滋味。”一个水手便去担中取一瓶酒出来，解了封头，递与阮小七。阮小七接过来，闻得喷鼻馨香。阮小七道：“只怕有毒。我且做个不着，先尝些个。”也无碗瓢，和瓶便呷，一饮而尽。阮小七吃了一瓶道：“有些滋味。一瓶那里济事，再取一瓶来！”又一饮而尽。吃得口滑，一连吃了四瓶。阮小七道：“怎地好？”水手道：“船梢头有一桶白酒在那里。”阮小七道：“与我取舀水的瓢来，我都教你们到口。”将那六瓶御酒，都分与水手众人吃了，却装上十瓶村醪水白酒，还把原封头缚了，再放在龙凤担内，飞也似摇着船来。</div>
+            <div class="text-block simplified-text">阮小七叫来水手，让他们把船舱里的水舀出去，用布擦干净。然后他对水手说："你去拿一瓶御酒来，我先尝尝味道。"一个水手就从担子里取出一瓶酒，打开封口递给阮小七。阮小七接过来，闻到酒香扑鼻。他说："就怕有毒。我豁出去了，先尝一点。"没有碗勺，他直接对着瓶子喝，一口气喝完一瓶。喝完说："味道不错。一瓶哪够啊，再来一瓶！"又一口气喝完。喝上瘾了，连喝四瓶。阮小七问："怎么办？"水手说："船尾还有一桶白酒。"阮小七说："给我拿个舀水的瓢来，我让你们都尝尝。"他把六瓶御酒都分给水手们喝了，然后装了十瓶普通白酒进去，重新封好放回担子里，飞快地划船走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">赶到金沙滩，却好上岸。宋江等都在那里迎接，香花灯烛，鸣金擂鼓，并山寨里村乐，一齐都响。将御酒摆在桌子上，每一桌令四个人抬，诏书也在一个桌子上抬着。陈太尉上岸，宋江等接着，纳头便拜。宋江道：“文面小吏，罪恶迷天，曲辱贵人到此，接待不及，望乞恕罪。”李虞候道：“太尉是朝廷大贵人，大臣来招安你们，非同小可，如何把这等漏船，差那不晓事的村贼乘驾，险些儿误了大贵人性命！”宋江道：“我这里有的是好船，怎敢把漏船来载贵人。”张干办道：“太尉衣襟上兀自湿了，你如何要赖！”宋江背后，五虎将紧随定，不离左右，又有八骠骑将簇拥前后。见这李虞候、张干办在宋江前面指手划脚，你来我去，都有心要杀这厮，只是碍着宋江一个，不敢下手。</div>
+            <div class="text-block simplified-text">到了金沙滩，正好上岸。宋江他们都在那儿等着迎接，又是烧香点蜡烛，又是敲锣打鼓，山寨里的乐队也奏着乐。御酒摆在桌上，每桌四个人抬着，圣旨也单独放在一张桌上抬着。陈太尉上岸后，宋江他们赶紧跪拜行礼。宋江说："我就是个脸上刺字的小官，罪大恶极，劳烦您这样的大人物亲自来，招待不周，请您原谅。"李虞候插嘴说："太尉可是朝廷大官，这次来招安你们，事情重大，你们居然派条破船，让不懂事的乡下人开船，差点害死太尉大人！"宋江解释："我们这儿好船多的是，哪敢用破船接您啊。"张干办指着太尉衣服说："你看太尉衣服都湿了，还想抵赖！"宋江身后站着五虎将紧跟着，周围还有八骠骑将围着。他们看李虞候和张干办在宋江面前指手画脚、你一句我一句的，都想宰了这两个家伙，只是碍于宋江在场，不敢动手。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">当日宋江请太尉上轿，开读诏书。四五次才请得上轿。牵过两匹马来与张干办、李虞候骑，这两个男女，不知身已多大，装煞臭幺。宋江央及得上马行了，令众人大吹大擂，迎上三关来。宋江等一百余个头领都跟在后面，直迎至忠义堂前，一齐下马，请太尉上堂。正面放着御酒、诏匣，陈太尉、张干办、李虞候立在左边，萧让、裴宣立在右边。宋江叫点众头领时，一百七人，于内单只不见了李逵。此时是四月间天气，都穿夹罗战袄，跪在堂上，拱听开读。陈太尉于诏书匣内取出诏书，度与萧让。裴宣赞礼，众将拜罢。萧让展开诏书，高声读道：</div>
+            <div class="text-block simplified-text">那天，宋江请太尉上轿子，准备宣读皇帝的诏书。太尉推让了好几次才上轿。宋江让人牵来两匹马给张干办和李虞候骑，这两个家伙摆架子，不知道自己算老几。宋江好说歹说才让他们骑上马。一路上锣鼓喧天，把太尉迎上三关。宋江带着一百多个头领跟在后面，一直来到忠义堂前。大家下马后，请太尉上堂。堂上正中间摆着御赐的酒和诏书盒子。陈太尉、张干办、李虞候站在左边，萧让、裴宣站在右边。宋江清点人数时，发现一百零七人都在，唯独少了李逵。当时是四月份，大家都穿着夹袄，跪在堂上等着听诏书宣读。陈太尉从盒子里取出诏书，递给萧让。裴宣主持仪式，众人行礼后，萧让打开诏书大声念起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">“制曰：文能安邦，武能定国。五帝凭礼乐而有封疆，三皇用杀伐而定天下。事从顺逆，人有贤愚。朕承祖宗之大业，开日月之光辉，普天率土，罔不臣伏。近为宋江等辈，啸聚山林，劫掳郡邑。本欲用彰天讨，诚恐劳我生民。今差太尉陈宗善前来招安。诏书到日，即将应有钱粮、军器，马匹、船只，目下纳官，拆毁巢穴，率领赴京，原免本罪。倘或仍昧良心，违戾诏制，天兵一至，龆龀不留。故兹诏示，想宜知悉。</div>
+            <div class="text-block simplified-text">皇帝下诏书说：
+
+能文的可以治国，能武的可以平乱。古代圣王用礼乐教化百姓，用武力平定天下。事情有好有坏，人有聪明有愚笨。我继承了祖宗的江山，像日月一样照耀全国，天下没有不服从的。
+
+最近宋江这伙人占山为王，抢劫州县。本来该派兵剿灭，但怕连累老百姓受苦。现在派太尉陈宗善去招安他们。接到这份诏书后，要立即把所有的钱粮、武器、马匹、船只都上交官府，拆掉山寨，带着人马到京城来，可以免罪。
+
+要是还敢昧着良心抗旨，等朝廷大军一到，连小孩都不留。特此通告，你们好好想清楚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">宣和三年孟夏四月 日诏示。”</div>
+            <div class="text-block simplified-text">"这是宣和三年四月夏天发的一份通告。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">萧让却才读罢，宋江已下皆有怒色。只见黑旋风李逵从梁上跳将下来，就萧让手里夺过诏书，扯的粉碎，便来揪住陈太尉，拽拳便打。此时宋江、卢俊义大横身抱住，那里肯放他下手。恰才解拆得开，李虞候唱道：“这厮是甚么人？敢如此大胆！”李逵正没寻人打处，劈头揪住李逵候便打，喝道：“写来的诏书是谁说的话？”张干办道：“这是皇帝圣旨。”李逵道：“你那皇帝正不知我这里众好汉，来招安老爷门，倒要做大！你的皇帝姓宋，我的哥哥也姓宋，你做得皇帝，偏我哥哥做不得皇帝！你莫要来恼犯着黑爹爹，好歹把你那写诏的官员尽都杀了！”众人都来解劝，把黑旋风推下堂去。宋江道：“太尉且宽心，休想有半星儿差池。且取御酒教众人沾恩。”随即取过一副嵌宝金花锺，令裴宣取一瓶御酒，倾在银酒海内看时，却是村醪白酒。再将九瓶都打开倾在酒海内，却是一般的淡薄村醪。众人见了，尽都骇然，一个个都走下堂去了。鲁智深提着铁禅杖，高声叫骂：“入娘撮鸟，忒杀是欺负人！把水酒做御酒来哄俺们吃！”赤发鬼刘唐也挺着朴刀杀上来，行者武松掣出双戒刀，没遮拦穆弘、九纹龙史进一齐发作。六个水军头领都骂下关去了。</div>
+            <div class="text-block simplified-text">萧让刚读完诏书，宋江他们听了都很生气。这时李逵突然从房梁上跳下来，一把抢过萧让手里的诏书撕得粉碎，冲上去就要打陈太尉。宋江和卢俊义赶紧拦腰抱住他，死活不让他动手。好不容易才把人拉开，李虞候就嚷嚷："这混蛋是谁？胆子这么大！"李逵正愁没人可打，冲上去揪住李虞候就打，边打边骂："这破诏书是谁让写的？"张干办说："这是皇上的圣旨！"李逵骂道："你们皇帝根本不知道我们梁山好汉的厉害！招安就招安，摆什么臭架子！你皇帝姓宋，我大哥也姓宋，他能当皇帝，我大哥怎么就不能当？别惹你黑爷爷生气，不然把你们写圣旨的官全宰了！"大伙儿赶紧过来劝架，把李逵推了出去。
+
+宋江对陈太尉说："您别担心，保证不会出事。先把御酒拿出来给大家尝尝。"结果拿来镶着宝石的金酒杯，倒上御酒一看，根本是掺水的劣质白酒。把剩下的九瓶都打开，全是同样的破酒。大家一看都气炸了，纷纷摔杯子走人。鲁智深抡着铁禅杖大骂："狗娘养的太欺负人了！拿这种破酒糊弄我们！"刘唐提着刀就要砍人，武松也拔出双刀，穆弘、史进都炸了锅。六个水军头领骂骂咧咧直接下山去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">宋江见不是话，横身在里面拦当，急传将令，叫轿马护送太尉下山，休教伤犯。此时四下大小头领，一大半闹将起来。宋江、卢俊义只得亲身上马，将太尉并开诏一干人数，护送下三关，再拜伏罪：“非宋江等无心归降，实是草诏的官员不知我梁山泊里弯曲。若以数句善言抚恤，我等尽忠报国，万死无怨。太尉若回得朝廷，善言则个。”急急送过渡口。这一干人吓的屁滚尿流，飞奔济州去了。有诗为证：</div>
+            <div class="text-block simplified-text">宋江一看情况不对，赶紧挤到中间拦着大家，急忙下令让人用轿子马车送太尉下山，别让人伤着他。这时候周围的大小头领们，一大半都闹起来了。宋江和卢俊义没办法，只好亲自骑马，把太尉和那些带着圣旨的人护送下山，一边走一边赔罪说："不是我们不想投降，实在是写圣旨的官员不了解我们梁山的情况。要是朝廷能说几句好话安抚我们，我们肯定忠心报国，死都不后悔。太尉您回去后，帮我们说点好话吧。"赶紧把这帮人送过渡口。那些人吓得魂都飞了，头也不回地往济州逃。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">太尉承宣出帝乡，为招忠义欲归降。</div>
+            <div class="text-block simplified-text">皇帝派太尉离开京城，去招安那些忠义的人，想让他们投降归顺。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">卑身辱国难成事，反被无端骂一场。</div>
+            <div class="text-block simplified-text">放低身段、忍辱负重也办不成事，到头来还白白挨了一顿骂。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">却说宋江回到忠义堂上，再聚众头领筵席。宋江道：“虽是朝廷诏旨不明，你们众人也忒性躁。”吴用道：“哥哥你休执迷，招安须自有日。如何怪得众弟兄们发怒，朝廷忒不将人为念。如今闲话都打叠起，兄长且传将令，马军拴束马匹，步军安排军器，水军整顿船只。早晚必有大军前来征讨，一两阵杀得他人亡马倒，片甲不回，梦着也怕，那时却再商量。”众人道：“军师言之极当。”是日散席，各归本帐。</div>
+            <div class="text-block simplified-text">宋江回到忠义堂，又把各位头领召集起来喝酒。宋江说："虽然朝廷的诏书写得不清楚，但你们也太着急了。"吴用接着说："大哥你别死心眼，招安的事早晚能成。弟兄们生气很正常，朝廷根本不把咱们当人看。现在别说废话了，大哥你快下命令：骑兵准备好马，步兵收拾好武器，水军把船都检查好。朝廷肯定很快就要派兵来打我们，等我们杀得他们人仰马翻，让他们连做梦都害怕，到时候再谈招安的事也不迟。"大家都说："军师说得对。"当天酒席散了，各自回营准备去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">且说陈太尉回到济州，把梁山泊开诏一事诉与张叔夜，张叔夜道：“敢是你们多说甚言语来？”陈太尉道：“我几曾敢发一言。”张叔夜道：“既是如此，枉费了心力，坏了事情。太尉急急回京，奏知圣上，事不宜迟。”陈太尉、张干办、李虞候一行人从，星夜回京来，见了蔡太师，备说梁山泊贼寇扯诏毁谤一节。蔡京听了，大怒道：“这伙草寇，安敢如此无礼！堂堂宋朝天下，如何教你这伙横行！”陈太尉哭道：“若不是太师福荫，小官粉骨碎身在梁山泊。今日死得逃生，再见恩相。”太师随即叫请童枢密，高、杨二太尉，都来相府商议军情重事。无片时，都请到太师府白虎堂内。众官坐下，蔡太师教唤过张干办、李虞候，备说梁山泊扯诏毁谤一事。杨太尉道：“这伙贼徒，如何主张招安地！当初是那一个官奏来？”高太尉得：“那日我若在朝内，必然阻住，如何肯行此事。”童枢密道：“鼠窃狗盗之徒，何足虑哉！区区不才，亲引一支军马，克时定日，扫清水泊而回。”众官道：“来日奏闻。”当下都散。</div>
+            <div class="text-block simplified-text">话说陈太尉回到济州，把在梁山泊宣读诏书时发生的事告诉了张叔夜。张叔夜问："是不是你们说了什么不该说的话？"陈太尉连忙说："我一句话都没敢多说啊。"张叔夜叹气道："既然这样，那真是白费功夫，把事情搞砸了。太尉赶紧回京城向皇上报告吧，这事耽误不得。"
+
+于是陈太尉带着张干办、李虞候等人连夜赶回京城，见到蔡太师，详细说了梁山泊那帮人撕毁诏书、辱骂朝廷的事。蔡京一听就火了："这群草寇胆子也太大了！我大宋天下，怎么能让这帮人如此嚣张！"陈太尉哭着说："要不是托太师的福，我这条命就丢在梁山泊了。现在能活着回来见您，真是万幸。"
+
+蔡太师马上让人把童枢密、高太尉和杨太尉都请到府里商量对策。不一会儿，这些大官都聚集在太师府的白虎堂。蔡太师让张干办、李虞候把事情又说了一遍。杨太尉气愤地说："这种土匪怎么能招安呢？当初是谁出的这个馊主意？"高太尉附和道："那天我要是在朝堂上，肯定拦着不让办这事。"童枢密拍着胸脯说："这些小偷小摸的毛贼有什么好怕的！让我带兵去，保证按时把他们剿灭干净。"最后众官员决定："明天就上奏皇上。"商量完就各自散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">次日早朝，众官都在御阶伺候。只见殿上净鞭三下响，文武两班齐，三呼万岁，君臣礼毕。蔡太师出班，将此事上奏天子。天子大怒，问道：“当日谁奏寡人，主张招安？”侍臣给事中奏道：“此日是御史大夫崔靖所言。”天子教拿崔靖送大理寺问罪。天子又问蔡京道：“此贼为害多时，差何人可以收剿？”蔡太师奏道：“非以重兵，不能收伏。以臣愚意，必得枢密院官亲率大军前去剿捕，可以刻日取胜。”天子教宣枢密使童贯，问道：“卿肯领兵收捕梁山泊草寇？”童贯跪下奏曰：“古人有云：孝当竭力，忠则尽命。臣愿效犬马之劳，以除心腹之患。”高俅、杨戬亦皆保举。天子随即降下圣旨，赐与金印、兵符，拜东厅枢密使童贯为大元帅，任从各处选调军马，前去剿捕梁山泊贼寇，拣日出师起行。</div>
+            <div class="text-block simplified-text">第二天早上，文武百官都等在皇宫台阶下准备上朝。只听见大殿上甩了三下响鞭，文官武将排好队伍，一起高喊"万岁"，行完君臣礼节。蔡太师站出来，把梁山造反的事报告给皇帝。皇帝非常生气，问："当初是谁建议我招安这些贼寇的？"一个叫给事中的侍从官回答："是御史大夫崔靖说的。"皇帝立刻下令把崔靖抓起来送交大理寺治罪。
+
+皇帝又问蔡京："这群反贼祸害很久了，该派谁去剿灭？"蔡太师回答："必须派大军才能镇压。依我看，应该让枢密院长官亲自带兵去围剿，这样才能速战速决。"皇帝就叫来枢密使童贯，问他："你愿意带兵去剿灭梁山泊的草寇吗？"童贯跪下说："古人说，尽孝要拼命，尽忠更要拼命。我愿意拼死效力，除掉这个心腹大患。"高俅和杨戬也推荐童贯。皇帝马上发下圣旨，赐给金印和兵符，任命童贯当大元帅，允许他随意调动各地军队，选个好日子出兵讨伐梁山贼寇。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">不是童贯引大军来，有分教：千千铁骑，布满山川；万万战船，平铺绿水。正是：只凭飞虎三千骑，卷起貔貅百万兵。毕竟童贯领了大军怎地出师，且听下回分解。</div>
+            <div class="text-block simplified-text">要不是童贯带着大军来，事情就不会闹这么大：漫山遍野都是骑兵，河面上挤满了战船。这阵仗简直就像带着几千精锐，直接调动了百万大军。至于童贯带着这么多兵怎么打，咱们下回再说。  
+
+（说明：  
+1. "有分教"转译为"事情就不会闹这么大"突出因果关系  
+2. "千千/万万"用"漫山遍野/挤满"替代夸张数字  
+3. 对仗句改为"带着几千精锐，调动百万大军"保留对比效果  
+4. "毕竟...且听下回分解"转为口语化悬念句式  
+5. 删除"貔貅"等生僻典故，保留军事力量的核心意象  
+6. 添加"咱们"增强说书人口吻，符合原文语境）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
