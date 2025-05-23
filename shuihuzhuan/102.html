@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百零二回　王庆因奸吃官司　龚端被打师军犯</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./101.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百零二回　王庆因奸吃官司　龚端被打师军犯</h1>
+        <a href="./103.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话说王庆见板凳作怪，用脚去踢那板凳。却是用力太猛，闪肭了胁肋，蹲在地下，只叫：“苦也！苦也！”半晌价动价不得。</div>
+            <div class="text-block simplified-text">王庆看见板凳不对劲，就用脚去踢它。结果用力过猛，把肋骨给扭伤了，疼得蹲在地上直喊："疼死了！疼死了！"半天都动弹不得。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">老婆听的声唤，走出来看时，只见板凳倒在一边，丈夫如此模样。便把王庆脸上打了一掌道：“郎当怪物！却终日在外面，不顾家里。今晚才到家里一回儿，又做什么来！”王庆道：“大嫂不要取笑。我闪肭了胁肋，了不的！”那妇人将王庆扶将起来。王庆勾着老婆的肩胛，摇头咬牙的叫道：“阿也！痛的慌！”那妇人骂道：“浪弟子，乌歪货！你闲常时只欢喜使腿牵拳，今日弄出来了。”那妇人自觉这句话说错，将纱衫袖儿掩着口笑。王庆听的“弄出来”三个字，恁般疼痛的时节，也忍不住笑，哈哈的笑起来。那妇人又将王庆打了个耳刮子道：“乌怪物！你又想了那里去？”当下妇人扶王庆到床上睡了，敲了一碟核桃肉，旋了一壶热酒，迟与王庆吃了。他自去拴门户，扑蚊虫，下帐子，与丈夫歇息。王庆因腰胁十分疼痛，那椿儿动弹不得，是不必说。</div>
+            <div class="text-block simplified-text">王庆的老婆听到叫声，出来一看，发现板凳倒在一旁，丈夫那副狼狈样。她上去就给了王庆一巴掌，骂道："你个没用的东西！整天在外面鬼混，家里啥也不管。今晚刚回家一会儿，又搞出什么幺蛾子！"  
+
+王庆疼得直叫："老婆别笑话我了，我肋骨闪着了，疼得要命！"  
+
+老婆赶紧把他扶起来。王庆搭着她的肩膀，疼得直咧嘴："哎哟！疼死我了！"  
+
+老婆又骂："你个不正经的，平时就爱动手动脚，这下可好，把自己整惨了吧！"说完发现自己话里有歧义，赶紧用袖子捂着嘴偷笑。  
+
+王庆虽然疼得厉害，但听到"整惨了"这话，也忍不住哈哈大笑。老婆又给了他一耳光："你个死鬼！又想哪儿去了？"  
+
+随后，老婆把王庆扶上床，给他弄了一碟核桃仁，热了一壶酒让他喝。自己则去关好门，赶了蚊子，放下蚊帐，准备休息。  
+
+王庆腰和肋骨疼得厉害，那活儿自然也动不了，这就不用多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">一宿无话。次早，王庆疼痛兀是不止。肚里思想：“如何去官府面前声喏答应？”挨到午牌时分，被老婆催他出去赎膏药。王庆勉强摆到府衙前，与惯医跌打损伤，朝北开铺子卖膏药的钱老儿买了两个膏药，贴在肋上。钱老儿说道：“都排若要好的快，须是吃两服疗伤行血的煎剂。”说罢，便撮了两服药，递与王庆。王庆向便袋里取出一块银子，约模有钱二三分重，讨张纸儿包了。钱老儿睃着他包银子，假把脸儿朝着东边。王庆将纸懈递来道：“先生莫嫌轻亵，将来买凉瓜儿啖。”钱老儿道：“都排，朋友家如何计较！这却使不得。”一头还在那里说，那只右手儿已是接了纸包，揭开药箱盖，把纸包丢下去了。</div>
+            <div class="text-block simplified-text">昨晚一夜没什么事。第二天早上，王庆的伤还是疼得厉害。他心里琢磨："待会儿怎么去官府报到啊？"磨蹭到中午，他老婆催他出去买膏药。王庆硬撑着走到衙门附近，找到经常给人治跌打损伤、铺子朝北开的老钱，买了两贴膏药贴在腰上。
+
+老钱说："王都头（对衙役的尊称），要想好得快，还得喝两副活血化瘀的汤药。"说完就包了两副药递给王庆。王庆从随身小袋里摸出一小块银子，大概值二三十文钱，又找了张纸包上。老钱假装看东边，眼睛却偷偷瞄着王庆包银子。王庆把包好的银子递过去说："钱大夫别嫌少，拿去买个瓜吃吧。"
+
+老钱嘴上说："王都头，都是朋友计较什么！这可使不得。"话还没说完，右手已经接过纸包，顺手揭开药箱盖子，把银子扔进去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">王庆拿了药，方欲起身，只见府西街上走来一个卖卦先一，头带单纱抹眉头巾，身穿葛布直身，撑着一把遮阴凉伞，伞下挂一个纸招牌儿，大书：“先天神数”四字。两旁有十六个小字，写道：</div>
+            <div class="text-block simplified-text">王庆刚拿了药，正要走，忽然看见西街那边来了个算命的。这人头上包着块薄纱头巾，身上穿着粗布长衫，手里举着把遮阳伞。伞底下挂着个纸招牌，上面用大字写着"神机妙算"四个字，旁边还有十六个小字。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">“荆南李助，十文一数，字字有准，术胜管辂。”</div>
+            <div class="text-block simplified-text">"荆南有个算命的叫李助，算一次只要十文钱，算得特别准，比古代有名的算命先生管辂还厉害。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">王庆见是个卖卦的，他已有娇秀这椿事在肚里，又遇着昨日的怪事，他便叫道：“李先生，这里请坐。”那先生道：“尊官有何见教？”口里说着，那双眼睛骨渌渌的把王庆从头上直看至脚下。王庆道：“在下欲卜一数。”李助下了伞，走进膏药铺中，对钱老儿拱手道：“搅扰。”便向单葛布衣袖里，模出个紫檀课筒儿，开了筒盖，取出一个大定铜钱，递与王庆道：“尊官那边去，对天默默地祷告。”王庆接了卦钱，对着炎炎的那轮红日，弯腰唱喏。却是疼痛，弯腰不下。好似那八九十岁老儿，硬着腰，半揖半拱的，兜了一兜，仰面立着祷告。那边李助看了，悄地对钱老儿猜说道：“用了先生膏药，一定好的快。想是打伤的。”钱老道：“他见什么板凳作怪，踢闪了腰肋。适才走来，说话也是气喘。贴了我两个膏药，如今腰也弯得下了。”李助道：“我说是个闪肭的模样。”王庆祷告已毕，将钱递与李助。那李助问了王庆姓名，将课筒摇着，口中念道：</div>
+            <div class="text-block simplified-text">王庆遇到一个算卦的，他本来就因为娇秀的事心里有事，再加上昨天碰到的怪事，就喊："李先生，来这儿坐。"算卦的问："您有什么事儿？"说话时眼睛滴溜溜地把王庆从头到脚打量了一遍。王庆说："我想算一卦。"
+
+李助放下伞，走进药铺，对钱老头拱拱手说："打扰了。"然后从袖子里掏出一个紫檀木的卦筒，打开盖子拿出一个大铜钱，递给王庆说："您到那边去，对着天默默许愿。"王庆接过铜钱，想对着太阳弯腰行礼，但因为身上疼弯不下去。像个八九十岁的老头似的，硬挺着腰，半鞠不鞠地晃了一下，就仰着脸站着许愿。
+
+李助偷偷对钱老头说："用了您的膏药，肯定好得快。看样子是被人打伤的。"钱老头说："他说是被板凳绊倒闪了腰。刚才来的时候说话都喘。贴了我两贴膏药，现在腰能弯下去了。"李助说："我看也是闪了腰的样子。"
+
+王庆许完愿，把铜钱还给李助。李助问了王庆的名字，摇着卦筒，嘴里念叨着...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">“日吉辰良，天地开张。圣人作易，幽赞神明。包罗万象，道合乾坤。与天地合其德，与日月合其明，与四时合其序，与鬼神合其吉凶。今有东京开封府王姓君子，对天买卦。甲寅旬中乙卯日，奉请周易文王先师，鬼谷先师，袁天纲先师，至神至圣，至福至灵，指示疑迷，明彰报应。”</div>
+            <div class="text-block simplified-text">这是一个算卦的开场白，大概意思是：
+
+现在是个好日子好时辰，天地万物都敞开着。古代圣人创造了《易经》，能通晓神明、包含世间一切道理，与天地万物的规律完全吻合。这卦能配合天地的德行、日月的明亮、四季的顺序，甚至鬼神预知的吉凶。
+
+今天有位家住东京开封府的王先生，诚心向天问卦。在甲寅年乙卯日这个时辰，特地请来几位最厉害的算命祖师爷——周文王、鬼谷子和袁天罡。这些祖师爷特别灵验，希望能指点迷津，清楚地告诉我们事情会怎么发展。
+
+（说明：原文是古代算卦的套话，翻译时保留了算卦的时间、人物、目的等基本信息，用现代人听得懂的方式说清楚"有人在特定时间请祖师爷算卦"这件事。去掉了"幽赞神明""道合乾坤"等文言词汇，改用"通晓神明""符合天地规律"等白话表达。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">李助将课筒发了两次，叠成一卦道：“是水电屯卦。”看了六爻动静，便问：“尊官所占何事？”王庆道：“问家宅。”李助摇着头道：“尊官莫怪小子直言！屯者，难也。你的灾难方兴哩。有几句断词，尊官须记着。”李助摇着一把竹骨摺叠油纸扇儿，念道：</div>
+            <div class="text-block simplified-text">李助摇了两次签筒，排出一个卦象说："这是水雷屯卦。"他看了看卦象的变化，就问："您想问什么事？"王庆回答："问问家里的事。"李助摇摇头说："您别怪我说话直！'屯'这个字就是困难的意思。您家的麻烦才刚开始呢。我有几句判词，您得记好了。"李助一边摇着竹骨油纸扇，一边念道：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">“家宅乱纵横，百怪生灾家未宁。非古庙，即危桥。白虎冲凶官病遭。有头无尾何曾济，见贵凶惊讼狱交。人口不安遭跌蹼，四肢无力拐儿撬。从改换，是非消。逢着虎龙鸡犬日，许多烦恼祸星招。”</div>
+            <div class="text-block simplified-text">这段文字说的是家里不太平，老出怪事，家人也不安宁。要么是房子位置不好（像古庙、破桥那种不吉利的地方），要么是犯了白虎煞（风水里的凶煞），容易生病惹官司。事情总是有头没尾，遇到当官的反而更倒霉，还可能吃官司。家里人老摔跤受伤，手脚没力气，孩子还可能被拐跑。要想改变这种状况，得搬个家或者改改风水。特别要注意虎年、龙年、鸡年、狗年这些年份，麻烦事会更多。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">当下王庆对着李助坐地。当不的那油纸扇儿的柿漆臭，把擀罗衫袖儿掩着鼻听他。李助念罢，对王庆道：“小子据理直言。家中还有作怪的事哩。须改过迁居，方保无事。明日是丙辰日，要仔细哩。”王庆见他说得凶险，也没了主意。取钱酬谢了李助。李助出了药铺，撑着伞，望东去了。当有府中五六个公人衙役，见了王庆，便道：“如何在这里闲话？”王庆把见怪闪肭的事说了。众人都笑。王庆道：“列位，若府尹相公问时，须与做兄弟的周全则个。”众人都道：“这个理会得。”说罢，各自散去。</div>
+            <div class="text-block simplified-text">王庆正坐在李助对面。他受不了李助那把油纸扇的柿子漆臭味，就用袖子捂着鼻子听他说。李助说完后，对王庆说："我实话实说。你家里还有怪事。你得改过自新、搬家，才能平安。明天是丙辰日，要特别小心。"王庆听他说得这么吓人，也不知道该怎么办。他给了李助一些钱表示感谢。李助离开药店，打着伞往东走了。
+
+这时有五六个衙门差役看见了王庆，就问："你怎么在这儿闲聊？"王庆把遇到怪事扭伤脚的事说了。大家都笑话他。王庆说："各位大哥，要是府尹大人问起来，还请帮小弟说点好话。"大家都说："这个我们懂。"说完就各自走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">王庆回到家中，教老婆煎药。王庆要病好，不上两个时辰，把两服药都吃了。又要药行，多饮了几杯酒。不知那去伤行血的药性，都是热的。当晚歇息，被老婆在身边挨挨摸摸，动了火。只是碍着腰痛，动弹不得。怎禁那妇人因王庆勾搭了娇秀，日夜不回，把他寡旷的久了，欲心似火般炽焰起来，怎饶得过他。便去爬在王庆身上，做了个掀翻细柳营。两个直睡到次日辰牌时分，方才起身。梳洗毕，王庆因腹中空虚，暖些酒吃了。正在吃早饭，兀是未完，只听得外面叫道：“都排在家么？”妇人向板壁缝看了道：“是两个府中人。”王庆听了这句话，便呆了一呆。只得放下饭碗，抹抹嘴，走将出来，拱拱手，问道：“二位光降，有何见教？”那两个公人道：“都排，真个受用！清早儿脸上好春色。大爷今早点名，因都排不到，大怒起来。我每兄弟辈替你禀说见怪闪肭的事。他那里肯信。便起一一枝签，差我每两个来请你回话。”把签与王庆看了。王庆道：“如今红了脸，怎好去参见？略停一会儿才好。”那两个公人道：“不干我每的事。太爷立等回话。去迟了，须带累我每吃打。快走，快走！”两个扶着王庆便走。王庆的老婆慌忙走出来问时，丈夫已是出门去了。</div>
+            <div class="text-block simplified-text">王庆回到家，让老婆给他熬药。他想快点好，不到四个钟头就把两副药全吃了。为了药效更好，他又多喝了几杯酒。他不知道这些治伤活血的药都是热性的。晚上睡觉时，老婆在旁边摸来摸去，搞得他浑身燥热。但因为腰疼动不了，只能忍着。可他老婆因为王庆最近总在外面勾搭娇秀不回家，早就憋得不行，这会儿欲火难耐，哪肯放过他。直接骑到王庆身上折腾起来。俩人一直睡到第二天上午才起床。洗漱完，王庆觉得肚子空，就热了点酒喝。正吃着早饭呢，外面有人喊："都排在家吗？"他老婆从门缝往外看："是衙门里的人。"王庆一听就愣住了，赶紧放下碗擦擦嘴出去，拱手问："两位来有啥事？"那俩差人说："都排日子过得挺美啊，大清早满面春风的。老爷今早点名你没到，气得不行。我们哥俩帮你说了闪到腰的事，他根本不信。直接发了签子，派我俩来抓你回去问话。"说完把签子给王庆看。王庆说："我这会儿脸红成这样，咋去见老爷？等会儿再去吧。"差人说："关我们屁事！老爷等着呢。去晚了我们得挨板子。赶紧走！"架着王庆就往外拖。他老婆慌慌张张追出来问时，人已经被带走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">两个公人扶着王庆，进了开封府。府尹正坐在堂中虎皮交椅上。两个公人带王庆上前禀道：“奉老爷钧旨，王庆拿到。”王庆勉强朝上磕了四个头。府尹喝道：“王庆，你是个军健，如何怠玩，不来伺候？”王庆又把那见怪闪肭的事，细禀一遍道：“实是腰肋疼痛，坐卧不宁，行走不动，非敢怠玩。望相公方便。”府尹听罢，又见王庆脸红，大怒喝道：“你这厮专一酗酒为非，干那不公不法的事！今日又捏妖言，欺诳上官。”喝教扯下去打。王庆那里分说得开。当下把王庆打得皮开肉绽，要他招认捏造妖书，煽惑愚民，谋为不轨的罪。王庆昨夜被老婆克剥，今日被官府拷打，真是双斧伐木，死去再醒。吃打不地，只得屈招。府尹录了王庆口词，叫禁子把王庆将刑具枷扭来钉了，押下死囚牢里，要问他个捏造妖书，谋为不轨的死罪。禁子将王庆扛抬入牢去了。</div>
+            <div class="text-block simplified-text">两个差役架着王庆进了开封府。知府大人正坐在大堂的虎皮椅子上。差役上前报告："大人，王庆已经抓来了。"王庆硬撑着磕了四个头。知府厉声质问："王庆，你是个当兵的，竟敢偷懒不执勤？"王庆又把遇到怪事受伤的经过详细说了一遍："我真是腰疼得厉害，坐卧不安，走路都困难，不是故意偷懒。求大人开恩。"知府看他脸色发红，更生气了："你这家伙整天喝酒闹事，净干些违法勾当！现在还敢编瞎话骗长官！"下令拖下去打。王庆根本没法辩解。结果被打得皮开肉绽，逼他承认编造谣言、蛊惑百姓、图谋造反的罪名。王庆昨晚刚被老婆打骂，今天又被官府毒打，真是雪上加霜，昏死过去又疼醒过来。实在受不了，只好屈打成招。知府记下口供，让狱卒给王庆戴上刑具，关进死牢，要定他个造谣造反的死罪。狱卒把王庆抬进大牢去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">原来童贯密使人分付了府尹，正要寻罪过摆拨他。可可的撞出这节怪事来。那时府中上下人等，谁不知道娇秀这件勾当，都纷纷扬扬的说开去：“王庆为这节事得罪，如今一定不能个活了。”那时蔡京、蔡攸耳朵的颇觉不好听。父子商议，若将王庆性命结果，此事愈真，丑声一发播传。于是密挽心腹官员，与府尹相知的，教他速将王庆刺配远恶军州，以灭其迹。蔡京、蔡攸择日迎娶娇秀成亲。一来遮掩了童贯之羞，二来灭了众人议论。蔡攸之子，左右是呆的，也不知娇秀是处子不是处子。这也不在话下。</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+原来童贯偷偷让人跟府尹打过招呼，正想找借口收拾王庆。刚好碰上这件怪事。当时府里上上下下的人都知道娇秀那件事，到处都在传："王庆因为这事惹上麻烦，这回肯定活不成了。"蔡京和蔡攸父子俩听着这些传言觉得特别难听。他俩商量，要是直接杀了王庆，反而显得这事是真的，丑闻会传得更厉害。于是暗中找关系好的官员，让他们赶紧把王庆发配到偏远荒凉的地方，好掩盖这件事。之后蔡京父子选了个日子把娇秀娶进门。这样既能保住童贯的面子，又能堵住大家的嘴。反正蔡攸的儿子本来就是个傻子，也搞不清娇秀是不是黄花闺女。这事就这么过去了。
+
+（说明：完全保留原文所有关键信息，包括：1.童贯暗中操作 2.王庆因丑闻获罪 3.蔡家父子处理方式 4.发配的真正目的 5.娶亲的政治算计 6.对傻儿子的评价。用"找借口收拾""到处都在传""搞不清"等口语化表达，替换了原文"分付""可可的""处子"等文言词汇。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">且说开封府尹，遵奉蔡太师处心腹密话，随即升厅。那日正是辛酉日。叫牢中提出王庆，除了长枷，断了二十脊杖，唤个文笔匠，刺了面颊，量地方远近，该配西京管下陕州牢城。当厅打一面七斤半团头铁叶护身枷钉了，贴上封皮，押了一道牒文，差两个防送公人，叫做孙琳、贺吉，监押前去。</div>
+            <div class="text-block simplified-text">开封府的府尹按照蔡太师私下交代的话，立刻升堂办公。那天正好是辛酉日。他让人把犯人王庆从牢里提出来，摘掉长枷，打了二十下脊杖，又找了个文身师傅在他脸上刺字。根据罪行轻重，决定把他发配到西京管辖的陕州监狱。当场给他戴上七斤半重的铁叶护身枷，贴上封条，写好公文，派了两个押送公人——孙琳和贺吉——负责押送他上路。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">三人出开封府来。只见王庆的丈人牛大户接着，同王庆、孙琳、贺吉，到衙前南街酒店里坐定。牛大户叫酒保搬取酒肉。吃了三杯两盏，牛大户向身边取出一包散碎银两，递与王庆道：“白银三十两，把与你路途中使用。”王庆用手去接道：“生受泰山！”牛大户推着王庆的手道：“这等容易！我等闲也不把银两与你。你如今配去陕州，一千余里，路远山遥，知道你几时回来。你调戏了别人家女儿，却不耽误了自己的妻子。老婆谁人替你养？又无一男半女，田地家产，可以守你。你须立纸休书。自你去后，任从改嫁，日后并无争执。如此方把银子与你。”王庆平日会花费，思想：“我囊中又无十两半斤银两，这陕州如何去得？”左思右算，要那银两使用。叹了两口气道：“罢，罢！”只得写纸休书。牛大户一手接纸，一手交银，自回去了。</div>
+            <div class="text-block simplified-text">三个人从开封府出来。王庆的老丈人牛大户迎上来，和王庆、孙琳、贺吉一起到衙门南街的酒店里坐下。牛大户叫店小二上酒上菜。喝了几杯酒后，牛大户从怀里掏出一包零碎银子，递给王庆说："这是三十两银子，给你路上用。"王庆伸手要接，说："谢谢岳父！"牛大户挡住王庆的手说："别急！我平时可不会随便给你钱。你现在被发配到陕州，一千多里路，山高路远，谁知道你什么时候能回来。你调戏别人家姑娘，却害得自己老婆没人管。你老婆以后谁养活？你们又没孩子，家里也没田产可以依靠。你得写份离婚书，保证你走后她可以改嫁，以后不会找麻烦。这样我才能把钱给你。"王庆平时花钱大手大脚，心里想："我身上连十两银子都没有，怎么去陕州？"想来想去，还是需要这笔钱。他叹了两口气说："算了，算了！"只好写了离婚书。牛大户一手拿过离婚书，一手把钱交给王庆，自己就走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">王庆同了两个公人，到家中来，收拾行囊包裹。老婆已被牛大户接到家中去了。把个门儿锁着。王庆向邻舍人家，借了斧凿，打开门户。到里面看时，凡老婆身上穿着的，头上插戴的，都将去了。王庆又恼怒，又凄惨。央间壁一个周老婆子到家，备了些酒食，把与公人吃了。将银十两，送与孙琳、贺吉道：“小人棒疮疼痛，行走不劝。欲将息几日，方好上路。”孙琳、贺吉得了钱，也是应允。怎奈蔡攸处挽心腹催促公人起身。王庆将家伙什物，胡乱变卖了，交还了胡员外家赁房。</div>
+            <div class="text-block simplified-text">王庆带着两个官差回到自己家，收拾行李包裹。他老婆已经被牛大户接走了，家门锁着。王庆找邻居借了斧头和凿子，把门撬开。进屋一看，发现老婆穿的衣服、戴的首饰全被拿走了。王庆又生气又难过。他请隔壁一个姓周的老太太来家里，准备了些酒菜给官差吃。又拿出十两银子给孙琳、贺吉两个官差，说："我挨了板子伤口疼，走路不方便。想休息几天再上路。"孙琳、贺吉收了钱，本来答应了。但蔡攸派亲信来催官差赶紧动身。王庆只好随便变卖了家里的东西，还清了租胡员外房子的钱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">此时王庆的父王砉，已被儿子气瞎了两眼，另居一处。儿子上门，不打便骂。今日闻得儿子遭官司刺配，不觉心痛。教个小厮扶着，走到王庆屋里叫道：“儿子呀！你不听我的训诲，以致如此！”说罢，那双盲昏眼内吊下泪来。王庆从小不曾叫王砉一声爷的，今值此家破人离的时节，心中也酸楚起来，叫声道：“爷！儿子今日遭恁般屈官司！叵耐牛老儿无礼，逼我写了休妻的状儿，才把银子与我。”王砉道：“你平日是爱妻子，孝丈人的。今日他如何这等待你？”王庆听了这两句抢白的话，便气愤愤的不来采着爷，迳同两个公人，收拾城去了。王砉顿足捶胸道：“是我不该来看那逆种！”复扶了小厮自回，不题。</div>
+            <div class="text-block simplified-text">这时候，王庆的父亲王砉已经被儿子气得双目失明，单独住在别处。每次儿子来，他不是打就是骂。这天听说儿子犯了事被判流放，心里难受，就让一个小仆人扶着来到王庆屋里，哭着说："儿啊！你就是不听我的话，才落到这地步！"王庆从小没叫过王砉一声"爹"，现在家破人亡，心里也不好受，就说："爹！儿子今天被人冤枉了！都怪那姓牛的老东西不讲理，非要我写休书才肯给钱。"王砉反问："你平时不是最疼媳妇、孝顺老丈人吗？怎么现在人家这样对你？"王庆一听这话就来气，干脆不理他爹，直接跟着两个差役收拾东西走了。王砉气得直跺脚："我就不该来看这个不孝子！"说完让小仆人扶着回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">却说王庆同了孙琳、贺吉，离了东京，赁个僻静所在，调治十余日。棒疮稍愈，公人催促上路。迤里而行，望陕州投奔。此时正是六月初旬，天气炎热，一日止行得四五十里。在路上免不得睡死人床，吃不滚汤。三个人行了十五六日，过了嵩山。一日，正在行走，孙琳用手向西指着远远的山峰，说道：“这座山叫做北邙山，属西京管下。”三人说着话，趁早凉行了二十余里。望见北邙山东有个市镇。只见西面村农，纷纷的投市中去。那市东人家稀少处，丁字儿列着三株大柏树。树下阴荫。只见一簇人亚肩叠背的，围着一个汉子，赤着上身，在那阴凉树下，吆吆喝喝地使棒。三人走到树下歇凉。</div>
+            <div class="text-block simplified-text">王庆和孙琳、贺吉一起离开东京，找了个安静的地方养伤，住了十多天。等棍棒打出的伤稍微好点了，押送他们的公差就催着上路。他们一路慢慢走，准备去陕州。这时候正是六月初，天气特别热，一天只能走四五十里路。路上条件很差，睡的是死人躺过的破床，喝的是不干净的生水。三个人走了十五六天，过了嵩山。有一天正走着，孙琳指着西边远处的山说："那座山叫北邙山，归西京管。"他们一边走一边聊，趁着早上凉快走了二十多里。看见北邙山东边有个小镇，西边的村民都往集市上赶。集市东头人少的地方，有三棵大柏树排成"丁"字形，树下很凉快。有一群人挤在一起，围着一个光膀子的男人，那人在树荫底下耍棍棒，嘴里还大声吆喝。三个人也走到树下乘凉休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">王庆走得汗雨淋漓，满身蒸湿。带着护身枷，挨入人丛中，掂起脚看那汉使棒。看了一歇儿，王庆不觉失口笑道：“那汉子使的是花棒。”那汉正使到热闹处，听了这句话，收了棒看时，却是个配军。那汉大怒，便骂：“贼配军！俺的枪棒远近闻名。你敢开了那乌口，轻慢我的棒，放出这个屁来！”丢下棒，提起拳头，劈脸就打。只见人丛中走出两个少年汉子来，拦住道：“休要动手。”便问王庆道：“足下必是高的。”王庆道：“乱道这一句，惹了那汉子的怒。小人枪棒也略晓得些儿。”</div>
+            <div class="text-block simplified-text">王庆走得浑身是汗，衣服都湿透了。他戴着枷锁，挤进人群里，踮起脚看一个大汉耍棍棒。看了一会儿，王庆忍不住笑着说："这人耍的都是花架子。"那大汉正耍得起劲，听到这话就停下来，一看是个流放的犯人。他火冒三丈，骂道："该死的犯人！老子的枪棒功夫谁不知道？你敢胡说八道，看不起我的功夫？"扔下棍子就要打王庆。这时人群里出来两个年轻人拦住说："别动手。"然后问王庆："你肯定很懂行吧？"王庆说："我就随口一说，惹他生气了。其实我也稍微懂点枪棒功夫。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">那边使棒的汉子怒骂道：“贼配军！你敢与我比试罢。”那两个人对王庆道：“你敢与那汉子使合棒。若赢了他，便将这掠下的两贯钱都送与你。”王庆笑道：“这也使得。”分开众人，向贺吉取了杆棒，脱了汗衫，拽紥起裙子，掣棒在手。众人都道：“你项上带着个枷儿，却如何轮棒？”王庆道：“只这节儿稀罕。带着行枷赢了他，才算手段。”众人齐声道：“你若带枷赢了，这两贯钱一定与你。”便让开路，放王庆入去。</div>
+            <div class="text-block simplified-text">那边有个耍棍子的壮汉生气地骂道："你这个发配的犯人！敢不敢跟我比试比试？"旁边两个人对王庆说："你敢跟那家伙比棍法吗？要是赢了，我们就把抢来的两贯钱都给你。"王庆笑着说："行啊。"他挤开人群，从贺吉那儿拿了根棍子，脱掉上衣，把裙子往腰上一扎，握紧棍子。周围人都说："你脖子上还戴着枷锁呢，怎么耍棍子啊？"王庆说："这才有意思。戴着枷锁赢了他，才算真本事。"大家听了都说："你要是戴着枷锁还能赢，这两贯钱肯定给你。"于是让开一条路，放王庆进去比试。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那使棒的汉，也掣棒在手，使个旗鼓，喝道：“来，来，来！”王庆道：“列位恩官，休要笑话。”那边汉子明欺王庆有护身枷碍着，吐个门户，唤做蟒蛇吞象势。王庆也吐个势，唤做晴蜓点水势。那汉喝一声，便使棒盖将入来。王庆望后一退。那汉赶入一步，提起棒，向王庆顶门，又复一棒打下来。王庆将身向左一内。那汉的棒打个空，以棒不迭。王庆就那一闪里，向那汉右手一棒劈去，正打着右手腕，把这条棒打落下来。幸得棒下留情，不然把个手腕打断。众人大笑。</div>
+            <div class="text-block simplified-text">有个耍棍子的家伙，手里拿着棍子摆好架势，大喊："来啊！来啊！"王庆说："各位大爷别笑话我。"那家伙看王庆戴着枷锁行动不便，就摆了个"蟒蛇吞象"的姿势。王庆也摆了个"蜻蜓点水"的姿势。那人大喝一声，抡起棍子就打过来。王庆往后一躲。那人追上前一步，举起棍子朝王庆脑门又打下来。王庆往左边一闪，那人打了个空，棍子都收不回来。王庆趁这机会，一棍子劈在那人右手腕上，把他的棍子打掉了。还好王庆手下留情，不然非得把他手腕打断不可。围观的人都笑起来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">王庆上前执着那汉的手道：“冲撞，休怪！”那汉右手疼痛，便将左手去取那两贯钱。众人一齐嚷将起来道：“那厮本事低丑。适才讲过，这钱应是赢棒的得。”只见在先出尖上前的两个汉子，劈手夺了那汉两贯钱，把与王庆道：“足下到敝庄一叙。”那使棒的拗众人不过，只得收拾了行仗，望镇上去了。众人都散。</div>
+            <div class="text-block simplified-text">王庆走上前拉住那人的手说："刚才冒犯了，别见怪！"那人右手疼得厉害，就用左手去拿那两贯钱。周围的人立刻吵吵起来："这家伙功夫太差。刚才说好的，这钱该给打赢的人。"这时，先前带头闹事的两个男人突然抢过那两贯钱，递给王庆说："请到我们庄上坐坐。"那个耍棒的人拗不过大家，只好收拾家伙往镇上走了。看热闹的人也散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">两个汉子邀了王庆，同两个公人，都戴个凉笠子，望南抹过两三座林子，转到一个村坊。林子里有所大庄院，一周遭都是土墙。墙外有二三百株大柳树。庄外新蝉噪柳，庄内乳燕啼梁。两个汉子邀王庆等三人进了庄院，入到草堂。叙礼罢，各人脱下汗衫麻鞋，分宾主坐下。</div>
+            <div class="text-block simplified-text">两个男人叫上王庆，还有两个差役，都戴着遮阳的斗笠，往南边穿过两三片树林，拐到一个村子。树林里有座大宅子，四周围着土墙。墙外长着二三百棵大柳树。宅子外面，刚出来的知了在柳树上叫个不停；宅子里面，小燕子在房梁上叽叽喳喳。那两个男人带着王庆他们三个进了宅子，来到正屋。互相客套几句后，大家都脱下汗湿的衣衫和麻草鞋，按主客位置坐下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">庄主问道：“列位都像东京口气。”王庆道了姓名，并说被府尹陷害的事。说罢，请问二位高姓大名。二人大喜。那上面坐的说道：“小可姓龚，单名个端字。这个是舍弟，单名个正字。舍下祖居在此。因此这里叫做龚家村。这里属西京新安县管下。”说罢，叫庄各替三位瀚濯那湿透的汗衫。先汲凉水来解了暑渴。引三人到耳房中洗了澡。草堂内摆上桌子。先吃了见成点心。然后杀鸡宰鸭，煮豆摘桃的置酒管待。</div>
+            <div class="text-block simplified-text">庄主问："各位说话都带着东京口音啊。"王庆说了自己的名字，还讲了被府尹陷害的事。说完后，就问那两位叫什么名字。两人很高兴。坐在上座的那个人说："我姓龚，名字叫端。这是我弟弟，叫正。我们家祖祖辈辈都住在这儿，所以这里叫龚家村。这地方归西京新安县管。"说完，就叫庄里的人帮他们三个洗洗湿透的衣服。先打来凉水给他们解渴消暑。带他们到厢房洗了澡。在草堂里摆好桌子，先吃了现成的点心。然后又杀鸡杀鸭，煮豆子摘桃子，准备酒菜招待他们。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">庄客重新摆设，先搬出一碟剥光的蒜头，一碟切断的壮葱，然后搬出菜蔬果品，鱼肉鸡鸭之类。龚端请王庆上面坐了，两个公人一代儿坐下，龚端和兄弟在下面备席。庄客筛酒。王庆称谢道：“小人是个犯罪囚人。感蒙二位错爱，无端相扰，却是不当。”龚端道：“说那里话！谁人保得没事？那个带着酒食走的？”</div>
+            <div class="text-block simplified-text">仆人重新摆好桌子，先端上一盘剥好的蒜、一盘切好的大葱，然后又上了各种蔬菜水果、鱼肉鸡鸭这些菜。龚端请王庆坐在上座，两个差人坐在旁边，龚端和他弟弟在下座陪着。仆人倒酒。王庆感谢说："我是个有罪的犯人。承蒙你们这么看得起我，无缘无故来打扰，实在不好意思。"龚端回答："别这么说！谁能保证自己一辈子不出事？谁出门还随身带着酒菜啊？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">当下猜枚行令。酒至半酣，龚端开口道：“这个敝村前后左右，也有二百余家，都推愚弟兄做个主儿。小可弟兄两个，也好使些拳棒，压服众人。今春二月，东村赛神会，搭台演戏。小可弟兄到那边耍子，与彼村一个人，唤做黄达，因赌钱斗口。被那厮痛打一顿。俺弟兄两个也赢不得他。黄达那厮在人面前夸口称强。俺两个奈何不得他，只得忍气吞声。适才见都排棒法十分整密，俺二人愿拜都排为师父。求师父点拨愚弟兄，必当重重酬谢。”王庆听罢大喜。谦让了一回，龚端同弟，随即拜王庆为师。当晚直饮至尽醉方休。乘凉歇息。</div>
+            <div class="text-block simplified-text">大家正玩着猜拳喝酒的游戏，喝得差不多的时候，龚端开口说道："我们这个村子前后左右有二百多户人家，大家都听我们兄弟俩的。我们兄弟俩会点拳脚功夫，平时也能镇得住大伙儿。今年二月，东村办庙会搭台唱戏，我们兄弟去那边玩，跟一个叫黄达的人因为赌钱吵起来，结果被他狠狠揍了一顿。我们兄弟俩联手都打不过他。那黄达还到处吹嘘自己厉害。我们拿他没办法，只能憋着这口气。刚才看到都排（王庆）您的棍法这么厉害，我们想拜您为师。求师父教教我们，我们一定好好报答您。"王庆听了特别高兴，客气了几句后，龚端和弟弟就当场拜王庆为师。那天晚上他们一直喝到大醉才散，之后乘凉休息去了。
+
+（说明：1.将"猜枚行令"译为现代常见的"猜拳喝酒"；2."酒至半酣"译为"喝得差不多"；3.用"会点拳脚功夫"替代"使些拳棒"；4.将"赛神会"译为通俗的"庙会"；5.用"狠狠揍了一顿"替代"痛打一顿"；6.将文言虚词"适才"译为"刚才"；7.保留"都排"称谓以符合原文，但通过括号说明指代对象；8.用"憋着这口气"翻译"忍气吞声"更口语化；9.增加"当场"一词使拜师场景更生动）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">次日天明，王庆乘着早凉，在打麦场上点拨龚端拽拳使腿。只见外面一个人，背叉着手，踱将进来，喝道：“那里配军，敢到这里卖弄本事？”只因走进这个人来，有分教：王庆重种大祸胎，龚端又结深仇怨。真是：祸从浮浪起，辱因赌博招。毕竟走进龚端庄里这个人是谁？且听下回分解。</div>
+            <div class="text-block simplified-text">第二天一大早，趁着天气凉快，王庆在打麦场教龚端练拳脚。正练着，忽然看见外面有个人背着手溜达进来，大声骂道："你一个发配的犯人，也敢在这儿显摆？"这人一来可坏了事：王庆又要倒大霉，龚端也要结仇家。说到底啊，都是因为爱耍威风惹的祸，好赌博招的灾。想知道这个闯进龚端家的是谁吗？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
