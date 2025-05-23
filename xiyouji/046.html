@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四十五回 三清观大圣留名　车迟国猴王显法</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./045.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第四十五回 三清观大圣留名　车迟国猴王显法</h1>
+        <a href="./047.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说孙大圣左手把沙和尚捻一把，右手把猪八戒捻一把，他二人却就省悟。坐在高处，倥着脸，不言不语。凭那些道士点灯着火，前后照看。他三个就如泥塑金装一般模样。虎力大仙道：“没有歹人，如何把供献都吃了。”鹿力大仙道：“却像人吃的勾当，有皮的都剥了皮，有核的都吐出核，却怎么不见人形？”羊力大仙道：“师兄勿疑。想是我们虔心志意，在此昼夜诵经，前后申文，又是朝廷名号，断然惊动天尊。想是三清爷爷圣驾降临，受用了这些供养。趁今仙从未返，鹤驾在斯，我等可拜告天尊，恳求些圣水金丹，进与陛下，却不是长生永寿，见我们的功果也？”虎力大仙道：“说的是。”教：“徒弟们动乐诵经!一壁厢取法衣来，等我步罡拜祷。”那些小道士俱遵命，两班儿摆列齐整。当的一声磬响，齐念一卷《黄庭道德真经》。虎力大仙披了法衣，擎着玉简，对面前舞蹈扬尘，拜伏于地，朝上启奏道：</div>
+            <div class="text-block simplified-text">话说孙悟空左手捏了一下沙和尚，右手捏了一下猪八戒，他俩立刻明白过来。三人坐在高处，板着脸不说话。那些道士点灯四处查看，他们三个就像泥塑的神像一样一动不动。  
+
+虎力大仙说：“没有外人进来，怎么供品全被吃了？”鹿力大仙说：“看痕迹像是人吃的，有皮的剥了皮，有核的吐了核，可怎么不见人影？”羊力大仙说：“师兄别瞎猜。咱们日夜虔诚念经，上报天庭，又顶着朝廷的名义，肯定是惊动了天尊。说不定是三清爷爷显灵，享用了供品。趁神仙还没走，咱们赶紧拜求些仙水金丹，献给皇上，让他长生不老，这不就显出咱们的本事了吗？”  
+
+虎力大仙说：“有道理。”于是吩咐：“徒弟们奏乐念经！快拿法衣来，我要做法祷告。”小道士们赶紧准备，排成两队站好。随着一声磬响，齐声念起《黄庭道德真经》。虎力大仙穿上法衣，拿着玉简，对着前面又跳又拜，趴在地上朝天祷告说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">“诚惶诚恐，稽首归依。臣等兴教，仰望清虚。灭僧鄙俚，敬道光辉。敕修宝殿，御制庭闱。广陈供养，高挂龙旗。通宵秉烛，镇日香菲。一诚达上，寸敬虔归。今蒙降驾，未返仙车，望赐些金丹圣水，进与朝廷，寿比南山。”八戒闻言，心中忐忑，默对行者道：“这是我们的不是：吃了东西，且不走路，只等这般祷祝，却怎么答应？”行者又捻一把，忽地开口，叫声：“晚辈小仙，且休拜祝。我等自蟠桃会上来的，不曾带得金丹圣水，待改日再来垂赐。”那些大小道士听见说出话来，一个个抖衣而战道：“爷爷呀!活天尊临凡，是必莫放，好歹求个长生的法儿！”鹿力大仙上前，又拜云：</div>
+            <div class="text-block simplified-text">改成大白话：
+
+"我们很害怕，给您磕头行礼。我们是来传教的，特别崇拜您。我们看不起和尚，只尊敬道教。皇帝让我们修了这座大殿，还亲自写了匾。我们准备了丰厚的供品，挂上了龙旗。整晚点着蜡烛，整天烧着香。我们诚心诚意地祈求您。现在您亲自来了，还没回天上，求您给点仙丹圣水，我们好献给皇帝，让他长生不老。"
+
+猪八戒听了心里发慌，偷偷对孙悟空说："这下糟了：我们吃了人家的东西，又不肯帮忙，现在人家这么诚心祷告，我们该怎么应付？"孙悟空又掐了他一把，突然开口说："各位小仙别拜了。我们是从蟠桃会来的，这次没带仙丹圣水，等下次再来赏赐你们吧。"
+
+那些道士听见神像说话，吓得浑身发抖："天啊！神仙下凡了！千万不能让他们走，好歹要讨个长生不老的法子！"鹿力大仙赶紧上前又跪下说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">“扬尘顿首，谨办丹诚。微臣归命，俯仰三清。自来此界，兴道除僧。国王心喜，敬重玄龄。罗天大醮，彻夜看经。幸天尊之不弃，降圣驾而临庭。俯求垂念，仰望恩荣。是必留些圣水，与弟子们延寿长生。”沙僧捻着行者，默默的道：“哥呀，要得紧，又来祷告了。”行者道：“与他些罢。”八戒寂寂道：“那里有得？”行者道：“你只看着我；我有时，你们也都有了。”</div>
+            <div class="text-block simplified-text">译文：
+
+那道士恭敬地跪拜，诚心诚意地说："小臣真心归顺，向三位天尊行礼。自从来到这里，就弘扬道教，打压佛教。国王很高兴，对我非常看重。我们举办了盛大的法会，整夜念经。幸好天尊没有嫌弃，亲自降临。我跪着请求您开恩，希望您能赐福。请务必留下些圣水，让我们这些弟子能长寿不老。"  
+
+沙僧悄悄拉了拉孙悟空，小声说："大哥，他们催得紧，又在求圣水了。"  
+孙悟空回答："那就给他们点儿吧。"  
+猪八戒低声问："可咱们哪有圣水啊？"  
+孙悟空说："你们只管看我的，我有办法，你们自然也能分到。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">那道士吹打已毕，行者开言道：“那晚辈小仙，不须伏拜。我欲不留些圣水与你们，恐灭了苗裔；若要与你，又忒容易了。”众道闻言，一齐俯伏叩头道：“万望天尊念弟子恭敬之意，千乞喜赐些须。我弟子广宣道德，奏国王普敬玄门。”行者道：“既如此，取器皿来。”那道士一齐顿首谢恩。虎力大仙爱强，就抬一口大缸，放在殿上；鹿力大仙端一砂盆安在供桌之上；羊力大仙把花瓶摘了花，移在中间。行者道：“你们都出殿前，掩上格子，不可泄了天机，好留与你些圣水。”众道一齐跪伏丹墀之下，掩了殿门。</div>
+            <div class="text-block simplified-text">那道士们敲锣打鼓折腾完，孙悟空开口说："你们这些小道士不用跪着拜我。要说不给你们留点圣水吧，怕断了你们的传承；要说给吧，又显得太随便了。"道士们一听，全都趴下磕头说："求大仙看在咱们诚心诚意的份上，多少赏点圣水。我们一定到处宣传您的好，让国王也敬重道教。"孙悟空说："行吧，拿装水的家伙来。"道士们赶紧磕头道谢。那个叫虎力大仙的逞能，搬来一口大缸放在大殿里；鹿力大仙端来个砂盆摆在供桌上；羊力大仙把花瓶里的花拿出来，把空花瓶放中间。孙悟空说："你们都到殿外去，关上门窗，别泄露天机，这样才好给你们留圣水。"道士们全都跪在台阶下，把殿门关得严严实实。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">那行者立将起来，掀着虎皮裙，撒了一花瓶臊溺。猪八戒见了，欢喜道：“哥啊，我把你做这几年兄弟，只这些儿不曾弄我。我才吃了些东西，道要干这个事儿哩。”那呆子揭衣服，忽喇喇，就似吕梁洪倒下坂来，沙沙的溺了一砂盆。沙和尚却也撒了半缸。依旧整衣端坐在上道：“小仙领圣水。”</div>
+            <div class="text-block simplified-text">孙悟空站起来，掀起虎皮裙，往花瓶里撒了一泡尿。猪八戒看见了，高兴地说："大哥啊，咱俩做兄弟这么多年，就这事儿你没坑过我。我刚吃了点东西，正想干这事儿呢。"这呆子撩起衣服，哗啦啦像洪水冲下山坡一样，往砂盆里尿了一大泡。沙和尚也尿了半缸。然后他们整理好衣服，端坐着说："小仙来领圣水。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">那些道士，推开格子，磕头礼拜谢恩，抬出缸去，将那瓶盆总归一处，教：“徒弟，取个锺子来尝尝。”小道士即便拿了一个茶锺，递与老道士。道士舀出一锺来，喝下口去，只情抹唇咂嘴。鹿力大仙道：“师兄好吃么？”老道士努着嘴道：“不甚好吃，有些酣之味。”羊力大仙道：“等我尝尝。”也喝了一口，道：“有些猪溺臊气。”行者坐在上面，听见说出这话儿来，已此识破了，道：“我弄个手段，索性留个名罢。”大叫云：</div>
+            <div class="text-block simplified-text">那些道士打开窗户，跪下磕头感谢老天，然后把缸搬出去，把瓶瓶罐罐都堆在一起。老道士说："徒弟，拿个杯子来尝尝。"小道士马上拿了个茶杯给老道士。老道士舀了一杯喝下去，不停地舔嘴唇咂嘴。鹿力大仙问："师兄，好喝吗？"老道士撅着嘴说："不太好喝，有点酒味。"羊力大仙说："让我也尝尝。"他也喝了一口，说："有股猪尿的骚味。"孙悟空坐在上面，听到这话就明白被发现了，心想："我干脆耍个花样，顺便留个名号。"于是大声喊道：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">“道号!道号!你好胡思!那个三清，肯降凡基?吾将真姓，说与你知。大唐僧众，奉旨来西。良宵无事，下降宫闱。吃了供养，闲坐嬉嬉。蒙你叩拜，何以答之？那里是甚么圣水，你们吃的都是我一溺之尿！”那道士闻得此言，拦住门，一齐动叉钯、扫帚、瓦块、石头，没头没脸，往里面乱打。好行者，左手挟了沙僧，右手挟了八戒，闯出门，驾着祥光，径转智渊寺方丈。不敢惊动师父，三人又复睡下。</div>
+            <div class="text-block simplified-text">改写成现代白话文：
+
+"呸！还叫道号！你们可真会瞎想！那些神仙怎么会下凡来？我实话告诉你们吧。我们是大唐来的和尚，奉皇帝命令去西天取经。今晚闲着没事，到你们这儿逛逛。吃了你们的供品，坐着玩了一会儿。你们还给我磕头，我拿什么回报呢？哪有什么圣水，你们喝的都是我的一泡尿！"  
+
+道士们一听这话，立刻堵住门，抄起叉子、扫帚、砖头、石头，没头没脑地往屋里乱砸。孙悟空真厉害，左手夹着沙僧，右手夹着八戒，冲出门去，驾着云直接飞回智渊寺的住处。他们怕吵醒师父，悄悄躺下继续睡觉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">早是五鼓三点。那国王设朝，聚集两班文武，四百朝官，但见绛纱灯火光明，宝鼎香云。此时唐三藏醒来，叫：“徒弟，徒弟，伏侍我倒换关文去来。”行者与沙僧、八戒急起身，穿了衣服，侍立左右道：“上告师父。这昏君信着那些道士，兴道灭僧，恐言语差错，不肯倒换关文；我等护持师父，都进朝去也。”</div>
+            <div class="text-block simplified-text">天还没亮，大概是凌晨三点多。国王上朝了，文武百官都到齐了，有四百多个官员。只见宫里点着红纱灯，照得通明，香炉里冒着烟。这时候唐僧醒了，喊："徒弟们，快起来，陪我去找国王换通关文书。"孙悟空、沙僧和猪八戒赶紧爬起来，穿好衣服站在旁边说："师父，这国王听信那些道士的话，只信道教打压我们和尚，就怕他故意刁难不肯换文书。我们得跟着您一起去，好保护您。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">唐僧大喜，披了锦袈裟。行者带了通关文牒，教悟净捧着钵盂，悟能拿了锡杖；将行囊、马匹，交与智渊寺僧看守。径到五凤楼前，对黄门官作礼，报了姓名。言是东土大唐取经的和尚来此倒换关文，烦为转奏。那阁门大使，进朝俯伏金阶，奏曰：“外面有四个和尚，说是东土大唐取经的，欲来倒换关文，现在五凤楼前候旨。”国王闻奏道：“这和尚没处寻死，却来这里寻死!那巡捕官员，怎么不拿他解来？”旁边闪过当驾的太师，启奏道：“东土大唐，乃南赡部洲，号曰中华大国。到此有万里之遥，路多妖怪。这和尚一定有些法力，方敢西来。望陛下看中华之远僧，且召来验牒放行，庶不失善缘之意。”国王准奏，把唐僧等宣至金銮殿下。师徒们排列阶前，捧关文递与国王。</div>
+            <div class="text-block simplified-text">唐僧高兴坏了，赶紧穿上锦缎袈裟。孙悟空拿着通关文件，沙和尚端着化斋的碗，猪八戒扛着锡杖；把行李和马匹交给智渊寺的和尚看着。他们直接来到五凤楼前，向守门的官员行礼，报上姓名。说是从东土大唐来取经的和尚，要换通关文件，麻烦帮忙通报。  
+
+守门官赶紧上朝，跪在台阶下报告：“外面来了四个和尚，说是东土大唐取经的，要换通关文件，现在在五凤楼外等着呢。”国王一听就说：“这些和尚找死吗？怎么跑到这儿来了！巡逻的官员怎么不把他们抓来？”这时，旁边的太师站出来说：“东土大唐在南赡部洲，是叫中华大国的地方。到这儿有万里远，路上妖怪又多。这些和尚肯定有点本事，才敢往西走。陛下看在他们远道而来的份上，不如叫进来看看文件，放他们走吧，也算结个善缘。”  
+
+国王同意了，让人把唐僧他们带到殿前。师徒几个站在台阶下，把通关文件递给了国王。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">国王展开方看，又见黄门官来奏：“三位国师来也。”慌得国王收了关文，急下龙座，着近侍的设了绣墩，躬身迎接。三藏等回头观看，见那大仙，摇摇摆摆，后带着一双丫髻蓬头的小童儿，往里直进。两班官控背躬身，不敢仰视。</div>
+            <div class="text-block simplified-text">国王打开文件正要看，这时守门的官员来报告：“三位国师到了。”国王一听就慌了，赶紧把文件收起来，从宝座上下来，让侍从搬来绣花凳子，弯着腰去迎接。唐僧他们回头一看，只见那位大仙大摇大摆地走进来，后面跟着两个扎着小辫子、头发乱蓬蓬的小童子。两边的官员都弯着腰行礼，头都不敢抬。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">他上了金銮殿，对国王径不行礼。那国王道：“国师，朕未曾奉请，今日如何肯降？”老道士云：“有一事奉告，故来也。那四个和尚是那国来的？”国王道：“是东土大唐差去西天取经的，来此倒换关文。”那三道士鼓掌大笑道：“我说他走了，原来还在这里！”国王惊道：“国师有何话说？他才来报了姓名，正欲拿送国师使用，怎奈当驾太师所奏有理，朕因看远来之意，不灭中华善缘，方才召入验牒；不期国师有此问。想是他冒犯尊颜，有得罪处也？”道士笑云：“陛下不知。他昨日来的，在东门外打杀了我两个徒弟，放了五百个囚僧，碎车辆，夜间闯进观来，把三清圣像毁坏，偷吃了御赐供养。我等被他蒙蔽了，只道是天尊下降；求些圣水金丹，进与陛下，指望延寿长生；不期他遗些小便，哄瞒我等。我等各喝了一口，尝出滋味，正欲下手擒拿，他却走了。今日还在此间，正所谓‘冤家路儿窄’也！”那国王闻言发怒，欲诛四众。</div>
+            <div class="text-block simplified-text">他直接走进大殿，见了国王也不行礼。国王问："国师，我没请你，今天怎么自己来了？"老道士说："有事跟你说才来的。那四个和尚是哪来的？"国王答："是从东土大唐去西天取经的，来这儿换通关文书的。"三个道士一听拍手大笑："我说他们跑了，原来还在这儿！"国王惊讶："国师这话什么意思？他们刚报上姓名，我正想抓来交给你发落，但太师说得有道理，我看他们远道而来，不想破坏和大唐的关系，就叫进来查文书。没想到国师会问起他们，难道他们得罪你了？"道士笑着说："陛下不知道。他们昨天在城东门外打死了我两个徒弟，放跑了五百个当苦力的和尚，砸烂车子，晚上还闯进道观，毁了三清神像，偷吃贡品。我们被他们骗了，以为是神仙下凡，向他们求仙水仙丹想献给陛下延年益寿，结果他们居然给我们喝尿！我们每人尝了一口发现上当，正要抓他们，却被他们跑了。没想到今天在这儿碰上，真是冤家路窄！"国王听了大怒，要杀这四个和尚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">孙大圣合掌开言，厉声高叫道：“陛下暂息雷霆之怒，容僧等启奏。”国王道：“你冲撞了国师，国师之言，岂有差谬！”行者道：“他说我昨日到城外打杀他两个徒弟，是谁知证?我等且屈认了，着两个和尚偿命，还放两个去取经。他又说我碎车辆，放了囚僧，此事亦无见证，料不该死，再着一个和尚领罪罢了。他说我毁了三清，闹了观宇，这又是栽害我也。”</div>
+            <div class="text-block simplified-text">孙悟空双手合十，大声说道：“陛下您先别生气，听我们解释一下。”国王说：“你得罪了国师，国师说的话还能有假？”孙悟空回答：“他说我昨天在城外打死了他的两个徒弟，有谁看见了？就算我们认了，让两个和尚抵命，也该放另外两个去取经吧。他又说我砸坏了车、放了关着的和尚，这事也没人看见，不该判死罪，最多再让一个和尚顶罪。至于他说我毁了道观、捣乱三清殿，这纯粹是诬陷我！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">国王道：“怎见栽害？”行者道：“我僧乃东土之人，乍来此处，街道尚且不通，如何夜里就知他观中之事?既遗下小便，就该当时捉住，却这早晚坐名害人。天下假名托姓的无限，怎么就说是我?望陛下回嗔详察。”那国王本来昏乱，被行者说了一遍，他就决断不定。</div>
+            <div class="text-block simplified-text">国王问："怎么说是栽赃害人？"
+
+孙悟空回答："我们是从东土大唐来的和尚，刚到这儿，连路都不熟，怎么可能半夜就知道道观里的事？就算真有人在那儿撒尿，也该当场抓住，怎么过了这么久才点名说是我干的？天下冒名顶替的人多了去了，凭什么就认定是我？请陛下消消气，仔细想想。"
+
+这国王本来脑子就不清楚，被孙悟空这么一说，更拿不定主意了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">正疑惑之间，又见黄门官来奏：“陛下，门外有许多乡老听宣。”国王道：“有何事干？”即命宣来。宣至殿前，有三四十名乡老，朝上磕头道：“万岁，今年一春无雨，但恐夏月干荒，特来启奏，请那位国师爷爷祈一场甘雨，普济黎民。”国王道：“乡老且退，就有雨来也。”乡老谢恩而出。</div>
+            <div class="text-block simplified-text">国王正纳闷呢，又有个太监来报告：“皇上，外面有一群老乡等着见您。”国王问：“他们有啥事？”马上让人带他们进来。三四十个老乡来到大殿，跪下磕头说：“皇上啊，今年春天一直没下雨，我们怕夏天闹旱灾。特意来求您，请那位国师大人下场雨，救救老百姓吧。”国王说：“你们先回去吧，马上就会下雨的。”老乡们谢恩后就退下了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">国王道：“唐朝僧众，朕敬道灭僧为何?只为当年求雨，我朝僧人，更未尝求得一点；幸天降国师，拯援涂炭。你今远来，冒犯国师，本当即时问罪；姑且恕你，敢与我国师赌胜求雨么？若祈得一场甘雨，济度万民，朕即饶你罪名，倒换关文，放你西去。若赌不过，无雨，就将汝等推赴杀场典刑示众。”行者笑道：“小和尚也晓得些儿求祷。”</div>
+            <div class="text-block simplified-text">国王说："唐朝来的和尚，我为什么尊敬道士、打压和尚？就因为当年我们国家求雨的时候，和尚连一滴雨都求不来。幸好老天派来国师，救了受苦的百姓。现在你们大老远跑来，冒犯了国师，本来该马上治你们的罪。不过先饶了你们，敢不敢和我国师比试求雨？要是你们能求来一场大雨，救了老百姓，我就免了你们的罪，给你们通关文书，放你们往西走。要是比不过，求不来雨，就把你们拉到刑场砍头，让大家都看看。"孙悟空笑着说："小和尚我也懂点求雨的法子。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">国王见说，即命打扫坛场；一壁厢教：“摆驾，寡人亲上五凤楼观看。”当时多官摆驾。须臾，上楼坐了。唐三藏随着行者、沙僧、八戒，侍立楼下。那三道士陪国王坐在楼上。少时间，一员官飞马来报：“坛场诸色皆备，请国师爷爷登坛。”</div>
+            <div class="text-block simplified-text">国王一听，马上让人把祭坛打扫干净，一边下令说："准备车马，我要亲自上五凤楼看热闹。"大臣们立刻安排好了车驾。不一会儿，国王就在楼上坐好了。唐僧带着孙悟空、沙和尚和猪八戒，站在楼下等着。那三个道士陪着国王坐在楼上。没过多久，一个官员骑马飞奔来报告："祭坛都准备好了，请国师大人上台做法。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">那虎力大仙，欠身拱手，辞了国王，径下楼来。行者向前拦住道：“先生那里去？”大仙道：“登坛祈雨。”行者道：“你也忒自重了，更不让我远乡之僧。也罢，这正是‘强龙不压地头蛇’。先生先去，必须对君前讲开。”大仙道：“讲甚么？”行者道：“我与你都上坛祈雨，知雨是你的，是我的?不见是谁的功绩了。”国王在上听见心中暗喜道：“那小和尚说话，倒有些筋节。”沙僧听见暗笑道：“不知一肚子筋节，还不曾拿出来哩！”大仙道：“不消讲，陛下自然知之。”行者道：“虽然知之，奈我远来之僧，未曾与你相会。那时彼此混赖，不成勾当。须讲开方好行事。”大仙道：“这一上坛，只看我的令牌为号：一声令牌响，风来；二声响，云起；三声响，雷闪齐鸣；四声响，雨至；五声响，云散雨收。”行者笑道：“妙啊!我僧是不曾见，请了，请了！”</div>
+            <div class="text-block simplified-text">那虎力大仙起身向国王行礼告别，直接往楼下走。孙悟空上前拦住他问："先生要去哪儿？"大仙说："上台求雨。"悟空说："你也太把自己当回事了，完全不让我们这些外地来的和尚先试试。算了，这就叫'强龙不压地头蛇'。你先去求雨可以，但得在国王面前把话说清楚。"大仙问："说什么？"悟空说："咱们都上台求雨，到时候这雨算是你求来的还是我求来的？功劳算谁的？"国王在上面听了，心里暗喜："这小和尚说话挺有道理。"沙僧听了偷着乐："他肚子里还有更多道理没说出来呢！"大仙说："不用多说，陛下自然明白。"悟空说："就算明白，但我大老远来的，之前又不认识你。到时候互相扯皮可不好。还是先说清楚再办事。"大仙说："这样吧，等会上台，看我令牌为信号：第一声响刮风，第二声响起云，第三声响打雷闪电，第四声响下雨，第五声响云散雨停。"悟空笑着说："真有意思！我们和尚可没见过这场面，您请便吧！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">大仙拽开步前进，三藏等随后，径到了坛门外。抬头观看，那里有一座高台，约有三丈多高。台左右插着二十八宿旗号，顶上放一张桌子，桌上有一个香炉，炉中香烟霭霭。两边有两只烛台，台上风烛煌煌。炉边靠着一个金牌，牌上镌的是雷神名号。底下有五个大缸，都注着满缸清水，水上浮着杨柳枝。杨柳枝上托着一面铁牌，牌上书的是雷霆都司的符字。左右有五个大桩，桩上写着五方蛮雷使者的名录。每一桩边立两个道士，各执铁锤，伺候着打桩。台后面有许多道士在那里写作文书。正中间设一架纸炉，又有几个象生的人物，都是那执符使者，土地赞教之神。</div>
+            <div class="text-block simplified-text">神仙大步往前走，唐僧他们跟在后面，一直走到祭坛外面。抬头一看，那里有一座很高的台子，差不多有三丈多高。台子两边插着二十八星宿的旗子，顶上放着一张桌子，桌上有个香炉，炉里的香烧得烟雾缭绕。两边各有一个烛台，台上的蜡烛烧得很亮。香炉旁边靠着一块金牌，上面刻着雷神的名字。台子下面摆着五个大缸，里面装满了清水，水面上漂着杨柳枝。杨柳枝上放着一块铁牌，牌上写着"雷霆都司"的符咒。台子左右有五根大木桩，每根桩子上都写着五方雷神的名字。每根桩子旁边站着两个道士，手里拿着铁锤，准备敲打木桩。台子后面还有很多道士在写文书。正中间放着一个纸炉，还有几个纸扎的人像，都是些拿符咒的神仙和土地爷。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">那大仙走进去，更不谦逊，直上高台立定。旁边有个小道士，捧了几张黄纸书就的符字，一口宝剑，递与大仙。大仙执着宝剑，念声咒语，将一道符在烛上烧了。那底下两三个道士，拿过一个执符的象生、一道文书，亦点火焚之。那上面乒的一声令牌响，只见那半空里，悠悠的风色飘来。猪八戒口里作念道：“不好了，不好了!这道士果然有本事，令牌响了一下，果然就刮风！”行者道：“兄弟悄悄的，你们再莫与我说话。只管护持师父，等我干事去来。”</div>
+            <div class="text-block simplified-text">那位大仙走进来，一点儿也不客气，直接站到高台上。旁边有个小道士，给他递了几张黄纸写的符咒和一把宝剑。大仙拿着宝剑，嘴里念着咒语，把一张符在蜡烛上烧了。底下两三个道士，又拿过一个纸扎的人偶和一份文书，也点火烧了。这时候台上"乒"地一声令牌响，半空中慢慢刮起了风。猪八戒小声嘀咕："完了完了！这道士真有两下子，令牌一响，真的起风了！"孙悟空说："别出声，你们都别跟我说话。好好保护师父，我去去就来。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">好大圣，拔下一根毫毛，吹口仙气，叫“变！”就变作一个“假行者”，立在唐僧手下。他的真身，出了元神，赶到半空中。高叫：“那司风的是那个？”慌得那风婆婆捻住布袋，巽二郎札住口绳，上前施礼。行者道：“我保护唐朝圣僧西天取经，路过车迟国，与那妖道赌胜祈雨，你怎么不助老孙，反助那道士?我且饶你，把风收了。若有一些风儿，把那道士的胡子吹得动动，各打二十铁棒！”风婆婆道：“不敢，不敢！”遂而没些风气。八戒忍不住，乱嚷道：“那先儿请退!令牌已响，怎么不见一些风儿?你下来，让我们上去！”</div>
+            <div class="text-block simplified-text">孙悟空拔了一根毫毛，吹口气喊了声“变！”，变出一个假悟空站在唐僧旁边。他的真身飞到天上，大喊：“管风的是谁？”风婆婆赶紧按住装风的袋子，风神也绑紧风绳，过来行礼。孙悟空说：“我保护唐僧去西天取经，路过车迟国和妖怪道士比赛求雨。你们不帮我反而帮那道士？这次饶了你们，马上把风停了。要是有一丝风吹动那道士的胡子，每人打二十铁棍！”风婆婆连声说：“不敢不敢！”于是风立刻停了。猪八戒忍不住嚷嚷：“那道士快认输！令牌都响了怎么还没风？你下来换我们上去！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那道士又执令牌，烧了符檄，扑的又打了一下，只见那空中云雾遮满。孙大圣又当头叫道：“布云的是那个？”慌得那推云童子、布雾郎君当面施礼。行者又将前事说了一遍。那云童、雾子也收了云雾，放出太阳星耀耀，一天万里更无云。八戒笑道：“这先儿只好哄这皇帝，搪塞黎民，全没些真实本事!令牌响了两下，如何又不见云生？”</div>
+            <div class="text-block simplified-text">那道士又拿起令牌，烧了符纸，啪地又敲了一下。这时天上一下子乌云密布。孙悟空立刻大声问："谁在那儿布云？"吓得管云的童子、管雾的小仙赶紧过来行礼。孙悟空把之前的事又说了一遍。这两个小仙马上收走云雾，让太阳重新放光，天空一下子变得万里无云。猪八戒笑着说："这老道也就骗骗皇帝，糊弄老百姓，根本没啥真本事！令牌敲了两下，怎么又不见有云了？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">那道士心中焦躁，仗宝剑，解散了头发，念着咒，烧了符，再一令牌打将下去，只见那南天门里，邓天君领着雷公、电母到当空，迎着行者施礼。行者又将前项事说了一遍。道：“你们怎么来的志诚!是何法旨！”天君道：“那道士五雷法是个真的。他发了文书，烧了文檄，惊动玉帝，玉帝掷下旨意，径至‘九天应元雷声普化天尊’府下。我等奉旨前来，助雷电下雨。”行者道：“既如此，且都住了，伺候老孙行事。”果然雷也不鸣，电也不灼。</div>
+            <div class="text-block simplified-text">那道士心里急得不行，拿着宝剑，披头散发，嘴里念咒，烧了符纸，又用令牌往下一敲。这时候，南天门里的邓天君带着雷公电母来到空中，向孙悟空行礼。孙悟空把之前的事又说了一遍，问道："你们怎么这么听话就来了？谁下的命令？"邓天君回答："那道士用的五雷法是真的。他发了文书，烧了檄文，惊动了玉帝。玉帝下旨到雷神天尊那里，我们是奉命来帮忙打雷下雨的。"孙悟空说："既然这样，你们都先停手，等着听我指挥。"果然，雷也不响了，电也不闪了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">那道士愈加着忙，又添香、烧符、念咒打下令牌。半空中，又有四海龙王，一齐拥至。行者当头喝道：“敖广，那里去？”那敖广、敖顺、敖钦、敖闰上前施礼。行者又将前项事说了一遍。道：“向日有劳，未曾成功；今日之事，望为助力。”龙王道：“遵命!遵命！”行者又谢了敖顺道：“前日亏令郎缚怪，搭救师父。”龙王道：“那厮还锁在海中，未敢擅便，正欲请大圣发落。”行者道：“凭你怎么处治了罢。如今且助我一功。那道士四声令牌已毕，却轮到老孙下去干事了。但我不会发符、烧檄、打甚令牌，你列位却要助我行行。”</div>
+            <div class="text-block simplified-text">那道士更着急了，又是烧香又是画符，嘴里念咒还不停地拍令牌。这时候，天上一下子来了四海龙王。孙悟空站在最前面大喊："敖广！你们跑来干嘛？"东海龙王敖广、西海龙王敖顺、南海龙王敖钦、北海龙王敖闰赶紧上前行礼。孙悟空又把之前的事说了一遍："之前辛苦你们帮忙，可惜没成功。今天这事还得靠你们出力。"龙王们连连答应："一定照办！一定照办！"
+
+孙悟空又特别感谢西海龙王："前几天多亏你儿子帮忙抓妖怪，救了我师父。"西海龙王忙说："那妖怪现在还锁在海里呢，我们不敢随便处置，正等着大圣您发落。"孙悟空摆摆手说："你们看着办就行。现在先帮我个忙——那道士已经拍了四次令牌，接下来该我出手了。可我不会画符念咒拍令牌这些把戏，得靠你们几位帮帮忙了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">邓天君道：“大圣吩咐，谁敢不从!但只是得一个号令，方敢依令而行；不然，雷雨乱了，显得大圣无款也。”行者道：“我将棍子为号罢。”那雷公大惊道：“爷爷呀!我们怎吃得这棍子？”行者道：“不是打你们，但看我这棍子往上一指，就要刮风。”那风婆婆、巽二郎没口的答应道：“就放风！”“棍子第二指，就要布云。”那推云童子、布雾郎君道：“就布云，就布云！”“棍子第三指，就要雷电皆鸣。”那雷公、电母道：“奉承!奉承！”“棍子第四指，就要下雨。”那龙王道：“遵命，遵命！”“棍子第五指，就要大日晴天，却莫违误。”</div>
+            <div class="text-block simplified-text">邓天君说："大圣您吩咐的事，我们哪敢不听！不过得有个明确的信号，我们才好按命令办事。不然雷啊雨啊乱成一团，显得您没规矩。"孙悟空说："那我把金箍棒当信号吧。"雷公一听吓坏了："天哪！我们可挨不起您这一棒啊！"孙悟空解释："不是要打你们。看我金箍棒往上一指，你们就刮风。"管风的风婆婆和巽二郎马上答应："这就放风！""第二指，就要布云。"管云的推云童子和布雾郎君赶紧说："马上布云！马上布云！""第三指，就要打雷闪电。"雷公电母连忙应和："照办！照办！""第四指，就要下雨。"龙王立刻答应："一定照做！""第五指，立刻出太阳放晴，谁也不准出错。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">吩咐已毕，遂按下云头，把毫毛一抖，收上身来。那些人肉眼凡胎，那里晓得?行者遂在旁边高叫道：“先生请了。四声令牌俱已响毕，更没有风云雷雨，该让我了。”</div>
+            <div class="text-block simplified-text">说完这些，孙悟空就降下云头，把身上的毫毛一收，变回原样。那些凡人肉眼凡胎，哪能看得出来？孙悟空就在旁边大声喊道：“道长，该做的都做完了。你令牌敲了四次，可还是没招来风雨雷电，现在该轮到我了。”  
+
+（说明：  
+1. 保留原文"毫毛一抖"的变身细节和"四声令牌"的核心信息  
+2. "肉眼凡胎"译为"凡人看不出来"更直白  
+3. 用"该轮到我了"替代"该让我了"更符合口语习惯  
+4. 添加"孙悟空"主语避免指代不明  
+5. 拆分长句为短句，符合现代白话习惯）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">那道士无奈，不敢久占，只得下了台让他。努着嘴，径往楼上见驾。行者道：“等我跟他去，看他说些甚的。”只听得那国王问道：“寡人这里洗耳诚听，你那里四声令响，不见风雨，何也？”道士云：“今日龙神都不在家。”行者厉声道：“陛下，龙神俱在家；只是这国师法不灵，请他不来。等和尚请来你看。”国王道：“即去登坛，寡人还在此候雨。”</div>
+            <div class="text-block simplified-text">那道士没办法，不敢一直占着台子，只好下来让给他。他撅着嘴，直接上楼去见国王。孙悟空说："我跟着他去，看他怎么说。"只听见国王问："我在这儿认真等着听，你那边敲了四次令，可一点风雨都没有，怎么回事？"道士回答："今天龙王都不在家。"孙悟空大声说："陛下，龙王都在家！是这国师的法术不灵，请不动龙王。等和尚请来给你看。"国王说："那快去作法吧，我还在这儿等着下雨呢。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">行者得旨，急抽身到坛所，扯着唐僧道：“师父请上台。”唐僧道：“徒弟，我却不会祈雨。”八戒笑道：“他害你了。若还没雨，拿上柴蓬，一把火了帐！”行者道：“你不会求雨，好的会念经。等我助你。”那长老才举步登坛，到上面，端然坐下，定性归神，默念那《密多心经》。正坐处，忽见一员官，飞马来问：“那和尚，怎么不打令牌，不烧符檄？”行者高声答道：“不用，不用，我们是静功祈祷。”那官去回奏不题。</div>
+            <div class="text-block simplified-text">孙悟空接了命令，赶紧跑到祭坛那儿，拉着唐僧说："师父，快上台吧。"唐僧说："徒弟，我可不会求雨啊。"猪八戒笑着说："他这是坑你呢。要是求不来雨，他们准得堆柴火把你烧了！"孙悟空说："你不会求雨，但会念经啊。我来帮你。"唐僧这才走上祭坛，端端正正坐下，静下心来，默默念起《心经》。正坐着呢，突然有个官员骑马跑来问："那和尚，怎么不敲令牌，也不烧符纸？"孙悟空大声回答："不用那些！我们这是安静地祷告。"那官员听完就回去报告了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">行者听得老师父经文念尽，却去耳朵内取出铁棒，迎风幌了一幌，就有丈二长短，碗来粗细。将棍望空一指，那风婆婆见了，急忙扯开皮袋，巽二郎解放口绳；只听得呼呼风响，满城中揭瓦翻砖，扬砂走石。看起来，真个好风，却比那寻常之风不同也。但见：</div>
+            <div class="text-block simplified-text">孙悟空听到唐僧念完经，就从耳朵里掏出金箍棒，晃了一下，那棒子就变得一丈二尺长，碗口那么粗。他举起棒子朝天空一指，风婆婆赶紧打开装风的袋子，巽二郎松开捆袋口的绳子。只听呼呼的风声，整个城里瓦片乱飞，砖头翻滚，沙土和石头都被吹得到处跑。这风可真厉害，跟平常的风完全不一样。你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">折柳伤花，摧林倒树。九重殿损壁崩墙，五凤楼摇梁撼柱。天边红日无光，地下黄砂有翅。演武厅前武将惊，会文阁内文官惧。三宫粉黛乱青丝，六院嫔妃蓬宝髻。侯伯金冠落绣缨，宰相乌纱飘展翅。当驾有言不敢谈，黄门执本无由递。金鱼玉带不依班，象简罗衫无品叙。彩阁翠屏尽损伤，绿窗朱户皆狼狈。金銮殿瓦走砖飞，锦云堂门歪碎。这阵狂风果是凶，刮得那君王父子难相会；六街三市没人踪，万户千门皆紧闭!正是那狂风大作，孙行者又显神通，把金箍棒钻一钻，望空又一指。只见那：</div>
+            <div class="text-block simplified-text">这段文字描述了一场可怕的狂风造成的破坏。让我用简单直白的现代话来说：
+
+大风吹断了柳树，刮倒了花木，树林也被摧毁。皇宫的墙壁倒塌，大殿的柱子摇晃。太阳被遮得暗淡无光，地上的黄沙被卷到空中。练武场的将军们吓坏了，文官们也都害怕。宫里的妃子们头发散乱，贵族们的帽子被吹跑，宰相的官帽在空中飘。没人敢说话，连奏折都递不上去。官员们的服饰都乱了套，宫殿的门窗都被损坏。金銮殿的瓦片乱飞，大殿的门都歪了。这场风太厉害了，连皇帝都找不到儿子，街上一个人都没有，家家户户都关着门。就在这狂风大作的时候，孙悟空又施展法力，把金箍棒晃了晃，往天上一指。接着就看见...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">推云童子，布雾郎君：推云童子显神威，骨都都触石遮天；布雾郎君施法力，浓漠漠飞烟盖地。茫茫三市暗，冉冉六街昏。因风离海上，随雨出昆仑。顷刻漫天地，须臾蔽世尘。宛然如混沌，不见凤楼门。此时昏雾朦胧，浓云。孙行者又把金箍棒钻一钻，望空又一指。慌得那：</div>
+            <div class="text-block simplified-text">改写后的白话文：
+
+管云的小孩和管雾的小伙子：管云的小孩一使劲，乌云滚滚，遮天蔽日；管雾的小伙子一发力，浓雾弥漫，铺天盖地。集市和街道都变得昏暗模糊。这云雾被风从海上吹来，随着雨从昆仑山飘出。一会儿功夫就布满天地，转眼间把整个世界都遮住了。到处迷迷蒙蒙，连皇宫的大门都看不见了。这时候浓雾弥漫，乌云密布。孙悟空又转了下金箍棒，朝天上指了一下。吓得那些......</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">雷公奋怒，电母生嗔：雷公奋怒，倒骑火兽下天关；电母生嗔，乱掣金蛇离斗府。唿喇喇施霹雳，振碎了铁叉山；淅沥沥闪红绡，飞出了东洋海。呼呼隐隐滚车声，烨烨煌煌飘稻米。万萌万物精神改，多少昆虫蛰已开。君臣楼上心惊骇，商贾闻声胆怯忙。那沉雷护闪，乒乒乓乓，一似那地裂山崩之势，唬得那满城人，户户焚香，家家化纸。孙行者高呼：“老邓!仔细替我看那贪赃坏法之官，忤逆不孝之子，多打死几个示众！”那雷越发振响起来。行者却又把铁棒望上一指。只见那：</div>
+            <div class="text-block simplified-text">雷公发火了，电母也生气了：雷公怒气冲冲地倒骑着火兽从天门冲下来；电母气得乱甩金蛇一样的闪电，从天上劈下来。轰隆隆的雷声把铁叉山都震碎了，哗啦啦的闪电像红绸子一样从东海飞出来。雷声像车轮滚动一样轰隆作响，闪电像稻米撒落一样闪闪发亮。这下把天地万物的精气神都震醒了，很多冬眠的虫子都被惊醒了。皇帝和大臣在楼上吓得发抖，商人们听到雷声也害怕得直哆嗦。那些炸雷和闪电噼里啪啦响个不停，就像天崩地裂一样，吓得全城老百姓家家都烧香拜神，户户都烧纸钱。孙悟空大喊："老邓（雷公）！给我看准了，那些贪污犯法的狗官，不孝顺父母的逆子，多劈死几个给大伙儿看看！"雷声顿时更响了。孙悟空又把金箍棒往天上一指。这时候看到：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">龙施号令，雨漫乾坤。势如银汉倾天堑，疾似云流过海门。楼头声滴滴，窗外响潇潇。天上银河泻，街前白浪滔。淙淙如瓮捡，滚滚似盆浇。孤庄将漫屋，野岸欲平桥。真个桑田变沧海，霎时陆岸滚波涛。神龙借此来相助，抬起长江望下浇。</div>
+            <div class="text-block simplified-text">龙王一发令，大雨就下得到处都是。雨势大得像天河倒下来一样，又快又猛，像云从海面上飞快飘过。楼顶滴滴答答响，窗外哗啦啦下个不停。天上的雨水像银河往下倒，街上积水像浪头一样高。雨声哗哗像从缸里倒水，哗啦啦像用盆泼水。小村子都快被淹了，河边的小桥眼看就要被水漫过。这雨大得简直像把田地变成大海，转眼间陆地就全是水。龙王借着这场大雨帮忙，简直是把长江水提起来往下倒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">这场雨，自辰时下起，只下到午时前后。下得那车迟城，里里外外，水漫了街衢。那国王传旨道：“雨够了，雨够了!十分再多，又坏了禾苗，反为不美。”五凤楼下听事官策马冒雨来报：“圣僧，雨够了。”行者闻言，将金箍棒往上又一指。只见霎时间，雷收风息，雨散云收。国王满心欢喜，文武尽皆称赞道：“好和尚，这正是‘强中更有强中手’!就是我国师求雨虽灵，若要晴，细雨儿还下半日，便不清爽；怎么这和尚要晴就晴，顷刻间杲杲日出，万里就无云也？”</div>
+            <div class="text-block simplified-text">这场雨从早上七八点开始下，一直下到中午前后。把整个车迟城里里外外都淹了，街上全是水。国王下令说："雨够了，雨够了！再下多了，庄稼就要被淹坏了，反而不好。"五凤楼下的传令官骑马冒雨来报告："圣僧，雨已经够了。"孙悟空一听，又把金箍棒往天上一指。转眼间，雷停了，风住了，雨也收了，云也散了。国王高兴坏了，大臣们也都夸："这和尚真厉害！真是'高手之外还有高手'啊！我们国师虽然能求来雨，但要停雨的话，小雨还得下半天才能停。这和尚说要天晴就立刻天晴，一眨眼太阳就出来了，天上连一片云都没有了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">国王教回銮，倒换关文，打发唐僧过去。正用御宝时，又被那三个道士上前阻住道：“陛下，这场雨全非和尚之功，还是我道门之力。”国王道：“你才说龙王不在家，不曾有雨；他走上去，以静功祈祷，就雨下来，怎么又与他争功，何也？”虎力大仙道：“我上坛发了文书，烧了符檄，击了令牌，那龙王谁敢不来?想是别方召请，风、云、雾、雷、电五司俱不在，一闻我令，随赶而来；适遇着我下他上，一时撞着这个机会，所以就雨。从根算来，还是我请的龙，下的雨，怎么算作他的功果？”那国王昏乱，听此言，却又疑惑未定。</div>
+            <div class="text-block simplified-text">国王正要盖章放唐僧他们走，三个道士又跳出来拦着说："陛下，这场雨根本不是和尚求来的，是我们道家的功劳！"国王说："你刚才还说龙王不在家，所以没下雨；人家和尚一祈祷，雨就来了，现在怎么又抢功劳？"虎力大仙狡辩道："我在祭坛发了文书烧了符，敲了令牌，龙王敢不来？肯定是去别的地方忙了。风云雷电各路神仙一听到我的命令，立马赶回来。刚好我下来他上去，碰巧赶上下雨。说到底，龙是我请来的，雨是我求的，怎么能算他的功劳？"国王本来脑子就糊涂，听了这话又开始犯嘀咕。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">行者近前一步，合掌奏道：“陛下，这些傍门法术，也不成个功果，算不得我的他的；如今有四海龙王，现在空中，我僧未曾发放，他还不敢遽退。那国师若能叫得龙王现身，就算他的功劳。”国王大喜道：“寡人做了二十三年皇帝，更不曾看见活龙是怎么模样。你两家各显法力，不论僧道，但叫得来的，就是有功；叫不出的，有罪。”那道士怎么有那样本事?就叫，那龙王见大圣在此，也不敢出头。道士云：“我辈不能，你是叫来。”</div>
+            <div class="text-block simplified-text">孙悟空上前一步，双手合十对国王说："陛下，这些旁门左道的法术根本没用，算不上谁的本事。现在四海龙王就在天上，我没让他们走，他们不敢离开。要是国师能把龙王叫出来现个身，就算他厉害。"国王高兴地说："我当了23年皇帝，还没见过真龙长啥样。你们俩都拿出真本事来，不管是和尚还是道士，谁能把龙王叫来，谁就有功；叫不来的，就要受罚。"那道士哪有这本事？他喊了半天，龙王看见孙悟空在这儿，根本不敢露面。道士只好认怂："我们不行，还是你来叫吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">那大圣仰面朝空，厉声高叫：“敖广何在?弟兄们都现原身来看！”那龙王听唤，即忙现了本身。四条龙，在半空中度雾穿云，飞舞向金銮殿上。但见：</div>
+            <div class="text-block simplified-text">孙悟空抬头对着天空大喊：“东海龙王敖广在哪儿？叫你的兄弟们一起现出原形过来！”龙王听到喊声，赶紧变回龙的样子。四条龙在云雾里穿行，飞向金銮殿。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">飞腾变化，绕雾盘云。玉爪垂钩白，银鳞舞镜明。髯飘素练根根爽，角耸轩昂挺挺清。磕额崔巍，圆睛幌亮。隐显莫能测，飞扬不可评。祷雨随时布雨，求晴即便天晴。这才是有灵有圣真龙象，祥瑞缤纷绕殿庭。那国王在殿上焚香，众公卿在阶前礼拜。国王道：“有劳贵体降临，请回。寡人改日醮谢。”行者道：“列位众神各自归去，这国王改日醮谢哩。”那龙王径自归海，众神各各回天。这正是：广大无边真妙法，至真了性劈傍门。</div>
+            <div class="text-block simplified-text">这段文字描述了一条神龙在空中飞舞变化的样子，以及它呼风唤雨的本事。这条龙爪子像白玉，鳞片闪闪发亮，胡须像白绸子一样飘动，龙角高高竖起，额头宽大，眼睛明亮。它时隐时现，飞起来的样子简直无法形容。它能随时下雨，也能马上让天放晴，真是神通广大。国王和大臣们都在拜它。国王说：“辛苦您跑一趟，请回吧。改天我再好好谢您。”孙悟空（行者）对众神仙说：“各位都回去吧，国王改天会答谢的。”于是龙王回海里，其他神仙回天上去了。这真是：佛法无边，能让人看透真相，摆脱歪门邪道。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">毕竟不知怎么除邪，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道怎么对付妖怪呢，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
