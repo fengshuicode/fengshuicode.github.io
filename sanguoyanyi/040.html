@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四十回 蔡夫人议献荆州　诸葛亮火烧新野</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./039.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第四十回 蔡夫人议献荆州　诸葛亮火烧新野</h1>
+        <a href="./041.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说玄德问孔明求拒曹兵之计。孔明曰：“新野小县，不可久居，近闻刘景升病在危笃，可乘此机会，取彼荆州为安身之地，庶可拒曹操也。”玄德曰：“公言甚善；但备受景升之恩，安忍图之！”孔明曰：“今若不取，后悔何及！”玄德曰：“吾宁死，不忍作负义之事。”孔明曰：“且再作商议。”</div>
+            <div class="text-block simplified-text">刘备问诸葛亮怎么抵挡曹操的军队。诸葛亮说："新野是个小地方，不能长久待下去。最近听说刘表病得很重，咱们可以趁这个机会拿下荆州作为根据地，这样才好抵抗曹操。"  
+
+刘备说："你说得对，但我受过刘表的恩惠，怎么忍心抢他的地盘呢？"  
+
+诸葛亮劝他："现在不拿下荆州，以后后悔都来不及！"  
+
+刘备坚持说："我宁愿死，也不做忘恩负义的事。"  
+
+诸葛亮见劝不动，只好说："那再想想别的办法吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说夏侯惇败回许昌，自缚见曹操，伏地请死。操释之。惇曰：“惇遭诸葛亮诡计，用火攻破我军。”操曰：“汝自幼用兵，岂不知狭处须防火攻？”惇曰：“李典、于禁曾言及此，悔之不及！”操乃赏二人。惇曰：“刘备如此猖狂，真腹心之患也，不可不急除。”操曰：“吾所虑者，刘备、孙权耳；余皆不足介意，今当乘此时扫平江南。”便传令起大兵五十万，令曹仁、曹洪为第一队，张辽、张郃为第二队。夏侯渊、夏侯惇为第三队，于禁、李典为第四队，操自领诸将为第五队：每队各引兵十万。又令许褚为折冲将军，引兵三千为先锋。选定建安十三年秋七月丙午日出师。</div>
+            <div class="text-block simplified-text">夏侯惇打了败仗回到许昌，把自己绑起来去见曹操，跪在地上请罪。曹操放了他。夏侯惇说："我中了诸葛亮的奸计，他用火攻打败了我们。"曹操说："你从小带兵打仗，难道不知道在狭窄的地方要防着火攻吗？"夏侯惇说："李典和于禁提醒过我，现在后悔也晚了！"曹操于是奖赏了李典和于禁。夏侯惇说："刘备这么嚣张，真是个大麻烦，得赶紧除掉他。"曹操说："我现在担心的就是刘备和孙权，其他人都不足为虑。现在正是时候去平定江南。"于是下令调动五十万大军：曹仁、曹洪带第一队，张辽、张郃带第二队，夏侯渊、夏侯惇带第三队，于禁、李典带第四队，曹操自己带着其他将领为第五队。每队各带十万兵马。又让许褚当先锋将军，带三千人打头阵。定在建安十三年秋天七月丙午日出发。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">太中大夫孔融谏曰：“刘备，刘表皆汉室宗亲，不可轻伐；孙权虎踞六郡，且有大江之险，亦不易取，今丞相兴此无义之师，恐失天下之望。”操怒曰：“刘备、刘表、孙权皆逆命之臣，岂容不讨！”遂叱退孔融，下令：“如有再谏者，必斩。”孔融出府，仰天叹曰：“以至不仁伐至仁，安得不败乎！”时御史大夫郗虑家客闻此言，报知郗虑，虑常被孔融侮慢，心正恨之，乃以此言入告曹操，且曰：“融平日每每狎侮丞相，又与祢衡相善，衡赞融曰仲尼不死，融赞衡曰颜回复生。向者祢衡之辱丞相，乃融使之也。”操大怒，遂命廷尉捕捉孔融。融有二子，年尚少，时方在家，对坐弈棋。左右急报曰：“尊君被廷尉执去，将斩矣！二公子何不急避？”二子曰：“破巢之下，安有完卵乎？”言未已，廷尉又至，尽收融家小并二子，皆斩之，号令融尸于市。京兆脂习伏尸而哭。操闻之，大怒，欲杀之。荀彧曰：“彧闻脂习常谏融曰：公刚直太过，乃取祸之道，今融死而来哭，乃义人也，不可杀。”操乃止，习收融父子尸首，皆葬之。后人有诗赞孔融曰：“孔融居北海，豪气贯长虹：坐上客长满，樽中酒不空；文章惊世俗，谈笑侮王公。史笔褒忠直，存官纪太中。”曹操既杀孔融，传令五队军马次第起行，只留荀彧等守许昌。</div>
+            <div class="text-block simplified-text">曹操手下的大官孔融劝他说："刘备、刘表都是皇亲国戚，不能随便打；孙权占着江东六郡，还有长江天险，也不好打。您现在带着军队去打他们，名不正言不顺，会让天下人失望的。"曹操生气地说："这些人都不听朝廷命令，怎么能不打！"就把孔融赶了出去，还下令："谁再敢劝我，就砍头！"
+
+孔融走出门外，抬头叹气说："最坏的人去打最好的人，怎么能不失败呢？"这话被另一个官员郗虑的手下听见了。郗虑一直记恨孔融，就把这话告诉了曹操，还说："孔融平时就老看不起您，还跟那个骂过您的祢衡是好朋友。他们互相吹捧，说对方是孔子、颜回转世。上次祢衡骂您，就是孔融指使的。"曹操一听大怒，立刻派人去抓孔融。
+
+孔融有两个小儿子正在家下棋。有人跑来报信："你爹被抓走要杀头了，你们快跑吧！"两个孩子说："鸟窝都破了，蛋还能完好吗？"话刚说完，抓人的就到了，把孔融全家都杀了，还把孔融的尸体挂在街上示众。
+
+有个叫脂习的朋友抱着孔融的尸体大哭。曹操要杀他，谋士荀彧劝道："脂习以前就劝过孔融别太耿直，现在来哭丧是讲义气，不该杀。"曹操这才放过他。脂习把孔融父子安葬了。
+
+后来有人写诗称赞孔融："孔融在北海当官时，气魄很大，家里总是宾客满座，酒喝不完。他文章写得好，连权贵都敢嘲笑。史书记载了他的忠诚正直。"
+
+曹操杀了孔融后，命令大军分批出发，只留下荀彧等人守许昌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说荆州刘表病重，使人请玄德来托孤。玄德引关、张至荆州见刘表。表曰：“我病已入膏肓，不久便死矣，特托孤于贤弟。我子无才，恐不能承父业，我死之后，贤弟可自领荆州。”玄德泣拜曰：“备当竭力以辅贤侄，安敢有他意乎！”正说间，人报曹操自统大兵至。玄德急辞刘表，星夜回新野。刘表病中闻此信，吃惊不小，商议写遗嘱，令玄德辅佐长子刘琦为荆州之主。蔡夫人闻之大怒，关上内门；使蔡瑁、张允二人把住外门。时刘琦在江夏，知父病危，来至荆州探病，方到外门，蔡瑁当住曰：“公子奉父命镇守江夏，其任至重；今擅离职守，倘东吴兵至，如之奈何？若入见主公，主公必生嗔怒，病将转增，非孝也。宜速回。”刘琦立于门外，大哭一场，上马仍回江夏。刘表病势危笃，望刘琦不来；至八月戊申日，大叫数声而死。后人有诗叹刘表曰：“昔闻袁氏居河朔，又见刘君霸汉阳。总为牝晨致家累，可怜不久尽销亡！”</div>
+            <div class="text-block simplified-text">话说刘表在荆州病得很重，派人请刘备来交代后事。刘备带着关羽、张飞到荆州见刘表。刘表说："我这病没救了，活不了多久了。我儿子没本事，怕他接不了我的班。我死后，老弟你就接管荆州吧。"刘备哭着说："我一定尽力帮您儿子，绝对不敢有其他想法！"
+
+正说着，有人报告曹操带着大军打过来了。刘备赶紧告别刘表，连夜赶回新野。刘表在病床上听说这事，吓得不轻，赶紧商量写遗嘱，让刘备帮着大儿子刘琦接管荆州。他老婆蔡夫人知道后气坏了，把内院大门一关，派蔡瑁、张允把守外门。
+
+这时刘琦在江夏听说父亲病危，赶来荆州探望。刚到外门就被蔡瑁拦住："公子你是奉命镇守江夏的，责任重大。现在擅离职守，要是东吴打过来怎么办？要是进去见主公，主公一生气病情加重，你这就不孝了。赶紧回去吧！"
+
+刘琦站在门外大哭一场，只好骑马回江夏。刘表病得快不行了，一直盼着刘琦来，可就是等不到。到了八月初九这天，大叫几声就死了。后来有人写诗感叹刘表："当年听说袁绍占河北，如今又见刘表占荆州。都是被家里女人坏事，可惜没多久就全完了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">刘表既死，蔡夫人与蔡瑁、张允商议，假写遗嘱，令次子刘琮为荆州之主，然后举哀报丧。时刘琮年方十四岁，颇聪明，乃聚众言曰：“吾父弃世，吾兄现在江夏，更有叔父玄德在新野。汝等立我为主。倘兄与叔兴兵问罪，如何解释？”众官未及对，幕官李珪答曰：“公子之言甚善。今可急发哀书至江夏，请大公子为荆州之主，就命玄德一同理事：北可以敌曹操，南可以拒孙权。此万全之策也。”蔡瑁叱曰：“汝何人，敢乱言以逆主公遗命！”李珪大骂曰：“汝内外朋谋，假称遗命，废长立幼，眼见荆襄九郡，送于蔡氏之手！故主有灵，必当殛汝！”蔡瑁大怒，喝令左右推出斩之。李珪“至死大骂不绝。于是蔡瑁遂立刘琮为主。蔡氏宗族，分领荆州之兵；命治中邓义、别驾刘先守荆州；蔡夫人自与刘琮前赴襄阳驻扎，以防刘琦、刘备。就葬刘表之柩于襄阳城东汉阳之原，竟不讣告刘琦与玄德。</div>
+            <div class="text-block simplified-text">刘表死后，他老婆蔡夫人和蔡瑁、张允商量，伪造了一份遗嘱，让小儿子刘琮当荆州的老大，然后才发丧。当时刘琮才十四岁，挺机灵的，他召集大家说："我爸去世了，我哥还在江夏，还有个叔叔刘备在新野。你们让我当老大，要是我哥和叔叔带兵来算账，怎么交代？"官员们还没回答，有个叫李珪的幕僚说："公子说得对。现在应该赶紧给江夏送信，请大公子来当荆州之主，让刘备一起管事。这样北边能对付曹操，南边能抵抗孙权，是最稳妥的办法。"蔡瑁呵斥道："你算老几，敢在这儿胡说八道，违抗老主公的遗命！"李珪大骂："你们里应外合伪造遗嘱，不让大儿子继位，眼看就要把荆州九郡都送给蔡家了！老主公有灵，非弄死你们不可！"蔡瑁气坏了，叫人把李珪拉出去砍了。李珪到死都在骂。最后蔡瑁还是让刘琮当了老大，把荆州兵权分给蔡家人，派邓义、刘先守荆州。蔡夫人带着刘琮去襄阳驻扎，防着刘琦和刘备。他们把刘表埋在襄阳城东的汉阳原，连丧事都没通知刘琦和刘备。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">刘琮至襄阳，方才歇马，忽报曹操引大军径望襄阳而来。琮大惊，遂请蒯越、蔡瑁等商议。东曹掾傅巽进言曰：“不特曹操兵来为可忧；今大公子在江夏，玄德在新野，我皆未往报丧，若彼兴兵问罪，荆襄危矣。巽有一计，可使荆襄之民，安如泰山，又可保全主公名爵。”琮曰：“计将安出？”巽曰：“不如将荆襄九郡，献与曹操，操必重待主公也。”琮叱曰：“是何言也！孤受先君之基业，坐尚未稳，岂可便弃之他人？”蒯越曰：“傅公悌之言是也。夫逆顺有大体，强弱有定势。今曹操南征北讨，以朝廷为名，主公拒之，其名不顺。且主公新立，外患未宁，内忧将作。荆襄之民，闻曹兵至，未战而胆先寒，安能与之敌哉？”琮曰：“诸公善言，非我不从；但以先君之业，一旦弃与他人，恐贻笑于天下耳。”</div>
+            <div class="text-block simplified-text">刘琮刚到襄阳，还没休息好，突然听说曹操带着大军直奔襄阳来了。刘琮吓坏了，赶紧找来蒯越、蔡瑁等人商量对策。这时手下傅巽说："不光曹操打过来让人发愁，您哥哥刘琦在江夏，刘备在新野，咱们还没通知他们您父亲去世的消息。要是他们借这个理由打过来，荆州就危险了。我有个办法，既能保住荆州百姓平安，又能让您继续当官。"刘琮问："什么办法？"傅巽说："不如把荆州九个郡都献给曹操，曹操肯定会厚待您。"刘琮生气地说："这叫什么话！我刚继承父亲的基业，位子还没坐热，怎么能白白送给别人？"蒯越接着说："傅巽说得对。做事要看清形势，现在曹操打着朝廷旗号到处打仗，您要是反抗，名不正言不顺。再说您刚上位，外面有敌人，内部也不稳定。老百姓听说曹操来了，还没打就吓破胆了，怎么打得过？"刘琮说："你们说得都有道理，不是我不听。只是把父亲留下的基业突然送给别人，怕被天下人笑话啊。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">言未已，一人昂然而进曰：“傅公悌、蒯异度之言甚善，何不从之？”众视之，乃山阳高平人，姓王，名粲，字仲宣。粲容貌瘦弱，身材短小；幼时往见中郎蔡邕，时邕高朋满座，闻粲至，倒履迎之。宾客皆惊曰：“蔡中郎何独敬此小子耶？”邕曰：“此子有异才，吾不如也。”粲博闻强记，人皆不及：尝观道旁碑文一过，便能记诵；观人弈棋，棋局乱，粲复为摆出，不差一子。又善算术。其文词妙绝一时。年十七，辟为黄门侍郎，不就。后因避乱至荆襄，刘表以为上宾。当日谓刘琮曰：“将军自料比曹公何如？”琮曰：“不如也。”粲曰：“曹公兵强将勇，足智多谋；擒吕布于下邳，摧袁绍于官渡，逐刘备于陇右，破乌桓于白狼：枭除荡定者，不可胜计。今以大军南下荆襄，势难抵敌。傅、蒯二君之谋，乃长策也。将军不可迟疑，致生后悔。”琮曰：“先生见教极是。但须禀告母亲知道。”只见蔡夫人从屏后转出，谓琮曰：“既是仲宣、公悌、异度三人所见相同，何必告我。”于是刘琮意决，便写降书，令宋忠潜地往曹操军前投献。宋忠领命，直至宛城，接着曹操，献上降书。操大喜，重赏宋忠，分付教刘琮出城迎接，便着他永为荆州之主。</div>
+            <div class="text-block simplified-text">话还没说完，一个人大摇大摆地走进来说："傅公悌和蒯异度说得很好啊，为啥不听他们的？"大家一看，原来是山阳高平人，叫王粲，字仲宣。王粲长得瘦小，个子不高。小时候他去见大官蔡邕，当时蔡邕家里满屋子客人，一听说王粲来了，急得连鞋都穿反了跑出去迎接。客人们都惊讶地问："蔡大人为啥这么看重这个小毛孩？"蔡邕说："这孩子特别有才华，我不如他。"王粲记性特别好，没人比得上：他只要看一遍路边的碑文，就能背下来；看别人下棋，要是棋子乱了，他能重新摆回原样，一个子都不差。数学也很好，写的文章在当时数一数二。十七岁时朝廷让他当官，他不去。后来为躲战乱跑到荆州，刘表把他当贵客。这天他对刘琮说："将军觉得自己比曹操怎么样？"刘琮说："比不上。"王粲说："曹操兵多将广，又聪明又会打仗：在下邳抓了吕布，在官渡打败袁绍，在陇右赶跑刘备，在白狼灭了乌桓，收拾掉的对手数都数不清。现在他带着大军来打荆州，肯定挡不住。傅公悌和蒯异度的主意才是长远之计。将军别再犹豫了，免得后悔。"刘琮说："先生说得对。不过得先告诉我妈。"这时他妈妈蔡夫人从屏风后面走出来说："既然仲宣、公悌、异度他们三个都这么说，还问我干啥。"于是刘琮下定决心，写了投降信，派宋忠偷偷去送给曹操。宋忠领命跑到宛城见到曹操，送上投降信。曹操高兴坏了，重赏宋忠，让刘琮出城迎接，还答应让他永远当荆州的老大。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">宋忠拜辞曹操，取路回荆襄。将欲渡江，忽见一枝人马到来，视之，乃关云长也。宋忠回避不迭，被云长唤住，细问荆州之事。忠初时隐讳；后被云长盘问不过，只得将前后事情，——实告。云长大惊，随捉宋忠至新野见玄德，备言其事。玄德闻之大哭。张飞曰：“事已如此，可先斩宋忠，随起兵渡江，夺了襄阳，杀了蔡氏、刘琮，然后与曹操交战。”玄德曰：“你且缄口。我自有斟酌。”乃叱宋忠曰：“你知众人作事，何不早来报我？今虽斩汝无益于事。可速去。”忠拜谢，抱头鼠窜而去。玄德正忧闷间，忽报公子刘琦差伊籍到来。玄德感伊籍昔日相救之恩，降阶迎之，再三称谢。籍曰：“大公子在江夏，闻荆州已故，蔡夫人与蔡瑁等商议，不来报丧，竟立刘琮为主。公子差人往襄阳探听，回说是实；恐使君不知，特差某赍哀书呈报，并求使君尽起麾下精兵，同往襄阳问罪。”玄德看书毕，谓伊籍曰：“机伯只知刘琮僭立，更不知刘琮已将荆襄九郡献与曹操矣！”籍大惊曰：“使君从何知之？”玄德具言拿获宋忠之事。籍曰：“若如此，使君不如以吊丧为名，前赴襄阳，诱刘琮出迎，就便擒下，诛其党类，则荆州属使君矣。”孔明曰：“机伯之言是也。主公可从之。”玄德垂泪曰：“吾兄临危托孤于我，今若执其子而夺其地，异日死于九泉之下，何面目复见吾兄乎？”孔明曰：“如不行此事，今曹兵已至宛城，何以拒敌？”玄德曰：“不如走樊城以避之。”</div>
+            <div class="text-block simplified-text">宋忠告别曹操，准备回荆州襄阳。他刚要过江，突然看见一队人马过来，一看是关羽。宋忠躲不开，被关羽叫住，仔细问他荆州的情况。宋忠开始还想瞒着，后来被关羽问得没办法，只好把前前后后的事都老实说了。关羽一听大吃一惊，立刻把宋忠抓到新野见刘备，详细说了这事。刘备听完大哭。张飞说："事情都这样了，不如先杀了宋忠，然后带兵过江，拿下襄阳，宰了蔡家那帮人和刘琮，再跟曹操干仗！"刘备说："你别乱说，我自有打算。"转头骂宋忠："你知道他们要干这些事，怎么不早点来告诉我？现在杀你也没用，赶紧滚吧！"宋忠赶紧磕头谢罪，灰溜溜逃走了。
+
+刘备正发愁呢，忽然有人报告说刘琦派伊籍来了。刘备一直记着伊籍以前救过他的恩情，赶紧下台阶迎接，连连道谢。伊籍说："大公子在江夏听说荆州出事了，蔡夫人和蔡瑁他们商量好了不报丧，直接让刘琮当了主子。公子派人去襄阳打听，情况属实，怕您不知道，特意让我带信来告诉您，还想请您带上精兵一起去襄阳讨个说法。"刘备看完信对伊籍说："你只知道刘琮抢着当主子，还不知道他已经把荆州九个郡都送给曹操了！"伊籍大惊："您怎么知道的？"刘备就把抓到宋忠的事说了。伊籍说："要是这样，您不如假装去吊丧，到襄阳把刘琮骗出来抓住，干掉他的同伙，荆州就是您的了。"诸葛亮也说："伊籍说得对，主公可以这么干。"刘备流着泪说："我大哥临死前把儿子托付给我，现在要我抓他儿子抢地盘，以后死了都没脸见我大哥啊！"诸葛亮说："要是不这么干，曹操的兵都快到宛城了，我们怎么抵挡？"刘备说："不如去樊城躲躲吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">正商议间，探马飞报曹兵已到博望了。玄德慌忙发付伊籍回江夏整顿军马，一面与孔明商议拒敌之计。孔明曰：“主公且宽心。前番一把火，烧了夏侯惇大半人马；今番曹军又来，必教他中这条计。我等在新野住不得了，不如早到樊城去。”便差人四门张榜，晓谕居民：“无问老幼男女，愿从者，即于今日皆跟我往樊城暂避，不可自误。”差孙乾往河边调拨船只，救济百姓；差糜竺护送各官家眷到樊城。一面聚诸将听令，先教云长引一千军去白河上流头埋伏。各带布袋，多装沙土，遏住白河之水，至来日三更后，只听下流头人喊马嘶，急取起布袋，放水淹之，却顺水杀将下来接应。又唤张飞引一千军去博陵渡口埋伏。此处水势最慢，曹军被淹，必从此逃难，可便乘势杀来接应。又唤赵云引军三千，分为四队，自领一队伏于东门外，其三队分伏西、南、北三门，却先于城内人家屋上，多藏硫黄焰硝引火之物。曹军入城，必安歇民房。来日黄昏后，必有大风；但看风起，便令西、南、北三门伏军尽将火箭射入城去；待城中火势大作，却于城外呐喊助威，只留东门放他出走。汝却于东门外从后击之。天明会合关、张二将，收军回樊城。再令糜芳、刘封二人带二千军。一半红旗，一半青旗，去新野城外三十里鹊尾坡前屯住。一见曹军到，红旗军走在左，青旗军走在右。他心疑必不敢追。汝二人却去分头埋伏。只望城中火起，便可追杀败兵，然后却来白河上流头接应。孔明分拨已定，乃与玄德登高了望，只候捷音。却说曹仁、曹洪引军十万为前队，前面已有许褚引三千铁甲军开路，浩浩荡荡，杀奔新野来。是日午牌时分，来到鹊尾坡，望见坡前一簇人马，尽打青、红旗号，许褚催军向前。刘封、糜芳分为四队，青、红旗各归左右。许褚勒马，教且休进：“前面必有伏兵。我兵只在此处住下。”许褚一骑马飞报前队曹仁。曹仁曰：“此是疑兵，必无埋伏。可速进兵。我当催军继至。”许褚复回坡前，提兵杀入。至林下追寻时，不见一人。时日已坠西。许褚方欲前进，只听得山上大吹大擂。抬头看时，只见山顶上一簇旗，旗丛中两把伞盖：左玄德，右孔明，二人对坐饮酒。许褚大怒，引军寻路上山。山上擂木炮石打将下来，不能前进。又闻山后喊声大震。欲寻路厮杀，天色已晚。曹仁领兵到，教且夺新野城歇马。军士至城下时，只见四门大开。曹兵突人，并无阻当，城中亦不见一人，竟是一座空城了。曹洪曰：“此是势孤计穷，故尽带百姓逃窜去了。我军权且在城安歇，来日平明进兵。”此时各军走乏，都已饥饿，皆去夺房造饭。曹仁、曹洪就在衙内安歇。初更已后，狂风大作。守门军士飞报火起。曹仁曰：“此必军士造饭不小心，遗漏之火，不可自惊。”说犹未了，接连几次飞报，西、南、北三门皆火起。曹仁急令众将上马时，满县火起，上下通红。是夜之火，更胜前日博望烧屯之火。后人有诗叹曰：“奸雄曹操守中原，九月南征到汉川。风伯怒临新野县，祝融飞下焰摩天。”曹仁引众将突烟冒火，寻路奔走，闻说东门无火，急急奔出东门。军士自相践踏，死者无数。曹仁等方才脱得火厄，背后一声喊起，赵云引军赶来混战，败军各逃性命，谁肯回身厮杀。正奔走间，糜芳引一军至，又冲杀一阵。曹仁大败，夺路而走，刘封又引一军截杀一阵。到四更时分，人困马乏，军士大半焦头烂额；奔至白河边，喜得河水不甚深，人马都下河吃水：人相喧嚷，马尽嘶鸣。</div>
+            <div class="text-block simplified-text">刘备和诸葛亮正在商量对策，突然探子来报说曹操的军队已经到了博望。刘备赶紧让伊籍回江夏准备兵马，同时和诸葛亮商量怎么对付敌人。诸葛亮说：“主公别担心。上次一把火烧了夏侯惇大半人马；这次曹军又来，肯定还会中计。新野不能待了，咱们早点搬去樊城吧。”于是派人到处贴告示，通知老百姓：“不管男女老少，愿意跟我们一起走的，今天就出发去樊城避难，别耽误。”又派孙乾去河边安排船只，帮百姓撤离；派糜竺护送官员家属去樊城。接着召集将领分配任务：先让关羽带一千士兵去白河上游埋伏，每人带上沙袋，堵住河水，等到半夜下游有动静，就立刻撤掉沙袋放水淹曹军，然后顺水冲下去接应。再让张飞带一千人去博陵渡口埋伏，那里水流慢，曹军被淹后肯定从那儿逃，趁机杀出来接应。又让赵云带三千人分成四队，自己带一队埋伏在东门外，其他三队埋伏在西、南、北门外，提前在城里民房屋顶藏好硫磺等易燃物。曹军进城后肯定住民房。第二天黄昏后会起大风，一见风来，就让埋伏的三队往城里射火箭；等火烧大了，在城外喊叫助威，只留东门让曹军逃。赵云再从东门外背后袭击。天亮后和关羽、张飞会合，撤回樊城。最后派糜芳、刘封带两千人，一半举红旗、一半举青旗，去新野城外三十里的鹊尾坡等着。曹军一到，红旗往左走，青旗往右走。曹军起疑不敢追，他俩就分头埋伏。等城里起火，就追杀败兵，再去白河上游接应。安排完，诸葛亮和刘备登高观望，等好消息。  
+
+另一边，曹仁、曹洪带十万大军打头阵，许褚率三千铁甲军开路，直奔新野。中午到鹊尾坡时，看见前面有一队人马举着青红旗。许褚冲上去，刘封、糜芳立刻把队伍分成左右两路。许褚勒马停下，说：“前面可能有埋伏，先别动。”他派人报告曹仁，曹仁却说：“这是吓唬人的，没埋伏，快进军！”许褚又冲上去，到树林里却发现一个人都没有。太阳快落山时，忽然听见山上敲锣打鼓，抬头看见刘备和诸葛亮坐在山顶伞盖下喝酒。许褚气坏了，带兵上山，结果被滚木礌石砸退。这时山后也传来喊杀声，天又黑了，曹仁下令先去新野城休息。到城下发现城门大开，里面空无一人。曹洪说：“他们没招了才带百姓逃跑，咱们先住下，明早再追。”士兵们又累又饿，抢房子做饭。曹仁、曹洪在县衙休息。半夜突然刮大风，守门的报告起火，曹仁说：“肯定是做饭不小心点的，别慌。”结果接二连三有人报信，西、南、北门全着火了。曹仁赶紧叫人上马，可全城已烧成火海，比上次博望坡还惨。曹仁带人冒火突围，听说东门没火，急忙冲出去。士兵互相踩踏，死伤无数。刚逃出火海，赵云又带兵杀来，曹军只顾逃命。接着糜芳、刘封轮流截杀，到四更天时，曹军人困马乏，大半烧得焦头烂额。逃到白河边，发现水不深，纷纷下河喝水，人喊马叫乱成一团。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说云长在上流用布袋遏住河水，黄昏时分，望见新野火起；至四更，忽听得下流头人喊马嘶，急令军士一齐掣起布袋，水势滔天，望下流冲去，曹军人马俱溺于水中，死者极多。曹仁引众将望水势慢处夺路而走。行到博陵渡口，只听喊声大起，一军拦路，当先大将，乃张飞也，大叫：“曹贼快来纳命！”曹军大惊。正是：城内才看红焰吐，水边又遇黑风来。未知曹仁性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">话说关羽在上游用沙袋堵住河水。天快黑时，他看到新野那边起火了；到了后半夜，突然听到下游传来人喊马叫的声音，立刻命令士兵们一起拉开沙袋。大水一下子冲下去，曹操的士兵和马匹都被淹了，死了很多人。曹仁带着手下往水小的地方逃命。跑到博陵渡口时，突然听到喊杀声，一支军队挡住去路，领头的正是张飞，他大喊："曹贼快来送死！"曹军都吓坏了。这真是：城里刚看见大火烧，河边又撞上黑旋风。不知曹仁能不能活命，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
