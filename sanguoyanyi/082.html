@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十二回 孙权降魏受九锡　先主征吴赏六军</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./081.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十二回 孙权降魏受九锡　先主征吴赏六军</h1>
+        <a href="./083.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说章武元年秋八月，先主起大军至夔关，驾屯白帝城。前队军马已出川口。近臣奏曰：“吴使诸葛瑾至。”先主传旨教休放入。黄权奏曰：“瑾弟在蜀为相，必有事而来。陛下何故绝之？当召入，看他言语。可从则从；如不可，则就借彼口说与孙权，令知问罪有名也。”先主从之，召瑾入城。瑾拜伏于地。先主问曰：“子瑜远来，有何事故？”瑾曰：“臣弟久事陛下，臣故不避斧钺，特来奏荆州之事。前者，关公在荆州时，吴侯数次求亲，关公不允。后关公取襄阳，曹操屡次致书吴侯，使袭荆州；吴侯本不肯许，因吕蒙与关公不睦，故擅自兴兵，误成大事，今吴侯悔之不及。此乃吕蒙之罪，非吴侯之过也。今吕蒙已死，冤仇已息。孙夫人一向思归。今吴侯令臣为使，愿送归夫人，缚还降将，并将荆州仍旧交还，永结盟好，共灭曹丕，以正篡逆之罪。”先主怒曰：“汝东吴害了朕弟，今日敢以巧言来说乎！”瑾曰：“臣请以轻重大小之事，与陛下论之：陛下乃汉朝皇叔，今汉帝已被曹丕篡夺，不思剿除；却为异姓之亲，而屈万乘之尊：是舍大义而就小义也。中原乃海内之地，两都皆大汉创业之方，陛下不取，而但争荆州：是弃重而取轻也。天下皆知陛下即位，必兴汉室，恢复山河；今陛下置魏不问，反欲伐吴：窃为陛下不取。”先主大怒曰：“杀吾弟之仇，不共戴天！欲朕罢兵，除死方休！不看丞相之面，先斩汝首！今且放汝回去，说与孙权：洗颈就戮！”诸葛瑾见先主不听，只得自回江南。</div>
+            <div class="text-block simplified-text">故事发生在章武元年八月，刘备带着大军到了夔关，驻扎在白帝城。先头部队已经出了四川。这时手下报告："东吴派诸葛瑾来了。"刘备下令不许他进来。大臣黄权劝道："诸葛瑾的弟弟诸葛亮在咱们这儿当丞相，他这次来肯定有事。陛下干嘛不见？不如让他进来，听听他说什么。说得对就听，不对就借他的嘴给孙权传话，让孙权知道我们打他是名正言顺的。"刘备同意了，让诸葛瑾进城。
+
+诸葛瑾跪拜行礼后，刘备问："你大老远跑来有什么事？"诸葛瑾说："我弟弟一直跟着陛下，所以我冒着危险来谈荆州的事。之前关羽在荆州时，孙权几次想结亲家被拒绝。后来关羽打襄阳，曹操一直写信让孙权偷袭荆州。孙权本来不同意，但因为吕蒙和关羽有矛盾，就擅自出兵，结果酿成大错，现在孙权后悔死了。这都是吕蒙的错，不是孙权的责任。现在吕蒙已经死了，仇也该了结了。孙夫人一直想回来，孙权派我来，愿意把夫人送回来，把投降的将领绑回来，荆州也还给你们，两家和好，一起打曹丕。"
+
+刘备生气地说："你们东吴害死我弟弟，现在还敢花言巧语！"诸葛瑾说："请让我说说轻重缓急：您是汉朝皇叔，现在曹丕篡位，您不去讨伐，却为了结拜兄弟打仗，这是舍大义顾小义。中原才是根本，长安洛阳都是汉朝发家的地方，您不去争，反而争荆州，这是丢了西瓜捡芝麻。天下人都指望您复兴汉室，现在您放着魏国不管却要打东吴，我觉得不合适。"
+
+刘备大怒："杀弟之仇不共戴天！想让我退兵除非我死了！要不是看在你弟弟面子上，现在就砍了你！滚回去告诉孙权：等着受死吧！"诸葛瑾见劝不动，只好回东吴去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说张昭见孙权曰：“诸葛子瑜知蜀兵势大，故假以请和为辞，欲背吴入蜀。此去必不回矣。”权曰：“孤与子瑜，有生死不易之盟；孤不负子瑜，子瑜亦不负孤。昔子瑜在柴桑时，孔明来吴，孤欲使子瑜留之。子瑜曰：弟已事玄德，义无二心；弟之不留，犹瑾之不往。其言足贯神明。今日岂肯降蜀乎？孤与子瑜可谓神交，非外言所得间也。”正言间，忽报诸葛瑾回。权曰：“孤言若何？”张昭满面羞惭而退。瑾见孙权，言先主不肯通和之意。权大惊曰：“若如此，则江南危矣！”阶下一人进曰：“某有一计，可解此危。”视之，乃中大夫赵咨也。权曰：“德度有何良策？”咨曰：“主公可作一表，某愿为使，往见魏帝曹丕，陈说利害，使袭汉中，则蜀兵自危矣。”权曰：“此计最善。但卿此去，休失了东吴气象。”咨曰：“若有些小差失，即投江而死，安有面目见江南人物乎！”</div>
+            <div class="text-block simplified-text">张昭对孙权说："诸葛瑾知道蜀国兵力强大，所以假装来求和，其实是想背叛吴国投奔蜀国。他这一走肯定不回来了。"孙权说："我和诸葛瑾有过生死与共的约定。我不会对不起他，他也不会对不起我。当年在柴桑时，诸葛亮来吴国，我想让诸葛瑾留下他。诸葛瑾说：'我弟弟已经效忠刘备，不能有二心；就像我不会去蜀国一样，他也不会留下来。'这话说得多么真诚。现在他怎么会投降蜀国呢？我和诸葛瑾是心灵相通的朋友，不是外人几句话就能挑拨的。"正说着，忽然有人报告诸葛瑾回来了。孙权得意地说："我说的没错吧？"张昭羞愧地退下了。
+
+诸葛瑾见到孙权，说刘备不肯讲和。孙权大惊："要是这样，我们江南就危险了！"这时有个叫赵咨的大臣站出来说："我有个办法可以化解危机。"孙权问："你有什么好主意？"赵咨说："主公可以写封信，我愿意当使者去见魏国皇帝曹丕，向他说明利害关系，让魏国攻打汉中。这样蜀国就顾不上我们了。"孙权说："这主意不错。不过你这次去，可别丢了我们东吴的脸。"赵咨说："要是我出半点差错，就跳江自杀，哪还有脸回来见江东父老！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">权大喜，即写表称臣，令赵咨为使。星夜到了许都，先见太尉贾诩等并大小官僚。次日早朝，贾诩出班奏曰：“东吴遣中大夫赵咨上表。”曹丕笑曰：“此欲退蜀兵故也。”即令召入。咨拜伏于丹墀。丕览表毕，遂问咨曰：“吴侯乃何如主也：”咨曰：“聪明、仁智、雄略之主也。”丕笑曰：“卿褒奖毋乃太甚？”咨曰：“臣非过誉也。吴侯纳鲁肃于凡品，是其聪也；拔吕蒙于行阵，是其明也；获于禁而不害，是其仁也；取荆州兵不血刃，是其智也；据三江虎视天下，是其雄也；屈身于陛下，是其略也：以此论之，岂不为聪明、仁智、雄略之主乎？”丕又问曰：“吴主颇知学乎？”咨曰：“吴主浮江万艘，带甲百万，任贤使能，志存经略；少有余闲，博览书传，历观史籍，采其大旨，不效书生寻章摘句而已。”丕曰：“朕欲伐吴，可乎？”咨曰：“大国有征伐之兵，小国有御备之策。”丕曰：“吴畏魏乎？”咨曰：“带甲百万，江汉为池，何畏之有？”丕曰：“东吴如大夫者几人？”咨曰：“聪明特达者八九十人；如臣之辈，车载斗量，不可胜数。”丕叹曰：“使于四方，不辱君命，卿可以当之矣。”于是即降诏，命太常卿邢贞赍册封孙权为吴王，加九锡。赵咨谢恩出城。</div>
+            <div class="text-block simplified-text">孙权特别高兴，马上写了份投降书自称臣子，派赵咨当使者送去。赵咨连夜赶到许昌，先见了太尉贾诩和其他官员。第二天上朝时，贾诩报告说："东吴派了中大夫赵咨来送投降书。"曹丕笑着说："这是想让我们帮忙打退蜀国军队吧。"就让人带赵咨进来。
+
+赵咨跪在台阶下行礼。曹丕看完投降书后问他："你们吴王是个什么样的人？"赵咨回答："是个聪明、仁义、有胆识的君主。"曹丕笑着说："你这也夸得太过了吧？"赵咨解释说："我没乱说。吴王能从普通人里发现鲁肃，说明他聪明；在军队中提拔吕蒙，说明他会看人；抓到于禁却不杀他，说明他仁慈；不费一兵一卒拿下荆州，说明他有智慧；占据三江地区虎视天下，说明他有胆量；现在向您称臣，说明他懂得策略。这样看来，难道不是聪明、仁义、有胆识的君主吗？"
+
+曹丕又问："你们吴王读书多吗？"赵咨说："吴王手下有上万艘战船，百万大军，能任用人才。有空时就看书，研究历史，只抓重点，不像书呆子那样死抠字句。"曹丕问："我想打东吴，行吗？"赵咨回答："大国可以出兵攻打，小国也有办法防守。"曹丕问："东吴怕我们魏国吗？"赵咨说："我们有百万大军，又有长江天险，有什么好怕的？"
+
+曹丕最后问："像你这样的人才，东吴有多少？"赵咨说："特别出色的有八九十人，像我这样的，多得数不清。"曹丕感叹说："你这样的人出使外国，真给国家长脸。"于是下旨封孙权为吴王，赏赐九种贵重礼物。赵咨谢恩后就出城回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">大夫刘晔谏曰：“今孙权惧蜀兵之势，故来请降。以臣愚见：蜀、吴交兵，乃天亡之也；今若遣上将提数万之兵，渡江袭之，蜀攻其外，魏攻其内，吴国之亡，不出旬日。吴亡则蜀孤矣。陛下何不早图之？”丕曰：“孙权既以礼服朕，朕若攻之，是沮天下欲降者之心；不若纳之为是。”刘晔又曰：“孙权虽有雄才，乃残汉骠骑将军、南昌侯之职。官轻则势微，尚有畏中原之心；若加以王位，则去陛下一阶耳。今陛下信其诈降，崇其位号以封殖之，是与虎添翼也。”丕曰：“不然。朕不助吴，亦不助蜀。待看吴、蜀交兵，若灭一国，止存一国，那时除之，有何难哉？朕意已决，卿勿复言。”遂命太常卿邢贞同赵咨捧执册锡，径至东吴。</div>
+            <div class="text-block simplified-text">大臣刘晔劝皇帝说："现在孙权害怕蜀国军队的强大，所以假装投降。照我看，蜀国和吴国打仗，正是老天要灭他们。如果我们派大将带几万兵过江偷袭，蜀国从外面打，我们从里面打，不出十天就能灭掉吴国。吴国一完蛋，蜀国就孤立无援了。皇上为什么不早点动手呢？"
+
+皇帝曹丕回答："孙权既然按礼节来投降，我要是打他，会让天下想投降的人寒心。不如接受他的投降。"
+
+刘晔又说："孙权虽然厉害，但现在只是个小小的将军和侯爷。官职低说明他实力不够，还怕我们。如果封他当王，地位就跟皇上只差一级了。现在皇上相信他是真投降，还提高他的地位，这等于给老虎装上翅膀啊。"
+
+曹丕说："不对。我既不帮吴国，也不帮蜀国。等他们两国打得两败俱伤，灭掉一个剩下一个的时候，再收拾剩下的那个也不迟。我已经决定了，你别再说了。"于是派邢贞和赵咨带着册封的文书去东吴了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说孙权聚集百官，商议御蜀兵之策。忽报魏帝封主公为王，礼当远接，顾雍谏曰：“主公宜自称上将军、九州伯之位，不当受魏帝封爵。”权曰：“当日沛公受项羽之封，盖因时也；何故却之？”遂率百官出城迎接。邢贞自恃上国天使，入门不下车。张昭大怒，厉声曰：“礼无不敬，法无不肃，而君敢自尊大，岂以江南无方寸之刃耶？”邢贞慌忙下车，与孙权相见，并车入城。忽车后一人放声哭曰：“吾等不能奋身舍命，为主并魏吞蜀，乃令主公受人封爵，不亦辱乎！”众视之，乃徐盛也。邢贞闻之，叹曰：“江东将相如此，终非久在人下者也！”却说孙权受了封爵，众文武官僚拜贺已毕，命收拾美玉明珠等物，遣人赍进谢恩。早有细作报说蜀主引本国大兵，及蛮王沙摩柯番兵数万，又有洞溪汉将杜路、刘宁二枝兵，水陆并进，声势震天。水路军已出巫口，旱路军已到秭归。时孙权虽登王位，奈魏主不肯接应，乃问文武曰：“蜀兵势大，当复如何？”众皆默然。权叹曰：“周郎之后有鲁肃，鲁肃之后有吕蒙，今吕蒙已亡，无人与孤分忧也！”言未毕，忽班部中一少年将，奋然而出，伏地奏曰：“臣虽年幼，颇习兵书。愿乞数万之兵，以破蜀兵。”权视之，乃孙桓也。桓字叔武，其父名河，本姓俞氏，孙策爱之，赐姓孙，因此亦系吴王宗族。河生四子，桓居其长，弓马熟娴，常从吴王征讨，累立奇功，官授武卫都尉；时年二十五岁。权曰：“汝有何策胜之？”桓曰：“臣有大将二员：一名李异，一名谢旌，俱有万夫不当之勇。乞数万之众，往擒刘备。”权曰：“侄虽英勇，争奈年幼；必得一人相助，方可。”虎威将军朱然出曰：“臣愿与小将军同擒刘备。”权许之，遂点水陆军五万，封孙桓为左都督，朱然为右都督，即日起兵。哨马探得蜀兵已至宜都下寨，孙桓引二万五千军马，屯于宜都界口，前后分作三营，以拒蜀兵。却说蜀将吴班领先锋之印，自出川以来，所到之处，望风而降，兵不血刃，直到宜都；探知孙桓在彼下寨，飞奏先主。时先主已到秭归，闻奏怒曰：“量此小儿，安敢与朕抗耶！”关兴奏曰：“既孙权令此子为将，不劳陛下遣大将，臣愿往擒之。”先主曰：“朕正欲观汝壮气。”即命关兴前往。兴拜辞欲行，张苞出曰：“既关兴前去讨贼，臣愿同行。”先主曰：“二侄同行甚妙，但须谨慎，不可造次。”</div>
+            <div class="text-block simplified-text">孙权召集大臣们商量怎么对付蜀国的军队。突然有人报告说魏国皇帝封孙权为王，按礼节应该出城迎接。大臣顾雍劝孙权说："您应该自称上将军、九州伯这样的称号，不该接受魏国皇帝的封赏。"孙权说："当年刘邦也接受过项羽的封赏，这是看情况决定的，为什么要拒绝呢？"于是带着百官出城迎接。
+
+魏国使者邢贞觉得自己是大国来的使臣，进了城门也不下车。张昭很生气，大声说："礼节上要恭敬，法律上要严肃，你竟敢摆架子，是觉得我们江南没人敢动你吗？"邢贞吓得赶紧下车，和孙权见面后一起坐车进城。突然车后面有人大哭说："我们这些人不能拼命帮主公打败魏国和蜀国，反而让主公接受别人的封赏，这不是耻辱吗！"大家一看，是将军徐盛。邢贞听到后感叹说："江东有这样的将领和官员，肯定不会一直屈居人下的！"
+
+孙权接受封赏后，官员们都来祝贺。孙权让人准备珍珠美玉等礼物，派人去魏国谢恩。这时探子来报，说蜀国皇帝刘备带着本国大军和蛮族首领沙摩柯的几万军队，还有杜路、刘宁两支队伍，从水路和陆路同时进攻，声势很大。水军已经出了巫峡，陆军已经到了秭归。
+
+孙权虽然当了王，但魏国不肯帮忙，就问大臣们："蜀国军队这么强，该怎么办？"大家都不说话。孙权叹气说："周瑜之后有鲁肃，鲁肃之后有吕蒙，现在吕蒙也死了，没人能帮我分忧了！"话没说完，一个年轻将领站出来说："我虽然年纪小，但读过不少兵书。请给我几万军队，一定能打败蜀军。"孙权一看，是孙桓。孙桓今年25岁，武艺高强，立过不少战功。孙权问："你有什么办法能赢？"孙桓说："我有两员大将李异和谢旌，都很勇猛。给我几万军队，一定能抓住刘备。"孙权说："你虽然勇敢，但年纪太小，需要有人帮忙。"将军朱然站出来说："我愿意和小将军一起去。"孙权同意了，派了五万水陆军队，封孙桓为左都督，朱然为右都督，立刻出发。
+
+探子报告蜀军已经到了宜都扎营。孙桓带了两万五千军队在宜都边界驻扎，分成三个营地阻挡蜀军。蜀国先锋吴班从四川出发以来，所到之处敌人纷纷投降，没打什么仗就到了宜都。听说孙桓在那里扎营，赶紧报告刘备。刘备这时已经到了秭归，生气地说："这小子也敢跟我作对？"关兴说："既然孙权派这小子当将军，不用陛下派大将，我去抓他。"刘备说："正好看看你的本事。"就让关兴去。张苞也说："我和关兴一起去。"刘备说："你们俩一起去很好，但要小心，不能轻敌。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">二人拜辞先主，会合先锋，一同进兵，列成阵势。孙桓听知蜀兵大至，合寨多起。两阵对圆，桓领李异、谢旌立马于门旗之下，见蜀营中，拥出二员大将，皆银盔银铠，白马白旗：上首张苞挺丈八点钢矛，下首关兴横着大砍刀。苞大骂曰：“孙桓竖子！死在临时，尚敢抗拒天兵乎！”桓亦骂曰：“汝父已作无头之鬼；今汝又来讨死，好生不智！”张苞大怒，挺枪直取孙桓。桓背后谢旌，骤马来迎。两将战有三十余合，旌败走，苞乘胜赶来。李异见谢旌败了，慌忙拍马轮蘸金斧接战。张苞与战二十余合，不分胜负。吴军中裨将谭雄，见张苞英勇，李异不能胜，却放一冷箭，正射中张苞所骑之马。那马负痛奔回本阵，未到门旗边，扑地便倒，将张苞掀在地上。李异急向前轮起大斧，望张苞脑袋便砍。忽一道红光闪处，李异头早落地，原来关兴见张苞马回，正待接应，忽见张苞马倒，李异赶来，兴大喝一声，劈李异于马下，救了张苞。乘势掩杀，孙桓大败。各自鸣金收军。</div>
+            <div class="text-block simplified-text">张苞和关兴告别刘备后，和先锋部队会合，一起进军布阵。孙桓听说蜀国大军来了，赶紧集合所有士兵迎战。两军对阵时，孙桓带着李异、谢旌站在军旗下，看见蜀军营里冲出两员大将，都穿着银盔银甲，骑着白马打着白旗：左边是张苞，举着长矛；右边是关兴，拿着大刀。张苞大骂："孙桓你个小子！死到临头还敢抵抗朝廷大军！"孙桓回骂："你爹已经是个没脑袋的鬼了，现在你又来送死，真是不知死活！"张苞气坏了，挺枪就刺孙桓。孙桓身后的谢旌骑马迎战，打了三十多个回合，谢旌打不过逃跑了，张苞追了上去。李异见谢旌败退，赶紧挥着金斧头来帮忙。张苞和李异打了二十多回合不分胜负。吴军小将谭雄看张苞太厉害，李异打不赢，就偷偷放了一支冷箭，正好射中张苞的马。马疼得往回跑，还没跑到军旗那儿就摔倒，把张苞摔下马。李异趁机冲过来举斧要砍张苞脑袋。突然一道红光闪过，李异的头掉了——原来是关兴看见张苞的马跑回来，正要接应，突然看见张苞落马，李异冲过来，关兴大喊一声，一刀把李异砍下马，救了张苞。蜀军乘胜追击，孙桓大败。最后两边都敲锣收兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">次日，孙桓又引军来。张苞、关兴齐出。关兴立马于阵前，单搦孙桓交锋。桓大怒，拍马轮刀，与关兴战三十余合，气力不加，大败回阵。二小将追杀入营，吴班引着张南、冯习驱兵掩杀。张苞奋勇当先，杀入吴军，正遇谢旌，被苞一矛刺死。吴军四散奔走。蜀将得胜收兵，只不见了关兴。张苞大惊曰：“安国有失，吾不独生！”言讫，绰枪上马。寻不数里，只见关兴左手提刀，右手活挟一将。苞问曰：“此是何人？”兴笑答曰：“吾在乱军中，正遇仇人，故生擒来。”苞视之，乃昨日放冷箭的谭雄也。苞大喜，同回本营，斩首沥血，祭了死马。遂写表差人赴先主处报捷。</div>
+            <div class="text-block simplified-text">第二天，孙桓又带着军队来挑战。张苞和关兴一起出阵迎战。关兴骑马站在阵前，专门点名要孙桓出来单挑。孙桓气得不行，骑着马挥刀就冲过来，跟关兴打了三十多个回合，结果力气不够，被打得大败逃回阵中。张苞和关兴两个小将追着吴军杀进敌营，吴班带着张南、冯习也趁机带兵冲杀。张苞冲在最前面，杀进吴军队伍时正好碰到谢旌，一矛就把他刺死了。吴军被打得四处逃窜。蜀军打了胜仗准备收兵，却发现关兴不见了。张苞急坏了，说："要是关兴出事，我也不活了！"说完就提枪上马去找人。没走几里地，就看见关兴左手提着刀，右手活捉了一个敌将。张苞问："这是谁啊？"关兴笑着说："我在乱军中正好碰到仇人，就把他活捉了。"张苞仔细一看，原来是昨天放冷箭的谭雄。张苞高兴坏了，两人一起回营，把谭雄砍头放血，祭奠了昨天被射死的战马。接着写了捷报派人送给刘备。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">孙桓折了李异、谢旌、谭雄等许多将士，力穷势孤，不能抵敌，即差人回吴求救。蜀将张南、冯习谓吴班曰：“目今吴兵势败，正好乘虚劫寨。”班曰：“孙桓虽然折了许多将士，朱然水军现今结营江上，未曾损折。今日若去劫寨，倘水军上岸，断我归路，如之奈何？”南曰：“此事至易：可教关、张二将军，各引五千军伏于山谷中；如朱然来救，左右两军齐出夹攻，必然取胜。”班曰：“不如先使小卒诈作降兵，却将劫寨事告与朱然；然见火起，必来救应，却令伏兵击之，则大事济矣。”冯习等大喜，遂依计而行。</div>
+            <div class="text-block simplified-text">孙桓损失了李异、谢旌、谭雄等好多手下，现在兵力不足，打不过了，赶紧派人回东吴求救。蜀国的张南、冯习对吴班说："现在吴军情况不妙，正好趁他们虚弱去偷袭军营。"吴班说："孙桓虽然损失了不少人，但朱然的水军还在江上扎营，没受损失。要是我们去偷袭，万一朱然的水军上岸断了我们退路，那可怎么办？"张南说："这简单：让关兴、张苞两位将军各带五千人埋伏在山谷里；要是朱然来救，两边伏兵一起杀出来围攻，肯定能赢。"吴班说："不如先派个小兵假装投降，把偷袭计划透露给朱然；等他看见军营着火来救援时，再让伏兵打他个措手不及，这事就成了。"冯习他们觉得这主意好，就按这个计划行动了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说朱然听知孙桓损兵折将，正欲来救，忽伏路军引几个小卒上船投降。然问之，小卒曰：“我等是冯习帐下士卒，因赏罚不明，待来投降，就报机密。”然曰：“所报何事？”小卒曰：“今晚冯习乘虚要劫孙将军营寨，约定举火为号。”朱然听毕，即使人报知孙桓。报事人行至半途，被关兴杀了。朱然一面商议，欲引兵去救应孙桓。部将崔禹曰：“小卒之言，未可深信。倘有疏虞，水陆二军尽皆休矣。将军只宜稳守水寨，某愿替将军一行。”然从之，遂令崔禹引一万军前去。是夜，冯习、张南、吴班分兵三路，直杀入孙桓寨中，四面火起，吴兵大乱，寻路奔走。</div>
+            <div class="text-block simplified-text">朱然听说孙桓打了败仗，正想去救他，突然有巡逻兵带着几个小兵上船来投降。朱然问他们怎么回事，小兵说："我们是冯习手下的兵，因为冯习赏罚不公平，所以来投降，顺便报告个秘密。"朱然问："什么秘密？"小兵说："今晚冯习要趁虚偷袭孙桓的军营，说好用点火当信号。"  
+
+朱然听完，马上派人去通知孙桓。没想到送信的人半路上被关兴杀了。朱然正和大家商量要带兵去救孙桓，手下将领崔禹说："这几个小兵的话不能全信。万一有诈，咱们水军陆军都得完蛋。将军您最好守好水寨，让我替您去一趟吧。"朱然同意了，就让崔禹带一万兵去了。  
+
+当天晚上，冯习、张南、吴班果然兵分三路杀进孙桓的军营，到处都点起了火，吴军乱成一团，四处逃命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">且说崔禹正行之间，忽见火起，急催兵前进。刚才转过山来，忽山谷中鼓声大震：左边关兴，右边张苞，两路夹攻。崔禹大惊，方欲奔走，正遇张苞；交马只一合，被苞生擒而回。朱然听知危急，将船往下水退五六十里去了。孙桓引败军逃走，问部将曰：“前去何处城坚粮广？”部将曰：“此去正北彝陵城，可以屯兵。”桓引败军急望彝陵而走。方进得城，吴班等追至，将城四面围定。关兴、张苞等解崔禹到秭归来。先主大喜，传旨将崔禹斩却，大赏三军。自此威风震动，江南诸将无不胆寒。</div>
+            <div class="text-block simplified-text">话说崔禹正带兵赶路，突然看见前面起火了，赶紧催促部队加快速度。刚拐过山脚，突然从山谷里传来震天的战鼓声——左边关兴、右边张苞带着人马从两侧包抄过来。崔禹吓坏了，刚想逃跑，正好撞上张苞；两人交手不到一个回合，就被张苞活捉了回去。朱然听说前线吃紧，赶紧带着战船往长江下游撤退了五六十里。孙桓带着残兵败将逃跑时问手下："前面哪座城易守难攻还有充足粮草？"部下回答："往正北方向的彝陵城最适合驻扎。"孙桓立刻带着败军往彝陵逃。他们刚进城，吴班等人就追到了，把城池团团围住。关兴、张苞他们把俘虏崔禹押到秭归。刘备非常高兴，下令处死崔禹，重赏全军。这一仗打出了威风，吓得江南的吴国将领个个心惊胆战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">却说孙桓令人求救于吴王，吴王大惊，即召文武商议曰：“今孙桓受困于彝陵，朱然大败于江中，蜀兵势大，如之奈何？”张昭奏曰：“今诸将虽多物故，然尚有十余人，何虑于刘备？可命韩当为正将，周泰为副将，潘璋为先锋，凌统为合后，甘宁为救应，起兵十万拒之。”权依所奏，即命诸将速行。此时甘宁已患痢疾，带病从征。</div>
+            <div class="text-block simplified-text">孙权接到孙桓的求救信，吓了一跳，赶紧召集大臣们商量："现在孙桓在彝陵被围，朱然在江上吃了败仗，蜀军势头这么猛，这可怎么办？"张昭建议说："虽然咱们有些将领不在了，但还有十多个能用的，不用怕刘备。可以让韩当当主将，周泰当副将，潘璋打头阵，凌统负责后援，甘宁随时支援，派十万大军去抵挡。"孙权同意了，马上命令将领们出发。当时甘宁正拉肚子，但还是带病跟着去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">却说先主从巫峡建平起，直接彝陵界分，七十余里，连结四十余寨；见关兴、张苞屡立大功，叹曰：“昔日从朕诸将，皆老迈无用矣；复有二侄如此英雄，朕何虑孙权乎！”正言间，忽报韩当、周泰领兵来到。先主方欲遣将迎敌，近臣奏曰：“老将黄忠，引五六人投东吴去了。”先主笑曰：“黄汉升非反叛之人也；因朕失口误言老者无用，彼必不服老，故奋力去相持矣。”即召关兴、张苞曰：“黄汉升此去必然有失。贤侄休辞劳苦，可去相助。略有微功，便可令回，勿使有失。”二小将拜辞先主，引本部军来助黄忠。正是：老臣素矢忠君志，年少能成报国功。未知黄忠此去如何，且看下文分解。</div>
+            <div class="text-block simplified-text">刘备从巫峡建平开始，一直扎营到彝陵地界，连起来有七十多里，建了四十多个营寨。他看到关兴、张苞这两个年轻将领接连立功，感慨说："以前跟着我的老将们都年纪大了，现在有这两个厉害的侄子帮忙，我还怕什么孙权！"正说着，突然传来消息说韩当、周泰带兵打过来了。刘备刚要派人迎战，身边大臣报告："老将黄忠带着五六个人投奔东吴去了。"刘备笑着说："黄忠不是会背叛的人。肯定是因为我刚才不小心说了老将没用的话，他不服老，所以跑去打仗证明自己。"马上叫来关兴、张苞说："黄忠这样去肯定要吃亏。你们辛苦跑一趟去帮他。只要有点功劳就赶紧带他回来，别让他出事。"两个小将军领命，带兵去帮黄忠。这正是：老将忠心不改，少年也能立功。至于黄忠这一去结果如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
