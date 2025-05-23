@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九十回 师狮授受同归一　盗道缠禅静九灵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./090.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第九十回 师狮授受同归一　盗道缠禅静九灵</h1>
+        <a href="./092.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说孙大圣同八戒、沙僧出城头，觌面相迎，见那伙妖精都是些杂毛狮子：黄狮精在前引领，狻猊狮、抟象狮在左，白泽狮、伏狸狮在右，猱狮、雪狮在后，中间却是一个九头狮子。那青脸儿怪执一面锦绣团花宝幢，紧挨着九头狮子；刁钻古怪儿、古怪刁钻儿打两面红旗，齐齐的都布在坎宫之地。</div>
+            <div class="text-block simplified-text">话说孙悟空和猪八戒、沙和尚一起出城，迎面撞见一群妖怪。这些妖怪都是些毛色乱七八糟的狮子：领头的黄狮精走在最前面，左边是狻猊狮和抟象狮，右边是白泽狮和伏狸狮，后面跟着猱狮和雪狮，正中间站着一个长着九个头的狮子。有个青脸妖怪举着绣满花的华丽大旗，紧挨着九头狮子；还有两个叫刁钻古怪和古怪刁钻的小妖，各举着一面红旗，整整齐齐地站在北边的位置。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">八戒莽撞，走近前骂道：“偷宝贝的贼怪!你去那里，伙这几个毛团来此怎的？”黄狮精切齿骂道：“泼狠秃厮!昨日三个敌我一个，我败回去，让你为人罢了；你怎么这般狠恶，烧了我的洞府，损了我的山场，伤了我的眷族!我和你冤仇深如大海!不要走!吃你老爷一铲！”好八戒，举钯就迎。两个才交手，还未见高低，那猱狮精轮一根铁蒺藜，雪狮精使一条三楞简，径来奔打。八戒发一声喊道：“来得好！”你看他横冲直抵，斗在一处。这壁厢，沙和尚急掣降妖杖，近前相助。又见那狻猊精、白泽精与抟象、伏狸二精，一拥齐上。这里孙大圣使金箍棒架住群精。狻猊使闷棍，白泽使铜锤，抟象使钢枪，伏狸使钺斧。那七个狮子精，这三个狠和尚，好杀：</div>
+            <div class="text-block simplified-text">猪八戒冲上去就骂：“偷宝贝的贼妖怪！你带这群小喽啰来干什么？”黄狮精气得咬牙切齿：“该死的秃驴！昨天你们三个打我一个，我输了认栽。可你们居然烧了我的老窝，毁了我的地盘，还杀我全家！这仇比海还深！别想跑，吃我一铲！”八戒二话不说抡起钉耙就打。两人刚打起来，还没分出胜负，猱狮精拿着铁蒺藜、雪狮精提着三楞简就冲过来帮忙。八戒大喊：“来得正好！”一个人硬扛三个打得不可开交。沙和尚赶紧抄起降妖杖上去帮忙。这时狻猊精、白泽精、抟象精和伏狸精也一窝蜂冲上来。孙悟空立刻用金箍棒拦住这群妖怪——狻猊精使闷棍，白泽精挥铜锤，抟象精挺钢枪，伏狸精抡钺斧。七个狮子精和三个狠和尚打得昏天黑地。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">棍锤枪斧三楞简，蒺藜骨朵四明铲。七狮七器甚锋芒，围战三僧齐呐喊。大圣金箍铁棒凶，沙僧宝杖人间罕。八戒颠风骋势雄，钉钯幌亮光华惨。前遮后挡各施功，左架右迎都勇敢。城头王子助威风，擂鼓筛锣齐壮胆。投来抢去弄神通，杀得昏蒙天地反!</div>
+            <div class="text-block simplified-text">这边有一大堆武器：棍子、锤子、枪、斧头、三棱棍，还有带刺的骨朵锤、四明铲。七个狮子精拿着七件厉害武器，围着三个和尚边打边吼。孙悟空的金箍棒特别凶，沙僧的宝杖世上少见，猪八戒抡起钉耙呼呼生风，耙子亮得晃眼。三个和尚前后左右挡得严实，打得特别勇猛。城头上的王子帮忙助威，敲锣打鼓给他们壮胆。两边打得天昏地暗，武器飞来飞去，简直要把天地都掀翻了！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">那一伙妖精，齐与大圣三人，战经半日，不觉天晚。八戒口吐粘涎，看看脚软，虚幌一钯，败下阵去，被那雪狮、猱狮二精喝道：“那里走，看打！”呆子躲闪不及，被他照脊梁上打了一简，睡在地下，只叫：“罢了，罢了！”两个精把八戒采鬃拖尾，扛将去见那九头狮子，报道：“祖爷，我等拿了一个来也。”</div>
+            <div class="text-block simplified-text">那帮妖怪和孙悟空他们三个打了半天，天都快黑了。猪八戒累得直淌口水，腿也软了，假装挥了下钉耙就逃跑。雪狮精和猱狮精冲他喊："往哪儿跑！找打！"这呆子没躲开，背上挨了一棍子，趴在地上直喊："完了完了！"两个妖怪揪着八戒的鬃毛和尾巴，把他抬去见九头狮子，报告说："老祖宗，我们抓了一个回来。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">说不了，沙僧、行者也都战败。众妖精一齐赶来，被行者拔一把毫毛，嚼碎喷将去，叫声：“变！”即变做百十个小行者，围围绕绕，将那白泽、狻猊、抟象、伏狸并金毛狮怪围裹在中。沙僧、行者却又上前攒打。到晚，拿住狻猊、白泽。走了伏狸、抟象。金毛报知老妖，老怪见失了二狮，吩咐：“把猪八戒捆了，不可伤他性命。待他还我二狮，却将八戒与他。他若无知，坏了我二狮，即将八戒杀了对命！”当晚群妖安歇城外不题。</div>
+            <div class="text-block simplified-text">简单来说，沙僧和孙悟空都打不过那些妖怪。妖怪们一起冲上来，孙悟空拔下一把毫毛，嚼碎后喷出去，大喊一声："变！"立刻变出上百个小孙悟空，把白泽、狻猊、抟象、伏狸和金毛狮怪团团围住。沙僧和孙悟空又冲上去打。打到晚上，抓住了狻猊和白泽，但伏狸和抟象跑掉了。金毛狮怪跑去告诉老妖怪，老妖怪听说丢了两个狮子精，就下令："把猪八戒绑起来，别伤他性命。等他们还我两个狮子精，就把猪八戒还给他们。要是他们敢乱来，害了我的狮子精，就杀了猪八戒偿命！"那天晚上，妖怪们在城外休息，故事就先说到这里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">却说孙大圣把两个狮子精抬近城边，老王见了，即传令开门，差二三十个校尉，拿绳扛出门，绑了狮精，扛入城里。孙大圣收了法毛，同沙僧径至城楼上，见了唐僧。唐僧道：“这场事甚是利害呀!悟能性命，不知有无？”行者道：“没事!我们把这两个妖精拿了，他那里断不敢伤。且将二精牢拴紧缚，待明早抵换八戒也。”</div>
+            <div class="text-block simplified-text">孙悟空把两个狮子精抓到城边，国王看见后，马上命令打开城门，派了二三十个士兵拿着绳子出来，把狮子精捆住，抬进城里。孙悟空收起毫毛，和沙僧一起上了城楼，见到唐僧。唐僧问："这次的事太危险了！八戒的命还在吗？"孙悟空说："别担心！我们抓了这两个妖怪，他们那边肯定不敢伤害八戒。先把这两个妖怪绑结实了，等明天一早去换回八戒。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">三个小王子对行者叩头道：“师父先前赌斗，只见一身；及后佯输而回，却怎么就有百十位师身?及至拿住妖精，近城来还是一身，此是甚么法力？”行者笑道：“我身上有八万四千毫毛，以一化十，以十化百，百千万亿之变化，皆身外身之法也。”那王子一个个顶礼，即时摆上斋来，就在城楼上吃了。各垛口上都要灯笼旗帜，梆铃锣鼓，支更传箭，放炮呐喊。</div>
+            <div class="text-block simplified-text">三个小王子给孙悟空磕头问："师父，刚才你打架的时候，我们只看见你一个人；后来假装打输了回来，怎么突然变成上百个你？等抓住妖怪进城时，又变回一个人了，这是什么法术啊？"孙悟空笑着说："我身上有八万四千根毫毛，一根能变十个我，十个能变一百个，要变多少有多少，这都是分身术。"几个王子听了又拜他。这时有人摆上饭菜，他们就在城楼上吃饭。城墙上到处都挂灯笼、插旗子，有人打更敲锣，放炮喊叫，热闹得很。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">早又天明。老怪即唤黄狮精定计道：“汝等今日用心拿那行者、沙僧，等我暗自飞空上城，拿他那师父并那老王父子，先转九曲盘桓洞，待你得胜回报。”</div>
+            <div class="text-block simplified-text">天亮了。老妖怪叫来黄狮精商量说："你们今天加把劲，一定要抓住孙悟空和沙僧。我偷偷飞到城上去抓他们的师父和那国王父子俩，先把他们带回九曲盘桓洞。等你们打赢了回来告诉我。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">黄狮领计，便引猱狮、雪狮、抟象、伏狸各执兵器到城边，滚风酿雾的索战。这里行者与沙僧跳出城头，厉声骂道：“贼泼怪!快将我师弟八戒送还我，饶你性命!不然，都教你粉骨碎尸！”那妖精那容分说，一拥齐来。这大圣弟兄两个，各运机谋，挡住五个狮子。这杀比昨日又甚不同：</div>
+            <div class="text-block simplified-text">黄狮想了个办法，带着猱狮、雪狮、抟象、伏狸这几个妖怪，拿着武器来到城边。他们刮起大风、弄出大雾，大声叫阵要打架。这时候，孙悟空和沙和尚从城墙上跳出来，大声骂道："你们这些该死的妖怪！赶紧把我师弟猪八戒还回来，就饶你们不死！要不然，把你们全都打得粉身碎骨！"那些妖怪根本不听，一起冲了上来。孙悟空和沙和尚两个人，各自使出本事，挡住了五个狮子精。这场打斗比昨天还要激烈：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">呼呼刮地狂风恶，暗暗遮天黑雾浓。走石飞沙神鬼怕，推林倒树虎狼惊。钢枪狠狠钺斧明，棍铲铜锤太毒情。恨不得囫囵吞行者，活活泼泼擒住小沙僧。这大圣一条如意棒，卷舒收放甚精灵。沙僧那柄降妖杖，灵霄殿外有名声。今番干运神通广，西域施功扫荡精。</div>
+            <div class="text-block simplified-text">狂风呼呼地刮着，特别猛，黑雾遮天蔽日，特别暗。飞沙走石，连鬼神都害怕；树木被吹倒，虎狼也吓坏了。妖怪们拿着明晃晃的钢枪、斧头、棍子、铲子和铜锤，特别凶狠。他们恨不得一口吞了孙悟空，活捉沙和尚。孙悟空的金箍棒能伸能缩，灵活得很；沙和尚的降妖杖在灵霄殿外也很有名。这次他们大显神通，要在西域扫除这些妖怪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">这五个杂毛狮子精与行者、沙僧正自杀到好处，那老怪驾着黑云，径直腾至城楼上，摇一摇头，唬得那城上文武大小官员并守城人夫等，都滚下城去；被他奔入楼中，张开口，把三藏与老王父子一顿噙出，复至坎宫地下，将八戒也着口噙之。原来他九个头就有九张口。一口噙着唐僧，一口噙着八戒，一口噙着老王，一口噙着大王子，一口噙着二王子，一口噙着三王子：六口噙着六人，还空了三张口，发声喊叫道：“我先去也！”这五个小狮精见他祖得胜，一个个愈展雄才。</div>
+            <div class="text-block simplified-text">五个狮子精正和孙悟空、沙僧打得激烈的时候，那个老妖怪驾着黑云直接飞到城楼上。它一摇头，就把城上的文武官员和守城的士兵全都吓得从城墙上滚了下去。老妖怪冲进城楼，张开大嘴，一口气把唐僧、国王和他的三个儿子都叼走了。接着它又跑到地下，把猪八戒也叼了起来。原来这妖怪有九个头，就有九张嘴。它用六张嘴分别叼着唐僧、八戒、国王和三个王子，还剩下三张嘴空着。老妖怪大喊一声："我先走啦！"那五个小狮子精看到老祖宗打赢了，一个个打得更起劲了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">行者闻得城上人喊嚷，情知中了他计，急唤沙僧仔细；他却把臂膊上毫毛，尽皆拔下，入口嚼烂喷出，变作千百个小行者，一拥攻上。当时拖倒猱狮，活捉了雪狮，拿住了抟象狮，扛翻了伏狸狮，将黄狮打死，烘烘的嚷到州城之下，倒转走脱了青脸儿与刁钻古怪、古怪刁钻儿二怪。</div>
+            <div class="text-block simplified-text">孙悟空听到城墙上有人大喊大叫，知道自己中计了，赶紧叫沙僧小心点。他拔下胳膊上的毛，放进嘴里嚼碎后吐出来，变出上千个小孙悟空，一起冲上去打。他们很快打倒了猱狮，活捉了雪狮，抓住了抟象狮，掀翻了伏狸狮，还打死了黄狮。这帮人闹哄哄地冲到城下，结果让青脸怪和刁钻古怪、古怪刁钻两个妖怪跑掉了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">那城上官看见，却又开门，将绳把五个狮精又捆了，抬进城去。还未发落，只见那王妃哭哭啼啼，对行者礼拜道：“神师啊，我殿下父子并你师父，性命休矣!这孤城怎生是好？”大圣收了法毛，对王妃作礼道：“贤后莫愁。只因我拿他七个狮精，那老妖弄摄法，定将我师父与殿下父子摄去，料必无伤。待明日绝早，我兄弟二人去那山中，管情捉住老妖，还你四个王子。”那王妃一簇女眷闻得此言，都对行者下拜道：“愿求殿下父子全生，皇图坚固！”拜毕，一个个含泪还宫。行者吩咐各官：“将打死那黄狮精，剥了皮；六个活狮精，牢牢拴锁。取些斋饭来，我们吃了睡觉。你们都放心，保你无事。”</div>
+            <div class="text-block simplified-text">城楼上的官员看到后，又打开城门，用绳子把那五个狮子精捆起来，抬进城里。还没等处置，王妃就哭着向孙悟空行礼说："神仙师父啊！我丈夫、儿子和你师父恐怕都没命了！这座孤城可怎么办啊？"孙悟空收起法术变的毛，回礼说："王后别着急。因为我抓了他们七个狮子精，那老妖怪使了邪术，肯定把我师父和国王父子抓走了，但应该不会伤害他们。明天一大早，我和师弟就去山里，保证抓住老妖怪，把你四个儿子都救回来。"王妃和宫女们听了这话，都向孙悟空跪拜说："求您救救国王父子，保佑国家太平！"拜完后，她们都流着眼泪回宫了。孙悟空对官员们说："把打死的那只黄狮子精的皮剥了，另外六个活着的狮子精要牢牢锁住。给我们拿些斋饭来，吃完好睡觉。你们都别担心，保证没事。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">至次日，大圣领沙僧驾起祥云，不多时，到于竹节山头。按云头观看，好座高山!但见：</div>
+            <div class="text-block simplified-text">第二天一大早，孙悟空带着沙和尚驾着云，没多久就到了竹节山。他们停下云仔细一看，这山真高啊！只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">峰排突兀，岭峻崎岖。深涧下潺水漱，陡崖前锦绣花香。回峦重迭，古道湾环。真是鹤来松有伴，果然云去石无依。玄猿觅果向晴辉，麋鹿寻花欢日暖。青鸾声淅呖，黄鸟语绵蛮。春来桃李争妍，夏至柳槐竞茂。秋到黄花布锦，冬交白雪飞绵。四时八节好风光，不亚瀛洲仙景象。他两个正在山头上看景，忽见那青脸儿，手拿一条短棍，径跑出崖谷之间。行者喝道：“那里走!老孙来也！”唬得那小妖一翻一滚的跑下崖谷。他两个一直追来，又不见踪迹。向前又转几步，却是一座洞府。两扇花斑石门，紧紧关闭。门上横嵌着一块石版，楷镌了十个大字，乃是“万灵竹节山，九曲盘桓洞。”</div>
+            <div class="text-block simplified-text">山势陡峭，山峰高耸，山路弯弯曲曲。山涧里流水哗哗响，悬崖边开满漂亮的花。山连着山，老路绕来绕去。松树上有鹤做伴，石头旁飘着白云。猴子在阳光下找果子，鹿儿开心地晒太阳。鸟儿叽叽喳喳叫个不停。春天桃李开花，夏天柳树槐树茂盛，秋天菊花遍地，冬天下起大雪。一年四季风景都很好，简直像神仙住的地方。
+
+孙悟空和同伴正在山顶看风景，突然看见一个青脸妖怪拿着短棍从山谷里跑出来。孙悟空大喊："往哪儿跑！老孙来了！"吓得那小妖怪连滚带爬逃下山谷。两人追过去却找不到妖怪了。往前走了几步，发现一个山洞。洞口有两扇带花纹的石门，关得紧紧的。门上面刻着十个大字："万灵竹节山，九曲盘桓洞。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">那小妖原来跑进洞去，即把洞门闭了。到中间对老妖道：“爷爷，外面又有两个和尚来了。”老妖道：“你大王并猱狮、雪狮、抟象、伏狸，可曾来？”小妖道：“不见，不见!只是两个和尚，在山峰高处眺望。我看见回头就跑，他赶将来，我却闭门来也。”老妖听说，低头不语。半晌，忽的吊下泪来，叫声“苦啊!我黄狮孙死了!猱狮孙等又尽被和尚捉进城去矣!此恨怎生报得！”八戒捆在旁边，与王父子、唐僧，俱攒在一处，惶惶受苦；听见老妖说声“众孙被和尚捉进城去”，暗暗喜道：“师父莫怕，殿下休愁。我师兄已得胜，捉了众妖，寻到此间救拔吾等也。”说罢，又听得老妖叫：“小的们，好生在此看守，等我出去拿那两个和尚进来，一发惩治。”</div>
+            <div class="text-block simplified-text">那小妖怪跑回洞里，赶紧关上了洞门。跑到老妖怪跟前说：“老大，外面又来了两个和尚。”老妖怪问：“你家大王和猱狮、雪狮、抟象、伏狸他们回来了吗？”小妖怪回答：“没看见！就两个和尚站在山顶上张望。我一看见就赶紧跑回来了，他们还追我，我赶紧关门躲进来了。”老妖怪听完，低着头不说话。过了一会儿，突然掉下眼泪，哭着说：“完了！我的黄狮孙儿死了！猱狮孙儿他们肯定也被和尚抓进城了！这仇怎么报啊！”  
+
+八戒被绑在旁边，和王子父子、唐僧关在一起，正害怕受苦呢。听见老妖怪说“孙儿们都被和尚抓进城了”，心里偷偷高兴：“师父别怕，殿下别急。我师兄肯定打赢了，抓了那些妖怪，马上就能找到这儿来救我们了。”正想着，又听见老妖怪喊：“小的们，好好看着他们！等我出去把那两个和尚抓回来，一起收拾！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">你看他身无披挂，手不拈兵，大踏步，走到前边，只闻得孙行者吆喝哩。他就大开了洞门，不答话，径奔行者。行者使铁棒，当头支住。沙僧轮宝杖就打。那老妖把头摇一摇，左右八个头，一齐张开口，把行者、沙僧轻轻的又衔于洞内。教：“取绳索来！”那刁钻古怪、古怪刁钻与青脸儿是昨夜逃生而回者，即拿两条绳，把他二人着实捆了。</div>
+            <div class="text-block simplified-text">你看他啥装备都没带，空着手就大步往前走，只听见孙悟空在那儿嚷嚷。他直接大开洞门，二话不说就冲孙悟空扑过去。孙悟空用金箍棒挡住他，沙和尚抡起宝杖就打。那老妖怪把头一摇，突然左右又冒出八个脑袋，一张嘴就把孙悟空和沙和尚轻轻松松叼回洞里了。老妖怪喊："拿绳子来！"昨天逃回来的刁钻古怪、古怪刁钻和青脸儿这几个小妖，赶紧拿了两条绳子，把他俩结结实实捆了起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">老妖问道：“你这泼猴，把我那七个儿孙捉了，我今拿住你和尚四个，王子四个，也足以抵得我儿孙之命!小的们，选荆条柳棍来，且打这猴头一顿，与我黄狮孙报报冤仇！”那三个小妖，各执柳棍，专打行者。行者本是熬炼过的身体，那些些柳棍儿，只好与他拂痒，他那里做声；凭他怎么捶打，略不介意。八戒、唐僧与王子见了，一个个毛骨悚然。少时，打折了柳棍。直打到天晚，也不计其数。沙僧见打得多了，甚不过意道：“我替他打百十下罢。”老妖道：“你且莫忙，明日就打到你了。一个个挨次儿打将来。”八戒着忙道：“后日就打到我老猪也！”打一会，渐渐的天昏了。老妖叫：“小的们，且住，点起灯火来，你们吃些饮食，让我到锦云窝略睡睡去。汝三人都是遭过害的，却用心看守，待明早再打。”三个小妖移过灯来，拿柳棍又打行者脑盖，就像敲梆子一般，剔剔托，托托剔，紧几下，慢几下。夜将深了，却都盹睡。</div>
+            <div class="text-block simplified-text">老妖怪问孙悟空："你这猴子，抓了我的七个儿孙。现在我抓住了你们四个和尚和四个王子，足够抵我儿孙的命了！小的们，拿荆条和柳条棍来，先打这猴头一顿，给我的黄狮孙报仇！"三个小妖怪拿着柳条棍专门打孙悟空。孙悟空身体经过锻炼，这些柳条棍打在他身上就像挠痒痒，他一声不吭，随便他们怎么打都不在乎。猪八戒、唐僧和王子们看了都吓得发抖。没多久，柳条棍都打断了。一直打到晚上，打了不知道多少下。沙和尚看打得太多了，过意不去，说："我替他挨一百下吧。"老妖怪说："别急，明天就轮到你了。一个个按顺序打。"猪八戒慌了："后天就该打我了！"又打了一会儿，天黑了。老妖怪说："小的们，先停下，点起灯来。你们吃点东西，我去锦云窝睡会儿。你们三个都是受害者，要好好看着，明天早上继续打。"三个小妖怪拿来灯，又用柳条棍打孙悟空的脑袋，像敲梆子似的，一会儿快一会儿慢。夜深了，他们都打起瞌睡来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">行者就使个遁法，将身一小，脱出绳来，抖一抖毫毛，整束了衣服，耳朵内取出棒来，幌一幌，有吊桶粗细，二丈长短，朝着三个小妖道：“你这孽畜，把你老爷就打了许多棍子!老爷还只照旧，老爷也把这棍子略你，看道如何！”把三个小妖轻轻一，就做三个肉饼；却又剔亮了灯，解放沙僧。八戒捆急了，忍不住大声叫道：“哥哥!我的手脚都捆肿了，倒不来先解放我！”这呆子喊了一声，却早惊动老妖。老妖一毂辘爬起来道：“是谁人解放？”那行者听见，一口吹息灯，也顾不得沙僧等众，使铁棒，打破几重门走了。那老妖到中堂里叫：“小的们，怎么没了灯光?只莫走了人也？”叫一声，没人答应；又叫一声，又没人答应；及取灯火来看时，只见地下血淋淋的三块肉饼，老王父子及唐僧、八戒俱在，只不见了行者、沙僧。点着火，前后赶看，忽见沙僧还背贴在廊下站哩；被他一把拿住倒，照旧捆了。又找寻行者，但见几层门尽皆破损，情知是行者打破走了；也不去追赶，将破门补的补，遮的遮，固守家业不题。</div>
+            <div class="text-block simplified-text">孙悟空用了个法术，把自己变小，从绳子里钻出来。他抖了抖毛，整理好衣服，从耳朵里掏出金箍棒，晃一晃变得像水桶那么粗、两丈那么长。他对三个小妖怪说："你们这些畜生，刚才打了我那么多棍！现在我还好好的，也该让你们尝尝我这棍子的厉害！"说完轻轻一棒，就把三个小妖怪打成了肉饼。
+
+接着他点亮灯，先解救了沙僧。猪八戒被捆得难受，急得大叫："师兄！我手脚都捆肿了，怎么不先来救我！"这一喊把老妖怪惊醒了。老妖怪爬起来问："谁在放人？"孙悟空听见，赶紧吹灭灯，顾不上救其他人，抡起铁棒打破几道门逃走了。
+
+老妖怪到大厅里喊："小的们，怎么灯灭了？是不是有人跑了？"喊了几声没人答应，点灯一看，只见地上有三滩血肉，自己儿子和唐僧、猪八戒都在，就是不见了孙悟空和沙僧。他举着火把到处找，发现沙僧还靠在走廊柱子上站着，就抓住他又捆了起来。再找孙悟空，看见好几道门都被打坏了，知道是孙悟空干的，但也没去追，只是把坏掉的门修修补补，继续守着洞府。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">却说孙大圣出了那九曲盘桓洞，跨祥云，径转玉华州。但见那城头上各厢的土地、神与城隍之神迎空拜接。行者道：“汝等怎么今夜才见？”城隍道：“小神等知大圣下降玉华州，因有贤王款留，故不敢见，今知王等遇怪，大圣降魔，特来叩接。”行者正在嗔怪处，又见金头揭谛、六甲六丁神将，押着一尊土地，跪在面前道：“大圣，吾等捉得这个地里鬼来也。”行者喝道：“汝等不在竹节山护我师父，却怎么嚷到这里？”丁甲神道：“大圣，那妖精自你逃时，复捉住卷帘大将，依然捆了。我等见他法力甚大，却将竹节山土地押解至此。他知那妖精的根由，乞大圣问他一问，便好处治，以救圣僧、贤王之苦。”行者听言，甚喜。那土地战兢兢叩头道：“那老妖前年下降竹节山。那九曲盘桓洞原是六狮之窝。那六个狮子，自得老妖至此，就都拜为祖翁。祖翁乃是个九头狮子，号为九灵元圣。若得他灭，须去到东极妙岩宫，请他主人公来，方可收伏。他人莫想擒也。”行者闻言，思忆半晌道：“东极妙岩宫，是太乙救苦天尊啊。他坐下正是个九头狮子。这等说，......”便教：“揭谛、金甲，还同土地回去，暗中护师父、师弟并州王父子。本处城隍守护城池，走出去来。”众神各各遵守去讫。</div>
+            <div class="text-block simplified-text">孙悟空从九曲盘桓洞出来，驾着云直接去了玉华州。刚到那儿，就看到城头上的土地神和城隍神都飞过来迎接。孙悟空问："你们怎么现在才来？"城隍神回答："我们知道大圣您来了玉华州，因为这里有贤王招待您，我们不敢打扰。现在听说贤王遇到妖怪，您来降妖，我们特地来迎接。"
+
+正说着，金头揭谛和六甲六丁神将押着一个土地神过来跪下说："大圣，我们把这个土地神抓来了。"孙悟空生气地问："你们不在竹节山保护我师父，跑这儿来干什么？"神将们解释："大圣，那妖怪趁您不在，又把沙和尚抓走了。我们打不过那妖怪，就把竹节山的土地神带来。他知道妖怪的来历，您问问他，好想办法救唐僧和贤王一家。"
+
+孙悟空听了很高兴。那土地神吓得直磕头，说："那老妖怪前年来的竹节山。九曲盘桓洞本来是六只狮子的窝。自从老妖怪来了，六只狮子都认他当祖宗。这老妖怪是个九头狮子，叫九灵元圣。要想除掉他，得去东极妙岩宫请他的主人太乙救苦天尊来才行，别人都治不了他。"
+
+孙悟空想了想说："原来是太乙救苦天尊的坐骑啊。"于是吩咐："揭谛、金甲，你们和土地神先回去暗中保护我师父、师弟和贤王一家。城隍神继续守城。"众神仙都领命去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">这大圣纵筋斗云，连夜前行。约有寅时分，到了东天门外，正撞着广目天王与天丁、力士一行仪从。众皆停住，拱手迎道：“大圣何往？”行者对众礼毕，道：“前去妙岩宫走走。”天王道：“西天路不走，却又东天来做甚？”行者道：“因到玉华州，蒙州王相款，遣三子拜我等弟兄为师，习学武艺，不期遇着一伙狮怪。今访得妙岩宫太乙救苦天尊乃怪之主人公也，欲请他为我降怪救师。”天王道：“那厢因你欲为人师，所以惹出这一窝狮子来也。”行者笑道：“正为此，正为此！”众天丁、力士一个个拱手，让道而行。大圣进了东天门，不多时，到妙岩宫前。但见：</div>
+            <div class="text-block simplified-text">孙悟空驾着筋斗云，连夜赶路。天快亮的时候，他到了东天门外，正好碰见广目天王带着一群天兵天将。大家停下来，拱手问他："大圣要去哪儿啊？"孙悟空回了个礼说："去妙岩宫转转。"天王问："你不去西天取经，跑东天来干啥？"孙悟空解释道："我在玉华州的时候，州王热情招待，还让他三个儿子拜我们师兄弟为师学武艺。没想到碰上一群狮子精，打听到妙岩宫的太乙救苦天尊就是这些妖怪的主人，想请他帮忙降妖救师父。"天王打趣说："就因为你非要当人家师父，才招来这一窝狮子精吧？"孙悟空笑着承认："对对对，就是这么回事！"天兵天将们让开路，孙悟空进了东天门，没多久就到了妙岩宫。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">彩云重迭，紫气茏葱。瓦漾金波焰，门排玉兽崇。花盈双阙红霞绕，日映骞林翠雾笼。果然是万真环拱，千圣兴隆。殿阁层层锦，窗轩处处通。苍龙盘护神光蔼，黄道光辉瑞气浓。这的是青华长乐界，东极妙岩宫。那宫门里立着一个穿霓帔的仙童，忽见孙大圣，即入宫报道：“爷爷，外面是闹天宫的齐天大圣来了。”太乙救苦天尊听得，即唤侍卫众仙迎接。迎至宫中。只见天尊高坐九色莲花座上，百亿瑞光之中。见了行者，下座来相见。</div>
+            <div class="text-block simplified-text">天上云彩层层叠叠，紫气缭绕。宫殿的瓦片金光闪闪，大门两旁立着玉石雕成的神兽。鲜花开满宫门两侧，红霞环绕；阳光照进树林，绿雾蒙蒙。这里真是神仙聚集、香火旺盛的地方。宫殿一层层金碧辉煌，门窗四通八达。有青龙盘绕守护，神光普照；祥云瑞气笼罩，气象万千。原来这就是东极妙岩宫——神仙住的地方。
+
+宫门口站着一个穿彩衣的仙童，突然看见孙悟空来了，赶紧跑进去报告："师父，当年大闹天宫的齐天大圣到门口了！"太乙救苦天尊一听，马上叫手下神仙们出去迎接。把孙悟空请进宫里，只见天尊坐在九色莲花宝座上，周身发着祥光。见到孙悟空来了，就起身下来迎接。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">行者朝上施礼。天尊答礼道：“大圣，这几年不见，前闻得你弃道归佛，保唐僧西天取经，想是功行完了。”行者道：“功行未完，却也将近；但如今因保唐僧到玉华州，蒙王子遣三子拜老孙等为师，习学武艺，把我们三件神兵照样打造，不期夜间被贼偷去。及天明寻找，原是城北豹头山虎口洞一个金毛狮子成精盗去。老孙用计取出，那精就伙了若干狮精与老孙大闹。内有一个九头狮子，神通广大，将我师父与八戒并王父子四人都衔去，到一竹节山九曲盘桓洞。次日，老孙与沙僧跟寻，亦被衔去。老孙被他捆打无数，幸而弄法走了。他们正在彼处受罪。问及当坊土地，始知天尊是他主人，特来奉请收降解救。”</div>
+            <div class="text-block simplified-text">孙悟空向天尊行礼。天尊回礼说："大圣，好几年没见了。听说你改信佛教，保护唐僧去西天取经，现在应该快完成了吧？"  
+
+孙悟空回答："还没完全结束，但也差不多了。这次护送唐僧到玉华州，那里的王子让三个儿子拜我们为师，学习武艺。他们还照着我们的兵器仿造了几件，没想到晚上被偷走了。天亮后我们去找，发现是城北豹头山虎口洞的一个金毛狮子精偷的。我用计把兵器拿回来，那妖精就带着一群狮子精跟我打起来。其中有个九头狮子特别厉害，把我师父、八戒还有王子和他的三个儿子都抓走了，带到竹节山的九曲盘桓洞。第二天我和沙僧去找人，也被抓了。我被他们捆住打了好多次，好不容易才逃出来。现在他们还在洞里受苦呢。我问了当地的土地神，才知道天尊你是那九头狮子的主人，所以特地来请你帮忙收服它，救出我师父他们。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">天尊闻言，即令仙将到狮子房唤出狮奴来问。那狮奴熟睡，被众将推摇方醒，揪至中厅来见。天尊问道：“狮兽何在？”那奴儿垂泪叩头，只教：“饶命!饶命！”天尊道：“孙大圣在此，且不打你。你快说为何不谨，走了九头狮子。”狮奴道：“爷爷，我前日在大千甘露殿中见一瓶酒，不知偷去吃了，不觉沉醉睡着，失于拴锁，是以走了。”天尊道：“那酒是太上老君送的，唤做‘轮回琼液’。你吃了该醉三日不醒。那狮兽今走几日了？”大圣道：“据土地说，他前年下降，到今二三年矣。”天尊笑道：“是了，是了，天宫里一日，在凡世就是一年。”叫狮奴道：“你且起来，饶你死罪，跟我与大圣下方去收他来。汝众仙都回去，不用跟随。”</div>
+            <div class="text-block simplified-text">神仙老大听了，马上叫手下的天兵去狮子房把看管狮子的仆人叫来问话。那仆人睡得正香，被天兵们推醒，揪到大殿上。神仙老大问："狮子去哪儿了？"仆人吓得直哭，不停磕头求饶："饶命啊！饶命！"神仙老大说："孙大圣在这儿，先不打你。你快老实交代，为什么没看好，让九头狮子跑了？"仆人回答："老大，我前天在大千甘露殿看见一瓶酒，偷偷喝光了，结果醉得不省人事，忘了锁笼子，狮子就跑掉了。"神仙老大说："那是太上老君送的'轮回琼液'，喝一口要醉三天。狮子跑了多久？"孙悟空插话："听土地公说，它两年前就跑下凡间了。"神仙老大笑了："这就对了，天上一日，地上一年。起来吧，饶你不死，跟我和大圣下凡去把狮子抓回来。其他神仙都回去，不用跟着。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">天尊遂与大圣、狮奴，踏云径至竹节山。只见那五方揭谛、六丁六甲、本山土地都来跪接。行者道：“汝等护，可曾伤着我师？”众神道：“妖精着了恼睡了，更不曾动甚刑罚。”天尊道：“我那元圣儿也是一个久修得道的真灵，他喊一声，上通三圣，下彻九泉，等闲也便不伤生。孙大圣，你去他门首索战，引他出来，我好收之。”</div>
+            <div class="text-block simplified-text">于是天尊和大圣、狮奴一起驾云直接到了竹节山。一到那儿，五方揭谛、六丁六甲和当地的土地神都赶紧过来跪着迎接。孙悟空问他们："你们保护我师父的时候，妖怪有没有伤到他？"众神回答："那妖怪生气睡着了，根本没动手用刑。"天尊说："我那元圣儿也是修炼多年的得道真灵，他吼一声，上能惊动三圣，下能震动地府，平时也不随便伤人性命。孙大圣，你去他门口叫阵，把他引出来，我好收服他。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">行者听言，果掣棒跳近洞口，高骂道：“泼妖精，还我人来也!泼妖精，还我人来也！”连叫了数声。那老妖睡着了，无人答应。行者性急起来，轮铁棒，往里打进，口中不住的喊骂。那老妖方才惊醒，心中大怒。爬起来，喝一声：“赶战！”摇摇头，便张口来衔。</div>
+            <div class="text-block simplified-text">孙悟空一听这话，立马掏出金箍棒跳到洞口，扯着嗓子大骂："该死的妖精！快把我师父交出来！该死的妖精，快把我师父交出来！"连着喊了好几遍。那老妖怪正睡着觉，没人搭理他。孙悟空急脾气上来了，抡起铁棒就往洞里冲，嘴里还不停地叫骂。老妖怪这才被吵醒，气得要命，爬起来吼了一嗓子："找死！"晃了晃脑袋，张开血盆大口就要咬人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">行者回头跳出。妖精赶到外边，骂道：“贼猴!那里走！”行者立在高崖上笑道：“你还敢这等大胆无礼!你死活也不知哩!这不是你老爷主公在此？”那妖精赶到崖前，早被天尊念声咒语，喝道：“元圣儿，我来了！”那妖认得是主人，不敢展挣，四只脚伏之于地，只是磕头。旁边跑过狮奴儿，一把挝住项毛，用拳着项上打够百十，口里骂道：“你这畜生，如何偷走，教我受罪！”那狮兽合口无言，不敢摇动。狮奴儿打得手困，方才住了。即将锦安在他身上，天尊骑了，喝声教走。他就纵身驾起彩云，径转妙岩宫去。</div>
+            <div class="text-block simplified-text">孙悟空转身跳出来。妖怪追到外面，大骂："死猴子！往哪儿跑！"孙悟空站在高崖上笑着说："你还敢这么嚣张！连自己死到临头都不知道！看看谁在这儿？"妖怪追到山崖前，太乙救苦天尊念起咒语，喝道："九头狮子，我来了！"妖怪认出主人，吓得不敢动弹，趴在地上直磕头。旁边跑出来个狮子饲养员，一把揪住它的鬃毛，往脖子上打了几十拳，边打边骂："你这畜生，竟敢偷跑出来，害我受罚！"狮子闭着嘴不敢出声，动都不敢动。饲养员打累了才停手。给他套上鞍子，天尊骑上去，喊了声"走"。狮子立刻驾起彩云，驮着天尊回妙岩宫去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">大圣望空称谢了。却入洞中，先解玉华王，次解唐三藏，次又解了八戒、沙僧并三王子。共搜他洞里物件，逍逍停停，将众领出门外。八戒就取了若干枯柴，前后堆上，放起火来，把一个九曲盘桓洞，烧做个乌焦破瓦窑!大圣又发放了众神，还教土地在此镇守。却令八戒、沙僧，各各使法，把王父子背驮回州。他搀着唐僧。不多时，到了州城，天色渐晚，当有妃后官员，都来接见了。摆上斋筵，共坐享之。长老师徒还在暴纱亭安歇。王子们入宫各寝。一宵无话。</div>
+            <div class="text-block simplified-text">孙悟空朝天说了声谢谢，然后进洞里先救出玉华王，接着救出唐僧，再救出八戒、沙僧和三个王子。他们把洞里值钱的东西都搜刮干净，慢悠悠地带着大家出了洞。八戒抱来一堆干柴，在洞口前后堆上，一把火把九曲盘桓洞烧成了黑乎乎的破窑洞！孙悟空又让那些帮忙的神仙各回各家，只留下土地公在这儿看着。然后让八戒和沙僧施法，轮流背着玉华王父子回城，他自己扶着唐僧。没多久就到了城里，天也快黑了，王妃、官员们都出来迎接。大家一块儿吃了顿素斋。唐僧师徒还在暴纱亭休息，王子们回宫睡觉。这一晚上平安无事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">次日，王又传旨，大开素宴。合府大小官员，一一谢恩。行者又叫屠子来，把那六个活狮子杀了，共那黄狮子都剥了皮，将肉安排将来受用。殿下十分欢喜，即命杀了。把一个留在本府内外人用，一个与王府长史等官分用；把五个都剁做一二两重的块子，差校尉散给州城内外军民人等，各吃些须：一则尝尝滋味，二则押押惊恐。那些家家户户，无不瞻仰。</div>
+            <div class="text-block simplified-text">第二天，国王又下令办了一场全素宴席。王府里所有官员都来谢恩。孙悟空又叫来屠夫，把那六头活狮子和之前那头黄狮子都杀了剥皮，把肉处理好准备吃。王子特别高兴，马上让人动手。他们留了一头狮子肉给王府里的人吃，另一头分给王府的官员们。剩下的五头狮子肉都切成小块，每块一二两重，派士兵分发给城里城外的百姓和士兵，让大家都尝尝：一来可以吃个新鲜，二来能压压惊。家家户户都分到了狮子肉，大家都高兴得很。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">又见那铁匠人等造成了三般兵器，对行者磕头道：“爷爷，小的们工都完了。”问道：“各重多少斤两？”铁匠道：“金箍棒有千斤，九齿钯与降妖杖各有八百斤。”行者道：“也罢了。”叫请三位王子出来，各人执兵器。三子对老王道：“父王，今日兵器完矣。”老王道：“为此兵器，几乎伤了我父子之命。”小王子道：“幸蒙神师施法，救出我等，却又扫荡妖邪，除了后患。诚所谓海晏河清，太平之世界也！”当时老王父子赏劳了匠作，又至暴纱亭拜谢了师恩。</div>
+            <div class="text-block simplified-text">我看到铁匠们已经做好了三件兵器，他们向孙悟空磕头说："大圣，我们都完工了。"孙悟空问："每件兵器有多重？"铁匠回答："金箍棒重一千斤，九齿钉耙和降妖杖都是八百斤。"孙悟空说："还行吧。"就叫三位王子出来拿兵器。
+
+三位王子对老国王说："父王，兵器今天都做好了。"老国王说："为了这些兵器，差点要了我们父子的命。"小王子接着说："多亏神仙师父用法术救了我们，还帮我们消灭了妖怪，解决了后患。现在真是天下太平，再也没有祸患了！"
+
+之后，老国王和王子们赏赐了铁匠们，又到暴纱亭向师父们道谢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">三藏又教大圣等快传武艺，莫误行程。他三人就各轮兵器，在王府院中，一一传授。不数日，那三个王子尽皆操演精熟，其余攻退之方，紧慢之法，各有七十二到解数，无不知之。一则那诸王子心坚，二则亏孙大圣先授了神力，此所以那千斤之棒，八百斤之钯杖，俱能举能运。较之初时自家弄的武艺，真天渊也!有诗为证，诗曰：缘因善庆遇神师，习武何期动怪狮。扫荡群邪安社稷，皈依一体定边夷。九灵数合元阳理，四面精通道果之。授受心明遗万古，玉华永乐太平时。</div>
+            <div class="text-block simplified-text">唐僧又让孙悟空他们赶紧教三个王子武功，别耽误赶路。于是孙悟空、猪八戒、沙僧三人拿着各自的兵器，在王府院子里轮流教他们。没过几天，三个王子就把所有招式都练熟了，包括进攻防守、快慢节奏等七十二种变化，全都掌握了。一来是王子们学得认真，二来多亏孙悟空先给他们输了神力，所以千斤重的金箍棒、八百斤的钉耙，他们都能轻松挥舞。和以前自己瞎练的功夫比起来，简直一个天上一个地下！有首诗说得好：因为行善积德遇到神仙师父，学武时意外引来狮子精捣乱。除掉妖怪保国家平安，收服外邦定边疆。九转元功合天道，四面八方通武艺。师徒传授的武功流传万代，玉华国从此永远太平。  
+
+（说明：原诗因含典故和术语，在不改变核心含义的前提下，将"怪狮"直译为"狮子精"，"九灵数合元阳理"意译为"九转元功合天道"，其余诗句均转化为白话情节描述）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">那王子又大开筵宴，谢了师教。又取出一大盘金银，用答微情。行者笑道：“快拿进去，快拿进去，我们出家人，要他何用？”八戒在旁道：“金银实不敢受，奈何我这件衣服被那些狮子精扯拉破了，但与我们换件衣服，足为爱也。”那王子随命针工，照依色样，取青锦、红锦、茶褐锦各数匹，与三位各做了一件。三人欣然领受，各穿了锦布直裰，收拾了行装起程。只见那城里城外，若大若小，无一人不称是罗汉临凡，活佛下界。鼓乐之声，旌旗之色，盈街塞道。正是家家户外焚香火，处处门前献彩灯。送至许远方回。他四众方得离城西去。这一去顿脱群思，潜心正果。才是：无虑无忧来佛界，诚心诚意上雷音。</div>
+            <div class="text-block simplified-text">那王子又大摆宴席，感谢师父的教导。还拿出一大堆金银财宝想表示感谢。孙悟空笑着说："快收回去！我们出家人要这些钱有什么用？"猪八戒在旁边插嘴："金银我们确实不能要，不过我的衣服被那些狮子精扯破了，要是能给我们换套新衣服，我们就很感谢了。"王子马上叫来裁缝，按照他们的身材，用青色、红色和茶褐色的锦缎，给他们每人做了一件新衣服。三人高兴地收下，穿上新做的锦缎僧袍，收拾行李准备出发。城里城外的人，不论老少，都说他们是罗汉下凡、活佛转世。街上挤满了奏乐的人，到处都飘着彩旗。家家户户都在门口烧香点灯。百姓们一直送出去很远才回去。唐僧师徒四人这才离开城池往西走。这次出发后，他们摆脱了各种杂念，专心去求取真经。这才叫：无忧无虑到佛国，诚心诚意去灵山。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">毕竟不知到灵山还有几多路程，何时行满，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道到灵山到底有多远，什么时候才能走到，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
