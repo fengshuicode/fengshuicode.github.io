@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八回　我佛造经传极乐　观音奉旨上长安</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./007.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八回　我佛造经传极乐　观音奉旨上长安</h1>
+        <a href="./009.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">试问禅关，参求无数，往往到头虚老。磨砖作镜，积雪为粮，迷了几多年少？毛吞大海，芥纳须弥，金色头陀微笑。悟时超十地三乘，凝滞了四生六道。谁听得绝想崖前，无阴树下，杜宇一声春晓？曹溪路险，鹫岭云深，此处故人音杳。千丈冰崖，五叶莲开，古殿帘垂香袅。那时节，识破源流，便见龙王三宝。</div>
+            <div class="text-block simplified-text">这段文字用大白话来说就是：
+
+问问那些修行的人，他们费尽心思参禅打坐，可到头来常常是白忙活一场。就像想把砖头磨成镜子、用积雪当干粮一样，多少年轻人被这些虚无缥缈的东西耽误了？有人说能一口喝干大海，把小山装进芥菜籽里，连佛祖听了都忍不住笑。真悟透了确实能超越轮回，但更多人反而被生死轮回困住了。
+
+有谁听过悬崖边、大树下，杜鹃鸟在春天清晨的那声啼叫？去曹溪求佛的路又陡又险，灵鹫山被云雾笼罩，老朋友早就没了消息。只有在那千丈冰崖上，当五瓣莲花开放，古老殿堂的门帘飘着香烟的时候，才能真正看透佛法的根源，明白什么是真正的宝贝。
+
+简单说就是：别整那些虚的修行，真正开悟不在形式，而在某个瞬间的自然领悟。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">这一篇词名《苏武慢》。</div>
+            <div class="text-block simplified-text">这篇文章的名字叫《苏武慢》。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">话表我佛如来，辞别了玉帝，回至雷音宝刹，但见那三千诸佛、五百阿罗、八大金刚、无边菩萨，一个个都执着幢幡宝盖，异宝仙花，摆列在灵山仙境，娑罗双林之下接迎。如来驾住祥云，对众道：我以——</div>
+            <div class="text-block simplified-text">话说如来佛祖告别了玉帝，回到雷音寺。看到寺里所有的佛、罗汉、金刚和菩萨，都举着旗子伞盖，捧着珍宝鲜花，整整齐齐站在灵山仙境的双树下迎接。如来踩着祥云，对大家说："我呢——"
+
+（说明：1. "话表"改为更口语的"话说"；2. "雷音宝刹"用更常见的"雷音寺"；3. 将佛教术语"三千诸佛、五百阿罗..."转换为"所有的佛、罗汉..."；4. "幢幡宝盖"译为"旗子伞盖"；5. "娑罗双林"意译为"双树"；6. 保持原文的叙事顺序和所有关键信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">甚深般若，遍观三界。根本性原，毕竟寂灭。同虚空相，一无所有。殄伏乖猴，是事莫识，名生死始，法相如是。</div>
+            <div class="text-block simplified-text">这段文字的大白话翻译：
+
+最深奥的智慧，能看透整个世界。万事万物的本质，说到底都是空的。就像虚空一样，什么都没有。降服那只叛逆的猴子（指孙悟空）这件事，一般人根本看不懂。这就是生死的真相，世界的本质就是这样。
+
+（说明：1.保留"般若"译为"智慧"；2."乖猴"直译为"叛逆的猴子"并注明指孙悟空；3."法相"译为"世界的本质"；4.用"空的"替代"寂灭"等佛教术语；5.整体采用口语化表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">说罢，放舍利之光，满空有白虹四十二道，南北通连。大众见了，皈身礼拜。少顷间，聚庆云彩雾，登上品莲台，端然坐下。那三千诸佛、五百罗汉、八金刚、四菩萨，合掌近前礼毕，问曰：“闹天宫搅乱蟠桃者，何也？”如来道：“那厮乃花果山产的一妖猴，罪恶滔天，不可名状，概天神将，俱莫能降伏；虽二郎捉获，老君用火锻炼，亦莫能伤损。我去时，正在雷将中间，扬威耀武，卖弄精神，被我止住兵戈，问他来历，他言有神通，会变化，又驾筋斗云，一去十万八千里。我与他打了个赌赛，他出不得我手，却将他一把抓住，指化五行山，封压他在那里。玉帝大开金阙瑶宫，请我坐了首席，立安天大会谢我，却方辞驾而回。”大众听言喜悦，极口称扬。谢罢，各分班而退，各执乃事，共乐天真。果然是——</div>
+            <div class="text-block simplified-text">说完，佛祖放出佛光，天空中出现了四十二道白色光带，从南到北连成一片。大家看到后，都跪下来磕头行礼。过了一会儿，天上聚集起彩云和雾气，佛祖坐上最高级的莲花宝座，稳稳地坐好。这时，三千位佛、五百罗汉、八大金刚、四位菩萨一起上前，合掌行礼后问道："那个大闹天宫、搅乱蟠桃会的家伙是谁啊？"佛祖说："那家伙是花果山的一只妖猴，坏事做尽，罪大恶极。天兵天将都拿他没办法，就连二郎神抓住他，太上老君用火炼他，也伤不了他。我去的时候，他正在雷将中间耀武扬威，卖弄本事。我让天兵停手，问他来历。他说自己本事大，会变化，一个跟头能翻十万八千里。我就跟他打了个赌，结果他逃不出我的手掌心，被我一把抓住，变成五行山压住了他。玉帝为了感谢我，特意打开天宫，请我坐最尊贵的位子，开了安天大会。我刚参加完回来。"大家听完都很高兴，连连称赞。谢过佛祖后，众人各自回到岗位，继续过着快乐的神仙生活。真是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">瑞霭漫天竺，虹光拥世尊。西方称第一，无相法王门。常见玄猿献果，麋鹿衔花；青鸾舞，彩凤鸣；灵龟捧寿，仙鹤噙芝。安享净土祗园，受用龙宫法界。日日花开，时时果熟。习静归真，参禅果正。不灭不生，不增不减。烟霞缥缈随来往，寒暑无侵不记年。</div>
+            <div class="text-block simplified-text">天上飘着吉祥的云彩，佛祖身上发着七彩光芒。在西方极乐世界，他是最厉害的存在，掌管着无相佛法的大门。这里总能看到黑猴子送水果，梅花鹿叼着花；青鸟跳舞，彩凤唱歌；乌龟捧着寿桃，仙鹤叼着灵芝。他舒舒服服地住在这片净土，享受着龙宫般的极乐世界。这里每天都有花开，果子随时都熟。在这儿修行能让人静心悟道，参透佛法真谛。这里的一切永恒不变，不会消失也不会增加。云雾缭绕自由自在，没有寒冷酷暑，也记不清过了多少年。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文就两个字“诗曰：”，意思是“诗里说：”或者“有首诗这样讲：”。这是古代文章里引用诗句时常用的开头，相当于现在说“有首诗写道：”。  
+
+（因为原文信息太少，我只能解释这两个字的意思。如果有更多原文内容，我可以帮你把整段话都改得更白话。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">去来自在任优游，也无恐怖也无愁。极乐场中俱坦荡，大千之处没春秋。</div>
+            <div class="text-block simplified-text">来去自由随便走，既不害怕也不愁。快乐地方都舒坦，广阔世界没春秋。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">佛祖居于灵山大雷音宝刹之间。一日，唤聚诸佛、阿罗、揭谛、菩萨、金刚、比丘僧、尼等众曰：“自伏乖猿安天之后，我处不知年月，料凡间有半千年矣。今值孟秋望日，我有一宝盆，盆中具设百样奇花，千般异果等物，与汝等享此盂兰盆会，如何？”概众一个个合掌，礼佛三匝领会。如来却将宝盆中花果品物，着阿傩捧定，着迦叶布散。大众感激，各献诗伸谢。</div>
+            <div class="text-block simplified-text">佛祖住在灵山的大雷音寺里。有一天，他把各路神仙、菩萨、罗汉、金刚、和尚尼姑等都叫到一起，说："自从收服孙悟空、天庭安定以来，我们这儿也不知道过了多久，估计人间得有五百年了。今天正好是七月十五，我这儿有个宝贝盆子，里面装着各种奇花异果，咱们一起开个盂兰盆会怎么样？"大家听了都双手合十，围着佛祖转了三圈表示同意。如来就让阿傩端着宝盆，迦叶给大家分里面的花果。大伙儿都很感激，纷纷作诗表示感谢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">福诗曰：</div>
+            <div class="text-block simplified-text">福诗说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">福星光耀世尊前，福纳弥深远更绵。福德无疆同地久，福缘有庆与天连。</div>
+            <div class="text-block simplified-text">福星的光芒照耀在佛祖面前，福气深厚又长久。福分大得像天地一样无边无际，福运和上天相连永远喜庆。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">福田广种年年盛，福海洪深岁岁坚。福满乾坤多福荫，福增无量永周全。</div>
+            <div class="text-block simplified-text">年年种福田，福气越来越旺；福海又深又广，福气一年比一年稳。福气充满天地间，带来更多福气保佑；福气多得数不清，永远周全又美满。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">禄诗曰：</div>
+            <div class="text-block simplified-text">“禄诗说”或者“有首诗是这么说的”。  
+
+（注：由于提供的原文只有“禄诗曰”三个字，没有后续具体诗句内容，所以直译只能处理这个开头。如果补充完整诗句，可以进一步用白话文转换整段内容。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">禄重如山彩凤鸣，禄随时泰祝长庚。禄添万斛身康健，禄享千钟世太平。</div>
+            <div class="text-block simplified-text">你的福气多得像山一样重，像凤凰叫一样吉祥。福气跟着好时候来，祝你像长寿星一样活得久。福气多得数不清，让你身体棒棒的。福气多得像堆成山的粮食，让天下都平平安安。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">禄俸齐天还永固，禄名似海更澄清。禄恩远继多瞻仰，禄爵无边万国荣。</div>
+            <div class="text-block simplified-text">你的工资高得像天一样，而且永远稳定；你的名声好得像大海一样干净。大家都很敬重你，因为你把好处带给很多人；你的地位高得没边，全世界都为你感到光荣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">寿诗曰：</div>
+            <div class="text-block simplified-text">生日贺诗写道：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">寿星献彩对如来，寿域光华自此开。寿果满盘生瑞霭，寿花新采插莲台。</div>
+            <div class="text-block simplified-text">寿星给如来献上礼物，从此福寿之地开始大放光彩。装满寿桃的果盘散发出吉祥的云气，新摘的寿花插在莲花宝座上。
+
+（说明：1.用"礼物"替代"彩"更直白；2."寿域光华"转化为"福寿之地大放光彩"更易懂；3."瑞霭"译为"吉祥的云气"保留意象；4.保留"莲台"佛教意象但添加"宝座"辅助理解；5.保持四句结构完整，未增减信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">寿诗清雅多奇妙，寿曲调音按美才。寿命延长同日月，寿如山海更悠哉。</div>
+            <div class="text-block simplified-text">祝你长寿的诗写得清新又巧妙，祝你长寿的曲子唱得动听又应景。愿你的寿命像日月一样长久，像高山大海一样永远存在。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">众菩萨献毕。因请如来明示根本，指解源流。那如来微开善口，敷演大法，宣扬正果，讲的是三乘妙典，五蕴楞严。但见那天龙围绕，花雨缤纷。正是：禅心朗照千江月，真性清涵万里天。</div>
+            <div class="text-block simplified-text">各位菩萨献礼结束后，请如来佛祖讲清楚佛法的根本道理。如来佛祖稍微张开嘴，开始讲解佛法真谛，告诉大家如何修行成佛。他讲的是最高深的佛经《三乘妙典》和《五蕴楞严》。当时场面很壮观：天龙护法围在旁边，天上像下雨一样飘落着花瓣。这场景正好印证了两句话：修行人的心像明月照亮千条江水一样通透，真正的佛性像万里晴空一样纯净清明。
+
+（说明：译文完全保留原文所有信息，用大白话替换了"敷演大法"等文言表达，将"禅心朗照千江月"等偈语转化为通俗解释，确保每个现代人都能听懂。把"善口"译为"稍微张开嘴"既准确又生活化，同时保持了如来庄严的说话姿态。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">如来讲罢，对众言曰：“我观四大部洲，众生善恶，各方不一。东胜神洲者，敬天礼地，心爽气平；北巨芦洲者，虽好杀生，只因糊口，性拙情疏，无多作践；我西牛贺洲者，不贪不杀，养气潜灵，虽无上真，人人固寿；但那南赡部洲者，贪淫乐祸，多杀多，正所谓口舌凶场，是非恶海。我今有三藏真经，可以劝人为善。”诸菩萨闻言，合掌皈依，向佛前问曰：“如来有那三藏真经？”如来曰：“我有《法》一藏，谈天；《论》一藏，说地；经一藏，度鬼。三藏共计三十五部，该一万五千一百四十四卷，乃是修真之经，正善之门。我待要送上东土，叵耐那方众生愚蠢，毁谤真言，不识我法门之旨要，怠慢了瑜迦之正宗。怎么得一个有法力的，去东土寻一个善信，教他苦历千山，远经万水，到我处求取真经，永传东土，劝化众生，却乃是个山大的福缘，海深的善庆。谁肯去走一遭来？”当有观音菩萨，行近莲台，礼佛三匝道：“弟子不才，愿上东土寻一个取经人来也。”诸众抬头观看，那菩萨——</div>
+            <div class="text-block simplified-text">如来佛祖说完后，对大家说："我看天下四个地方的人，好坏都不一样。东胜神洲的人敬重天地，心地善良；北巨芦洲的人虽然爱杀生，但只是为了吃饭，本性不坏；我们西牛贺洲的人不贪心不杀生，活得长寿；只有南赡部洲的人最坏，又贪心又爱惹事，整天打打杀杀，是非不断。我这里有三套真经，可以教人向善。"
+
+菩萨们听了，合掌问道："如来佛祖，是哪三套真经？"
+
+如来回答："一套讲天理，一套说地理，一套超度亡魂。总共三十五部，一万五千一百四十四卷，都是教人修心向善的好经书。我想把这些经书送到东土大唐，可惜那里的人太愚昧，不懂佛法真谛。得找个有本事的人去东土找个诚心的人，让他历经千辛万苦来我这里取经，把真经永远传下去。这可是天大的好事，谁愿意去？"
+
+这时观音菩萨走到莲花台前，行礼说："弟子愿意去东土找个取经人。"大家都抬头看着观音菩萨——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">理圆四德，智满金身。缨络垂珠翠，香环结宝明。乌云巧迭盘龙髻，绣带轻飘彩凤翎。碧玉纽，素罗袍，祥光笼罩；锦绒裙，金落索，瑞气遮迎。眉如小月，眼似双星。玉面天生喜，朱唇一点红，净瓶甘露年年盛，斜插垂杨岁岁青。解八难，度群生，大慈悯。故镇太山，居南海，救苦寻声，万称万应，千圣千灵。兰心欣紫竹，蕙性爱香藤。他是落伽山上慈悲主，潮音洞里活观音。</div>
+            <div class="text-block simplified-text">这段文字描述的是观音菩萨的形象和特点，用现代白话文可以这样说：
+
+观音菩萨智慧圆满，品德高尚。她戴着珠宝装饰的头冠，身上挂着香环和闪亮的饰品。头发盘成龙髻，绣带轻轻飘动像凤凰的羽毛。穿着碧玉扣子的素色长袍，全身笼罩着祥光；锦缎裙子配上金色腰带，散发着吉祥的气息。眉毛像弯月，眼睛亮如星星。天生一副慈祥的面容，红唇一点。手里的净瓶永远装满甘露，旁边插着的杨柳枝常年青翠。她救苦救难，帮助众生，非常慈悲。她镇守泰山，住在南海，哪里有苦难她就去救助，有求必应，灵验无比。她喜欢紫竹和香藤的清香。她就是落伽山上慈悲的观音菩萨，潮音洞里救苦救难的活菩萨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">如来见了，心中大喜道：“别个是也去不得，须是观音尊者，神通广大，方可去得。”菩萨道：“弟子此去东土，有甚言语吩咐？”如来道：“这一去，要踏看路道，不许在霄汉中行，须是要半云半雾：目过山水，谨记程途远近之数，叮咛那取经人。但恐善信难行，我与你五件宝贝。”即命阿傩、迦叶，取出锦蝠袈裟一领，九环锡杖一根，对菩萨言曰：“这袈裟、锡杖，可与那取经人亲用。若肯坚心来此，穿我的袈裟，免堕轮回；持我的锡杖，不遭毒害。”这菩萨皈依拜领。如来又取出三个箍儿，递与菩萨道：“此宝唤做紧箍儿。虽是一样三个，但只是用各不同，我有金紧禁的咒语三篇。假若路上撞见神通广大的妖魔，你须是劝他学好，跟那取经人做个徒弟。他若不伏使唤，可将此箍儿与他戴在头上，自然见肉生根。各依所用的咒语念一念，眼胀头痛，脑门皆裂，管教他入我门来。”</div>
+            <div class="text-block simplified-text">如来看到后，心里特别高兴，说："别人都干不了这事，只有观音菩萨你本事大，才能办成。"  
+
+观音问："我去东土大唐，您有什么要交代的吗？"  
+
+如来说："你这一路要好好认路，不能在天上飞太高，得贴着半山腰的云雾走。把经过的山山水水、路程远近都记清楚，到时候告诉取经人。我怕他路上难走，给你五件宝贝。"  
+
+说完就叫阿傩、迦叶拿来一件锦蝠袈裟和一根九环锡杖，对观音说："这两样给取经人用。要是他诚心来取经，穿上我的袈裟就不用再受苦轮回，拿着我的锡杖就不会被毒害。"观音恭敬地收下了。  
+
+如来又拿出三个箍儿，交给观音说："这叫紧箍儿。三个看起来一样，用法不同。我这有三篇咒语。要是路上遇到厉害的妖怪，你先劝他学好，给取经人当徒弟。要是他不听话，就把这箍儿套他头上，一戴就会长进肉里。你念对应的咒语，他就头疼眼胀，脑门要裂开似的，保证他乖乖听话。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">那菩萨闻言，踊跃作礼而退。即唤惠岸行者随行。那惠岸使一条浑铁棍，重有千斤，只在菩萨左右，作一个降魔的大力士。菩萨遂将锦蝠袈裟，作一个包裹，令他背了。菩萨将金箍藏了，执了锡杖，径下灵山。这一去，有分教：佛子还来归本愿，金蝉长老裹啃檀。</div>
+            <div class="text-block simplified-text">菩萨一听这话，高兴地行礼后就退下了。他马上叫上徒弟惠岸跟着一起走。惠岸拿着一条千斤重的浑铁棍，专门跟在菩萨身边当保镖。菩萨把锦蝠袈裟包成包袱让惠岸背着，自己则收好金箍，拿着锡杖直接下山去了。这一走可不得了：佛门弟子终于要实现自己的使命，金蝉长老（唐僧）即将踏上取经之路。
+
+（说明：1.将"踊跃作礼"译为"高兴地行礼"更直白 2."降魔的大力士"意译为"保镖"更通俗 3."有分教"这种说书人口吻转化为"可不得了"的口语表达 4.末句偈语译为白话时保留了"金蝉长老"这个专有名词，同时用括号补充说明其身份 5.全程使用"他"而非"她"指代观音，符合现代读者对菩萨形象的普遍认知）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">那菩萨到山脚下，有玉真观金顶大仙在观门首接住，请菩萨献茶。菩萨不敢久停，曰：“今领如来法旨，上东土寻取经人去。”大仙道：“取经人几时方到？”菩萨道：“未定，约摸二三年间，或可至此。”遂辞了大仙，半云半雾，约记程途。有诗为证。诗曰：</div>
+            <div class="text-block simplified-text">观音菩萨来到山脚下，玉真观的金顶大仙在门口迎接，请菩萨喝茶。菩萨没敢多待，说："我奉如来佛祖的命令，去东土大唐找取经的人。"大仙问："取经的人什么时候能到？"菩萨回答："说不准，大概两三年吧，应该能到这儿。"说完就告别大仙，驾着云雾上路了。这事儿有首诗为证，诗是这样写的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">万里相寻自不言，却云谁得意难全？求人忽若浑如此，是我平生岂偶然？</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+大老远跑来见你，不用说你也知道为啥。可你却说"谁能事事如意呢？" 
+求人帮忙的时候突然这么敷衍我，难道我这辈子遇到这种事都是碰巧吗？
+
+（说明：通过反问和口语化表达保留原诗的委屈和不满情绪。"万里相寻"译为"大老远跑来"，"意难全"译为"事事如意"，"岂偶然"转为反问句，更符合日常对话语气。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">传道有方成妄语，说明无信也虚传。愿倾肝胆寻相识，料想前头必有缘。</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+传教讲道理要是方法不对，就成了瞎说；解释说明要是没诚意，也是白费口舌。我真心实意想找个懂我的人，相信前面一定能遇到有缘分的朋友。
+
+（说明：根据白话文要求进行了以下处理：
+1. "传道有方成妄语"→解释为方法不对就成了瞎说
+2. "说明无信也虚传"→直译为没诚意的解释是白费口舌
+3. "愿倾肝胆寻相识"→用"真心实意找懂我的人"替代文言意象
+4. "料想前头必有缘"→转化为口语化的"相信能遇到有缘朋友"
+5. 保留了寻找知音、相信缘分的关键信息
+6. 使用"白费口舌""真心实意"等日常用语）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">师徒二人正走间，忽然见弱水三千，乃是流沙河界。菩萨道：“徒弟呀，此处却是难行。取经人浊骨凡胎，如何得渡？”惠岸道：“师父，你看河有多远？”那菩萨停立云步看时，只见——</div>
+            <div class="text-block simplified-text">师徒俩正走着，突然看到一条很宽的河，叫流沙河。菩萨说：“徒弟啊，这里不好走。取经的人都是普通人，怎么过得去？”惠岸问：“师父，你看这河有多宽？”菩萨停下脚步，站在云上看了看，发现——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">东连沙碛，西抵诸番，南达乌戈，北通鞑靼。径过有八百里遥，上下有千万里远。水流一似地翻身，浪滚却如山耸背。洋洋浩浩，漠漠茫茫，十里遥闻万丈洪。仙槎难到此，莲叶莫能浮。衰草斜阳流曲浦，黄云影日暗长堤。那里得客商来往？何曾有渔叟依栖？平沙无雁落，远岸有猿啼。只是红蓼花蘩知景色，白灊香细任依依。</div>
+            <div class="text-block simplified-text">东边连着沙漠，西边挨着外国，南边到乌戈，北边通鞑靼。这段路有八百里长，范围大到上下几万里远。水急得就像地翻过来一样，浪大得像山在耸背。水势又大又猛，一眼望不到边，十里外都能听到巨大的水声。神仙的船都到不了这儿，连莲叶都浮不起来。夕阳照着枯草在弯曲的岸边，黄云遮住太阳让长堤显得阴暗。这里根本没有商人经过，也不会有打鱼的老头住。平坦的沙滩连大雁都不落，远处岸边只有猴子在叫。只有红色的蓼花知道这里的景色，白色的香草随意生长。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">菩萨正然点看，只见那河中，泼剌一声响喨，水波里跳出一个妖魔来，十分丑恶。他生得——</div>
+            <div class="text-block simplified-text">菩萨正在仔细查看，突然听见河里“哗啦”一声巨响，从水里跳出来一个妖怪，长得特别吓人。他的样子是这样的——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">青不青，黑不黑，晦气色脸；长不长，短不短，赤脚筋躯。眼光闪烁，好似灶底双灯；口角丫叉，就如屠家火钵。獠牙撑剑刃，红发乱蓬松。一声叱咤如雷吼，两脚奔波似滚风。</div>
+            <div class="text-block simplified-text">这人长得真难看：脸色发灰发暗，说青不青说黑不黑的；个子不高不矮，光着脚青筋暴起。眼睛贼溜溜转，活像灶台底下两盏油灯；嘴巴歪歪咧咧，跟杀猪用的火盆似的。两颗大獠牙像剑一样支棱着，红头发乱得像鸡窝。他吼一嗓子跟打雷似的，跑起来两脚生风快得很。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">那怪物手执一根宝杖，走上岸就捉菩萨，却被惠岸掣浑铁棒挡住，喝声“休走！”那怪物就持宝杖来迎。两个在流沙河边，这一场恶杀，真个惊人——</div>
+            <div class="text-block simplified-text">那妖怪手里拿着一根宝杖，一上岸就要抓菩萨。幸好惠岸举起铁棒拦住，大喊一声："别跑！"妖怪就挥动宝杖打过来。两个人在流沙河边打得特别激烈，场面非常吓人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">木叉浑铁棒，护法显神通；怪物降妖杖，努力逞英雄。双条银蟒河边舞，一对神僧岸上冲。那一个威镇流沙施本事，这一个力保观音建大功。那一个翻波跃浪，这一个吐雾喷风。翻波跃浪乾坤暗，吐雾喷风日月昏。那个降妖杖，好便似出山的白虎；这个浑铁棒，却就如卧道的黄龙。那个使将来，寻蛇拨草；这个丢开去，扑鹞分松。只杀得昏漠漠，星辰灿烂；雾腾腾，天地朦胧。那个久住弱水惟他狠，这个初出灵山第一功。</div>
+            <div class="text-block simplified-text">木叉拿着铁棒，使出神通保护师父；妖怪挥着降妖杖，拼命耍威风。两条银蟒似的武器在河边飞舞，两位高僧在岸上打斗。一个在流沙河展示本事，一个为保护观音立大功。一个搅得河水翻腾，一个弄得狂风大雾。河水翻腾天都黑了，狂风大雾遮天蔽日。那降妖杖像下山猛虎，这铁棒像卧地巨龙。一个挥舞着像在草丛找蛇，一个甩开武器像老鹰抓松鸡。打得天昏地暗，星星都出来了；雾气弥漫，天地都看不清。那妖怪在弱水称霸很久，这木叉刚从灵山出来就立了头功。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">他两个来来往往，战上数十合，不分胜负。那怪物架住了铁棒道：“你是那里和尚，敢来与我抵敌？”木叉道：“我是托塔天王二太子木叉惠岸行者。今保我师父往东土寻取经人去。你是何怪，敢大胆阻路？”那怪方才醒悟道：“我记得你跟南海观音在紫竹林中修行，你为何来此？”木叉道：“那岸上不是我师父？”</div>
+            <div class="text-block simplified-text">他们俩打了几十个回合，还是分不出输赢。那妖怪挡住铁棒问：“你是哪来的和尚，敢跟我打？”木叉说：“我是托塔天王的二儿子木叉惠岸行者，现在保护我师父去东土找取经人。你是什么妖怪，胆子这么大敢拦路？”妖怪这才明白过来：“我想起来了，你不是跟着南海观音在紫竹林修行的吗？怎么跑这儿来了？”木叉说：“岸上那位不就是我师父吗？”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">怪物闻言，连声喏喏，收了宝杖，让木叉揪了去，见观音纳头下拜，告道：“菩萨，恕我之罪，待我诉告。我不是妖邪，我是灵霄殿下侍銮舆的卷帘大将。只因在蟠桃会上，失手打碎了玻璃盏，玉帝把我打了八百，贬下界来，变得这般模样。又教七日一次，将飞剑来穿我胸胁百余下方回，故此这般苦恼。没奈何，饥寒难忍，三二日间，出波涛寻一个行人食用。不期今日无知，冲撞了大慈菩萨。”菩萨道：“你在天有罪，既贬下来，今又这等伤生，正所谓罪上加罪。我今领了佛旨，上东土寻取经人。你何不入我门来，皈依善果，跟那取经人做个徒弟，上西天拜佛求经？我教飞剑不来穿你。那时节功成免罪，复你本职，心下如何？”那怪道：“我愿皈正果。”又向前道：“菩萨，我在此间吃人无数，向来有几次取经人来，都被我吃了。凡吃的人头，抛落流沙，竟沉水底。这个水，鹅毛也不能浮。惟有九个取经人的骷髅，浮在水面，再不能沉。我以为异物，将索儿穿在一处，闲时拿来顽耍。这去，但恐取经人不得到此，却不是反误了我的前程也？”菩萨曰：“岂有不到之理？你可将骷髅儿挂在头项下，等候取经人，自有用处。”怪物道：“既然如此，愿领教诲。”菩萨方与他摩顶受戒，指沙为姓，就姓了沙，起个法名，叫做个沙悟净。当时入了沙门，送菩萨过了河，他洗心涤虑，再不伤生，专等取经人。</div>
+            <div class="text-block simplified-text">妖怪一听，赶紧答应，放下武器，跟着木叉去见观音菩萨。他一见菩萨就跪下磕头，说：“菩萨饶命，听我解释。我不是妖怪，我本来是玉皇大帝身边的卷帘大将。因为在蟠桃会上不小心打碎了玻璃杯，玉帝打了我八百棍，把我贬到凡间，变成这副丑样子。还每七天派飞剑来刺我胸口一百多下，我实在受不了。又饿又冷，没办法，每隔两三天就出来抓人吃。今天不知好歹，冒犯了菩萨，真是该死。”
+
+菩萨说：“你在天上犯了错被贬下来，现在又吃人害命，错上加错。我现在奉佛祖的命令，去东土找取经人。你不如拜我为师，改邪归正，给取经人当徒弟，一起去西天取经。我让飞剑不再刺你。等取经成功，你不仅能免罪，还能官复原职，你觉得怎么样？”
+
+妖怪马上说：“我愿意改邪归正！”接着又说：“菩萨，我在这儿吃了不少人。之前有几个取经人经过，都被我吃了。那些人的脑袋扔进流沙河都沉底了，这河水连鹅毛都浮不起来。奇怪的是，有九个取经人的骷髅头一直浮在水面上。我觉得稀奇，就用绳子串起来，平时拿来玩。我就怕万一取经人根本到不了这儿，不是耽误了我的前程吗？”
+
+菩萨说：“不可能到不了！你把那九个骷髅头挂在脖子上等着，到时候自有用处。”妖怪说：“既然这样，我一定照办。”菩萨就给他剃度受戒，让他姓沙，法名叫沙悟净。沙悟净从此皈依佛门，送菩萨过河后，洗心革面不再吃人，专心等取经人到来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">菩萨与他别了，同木叉径奔东土。行了多时，又见一座高山，山上有恶气遮漫，不能步上。正欲驾云过山，不觉狂风起处，又闪上一个妖魔。他生得又甚凶险，但见他——</div>
+            <div class="text-block simplified-text">菩萨和他分开后，带着木叉直接往东边去了。走了很久，又看到一座很高的山，山上黑气滚滚，没法步行上去。他们正想驾云飞过山头，突然刮起一阵狂风，又冒出一个妖怪。这妖怪长得特别吓人，你看他——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">卷脏莲蓬吊搭嘴，耳如蒲扇显金睛。獠牙锋利如钢锉，长嘴张开似火盆。</div>
+            <div class="text-block simplified-text">这妖怪长得真吓人：头发乱得像脏莲蓬，嘴巴耷拉着，耳朵大得像蒲扇，眼睛闪着金光。牙齿又尖又利像钢锉，一张大嘴张开跟火盆似的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">金盔紧系腮边带，勒甲丝绦蟒退鳞。手执钉钯龙探爪，腰挎弯弓月半轮。</div>
+            <div class="text-block simplified-text">头上戴着紧紧绑在下巴的金头盔，身上穿着用蟒蛇皮做的护甲。手里拿着像龙爪一样的钉耙，腰间挂着像半个月亮似的弯弓。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">纠纠威风欺太岁，昂昂志气压天神。</div>
+            <div class="text-block simplified-text">这人特别威风，连太岁都敢欺负，气势特别足，连天神都不放在眼里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">他撞上来，不分好歹，望菩萨举钉钯就筑。被木叉行者挡住，大喝一声道：“那泼怪，休得无礼！看棒！”妖魔道：“这和尚不知死活！看钯！”两个在山底下，一冲一撞，赌斗输赢。真个好杀——</div>
+            <div class="text-block simplified-text">他冲过来，也不管是谁，举起钉耙就朝菩萨打去。木叉行者赶紧拦住，大声喝道："你这妖怪，别太放肆！看招！"妖怪回骂："这和尚找死！看耙！"两人在山下打来打去，拼个你死我活。打得真是激烈——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">妖魔凶猛，惠岸威能。铁棒分心捣，钉钯劈面迎。播土扬尘天地暗，飞砂走石鬼神惊。九齿钯，光耀耀，双环响喨；一条棒，黑悠悠，两手飞腾。这个是天王太子，那个是元帅精灵。一个在普陀为护法，一个在山洞作妖精。这场相遇争高下，不知那个亏输那个赢。</div>
+            <div class="text-block simplified-text">妖怪特别凶，惠岸很厉害。铁棒朝心口打，钉耙迎面劈。打得尘土飞扬天都黑了，飞沙走石连鬼神都吓到。九齿钉耙闪闪发亮，两个铁环叮当响；黑黝黝的铁棒在手里飞快挥舞。这边是天王的太子，那边是妖怪头子。一个是普陀山的护法，一个是山洞里的妖精。他俩打起来比谁更厉害，真不知道最后谁会输谁会赢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">他两个正杀到好处，观世音在半空中，抛下莲花，隔开钯杖。怪物见了心惊，便问：“你是那里和尚，敢弄什么眼前花儿哄我？”木叉道：“我把你个肉眼凡胎的泼物！我是南海菩萨的徒弟。这是我师父抛来的莲花，你也不认得哩！”那怪道：“南海菩萨，可是扫三灾救八难的观世音么？”木叉道：“不是他是谁？”怪物撇了钉钯，纳头下礼道：“老兄，菩萨在那里？累烦你引见一引见。”木叉仰面指道：“那不是？”怪物朝上磕头，厉声高叫道：“菩萨，恕罪，恕罪！”观音按下云头，前来问道：“你是那里成精的野豕，何方作怪的老彘，敢在此间挡我？”那怪道：“我不是野豕，亦不是老彘，我本是天河里天蓬元帅。只因带酒戏弄嫦娥，玉帝把我打了二千锤，贬下尘凡。一灵真性，竟来夺舍投胎，不期错了道路，投在个母猪胎里，变得这般模样。是我咬杀母猪，可死群彘，在此处占了山场，吃人度日。不期撞着菩萨，万望拔救拔救。”菩萨道：“此山叫做什么山？”怪物道：“叫做福陵山。山中有一洞，叫做云栈洞。洞里原有个卵二姐，他见我有些武艺，招我做了家长，又唤做倒猃门。</div>
+            <div class="text-block simplified-text">他们俩正打得激烈的时候，观音菩萨在天上扔下一朵莲花，把他们的兵器隔开了。妖怪一看吓坏了，问："你是哪来的和尚？变朵花来骗我？"木叉说："你这个没见识的蠢货！我是南海观音菩萨的徒弟。这是我师父扔的莲花，你都不认识！"妖怪说："南海菩萨？就是那个救苦救难的观音菩萨吗？"木叉说："不是她还能是谁？"妖怪立刻扔掉钉耙，跪下磕头说："大哥，菩萨在哪儿？麻烦你带我见见她。"木叉抬头指着天上说："那不是吗？"妖怪赶紧朝天上磕头，大声喊："菩萨饶命啊！"
+
+观音菩萨降下云头，问他："你是哪儿来的野猪精？在这挡我的路？"妖怪说："我不是野猪精。我原本是天河里的天蓬元帅，因为喝醉酒调戏嫦娥，被玉帝打了两千锤，贬到人间。投胎的时候走错路，投到母猪肚子里，变成这副模样。我咬死了母猪和一群小猪，占了这座山，靠吃人过日子。今天遇到菩萨，求您救救我！"菩萨问："这山叫什么名字？"妖怪回答："叫福陵山。山里有个云栈洞，洞里原来住着个卵二姐。她看我有点本事，招我当丈夫，叫我倒插门。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">不上一年，他死了，将一洞的家当，尽归我受用。在此日久年深，没有个赡身的勾当，只是依本等吃人度日。万望菩萨恕罪。”菩萨道：“古人云，若要有前程，莫做没前程。你既上界违法，今又不改凶心，伤生造孽，却不是二罪俱罚？”那怪道：“前程前程，若依你，教我嗑风！常言道，依着官法打杀，依着佛法饿杀。去也，去也！还不如捉个行人，肥腻腻的吃他家娘！管什么二罪三罪，千罪万罪！”菩萨道：“人有善愿，天必从之。汝若肯归依正果，自有养身之处。世有五谷，尽能济饥，为何吃人度日？”怪物闻言，似梦方觉，向菩萨施礼道：“我欲从正，奈何获罪于天，无所祷也！”菩萨道：“我领了佛旨，上东土寻取经人。你可跟他做个徒弟，往西天走一遭来，将功折罪，管教你脱离灾瘴。”那怪满口道：“愿随，愿随！”菩萨才与他摩顶受戒，指身为姓，就姓了猪，替他起了法名，就叫做猪悟能。遂此领命归真，持斋把素，断绝了五荤三厌，专候那取经人。</div>
+            <div class="text-block simplified-text">不到一年，他就死了，把整个洞里的家当都留给我用了。我在这儿待了很久，也没个正经活计养活自己，只能靠吃人过日子。求菩萨饶恕我的罪过。”
+
+菩萨说：“古人说得好，要想有好前途，就别干断送前途的事。你本来在天上犯了法，现在还不改吃人的恶习，这不是罪上加罪吗？”
+
+那妖怪说：“前途？听你的话，我只能喝西北风！俗话说，按官府的法子活不下去，按佛门的规矩得饿死。算了算了！还不如抓个人来，美美地吃一顿！管他几重罪呢！”
+
+菩萨劝他：“人有善心，老天都会帮忙。你要是肯改邪归正，自然有办法活命。世上有粮食可以充饥，何必非要吃人？”
+
+妖怪一听，好像突然醒悟了，赶紧行礼说：“我想改过自新，可已经得罪了上天，求告无门啊！”
+
+菩萨说：“我奉佛祖之命去东土找取经人。你可以给他当徒弟，一起去西天取经，将功赎罪，保证你能脱离苦海。”
+
+妖怪连连答应：“愿意愿意！”菩萨就给他剃度受戒，让他跟着自己姓猪，取法名“猪悟能”。从此他皈依佛门，吃素戒荤，专心等着取经人到来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">菩萨却与木叉，辞了悟能，半兴云雾前来。正走处，只见空中有一条玉龙叫唤，菩萨近前问曰：“你是何龙，在此受罪？”那龙道：“我是西海龙王敖闰之子，因纵火烧了殿上明珠，我父王表奏天庭，告了忤逆。玉帝把我吊在空中，打了三百，不日遭诛。望菩萨搭救搭救。”观音闻言，即与木叉撞上南天门里，早有邱、张二天师接着，问道：“何往？”菩萨道：“贫僧要见玉帝一面。”二天师即忙上奏，玉帝遂下殿迎接。菩萨上前礼毕道：“贫僧领佛旨上东土寻取经人，路遇孽龙悬吊，特来启奏，饶他性命，赐与贫僧，教他与取经人做个脚力。”玉帝闻言，即传旨赦宥，差天将解放，送与菩萨，菩萨谢恩而出。这小龙叩头谢活命之恩，听从菩萨使唤。菩萨把他送在深涧之中，只等取经人来，变做白马，上西方立功。小龙领命潜身不题。</div>
+            <div class="text-block simplified-text">观音菩萨和木叉告别了猪八戒，驾着云雾往前走。半路上，看见一条白龙被吊在空中惨叫。菩萨上前问："你是哪里的龙？为什么在这儿受罚？"  
+
+白龙回答："我是西海龙王的儿子，因为不小心烧了殿上的明珠，我父王告到天庭，说我大逆不道。玉帝把我吊在这儿，打了三百鞭，过几天就要处死。求菩萨救救我！"  
+
+观音听了，立刻带着木叉赶到南天门。守门的邱、张二位天师问："菩萨来有什么事？"观音说："我想见玉帝。"天师赶紧通报，玉帝出来迎接。  
+
+观音行礼后说："我奉佛祖之命去东土找取经人，路上看见这条龙受罚，特地来求情，请饶他一命，让他给取经人当个坐骑。"  
+
+玉帝答应了，下令放龙，交给观音。菩萨谢过玉帝，带着白龙离开。白龙磕头感谢救命之恩，答应听菩萨安排。菩萨把他放在深涧里等着，等取经人来了，他就变成白马，一起去西天立功。白龙乖乖藏起来，不再惹事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">菩萨带引木叉行者过了此山，又奔东土。行不多时，忽见金光万道，瑞气千条，木叉道：“师父，那放光之处，乃是五行山了，见有如来的压帖在那里。”菩萨道：“此却是那搅乱蟠桃会大闹天宫的齐天大圣，今乃压在此也。”木叉道：“正是，正是。”师徒俱上山来，观看帖子，乃是“络嘛呢叭迷底”六字真言。菩萨看罢，叹惜不已，作诗一首，诗曰：</div>
+            <div class="text-block simplified-text">观音菩萨带着徒弟木叉走过这座山，继续往东边赶路。没走多远，突然看见远处金光闪闪、祥云缭绕。木叉说："师父，发光的地方就是五行山了，还能看见如来佛祖的压帖在那儿。"观音菩萨说："这就是当年大闹蟠桃会、搅乱天庭的齐天大圣，现在被压在这山下。"木叉连连点头："对对对。"师徒俩一起上山看那张压帖，上面写着"络嘛呢叭迷底"六个字的咒语。观音菩萨看完后，忍不住叹气，还念了一首诗说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">堪叹妖猴不奉公，当年狂妄逞英雄。欺心搅乱蟠桃会，大胆私行兜率宫。</div>
+            <div class="text-block simplified-text">这猴子真是可气，一点都不守规矩。当年狂妄自大，觉得自己多厉害。胆大包天，把王母娘娘的蟠桃会搞得一团糟，还敢偷偷溜进太上老君的兜率宫捣乱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">十万军中无敌手，九重天上有威风。自遭我佛如来困，何日舒伸再显功！</div>
+            <div class="text-block simplified-text">这猴子本事大得很，地上打仗没人能赢他，天上神仙也怕他三分。可惜后来被如来佛祖压住了，不知道啥时候才能出来再大闹一场！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">师徒们正说话处，早惊动了那大圣。大圣在山根下高叫道：“是那个在山上吟诗，揭我的短哩？”菩萨闻言，径下山来寻看，只见那石崖之下，有土地、山神、监押大圣的天将，都来拜接了菩萨，引至那大圣面前。看时，他原来压于石匣之中，口能言，身不能动。菩萨道：“姓孙的，你认得我么？”大圣睁开火眼金睛，点着头儿高叫道：“我怎么不认得你，你好的是那南海普陀落伽山救苦救难大慈大悲南无观世音菩萨。承看顾，承看顾！我在此度日如年，更无一个相知的来看我一看。你从那里来也？”菩萨道：“我奉佛旨，上东土寻取经人去，从此经过，特留残步看你。”大圣道：“如来哄了我，把我压在此山，五百余年了，不能展挣。万望菩萨方便一二，救我老孙一救！”菩萨道：“你这厮罪业弥深，救你出来，恐你又生祸害，反为不美。”大圣道：“我已知悔了，但愿大慈悲指条门路，情愿修行。”这才是——</div>
+            <div class="text-block simplified-text">师徒几个正说着话，不小心惊动了孙悟空。孙悟空在山脚下大喊：“谁在上面念诗，说我坏话呢？”观音菩萨听见了，就下山来看。只见山崖下面，土地神、山神和看守孙悟空的天兵天将都来拜见菩萨，带她到孙悟空面前。只见孙悟空被压在石匣里，能说话，但身子动不了。  
+
+菩萨问：“姓孙的，你还认得我吗？”孙悟空睁开火眼金睛，点头大喊：“我怎么会不认得你？你不就是南海普陀山那位救苦救难、大慈大悲的观音菩萨嘛！多谢你来看我，多谢！我在这儿过得像坐牢一样，连个熟人都没来看过我。你从哪儿来的？”  
+
+菩萨说：“我奉如来佛祖的命令，去东土找取经人，路过这儿，顺便来看看你。”  
+
+孙悟空说：“如来骗了我，把我压在这山下五百多年，动弹不得。求菩萨行行好，救救我吧！”  
+
+菩萨说：“你这家伙罪孽深重，放你出来，怕你又闯祸，反而不妥。”  
+
+孙悟空赶紧说：“我已经知道错了，只求菩萨指点条出路，我愿意改过修行。”  
+
+这才是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">人心生一念，天地尽皆知。善恶若无报，乾坤必有私。</div>
+            <div class="text-block simplified-text">你心里想什么，老天全都知道。要是做了好事坏事都没报应，那这世界肯定不公平。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">那菩萨闻得此言，满心欢喜，对大圣道：“圣经云：‘出其言善，则千里之外应之；出其言不善，则千里之外违之。’你既有此心，待我到了东土大唐国寻一个取经的人来，教他救你。你可跟他做个徒弟，秉教伽持，入我佛门，再修正果，如何？”大圣声声道：“愿去，愿去！”菩萨道：“既有善果，我与你起个法名。”大圣道：“我已有名了，叫做孙悟空。”菩萨又喜道：“我前面也有二人归降，正是“悟”字排行。你今也是“悟”字，却与他相合，甚好，甚好。这等也不消叮嘱，我去也。”那大圣见性明心归佛教，这菩萨留情在意访神僧。</div>
+            <div class="text-block simplified-text">菩萨听了这话，非常高兴，对孙悟空说："古书上说：‘说好话，千里之外都有人响应；说坏话，千里之外都有人反对。’既然你有这个心意，等我到大唐国找个取经的人来救你。你可以给他当徒弟，跟着修行，加入佛门，重新修炼成佛，怎么样？"孙悟空连连说："愿意！愿意！"菩萨说："既然你有这个善缘，我给你起个法名吧。"孙悟空说："我已经有名字了，叫孙悟空。"菩萨更高兴了："之前也有两个人归顺我，法名都是'悟'字辈的。现在你也是'悟'字辈，正好和他们一样，太好了。这样我就不用多交代了，我走了。"就这样，孙悟空诚心归顺了佛门，菩萨也用心去寻找取经的圣僧。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">他与木叉离了此处，一直东来，不一日就到了长安大唐国。敛雾收云，师徒们变作两个疥癞游僧，入长安城里，早不觉天晚。行至大市街旁，见一座土地神祠，二人径入，唬得那土地心慌，鬼兵胆战，知是菩萨，叩头接入。那土地又急跑报与城隍、社令，及满长安各庙神祗，都知是菩萨，参见告道：“菩萨，恕众神接迟之罪。”菩萨道：“汝等切不可走漏一毫消息，我奉佛旨，特来此处寻访取经人。借你庙宇，权住几日，待访着真僧即回。”众神各归本处，把个土地赶在城隍庙里暂住，他师徒们隐遁真形。毕竟不知寻出那个取经人来，且听下回分解。</div>
+            <div class="text-block simplified-text">他和木叉离开那里，一路往东走，没几天就到了大唐国都长安。他们收起云雾，变成两个长癞疮的游方和尚，进了长安城，不知不觉天就黑了。走到大街上，看见一座土地庙，两人直接走进去，吓得土地爷心慌，小鬼们发抖，认出是菩萨来了，赶紧磕头迎接。土地爷又急忙跑去通知城隍爷、社令和长安城里所有庙里的神仙，大家都知道是菩萨来了，都来拜见说："菩萨，请原谅我们迎接晚了。"菩萨说："你们千万别走漏风声，我奉如来佛祖的命令，专门来这里找取经的人。借你们的庙住几天，等找到真正的取经人就回去。"神仙们各自回庙，把土地爷赶到城隍庙里临时住下，他们师徒俩隐藏了真身。到底能不能找到那个取经人呢？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
