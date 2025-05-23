@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六十九回　东平府误陷九纹龙　宋公明义释双枪将</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./068.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第六十九回　东平府误陷九纹龙　宋公明义释双枪将</h1>
+        <a href="./070.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+这首诗说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">神龙失势滞飞升，得遇风雷便不情。</div>
+            <div class="text-block simplified-text">龙要是没了本事飞不起来，可一旦碰上刮风打雷，它就能趁机上天了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">豪杰相逢鱼得水，英雄际会弟投兄。</div>
+            <div class="text-block simplified-text">好汉遇到好汉就像鱼儿遇到水，英雄碰到英雄就像弟弟找到哥哥一样投缘。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">千金伪买花娘俏，一让能成俊义名。</div>
+            <div class="text-block simplified-text">花大价钱假装买花，其实是为了讨姑娘欢心；稍微退让一步，反而能赢得好名声。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">水战火攻人罕敌，绿林头领宋公明。</div>
+            <div class="text-block simplified-text">这个人特别擅长水战和火攻，几乎没人能打得过他，他就是梁山好汉的头儿宋江。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当下梁山泊忠义堂上，宋江打了曾头市，卢俊义捉得史文恭，祭献晁天王已了，宋江不负晁盖遗言，要把主位让与卢员外，众人不服。宋江又道：“如此众志不定，于心不安。目今山寨钱粮缺少，梁山泊东有两个州府，却有钱粮。一处是东平府，一处是东昌府。我们自来不曾搅扰他那里百姓。今去问他借粮，公然不肯。今写下两个阄儿，我和卢员外各拈一处。如先打破城子的，便做梁山泊主。如何？”吴用道：“也好。听从天命。”卢俊义道：“休如此说。只是哥哥为梁山泊之主，某听从差遣。”此时不由卢俊义，当下便唤铁面孔目裴宣写下两个阄儿。焚香对天祈祷已罢，各拈一个。宋江拈着东平府，卢俊义拈着东昌府。众皆无语。</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+当时在梁山的忠义堂上，宋江刚打完曾头市，卢俊义抓到了史文恭，给死去的晁盖办完祭祀仪式。宋江想按晁盖的遗言把老大的位置让给卢俊义，但兄弟们都不答应。宋江又说："既然大家意见不统一，我心里也不踏实。现在山寨里缺钱缺粮，梁山泊东边有两个城市有钱有粮，一个是东平府，一个是东昌府。我们以前没骚扰过那里的老百姓。现在去跟他们借粮，他们居然不肯给。这样吧，我们写两个纸条，我和卢员外各抽一个。谁先打下自己抽到的城，谁就当梁山的老大，怎么样？"军师吴用说："行啊，听天由命吧。"卢俊义推辞说："别这样，还是哥哥当老大，我听你安排。"但这事由不得他推辞，马上叫来铁面孔目裴宣写了两个纸条。烧香拜天之后，两人各抽一个。宋江抽到东平府，卢俊义抽到东昌府。大家都没话说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">当日设筵，饮酒中间，宋江传令调拨人马。宋江部下：林冲、花荣、刘唐、史进、徐宁、燕顺、吕方、郭盛、韩滔、彭玘、孔明、孔亮、解珍、解宝、王矮虎、一丈青、张青、孙二娘、孙新、顾大嫂、石勇、郁保四、王定六、段景住，大小头领二十五员，马步军兵一万，水军头领三员，阮小二、阮小五、阮小七，领水军驾船接应。卢俊义部下：吴用、公孙胜、呼延灼、朱仝、雷横，索超、关胜、杨志、单廷圭、魏定国、宣赞、郝思文、燕青、杨林、欧鹏、凌振、马麟、邓飞、施恩、樊瑞、项充、李衮、时迁、白胜，大小头领二十五员，马步军兵一万，水军头领三员，李俊、童威、童猛，引水手驾船策应。其余头领并中伤者，看守寨栅。宋江分俵已定。此是一时进兵，去打两处州郡。有诗为证：</div>
+            <div class="text-block simplified-text">那天摆酒席，喝酒的时候，宋江下令安排人手。宋江这边带着：林冲、花荣、刘唐、史进、徐宁、燕顺、吕方、郭盛、韩滔、彭玘、孔明、孔亮、解珍、解宝、王矮虎、一丈青、张青、孙二娘、孙新、顾大嫂、石勇、郁保四、王定六、段景住，大小头领一共二十五人，步兵骑兵一万人，还有三个水军头领阮小二、阮小五、阮小七，带着水军开船支援。卢俊义那边带着：吴用、公孙胜、呼延灼、朱仝、雷横，索超、关胜、杨志、单廷圭、魏定国、宣赞、郝思文、燕青、杨林、欧鹏、凌振、马麟、邓飞、施恩、樊瑞、项充、李衮、时迁、白胜，大小头领也是二十五人，步兵骑兵一万人，三个水军头领李俊、童威、童猛，带着水手开船帮忙。剩下的头领和受伤的人，留在山寨看家。宋江把任务都分配好了。这次是同时出兵去打两个地方。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">尧舜推贤万古无，禹汤传后亦良图。</div>
+            <div class="text-block simplified-text">尧舜把位子让给贤人，这种做法自古以来独一无二。大禹和商汤把王位传给子孙，也不失为好办法。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">谁知聚啸山林者，揖让谦恭有盛谟。</div>
+            <div class="text-block simplified-text">真没想到，那些在山林里聚众闹事的土匪强盗，表面上居然装得很有礼貌、很讲规矩的样子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">且说宋江与众头领去打东平府，卢俊义与众头领去打东昌府，众多头领各自下山。此是三月初一日的话。日暖风和，草青沙软，正好厮杀。</div>
+            <div class="text-block simplified-text">话说宋江带着一帮兄弟去打东平府，卢俊义也带着另一帮兄弟去打东昌府，大家都下山去了。这是三月初一的事。那天天气暖和，风吹着很舒服，草地绿油油的，沙子也软软的，正是打仗的好时候。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">却说宋江领兵前到东平府，离城只有四十里路，地名安山镇，扎住军马。宋江道：“东平府太守程万里和一个兵马都监，乃是河东上党郡人氏。此人姓董名平，善使双枪，人皆称为双枪将。有万夫不当之勇。虽然去打他城子，也和他通些礼数，差两个人，赍一封战书去那里下。若肯归降，免致动兵。若不听从，那时大行杀戮，使人无怨。谁敢与我先去下书？”只见部下走过一人，身长一丈，腰阔数围。那人是谁？有诗为证：</div>
+            <div class="text-block simplified-text">宋江带着军队到了离东平府四十里的安山镇，就在那里驻扎下来。宋江说："东平府的太守程万里和兵马都监董平是河东上党郡人。这个董平擅长用双枪，大家都叫他'双枪将'，特别能打。虽然我们要攻打他们，但也要先礼后兵。先派两个人送封战书过去。要是他们愿意投降，就不用打仗了。要是不同意，到时候再动手也不迟。谁愿意去送信？"这时队伍里走出一个人，这人个子特别高，腰特别粗。他是谁呢？有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">不好资财惟好义，貌似金刚离古寺。</div>
+            <div class="text-block simplified-text">这个人不爱钱只讲道义，长得像庙里的金刚一样威武。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">身长唤做险道神，此是青州郁保四。</div>
+            <div class="text-block simplified-text">这人个子特别高，外号叫"险道神"，他就是青州好汉郁保四。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">郁保四道：“小人认得董平，情愿赍书去下。”又见部下转过一人，瘦小身材，叫道：“我帮他去。”那人是谁？有诗为证：</div>
+            <div class="text-block simplified-text">郁保四说："我认识董平，愿意去送信。"这时他手下又站出来一个人，个子又瘦又小，喊道："我跟他一起去。"这人是谁呢？有首诗是这么说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">蚱蜢头尖光眼目，鹭鹚瘦腿全无肉。</div>
+            <div class="text-block simplified-text">这只蚱蜢脑袋尖尖的，眼睛又大又亮；那只鹭鹚腿细得像竹竿，一点肉都没有。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">路遥行走疾如飞，扬子江边王定六。</div>
+            <div class="text-block simplified-text">这个人走路快得像飞一样，在扬子江边有个叫王定六的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">这两个便道：“我们不曾与山寨中出得些气力，今情愿去走一遭。”宋江大喜，随即写了战书与郁保四、王定六两个去下。书上只说借粮一事。</div>
+            <div class="text-block simplified-text">这两个人就说："我们还没给山寨出过力，现在愿意跑这一趟。"宋江很高兴，马上写了战书让郁保四和王定六送去。战书上只说要借粮食的事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">且说东平府程太守，闻知宋江起军马到了安山镇住扎，便请本州兵马都监双枪将董平商议军情重事。正坐间，门人报道：“宋江差人下战书。”程太守教唤至。郁保四、王定六当府厮见了，将书呈上。程万里看罢来书，对董都监说道：“要借本府钱粮，此事如何？”董平听了大怒，叫推出去即便斩首。程太守谏道：“不可！自古两国争战，不斩来使。于礼不当。只将二人各打二十讯棍，发回原寨，看他如何？”董平怒气未息，喝把郁保四、王定六一索捆翻，打得皮开肉绽，推出城去。两个回到大寨，哭告宋江说：“董平那厮无理，好生眇视大寨！”</div>
+            <div class="text-block simplified-text">话说东平府的程太守听说宋江带着军队到了安山镇驻扎，就请来本州的兵马总管双枪将董平商量军事。正说着，手下报告："宋江派人来下战书。"程太守让人把使者带进来。郁保四、王定六见了太守，递上战书。程万里看完信，问董平："他们要借咱们的钱粮，这事怎么办？"董平一听就火了，喊着要把使者拉出去砍头。程太守劝道："不行！自古以来打仗都不杀使者，这样不合规矩。不如把这两人各打二十棍子，赶回去，看他们怎么办？"董平还是气不过，叫人把郁保四、王定六捆起来狠狠打了一顿，打得浑身是伤，然后赶出城去。两人回到大营，哭着向宋江告状："董平那个混蛋太欺负人了，根本不把咱们放在眼里！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">宋江见打了两个，怒气填胸，便要平吞州郡。先叫郁保四、王定六上车，回山将息。只见九纹龙史进起身说道：“小弟旧在东平府时，与院子里一个娼妓有染，唤做李瑞兰，往来情熟。我如今多将些金银，潜地入城，借他家里安歇。约定时日，哥哥可打城池。只等董平出来交战，我便扒去更鼓楼上放起火来，里应外合，可成大事。”宋江道：“最好！”史进随即收拾金银，安在包袱里，身边藏了暗器，拜辞起身。宋江道：“兄弟善觑方便。我且顿兵不动。”</div>
+            <div class="text-block simplified-text">宋江看到两个兄弟被打伤了，气得不行，恨不得立刻攻下州城。他先让郁保四和王定六上车回山寨养伤。这时史进站起来说："我以前在东平府的时候，认识一个叫李瑞兰的妓女，关系不错。我现在多带些钱偷偷进城，住在她家。咱们约定好时间，你们在外面攻城。等董平出来打仗的时候，我就溜到更鼓楼放火，里应外合，肯定能成功。"宋江说："好主意！"史进马上收拾好金银，打成包袱，随身藏好武器，告别众人出发了。宋江说："兄弟你见机行事，我这边先按兵不动。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">且说史进转入城中，径到西瓦子李瑞兰家。大伯见是史进，吃了一惊，接入里面，叫女儿出来厮见。李瑞兰生的甚是标格出尖。有诗为证：</div>
+            <div class="text-block simplified-text">话说史进进城后，直接去了西瓦子找李瑞兰。李瑞兰的父亲一看是史进，吓了一跳，赶紧把他请进屋，叫女儿出来见面。这李瑞兰长得特别漂亮。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">万种风流不可当，梨花带雨玉生香。</div>
+            <div class="text-block simplified-text">这姑娘美得让人没法抵挡，就像带着雨滴的梨花一样清新动人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">翠禽啼醒罗浮梦，疑是梅花靓晓妆。</div>
+            <div class="text-block simplified-text">天刚亮，小鸟叽叽喳喳地叫，把我从美梦中吵醒了。我迷迷糊糊地睁开眼睛，看到窗外的梅花开得正艳，还以为是哪个漂亮姑娘大清早起来梳妆打扮呢！
+
+（说明：将"翠禽"译为"小鸟"更通俗，"啼醒罗浮梦"用"吵醒美梦"表达，"靓晓妆"转化为姑娘梳妆的日常场景，保留梅花意象和误认的趣味性，整体符合清晨醒来的生活化情境。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">李瑞兰引去楼上坐了，遂问史进道：“一向如何不见你头影？听的你在梁山泊做了大王，官司出榜捉你。这两日街上乱哄哄地说宋江要来打城借粮，你如何却到这里？”史进道：“我实不瞒你说：我如今在梁山泊做了头领，不曾有功。如今哥哥要来打城借粮，我把你家备细说了。如今我特地来做细作，有一包金银相送与你，切不可走透了消息。明日事完，一发带你一家上山快活。”李瑞兰葫芦提应承，收了金银，且安排些酒肉相待，却来和大娘商量道：“他往常做客时，是个好人，在我家出入不妨。如今他做了歹人，倘或事发，不是耍处。”大伯说道：“梁山泊宋江这伙好汉，不是好惹的。但打城池，无有不破。若还出了言语，他们有日打破城子入来，和我们不干罢！”虔婆便骂道：“老蠢物！你省得甚么人事！自古道：蜂刺入怀，解衣去赶。天下通例，自首者即免本罪。你快去东平府里首告，拿了他去，省得日后负累不好。”李公道：“他把许多金银与我家，不与他担些干系，买我们做甚么？”虔婆骂道：“老畜生！你这般说，却似放屁！我这行院人家，坑陷了千千万万的人，岂争他一个！你若不去首告，我亲自去衙前叫屈，和你也说在里面！”李公道：“你不要性发，且教女儿款住他，休得打草惊蛇，吃他走了。待我去报与做公的，先来拿了，却去首告。”</div>
+            <div class="text-block simplified-text">李瑞兰把史进带到楼上坐下，问他："好久没见你了，听说你在梁山泊当了山大王，官府正到处抓你呢。这两天街上都在传宋江要来打城抢粮食，你怎么跑这儿来了？"史进老实说："不瞒你说，我在梁山泊当了个小头目，还没立过功。这次宋江大哥要来攻城抢粮，我把你家情况都告诉他了。现在我是专门来当内应的，这包金银送给你，千万别走漏风声。等明天事情办完，我带你们全家上山享福去。"
+
+李瑞兰嘴上答应着，收了金银，给他准备了酒菜，转头就找她妈商量："以前他来咱们家做客时是个好人，来往没关系。可现在他成了强盗，万一出事可不得了。"她爹说："梁山泊那帮人不好惹，他们打城池没有打不下来的。要是走漏风声，等他们杀进城来，咱们都得完蛋！"她妈立刻骂道："老糊涂！你懂什么！老话说得好：蜜蜂钻怀里，得赶紧脱衣服赶走。按朝廷规矩，主动告发就能免罪。你赶紧去官府告发，把他抓了，省得以后受连累！"她爹说："他给咱家这么多钱，不帮他担点风险，这钱拿着能安心吗？"她妈又骂："老不死的！放什么屁！咱们这行坑过多少人，还差他一个？你要不去告官，我就自己去衙门喊冤，连你一块告了！"她爹赶紧说："你别急，先让女儿稳住他，别打草惊蛇让他跑了。我这就去找官差，等抓了人再去报案。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">且说史进见这李瑞兰上楼来，觉得面色红白不定。史进便问道：“你家莫不有甚事，这般失惊打怪？”李瑞兰道：“却才上胡梯踏了个空，争些儿吃了一跤，因此心慌撩乱。”史进虽是英勇，又吃他瞒过了，更不猜疑。有诗为证：</div>
+            <div class="text-block simplified-text">话说史进看见李瑞兰上楼来，发现她脸色一会儿红一会儿白，很不正常。史进就问："你家是不是出什么事了？怎么慌慌张张的？"李瑞兰回答说："刚才上楼时差点踩空台阶，险些摔一跤，所以现在心里还扑通扑通跳。"史进虽然是个机灵人，但这次也被她骗过去了，一点都没起疑心。有首诗可以证明这事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">可叹虔婆伎俩多，粉头无奈苦教唆。</div>
+            <div class="text-block simplified-text">唉，这老鸨的花招可真多，逼得妓女没办法，只好硬着头皮听她使唤。
+
+（解析：1. "虔婆"译为"老鸨"更直白；2. "伎俩多"用"花招可真多"更口语化；3. "粉头"明确为"妓女"；4. "无奈苦教唆"转化为"硬着头皮听她使唤"的场景化表达；5. 保留原句因果逻辑和贬义色彩；6. 添加"唉"字还原原文的感叹语气）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">早知暗里施奸狡，错用黄金买笑歌。</div>
+            <div class="text-block simplified-text">早知道你背地里耍心眼使坏，我就不该花钱买你的虚情假意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">当下李瑞兰相叙间阔之情。争不过一个时辰，只听得胡梯边脚步响，有人奔上来。窗外呐声喊，数十个做公的抢到楼上。史进措手不及，正如鹰拿野雀，弹打斑鸠，把史进似抱头狮子绑将下楼来，径解到东平府里厅上。程太守看了大骂道：“你这厮胆包身体，怎敢独自个来做细作！若不是李瑞兰父亲首告，误了我一府良民。快招你的情由，宋江教你来怎地？”史进只不言语。董平便道：“两边公吏狱卒牢子，这等贼骨头，不打如何肯招！”程太守喝道：“与我加力打这厮！”又将冷水来喷，两边腿上各打一百大棍。史进由他拷打，不招实情。董平道：“且把这厮长枷木杻，送在死囚牢里，等拿了宋江，一并解京施行。”</div>
+            <div class="text-block simplified-text">李瑞兰正和史进聊着家常。不到一小时，突然听见楼梯传来脚步声，有人冲了上来。窗外一阵喊叫，几十个衙役冲上楼。史进来不及反应，就像老鹰抓小鸟、弹弓打斑鸠一样，被他们像捆狮子似的绑起来押下楼，直接带到东平府大堂。程太守一见他就大骂："你这家伙胆子也太大了，竟敢一个人来当奸细！要不是李瑞兰她爹举报，差点害了我们全城百姓。快老实交代，宋江派你来干什么？"史进闭着嘴不说话。董平就说："这种贼骨头，不上刑怎么会招！"程太守吼道："给我往死里打！"还用冷水泼他，两条腿各打了一百大板。史进任凭他们打，就是不招。董平说："先给他戴上重枷关进死牢，等抓到宋江，一起押到京城处置。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">却说宋江自从史进去了，备细写书与吴用知道。吴用看了宋公明来书，说史进去娼妓李瑞兰家做细作，大惊。急与卢俊义说知，连夜来见宋江，问道：“谁叫史进去来？”宋江道：“他自愿去。说这李行首是他旧日的表子，好生情重，因此前去。”吴用道：“兄长欠这些主张。若吴某在此，决不叫去。常言道：娼妓之家，讳‘者扯丐漏走’五个字。得便熟闲，迎新送旧，陷了多少才人。更兼水性，无定准之意，纵有恩情，也难出虔婆之手。此人今去，必然吃亏。”宋江便问吴用请计。吴用便叫顾大嫂：“劳烦你去走一遭。可扮做贫婆，潜入城中，只做求乞的。若有些动静，火急便回。若是史进陷在牢中，你可去告狱卒，只说有旧情恩念，我要与他送一口饭。捵入牢中，暗与史进说知：‘我们月尽夜黄昏前后，必来打城。你可就水火之处，安排脱身之计。’月尽夜，你就城中放火为号。此间进兵方好成事。——兄长可先打汶上县，百姓必然都奔东平府。却叫顾大嫂杂在数内，乘势入城，便无人知觉。”吴用设计已罢，上马便回东昌府去了。宋江点起解珍、解宝，引五百余人攻打汶上县。果然百姓扶老挈幼，鼠窜狼奔，都奔东平府来。有诗为证：</div>
+            <div class="text-block simplified-text">话说宋江在史进去之后，把事情详细写信告诉了吴用。吴用看了宋江的信，知道史进去妓女李瑞兰家当卧底，大吃一惊。赶紧找卢俊义商量，连夜跑来见宋江，问道："谁让史进去的？"宋江说："他自己要去的。说这个李行首是他以前的老相好，感情很深，所以去了。"吴用说："大哥你这个决定欠考虑。要是我在，肯定不会让他去。俗话说：妓院这种地方最忌讳'骗、偷、拐、跑'这几个字。她们整天迎来送往，坑过多少有本事的人。再加上水性杨花，根本靠不住，就算有感情，也逃不过老鸨的手掌心。史进这次去肯定要吃亏。"宋江赶紧问吴用怎么办。吴用就叫来顾大嫂："麻烦你跑一趟。扮成要饭的老太婆混进城去。要是发现情况不对，马上回来。要是史进被抓进大牢，你就跟狱卒说，念在旧情想给他送顿饭。进牢后偷偷告诉史进：'我们月底天黑前后一定会来攻城。你找机会在混乱中逃跑。'月底那天晚上，你就在城里放火当信号。这边军队才好行动。——大哥你先带兵打汶上县，老百姓肯定都会往东平府跑。让顾大嫂混在人群里进城，就不会被人发现。"吴用安排完就骑马回东昌府了。宋江带着解珍、解宝，率领五百多人攻打汶上县。果然老百姓拖家带口，像受惊的老鼠一样拼命往东平府逃。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">史进怆惶已就擒，当官拷掠究来音。</div>
+            <div class="text-block simplified-text">史进被抓了，心里很慌。官府对他严刑拷打，逼问事情的来龙去脉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">若非顾媪通消息，怎救圜中万死身。</div>
+            <div class="text-block simplified-text">要不是老太太偷偷报信，怎么能救出监狱里那些差点没命的人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">欲避兵戈，逃生匿迹，合城纷扰，都不在话下。却说顾大嫂头髻蓬松，衣服蓝缕，杂在众人里面，捵入城来，绕街求乞。到于衙前，打听得果然史进陷在牢中，方知吴用智亮如神。次日，提着饭罐，只在司狱司前往来伺候。见一个年老公人从牢里出来，顾大嫂看着便拜，泪下如雨。那年老公人问道：“你这贫婆哭做甚么？”顾大嫂道：“牢中监的史大郎，是我旧的主人，自从离了，又早十年。只说道在江湖上做买卖，不知为甚事陷在牢里。眼见得无人送饭，老身叫化得这一口儿饭，特要与他充饥。哥哥怎生可怜见，引进则个，强如造七层宝塔。”那公人道：“他是梁山泊强人，犯着该死的罪。谁敢带你入去。”顾大嫂道：“便是一刀一剐，自教他瞑目而受。只可怜见引老身入去送这口儿饭，也显得旧日之情。”说罢又哭。那老公人寻思道：“若是个男子汉，难带他入去。一个妇人家有甚利害？”当时引顾大嫂直入牢中来，看见史进项带沉枷，腰缠铁索。史进见了顾大嫂，吃了一惊，则声不得。顾大嫂一头假啼哭，一头喂饭。别的节级便来喝道：“这是该死的歹人！狱不通风，谁放你来送饭？即忙出去，饶你两棍！”顾大嫂见监牢内人多，难说备细，只说得：“月尽夜打城，叫你牢中自挣扎。”史进再要问时，顾大嫂被小节级打出牢门。史进只记得“月尽夜”。</div>
+            <div class="text-block simplified-text">为了躲避战乱，全城的人都忙着逃命躲藏。顾大嫂头发乱糟糟的，穿着破衣服，混在人群里进了城，沿街要饭。她来到衙门附近，打听到史进确实被关在大牢里，这才知道吴用真是神机妙算。
+
+第二天，她提着饭罐在监狱门口转悠。看到一个老狱卒从牢里出来，顾大嫂立刻跪下磕头，哭得稀里哗啦。老狱卒问："你这要饭的哭啥？"顾大嫂说："关在里面的史大郎是我以前的主人，我们分开有十年了。听说他在外面做生意，不知道为啥被抓了。我看没人给他送饭，我讨来这口饭想给他吃。求您行行好，带我进去吧，这比修七层佛塔功德还大啊！"
+
+老狱卒说："他是梁山强盗，犯了死罪。谁敢带你进去？"顾大嫂说："就算要杀要剐，他也认了。您就发发善心让我送这口饭，也算我们主仆一场的情分。"说完又哭。老狱卒心想："要是个男的肯定不能带，一个女的能有什么问题？"就带她进了牢房。
+
+史进戴着沉重的枷锁，看到顾大嫂吓了一跳，不敢出声。顾大嫂一边假装哭一边喂饭。这时其他狱卒过来骂："这是死囚！牢房不许探视，谁让你来送饭的？赶紧滚，不然揍你！"顾大嫂看牢里人多不方便细说，只悄悄说了句："月底晚上攻城，你在牢里做好准备。"史进还想问，顾大嫂已经被赶出去了。史进只记住了"月底晚上"这句话。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">原来那个三月却是大尽。到二十九，史进在牢中与两个节级说话，问道：“今朝是几时？”那个小节级却错记了，回说道：“今朝是月尽夜，晚些买贴孤魂纸来烧。”史进得了这话，巴不得晚。一个小节级吃的半醉，带史进到水火坑边。史进哄小节级道：“背后的是谁？”赚得他回头，挣脱了枷。只一枷梢，把那小节级面上正着一下，打倒在地。就拾砖头敲开木杻，睁着鹘眼，抢到亭心里。几个公人都酒醉了，被史进迎头打着，死的死了，走的走了。拔开牢门，只等外面救应。又把牢中应有罪人尽数放了，总有五六十人，就在牢内发喊起来，一齐走了。有人报知太守。程万里惊得面如土色，连忙便请兵马都监商议。董平道：“城中必有细作，且差多人围困了这贼！我却乘此机会，领军出城去捉宋江。相公便紧守城池，差数十个人围定牢门，休教走了。”董平上马点军去了。程太守便点起一应节级、虞候、押番，各执枪棒，去大牢前呐喊。史进在牢里不敢轻出。外厢的人又不敢进去。顾大嫂只叫得苦。</div>
+            <div class="text-block simplified-text">原来那个三月有三十天。到了二十九号这天，史进在牢里跟两个看守聊天，问："今天几号了？"有个小看守记错了，回答说："今晚是月底，待会儿得买点纸钱烧给孤魂野鬼。"史进一听这话，巴不得天快黑。
+
+后来有个喝得半醉的小看守带史进去上厕所。史进骗他说："你背后是谁？"趁小看守回头时，史进猛地挣脱枷锁，用枷锁狠狠砸在他脸上，当场把他打趴下。接着捡起砖头砸开脚镣，瞪着眼睛冲到院子中央。当时几个狱卒都喝醉了，被史进迎面打来，死的死逃的逃。
+
+史进撬开牢门，等着外面接应的人。他把牢里五六十个犯人都放了，犯人们在牢里大喊大叫，一窝蜂逃了出去。有人赶紧报告太守，程万里吓得脸色惨白，急忙找兵马都监董平商量。董平说："城里肯定有内奸，先派人包围大牢！我正好趁这机会带兵出城抓宋江。您守着城池，派几十个人堵住牢门别让犯人跑了。"说完就骑马调兵去了。
+
+程太守召集所有看守、差役，拿着武器到大牢外叫骂。史进在牢里不敢轻易出来，外面的人也不敢进去。顾大嫂急得直跺脚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">却说都监董平，点起兵马，四更上马，杀奔宋江寨来。伏路小军报知宋江。宋江道：“此必是顾大嫂在城中又吃亏了。他既杀来，准备迎敌！”号令一下，诸军都起。当时天色方明，却好接着董平军马，两下摆开阵势。董平出马，真乃英雄盖世，谋勇过人。有诗为证：</div>
+            <div class="text-block simplified-text">话说董都监带着兵，天还没亮就出发，直接杀向宋江的营地。宋江手下的探子赶紧报告了这个消息。宋江说："肯定是顾大嫂在城里又出事了。既然他们打过来了，咱们就准备好迎战！"命令一下，所有士兵都行动起来。这时候天刚亮，正好碰上董平的部队，两边摆开阵势准备开打。董平骑马出来，确实是个厉害人物，又聪明又勇敢。有首诗是这么夸他的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">两面旗牌耀日月，简银铁铠似霜凝。</div>
+            <div class="text-block simplified-text">两面大旗亮闪闪像太阳月亮，银白色的铠甲冷冰冰像结了霜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">水磨凤翅头盔白，锦绣麒麟战袄青。</div>
+            <div class="text-block simplified-text">他戴着一顶白色的头盔，头盔两边像凤凰翅膀一样展开；穿着一件青色的战袍，战袍上绣着精美的麒麟图案。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">一对白龙争上下，两条银蟒递飞腾。</div>
+            <div class="text-block simplified-text">两条白龙在空中打架，你追我赶；又像两条银蛇互相缠绕着飞上飞下。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">河东英勇风流将，能使双枪是董平。</div>
+            <div class="text-block simplified-text">在河东有个很厉害的将军叫董平，他不仅打仗勇猛，长得也帅，最拿手的是使双枪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">原来董平心灵机巧，三教九流，无所不通，品竹调弦，无有不会。山东、河北皆号他为风流双枪将。宋江在阵前，看了董平这表人品，一见便喜。又见他箭壶中插一面小旗，上写一联道：“英勇双枪将，风流万户侯”。宋江随即遣韩滔出马迎敌。韩滔得令，手执铁槊，直取董平。董平那对铁枪，神出鬼没，人不可当。宋江再教金枪手徐宁，仗钩镰枪前去交战，替回韩滔。徐宁得令，飞马便出，接住董平厮杀。两个在征尘影里，杀气丛中，斗到五十余合，不分胜败。交战良久，宋江恐怕徐宁有失，便教鸣金收军。徐宁勒马回来。董平手举双枪，直追杀入阵来。宋江鞭梢一展，四下军兵一齐围住。宋江勒马，上高阜处看望，只见董平围在阵内。他若投东，宋江便把号旗望东指，军马向东来围他。他若投西，号旗便望西指，军马便向西来围他。董平在阵中横冲直撞，两枝枪，直杀到申牌已后，冲开条路，杀出去了。宋江不赶董平，驱兵大进。董平因见交战不胜，当晚收军回城去了。宋江连夜起兵，直抵城下，团团调兵围住。顾大嫂在城中未敢放火，史进又不得出来，两下拒住。</div>
+            <div class="text-block simplified-text">原来董平这人特别聪明，什么都会，吹拉弹唱样样精通。在山东、河北一带，大家都叫他"风流双枪将"。宋江在战场上看到董平长得帅，一下子就喜欢上了。又看见他箭袋里插着一面小旗，上面写着："英勇双枪将，风流万户侯"。宋江马上派韩滔去跟他打。韩滔拿着铁槊就冲上去，可董平那对铁枪实在太厉害，根本挡不住。宋江又让徐宁拿着钩镰枪去帮忙，把韩滔换下来。徐宁骑马冲上去跟董平打，两人打了五十多个回合还分不出胜负。宋江怕徐宁出事，就下令收兵。徐宁骑马回来，董平却举着双枪追了过来。宋江一挥鞭子，四面八方的士兵就把董平围住了。宋江站在高处看，只见董平在包围圈里左冲右突。他往东跑，宋江就往东指挥；他往西跑，宋江就往西指挥。董平在包围圈里横冲直撞，一直打到下午才杀出一条路逃走了。宋江没去追他，带着大部队继续前进。董平因为打不赢，当晚就收兵回城了。宋江连夜带兵追到城下，把城团团围住。城里的顾大嫂不敢放火，史进也出不来，两边就这么僵持着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">原来程太守有个女儿，十分大有颜色。董平无妻，累累使人去求为亲，程万里不允。因此日常间有些言和意不和。董平当晚领军入城，其日，使个就里的人，乘势来问这头亲事。程太守回说：“我是文官，他是武官，相赘为婿，正当其理。只是如今贼寇临城，事在危急，若还便许，被人耻笑。待得退了贼兵，保护城池无事，那时议亲，未为晚矣。”那人把这话却回复董平，董平虽是口里应道：“说得是。”只是心中踌躇，不十分欢喜。恐怕他日后不肯。</div>
+            <div class="text-block simplified-text">程太守有个女儿，长得特别漂亮。董平还没娶老婆，多次派人去提亲，但程万里一直不答应。所以两人平时说话做事总有点不对付。这天晚上董平带兵进城，马上找了个熟人来提亲。程太守回答说："我是文官，他是武官，结亲家挺合适。但现在土匪都快打到城下了，情况紧急，要是现在答应婚事，会被人笑话。等打退土匪，保住城池安全，再谈婚事也不迟。"那人把这话传给董平，董平嘴上说"说得对"，心里却犯嘀咕，不太高兴，怕程太守以后反悔。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">这里宋江连夜攻城得紧，太守催请出战。董平大怒，披挂上马，带领三军出城交战。宋江亲在阵前门旗下喝道：“量你这个寡将，怎敢当吾！岂不闻古人有言：大厦将倾，非一木可支。你看我手下雄兵十万，猛将千员，替天行道，济困扶危。早来就降，免受一死。”董平大怒，回道：“文面小吏，该死狂徒，怎敢乱言！”说罢，手举双枪，直奔宋江。左有林冲，右有花荣，两将齐出，各使军器，来战董平。约斗数合，两将便走，宋江军马佯败，四散而奔。董平要逞功劳，拍马赶来。宋江等却好退到寿张县界。宋江前面走，董平后面追。离城有十数里，前至一个村镇，两边都是草屋，中间一条驿道。董平不知是计，只顾纵马赶来。宋江因见董平了得，隔夜已使王矮虎、一丈青、张青、孙二娘四个，带一百余人，先在草屋两边埋伏，却拴数条绊马索在路上，又用薄土遮盖，只等来时鸣锣为号，绊马索齐起，准备捉这董平。董平正赶之间，来到那里，只听得背后孔明、孔亮大叫：“勿伤吾主！”恰好到草屋前，一声锣响，两边门扇齐开，拽起绳索。那马却待回头，背后绊马索齐起，将马绊倒，董平落马。左边撞出一丈青、王矮虎，右边走出张青、孙二娘，一齐都上，把董平捉了。头盔、衣甲、双枪、只马，尽数夺了。两个女头领，将董平捉住，用麻绳背剪绑了。两个女将各执钢刀，监押董平来见宋江。</div>
+            <div class="text-block simplified-text">宋江连夜带兵猛攻城池，太守急着要董平出城迎战。董平气坏了，穿上盔甲骑马出城，带着军队去打仗。宋江站在阵前喊话："就你一个光杆将军，怎么打得过我们？你没听过老话吗——快倒的大房子，一根木头撑不住。看看我这十万大军、上千猛将，都是替天行道、帮老百姓的。赶紧投降吧，还能饶你一命！"董平火冒三丈回骂："你个脸上刺字的小官，找死的东西还敢胡说！"说完举着双枪就冲宋江杀过去。
+
+这时林冲从左边、花荣从右边同时杀出，三个人打了一会儿，林冲花荣假装打不过，带着兵马假装逃跑。董平想立功，紧追不舍。宋江他们一路退到寿张县地界，董平在后面追了十几里，追到一个村子。这村子两边都是茅草屋，中间一条大路——其实宋江早就让王矮虎、一丈青、张青、孙二娘带了一百多人埋伏在草屋里，路上还偷偷拉了绊马索，就等董平中计。
+
+正追着，突然听见孔明孔亮在后面喊："别伤我大哥！"紧接着锣声一响，两边草屋门猛地打开，埋伏的人拉起绊马索。董平的马刚要转身就被绊倒，他摔下马来。埋伏的人一拥而上——左边冲出一丈青和王矮虎，右边跳出张青和孙二娘，直接把董平按住。他们扒了董平的头盔铠甲，抢走双枪和战马，两个女头领用麻绳把他捆得结结实实，拿着刀押去见宋江。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">却说宋江过了草房，勒住马，立在绿杨树下，迎见这两个女头领解着董平。宋江随即喝退两个女将：“我教你去相请董将军，谁教你们绑缚他来！”二女将喏喏而退。宋江慌忙下马，自来解其绳索，便脱护甲锦袍与董平穿着，纳头便拜。董平慌忙答礼。宋江道：“倘蒙将军不弃微贱，就为山寨之主。”董平答道：“小将被擒之人，万死犹轻。若得容恕安身，实为万幸！”宋江道：“敝寨地连水泊，素无扰害。今为缺少粮食，特来东平府借粮，别无他意。”董平道：“程万里那厮，原是童贯门下门馆先生，得此美任，安得不害百姓。若是兄长肯容董平，今去赚开城门，杀入城中，共取钱粮，以为报效。”宋江大喜，便令一行人将过盔甲枪马，还了董平，披挂上马。董平在前，宋江军马在后，卷起旗幡，都到东平城下。董平军马在前，大叫：“城上快开城门！”把门军士将火把照时，认得是董都监，随即大开城门，放下吊桥。董平拍马先入，砍断铁锁，背后宋江等长驱人马杀入城来。都到东平府里。急传将令，不许杀害百姓，放火烧人房屋。董平径奔私衙，杀了程太守一家人口，夺了这女儿。宋江先叫开放大牢，救出史进。便开府库，尽数取了金银财帛，大开仓廒，装载粮米上车，先使人护送去梁山泊金沙滩，交割与三阮头领，接递上山。史进自引人去西瓦子里李瑞兰家，把虔婆老幼，一门大小，碎尸万段。宋江将太守家私，俵散居民，仍给沿街告示，晓谕百姓：“害民州官，已自杀戮。汝等良民，各安生理。”告示已罢，收拾回军。</div>
+            <div class="text-block simplified-text">宋江骑马经过一间草屋，在柳树下停下来，正好看见两个女头领押着被绑的董平过来。宋江立刻训斥她们："我让你们去请董将军，谁让你们绑他了？"两个女将赶紧退下。宋江连忙下马，亲手给董平松绑，还把自己的好衣服脱给他穿，然后跪下就拜。董平也赶紧回礼。
+
+宋江说："要是将军不嫌弃我们这穷山寨，就请来当老大吧。"董平回答："我是个被抓的败将，死一万次都不冤。您能收留我，真是天大的恩情！"宋江解释："我们山寨靠着水泊，从来不欺负百姓。这次是因为缺粮，才来东平府借粮，没别的意思。"董平说："那个程万里是奸臣童贯的手下，当官后专门祸害百姓。您要是信得过我，我现在就去骗开城门，咱们杀进城抢粮报恩。"
+
+宋江很高兴，让人把董平的盔甲武器马匹都还给他。董平穿好装备骑马走在前面，宋江带兵跟在后面，收起旗帜悄悄来到东平城下。董平对着城上喊："快开城门！"守城士兵用火把一照，认出是董都监，马上打开城门放下吊桥。董平骑马冲进去砍断门锁，宋江带着大队人马杀进城，直奔府衙。
+
+宋江下令不准伤害百姓、不许放火烧房。董平直接冲到程太守家，杀了太守全家，抢走了他女儿。宋江先让人打开监狱救出史进，又打开仓库把金银财宝和粮食都装上马车，派人先运回梁山泊。史进带人去妓院找李瑞兰一家报仇，把她们全家都砍成了肉酱。宋江把太守家的财产分给老百姓，还贴出告示说："祸害百姓的贪官已经杀了，好百姓们安心过日子吧。"办完这些事，宋江就带兵回山了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">大小将校再到安山镇，只见白日鼠白胜飞奔前来，报说东昌府交战之事，虚实胜败。宋江听罢，神眉剔竖，怪眼圆睁，大叫：“众多兄弟，不要回山，且跟我来，再去这个去处降兵捉将！”正是：再施忠义轻舒手，复夺资储锦绣城。毕竟宋江再引军马投何处来，且听下回分解。</div>
+            <div class="text-block simplified-text">一帮将领又回到安山镇，正好碰见白胜急急忙忙跑来报告东昌府打仗的详细情况。宋江听完，气得眉毛竖起、眼睛瞪圆，大喊："弟兄们别回山寨了！跟我走，咱们再去那儿收拾那些官兵！"这正是：好汉再次出手，要夺回富饶城池。到底宋江带兵去哪儿？咱们下回接着说。
+
+（说明：改写时做了这些处理：
+1. "将校"改为"将领"，"白日鼠白胜"简化为"白胜"更符合现代称呼习惯
+2. 用"急急忙忙跑来"替代"飞奔前来"更口语化
+3. "神眉剔竖，怪眼圆睁"转化为"气得眉毛竖起、眼睛瞪圆"更直观
+4. 诗句意译为"好汉再次出手，要夺回富饶城池"保留原意但更直白
+5. 保留所有关键信息：地点、人物、事件、决策
+6. 最后一句保持传统说书风格的同时改用现代口语）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
