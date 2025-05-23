@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第十三回　急先锋东郭争功　青面兽北京斗武</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./012.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第十三回　急先锋东郭争功　青面兽北京斗武</h1>
+        <a href="./014.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句翻译成现代白话文：
+
+"有首诗这样写道："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">得罪幽燕作配戎，当场比试较英雄。</div>
+            <div class="text-block simplified-text">在幽燕地区得罪了外族军队，双方当场比试，看谁更厉害。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">棋逢敌手难藏幸，将遇良才怎用功。</div>
+            <div class="text-block simplified-text">下棋碰到厉害的对手，想赢可不容易；打仗遇到有本事的将领，再使劲儿也难打赢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">鹊画弓弯欺满月，点钢枪刺耀霜风。</div>
+            <div class="text-block simplified-text">这张弓弯得像月亮一样圆，钢枪的枪尖在寒风中闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">直饶射虎穿杨手，尽心输赢胜负中。</div>
+            <div class="text-block simplified-text">就算你是百发百中的神射手，到头来还不是困在输赢的圈子里打转。
+
+（说明：1. "直饶"译为"就算"更口语化 2. "射虎穿杨手"用"百发百中的神射手"解释典故 3. "尽心输赢胜负中"转化为"困在输赢的圈子里打转"的日常比喻 4. 保留了"技艺高超却执着胜负"的核心含义 5. 使用"到头来""还不是"等口语连接词 6. 未增减原意）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当时周谨、杨志两个勒马在于旗下，正欲出战交锋。只见兵马都监闻达喝道：“且住！”自上厅来禀复梁中书道：“复恩相：论这两个比试武艺，虽然未见本事高低，枪刀本是无情之物，只宜杀贼剿寇。今日军中自家比试，恐有伤损，轻则残疾，重则致命，此乃于军不利。可将两根枪去了枪头，各用毡片包裹，地下蘸了石灰，再各上马，都与皂衫穿着。但是枪尖厮搠，如白点多者当输。此理如何？”梁中书道：“言之极当。”随即传令下去。两个领了言语，向这演武厅后去了枪尖，都用毡片包了，缚成骨朵，身上各换了皂衫；各用枪去石灰桶里蘸了石灰；再各上马，出到阵前。杨志横枪立马看到那周谨时，果是弓马熟闲。怎生结束？头戴皮盔，皂衫笼着一副熟铜甲，下穿一对战靴，系一条绯红包肚，骑一匹鹅黄马。那周谨跃马挺枪直取杨志，这杨志也拍战马拈手中枪来战周谨。两个在阵前来来往往，翻翻复复，搅做一团，扭做一块。鞍上人斗人，坐下马斗马。两个斗了四五十合。看周谨时，恰似打翻了豆腐的，斑斑点点，约有三五十处。看杨志时，只有左肩胛上一点白。梁中书大喜，叫唤周谨上厅看了迹，道：“前官参你做个军中副牌，量你这般武艺，如何南征北讨，怎生做的正请受的副牌？教杨志替此人职役。”</div>
+            <div class="text-block simplified-text">当时周谨和杨志骑马站在旗子下面，正要开打。这时兵马都监闻达突然喊："等一下！"
+他跑到梁中书面前说："大人，他俩比武虽然看不出真本事，但刀枪无眼，容易受伤。万一出事，轻的残废，重的送命，对军队不好。不如把枪头去掉，包上毡布，再蘸点石灰。让他们穿上黑衣服比试，谁身上白点多谁就输。您看行不？"
+梁中书说："这主意好。"马上让人去安排。
+两人听了命令，到后面去掉枪尖，包上毡布，换上黑衣，把枪蘸了石灰，重新上马出场。
+杨志拿着枪看周谨，发现他确实骑射功夫不错。周谨穿着皮头盔、黑衣服套着铜铠甲，脚蹬战靴，腰系红肚兜，骑一匹黄马。
+两人打起来后，马打马，人打人，打了四五十回合。再看周谨，全身像打翻了豆腐似的，沾了三五十个白点。杨志就左肩膀有一个白点。
+梁中书很高兴，叫周谨上来检查后说："前任推荐你当副牌官，就你这水平怎么打仗？让杨志替你吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">管军兵马都监李成上厅禀复梁中书道：“周谨枪法生疏，弓马熟闲。不争把他来逐了职事，恐怕慢了军心。再教周谨与杨志比箭如何？”梁中书道：“言之极当。”再传下将令来，叫杨志与周谨比箭。两个得了将令，都扎了枪，各关了弓箭。杨志就弓袋内取出那张弓来，扣得端正，擎了弓，跳上马，跑到厅前，立在马上，欠身禀复道：“恩相，弓箭发处，事不容情，恐有伤损，乞请钧旨。”梁中书道：“武夫比试，何虑伤残，但有本事，射死勿论。”杨志得令，回到阵前。李成传下言语，叫两个比箭好汉各关与一面遮箭牌，防护身体。两个各领了遮箭防牌，绾在臂上。杨志道：“你先射我三箭，后却还你三箭。”周谨听了，恨不得把杨志一箭射个透明。杨志终是个军官出身，识破了他手段，全不把他为事。怎见的两个比试？”</div>
+            <div class="text-block simplified-text">李成将军向梁中书报告说："周谨枪法不行，但箭术不错。要是直接撤他的职，怕影响军心。不如让他再和杨志比一次箭术？"梁中书说："有道理。"于是下令让杨志和周谨比箭。
+
+两人接到命令后，都放下长枪，带上弓箭。杨志从弓袋里取出弓，整理好装备，骑上马跑到厅前，在马上行礼说："大人，比箭时容易误伤，请您明示。"梁中书说："比武难免受伤，凭真本事较量，就算射死也不追究。"杨志领命回到场地。
+
+李成让人给两人各发一块挡箭牌护身。两人把挡箭牌绑在手臂上。杨志说："你先射我三箭，然后我再射你三箭。"周谨听了恨不得一箭射穿杨志。但杨志毕竟是老手，看穿了他的把戏，根本没当回事。
+
+接下来就是两人的比试了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">一个天姿英发，一个锐气豪强。一个曾向山中射虎，一个惯从风里穿杨。彀满处兔狐丧命，箭发时雕鹗魂伤。较艺术当场比并，施手段对众揄扬。一个磨鞦解实难抵当，一个闪身解不可提防。顷刻内要观胜负，霎时间要见存亡。虽然两个降龙手，必定其中有一强。</div>
+            <div class="text-block simplified-text">这段文字描述了两个厉害人物比试的场景。简单来说：
+
+有两个特别厉害的人，一个天生聪明能干，一个勇猛气势强。一个曾经在山里射杀过老虎，一个擅长在风中射中杨柳叶（形容箭法准）。他们拉弓就能让兔子狐狸没命，放箭就能让老鹰吓得魂飞。现在要比试本领，当众展示各自的手段。一个的绝招让人难以抵挡，一个的身手快得防不胜防。转眼间就要分出输赢，一会儿就见生死。虽然两人都像能制服龙的高手，但肯定有一个更强。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">当时将台上早把青旗磨动。杨志拍马望南边去。周谨纵马赶来，将缰绳搭在马鞍鞒上，左手拿着弓，右手搭上箭，拽得满满地，望杨志后心飕地一箭。杨志听得背后弓弦响，霍地一闪，去镫里藏身，那枝箭早射个空。周谨见一箭射不着，却早慌了。再去壶中急取第二枝箭来，搭上弓弦，觑的杨志较亲，望后心再射一箭。杨志听得第二枝箭来，却不去镫里藏身。那枝箭风也似来，杨志那时也取弓在手，用弓梢只一拨，那枝箭滴溜溜拨下草地里去了。周谨见第二枝箭又射不着，心里越慌。杨志的马早跑到教场尽头，霍地把马一兜，那马便转身望正厅上走回来。周谨也把马只一勒，那马也跑回，就势里赶将来。去那绿茸茸芳草地上，八个马蹄翻盏撒钹相似，勃喇喇地风团儿也似般走。周谨再取第三枝箭，搭在弓弦上，扣得满满地，尽平生气力，眼睁睁地看着杨志后心窝上，只一箭射将来。杨志听得弓弦响，扭回身，就鞍上把那枝箭只一绰，绰在手里，便纵马入演武厅前，撇下周谨的箭。</div>
+            <div class="text-block simplified-text">台上的人挥动青旗发出信号。杨志骑马往南边跑。周谨骑马追上去，把缰绳挂在马鞍上，左手拿弓，右手拉满弓弦，朝杨志后背"嗖"地射了一箭。杨志听到弓弦声，猛地一闪，躲到马镫旁边，那箭射空了。周谨见没射中，顿时慌了。赶紧又从箭筒里抽出第二支箭，瞄准杨志后背再射。杨志听到第二箭射来，这次没躲，眼看箭飞快射到，他拿起弓用弓梢一挑，那箭"啪"地被打落在草地上。周谨见第二箭又没中，更慌了。这时杨志的马已跑到场地尽头，突然调头往回跑。周谨也勒马转身追上去。两人在绿草地上跑得飞快，马蹄声像打翻碗碟一样响。周谨拿出第三支箭，用尽全力拉满弓，死死盯着杨志后背猛射过去。杨志听到弓弦响，转身一伸手，凌空接住飞箭，然后骑马直奔演武厅，把周谨的箭扔在地上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">梁中书见了大喜。传下号令，却叫杨志也射周谨三箭。将台上又把青旗磨动。周谨撇了弓箭，拿了防牌在手，拍马望南而走。杨志在马上把腰只一纵，略将脚一拍，那马勃喇喇的便赶。杨志先把弓虚扯一扯，周谨在马上听得脑后弓弦响，扭转身来，便把防牌来迎，却早接个空。周谨寻思道：“那厮只会使枪，不会射箭。等我待他第二枝箭再虚诈时，我便喝住了他，便算我赢了。”周谨的马早到教场南尽头，那马便转望演武厅来。杨志的马见周谨马跑转来，那马也便回身。杨志早去壶中掣出一枝箭来，搭在弓弦上。心里想道：“射中他后心窝，必至伤了他性命。他和我又没冤仇，洒家只射他不致命处便了。”左手如托泰山，右手如抱婴孩，弓开如满月，箭去似流星。说时迟，那时快，一箭正中周谨左肩。周谨措手不及，翻身落马。那匹空马直跑过演武厅背后去了。众军卒自去救那周谨去了。</div>
+            <div class="text-block simplified-text">梁中书看了非常高兴，下令让杨志也射周谨三箭。指挥台上青旗一挥，周谨扔下弓箭，拿起盾牌，骑马往南跑。杨志一夹马肚子，马就飞快追了上去。杨志假装拉弓（其实没射），周谨听到背后弓弦响，转身用盾牌挡，结果挡了个空。周谨心想："这家伙只会耍枪不会射箭，等他第二次假装射箭时，我就喊停他，这样就算我赢了。"这时周谨的马跑到场地南头，又折返跑回指挥台。杨志的马也跟着调头。杨志从箭筒抽出一支箭搭上弓，心想："射他后背会要命，我俩没仇，射个不致命的地方就行。"他左手稳稳托弓，右手轻轻拉弦，弓拉得满满的，箭嗖地飞出去——眨眼间正中周谨左肩。周谨来不及躲，摔下马来，他的空马跑到指挥台后面去了。士兵们赶紧跑去救周谨。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">梁中书见了大喜，叫军政司便呈文案来，教杨志截替了周谨职役。杨志喜气洋洋，下了马，便向厅前来拜谢恩相，充其职役。只见阶下左边转上一个人来，叫道：“休要谢职！我和你两个比试。”杨志看那人时，身材凛凛，七尺以上长短，面圆耳大，唇阔口方，腮边一部落腮胡须，威风凛凛，相貌堂堂，直到梁中书面前声了喏，禀道：“周谨患病未痊，精神不在，因此误输与杨志。小将不才，愿与杨志比试武艺。如若小将折半点便宜与杨志，休教截替周谨，便教杨志替了小将职役，虽死而不怨。”梁中书看时，不是别人，却是大名府留守司正牌军索超。为是他性急，撮盐入火，为国家面上只要争气，当先厮杀，以此人都叫他做急先锋。</div>
+            <div class="text-block simplified-text">梁中书看了非常高兴，马上让军政司办理手续，叫杨志接替周谨的职位。杨志兴高采烈地下了马，走到厅前向梁中书道谢。这时，台阶下突然走出一个人，大声说："先别急着谢赏！我要和你比试比试！"杨志打量这人：个头高大，身高超过一米七，圆脸大耳，宽嘴方下巴，满脸络腮胡，看起来威风凛凛。这人走到梁中书面前行礼说："周谨是因为生病没恢复，状态不好才输给杨志。我虽然本事不大，但想和杨志比试武艺。要是我输给他半点，不用让他接替周谨，直接接替我的职位就行，就算死了也不后悔。"梁中书一看，原来是大名府留守司的正牌军官索超。这人脾气火爆，一点就着，但为了国家荣誉特别要强，打仗总是冲在最前面，所以大家都叫他"急先锋"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">李成听得，便下将台来，直到厅前禀复道：相公，这杨志既是殿司制使，必然好武艺。虽和周谨不是对手，正好与索正牌比试武艺，便见优劣。”梁中书听了，心中想道：“我指望一力要抬举杨志，众将不伏。一发等他赢了索超，他们也死而无怨，却无话说。”梁中书随即唤杨志上厅，问道：“你与索超比试武艺如何？”杨志禀道：“恩相将令，安敢有违。”梁中书道：“既然如此，你去厅后换了装束，好生披挂。”教甲仗库随行官吏，取应用军器给与，就叫：“牵我的战马，借与杨志骑。小心在意，休觑得等闲。”杨志谢了，自去结束。</div>
+            <div class="text-block simplified-text">李成听完，走下指挥台，到大厅前报告说："大人，这个杨志既然是殿前司的制使，武功肯定不错。虽然他和周谨比试不算什么，但正好可以和索超比试一下，看看谁更厉害。"梁中书听了，心里想："我本来想提拔杨志，但将领们都不服气。干脆等杨志赢了索超，他们也就没话说了，死了也甘心。"梁中书马上叫杨志上厅，问他："你和索超比试武功怎么样？"杨志回答："大人吩咐，我哪敢不听。"梁中书说："那好，你去后面换身装备，好好穿戴。"又让军械库的官员给他拿需要的武器，还说："把我的战马牵来给杨志骑。你要小心点，别不当回事。"杨志道了谢，自己去准备了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">却说李成分付索超道：“你却难比别人，周谨是你徒弟，先自输了。你若有些疏失，吃他把大名府军官都看得轻了。我有一匹惯曾上阵的战马并一副披挂，都借与你。小心在意，休教折了锐气！”索超谢了，也自去结束。</div>
+            <div class="text-block simplified-text">李成对索超说："你跟别人不一样，周谨是你徒弟，他已经输了。要是你也出什么差错，会让大名府的军官们都看不起咱们。我有匹经常打仗的好马和一副盔甲，都借给你用。一定要小心，别丢了咱们的脸！"索超道了谢，自己也去准备了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">梁中书起身，走出阶前来。从人移转银交椅，直到月台栏干边放下。梁中书坐定。左右祗候两行。唤打伞的撑开那把银葫芦顶茶褐罗三檐凉伞来盖定在梁中书背后。将台上传下将令，早把红旗招动。两边金鼓齐鸣，发一通擂。去那教场中两阵内各放了个炮。炮响处，索超跑马入阵内藏在门旗下。杨志也从阵里跑马入军中，直到门旗背后。将台上又把黄旗招动，又发了一通擂。两军齐呐一声喊。教场中谁敢做声，静荡荡的。再一声锣响，扯起净平白旗。两下众官没一个敢走动胡言说话，静静的立着。将台上又把青旗招动。只见第三通战鼓响处，去那左边阵内门旗下，看看分开。鸾铃响处，正牌军索超出马，直到阵前兜住马，拿军器在手，果是英雄。怎生打扮？但见：</div>
+            <div class="text-block simplified-text">梁中书站起来，走到台阶前。手下人搬来一把银色的交椅，放在高台的栏杆边上。梁中书坐下后，两边站满了伺候的人。他让打伞的人撑开那把银葫芦顶、茶褐色罗绸做的三层遮阳伞，挡在自己身后。  
+
+指挥台上发出命令，红旗一挥，两边的金鼓一起敲响，擂了一通鼓。教场两边的队伍里各放了一炮。炮声一响，索超骑马冲进队伍，藏在旗子后面。杨志也从队伍里骑马出来，躲到另一边的旗子后。指挥台上又挥动黄旗，再擂一通鼓。两边的士兵齐声大喊，教场里立刻安静下来，没人敢出声。又一声锣响，举起净平白旗。两边的官员都静静地站着，没人敢乱动乱说话。  
+
+指挥台上再次挥动青旗。第三通战鼓响起时，左边队伍的门旗慢慢分开。随着马铃声响，正牌军索超骑马冲出来，一直跑到阵前勒住马，手里拿着武器，看起来真像个英雄。他是什么打扮呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">头戴一顶熟铜狮子盔，脑后斗大来一颗红缨；身披一副铁叶攒成铠甲，腰系一条镀金兽面束带，前后两面青铜护心镜；上笼着一领绯红团花袍，上面垂两条绿绒缕颔带；下穿一双斜皮气跨靴。左带一张弓，右悬一壶箭，手里横着一柄金蘸斧。坐下李都监那匹惯战能征雪白马。</div>
+            <div class="text-block simplified-text">这个人戴着一顶铜狮子头盔，后面有个大红缨子；穿着一身铁片拼成的铠甲，腰上系着金色兽头腰带，前后各有一块青铜护心镜；外面套着一件红色花袍子，领口挂着两条绿绒带；脚上蹬着一双斜皮靴子。左边带着弓，右边挂着箭袋，手里握着一把金色斧头。骑的是李都监那匹能征善战的白色战马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">看那匹马时，又是一匹好马。但见：</div>
+            <div class="text-block simplified-text">看那匹马，真是一匹好马。你看它：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">两耳如同玉箸，双睛凸似金铃。色按庚辛，仿佛南山白额虎；毛堆腻粉，如同北海玉麒麟。冲得阵，跳得溪，喜战鼓性如君子；负得重，走得远，惯嘶风必是龙媒。胜如伍相梨花马，赛过秦王白玉驹。</div>
+            <div class="text-block simplified-text">这匹马长得特别神气：两只耳朵像白玉筷子一样直挺，眼睛又大又圆像金色的铃铛。它的毛色白得像金属一样闪亮，看起来就像南山那只著名的白额老虎；全身的毛又厚又密，跟北海传说中的玉麒麟似的。这马特别厉害：打仗时能冲锋陷阵，过小溪能轻松跳跃，一听到战鼓声就兴奋得像正人君子见到正义之事；驮着重物也能走远路，迎着风嘶鸣的样子一看就是千里马的料。比伍子胥骑的梨花马还威风，比秦王那匹白玉驹更出色。
+
+（说明：译文通过以下方式实现要求：
+1. 用"像...一样"替代文言比喻
+2. "性如君子"译为"像正人君子见到正义之事"
+3. "龙媒"译为通俗的"千里马"
+4. 将"庚辛"代表的金属白色直接说明
+5. 保留所有原始意象：玉箸、金铃、白额虎等
+6. 最后两句保持比较关系但改用口语表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">左阵上急先锋索超兜住马，挜着金蘸斧，立马在阵前。右边阵内门旗下，看看分开。鸾铃响处，杨志提手中枪出马，直至阵前，勒住马，横着枪在手，果是勇猛。怎生结束？但见：</div>
+            <div class="text-block simplified-text">左边队伍里，急先锋索超拉住马，手里攥着金斧子，站在队伍最前面。右边队伍里，门旗下面突然分开。随着铃铛声响起，杨志提着长枪骑马出来，一直跑到队伍前面，勒住马，横着拿枪，看起来特别勇猛。他是什么打扮呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">头戴一顶铺霜耀日镔铁盔，上撒着一把青缨；身穿一副钩嵌梅花榆叶甲，系一条红绒打就勒甲绦，前后兽面掩心；上笼着一领白罗生色花袍，垂着条紫绒飞带；脚登一双黄皮衬底靴。一张皮靶弓，数根凿子箭，手中挺着浑铁点钢枪。骑的是梁中书那匹火块赤千里嘶风马。</div>
+            <div class="text-block simplified-text">这人头上戴着一顶闪亮的铁头盔，上面插着一撮青色缨毛；身上穿着一套梅花图案的金属铠甲，用红绒绳紧紧绑着，前后都有兽头护心镜；外面披着一件白色绣花战袍，腰间挂着紫色飘带；脚上蹬着黄色皮靴。背着一张皮弓，带着几支箭，手里握着一杆精铁长枪。骑的是梁中书那匹有名的红色千里马，跑起来像风一样快。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">看时，又是一匹无敌的好马。但见：</div>
+            <div class="text-block simplified-text">仔细一看，又是一匹特别棒的马。你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">鬃分火焰，尾摆朝霞。浑身乱扫胭脂，两耳对攒红叶。侵晨临紫塞，马蹄迸四点寒星；日暮转沙堤，就地滚一团火块。休言火德神驹，真乃寿亭赤兔。疑是南宫来猛兽，浑如北海出骊龙。</div>
+            <div class="text-block simplified-text">这匹马可真是威风！它的鬃毛像跳动的火焰，尾巴甩起来像朝霞一样红。全身火红得像涂了胭脂，两只耳朵竖着像对红叶。清晨跑过边关时，马蹄溅起的尘土像四颗寒星；傍晚转到沙堤上，远远看去就像一团滚动的火球。别说什么火神骑的宝马了，这简直就是关公那匹赤兔马再世！猛一看还以为是天上神兽下凡，仔细瞧又像北海里冲出的黑龙那么霸气。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">右阵上青面兽杨志，拈手中枪，勒坐下马，立于阵前。两边军将暗暗地喝采。虽不知武艺如何，先见威出众．正南上旗牌官拿着销金令字旗，聚马而来，喝道：“奉相公钧旨，教你两个俱各用心。如有亏误处，定行责罚。若是赢时，多有重赏。”二人得令，纵马出阵，都到教场中心。两马相交，二般兵器并举。索超忿怒，轮手中大斧，拍马来战杨志。杨志逞威，拈手中神枪，来迎索超。两个在教场中间，将台前面，二将相交，各赌平生事。一来一往，一去一回，四条臂膊纵横，八只马蹄撩乱。但见：</div>
+            <div class="text-block simplified-text">右边的队伍里，青面兽杨志握紧长枪，勒住战马，站在阵前。两边的士兵都偷偷叫好——虽然不知道他武功到底怎样，但光看这气势就够威风了。这时候正南边有个传令官举着镶金边的令旗，骑马跑过来大喊："奉大帅命令，叫你们两个都认真打。谁要是出差错，肯定要受罚；要是打赢了，重重有赏！"俩人听完命令，立刻催马冲到练兵场中央。只见两匹马冲到一块，两件兵器同时举起——索超怒气冲冲抡起大斧头，拍马直奔杨志；杨志也不含糊，挺起长枪迎战索超。两个人在练兵场正中间、指挥台前面打得不可开交，都拼上了看家本领。你一招我一式，杀得难分难解，四条胳膊舞得眼花缭乱，八只马蹄踏得尘土飞扬。那场面真是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">征旗蔽日，杀气遮天。一个金蘸斧直奔顶门，一个浑铁枪不离心坎。这个是扶持社稷，毗沙门托塔李天王；那个是整顿江山，掌金阙天蓬大元帅。一个枪尖上吐一条火焰，一个斧刃中迸几道寒光。那个是七国中袁达重生，这个是三分内张飞出世。一个似巨灵神忿怒，挥大斧劈碎西华山；一个如华光藏生嗔，仗金枪搠透锁魔关。这个圆彪彪睁开双眼，肐查查斜砍斧头来；那个必剥剥咬碎牙关，火焰焰摇得枪杆断。这个弄精神，不放些儿空；那个觑破绽，安容半点闲。</div>
+            <div class="text-block simplified-text">战旗多得遮住了太阳，杀气浓得盖住了天空。一个举着金斧头直砍脑袋，一个挺着铁枪猛刺心窝。这边是保家卫国的托塔李天王，那边是镇守天庭的天蓬大元帅。一个枪头喷火，一个斧刃闪光。那边活像战国猛将袁达再世，这边好比三国张飞重生。一个像发怒的巨灵神，抡起斧头能劈开华山；一个似生气的华光神，端着金枪能捅破魔关。这个瞪圆双眼，唰地劈下斧头；那个咬紧牙关，晃得枪杆直冒火星。这边全神贯注不留破绽，那边抓住机会步步紧逼。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">当下杨志和索超两个斗到五十余合，不分胜败。月台上梁中书看得呆了。两边众军官看了，喝采不迭。阵面上军士们递相厮觑道：“我们做了许多年军，也曾出了几遭征，何曾见这等一对好汉厮杀！”李成、闻达在将台上不住声叫道：“好斗！”闻达心里只恐两个内伤了一个，慌忙招呼旗牌官拿着令字旗，与他分了。将台上忽的一声锣响，杨志和索超斗到是处，各自要争功，那里肯回马。旗牌官飞来叫道：“两个好汉歇了，相公有令。”杨志、索超方才收了手中军器，勒坐下马，各跑回本阵来。立马在旗下，看到梁中书，只等将令。李成、闻达下将台来，直到月台下禀复梁中书道：“相公，据这两个武艺一般，皆可重用。”梁中书大喜，传下将令，叫唤杨志、索超。旗牌官传令，唤两个到厅前，都下了马，小校接了二人的军器。两个都上厅来，躬身听令。梁中书叫取两锭白银，两副表里来，赏赐二人。就叫军政司将两个都升做管军提辖使，便叫贴了文案，从今日便参了他两个。索超、杨志都拜谢了梁中书，将着赏赐下厅来。解了枪刀弓箭，卸了头盔衣甲，换了衣裳。索超也自去了披挂，换了棉袄。都上厅来，再拜谢了众军官，入班做了提辖。众军卒打着得胜鼓，把着那金鼓旗先散。梁中书和大小军官，都在演武厅上筵宴。</div>
+            <div class="text-block simplified-text">杨志和索超打了五十多个回合，还是不分胜负。梁中书在台上看傻眼了。两边的军官们不停地叫好。士兵们互相议论："当了这么多年兵，打过这么多次仗，从没见过这么厉害的高手对打！"李成和闻达在指挥台上一个劲喊"打得好！"。闻达担心他俩受伤，赶紧让旗牌官举着令旗去分开他们。突然一声锣响，可杨志和索超正打得难分难解，都想立功，谁也不肯停手。旗牌官跑过去喊："两位好汉停手吧，大人有令！"他俩这才收起武器，骑马回到各自队伍。站在旗下面等命令。李成和闻达下来向梁中书报告："大人，他俩武艺不相上下，都可以重用。"梁中书很高兴，下令叫杨志和索超过来。两人来到大厅前下马，卫兵接过武器。他俩上厅听令，梁中书赏给他们每人一锭银子和两套衣服，当场升他俩当提辖官，命令马上办理手续。杨志和索超谢过梁中书，拿着赏赐下厅，卸下武器盔甲，换上便服。索超也脱掉战袍换上棉袄。两人又上厅谢过各位军官，正式当上提辖。士兵们敲着得胜鼓，举着旗子先散了。梁中书和军官们在演武厅摆酒庆贺。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">看看红日沉西，筵席已罢，众官皆欢。梁中书上了马，众官员都送归府。马头前摆着这两个新参的提辖，上下肩都骑着马，头上都带着花红，迎入东郭门来。两边街道扶老携幼，都看了欢喜。梁中书在马上问道：“你那百姓欢喜为何，莫非哂笑下官？”众老人都跪下禀道：“老汉等生在北京，长在大名府，不曾见今日这等两个好汉将军比试。今日教场中看了这般敌手，如何不欢喜！”梁中书在马上听了大喜。回到府中，众官各自散了。索超自有一班弟兄，请去作庆饮酒。杨志新来，未有相识，自去梁府宿歇，早晚殷勤，听候使唤。都不在话下。</div>
+            <div class="text-block simplified-text">太阳快下山了，酒席也散了，大家都挺高兴。梁中书骑上马，其他官员也都各自回府。队伍最前面走着刚上任的两个军官，他俩都骑着马，头上戴着大红花，从东城门进来。路两边站满了老百姓，有老人有小孩，个个看得兴高采烈。
+
+梁中书在马上问："你们这么高兴，是不是在笑话我啊？"几个老人家赶紧跪下说："我们在大名府活了大半辈子，从没见过今天这么精彩的比武。这两位好汉在练兵场打得真叫一个漂亮，看得我们实在痛快！"
+
+梁中书听了特别开心。回到府里，官员们各自回家。索超有自己那帮兄弟，叫去喝酒庆祝了。杨志是新来的，没什么熟人，就住在梁中书府上，每天勤快干活，等着听吩咐。这些小事就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">且把这闲话丢过，只说正话。自东郭演武之后，梁中书十分爱惜杨志，早晚与他并不相离。月中又有一分请受，自渐渐地有人来结识他。那索超见了杨志手段高强，心中也自钦伏。不觉光阴迅速，又早春尽夏来，时逢端午，蕤宾节至。梁中书与蔡夫人在堂家宴，庆贺端阳。但见：</div>
+            <div class="text-block simplified-text">咱们跳过这些闲话，直接说重点。自从上次在东郭比武之后，梁中书特别看重杨志，整天把他带在身边。每个月还给他发工资，慢慢地就有不少人主动来结交他。那个叫索超的看到杨志武艺高强，心里也很佩服。时间过得飞快，转眼春天过去夏天到了，正好赶上端午节。梁中书和蔡夫人就在家里摆酒席，庆祝端午。当时看到这样的景象：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">盆栽绿艾，瓶插红榴。水晶帘卷虾须，锦绣屏开孔雀。菖蒲切玉，佳人笑捧紫霞杯；角黍堆金，美女高擎表玉案。食烹异品，果献时新。弦管笙簧，奏派声清韵美；绮罗珠翠，摆两行舞女歌儿。当筵象板撒红牙，遍体舞裙拖锦绣。消遣壶中闲日月，遨游身外醉乾坤。</div>
+            <div class="text-block simplified-text">院子里摆着盆栽的绿艾草，花瓶里插着红石榴花。水晶帘子卷起来像虾须一样垂着，锦绣屏风上开着孔雀图案。切得像玉片一样的菖蒲，漂亮姑娘端着紫色酒杯；堆成小金山似的粽子，美女们高举着白玉托盘。桌上摆着稀罕的美食，时令新鲜的水果。乐器奏出清脆动听的音乐，穿着华丽衣服、戴着珠宝的歌女们排成两行表演。宴席上打着红牙拍板，舞女们转着圈，锦绣裙子随风飘动。在这儿喝酒作乐打发时间，醉醺醺地好像到了另一个世界。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">当日梁中书正在后堂与蔡夫人家宴，庆赏端阳。酒至数杯，食供两套，只见蔡夫人道：“相公自从出身，今日为一统帅，掌握国家重任。这功名富贵从何而来？”梁中书道：“世杰自幼读书，颇知经史。人非草木，岂不知泰山之恩，提携之力，感激不尽。”蔡夫人道：“丈夫既知我父亲之恩德，如何忘了他生辰？”梁中书道：“下官如何不记得泰山是六月十五日生辰。已使人将十万贯收买金珠宝贝，送上京师庆寿。一月之前，干人都关领去了，见今九分齐备。数日之间，也待打点停当，差人起程。只是一件，在此踌躇：上年收买了许多玩器并金珠宝贝，使人送去，不到半路，尽被贼人劫了，枉费了这一遭财物，至今严捕贼人不获。今年教谁人去好？”蔡夫人道：“帐前见有许多军校，你选择知心腹的人去便了。”梁中书道：“尚有四五十日，早晚催并礼物完足，那时选择去人未迟。夫人不必挂心，世杰自有理会。”当日家宴，午牌至二更方散。自此不在话下。</div>
+            <div class="text-block simplified-text">那天，梁中书正和蔡夫人在后堂吃端午节家宴。酒过几巡，菜上两道，蔡夫人说："相公，你从一个小官做到现在的大帅，手握国家大权。这富贵功名是怎么来的？"梁中书回答："我从小读书，懂得些道理。人又不是木头，当然明白全靠岳父大人提拔的恩情，我感激不尽。"蔡夫人说："你既然知道我父亲的恩情，怎么忘了他生日快到了？"梁中书说："我怎么会忘记岳父六月十五的生日呢？早就准备了十万贯钱买金银珠宝，要送到京城贺寿。一个月前就让手下人去办了，现在东西基本备齐。过几天收拾妥当就派人出发。就是有件事让我发愁：去年买的许多贵重礼物，半路上全被强盗抢了，白白浪费钱财，到现在还没抓到贼人。今年该派谁去送呢？"蔡夫人说："你手下那么多军官，挑个可靠的去不就行了。"梁中书说："离生日还有四五十天，等礼物都备齐了再选人也不迟。夫人别操心，我自有安排。"这家宴从中午一直吃到半夜才散。这事就先说到这儿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">不说梁中书收买礼物玩器，选人上京去庆贺蔡太师生辰。且说山东济州郓城县新到任一个知县，姓时名文彬，当日升厅公座。但见：</div>
+            <div class="text-block simplified-text">梁中书正忙着准备礼物和好东西，挑人去京城给蔡太师祝寿。这边山东济州郓城县新来了个县官，叫时文彬，这天刚升堂办公。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">为官清正，作事廉明。每怀恻隐之心，常有仁慈之念。争田夺地，辨曲直而后施行；斗殴相争，分轻重方才决断。闲暇抚琴会客，也应分理民情。虽然县治宰臣官，果是一方民父母。</div>
+            <div class="text-block simplified-text">这个人当官清廉正直，做事公正严明。他心地善良，总是替别人着想。遇到争土地、抢地盘的事，他会先搞清楚谁对谁错再处理；碰到打架斗殴的纠纷，他会根据事情严重程度来判决。平时有空就弹弹琴、见见客人，但该管的百姓事情一样不落下。虽然只是个县官，但确实像老百姓的父母官一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">当下知县时文彬升厅公座，左右两边排着公吏人等。知县随即叫唤尉司捕盗官员，并两个巡捕都头。本县尉司管下，有两个都头：一个唤做步兵都头，一个唤做马兵都头。这马兵都头管着二十匹坐马弓手，二十个土兵；那步兵都头管着二十个使枪的头目，二十个土兵。</div>
+            <div class="text-block simplified-text">县官时文彬升堂办公，两边站着衙门里的办事人员。县官马上叫来管抓贼的官员和两个巡捕队长。这个县里管治安的有两个队长：一个管步兵，一个管骑兵。骑兵队长手下管着二十个骑马的弓箭手和二十个普通士兵；步兵队长手下管着二十个拿枪的小头目和二十个普通士兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">这马兵都头姓朱名仝，身长八尺四五，有一部虎须髯，长一尺五寸，面如重枣，目若朗星，似关云长模样，满县人都称他做美髯公。原是本处富户，只因他仗义疏财，结识江湖上好汉，学得一身好武艺。怎见的朱仝气象？但见：</div>
+            <div class="text-block simplified-text">这个马兵队长姓朱名仝，身高一米八五左右，留着浓密的胡子，胡子有三十多厘米长，脸像红枣一样红，眼睛又亮又大，长得跟关公很像，全县人都叫他"美胡子"。他本来是当地的有钱人，因为为人仗义、花钱大方，交了很多江湖好汉朋友，还练就了一身好功夫。他长什么样呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">义胆忠肝豪杰，胸中武艺精通。超群出众果英雄。弯弓能射虎，提剑可诛龙。一表堂堂神鬼怕，形容凛凛威风。面如重枣色通红。云长重出世，人号美髯公。</div>
+            <div class="text-block simplified-text">这个人是个了不起的英雄好汉，武艺高强，本事特别大。他比一般人都厉害，是真正的英雄。拉弓能射死老虎，拿剑敢杀恶龙。长相威武，连鬼神见了都害怕。他身材高大，气势逼人，脸色红得像熟透的枣子。就像关公再世，大家都叫他"大胡子美男子"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">那步兵都头姓雷名横，身长七尺五寸，紫棠色面皮，有一部扇圈胡须。为他膂力过人，能跳二三丈阔涧，满县人都称他做插翅虎。原是本县打铁匠人出身，后来开张碓坊，杀牛放赌。虽然仗义，只有些心匾窄。也学得一身好武艺。怎见得雷横气象？但见：</div>
+            <div class="text-block simplified-text">这个步兵队长叫雷横，身高一米七五左右，脸色紫红，长着一圈像扇子形状的大胡子。因为他力气特别大，能跳过两三丈宽的河沟，全县人都叫他"插翅虎"。他原来是县里的铁匠，后来开了个磨坊，还干过宰牛、开赌场的营生。这人虽然讲义气，但心眼有点小。他武功很好。雷横长什么样呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">天上罡星临世上，就中一个偏能。都头好汉是雷横。拽拳神臂健，飞脚电光生。江海英雄当武勇，跳墙过涧身轻。豪雄谁敢与相争。山东插翅虎，寰海尽闻名。</div>
+            <div class="text-block simplified-text">这段说的是：
+
+天上有个厉害的星宿下凡了，其中有个特别能打的。这人叫雷横，是个好汉。他拳头有力，胳膊结实，踢腿快得像闪电。他在江湖上以武艺出名，翻墙过河灵活得很。这么厉害的人，谁敢跟他比？外号"山东插翅虎"，天下人都知道他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">因那朱仝、雷横两个，非是等闲人也，以此众人保他两个做了都头，专管擒拿贼盗。当日知县呼唤，两个上厅来，声了喏，取台旨。知县道：“我自到任以来，闻知本府济州管下所属水乡梁山泊，贼盗聚众打劫，拒敌官军。亦恐各处乡村，盗贼猖狂，小人甚多。今唤你等两个，休辞辛苦，与我将带本管土兵人等，一个出西门，一个出东门，分投巡捕。若有贼人，随即剿获申解，不可扰动乡民。体知东溪村山上有株大红叶树，别处皆无。你们众人采几片来县里呈纳，方表你们曾巡到那里。各人若无红叶，便是汝等虚妄，官府定行责罚不恕。”两个都头领了台旨，各自回归，点了本管土兵，分投自去巡察。</div>
+            <div class="text-block simplified-text">朱仝和雷横这两个人本事不小，所以大家推举他们当了都头，专门负责抓贼。这天，县太爷叫他们上堂听令。两人行礼后，县太爷说："我上任以来，听说济州管辖的梁山泊有水贼聚众抢劫，对抗官府。我担心各个乡村也有盗贼作乱，坏人不少。现在派你们俩别怕辛苦，带上手下的士兵，一个从西门出发，一个从东门出发，分头去巡查抓捕。遇到贼人就地捉拿押送回来，别惊扰老百姓。听说东溪村山上有棵特别的红叶树，别的地方都没有。你们每人摘几片红叶带回县衙交差，这样才能证明你们真的去过那里。要是谁拿不出红叶，就是谎报巡查情况，官府一定严惩不饶。"两个都头领命后，各自回去集合手下士兵，分头去巡查了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">不说朱仝引人出西门自去巡捕。只说雷横当晚引了二十个土兵，出东门绕村巡察，遍地里走一了遭，回来到东溪村山上，众人采了那红叶，就下村来。行不到三二里，早到灵官庙前，见殿门不关。雷横道：“这殿里又没有庙祝，殿门不关，莫不有歹人在里面么？我们直入去看一看。”众人拿着火，一齐照将入来。只见供桌上赤条条地睡着一个大汉。天道又热，那汉子把些破衣裳团做一块作枕头，枕在项下，齁齁的沉睡着了在供桌上。雷横看了道：“好怪，好怪！知县相公忒神明，原来这东溪村真个有贼。”大喝一声，那汉却待要挣挫，被二十个土兵一齐向前，把那汉子一条索子绑了，押出庙门，投一个保正庄上来。</div>
+            <div class="text-block simplified-text">咱们先不管朱仝带人去西门巡逻的事。单说雷横这天晚上带了二十个士兵，从东门出来绕着村子检查，到处都转了一圈。回到东溪村山上时，大伙儿顺手摘了些红叶，就下山往回走。走了不到两三里地，来到灵官庙前，发现庙门大开着。雷横说："这庙里又没看庙的，门却开着，该不会有坏人藏在里面吧？咱们进去瞧瞧。"士兵们举着火把，一块儿进了庙。
+
+进去一看，供桌上光着膀子躺着个大汉。天儿挺热的，这人拿几件破衣服卷成枕头垫在脖子底下，在供桌上睡得正香，还打着呼噜。雷横一看就说："真邪门！县太爷果然料事如神，东溪村还真藏着贼人！"他大喝一声，那汉子刚要挣扎，二十个士兵就一拥而上，用绳子把他捆了个结实，押出庙门，直接送到了保正（相当于村长）的庄子上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">不是投那个去处，有分教：直使得东溪村里，聚三四筹好汉英雄；郓城县中，寻十万贯金珠宝贝。正是：天上罡星来聚会，人间地煞得相逢。毕竟雷横拿住那汉投解甚处来，且听下回分解。</div>
+            <div class="text-block simplified-text">简单来说就是：  
+
+雷横抓住的那个人要被押到哪里去呢？这可不是随便押个地方，接下来会发生大事：东溪村里会聚集一群好汉，郓城县里也会有人去找那价值十万贯的财宝。说白了，就是一群厉害人物要碰头了。  
+
+至于雷横到底把人押去哪儿，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
