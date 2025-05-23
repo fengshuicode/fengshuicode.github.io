@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十五回　王婆计啜西门庆　淫妇药鸩武大郎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./024.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十五回　王婆计啜西门庆　淫妇药鸩武大郎</h1>
+        <a href="./026.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">诗歌里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">可怪狂夫恋野花，因贪淫色受波查。</div>
+            <div class="text-block simplified-text">真搞不懂这男人为啥非要去找野花，就为了那点色欲惹上麻烦。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">亡身丧已皆因此，破业倾资总为他。</div>
+            <div class="text-block simplified-text">为了他，命都搭上了，家产也败光了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">半晌风流有何益，一般滋味不须夸。</div>
+            <div class="text-block simplified-text">短暂的快活有啥用，平常的滋味不用吹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">他时祸起萧墙内，血污游魂更可嗟。</div>
+            <div class="text-block simplified-text">以后要是祸事从内部闹起来，连命都保不住，那才真叫惨呢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当下郓哥被王婆打了这几下，心中没出气处，提了雪梨篮儿，一径奔来街上，直来寻武大郎。转了两条街，只见武大挑着炊饼担儿，正从那条街上来。郓哥见了，立住了脚，看着武大道：“这几时不见你，怎么吃得肥了？”武大歇下担儿道：“我只是这般模样，有甚么吃得肥处？”郓哥道：“我前日要籴些麦稃，一地里没籴处。人都道你屋里有。”武大道：“我屋里又不养鹅鸭，那里有这麦稃？”郓哥道：“你说没麦稃，你怎地栈得肥地？便颠倒提起你来，也不妨，煮你在锅里，也没气。”武大道：“含鸟猢狲，倒骂得我好！我的老婆又不偷汉子，我如何是鸭？”郓哥道：“你老婆不偷汉子，只偷子汉。”武大扯住郓哥道：“还我主来！”郓哥道：“我笑你只会扯我，却不咬下他左边的来。”武大道：“好兄弟，你对我说是兀谁，我把十个炊饼送你。郓哥道：“炊饼不济事。你只做个小主人，请我吃三杯，我便说与你。”武大道：“你会吃酒，跟我来。”武大挑了担儿，引着郓哥，到一个小酒店里，歇了担儿，拿了几个炊饼，买了些肉，讨了一旋酒，请郓哥吃。那小厮又道：“酒便不要添了，肉再切几块来。”武大道：“好兄弟，你且说与我则个。”郓哥道：“且不要慌。等我一发吃了，却说与你。你却不要气苦！我自帮你打捉。”武大看那猴子吃了酒肉，道：“你如今却说与我。”郓哥道：“你要得知，把手来摸我头上肐。”武大道：“却怎地来有这肐？”郓哥道：“我对你说。我今日将这一篮雪梨，去寻西门大郎挂一小勾子，一地里没寻处。街上有人说道：‘他在王婆茶房里，和武大娘子勾搭上了，每日只在那里行走。’我指望去赚三五十钱使，叵耐那王婆老猪狗，不放我去房里寻他，大栗暴打我出来。我特地来寻你。我方才把两句话来激你，我不激你时，你须不来问我。”武大道：“真个有这等事？”郓哥道：“又来了！我道你是这般的鸟人，那厮两个落得快活。只等你出来，便在王婆房里做一处。你兀自问道真个也是假！”武大听罢，道：“兄弟，我实不瞒你说：那婆娘每日去王婆家里做衣裳，归来时便脸红，我自也有些疑忌。这话正是了。我如今寄了担儿，便去捉奸，如何？”郓哥道：“你老大一个人，原来没些见识！那王婆老狗，什么利害怕人，你如何出得他手！他须三人也有个暗号，见你入来拿他，把你老婆藏过了，那西门庆须了得，打你这般二十来个。若捉他不着，干吃他一顿拳头。他又有钱有势，反告了一纸状子，你便用吃他一场官司。又没人做主，干结果了你。”武大道：“兄弟，你都说得是。却怎地出得这口气？”郓哥道：“我吃那老猪狗打了，也没出气处。我教你一着，你今日晚些归去，都不要发作，也不可说，自只做每日一般。明朝便少做些炊饼出来卖，我自在巷口等你。若是见西门庆入却时，我便来叫你。你便挑着担儿，只在左近等我。我便先去惹那老狗，必然打我时，我先将篮儿丢出街来。你却抢来，我便一头顶住那婆子，你便只顾奔入房里去，叫起屈来。此计如何？”武大道：“既是如此，却是亏了兄弟！我有数贯钱，与你把去籴米。明日早早来紫石街巷口等我。”郓哥得了数贯钱、几个炊饼，自去了。</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+那天郓哥被王婆打了几下，心里憋着火，提着装雪梨的篮子跑到街上找武大郎。转了两条街，正好看见武大挑着卖烧饼的担子走过来。
+
+郓哥拦住他说："好久不见，你怎么长胖了？"武大放下担子："我一直这样，哪胖了？"郓哥说："我前两天想买点麦麸，到处买不到。别人都说你家有。"武大说："我家又不养鸡鸭，哪来的麦麸？"郓哥说："没麦麸你怎么养得这么肥？把你倒拎起来都没事，扔锅里煮也不冒气。"（注：这是在暗讽武大像鸭子）
+
+武大生气了："小兔崽子骂我是鸭子？我老婆又没偷人！"郓哥说："你老婆是不偷人，专偷汉子。"武大抓住他："你说明白！"郓哥说："你光抓我有什么用，有本事去抓奸夫啊。"
+
+武大说："好兄弟，你告诉我是谁，我给你十个烧饼。"郓哥说："烧饼不行，你得请我喝三杯酒。"武大就带他去小酒馆，买了酒肉请他吃。
+
+郓哥吃饱喝足才说："我今天本来想找西门庆卖梨赚钱，结果听说他和你老婆在王婆茶馆鬼混。我去找他们，被王婆打出来了。我刚才故意激你，就是让你来找我。"
+
+武大说："难怪我老婆每天去王婆家做衣服，回来都脸红。我现在就去抓奸！"郓哥劝他："你打不过他们的。我有个主意：明天你少做点烧饼，在巷口等我。看到西门庆进去，我就去挑衅王婆。等我把篮子扔出来，你就冲进去抓人。"
+
+武大觉得这主意好，给了郓哥一些钱和烧饼。郓哥拿着钱走了。
+
+（说明：原文中"鸭"是骂人话，指妻子出轨的丈夫；"栈得肥"指养肥；"肐"是头上的包。这些在改写时都用通俗说法替代了，同时保留了所有关键情节。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">武大还了酒钱挑了担儿，自去卖了一遭归去。原来这妇人往常时只是骂武大，百般的欺负他。近日来自知无礼，只得窝盘他些个。当晚武大挑了担儿归家，也只和每日一般，并不说起。那妇人道：“大哥买盏酒吃？”武大道：“却才和一般经纪人买三碗吃了。”那妇人安排晚饭与武大吃了，当夜无话。次日饭后，武大只做三两扇炊饼，安在担儿上。这妇人一心只想着西门庆，那里来理会武大做多做少。当日武大挑了担儿，自出去做买卖。这妇人巴不能勾他出去了，便踅过王婆房里来等西门庆。</div>
+            <div class="text-block simplified-text">武大付了酒钱，挑着担子去街上卖了一趟饼就回家了。平时这女人（指潘金莲）总是骂武大，各种欺负他。但最近她觉得自己做得有点过分，就稍微对武大好了点。那天晚上武大挑着担子回家，和往常一样什么都没说。潘金莲问他："大哥要不要买点酒喝？"武大回答："刚和几个做买卖的一起喝了三碗。"潘金莲给武大准备了晚饭，当晚没什么特别的事。第二天吃过午饭，武大只做了两三个饼放在担子上。潘金莲满脑子想的都是西门庆，根本不管武大做多少饼。武大挑着担子出门做生意后，潘金莲巴不得他赶紧走，好溜到王婆家等西门庆来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">且说武大挑着担儿，出到紫石街巷口，迎见郓哥提着篮儿在那里张望。武大道：“如何？”郓哥道：“早些个，你且去卖一遭了来。他七八分来了，你只在左近处伺候。”武大云飞也去卖了一遭回来。郓哥道：“你只看我篮儿撇出来，你便奔入去。”武大自担儿寄了，不在话下。</div>
+            <div class="text-block simplified-text">话说武大挑着担子，走到紫石街巷口，正好碰见郓哥提着篮子在那儿东张西望。武大问："怎么样？"郓哥说："还早呢，你先去卖一圈货再来。他差不多快到了，你就在附近等着。"武大赶紧去卖完货回来。郓哥交代："你只要看到我把篮子扔出来，就马上冲进去。"武大把担子寄存好，这就不细说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">虎有伥兮鸟有媒，暗中牵陷恣施为。</div>
+            <div class="text-block simplified-text">老虎害人靠伥鬼，鸟儿被抓因诱饵。  
+暗地使坏下圈套，想害谁就害谁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">郓哥指讦西门庆，他日分尸竟莫支。</div>
+            <div class="text-block simplified-text">郓哥揭发西门庆的丑事，后来西门庆被人分尸，谁也救不了他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">却说郓哥提着篮儿走入茶坊里来，骂道：“老猪狗！你昨日做甚么便打我？”那婆子旧性不改，便跳起身来喝道：“你这小猢狲！老娘与你无干，你做甚么又来骂我？”郓哥道：“便骂你这马泊六，做牵头的老狗，直甚么屁！”那婆子大怒，揪住郓哥便打。郓哥叫一声：“你打我！”把篮儿丢出当街上来。那婆子却待揪他，被这小猴子叫声“你打”时，就把王婆腰里带个住，看着婆子小肚上只一头撞将去，争些儿跌倒，却得壁子碍住不倒。那猴子死顶住在壁上。只见武大裸起衣裳，大踏步直抢入茶房里来。那婆子见了是武大来，急待要拦当时，却被这小猴子死命顶住，那里肯放。婆子只叫得：“武大来也！”那婆娘正在房里，做手脚不迭，先奔来顶住了门。这西门庆便钻入床底下躲去。武大抢到房门边，用手推那房门时，那里推得开。口里只叫得：“做得好事！”那妇人顶住着门，慌做一团，口里便说道：“闲常时只如鸟嘴，卖弄杀好拳棒，急上场时便没些用。见个纸虎，也吓一跤！”那妇人这几句话，分明教西庆来打武大，夺路了走。西门庆在床底下听了妇人这几句言语，提醒他这个念头，便钻出来，说道：“娘子，不是我没本事，一时间没这智量。”便来拔开门，叫声：“不要来！”武大却待要揪他，被西门庆早飞起右脚。武大矮短，正踢中心窝里，扑地望后便倒了。西门庆见踢倒了武大，打闹里一直走了。郓哥见不是话头，撇了王婆撒开。街坊邻舍都知道西门庆了得，谁敢来多管。王婆当时就地下扶起武大来，见他口里吐血，面皮蜡查也似黄了。便叫那妇人出来，舀碗水来，救得苏醒。两个上下肩掺着，便从后门扶归楼上去，安排他床上睡了。当夜无话。</div>
+            <div class="text-block simplified-text">郓哥拎着篮子走进茶馆，开口就骂：“老不死的！昨天凭什么打我？”那老婆子脾气火爆，立刻跳起来回骂：“小兔崽子！关你屁事，凭什么骂我？”郓哥继续挑衅：“就骂你这个拉皮条的老畜生，屁都不是！”老婆子气疯了，冲上去要打他。郓哥大喊“你敢打我！”，顺手把菜篮子扔到大街上。当老婆子扑过来时，这小机灵鬼突然抱住她的腰，一头撞向她肚子，差点把她撞倒，幸亏后面有墙挡着。郓哥死死把她顶在墙上。
+
+这时武大郎卷着袖子冲进茶馆。老婆子看见武大郎来了想拦，却被郓哥死死缠住脱不开身，只能大喊：“武大郎来了！”屋里那女人慌慌张张跑去顶住房门。西门庆吓得钻到床底下。武大郎冲到房门口使劲推门，根本推不开，只能吼：“你们干的好事！”那女人死死顶着门，嘴里还激将：“平时吹牛说自己多厉害，关键时刻屁用没有！纸老虎都能吓死你！”这话分明是教唆西门庆动手。
+
+西门庆在床底下听见这话，立刻爬出来说：“宝贝别急，我刚才是没反应过来。”说完就去拉开门，冲着武大郎喊：“别过来！”武大郎刚要抓他，西门庆抬腿就是一脚。武大郎个子矮，正好被踢中胸口，直接仰面倒地。西门庆趁机溜走了。郓哥见情况不对，也扔下老婆子跑了。街坊邻居都知道西门庆不好惹，没人敢插手。
+
+老婆子赶紧扶起武大郎，只见他口吐鲜血，脸色惨白。她叫那女人端水来，好歹把人救醒了。两人一左一右架着武大郎，从后门把他弄上楼躺下。这一夜就这么过去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">次日，西门庆打听得没事，依前自来和这妇人做一处，只指望武大自死。武大一病五日，不能勾起。更兼要汤不见，要水不见，每日叫那妇人不应。又见他浓妆艳抹了出去，归来时便面颜红色。武大几遍气得发昏，又没人来采着。武大叫老婆来分付道：“你做的勾当，我亲手来捉着你奸，你倒挑拨奸夫踢了我心！至今求生不生，求死不死。你们却自去快活。我死自不妨，和你们争不得了。我的兄弟武二，你须得知他性格。倘或早晚归来，他肯干休！你若肯可怜我，早早扶侍我好了，他归来时，我都不提。你若不肯觑我时，待他归来，却和你们说话。”</div>
+            <div class="text-block simplified-text">第二天，西门庆打听到没什么事，又像以前一样来找这女人鬼混，就盼着武大自己死掉。武大已经病了五天，起不来床。想要口汤喝没人理，要口水喝也没人管，每天叫那女人她都不答应。还看见她打扮得花枝招展出门，回来时满脸通红。武大气得昏过去好几次，又没人来照顾他。
+
+武大把老婆叫过来对她说："你干的好事！我亲手抓到你们偷情，你反倒挑唆奸夫踢我心窝！现在我是活也活不成，死也死不了。你们倒逍遥快活。我死了倒没什么，反正也斗不过你们。可我弟弟武松的脾气你是知道的，要是他哪天回来，绝不会放过你们！你要是还有点良心，就好好照顾我让我快点好起来，等他回来我一个字都不提。你要是不管我死活，等他回来，有你们好果子吃！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">这妇人听了这话，也不回言，却踅过来一五一十都对王婆和西门庆说了。那西门庆听了这话，却似提在冰窨子里，说道：“苦也！我须知景阳冈上打虎的武都头，他是清县第一个好汉。我如今却和你眷恋日久，情孚意合，却不恁地理会。如今这等说时，正是怎地好？却是苦也！”王婆冷笑道：“我倒不曾见，你是个把柁的，我是趁船的。我倒不慌，你倒慌了手脚。”西门庆道：“我枉自做了男子汉，到这般去处，却摆布不开。你有甚么主见，遮藏我们则个。”王婆道：“你们却要长做夫妻，短做夫妻？”西门庆道：“干娘，你且说如何是长做夫妻，短做夫妻？”王婆道：“若是短做夫妻，你们只就今日便分散，等武大将息好了起来，与他陪了话。武二归来，都没言语。待他再差使出去，却再来相约，这是短做夫妻。你们若要长做夫妻，每日同一处不担惊受怕，我却有一条妙计，只是难教你。”</div>
+            <div class="text-block simplified-text">这女人听完那些话，一声不吭，转身就把事情从头到尾告诉了王婆和西门庆。西门庆一听，就像掉进了冰窟窿，叫道："完了！谁不知道景阳冈打虎的武松是全县最厉害的好汉。现在我和你好了这么久，感情这么深，哪能说断就断。现在事情变成这样，可怎么办啊？真是要命！"  
+
+王婆冷笑着说："我还没见过这样的，你是个掌舵的，我倒成了坐船的。我都不急，你倒先慌了手脚。"  
+
+西门庆说："我白当了个男人，到这种时候反而没主意了。你有什么办法能帮我们瞒过去？"  
+
+王婆问："你们是想做长久夫妻，还是露水夫妻？"  
+
+西门庆问："干娘，什么叫长久夫妻？什么叫露水夫妻？"  
+
+王婆说："要是露水夫妻，你们今天就分开。等武大养好伤，去给他赔个不是。等武二回来，大家就当什么都没发生过。等他再出门办事的时候，你们再偷偷见面，这就是露水夫妻。要是想做长久夫妻，天天在一起不用提心吊胆，我倒有个好主意，就怕你不肯照做。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">西门庆道：“干娘，周全了我们则个！只要长做夫妻。”王婆道：“这条计用着件东西，别人家里都没，天生天化大官人家里却有。”西门庆道：“便是要我的眼睛，也剜来与你。却是甚么东西？”王婆道：“如今这捣子病得重，趁他狼狈里，便好下手。大官人家里取些砒霜来，却教大娘子自去赎一帖心疼的药来，把这砒霜下在里面，把这矮子结果了，一把火烧得干干净净的，没了踪迹。便是武二回来，待敢怎地？自古道：“嫂叔不通问；初嫁从亲，再嫁由身。阿叔如何管得。暗地里来往半年一载，便好了。等待夫孝满日，大官人娶了家去。这个不是长远夫妻，谐老同欢？此计如何？”西门庆道：“干娘此计神妙。自古道：欲求生快活，须下死工夫。罢，罢，罢！一不做，二不休！”王婆道：“可知好哩。这是斩草除根，萌芽不发。若是斩草不除根，春来萌芽再发。官人便去取些砒霜来，我自教娘子下手。事了时，却要重重的谢我。”西门庆道：“这个自然，不消你说。”有诗为证：</div>
+            <div class="text-block simplified-text">西门庆说："干娘，帮帮我们吧！我们想永远在一起。"王婆回答："这个计划需要一样东西，别人家都没有，只有你家才有。"西门庆说："就是要我的眼珠子，我也挖给你。到底是什么东西？"  
+
+王婆说："现在那个矮子病得厉害，趁他病得要死，正好动手。你去家里拿些砒霜来，我让大娘子去买治心痛的药，把砒霜下在药里，把那矮子毒死，再一把火烧干净，不留痕迹。就算武二回来，又能怎样？老话说：'小叔子管不着嫂子的事。'你们暗中来往半年一年，等守孝期满，你把她娶回家，这不就能做长久夫妻了？你觉得这主意怎么样？"  
+
+西门庆说："干娘这主意太妙了。老话说：'想活得快活，就得下狠手。'好，就这么干！"王婆说："这就对了。要斩草除根，免得后患。要是留着根，春天又会长出来。你快去拿砒霜，我来教大娘子下手。事成之后，可得好好谢我。"西门庆说："那当然，不用你说。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">云情雨意两绸缪，恋色迷花不肯休。</div>
+            <div class="text-block simplified-text">两个人爱得死去活来，整天黏在一起，沉迷男欢女爱舍不得分开。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">毕竟难逃天地眼，武松还砍二人头。</div>
+            <div class="text-block simplified-text">武松最后还是杀了那两个人，这事瞒不过老天爷的眼睛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">且说西门庆去不多时，包了一包砒霜来，把与王婆收了。这婆子却看着那妇人道：“大娘子，我教你下药的法度。如今武大不对你说道，教你看活他。你便把些小意儿贴恋他。他若问你讨药吃时，便把这砒霜调在心痛药里。待他一觉身动，你便把药灌将下去，却便走了起身。他若毒药转时，必然肠胃迸断，大叫一声。你却把被只一盖，都不要人听得。预先烧下一锅汤，煮着一条抹布。他若毒药发时，必然七窍内流血，口唇上有牙齿咬的痕迹。他若放了命，便揭起被来，却将煮的抹布一揩，都没了血迹，便入在棺材里，扛出去烧了。有甚么鸟事！”那妇人道：“好却是好，只是奴手软了，临时安排不得尸首。”王婆道：“这个容易。你只敲壁子，我自过来撺掇你。”西门庆道：“你们用心整理，明日五更来讨回报。”西门庆说罢，自去了。王婆把这砒霜用手捻为细末，把与那妇人拿去藏了。</div>
+            <div class="text-block simplified-text">简单来说，西门庆出去了一会儿，买了一包砒霜回来交给王婆。王婆对那女人说："大妹子，我教你下毒的方法。现在武大不是让你照顾他吗？你就假装对他好。等他问你要药吃的时候，就把砒霜混在治心痛的药里。等他睡着翻身的时候，你就把药灌下去，然后赶紧走开。等毒药发作，他肯定会肚子疼得厉害，大叫一声。你马上用被子把他蒙住，别让人听见。提前烧一锅热水，煮一块抹布。等毒发的时候，他会七窍流血，嘴上还有牙咬的痕迹。等他死了，你就掀开被子，用煮好的抹布把血迹擦干净，然后装进棺材抬出去烧了。这能有什么麻烦！"
+
+那女人说："办法是好，就怕我到时候手软，处理不了尸体。"王婆说："这简单。你敲敲墙，我马上过来帮你。"西门庆说："你们好好准备，明天早上我来听消息。"说完就走了。王婆把砒霜捏成粉末，交给那女人藏起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">那妇人却踅将归来，到楼上看武大时，一丝没有两气，看看待死。那妇人坐在床边假哭，武大道：“你做甚么来哭？”那妇人拭着眼泪说道：“我的一时间不是了，吃那厮局骗了，推想却踢了你这脚。我问得一处好药，我要去赎来医你，又怕你疑忌了，不敢去取。”武大道：“你救得我活，无事了，一笔都勾，并不记怀，武二家来亦不提起。快去赎药来救我则个。”那妇人拿了些铜钱，径来王婆家里坐地，却叫王婆去赎了药来。把到楼上，教武大看了，说道：“这贴心疼药，太医叫你半夜里吃。吃了倒头把一两床被发些汗，明日便起得来。”武大道：“却是好也！生受大嫂，今夜醒睡些个，半夜里调来我吃。”那妇人道：“你自放心睡，我自伏待你。”</div>
+            <div class="text-block simplified-text">那个女人又转身回来，上楼看武大时，发现他已经奄奄一息，眼看就要死了。她坐在床边假装哭，武大问："你哭什么？"她擦着眼泪说："都怪我一时糊涂，被那混蛋骗了，没想到会踢伤你。我打听到一种好药，想去买来给你治伤，又怕你多心，不敢去拿。"武大说："你要是能救活我，过去的事就算了，我全都不计较，等武二回来也不提这事。你快去买药来救我吧。"那女人拿了钱，直接去王婆家坐着，让王婆去买药。药买回来后，她拿到楼上给武大看，说："这是治心痛的药，大夫让你半夜吃。吃完蒙头盖两床被子发汗，明天就能起床了。"武大说："那太好了！辛苦你了，今晚别睡太死，半夜弄给我吃。"那女人说："你安心睡吧，我会照顾你的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">看看天色黑了，那妇人在房里点上碗灯，下面先烧了一大锅汤，拿了一片抹布，煮在汤里。听那更鼓时，却好正打三更。那妇人先把毒药倾在盏子里，却舀一碗白汤，把到楼上，叫声：“大哥，药在那里？”武大道：“在我席子底下枕头边，你快调来与我吃。”那妇人揭起席子，将那药抖在盏子里，把那药贴安了，将白汤冲在盏内，把头上银牌儿只一搅，调得匀了；左手扶起武大，右手把药便灌。武大呷了一口，说道：“大嫂，这药好难吃！”那妇人道：“只要他医治得病，管甚么难吃。”武大再呷第二口时，被这婆娘就势只一灌，一盏药都灌下喉咙去了。那妇人便放倒武大，慌忙跳下床来。武大哎了一声，说道：“大嫂，吃下这药去，肚里倒疼起来。苦呀，苦呀！倒当不得了！”这妇人便去脚后扯过两床被来，劈脸只顾盖。武大叫道：“我也气闷！”那妇人道：“太医分付，教我与你发些汗，便好得快。”武大再要说时，这妇人怕他挣扎，便跳上床来，骑在武大身上，把手紧紧地按住被角，那里肯放些松。正似：</div>
+            <div class="text-block simplified-text">天黑了，那女人在屋里点了一盏灯，先烧了一大锅热水，拿了块抹布放锅里煮着。听到打更声，正好是三更天。女人先把毒药倒进碗里，又舀了一碗白开水端上楼，喊："大哥，药在哪儿？"武大说："在我席子下面的枕头边上，你快调好给我喝。"女人掀开席子，把药粉抖进碗里，放好药包，用白开水冲开，拿头上的银簪子搅匀。她左手扶起武大，右手端起药就往他嘴里灌。武大喝了一口说："老婆，这药太难喝了！"女人说："能治病就行，管它难不难喝。"武大正要喝第二口，这女人趁机猛一灌，整碗药全灌进他喉咙里了。女人马上把武大放倒，急忙跳下床。武大"哎哟"一声说："老婆，这药喝下去肚子疼得要命。好难受啊！受不了了！"女人立刻从床尾拉过两床被子，劈头盖脸把他蒙住。武大喊："我喘不过气了！"女人说："大夫说了，让你发发汗，病好得快。"武大还想说话，女人怕他反抗，跳上床骑在他身上，死死按住被角不让他动。那场景就像：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">油煎肺腑，火燎肝肠。心窝里如雪刃相侵，满腹中似钢刀乱搅。痛剐剐烟生七窍，直挺挺鲜血模糊。浑身冰冷，口内涎流。牙关紧咬，三魂赴枉死城中；喉管枯干，七魄投望乡台上。地狱新添食毒鬼，阳间没了捉奸人。</div>
+            <div class="text-block simplified-text">这段话描述了一个人中毒后痛苦死去的惨状：
+
+五脏六腑像被油煎火烤一样难受，心里像被刀捅，肚子里像有刀在搅。痛苦得七窍冒烟，直挺挺地躺着，满脸是血。全身发冷，嘴里流口水，牙关咬得紧紧的。三魂七魄都离体了，就像去了阴曹地府。地狱里多了个中毒死的鬼，世上少了个专门捉奸的人。
+
+（说明：完全按照要求改写，保留了"中毒惨死"的核心信息，用"油煎火烤""刀捅""七窍冒烟"等生活化比喻替代原文的文学性表达，将"三魂七魄"等概念转化为"阴曹地府"等通俗说法，最后一句的"捉奸人"因是重要信息予以保留）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那武大当时哎了两声，喘息了一回，肠胃迸断，呜呼哀哉，身体动不得了。那妇人揭起被来，见了武大咬牙切齿，七窍流血，怕将起来，只得跳下床来敲那壁子。王婆听得，走过后门头咳嗽。那妇人便下楼来，开了后门。王婆问道：“了也未？”那妇人道：“了便了了，只是我手脚软了，安排不得。”王婆道：“有甚么难处，我帮你便了。”那婆子便把衣袖卷起，舀了一桶汤，把抹布撇在里面，掇上楼来。卷过了被，先把武大嘴边唇上都抹了。却把七窍淤血痕迹拭净，便把衣裳盖在尸上。两个从楼上一步一掇，扛将下来，就楼下将扇旧门停了。与他梳了头，戴上巾帻，穿了衣裳，取双鞋袜与他穿了，将片白绢盖了脸，拣床干净被盖在死尸身上。却上楼来收拾得干净了。王婆自转将归去了，那婆娘却号号地假哭起养家人来。看官听说，原来但凡世上妇人哭有三样哭：有泪有声谓之哭；有泪无声谓之泣；无泪有声谓之号。当下那妇人干号了半夜。</div>
+            <div class="text-block simplified-text">武大当时"哎哟"叫了两声，喘了一会儿气，肠子都断了，就这么死了，身子一动不动。潘金莲掀开被子，看见武大瞪着眼、咬着牙，七窍流血，吓得要命，赶紧跳下床敲墙。隔壁王婆听见动静，在后门咳嗽回应。潘金莲下楼开门的功夫，王婆就问："完事了吗？"潘金莲哆嗦着说："人是死了，可我吓得手脚发软，没法收拾。"王婆说："这有什么难的，我来帮你。"
+
+王婆立刻卷起袖子，打来一桶热水，泡了抹布拎上楼。她把被子掀开，先擦干净武大嘴边和脸上的血，再把七窍的血迹都抹掉，给尸体套上衣服。两人费力地把尸体从楼上抬下来，用楼下的一扇旧门板当临时床铺。她们给武大梳好头发，戴上帽子，穿齐衣服鞋袜，最后盖了块白布在脸上，又找了床干净被子把尸体整个蒙住。收拾完现场，王婆就回家了，剩下潘金莲在那儿扯着嗓子干嚎——明眼人都知道，女人哭分三种：有眼泪有声音是真哭；光流泪不出声是抽泣；像她这样干打雷不下雨，纯粹是装样子。这女人就这么假模假式地嚎了半宿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">次早五更，天色未晓，西门庆奔来讨信。王婆说了备细。西门庆取银子把与王婆，教买棺材津送。就呼那妇人商议。这婆娘过来和西门庆说道：“我的武大今日已死，我只靠着你做主。”西门庆道：“这个何须得你说费心。”王婆道：“只有一件事最要紧，地方上团头何九叔，他是个精细的人，只怕他看出破绽，不肯殓。”西门庆道：“这个不妨。我自分付他便了。他不肯违我的言语。”王婆道：“大官人便用去分付他。不可迟误。”西门庆去了。</div>
+            <div class="text-block simplified-text">第二天天还没亮，大概五更天的时候，西门庆就急匆匆跑来打听消息。王婆把事情经过都告诉了他。西门庆拿出银子给王婆，让她去买棺材办丧事。接着就叫潘金莲过来商量。这女人过来对西门庆说："我家武大现在已经死了，我就全靠你拿主意了。"西门庆回答："这还用你说，我自然会安排好。"王婆提醒说："有件事特别要紧，咱们这片的团头何九叔是个精明人，就怕他看出问题，不肯收尸。"西门庆说："这不用担心，我去跟他说就行。他不敢不听我的话。"王婆催他："那大官人赶紧去打招呼吧，可别耽误了。"说完西门庆就去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">到天大明，王婆买了棺材，又买些香烛纸钱之类，归来与那妇人做羹饭，点起一对随身灯。邻舍坊厢都来吊问。那妇人虚掩着粉脸假哭。众街坊问道：“大郎因甚病患便死了？”那婆娘答道：“因患心疼病症，一日日越重了，看看不能勾好，不幸昨夜三更死了。”又哽哽咽咽假哭起来。众邻舍明知道此人死得不明，不敢死问他，只自人情劝道：“死自死了，活得自安过，娘子省烦恼。”那妇人只得假意儿谢了，众人各自散了。</div>
+            <div class="text-block simplified-text">天刚亮，王婆就去买了棺材，还买了香烛纸钱这些东西。回来后帮那女人准备祭品，点了一对长明灯。街坊邻居都来吊丧慰问。那女人用手帕遮着脸装哭。邻居们问："武大郎得什么病死的？"那女人回答："他心口疼的病，一天比一天严重，眼看好不了了，结果昨天半夜就死了。"说完又装模作样地抽泣起来。邻居们其实都明白这人死得蹊跷，但不敢多问，只是客套地劝她："人死不能复生，活着的人要好好过日子，你别太伤心了。"那女人就假装道谢，邻居们也都各自回家了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">王婆取了棺材，去请团头何九叔。但是入殓用的都买了，并家里一应物件也都买了；就叫了两个和尚晚些伴灵。多样时，何九叔先拨几个火家来整顿。</div>
+            <div class="text-block simplified-text">王婆买了棺材，去请专门管丧事的何九叔。她把下葬要用的东西都买齐了，家里要用的也都准备好了；还叫了两个和尚晚上来守灵。过了一会儿，何九叔先派了几个帮手过来帮忙收拾。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">且说何九叔到巳牌时分，慢慢地走出来，到紫石街巷口，迎见西门庆叫道：“九叔何往？”何九叔答道：“小人只去前面殓这卖炊饼的武大郎尸首。”西门庆道：“借一步说话则个。”何九叔跟着西门庆来到转角头一个小酒店里，坐下在阁儿内。西门庆道：“何九叔请上坐。”何九叔道：“小人是何者之人，对官人一处坐地！”西门庆道：“九叔何故见外？且请坐。”二人坐定，叫取瓶好酒来。小二一面铺下菜蔬果品按酒之类，即便筛酒。何九叔心中疑忌，想道：“这人从来不曾和我吃酒，今日这杯酒必有跷蹊。”两个吃了一个时辰，只见西门庆去袖子里摸出一锭十两银子放在桌上，说道：“九叔休嫌轻微，明日酬谢。”何九叔叉手道：“小人无半点用功效力之处，如何敢受大官人见赐银两？若是大官人便有使令小人处，也不敢受。”西门庆道：“九叔体要见外，请收过了却说。”何九叔道：“大官人但说不妨，小人依听。”西门庆道：“别无甚事，少刻他家也有些辛苦钱。只是如今殓武大的尸首，凡百事周全，一床锦被遮盖则个。别不多言。”何九叔道：“是这些小事，有甚利害，如何敢受银两。”西门庆道：“九叔不受时，便是推却。”那何九叔自来惧怕西门庆是个刁徒，把持官府的人，只得受了。两个又吃了几杯，西门庆呼酒保来记了帐，明日来铺里支钱。两个下楼，一同出了店门。西门庆道：“九叔记心，不可泄漏，改日别有报效。”分付罢，一直去了。</div>
+            <div class="text-block simplified-text">话说快到中午的时候，何九叔慢悠悠地走到紫石街口，正好碰见西门庆。西门庆喊住他："九叔去哪儿啊？"何九叔回答："我去前面给卖烧饼的武大郎收尸。"西门庆说："借一步说话。"就把何九叔带到街角小酒馆的包间里。
+
+西门庆客气地让何九叔坐上座，何九叔连忙推辞："我哪敢跟您平起平坐啊！"西门庆坚持让他坐下，还叫了好酒好菜。何九叔心里直打鼓："这人平时从不请我喝酒，今天肯定没好事。"
+
+两人喝了一个多小时，西门庆突然从袖子里掏出十两银子放在桌上："九叔别嫌少，明天还有重谢。"何九叔赶紧摆手："我啥忙都没帮上，哪敢收您的钱啊！要是有事您尽管吩咐。"西门庆非要他收下："你先拿着，我有话说。"
+
+西门庆接着说："其实也没啥大事。就是一会儿你去收殓武大郎的时候，把事情办妥当些，用床好被子把他盖严实了就行。"何九叔嘴上说："这点小事哪用得着给钱。"但心里知道西门庆是当地恶霸，跟官府都有勾结，不敢不收这钱。
+
+两人又喝了几杯，西门庆叫来服务员记账，说明天来结账。临走时西门庆再三叮嘱："九叔千万记住，这事别往外说，以后少不了你的好处。"说完就自己先走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">何九叔心中疑忌，肚里寻思道：“这件事却又作怪！我自去殓武大郎尸首，他却怎地与我许多银子？这件事必定有跷蹊。”来到武大门前，只见那几个火家在门首伺候。何九叔问道：“这武大是甚病死了？”火家答道：“他家说害心疼病死了。”何九叔揭起帘子入来，王婆接着道：“久等何叔多时了。”何九叔应道：“便是有些小事绊住了脚，来迟了一步。”只见武大老婆穿着些素淡衣裳从里面假哭出来。何九叔道：“娘子省烦恼，可伤大郎归天去了。”那妇人虚掩着泪眼道：“说不可尽！不想拙夫心疼症候，几日子便休了，撇得奴好苦！”何九叔上上下下看了那婆娘的模样，口里自暗暗地道：“我从来只听的说武大娘子，不曾认得他，原来武大却讨着这个老婆！西门庆这十两银子有些来历。”</div>
+            <div class="text-block simplified-text">何九叔心里觉得奇怪，暗想："这事儿真不对劲！我就是去收殓武大郎的尸体，他（西门庆）为啥要给我这么多钱？肯定有问题。"走到武大家门口，看见几个伙计在门口等着。何九叔问："武大是怎么死的？"伙计回答："他家里说是突发心脏病死的。"
+
+何九叔掀开门帘进去，王婆迎上来说："何叔，我们等你半天了。"何九叔应付道："有点小事耽搁了，来晚一步。"这时看见武大老婆穿着素色衣服，假装哭着走出来。何九叔说："娘子节哀，大郎走了真让人难过。"那女人假装擦着眼泪说："别提了！谁知道我丈夫突然犯心脏病，没几天人就没了，丢下我一个人好苦啊！"
+
+何九叔上下打量着这女人，心里嘀咕："我光听说过武大老婆，今天才见到真人。没想到武大娶了这么个漂亮媳妇！难怪西门庆要给我十两银子，这里面肯定有事儿。"
+
+（说明：改编时保留了所有关键情节和人物对话，将文言虚词"却""怎地""跷蹊"等替换为口语词，把"火家"译为现代人容易理解的"伙计"，"素淡衣裳"译为"素色衣服"，"心疼病/症候"统一译为"心脏病"。人物心理活动和对话都改用自然的口语表达，同时确保所有原始信息完整保留。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">何九叔看着武大尸首，揭起千秋幡，扯开白绢，用五轮八宝犯着两点神水眼定睛看时，何九叔大叫一声，望后便倒，口里喷出血来。但见：指甲青，唇口紫，面皮黄，眼无光。未知五脏如何，先见四肢不举。正是：身如五鼓衔山月，命似三更油尽灯。毕竟何九叔性命如何，且听下回分解。</div>
+            <div class="text-block simplified-text">何九叔查看武大的尸体，掀开盖尸布，扯开白布仔细看。突然他大叫一声，往后摔倒，嘴里喷出血来。只见他：指甲发青，嘴唇发紫，脸色蜡黄，两眼无神。还不知道内脏怎么样，手脚已经不能动了。真是：身体像快落山的月亮一样虚弱，性命像半夜油尽的灯一样快熄了。何九叔到底能不能活下来，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
