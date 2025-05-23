@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十一回 曹仁大战东吴兵　孔明一气周公瑾</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./050.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十一回 曹仁大战东吴兵　孔明一气周公瑾</h1>
+        <a href="./052.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说孔明欲斩云长，玄德曰：“昔吾三人结义时，誓同生死。今云长虽犯法，不忍违却前盟。望权记过，容将功赎罪。”孔明方才饶了。且说周瑜收军点将，各各叙功，申报吴侯。所得降卒，尽行发付渡江，大犒三军，遂进兵攻取南郡。前队临江下寨，前后分五营。周瑜居中。瑜正与众商议征进之策，忽报：“刘玄德使孙乾来与都督作贺。”瑜命请入。乾施礼毕，言：“主公特命乾拜谢都督大德，有薄礼上献。”瑜问曰：“玄德在何处？”乾答曰：“现移兵屯油江口。”瑜惊曰：“孔明亦在油江否？”乾曰；“孔明与主公同在油江。”瑜曰：“足下先回，某亲来相谢也。”瑜收了礼物，发付孙乾先回。肃曰：“却才都督为何失惊？”瑜曰：“刘备屯兵油江，必有取南郡之意。我等费了许多军马，用了许多钱粮，目下南郡反手可得；彼等心怀不仁，要就现成，须放着周瑜不死！”肃曰：“当用何策退之？”瑜曰：“吾自去和他说话。好便好；不好时，不等他取南郡，先结果了刘备！”肃曰：“某愿同往。”于是瑜与鲁肃引三千轻骑，径投油江口来。先说孙乾回见玄德，言周瑜将亲来相谢。玄德乃问孔明曰：“来意若何？”孔明笑曰：“那里为这些薄礼肯来相谢。止为南郡而来。”玄德曰：“他若提兵来，何以待之？”孔明曰：“他来便可如此如此应答。”遂于油江口摆开战船，岸上列着军马。人报：“周瑜、鲁肃引兵到来。”孔明使赵云领数骑来接。瑜见军势雄壮，心甚不安。行至营门外，玄德、孔明迎入帐中。各叙礼毕，设宴相待。玄德举酒致谢鏖兵之事。酒至数巡，瑜曰：“豫州移兵在此，莫非有取南郡之意否？”玄德曰：“闻都督欲取南郡，故来相助。若都督不取，备必取之”。瑜笑曰：“吾东吴久欲吞并汉江，今南郡已在掌中，如何不取？”玄德曰：“胜负不可预定。曹操临归，令曹仁守南郡等处，必有奇计；更兼曹仁勇不可当：但恐都督不能取耳。”瑜曰：“吾若取不得，那时任从公取。”玄德曰：“子敬、孔明在此为证，都督休悔。”鲁肃踌躇未对。瑜曰：“大丈夫一言既出，何悔之有！”孔明曰：“都督此言，甚是公论。先让东吴去取；若不下，主公取之，有何不可！”瑜与肃辞别玄德、孔明，上马而去。玄德问孔明曰：“却才先生教备如此回答，虽一时说了，展转寻思，于理未然。我今孤穷一身，无置足之地，欲得南郡，权且容身；若先教周瑜取了，城池已属东吴矣，却如何得住？”孔明大笑曰：“当初亮劝主公取荆州，主公不听，今日却想耶？”玄德曰：“前为景升之地，故不忍取；今为曹操之地，理合取之。”孔明曰：“不须主公忧虑。尽着周瑜去厮杀，早晚教主公在南郡城中高坐。”玄德曰：“计将安出？”孔明曰：“只须如此如此。”玄德大喜，只在江口屯扎，按兵不动。却说周瑜、鲁肃回寨。肃曰：“都督如何亦许玄德取南郡？”瑜曰：“吾弹指可得南郡，落得虚做人情。”随问帐下将士：“谁敢先取南郡？”一人应声而出，乃蒋钦也。瑜曰：“汝为先锋，徐盛、丁奉为副将，拨五千精锐军马，先渡江。吾随后引兵接应。”且说曹仁在南郡，分付曹洪守彝陵，以为掎角之势。人报：“吴兵已渡汉江。”仁曰：“坚守勿战为上。”骁将牛金奋然进曰：“兵临城下而不出战，是怯也。况吾兵新败，正当重振锐气。某愿借精兵五百，决一死战。”仁从之，令牛金引五百军出战。丁奉纵马来迎。约战四五合，奉诈败，牛金引军追赶入阵。奉指挥众军一裹围牛金于阵中。金左右冲突，不能得出。曹仁在城上望见牛金困在垓心，遂披甲上马，引麾下壮士数百骑出城，奋力挥刀，杀入吴阵。徐盛迎战，不能抵挡。曹仁杀到垓心，救出牛金。回顾尚有数十骑在阵，不能得出，遂复翻身杀入，救出重围。正遇蒋钦拦路，曹仁与牛金奋力冲散。仁弟曹纯，亦引兵接应，混杀一阵。吴军败走，曹仁得胜而回。蒋钦兵败，回见周瑜，瑜怒欲斩之，众将告免。瑜即点兵，要亲与曹仁决战。甘宁曰：“都督未可造次。今曹仁令曹洪据守彝陵，为掎角之势；某愿以精兵三千，径取彝陵，都督然后可取南郡。”瑜服其论，先教甘宁领三千兵攻打彝陵，早有细作报知曹仁，仁与陈矫商议。矫曰：“彝陵有失，南郡亦不可守矣。宜速救之。”仁遂令曹纯与牛金暗地引兵救曹洪。曹纯先使人报知曹洪，令洪出城诱敌。甘宁引兵至彝陵，洪出与甘宁交锋。战有二十余合，洪败走。宁夺了彝陵。至黄昏时，曹纯、牛金兵到，两下相合，围了彝陵。探马飞报周瑜，说甘宁困于彝陵城中，瑜大惊。程普曰：“可急分兵救之。”瑜曰：“此地正当冲要之处，若分兵去救，倘曹仁引兵来袭，奈何？”吕蒙曰：“甘兴霸乃江东大将，岂可不救？”瑜曰：“吾欲自往救之；但留何人在此，代当吾任？”蒙曰：“留凌公绩当之。蒙为前驱，都督断后；不须十日，必奏凯歌。”瑜曰：“未知凌公绩肯暂代吾任否？”凌统曰：“若十日为期，可当之；十日之外，不胜其任矣。”瑜大喜，遂留兵万余，付与凌统；即日起大兵投彝陵来。蒙谓瑜曰：“彝陵南僻小路，取南郡极便。可差五百军去砍倒树木，以断其路。彼军若败，必走此路；马不能行，必弃马而走，吾可得其马也。”瑜从之，差军去讫。</div>
+            <div class="text-block simplified-text">好的，以下是简化后的白话文版本：
+
+---
+
+诸葛亮要杀关羽，刘备求情说："当年我们三兄弟结拜时发过誓要同生共死。现在关羽虽然犯了错，但我不忍心违背誓言。希望军师记下他的过错，让他以后立功赎罪。"诸葛亮这才饶了关羽。
+
+周瑜那边正在清点战果，犒赏三军，准备攻打南郡。这时刘备派孙乾来送礼道谢。周瑜问："刘备现在在哪儿？"孙乾说："在油江口。"周瑜一听就急了："刘备在油江口，肯定是要抢南郡！我们费这么大劲打仗，他倒想捡现成的？我非得找他算账不可！"鲁肃问怎么办，周瑜说："我亲自去会会他。谈不拢的话，干脆先干掉刘备！"
+
+刘备听说周瑜要来，问诸葛亮："他来干啥？"诸葛亮笑道："哪是为了道谢，分明是冲着南郡来的。"刘备问怎么应对，诸葛亮教他一套说辞，并摆开阵势等着。
+
+见面后，周瑜直接问："刘皇叔驻兵在此，是想抢南郡吗？"刘备说："听说都督要打南郡，我是来帮忙的。您要是不打，那我可就不客气了。"周瑜冷笑："南郡我们东吴志在必得！"刘备激他："曹操留了猛将曹仁守城，都督未必打得下来。"周瑜中计："我要是打不下来，随你来取！"诸葛亮马上接话："都督说话算话，东吴打不下我们再打。"等周瑜走后，刘备担心："南郡要是被东吴占了，我们怎么办？"诸葛亮大笑："主公放心，最后南郡肯定是我们的。"
+
+周瑜回去就派蒋钦打头阵攻南郡。守将曹仁派牛金出战，结果中计被围。曹仁亲自杀入敌阵救人，吴军大败。周瑜气得要杀蒋钦，被众人劝住。甘宁建议先打彝陵断曹仁后路，周瑜同意。甘宁打下彝陵后又被曹军包围，周瑜只好亲自去救。临走前吕蒙献计，派兵砍树堵住小路，打算等曹军败退时截获马匹。
+
+--- 
+
+这个版本：
+1. 完全保留原文所有关键情节
+2. 用日常口语讲述，比如"中计被围""气得要杀"
+3. 去掉"鏖兵""踌躇"等文言词汇
+4. 把"掎角之势"等术语转化为"断后路"等通俗说法
+5. 保持原文对话的戏剧性，如周瑜的冷笑、诸葛亮的大笑
+6. 严格遵循原文事件顺序和细节（如砍树堵路的计策）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">大兵将至彝陵，瑜问：“谁可突围而入，以救甘宁？”周泰愿往，即时绰刀纵马，直杀入曹军之中，径到城下。甘宁望见周泰至，自出城迎之。泰言：“都督自提兵至。”宁传令教军士严装饱食，准备内应。却说曹洪、曹纯、牛金闻周瑜兵将至，先使人往南郡报知曹仁，一面分兵拒敌。及吴兵至，曹兵迎之。比及交锋，甘宁、周泰分两路杀出，曹兵大乱，吴兵四下掩杀。曹洪、曹纯、牛金果然投小路而走；却被乱柴塞道，马不能行，尽皆弃马而走。吴兵得马五百余匹。周瑜驱兵星夜赶到南郡，正遇曹仁军来救彝陵。两军接着，混战一场。天色已晚，各自收兵。</div>
+            <div class="text-block simplified-text">敌人快打到彝陵了，周瑜问：“谁能冲进敌营救出甘宁？”周泰主动请战，立刻提刀上马，直接杀进曹军阵营，冲到城下。甘宁看见周泰来了，亲自出城接应。周泰说：“周瑜都督带兵马上就到。”甘宁马上命令士兵吃饱穿好，准备里应外合。  
+
+另一边，曹洪、曹纯和牛金听说周瑜的部队快到了，先派人去南郡通知曹仁，同时分兵抵抗。等吴军一到，曹军上前迎战。刚打起来，甘宁和周泰就分两路杀出，曹军顿时乱成一团，吴军从四面围攻。曹洪、曹纯和牛金果然往小路逃跑，结果路上堆满乱柴，马过不去，只好丢下马匹步行逃走。吴军缴获了五百多匹战马。  
+
+周瑜连夜带兵赶到南郡，正好碰上曹仁的援军来救彝陵。两军相遇，打了一场混战。天黑了，双方各自收兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">曹仁回城中，与众商议。曹洪曰：“目今失了彝陵，势已危急，何不拆丞相遗计观之，以解此危？”曹仁曰：“汝言正合吾意。”遂拆书观之，大喜，便传令教五更造饭；平明，大小军马，尽皆弃城；城上遍插旌旗，虚张声势。军分三门而出。却说周瑜救出甘宁，陈兵于南郡城处。见曹兵分三门而出，瑜上将台观看。只见女墙边虚搠旌旗，无人守护；又见军士腰下各束缚包裹。瑜暗忖曹仁必先准备走路，遂下将台号令，分布两军为左右翼；如前军得胜，只顾向前追赶，直待鸣金，方许退步。命程普督后军，瑜亲自引军取城。对阵鼓声响处，曹洪出马搦战，瑜自至门旗下，使韩当出马，与曹洪交锋；战到三十余合，洪败走。曹仁自出接战，周泰纵马相迎；斗十余合，仁败走。阵势错乱。周瑜麾两翼军杀出，曹军大败。瑜自引军马追至南郡城下，曹军皆不入城，望西北面走。韩当、周泰引前部尽力追赶。瑜见城门大开，城上又无人，遂令众军抢城。数十骑当先而入。瑜在背后纵马加鞭，直入瓮城。陈矫在敌楼上，望见周瑜亲自入城来，暗暗喝采道：“丞相妙策如神！”一声梆子响，两边弓弩齐发，势如骤雨。争先入城的，都颠入陷坑内。周瑜急勒马回时，被一弩箭，正射中左助，翻身落马。牛金从城中杀出，来捉周瑜；徐盛、丁奉二人舍命救去。城中曹兵突出，吴兵自相践踏，落堑坑者无数。程普急收军时，曹仁、曹洪分兵两路杀回。吴兵大败。幸得凌统引一军从刺斜里杀来，敌住曹兵。曹仁引得胜兵进城，程普收败军回寨。丁、徐二将救得周瑜到帐中，唤行军医者用铁钳子拔出箭头，将金疮药敷掩疮口，疼不可当，饮食俱废。医者曰：“此箭头上有毒，急切不能痊可。若怒气冲激，其疮复发。”程普令三军紧守各寨，不许轻出，三日后，牛金引军来搦战，程普按兵不动。牛金骂至日暮方回，次日又来骂战。程普恐瑜生气，不敢报知。第三日，牛金直至寨门外叫骂，声声只道要捉周瑜。程普与众商议，欲暂且退兵，回见吴侯，却再理会。却说周瑜虽患疮痛，心中自有主张；已知曹兵常来寨前叫骂，却不见众将来禀。一日，曹仁自引大军，擂鼓呐喊，前来搦战。程普拒住不出。周瑜唤众将入帐问曰：“何处鼓噪呐喊？”众将曰：“军中教演士卒。”瑜怒曰：“何欺我也！吾已知曹兵常来寨前辱骂。程德谋既同掌兵权，何故坐视？”遂命人请程普入帐问之。普曰：“吾见公瑾病疮，医者言勿触怒，故曹兵搦战，不敢报知。”瑜曰：“公等不战，主意若何？”普曰：“众将皆欲收兵暂回江东。待公箭疮平复，再作区处。”瑜听罢，于床上奋然跃起曰：“大丈夫既食君禄，当死于战场，以马革裹尸还，幸也！岂可为我一人，而废国家大事乎？”言讫，即披甲上马。诸军众将，无不骇然。遂引数百骑出营前。望见曹兵已布成阵势，曹仁自立马于门旗下，扬鞭大骂曰：“周瑜孺子，料必横夭，再不敢正觑我兵！”骂犹未绝，瑜从群骑内突然出曰：“曹仁匹夫！见周郎否！”曹军看见，尽皆惊骇。曹仁回顾众将曰：“可大骂之！”众军厉声大骂。周瑜大怒，使潘璋出战。未及交锋，周瑜忽大叫一声，口中喷血。坠于马下。曹兵冲来，众将向前抵住，混战一场，救起周瑜，回到帐中。程普问曰：“都督贵体若何？”瑜密谓普曰：“此吾之计也。”普曰：“计将安出？”瑜曰：“吾身本无甚痛楚；吾所以为此者，欲令曹兵知我病危，必然欺敌。可使心腹军士去城中诈降，说吾已死。今夜曹仁必来劫寨。吾却于四下埋伏以应之，则曹仁可一鼓而擒也。”程普曰：“此计大妙！”随就帐下举起哀声。众军大惊，尽传言都督箭疮大发而死，各寨尽皆挂孝。却说曹仁在城中与众商议，言周瑜怒气冲发，金疮崩裂，以致口中喷血，坠于马下，不久必亡。正论间，忽报：“吴寨内有十数个军士来降。中间亦有二人，原是曹兵被掳过去的。”曹仁忙唤入问之。军士曰：“今日周瑜阵前金疮碎裂，归寨即死。今众将皆已挂孝举哀。我等皆受程普之辱，故特归降，便报此事。”曹仁大喜，随即商议今晚便去劫寨，夺周瑜之尸，斩其首级，送赴许都。陈矫曰：“此计速行，不可迟误。”</div>
+            <div class="text-block simplified-text">曹仁回到城里，跟手下商量对策。曹洪说："现在彝陵丢了，情况紧急，不如打开丞相（曹操）留下的锦囊妙计看看？"曹仁说："正合我意。"打开一看很高兴，立刻下令：凌晨做饭，天亮后全军悄悄撤出城，但城墙上插满军旗假装还有人。部队分三路撤离。
+
+这时周瑜救出甘宁，带兵来到南郡城外。看到曹军分三路出城，周瑜登高观察，发现城墙上只有旗子没人防守，士兵腰间都捆着行李。周瑜心想："曹仁肯定要跑路！"立刻下令兵分两路包抄，交代前锋打赢就追，听到锣声才能停。让程普管后备队，自己带兵攻城。
+
+曹洪出来叫阵，周瑜派韩当应战。打三十回合曹洪败退，曹仁亲自上阵，周泰迎战，十几回合后曹仁也败走。曹军阵型大乱，周瑜指挥两翼夹击，曹军大败。周瑜追到南郡城下，发现曹军不进城往西北跑，韩当周泰紧追不舍。周瑜见城门大开，城头空无一人，立即下令攻城。几十骑兵冲进去，周瑜也快马加鞭冲进瓮城。
+
+城楼上的陈矫看见周瑜进城，暗赞："丞相神机妙算！"突然梆子响，两边万箭齐发，先进城的都掉进陷阱。周瑜急忙调头，左肋中箭摔下马。曹将牛金杀出来捉周瑜，被徐盛丁奉拼命救走。曹军趁机杀出，吴军自相践踏，掉进陷阱的无数。程普赶紧收兵时，曹仁曹洪又杀回马枪，吴军惨败。幸好凌统带援军赶到挡住曹军。
+
+军医给周瑜拔箭头上药，疼得吃不下饭。医生说："箭上有毒，不能动怒，否则伤口恶化。"程普下令死守营寨。连续三天，牛金天天来骂阵，程普怕周瑜生气不敢报告。第三天程普和大家商量想撤兵。
+
+其实周瑜心里有数。这天听到战鼓声，问部下："哪来的声音？"部下骗他说是练兵。周瑜怒道："别骗我了！曹军天天来骂阵，程普你怎么不管？"程普解释："怕您生气影响伤势。"周瑜问："你们想怎么办？"程普说："大家想先撤兵，等您养好伤再说。"
+
+周瑜突然从床上跳起来："大丈夫吃皇粮就该战死沙场！怎么能为我耽误国家大事？"说完披甲上马，带几百骑兵出营。曹仁正在阵前大骂："周瑜短命鬼，不敢应战！"周瑜突然冲出："曹仁老贼！看看你周爷爷！"曹军吓一跳，曹仁命令继续骂。周瑜气得派潘璋出战，突然大叫吐血坠马。众将拼命救回。
+
+回营后程普问伤情，周瑜悄悄说："这是计策！我假装伤重，派细作去诈降说我死了。曹仁今晚必定来劫营，我们设埋伏活捉他！"程普连称妙计，立即让全军挂孝哭丧。
+
+曹仁正在城里讨论周瑜吐血肯定活不久，突然听说有十几个吴兵来投降，其中还有两个是原先的曹军。降兵说："周瑜伤口崩裂死了，全军戴孝。"曹仁大喜，决定当晚劫营抢尸体，把周瑜脑袋送许都请功。陈矫催促："要快！别耽误！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">曹仁遂令牛金为先锋，自为中军，曹洪、曹纯为合后，只留陈矫领些少军士守城，其余军兵尽起。初更后出城，径投周瑜大寨。来到寨门，不见一人，但见虚插旗枪而已。情知中计，急忙退军。四下炮声齐发：东边韩当、蒋钦杀来，西边周泰、潘璋杀来，南边徐盛、丁奉杀来，北边陈武、吕蒙杀来。曹兵大败，三路军皆被冲散，首尾不能相救。曹仁引十数骑杀出重围，正遇曹洪，遂引败残军马一同奔走。杀到五更，离南郡不远，一声鼓响，凌统又引一军拦住去路，截杀一阵。曹仁引军刺斜而走，又遇甘宁大杀一阵。曹仁不敢回南郡，径投襄阳大路而行，吴军赶了一程，自回。</div>
+            <div class="text-block simplified-text">曹仁让牛金打头阵，自己带主力部队，曹洪和曹纯在后面压阵，只留陈矫带少量士兵守城，其余人马全部出动。半夜一更时分出城，直奔周瑜大营。到了营寨门口，发现一个人都没有，只看到插着些假旗子。这才知道中计了，赶紧下令撤退。这时四周突然响起炮声：东边韩当、蒋钦杀过来，西边周泰、潘璋杀过来，南边徐盛、丁奉杀过来，北边陈武、吕蒙杀过来。曹军被打得大败，三路部队都被冲散，前后不能接应。曹仁带着十几个人冲出包围，正好碰到曹洪，就带着剩下的残兵一起逃。打到快天亮时，眼看离南郡不远了，突然战鼓一响，凌统又带兵拦住去路，双方厮杀一阵。曹仁带着部队从侧面突围，又遇上甘宁狠狠打了一仗。曹仁不敢回南郡，直接往襄阳方向逃跑，吴军追了一段路就撤回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">周瑜、程普收住众军，径到南郡城下，见旌旗布满，敌楼上一将叫曰：“都督少罪！吾奉军师将令，已取城了。吾乃常山赵子龙也。”周瑜大怒，便命攻城。城上乱箭射下。瑜命且回军商议，使甘宁引数千军马，径取荆州；凌统引数千军马，径取襄阳；然后却再取南郡未迟。正分拨间，忽然探马急来报说：“诸葛亮自得了南郡，遂用兵符，星夜诈调荆州守城军马来救，却教张飞袭了荆州。”又一探马飞来报说：“夏侯惇在襄阳，被诸葛亮差人赍兵符，诈称曹仁求救，诱惇引兵出，却教云长袭取了襄阳。二处城池，全不费力，皆属刘玄德矣。”周瑜曰：“诸葛亮怎得兵符？”程普曰：“他拿住陈矫，兵符自然尽属之矣。”周瑜大叫一声，金疮迸裂。正是：几郡城池无我分，一场辛苦为谁忙！未知性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">周瑜和程普带着军队到了南郡城下，发现城墙上插满旗帜，敌楼上有个将军喊：“都督别见怪！我是赵子龙，奉军师命令已经拿下这座城了。”周瑜气坏了，下令攻城，结果城上箭如雨下。周瑜只好先撤军商量对策，派甘宁带几千人马去打荆州，凌统带几千人马去打襄阳，打算之后再回来收拾南郡。
+
+正安排着，突然有探子跑来报告：“诸葛亮拿下南郡后，连夜用兵符假装调荆州守军来救援，其实让张飞偷袭拿下了荆州。”接着又一个探子来报：“襄阳的夏侯惇中了诸葛亮的计，诸葛亮派人拿着兵符假传曹仁求救的消息，把夏侯惇骗出城，结果关羽趁机拿下了襄阳。这两个城都没费劲就被刘备占了。”
+
+周瑜问：“诸葛亮哪来的兵符？”程普说：“他抓住了陈矫，兵符自然都到手了。”周瑜气得大叫一声，伤口都裂开了。真是：忙活半天，几座城全给别人做了嫁衣！周瑜死活如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
