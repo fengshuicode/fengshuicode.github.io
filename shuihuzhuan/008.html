@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第八回　林教头刺配沧州道　鲁智深大闹野猪林</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./007.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第八回　林教头刺配沧州道　鲁智深大闹野猪林</h1>
+        <a href="./009.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句"诗曰"可以简单理解为：
+
+"这首诗说的是：" 或 "这首诗讲的是："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">头上青天只恁欺，害人性命霸人妻。</div>
+            <div class="text-block simplified-text">老天爷真是不长眼，纵容坏人杀人抢老婆。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">须知奸恶千般计，要使英雄一命危。</div>
+            <div class="text-block simplified-text">记住：坏人想害人，办法多得很，再厉害的好汉也可能被他们害死。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">忠义萦心由秉赋，贪嗔转念是慈悲。</div>
+            <div class="text-block simplified-text">做人要讲良心，天生就该重情重义；能把贪心怒火转成善念，这才是真正的善良。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">林冲合是灾星退，却笑高俅枉作为。</div>
+            <div class="text-block simplified-text">林冲真是倒霉到头了，现在终于转运了。高俅那家伙费尽心机想害他，结果白忙活一场，真是可笑！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当时太尉喝叫左右排列军校，拿下林冲要斩。林冲大叫冤屈。太尉道：“你来节堂有何事务？见今手里拿着利刃，如何不是来杀下官？”林冲告道：“太尉不唤，如何敢见。有两个承局望堂里去了，故赚林冲到此。”太尉喝道：“胡说！我府中那有承局。这厮不服断遣！”喝叫左右：“解去开封府，分付滕府尹好生推问，勘理明白处决。就把宝刀封了去。”左右领了钧旨，监押林冲投开封府来。恰好府尹坐衙未退。但见：</div>
+            <div class="text-block simplified-text">当时太尉大喊一声，命令手下士兵把林冲抓起来要杀头。林冲大声喊冤。太尉说："你跑到军事重地来干什么？现在手里还拿着刀，不是来杀我是什么？"林冲解释说："太尉您没叫我，我哪敢自己来。是有两个当差的进了大堂，我才被骗到这里的。"太尉骂道："放屁！我府里根本没这种人。这小子不服管教！"又对手下说："把他押到开封府去，告诉滕府尹好好审问，查清楚后处决。把宝刀也一起封存送过去。"手下领命，押着林冲去开封府。正赶上府尹还在衙门里办公。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">绯罗缴壁，紫绶卓围。当头额挂朱红，四下帘垂斑竹。官僚守正，戒石上刻御制四行；令史谨严，漆牌中书低声二字。提辖官能掌机密，客帐司专管牌单。吏兵沉重，节级严威。执藤条祗候立阶前，持大杖离班分左右。庞眉狱卒挈沉枷，显耀狰狞；竖目押牢提铁锁，施逞猛勇。户婚词讼，断时有似玉衡明；斗殴相争，判断恰如金镜照。虽然一郡宰臣官，果是四方民父母。直使囚从冰上立、尽教人向镜中行。说不尽许多威仪，似塑就一堂神道。</div>
+            <div class="text-block simplified-text">这段文字描述的是一个古代衙门大堂的威严场景。我用大白话重新说一遍：
+
+衙门大堂装饰华丽：墙上挂着红色丝绸帷帐，围着紫色绸缎围挡。正上方挂着朱红色匾额，四周垂着斑竹做的帘子。
+
+官员们都很严肃：门口石碑上刻着皇帝定的四条规矩；办事员小心谨慎，漆牌上写着"低声"二字提醒大家安静。
+
+这里分工明确：提辖官负责机密事务，客帐司专门管理文书档案。衙役们个个板着脸，级别高的显得特别威严。他们手拿藤条站在台阶前，握着大棍子分列两边。
+
+监狱的看守也很吓人：白眉毛的狱卒扛着沉重枷锁，面目凶狠；瞪着眼睛的牢头提着铁锁链，显得特别凶猛。
+
+这里判案很公正：处理婚姻纠纷时，判得明明白白；判决打架斗殴时，公平得像镜子照人一样清楚。
+
+虽然这只是地方官办公的地方，但确实是老百姓的父母官。在这里，犯人不敢乱说乱动，所有人都得规规矩矩。这场面说不出的威严，就像庙里供奉的神仙一样让人敬畏。
+
+（完全保留原文描写的衙门陈设、人员分工和审案情况，只是用现代人能听懂的话重新组织了一遍。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">高太尉干人把林冲押到府前，跪在阶下。府干将太尉言语对滕府尹说了，将上太尉封的那把刀，放在林冲面前。府尹道：“林冲，你是个禁军教头，如何不知法度，手执利刃，故入节堂？这是该死的罪犯！”林冲告道：“恩相明镜，念林冲负屈衔冤。小人虽是粗卤的军汉，颇识些法度，如何敢擅入节堂。为是前月二十八日，林冲与妻到岳庙还香愿，正迎见高太尉的小衙内把妻子调戏，被小人喝散了。次后，又使陆虞候赚小人吃酒，却使富安来骗林冲妻子到陆虞候家楼上调戏，亦被小人赶去，是把陆虞候家打了一场。两次虽不成奸，皆有人证。次日，林冲自买这口刀。今日，太尉差两个承局来家呼唤林冲，叫将刀来府里比看。因此，林冲同二人到节堂下。两个承局进堂里去了，不想太尉从外面进来，设计陷害林冲。望恩相做主！”府尹听了林冲口词，且叫与了回文，一面取刑具枷杻来枷了，推入牢里监下。林冲家里自来送饭，一面使钱。林冲的丈人张教头亦来买上告下，使用财帛。</div>
+            <div class="text-block simplified-text">高太尉的手下把林冲押到大堂前，让他跪在台阶下。手下人把高太尉的话转告给府尹，又把高太尉封存的那把刀摆在林冲面前。府尹说："林冲，你身为禁军教头，怎么不懂法律？竟敢拿着刀硬闯军机重地，这可是死罪！"
+
+林冲连忙喊冤："大人明鉴啊！我林冲实在是冤枉。我虽然是个粗人，但也知道规矩，哪敢随便进节堂？上个月二十八号，我和妻子去岳庙还愿，正好撞见高太尉的干儿子调戏我老婆，被我骂跑了。后来他们又让陆谦骗我去喝酒，同时派富安把我老婆骗到陆谦家楼上想欺负她，又被我及时赶到打了一顿。这两次虽然没得逞，但都有证人。第二天我自己买了这把刀。今天太尉派两个差人到我家，叫我把刀带去官府比对。我就跟着他们到了节堂外，那两个差人先进去了，没想到太尉突然从外面进来，这分明是设局害我啊！求大人为我做主！"
+
+府尹听完林冲的辩解，先给他开了回执，然后让人拿来刑具给林冲戴上，关进了大牢。林冲家里人每天来送饭，同时花钱打点。林冲的岳父张教头也到处花钱托关系求情。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">正值有个当案孔目，姓孙名定，为人最鲠直，十分好善，只要周全人，因此人都唤做孙佛儿。他明知道这件事，转转宛宛，在府上说知就里，禀道：“此事果是屈了林冲，只可周全他。”府尹道：“他做下这般罪，高太尉批仰定罪，定要问他‘手执利刃，故入节堂，杀害本官’，怎周全得他？”孙定道：“这南衙开封府不是朝廷的，是高太尉家的？”府尹道：“胡说！”孙定道：“谁不知高太尉当权，倚势豪强，更兼他府里无般不做，但有人小小触犯，便发来开封府，要杀便杀，要剐便剐，却不是他家官府。”府尹道：“据你说时，林冲事怎的方便他，施行断遣？”孙定道：“看林冲口词，是个无罪的人。只是没拿那他两个承局处。如今着他招认做‘不合腰悬利刃，误入节堂'，脊杖二十，刺配远恶军州。”滕府尹也知这件事了，自去高太尉面前，再三禀说林冲口词。高俅情知理短，又碍府尹，只得准了。</div>
+            <div class="text-block simplified-text">正好有个管案子的文书，叫孙定。这人特别正直，心地善良，总爱帮人，大家都叫他"孙佛爷"。他清楚林冲这事儿有冤情，就拐弯抹角地向府尹说明情况："这事确实冤枉了林冲，咱们得帮帮他。"
+
+府尹说："他犯的罪可不轻啊！高太尉亲自批示要定他'拿着刀故意闯进军事重地，想刺杀长官'的死罪，这怎么帮？"
+
+孙定直接怼回去："咋的？这开封府是他高太尉家开的啊？"府尹急了："胡说八道！"孙定接着说："谁不知道高太尉仗势欺人？他家干的坏事多了去了！稍微得罪他们的人，就被押到开封府想杀就杀，这不就是他家的衙门吗？"
+
+府尹被说得没辙："那你说林冲这事儿怎么办？"孙定出主意："看林冲的供词明明是无辜的。就是没抓到那两个传令的人。不如让他认个'不该带刀，不小心走错地方'的轻罪，打二十板子，发配到偏远地方算了。"
+
+后来府尹去找高太尉说了好几次。高俅自己也觉得理亏，又不好驳府尹面子，最后只好同意了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">就此日，府尹回来升厅，叫林冲除了长枷，断了二十脊杖，唤个文笔匠刺了面颊，量地方远近，该配沧州牢城。当厅打一面七斤半团头铁叶护身枷钉了，贴了封皮，押了一道牒文，差两个防送公人监押前去。两个人是董超、薛霸。二人领了公文，押送林冲出开封府来。只见众邻舍并林冲的丈人张教头，都在府前接着，同林冲两个公人，到州桥下酒店里坐定。林冲道：“多得孙孔目维持，这棒不毒，因此走得动掸。”张教头叫酒保安排案酒果子，管侍两个公人。酒至数杯，只见张教头将出银两，赍发他两个防送公人已了。林冲执手对丈人说道：“泰山在上，年灾月厄，撞了高衙内，吃了一场屈官司。今日有句话说，上禀泰山。自蒙泰山错爱，将令爱嫁事小人，已经三载，不曾有半些儿差池。虽不曾生半个儿女，未曾面红面赤，半点相争。今小人遭这场横事，配去沧州，生死存亡未保。娘子在家，小人心去不稳，诚恐高衙内威逼这头亲事。况兼青春年少，休为林冲误了前程。却是林冲自行主张，非他人逼迫，小人今日就高邻在此，明白立纸休书，任从改嫁，并无争执。如此，林冲去的心稳，免得高衙内陷害。”张教头道：“林冲，甚么言语！”你是天年不齐，遭了横事，又不是你作将出来的。今日权且去沧州躲灾避难，早晚天可怜见，放你回来时，依旧夫妻完聚。老汉家中也颇有些过活，明日便取了我女家去，并锦儿，不拣怎的，三年五载，养赡得他。又不叫他出入，高衙内便要见也不能勾。休要忧心，都在老汉身上。你在沧州牢城，我自频频寄书并衣服于你。休得要胡思乱想，只顾放心去。”林冲道：“感谢泰山厚意，只是林冲放心不下，枉自两相耽误。泰山可怜见林冲，依允小人，便死也瞑目。”张教头那里肯应承，众邻舍亦说行不得。林冲道：“若不依允小人之时，林冲便挣扎得回来，誓不与娘子相聚！”张教头道：“既然如此行时，权且由你写下，我只不把女儿嫁人便了。”当时叫酒保寻个写文书的人来，买了一张纸来。那人写，林冲说，道是：</div>
+            <div class="text-block simplified-text">那天，府尹升堂审案，下令给林冲卸下长枷，打了他二十脊杖，又让文身师傅在他脸上刺字。根据罪行轻重，判他去沧州服刑。当场给他戴上七斤半的铁叶枷锁，贴上封条，办好公文，派两个差役董超、薛霸押送他上路。
+
+出了开封府，街坊邻居和林冲的岳父张教头都在门口等着。大家陪着林冲和两个差役到州桥下的酒馆坐下。林冲说："多亏孙孔目帮忙周旋，这顿板子打得不算重，我还能走路。"张教头叫店家上酒菜招待差役。喝了几杯后，张教头拿出银子打点两个差役。
+
+林冲拉着岳父的手说："岳父大人，我今年倒霉，惹上高衙内，吃了冤枉官司。今天有件事要说：承蒙您看得起，把女儿嫁给我三年，我们一直和和睦睦，从没红过脸。虽然没生孩子，但感情很好。现在我要发配沧州，生死难料。留妻子在家，我实在不放心，怕高衙内来逼婚。她还年轻，别为我耽误终身。这是我自己的主意，没人逼我。今天当着各位邻居的面，我想写封休书，让她改嫁。这样我走得安心，也免得高衙内找麻烦。"
+
+张教头急道："林冲，别说傻话！你是遭了无妄之灾，又不是你的错。先去沧州避祸，等老天开眼放你回来，照样夫妻团圆。我家底还算厚实，明天就把女儿和丫鬟锦儿接回家，养她们个三五年不成问题。不让她们出门，高衙内想见也见不着。你别担心，都有我呢。我会常给你寄信寄衣服。别多想，安心上路吧。"
+
+林冲坚持道："感谢岳父好意，但我实在放心不下。这样拖下去对谁都不好。您就答应我吧，这样我死了也能瞑目。"张教头和邻居们都不同意。林冲发狠说："要是您不答应，就算我活着回来，也绝不和妻子团聚！"
+
+张教头只好说："既然你这么坚决，就先写吧。不过我绝不会让女儿改嫁。"于是叫店家找来会写字的人，买了张纸。由林冲口述，那人代笔写了休书。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">“东京八十万禁军教头林冲，为因身犯重罪，断配沧州，去后存亡不保。有妻张氏年少，情愿立此休书，任从改嫁，永无争执。委是自行情愿，即非相逼。恐后无凭，立此文约为照。年月日。”</div>
+            <div class="text-block simplified-text">这是林冲写的一封离婚协议书，大意是：
+
+"我是东京八十万禁军的武术教练林冲，因为犯了重罪，被发配到沧州，这一去生死难料。我妻子张氏还年轻，我自愿写下这封休书，同意她改嫁，以后绝不反悔。这完全是我自己的决定，没人逼我。为了防止以后说不清楚，特立此字据为证。某年某月某日。"
+
+用现在的话说就是：
+"我林冲犯了事要被流放，生死未卜。老婆还年轻，我自愿离婚让她改嫁，绝不纠缠。这是我自己的决定，立字为据。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">林冲当下看人写了，借过笔来，去年月下押个花字，打个手模。正在阁里写了，欲付与泰山收时，只见林冲的娘子号天哭地叫将来。女使锦儿抱着一包衣服，一路寻到酒店里。林冲见了，起身接着道：“娘子，小人有句话说，已禀过泰山了。为是林冲年灾月厄，遭这场屈事。今去沧州，生死不保，诚恐误了娘子青春，今已写了几字在此。万望娘子休等小人，有好头脑，自行招嫁，莫为林冲误了贤妻。”那妇人听罢，哭将起来，说道：“丈夫！我不曾有半些儿点污，如何把我休了？”林冲道：“娘子，我是好意。恐怕日后两下相误，赚了你。”张教头便道：“我儿放心。虽是林冲恁的主张，我终不成下得将你来再嫁人。这事且由他放心去。他便不来时，我也安排你一世的终身盘费，只教你守志便了。”那妇人听得说，心中哽咽，又见了这封书，一时哭倒，声绝在地。未知五脏如何，先见四肢不动。但见：</div>
+            <div class="text-block simplified-text">林冲让人写好休书，拿过笔来，在年月下面签了名、按了手印。正在房间里写完，准备交给岳父的时候，突然听见他老婆在外面哭喊着找过来。丫鬟锦儿抱着一包衣服，一路找到酒店里。林冲看见老婆来了，站起来说："老婆，我有话跟你说，已经跟岳父说过了。我今年倒霉，摊上这冤枉事。现在要去沧州，生死难料，怕耽误你青春，已经写好了休书。希望你别等我了，遇到合适的人就改嫁吧，别让我连累你。"他老婆一听就哭了："老公！我又没做错什么，为什么休我？"林冲说："老婆，我是为你好。怕以后互相耽误，害了你。"他岳父张教头说："女儿别担心。虽然林冲这么做，但我不会随便让你改嫁。这事就顺他的意吧。就算他不回来，我也会养你一辈子，你就安心守着吧。"他老婆听完这话，心里难受，又看到休书，一下子哭晕过去，倒在地上没动静了。不知道她五脏怎样，先看见她手脚都不动了。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">荆山玉损，可惜数十年结发成亲；宝鉴花残，枉费九十日东君匹配。花容倒卧，有如西苑芍药倚朱栏；檀口无言，一似南海观音来入定。小园昨夜春风恶，吹折江梅就地横。</div>
+            <div class="text-block simplified-text">老婆死了，真可惜几十年的夫妻情分；镜子里的容颜凋谢，白白浪费了三个月的恩爱时光。她美丽的身体倒在那儿，就像花园里的芍药靠着栏杆；紧闭着嘴不说话，就像观音菩萨打坐入定。昨晚小院里刮大风，把梅花吹断在地上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">林冲与泰山张教头救得起来，半晌方才苏醒，也自哭不住。林冲把休书与教头收了。众邻舍亦有妇人来劝林冲娘子，搀扶回去。张教头嘱咐林冲道：“你顾前程去，挣扎回来厮见。你的老小，我明日便取回去养在家里，待你回来完聚。你但放心去，不要挂念。如有便人，千万频频寄些书信来。”林冲起身谢了，拜辞泰山并众邻舍，背了包裹，随着公人去了。张教头同邻舍取路回家，不在话下。</div>
+            <div class="text-block simplified-text">林冲和张教头（他岳父）好不容易把他妻子救醒过来，她醒来后一直哭个不停。林冲把离婚书交给张教头收着。邻居家的女人们也来劝林冲的妻子，扶着她回家去了。张教头对林冲说："你只管去奔你的前程，好好保重争取活着回来。你老婆孩子，我明天就接回家照顾，等你回来团圆。你放心走吧，别惦记家里。要是遇到顺路的人，一定多捎信回来。"林冲站起来道谢，告别了岳父和邻居们，背上行李跟着公差走了。张教头和邻居们也各自回家，这些就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">且说两个防送公人把林冲带来使臣房里寄了监。董超、薛霸各自回家，收拾行李。只说董超正在家里拴束包裹，只见巷口酒店里酒保来说道：“董端公，一位官人在小人店里请说话。”董超道：“是谁？”酒保道：“小人不认的，只叫请端公便来。”原来宋时的公人都称呼“端公”。当时董超便和酒保径到店中阁儿内看时，见坐着一个人，头戴顶万字头巾，身穿领皂纱背子，下面皂靴净袜。见了董超，慌忙作揖道：“端公请坐。”董超道：“小人自来不曾拜识尊颜，不知呼唤有何使令？”那人道：“请坐，少间便知。”董超坐在对席。酒保一面铺下酒盏菜蔬果品案酒，都搬来摆了一桌。那人问道：“薛端公在何处住？”董超道：“只在前边巷内。”那人唤酒保问了底脚，“与我去请将来。”酒保去了一盏茶时，只见请得薛霸到阁儿里。董超道：“这位官人请俺说话。”薛霸道：“不敢动问大人高姓？”那人又道：“少刻便知，且请饮酒。”三人坐定，一面酒保筛酒。酒至数杯，那人去袖子里取出十两金子，放在桌上，说道：“二位端公各收五两，有些小事烦及。”二人道：“小人素不认得尊官，何故与我金子？”那人道：“二位莫不投沧州去？”董超道：“小人两个奉本府差遣，监押林冲直到那里。”那人道：“既是如此，相烦二位。我是高太尉府心腹人陆虞候便是。”董超、薛霸喏喏连声，说道：“小人何等样人，敢共对席。”陆谦道：“你二位也知林冲和太尉是对头。今奉着太慰钧旨，教将这十两金子送与二位。望你两个领诺，不必远去，只就前面僻静志处把林冲结果了，就彼处讨纸回状回来便了。若开封府但有话说，太尉自行分付，并不妨事。”董超道：“却怕使不的。开封府公文只叫解活的去，却不曾教结果了他。亦且本人年纪又不高大，如何作的这缘故？倘有些兜答，恐不方便。”薛霸道：“董超，你听我说。高太尉便叫你我死，也只得依他，莫说使这官人又送金子与俺。你不要多说，和你分了罢，落得做人情，日后也有照顾俺处。前头有的是大松林猛恶去处，不拣怎的与他结果了罢。”当下薛霸收了金子，说道：“官人放心。多是五站路，少只两程，便有分晓。”陆谦大喜道：“还是薛端公真是爽利，明日到地了时，是必揭取林冲脸上金印回来做表正，陆谦再包办二位十两金子相谢。专等好音，切不可相误。”原来宋时，但是犯人徒流迁徙的，都脸上刺字，怕人恨怪，只唤做“打金印”。三个人又吃了一会酒，陆虞候算了酒钱。三人出酒肆来，各自分手。</div>
+            <div class="text-block simplified-text">话说两个押送官差把林冲关进看守所后，董超和薛霸各自回家收拾行李。董超正在家里打包行李，忽然巷口酒馆的伙计跑来叫他："董长官，有位大人在我们店里请您过去说话。"董超问："谁找我？"伙计说："我也不认识，就说请您过去。"（注：宋朝时管官差叫"端公"）
+
+董超跟着伙计来到酒店包间，看见一个头戴万字巾、身穿黑纱外套、脚蹬黑靴的人。那人一见董超就赶紧行礼："长官请坐。"董超说："我从来没见过您，不知找我有啥事？"那人说："先坐，待会儿您就知道了。"
+
+这时酒保端来酒菜摆满一桌。那人问："薛长官住哪儿？"董超说："就在前面巷子里。"那人让酒保去请薛霸。不一会儿薛霸来了，董超介绍："这位大人找我们。"薛霸问："请问您贵姓？"那人说："先喝酒，待会儿说。"
+
+喝了几杯后，那人从袖子里掏出十两金子放桌上："二位各拿五两，有点小事麻烦你们。"两人推辞："我们都不认识您，这钱不能收啊。"那人问："你们是不是要押送林冲去沧州？"董超说："对，这是我们的差事。"
+
+那人这才亮明身份："我是高太尉的心腹陆谦。太尉让我给你们送钱，就想请你们在路上找个没人的地方把林冲解决了。回头太尉会罩着你们，不用担心。"
+
+董超犹豫："这不好吧？公文上说要押活人回去。再说林冲年纪轻轻，突然死了不好交代啊。"薛霸插话："太尉让咱们死都得听，何况还给钱。前面不是有片松树林吗？就在那儿动手吧。"说着就把金子收了。
+
+陆谦高兴地说："还是薛长官痛快！等事成后把林冲脸上的刺青割下来作证，我再给你们十两金子。"（注：宋朝流放犯人脸上要刺字，俗称"打金印"）
+
+三人又喝了会儿酒，陆谦付完账，大家就散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">只说董超、薛霸将金子分受入己，送回家中，取了行李包裹，拿了水火棍，便来使臣房里取了林冲，监押上路。当日出得城来，离城三十里多路歇了。宋时途路上客店人家，但是公人监押囚人来歇，不要房钱。当下董、薛二人带林冲到客店里，歇了一夜。第二日天明起来，打火吃了饮食，投沧州路上来。时遇六月天气，炎暑正热。林冲初吃棒时，倒也无事，次后三两日间，天道盛热，棒疮却发。又是个新吃棒的人，路上一步挨一步，走不动。董超道：“你好不晓事！此去沧州二千里有余的路，你这样般走，几时得到。”林冲道：“小人在太尉府里折了些便宜，前日方才吃棒，棒疮举发。这般炎热，上下只得担待一步。”薛霸道：“你自慢慢的走，休听咭咶。”董超一路上喃喃咄咄的，口里埋冤叫苦，说道：“却是老爷们晦气，撞着你这个魔头。”看看天色又晚，但见：</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+董超和薛霸把金子分了装进自己口袋，送回家后拿了行李和棍子，就去押送林冲上路。当天走了三十多里路就休息了。那时候的规矩，公差押犯人去住店不用付房钱。当晚他们带着林冲在客店住了一夜。第二天天亮后，他们吃了早饭继续往沧州走。
+
+当时正是六月大热天。林冲刚挨完板子时还能走，但过了两三天天气太热，伤口开始发炎。他是个刚挨过打的人，走路一瘸一拐的走不快。董超骂他："你怎么这么不懂事！去沧州有两千多里路，照你这么走什么时候才能到？"林冲说："我在太尉府受了罚，前几天刚挨了板子，现在伤口发作。天又这么热，请两位多包涵。"薛霸说："你慢慢走，别听他啰嗦。"董超一路上骂骂咧咧，抱怨说："真是我们倒霉，摊上你这个灾星。"这时天又快黑了，只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">红轮低坠，玉镜将明。遥观樵子归来，近睹柴门半掩。僧投古寺，疏林穰穰鸦飞；客奔孤村，断岸嗷嗷犬吠。佳人秉烛归房，渔父收纶罢钓。唧唧乱蛩鸣腐草，纷纷宿鹭下莎汀。</div>
+            <div class="text-block simplified-text">太阳快落山了，月亮就要升起来。远远看见砍柴的人往回走，近处看农家院门半开着。和尚赶回老庙，树林里乌鸦乱飞；赶路人奔向孤零零的村子，河岸边狗叫个不停。姑娘拿着蜡烛回屋睡觉，打鱼的人收网不钓了。草丛里蟋蟀叫得欢，水边白鹭纷纷落下休息。
+
+（说明：通过以下方式实现白话转换：
+1. "红轮""玉镜"改为"太阳""月亮"
+2. "樵子"改为"砍柴的人"，"柴门"改为"农家院门"
+3. "穰穰""嗷嗷"等拟声词转换为"乱飞""叫个不停"等通俗表达
+4. "秉烛""收纶"等古语改为"拿着蜡烛""收网"等日常说法
+5. 保持原文六组场景描写的完整性，仅转换表述方式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">当晚三个人投村中客店里来。到得房内，两个公人放了棍棒，解下包裹。林冲也把包来解了，不等公人开口，去包里取些碎银两，央店小二买些酒肉，籴些米来，安排盘馔，请两个防送公人坐了吃。董超、薛霸又添酒来，把林冲灌的醉了，和枷倒在一边。薛霸去烧一锅百沸滚汤，提将来倾在脚盆内，叫道：“林教头，你也洗了脚好睡。”林冲挣的起来，被枷碍了，曲身不得。薛霸便道：“我替你洗。”林冲忙道：“使不得！”薛霸道：“出路人那里计较的许多。”林冲不知是计，只顾伸下脚来，被薛霸只一按，按在滚汤里。林冲叫一声：“哎也！”急缩得起时，泡得脚面红肿了。林冲道：“不消生受。”薛霸道：“只见罪人伏侍公人，那曾有公人伏侍罪人。好意叫他洗脚，颠倒嫌冷嫌热，却不是好心不得好报。”口里喃喃的骂了半夜。林冲那里敢回话，自去倒在一边。他两个泼了这水，自换些水去外边洗了脚收拾。睡到四更，同店人都未起，薛霸起来烧了面汤，安排打火做饭吃。林冲起来，晕了，吃不得，又走不动。薛霸拿了水火棍，催促动身。董超去腰里解下一双新草鞋，耳朵并索儿却是麻编的，叫林冲穿。林冲看时，脚上满面都是潦浆泡，只得寻觅旧草鞋穿，那里去讨，没奈何，只得把新鞋穿上。叫店小二算过酒钱。两个公人带了林冲出店，却是五更天气。</div>
+            <div class="text-block simplified-text">那天晚上，三个人到村里的小旅馆住下。进屋后，两个差人放下棍棒，解下行李。林冲也解开自己的包袱，不等差人说话，就拿出些零碎银子，请店小二买了酒肉和米，准备好饭菜，请两个押送他的差人坐下吃喝。董超和薛霸又添酒，把林冲灌醉，让他戴着枷锁倒在一边。薛霸烧了一锅滚烫的开水，倒进洗脚盆里，喊道："林教头，洗个脚好睡觉。"林冲挣扎着想起来，但被枷锁卡住弯不了腰。薛霸就说："我帮你洗。"林冲赶紧说："不用！"薛霸说："出门在外哪那么多讲究。"林冲没想到是计，刚伸出脚，就被薛霸一把按进开水里。林冲疼得大叫，赶紧缩回脚，脚面已经烫得红肿。林冲说："不用麻烦了。"薛霸骂道："从来都是犯人伺候差人，哪有差人伺候犯人的。好心让你洗脚，还嫌冷嫌热，真是好心没好报。"骂骂咧咧了半夜。林冲不敢回嘴，自己倒在一边。两个差人倒掉水，换了干净水在外边洗脚收拾。睡到凌晨四点，其他客人都没醒，薛霸起来烧水做饭。林冲起来时头晕吃不下，也走不动。薛霸拿着棍子催着上路。董超从腰间解下一双新草鞋（鞋带是麻绳编的）让林冲穿。林冲一看自己满脚水泡，想找旧鞋穿却找不到，只好穿上新鞋。结完账后，两个差人带着林冲离开旅店，这时天刚蒙蒙亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">林冲走不到三二里，脚上泡被新草鞋打破了，鲜血淋漓，正走不动，声唤不止。薛霸骂道：“走便快走，不走便大棍搠将起来。”林冲道：“上下方便，小人岂敢怠慢，俄延程途，其实是脚疼走不动。”董超道：“我扶着你走便了。”搀着林冲，又行不动，只得又挨了四五里路。看看正走动了，早望见前面烟笼雾锁，一座猛恶林子。但见：</div>
+            <div class="text-block simplified-text">林冲走了不到两三里路，脚上的水泡被新草鞋磨破了，流了很多血，疼得实在走不动，不停地呻吟。薛霸骂道：“能走就快点走，不走我就用棍子打你！”林冲说：“求您行行好，我哪敢偷懒拖延路程，实在是脚疼得走不动啊。”董超说：“我扶着你走吧。”他扶着林冲，还是走不快，只能勉强又走了四五里路。眼看终于能走动了，远远看见前面雾气蒙蒙，有片阴森可怕的树林。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">层层如雨脚，郁郁似云头。杈枒如鸾凤之巢，屈曲似龙蛇之势。根盘地角，弯环有似蟒盘旋；影拂烟霄，高耸直教禽打捉。直饶胆硬心刚汉，也作魂飞魄散人。</div>
+            <div class="text-block simplified-text">这段文字描述了一棵形状奇特、让人害怕的大树。用大白话说就是：
+
+这棵树长得特别吓人。它的树枝密密麻麻像下雨的雨线，树冠茂密得像乌云压顶。枝杈歪歪扭扭，有的像凤凰窝，有的像蛇爬行的样子。树根在地里盘来盘去，像条大蟒蛇；树梢高得都快碰到云了，鸟儿飞过都可能被挂住。就算是胆子最大、最硬气的好汉，看到这棵树也得被吓得魂飞魄散。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">这座猛恶林子，有名唤做“野猪林”，此是东京去沧州路上第一个险峻去处。宋时，这座林子内，但有些冤仇的，使用些钱与公人，带到这里，不知结果了多少好汉在此处。今日，这两个公人带林冲奔入这林子里来。董超道：“走了一五更，走不得十里路程，似此沧州怎的得到。”薛霸道：“我也走不得了，且就林子里歇一歇。”</div>
+            <div class="text-block simplified-text">这片林子特别凶险，名叫"野猪林"，是从东京到沧州路上最危险的地方。在宋朝那会儿，只要有人结仇，花钱买通差役，就能把人带到这儿害死，不知道有多少好汉死在这里。这天，两个差役押着林冲进了林子。董超说："走了一整夜，连十里路都没走到，照这样什么时候才能到沧州啊。"薛霸也说："我也走不动了，先在林子里歇会儿吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">三个人奔到里面，解下行李包裹，都搬在树根头。林冲叫声：“呵也！”靠着一株大树便倒了。只见董超说道：“行一步，等一步，倒走得我困倦起来。且睡一睡却行。”放下水火棍，便倒在树边，略略闭得眼，从地下叫将起来。林冲道：“上下做甚么？”董超、薛霸道：“俺两个正要睡一睡，这里又无关锁，只怕你走了。我们放心不下，以此睡不稳。”林冲答道：“小人是个好汉，官司既已吃了，一世也不走。”董超道：“那里信得你说。要我们心稳，须得缚一缚。”林冲道：“上下要缚便缚，小人敢道怎地。”薛霸腰里解下索子来，把林冲连手带脚和枷紧紧的绑在树上。两个跳将起来，转过身来，拿起水火棍，看着林冲，说道：“不是俺要结果你，自是前日来时，有那陆虞候传着高太尉钧旨，教我两个到这里结果你，立等金印回去回话。便多走的几日，也是死数。只今日就这里，倒作成我两个回去快些。休得要怨我弟兄两个，只是上司差遣，不由自己。你须精细着，明年今日是你周年。我等已限定日期，亦要早回话。”林冲见说，泪如雨下，便道：“上下！我与你二位，往日无仇，近日无冤。你二位如何救得小人，生死不忘。”董超道：“说甚么闲话！救你不得。”薛霸便提起水火棍来，望着林冲脑袋上劈将来。可怜豪杰，等闲来赴鬼门关；惜哉英雄，到此翻为槐国梦。万里黄泉无旅店，三魂今夜落谁家？毕竟看林冲性命如何，且听下回分解。</div>
+            <div class="text-block simplified-text">三个人跑到树林里，放下行李包裹，堆在树根旁边。林冲突然喊了声"哎呀！"，靠着一棵大树就倒下了。这时董超说："走一步歇一步，累死我了。先睡会儿再走吧。"说完放下棍子，也倒在树边，刚闭上眼睛，突然又从地上跳起来。
+
+林冲问："两位差爷怎么了？"董超和薛霸说："我们正要睡觉，可这里没门没锁，怕你跑了。我们放心不下，睡不着。"林冲回答："我是条好汉，既然吃了官司，这辈子都不会逃。"董超说："谁信你的鬼话！要我们放心，得把你绑起来。"林冲说："差爷要绑就绑，我哪敢说不。"
+
+薛霸从腰间解下绳子，把林冲连手带脚和枷锁一起紧紧绑在树上。两人突然跳起来，转身抄起棍子，盯着林冲说："不是我们要杀你，是前几天出发时，陆谦传高太尉的命令，叫我们在这结果你，拿你的脑袋回去交差。就算多活几天也是死，不如今天就在这了结，我们也好早点回去复命。别怪我们兄弟，都是上司的命令，我们也没办法。你记好了，明年的今天就是你的忌日。我们赶着回去复命呢。"
+
+林冲听完泪流满面，哀求道："两位差爷！我和你们无冤无仇，求你们救救我，我这辈子都不会忘记你们的大恩。"董超说："少废话！救不了你。"薛霸举起棍子就朝林冲脑袋劈去。可怜这位好汉，眼看就要命丧黄泉。不知林冲性命如何，且听下回分解。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
