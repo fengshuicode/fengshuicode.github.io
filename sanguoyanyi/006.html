@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六回 焚金阙董卓行凶　匿玉玺孙坚背约</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./005.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第六回 焚金阙董卓行凶　匿玉玺孙坚背约</h1>
+        <a href="./007.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说张飞拍马赶到关下，关上矢石如雨，不得进而回。八路诸侯，同请玄德、关、张贺功，使人去袁绍寨中报捷。绍遂移檄孙坚，令其进兵。坚引程普、黄盖至袁术寨中相见。坚以杖画地曰：“董卓与我，本无仇隙。今我奋不顾身，亲冒矢石，来决死战者，上为国家讨贼，下为将军家门之私；而将军却听谗言，不发粮草，致坚败绩，将军何安？”术惶恐无言，命斩进谗之人，以谢孙坚。</div>
+            <div class="text-block simplified-text">话说张飞骑马冲到关下，关上箭和石头像下雨一样射下来，他没法前进只好退回。八路诸侯一起请刘备、关羽、张飞庆祝胜利，并派人到袁绍大营报告好消息。袁绍就发文书命令孙坚继续进军。孙坚带着程普、黄盖到袁术营里见面。孙坚用棍子在地上画着说："我和董卓本来没仇。现在我拼了命亲自上阵打仗，一是为了国家除害，二是为了给你袁家报仇。可你却听信小人挑拨，不给我粮草，害我打了败仗，你心里过得去吗？"袁术吓得说不出话，赶紧把挑拨离间的人杀了，向孙坚赔罪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">忽人报坚曰：“关上有一将，乘马来寨中，要见将军。”坚辞袁术，归到本寨，唤来问时，乃董卓爱将李傕。坚曰：“汝来何为？”傕曰：“丞相所敬者，惟将军耳。今特使傕来结亲：丞相有女，欲配将军之子。”坚大怒，叱曰：“董卓逆天无道，荡覆王室，吾欲夷其九族，以谢天下，安肯与逆贼结亲耶！吾不斩汝，汝当速去，早早献关，饶你性命！倘若迟误，粉骨碎身！”李傕抱头鼠窜，回见董卓，说孙坚如此无礼。卓怒，问李儒。儒曰：“温侯新败，兵无战心。不若引兵回洛阳，迁帝于长安，以应童谣。近日街市童谣曰：西头一个汉，东头一个汉。鹿走入长安，方可无斯难。臣思此言‘西头一个汉’，乃应高祖旺于西都长安，传一十二帝；‘东头一个汉’，乃应光武旺于东都洛阳，今亦传一十二帝。天运合回。丞相迁回长安，方可无虞。”卓大喜曰：“非汝言，吾实不悟。”遂引吕布星夜回洛阳，商议迁都。聚文武于朝堂，卓曰：“汉东都洛阳，二百余年，气数已衰。吾观旺气实在长安，吾欲奉驾西幸。汝等各宜促装。”司徒杨彪曰：“关中残破零落。今无故捐宗庙，弃皇陵，恐百姓惊动。天下动之至易，安之至难。望丞相监察。”卓怒曰：“汝阻国家大计耶？”太尉黄琬曰：“杨司徒之言是也。往者王莽篡逆，更始赤眉之时，焚烧长安，尽为瓦砾之地；更兼人民流移，百无一二。今弃宫室而就荒地，非所宜也。”卓曰：“关东贼起，天下播乱。长安有崤函之险；更近陇右，木石砖瓦，克日可办，宫室营造，不须月余。汝等再休乱言。”司徒荀爽谏曰：“丞相若欲迁都，百姓骚动不宁矣。”卓大怒曰：“吾为天下计，岂惜小民哉！”即日罢杨彪、黄琬、荀爽为庶民。卓出上车，只见二人望车而揖，视之，乃尚书周毖、城门校尉伍琼也。卓问有何事，毖曰：“今闻丞相欲迁都长安，故来谏耳。”卓大怒曰：“我始初听你两个，保用袁绍；今绍已反，是汝等一党！”叱武士推出都门斩首。遂下令迁都，限来日便行。李儒曰：“今钱粮缺少，洛阳富户极多，可籍没入官。但是袁绍等门下，杀其宗党而抄其家赀，必得巨万。”卓即差铁骑五千、遍行捉拿洛阳富户，共数千家，插旗头上大书“反臣逆党”，尽斩于城外，取其金赀。</div>
+            <div class="text-block simplified-text">突然有人跑来报告孙坚："关口那边有个将军骑马到咱们军营来了，说要见您。"孙坚跟袁术打了声招呼就回自己军营，叫那人过来一问，原来是董卓的心腹大将李傕。孙坚问："你来干啥？"李傕说："我们丞相最佩服的就是您了。特意派我来提亲：丞相想把女儿嫁给您儿子。"孙坚一听火冒三丈，骂道："董卓这个混蛋无法无天，把朝廷搞得一团糟，我恨不得把他全家杀光给天下人出气，怎么可能跟这种反贼结亲家！今天不杀你算你走运，赶紧滚回去告诉董卓早点投降，还能留条命！要是敢拖延，把你们全剁成肉酱！"李傕吓得抱头逃跑，回去跟董卓告状说孙坚太嚣张。董卓气得找李儒商量。李儒说："吕布刚吃了败仗，士兵们都没心思打仗。不如咱们撤回洛阳，把皇帝搬到长安去，正好应验了最近街上传的童谣——'西边一个汉，东边一个汉，皇帝跑到长安去，天下才能保平安'。我琢磨这'西边一个汉'是说汉高祖在长安建都传了十二代皇帝，'东边一个汉'是说光武帝在洛阳建都也传了十二代。现在该转回去了。丞相您搬到长安就安全了。"董卓高兴地说："要不是你提醒，我还真没想到。"马上带着吕布连夜赶回洛阳商量迁都。第二天召集文武百官开会，董卓宣布："汉朝在洛阳建都两百多年，气数已尽。我看长安风水好，准备带皇上过去。你们都赶紧收拾行李。"司徒杨彪劝道："关中地区早就荒废了。现在无缘无故抛弃祖庙皇陵，老百姓肯定要闹事。搞乱天下容易，想安定下来就难了。请丞相三思。"董卓瞪眼："你敢妨碍国家大事？"太尉黄琬帮腔："杨司徒说得对。当年王莽篡位和赤眉军作乱时，长安被烧得只剩一堆破砖烂瓦，老百姓都跑光了，现在放着好好的皇宫不住去那种地方实在不合适。"董卓反驳："现在关东到处是叛军，长安有险要地形，离陇右又近，建筑材料随时能运来，个把月就能盖好新宫殿。你们别废话了！"司徒荀爽也劝："丞相要是迁都，老百姓肯定要造反啊。"董卓拍桌子怒吼："我这是为天下着想，管那些小老百姓干嘛！"当场就把杨彪、黄琬、荀爽撤职查办。董卓出门上车时，看见尚书周毖和城门校尉伍琼在路边行礼，就问有什么事。周毖说："听说丞相要迁都长安，特来劝阻。"董卓暴怒："当初就是听你俩的话重用袁绍，现在袁绍造反了，你们果然是一伙的！"直接叫卫兵把这两人拉去砍头。随即下令明天必须全部搬走。李儒出主意："现在军费紧张，洛阳有钱人多得很，可以抄他们的家。特别是袁绍那些人的亲戚朋友，全杀了没收财产，肯定能捞几千万。"董卓立刻派五千骑兵满城抓有钱人，抓了几千家，在他们头上插着"反贼同党"的旗子，全部拉到城外砍头，金银财宝全抢光。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">李傕、郭汜尽驱洛阳之民数百万口，前赴长安。每百姓一队，间军一队，互相拖押；死于沟壑者，不可胜数。又纵军士淫人妻女，夺人粮食；啼哭之声，震动天地。如有行得迟者，背后三千军催督，军手执白刃，于路杀人。</div>
+            <div class="text-block simplified-text">李傕和郭汜这两个军阀，强迫洛阳几百万老百姓全部搬到长安去。他们把老百姓和军队混在一起，一队百姓一队兵，互相押着走。路上死的人多得数不清。这些当兵的还随便糟蹋妇女，抢老百姓的粮食，到处都能听到哭喊声，惨得不得了。谁要是走得慢，后面三千士兵就拿刀逼着，看谁走得慢就直接砍死。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">卓临行，教诸门放火，焚烧居民房屋，并放火烧宗庙宫府。南北两宫，火焰相接；长乐宫庭，尽为焦土。又差吕布发掘先皇及后妃陵寝，取其金宝。军士乘势掘官民坟冢殆尽。董卓装载金珠缎匹好物数千余车，劫了天子并后妃等，竟望长安去了。却说卓将赵岑，见卓已弃洛阳而去，便献了汜水关。孙坚驱兵先入。玄德、关、张杀入虎牢关，诸侯各引军入。</div>
+            <div class="text-block simplified-text">董卓临走前，命令手下到处放火，烧老百姓的房子，还把皇宫和宗庙也烧了。洛阳城里南北两座皇宫烧得火光连成一片，长乐宫被烧得精光。他又派吕布去挖开皇帝和后妃们的陵墓，把里面的金银财宝都抢走。士兵们也趁机把官员和老百姓的坟全挖了个遍。董卓抢了几千车金银珠宝、绸缎好东西，还抓走了皇帝和皇后他们，直接往长安跑了。
+
+再说董卓的部下赵岑，看到董卓已经扔下洛阳跑了，就主动献出汜水关投降。孙坚带着兵最先冲进洛阳。刘备、关羽、张飞他们打进虎牢关，其他诸侯也各自带兵进了城。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">且说孙坚飞奔洛阳，遥望火焰冲天，黑烟铺地，二三百里，并无鸡犬人烟；坚先发兵救灭了火，令众诸侯各于荒地上屯住军马。曹操来见袁绍曰：“今董贼西去，正可乘势追袭；本初按兵不动，何也？”绍曰：“诸兵疲困，进恐无益。”操曰：“董贼焚烧宫室，劫迁天子，海内震动，不知所归：此天亡之时也，一战而天下定矣。诸公何疑而不进？”众诸侯皆言不可轻动。操大怒曰：“竖子不足与谋！”遂自引兵万余，领夏侯惇、夏侯渊、曹仁、曹洪、李典、乐进，星夜来赶董卓。</div>
+            <div class="text-block simplified-text">话说孙坚快马加鞭赶到洛阳，远远就看见大火烧得满天通红，黑烟笼罩大地，方圆两三百里内连个人影、鸡狗都看不到。孙坚先带人把火扑灭，然后让各路诸侯的军队在这片荒地上扎营休息。
+
+这时曹操跑去找袁绍说："现在董卓往西边逃了，正是追上去打他的好机会。你为啥按兵不动啊？"袁绍回答："大家都累坏了，现在追上去恐怕占不到便宜。"曹操急了："董卓烧了皇宫，把皇上都抓走了，全国上下人心惶惶。这是老天要灭他啊，打这一仗就能平定天下了！你们还犹豫啥？"其他诸侯都说不能轻举妄动。
+
+曹操气得大骂："这帮废物根本没法共事！"说完就带着自己的一万多兵马，叫上夏侯惇、夏侯渊、曹仁、曹洪、李典、乐进这些将领，连夜去追董卓了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">且说董卓行至荥阳地方，太守徐荣出接。李儒曰：“丞相新弃洛阳，防有追兵。可教徐荣伏军荥阳城外山坞之旁，若有兵追来，可竟放过；待我这里杀败，然后截住掩杀。令后来者不敢复追。”卓从其计，又令吕布引精兵遏后。布正行间，曹操一军赶上。吕布大笑曰：“不出李儒所料也！”将军马摆开。曹操出马，大叫：“逆贼！劫迁天子，流徙百姓，将欲何往？”吕布骂曰：“背主懦夫，何得妄言！”夏侯惇挺枪跃马，直取吕布。战不数合，李傕引一军，从左边杀来，操急令夏侯渊迎敌。右边喊声又起，郭汜引军杀到，操急令曹仁迎敌。三路军马，势不可当。夏侯惇抵敌吕布不住，飞马回阵。布引铁骑掩杀，操军大败，回望荥阳而走。走至一荒山脚下，时约二更，月明如昼。方才聚集残兵，正欲埋锅造饭，只听得四围喊声，徐荣伏兵尽出。曹操慌忙策马，夺路奔逃，正遇徐荣，转身便走。荣搭上箭，射中操肩膊。操带箭逃命，踅过山坡。两个军士伏于草中，见操马来，二枪齐发，操马中枪而倒。操翻身落马，被二卒擒住。只见一将飞马而来，挥刀砍死两个步军，下马救起曹操。操视之，乃曹洪也。操曰：“吾死于此矣，贤弟可速去！”洪曰：“公急上马！洪愿步行。”操曰：“贼兵赶上，汝将奈何？”洪曰：“天下可无洪，不可无公。”操曰：“吾若再生，汝之力也。”操上马，洪脱去衣甲，拖刀跟马而走。约走至四更余，只见前面一条大河，阻住去路，后面喊声渐近。操曰：“命已至此，不得复活矣！”洪急扶操下马，脱去袍铠，负操渡水。才过彼岸，追兵已到，隔水放箭。操带水而走。比及天明，又走三十余里，土冈下少歇。忽然喊声起处，一彪人马赶来：却是徐荣从上流渡河来追。操正慌急间，只见夏侯惇、夏侯渊引数十骑飞至，大喝：“徐荣无伤吾主！”徐荣便奔夏侯惇，惇挺枪来迎。交马数合，惇刺徐荣于马下，杀散余兵。随后曹仁、李典、乐进各引兵寻到，见了曹操，忧喜交集；聚集残兵五百余人，同回河内。卓兵自往长安。却说众诸侯分屯洛阳。孙坚救灭宫中余火，屯兵城内，设帐于建章殿基上。坚令军士扫除宫殿瓦砾。凡董卓所掘陵寝。尽皆掩闭。于太庙基上，草创殿屋三间，请众诸侯立列圣神位，宰太牢祀之。祭毕，皆散。坚归寨中，是夜星月交辉，乃按剑露坐，仰观天文。见紫微垣中白气漫漫，坚叹曰：“帝星不明，贼臣乱国，万民涂炭，京城一空！”言讫，不觉泪下。</div>
+            <div class="text-block simplified-text">话说董卓带着人马走到荥阳地界，当地太守徐荣出来迎接。李儒对董卓说："丞相刚离开洛阳，要防备后面有追兵。可以让徐荣带兵埋伏在荥阳城外的山坳里，要是真有追兵来，先放他们过去；等我们这边把追兵打败了，再杀出来断他们后路。这样后面的人就不敢再追了。"董卓采纳了这个计策，又派吕布带着精锐部队断后。
+
+果然，吕布正走着，曹操的部队就追上来了。吕布大笑道："果然被李儒说中了！"立刻摆开阵势。曹操骑马出来大喊："反贼！你挟持皇上，祸害百姓，要往哪儿跑？"吕布骂道："你这个背叛主子的胆小鬼，还敢胡说八道！"
+
+夏侯惇挺枪冲上去跟吕布打起来。没打几个回合，李傕带着部队从左边杀来，曹操赶紧派夏侯渊去抵挡。这时右边又传来喊杀声，郭汜带兵杀到，曹操又急忙派曹仁迎战。三路敌军来势汹汹，夏侯惇打不过吕布，掉转马头就跑。吕布带着骑兵追杀，曹操的部队大败，往荥阳方向逃去。
+
+逃到一座荒山脚下时，已经是晚上八九点钟，月亮亮得像白天一样。曹操刚把残兵集合起来准备做饭，突然四周喊声大作，徐荣的伏兵全杀出来了。曹操慌忙骑马逃跑，正好撞见徐荣，赶紧调头就跑。徐荣一箭射中曹操肩膀。曹操带着箭伤逃命，刚翻过山坡，又被两个埋伏的士兵用长枪刺中马匹，摔下马被活捉。
+
+这时曹洪骑马赶来，砍死那两个士兵救起曹操。曹操说："我今天要死在这儿了，你快走吧！"曹洪说："主公快上马！我走路跟着。"曹操说："追兵来了你怎么办？"曹洪说："天下可以没有我曹洪，不能没有主公啊！"曹操感动地说："我要是能活下来，全靠你了。"
+
+曹操骑马，曹洪脱掉盔甲提刀跟着跑。跑到凌晨两三点，前面被一条大河拦住，后面追兵越来越近。曹操叹气说："看来真要死在这儿了。"曹洪赶紧扶曹操下马，背着他游过河。刚上岸，追兵就到了，隔着河射箭。曹操浑身湿透继续逃命。
+
+天快亮时，又跑了三十多里，在一个土坡下休息。突然徐荣带着人马从上游渡河追来。危急时刻，夏侯惇、夏侯渊带着几十个骑兵赶到，大喊："徐荣休伤我主！"几个回合就把徐荣刺死，打散了追兵。后来曹仁、李典、乐进也带兵找来，见到曹操又惊又喜。最后收拢了五百多残兵，一起回河内去了。董卓的部队则去了长安。
+
+再说其他诸侯驻扎在洛阳。孙坚带人扑灭皇宫余火，在城内驻兵，把大帐设在建章殿废墟上。他命令士兵清理宫殿瓦砾，把董卓挖开的皇陵都重新封好。又在太庙旧址上临时搭了三间屋子，请各路诸侯一起祭祀历代皇帝。祭祀结束后众人散去。
+
+当晚星光灿烂，孙坚拿着剑坐在露天，抬头看星星。看到紫微星周围白气弥漫，叹息道："帝王星暗淡，奸臣祸国，百姓遭殃，京城都空了！"说完忍不住流下眼泪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">傍有军士指曰：“殿南有五色毫光起于井中，”坚唤军士点起火把，下井打捞。捞起一妇人尸首，虽然日久，其尸不烂：宫样装束，项下带一锦囊。取开看时，内有朱红小匣，用金锁锁着。启视之，乃一玉玺：方圆四寸，上镌五龙交纽；傍缺一角，以黄金镶之；上有篆文八字云：“受命于天，既寿永昌。”坚得玺，乃问程普。普曰：“此传国玺也。此玉是昔日卞和于荆山之下，见凤凰栖于石上，载而进之楚文王。解之，果得玉。秦二十六年，令良工琢为玺，李斯篆此八字于其上。二十八年，始皇巡狩至洞庭湖。风浪大作，舟将覆，急投玉玺于湖而止。至三十六年，始皇巡狩至华阴，有人持玺遮道，与从者曰：‘持此还祖龙。’言讫不见，此玺复归于秦。明年，始皇崩。后来子婴将玉玺献与汉高祖。后至王莽篡逆，孝元皇太后将玺打王寻、苏献，崩其一角，以金镶之。光武得此宝于宜阳，传位至今。近闻十常侍作乱，劫少帝出北邙，回宫失此宝。今天授主公，必有登九五之分。此处不可久留，宜速回江东，别图大事。”坚曰：“汝言正合吾意。明日便当托疾辞归。”商议已定，密谕军士勿得泄漏。</div>
+            <div class="text-block simplified-text">旁边有个士兵指着说：“大殿南边的井里冒出五颜六色的光。”孙坚让士兵点着火把下井打捞，捞上来一具女尸。虽然死了很久，但尸体没腐烂，穿着宫廷衣服，脖子上挂着一个锦袋。打开一看，里面有个红色小盒子，用金锁锁着。打开盒子，里面是一块玉玺：四寸见方，上面刻着五条龙互相缠绕；旁边缺了一个角，用黄金补上了；上面刻着八个篆体字：“受命于天，既寿永昌。”孙坚拿到玉玺后，就问程普这是啥。程普说：“这是传国玉玺。这块玉是以前卞和在荆山脚下看见凤凰落在石头上，挖出来献给楚文王的。后来秦始皇二十六年，让好工匠做成玉玺，李斯刻了这八个字。二十八年，秦始皇坐船到洞庭湖遇到大风浪，差点翻船，把玉玺扔进湖里才平息。三十六年，秦始皇到华阴时，有人拿着玉玺拦住路，对随从说‘把这个还给祖龙（指秦始皇）’，说完就不见了，玉玺又回到秦朝。第二年秦始皇就死了。后来秦王子婴把玉玺献给汉高祖。王莽篡位时，孝元皇太后用玉玺砸王寻、苏献，砸掉一个角，就用金子补上了。光武帝在宜阳得到这个宝贝，一直传到今天。最近听说十常侍叛乱，挟持少帝逃出北邙山，回宫时丢了玉玺。现在老天把它给您，说明您肯定能当皇帝。这儿不能久留，咱们赶紧回江东，另做打算。”孙坚说：“你说得对，明天我就装病辞职回去。”商量好后，悄悄告诉士兵们别往外说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">谁想数中一军，是袁绍乡人，欲假此为进身之计，连夜偷出营寨，来报袁绍。绍与之赏赐，暗留军中。次日，孙坚来辞袁绍曰：“坚抱小疾，欲归长沙，特来别公。”绍笑曰：“吾知公疾乃害传国玺耳。”坚失色曰：“此言何来？”绍曰：“今兴兵讨贼，为国除害。玉玺乃朝廷之宝，公既获得，当对众留于盟主处，候诛了董卓，复归朝廷。今匿之而去，意欲何为？”坚曰：“玉玺何由在吾处？”绍曰：“建章殿井中之物何在？”坚曰：“吾本无之，何强相逼？”绍曰：“作速取出，免自生祸。”坚指天为誓曰：“吾若果得此宝，私自藏匿，异日不得善终，死于刀箭之下！”众诸侯曰：“文台如此说誓，想必无之。”绍唤军士出曰：“打捞之时，有此人否？”坚大怒，拔所佩之剑，要斩那军士。绍亦拔剑曰：“汝斩军人，乃欺我也。”绍背后颜良、文丑皆拔剑出鞘。坚背后程普、黄盖、韩当亦掣刀在手。众诸侯一齐劝住。坚随即上马，拔寨离洛阳而去。绍大怒，遂写书一封，差心腹人连夜往荆州，送与刺史刘表，教就路上截住夺之。</div>
+            <div class="text-block simplified-text">有个袁绍的老乡，想靠告密升官发财，晚上偷偷溜出军营去给袁绍报信。袁绍赏了他，悄悄把他留在自己部队里。第二天孙坚来找袁绍说："我有点不舒服，想回长沙，特地来跟你道别。"袁绍笑着说："我知道你得的什么病，是得了传国玉玺的病吧！"孙坚脸色大变："你这话什么意思？"袁绍说："咱们起兵是为了讨伐国贼，玉玺是国家的宝贝，你既然捡到了就该交给我这个盟主保管，等灭了董卓再还给朝廷。你现在藏着玉玺想溜，到底想干嘛？"孙坚嘴硬："玉玺怎么可能在我这儿？"袁绍直接挑明："建章殿井里捞出来的东西在哪儿？"孙坚抵赖："我根本没有，你别冤枉人！"袁绍威胁："赶紧交出来，别自找麻烦。"孙坚急得对天发誓："我要是真拿了玉玺还藏起来，以后不得好死，被人乱刀砍死、乱箭射死！"其他军阀都打圆场："孙坚都这么赌咒了，应该真没拿。"袁绍突然叫出那个告密的老乡："捞玉玺的时候，这人在场吗？"孙坚气得拔剑要砍那告密的人，袁绍也拔剑说："你敢动我的人就是跟我过不去！"两边手下颜良、文丑、程普、黄盖他们都亮出兵器，被众人劝住。孙坚直接带兵离开洛阳。袁绍气坏了，派人送信给荆州的刘表，让他在半路截住孙坚把玉玺抢过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">次日，人报曹操追董卓，战于荥阳，大败而回。绍令人接至寨中，会众置酒，与操解闷。饮宴间，操叹曰：“吾始兴大义，为国除贼。诸公既仗义而来，操之初意，欲烦本初引河内之众，临孟津、酸枣；诸将固守成皋，据敖仓，塞轘辕、太谷，制其险要；公路率南阳之军，驻丹、析，入武关，以震三辅。皆深沟高垒，勿与战，益为疑兵，示天下形势。以顺诛逆，可立定也。今迟疑不进，大失天下之望。操窃耻之！”绍等无言可对。既而席散，操见绍等各怀异心，料不能成事，自引军投扬州去了。公孙瓒谓玄德、关、张曰：“袁绍无能为也，久必有变。吾等且归。”遂拔寨北行。至平原，令玄德为平原相，自去守地养军。兖州太守刘岱，问东郡太守乔瑁借粮。瑁推辞不与，岱引军突入瑁营，杀死乔瑁，尽降其众。袁绍见众人各自分散，就领兵拔寨，离洛阳，投关东去了。</div>
+            <div class="text-block simplified-text">第二天，有人报告说曹操带兵去追董卓，在荥阳打了一仗，结果大败而归。袁绍派人把曹操接到军营里，召集大家喝酒，帮曹操散心。喝酒的时候，曹操叹气说："我当初起兵是为了正义，要为国家除掉奸贼。各位既然仗义来帮忙，我原本的打算是让袁绍（本初）带着河内的兵，到孟津、酸枣一带；其他将领守住成皋，占住敖仓，堵住轘辕、太谷这些险要的地方；袁术（公路）带着南阳的军队，驻扎在丹、析，打进武关，震慑长安周边。大家都挖深壕沟、筑高城墙，先别打仗，多布置些疑兵，让天下人看到我们的优势。这样以正义讨伐叛逆，很快就能成功。可现在大家犹豫不前，太让天下人失望了。我真觉得丢脸！"袁绍他们听了都说不出话。喝完酒，曹操看出袁绍这些人各有私心，知道成不了大事，就自己带兵去扬州了。公孙瓒对刘备、关羽、张飞说："袁绍这人靠不住，迟早要出事。咱们回去吧。"于是带着部队往北走。到了平原，让刘备当平原相，自己回去守地盘养军队。兖州太守刘岱向东郡太守乔瑁借粮，乔瑁不肯给，刘岱就带兵冲进乔瑁军营，杀了乔瑁，收编了他的部队。袁绍看到大家都散了，也带着兵离开洛阳，往关东去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说荆州刺史刘表，字景升，山阳高平人也，乃汉室宗亲；幼好结纳，与名士七人为友，时号“江夏八俊”。那七人：汝南陈翔，字仲麟；同郡范滂，字孟博；鲁国孔昱，字世元；渤海范康，字仲真，山阳檀敷，字文友；同郡张俭，字元节；南阳岑咥，字公孝。刘表与此七人为友；有延平人蒯良、蒯越，襄阳人蔡瑁为辅。当时看了袁绍书，随令蒯越、蔡瑁引兵一万来截孙坚。坚军方到，蒯越将阵摆开，当先出马。孙坚问曰：“蒯异度何故引兵截吾去路？”越曰：“汝既为汉臣，如何私匿传国之宝？可速留下，放汝归去！”坚大怒，命黄盖出战。蔡瑁舞刀来迎。斗到数合，盖挥鞭打瑁正中护心镜。瑁拨回马走，孙坚乘势杀过界口。山背后金鼓齐鸣、乃刘表亲自引军来到。孙坚就马上施礼曰：“景升何故信袁绍之书，相逼邻郡？”表曰：“汝匿传国玺，将欲反耶？”坚曰：“吾若有此物，死于刀箭之下！”表曰：“汝若要我听信，将随军行李，任我搜看。”坚怒曰：“汝有何力，敢小觑我！”方欲交兵，刘表便退。坚纵马赶去，两山后伏兵齐起，背后蔡瑁、蒯越赶来，将孙坚困在垓心。正是：玉玺得来无用处，反因此宝动刀兵。毕竟孙坚怎地脱身，且听下文分解。</div>
+            <div class="text-block simplified-text">话说荆州的老大刘表，字景升，是山东高平人，跟汉朝皇帝算亲戚。他年轻时爱交朋友，跟七个名士混得特别好，人称"江夏八俊"。这七个人是：河南的陈翔、范滂，山东的孔昱，河北的范康，山东的檀敷、张俭，还有河南的岑咥。刘表手下还有蒯良、蒯越和蔡瑁这几个帮手。
+
+这天刘表收到袁绍的信，马上派蒯越、蔡瑁带一万兵去堵孙坚。孙坚刚到，蒯越就摆开阵势出来叫阵。孙坚问："蒯越你为啥拦我路？"蒯越说："你既然是汉朝的官，为啥偷藏传国玉玺？赶紧交出来就放你走！"孙坚气坏了，让黄盖出战。蔡瑁提刀来打，没几回合就被黄盖一鞭子打中护心镜，吓得掉头就跑。孙坚趁机带兵冲过边界。
+
+这时山后突然锣鼓喧天，原来是刘表亲自带兵来了。孙坚在马上行礼说："刘表你为啥信袁绍的鬼话，来找我麻烦？"刘表说："你偷藏玉玺是想造反吗？"孙坚发誓："我要是有玉玺，就被刀箭戳死！"刘表说："想让我信你，就让我搜行李！"孙坚火了："你算老几，敢瞧不起我！"正要开打，刘表突然撤兵。孙坚追上去，结果两边山里埋伏的兵全冲出来，后面蔡瑁、蒯越也包抄过来，把孙坚团团围住。这可真是：玉玺没捞着好处，反倒惹来大麻烦。想知道孙坚怎么逃命，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
