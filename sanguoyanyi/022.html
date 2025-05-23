@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二十二回 袁曹各起马步三军　关张共擒王刘二将</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./021.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二十二回 袁曹各起马步三军　关张共擒王刘二将</h1>
+        <a href="./023.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说陈登献计于玄德曰：“曹操所惧者袁绍。绍虎踞冀、青、幽、并诸郡，带甲百万，文官武将极多，今何不写书遣人到彼求救？”玄德曰：“绍向与我未通往来，今又新破其弟，安肯相助？”登曰：“此间有一人与袁绍三世通家，若得其一书致绍，绍必来相助。”玄德问何人。登曰：“此人乃公平日所折节敬礼者，何故忘之？”玄德猛省曰：“莫非郑康成先生乎？”登笑曰：“然也。”原来郑康成名玄，好学多才，尝受业于马融。融每当讲学，必设绛帐，前聚生徒，后陈声妓，侍女环列左右。玄听讲三年，目不邪视，融甚奇之。及学成而归。融叹曰：“得我学之秘者，惟郑玄一人耳！”玄家中侍婢俱通毛诗。一婢尝忤玄意，玄命长跪阶前。一婢戏谓之曰：“胡为乎泥中？”此婢应声曰：“薄言往愬，逢彼之怒。”其风雅如此。桓帝朝，玄官至尚书；后因十常侍之乱，弃官归田，居于徐州。玄德在涿郡时，已曾师事之；及为徐州牧，时时造庐请教，敬礼特甚。当下玄德想出此人，大喜，便同陈登亲至郑玄家中，求其作书。玄慨然依允，写书一封，付与玄德。玄德便差孙乾星夜赍往袁绍处投递。绍览毕，自忖曰：“玄德攻灭吾弟，本不当相助；但重以郑尚书之命，不得不往救之。”遂聚文武官，商议兴兵伐曹操。谋士田丰曰：“兵起连年，百姓疲弊，仓廪无积，不可复兴大军。宜先遣人献捷天子，若不得通，乃表称曹操隔我王路，然后提兵屯黎阳；更于河内增益舟楫，缮置军器，分遣精兵，屯扎边鄙。三年之中，大事可定也。”谋士审配曰：“不然。以明公之神武，抚河朔之强盛，兴兵讨曹贼，易如反掌，何必迁延日月？”谋士沮授曰：“制胜之策，不在强盛。曹操法令既行，士卒精练，比公孙瓒坐受困者不同。今弃献捷良策，而兴无名之兵，窃为明公不取。”谋士郭图曰：“非也。兵加曹操，岂曰无名？公正当及时早定大业。愿从郑尚书之言，与刘备共仗大义，剿灭曹贼，上合天意，下合民情，实为幸甚！”四人争论未定，绍躇踌不决。忽许攸、荀谌自外而入。绍曰：“二人多有见识，且看如何主张。”二人施礼毕，绍曰：“郑尚书有书来，令我起兵助刘备，攻曹操。起兵是乎？不起兵是乎？”二人齐声应曰：“明公以众克寡，以强攻弱，讨汉贼以扶王室：起兵是也。”绍曰：“二人所见，正合我心。”便商议兴兵。先令孙乾回授郑玄，并约玄德准备接应；一面令审配、逢纪为统军，田丰、荀谌、许攸为谋士，颜良、文丑为将军，起马军十五万，步兵十五万，共精兵三十万，望黎阳进发。分拨已定，郭图进曰：“以明公大义伐操，必须数操之恶，驰檄各郡，声罪致讨，然后名正言顺。”绍从之，遂令书记陈琳草檄。琳字孔璋，素有才名；灵帝时为主簿，因谏何进不听，复遭董卓之乱，避难冀州，绍用为记室。当下领命草檄，援笔立就。其文曰：</div>
+            <div class="text-block simplified-text">陈登给刘备出主意说："曹操最怕的是袁绍。袁绍现在占着冀州、青州、幽州、并州这些地方，手下有百万大军，文武官员一大堆。不如写信向袁绍求救？"
+
+刘备说："我跟袁绍平时没啥交情，前不久还打败了他弟弟，他怎么会帮我？"
+
+陈登说："有个人跟袁绍家是世交，只要他写封信，袁绍肯定帮忙。"
+
+刘备问是谁。陈登说："就是您平时特别尊敬的那个人啊，怎么忘了？"
+
+刘备突然想起来："难道是郑康成先生？"
+
+陈登笑着说："就是他。"
+
+原来郑康成名叫郑玄，学问很大。年轻时跟着马融学习，马融讲课总在红色帐子里，前面坐着学生，后面摆着歌舞表演。郑玄听了三年课，眼睛从不乱看，马融很欣赏他。出师时马融说："真正学会我本事的，只有郑玄。"郑玄家的丫鬟都懂《诗经》，有次一个丫鬟犯错被罚跪，另一个开玩笑问："怎么跪在泥里啊？"被罚的丫鬟立刻用《诗经》里的话回答："我去诉苦，正赶上他生气。"可见他家风气。
+
+郑玄在汉桓帝时当过尚书，后来因为太监乱政就辞职回徐州种地。刘备年轻时拜他为师，当上徐州牧后经常去请教，对他特别尊敬。
+
+刘备想明白后很高兴，马上和陈登去找郑玄帮忙写信。郑玄爽快答应，写好信交给刘备。刘备立刻派孙乾连夜送给袁绍。
+
+袁绍看完信心里琢磨："刘备刚打我弟弟，本来不该帮他。但郑尚书的面子不能不给。"就召集手下商量打曹操的事。
+
+谋士田丰说："连年打仗百姓太苦，粮仓都空了，现在不适合出兵。应该先派人给皇上报捷，如果曹操阻拦，就说他阻断朝廷联系。然后派兵驻守黎阳，在黄河边准备船只武器，派精兵防守边境。这样准备三年就能成大事。"
+
+审配反对说："以您的实力打曹操轻而易举，干嘛要等？"
+
+沮授说："打仗不能光靠人多。曹操军纪严明，士兵训练有素，不像公孙瓒那么好打。现在放弃稳妥的办法，无缘无故出兵，我觉得不行。"
+
+郭图说："打曹操怎么算无名？现在就该动手！按郑尚书说的，和刘备一起消灭曹操，这才顺天应民！"
+
+四个人吵个不停，袁绍拿不定主意。这时许攸、荀谌进来，袁绍就问他们意见。两人都说："您兵多将广，打曹操是替天行道，应该出兵。"
+
+袁绍高兴地说："正合我意！"于是决定出兵。先让孙乾回去报信，通知刘备准备接应；派审配、逢纪管军队，田丰、荀谌、许攸当军师，颜良、文丑当大将，率领三十万大军向黎阳进发。
+
+郭图又建议："既然要打曹操，应该先发檄文列举他的罪状，这样才名正言顺。"袁绍同意，让才子陈琳写檄文。陈琳马上写好，檄文内容是...（此处省略檄文内容）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">盖闻明主图危以制变，忠臣虑难以立权。是以有非</div>
+            <div class="text-block simplified-text">好的，我把这段话翻译成大白话：
+
+听说啊，聪明的领导会在危险还没发生时就提前想办法应对变化，忠诚的部下会在困难出现前就考虑好解决的办法。所以有时候为了大局，不得不做一些看起来不太合规的事。
+
+（解释：这段话原本是文言文，说的是领导要有远见，下属要未雨绸缪，有时候为了办成重要的事，可能需要打破常规。我用"不太合规"来替代原文"有非常之人，然后有非常之事"的抽象说法，既保留了原意又通俗易懂。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">常之人，然后有非常之事；有非常之事，然后立非常之</div>
+            <div class="text-block simplified-text">普通人做出不普通的事，才能干成一番大事业；干成了大事业，才能建立不一般的功绩。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">功。夫非常者，固非常人所拟也。曩者，强秦弱主，赵</div>
+            <div class="text-block simplified-text">这段话用大白话来说就是：
+
+"要干大事儿的人，本来就不是一般人能比的。以前秦国那么厉害，可它的国君却是个软蛋；赵国..." 
+
+（注：原文截断了，后半部分无法完整翻译。但按这个白话风格，后面大概会说"赵国虽然弱，但君主有骨气"之类对比的话。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">高执柄，专制朝权，威福由己；时人迫胁，莫敢正言；终</div>
+            <div class="text-block simplified-text">这个人手握大权，独断专行，朝廷的事全由他说了算；想赏谁罚谁都是他自己决定。当时的人都害怕他，没人敢说真话。最后......</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">有望夷之败，祖宗焚灭，污辱至今，永为世鉴。及臻吕</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+秦朝在望夷宫事变中失败，连祖庙都被烧了，这个耻辱一直延续到现在，永远是个教训。后来到了吕后掌权的时候...
+
+解释：
+1. "有望夷之败"：指秦二世在望夷宫被赵高所杀的历史事件
+2. "祖宗焚灭"：指秦朝宗庙被毁
+3. "永为世鉴"：永远作为后世的警示
+4. "及臻吕"：指接下来到了吕后时期（原文可能不完整）
+
+我用最直白的话重新组织了一下，保留了所有关键信息：
+- 历史事件（望夷宫之变）
+- 造成的后果（祖庙被烧）
+- 历史影响（成为后世教训）
+- 引出下个历史阶段（吕后时期）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">后季年，产禄专政，内兼二军，外统赵梁；擅断万机，决</div>
+            <div class="text-block simplified-text">到了晚年，吕产和吕禄掌握了朝廷大权。他们在朝廷内控制着两支军队，在朝廷外管着赵梁地区。所有国家大事都由他们说了算，想怎么决定就怎么决定。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">事省禁；下陵上替，海内寒心。于是绛侯朱虚兴兵奋怒，</div>
+            <div class="text-block simplified-text">朝廷里的事没人管了，下面的人欺负上面的人，全国上下都感到心寒。这时候，绛侯周勃和朱虚侯刘章带兵起义，非常愤怒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">诛夷逆暴，尊立太宗，故能王道兴隆，光明显融：此则</div>
+            <div class="text-block simplified-text">消灭了那些造反作乱的坏人，拥戴贤明的君主上位，所以国家治理得很好，天下太平光明：这就是</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">大臣立权之明表也。司空曹操：祖父中常侍腾，与左棺、徐璜并作妖孽，</div>
+            <div class="text-block simplified-text">这段话可以这样改：
+
+大官掌权就是最好的证明。比如司空曹操：他爷爷曹腾是个太监头子，跟左棺、徐璜这几个祸害是一伙的。
+
+（说明：1.把"大臣立权"直译为"大官掌权"更直白 2."明表"译为"最好的证明"更易懂 3.用"太监头子"替代"中常侍"更口语 4."并作妖孽"译为"是一伙的祸害"更通俗 5.保留全部历史人物信息 6.保持原句的贬义色彩）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">饕餮放横，伤化虐民；父嵩，乞匄携养，因赃假位，舆</div>
+            <div class="text-block simplified-text">这段话可以这样改写成简单直白的现代白话文：
+
+"这个人像贪吃的恶兽一样横行霸道，祸害百姓、败坏风气。他爹叫嵩，是个要饭的，靠别人养大，后来靠贪污贿赂当上了官，还坐着豪华车子摆谱。"
+
+解释改写要点：
+1. "饕餮"换成"贪吃的恶兽"更容易理解
+2. "放横"直接说"横行霸道"
+3. "伤化虐民"拆解为"祸害百姓、败坏风气"
+4. "乞匄"用"要饭的"更直白
+5. "因赃假位"明确说是"靠贪污贿赂当官"
+6. "舆"翻译成"坐豪华车子摆谱"更形象
+7. 保留了所有原始信息：贪污上位、出身低贱、欺压百姓等
+8. 使用"他爹"这样的口语化表达
+9. 把文言文的并列短句改为连贯的叙述句</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">金辇璧，输货权门，窃盗鼎司，倾覆重器。操赘阉遗丑，</div>
+            <div class="text-block simplified-text">这个人用金银财宝贿赂有权有势的人，偷偷摸摸地篡夺了朝廷大权，把国家搞得一团糟。他本来就是太监养子的后代（暗示出身低贱），...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">本无懿德，[犭票]狡锋协，好乱乐祸。</div>
+            <div class="text-block simplified-text">这个人本来就没有什么好品德，又狡猾又凶狠，就喜欢捣乱惹事，巴不得天下大乱。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">幕府董统鹰扬，扫除凶逆；续遇董卓，侵官暴国。于</div>
+            <div class="text-block simplified-text">曹操一开始带兵打仗，是为了消灭那些作乱的坏人。后来董卓掌权，他欺负官员、祸害国家。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">是提剑挥鼓，发命东夏，收罗英雄，弃瑕取用；故遂与</div>
+            <div class="text-block simplified-text">我拿着剑、敲着鼓，在东方发号施令，到处招揽人才，就算他们有小毛病也不计较，只要有用就收下。所以后来就和（他们合作了）  
+
+（说明：最后半句"与"字后原文残缺，按现代白话习惯补全了合理语义，用括号标注以示区分）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">操同谘合谋，授以裨师，谓其鹰犬之才，爪牙可任。至</div>
+            <div class="text-block simplified-text">曹操和他们一起商量策划，给他们军队带兵，说他们有当打手的能力，可以当得力帮手。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">乃愚佻短略，轻进易退，伤夷折衄，数丧师徒；幕府辄</div>
+            <div class="text-block simplified-text">这个人又笨又冲动，做事没计划，动不动就往前冲，又轻易撤退，结果总是损兵折将，死了不少手下；领导部门就...（最后半句缺内容，按现有信息直译）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">复分兵命锐，修完补辑，表行东郡，领兖州刺史，被以</div>
+            <div class="text-block simplified-text">重新组织精锐部队，修补整顿装备，上表推荐自己担任东郡的官职，兼任兖州刺史，还得到了（朝廷的）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">虎文，奖蹙威柄，冀获秦师一克之报。而操遂承资跋扈，</div>
+            <div class="text-block simplified-text">虎文这个人，本来想通过打仗立功来掌握大权，希望能像秦国军队打胜仗那样得到回报。但曹操却趁机利用这些资源变得蛮横霸道。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">恣行凶忒，割剥元元，残贤害善。</div>
+            <div class="text-block simplified-text">这个人想干啥就干啥，特别凶狠恶毒。他欺负老百姓，伤害好人，把善良有才能的人都害了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">故九江太守边让，英才俊伟，天下知名；直言正色，</div>
+            <div class="text-block simplified-text">九江太守边让这个人，特别有才华，长得也帅，全国都知道他。他说话直来直去，态度很正派。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">论不阿谄；身首被枭悬之诛，妻孥受灰灭之咎。自是士</div>
+            <div class="text-block simplified-text">原文翻译成简单直白的白话文：
+
+做人别拍马屁。不然的话，脑袋会被砍下来挂起来示众，老婆孩子也会跟着遭殃被杀光。从这以后，读书人...（原文不完整，无法继续翻译）
+
+说明：
+1. 把"阿谄"翻译成"拍马屁"更通俗
+2. "身首被枭悬之诛"用"脑袋被砍下来挂起来示众"解释
+3. "妻孥受灰灭之咎"翻译成"老婆孩子也会跟着遭殃被杀光"
+4. 保留了原文的警告语气
+5. 最后注明原文不完整</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">林愤痛，民怨弥重；一夫奋臂，举州同声。故躬破于徐</div>
+            <div class="text-block simplified-text">老百姓气得不行，怨气越来越大；只要有一个人带头反抗，整个地方的人都会跟着响应。所以（统治者）在徐州吃了败仗。  
+
+（说明：用"气得不行"替代"愤痛"，"怨气越来越大"替代"民怨弥重"，"带头反抗/整个地方的人都会跟着响应"解释"一夫奋臂，举州同声"，"吃了败仗"直译"躬破"。保留"徐州"专有名词，括号补充主语使逻辑清晰。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">方，地夺于吕布；彷徨东裔，蹈据无所。幕府惟强干弱</div>
+            <div class="text-block simplified-text">当时，曹操的地盘被吕布抢走了；他在东边到处乱跑，没地方落脚。袁绍（幕府）只顾着壮大自己、削弱别人。  
+
+（说明：根据上下文推断，"幕府"指袁绍势力；"强干弱枝"是古代政治策略，意为主力强大、削弱附属力量，这里用"壮大自己、削弱别人"直白表达。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">枝之义，且不登叛人之党，故复援旌擐甲，席卷起征，金</div>
+            <div class="text-block simplified-text">这段话的大意是：
+
+因为不想和叛徒混在一起，所以我又拿起武器，穿上盔甲，带兵出发打仗去了。"金"字后面没写完，可能是想说"金钱"或者"金鼓"之类的。
+
+用最简单的大白话来说就是：我不跟叛徒一伙，所以重新武装起来带兵出征了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">鼓响振，布众奔沮；拯其死亡之患，复其方伯之位：则</div>
+            <div class="text-block simplified-text">鼓声一响，吕布的士兵就吓得四处逃跑。这时候如果能把他们从死亡的危机中救出来，让他们重新当上地方长官的话，那么...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">幕府无德于兖土之民，而有大造于操也。</div>
+            <div class="text-block simplified-text">幕府（指掌权的人）对兖州的老百姓没什么恩德，但对曹操（操）却帮了大忙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">后会銮驾返旆，群虏寇攻。时冀州方有北鄙之警，匪</div>
+            <div class="text-block simplified-text">后来皇帝的车驾掉头返回，一群敌人趁机进攻。那时候冀州北部边境正有警报，土匪（在作乱）。  
+
+（注：根据文言文特征，"匪"字后可能存在省略，常规理解可补为"匪患"或"匪扰"，此处按最小化补充原则处理）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">遑离局；故使从事中郎徐勋，就发遣操，使缮修郊庙，翊</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+曹操你别乱跑；所以派了手下的官员徐勋去找你，让你去修理一下郊外的庙宇，帮着干点活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">卫幼主。操便放志：专行胁迁，当御省禁；卑侮王室，败</div>
+            <div class="text-block simplified-text">曹操欺负小皇帝，想干啥就干啥：强行把皇帝搬来搬去，控制朝廷；不把皇家放在眼里，破坏规矩。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">法乱纪；坐领三台，专制朝政；爵赏由心，弄戮在口；所</div>
+            <div class="text-block simplified-text">这个人违法乱纪，身居高位却独揽大权；随便给人封官加爵，想杀谁就杀谁；</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">爱光五宗，所恶灭三族；群谈者受显诛，腹议者蒙隐戮；</div>
+            <div class="text-block simplified-text">喜欢的人就使劲儿夸，讨厌的人就全家遭殃；公开议论的人会被公开处死，心里有想法的人也会被偷偷弄死。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">百僚钳口，道路以目；尚书记朝会，公卿充员品而已。</div>
+            <div class="text-block simplified-text">官员们都不敢说话，走在路上只能用眼神交流；尚书们只是记录朝会情况，那些大官们也就是充个数罢了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">故太尉杨彪，典历二司，享国极位。操因缘眦睚，被</div>
+            <div class="text-block simplified-text">原文改写：
+
+以前当过太尉的杨彪，曾经在两个重要部门当过大官，地位非常高。曹操因为跟他有点小过节，就找借口...
+
+（说明：原文后半句不完整，根据现有信息只能改写至此。若需完整改写，请提供剩余文本。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">以非罪；榜楚参并，五毒备至；触情任忒，不顾宪纲。又</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+他们给无辜的人强加罪名；用棍棒毒打，各种酷刑都用上了；完全凭个人喜怒乱来，根本不管法律和规矩。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">议郎赵彦，忠谏直言，义有可纳，是以圣朝含听，改容</div>
+            <div class="text-block simplified-text">赵彦是个当官的，说话直来直去，提的建议很有道理。所以皇上觉得他说得对，认真听了他的意见，脸色都变好了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">加饰。操欲迷夺时明，杜绝言路，擅收立杀，不俟报国。</div>
+            <div class="text-block simplified-text">曹操想蒙骗大家，堵住人们的嘴，想抓人就抓，想杀就杀，根本不管朝廷同不同意。  
+
+（说明：原文用"迷夺时明"形容曹操迷惑世人，"杜绝言路"指不让人们说话，"擅收立杀"强调擅自抓人杀人，"不俟报国"指不请示朝廷。译文全部转化为口语化表达，保留"抓人杀人"的核心动作和"无视朝廷"的关键信息，用"堵住人们的嘴""根本不管"等日常说法替换文言句式。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">又梁孝王，先帝母昆，坟陵尊显；桑梓松柏，犹宜肃恭。</div>
+            <div class="text-block simplified-text">梁孝王是前皇帝的亲兄弟，他的坟墓修建得很气派；连他坟地周围的树木，人们都应该恭恭敬敬地对待。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">而操帅将吏士，亲临发掘，破棺裸尸，掠取金宝。至令</div>
+            <div class="text-block simplified-text">曹操带着手下的军官和士兵，亲自去挖坟。他们撬开棺材，扒光尸体，抢走金银财宝。结果搞得...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">圣朝流涕，士民伤怀！操又特置发丘中郎将、摸金校尉，</div>
+            <div class="text-block simplified-text">朝廷上下都哭了，老百姓也很伤心！曹操还专门设了"挖坟中郎将"和"偷宝校尉"这两个职位。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">所过隳突，无骸不露。身处三公之位，而行桀虏之态，污</div>
+            <div class="text-block simplified-text">走过的地方都被破坏得乱七八糟，连死人的骨头都被挖出来暴露在外。这人虽然身居高位，干的却是强盗一样的坏事，把国家搞得乌烟瘴气。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">国害民，毒施人鬼！加其细致惨苛，科防互设；罾缴充</div>
+            <div class="text-block simplified-text">国家害苦了老百姓，坏事做尽，连鬼都不放过！他们定的规矩又细又狠，到处设关卡防备；到处都是陷阱和圈套</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">蹊，坑阱塞路；举手挂网罗，动足触机陷：是以兖、豫</div>
+            <div class="text-block simplified-text">路上到处都是坑和陷阱；一抬手就可能碰到网，一抬脚就可能踩中机关：所以在兖州、豫州这些地方</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">有无聊之民，帝都有吁嗟之怨。历观载籍，无道之臣，贪</div>
+            <div class="text-block simplified-text">有些闲得发慌的老百姓，在京城里抱怨叹气。翻翻历史书就知道，那些不讲道理的官员，一个个都贪得无厌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">残酷烈，于操为甚！幕府方诘外奸，未及整训；加绪含容，冀可弥缝。而</div>
+            <div class="text-block simplified-text">曹操这个人啊，手段实在太狠毒了！我们这边正在处理外部敌人，还没来得及整顿军队；虽然一直忍着让着，希望他能收敛点。可是...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">操豺狼野心，潜包祸谋，乃欲摧挠栋梁，孤弱汉室，除</div>
+            <div class="text-block simplified-text">这人就像豺狼一样坏，暗地里打着坏主意，想搞垮国家的顶梁柱，削弱汉朝的力量，除掉忠臣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">灭忠正，专为袅雄。往者伐鼓北征公孙瓒，强寇桀逆，拒</div>
+            <div class="text-block simplified-text">消灭忠诚正直的人，专门培养奸雄。以前出兵北征公孙瓒时，那些凶恶的敌人非常嚣张，拼命抵抗</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">围一年。操因其未破，阴交书命，外助王师，内相掩袭。</div>
+            <div class="text-block simplified-text">曹操围城一年。眼看城还没攻下，他就暗地里写信下令：让外面假装帮朝廷军队，实际上在城里搞偷袭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">会其行人发露，瓒亦枭夷，故使锋芒挫缩，厥图不果。今</div>
+            <div class="text-block simplified-text">等到他的使者把事情暴露，公孙瓒也被杀了，所以让他（的野心）受挫，计划没能成功。现在</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">乃屯据敷仓，阻河为固，欲以螳螂之斧，御隆车之隧。</div>
+            <div class="text-block simplified-text">他们驻扎在敷仓这个地方，靠着河防守，想用螳螂挡车那样的不自量力方式，来抵抗强大的敌人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">幕府奉汉威灵，折冲宇宙；长戟百万，胡骑千群；奋</div>
+            <div class="text-block simplified-text">这段话的大意是说：我们军队靠着汉朝的威望，在天下打仗很厉害；有上百万拿着长矛的士兵，还有成千上万的骑兵；打起仗来特别勇猛。
+
+（解释说明：原文是古代军事文书用语，我把它翻译成了大白话：
+1. "幕府"直接说"我们军队"更易懂
+2. "奉汉威灵"解释为"靠着汉朝的威望"
+3. "折冲宇宙"这种夸张说法用"在天下打仗很厉害"代替
+4. "长戟百万"直译为"上百万拿着长矛的士兵"
+5. 最后"奋"字根据语境补充为"打起仗来特别勇猛"
+完全保留了原文夸耀军事实力的核心意思，但用了现代人一听就懂的表达方式。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">中黄育获之士，骋良弓劲弩之势；并州越太行，青州涉</div>
+            <div class="text-block simplified-text">那些武艺高强的人，拉开强弓硬弩；从并州翻过太行山，从青州渡过黄河</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">济漯；大军泛黄河而角其前，荆州下宛叶而掎其后：雷</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+军队从济水和漯河出发；主力部队渡过黄河从正面进攻，荆州那边的部队拿下宛城和叶县从背后包抄：声势像打雷一样猛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">震虎步，若举炎火以焫飞蓬，覆沧海以沃[火票]炭，有何不</div>
+            <div class="text-block simplified-text">这就像拿着大火去烧一堆轻飘飘的干草，或者把整个大海的水倒下去浇灭一小块烧红的炭火——搞定这些不是轻轻松松的事吗？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">灭者哉？又操军吏士，其可战者，皆出自幽冀，或故营</div>
+            <div class="text-block simplified-text">曹操的军队和官员，那些能打仗的，是不是都来自幽州和冀州，或者他原来的老部下？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">部曲，咸怨旷思归，流涕北顾。其余兖豫之民，及吕布</div>
+            <div class="text-block simplified-text">士兵们都很想家，心里难受，哭着往北看老家。剩下的兖州、豫州老百姓，还有吕布的手下...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">张杨之余众，覆亡迫胁，权时苟从；各被创夷，人为仇</div>
+            <div class="text-block simplified-text">张杨剩下的那些手下，眼看就要完蛋了，被逼无奈只能暂时投降；他们个个身上带伤，心里都恨得要命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">敌。若回旆方徂，登高冈而击鼓吹，扬素挥以启降路，必</div>
+            <div class="text-block simplified-text">敌人。如果我们掉头往回走，爬上高坡，敲鼓吹号，举起白旗给他们一条投降的路，他们肯定会...</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">土崩瓦解，不俟血刃。方今汉室陵迟，纲维弛绝；圣朝无一介之辅，股肱</div>
+            <div class="text-block simplified-text">现在的情况就像泥土崩塌、瓦片碎裂一样，不用打仗就垮了。如今汉朝越来越不行了，规矩制度都废了；朝廷里连一个能帮忙的大臣都没有，就像人没了胳膊大腿一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">无折冲之势。方畿之内，简练之臣，皆垂头□翼，莫所</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+现在国家没有能打仗的军队。京城附近那些训练过的官员，个个都低着头缩着脖子，没人敢出头。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">凭恃；虽有忠义之佐，胁于暴虐之臣，焉能展其节？又</div>
+            <div class="text-block simplified-text">就算有忠心耿耿的好帮手，但在残暴凶狠的坏人控制下，他们又怎么能真正发挥自己的本事呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">操持部曲精兵七百，围守宫阙，外托宿卫，内实拘执。惧</div>
+            <div class="text-block simplified-text">曹操带着七百个训练有素的精兵，表面上说是保护皇宫，实际上把皇帝控制起来了。皇帝心里很害怕。  
+
+（说明：用最直白的口语拆分长句，将"操持"译为"带着"，"部曲精兵"译为"训练有素的精兵"，"宫阙"译为"皇宫"，"外托宿卫，内实拘执"用"表面上...实际上..."的对比结构直译，最后单字"惧"补充主语译为完整句）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">其篡逆之萌，因斯而作。此乃忠臣肝脑涂地之秋，烈士</div>
+            <div class="text-block simplified-text">他想造反的心思，就是从这时候开始的。现在正是忠臣拼死报国、壮士流血牺牲的时候。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">立功之会，可不勖哉！操又矫命称制，遣使发兵。恐边</div>
+            <div class="text-block simplified-text">原文翻译成大白话：
+
+立功的好机会，可要好好把握啊！曹操又假传皇帝的命令，派使者去调兵。他担心边境会出事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">远州郡，过听给与，违众旅叛，举以丧名，为天下笑，则</div>
+            <div class="text-block simplified-text">远州郡这个地方，因为听信了错误的建议，给了不该给的东西，结果和大家对着干，闹得众叛亲离。最后不光名声臭了，还成了全国的笑柄。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">明哲不取也。即日幽并青冀四州并进。书到荆州，便勒现兵，与</div>
+            <div class="text-block simplified-text">聪明人不会这么干。现在幽州、并州、青州、冀州四个地方一起出兵。这封信送到荆州后，马上带着现有的军队，和（他们）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">67.</span>
+            <div class="text-block original-text">建忠将军协同声势。州郡各整义兵，罗落境界，举武扬</div>
+            <div class="text-block simplified-text">建忠将军和大家一起壮大声势。各州各郡都组织起正义的军队，在边界上严密布防，展示武力、宣扬军威。
+
+（说明：根据口语化要求做了以下处理：
+1. "协同"改为"和大家一起"
+2. "整义兵"译为"组织正义的军队"
+3. "罗落境界"意译为"在边界严密布防"
+4. "举武扬威"拆解为"展示武力、宣扬军威"
+5. 保留"建忠将军"专有名词不变
+6. 通过添加连接词使语句更连贯
+7. 使用"严密布防"等现代军事常用语
+8. 保持原文四字结构但转换表达方式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">68.</span>
+            <div class="text-block original-text">威，并匡社稷：则非常之功于是乎著。</div>
+            <div class="text-block simplified-text">厉害的人一起努力，就能保住国家，这样就能干出大事业。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">69.</span>
+            <div class="text-block original-text">其得操首者，封五千户侯，赏钱五千万。部曲偏裨</div>
+            <div class="text-block simplified-text">谁能砍下曹操的脑袋，就封他做五千户的侯爵，再赏五千万钱。手下的军官和副将们也能升官发财。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">70.</span>
+            <div class="text-block original-text">将校诸吏降者，勿有所问。广宜恩信，班扬符赏，布告</div>
+            <div class="text-block simplified-text">投降的军官和官员们，我们不会追究你们的责任。现在要大力推广恩德和诚信，公开宣布奖赏规定，让所有人都知道。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">71.</span>
+            <div class="text-block original-text">天下，咸使知圣朝有拘迫之难。如律令！</div>
+            <div class="text-block simplified-text">让全天下的人都知道，朝廷现在遇到了困难，日子不好过。这是命令！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">72.</span>
+            <div class="text-block original-text">绍览檄大喜，即命使将此檄遍行州郡，并于各处关津隘口张挂。檄文传至许都，时曹操方患头风，卧病在床。左右将此檄传进，操见之，毛骨悚然，出了一身冷汗，不觉头风顿愈，从床上一跃而起，顾谓曹洪曰：“此微何人所作？”洪曰：“闻是陈琳之笔。”操笑曰：“有文事者，必须以武略济之。陈琳文事虽佳，其如袁绍武略之不足何！”遂聚众谋士商议迎敌。孔融闻之，来见操曰：“袁绍势大，不可与战，只可与和。”荀彧曰：“袁绍无用之人，何必议和？”融曰：“袁绍士广民强。其部下如许攸、郭图、审配、逢纪皆智谋之士；田丰、沮授皆忠臣也；颜良、文丑勇冠三军；其余高览、张郃、淳于琼等俱世之名将。——何谓绍为无用之人乎？”彧笑曰：“绍兵多而不整。田丰刚而犯上，许攸贪而不智，审配专而无谋，逢纪果而无用：此数人者，势不相容，必生内变，颜良、文丑，匹夫之勇，一战可擒。其余碌碌等辈，纵有百万，何足道哉！”孔融默然。操大笑曰：“皆不出荀文若之料。”遂唤前军刘岱、后军王忠引军五万，打着丞相旗号，去徐州攻刘备。原来刘岱旧为兖州刺史；及操取兖州，岱降于操，操用为偏将，故今差他与王忠一同领兵。操却自引大军二十万，进黎阳，拒袁绍。程昱曰：“恐刘岱、王忠不称其使。”操曰：“吾亦知非刘备敌手，权且虚张声势。”分付：“不可轻进。待我破绍，再勒兵破备。”刘岱、王忠领兵去了。</div>
+            <div class="text-block simplified-text">袁绍看了那篇讨伐曹操的公告，高兴得不得了，马上派人把公告发到各个州县，还在各个关口要道张贴。公告传到许都时，曹操正犯头疼病躺着休息。手下把公告拿给他看，曹操一看吓得汗毛直竖，出了一身冷汗，没想到头疼突然好了，一下子从床上跳起来，转头问曹洪："这文章是谁写的？"曹洪说："听说是陈琳写的。"曹操笑着说："光会写文章没用，还得会打仗。陈琳文章写得再好，袁绍不会打仗又有什么用！"于是召集谋士们商量怎么对付袁绍。
+
+孔融听说后跑来劝曹操："袁绍势力太大，打不过，还是讲和吧。"荀彧说："袁绍就是个草包，干嘛跟他讲和？"孔融反驳："袁绍地盘大、人马多，手下许攸、郭图、审配、逢纪都是有本事的谋士；田丰、沮授都是忠臣；颜良、文丑特别能打；还有高览、张郃、淳于琼这些名将——怎么能说袁绍没用呢？"荀彧笑着说："袁绍兵多但管不好。田丰太耿直总顶撞上司，许攸贪心还没脑子，审配独断专行不会谋划，逢纪做事冲动不顶用：这几个人互相看不顺眼，肯定要内讧。颜良、文丑就是两个莽夫，打一仗就能抓住。其他那些杂牌将领，就算有百万大军也不足为惧！"孔融不说话了。曹操大笑道："果然还是荀彧看得准。"
+
+于是曹操派前军刘岱、后军王忠带着五万兵马，打着丞相的旗号去徐州打刘备。原来刘岱以前是兖州刺史，曹操占了兖州后他就投降了，现在当个副将。曹操自己带着二十万大军去黎阳对付袁绍。程昱提醒："就怕刘岱、王忠打不过刘备。"曹操说："我知道他们不是刘备对手，就是做个样子。"特意交代："别真打，等我收拾完袁绍，再回头解决刘备。"刘岱、王忠就带兵出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">73.</span>
+            <div class="text-block original-text">曹操自引兵至黎阳。两军隔八十里，各自深沟高垒，相持不战。自八月守至十月。原来许攸不乐审配领兵，沮授又恨绍不用其谋，各不相和，不图进取。袁绍心怀疑惑，不思进兵，操乃唤吕布手下降将臧霸守把青、徐；于禁、李典屯兵河上；曹仁总督大军，屯于官渡，操自引一军，竟回许都。</div>
+            <div class="text-block simplified-text">曹操带兵到了黎阳。两边的军队隔着八十里地，各自挖深战壕、筑高营垒，就这么耗着不打仗。从八月一直拖到十月。原来袁绍那边，许攸不喜欢审配带兵，沮授又气袁绍不听他的主意，几个人互相看不顺眼，根本不想着进攻。袁绍自己也犹犹豫豫的，不打算出兵。曹操一看这情况，就派了吕布以前的部将臧霸去守青州和徐州；让于禁、李典带兵守在黄河边上；叫曹仁当总指挥，把大部队驻扎在官渡。安排完这些，曹操自己带着一支队伍直接回许昌了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">74.</span>
+            <div class="text-block original-text">且说刘岱、王忠引军五万，离徐州一百里下寨。中军虚打“曹丞相”旗号，未敢进兵，只打听河北消息。这里玄德也不知曹操虚实，未敢擅动，亦只探听河北。忽曹操差人催刘岱、王忠进战。二人在寨中商议。岱曰：“丞相催促攻城，你可先去。”王忠曰：“丞相先差你。”岱曰：“我是主将，如何先去？”忠曰：“我和你同引兵去。”岱曰：“我与你拈阄，拈着的便去。”王忠拈着“先”字，只得分一半军马，来攻徐州。</div>
+            <div class="text-block simplified-text">话说刘岱和王忠带着五万兵马，在离徐州一百里的地方安营扎寨。他们虽然打着"曹丞相"的旗号壮声势，但一直不敢进攻，只是派人打探河北那边的战况。刘备这边也摸不清曹操的底细，同样不敢轻举妄动，也只在关注河北的消息。突然曹操派人来催刘岱、王忠赶紧开战。两人在军营里商量对策。刘岱说："丞相催着攻城，要不你先上？"王忠推脱道："明明是丞相先派你来的。"刘岱反驳："我可是主将，哪有主将打头阵的道理？"王忠只好说："那咱俩一起带兵去吧。"刘岱眼珠一转："这样，咱们抓阄决定，谁抽到谁去。"结果王忠抓到了"先"字，没办法只好带着一半人马去攻打徐州。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">75.</span>
+            <div class="text-block original-text">玄德听知军马到来，请陈登商议曰：“袁本初虽屯兵黎阳，奈谋臣不和，尚未进取。曹操不知在何处。闻黎阳军中，无操旗号，如何这里却反有他旗号？”登曰：“操诡计百出，必以河北为重，亲自监督，却故意不建旗号，乃于此处虚张旗号：吾意操必不在此。”玄德曰：“两弟谁可探听虚实？”张飞曰：“小弟愿往。”玄德曰：“汝为人躁暴，不可去。”飞曰：“便是有曹操也拿将来！”云长曰：“待弟往观其动静。”玄德曰：“云长若去，我却放心。”于是云长引三千人马出徐州来。</div>
+            <div class="text-block simplified-text">刘备听说有军队来了，就叫来陈登商量说："袁绍虽然把军队驻扎在黎阳，但他的谋士们意见不合，所以还没打过来。现在不知道曹操在哪儿。听说黎阳那边没有曹操的旗号，怎么这里反而有他的旗号？"陈登说："曹操鬼主意多，他肯定把河北那边当重点，亲自在那边盯着，故意不打旗号。这里的旗号肯定是虚张声势，我觉得曹操肯定不在这儿。"
+
+刘备问："两位弟弟谁去打探一下情况？"张飞抢着说："让我去！"刘备说："你脾气太急，不能去。"张飞不服气："就算真有曹操我也能把他抓来！"关羽说："还是让我去看看吧。"刘备这才放心："云长去的话我就放心了。"于是关羽带着三千人马从徐州出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">76.</span>
+            <div class="text-block original-text">时值初冬，阴云布合，雪花乱飘，军马皆冒雪布阵。云长骤马提刀而出，大叫王忠打话。忠出曰：“丞相到此，缘何不降？”云长曰：“请丞相出阵，我自有话说。”忠曰：“丞相岂肯轻见你！”云长大怒，骤马向前。王忠挺枪来迎。两马相交，云长拨马便走。王忠赶来。转过山坡，云长回马，大叫一声，舞刀直取。王忠拦截不住，恰待骤马奔逃，云长左手倒提宝刀，右手揪住王忠勒甲绦，拖下鞍鞒，横担于马上，回本阵来。王忠军四散奔走。</div>
+            <div class="text-block simplified-text">那时候刚入冬，天阴沉沉的，下着大雪，士兵和马都在雪地里摆开阵势。关羽骑着马，提着大刀冲出来，大声喊王忠出来说话。王忠出来说："丞相都来了，你为啥不投降？"关羽说："让丞相出来，我有话要说。"王忠说："丞相哪能随便见你！"关羽一听就火了，骑马冲过去。王忠举枪迎战。两人骑马打在一起，关羽突然调转马头假装逃跑。王忠追了上去。转过山坡，关羽突然回马，大喊一声，挥刀就砍。王忠挡不住，正要骑马逃跑，关羽左手提着刀，右手一把抓住王忠的腰带，把他从马上拽下来，横放在自己马背上，带回自己阵营。王忠的士兵一看主将被抓，全都四散逃跑了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">77.</span>
+            <div class="text-block original-text">云长押解王忠，回徐州见玄德。玄德问：“尔乃何人？现居何职？敢诈称曹丞相！”忠曰：“焉敢有诈。奉命教我虚张声势，以为疑兵。丞相实不在此。”玄德教付衣服酒食，且暂监下，待捉了刘岱，再作商议。云长曰：“某知兄有和解之意，故生擒将来。”玄德曰：“吾恐翼德躁暴，杀了王忠，故不教去。此等人杀之无益，留之可为解和之地。”张飞曰：“二哥捉了王忠，我去生擒刘岱来！”玄德曰：“刘岱昔为兖州刺史，虎牢关伐董卓时，也是一镇诸侯，今日为前军，不可轻敌。”飞曰：“量此辈何足道哉！我也似二哥生擒将来便了。”玄德曰：“只恐坏了他性命，误我大事。”飞曰：“如杀了，我偿他命！”玄德遂与军三千。飞引兵前进。</div>
+            <div class="text-block simplified-text">关羽押着王忠回到徐州见刘备。刘备问："你是什么人？现在当什么官？竟敢冒充曹丞相！"王忠回答："我哪敢冒充啊，是奉命假装声势大，用来迷惑你们的。曹丞相其实不在这儿。"刘备让人给他衣服和饭菜，先关起来，等抓到刘岱再说。  
+
+关羽说："我知道大哥想和解，所以活捉了他带回来。"刘备说："我怕张飞脾气暴，会杀了王忠，所以不让他去。这种人杀了没用，留着还能当和谈的筹码。"  
+
+张飞嚷嚷："二哥抓了王忠，那我去把刘岱活捉回来！"刘备提醒："刘岱以前当过兖州刺史，讨伐董卓时也是诸侯之一，现在当先锋，别小看他。"张飞不屑："这种货色算什么！我也像二哥那样活捉回来就是了。"刘备担心："就怕你失手杀了他，坏了我的计划。"张飞拍胸脯："要是我杀了他，我赔他命！"刘备只好给他三千兵。张飞带兵出发了。  
+
+（说明：根据口语化要求做了以下处理：  
+1. "云长/玄德/翼德"改为更通俗的"关羽/刘备/张飞"  
+2. "焉敢有诈"译为"我哪敢冒充啊"  
+3. "解和之地"意译为"和谈的筹码"  
+4. "量此辈何足道哉"译为"这种货色算什么"  
+5. 添加"嚷嚷""拍胸脯"等动作细节使对话更生动  
+6. 保留所有关键信息点：王忠诈称曹操、张飞立军令状等）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">78.</span>
+            <div class="text-block original-text">却说刘岱知王忠被擒，坚守不出。张飞每日在寨前叫骂，岱听知是张飞，越不敢出。飞守了数日，见岱不出，心生一计：传令今夜二更去劫寨；日间却在帐中饮酒诈醉，寻军士罪过，打了一顿，缚在营中，曰：“待我今夜出兵时，将来祭旗！”却暗使左右纵之去。军士得脱，偷走出营，径往刘岱营中来报劫寨之事。刘岱见降卒身受重伤，遂听其说，虚扎空寨，伏兵在外。是夜张飞却分兵三路，中间使三十余人，劫寨放火；却教两路军抄出他寨后，看火起为号，夹击之。三更时分，张飞自引精兵，先断刘岱后路；中路三十余人，抢入寨中放火。刘岱伏兵恰待杀入，张飞两路兵齐出。岱军自乱，正不知飞兵多少，各自溃散。刘岱引一队残军，夺路而走，正撞见张飞，狭路相逢，急难回避，交马只一合，早被张飞生擒过去。余众皆降。飞使人先报入徐州。玄德闻之，谓云长曰：“翼德自来粗莽，今亦用智，吾无忧矣！”乃亲自出郭迎之。飞曰：“哥哥道我躁暴，今日如何？玄德曰：“不用言语相激，如何肯使机谋！”飞大笑。</div>
+            <div class="text-block simplified-text">刘岱知道王忠被抓后，就死守营地不出来。张飞天天在营门外骂阵，刘岱一听是张飞更不敢出来了。张飞守了好几天，看刘岱死活不出来，就想了个主意：他下令晚上二更去偷袭刘岱的营地，白天却假装在帐篷里喝醉酒，故意找个士兵的茬，把他打了一顿绑起来，说："等我晚上出兵时拿你祭旗！"其实偷偷让人把士兵放了。这士兵逃出来后，直接跑到刘岱那里报告了偷袭计划。
+
+刘岱看到逃来的士兵满身是伤，就信了他的话，假装营地里有人，实际上在外面埋伏了士兵。到了晚上，张飞把兵分成三路：中间派三十多人去营地点火，另外两路绕到营地后面，看到火起就一起进攻。三更天时，张飞亲自带精兵断了刘岱后路，中间那三十多人冲进营地放火。刘岱的伏兵刚要杀出来，就被张飞两路兵马夹击。刘岱的部队乱成一团，也不知道张飞到底有多少人，纷纷逃命。刘岱带着残兵想跑，正好撞上张飞，两人在窄路上碰见躲不开，才打了一个回合，刘岱就被张飞活捉了，剩下的士兵都投降了。
+
+张飞派人先去徐州报信。刘备听说后对关羽说："张飞平时莽撞，现在也会用计谋了，我总算放心了！"就亲自出城迎接。张飞说："哥哥总说我脾气暴，今天怎么样？"刘备笑着说："要不是我故意激你，你怎么肯动脑子呢！"张飞听了哈哈大笑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">79.</span>
+            <div class="text-block original-text">玄德见缚刘岱过来，慌下马解其缚曰：“小弟张飞误有冒渎，望乞恕罪。”遂迎入徐州，放出王忠，一同管待。玄德曰：“前因车胄欲害备，故不得不杀之。丞相错疑备反，遣二将军前来问罪。备受丞相大恩，正思报效，安敢反耶？二将军至许都，望善言为备分诉，备之幸也。”刘岱、王忠曰：“深荷使君不杀之恩，当于丞相处方便，以某两家老小保使君。”玄德称谢。次日尽还原领军马，送出郭外。</div>
+            <div class="text-block simplified-text">刘备看见刘岱被绑着押过来，赶紧下马给他松绑，说："我弟弟张飞不懂事冒犯了你，希望你别见怪。"然后把刘岱请进徐州城，把之前抓的王忠也放了，一起招待他们。  
+
+刘备解释说："之前因为车胄想害我，我不得已才杀了他。丞相误会我要造反，派你们两位来问罪。我受丞相那么多恩惠，正想着怎么报答，怎么可能造反呢？你们回许都后，请帮我在丞相面前说几句好话，这就是我最大的心愿了。"  
+
+刘岱和王忠回答："多谢您不杀之恩，我们回去一定在丞相面前帮您说话，愿意用我们两家老小的性命担保您。"刘备听了连连道谢。  
+
+第二天，刘备把带来的兵马全部还给他们，还亲自把他们送出城外。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">80.</span>
+            <div class="text-block original-text">刘岱、王忠行不上十余里，一声鼓响，张飞拦路大喝曰：“我哥哥忒没分晓！捉住贼将如何又放了？”?得刘岱、王忠在马上发颤。张飞睁眼挺枪赶来，背后一人飞马大叫：“不得无礼！”视之，乃云长也。刘岱、王忠方才放心。云长曰：“既兄长放了，吾弟如何不遵法令？”飞曰：“今番放了，下次又来。”云长曰：“待他再来，杀之未迟。”刘岱、王忠连声告退曰：“便丞相诛我三族，也不来了。望将军宽恕。”飞曰：“便是曹操自来，也杀他片甲不回！今番权且寄下两颗头！”刘岱、王忠抱头鼠窜而去。云长、翼德回见玄德曰：“曹操必然复来。”孙乾谓玄德曰：“徐州受敌之地，不可久居；不若分兵屯小沛，守邳城，为掎角之势，以防曹操。”玄德用其言，令云长守下邳；甘、糜二夫人亦于下邳安置。甘夫人乃小沛人也，糜夫人乃糜竺之妹也。孙乾、简雍、糜竺、糜芳守徐州。玄德与张飞屯小沛。刘岱、王忠回见曹操，具言刘备不反之事。操怒骂：“辱国之徒，留你何用！”喝令左右推出斩之。正是：犬豕何堪共虎斗，鱼虾空自与龙争。不知二人性命如何，且听下文分解。</div>
+            <div class="text-block simplified-text">刘岱和王忠刚走了不到十里路，突然听到战鼓声，张飞冲出来拦住他们大喊："我大哥也太糊涂了！好不容易抓住这两个敌将，怎么又给放了？"吓得刘岱、王忠在马背上直发抖。张飞瞪着眼睛举枪就要冲过来，这时后面有人骑马飞奔过来喊："别乱来！"一看是关羽。刘岱和王忠这才松了口气。
+
+关羽说："既然大哥放了他们，你怎么能不听命令？"张飞不服气："这次放了，下次他们还会来。"关羽说："等他们再来，再杀也不迟。"刘岱和王忠赶紧求饶："就算曹操要杀我们全家，我们也不敢再来了，求将军饶命。"张飞吼道："就算曹操亲自来，我也要杀得他全军覆没！今天先饶你们一命！"刘岱和王忠吓得赶紧逃跑了。
+
+关羽和张飞回去见刘备说："曹操肯定还会再来。"孙乾对刘备说："徐州这地方容易受攻击，不能久留。不如分兵驻守小沛和下邳城，形成互相支援的阵势，防备曹操。"刘备采纳建议，让关羽守下邳城，把甘夫人和糜夫人也安排在那里（甘夫人是小沛人，糜夫人是糜竺的妹妹）。孙乾、简雍、糜竺、糜芳留守徐州，刘备和张飞驻守小沛。
+
+刘岱和王忠回去见曹操，报告说刘备没有造反的意思。曹操气得大骂："没用的废物，留你们干什么！"命令手下把他们推出去斩首。这真是：猪狗怎么配和老虎斗，鱼虾哪敢跟龙王争。不知道这两个人死活如何，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
