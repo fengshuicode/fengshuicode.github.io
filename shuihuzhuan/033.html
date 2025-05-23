@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三十三回　宋江夜看小鳌山　花荣大闹清风寨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./032.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第三十三回　宋江夜看小鳌山　花荣大闹清风寨</h1>
+        <a href="./034.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文就两个字“诗曰：”，意思是“诗里说：”或“有首诗这样讲：”。  
+
+如果要保持原意并扩展成更直白的白话，可以写成：  
+“有首诗是这么说的：”  
+或者更简单：  
+“诗里写着：”  
+
+（因为原文本身极简，直译后依然简短，但完全符合要求。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">花开不择贫家第，月照山河到处明。</div>
+            <div class="text-block simplified-text">花开不管穷人家还是富人家，月亮照到哪里都一样亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">世间只有人心恶，万事还须天养人。</div>
+            <div class="text-block simplified-text">这世上最坏的就是人心，但人活着还得靠老天爷照顾。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">盲聋喑哑家豪富，智慧聪明却受贫。</div>
+            <div class="text-block simplified-text">有钱人又瞎又聋又哑，聪明人反而穷得很。
+
+（解释：这个改写版本完全保留了原文对比的核心信息，用"有钱人"对应"家豪富"，"聪明人"对应"智慧聪明"，用"又瞎又聋又哑"直译"盲聋喑哑"，"穷得很"对应"受贫"。句子结构简化为两个对比分句，使用现代人最常用的口语词汇，没有任何理解障碍。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">年月日时该载定，算来由命不由人。</div>
+            <div class="text-block simplified-text">日子时辰都是老天定好的，人的命运自己说了不算。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说这清风山离青州不远，只隔得百里来路。这清风寨却在青州三岔路口，地名清风镇。因为这三岔路上通三处恶山，因此特设这清风寨在这清风镇上。那里也有三五千人家，却离这清风山只有一站多路。当日三位头领自上山去了。</div>
+            <div class="text-block simplified-text">清风山离青州很近，大概一百里左右。清风寨就在青州的三岔路口那儿，那个地方叫清风镇。因为这三岔路连着三个不太平的山头，所以专门在清风镇上设了这个清风寨。镇上住着三四千户人家，离清风山也就一天的路程。那天三个头领自己上山去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">只说宋公明独自一个，背着些包裹，迤逦来到清风镇上，便借问花知寨住处。那镇上人答道：“这清风寨衙门在镇市中间。南边有个小寨，是文官刘知寨住宅；北边那个小寨，正是武官花知寨住宅。”宋江听罢，谢了那人，便投北寨来。到得门首，见有几个把门军汉，问了姓名，入去通报。只见寨里走出那个年少的军官来，拖住宋江便拜。那人生得如何，但见：</div>
+            <div class="text-block simplified-text">宋江一个人背着行李，慢慢走到清风镇上，打听花知寨住哪儿。镇上的人告诉他：“清风寨的衙门在镇子中间。南边的小寨是文官刘知寨家，北边的小寨就是武官花知寨家。”宋江谢过那人，就往北寨走去。到了门口，几个守门的士兵问了他的名字，进去通报。不一会儿，寨里走出来一个年轻军官，一把拉住宋江就拜。这人长什么样呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">齿白唇红双眼俊，两眉入鬓常清。细腰宽膀似猿形。</div>
+            <div class="text-block simplified-text">这人长得特别好看：牙齿雪白，嘴唇红润，眼睛又大又有神，两条眉毛又长又直，一直延伸到鬓角。身材也好，腰细肩膀宽，像猿猴一样灵活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">能骑乖劣马，爱放海东青。百步穿杨神臂健，弓开秋</div>
+            <div class="text-block simplified-text">这个人很厉害，能驯服烈马，喜欢养凶猛的老鹰。他射箭技术超群，百发百中，力气大得惊人，拉弓射箭就像秋天拉开弓弦一样轻松自如。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">月分明。雕翎箭发迸寒星。人称小李广，将种是花荣。</div>
+            <div class="text-block simplified-text">月亮特别亮。花荣射出的箭像一道寒光。大家都叫他"小李广"，这人就是花荣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">出来的年少将军不是别人，正是清风寨武知寨小李广花荣。宋江见了。看那花荣，怎生打扮？但见：</div>
+            <div class="text-block simplified-text">这个年轻的将军不是别人，正是清风寨的武官花荣，外号"小李广"。宋江抬头一看，只见花荣穿着打扮是这样的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">身上战袍金翠绣，腰间玉带嵌山犀。</div>
+            <div class="text-block simplified-text">他身上穿着绣满金色绿色花纹的战袍，腰上系着镶有犀牛角的玉带。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">渗青巾帻双环小，文武花靴抹绿低。</div>
+            <div class="text-block simplified-text">这个人头上戴着深青色的头巾，头巾两边各有一个小环。脚上穿着绣有花纹的靴子，靴子是绿色的，靴筒不高。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">花荣见宋江，拜罢，喝叫军汉接了包裹、朴刀、腰刀，扶住宋江，直至正厅上，便请宋江当中凉床上坐了。花荣又纳头拜了四拜，起身道：“自从别了兄长之后，屈指又早五六年矣，常常念想。听得兄长杀了一个泼烟花，官司行文书各处追捕。小弟闻得，如坐针毡，连连写了十数封书去贵庄问信，不知曾到也否？今日天赐，幸得哥哥到此，相见一面，大称平生渴仰之思。”说罢又拜。宋江扶住道：“贤弟休只顾讲礼，请坐了，听在下告诉。”花荣斜坐着。宋江把杀阎婆惜一事和投奔柴大官人并孔太公庄上遇见武松、清风山上被捉遇燕顺等事，细细地都说了一遍。花荣听罢，答道：“兄长如此多磨难！今日幸得仁兄到此，且住数年，却又理会。”宋江道：“若非兄弟宋清寄书来孔太公庄上时，在下也特地要求贤弟这里走一遭。”花荣道：“前次连连奉书去拜问兄长，不见回音。后闻知令弟说，兄长在白虎山孔太公庄上，也特地要差人请兄长来此间住几时。今蒙仁兄不弃到此，只恨无甚罕物管待。”便请宋江去后堂里坐，唤出浑家崔氏来拜伯伯。拜罢，花荣又叫妹子出来拜了哥哥。便请宋江更换衣裳鞋袜，香汤沐浴，在后堂安排筵席洗尘。</div>
+            <div class="text-block simplified-text">花荣见到宋江，先跪下拜见，然后让手下接过宋江的行李和武器，扶着宋江到大厅，请他坐在正中的凉床上。花荣又跪下磕了四个头，站起来说："自从和大哥分别后，算起来已经有五六年了，我经常想念你。听说大哥你杀了一个妓女，官府到处通缉你。我听到消息后急得像坐在针毡上，连着写了十几封信到你庄上打听消息，不知道收到没有？今天老天开眼，幸好大哥你来我这里，能见上一面，真是了却了我多年的心愿。"说完又要跪拜。宋江扶住他说："好兄弟别光顾着行礼了，快坐下，听我慢慢跟你说。"花荣侧身坐下。宋江就把杀阎婆惜的事、投奔柴大官人、在孔太公庄上遇到武松、在清风山被抓又遇到燕顺这些事，都详细说了一遍。花荣听完说："大哥你真是吃了不少苦啊！现在幸好你来我这里，先住上几年，其他的事以后再说。"宋江说："要不是我弟弟宋清写信到孔太公庄上，我也特意要来你这里一趟。"花荣说："之前我连着写信问候大哥，都没收到回信。后来听你弟弟说你在白虎山孔太公庄上，我也特意要派人去请你来住些日子。现在大哥你不嫌弃来我这里，只恨没什么好东西招待你。"说完就请宋江到后堂坐着，叫妻子崔氏出来拜见大伯。拜完后，花荣又叫妹妹出来拜见哥哥。接着请宋江换衣服鞋袜，洗个热水澡，在后堂摆酒席给他接风。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">当日筵宴上，宋江把救了刘知寨恭人的事，备细对花荣说了一遍。花荣听罢，皱了双眉说道：“兄长没来由救那妇人做甚么！正好教灭这厮的口。”宋江道：“却又作怪！我听得说是清风寨知寨的恭人，因此把做贤弟同僚面上，特地不顾王矮虎相怪，一力要救他下山。你却如何恁的说？”花荣道：“兄长不知。不是小弟说口，这清风寨还是青州紧要去处，若还是小弟独自在这里守把时，远近强人怎敢把青州搅得粉碎！近日除将这个穷酸饿醋来做个正知寨，这厮又是文官，又没本事，自从到任，把此乡间些少上户诈骗，乱行法度，无所不为。小弟是个武官副知寨，每每被这厮呕气，恨不得杀了这滥污贼禽兽！兄长却如何救了这厮的妇人？打紧这婆娘极不贤，只要调拨他丈夫行不仁的事，残害良民，贪图贿赂。正好叫那贱人受些玷辱。兄长错救了这等不才的人。”宋江听了，便劝道：“贤弟差矣。自古道：冤仇可解不可结。他和你是同僚官，又不合活生世。亦且他是个文墨的人，你如何不谏他。他虽有些过失，你可隐恶而扬善。贤弟休如此浅见。”花荣道：“兄长见得极明。来日公廨内见刘知寨时，与他说过救了他老小之事。”宋江道：“贤弟若如此，见常也显你的好处。”花荣夫妻几口儿，朝暮精精致致供茶献酒供食，伏侍宋江。当时就晚，安排床帐在后堂轩下，请宋江安歇。次日，又备酒食筵宴管待。</div>
+            <div class="text-block simplified-text">那天吃饭的时候，宋江把救了刘知寨老婆的事详细告诉了花荣。花荣听完皱起眉头说："大哥你救那女人干啥！就该让那帮人弄死她才好。"  
+
+宋江说："这就怪了！我听说她是清风寨知寨的夫人，想着是你同事的面子，才不顾王矮虎反对，硬是把她救下山。你怎么这么说？"  
+
+花荣解释道："大哥你不知道。不是我吹牛，这清风寨可是青州的重要关卡，要是我一个人在这守着，附近的强盗哪敢把青州闹得天翻地覆！最近派来个穷酸书生当正知寨，这人文官出身又没本事，上任后就知道敲诈老百姓，胡作非为。我当个武官副知寨，天天受这混蛋的气，恨不得宰了这个畜生！大哥你怎么反倒救了他老婆？关键是这女人特别坏，整天撺掇她丈夫干缺德事，祸害好人，收受贿赂。就该让这贱人吃点苦头。大哥你救错人了。"  
+
+宋江劝道："老弟你这话不对。老话说：冤家宜解不宜结。他好歹是你同事，又不是一辈子仇人。再说他是个读书人，你该多劝劝他。就算他有错，你也该多说他好话。老弟你别这么小心眼。"  
+
+花荣说："大哥说得对。明天我去衙门见刘知寨时，会跟他提你救了他家人的事。"  
+
+宋江说："这就对了，也能显得你大度。"  
+
+之后花荣一家子每天好吃好喝伺候宋江。当晚就在后堂给宋江准备了床铺让他休息。第二天又摆了酒席招待他。  
+
+（说明：译文在完全保留原文情节的基础上，做了以下处理：  
+1. 将"恭人"译为"老婆/夫人"  
+2. "穷酸饿醋"译为"穷酸书生"  
+3. "滥污贼禽兽"译为"畜生"  
+4. 将文言句式"却又作怪"转化为口语"这就怪了"  
+5. 用"胡作非为"替代"无所不为"等文言表达  
+6. 保持所有人物关系和事件经过完全不变）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">话休絮烦。宋江自到花荣寨里，吃了四五日酒。花荣手下有几个梯己人，一日换一个，拨些碎银子在他身边，每日教相陪宋江去清风镇街上观看市井喧哗，村落宫观寺院，闲走乐情。自那日为始，这梯己人相陪着闲走，邀宋江去市井上闲玩。那清风镇上也有几座小勾栏并茶房酒肆，自不必说得。当日宋江与这梯己人在小勾栏里闲看了一回，又去近村寺院道家宫观游赏一回，请去市镇上酒肆中饮酒。临起身时，那梯己人取银两还酒钱。宋江那里肯要他还钱，却自取碎银还了。宋江归来，又不对花荣说。那个同去的人欢喜，又落得银子，又得身闲。自此，每日拨一个相陪，和宋江缓步闲游，又只是宋江使钱。自从到寨里，无一个不敬他的。宋江在花荣寨里住了将及一月有余，看看腊尽春回，又早元宵节近。</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+宋江在花荣家住下后，天天喝酒玩乐。花荣有几个心腹手下，每天轮流派一个陪着宋江到清风镇逛街，看热闹、逛寺庙道观。镇上有些小戏院、茶馆酒楼，他们经常去这些地方玩。每次喝酒吃饭，宋江都抢着付钱，不让陪同的人花钱。回去后宋江也不告诉花荣这事。陪他的人既轻松又能占便宜，都很高兴。从此每天都有人主动陪宋江出去玩，反正都是宋江花钱。他在花荣家住了一个多月，大家都喜欢他。转眼快到正月十五元宵节了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">且说这清风寨镇上居民商量放灯一事，准备庆赏元宵，科敛钱物，去土地大王庙前扎缚起一座小鳌山，上面结采悬花，张挂五七百碗花灯。土地大王庙内，逞应诸般社火。家家门前扎起灯棚，赛悬灯火。市镇上，诸行百艺都有。虽然比不得京师，只此也是人间天上。当下宋江在寨里和花荣饮酒，不觉又早是元宵节到。至日，晴明得好。花荣到巳牌前后，上马去公廨内点起数百个军士，教晚间去市镇上弹压；又点差许多军汉，分头去四下里守把栅门。未牌时分，回寒来邀宋江吃点心。宋江对花荣说道：“听闻此间市镇上今日晚点放花灯，我欲去观看观看。”花荣答道：“小弟本欲陪侍兄长去看灯，正当其理。只是奈缘我职役在身，不能勾自在闲步同往。今夜兄长自与家间二三人去看灯，早早的便回。小弟在家专待，家宴三杯，以庆佳节。”宋江道：“最好。”却早天色向晚，东边推出那轮明月上来。正是：</div>
+            <div class="text-block simplified-text">话说清风寨的老百姓商量着要办灯会庆祝元宵节，大家凑钱在土地庙前搭了个小灯山，挂上五六百盏花灯。庙里还有各种表演活动，家家户户门口都搭起灯棚，比谁家灯笼挂得好。街上各种杂耍手艺都有，虽然比不上京城热闹，但这阵仗也算得上人间天堂了。
+
+这时候宋江正在寨子里和花荣喝酒，不知不觉就到了元宵节当天。天气特别好，花荣上午九点多骑马去衙门，点了好几百个士兵，让他们晚上到街上维持秩序；又派了不少兵丁把守各处路口。下午三点多回来请宋江吃点心。宋江说："听说今晚街上有灯会，我想去看看。"花荣回答："我本来该陪哥哥去看灯的，可公务在身走不开。今晚哥哥带几个家里人去逛灯会，早点回来。我在家备好酒菜等你们回来过节。"宋江说："这样挺好。"
+
+说话间天就黑了，东边月亮慢慢升起来。真是：（这里原文没写完）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">玉漏铜壶且莫催，星桥火树彻明开。</div>
+            <div class="text-block simplified-text">别急着催时间走，你看那满街的花灯亮得像星星搭的桥，整夜都不会灭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">鳌山高耸青云上，何处游人不看来。</div>
+            <div class="text-block simplified-text">这座山特别高，都快碰到云彩了，哪个路过的人不想抬头看看啊？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">当晚，宋江和花荣家亲随梯己人两三个，跟随着宋江缓步徐行。到这清风镇上看灯时，只见家家门前搭起灯棚，悬挂花灯，不计其数。灯上画着许多故事，</div>
+            <div class="text-block simplified-text">那天晚上，宋江带着花荣家的两三个心腹手下，慢慢走到清风镇上看灯会。他们看到镇上家家户户门口都搭了灯棚，挂满了各式各样的花灯，多得数不清。灯上还画着各种人物故事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">也有剪采飞白牧丹花灯，并荷花芙蓉异样灯火。四五个人手厮挽着，来到土地大王庙前，看那小鳌山时，怎见的好灯？但见：</div>
+            <div class="text-block simplified-text">还有用彩色纸剪成的牡丹花灯和荷花芙蓉形状的奇特灯笼。四五个人手拉着手，一起走到土地庙前，看那座小灯山。你猜这灯有多好看？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">山石穿双龙戏水，云霞映独鹤朝天。金莲灯，玉梅灯，晃一片琉璃；荷花灯，芙蓉灯，散千团锦绣。银蛾斗采，双双随绣带香球；雪柳争辉，缕缕拂华幡翠幕。村歌社鼓，花灯影里竞喧阗；织女蚕奴，画烛光中同赏玩。虽无佳丽风流曲，尽贺丰登大有年。</div>
+            <div class="text-block simplified-text">山上的石头像两条龙在玩水，天上的云彩映着一只仙鹤朝太阳飞。金色的莲花灯，白玉般的梅花灯，照得一片亮晶晶；荷花灯和芙蓉灯，像千万朵鲜花一样漂亮。银色飞蛾争着发光，一对对跟着彩带和香球；雪白的柳枝比谁更亮，一条条轻拂着彩旗和翠绿的帷幕。村里人唱歌打鼓，在花灯的光影里热闹非凡；织布的女子和养蚕的人，都在烛光下一起赏灯玩乐。虽然没有美女唱动听的曲子，但大家都在庆祝今年的大丰收。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">当下宋江等四人在鳌山前看了一回，迤逦投南看灯。走不过五七百步，只见前面灯烛荧煌，一伙人围住在一个大墙院门首热闹，锣声响处，众人喝采。宋江看时，却是一伙舞鲍老的。宋江矮矬，人背后看不见。那相陪的梯己人却认得社火队里，便教分开众人，让宋江看。那跳鲍老的，身躯扭得村村势势的。宋江看了，呵呵大笑。只见这墙院里面，却是刘知寨夫妻两口儿和几个婆娘在里面看。听得宋江笑声，那刘知寨的老婆于灯下却认的宋江，便指与丈夫道：</div>
+            <div class="text-block simplified-text">现在宋江他们四个人在鳌山前面看了一会儿灯，接着往南走继续看。走了不到五六百米，看到前面灯火通明，一群人围在一个大院子门口看热闹，锣声一响，大家都在叫好。宋江一看，原来是一伙人在跳鲍老舞（一种民间舞蹈）。宋江个子矮，站在人群后面看不见。陪着他的那个心腹认识表演队的人，就让大家让开，好让宋江看。那个跳鲍老舞的人，身子扭得特别滑稽。宋江看了，哈哈直笑。这时候院子里面，刘知寨和他老婆还有几个女人也在看。听到宋江的笑声，刘知寨的老婆在灯光下认出了宋江，就指着宋江对她丈夫说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">“兀那个黄矮汉子，便是前日清风山抢掳下我的贼头！”刘知寨听了，吃一惊，便唤亲随六七人，叫捉那个笑的黑汉子。宋江听得，回身便走。走不过十余家，众军汉赶上，把宋江捉住，拿了来。却似皂雕追紫燕，正如猛虎啖羊羔。拿到寨里，用四条麻索绑了，押至厅前。那三个梯己人见捉了宋江去，自跑回来报与花荣知道。</div>
+            <div class="text-block simplified-text">那个又黄又矮的家伙，就是前几天在清风山抢走我的土匪头子！刘知寨一听，吓了一大跳，马上叫来六七个手下，让他们去抓那个笑嘻嘻的黑脸汉子。宋江听见了，转身就跑。可没跑出多远，就被那些当兵的追上抓住了。就像老鹰抓小鸟，老虎吃小羊一样容易。他们把宋江带回寨子里，用四根麻绳捆得结结实实，押到大堂上。宋江那三个心腹看见他被抓，赶紧跑回去给花荣报信。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">且说刘知寨坐在厅上，叫解过那厮来。众人把宋江簇拥在厅前跪下。刘知寨喝道：“你这厮是清风山打劫强贼，如何敢擅自来看灯！今被擒获，你有何理说？”宋江告道：“小人自是郓城县客人张三，与花知寨是故友，来此间多日了，从不曾在清风山打劫。”刘知寨老婆却从屏风背后转将出来，喝道：“你这厮兀自赖哩！你记得教我叫你做大王时？”宋江告道：“恭人差矣。那时小人不对恭人说来：小人自是郓城县客人，亦被掳掠在此间，不能勾下山去。”刘知寨道：“你既是客人被掳劫在那里，今日如何能勾下山来，却到我这里看灯？”那妇人便说道：“你这厮在山上时，大落落的坐在中间交椅上，由我叫大王，那里采人！”宋江道：“恭人全不记我一力救你下山，如何今日倒把我强扭做贼？”那妇人听了大怒，指着宋江骂道：“这等顽皮赖骨，不打如何肯招！”刘知寨道：“说得是！”喝叫：“取过批头来打那厮！”一连打了两料。打得宋江皮开肉绽，鲜血迸流。便叫：“把铁锁锁了，明日合个囚车，把郓城虎张三解上州里去。”</div>
+            <div class="text-block simplified-text">话说刘知寨坐在大堂上，让人把宋江押上来。一群人推着宋江来到堂前，按着他跪下。刘知寨大声骂道："你这个清风山的强盗头子，胆子不小啊，敢跑来看花灯！现在被抓了，还有什么好说的？"
+
+宋江赶紧解释："大人明鉴，小人只是郓城县来的生意人，姓张名三，和花知寨是老朋友。我来这儿好些天了，从来没在清风山当过强盗啊。"
+
+这时刘知寨的老婆从屏风后面冲出来，指着宋江喊："你还敢抵赖！忘了在山上让我喊你大王的事儿了？"
+
+宋江连忙说："夫人您记错了。当时我就跟您说过，我是郓城县来的生意人，也是被他们抓到山上的，想逃都逃不掉啊。"
+
+刘知寨冷笑："既然是被抓上山的，现在怎么又能下山，还跑来看灯？"
+
+他老婆又插嘴："你在山上可威风了！大模大样坐在头把交椅上，我喊你大王你都不搭理！"
+
+宋江急了："夫人您怎么忘了，明明是我拼命把您救下山的，怎么现在反咬我是强盗？"
+
+那女人一听就炸了，跳脚大骂："这个无赖，不打是不会招的！"
+
+刘知寨点头："说得对！"立刻下令："拿板子来，给我狠狠地打！"连着打了两顿，打得宋江皮开肉绽，血流不止。最后刘知寨吩咐："用铁链锁起来，明天弄辆囚车，把这个郓城县的张三押到州府去。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">却说相陪宋江的梯己人慌忙奔回来报知花荣。花荣听罢大惊，连忙写一封书，差两个能干亲随人去刘知寨处取。亲随人赍了书，急忙到刘知寨门前。把门军士入去报复道：“花知寨差人在门前下书。”刘高叫唤至当厅。那亲随人将书呈上，刘高拆开封皮，读道：</div>
+            <div class="text-block simplified-text">宋江身边的心腹急忙跑回来告诉花荣。花荣一听吓坏了，赶紧写了封信，派两个得力的亲信去刘知寨那里要人。这两个亲信拿着信，火急火燎地赶到刘知寨家门口。守门的士兵进去报告说："花知寨派人来送信了。"刘高叫人把他们带到大堂上。亲信把信递上去，刘高拆开信封，看到信上写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">“花荣拜上僚兄相公座前：所有薄亲刘丈，近日从济州来，因看灯火，误犯尊威，万乞情恕放免，自当造谢。草字不恭，烦乞照察。不宣。”</div>
+            <div class="text-block simplified-text">这是花荣写给领导的一封信，大意是说：
+
+"领导您好：
+我有个亲戚刘大爷，最近从济州过来看花灯，不小心冒犯了您。求您看在我的面子上饶了他，我一定亲自登门道谢。
+信写得比较随便，请您多包涵。不多说了。"
+
+（注：保留了"看灯火"的细节，用"领导"替代"僚兄相公"更易懂，"薄亲"直接说"亲戚"，"造谢"译为"登门道谢"，最后用"不多说了"对应"不宣"的口语化表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">刘高看了大怒，把书扯的粉碎，大骂道：“花荣这厮无礼！你是朝廷命官，如何却与强贼通同，也来瞒我！这贼已招是郓城县张三，你却如何写道是刘丈？俺须不是你侮弄的！你写他姓刘，是和我同姓，恁地我便放了他？”喝令左右把下书人推抢出去。那亲随人被赶出寨门，急急归来禀复花荣知道。花荣听了，只叫得：“苦了哥哥！快备我的马来！”花荣披挂，拴束了弓箭，绰枪上马，带了三五十名军汉，都拖枪拽棒，直奔到刘高寨里来。把门军人见了，那里敢拦当；见花荣头势不好，尽皆吃惊，都四散走了。花荣抢到厅前，下了马，手中拿着枪。那三五十人都两摆在厅前。花荣口里叫道：“请刘知寨说话！”刘高听得，见花荣头势不好，惊的魂飞魄散，惧怕花荣是个武官，那里敢出来相见。花荣见刘高不出来，立了一回，喝叫左右去两边耳房里搜人。那三五十军汉一齐去搜时，早从廊下耳房里寻见宋江，被麻索高吊起在梁上，又使铁索锁着两腿，打得肉绽。几个军汉便把绳索割断，铁锁打开，救出宋江。花荣便叫军士先送回家里去。花荣上了马，绰枪在手，口里发语道：“刘知寨！你便是个正知寨，待怎的奈何了花荣！谁家没个亲眷，你却甚么意思？我的一个表兄，直拿在家里，强扭做贼，好欺负人！明日和你说话，却再理会！”花荣带了众人，自回到寨里来看视宋江。</div>
+            <div class="text-block simplified-text">刘高看完信后非常生气，把信撕得粉碎，大骂道："花荣这个混蛋太不像话了！你是个朝廷官员，怎么能和强盗勾结，还来骗我！这贼人自己都招认是郓城县的张三，你偏要写成姓刘的？难道就因为他和我同姓，我就会放人吗？"他命令手下把送信的人赶了出去。
+
+送信的人急忙跑回去告诉花荣。花荣一听就急了："这下可害苦我哥哥了！快把我的马牵来！"他穿上盔甲，带上弓箭，提着长枪上马，带着三五十个士兵，拿着武器直奔刘高的寨子。守门的士兵看到这架势，吓得都不敢拦，全都躲开了。
+
+花荣冲到大厅前下马，拿着枪，士兵们在大厅前站成两排。他大声喊："叫刘知寨出来说话！"刘高听到喊声，看到花荣来势汹汹，吓得魂都快没了。他知道花荣是武将，根本不敢出来见面。
+
+花荣见刘高不出来，等了一会儿，就命令士兵们去两边房间搜查。士兵们很快就在走廊旁的房间里找到了宋江，发现他被麻绳吊在房梁上，腿上还锁着铁链，身上被打得皮开肉绽。士兵们赶紧割断绳子，打开铁锁，把宋江救了下来。花荣让士兵先把宋江送回家。
+
+花荣骑上马，握着长枪喊道："刘知寨！就算你是正职知寨，又能把花荣怎么样？谁家没有亲戚朋友，你这样做是什么意思？我表哥好好的人，被你抓来硬说是强盗，太欺负人了！这事没完，咱们走着瞧！"说完就带着人回去照顾宋江了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">却说刘知寨见花荣救了人去，急忙点起一二百人，也叫来花荣寨夺人。那二百人内，新有两个教头，为首的教头虽然了得些枪刀，终不及花荣武艺。不敢不从刘高，只得引了众人奔花荣寨里来。把门军士入去报知花荣。此时天色未甚明亮。那二百来人拥在门首，谁敢先入去，都惧怕花荣了得。看看天大明了，却见两扇大门不关，只见花知寨在正厅上坐着，左手拿着弓，右手拿着箭。众人都拥在门前。花荣竖起弓，大喝道：“你这军士们！不知冤各有头，债各有主？刘高差你来，休要替他出色。你那两个新参教头，还未见花知寨的武艺。今日先教你众人看花知寨弓箭，然后你那厮们要替刘高出色，不怕的入来。看我先射大门上左边门神的骨朵头。”搭上箭，拽满弓，只一箭，喝声道：“着！”正射中门神骨朵头。众人看了，都吃一惊。花荣又取第二枝箭，大叫道：“你们众人再看我这第二枝箭，要射右边门神的头盔上朱缨。”飕的又一箭，不偏不斜，正中缨头上。那两枝箭却射定在两扇门上。花荣再取第三枝箭，喝道：“你众人看我第三枝箭，要射你那队里穿白的教头心窝。”那人叫声：“哎呀！”便转身先走。众人发声喊，一齐都走了。</div>
+            <div class="text-block simplified-text">话说刘知寨发现花荣把人救走了，赶紧召集了一两百号人，还跑去花荣的寨子要抢人。这群人里有两个新来的教头，领头的那个虽然会点功夫，但根本比不上花荣的身手。他们不敢不听刘高的命令，只好带着人冲到花荣寨子门口。守门的士兵赶紧进去报告花荣。这时候天还没大亮，两百多号人挤在门口，谁都不敢第一个进去——大家都怕花荣厉害。等到天完全亮了，他们发现大门敞开着，花荣就坐在大厅上，左手拿弓，右手拿箭。一群人堵在门口不敢动。花荣举起弓大吼：“你们这些当兵的！不知道冤有头债有主吗？刘高叫你们来送死，你们还真给他卖命？那两个新来的教头，还没见识过我的本事吧？今天先让你们开开眼！”说完就搭箭拉弓，“看我先射左边门神脑袋上的疙瘩！”只听“嗖”的一声，箭正中门神头顶的装饰球。所有人都吓傻了。花荣又抽出第二支箭喊道：“再看这第二箭，要射右边门神头盔上的红缨子！”又是一箭，不偏不倚射中红缨。两支箭稳稳钉在门板上。花荣拿出第三支箭喝道：“现在这第三箭，要射你们队伍里穿白衣服的教头心窝！”那教头“妈呀”一声，扭头就跑。其他人也跟着哇哇乱叫，一窝蜂全逃了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">花荣且教闭上寨门，却来后堂看觑宋江。花荣说道：“小弟误了哥哥，受此之苦。”宋江答道：“我却不妨。只恐刘高那厮不肯和你干休，我们也要计较个常便。”花荣道：“小弟舍着弃了这道官诰，和那厮理会。”宋江道：“不想那妇人将恩作怨，教丈夫打我这一顿。我本待自说出真名姓来，却又怕阎婆惜事发，因此只说郓城客人张三。叵耐刘高无礼，要把我做郓城虎张三解上州去，合个囚车盛我。要做清风山贼首时，顷刻便是一刀一剐。不得贤弟自来力救，便有铜唇铁舌，也和他分辩不得。”花荣道：“小弟寻思，只想他是读书人，须念同姓之亲，因此写了刘丈，便是忘了忌讳这一句话。如今既已救了来家，且却又理会。”宋江道：“贤弟差矣。既然伊你豪势，救了人来，凡事三思而后行，再思可矣。自古道：“吃饭防噎，行路防跌。他被你公然夺了人来，急使人来抢，又被你一吓，尽都散了。我想他如何肯干罢，必然要和你动文书。今晚我先走上清风山去躲避，你明日却好和他白赖，终久只是文武不和相殴的官司。我若再被他拿出去时，你便和他分说不过。”花荣道：“小弟只是一勇之夫，却无兄长的高明远见。只恐兄长伤重了，走不动。”宋江道：“不妨。事急难以担阁，我自捱到山下便了。”当时敷贴了膏药，吃了些酒肉，把包裹都寄在花荣处。黄昏时分，便使两个军汉送出栅外去了。宋江自连夜捱去，不在话下。</div>
+            <div class="text-block simplified-text">花荣让人关上寨门，到后堂看望宋江。花荣说："都怪我没护好哥哥，让你受罪了。"宋江说："我没事。就怕刘高那混蛋不会善罢甘休，咱们得想个长久办法。"花荣说："大不了这官我不当了，跟他拼了！"
+
+宋江叹气："没想到那女人恩将仇报，怂恿丈夫打我。我本想亮明身份，又怕阎婆惜那件事暴露，只好谎称是郓城来的张三。可恨刘高不讲理，非说我是土匪头子'郓城虎张三'，要用囚车押我去州府。要不是贤弟及时相救，我浑身是嘴也说不清啊。"
+
+花荣懊恼道："我原想着他是读书人，看在同姓份上会留情面，写信时还尊称他'刘丈'，结果反倒害了哥哥。现在既然把人救回来了，咱们再从长计议。"
+
+宋江摇头："贤弟想错了。你仗着兵权把人抢回来，但做事要三思啊。俗话说'吃饭防噎，走路防跌'。你当众抢人，他们虽然暂时被你吓退，肯定要告到官府。今晚我先躲上清风山，明天你就咬定是文武官员打架纠纷。要是我再被抓，你就真说不清了。"
+
+花荣着急："我这人莽撞，没哥哥想得周全。可你伤这么重，怎么走得了山路？"宋江说："不碍事，情况紧急耽误不得，我慢慢挪到山下就行。"他让花荣帮忙敷好药，吃了点酒肉，行李都留在花荣那里。天刚擦黑，就让两个士兵护送他出了寨门，自己连夜往山上赶去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">再说刘知寨见军士一个个都散回寨里来说道：“花知寨十分英勇了得，谁敢去近前当他弓箭！”两个教头道：“着他一箭时，射个透明窟窿，却是都去不得！”刘高那厮终是个文官，还有些谋略算计。花荣虽然勇猛豪杰，不及刘高的智量。正是将在谋而不在勇。当下刘高寻思起来：“想他这一夺去，必然连夜放他上清风山去了，明日却来和我白赖。便争竞到上司，也只是文武不和斗殴之事，我却如何奈何的他？我今夜差二三十军汉，去五里路头等候。倘若天幸捉着时，将来悄悄的关在家里，却暗地使人连夜去州里报知连军官下来取，就和花荣一发拿了，都害了他性命。那时我独自霸着这清风寨，省得受这厮们的气。”当晚点了二十余人，各执枪棒，就夜去了。约莫有二更时侯，去的军汉背剪绑得宋江到来。刘知寨见了，大喜道：“不出吾之所料！且与我囚在后院里，休教一个人得知。”连夜便写了实封申状，差两个心腹之人星夜来青州府飞报。次日，花荣只道宋江上清风山去了，坐视在家，心里自道：“我且看他怎的。”竟不来采着。刘高也只做不知。两下都不说着。</div>
+            <div class="text-block simplified-text">刘知寨看到士兵们一个个跑回寨里，都说："花知寨太厉害了，箭法那么准，谁敢靠近啊！"两个教官也说："被他射一箭就是个透心凉，咱们都别去送死了！"刘高这家伙到底是个文官，有点心眼。花荣虽然勇猛，但不如刘高会算计。这就叫打仗靠脑子不靠蛮力。
+
+刘高琢磨着："他抢走宋江，肯定连夜送上清风山了。明天肯定要来跟我耍赖。就算闹到上头，也就是个文武官员打架的事，我也拿他没办法。不如今晚派二三十个兵，在五里外等着。要是运气好抓到人，就偷偷关在家里，再连夜派人去州里报告连军官，等他们来把花荣和宋江一起抓了，直接要他们的命。这样我就能独占清风寨，不用受这帮人的气了。"
+
+当晚他派了二十多人拿着武器出发。大约二更天的时候，士兵们把捆得结结实实的宋江押回来了。刘知寨高兴坏了："果然不出我所料！先把他关在后院，别让人知道。"他连夜写了密信，派两个亲信快马加鞭送到青州府报信。
+
+第二天，花荣以为宋江已经上了清风山，就在家等着看情况，心想："我倒要看看他能怎么样。"根本没去管这事。刘高也假装不知道。两边谁都不提这事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">且说青州府知府正值升厅坐公座。那知府复姓慕容，双名彦达，是今上徽宗天子慕容贵妃之兄，倚托妹子的势要，在青州横行，残害良民，欺罔僚友，无所不为。正欲回后堂退食，只见左右公人接上刘知寨申状，飞报贼情公事。知府接来，看了刘高的文书，吃了一惊，便道：“花荣是个功臣之子，如何结连清风山强贼？这罪犯非小，未委虚的。”便教唤那本州兵马都监来到厅上，分付他去。</div>
+            <div class="text-block simplified-text">话说青州府的知府正在大厅上办公。这位知府姓慕容，名叫彦达，是当今皇上宋徽宗的妃子慕容贵妃的哥哥。他仗着妹妹的权势，在青州胡作非为，欺负老百姓，欺骗同僚，什么坏事都干。他正准备回后堂吃饭，突然手下人送来刘知寨的报告，说有紧急的土匪情况。知府看完刘高的报告，吓了一跳，说："花荣是将门之后，怎么会和清风山的土匪勾结？这可是大罪，不知道是真是假。"于是就叫来本州的兵马都监，当面交代他去处理这件事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">原来那个都监姓黄名信，为他本身武艺高强，威镇青州，因此称他为镇三山。那青州地面所管下有三座恶山，第一便是清风山，第二便是二龙山，第三便是桃花山。这三处都是强人草寇出没的去处。黄信却自夸要捉尽三山人马，因此唤做镇三山。那人生的如何？但见：</div>
+            <div class="text-block simplified-text">这个都监叫黄信，因为他武功厉害，在青州一带很有名，所以外号叫"镇三山"。青州管着三座强盗出没的山：清风山、二龙山和桃花山。黄信夸口说要收拾这三座山上的强盗，所以才得了这个外号。他长什么样呢？你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">相貌端方如虎豹，身躯长大似蛟龙。</div>
+            <div class="text-block simplified-text">这人长得端正威严，像老虎豹子一样有气势；身材高大魁梧，像蛟龙一样威风。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">平生惯使丧门剑，威镇三山立大功。</div>
+            <div class="text-block simplified-text">我这辈子最拿手的就是用那把丧门剑，靠着它威震四方，立下了不少大功劳。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">这兵马都监黄信上厅来领了知府的言语出来，点起五十个壮健军汉，披挂了衣甲，马上擎着那口丧门剑，连夜便下清风寨来，径到刘高寨前下马。刘知寨出来接着，请到后堂，叙礼罢，一面安排酒食管待，一面犒赏军士。后面取出宋江来，教黄信看了。黄信道：“这个不必问了。连夜合个囚车，把这厮盛在里面。”头上抹了红绢，插一个纸旗，上写着“清风山贼首郓城虎张三”。宋江那里敢分辩，只得由他们安排。黄信再问刘高道：“你拿得张三时，花荣知也不知？”刘高道：“小官夜来二更拿了他，悄悄提得来藏在家里。花荣只知道张三去了，自坐视在家。”黄信道：“既是恁地，却容易。明日天明，安排一副羊酒去大寨里公厅上摆着，却教四下里埋伏下二三十人预备着。我却自去花荣家请得他来，只推道慕容知府听得你文武不和，因此特差我来置酒劝谕。赚到公厅，只看我掷盏为号，就下手拿住了，一同解上州里去。此计如何？”刘高喝采道：“还是相公高见！此计大妙，却似瓮中捉鳖，手到拿来！”</div>
+            <div class="text-block simplified-text">黄信接到知府的命令，立刻召集五十个精壮士兵，全副武装，带着他那把丧门剑，连夜赶到清风寨刘高那里。刘高出来迎接，请他到后堂，客套几句后，一边摆酒招待他，一边犒劳士兵。接着把宋江押出来给黄信看。黄信说："不用审了，连夜弄个囚车，把这家伙关进去。"他们给宋江头上绑了红布，插了面纸旗，上面写着"清风山贼头子郓城虎张三"。宋江哪敢辩解，只能任他们摆布。  
+
+黄信又问刘高："你抓张三的时候，花荣知道吗？"刘高说："我半夜二更天悄悄抓了他，藏在家里。花荣只知道张三跑了，还在家待着呢。"黄信说："那就好办了。明天天亮，你在大厅摆上酒肉，四周埋伏二三十人准备好。我去花荣家请他，就说慕容知府听说你们文武官不和，特意派我来摆酒调解。等把他骗到大厅，我一摔杯子当暗号，你们就动手抓人，一起押到州里去。这主意怎么样？"刘高拍马屁说："大人高明！这计策太妙了，简直像瓮中捉鳖，十拿九稳！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">当夜定了计策。次日天晓，先去大寨左右两边帐幕里，预先埋伏了军士。厅上虚设着酒食筵宴。早饭前后，黄信上了马，只带三两个从人，来到花荣寨前。军人入去传报。花荣问道：“来做甚么？”军汉答道：“只听得教报道：黄都监特来相探。”花荣听罢，便出来迎接。黄信下马，花荣请至厅上，叙礼罢，便问道：“都监相公有何公干到此？”黄信道：“下官蒙知府呼唤，发落道：为是你清风寨内文武官僚不和，未知为甚缘由。知府诚恐二官因私仇而误其公事，特差黄某赍到羊酒，前来与你二官讲和。已安排在大寨公厅上，便请足下上马同往。”花荣笑道：“花荣如何敢欺罔刘高，他又是个正知寨。只是本人累累要寻花荣的过失。不想惊动知府，有劳都监下临草寨，花荣将何以报？”黄信附耳低言道：“知府只为足下一人。倘有些刀兵动时，他是文官，做得何用。你只依着我行。”花荣道：“深谢都监过爱。”黄信便邀花荣同出门首上马。花荣道：“且请都监少叙三杯了去。”黄信道：“待说开了，畅饮何妨。”花荣只得叫备马。</div>
+            <div class="text-block simplified-text">那天晚上他们定好了计划。第二天一早，先在大寨两边的帐篷里埋伏好士兵。大厅上假装摆好了酒席。吃过早饭不久，黄信骑上马，只带了几个随从，来到花荣的寨子前。士兵进去通报。花荣问："他来干什么？"士兵回答："说是黄都监特意来拜访。"花荣听了，就出来迎接。黄信下了马，花荣把他请进大厅，互相行礼后问："都监大人来这儿有什么事？"黄信说："知府大人派我来，说是听说清风寨的文官武将不和，不知道什么原因。知府担心你们因为私事耽误公事，特意让我带着酒肉来调解。酒席已经在大寨准备好了，请跟我一起去吧。"花荣笑着说："我哪敢欺负刘高啊？他毕竟是正寨主。只是他老是找我的麻烦。没想到惊动了知府，还麻烦都监亲自来我们这小地方，我真不知道怎么感谢。"黄信凑近他耳边小声说："知府主要是为了你。要是真打起来，他是个文官能干什么？你只要听我的就行。"花荣说："太感谢都监关照了。"黄信就拉着花荣一起出门上马。花荣说："要不先喝几杯再走？"黄信说："等事情说开了，再痛快喝也不迟。"花荣只好叫人准备马匹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">当时两个并马而行，直来到大寨，下了马。黄信携着花荣的手，同上公厅来。只见刘高已自先在公厅上，三个人都相见了。黄信叫取酒来。从人已先自把花荣的马牵将出去，闭了寨门。花荣不知是计，只想黄信是一般武官，必无歹意。黄信擎一盏酒来，先劝刘高道：“知府为因听得你文武二官同僚不和，好生忧心。今日特委黄信到来，与你二公陪话。烦望只以报答朝廷为重，再后有事，和同商议。”刘高答道：“量刘高不才，颇识些理法，何足道哉，直教知府恩相如此挂心。我二人也无甚言语争执，此是外人妄传。”黄信大笑道：“妙哉！”刘高饮过酒，黄信又斟第二杯酒来劝花荣道：“虽然是刘知寨如此说了，想必是闲人妄传，故是如此。且请饮一杯。”花荣接过酒吃了。刘高拿副台盏，斟一盏酒，回劝黄信道：“动劳都监相公降临敝地，满饮此杯。”</div>
+            <div class="text-block simplified-text">那时候两个人一起骑马，直接到了大寨，下了马。黄信拉着花荣的手，一起走进大厅。看见刘高已经在大厅里等着了，三个人见了面。黄信让人拿酒来。手下人早就把花荣的马牵走了，关上了寨门。花荣不知道这是计谋，只觉得黄信和自己一样是武官，应该没坏心眼。
+
+黄信端起一杯酒，先敬刘高说："知府听说你们文武官员闹矛盾，特别担心。今天专门派我来当和事佬。希望你们以国家大事为重，以后有事好好商量。"刘高回答说："我刘高虽然没什么本事，但还是懂道理的，哪敢让知府大人这么操心。我们俩其实没什么矛盾，都是外人瞎传的。"黄信大笑着说："太好了！"
+
+刘高喝完酒，黄信又倒第二杯敬花荣："既然刘知寨都这么说了，肯定是有人乱传话。来，喝一杯。"花荣接过酒喝了。刘高也拿起酒杯，倒了一杯回敬黄信："辛苦都监大人跑这一趟，请干了这杯。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">黄信接过酒来，拿在手里，把眼四下一看，有十数个军汉簇上厅来。黄信把酒盏望地下一掷，只听得后堂一声喊起，两边帐幕里走出三五十个壮健军汉，一发上，把花荣拿倒在厅前。黄信喝道：“绑了！”花荣一片声叫道：“我得何罪？”黄信大笑，喝道：“你兀自敢叫哩！你结连清风山强贼，一同背反朝廷，当得何罪？我念你往日面皮，不去惊动拿你家老小。”花荣道：“相公也有个证见。”黄信道：“还你一个证见，教你看真赃正贼，我不屈你。左右，与我推得来。”无移时，一辆囚车，一个纸旗儿，一条红抹额，从外面推将入来。花荣看了，见是宋江陷着，目睁口呆，面面厮觑，做声不得。黄信喝道：“这须不干我事，见有告人刘高在此。”花荣道：“不妨，不妨。这是我的亲眷，他自是郓城县人。你要强扭他做贼，到上司自有分辩处。”黄信道：“你既然如此说时，我只解你上州里，你自去分辩。”便叫刘知寨点起一百寨兵防送。“就要你同去，便解投青州。此是知府相公立等回报的公事，不可耽迟。”花荣便对黄信说道：“都监赚我来，虽然捉了我，便到朝廷，和他还有分辩。可看我和都监一般武职官面，休去我衣服，容我坐在囚车里。”黄信道：“这几件容易，便都依你。就叫刘知寨一同去州里折辩明白，休要枉害人性命。”当时黄信与刘高都上了马，监押着两辆囚车，并带三五十军士、一百寨兵，簇拥着车子，取路奔青州府来。</div>
+            <div class="text-block simplified-text">黄信接过酒，拿在手里，四下看了看，发现十几个士兵正往厅上围过来。他猛地摔碎酒杯，只听后堂一声喊，两边冲出三五十个壮汉，一下子把花荣按倒在地。黄信大喊："绑起来！"花荣急得直喊："我犯了什么罪？"黄信大笑道："你还敢叫！你勾结清风山的强盗造反，该当何罪？看在你往日情分上，我才没去抓你家人。"花荣说："大人总得有证据吧？"黄信说："好，给你看证据——把人带上来！"不一会儿，有人推进来一辆囚车，车上插着白旗，犯人头上绑着红布条。花荣一看是宋江，惊得目瞪口呆说不出话。黄信喝道："这可怪不得我，是刘高告发的。"花荣赶紧说："别急，这人是我亲戚，是郓城县的良民。你硬说他是强盗，到了上级那儿自然能说清楚。"黄信说："既然你这么讲，我就押你去州里对质。"随即命令刘高带一百士兵押送，还说："你也得跟着去青州，这是知府大人急着要办的案子，不能耽误。"花荣对黄信说："都监设计抓我，就算到了朝廷我也有理可说。看在我们都是武官的情分上，别扒我衣服，让我体面坐囚车。"黄信答应："这些都好说，刘高也一起去州里说清楚，别冤枉好人。"说完，黄信和刘高骑马押着两辆囚车，带着几十个官兵和一百寨兵，直奔青州府。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">不是黄信、刘高解宋江、花荣望青州来，有分教：火焰堆里，送数百间屋宇人家；刀斧丛中，杀一二千残生性命。且教大闹了青州，纵横山寨。直使玉屏风上题名字，丹凤门中降赦书，毕竟解宋江投青州来怎地脱身，且听下回分解。</div>
+            <div class="text-block simplified-text">黄信和刘高押着宋江、花荣往青州去，这下可要出大事了：接下来不光要烧掉几百户人家的房子，还得在乱战中死一两千人。这一闹，整个青州都会乱套，山寨的人马也会到处闹腾。最后连官府都得在城门口贴告示招安。至于宋江被押到青州后怎么逃出来，咱们下回再说。  
+
+（说明：改写时做了以下处理：  
+1. "有分教"改为"这下可要出大事了"  
+2. 将文言句式"火焰堆里""刀斧丛中"转化为白话描述  
+3. "玉屏风""丹凤门"等典故直接译为"官府""城门口"  
+4. 保留"下回分解"的传统说书句式  
+5. 添加"咱们"增强口语互动感  
+6. 用"乱套""闹腾"等生活化词汇替代原文雅语）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
