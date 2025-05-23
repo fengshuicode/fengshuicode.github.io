@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百零一回　谋坟地阴险产逆　踏春阳妖艳生奸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./100.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百零一回　谋坟地阴险产逆　踏春阳妖艳生奸</h1>
+        <a href="./102.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话说蔡京在武学中，查问那不听他谭兵，仰视屋角的这个官员，姓罗名戩，祖贯云安军达州人，见做武学谕。当下蔡京怒气填胸，正欲发作。因天子驾到报来，蔡京遂放下此事，率领百官，迎接圣驾进学。拜舞山呼。道君皇帝讲武已毕，当有武学谕罗戩，不等蔡京开口，上前俯伏，先启奏道：“武学谕小臣罗戩，冒万死，谨将淮西强贼王庆造反情形，上达圣聪。王庆作乱淮西，五年于兹。官军不敢抵敌。童贯、蔡攸，奉旨往淮西征讨，全军覆没，惧罪隐匿，欺诳陛下，说军士水土不服，权且罢兵。以致养成大患。王庆势愈猖獗。前月又将臣乡云安军攻破，掳掠淫杀，惨毒不忍言说。通共占据八座军州，八十六个州县。蔡京经体赞元，其子蔡攸，如是覆军杀将，辱国丧师。今日圣驾未临时，犹俨然上坐谭兵，大言不惭，病狂丧心。乞陛下速诛蔡京等误国贼臣，选将发兵，速行征剿，救生民于涂炭，保社稷以无疆。臣民幸甚，天下幸甚！”道君皇帝闻奏大怒，深责蔡京等隐匿之罪。当被蔡京等巧言宛奏。天子不即加罪。起驾还宫。</div>
+            <div class="text-block simplified-text">故事讲的是蔡京在武学（军事学校）里查问一个不专心听他讲兵法、老是抬头看房梁的官员。这人叫罗戩，老家在云安军达州，现在是武学里的教官。蔡京气得要命，正要发火，突然听说皇帝来了，只好先带百官去迎接。
+
+等皇帝检阅完军队，罗戩突然抢先跪地报告："我是小教官罗戩，冒死向您报告：淮西大盗王庆造反五年了，官兵根本打不过。童贯和蔡攸（蔡京儿子）奉命去镇压，结果全军覆没。他们怕被治罪就撒谎说士兵水土不服，暂时撤兵，结果让叛军越来越猖狂。上个月他们连我老家云安军都攻破了，烧杀抢掠无恶不作。现在叛军已经占了八个州、八十六个县。蔡京身为重臣，他儿子打了败仗还敢欺瞒朝廷。刚才您没来时，蔡京还装模作样坐在上面讲兵法，简直不要脸！求皇上赶紧处置这些祸国殃民的奸臣，派兵剿匪，救老百姓于水火，保住江山！"
+
+皇帝听完大怒，要治蔡京他们的罪。但蔡京一伙花言巧语糊弄过去了，皇帝暂时没处罚他们，就回宫了。
+
+（说明：原文中"拜舞山呼"是古代臣子见皇帝的礼仪动作，现代人不用这样行礼，所以意译为"迎接"；"谭兵"即"谈兵"，指讲解兵法；"圣聪"是对皇帝听力的敬称，直接译为"报告给您"更易懂。其他信息均完整保留。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">次日，又有亳州太守侯蒙，到京听调。上书直言童贯、蔡攸，丧师辱国之罪。并荐举：“宋江等才略过人，屡建奇功，征辽回来，又定河北。今已奏凯班师。目今王庆猖獗，乞陛下降敕，将宋江等先行褒赏，即着这支军马，征讨淮西，必成大功。”徽宗皇帝准奏。随即降旨，下省院议封宋江等官爵。省院官同蔡京等商议，回奏：“王庆打破宛州。昨有禹州、许州、叶县三处申文告急。那三处是东京所属州县，邻近神京。乞陛下敕陈瓘、宋江等，不必班师回京。着他统领军马，星夜驰救禹州等处。臣等保举侯蒙为行军参谋。罗戩素有韬略，着他同侯蒙到陈瓘军前听用。宋江等正在征剿，未便升受。待淮西奏凯，另行酌议封赏。”原来蔡京知王庆那里兵强将猛，与童贯、杨戩、高俅计议，故意将侯蒙、罗戩送到陈瓘那里。只等宋江等败绩，侯蒙、罗戩怕他走上天去。那时却不是一纲打尽。话不絮繁。却说那四个贼臣的条议，道君皇帝一一准奏。降旨写敕，就着侯蒙、罗戩赍捧诏敕，及领赏赐金银段疋，袍服衣甲，马匹御酒等物，即日起行，驰往河北，宣谕宋江等。又敕该部将河北新复各府州县所缺正佐官员，速行推补，勒限星驰赴任。道君皇帝剖断政事已毕，复被王黼、蔡攸二人，劝帝到艮岳娱乐去了，不题。</div>
+            <div class="text-block simplified-text">第二天，亳州太守侯蒙到京城等安排工作。他直接给皇帝打报告，举报童贯、蔡攸打仗失败、让国家丢脸的罪行。同时推荐说："宋江这帮人本事大、立过很多功，打辽国回来后又平定了河北。现在他们打完胜仗准备回朝。眼下王庆闹得厉害，请皇上先奖励宋江他们，直接派这支队伍去打淮西，肯定能赢。"宋徽宗同意了。
+
+接着皇帝下令让政府部门讨论给宋江他们封官的事。但蔡京那帮人商量后回复说："王庆刚攻下宛州，禹州、许州、叶县这三个靠近京城的地方都在求救。不如别让宋江他们回京，直接派去救这三个地方。我们推荐侯蒙当参谋，再派懂军事的罗戩一起去。宋江他们正在打仗，先别升官，等打完淮西再说。"其实蔡京知道王庆厉害，和童贯他们商量好故意把侯蒙、罗戩派过去，就等着宋江打败仗，好把这些人一网打尽。
+
+皇帝全批准了，马上让人带着圣旨、赏赐的金银绸缎、衣服盔甲、御酒等东西，跟侯蒙他们一起快马加鞭去找宋江。还命令赶紧补上河北各地空缺的官员。办完这些事，皇帝又被王黼、蔡攸拉着去艮岳游乐园玩了。
+
+（说明：原文中"段疋"即绸缎，"正佐官员"指正副官职，"勒限星驰"意为限期快速到任，均用现代常用词替换。保留所有人物关系和事件脉络，删减了部分文言虚词，将"道君皇帝"统一译为"皇帝"便于理解。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">且说侯蒙赍领诏敕，及赏赐将士等物，满满的装载三十五车，离了东京，望河北进发。于路无话。不则一日，过了壶关山，昭德府，来到威胜州。离城尚有二十余里，遇着宋兵押解贼首到来。却是宋江先接了班师诏敕，恰遇琼英葬母回来。宋江将琼英母子，及叶清贞孝节义的事，擒元凶贼首的功，并乔道清、孙安等降顺天朝，有功员役，都备细写表，申奏朝廷。就差张清、琼英、叶清，领兵押解贼首先行。当下张清上前与侯参谋、罗戩相见已毕。张清得了这个消息，差人驰往陈安抚、宋先锋处报闻。陈瓘、宋江率领诸将出郭迎接。侯蒙等捧赍圣旨入城，摆列龙亭香案，陈安抚及宋江以下诸将，整整齐齐，朝北跪着。裴宣喝拜。拜罢，侯蒙面南立于龙亭之左，将诏书宣读道：</div>
+            <div class="text-block simplified-text">话说侯蒙带着皇帝的命令和赏赐将士的东西，装了满满三十五辆车，离开东京，往河北出发。一路上没什么特别的事。没过多久，他们过了壶关山、昭德府，到了威胜州。离城还有二十多里地时，遇到宋军押送贼寇头目过来。原来是宋江已经接到了撤军的命令，正好碰上琼英安葬母亲回来。宋江把琼英母子的情况、叶清的忠孝节义事迹、抓住贼寇头目的功劳，还有乔道清、孙安等人归顺朝廷的事，都详细写成奏章报告给朝廷。他就派张清、琼英、叶清带兵押着贼寇头目先走一步。
+
+这时张清上前跟侯参谋、罗戬见了面。张清知道这消息后，赶紧派人骑马去通知陈安抚和宋先锋。陈瓘、宋江带着众将领出城迎接。侯蒙等人捧着圣旨进城，摆好香案，陈安抚和宋江以下的将领们整整齐齐朝北跪下。裴宣喊口令让大家行礼。行完礼，侯蒙面向南站在香案左边，开始宣读诏书。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">“制曰：朕以敬天法祖，缵绍洪基。惟赖杰宏股肱，赞勷大业。迩来边庭多儆，国祚少宁。尔先锋使宋江等，跋履山川，逾越险阻，先成平虏之功，次奏静寇之绩。朕实嘉赖。今特差参谋侯蒙，赍捧诏书，给赐安抚陈瓘及宋江、卢俊义等，金银袍段，名马衣甲御酒等物，用彰尔功。兹者，又因强贼王庆，作乱淮西，倾覆我城池，芟夷我人民，虔刘我边陲，荡摇我西京。仍敕陈瓘为安抚，宋江为平西都先锋，卢俊义为平西副先锋，侯蒙为行军参谋。诏书到日，即统领军马，星驰先救宛州。尔等将士，协力尽忠，功奏荡平，定行对赏。其三军头目，如钦赏未敷，着陈瓘就于河北州县内丰盈库藏中，那撮给赏，造册奏闻。尔其钦哉！特谕。宣和五年四月×日！”</div>
+            <div class="text-block simplified-text">皇帝说：我敬天敬祖宗，继承皇位。全靠各位能人帮忙，才能治理国家。最近边境不太平，国家不安宁。你们这些先锋官宋江等人，翻山越岭，不怕危险，先是平定了外敌，接着又剿灭了内乱。我真的很感谢你们。现在特意派参谋侯蒙带着圣旨，去赏赐安抚使陈瓘和宋江、卢俊义等人，给你们金银、绸缎、好马、盔甲和御酒等东西，表彰你们的功劳。现在又有大盗王庆在淮西造反，攻占我们的城池，杀害百姓，扰乱边境，威胁西京。所以再命令陈瓘当安抚使，宋江当平西都先锋，卢俊义当平西副先锋，侯蒙当行军参谋。接到圣旨后，马上带兵火速去救宛州。你们这些将士要齐心协力，尽忠报国，等平定叛乱后，一定重重有赏。如果赏赐不够，就让陈瓘从河北州县的仓库里再拿些钱来奖赏大家，把名单报上来就行。你们要好好干！特此通知。宣和五年四月×日。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">侯蒙读罢丹诏，陈瓘及宋江等山呼万岁，再拜谢恩已毕。侯蒙取过金银段疋等项，依次照名给散。陈安抚及宋江、卢俊义各黄金五百两，锦段十表里，锦袍一套，名马一匹，御酒二瓶。吴用等三十四员，各赏白金二百两，采段四表里，御酒一瓶。朱武等七十二员，各赐白金一百两，御酒一瓶。余下金银，陈安抚设处凑足，俵散军兵已毕。宋江复令张清、琼英、叶清，押解田虎、田豹、田彪到京师献俘去了。</div>
+            <div class="text-block simplified-text">侯蒙看完皇帝的诏书后，陈瓘和宋江等人高喊"万岁"，跪拜谢恩。接着，侯蒙把金银绸缎等赏赐按名单发给大家：安抚使陈瓘和宋江、卢俊义每人得黄金五百两、上等锦缎十匹、锦袍一套、好马一匹、御酒两瓶；军师吴用等三十四人每人得白银二百两、彩缎四匹、御酒一瓶；朱武等七十二人每人得白银一百两、御酒一瓶。剩下的钱，陈瓘想办法凑齐分给了士兵们。最后，宋江派张清、琼英、叶清把俘虏田虎三兄弟押送到京城去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">公孙胜来禀：“乞兄长修五龙山龙神庙中五条龙像。”宋江依允，差匠修塑。</div>
+            <div class="text-block simplified-text">公孙胜来报告说："大哥，能不能把五龙山上龙神庙里的五条龙像修一修？"宋江答应了，马上派工匠去修理和重塑龙像。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">宋江差戴宗、马灵往谕各路守城将士，一等新官到来，即行交代，勒兵前来征剿王庆。宋江又料理了数日。各处新官皆到。诸路守城将佐，统领军失，陆续到来。宋江将钦赏银两俵散已毕。宋江令萧让、金大坚镌勒碑石，记叙其事。正值五月五日天中节，宋江教宋清大排筵席，庆贺太平。请陈安抚上坐，新任太守及侯蒙、罗戩，并本州佐贰等官次之。宋江以下，除张清赴京外，其一百单七人及河北降将乔道清、孙安、卞祥等一十七员，整整齐齐，排坐两边。当下席间，陈瓘、侯蒙、罗戩称赞宋江等功勋。宋江、吴用等感激三位知己。或论朝事，或诉衷曲。觥筹交错，灯烛辉煌，直饮至夜半方散。</div>
+            <div class="text-block simplified-text">宋江派戴宗和马灵去通知各地守城的将领，等新上任的官员一到，马上交接工作，然后带兵回来一起打王庆。宋江又忙活了几天。各地新官都到齐了。守城的将领们带着军队陆续赶来。宋江把朝廷赏的银子分完后，让萧让和金大坚刻石碑记录这件事。正好赶上端午节，宋江叫弟弟宋清大摆酒席庆祝胜利。席上让陈安抚坐主位，新来的太守和侯蒙、罗戩，还有本州的副官们依次坐。宋江这边，除了张清去京城了，其他107个好汉，加上从河北投降的乔道清、孙安、卞祥等17个将领，整整齐齐分坐两边。喝酒时，陈瓘、侯蒙、罗戩夸宋江他们立了大功。宋江、吴用他们也很感谢这三位大人。大家聊国家大事，也说心里话。酒杯碰来碰去，灯火通明，一直喝到半夜才散。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">次日，宋江与吴用计议，整点兵马，辞别州官，离了威胜，同陈瓘等众，望南进发。所过地方，秋毫无犯。百姓香花灯烛，络绎道路，拜谢宋江等剪除贼寇，我每百姓，得再见天日之恩。</div>
+            <div class="text-block simplified-text">第二天，宋江和吴用商量后，清点好兵马，告别当地官员，离开威胜城，和陈瓘等人一起往南走。一路上军队纪律严明，没动老百姓一针一线。百姓们纷纷拿着香烛鲜花，在路边迎接，感谢宋江他们消灭了强盗，说："多亏你们除掉了这帮祸害，我们老百姓才能重新过上好日子。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">不说宋江等望南征进。再说没羽箭张清同琼英、叶清，将陷车囚解田虎等已到东京。先将宋江书札，呈达宿太尉，并送金珠珍玩。宿太尉转达上皇。天子大嘉琼英母子贞孝，降敕特赠琼英母宋氏，为介休贞节县君。着彼处有司建造坊祠，表扬贞节，春秋享祀。封琼英为贞孝宜人，叶清为正排军，钦赏白银五十两，表扬其义。张清复还旧日原职。仍着三人协助宋江，征讨淮西。功成升赏。道君皇帝敕下法司，将反贼田虎、田豹、田彪，押赴市曹，凌迟碎剐。当下琼英带得父母小像，禀过监斩官，将仇申、宋氏小像，悬挂法场中。像前摆张桌子。等到午时三刻，田虎开刀碎剐后，琼英将田虎首级，摆在桌上，滴血祭奠父母，放声大哭。此时琼英这段事，东京已传遍了。当日观者如垛。见琼英哭得悲恸，无不感泣。琼英祭奠已毕，同张清、叶清，望阙谢恩。三人离了东京，迳望宛州进发，来助宋江征讨王庆，不在话下。</div>
+            <div class="text-block simplified-text">咱们先不说宋江他们往南边打仗的事。回头说说张清、琼英和叶清他们，已经押着田虎这帮犯人到了东京。他们先把宋江的信和金银珠宝送给宿太尉，宿太尉再转交给皇上。皇上特别表扬琼英和她妈守节尽孝，下令追封琼英的母亲为"介休贞节县君"，让当地政府建牌坊纪念她，每年春秋祭祀。又封琼英为"贞孝宜人"，叶清升官当正排军，还赏了五十两银子。张清官复原职。皇上让他们仨继续帮宋江打淮西，等打完仗再加官进爵。  
+
+皇上还下令把反贼田虎兄弟押到刑场千刀万剐。行刑前，琼英把父母的画像挂在刑场，前面摆了张桌子。等到午时三刻，田虎被处死后，琼英把他的脑袋放桌上，用他的血祭拜父母，当场放声大哭。这事儿在东京传开了，围观的人挤得水泄不通，看到琼英哭得那么伤心，大家都跟着掉眼泪。  
+
+祭拜完，琼英他们向皇上谢恩，然后就离开东京，直奔宛州去帮宋江打王庆了。后面的事咱们先不提。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">看官牢记话头，仔细听着。且把王庆自幼至长的事，表白出来。那王庆原是东京开封府内一个副排军。他父亲王砉，是东京大富户。专一打点衙门，撺唆结讼，放刁把滥，排陷良善。因此人都让他些个。他听信了一个风水先生，看中了一块阴地，当出大贵之子。这块地就是王砉亲戚人家葬过的。王砉与风水先生设计陷害。王砉出尖，把那家告纸谎状。官司累年，家产荡尽。那家敌王砉不过，离了东京，远方居住。后来王庆造反，三族皆夷。独此家在远方官府查出是王砉被害，独得保全。王砉夺了那块坟地，葬过父母。妻子怀孕弥月，王砉梦虎入室，蹲踞堂西。忽被狮兽突入，将虎衔去。王砉觉来，老婆便产王庆。那王庆从小浮浪。到十六七岁，生得身雄力大，不去读书，专好斗鸡走马，使枪轮棒。那王砉夫妻两口儿，单单养得王庆一个，十分爱恤，自来护短，凭他惯了。到得长大，如何拘管得下。王庆赌的是钱儿，宿的是娼儿，吃的是酒儿。王砉夫妇也有时训诲他。王庆逆性发作，将父母詈骂。王砉无可奈何，只索由他。过了六七年，把个家产费得罄尽。单靠着一身本事，在本府充做个副排军。一有钱钞在手，三兄四弟，终日大酒大肉价同吃。若是有些不如意时节，拽出拳头便打。所以众人又惧怕他，又喜欢他。</div>
+            <div class="text-block simplified-text">各位听好了，咱们来说说王庆从小到大的故事。王庆原本是开封府的一个小军官。他爹王砉是当地的大财主，专门勾结官府、挑拨打官司、欺负老实人，所以大家都怕他三分。
+
+王砉听信一个风水先生的话，看中一块别人家祖坟的风水宝地，说是能生贵子。这块地其实是王砉亲戚家的祖坟。王砉就和风水先生合伙下套，自己出头告那家人。官司打了好几年，把那家人搞得倾家荡产。那家人斗不过王砉，只好离开开封去外地住了。后来王庆造反被灭三族，反倒是这家人因为在外地，官府查清是被王砉陷害的，反而没事。
+
+王砉抢到坟地后，把自家父母葬在那里。后来他老婆怀孕快生时，王砉梦见老虎进屋蹲在西边，突然被狮子叼走了。醒来老婆就生了王庆。
+
+王庆从小就不学好，十六七岁时长得高大威猛，不爱读书，整天就知道斗鸡赛马、舞刀弄棒。王砉两口子就这一个儿子，特别溺爱，从小惯着不管。等长大了更管不住了。王庆整天赌博嫖娼喝酒，爹妈说他两句，他就骂爹骂娘。王砉没办法，只能随他去。这么混了六七年，把家产都败光了，只能靠着自己有点本事，在开封府当个小军官。
+
+有了钱就带着一群狐朋狗友大吃大喝，稍不顺心就挥拳头打人。所以大家又怕他又爱跟他玩。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">一日，王庆五更入衙画卯，干办完了执事，闲步出城南，到玉津圃游玩。此时是徽宗政和六年，仲春天气，游人如蚁，车马如云。正是：</div>
+            <div class="text-block simplified-text">一天早上，王庆天没亮就去衙门签到干活。忙完公事后，他闲着没事溜达到城南的玉津圃公园玩。那时候是宋徽宗政和六年（1116年）的农历二月，公园里人山人海，到处都是游客和车马。简单来说就是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">上苑花慵堤柳眠，游人队里杂婵娟。金勒马嘶芳草地，玉楼人醉杏花天。</div>
+            <div class="text-block simplified-text">花园里的花儿懒得开，堤上的柳树像在打瞌睡。游人来来往往，里面还混着些漂亮姑娘。有钱人骑着装饰华丽的马，在草地上溜达；富贵人家的小姐们，在开满杏花的楼台上喝得醉醺醺的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">王庆独自闲耍了一回，向那圃中一棵修他的垂杨上，将肩胛斜倚着，欲筹个相识到来，同去酒肆中吃三杯进城。无移时，只见池北边十来个干办、虞候、伴当、养娘人等，簇着一乘轿子，轿子里面如花似朵的一个少年女子。那女子要看景致，不用竹席。那王庆好的是女色。见了这般标致的女子，把个魂灵都吊下来。认得那夥干办、虞候是枢密童贯府中人。当下王庆远远地跟着轿子，随了那夥人来到艮岳。那艮岳在京城东北隅，即道君皇帝所筑。奇峰怪石，古木珍禽，亭榭池馆，不可胜数。外面朱垣绯户，如禁门一般。有内相、禁军看守，等闲人脚指头儿也不敢踅到门前。那簇人歇下轿，养娘扶女子出了轿，迳望艮岳门内，袅袅娜娜，妖妖娆娆走进去。那看门禁军、内侍，都让开条路，让他走进去了。</div>
+            <div class="text-block simplified-text">王庆一个人闲逛了一会儿，靠在一棵高大的垂柳树上，想等个熟人一起去酒馆喝几杯再进城。没过多久，他看到池塘北边有十几个随从、仆役和丫鬟，围着一顶轿子，轿子里坐着个非常漂亮的年轻姑娘。那姑娘想欣赏风景，所以没拉轿帘。王庆这人特别好色，一见这么漂亮的姑娘，魂儿都被勾走了。他认出那些随从是童贯大官人府上的。于是王庆远远跟着轿子，随他们来到艮岳。艮岳在京城东北角，是道君皇帝修建的，里面有奇山怪石、古树珍禽、亭台楼阁，多得数不清。外围红墙朱门，像皇宫一样森严，有太监和禁军把守，普通人根本不敢靠近。那群人停下轿子，丫鬟扶着姑娘出来，那姑娘扭着腰，妖里妖气地走进艮岳大门。守门的禁军和太监都让开路放她进去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">原来那女子是童贯之弟童贳之女，杨戩的外孙。童贯抚养为己女，许配蔡攸之子，却是蔡京的孙儿媳妇了。小名叫做娇秀。年方二八。他禀过童贯，乘天子两日在李师师家娱乐，欲到艮岳游玩。童贯预先分付了禁军人役，因此不敢拦阻。那娇秀进去了两个时辰，兀是不见出来。王庆那厮，呆呆地在外面守着，肚里饥饿。踅到东街酒店里买些酒肉，忙忙地吃了六七杯，恐怕那女子去了，连帐也不算，向便袋里摸出一块二钱重的银子，丢与店小二道：“少停便来算帐。”王庆再踅到艮岳前，又停了一回，只见那女子同了养娘，轻移莲步，走出艮岳来。且不上轿，看那艮岳外面的景致。王庆踅上前去，看那女子时，真个标致。有混江龙词为证：</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+这姑娘是童贯弟弟童贳的女儿，杨戩的外孙女。童贯把她当亲生女儿养大，许配给了蔡攸的儿子，也就是蔡京的孙媳妇。小名叫娇秀，十六岁。她跟童贯打过招呼，趁皇帝这两天在李师师家玩乐的时候，去艮岳公园游玩。童贯提前打点好了守卫，所以没人敢拦她。
+
+娇秀进去玩了两个多小时还没出来。王庆这人在外面傻等着，肚子饿得咕咕叫。他跑到东街酒店买了些酒肉，急急忙忙喝了六七杯，怕那姑娘走了，连账都没结，从口袋里掏出一块二钱重的银子扔给店小二说："一会儿再来结账。"
+
+王庆又跑回艮岳门口等了一会儿，终于看见那姑娘带着丫鬟慢慢走出来。她没急着上轿子，站在那儿看艮岳外面的风景。王庆凑近一看，这姑娘长得真漂亮。有首《混江龙》的词专门形容她的美貌。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">丰资毓秀，那里个金屋堪收。点樱桃小口，横秋水双眸。若不是昨夜晴开新月皎，怎能得今朝肠断小梁州。芳芬绰约蕙兰俦，香飘雅丽芙蓉袖。两下里心猿，都被月引花钩。</div>
+            <div class="text-block simplified-text">这姑娘长得真好看，简直就是个美人胚子。她嘴巴小巧红润，眼睛水灵灵的。要不是昨晚月亮又亮又圆，我今天怎么会为她神魂颠倒呢？她像兰花一样优雅芬芳，衣袖飘香像荷花一样清新。我们俩都被这月色和花香迷住了，心里小鹿乱撞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">王庆看到好处，不觉心头撞鹿，骨软筋麻，好便似雪狮子向火，霎时间酥了半边。那娇秀在人丛里睃见王庆的相貌。</div>
+            <div class="text-block simplified-text">王庆看到那美景，心里激动得不得了，整个人都软绵绵的，就像雪做的狮子碰到火，一下子半边身子都酥软了。那叫娇秀的姑娘在人群里偷偷看到了王庆的长相。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">凤眼浓眉如画，微须白面红颜。顶平额阔满天仓，七尺身材壮健。善会偷香窃玉，惯的卖俏行奸。凝眸呆想立人前，俊俏风流无限。</div>
+            <div class="text-block simplified-text">这个人长得特别好看：眼睛像凤凰眼，眉毛又浓又好看，脸上没什么胡子，皮肤白里透红。他额头又宽又平，身材高大结实，差不多有七尺高。这人特别会勾引人，擅长偷情耍手段，总爱装模作样骗人。经常站在那儿直勾勾地盯着人发呆，看起来特别风流帅气。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">那娇秀一眼睃着王庆风流，也看上了他。当有干办、虞候喝开众人，养娘扶娇秀上轿。众人簇拥着，转东过西，却到酸枣门外岳庙里来烧香。王庆又跟随到岳庙里。人山人海的挨挤不开。众人见是童枢密处虞候、干办，都让开条路。那娇秀下轿进香。王庆挨踅上前，却是不能近身。又恐随从人等叱咤，假意与庙祝厮熟，帮他点烛烧香。一双眼不住的溜那娇秀。娇秀也把眼来频睃。原来蔡攸的儿子，生来是憨呆的。那娇秀在家听得几次媒婆传说是真，日夜叫屈怨恨。今日见了王庆风流俊俏，那小鬼头儿春心也动了。当下童府中一个董虞候，早已瞧科。认得排军王庆。董虞候把王庆劈脸一掌打去，喝道：“这个是什么人家宅眷！你是开封府一个军健，你好大胆！如何也在这里挨挨挤挤？待俺对相公说了，教你这颗驴头安不牢在颈上。”王庆那敢则声，抱头鼠窜，奔出庙门来。噀一口唾，叫声道：“啐！我直恁这般呆！癞虾蟆怎想吃天鹅肉！”当晚忍气吞声，惭愧回家。谁知那娇秀回府，倒是日夜思想。厚贿侍婢，反去问那董虞候，教他说王庆的详细。侍婢与一个薛婆子相熟，同他做了马泊六，悄地勾引王庆，从后门进来。人不知，鬼不觉，与娇秀勾搭。王庆那厮喜出望外，终日饮酒。</div>
+            <div class="text-block simplified-text">漂亮姑娘娇秀一眼就看中了帅气的王庆。这时她家的随从们赶开人群，丫鬟扶着娇秀上轿。一大帮人前呼后拥，拐来拐去来到酸枣门外的岳庙烧香。王庆也跟到了庙里。庙里人挤人根本走不动，但大家一看是童枢密大人家的随从，都赶紧让路。娇秀下轿进香时，王庆想凑近却挤不过去。又怕被随从骂，就假装和庙里管事很熟，帮忙点蜡烛烧香，眼睛却一直偷瞄娇秀。娇秀也频频看他。原来蔡攸的儿子是个傻子，娇秀早就听媒婆说过这事，天天在家委屈抱怨。今天见到英俊的王庆，这姑娘也动心了。童府里一个姓董的随从早就发现不对劲，认出王庆是个小军官，上去就扇了他一耳光骂道："这是你能盯着看的大小姐吗？你个小兵胆子不小！再敢在这儿挤来挤去，我告诉老爷让你脑袋搬家！"王庆吓得抱头就跑，出了庙门吐口唾沫骂自己："呸！我真是蠢！癞蛤蟆还想吃天鹅肉！"当晚憋着气灰溜溜回家了。没想到娇秀回府后反而日思夜想，花钱收买丫鬟，让她找董随从打听王庆的情况。这丫鬟认识个姓薛的媒婆，两人暗中牵线，偷偷把王庆从后门带进府里。就这样神不知鬼不觉地和娇秀好上了。王庆这混蛋高兴坏了，天天喝酒享乐。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">光阴荏苒，过了三月。正是乐极生悲。王庆一日吃得烂醉如泥，在本府正排军张斌面前，露出马脚。遂将此事彰扬开去，不免吹在童贯耳朵里。童贯大怒，思想要寻罪过摆拨他，不在话下。</div>
+            <div class="text-block simplified-text">时间过得很快，转眼三个月过去了。俗话说乐极生悲，王庆有一天喝得烂醉，不小心在同事张斌面前说漏了嘴。结果这事就传开了，最后传到了童贯耳朵里。童贯知道后非常生气，打算找机会收拾王庆，这是后话了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">且说王庆因此事发觉，不敢再进童府去了。一日在家闲坐。此时已是五月下旬，天气炎热。王庆掇条板凳，放在天井中乘凉。方起身入屋里去拿扇子，只见那条板凳，四脚搬动，从天井中走将入来。王庆喝声道：“奇怪！”飞起右脚，向板凳只一脚踢去。王庆叫声道：“阿也，苦也！”不踢时万事皆休，一踢时，迍邅立至。正是：天有不测风云，人有旦夕祸福。毕竟王庆踢这板凳，为何叫苦起来？且听下回分解。</div>
+            <div class="text-block simplified-text">话说王庆因为那件事败露，不敢再去童府了。有一天他在家闲着没事。那时候已经是五月底，天特别热。王庆搬了个长板凳到院子里乘凉。刚起身要进屋拿扇子，突然看见那条板凳自己动了起来，四条腿一挪一挪地从院子里往屋里走。王庆大喊一声："见鬼了！"抬起右脚就朝板凳踹过去。结果他马上疼得大叫："哎呦喂，疼死我了！"本来啥事没有，这一脚下去可惹上麻烦了。这就叫：老天爷说变脸就变脸，人倒霉就是一瞬间。到底王庆为啥踢个板凳反而自己叫疼？咱们下回接着说。  
+
+（说明：改编时做了这些处理：  
+1. "迍邅"这种生僻词换成"惹上麻烦"  
+2. "阿也"改成现在人喊疼的"哎呦喂"  
+3. 把文言句式"正是..."转成口语化的"这就叫..."  
+4. 保留所有关键动作和情节，连板凳"四脚搬动"的细节都原样呈现  
+5. 最后一句故意保留传统说书格式，维持原文风格）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
