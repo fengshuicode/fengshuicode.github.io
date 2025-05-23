@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四十六回 用奇谋孔明借箭　献密计黄盖受刑</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./045.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第四十六回 用奇谋孔明借箭　献密计黄盖受刑</h1>
+        <a href="./047.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说鲁肃领了周瑜言语，径来舟中相探孔明。孔明接入小舟对坐。肃曰：“连日措办军务，有失听教。”孔明曰：“便是亮亦未与都督贺喜。”肃曰：“何喜？”孔明曰：“公瑾使先生来探亮知也不知，便是这件事可贺喜耳。”谈得鲁肃失色问曰：“先生何由知之？”孔明曰：“这条计只好弄蒋干。曹操、虽被一时瞒过，必然便省悟，只是不肯认错耳。今蔡、张两人既死，江东无患矣，如何不贺喜！吾闻曹操换毛玠、于禁为水军都督，则这两个手里，好歹送了水军性命。”鲁肃听了，开口不得，把些言语支吾了半晌，别孔明而回。孔明嘱曰：“望子敬在公瑾面前勿言亮先知此事。恐公瑾心怀妒忌，又要寻事害亮。”鲁肃应诺而去，回见周瑜，把上项事只得实说了。瑜大惊曰：“此人决不可留！吾决意斩之！”肃劝曰：“若杀孔明，却被曹操笑也。”瑜曰：“吾自有公道斩之，教他死而无怨。”肃曰：“何以公道斩之？”瑜曰：“子敬休问，来日便见。”次日，聚众将于帐下，教请孔明议事。孔明欣然而至。坐定，瑜问孔明曰：“即日将与曹军交战，水路交兵，当以何兵器为先？”孔明曰：“大江之上，以弓箭为先。”瑜曰：“先生之言，甚合愚意。但今军中正缺箭用，敢烦先生监造十万枝箭，以为应敌之具。此系公事，先生幸勿推却。”孔明曰：“都督见委，自当效劳。敢问十万枝箭，何时要用？”瑜曰：“十日之内，可完办否？”孔明曰：“操军即日将至，若候十日，必误大事。”瑜曰：“先生料几日可完办？”孔明曰：“只消三日，便可拜纳十万枝箭。”瑜曰：“军中无戏言。”孔明曰：“怎敢戏都督！愿纳军令状：三日不办，甘当重罚。”瑜大喜，唤军政司当面取了文书，置酒相待曰：“待军事毕后，自有酬劳。”孔明曰：“今日已不及，来日造起。至第三日，可差五百小军到江边搬箭。”饮了数杯，辞去。鲁肃曰：“此人莫非诈乎？”瑜曰：“他自送死，非我逼他。今明白对众要了文书，他便两胁生翅，也飞不去。我只分付军匠人等，教他故意迟延，凡应用物件，都不与齐备。如此，必然误了日期。那时定罪，有何理说？公今可去探他虚实，却来回报。</div>
+            <div class="text-block simplified-text">鲁肃按照周瑜的吩咐，坐船来找诸葛亮。两人在船上面对面坐着。鲁肃说："最近忙着处理军务，没空来请教您。"诸葛亮说："我也没来得及恭喜都督呢。"鲁肃问："喜从何来？"诸葛亮说："周瑜派你来试探我知不知道那件事，这就是值得恭喜的地方啊。"鲁肃一听脸色都变了："先生怎么知道的？"诸葛亮说："这条计策只能骗骗蒋干。曹操虽然一时被骗，但很快就会明白过来，只是不肯认错罢了。现在蔡瑁、张允死了，江东没有后顾之忧了，怎么能不恭喜呢？我听说曹操换了毛玠、于禁当水军都督，这两人肯定会把水军害惨。"鲁肃听完说不出话，支支吾吾半天才告辞。诸葛亮叮嘱他："希望你别告诉周瑜我早就知道这事。我怕他嫉妒，又要找茬害我。"鲁肃答应着走了，回去见到周瑜还是实话实说了。周瑜大惊："这人绝对不能留！我一定要杀了他！"鲁肃劝道："杀了诸葛亮，会被曹操笑话的。"周瑜说："我会光明正大地杀他，让他死得心服口服。"鲁肃问："怎么个光明正大法？"周瑜说："你别管，明天就知道了。"第二天，周瑜召集将领开会，请诸葛亮来商量军事。诸葛亮高兴地来了。坐下后，周瑜问："马上要和曹军在水上开战，你觉得用什么武器最好？"诸葛亮说："江上打仗，弓箭最好。"周瑜说："先生说得对。但现在军中缺箭，想麻烦先生负责造十万支箭用来打仗。这是公事，请先生不要推辞。"诸葛亮说："都督交代，我自当尽力。请问十万支箭什么时候要？"周瑜说："十天之内能完成吗？"诸葛亮说："曹操军队马上就到，等十天会误事。"周瑜问："那先生觉得几天能完成？"诸葛亮说："只要三天，就能交出十万支箭。"周瑜说："军中可不能开玩笑。"诸葛亮说："怎么敢跟都督开玩笑！我愿意立军令状：三天完不成，甘愿受罚。"周瑜很高兴，叫来军官当面立下字据，设宴招待说："等事情办完，一定重谢。"诸葛亮说："今天来不及了，明天开始造。第三天，请派五百士兵到江边搬箭。"喝了几杯就走了。鲁肃说："这人该不会在骗人吧？"周瑜说："他自己找死，不是我逼他的。现在当着大家的面立了字据，就算他长出翅膀也跑不掉。我已经吩咐工匠们故意拖延，材料也不给够。这样肯定会误期，到时候治他的罪，他还有什么话说？你现在去探探他的底细，回来告诉我。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">肃领命来见孔明。孔明曰：“吾曾告子敬，休对公瑾说，他必要害我。不想子敬不肯为我隐讳，今日果然又弄出事来。三日内如何造得十万箭？子敬只得救我！”肃曰：“公自取其祸，我如何救得你？”孔明曰：“望子敬借我二十只船，每船要军士三十人，船上皆用青布为幔，各束草千余个，分布两边。吾别有妙用。第三日包管有十万枝箭。只不可又教公瑾得知，若彼知之，吾计败矣。”肃允诺，却不解其意，回报周瑜，果然不提起借船之事，只言：“孔明并不用箭竹、翎毛、胶漆等物，自有道理。”瑜大疑曰：“且看他三日后如何回覆我！”却说鲁肃私自拨轻快船二十只，各船三十余人，并布幔束草等物，尽皆齐备，候孔明调用。第一日却不见孔明动静；第二日亦只不动。至第三日四更时分，孔明密请鲁肃到船中。肃问曰：“公召我来何意？”孔明曰：“特请子敬同往取箭。”肃曰：“何处去取？”孔明曰：“子敬休问，前去便见。”遂命将二十只船，用长索相连，径望北岸进发。是夜大雾漫天，长江之中，雾气更甚，对面不相见。孔明促舟前进，果然是好大雾！前人有篇《大雾垂江赋》曰：“大哉长江！西接岷、峨，南控三吴，北带九河。汇百川而入海，历万古以扬波。至若龙伯、海若，江妃、水母，长鲸千丈，天蜈九首，鬼怪异类，咸集而有。盖夫鬼神之所凭依，英雄之所战守也。时也阴阳既乱，昧爽不分。讶长空之一色，忽大雾之四屯。虽舆薪而莫睹，惟金鼓之可闻。初若溟濛，才隐南山之豹；渐而充塞，欲迷北海之鲲。然后上接高天，下垂厚地；渺乎苍茫，浩乎无际。鲸鲵出水而腾波，蛟龙潜渊而吐气。又如梅霖收溽，春阴酿寒；溟溟漠漠，洁浩漫漫。东失柴桑之岸，南无夏口之山。战船千艘，俱沉沦于岩壑；渔舟一叶，惊出没于波澜。甚则穹吴无光，朝阳失色；返白昼为昏黄，变丹山为水碧。虽大禹之智，不能测其浅深；离娄之明，焉能辨乎咫尺？于是冯夷息浪，屏翳收功；鱼鳖遁迹，鸟兽潜踪。隔断蓬莱之岛，暗围阊阖之宫。恍惚奔腾，如骤雨之将至；纷纭杂沓，若寒云之欲同。乃能中隐毒蛇，因之而为瘴疠；内藏妖魅，凭之而为祸害。降疾厄于人间，起风尘于塞外。小民遇之夭伤，大人观之感慨。盖将返元气于洪荒，混天地为大块。”</div>
+            <div class="text-block simplified-text">鲁肃奉命去见诸葛亮。诸葛亮说："我之前跟子敬（鲁肃）说过，别告诉周瑜，他肯定会害我。没想到子敬还是说漏嘴了，现在果然出事了。三天怎么可能造出十万支箭？子敬这次可得救我啊！"鲁肃说："你自己惹的祸，我怎么救你？"诸葛亮说："这样吧，借我二十条船，每条船上配三十个士兵，船上都用青布围起来，两边绑上一千多个草把子。我自有妙用。保证三天后给你十万支箭。但千万别让周瑜知道，要是他知道了，我的计划就泡汤了。"鲁肃答应了，但没明白他要干嘛。回去见周瑜时，果然没提借船的事，只说："诸葛亮造箭不用竹子、羽毛、胶水这些材料，说有别的办法。"周瑜很疑惑："那就看他三天后怎么交差！"鲁肃私下准备了二十条快船，按诸葛亮说的都布置好了。第一天诸葛亮没动静，第二天还是没动静。到了第三天凌晨，诸葛亮悄悄把鲁肃请到船上。鲁肃问："叫我来干嘛？"诸葛亮说："带你去取箭。"鲁肃问："去哪儿取？"诸葛亮说："别问，去了就知道。"于是二十条船用绳子连成一串，往江北开去。那晚江上大雾弥漫，面对面都看不见人。诸葛亮催船前进，这雾可真大啊！（此处省略描写大雾的赋文）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">当夜五更时候，船已近曹操水寨。孔明教把船只头西尾东，一带摆开，就船上擂鼓呐喊。鲁肃惊曰：“倘曹兵齐出，如之奈何？”孔明笑曰：“吾料曹操于重雾中必不敢出。吾等只顾酌酒取乐，待雾散便回。</div>
+            <div class="text-block simplified-text">那天半夜五更天，船快到曹操的水军营地了。诸葛亮让船头朝西、船尾朝东排成一排，在船上使劲敲鼓大喊。鲁肃吓坏了说："要是曹军全冲出来怎么办？"诸葛亮笑着说："我猜曹操看这么大雾肯定不敢出来。咱们只管喝酒开心，等雾散了就回去。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说曹寨中，听得擂鼓呐喊，毛玠、于禁二人慌忙飞报曹操。操传令曰：“重雾迷江，彼军忽至，必有埋伏，切不可轻动。可拨水军弓弩手乱箭射之。”又差人往旱寨内唤张辽、徐晃各带弓弩军三千，火速到江边助射。比及号令到来，毛玠、于禁怕南军抢入水寨，已差弓弩手在寨前放箭；少顷，旱寨内弓弩手亦到，约一万余人，尽皆向江中放箭：箭如雨发。孔明教把船吊回，头东尾西，逼近水寨受箭，一面擂鼓呐喊。待至日高雾散，孔明令收船急回。二十只船两边束草上，排满箭枝。孔明令各船上军士齐声叫曰：“谢丞相箭！”比及曹军寨内报知曹操时，这里船轻水急，已放回二十余里，追之不及。曹操懊悔不已。却说孔明回船谓鲁肃曰：“每船上箭约五六千矣。不费江东半分之力，已得十万余箭。明日即将来射曹军，却不甚便！”肃曰：“先生真神人也！何以知今日如此大雾？”孔明曰：“为将而不通天文，不识地利，不知奇门，不晓阴阳，不看阵图，不明兵势，是庸才也。亮于三日前已算定今日有大雾，因此敢任三日之限。公瑾教我十日完办，工匠料物，都不应手，将这一件风流罪过，明白要杀我。我命系于天，公瑾焉能害我哉！”鲁肃拜服。船到岸时，周瑜已差五百军在江边等候搬箭。孔明教于船上取之，可得十余万枝，都搬入中军帐交纳。鲁肃人见周瑜，备说孔明取箭之事。瑜大惊，慨然叹曰：“孔明神机妙算，吾不如也！”后人有诗赞曰：“一天浓雾满长江，远近难分水渺茫。骤雨飞蝗来战舰，孔明今日伏周郎。”少顷，孔明入寨见周瑜。瑜下帐迎之，称羡曰：“先生神算，使人敬服。”孔明曰：“诡谲小计，何足为奇。”</div>
+            <div class="text-block simplified-text">曹操那边听到战鼓声和喊杀声，手下毛玠、于禁赶紧跑去报告。曹操下令说："现在江上大雾，敌人突然出现，肯定有埋伏，千万别乱动。让水军的弓箭手往雾里射箭。"他又派人叫张辽、徐晃各带三千弓箭手赶到江边帮忙射箭。
+
+等命令传到时，毛玠、于禁怕东吴军冲进水寨，已经让弓箭手在寨前射箭了。很快，张辽他们的弓箭手也到了，总共一万多人，都朝着江里射箭，箭像下雨一样。诸葛亮让船掉头，船头朝东船尾朝西，靠近曹军水寨接箭，同时继续擂鼓喊叫。等太阳升高雾散了，诸葛亮下令赶紧开船回去。二十条船两边的草把子上都插满了箭。诸葛亮让士兵们一起喊："谢谢丞相的箭！"等曹操知道这事时，船早就顺流而下跑出二十多里，追不上了。曹操气得直跺脚。
+
+诸葛亮回到船上对鲁肃说："每条船上大概有五六千支箭。没费东吴一点力气，就白得了十多万支箭，明天正好用来射曹军，多方便！"鲁肃佩服地说："先生真是神仙啊！您怎么知道今天会有大雾？"诸葛亮说："当将领的要是不懂天文地理，不会看天气，不会排兵布阵，那就是废物。我三天前就算到今天有大雾，所以才敢答应三天交箭。周瑜让我十天造好箭，可工匠材料都不够，他这是存心想找借口杀我。不过我命大，他害不了我！"鲁肃听得直点头。
+
+船靠岸时，周瑜已经派了五百士兵在江边等着搬箭。诸葛亮让他们从船上取下十多万支箭，都搬到大营里。鲁肃去见周瑜，把诸葛亮借箭的事说了一遍。周瑜大吃一惊，感叹道："诸葛亮真是神机妙算，我不如他啊！"
+
+后来有人写诗夸这事："大雾笼罩长江，分不清远近。箭像蝗虫一样飞向战船，诸葛亮这次把周瑜给耍了。"一会儿诸葛亮来见周瑜，周瑜亲自出帐迎接，佩服地说："先生神机妙算，让人佩服。"诸葛亮谦虚地说："小把戏而已，不值一提。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">瑜邀孔明入帐共饮。瑜曰：“昨吾主遣使来催督进军，瑜未有奇计，愿先生教我。”孔明曰：“亮乃碌碌庸才，安有妙计？”瑜曰：“某昨观曹操水寨，极是严整有法，非等闲可攻。思得一计，不知可否。先生幸为我一决之。”孔明曰：“都督且休言。各自写于手内，看同也不同。”瑜大喜，教取笔砚来，先自暗写了，却送与孔明；孔明亦暗写了。两个移近坐榻，各出掌中之字，互相观看，皆大笑。原来周瑜掌中字，乃一“火”字；孔明掌中，亦一“火”字。瑜曰：“既我两人所见相同，更无疑矣。幸勿漏泄。”孔明曰：“两家公事，岂有漏泄之理。吾料曹操虽两番经我这条计，然必不为备。今都督尽行之可也。”饮罢分散，诸将皆不知其事。</div>
+            <div class="text-block simplified-text">周瑜请诸葛亮到帐篷里一起喝酒。周瑜说："昨天我主公派人来催我快点出兵，但我还没想出好办法，希望先生能指点我。"诸葛亮说："我只是个普通人，哪有什么好主意？"周瑜说："我昨天看了曹操的水军营寨，防守得非常严密，不是随便就能攻破的。我想了个办法，不知道行不行。请先生帮我拿个主意。"
+
+诸葛亮说："都督先别说出来。我们各自在手心里写个字，看看想的是不是一样。"周瑜很高兴，让人拿来纸笔，自己先偷偷写了个字，然后递给诸葛亮；诸葛亮也偷偷写了个字。两人靠近坐下，同时亮出手心里的字，一看都笑了。原来周瑜手心里写的是个"火"字，诸葛亮手心里也是个"火"字。
+
+周瑜说："既然我们想的一样，那就没问题了。千万别泄露出去。"诸葛亮说："这是两军的大事，怎么会泄露呢？我估计曹操虽然之前中过这招，但这次肯定没防备。都督尽管按计划行事。"喝完酒两人就分开了，其他将领都不知道这件事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">却说曹操平白折了十五六万箭，心中气闷。荀攸进计曰：“江东有周瑜、诸葛亮二人用计，急切难破。可差人去东吴诈降，为奸细内应，以通消息，方可图也。”操曰：“此言正合吾意。汝料军中谁可行此计？”攸曰：“蔡瑁被诛，蔡氏宗族，皆在军中。瑁之族弟蔡中、蔡和现为副将。丞相可以恩结之，差往诈降东吴，必不见疑。”操从之，当夜密唤二人入帐嘱付曰：“汝二人可引些少军士，去东吴诈降。但有动静，使人密报，事成之后，重加封赏。休怀二心！”二人曰：“吾等妻子俱在荆州，安敢怀二心，丞相勿疑。某二人必取周瑜、诸葛亮之首，献于麾下。”操厚赏之。次日，二人带五百军士，驾船数只，顺风望着南岸来。</div>
+            <div class="text-block simplified-text">曹操白白损失了十五六万支箭，心里特别窝火。荀攸出主意说："江东有周瑜和诸葛亮这两个人出谋划策，一时半会儿打不下来。不如派人假装投降东吴，当内应传递消息，这样才有机会。"曹操说："这主意正合我意。你觉得军中谁适合干这事？"荀攸说："蔡瑁被杀后，他蔡家的亲戚都在咱们军中。蔡瑁的堂弟蔡中、蔡和现在是副将。丞相对他们好点，派他们去假装投降，东吴肯定不会起疑。"曹操同意了，当晚悄悄把两人叫到帐中交代："你们带少量士兵去东吴假装投降。那边有什么动静就偷偷报信，事成之后重重有赏。可别耍花样！"两人赶紧表忠心："我们的老婆孩子都在荆州，哪敢有二心？丞相放心，我们一定把周瑜和诸葛亮的脑袋给您提来。"曹操给了他们重赏。第二天，两人带着五百士兵，坐了几条船，顺风往南岸去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">且说周瑜正理会进兵之事，忽报江北有船来到江口，称是蔡瑁之弟蔡和、蔡中，特来投降。瑜唤入。二人哭拜曰：“吾兄无罪，被操贼所杀。吾二人欲报兄仇，特来投降。望赐收录，愿为前部。”瑜大喜，重赏二人，即命与甘宁引军为前部。二人拜谢，以为中计。瑜密唤甘宁分付曰：“此二人不带家小，非真投降，乃曹操使来为奸细者。吾今欲将计就计，教他通报消息。汝可殷勤相待，就里提防。至出兵之日，先要杀他两个祭旗。汝切须小心，不可有误。”甘宁领命而去。</div>
+            <div class="text-block simplified-text">周瑜正在安排打仗的事，忽然有人报告说江北有船到了江口，船上的人自称是蔡瑁的弟弟蔡和、蔡中，专门来投降的。周瑜叫他们进来。两人一进来就哭着跪下说："我们哥哥没犯什么错，却被曹操杀了。我们想给哥哥报仇，所以来投奔您。希望您收留我们，我们愿意打头阵。"周瑜听了很高兴，重赏了他们，马上让他们跟着甘宁带领先锋部队。两人谢过周瑜，心里还以为自己的计谋得逞了。
+
+其实周瑜悄悄把甘宁叫来交代："这两个人没带家属，肯定不是真心投降，是曹操派来的奸细。我打算反过来利用他们，让他们传假消息。你要假装热情招待，暗地里提防着。等出兵那天，先杀了他们祭旗。你一定要小心，千万别出岔子。"甘宁听完就去准备了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">鲁肃入见周瑜曰：“蔡中、蔡和之降，多应是诈，不可收用。”瑜叱曰：“彼因曹操杀其兄，欲报仇而来降，何诈之有！你若如此多疑，安能容天下之士乎！”肃默然而退，乃往告孔明。孔明笑而不言。肃曰：“孔明何故哂笑？”孔明曰：“吾笑子敬不识公瑾用计耳。大江隔远，细作极难往来。操使蔡中、蔡和诈降，刺探我军中事，公瑾将计就计，正要他通报消息。兵不厌诈，公瑾之谋是也。”肃方才省悟。</div>
+            <div class="text-block simplified-text">鲁肃去见周瑜说："蔡中、蔡和来投降，八成是假的，不能收留他们。"周瑜训斥道："他们是因为曹操杀了他们哥哥，想报仇才来投降的，哪有什么假！你要总是这么多疑，怎么能招揽天下的人才呢！"鲁肃没说话就退下了，转头去告诉诸葛亮。诸葛亮听了光笑不说话。鲁肃问："先生为什么笑啊？"诸葛亮说："我笑你不懂周瑜的计策。隔着这么宽的江，探子很难来回跑。曹操派蔡中、蔡和假装投降，来打探我们军情，周瑜这是反过来利用他们，正好让他们传假消息回去。打仗就是要用计谋，周瑜这招高明啊。"鲁肃这才明白过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说周瑜夜坐帐中，忽见黄盖潜入中军来见周瑜。瑜问曰：“公覆夜至，必有良谋见教？”盖曰：“彼众我寡，不宜久持，何不用火攻之？”瑜曰：“谁教公献此计？”盖曰：“某出自己意，非他人之所教也。”瑜曰：“吾正欲如此，故留蔡中、蔡和诈降之人，以通消息；但恨无一人为我行诈降计耳。”盖曰：“某愿行此计。”瑜曰：“不受些苦，彼如何肯信？”盖曰：“某受孙氏厚恩，虽肝脑涂地，亦无怨悔。”瑜拜而谢之曰：“君若肯行此苦肉计，则江东之万幸也。”盖曰：“某死亦无怨。”遂谢而出。次日，周瑜鸣鼓大会诸将于帐下。孔明亦在座。周瑜曰：“操引百万之众，连络三百余里，非一日可破。今令诸将各领三个月粮草，准备御敌。”言未讫，黄盖进曰：“莫说三个月，便支三十个月粮草，也不济事！若是这个月破的，便破；若是这个月破不的，只可依张子布之言，弃甲倒戈，北面而降之耳！”周瑜勃然变色，大怒曰：“吾奉主公之命，督兵破曹，敢有再言降者必斩。今两军相敌之际，汝敢出此言，慢我军心，不斩汝首，难以服众！”喝左右将黄盖斩讫报来。黄盖亦怒曰：“吾自随破虏将军，纵横东南，已历三世，那有你来？”瑜大怒，喝令速斩。甘宁进前告曰：“公覆乃东吴旧臣，望宽恕之。”瑜喝曰：“汝何敢多言，乱吾法度！”先叱左右将甘宁乱棒打出。众官皆跪告曰：“黄盖罪固当诛，但于军不利。望都督宽恕，权且记罪。破曹之后，斩亦未迟。”瑜怒未息。众官苦苦告求。瑜曰：“若不看众官面皮，决须斩首！今且免死！”命左右：“拖翻打一百脊杖，以正其罪！”众官又告免。瑜推翻案桌，叱退众官，喝教行杖。将黄盖剥了衣服，拖翻在地，打了五十脊杖。众官又复苦苦求免。瑜跃起指盖曰：“汝敢小觑我耶！且寄下五十棍！再有怠慢，二罪俱罚！”恨声不绝而入帐中。众官扶起黄盖，打得皮开肉绽，鲜血进流，扶归本寨，昏绝几次。动问之人，无不下泪。鲁肃也往看问了，来至孔明船中，谓孔明曰：“今日公瑾怒责公覆，我等皆是他部下，不敢犯颜苦谏；先生是客，何故袖手旁观，不发一语？”孔明笑曰：“子敬欺我。”肃曰：“肃与先生渡江以来，未尝一事相欺。今何出此言？”孔明曰：“子敬岂不知公瑾今日毒打黄公覆，乃其计耶？如何要我劝他？”肃方悟。孔明曰：“不用苦肉计，何能瞒过曹操？今必令黄公覆去诈降，却教蔡中、蔡和报知其事矣。子敬见公瑾时，切勿言亮先知其事，只说亮也埋怨都督便了。”肃辞去，入帐见周瑜。瑜邀入帐后。肃曰：“今日何故痛责黄公覆？”瑜曰：“诸将怨否？”肃曰：“多有心中不安者。”瑜曰：“孔明之意若何？”肃曰：“他也埋怨都督忒情薄。”瑜笑曰：“今番须瞒过他也。”肃曰：“何谓也？”瑜曰：“今日痛打黄盖，乃计也。吾欲令他诈降，先须用苦肉计瞒过曹操，就中用火攻之，可以取胜。”肃乃暗思孔明之高见，却不敢明言。</div>
+            <div class="text-block simplified-text">一天晚上，周瑜正在营帐里坐着，黄盖突然偷偷进来见他。周瑜问："老黄，大半夜过来，是不是有好主意？"黄盖说："咱们人少，曹操人多，不能拖太久，不如用火攻吧！"周瑜问："谁给你出的主意？"黄盖说："我自己想的，没人教我。"周瑜说："我也正想这么干，所以留着蔡中、蔡和这两个假投降的人传消息，就缺个愿意假装投降的人。"黄盖立刻说："我愿意！"周瑜说："不吃点苦头，曹操怎么会信？"黄盖拍胸脯："我受孙家大恩，死都不怕！"周瑜感动地拜谢："老黄你要真肯演这出苦肉计，咱们江东就有救了。"黄盖说："死了也值！"说完就走了。
+
+第二天开会，周瑜对将领们说："曹操百万大军，战线拉得老长，一时半会儿打不完。大家先准备三个月的粮草。"话没说完，黄盖就跳出来唱反调："三个月？三十个月都没用！这个月打不赢就投降算了！"周瑜假装暴怒："主公让我带兵打仗，谁敢再说投降就砍头！你动摇军心，非杀不可！"黄盖也飙演技："我跟着孙家三代人打仗的时候，你还不知道在哪儿呢！"周瑜大喊"快砍"，甘宁求情被轰出去，其他官员跪了一地求饶。最后周瑜"勉强"改判打一百军棍，打到五十棍时又"气呼呼"地说先记着另一半。
+
+黄盖被打得皮开肉绽，被人抬回去时疼晕好几次。鲁肃看完黄盖，跑去问诸葛亮："周瑜发这么大火，你怎么不劝劝？"诸葛亮笑他："老鲁你逗我呢？"鲁肃说没骗你，诸葛亮点破："这不明显是苦肉计吗？不打狠点怎么骗曹操？黄盖肯定要去假投降，那两个姓蔡的奸细会把这事告诉曹操。你回去可别说我看穿了，就说我也在骂周瑜心狠。"鲁肃回去见周瑜，周瑜偷偷告诉他："打黄盖是演戏，要用苦肉计骗曹操，方便火攻。"鲁肃这才明白诸葛亮早就看穿了，但不敢说破。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">且说黄盖卧于帐中，诸将皆来动问。盖不言语，但长吁而已。忽报参谋阚泽来问。盖令请入卧内，叱退左右。阚泽曰：“将军莫非与都督有仇？”盖曰：“非也。”泽曰：“然则公之受责，莫非苦肉计乎？”盖曰：“何以知之？”泽曰：“某观公瑾举动，已料着八九分。”盖曰：“某受吴侯三世厚恩，无以为报，故献此计，以破曹操。吾虽受苦，亦无所恨。吾遍观军中，无一人可为心腹者。惟公素有忠义之心，敢以心腹相告。”泽曰：“公之告我，无非要我献诈降书耳。”盖曰：“实有此意。未知肯否？”阚泽欣然领诺。正是：勇将轻身思报主，谋臣为国有同心。未知阚泽所言若何，且看下文分解。</div>
+            <div class="text-block simplified-text">话说黄盖躺在帐篷里养伤，将领们都来探望。黄盖不说话，只是不停叹气。这时有人报告说参谋阚泽来了。黄盖让人把他请进来，又叫其他人退下。阚泽问："将军是不是跟都督（周瑜）有仇？"黄盖说："不是。"阚泽又问："那您被打得这么惨，该不会是苦肉计吧？"黄盖惊讶地问："你怎么知道的？"阚泽说："我看周瑜的举动，猜得八九不离十。"黄盖说："我受孙家三代厚恩，没什么能报答的，所以想出这个计策来对付曹操。虽然吃了苦头，但绝不后悔。我看遍军中，只有你为人忠义，才敢跟你说实话。"阚泽立刻明白了："您告诉我这些，是想让我去送诈降信吧？"黄盖点头："就是这个意思。你愿意吗？"阚泽爽快地答应了。这正是：勇将不惜性命报效主公，谋士为国出力同心协力。至于阚泽接下来要怎么做，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
