@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十七回　梁山泊十面埋伏　宋公明两赢童贯</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./076.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十七回　梁山泊十面埋伏　宋公明两赢童贯</h1>
+        <a href="./078.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文中的“诗曰”可以直白地翻译为：
+
+“诗里说：” 或 “这首诗说的是：”
+
+这样既保留了原文引用诗句的意图，又用最通俗的白话文表达出来，完全符合您提出的6点要求。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">红日天光气障霾，纷纷戈戟两边排。</div>
+            <div class="text-block simplified-text">太阳红彤彤的，但天空灰蒙蒙的看不清。两边的人马拿着武器，密密麻麻地站成两排对峙着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">征鼙倒海翻江振，铁骑追风卷地来。</div>
+            <div class="text-block simplified-text">战鼓声震天动地，骑兵像狂风一样冲杀过来。
+
+解释改写要点：
+1. "征鼙"直接译为"战鼓"，更通俗易懂
+2. "倒海翻江振"用"震天动地"替代，保留夸张效果但更口语化
+3. "铁骑"译为"骑兵"，避免文言词汇
+4. "追风卷地"转化为"像狂风一样冲杀"，既保留原意又形象生动
+5. 整体保持对仗结构，但用词完全现代化
+6. 完整保留了原句描绘战争场面的核心意象：鼓声和骑兵冲锋</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">四斗五方旗影扬，九宫八卦阵门开。</div>
+            <div class="text-block simplified-text">旗帜在风中飘扬，军队摆开阵势准备战斗。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">奸雄童贯摧心胆，却似当年大会垓。</div>
+            <div class="text-block simplified-text">童贯这个狡猾的家伙吓得心都碎了，就像当年在垓下被围困时一样狼狈。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当日宋江阵中，前部先锋三队军马赶过对阵。大刀阔斧，杀得童贯三军人马，大败亏输，星落云散，七损八伤。军士抛金弃鼓，撇戟丢枪，觅子寻爷，呼兄唤弟，折了万余人马，退三十里外扎住。吴用在阵中鸣金收军，传令道：“且未可尽情追杀，略报个信与他。”梁山泊人马都收回山寨，各自献功请赏。</div>
+            <div class="text-block simplified-text">那天宋江的队伍里，先头部队分成三队冲向敌人。他们打得特别猛，把童贯的军队打得落花流水，死伤惨重。敌兵吓得扔了武器和战鼓，到处乱跑找亲人，死了一万多人，最后败退到三十里外才停下。吴用在军中下令收兵，说："别追太狠了，给他们点教训就够了。"梁山的人马都撤回山寨，开始论功行赏。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">且说童贯输了一阵，折了人马，早扎寨栅安歇下。心中忧闷，会集诸将商议。酆美、毕胜二将道：“枢相休忧！此寇知得官军到来，预先摆布下这座阵势。官军初到，不知虚实，因此中贼奸计。想此草寇，只是倚山为势，多设军马，虚张声势。一时失了地利。我等且再整练马步将士，停歇三日，养成锐气，将息战马。三日后，将全部军将分作长蛇之阵，俱是步军杀将去。此阵如常山之蛇，击首则尾应，击尾则首应，击中则首尾皆应，都要连络不断。决此一阵，必见大功。”童贯道：“此计大妙，正合吾意。”即时传下将令，整肃三军，训练已定。</div>
+            <div class="text-block simplified-text">话说童贯刚打了败仗，损失了不少士兵，现在安营扎寨休息。他心里烦得很，就召集将领们开会商量。酆美和毕胜两位将军说："大人别发愁！这帮土匪知道官兵要来，提前摆好了阵势。咱们刚来不清楚情况，所以中了他们的圈套。其实这些土匪就是仗着山势险要，多布置了些人马虚张声势。这次咱们只是吃了地形的亏。不如让步兵骑兵休整三天，养精蓄锐，把战马也喂好。三天后咱们把所有部队排成长蛇阵，让步兵打头阵。这个阵法就像常山蛇一样，打它头尾就来救，打它尾巴头就来救，打中间就头尾一起救，前后照应不断。用这个办法决战，肯定能打赢。"童贯听了说："这主意太好了，正合我意。"马上传令整顿军队，开始训练准备。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">第三日五更造饭，军将饱食。马带皮甲，人披铁铠，大刀阔斧，弓弩上弦。正是：枪刀流水急，人马撮风行。大将酆美、毕胜当先引军，浩浩荡荡，杀奔梁山泊来。八路军马分于左右。前面发三百铁甲哨马，前去探路。回来报与童贯中军知道，说：“前日战场上，并不见一个军马。”童贯听了心疑，自来前军问酆美、毕胜道：“退兵如何？”酆美答道：“休生退心，只顾冲突将去。长蛇阵摆定，怕做甚么？”官军迤逦前行，直进到水泊边，竟不见一个军马，但见隔水茫茫荡荡，都是芦苇烟火。远远地遥望见水浒寨山顶上，一面杏黄旗在那里招展，亦不见些动静。童贯与酆美、毕胜勒马在万军之前，遥望见对岸水面上芦林中一只小船，船上一个人，头戴青箬笠，身披绿簑衣，斜倚着船，背岸西独自钓鱼。童贯的步军，隔着岸叫那渔人问道：“贼在那里？”那渔人只不应。童贯叫能射弓的放箭。两骑马直近岸边滩头来，近水兜住马，攀弓搭箭，望那渔人后心飕地一箭去。那枝箭正射到箬笠上，当地一声响，那箭落下水里去了。这一个马军放一箭，正射到簑衣上，当地一声响，那箭也落下水里去了。那两个马军，是童贯军中第一惯射弓箭的。两个吃了一惊，勒回马，上来欠身禀童贯道：“两箭皆中，只是射不透。不知他身上穿着甚的？”童贯再拨三百能射硬弓的哨路马军，来滩头摆开，一齐望着那渔人放箭。那乱箭射去，渔人不慌，多有落在水里的，也有射着船上的。但射着簑衣箬笠的，都落下水里去。童贯见射他不死，便差会水的军汉，脱了衣甲，赴水过去捉那渔人。早有三五十人赴将开去。那渔人听得船尾水响，知有人来。不慌不忙，放下鱼钓，取棹竿担在身边。近船来的，一棹竿一个，太阳上着的，脑袋上着的，面门上着的，都打下水里去了。后面见沉了几个，都赴转岸上，去寻衣甲。童贯看见大怒，教拨五百军汉下水去，定要拿这渔人；若有回来的一刀两段。五百军人脱了衣甲，呐声喊，一齐都跳下水里，赴将过去。那渔人回转船头，指着岸上童贯，大骂道：“乱国贼臣，害民的禽兽！来这里纳命，犹自不知死哩！”童贯大怒，喝教马军放箭。那渔人呵呵大笑，说道：“兀那里有军马到了！”把手指一指，弃了簑衣箬笠，翻身攒入水底下去了。那五百军正赴到船边，只听得在水中乱叫，都沉下去了。那渔人正是浪里白跳张顺。头上箬笠，上面是箬叶裹着，里面是铜打成的。簑衣里面，一片熟铜打就，披着如龟壳相似，可知道箭矢射不入。张顺攒下水底，拔出腰刀，只顾排头价戳人，都沉下去，血水滚将起来。有乖的赴了开去，逃得性命。童贯在岸上看得呆了。身边一将指道：“山顶上那把黄旗，正在那里磨动。”</div>
+            <div class="text-block simplified-text">第三天一大早，军队就做饭吃饭准备出发。马匹披上皮甲，士兵穿上铁甲，拿着大刀斧头，弓箭拉满弦。真是刀枪如流水，人马快如风。大将酆美、毕胜带头领兵，大部队气势汹汹地杀向梁山泊。军队分成八路前进。先派三百名铁甲骑兵在前面探路。探子回来报告童贯说："前面战场上连个人影都没看见。"童贯觉得奇怪，亲自到前线问酆美、毕胜："要不要撤退？"酆美回答："别想着撤，直接往前冲。我们摆好长蛇阵，怕什么？"
+
+官兵继续前进，一直走到水泊边，还是没看见一个敌人，只看见对岸一片芦苇荡冒着烟。远远望见梁山寨山顶上飘着一面杏黄旗，但也没什么动静。童贯和酆美、毕胜骑马站在队伍最前面，看见对岸芦苇丛里有条小船，船上有个戴青斗笠、穿绿蓑衣的人，正背对着岸边钓鱼。
+
+童贯的步兵隔着岸喊那渔夫："贼人在哪儿？"渔夫不理他们。童贯命令弓箭手射箭。两个骑兵跑到岸边，拉弓朝渔夫后背射箭。第一箭射中斗笠，"当"的一声掉水里了；第二箭射中蓑衣，也是"当"的一声掉水里了。这两个可是童贯军中最厉害的射手。他们吓坏了，赶紧回去报告："明明射中了，就是射不穿，不知道他穿的什么衣服。"
+
+童贯又派三百名弓箭手到岸边，一齐朝渔夫射箭。箭像雨点一样飞过去，渔夫一点也不慌，有的箭掉水里，有的射中船，但射中斗笠蓑衣的都掉水里了。童贯见射不死他，就派会水的士兵脱了衣服游过去抓人。三五十个人刚游过去，渔夫听见水响，不慌不忙放下鱼竿，拿起船桨。过来一个打一个，专打脑袋，把人都打下水了。后面的人见状赶紧游回岸上穿衣服。
+
+童贯气坏了，命令五百名士兵下水抓人，谁敢回来就砍头。五百人脱了衣服跳下水。渔夫调转船头，指着童贯大骂："祸国殃民的奸臣！来这儿送死还不知道呢！"童贯气得命令骑兵放箭。渔夫哈哈大笑："看那边，我们的军队来了！"说完扔掉斗笠蓑衣，一个猛子扎进水里。
+
+那五百士兵刚游到船边，突然在水里乱叫，一个个都沉下去了。原来这渔夫是梁山好汉"浪里白条"张顺。他的斗笠是铜做的，蓑衣也是铜片打的像龟壳一样，所以箭射不穿。张顺在水底抽出刀，见人就捅，河水都被血染红了。机灵的赶紧逃命，才保住性命。
+
+童贯在岸上看傻了。这时身边一个将领指着山顶说："看，那面黄旗在动呢！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">童贯定睛看了，不解何意。众将也没做道理处。酆美道：“把三百铁甲哨马分作两队，教去两边山后出哨，看是如何？”却才分到山前，只听得芦苇中一个轰天雷炮飞起，火烟撩乱。两边哨马齐回来报：“有伏兵到了！”童贯在马上，那一惊不小！酆美、毕胜两边差人教军士休要乱动，数十万军都掣刀在手。前后飞马来叫道：“如有先走的，便斩！”按住三军人马。童贯且与众将立马望时，山背后鼓声震地，喊杀喧天，早飞出一彪军马，都打着黄旗。当先有两员骁将领兵。怎见得那队军马整齐？好似：</div>
+            <div class="text-block simplified-text">童贯仔细看了看，不明白怎么回事。将领们也都不知道该怎么办。酆美说："把三百名穿铁甲的侦察骑兵分成两队，让他们到两边山后去侦察一下，看看情况如何？"刚把人派到山前，就听见芦苇丛里突然响起一声震天动地的炮响，火光四起，浓烟滚滚。两边的侦察兵都跑回来报告："有埋伏的敌人来了！"童贯骑在马上，吓了一大跳！酆美、毕胜赶紧派人传令，让士兵们不要乱动，几十万大军都拔出刀来。传令兵骑马来回喊着："谁敢先逃跑，就砍头！"这才稳住部队。童贯和将领们勒马观望时，山后面突然响起震天的战鼓声，喊杀声惊天动地，很快冲出一支队伍，都举着黄旗。最前面有两个勇猛的将领带队。这支队伍有多整齐呢？就像：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">黄旗拥出万山中，烁烁金光射碧空。</div>
+            <div class="text-block simplified-text">一大群黄旗从山里冒出来，金光闪闪的，把蓝天都照亮了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">马似怒涛冲石壁，人如烈火撼天风。</div>
+            <div class="text-block simplified-text">马跑得像发怒的浪涛撞击石壁一样猛，人拼得像熊熊烈火搅动狂风那样凶。  
+
+（解释：这两句诗用夸张的比喻形容气势磅礴的场景——马匹冲锋时像狂暴的海浪拍打悬崖般势不可挡，战士战斗时如烈火遇狂风般激烈勇猛。翻译时保留了"马/人"的主体和"怒涛/烈火"的比喻核心，将文言句式拆解为口语化的明喻，用"发怒的浪涛""熊熊烈火"等常见意象替代原诗的文学性表达，确保即使不了解古诗的读者也能直观感受到那种震撼的冲击力。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">鼓声震动森罗殿，炮力掀翻泰华宫。</div>
+            <div class="text-block simplified-text">鼓声大得连阎王殿都在晃，炮火猛得把泰山都炸翻了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">剑队暗藏插翅虎，枪林飞出美髯公。</div>
+            <div class="text-block simplified-text">翻译：
+
+剑队里藏着个外号"插翅虎"的猛将，长枪阵中突然杀出个胡子漂亮的英雄。
+
+说明：
+1. 保留了原文两员武将出场的基本信息
+2. "暗藏"改为更直白的"藏着"，"飞出"译为"突然杀出"更生动
+3. "美髯公"这种雅称译为"胡子漂亮的英雄"更易懂
+4. 用"外号"解释"插翅虎"的称谓性质
+5. 保持了对仗句式但用词更口语化
+6. 未添加原文没有的情节或修饰</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">两骑黄长远马上两员英雄头领，上首美髯公朱仝，下首插翅虎雷横，带领五千人马，直杀奔官军。童贯令大将酆美、毕胜当先迎敌。两个得令，便骤马挺枪出阵，大骂：“无端草贼，不来投降，更待何时！”雷横在马上大笑，喝道：“匹夫，死在眼前尚且不知！怎敢与吾决战！”毕胜大怒，拍马挺枪，直取雷横。雷横也使枪来迎。两马相交，军器并举。二将约战到二十余合，不分胜败。酆美见毕胜战久不能取胜，拍马舞刀径来助战。朱仝见了，大喝一声，飞马轮刀来战酆美。四匹马，两对儿，在阵前厮杀。童贯看了，喝采不迭。斗到间深里，只见朱仝、雷横卖个破绽，拨回马头，望本阵便走。酆美、毕胜两将不舍，拍马追将过去。对阵军发声喊，望山后便走。童贯叫尽力追赶过山脚去。只听得山顶上画角齐鸣。众军抬头看时，前后两个炮直飞起来。童贯知有伏兵，把军马约住，教不要去赶。</div>
+            <div class="text-block simplified-text">两员大将骑着黄马从远处冲来，领头的正是朱仝和雷横，带着五千士兵杀向官兵。童贯派出手下大将酆美和毕胜迎战。这两人骑马提枪冲出来，大骂道："你们这些草寇，还不投降，等什么呢！"雷横大笑着说："蠢货，死到临头还不知道！敢跟我打？"毕胜气得骑马挺枪直冲雷横，两人打了二十多回合不分胜负。酆美见毕胜打不赢，也挥刀加入战斗。朱仝见状大喝一声，骑马挥刀拦住酆美。四人就在阵前厮杀起来，童贯看得连连叫好。打着打着，朱仝和雷横突然假装败退，掉头就跑。酆美、毕胜紧追不舍，官兵们也喊着追上山去。童贯命令全力追击，突然山顶响起号角声，两发炮弹飞上天。童贯这才知道中计了，赶紧叫士兵停止追击。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">只见山顶上闪出那把杏黄旗来，上面绣着“替天行道”四字。童贯踅过山那边看时，见山头上一簇杂采绣旗开处，显出那个郓城县盖世英雄山东呼保义宋江来。背后便是军师吴用、公孙胜、花荣、徐宁、金枪手、银枪手众多好汉。童贯见了大怒，便差人马上山来拿宋江。大军人马分为两路，却待上山。只听得山顶上鼓乐喧天，众好汉都笑。童贯越添心上怒，咬碎口中牙，喝道：“这贼怎敢戏吾！我当自擒这厮，”酆美谏道：“枢相，彼必有计，不可亲临险地。且请回军，来日却再打听虚实，方可进兵。”童贯道：“胡说！事已到这里，岂可退军！教星夜与贼交锋，今已见贼，势不容退。”语犹未绝，只听得后军呐喊。探子报道：“正西山后，冲出一彪军来，把后军杀开做两处。”童贯大惊，带了酆美、毕胜，急回来救应后军时，东边山后鼓声响处，又早飞出一队人马来。一半是红旗，一半是青旗，捧着两员大将，引五千军马杀将来。那红旗军随红旗，青旗军随青旗，队伍端的整齐，但见：</div>
+            <div class="text-block simplified-text">山头上突然出现一面杏黄色的旗子，上面绣着"替天行道"四个大字。童贯转到山那边一看，只见山顶上各种颜色的旗子展开，露出宋江这个郓城县有名的好汉。宋江身后站着军师吴用、公孙胜、花荣、徐宁等众多好汉。童贯看了非常生气，立刻派人上山抓宋江。大军分成两队准备攻山。这时山顶突然响起鼓乐声，好汉们都在大笑。童贯更加愤怒，气得咬牙切齿，骂道："这群贼人竟敢戏弄我！我要亲自抓住他们！"酆美劝道："大人，他们肯定有埋伏，您不能冒险。不如先撤兵，改天打探清楚再进攻。"童贯说："胡说！都到这份上了怎么能撤兵！今天必须连夜开战，既然见到敌人就不能撤退。"话还没说完，后面部队突然传来喊杀声。探子来报："西边山后杀出一支队伍，把我们的后军截成两段了！"童贯大吃一惊，赶紧带着酆美、毕胜去救援。这时东边山后也响起战鼓，又杀出一支队伍。这支队伍一半举红旗，一半举青旗，由两员大将率领五千人马杀来。红旗兵跟着红旗，青旗兵跟着青旗，队伍排得非常整齐。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">对对红旗间翠袍，争飞战马转山腰。</div>
+            <div class="text-block simplified-text">红旗和绿袍混在一起，战马在山腰上飞快地跑来跑去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">日烘旗帜青龙见，风摆旌旗朱雀摇。</div>
+            <div class="text-block simplified-text">太阳晒得旗帜上的青龙图案都露出来了，风吹得旗子上的朱雀图案直摇晃。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">二队精兵皆勇猛，两员上将最英豪。</div>
+            <div class="text-block simplified-text">两支队伍都是精锐部队，士兵们个个勇猛善战，领头的两位将军更是厉害，本事特别大。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">秦明手舞狼牙棍，关胜斜横偃月刀。</div>
+            <div class="text-block simplified-text">秦明挥着狼牙棒，关胜横握着大刀。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">那红旗队里头领是霹雳火秦明，青旗队里头领是大刀关胜。二将在马上杀来，大喝道：“童贯早纳下首级！”童贯大怒，便差酆美来战关胜，毕胜去斗秦明。童贯见后军发喊甚紧，又教鸣金收军，且休恋战，延便且退。朱仝、雷横引黄旗军又杀将来，两下里夹攻，童贯军兵大乱。酆美、毕胜保护着童贯，逃命而走。正行之间，刺斜里又飞出一彪人马来，接住了厮杀。那队军马，一半是白旗，一半是黑旗。黑白旗中，也捧着两员虎将，引五千军马，拦住去路。这队军端的整齐，但见：</div>
+            <div class="text-block simplified-text">红旗军的头领是脾气火爆的秦明，青旗军的头领是使大刀的关胜。两人骑马冲过来，大声喊道："童贯，快把脑袋交出来！"童贯气坏了，马上派酆美去打关胜，毕胜去对付秦明。童贯听到后面军队喊杀声越来越近，赶紧下令收兵撤退。这时朱仝、雷横带着黄旗军又杀过来，两边夹击，童贯的军队乱成一团。酆美、毕胜拼命保护童贯逃跑。正跑着，突然又杀出一支队伍拦住去路。这支队伍一半举白旗，一半举黑旗，队伍里也有两员猛将带着五千人马。这支队伍军容整齐，你看：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">炮似轰雷山石裂，绿林深处显戈矛。</div>
+            <div class="text-block simplified-text">炮声像打雷一样响，把山上的石头都震裂了。树林深处突然出现了拿着武器的士兵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">素袍兵出银河涌，玄甲军来黑气浮。</div>
+            <div class="text-block simplified-text">穿着白衣服的士兵冲出来，像银河一样密密麻麻；穿着黑盔甲的军队杀过来，带着黑压压的气势。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">两股鞭飞风雨响，一条枪到鬼神愁。</div>
+            <div class="text-block simplified-text">这两句话的意思是：他挥舞双鞭，速度快得像风雨呼啸；刺出一枪，威力大得连鬼神都害怕。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">左边大将呼延灼，右手英雄豹子头。</div>
+            <div class="text-block simplified-text">左边的大将是呼延灼，右边的好汉是豹子头林冲。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">那黑旗队里头领是双鞭呼延灼，白旗队里头领是豹子头林冲。二将在马上大喝道：“奸臣童贯，待走那里去？早来受死！”一冲直杀入军中来。那睢州都监段鹏举接住呼延灼交战，洳州都监马万里接着林冲厮杀。这马万里与林冲斗不到数合，气力不加。却待要走，被林冲大喝一声，慌了手脚，着了一矛，戳在马下。段鹏举看见马万里被林冲搠死，无心恋战，隔过呼延灼双鞭，霍地拨回马便走。呼延灼奋勇赶将入来。两军混战。童贯只教夺路且回。只听得前军喊声大举，山背后飞出一彪步军，直杀入垓心里来。当先一僧、一行者，领着军兵，大叫道：“休教走了童贯！”那和尚不修经忏，专好杀人，单号花和尚，双名鲁智深。这行者，景阳冈曾打虎，水浒寨最英雄，有名行者武松。鲁智深一条禅杖，武行者两口戒刀，杀入阵来。怎见得？有《西江月》为证：</div>
+            <div class="text-block simplified-text">黑旗军的头领是双鞭呼延灼，白旗军的头领是豹子头林冲。两人骑马大喊："奸臣童贯，你往哪儿跑？快来送死！"说完就冲进敌军中。
+
+睢州都监段鹏举迎战呼延灼，洳州都监马万里对战林冲。马万里跟林冲打了没几个回合就撑不住了，刚想逃跑，被林冲一声大吼吓慌了神，一枪就被刺下马死了。段鹏举看见马万里被杀，也没心思打了，挡开呼延灼的双鞭，掉转马头就跑。呼延灼紧追不舍。两边军队混战在一起。
+
+童贯只顾着让人杀出一条路逃跑。这时突然听到前面喊声震天，从山后冲出一队步兵，直接杀进战场最激烈的地方。领头的是一个和尚和一个行者，带着士兵大喊："别让童贯跑了！"
+
+这和尚不爱念经，就喜欢杀人，外号花和尚，名叫鲁智深。那个行者，就是在景阳冈打过老虎、梁山好汉里最厉害的武松。鲁智深挥着禅杖，武松舞着两把戒刀，冲进敌阵。那场面有多激烈？有首《西江月》为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">鲁智深一条禅杖，武行者两口钢刀。钢刀飞出火光飘，禅杖来如铁炮。禅杖打开脑袋，钢刀截断人腰。两般兵器不相饶，百万军中显耀。</div>
+            <div class="text-block simplified-text">鲁智深拿着一根禅杖，武松使着两把钢刀。钢刀挥舞时火星四溅，禅杖抡起来像大炮一样猛。禅杖能把人脑袋砸碎，钢刀能把人拦腰砍断。这两件兵器都厉害得很，在千军万马中特别威风。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">童贯众军被鲁智深、武松引领步军一冲，早四分五落。官军人马前无去路，后没退兵，只得引酆美、毕胜撞透重围，杀条血路，奔过山背后来。正方喘息，又听得炮声大震，战鼓齐鸣。看两员猛将当先，一簇步军拦路。怎见得？</div>
+            <div class="text-block simplified-text">童贯的军队被鲁智深和武松带着步兵一冲，立刻就乱成一团。官兵们前无出路，后无退路，只好带着酆美、毕胜拼命杀出包围，杀出一条血路，逃到山后面。刚喘口气，又听见炮声震天，战鼓齐响。只见两员猛将冲在前面，一队步兵挡住去路。那场面是怎样的呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">人人勇欺子路，个个貌若天神。钢刀铁槊乱纷纷，战鼓绣旗相称。左手解珍出众，右手解宝超群。数千铁甲虎狼军，搅碎长蛇大阵。</div>
+            <div class="text-block simplified-text">这段文字可以这样改写成大白话：
+
+人人都敢欺负子路，但个个长得像天兵天将。他们拿着刀枪棍棒乱糟糟地冲杀，战鼓和旗子倒是挺配套。左边那个叫解珍的特别厉害，右边那个叫解宝也不简单。带着几千个穿铁甲的凶狠士兵，把敌人的长蛇阵冲得稀巴烂。
+
+解释改写要点：
+1. "勇欺"改成了"敢欺负"更直白
+2. "貌若天神"用"长得像天兵天将"替代
+3. "钢刀铁槊"具体化为"刀枪棍棒"
+4. "相称"改为"挺配套"更口语
+5. "出众/超群"用"特别厉害/不简单"替代
+6. "铁甲虎狼军"拆解为"穿铁甲的凶狠士兵"
+7. "搅碎"用更形象的"冲得稀巴烂"
+8. 保留了所有人名和关键信息
+9. 整体保持原文的激烈战斗氛围</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">来的步军头领解珍、解宝，各拈五股钢叉，引领步军杀入阵内。童贯人马遮拦不住，突围而走。五面马军步军，一齐追杀，赶得官军星落云散。酆美、毕胜力保童贯而走。见解珍、解宝弟兄两个，挺起钢叉直冲到马前。童贯急忙拍马望刺斜里便走。背后酆美、毕胜赶来救应，又得唐州都监韩天麟、邓州都监王义，四个并力杀出垓心。方才进步，喘息未定，只见前面尘起，叫杀连天。绿茸茸林子里，又早飞出一彪人马。当先两员猛将，拦住去路。那两员是谁？但见：</div>
+            <div class="text-block simplified-text">步兵头领解珍、解宝两兄弟，手拿五股钢叉，带着步兵冲进敌阵。童贯的军队挡不住，只能突围逃跑。五路骑兵步兵一起追杀，打得官兵七零八落。酆美、毕胜拼命保护童贯逃跑。这时解珍、解宝兄弟举着钢叉直接冲到童贯马前。童贯赶紧调转马头往斜刺里逃。后面酆美、毕胜赶来救援，加上唐州都监韩天麟、邓州都监王义，四个人合力才从包围圈杀出来。刚跑出一段路，还没喘过气，就看见前面尘土飞扬，喊杀声震天。绿油油的树林里，突然又冲出一队人马。领头两员猛将挡住去路。这两人是谁？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">一个开山大斧吞龙口，一个出白银枪蟒吐梢。一个咬碎银牙冲大阵，一个睁圆怪眼跃天桥。一个董平紧要拿童贯，一个舍命争先是索超。</div>
+            <div class="text-block simplified-text">这段文字描述的是两个猛将激烈打斗的场景，用大白话来说就是：
+
+一个拿着大斧头，斧头像能吞下龙一样凶猛；另一个使银枪，枪尖像蟒蛇吐信子般灵活。一个气得咬牙切齿冲进战场，另一个瞪大眼睛跳过天桥。一个叫董平的拼命要抓住童贯，另一个叫索超的豁出性命冲在最前面。
+
+简单说就是：两个狠人在拼命干架，一个用斧头，一个用银枪，都打红了眼。董平非要抓到童贯不可，索超也完全不顾死活地往前冲。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">这两员猛将，双枪将董平，急先锋索超，两个更不打话，飞马直取童贯。王义挺枪去迎，被索超手起斧落，砍于马下。韩天麟来救，被董平一枪搠死。酆美、毕胜死保护童贯，奔马逃命。四下里金鼓乱响，正不知何处军来。童贯拢马上坡看时，四面八方，四队军马，两胁两队步军，栲栳圈，簸箕掌，梁山泊军马大队齐齐杀来。童贯军马如风落云散，东零西乱。正看之间，山坡下一簇人马出来，认的旗号是陈州都监吴秉彝，许州都监李明。这两个引着些断枪折戟，败残军马，踅转琳琅山躲避。看见招呼时，正欲上坡，急调人马。又见山侧喊声起来，飞过一彪人马赶出，两把认旗招展，马上两员猛将，各执兵器，飞奔官军。这两个是谁？有《临江词》为证：</div>
+            <div class="text-block simplified-text">这段讲的是梁山好汉和童贯军队打仗的事。简单来说就是：
+
+董平和索超这两个梁山好汉二话不说，骑马直冲童贯。王义想挡，被索超一斧子砍死。韩天麟来帮忙，又被董平一枪捅死。酆美和毕胜拼命保护童贯逃跑。
+
+这时候四周战鼓乱响，童贯跑上坡一看，四面八方全是梁山的人马杀过来，他的军队被打得七零八落。
+
+正看着呢，山坡下又来了吴秉彝和李明两个军官，带着些残兵败将想躲到山上。他们刚想上山，突然旁边又杀出一队人马，领头的是两个猛将（后面用一首词介绍这两人是谁）。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">盔上长缨飘火焰，纷纷乱撒猩红。胸中豪气吐长虹。战袍裁蜀锦，铠甲镀金铜。两口宝刀如雪练，垓心抖擞威风。左冲右突显英雄。军班青面兽，史进九纹龙。</div>
+            <div class="text-block simplified-text">头盔上的红缨像跳动的火苗一样飘动，红艳艳的特别显眼。这人浑身充满豪气，气势特别强。战袍是用上好的锦缎做的，铠甲闪着金铜色的光。他手里两把雪亮的宝刀，在战场中央特别威风。只见他左冲右突，特别英勇。这就是外号"青面兽"的杨志，和绰号"九纹龙"的史进。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">这两员猛将，正是杨志、史进。两骑马，两口刀，却好截住吴秉彝、李明两个军官厮杀。李明挺枪向前来斗杨志，吴秉彝使方天戟来战史进。两对儿在山坡下一来一往，盘盘旋旋，各逞平生武艺。童贯在山坡上勒住马，观之不定。四个人约斗到三十余合，吴秉彝用戟奔史进心坎上戳将来，史进只一闪，那枝戟从肋窝里放个过。吴秉彝连人和马抢近前来，被史进手起刀落，只见一条血颡光连肉，顿落金鍪在马边，吴秉彝死于坡下。李明见先折了一个，却待也要拨回马走时，被杨志大喝一声，惊得魂消魄散，胆颤心寒，手中那条枪，不知颠倒。杨志把那口刀从顶门上劈将下来。李明只一闪，那刀正剁着马的后胯下。那马后蹄将下去，把李明闪下马来。弃了手中枪，却待奔走。这杨志手快，随复一刀，砍个正着。可怜李明半世军官，化作南柯一梦。两员官将皆死于坡下。杨志、史进追杀败军，正如砍瓜截瓠相似。</div>
+            <div class="text-block simplified-text">这俩猛将就是杨志和史进。他们骑着马、提着刀，正好堵住敌军军官吴秉彝和李明打了起来。李明举枪冲向杨志，吴秉彝挥着方天戟对战史进。两对人在山坡下来回厮杀，打得难分难解，各自使出看家本领。童贯在山坡上勒马观战，看得眼花缭乱。
+
+打了三十多回合后，吴秉彝突然用戟直刺史进心口，史进敏捷一闪，戟尖擦着他肋下刺空。吴秉彝连人带马冲过来，被史进手起刀落——只见一道血光闪过，连着金头盔的脑袋直接滚落马旁，吴秉彝当场毙命。
+
+李明见同伴被杀，刚想调转马头逃跑，杨志突然大吼一声，吓得他魂飞魄散，连手里的枪都拿不稳了。杨志当头一刀劈下，李明虽然躲开要害，但战马后腿被砍中。马匹跪倒时把他摔下马来，李明丢枪想跑，杨志眼疾手快追上去又是一刀，当场结果了他。可怜李明当了大半辈子军官，就这样送了命。
+
+两名军官都死在山坡下。杨志和史进追杀残兵，简直像切瓜砍菜一样轻松。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">童贯和酆美、毕胜在山坡上看了，不敢下来，身无所措。三个商量道：“似此如何杀得出去？”酆美道：“枢相且宽心，小将望见正南上，尚兀自有大队官军扎住在那里。旗幡不倒，可以解救。毕都统保守枢相在山头，酆美杀开条路，取那枝军马来保护枢相出去。”童贯道：“天色将晚，你可善觑方便，疾去早来。”酆美提着大杆刀，飞马杀下山来，冲开条路，直到南边。看那队军马时，却是嵩州都监周信，把军兵团团摆定，死命抵住。垓心里看见那酆美来，便接入阵内，问：“枢相在那里？”酆美道：“只在前面山坡上，专等你这枝军马去救护杀出来；事不宜迟，火速便起。”周信听说罢，便教传令，马步军兵都要相顾，休失队伍，齐心并力。二员大将当先，众军助喊，杀奔山坡边来。行不到一箭之地，刺斜里一枝军到。酆美舞刀径出迎敌，认得是睢州都监段鹏举，三个都相见了，合兵一处杀到山坡下。毕胜下坡，迎接上去。见了童贯，一处商议道：“今晚便杀出去好，却捱到来朝去好？”酆美道：“我四人死保枢相，则就今晚杀透重围出去，可脱贼寇。”看看近夜，只听得四边喊声不绝，金鼓乱鸣。约有二更时候，星月光亮，酆美当先，众军官簇拥童贯在中间，一齐并力杀下山坡来。只听得四下里乱叫道：“不要走了童贯！”众官军只望正南路冲杀过来。看看混战到四更左右，杀出垓心。童贯在马上，以手加额，顶礼天地神明道：“惭愧！脱得这场大难！”催赶出界，奔济州去。却才欢喜未尽，只见前面山坡边一带，火把不计其数。背后喊声又起。看见火把光中，两员好汉拈着两条朴刀，引出一员骑白马的英雄大将，在马上横着一条点钢枪。那人是谁？有《临江仙》词一首为证：</div>
+            <div class="text-block simplified-text">童贯和酆美、毕胜在山坡上看着下面，不敢下去，不知道该怎么办。三个人商量说："这样下去怎么冲得出去？"酆美说："大人别担心，我看见正南边还有一大队官兵在那里。他们的旗子还立着，应该能来救我们。毕将军你保护大人留在山上，我带人杀出一条路，把那队人马叫来救大人出去。"童贯说："天快黑了，你要看准机会，快去快回。"
+
+酆美拿着大刀，骑马冲下山去，一路杀到南边。看到那队人马是嵩州的周信带领的，士兵们围成一圈死守。周信看到酆美来了，就让他进到阵中，问："大人在哪儿？"酆美说："就在前面山坡上，专门等你们去救。事不宜迟，赶紧出发。"周信立刻下令，让士兵们互相照应，保持队形，一起往前冲。两位将军带头，士兵们喊着冲上山坡。还没走多远，侧面又来了一队人马。酆美提刀迎上去，发现是睢州的段鹏举。三路人马汇合后一起杀到山坡下。毕胜从山坡上下来接应。见到童贯后，大家商量："是今晚就突围，还是等到明天？"酆美说："我们四个拼死保护大人，今晚就杀出去，才能摆脱敌人。"
+
+快到半夜时，四周喊杀声不断。大约二更天，借着月光，酆美打头，众军官护着童贯在中间，一起往山下冲。只听见到处都在喊："别让童贯跑了！"官兵们拼命往正南方向突围。一直打到四更天左右，终于冲出包围。童贯骑在马上，摸着额头感谢老天："谢天谢地！总算逃过这一劫！"他们赶紧离开战场，往济州跑。还没高兴多久，就看见前面山坡上出现无数火把。后面又传来喊杀声。火光中看见两条好汉拿着朴刀，后面跟着一个骑白马的大将，手里握着钢枪。这人是谁？有首《临江仙》为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">马步军中惟第一，偏他数内为尊。上天降下恶星辰。眼珠如点漆，面部似镌银。丈二钢枪无敌手，独骑战马侵寻。人材武艺两绝伦。梁山卢俊义，河北玉麒麟。</div>
+            <div class="text-block simplified-text">这段话说的是：
+
+在步兵骑兵里他排第一，本事最大。就像天上掉下来的凶星下凡。他眼睛黑得像漆，脸白得像银子。使一杆一丈二的长枪没人打得过，单枪匹马冲锋陷阵。论长相和武功都是顶尖的。他就是梁山的卢俊义，外号"河北玉麒麟"。
+
+（说明：用"凶星"替代"恶星辰"更易懂，"镌银"译为"像银子"更直观，"侵寻"意译为"冲锋陷阵"更贴切，保留"玉麒麟"绰号因具有专名性质）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">那马上的英雄大将，正是玉麒麟卢俊义。马前这两个使朴刀的好汉，一个是病关索杨雄，一个是拚命三郎石秀。在火把光中，引着三千余人，抖擞精神，拦住去路。卢俊义在马上大喝道：“童贯不下马受缚，更待何时！”童贯听得，对众道：“前有伏兵，后有追兵，似此如之奈何？”酆美道：“小将舍条性命，以报枢相。汝等众官，紧保枢相，夺路望济州去。我自战住此贼。”酆美拍马舞刀，直奔卢俊义。两马相交，斗不到数合，被卢俊义把枪只一逼，逼过大刀，抢入身去，劈腰提住，一脚蹬开战马，把酆美活捉去了。杨雄、石秀便来接应。众军齐上，横拖倒拽捉了去。毕胜和周信、段鹏举，舍命保童贯，冲杀拦路军兵，且战且走。背后卢俊义赶来。童贯败军忙忙似丧家之犬，急急如漏网之鱼。天晓脱得追兵，望济州来。正走之间，前面山坡背后，又冲出一队步军来，那军都是铁掩心甲，绛红罗头巾。当先四员步军头领。毕竟是谁？但见：</div>
+            <div class="text-block simplified-text">那个骑在马上的英雄大将，就是外号"玉麒麟"的卢俊义。马前两个拿朴刀的好汉，一个是"病关索"杨雄，一个是"拚命三郎"石秀。他们带着三千多人，举着火把，精神抖擞地拦住了去路。卢俊义在马上大喊："童贯！还不快下马投降，等什么呢！"
+
+童贯听见后对手下说："前面有埋伏，后面有追兵，这下怎么办？"酆美说："我豁出这条命也要保护大人。你们护着大人往济州方向突围，我来挡住他们。"说完就骑马挥刀冲向卢俊义。
+
+两人交手没几个回合，卢俊义用枪一挑，躲过大刀，一把抓住酆美的腰带，把他从马上拽下来活捉了。杨雄和石秀立刻带人上前接应，士兵们一拥而上把酆美捆走了。
+
+毕胜、周信和段鹏举拼死保护童贯突围，边打边逃。卢俊义在后面紧追不舍。童贯的败兵逃得像丧家狗、漏网鱼一样狼狈。天亮时才甩掉追兵往济州跑。
+
+正跑着，前面山坡后突然又杀出一队步兵，都穿着铁甲，戴着红头巾。领头的四个步兵头领是谁呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">黑旋风持两把大斧，丧门神仗一口龙泉。项充、李兖在傍边，手舞团牌体健。斩虎须投大穴，诛龙必向深渊。三军威势振青天，恶鬼眼前活见。</div>
+            <div class="text-block simplified-text">李逵（黑旋风）手里拿着两把大斧头，鲍旭（丧门神）握着一把龙泉宝剑。项充和李兖站在他们旁边，手里挥舞着盾牌，身体强壮有力。要杀老虎就得闯进老虎窝，要斩龙就得深入龙潭。这支军队气势冲天，连恶鬼见了都要吓得现出原形。
+
+（说明：1.将绰号与本名并列便于理解；2."大穴/深渊"转化为更通俗的"老虎窝/龙潭"；3."三军威势"具体化为"这支军队气势"；4.末句保留夸张修辞但改用更直白的表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">这李逵轮两把板斧，鲍旭仗一口宝剑，项充、李衮各舞蛮牌遮护，却似一团火块，从地皮上滚将来，杀得官军四分五落而走。童贯与众将且战且走，只逃性命。李逵直砍入马军队里，把段鹏举马脚砍翻，掀将下来，就势一斧，劈开脑袋，再复一斧，砍断咽喉，眼见得段鹏举不活了。且说败残官军将次捱到济州，真乃是头盔斜掩耳，护项半兜腮。马步三军没了气力，人困马乏。奔到一条溪边，军马都且去吃水。只听得对溪一声炮响，箭矢如飞蝗一般射将过来。官军急上溪岸去。树林边转出一彪军马来。为头马上三个英雄是谁？但见：</div>
+            <div class="text-block simplified-text">李逵挥着两把斧头，鲍旭举着一把宝剑，项充和李衮各自挥舞盾牌保护他们。他们像一团火球一样冲过来，打得官兵七零八落，四散逃跑。童贯和其他将领边打边逃，只顾着保命。李逵直接冲进骑兵队伍，砍断了段鹏举的马腿，把他掀下马来。李逵接着一斧子劈开他的脑袋，再一斧子砍断他的喉咙，段鹏举当场就死了。  
+
+剩下的残兵败将好不容易逃到济州附近，一个个头盔歪斜，护颈松散，士兵和马匹都累得没力气了。他们跑到一条小溪边，人马都停下来喝水。突然，对岸一声炮响，箭像飞蝗一样射过来。官兵慌忙爬上溪岸。这时，树林边冲出一队人马，领头的三个好汉是谁？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">铜铃奋勇敢争征，飞石飞叉众莫能。</div>
+            <div class="text-block simplified-text">铜铃这人特别勇猛，敢打敢拼，他扔石头甩叉子的本事没人比得上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">二虎相随没羽箭，东昌骠骑是张清。</div>
+            <div class="text-block simplified-text">两只老虎一起跑，后面跟着个叫张清的猛将，他外号"没羽箭"，是东昌府的骠骑将军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">原来这没羽箭张清和龚旺、丁得孙，带领三百余骑马军。那一队骁骑马军，都是铜铃面具，雉尾红缨，轻弓短箭，绣旗花枪，三将为头，直冲将来。嵩州都监周信见张清军马少，便来迎敌。毕胜保着童贯而走。周信纵马挺枪来迎。只见张清左手约住枪，右手似招宝七郎之形，口中喝一声道：“着！”去周信鼻凹上只一石子打中，翻身落马。龚旺、丁得孙傍边飞马来相助，将那两条叉戳定咽喉，好似霜摧边地草，雨打上林花，周信死于马下。童贯止和毕胜逃命，不敢入济州，引了败残军马，连夜投东京去了。于路收拾逃难军马下寨。</div>
+            <div class="text-block simplified-text">这段讲的是张清、龚旺、丁得孙带着三百多个骑兵冲过来。这些骑兵装备很特别：马脖子上挂着铜铃，戴着面具，头盔插着野鸡毛和红缨，拿着轻便的弓箭和绣花枪。三个将领带头往前冲。
+
+嵩州的军官周信看到张清这边人少，就带兵迎战。童贯在毕胜保护下逃跑。周信骑马举枪冲上去，张清用左手挡开他的枪，右手像拜神像的姿势一样，喊了声"着！"，一颗石子正好打在周信鼻梁上，把他打下马。龚旺和丁得孙立刻骑马过来帮忙，用钢叉刺穿周信的喉咙，周信当场就死了，像被霜打的野草、被雨打落的花一样。
+
+童贯和毕胜只顾逃命，连济州城都不敢进，带着剩下的残兵败将连夜逃往东京。一路上收拢逃散的士兵，找个地方扎营休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">原来宋江有仁有德，素怀归顺之心，不肯尽情追杀。惟恐众将不舍，要追童贯，火急差戴宗传下将令，布告众头领，收拾各路军马步卒，都回山寨请功。各处鸣金收军而回。鞍上将都敲金镫，步下卒齐唱凯歌，纷纷尽入梁山泊，个个同回宛子城。宋江、吴用、公孙胜先到水浒寨中忠义堂上坐下，令裴宣验看各人功赏。卢俊义活捉酆美，解上寨来，跪在堂前。宋江自解其缚，请入堂内上坐，亲自捧杯陪话，奉酒压惊。众头领都到堂上。是日杀牛宰马，重赏三军。留酆美住了两日，备办鞍马，送下山去。酆美大喜。宋江陪话道：“将军，阵前阵后冒渎威严，切乞恕罪！宋江等本无异心，只要归顺朝廷，与国家出力。被至不公不法之人，逼得如此。望将军回朝，善言解救。倘得他日重见恩光，生死不忘大德。”酆美拜谢不杀之恩，登程下山。宋江令人直送出界。酆美放回京，不在话下。</div>
+            <div class="text-block simplified-text">原来宋江这人很仁义，一直想归顺朝廷，所以不愿意把敌人赶尽杀绝。他怕手下将领们不甘心，还要去追童贯，就赶紧派戴宗传令，通知所有头领收兵回山寨领功。各处听到收兵信号就撤了。骑马的将领们高兴地敲着马鞍，步兵们唱着胜利的歌，一起热热闹闹回到梁山泊。宋江、吴用和公孙胜先到忠义堂坐下，让裴宣统计大家的功劳。卢俊义活捉了酆美，押到堂前跪下。宋江亲自给他松绑，请他上座，还敬酒给他压惊。所有头领都到齐了。当天杀牛宰马犒赏全军。留酆美住了两天，准备好马匹送他下山。酆美很高兴。宋江对他说："将军，打仗时多有冒犯，请您原谅！我们本来没想造反，只想归顺朝廷为国效力。都是被那些贪官污吏逼的。希望您回去帮我们说句好话。要是以后还能得到朝廷重用，我们一辈子记得您的大恩。"酆美感谢不杀之恩，下山回京去了。宋江派人一直送到边界。酆美回京的事就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">宋江回到忠义堂上，再与吴用等众头领商议。原来今次用此十面埋伏之计，都是吴用机谋布置，杀得童贯胆寒心碎，梦里也怕，大军三停折了二停。吴用道：“童贯回去京师，奏了官家，如何不再起兵来。必得一人，直投东京探听虚实，回报山寨，预作准备。”宋江道：“军师此论，允合吾心。恁弟兄中不知那个敢去？”只见坐次之中一个人应道：“兄弟愿往。”众人看了，都道：“须是他去，必干大事。”</div>
+            <div class="text-block simplified-text">宋江回到忠义堂，又和吴用等头领商量事情。原来这次用的十面埋伏计策，都是吴用出的主意，打得童贯吓破了胆，连做梦都害怕，军队损失了三分之二。吴用说："童贯回京城后，向皇帝报告了，肯定还会派兵来打。得派个人去东京打探消息，回来报告山寨，我们好提前准备。"宋江说："军师说得对，正合我意。兄弟们谁愿意去？"这时有个人站起来说："我去。"大家一看都说："他去最合适，肯定能办好这事。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">不是这个人来，有分教：济州城外，造数百只艨艟战船；梁山泊中，添万余石军粮米麦。正是：冲阵马亡青嶂下，戏波船陷绿蒲中。毕竟梁山泊是谁人前去打听，且听下回分解。</div>
+            <div class="text-block simplified-text">如果不是这个人来，事情就会变成这样：济州城外会造几百艘大战船；梁山泊里会多出一万多石的军粮。简单说就是：打仗的马死在青山下，翻了的船陷在芦苇里。到底是谁去梁山泊打探消息呢？咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
