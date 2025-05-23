@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百十二回 救寿春于诠死节　取长城伯约鏖兵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./111.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百十二回 救寿春于诠死节　取长城伯约鏖兵</h1>
+        <a href="./113.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说司马昭闻诸葛诞会合吴兵前来决战，乃召散骑长史裴秀、黄门侍郎钟会，商议破敌之策。钟会曰：“吴兵之助诸葛诞，实为利也；以利诱之，则必胜矣。”昭从其言，遂令石苞、州泰先引两军于石头城埋伏，王基、陈骞领精兵在后，却令偏将成倅引兵数万先去诱敌；又令陈俊引车仗牛马驴骡，装载赏军之物，四面聚集于阵中，如敌来则弃之。</div>
+            <div class="text-block simplified-text">司马昭听说诸葛诞联合吴国军队要来打仗，就找来裴秀和钟会商量怎么对付敌人。钟会说："吴国帮诸葛诞打仗，其实就是为了捞好处。我们拿好处引诱他们，肯定能赢。"司马昭听了他的主意，做了以下安排：先派石苞和州泰带两支队伍在石头城埋伏；让王基、陈骞带着精锐部队在后面接应；又派成倅带着几万人马去引诱敌人；还让陈俊用牛车驴车拉着犒赏军队的物资，堆在战场上，等敌人来了就故意扔下这些东西逃跑。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">是日，诸葛诞令吴将朱异在左，文钦在右，见魏阵中人马不整，诞乃大驱士马径进。成倅退走，诞驱兴掩杀，见牛马驴骡，遍满郊野；南兵争取，无心恋战。忽然一声炮响，两路兵杀来：左有石苞，右有州泰，诞大惊，急欲退时，王基、陈骞精兵杀到。诞兵大败。司马昭又引兵接应。诞引败兵奔入寿春，闭门坚守。昭令兵四面围困，并力攻城。</div>
+            <div class="text-block simplified-text">那天，诸葛诞让吴国的朱异带兵在左边，文钦在右边。他们看到魏国的军队阵型混乱，就带着大队人马直接冲了过去。魏将成倅赶紧撤退，诸葛诞乘胜追击，发现战场上到处都是牛马驴骡等牲口。南方的士兵只顾着抢这些东西，根本不想打仗。突然一声炮响，两边杀出两支魏国军队：左边是石苞，右边是州泰。诸葛诞吓坏了，正要撤退，王基和陈骞又带着精锐部队杀到。诸葛诞的部队被打得大败。这时司马昭也带兵赶来支援。诸葛诞只好带着残兵逃回寿春城，关起城门死守。司马昭命令军队从四面围住城池，全力攻城。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">时吴兵退屯安丰，魏主车驾驻于项城。钟会曰：“今诸葛诞虽败，寿春城中粮草尚多，更有吴兵屯安丰以为掎角之势；今吾兵四面攻围，彼缓则坚守，急则死战；吴兵或乘势夹攻：吾军无益。不如三面攻之，留南门大路，容贼自走；走而击之，可全胜也。吴兵远来，粮必不继；我引轻骑抄在其后，可不战而自破矣。”昭抚会背曰：“君真吾之子房也！”遂令王基撤退南门之兵。却说吴兵屯于安丰，孙綝唤朱异责之曰：“量一寿春城不能救，安可并吞中原？如再不胜必斩！”朱异乃回本寨商议。于诠曰：“今寿春南门不围，某愿领一军从南门入去，助诸葛诞守城。将军与魏兵挑战，我却从城中杀出：两路夹攻，魏兵可破矣。”异然其言。于是全怿、全端、文钦等，皆愿入城。遂同于诠引兵一万，从南门而入城。魏兵不得将令，未敢轻敌，任吴兵入城，乃报知司马昭。昭曰：“此欲与朱异内外夹攻，以破我军也。”乃召王基、陈骞分付曰：“汝可引五千兵截断朱异来路，从背后击之。”二人领命而去。朱异正引兵来，忽背后喊声大震：左有王基，右有陈骞，两路军杀来。吴兵大败。朱异回见孙綝，綝大怒曰：“累败之将，要汝何用！”叱武士推出斩之。又责全端子全祎曰：“若退不得魏兵，汝父子休来见我！”于是孙綝自回建业去了。</div>
+            <div class="text-block simplified-text">当时吴国的军队撤退驻扎在安丰，魏国的皇帝在项城。钟会说：“现在诸葛诞虽然败了，但寿春城里粮食还很多，加上吴军在安丰驻扎形成夹击之势。如果我们四面围攻，他们不急就死守，急了就拼命；吴军还可能趁机夹攻：对我们没好处。不如三面包围，留出南门大路让他们逃跑；等他们逃跑时再打，就能大获全胜。吴军远道而来，粮食肯定跟不上；我们派轻骑兵绕到后面截断粮道，不用打就能让他们崩溃。”司马昭拍着钟会后背说：“你真是我的张良啊！”于是命令王基撤走南门的部队。
+
+再说吴军驻扎在安丰，孙綝把朱异叫来骂：“连个寿春城都救不了，还谈什么夺取中原？再打不赢就砍你脑袋！”朱异回营商量。于诠说：“现在寿春南门没包围，我愿带兵从南门进城帮诸葛诞守城。将军您和魏军正面交战，我从城里杀出来：两路夹攻就能打败魏军。”朱异同意了。于是全怿、全端、文钦等人都要进城，跟着于诠带一万兵从南门进了城。魏军没接到命令不敢轻举妄动，放吴军进城后报告了司马昭。司马昭说：“这是想和朱异里应外合打我们。”就叫来王基、陈骞吩咐：“你们带五千兵截断朱异的退路，从背后袭击。”两人领命去了。
+
+朱异正带兵过来，突然背后杀声震天：左边王基，右边陈骞，两路军队杀来。吴军大败。朱异回去见孙綝，孙綝大怒：“老是打败仗，留你有什么用！”命令武士拉出去砍了。又骂全端的儿子全祎：“要是打不退魏军，你们父子别来见我！”说完孙綝自己回建业去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">钟会与昭曰：“今孙綝退去，外无救兵，城可围矣。”昭从之，遂催军攻围。全祎引兵欲入寿春，见魏兵势大，寻思进退无路，遂降司马昭。昭加祎为偏将军。祎感昭恩德，乃修家书与父全端，叔全怿，言孙綝不仁，不若降魏，将书射入城中。怿得祎书，遂与端引数千人开门出降。诸葛诞在城中忧闷，谋士蒋班、焦彝进言曰：“城中粮少兵多，不能久守，可率吴、楚之众，与魏兵决一死战。”诞大怒曰：“吾欲守，汝欲战，莫非有异心乎！再言必斩！”二人仰天长叹曰：“诞将亡矣！我等不如早降，免至一死！”是夜二更时分，蒋、焦二人逾城降魏，司马昭重用之。因此城中虽有敢战之士，不敢言战。诞在城中，见魏兵四下筑起土城以防淮水，只望水泛，冲倒土城，驱兵击之。不想自秋至冬，并无霖雨，淮水不泛。城中看看粮尽，文钦在小城内与二子坚守，见军士渐渐饿倒，只得来告诞曰：“粮皆尽绝，军士饿损，不如将北方之兵尽放出城，以省其食。”诞大怒曰：“汝教我尽去北军，欲谋我耶？”叱左右推出斩之。文鸯、文虎见父被杀，各拔短刀，立杀数十人，飞身上城，一跃而下，越壕赴魏寨投降。司马昭恨文鸯昔日单骑退兵之仇，欲斩之。钟会谏曰：“罪在文钦，今文钦已亡，二子势穷来归，若杀降将，是坚城内人之心也。”昭从之，遂召文鸯、文虎入帐，用好言抚慰，赐骏马锦衣，加为偏将军，封关内侯。二子拜谢，上马绕城大叫曰：“我二人蒙大将军赦罪赐爵，汝等何不早降！”城内人闻言，皆计议曰：“文鸯乃司马氏仇人，尚且重用，何况我等乎？”于是皆欲投降。诸葛诞闻之大怒，日夜自来巡城。以杀为威。</div>
+            <div class="text-block simplified-text">钟会对司马昭说："现在孙綝已经撤退，外面没有援兵，我们可以包围城池了。"司马昭同意，立刻下令加紧围攻。全祎带兵想进寿春城，看到魏军势力强大，发现自己进退两难，就投降了司马昭。司马昭封他做偏将军。全祎感激司马昭的恩情，就写了封家信给父亲全端和叔叔全怿，说孙綝不是好人，不如投降魏国，把信射进城里。全怿收到信后，就和全端带着几千人开城门投降了。
+
+诸葛诞在城里发愁，谋士蒋班和焦彝建议说："城里粮食少士兵多，撑不了多久，不如带着吴楚的士兵和魏军拼死一战。"诸葛诞大怒："我要守城，你们却要出战，是不是有二心？再说就杀了你们！"两人仰天长叹："诸葛诞要完蛋了！我们不如早点投降，免得送死！"当晚半夜，蒋班和焦彝翻墙投降魏军，司马昭重用了他们。这样一来，城里虽然还有敢打的士兵，但没人敢提出战的事了。
+
+诸葛诞在城里，看到魏军在四周筑土城防淮水，就盼着发大水冲垮土城，好带兵出击。没想到从秋天到冬天一滴雨都没下，淮水也没涨。城里粮食快吃完了，文钦在小城里和两个儿子死守，看到士兵们饿得不行，只好来对诸葛诞说："粮食吃光了，士兵都饿坏了，不如把北方士兵放出城去，省点粮食。"诸葛诞大怒："你想让我把北方兵都放走，是不是想害我？"命令手下把文钦推出去杀了。
+
+文鸯和文虎见父亲被杀，拔出短刀当场杀了数十人，跳上城墙翻出去，越过壕沟到魏军营寨投降。司马昭记恨文鸯以前单枪匹马打退魏军的仇，想杀了他。钟会劝道："罪过在文钦，现在文钦已死，他两个儿子走投无路来投降，如果杀了降将，只会让城里人更坚定守城的决心。"司马昭听从建议，把文鸯、文虎叫来好言安慰，赏赐好马和锦衣，封为偏将军和关内侯。两人谢恩后，骑马绕城大喊："我们被大将军饶恕还封了官，你们为什么不早点投降？"城里人听了议论纷纷："连司马家的仇人文鸯都被重用，何况我们呢？"于是都想投降。诸葛诞听说后气坏了，整天亲自巡城，靠杀人来立威。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">钟会知城中人心已变，乃入帐告昭曰：“可乘此时攻城矣。”昭大喜，遂激三军，四面云集，一齐攻打。守将曾宣献了北门，放魏兵入城。诞知魏兵已入；慌引麾下数百人，自城中小路突出；至吊桥边，正撞着胡奋，手起刀落，斩诞于马下，数百人皆被缚。王基引兵杀到西门，正遇吴将于诠。基大喝曰：“何不早降！”诠大怒曰：“受命而出，为人救难，既不能救，又降他人，义所不为也！”乃掷盔于地，大呼曰：“人生在世，得死于战场者，幸耳！”急挥刀死战三十余合，人困马乏，为乱军所杀。后人有诗赞曰：“司马当年围寿春，降兵无数拜车尘。东吴虽有英雄士，谁及于诠肯杀身！”</div>
+            <div class="text-block simplified-text">钟会发现城里的人心已经变了，就进帐篷告诉司马昭：“现在正是攻城的好机会。”司马昭很高兴，立刻鼓舞军队，从四面八方一起进攻。守城的将领曾宣偷偷打开北门，放魏军进城。诸葛诞知道魏军已经进城，急忙带着几百个手下从小路逃跑。刚到吊桥边，正好碰上胡奋，胡奋抬手一刀就把诸葛诞砍下马，几百个手下全被抓了。王基带兵冲到西门，碰上了吴国的于诠。王基大喊：“还不快投降！”于诠生气地说：“我奉命来救人，现在救不了人，还要投降敌人，这种事我绝不干！”说完把头盔往地上一摔，大喊：“人这一辈子，能死在战场上就是福气！”说完拼命和王基打了三十多个回合，最后力气用尽，被乱军杀死。后来有人写诗称赞他：“当年司马昭围攻寿春，无数人跪地投降。东吴虽然有不少英雄，但谁能像于诠这样宁死不屈！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">司马昭入寿春，将诸葛诞老小尽皆枭首，灭其三族。武士将所擒诸葛诞部卒数百人缚至。昭曰：“汝等降否？”众皆大叫曰：“愿与诸葛公同死，决不降汝！”昭大怒，叱武士尽缚于城外，逐一问曰：“降者免死。”并无一人言降。直杀至尽，终无一人降者。昭深加叹息不已，令皆埋之。后人有诗赞曰：“忠臣矢志不偷生，诸葛公休帐下兵，《薤露》歌声应未断，遗踪直欲继田横！”</div>
+            <div class="text-block simplified-text">司马昭带兵打进寿春城，把诸葛诞全家老小都杀了，还灭了他三族。士兵们抓了几百个诸葛诞的手下，绑着押过来。司马昭问他们："你们投降不？"这些人都大喊："我们宁愿跟诸葛公一起死，也绝不投降！"司马昭气坏了，命令士兵把这些人全绑到城外，挨个问："投降的可以免死。"结果没一个人说要投降。最后全被杀光了，自始至终没一个人投降。司马昭连连叹气，让人把他们都埋了。后来有人写诗称赞这些人："忠臣宁死也不苟活，诸葛公的部下真是好样的，悲壮的歌声仿佛还在耳边，他们的气节堪比当年的田横！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说吴兵大半降魏，裴秀告司马昭曰：“吴兵老小，尽在东南江、淮之地，今若留之，久必为变；不如坑之。”钟会曰：“不然。古之用兵者，全国为上，戮其元恶而已。若尽坑之，是不仁也。不如放归江南，以显中国之宽大。”昭曰：“此妙论也。”遂将吴兵尽皆放归本国。唐咨因惧孙綝，不敢回国，亦来降魏。昭皆重用，令分布三河之地。淮南已平。正欲退兵，忽报西蜀姜维引兵来取长城，邀截粮草。昭大惊，慌与多官计议退兵之策。时蜀汉延熙二十年，改为景耀元年。姜维在汉中，选川将两员，每日操练人马：一是蒋舒，一是傅佥。二人颇有胆勇，维甚爱之。忽报淮南诸葛诞起兵讨司马昭，东吴孙綝助之，昭大起两都之兵，将魏太后并魏主一同出征去了。维大喜曰：“吾今番大事济矣！”遂表奏后主，愿兴兵伐魏。中散大夫谯周听知，叹曰：“近来朝廷溺于酒色，信任中贵黄皓，不理国事，只图欢乐；伯约累欲征伐，不恤军士：国将危矣！”乃作《仇国论》一篇，寄与姜维。维拆封视之。论曰：“或问：古往能以弱胜强者，其术何如？曰：处大国无患者，恒多慢；处小国有忧者，恒思善。多慢则生乱；思善则生治，理之常也，故周文养民，以少取多；句践恤众，以弱毙强。此其术也。或曰：曩者楚强汉弱，约分鸿沟，张良以为民志既定则难动也，率兵追羽，终毙项氏；岂必由文王、句践之事乎？曰：商、周之际，王侯世尊，君臣久固。当此之时，虽有汉祖，安能仗剑取天下乎？及秦罢侯置守之后，民疲秦役，天下土崩，于是豪杰并争。今我与彼，皆传国易世矣，既非秦末鼎沸之时，实有六国并据之势，故可为文王，难为汉祖。时可而后动，数合而后举，故汤、武之师，不再战而克，诚重民劳而度时审也。如遂极武黩征，不幸遇难，虽有智者，不能谋之矣。”姜维看毕，大怒曰：“此腐儒之论也！”掷之于地，遂提川兵来取中原。乃问傅佥曰：“以公度之，可出何地？”佥曰：“魏屯粮草，皆在长城；今可径取骆谷，度沈岭，直到长城，先烧粮草，然后直取秦川，则中原指日可得矣。”维曰：“公之见与吾计暗合也。”即提兵径取骆谷，度沈岭，望长城而来。</div>
+            <div class="text-block simplified-text">吴国大部分士兵投降了魏国，裴秀对司马昭说："这些吴兵的家人都住在东南的江淮一带，要是留着他们，时间长了肯定要造反，不如直接活埋了。"钟会反对说："不行。打仗的最高境界是收服人心，只杀首恶就行了。全活埋太残忍了，不如放他们回江南，还能显得我们大度。"司马昭觉得有道理，就把吴兵都放回去了。有个叫唐咨的吴将怕回去被孙綝收拾，也投降了魏国，司马昭重用他，让他驻守三河地区。
+
+刚平定淮南准备撤军，突然接到报告说蜀国的姜维带兵来打长城，要截断粮道。司马昭吓坏了，赶紧召集官员商量对策。这时候是蜀汉景耀元年（原来叫延熙二十年），姜维在汉中训练部队，特别看重两个有本事的将领：蒋舒和傅佥。
+
+这时又传来消息：魏国的诸葛诞联合东吴孙綝起兵讨伐司马昭，逼得司马昭带着魏国太后和皇帝亲自出征。姜维高兴坏了："机会来了！"立刻上奏刘禅要出兵伐魏。大臣谯周听说后叹气说："现在皇上整天吃喝玩乐，宠信太监黄皓，不理朝政。姜维老是打仗，不顾士兵死活，国家要完啊！"就写了篇《仇国论》劝姜维。
+
+文章大意是说：弱国想打败强国，得学周文王和越王勾践那样爱护百姓、积蓄力量。现在魏蜀两国都立国很久了，局势稳定，应该稳扎稳打。要是硬拼，搞不好要亡国。姜维看完气得把文章一扔："书呆子懂什么！"直接带兵出发了。
+
+他问傅佥："你觉得该打哪里？"傅佥说："魏军的粮草都在长城，咱们可以走骆谷、过沈岭，先烧他们粮草，再打秦川，中原就是我们的了。"姜维一拍大腿："和我想的一样！"立刻带兵往长城杀去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说长城镇守将军司马望，乃司马昭之族兄也。城内粮草甚多，人马却少。望听知蜀兵到，急与王真、李鹏二将，引兵离城二十里下寨。次日，蜀兵来到，望引二将出阵。姜维出马，指望而言曰：“今司马昭迁主于军中，必有李傕、郭汜之意也，吾今奉朝廷明命，前来问罪，汝当早降。若还愚迷，全家诛戮！”望大声而答曰：“汝等无礼，数犯上国，如不早退，令汝片甲不归！”言未毕，望背后王真挺枪出马，蜀阵中傅佥出迎。战不十合，佥卖个破绽，王真便挺枪来刺；傅佥闪过，活捉真于马上，便回本阵。李鹏大怒，纵马轮刀来救。佥故意放慢，等李鹏将近，努力掷真于地，暗掣四楞铁简在手；鹏赶上举刀待砍，傅佥偷身回顾，向李鹏面门只一简，打得眼珠迸出，死于马下。王真被蜀军乱枪刺死。姜维驱兵大进。司马望弃寨入城，闭门不出。维下令曰：“军士今夜且歇一宿，以养锐气。来日须要入城。”次日平明，蜀兵争先大进，一拥至城下，用火箭火炮打入城中。城上草屋一派烧着，魏兵自乱。维又令人取干柴堆满城下，一齐放火，烈焰冲天。城已将陷，魏兵在城内嚎啕痛哭，声闻四野。</div>
+            <div class="text-block simplified-text">话说长城镇守将军司马望，是司马昭的堂哥。城里粮食很多，但兵不多。司马望听说蜀军来了，赶紧和王真、李鹏两位将军带兵出城，在离城二十里的地方扎营。第二天蜀军到了，司马望带着两位将军出战。姜维骑马出来，指着司马望说："现在司马昭把皇帝挟持在军中，肯定和李傕、郭汜一样想造反。我奉朝廷命令来讨伐你们，你们最好早点投降。要是执迷不悟，就杀你们全家！"司马望大声回骂："你们太无礼了，老是来侵犯我们魏国。要是不赶紧退兵，让你们有来无回！"话还没说完，司马望身后的王真就挺枪冲出来，蜀军这边的傅佥出来迎战。打了不到十个回合，傅佥假装露出破绽，王真一枪刺过来；傅佥躲开后，直接把王真从马上活捉了回去。李鹏气得骑马挥刀来救，傅佥故意放慢速度，等李鹏靠近时，突然把王真往地上一扔，偷偷拿出铁简；李鹏追上来正要砍人，傅佥猛地转身，一铁简砸在李鹏脸上，打得他眼珠都爆出来，当场摔下马死了。王真也被蜀军乱枪刺死。姜维乘胜追击。司马望丢下营地逃回城里，关紧城门不敢出来。姜维下令："今晚让士兵好好休息，养足精神。明天一定要攻进城。"第二天天刚亮，蜀军就争先恐后地冲上去，把火箭火炮往城里射。城上的草屋全烧着了，魏兵乱成一团。姜维又让人在城下堆满干柴点火，火势冲天。眼看城就要被攻破，城里的魏兵哭喊连天，哭声传遍四周。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">正攻打之间，忽然背后喊声大震。维勒马回看，只见魏兵鼓噪摇旗，浩浩而来。维遂令后队为前队，自立于门旗下候之。只见魏阵中一小将，全装惯带，挺枪纵马而出，约年二十余岁，面如傅粉，唇似抹朱，厉声大叫曰：“认得邓将军否！”维自思曰：“此必是邓艾矣。”挺枪纵马来迎。二人抖擞精神，战到三四十合，不分胜负。那小将军枪法无半点放闲。维心中自思：“不用此计，安得胜乎？”便拨马望左边山路中而走。那小将骤马追来，维挂住了钢枪，暗取雕弓羽箭射之。那小将眼乖，早已见了，弓弦响处，把身望前一倒，放过羽箭。维回头看时，小将已到，挺枪来刺；维一闪，那枪从肋傍边过，被维挟住。那小将弃枪，望本阵而走。维嗟叹曰：“可惜！可惜！”再拨马赶来。追至阵门前，一将提刀而出曰：“姜维匹夫，勿赶吾儿！邓艾在此！”维大惊。原来小将乃艾之子邓忠也。维暗暗称奇；欲战邓艾，又恐马乏，乃虚指艾曰：“吾今日识汝父子也。各且收兵，来日决战。”艾见战场不利，亦勒马应曰：“既如此，各自收兵，暗算者非丈夫也。”于是两军皆退。邓艾据渭水下寨，姜维跨两山安营。艾见了蜀兵地理，乃作书与司马望曰：“我等切不可战，只宜固守。待关中兵至时，蜀兵粮草皆尽，三面攻之，无不胜也。今遣长子邓忠相助守城。”一面差人于司马昭处求救。</div>
+            <div class="text-block simplified-text">两军正打得激烈时，姜维突然听到背后传来震天喊声。他回头一看，发现大批魏军摇着旗呐喊着冲过来。姜维赶紧让后队变前队，自己站在军旗下等着。这时魏军里冲出一个年轻将领，全副武装骑着马，二十多岁的样子，长得白白净净，红嘴唇，大喊："认识邓将军吗！"姜维心想："这肯定是邓艾。"就提枪迎上去。
+
+两人打了三十多回合不分胜负。那小将枪法很厉害，一点破绽都没有。姜维心里琢磨："不用计策赢不了啊。"就假装往左边山路逃跑。小将紧追不舍，姜维突然转身拉弓射箭。没想到小将眼尖，听到弓弦声就趴下躲过了。姜维回头时，小将已经冲到跟前举枪就刺。姜维一闪身，用胳肢窝夹住了对方的枪。小将扔下枪就跑回自己阵营。姜维叹气说："太可惜了！"又追了上去。
+
+追到对方军营前，一个将领提刀出来喊："姜维别追我儿子！邓艾在这儿！"姜维这才知道刚才那小将是邓艾的儿子邓忠，心里暗暗吃惊。他想和邓艾打，又怕马太累，就假装说："今天算认识你们父子了。先休战，改天再打。"邓艾看形势不利，也回应说："那就各自退兵，偷袭不算好汉。"于是两边都撤军了。
+
+后来邓艾在渭水边扎营，姜维在两山之间安营。邓艾观察了蜀军地形后，给司马望写信说："我们现在不能打，应该死守。等关中的援军到了，蜀军粮草耗尽时三面夹攻，一定能赢。现在让我儿子邓忠帮你守城。"同时派人向司马昭求救。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说姜维令人于艾寨中下战书，约来日大战，艾佯应之。次日五更，维令三军造饭，平明布阵等候。艾营中偃旗息鼓，却如无人之状。维至晚方回。次日又令人下战书，责以失期之罪。艾以酒食待使，答曰：“微躯小疾，有误相持，明日会战。”次日，维又引兵来，艾仍前不出。如此五六番。傅佥谓维曰：“此必有谋也，宜防之。”维曰：“此必捱关中兵到，三面击我耳。吾今令人持书与东吴孙綝，使并力攻之。”忽探马报说：“司马昭攻打寿春，杀了诸葛诞，吴兵皆降。昭班师回洛阳。便欲引兵来救长城。”维大惊曰：“今番伐魏，又成画饼矣，不如且回。”正是：已叹四番难奏绩，又嗟五度未成功。未知如何退兵，且看下文分解。</div>
+            <div class="text-block simplified-text">姜维派人去邓艾的军营下战书，约好第二天大战一场。邓艾假装答应了。第二天天刚亮，姜维就让部队做饭，天亮后排好阵势等着。可邓艾那边却静悄悄的，像没人一样。姜维等到晚上才撤兵。第二天他又派人去质问邓艾为什么不来应战。邓艾好吃好喝招待使者，说："我身体有点不舒服，耽误了打仗，明天一定打。"结果第二天姜维带兵来了，邓艾还是不出来。这样来回搞了五六次。傅佥对姜维说："这里面肯定有诈，咱们得小心。"姜维说："他肯定是想等关中的援军到了，从三面夹击我们。我现在就写信给东吴的孙綝，让他一起出兵。"这时突然有探子来报："司马昭攻下了寿春，杀了诸葛诞，吴军都投降了。司马昭已经撤兵回洛阳，准备来支援长城。"姜维大吃一惊说："这次伐魏又白忙活了，还是先撤吧。"真是：四次北伐都没成功，第五次又要泡汤了。到底怎么撤军，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
