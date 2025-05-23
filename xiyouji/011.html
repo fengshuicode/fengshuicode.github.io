@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十回　二将军宫门镇鬼　唐太宗地府还魂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./010.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第十回　二将军宫门镇鬼　唐太宗地府还魂</h1>
+        <a href="./012.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说太宗与魏征在便殿对弈，一递一着，摆开阵势。正合《烂柯经》云：</div>
+            <div class="text-block simplified-text">唐太宗和魏征在一个小宫殿里下围棋，你一步我一步地摆开棋局。这情形正好应了《烂柯经》里说的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">博弈之道，贵乎严谨。高者在腹，下者在边，中者在角，此棋家之常法。</div>
+            <div class="text-block simplified-text">下棋的关键是要认真仔细。高手喜欢占中间，水平差点的爱占边上，中等水平的爱占角落，这是下棋的人都知道的基本方法。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">法曰：</div>
+            <div class="text-block simplified-text">原文就两个字"法曰："，意思是"兵法上说："或者"法律条文规定："。  
+
+用最简单直白的现代白话文说就是：  
+"书上写着："  
+或者  
+"规定里说："  
+
+（因为原文太短，具体意思要看上下文。如果是讲兵法的，就是"兵法书上说"；如果是讲法律的，就是"法律规定"。这里按最通用的方式翻译成"书上写着"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">宁输一子，不失一先。击左则视右，攻后则瞻前。有先而后，有后而先。两生勿断，皆活勿连。阔不可太疏，密不可太促。与其恋子以求生，不若弃之而取胜；与其无事而独行，不若固之而自补。彼众我寡，先谋其生；我众彼寡，务张其势。善胜者不争，善阵者不战；善战者不败，善败者不乱。夫棋始以正合，终以奇胜。凡敌无事而自补者，有侵绝之意；弃小而不救者，有图大之心。随手而下者，无谋之人；不思而应者，取败之道。《诗》云：“惴惴小心，如临于谷。”此之谓也。</div>
+            <div class="text-block simplified-text">下棋时，宁愿丢一个子，也不能失去先手优势。对手攻左边，你要注意右边；对手攻后面，你要看好前面。有时候先出手反而被动，后出手却能占先机。两片活棋别急着切断，两处能活的别硬要连上。布局太宽会松散，太密又显得挤。与其死抱着几个子想活命，不如主动放弃去赢棋；与其闲着乱走，不如先稳固自己的地盘。对方子多我方子少时，先想办法活下来；我方子多对方子少时，要趁机扩大优势。真正会赢的人不硬拼，会布阵的人不用死战；会打仗的人不轻易输，输了也能稳住阵脚。开局按常规走，最后靠出奇招取胜。如果对手没事儿就补自己的棋，可能是要发动进攻；放弃小棋不救的，多半在打大算盘。随手乱下的人没脑子，不思考就应招的肯定输。就像《诗经》说的："要像站在悬崖边那样小心谨慎。"就是这个道理。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">诗曰：棋盘为地子为天，色按阴阳造化全。下到玄微通变处，笑夸当日烂柯仙。</div>
+            <div class="text-block simplified-text">诗里说：  
+棋盘就像大地，棋子就像天空，黑子白子代表阴阳变化。  
+下棋下到精妙的地方，那感觉比传说中的神仙还快活！  
+
+（说明：  
+1. "烂柯仙"用"传说中的神仙"替代，避免文化隔阂  
+2. "玄微通变"转化为"精妙的地方"  
+3. 保留棋盘/棋子/阴阳的核心意象  
+4. 口语化处理为"就像""代表""快活"等日常词汇  
+5. 末句用"那感觉..."句式增强场景感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">君臣两个对弈此棋，正下到午时三刻，一盘残局未终，魏征忽然踏伏在案边，鼾鼾盹睡。太宗笑曰：“贤卿真是匡扶社稷之心劳，创立江山之力倦，所以不觉盹睡。”太宗任他睡着，更不呼唤。不多时，魏征醒来，俯伏在地道：“臣该万死，臣该万死！却才晕困，不知所为，望陛下赦臣慢君之罪。”太宗道：“卿有何慢罪？且起来，拂退残棋，与卿从新更着。”魏征谢了恩，却才拈子在手，只听得朝门外大呼小叫。原来是秦叔宝、徐茂功等，将着一个血淋的龙头，掷在帝前，启奏道：“陛下，海浅河枯曾有见，这般异事却无闻。”太宗与魏征起身道：“此物何来？”叔宝、茂功道：“千步廊南，十字街头，云端里落下这颗龙头，微臣不敢不奏。”唐王惊问魏征：“此是何说？”魏征转身叩头道：“是臣才一梦斩的。”唐王闻言，大惊道：“贤卿盹睡之时，又不曾见动身动手，又无刀剑，如何却斩此龙？”魏征奏道：“主公，臣的身在君前，梦离陛下——</div>
+            <div class="text-block simplified-text">皇帝和魏征正在下棋，下到中午还没分出胜负，魏征突然趴在桌上睡着了。皇帝笑着说："爱卿为国事操劳太累了，所以不知不觉睡着了。"皇帝没叫醒他，让他继续睡。过了一会儿，魏征醒来，赶紧跪下说："臣罪该万死！刚才太困睡着了，请皇上饶恕我的不敬之罪。"皇帝说："这算什么罪过？快起来，我们把棋局收拾一下重新下吧。"
+
+魏征刚拿起棋子，突然听到宫门外一阵吵闹。原来是秦叔宝和徐茂功等人提着一个血淋淋的龙头进来报告："皇上，我们见过河水干涸，可从来没见过这种怪事。"皇帝和魏征站起来问："这东西哪来的？"两人回答："在千步廊南边的十字路口，这颗龙头从云里掉下来，我们不敢不报告。"
+
+皇帝吃惊地问魏征："这是怎么回事？"魏征跪下说："是臣刚才在梦里砍的。"皇帝大惊："爱卿睡着的时候，明明没动过，手上也没刀剑，怎么斩的龙？"魏征回答："皇上，臣的身体虽然在这里，但魂魄已经离开——"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">身在君前对残局，合眼朦胧；梦离陛下乘瑞云，出神抖擞。那条龙，在剐龙台上，被天兵将绑缚其中。是臣道：‘你犯天条，合当死罪。我奉天命，斩汝残生。’龙闻哀苦，臣抖精神。龙闻哀苦，伏爪收鳞甘受死；臣抖精神，撩衣进步举霜锋。傣带一声刀过处，龙头因此落虚空。”</div>
+            <div class="text-block simplified-text">我站在皇帝面前下棋，困得眼睛都睁不开；迷迷糊糊梦见自己离开皇帝驾着祥云，一下子精神了。那条龙被天兵天将绑在剐龙台上。我就说："你犯了天条，该死。我奉老天爷的命令来杀你。"龙听了直求饶，我打起精神。龙可怜巴巴地缩着爪子收起鳞片等死，我提起劲儿撩起衣服上前，举起雪亮的刀。咔嚓一刀砍下去，龙头就掉到半空中了。
+
+（说明：译文完全保留"剐龙台斩龙"的核心情节，用"老天爷""求饶""咔嚓一刀"等口语化表达替换了"天条""哀苦""霜锋"等文言词汇，将"合眼朦胧/出神抖擞"转化为"困得睁不开眼/一下子精神了"等生活化表述，确保砍龙过程的动作连贯性，最后用拟声词强化画面感。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">太宗闻言，心中悲喜不一。喜者夸奖魏征好臣，朝中有此豪杰，愁甚江山不稳？悲者谓梦中曾许救龙，不期竟致遭诛。只得强打精神，传旨着叔宝将龙头悬挂市曹，晓谕长安黎庶，一壁厢赏了魏征，众官散讫。当晚回宫，心中只是忧闷，想那梦中之龙，哭啼啼哀告求生，岂知无常，难免此患。思念多时，渐觉神魂倦怠，身体不安。当夜二更时分，只听得宫门外有号泣之声，太宗愈加惊恐。正朦胧睡间，又见那泾河龙王，手提着一颗血淋淋的首级，高叫：“唐太宗，还我命来，还我命来！你昨夜满口许诺救我，怎么天明时反宣人曹官来斩我？你出来，你出来！我与你到阎君处折辨折辨！”他扯住太宗，再三嚷闹不放，太宗箝口难言，只挣得汗流遍体。正在那难分难解之时，只见正南上香云缭绕，彩雾飘飘，有一个女真人上前，将杨柳枝用手一摆，那没头的龙，悲悲啼啼，径往西北而去。原来这是观音菩萨，领佛旨上东土寻取经人，此住长安城都土地庙里，夜闻鬼泣神号，特来喝退业龙，救脱皇帝。那龙径到阴司地狱具告不题。</div>
+            <div class="text-block simplified-text">唐太宗听了这事，心里又高兴又难过。高兴的是魏征是个好官，朝中有这样的能人，还怕国家不稳吗？难过的是自己做梦时答应救龙，没想到龙还是被杀了。他只好打起精神，下令让秦叔宝把龙头挂在城门上给老百姓看，同时奖赏了魏征，然后让大臣们退下。  
+
+晚上回宫后，太宗一直闷闷不乐，想着梦里那条龙哭着求他救命，没想到还是没逃过一死。他越想越难受，渐渐觉得精神疲惫，身体不舒服。半夜时候，忽然听到宫门外有哭声，太宗更害怕了。迷迷糊糊中，他又看见泾河龙王，提着一颗血淋淋的头，冲他大喊：“唐太宗！还我命来！你昨晚明明答应救我，怎么天亮反而叫人杀我？你出来！咱们到阎王那儿评理去！”龙王拽住太宗不放，太宗吓得说不出话，浑身冒冷汗。  
+
+就在这危急时刻，南边飘来一阵香雾，一个女仙人（其实是观音菩萨）走过来，用杨柳枝一挥，那没头的龙就哭着往西北方向走了。原来观音菩萨奉如来之命来大唐找取经人，正好住在长安城的土地庙里，晚上听到鬼哭神嚎，就赶来赶走龙王，救了皇帝。后来龙王去阴曹地府告状，这是后话了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">却说太宗苏醒回来，只叫“有鬼，有鬼！”慌得那三宫皇后，六院嫔妃，与近侍太监，战兢兢一夜无眠。不觉五更三点，那满朝文武多官，都在朝门外候朝。等到天明，犹不见临朝，唬得一个个惊惧踌躇。及日上三竿，方有旨意出来道：“朕心不快，众官免朝。”不觉倏五七日，众官忧惶，都正要撞门见驾问安，只见太后有旨，召医官入宫用药，众人在朝门等候讨信。少时，医官出来，众问何疾。医官道：“皇上脉气不正，虚而又数，狂言见鬼，又诊得十动一代，五脏无气，恐不讳只在七日之内矣。”众官闻言大惊失色。正怆惶间，又听得太后有旨宣徐茂功、护国公、尉迟公见驾。三公奉旨，急入到分宫楼下。拜毕，太宗正色强言道：“贤卿，寡人十九岁领兵，南征北伐，东挡西除，苦历数载，更不曾见半点邪祟，今日却反见鬼！”尉迟公道：“创立江山，杀人无数，何怕鬼乎？”太宗道：“卿是不信。朕这寝宫门外，入夜就抛砖弄瓦，鬼魅呼号，着然难处。白日犹可，昏夜难禁。”叔宝道：“陛下宽心，今晚臣与敬德把守宫门，看有什么鬼祟。”太宗准奏，茂功谢恩而出。当日天晚，各取披挂，他两个介胄整齐，执金瓜钺斧，在宫门外把守。好将军！你看他怎生打扮——</div>
+            <div class="text-block simplified-text">唐太宗醒过来后，一直大喊"有鬼啊！有鬼啊！"吓得皇后、妃子和太监们整晚提心吊胆，谁都不敢睡觉。天快亮时，文武百官照常在宫门外等着上朝，可等到太阳老高了还不见皇上出来。最后只传出一句话："皇上不舒服，今天不上朝了。"就这样过了五六天，大臣们都急坏了，正想闯进去看看皇上，突然太后传令叫太医进宫看病。太医出来后，大家赶紧问皇上怎么了。太医说："皇上脉象很乱，老是说胡话看见鬼，恐怕...最多只剩七天时间了。"大臣们一听脸都吓白了。这时太后又传令让徐茂功、秦叔宝和尉迟恭三位大臣进宫。三人进去后，唐太宗硬撑着说："我十九岁就带兵打仗，什么场面没见过？现在居然撞鬼了！"尉迟恭说："打天下时杀了那么多人，还怕什么鬼？"太宗说："你们不信！我寝宫外面一到晚上就砖瓦乱飞，鬼哭狼嚎的，白天还好，晚上实在受不了。"秦叔宝就说："皇上放心，今晚我和尉迟恭守在宫门口，看看到底是什么鬼怪。"皇上同意了。到了晚上，两位将军全副武装，拿着兵器在宫门外站岗。嘿！你看他俩那威风凛凛的架势——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">头戴金盔光烁烁，身披铠甲龙鳞。护心宝镜幌祥云，狮蛮收紧扣，绣带彩霞新。这一个凤眼朝天星斗怕，那一个环睛映电月光浮。他本是英雄豪杰旧勋臣，只落得千年称户尉，万古作门神。</div>
+            <div class="text-block simplified-text">这个人头上戴着闪闪发光的金头盔，身上穿着像龙鳞一样的铠甲。护心镜亮得能照出祥云，腰带扣得很紧，绣花的带子像彩霞一样鲜艳。他眼睛像凤凰眼一样向上看，连星星都怕他；另一个眼睛又大又亮，像闪电一样，月光都显得暗淡。他们本来是立过大功的英雄豪杰，现在却只能永远当个看门的门神。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">二将军侍立门旁，一夜天晚，更不曾见一点邪祟。是夜，太宗在宫，安寝无事，晓来宣二将军，重重赏牜劳道：“朕自得疾，数日不能得睡，今夜仗二将军威势甚安。卿且请出安息安息，待晚间再一护卫。”二将谢恩而出。遂此二三夜把守俱安，只是御膳减损，病转觉重。太宗又不忍二将辛苦，又宣叔宝、敬德与杜、房诸公入宫，吩咐道：“这两日朕虽得安，却只难为秦、胡二将军彻夜辛苦。朕欲召巧手丹青，传二将军真容，贴于门上，免得劳他，如何？”众臣即依旨，选两个会写真的，着胡、秦二公依前披挂，照样画了，贴在门上，夜间也即无事。</div>
+            <div class="text-block simplified-text">两位将军站在门边守了一整夜，天都亮了，也没见到什么妖魔鬼怪。那天晚上，唐太宗在宫里睡得很安稳。第二天一早，他就召见两位将军，重重赏赐他们说："我这几天一直生病，睡不着觉，多亏有你们守着，昨晚才睡了个好觉。你们先回去休息吧，晚上再来值班。"两位将军谢恩后就走了。  
+
+就这样连续守了两三夜，都很太平，但太宗的饭量却越来越少，病情反而加重了。太宗心疼两位将军太辛苦，又把秦叔宝、尉迟敬德，还有杜如晦、房玄龄等大臣叫进宫，对他们说："这几天我虽然睡得安稳，但秦将军和胡将军整夜值班太辛苦了。我想找画技好的画师，把他们的画像画下来贴在门上，这样就不用辛苦他们亲自守夜了，你们觉得怎么样？"大臣们立刻照办，找来两个会画人像的画师，让秦叔宝和胡将军穿上盔甲摆好姿势，照着画下来贴在门上。结果晚上果然平安无事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">如此二三日，又听得后宰门乒乓乒乓砖瓦乱响，晓来急宣众臣曰：“连日前门幸喜无事，今夜后门又响，却不又惊杀寡人也！”茂功进前奏道：“前门不安，是敬德、叔宝护卫；后门不安，该着魏征护卫。”太宗准奏，又宣魏征今夜把守后门。征领旨，当夜结束整齐，提着那诛龙的宝剑，侍立在后宰门前，真个的好英雄也！他怎生打扮——</div>
+            <div class="text-block simplified-text">这样过了两三天，又听见皇宫后门乒乒乓乓响个不停，砖头瓦片乱飞。天刚亮，皇帝急忙召见大臣们说："前几天前门还好没事，昨晚后门又闹出这么大动静，这不是要吓死我吗！"大臣徐茂功上前说："前门不安宁，有尉迟恭和秦琼两位将军守着；后门出问题，该让魏征去守。"皇帝同意了，马上命令魏征当晚去守后门。魏征接了圣旨，当天晚上穿戴整齐，拿着那把斩过龙的宝剑，威风凛凛地站在后门口，真是个顶天立地的大英雄！他当时是什么打扮呢——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">熟绢青巾抹额，锦袍玉带垂腰，兜风氅袖采霜飘，压赛垒荼神貌。脚踏乌靴坐折，手持利刃凶骁。圆睁两眼四边瞧，那个邪神敢到！</div>
+            <div class="text-block simplified-text">这人打扮得挺威风：头上扎着深色绸巾，身穿锦缎官服，腰系玉带，披风袖子随风飘动，看起来比武神还神气。脚蹬黑靴半蹲着，手里拿着明晃晃的刀，一脸凶相。他瞪大眼睛四处扫视，看哪个妖怪敢过来！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">一夜通明，也无鬼魅。虽是前后门无事，只是身体渐重。一日，太后又传旨，召众臣商议殡殓后事。太宗又宣徐茂功，吩咐国家大事，叮嘱仿刘蜀主托孤之意。言毕，沐浴更衣，待时而已。旁闪魏征，手扯龙衣，奏道：“陛下宽心，臣有一事，管保陛下长生。”太宗道：“病势已入膏肓，命将危矣，如何保得？”征云：“臣有书一封，进与陛下，捎去到冥司，付酆都判官崔吧太宗道：“崔吧是谁？”征云：“崔吧乃是太上先皇帝驾前之臣，先受兹州令，后升礼部侍郎。在日与臣八拜为交，相知甚厚。他如今已死，现在阴司做掌生死文簿的酆都判官，梦中常与臣相会。此去若将此书付与他，他念微臣薄分，必然放陛下回来，管教魂魄还阳世，定取龙颜转帝都。”太宗闻言，接在手中，笼入袖里，遂瞑目而亡。那三宫六院、皇后嫔妃、侍长储君及两班文武，俱举哀戴孝，又在白虎殿上，停着梓宫不题。</div>
+            <div class="text-block simplified-text">一整晚灯火通明，但没闹鬼。虽然皇宫前后门都平安无事，只是皇帝身体越来越差。有一天，太后又下命令，召集大臣商量皇帝死后安葬的事。唐太宗又叫来徐茂功，交代国家大事，特别嘱咐他要像当年刘备托付诸葛亮照顾刘禅那样辅佐新君。说完就去洗澡换衣服，等着最后时刻到来。
+
+这时魏征突然站出来，拉住皇帝的衣袖说："陛下别担心，我有办法能让您长命百岁。"太宗说："我这病已经没救了，命都快没了，还怎么保？"魏征说："我写了一封信，您带着它到阴间，交给地府的判官崔珏。"太宗问："崔珏是谁？"魏征解释："他是先皇的老部下，当过兹州县令，后来升到礼部侍郎。生前和我拜过把子，交情很深。现在他在阴间管生死簿，经常在梦里和我见面。您把这封信给他，看在我的面子上，他肯定会放您还阳。保证让您的魂魄回到阳间，一定能活着回长安。"太宗听完接过信，塞进袖子，然后就闭上眼睛去世了。宫里皇后妃子、太子和文武百官都穿上孝服哭丧，把棺材停在白虎殿里。后面的事就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">却说太宗渺渺茫茫，魂灵径出五凤楼前，只见那御林军马，请大驾出朝采猎。太宗欣然从之，缥渺而去。行多时，人马俱无。独自个散步荒郊草野之间。正惊惶难寻道路，只见那一边，有一人高声大叫道：“大唐皇帝，往这里来，往这里来！”太宗闻言，抬头观看，只见那人——</div>
+            <div class="text-block simplified-text">话说唐太宗迷迷糊糊的，魂魄飘出了五凤楼。他看见御林军的人马，邀请他出去打猎。太宗高兴地答应了，跟着他们飘飘荡荡地走了。走了很久，突然发现人和马都不见了，只剩自己一个人在荒郊野地里走。他正害怕得找不到路，忽然听见有人大喊："大唐皇帝，往这儿来！往这儿来！"太宗听见声音，抬头一看——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">头顶乌纱，腰围犀角。头顶乌纱飘软带，腰围犀角显金厢。手擎牙笏凝祥霭，身着罗袍隐瑞光。脚踏一双粉底靴，登云促雾；怀揣一本生死簿，注定存亡。鬓发蓬松飘耳上，胡须飞舞绕腮旁。昔日曾为唐国相，如今掌案侍阎王。</div>
+            <div class="text-block simplified-text">这人头上戴着乌纱帽，腰上系着犀角带。乌纱帽两边飘着软带子，犀角带上镶着金边儿。他手里拿着象牙笏板，周围绕着祥云；身上穿着官袍，隐隐透着吉祥的光。脚上蹬着白底靴子，能腾云驾雾；怀里揣着本生死簿，专门管人的生死。他耳朵边的头发乱蓬蓬的，腮帮子周围胡子乱飞。以前是唐朝的宰相，现在在阎王爷手下当判官。
+
+（说明：原文描述的是阴间判官形象，译文通过以下方式实现白话转换：
+1. "腰围犀角"译为"腰上系着犀角带"更直观
+2. "祥霭/瑞光"等抽象词转为"祥云/吉祥的光"
+3. "登云促雾"用"能腾云驾雾"表达
+4. "掌案"译为具体职务"当判官"
+5. 保留所有关键元素：服饰、法器、职能、来历
+6. 使用"乱蓬蓬/乱飞"等口语化表达增强画面感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">太宗行到那边，只见他跪拜路旁，口称：“陛下，赦臣失误远迎之罪！”太宗问曰：“你是何人？因甚事前来接拜？”那人道：“微臣半月前，在森罗殿上，见泾河鬼龙告陛下许救反诛之故，第一殿秦广大王即差鬼使催请陛下，要三曹对案。臣已知之，故来此间候接，不期今日来迟，望乞恕罪恕罪。”太宗道：“你姓甚名谁？是何官职？”那人道：“微臣存日，在阳曹侍先君驾前，为兹州令，后拜礼部侍郎，姓崔名吧。</div>
+            <div class="text-block simplified-text">唐太宗走到那儿，看见一个人跪在路边行礼，嘴里喊着："皇上，请您原谅我没能及时迎接的罪过！"太宗问他："你是谁？为啥在这儿接我？"那人回答："小臣半个月前在阴曹地府，看见泾河龙王的鬼魂告状，说您答应救他却反而杀了他。阎王爷就派鬼差来请您去地府对质。我知道这事，特意在这儿等您，没想到来晚了，求您原谅。"太宗又问："你叫什么名字？以前是做什么的？"那人说："小臣活着的时候，在阳间给先皇当过差，做过兹州的县令，后来升官做到礼部侍郎，我叫崔吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">今在阴司，得受酆都掌案判官。”太宗大喜，近前来御手忙搀道：“先生远劳。朕驾前魏征有书一封，正寄与先生，却好相遇。”判官谢恩，问书在何处。太宗即向袖中取出递与崔吧。吧拜接了，拆封而看。其书曰：</div>
+            <div class="text-block simplified-text">现在我在阴间当官，是酆都城的判官，专门管案子的。"唐太宗一听特别高兴，赶紧走上前亲手扶他起来说："先生大老远赶来辛苦了。我这儿有魏征写的一封信，正好要带给您，没想到在这儿碰上了。"判官连忙行礼感谢，问信在哪儿。太宗马上从袖子里掏出信递给他。判官恭敬地接过信，拆开信封读起来。信上写着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">辱爱弟魏征，顿首书拜大都案契兄崔老先生台下：忆昔交游，音容如在。倏尔数载，不闻清教。常只是遇节令设蔬品奉祭，未卜享否？又承不弃，梦中临示，始知我兄长大人高迁。奈何阴阳两隔，天各一方，不能面觌。今因我太宗文皇帝倏然而故，料是对案三曹，必然得与兄长相会。万祈俯念生日交情，方便一二，放我陛下回阳，殊为爱也。容再修谢。不尽。</div>
+            <div class="text-block simplified-text">这是魏征写给已故好友崔判官的一封信，用大白话来说就是：
+
+"亲爱的崔老哥：
+
+我是你老弟魏征。想起以前咱俩的交情，你的声音样子好像还在眼前。一晃好几年没听到你的教诲了。我逢年过节都会准备些素食祭品给你，也不知道你收到没有？多亏你不嫌弃，还托梦告诉我你升官了。可惜咱俩阴阳两隔，没法见面。
+
+现在我家老板唐太宗突然去世，我猜他到了阴间肯定要跟你打交道。看在我们多年交情的份上，麻烦你行个方便，放我家老板还阳吧！这份情谊我记心里了，改日再谢。
+
+魏征拜上"
+
+简单说就是：魏征托阴间的老同事帮忙，想让死去的唐太宗复活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">那判官看了书，满心欢喜道：“魏人曹前日梦斩老龙一事，臣已早知，甚是夸奖不尽。又蒙他早晚看顾臣的子孙，今日既有书来，陛下宽心，微臣管送陛下还阳，重登玉阙。”太宗称谢了。</div>
+            <div class="text-block simplified-text">判官看完信，特别高兴地说："前几天魏征在梦里杀老龙的事，我早就知道了，真是佩服得不得了。他还一直照顾我的后代，现在他写信来求情，陛下您放心，我保证送您回阳间，重新当皇帝。"唐太宗连忙道谢。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">二人正说间，只见那边有一对青衣童子，执幢幡宝盖，高叫道：“阎王有请，有请。”太宗遂与崔判官并二童子举步前进。忽见一座城，城门上挂着一面大牌，上写着“幽冥地府鬼门关”七个大金字。那青衣将幢幡摇动，引太宗径入城中，顺街而走。只见那街旁边有先主李渊，先兄建成，故弟元吉，上前道：“世民来了，世民来了！”那建成、元吉就来揪打索命。太宗躲闪不及，被他扯住。幸有崔判官唤一青面獠牙鬼使，喝退了建成、元吉，太宗方得脱身而去。行不数里，见一座碧瓦楼台，真个壮丽，但见——</div>
+            <div class="text-block simplified-text">两个人正说着话，忽然看见那边来了两个穿黑衣服的小孩，手里举着旗子和华盖，大声喊：“阎王爷有请，有请！”唐太宗就和崔判官跟着这两个小孩往前走。走着走着，突然看见一座城，城门上挂着一块大牌子，上面用金字写着“阴曹地府鬼门关”七个大字。那两个黑衣小孩摇着旗子，带着唐太宗进了城，沿着大街走。街边站着他的父亲李渊、哥哥李建成和弟弟李元吉，他们一看见唐太宗就喊：“李世民来了！李世民来了！”李建成和李元吉冲上来要打他，找他偿命。唐太宗躲不开，被他们抓住。幸好崔判官叫来一个青面獠牙的鬼差，把李建成和李元吉赶跑了，唐太宗这才脱身。又走了没多远，看见一座绿色琉璃瓦的楼台，特别漂亮，只见——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">飘飘万迭彩霞堆，隐隐千条红雾现。耿耿檐飞怪兽头，辉辉瓦迭鸳鸯片。</div>
+            <div class="text-block simplified-text">天上飘着一大片彩色的云，像堆起来一样，隐约还能看见很多红色的雾气。屋檐翘起来，像怪物的脑袋，瓦片亮闪闪的，像一对对鸳鸯的羽毛拼在一起。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">门钻几路赤金钉，槛设一横白玉段。窗牖近光放晓烟，帘栊幌亮穿红电。</div>
+            <div class="text-block simplified-text">门上钉着几排金钉子，门槛是用白玉做的。窗户透亮，早晨的阳光照进来能看见淡淡的雾气，帘子又薄又透，红色的光都能穿过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">楼台高耸接青霄，廊庑平排连宝院。兽鼎香云袭御衣，绛纱灯火明宫扇。</div>
+            <div class="text-block simplified-text">高楼直插云霄，走廊连着华丽的庭院。香炉里飘出的烟雾绕着龙袍，红纱灯照得宫扇闪闪发亮。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">左边猛烈摆牛头，右下峥嵘罗马面。接亡送鬼转金牌，引魄招魂垂素练。</div>
+            <div class="text-block simplified-text">左边有个牛头在使劲摇晃，右下角有个凶猛的罗马人面孔。用金牌送走死去的鬼魂，用白布条把魂魄招引回来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">唤作阴司总会门，下方阎老森罗殿。</div>
+            <div class="text-block simplified-text">这地方就是阴间的总部，下面就是阎王爷住的森罗殿。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">太宗正在外面观看，只见那壁厢环珮叮噹，仙香奇异，外有两对提烛，后面却是十代阎王降阶而至。是那十代阎君：秦广王、楚江王、宋帝王、仵官王、阎罗王、平等王、泰山王、都市王、卞城王、转轮王。</div>
+            <div class="text-block simplified-text">唐太宗正在外面看，突然听到叮叮当当的玉佩声，闻到一股奇特的香味。前面有两对提着灯笼的，后面跟着十殿阎王，他们正走下台阶来迎接。这十位阎王分别是：秦广王、楚江王、宋帝王、仵官王、阎罗王、平等王、泰山王、都市王、卞城王、转轮王。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">十王出在森罗宝殿，控背躬身迎迓太宗。太宗谦下，不敢前行。十王道：“陛下是阳间人王，我等是阴间鬼王，分所当然，何须过让？”太宗道：“朕得罪麾下，岂敢论阴阳人鬼之道？”逊之不已。太宗前行，径入森罗殿上，与十王礼毕，分宾主坐定。约有片时，秦广王拱手而进言曰：“泾河鬼龙告陛下许救而反杀之，何也？”太宗道：“朕曾夜梦老龙求救，实是允他无事，不期他犯罪当刑，该我那人曹官魏征处斩。朕宣魏征在殿着棋，不知他一梦而斩。这是那人曹官出没神机，又是那龙王犯罪当死，岂是朕之过也？”十王闻言，伏礼道：“自那龙未生之前，南斗星死簿上已注定该遭杀于人曹之手，我等早已知之。但只是他在此折辩，定要陛下来此三曹对案，是我等将他送入轮藏，转生去了。今又有劳陛下降临，望乞恕我催促之罪。”言毕，命掌生死簿判官：“急取簿子来，看陛下阳寿天禄该有几何？”崔判官急转司房，将天下万国国王天禄总簿，先逐一检阅，只见南赡部洲大唐太宗皇帝注定贞观一十三年。崔判官吃了一惊，急取浓墨大笔，将“一”字上添了两画，却将簿子呈上。十王从头看时，见太宗名下注定三十三年，阎王惊问：“陛下登基多少年了？”太宗道：“朕即位，今一十三年了。”阎王道：“陛下宽心勿虑，还有二十年阳寿。此一来已是对案明白，请返本还阳。”太宗闻言，躬身称谢。十阎王差崔判官、朱太尉二人，送太宗还魂。太宗出森罗殿，又起手问十王道：“朕宫中老少安否如何？”十王道：“俱安，但恐御妹寿似不永。”太宗又再拜启谢：“朕回阳世，无物可酬谢，惟答瓜果而已。”十王喜曰：“我处颇有东瓜西瓜，只少南瓜。”太宗道：“朕回去即送来，即送来。”从此遂相揖而别。</div>
+            <div class="text-block simplified-text">十位阎王从森罗宝殿出来，弯着腰恭敬地迎接唐太宗。太宗很谦虚，不敢走在前面。阎王们说："您是阳间的皇帝，我们是阴间的鬼王，按规矩该这样迎接，您不用客气。"太宗回答："我得罪了你们的手下（指龙王），哪敢讲什么阴阳人鬼的规矩？"双方推让半天，太宗才走进森罗殿，和阎王们行礼后分主客坐下。
+
+过了一会儿，秦广王上前说："泾河龙王告状说您答应救他却反而害死他，怎么回事？"太宗解释："我确实梦到老龙求救，答应保他平安。没想到他犯了死罪，该由我的大臣魏征处斩。我当时叫魏征来下棋，想拖住他，谁知魏征在梦里把龙斩了。这是魏征神通广大，加上龙王自己该死，不是我的错啊。"
+
+阎王们听完行礼说："这龙王还没出生时，生死簿上就写着他该被魏征杀死，我们早知道。但他非要争辩，一定要您来阴间对质，我们只好让他投胎去了。今天麻烦您跑一趟，请原谅我们催您来的罪过。"说完就叫管生死簿的判官："快拿簿子来看看皇上还能活多久？"
+
+崔判官赶紧去查，发现太宗本来只能活到贞观十三年（即当时年份），吓得立刻用浓墨把"十"改成"卅（三十）"。阎王看到簿子上写着"三十三年"，惊讶地问："陛下登基多久了？"太宗答："十三年。"阎王说："您放心，还能活二十年。这次对质已经清楚，您可以还阳了。"太宗道谢后，阎王派崔判官和朱太尉送他回去。
+
+临走时太宗又问："我宫里的人都好吗？"阎王回答："都平安，只是您妹妹可能活不长。"太宗再次道谢："我回去后没什么好答谢的，只能送些瓜果来。"阎王高兴地说："我们这儿有冬瓜西瓜，就缺南瓜。"太宗连忙说："我回去马上送来！"说完就告别了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">那太尉执一首引魂幡，在前引路，崔判官随后保着太宗，径出幽司。太宗举目而看，不是旧路，问判官曰：“此路差矣？”判官道：“不差。阴司里是这般，有去路，无来路。如今送陛下自转轮藏出身，一则请陛下游观地府，一则教陛下转托超生。”太宗只得随他两个，引路前来。径行数里，忽见一座高山，阴云垂地，黑雾迷空。太宗道：“崔先生，那厢是什么山？”判官道：“乃幽冥背阴山。”太宗悚惧道：“朕如何去得？”判官道：“陛下宽心，有臣等引领。”太宗战战兢兢，相随二人，上得山岩，抬头观看，只见——</div>
+            <div class="text-block simplified-text">太尉拿着一面招魂幡在前面带路，崔判官在后面保护着唐太宗，一起从阴间出来。太宗抬头一看，发现不是来时的路，就问判官：“这条路不对吧？”判官回答：“没错。阴间就是这样，只有去的路，没有回头的路。现在送陛下从转世轮回的地方出去，一来让陛下参观地府，二来让陛下投胎转世。”太宗只好跟着他们继续走。走了几里地，突然看见一座高山，天上乌云压得很低，黑雾弥漫。太宗问：“崔先生，那边是什么山？”判官说：“那是阴间的背阴山。”太宗害怕地说：“我怎么能过去？”判官安慰他：“陛下别担心，有我们带路呢。”太宗提心吊胆地跟着两人上了山，抬头一看，只见——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">形多凸凹，势更崎岖。峻如蜀岭，高似庐岩。非阳世之名山，实阴司之险地。荆棘丛丛藏鬼怪，石崖磷磷隐邪魔。耳畔不闻兽鸟噪，眼前惟见鬼妖行。阴风飒飒，黑雾漫漫。阴风飒飒，是神兵口内哨来烟；黑雾漫漫，是鬼祟暗中喷出气。一望高低无景色，相看左右尽猖亡。那里山也有，峰也有，岭也有，洞也有，涧也有；只是山不生草，峰不插天，岭不行客，洞不纳云，涧不流水。岸前皆魍魉，岭下尽神魔。洞中收野鬼，涧底隐邪魂。山前山后，牛头马面乱喧呼；半掩半藏，饿鬼穷魂时对泣。催命的判官，急急忙忙传信票；追魂的太尉，吆吆喝喝趱公文。急脚子旋风滚滚，勾司人黑雾纷纷。</div>
+            <div class="text-block simplified-text">这地方到处都是凹凸不平的山石，地势特别险峻。山高得像四川的山岭，又像庐山的岩石那么陡。这不是人间的山，而是阴间的危险地带。荆棘丛里藏着鬼怪，陡峭的山崖后面躲着妖魔。听不到鸟兽的叫声，只能看见鬼怪在眼前晃来晃去。阴风呼呼地吹，黑雾到处弥漫——那阴风其实是阴兵嘴里吹出来的气，黑雾是鬼怪暗中吐出来的。放眼望去，看不到一点好景色，四周全是凶恶的鬼怪。这里虽然也有山、有峰、有岭、有洞、有山涧，但山上不长草，山峰不冲天，山岭没人走，山洞不聚云，山涧没有水。岸边全是妖怪，山下都是妖魔。山洞里关着野鬼，山涧底下藏着恶魂。山前山后，牛头马面吵吵嚷嚷；阴暗角落里，饿鬼冤魂哭哭啼啼。催命的判官跑来跑去送传票，索魂的差役大呼小叫赶着送公文。跑腿的小鬼像旋风一样乱窜，勾魂的使者带着黑雾到处忙活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">太宗全靠着那判官保护，过了阴山。前进，又历了许多衙门，一处处俱是悲声振耳，恶怪惊心。太宗又道：“此是何处？”判官道：“此是阴山背后一十八层地狱。”太宗道：“是那十八层？”判官道：“你听我说：</div>
+            <div class="text-block simplified-text">唐太宗全靠判官保护，才过了阴山。继续往前走，又经过很多衙门，每个地方都听到悲惨的哭声，看到吓人的妖怪。唐太宗又问："这是哪里？"判官回答："这是阴山后面的十八层地狱。"唐太宗问："哪十八层？"判官说："你听我讲："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">吊筋狱、幽枉狱、火坑狱，寂寂寥寥，烦烦恼恼，尽皆是生前作下千般业，死后通来受罪名。酆都狱、拔舌狱、剥皮狱，哭哭啼啼，凄凄惨惨，只因不忠不孝伤天理，佛口蛇心堕此门。磨捱狱、碓捣狱、车崩狱，皮开肉绽，抹嘴咨牙，乃是瞒心昧己不公道，巧语花言暗损人。寒冰狱、脱壳狱、抽肠狱，垢面蓬头，愁眉皱眼，都是大斗小秤欺痴蠢，致使灾屯累自身。油锅狱、黑暗狱、刀山狱，战战兢兢，悲悲切切，皆因强暴欺良善，藏头缩颈苦伶仃。血池狱、阿鼻狱、秤杆狱，脱皮露骨，折臂断筋，也只为谋财害命，宰畜屠生，堕落千年难解释，沉沦永世不翻身。一个个紧缚牢栓，绳缠索绑，差些赤发鬼、黑脸鬼，长枪短剑；牛头鬼、马面鬼，铁简铜锤。只打得皱眉苦面血淋淋，叫地叫天无救应。正是人生却莫把心欺，神鬼昭彰放过谁？善恶到头终有报，只争来早与来迟。”</div>
+            <div class="text-block simplified-text">这段文字讲的是人死后下地狱受罚的各种惨状，用大白话解释就是：
+
+"这些地狱里有吊筋的、关冤魂的、火烧的，里面冷冷清清，充满痛苦。这些都是人活着时干尽坏事，死后该受的惩罚。还有割舌头、剥皮的地狱，里面哭喊连天，惨不忍睹，都是因为不忠不孝、违背天理，嘴上说得好听心里恶毒的人才来的。
+
+另外有磨盘碾、石臼捣、车轮压的地狱，把人弄得皮开肉绽、惨叫连连。这些惩罚是给那些昧着良心做事、用花言巧语害人的人准备的。还有寒冰冻、剥壳、抽肠的地狱，里面的人蓬头垢面、愁眉苦脸，都是因为活着时缺斤短两骗老实人，最后报应到自己身上。
+
+油锅炸、黑暗关、刀山刺的地狱里，人们吓得发抖、哭得伤心，都是因为欺负老实人、遇事缩头当懦夫的下场。血池泡、无间地狱、秤杆秤的地狱，把人折磨得皮开肉绽、断手断脚，这些都是谋财害命、杀生害命的人该受的罪，要在这里受苦千年万年，永远不能解脱。
+
+这些罪人都被五花大绑，由红发鬼、黑脸鬼拿着刀枪，牛头马面提着铁锤铜棍看着。打得他们满脸是血、哭爹喊娘也没用。这就是告诉人们：做人别昧良心，神明都看在眼里。善有善报恶有恶报，只是时间早晚的问题。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">太宗听说，心中惊惨。进前又走不多时，见一伙鬼卒，各执幢幡，路旁跪下道：“桥梁使者来接。”判官喝令起去，上前引着太宗，从金桥而过。太宗又见那一边有一座银桥，桥上行几个忠孝贤良之辈，公平正大之人，亦有幢幡接引；那壁厢又有一桥，寒风滚滚，血浪滔滔，号泣之声不绝。太宗问道：“那座桥是何名色？”判官道：“陛下，那叫做奈河桥。若到阳间，切须传记，那桥下都是些——</div>
+            <div class="text-block simplified-text">唐太宗听到这些，心里又惊又怕。往前走了一会儿，看见一群鬼差，手里拿着旗子，跪在路边说："我们是管桥的，特地来迎接您。"判官让他们起来，带着太宗从金桥上走过。太宗又看到旁边有座银桥，桥上走着一些忠臣孝子、善良正直的人，也有鬼差举着旗子迎接他们；另一边还有座桥，冷风呼呼地吹，河里翻着血浪，还能听到不停的哭喊声。太宗问："那座桥叫什么名字？"判官回答："皇上，那叫奈河桥。您要是回到人间，一定要告诉活着的人，那桥底下全是——"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">奔流浩浩之水，险峻窄窄之路。俨如匹练搭长江，却似火坑浮上界。阴气逼人寒透骨，腥风扑鼻味钻心。波翻浪滚，往来并没渡人船；赤脚蓬头，出入尽皆作业鬼。桥长数里，阔只三騑，高有百尺，深却千重。上无扶手栏杆，下有抢人恶怪。枷杻缠身，打上奈河险路。你看那桥边神将甚凶顽，河内孽魂真苦恼，桠杈树上，挂的是青红黄紫色丝衣；壁斗崖前，蹲的是毁骂公婆淫泼妇。铜蛇铁狗任争餐，永堕奈河无出路。”</div>
+            <div class="text-block simplified-text">这是一条非常可怕的河和桥。河水又大又急，路又窄又险。看起来像一匹白布挂在长江上，又像火坑漂在天上。阴森森的冷气刺骨，腥臭的风直冲鼻子。浪花翻滚，却没有渡船。桥上的人光着脚、头发乱糟糟的，都是受罪的鬼魂。桥有几里长，却只有三匹马并排那么宽，高百尺，深不见底。桥上没有栏杆，桥下还有抓人的妖怪。鬼魂们戴着枷锁，被逼着走上这座危险的桥。桥边的神将样子凶恶，河里的鬼魂痛苦不堪。旁边的树上挂着五颜六色的衣服，悬崖边蹲着生前骂公婆的恶毒女人。铜蛇铁狗随便吃人，掉进这河里就永远出不来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">诗曰：时闻鬼哭与神号，血水浑波万丈高。无数牛头并马面，狰狞把守奈河桥。”</div>
+            <div class="text-block simplified-text">诗里说：经常能听见鬼哭神嚎的声音，血色的河水掀起巨浪。数不清的牛头马面这些鬼差，面目凶恶地把守着奈河桥。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">正说间，那几个桥梁使者，早已回去了。太宗心又惊惶，点头暗叹，默默悲伤，相随着判官、太尉，早过了奈河恶水，血盆苦界。前又到枉死城，只听哄哄人嚷，分明说：“李世民来了，李世民来了！”太宗听叫，心惊胆战。见一伙拖腰折臂、有足无头的鬼魅，上前拦住，都叫道：“还我命来，还我命来！”慌得那太宗藏藏躲躲，只叫：“崔先生救我，崔先生救我！”判官道：“陛下，那些人都是那六十四处烟尘，七十二处草寇，众王子、众头目的鬼魂；尽是枉死的冤业，无收无管，不得超生，又无钱钞盘缠，都是孤寒饿鬼。陛下得些钱钞与他，我才救得哩。”太宗道：“寡人空身到此，却那里得有钱钞？”判官道：“陛下，阳间有一人，金银若干，在我这阴司里寄放。陛下可出名立一约，小判可作保，且借他一库，给散这些饿鬼，方得过去。”太宗问曰：“此人是谁？”判官道：“他是河南开封府人氏，姓相名良，他有十三库金银在此。陛下若借用过他的，到阳间还他便了。”太宗甚喜，情愿出名借用。遂立了文书与判官，借他金银一库，着太尉尽行给散。判官复吩咐道：“这些金银，汝等可均分用度，放你大唐爷爷过去，他的阳寿还早哩。我领了十王钧语，送他还魂，教他到阳间做一个水陆大会，度汝等超生，再休生事。”众鬼闻言，得了金银，俱唯唯而退。判官令太尉摇动引魂幡，领太宗出离了枉死城中，奔上平阳大路，飘飘荡荡而去。毕竟不知从那条路出身，且听下回分解。</div>
+            <div class="text-block simplified-text">他们正说着话，那几个带路的鬼差已经回去了。唐太宗心里害怕，一边叹气一边难过，跟着判官和太尉往前走。他们过了奈河、血池这些可怕的地方，前面又到了枉死城。忽然听见乱哄哄的喊声："李世民来了！李世民来了！"太宗吓得直哆嗦。只见一群缺胳膊少腿、没脑袋的鬼围上来拦路，嚷嚷着："还我命来！还我命来！"太宗吓得东躲西藏，连声喊："崔先生救命啊！"
+
+判官说："皇上，这些都是当年打仗时死的冤魂，没人管也没钱，投不了胎。您给他们些钱，我才能帮您脱身。"太宗为难："我空着手来的，哪有钱啊？"判官出主意："阳间有个叫相良的开封人，在阴间存了十三库金银。您写个借条，我作担保，先借他一库钱分给这些鬼，就能过去了。"
+
+太宗很高兴，马上写了借条。判官把钱分给众鬼，嘱咐道："你们拿了钱就别闹了，放唐皇过去。他阳寿未尽，阎王让我送他还阳。等他回去办个超度法会，你们就能投胎了。"鬼魂们拿了钱，乖乖散开了。判官让太尉挥动引魂幡，带着太宗离开枉死城，走上大路飘走了。至于他们往哪去，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
