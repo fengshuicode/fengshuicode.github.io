@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title># 第十二回　梁山泊林冲落草　汴京城杨志卖刀</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./011.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title"># 第十二回　梁山泊林冲落草　汴京城杨志卖刀</h1>
+        <a href="./013.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句翻译：
+古诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">天罡地煞下凡尘，托化生身各有因。</div>
+            <div class="text-block simplified-text">天上的神仙和地下的鬼怪都投胎到人间来了，他们转世成人都有自己的原因。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">落草固缘屠国士，卖刀岂可杀平人？</div>
+            <div class="text-block simplified-text">这人本来是个英雄好汉，被逼无奈才当了强盗，但就算卖刀求生，也不能去伤害普通老百姓啊！
+
+（说明：原句用典较深，"落草"指被迫为盗，"屠国士"指杀害国家栋梁，"卖刀"典出林冲卖刀。改写后直接点明"英雄好汉被逼当强盗"的核心，用"不能伤害老百姓"替代典故表达，完全保留原句"即便落魄也不该伤及无辜"的核心思想，采用口语化表达。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">东京已降天蓬帅，北地生成黑煞神。</div>
+            <div class="text-block simplified-text">东京那边出了个像天蓬元帅一样厉害的人物，北方也出了个像黑煞神一样的狠角色。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">豹子头逢青面兽，同归水浒乱乾坤。</div>
+            <div class="text-block simplified-text">林冲碰上了杨志，两人一起上了梁山造反闹事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说林冲打一看时，只见那汉子头戴一顶范阳毡笠，上撒着一把红缨，穿一领白段子征衫，系一条纵线绦，下面青白间道行缠，抓着裤子口，獐皮袜，带毛牛膀靴，跨口腰刀，提条朴刀，生得七尺五六身材，面皮上老大一搭青记，腮边微露些少赤须，把毡笠子掀在脊梁上，坦开胸脯，带着抓角儿软头巾，挺手中朴刀，高声喝道：“你那泼贼，将俺行李财帛那里去了？”林冲正没好气，那里答应，睁圆怪眼，倒竖虎须，挺着朴刀，抢将来斗那个大汉。但见：</div>
+            <div class="text-block simplified-text">林冲抬头一看，只见那汉子戴着一顶毛毡帽子，帽子上插着红缨，身穿白色绸缎战袍，腰间系着一条带子，腿上缠着青白相间的绑腿，裤脚扎紧，脚穿獐皮袜和毛皮靴，腰间挎着刀，手里提着一把大刀。这人身高七尺五六，脸上有块大青疤，腮边露出些红胡子。他把帽子往后一掀，敞开衣襟，头上歪戴着头巾，举着大刀高声骂道："你这混蛋，把我的行李和钱财弄哪儿去了？"林冲本来就在气头上，哪会理他，瞪圆眼睛，胡子都竖起来了，提着刀就冲上去要跟那大汉干架。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">残雪初晴，薄云方散。溪边踏一片寒冰，岸畔涌两条杀气。一上一下，似云中龙斗水中龙；一往一来，如岩下虎斗林下虎。一个是擎天白玉柱，一个是架海紫金梁。那个没些须破绽高低，这个有千般威风勇猛。一个尽气力望心窝对戳，一个弄精神胁肋忙穿。架隔遮拦，却似马超逢翼德；盘旋点搠，浑如敬德战秦琼。斗来半晌没输赢，战到数番无胜败。果然巧笔画难成，便是鬼神须胆落。</div>
+            <div class="text-block simplified-text">雪刚停，天刚放晴，云也散开了。溪边结着冰，岸上却有两股杀气腾腾。两个人打斗起来，一个在上一个在下，像云里的龙和水里的龙在打架；一个往前一个往后，像山下的虎和林中的虎在撕咬。一个像撑天的白玉柱子，一个像架海的紫金大梁。两个人打得都没破绽，一个威风凛凛，一个勇猛无比。一个用尽全力往心窝捅，一个集中精神往肋下刺。防守躲闪的样子，就像马超碰上张飞；来回周旋的架势，活像尉迟恭大战秦琼。打了半天不分胜负，斗了几回合难分高下。这场景连最厉害的画师也画不出来，连鬼神看了都得吓破胆。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">林冲与那汉斗到三十来合，不分胜败。两个又斗了十数合，正斗到分际，只见山高处叫道：“两个好汉不要斗了。”林冲听得，蓦地跳出圈子外来。两个收住手中朴刀，看那山顶上时，却是王伦和杜迁、宋万，并许多小喽啰走下山来，将船渡过了河，说道：“两位好汉，端的好两口朴刀，神出鬼没。这个是俺的兄弟林冲。青面汉，你却是谁？愿通姓名。”那汉道：“洒家是三代将门之后，五侯杨令公之孙，姓杨名志。流落在此关西。年纪小时，曾应过武举，做到殿司制使官。道君因盖万岁山，差一般十个制使，去太湖边搬运花石纲赴京交纳。不想洒家时乖运蹇，押着那花石纲来到黄河里，遭风打翻了船，失陷了花石纲，不能回京赴任，逃去他处避难。如今赦了俺们罪犯。洒家今来收得一担儿钱物，待回东京，去枢密院使用，再理会本身的勾当。打从这里经过，雇倩庄家挑那担儿，不想被你们夺了。可把来还洒家如何？”王伦道：“你莫不是绰号唤青面兽的？”杨志道：“洒家便是。”王伦道：“既然是杨制使，就请到山寨吃三杯水酒，纳还行李如何？”杨志道：“好汉既然认得洒家，便还了俺行李，更强似请吃酒。王伦道：“制使，小可数年前到东京应举时，便闻制使大名，今日幸得相见，如何教你空去。且请到山寨少叙片时，并无他意。”杨志听说了，只得跟了王伦一行人等，过了河，上山寨来。就叫朱贵同上山寨相会，都来到寨中聚义厅上。左边一带四把交椅，却是王伦、杜迁、宋万、朱贵，右边一带两把交椅，上首杨志，下首林冲。都坐定了。王伦叫杀羊置酒，安排筵宴管待杨志，不在话下。</div>
+            <div class="text-block simplified-text">林冲和那个汉子打了三十多个回合，不分胜负。又打了十几个回合，正打得难分难解时，忽然听到山上有人喊："两位好汉别打了！"林冲一听，立刻跳出战斗。两人收起刀，往山顶一看，原来是王伦带着杜迁、宋万和一群小喽啰下山来。他们划船过河后说："两位好汉的刀法真厉害！这位是我的兄弟林冲。这位青脸好汉，你是谁？报个名字吧。"
+
+那汉子说："我是将门之后，杨令公的孙子，叫杨志。现在流落在关西一带。年轻时考过武举，当过殿司制使官。皇上要建万岁山，派我们十个制使去太湖运花石纲回京。我运气不好，船在黄河里被风浪打翻，丢了花石纲，不敢回京复命，只能到处躲藏。现在朝廷赦免了我们的罪。我这次带了一担钱财，准备回东京打点关系，重新谋个差事。路过这里雇了个挑夫，没想到被你们抢了。能把东西还给我吗？"
+
+王伦问："你就是外号叫'青面兽'的吧？"杨志说："正是。"王伦说："既然是杨制使，不如上山寨喝几杯酒，我们把行李还给你？"杨志说："既然认识我，直接把行李还我就行，比喝酒强。"王伦说："制使大人，我几年前去东京考试时就听说过您的大名，今天难得见面，怎么能让您空手走呢？请上山寨坐坐，没有别的意思。"杨志听了，只好跟着王伦他们过河上山。
+
+王伦又叫来朱贵一起上山。众人在聚义厅就座：左边坐着王伦、杜迁、宋万、朱贵，右边上首是杨志，下首是林冲。王伦吩咐杀羊摆酒招待杨志，这些就不细说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">话休絮繁。酒至数杯，王伦指着林冲对杨志道：“这个兄弟，他是东京八十万禁军教头，唤做豹子头林冲。因这高太尉那厮安不得好人，把他寻事刺配沧州。那里又犯了事，如今也新到这里。却才制使要上东京干勾当，不是王伦纠合制使，小可兀自弃文就武，来此落草。制使又是有罪的人，虽经赦宥，难复前职。亦且高俅那厮见掌军权，他如何肯容你？不如只就小寨歇马，大秤分金银，大碗吃酒肉，同做好汉。不知制使心下主意若何？”杨志答道：“重蒙众头领如此带携，只是洒家有个亲眷，见在东京居住。前者官事连累了他，不曾酬谢得他，今日欲要投那里走一遭。望众头领还了洒家行李。如不肯还，杨志空手也去了。”王伦笑道：“既是制使不肯在此，如何敢勒逼入伙。且请宽心住一宵，明日早行。”杨志大喜。当日饮酒到二更方散，各自去歇息了。次日早起来，又置酒与杨志送行。吃了早饭，众头领叫一个小喽啰把昨夜担儿挑了，一齐都送下山来，到路口与杨志作别。教小喽啰渡河，送出大路。众人相别了，自回山寨。王伦自此方才肯教林冲坐第四位，朱贵做第五位。从此，五个好汉在梁山泊打家劫舍，不在话下。</div>
+            <div class="text-block simplified-text">简单直白的现代白话文：
+
+（为了更符合现代口语习惯，部分称谓调整为"你/我"称呼，保留关键情节）
+
+别啰嗦了。喝了几杯酒后，王伦指着林冲对杨志说："这位兄弟是东京八十万禁军的武术教练，叫豹子头林冲。因为高太尉那个混蛋容不下好人，找借口把他发配到沧州。后来他又惹了事，现在刚到我们这儿。刚才听说你要回东京办事，不是我王伦非要拉你入伙，我自己也是放弃文职来这儿落草的。你现在是个有案底的人，就算被赦免了，也很难官复原职。何况高俅那个混蛋现在掌兵权，怎么会放过你？不如留在我们山寨，一起大秤分钱、大碗喝酒吃肉，当个快活好汉。你觉得怎么样？"
+
+杨志回答："多谢各位头领看得起我。但我有个亲戚住在东京，之前连累了他还没报答，现在想去看看他。请把行李还给我，如果不还，我空手也要走。"
+
+王伦笑着说："既然你不愿意留下，我们哪敢强迫。今晚安心住一宿，明早再走吧。"杨志很高兴。当晚喝到半夜才散，各自休息。
+
+第二天早起，又摆酒给杨志送行。吃完早饭，头领们让一个小兵挑着昨夜的担子，一起送杨志到山下路口告别。还派小兵送他过河到大路上。众人告别后回了山寨。
+
+从这时起，王伦才让林冲坐第四把交椅，朱贵第五。从此五个好汉在梁山泊劫富济贫，这些就不细说了。
+
+（说明：将"洒家"改为"我"，"制使"改为"你"，"刺配"译为"发配"，"歇马"译为"留下"等，均采用现代人最常用的对应词汇）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">只说杨志出了大路，寻个庄家挑了胆子，发付小喽啰自回山寨。杨志取路投东京来，路上免不得饥餐渴饮，夜住晓行。不数日，来到东京。有诗为证：</div>
+            <div class="text-block simplified-text">简单来说：杨志离开大路，找了个农民帮他挑行李，把手下打发回山寨。他自己一个人往东京走，路上饿了就吃，渴了就喝，晚上住店，天亮了继续赶路。没过几天，就到了东京。有首诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">清白传家杨制使，耻将身迹履危机。</div>
+            <div class="text-block simplified-text">杨制使这个人，家里世代清白，名声很好。他非常看重自己的名声，不愿意做那些有风险、可能让自己名声受损的事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">岂知奸佞残忠义，顿使功名事已非。</div>
+            <div class="text-block simplified-text">谁知道那些坏蛋害死了忠臣，一下子就把好好的事业全毁了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">那杨志入得城来，寻个客店安歇下。庄客交还担儿，与了些银两，自回去了。杨志到店中放下行李，解了腰刀、朴刀，叫店小二将些碎银子买些酒肉吃了。过数日，央人来枢密院打点理会本等的勾当。将出那担儿内金银财物，买上告下，再要补殿司府制使职役。把许多东西都使尽了，方才得申文书，引去见殿帅高太尉。来到厅前，那高俅把从前历事文书都看了，大怒道：“既是你等十个制使去运花石纲，九个回到京师交纳了，偏你这厮把花石纲失陷了，又不来首告，倒又在逃，许多时捉拿不着。今日再要勾当，虽经赦宥所犯罪名，难以委用。”把文书一笔都批倒了，将杨志赶出殿司府来。</div>
+            <div class="text-block simplified-text">杨志进了城，找了个旅馆住下。跟他一起的人把行李还给他，拿了点钱就走了。杨志在旅馆放下东西，解下随身带的刀，让店小二拿零钱买了些酒菜吃。过了几天，他托人到枢密院打点关系，想办自己的事。他把行李里的金银财宝都拿出来，上下打点，想重新当上殿司府的制使官。钱都花光了，才拿到申请文件，被带去见高太尉。到了大厅，高俅看完他以前的档案，生气地说："当初派你们十个制使去运花石纲，九个都完成任务回来了，就你把东西弄丢了，还不主动报告，反而逃跑躲了这么久。现在又想当官？虽然你犯的罪被赦免了，但不能再用你。"说完就把文件撕了，把杨志赶出了殿司府。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">杨志闷闷不已，回到客店中，思量：“王伦劝俺，也见得是，只为洒家清白姓字，不肯将父母遗体来点污了。指望把一身本事，边庭上一枪一刀，博个封妻荫子，也与祖宗争口气。不想又吃这一闪！高太尉，你忒毒害，恁地克剥！”心中烦恼了一回，在客店里又住了几日，盘缠都使尽了。杨志寻思道：“却是怎地好！只有祖上留下这口宝刀，从来跟着洒家，如今事急无措，只得拿去街上货卖得千百贯钱钞，好做盘缠，投往他处安身。”当日将了宝刀，插了草标儿，上市去卖。走到马行街内，立了两个时辰，并无一个人问。将立到晌午时分，转来到天汉州桥热闹处去卖。杨志立未久，只见两边的人都跑入河下巷内去躲。杨志看时，只见都乱撺，口里说道：“快躲了，大虫来也。”杨志道：“好作怪！这等一片锦城池，却那得大虫来？”当下立住脚看时，只见远远地黑凛凛一大汉，吃得半醉，一步一攧撞将来。杨志看那人时，形貌生得粗丑。但见：</div>
+            <div class="text-block simplified-text">杨志心情郁闷，回到旅馆里想："王伦劝我的话也有道理。我杨家世代清白，不能玷污了父母给的身体。本想靠自己的本事，在战场上拼杀，混个功名，给祖宗争光。没想到又碰上这种倒霉事！高太尉，你太狠毒了，这么欺负人！"他越想越烦，在旅馆又住了几天，钱都花光了。杨志琢磨："这可怎么办？现在只剩下祖传的这把宝刀一直跟着我。眼下走投无路，只能拿去街上卖了换点钱当路费，好去别处谋生。"当天他就拿着宝刀，插上草标，上街去卖。在马行街站了两个小时，没人来问。快到中午时，他又转到天汉州桥热闹的地方去卖。刚站没多久，就见两边的人都往河边巷子里躲。杨志一看，只见人们乱跑，嘴里喊着："快躲开，老虎来了！"杨志觉得奇怪："这繁华城里哪来的老虎？"他站住一看，只见远处晃晃悠悠走来一个黑大汉，喝得半醉，走路东倒西歪的。那人生得粗壮丑陋。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">面目依稀似鬼，身材仿佛如人。杈枒怪树，变为肐形骸；臭秽枯桩，化作腌臜魍魉。浑身遍体，都生渗渗濑濑沙鱼皮；夹脑连头，尽长拳拳弯弯卷螺发。胸前一片锦顽皮；额上三条强拗皱。</div>
+            <div class="text-block simplified-text">这人长得跟鬼似的，身材勉强像个人。那些乱七八糟的树枝，变得像扭曲的四肢；又臭又脏的烂树桩，变成了恶心的妖怪。全身上下都长着疙疙瘩瘩的鱼鳞皮，脑袋上顶着卷曲的螺丝头发。胸口有一块硬邦邦的皮，额头上刻着三道深深的皱纹。
+
+（说明：1.将"肐形骸"译为"扭曲的四肢"更直观 2."腌臜魍魉"用"恶心的妖怪"替代 3."渗渗濑濑沙鱼皮"处理为"疙疙瘩瘩的鱼鳞皮"更形象 4.保留"螺丝头发"的比喻但简化表述 5.用"硬邦邦""深深的"等口语词增强画面感）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">原来这人，是京师有名的破落户泼皮，叫做没有毛大虫牛二，专在街上撒泼行凶撞闹。连为几头官司，开封府也治他不下，以此满城人见那厮来都躲了。却说牛二抢到杨志面前，就手里把那口宝刀扯将出来，问道：“汉子，你这刀要卖几钱？”杨志道：“祖上留下宝刀，要卖三千贯。”牛二喝道：“甚么鸟刀，要卖许多钱！我三百文买一把，也切得肉，切得豆腐。你的鸟有甚好处，叫做宝刀？”杨志道：“洒家的须不是店上卖的白铁刀，这是宝刀。”牛二道：“怎地唤做宝刀？”杨志道：“第一件砍铜剁铁，刀口不卷。第二件吹毛得过。第三件杀人刀上没血。”牛二道：“你敢剁铜钱么？”杨志道：“你便将来，剁与你看。”牛二便去州桥下香椒铺里，讨了二十文当三钱，一垛儿将来，放在州桥阑干上，叫杨志道：“汉子，你若剁得开时，我还你三千贯。”那时看的人虽然不敢近前，向远远地围住了望。杨志道：“这个直得甚么。”把衣袖卷起，拿刀在手，看的较胜，只一刀，把铜钱剁做两半。众人都喝采。牛二道：“喝甚么鸟采！你且说第二件是甚么？”杨志道：“吹毛过得。就把几根头发望刀口上只一吹，齐齐都断。”牛二道：“我不信。”自把头上拔下一把头发，递与杨志：“你且吹我看。”杨志左手接过头发，照着刀口上尽气力一吹，那头发都做两段，纷纷飘下地来。众人喝采，看的人越多了。牛二又问：“第三件是甚么？”杨志道：“杀人刀上没血。”牛二道：“怎地杀人刀上没血？”杨志道：“把人一刀砍了，并无血痕，只是个快。”牛二道：“我不信！你把刀来剁一个人我看。”杨志道：“禁城之中，如何敢杀人？你不信时，取一只狗来，杀与你看。”牛二道：“你说杀人，不曾说杀狗。”杨志道：“你不买便罢，只管缠人做甚么！”牛二道：“你将来我看。”杨志道：“你只顾没了当！洒家又不是你撩拨的。”牛二道：“你敢杀我？”杨志道：“和你往日无冤，昔日无仇，一物不成，两物见在。没来由杀你做甚么？”牛二紧揪住杨志说道：“我鳖鸟买你这口刀。”杨志道：“你要买，将钱来。”牛二道：“我没钱。”杨志道：“你没钱，揪住洒家怎地？”牛二道：“我要你这口刀。”杨志道：“俺不与你。”牛二道：“你好男子，剁我一刀。”杨志大怒，把牛二推了一跤。牛二爬将起来，钻入杨志怀里。杨志叫道：“街坊邻舍都是证见。杨志无盘缠，自卖这口刀。这个泼皮强夺洒家的刀，又把俺打。”街坊人都怕这牛二，谁敢向前来劝。牛二喝道：“你说我打你，便打杀直甚么！”口里说，一面挥起右手，一拳打来。杨志霍地躲过，拿着刀抢入来，一时性起，望牛二颡根上搠个着，扑地倒了。杨志赶入去，把牛二胸脯上又连搠了两刀，血流满地，死在地上。</div>
+            <div class="text-block simplified-text">这人是个京城出了名的无赖混混，外号叫"没毛大虫牛二"，整天在街上耍横闹事。他犯过好几回案子，连开封府都拿他没办法，所以全城人见了他都躲着走。
+
+这天牛二冲到杨志面前，一把抽出他手里的宝刀问："喂，你这刀卖多少钱？"杨志回答："这是祖传的宝刀，要卖三千贯。"牛二骂道："什么破刀值这么多钱！我花三百文买的刀也能切肉切豆腐。你这破刀有什么特别的？"
+
+杨志说："我这可不是普通铁匠铺打的刀，是真正的宝刀。"牛二问："怎么个宝法？"杨志解释："第一，能砍铜剁铁不卷刃；第二，吹毛断发；第三，杀人不见血。"
+
+牛二不信邪："你敢剁铜钱吗？"杨志说："你拿来我就剁给你看。"牛二跑到桥下铺子要来二十文铜钱，叠在桥栏杆上说："你要能剁开，我就给你三千贯。"围观的人都不敢靠近，远远站着看。杨志卷起袖子，手起刀落把铜钱劈成两半，众人齐声叫好。
+
+牛二又嚷嚷："别瞎叫好！第二件怎么证明？"杨志说："吹毛断发。"说着拿几根头发在刀刃上一吹，头发齐齐断开。牛二还不信，拔下自己头发让杨志试，结果头发真的断成两截飘落。围观的人更多了。
+
+牛二继续问第三件。杨志说："杀人不见血。"牛二非要他杀个人证明，杨志说城里不能杀人，可以杀条狗代替。牛二耍无赖："你明明说的是杀人！"杨志不耐烦了："不买就别捣乱！"
+
+牛二开始耍横："把刀给我！"杨志拒绝后，牛二竟说："有本事你砍我啊！"杨志气得推倒他。牛二爬起来就往杨志身上扑，还大喊："街坊们看着啊，这外地人欺负我！"周围人都怕牛二，没人敢劝。
+
+牛二挥拳打来，杨志躲开后一时火起，一刀捅在牛二脖子上。见牛二倒地，杨志又补了两刀，牛二当场毙命，血流了一地。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">杨志叫道：“洒家杀死这个泼皮，怎肯连累你们！泼皮既已死了，你们都来同洒家去官府府里出首。”坊隅众人慌忙拢来，随同杨志，径投开封府出首。正值府尹坐衙。杨志拿着刀，和地方邻舍众人，都上厅来，一齐跪下，把刀放在面前。杨志告道：“小人原是殿司制使，为因失陷花石纲，削去本身职役，无不盘缠，将这口刀在街货卖。不期被个泼皮破落户牛二，强夺小人的刀，又用拳打小人，因此一时性起，将那人杀死。众邻舍都是证见。”众人亦替杨志告说，分诉了一回。府尹道：“既是自行前来出首，免了这厮入门的款打。”且叫取一面长枷枷了，差两员相官，带了仵作行人，监押杨志并众邻舍一干人犯，都来天汉州桥边，登场检验了，叠成文案。众邻舍都出了供状，保放随衙听候，当厅发落，将杨志于死囚牢门里监收。但见：</div>
+            <div class="text-block simplified-text">杨志大喊："我杀了这个无赖，不会连累你们！既然人已经死了，你们就跟我一起去官府自首。"街坊邻居们赶紧围过来，跟着杨志直奔开封府报案。正好碰上府尹在衙门办公。
+
+杨志拿着刀，和邻居们一起上堂跪下，把刀放在地上。杨志说："我本来是殿司制使，因为弄丢了花石纲，被撤了职，没钱用就拿这刀上街卖。没想到被一个叫牛二的混混抢刀，还动手打我，我一气之下就把他杀了。这些邻居都可以作证。"邻居们也帮着杨志说明情况。
+
+府尹说："既然自己来投案，就免了进门那顿打。"让人给杨志戴上枷锁，派了两个官员带着验尸的人，押着杨志和邻居们去天汉州桥边验尸，做好记录。邻居们写了证词后都放了，随时听候传唤。杨志被关进了死囚牢。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">推临狱内，拥入牢门。抬头参青面使者，转面见赤发鬼王。黄须节级，麻绳准备吊绷揪；黑面押牢，木匣安排牢锁镣。杀威棒，狱卒断时腰痛；撒子角，囚人见了心惊。休言死去见阎王，只此便为真地狱。</div>
+            <div class="text-block simplified-text">译文：
+
+把犯人推进监狱，押进牢房。一抬头就看见凶神恶煞的狱卒，转头又碰上满脸横肉的牢头。黄胡子的看守拿着麻绳准备捆人，黑脸的狱吏搬来木匣子要上镣铐。那打人的杀威棒，狱卒抡起来能让人腰断骨折；各种刑具摆在那儿，犯人看了就腿软。别说死后见阎王了，这活生生的就是人间地狱。
+
+（说明：通过以下方式实现口语化转换：
+1. "青面使者/赤发鬼王"转为"凶神恶煞的狱卒/满脸横肉的牢头"
+2. "黄须节级/黑面押牢"译为"黄胡子的看守/黑脸的狱吏"
+3. 将"杀威棒"的文言描述转为"抡起来能让人腰断骨折"
+4. "撒子角"这种生僻词用"各种刑具"替代
+5. 末句用"活生生的就是"强化现实感
+6. 保留所有刑具、场景等关键元素，仅转换表达方式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">且说杨志押到死囚牢里，众多押牢禁子、节级见说杨志杀死没毛大虫牛二，都可怜他是个好男子，不来问他要钱，又好生看觑他。天汉州桥下众人，为是杨志除了街上害人之物，都敛些盘缠，凑些银两，来与他送饭，上下又替他使用。推司也觑他是个首身的好汉，又与东京街上除了一害，牛二家又没苦主，把款状都改得轻了。三推六问，却招做一时斗殴杀伤，误伤人命。待了六十日限满，当厅推司禀过府尹，将杨志带出厅前，除了长枷，断了二十脊杖，唤个文墨匠人，刺了两行金印，迭配北京大名府留守司充军。那口宝刀，没官入库。当厅押了文牒，差两个防送公人，免不得是张龙、赵虎，把七斤半铁叶子盘头护身枷钉了。分付两个公人，便教监押上路。天汉州桥那几个大户，科敛些银两钱物，等候杨志到来，请他两个公人一同到酒店里吃了些酒食，把出银两赍发两位防送公人，说道：“念杨志是个好汉，与民除害。今去北京路途中，望乞二位上下照觑，好生看他一看。”张、赵虎道：“我两个也知他是好汉，亦不必你众位分付，但请放心。”杨志谢了众人。其余多的银两，尽送与杨志做盘缠。众人各自散了。</div>
+            <div class="text-block simplified-text">话说杨志被关进死囚牢房，那些看守牢房的狱卒和差役听说他杀的是街上恶霸牛二，都觉得他是个好汉，不但没向他索要钱财，还对他挺照顾。桥下的老百姓因为杨志除掉了这个祸害，都凑了些钱给他送饭，还上下打点关系。审案的官员也觉得他敢作敢当，又为东京城除了一害，加上牛二家没人来告状，就把罪名改轻了。经过几次审问，最后定为打架时失手杀人。关押六十天后，官员向府尹报告，给杨志去掉重枷，打了二十板子，让文身师傅在他脸上刺了两行字，发配到大名府当兵。他那把宝刀被官府没收了。办完手续，派张龙、赵虎两个公差押送他上路，给他戴上七斤半的铁枷锁。桥下那些有钱人凑了些钱，等杨志路过时，请两个公差到酒店吃饭，塞钱给他们说："杨志是个好汉，为民除害。这一路上还请二位多关照。"张龙、赵虎说："我们知道他是好汉，不用你们多说，尽管放心。"杨志谢过大家。剩下的钱都给他当路费。之后大家就各自散了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">话里只说杨志同两个公人来到原下的客店里，算还了房钱饭钱，取了原寄的衣服行李，安排些酒食，请了两个公人，寻医士赎了几个杖疮的膏药贴了棒疮，便同两个公人上路，三个望北京进发。五里单牌，十里双牌，逢州过县，买些酒肉，不时间请张龙、赵虎吃。三个在路，夜宿旅馆，晓行驿道，不数日来到北京。入得城中，寻个客店安下，原来北京大名府留守司，上马管军，下马管民，最有权势。那留守唤做梁中书，讳世杰，他是东京当朝太师蔡京的女婿。当日是二月初九日，留守升厅。两个公人解杨志到留守司厅前，呈上开封府公文。梁中书看了，原在东京时也曾认得杨志，当下一见了，备问情由。杨志便把高太尉不容复职，使尽钱财，将宝刀货卖，因而杀死牛二的实情，通前一一告禀了。梁中书听得，大喜。当厅就开了枷，留在厅前听用。押了批回与两个公人，自回东京，不在话下。</div>
+            <div class="text-block simplified-text">咱们就说说杨志和两个公差的事。他们到了之前住过的小旅店，结了房钱饭钱，拿回寄存的行李，买了些酒菜请公差吃饭，还找了大夫买膏药治了棒伤，然后就一起上路往北京走。一路上每五里有个单牌坊，十里有个双牌坊，经过州县就买点酒肉，时不时请张龙、赵虎（两个公差）吃喝。三个人白天赶路，晚上住店，没几天就到了北京。
+
+进城后找了家旅店住下。要知道北京大名府的留守司权力很大，管军队也管百姓。留守名叫梁中书，大名叫梁世杰，是当朝太师蔡京的女婿。那天是二月初九，梁中书正在衙门办公。两个公差把杨志带到衙门，递上开封府的公文。梁中书一看就认出了杨志——原来在东京时就认识。他仔细问了情况，杨志就把高太尉不让他复职、他花光钱财卖宝刀、结果杀了牛二这些事全说了。梁中书听完很高兴，当场给他去掉枷锁，留在衙门当差。两个公差拿了回执就回东京去了，这事就算完了。
+
+（说明：原文中"五里单牌，十里双牌"是古代道路标记方式，直译会影响理解，故处理为解释性翻译；"讳世杰"指古人避讳直呼上司名字，现代语境简化为"大名"；保留了所有关键人物和情节，用口语化短句重组，如"算还了房钱"改为"结了房钱饭钱"等。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">只说杨志自在梁中书府中，早晚殷勤，听候使唤。梁中书见他勤谨，有心要抬举他，欲要迁他做个军中副牌，月支一分请受。只恐众人不伏，因此传下号令，教军政司告示大人诸将人员，来日都要出东郭门教场中去演武试艺。当晚，梁中书唤杨志到厅前。梁中书道：“我有心要抬举你做个军中副牌，月支一分请受，只不知你武艺如何？”杨志禀道：“小人应过武举出身，曾做殿司府制使职役，这十八般武艺，自下习学。今日，蒙恩相抬举，如拨云见日一般。杨志若得寸进，当效衔环背鞍之报。”梁中书大喜，赐与一副衣甲。当夜无事。有诗为证：</div>
+            <div class="text-block simplified-text">简单直白的现代白话文：
+
+话说杨志在梁中书家里做事，每天勤快认真，随时听候差遣。梁中书看他这么卖力，想提拔他当个军队里的副牌军官，每月领一份薪水。但又怕别人不服气，就下令通知所有军官，第二天都到东城外的训练场比武较量。
+
+当天晚上，梁中书把杨志叫到大厅，对他说："我想提拔你当副牌军官，每月领薪水，但不知道你武功怎么样？"杨志回答说："我参加过武举考试，以前当过殿司府的制使，各种兵器武艺都练过。今天能得到大人提拔，就像拨开乌云见到太阳。要是能当上这个官，我一定拼死效忠。"梁中书听了很高兴，赏给他一套盔甲。当晚平安无事。
+
+（最后一句"有诗为证"可以去掉，因为现代白话不需要这个）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">杨志英雄伟丈夫，卖刀市上杀无徒。</div>
+            <div class="text-block simplified-text">杨志是个了不起的好汉，在街上卖刀时杀了那个无赖。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">却教罪配幽燕地，演武场中敌手无。</div>
+            <div class="text-block simplified-text">他被发配到北方偏远的地方充军，在那里比武时没人能打得过他。  
+
+（说明：  
+1. "罪配幽燕地"直译为"因罪发配到幽燕地区"，用"北方偏远的地方"更通俗；  
+2. "演武场中敌手无"保留比武无敌的核心信息，用"没人能打得过"更口语化；  
+3. 完整保留"发配充军"和"武艺高强"两层核心信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">次日天晓，时当二月中旬，正值风和日暖。梁中书早饭已罢，带领杨志上马，前遮后拥，往东郭门来。到得教场中，大小军卒并许多官员接见，就演武厅前下马。到厅上，正面撒下一把浑银交椅坐下。左右两边齐臻臻地排着两行官员：指挥使、团练使、正制使、统领使、牙将、校尉、副牌军。前后周围恶狠狠地列着百员将校。正将台上立着两个都监：一个唤做李天王李成，一个唤做闻大刀闻达。二人皆有万夫不当之勇，统领着许多军马，一齐都来朝着梁中书呼三声喏。却早将台上竖起一面黄旗来。将台两边，左右列着三五十对金鼓手，一齐发起擂来。品了三通画角，发了三通擂鼓，教场里面谁敢高声。又见将台上面竖起一面净平旗来，前后五军一齐整肃。将台上把一面引军红旗磨动，只见鼓声响处，五百军列成两阵，军士各执器械在手。将台上又把白旗招动，两阵马军齐齐地都立在面前，各把马勒住。</div>
+            <div class="text-block simplified-text">第二天早上，正是二月中旬，天气暖和，阳光很好。梁中书吃完早饭，带着杨志骑马出发，前后跟着一大群护卫，往东城门外的练兵场去。到了练兵场，大小军官和很多官员都来迎接，他们在演武厅前下马。梁中书走到厅里，在正中间摆好的一把银白色椅子上坐下。左右两边整整齐齐站着两排官员：有指挥使、团练使、正制使、统领使、牙将、校尉、副牌军等。周围还站着上百个凶神恶煞的军官。
+
+练兵场正面的台子上站着两个都监：一个叫"李天王"李成，一个叫"闻大刀"闻达。这两个人都是特别能打的猛将，带着大批士兵，一起向梁中书行礼喊了三声。这时台上竖起一面黄旗。台子两边站着三五十对敲锣打鼓的士兵，开始一起擂鼓。吹了三遍号角，打了三通鼓后，整个练兵场安静得没人敢大声说话。
+
+接着台上又竖起一面净平旗，所有士兵立刻排好队伍。台上挥动红旗时，五百名士兵分成两队站好，手里都拿着武器。然后台上换成白旗，两队骑兵立刻整齐地站到前面，都勒住了马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">梁中书传下令来，叫唤副牌军周谨向前听令。右阵里周谨听得呼唤，跃马到厅前，跳下马，插了枪，暴雷也似声个大喏。梁中书道：“着副牌军施逞本身武艺。”周谨得了将令，绰枪上马，在演武厅前左盘右旋，右盘左旋，将手中枪使了几路。众人喝彩。梁中书道：“叫东京对拨来的军健杨志。”杨志转过厅前，唱个大喏。梁中书道：“杨志，我知你原是东京殿公府制使军官，犯罪配来此间。即日盗贼猖狂，国家用人之际，你敢与周谨比试武艺高低？如若赢时，便迁你充其职役。”杨志道：“若蒙恩相差遣，安敢有违钧旨。”梁中书叫取一匹战马来，教甲仗库随行官吏应付军器。教杨志披挂上马，与周谨比试。杨志去厅后把夜来衣甲穿了，拴束罢，带了头盔、弓箭、腰刀，手拿长枪上马，从厅后跑将出来。梁中书看了道：“着杨志与周谨先比枪。”周谨先怒道：“这个贼配军，敢来与我交枪！”谁知恼犯了这个好汉，来与周谨斗武。</div>
+            <div class="text-block simplified-text">梁中书下令，叫副牌军周谨过来听令。右边的队伍里周谨听到叫他，立刻骑马跑到厅前，下马放下枪，大声答应。梁中书说："让副牌军展示一下你的武艺。"周谨接到命令，拿起枪骑上马，在演武厅前左右来回跑了几圈，耍了几套枪法。大家都叫好。梁中书又说："叫从东京调来的士兵杨志过来。"杨志走到厅前，大声应命。梁中书对他说："杨志，我知道你原来是东京殿帅府的军官，因为犯了罪被发配到这里。现在盗贼闹得厉害，正是国家用人的时候，你敢不敢和周谨比试武艺？要是你赢了，就让你顶替他的职位。"杨志回答："既然大人吩咐，我哪敢不听。"梁中书让人牵来一匹战马，叫管兵器的人给杨志准备装备。杨志到厅后穿上盔甲，戴好头盔，带上弓箭和腰刀，拿着长枪上马，从厅后跑出来。梁中书说："先让杨志和周谨比枪法。"周谨先发火说："这个发配来的犯人，也敢跟我比枪！"他没想到，这下可惹恼了杨志这个好汉，两人就要打起来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">不因杨志来与周谨比试，杨志在万马丛中闻姓字，千军队里夺头功。直教大斧横担来水浒，钢枪斜拽上梁山。毕竟杨志与周谨比试引出甚么人来，且听下回分解。</div>
+            <div class="text-block simplified-text">杨志和周谨比武的时候，杨志在千军万马中出了名，立下大功。这直接导致后来他拿着大斧上了梁山，带着钢枪入了伙。至于杨志和周谨这场比武还引出了谁，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
