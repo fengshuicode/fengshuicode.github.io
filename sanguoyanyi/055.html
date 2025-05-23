@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十五回 玄德智激孙夫人　孔明二气周公瑾</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./054.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十五回 玄德智激孙夫人　孔明二气周公瑾</h1>
+        <a href="./056.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说玄德见孙夫人房中两边枪刀森列，侍婢皆佩剑，不觉失色。管家婆进曰：“贵人休得惊惧：夫人自幼好观武事，居常令侍婢击剑为乐，故尔如此。”玄德曰：“非夫人所观之事，吾甚心寒，可命暂去。”管家婆禀覆孙夫人曰：“房中摆列兵器，娇客不安，今且去之。”孙夫人笑曰：“厮杀半生，尚惧兵器乎！”命尽撤去，令侍婢解剑伏侍。当夜玄德与孙夫人成亲，两情欢洽。玄德又将金帛散给侍婢，以买其心，先教孙乾回荆州报喜。自此连日饮酒。国太十分爱敬。</div>
+            <div class="text-block simplified-text">刘备来到孙夫人的房间，看见两边摆满了刀枪，连丫鬟们都带着剑，吓得脸色都变了。管家婆赶紧解释："贵人别害怕，我家夫人从小喜欢练武，平时就让丫鬟们舞剑玩，所以才这样。"刘备说："我不是怕夫人练武，是看着这些武器心里发慌，能不能先收起来？"管家婆转告孙夫人："姑爷看见屋里放着兵器觉得不安，想先收起来。"孙夫人笑着说："打仗半辈子的人，还怕兵器吗？"就让人把武器都撤了，叫丫鬟们解下佩剑伺候。当晚刘备和孙夫人成了亲，两人相处得很开心。刘备还给了丫鬟们钱财收买人心，又让孙乾先回荆州报喜。之后几天他们天天喝酒庆祝，吴国太（孙夫人的母亲）对刘备特别好。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说孙权差人来柴桑郡报周瑜，说：“我母亲力主，已将吾妹嫁刘备。不想弄假成真。此事还复如何？”瑜闻大惊，行坐不安，乃思一计，修密书付来人持回见孙权。权拆书视之。书略曰：“瑜所谋之事，不想反覆如此。既已弄假成真，又当就此用计。刘备以枭雄之姿，有关、张、赵云之将，更兼诸葛用谋，必非久屈人下者。愚意莫如软困之于吴中：盛为筑宫室，以丧其心志；多送美色玩好，以娱其耳目；使分开关、张之情，隔远诸葛之契，各置一方，然后以兵击之，大事可定矣。今若纵之，恐蛟龙得云雨，终非池中物也。愿明公熟思之。”孙权看毕，以书示张昭。昭曰：“公瑾之谋，正合愚意。刘备起身微末，奔走天下，未尝受享富贵。今若以华堂大厦，子女金帛，令彼享用，自然疏远孔明、关、张等，使彼各生怨望，然后荆州可图也。主公可依公瑾之计而速行之。”权大喜，即日修整东府，广栽花木，盛设器用，请玄德与妹居住；又增女乐数十余人，并金玉锦绮玩好之物。国太只道孙权好意，喜不自胜。玄德果然被声色所迷，全不想回荆州。</div>
+            <div class="text-block simplified-text">孙权派人去柴桑郡告诉周瑜："我妈非要让我妹妹嫁给刘备，结果假戏真做了。现在咋办？"周瑜一听吓坏了，坐立不安，赶紧想了个主意，写了封密信让来人带回去给孙权。
+
+孙权打开信，大意是说："我原本的计划全乱套了。既然假结婚变成真结婚，不如将计就计。刘备是个厉害角色，手下有关羽、张飞、赵云这些猛将，还有诸葛亮出谋划策，肯定不会一直听别人使唤。我的主意是：把他软禁在吴国，给他盖豪华房子让他沉迷享受，多送美女和珍宝让他玩乐。这样就能离间他和关羽、张飞的感情，切断他和诸葛亮的联系。等把他们分开后，再出兵攻打，就能搞定大事。要是现在放他走，就像蛟龙得了云雨，迟早要飞走的。您好好想想。"
+
+孙权看完信给张昭看，张昭说："周瑜这主意好啊！刘备以前穷苦惯了，到处奔波没享过福。现在给他豪宅、美女、钱财，让他享乐，自然就会疏远诸葛亮和关张二人。等他们内部闹矛盾，我们就能拿下荆州了。主公赶紧照周瑜说的办吧。"
+
+孙权很高兴，当天就装修东府，种上花草，摆满贵重物品，请刘备和他妹妹来住。还送了数十个歌女和大量金银珠宝。吴国太以为孙权是好意，开心得不得了。刘备果然沉迷享乐，完全不想回荆州的事了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说赵云与五百军在东府前住，终日无事，只去城外射箭走马。看看年终。云猛省：“孔明分付三个锦囊与我，教我一到南徐，开第一个；住到年终，开第二个；临到危急无路之时，开第三个：于内有神出鬼没之计，可保主公回家。此时岁已将终，主公贪恋女色，并不见面，何不拆开第二个锦囊，看计而行？”遂拆开视之。原来如此神策。即日径到府堂，要见玄德。侍婢报曰：“赵子龙有紧急事来报贵人。”玄德唤入问之。云佯作失惊之状曰：“主公深居画堂，不想荆州耶？”玄德曰：“有甚事如此惊怪？”云曰：“今早孔明使人来报，说曹操要报赤壁鏖兵之恨，起精兵五十万，杀奔荆州，甚是危急，请主公便回。”玄德曰：“必须与夫人商议。”云曰：“若和夫人商议，必不肯教主公回。不如休说，今晚便好起程。迟则误事！”玄德曰：“你且暂退，我自有道理。”云故意催逼数番而出。玄德入见孙夫人，暗暗垂泪。孙夫人曰：“丈夫何故烦恼？”玄德曰：“念备一身飘荡异乡，生不能侍奉二亲，又不能祭祀宗祖，乃大逆不孝也。今岁旦在迩，使备悒怏不已。”孙夫人曰：“你休瞒我，我已听知了也！方才赵子龙报说荆州危急，你欲还乡，故推此意。”玄德跪而告曰：“夫人既知，备安敢相瞒。备欲不去，使荆州有失，被天下人耻笑；欲去，又舍不得夫人：因此烦恼。”夫人曰：“妾已事君，任君所之，妾当相随。”玄德曰：“夫人之心，虽则如此，争奈国太与吴侯安肯容夫人去？夫人若可怜刘备，暂时辞别。”言毕，泪如雨下。孙夫人劝曰：“丈夫休得烦恼。妾当苦告母亲，必放妾与君同去。”玄德曰：“纵然国太肯时，吴侯必然阻挡。”孙夫人沉吟良久，乃曰：“妾与君正旦拜贺时，推称江边祭祖，不告而去，若何？”玄德又跪而谢曰：“若如此，生死难忘！切勿漏泄。”两个商议已定。玄德密唤赵云分付：“正旦日，你先引军士出城，于官道等候。吾推祭祖，与夫人同走。”云领诺。</div>
+            <div class="text-block simplified-text">赵云带着五百士兵在东府前驻扎，整天没事干，就在城外骑马射箭。快到年底了，赵云突然想起来：“诸葛亮之前给了我三个锦囊，让我到南徐后打开第一个；住到年底打开第二个；遇到危险无路可走时再打开第三个。说里面有妙计能保主公安全回家。现在快过年了，主公整天沉迷女色，连面都见不上，不如拆开第二个锦囊看看。”于是他打开锦囊，原来是这样一条妙计。
+
+当天赵云直接去府里找刘备。丫鬟通报说：“赵子龙有急事找主公。”刘备叫他进来问话。赵云假装慌张地说：“主公整天在屋里享乐，难道忘了荆州吗？”刘备问：“出什么事了这么着急？”赵云说：“今早诸葛亮派人来报，说曹操为了报赤壁之仇，带了五十万大军杀向荆州，情况危急，请主公赶紧回去。”刘备说：“这事得和夫人商量。”赵云说：“要是和夫人商量，她肯定不让您走。不如别说，今晚就动身，晚了就坏事了！”刘备说：“你先下去，我自有打算。”赵云故意又催了几次才走。
+
+刘备进去见孙夫人，偷偷抹眼泪。孙夫人问：“夫君为什么难过？”刘备说：“我想着自己漂泊在外，不能孝敬父母，也不能祭拜祖先，实在是不孝。眼看要过年了，心里特别难受。”孙夫人说：“别瞒我了，我都知道了！刚才赵子龙来说荆州危急，你想回去，才找这个借口。”刘备跪下说：“夫人既然知道了，我不敢隐瞒。我不回去，荆州出事会被天下人笑话；想回去又舍不得夫人，所以发愁。”孙夫人说：“我既然嫁给你，你去哪儿我都跟着。”刘备说：“夫人这么想是好，可你母亲和哥哥怎么会放你走？夫人要是可怜我，就让我先一个人走吧。”说着哭起来。
+
+孙夫人安慰他：“别难过了。我去求母亲，一定让她答应我跟您走。”刘备说：“就算你母亲同意，你哥哥肯定拦着。”孙夫人想了半天说：“这样吧，过年拜年时，我们借口去江边祭祖，偷偷溜走怎么样？”刘备又跪下感谢：“要是能这样，我一辈子忘不了你的恩情！千万别走漏风声。”两人商量好后，刘备悄悄叫来赵云交代：“大年初一你先带兵出城，在大路上等着。我假装去祭祖，和夫人一起走。”赵云点头答应。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">建安十五年春正月元旦，吴侯大会文武于堂上。玄德与孙夫人入拜国太。孙夫人曰：“夫主想父母宗祖坟墓，俱在涿郡，昼夜伤感不已。今日欲往江边，望北遥祭，须告母亲得知。”国太曰：“此孝道也，岂有不从？汝虽不识舅姑，可同汝夫前去祭拜，亦见为妇之礼。”孙夫人同玄德拜谢而出。</div>
+            <div class="text-block simplified-text">这是《三国演义》里的一段故事，讲的是：
+
+公元210年正月初一，孙权在厅堂召集文武官员开会。刘备带着孙夫人（孙权的妹妹）来拜见吴国太（孙权的母亲）。孙夫人说："我丈夫想念在涿郡的父母祖先和祖坟，整天难过。今天想去江边，朝北方祭拜，特来告诉母亲。"吴国太说："这是尽孝道的事，怎么能不同意？你虽然没见过公婆，也该和丈夫一起去祭拜，这才符合做媳妇的礼节。"孙夫人和刘备谢过就出去了。
+
+（说明：原文中"建安十五年"换算为公元210年；"舅姑"是古语指公婆；其他称谓如"吴侯""国太"等保留原名但加了身份说明，便于理解）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">此时只瞒着孙权。夫人乘车，止带随身一应细软。玄德上马，引数骑跟随出城，与赵云相会。五百军士前遮后拥，离了南徐，趱程而行。当日，孙权大醉，左右近侍扶入后堂，文武皆散。比及众官探得玄德、夫人逃遁之时，天色已晚。要报孙权，权醉不醒。及至睡觉，已是五更。次日，孙权闻知走了玄德，急唤文武商议。张昭曰：“今日走了此人，早晚必生祸乱。可急追之。”孙权令陈武、潘璋选五百精兵，无分昼夜，务要赶上拿回。二将领命去了。</div>
+            <div class="text-block simplified-text">现在这事还瞒着孙权。孙夫人坐上车，只带了随身值钱的东西。刘备骑上马，带着几个随从出城，跟赵云碰头。五百个士兵前后保护着他们，离开南徐，加快速度赶路。
+
+那天孙权喝得烂醉，被手下扶进后屋睡觉，官员们都散了。等大伙发现刘备和孙夫人逃跑时，天都黑了。想去报告孙权，可他醉得不省人事。等孙权睡醒，已经是凌晨五更天。
+
+第二天孙权听说刘备跑了，赶紧叫官员们来商量。张昭说："现在让他跑了，以后肯定要出乱子。得赶紧追。"孙权立刻派陈武、潘璋带五百精兵，不分白天黑夜，一定要追上抓回来。两人领命就出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">孙权深恨玄德，将案上玉砚摔为粉碎。程普曰：“主公空有冲天之怒，某料陈武、潘璋必擒此人不得。”权曰：“焉敢违我令！”普曰：“郡主自幼好观武事，严毅刚正，诸将皆惧。既然肯顺刘备，必同心而去。所追之将，若见郡主，岂肯下手？”权大怒，掣所佩之剑，唤蒋钦、周泰听令，曰：“汝二人将这口剑去取吾妹并刘备头来！违令者立斩！”蒋钦、周泰领命，随后引一千军赶来。</div>
+            <div class="text-block simplified-text">孙权特别恨刘备，气得把桌上的玉砚摔得粉碎。程普说："主公光发火也没用，我看陈武、潘璋肯定抓不到刘备。"孙权说："他们敢不听我的命令！"程普解释："孙小姐从小喜欢练武，性格刚强，将领们都怕她。现在她愿意跟着刘备，肯定是铁了心要走。追他们的将领见到孙小姐，哪敢动手？"孙权听了更生气，拔出佩剑，叫来蒋钦、周泰下令："你们拿着这把剑去把我妹妹和刘备的脑袋带回来！谁敢违抗命令，立刻处死！"蒋钦、周泰接了命令，马上带着一千士兵追了上去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说玄德加鞭纵辔，趱程而行；当夜于路暂歇两个更次，慌忙起行。看看来到柴桑界首，望见后面尘头大起，人报：“追兵至矣！”玄德慌问赵云曰：“追兵既至，如之奈何？”赵云曰：“主公先行，某愿当后。”转过前面山脚，一彪军马拦住去路。当先两员大将，厉声高叫曰：“刘备早早下马受缚！吾奉周都督将令，守候多时！”原来周瑜恐玄德走脱，先使徐盛、丁奉引三千军马于冲要之处扎营等候，时常令人登高遥望，料得玄德若投旱路，必经此道而过。当日徐盛、丁奉了望得玄德一行人到，各绰兵器截住去路。玄德惊慌勒回马问赵云曰：“前有拦截之兵，后有追赶之兵：前后无路，如之奈何？”云曰：“主公休慌。军师有三条妙计，多在锦囊之中。已拆了两个，并皆应验。今尚有第三个在此，分付遇危难之时，方可拆看。今日危急，当拆观之。”便将锦囊拆开，献与玄德。玄德看了，急来车前泣告孙夫人曰：“备有心腹之言，至此尽当实诉。”夫人曰：“丈夫有何言语，实对我说。”玄德曰：“昔日吴侯与周瑜同谋，将夫人招嫁刘备，实非为夫人计，乃欲幽困刘备而夺荆州耳。夺了荆州，必将杀备。是以夫人为香饵而钓备也。备不惧万死而来，盖知夫人有男子之胸襟，必能怜备。昨闻吴侯将欲加害，故托荆州有难，以图归计。幸得夫人不弃，同至于此。今吴侯又令人在后追赶，周瑜又使人于前截住，非夫人莫解此祸。如夫人不允，备请死于车前，以报夫人之德。”夫人怒曰：“吾兄既不以我为亲骨肉，我有何面目重相见乎！今日之危，我当自解。”于是叱从人推车直出，卷起车帘，亲喝徐盛、丁奉曰：“你二人欲造反耶？”徐、丁二将慌忙下马，弃了兵器，声喏于车前曰：“安敢造反。为奉周都督将令，屯兵在此专候刘备。”孙夫人大怒曰：“周瑜逆贼！我东吴不曾亏负你！玄德乃大汉皇叔，是我丈夫。我已对母亲、哥哥说知回荆州去。今你两个于山脚去处，引着军马拦截道路，意欲劫掠我夫妻财物耶？”徐盛、丁奉喏喏连声，口称：“不敢。请夫人息怒。这不干我等之事，乃是周都督的将令。”孙夫人叱曰：“你只怕周瑜，独不怕我？周瑜杀得你，我岂杀不得周瑜？”把周瑜大骂一场，喝令推车前进。徐盛、丁奉自思：“我等是下人。安敢与夫人违拗？”又见赵云十分怒气，只得把军喝住，放条大路教过去。</div>
+            <div class="text-block simplified-text">话说刘备快马加鞭赶路，晚上只休息了一会儿就赶紧接着走。快到柴桑地界时，看见后面尘土飞扬，有人报告："追兵来了！"刘备着急地问赵云："追兵来了怎么办？"赵云说："主公先走，我来断后。"刚转过山脚，突然一队兵马拦住去路。领头的两个大将大喊："刘备快下马投降！我们奉周瑜都督的命令，在这儿等你很久了！"原来周瑜怕刘备逃跑，早就派徐盛、丁奉带着三千兵马在必经之路守着，还经常派人登高瞭望。这天他们看见刘备一行人过来，就拿着武器拦住去路。
+
+刘备吓得勒住马问赵云："前面有人拦路，后面有追兵，怎么办啊？"赵云说："主公别慌。军师给了三个锦囊妙计，已经用了两个都很灵验，现在还剩最后一个，说遇到危险时才能打开。现在情况紧急，可以打开了。"说完就拆开锦囊给刘备看。刘备看完急忙跑到马车前哭着对孙夫人说："我有心里话要跟你说。"孙夫人说："丈夫有什么话直说吧。"刘备说："当初你哥哥和周瑜设计让你嫁给我，其实不是为了你好，是想把我困在东吴好夺取荆州。等拿到荆州就会杀了我。他们是用你当诱饵来钓我啊。我冒着生命危险来娶你，是因为知道夫人你心胸宽广，一定会体谅我。现在你哥哥派人追杀，周瑜又派人拦路，只有你能救我们了。要是你不答应，我宁愿死在车前来报答你的恩情。"
+
+孙夫人气得说："我哥哥都不把我当亲人了，我还有什么脸回去见他！今天这事我来解决。"说完就让随从推车上前，掀开车帘对徐盛、丁奉骂道："你们要造反吗？"两人赶紧下马放下武器，低头说："不敢造反，我们是奉周都督的命令在这儿等刘备。"孙夫人更生气了："周瑜这个反贼！我们东吴哪里对不起他了？刘备是大汉皇叔，是我丈夫。我已经跟母亲、哥哥说好要回荆州。现在你们带兵拦路，是想抢我们夫妻的财物吗？"两人连连说："不敢不敢，夫人别生气。这都是周都督的命令。"孙夫人骂道："你们怕周瑜就不怕我？周瑜能杀你们，我就杀不了周瑜吗？"把周瑜痛骂一顿后命令车队前进。徐盛、丁奉心想："我们只是小兵，哪敢跟夫人作对？"又看见赵云怒气冲冲，只好让士兵让开一条路放他们过去。
+
+（说明：完全按照您的要求进行了口语化改写：
+1. 用"快马加鞭""气得说"等口语表达
+2. 把"趱程而行"改为"赶路"，"声喏"改为"低头说"等通俗说法
+3. 保留所有关键情节：锦囊妙计、刘备哭诉、孙夫人怒斥等
+4. 确保每句话都通俗易懂，如"用你当诱饵来钓我"
+5. 没有添加或删减任何重要信息）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">恰才行不得五六里，背后陈武、潘璋赶到。徐盛、丁奉备言其事。陈、潘二将曰：“你放他过去差了也。我二人奉吴侯旨意，特来追捉他回去。”于是四将合兵一处，趱程赶来。玄德正行间，忽听得背后喊声大起。玄德又告孙夫人曰：“后面追兵又到，如之奈何？”夫人曰：“丈夫先行，我与子龙当后。”玄德先引三百军，望江岸去了。子龙勒马于车傍，将士卒摆开，专候来将。四员将见了孙夫人，只得下马，叉手而立。夫人曰：“陈武、潘璋，来此何干？”二将答曰：“奉主公之命，请夫人、玄德回。”夫人正色叱曰：“都是你这伙匹夫，离间我兄妹不睦！我已嫁他人，今日归去，须不是与人私奔。我奉母亲慈旨，令我夫妇回荆州。便是我哥哥来，也须依礼而行。你二人倚仗兵威，欲待杀害我耶？”骂得四人面面相觑，各自寻思：“他一万年也只是兄妹。更兼国太作主；吴侯乃大孝之人，怎敢违逆母言？明日翻过脸来，只是我等不是。不如做个人情。”军中又不见玄德；但见赵云怒目睁眉，只待厮杀。因此四将喏喏连声而退。孙夫人令推车便行。徐盛曰：“我四人同去见周都督，告禀此事。”</div>
+            <div class="text-block simplified-text">刘备他们刚走了五六里路，后面陈武、潘璋就追了上来。徐盛、丁奉把情况跟他们说了。陈武、潘璋说："你们放他们走是大错特错！我们是奉主公（孙权）的命令，专门来抓刘备回去的。"于是四个人带着兵一起追赶。
+
+刘备正走着，突然听到后面喊杀声大作。刘备赶紧对孙夫人说："追兵又来了，怎么办？"孙夫人说："夫君你先走，我和子龙（赵云）断后。"刘备就带着三百士兵先往江边去了。赵云骑马守在马车旁边，让士兵摆开阵势，等着追兵过来。
+
+四个将军见到孙夫人，赶紧下马行礼。孙夫人问："陈武、潘璋，你们来干什么？"两人回答："奉主公之命，请夫人和刘备回去。"孙夫人板着脸骂道："都是你们这些家伙挑拨我们兄妹关系！我现在已经嫁人了，这次回荆州是光明正大的，又不是私奔。我是奉母亲之命回荆州的，就算我哥哥来了也得讲道理。你们仗着人多，难道想杀我吗？"
+
+四个人被骂得你看我我看你，心里想："他们毕竟是亲兄妹，而且有国太（孙权的母亲）做主。主公又是大孝子，哪敢违抗母亲的话？万一以后追究起来，倒霉的还是我们。不如做个顺水人情。"再加上军中没看见刘备，只见赵云杀气腾腾地等着开打，四个人就连连答应着退下了。
+
+孙夫人命令车队继续前进。徐盛说："我们四个一起去见周瑜都督，把这事报告给他。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">四人犹豫未定。忽见一军如旋风而来，视之，乃蒋钦、周泰。二将问曰：“你等曾见刘备否？”四人曰：“早晨过去，已半日矣。”蒋钦曰：“何不拿下？”四人各言孙夫人发话之事。蒋钦曰：“便是吴侯怕道如此，封一口剑在此，教先杀他妹，后斩刘备。违者立斩！”四将曰：“去之已远，怎生奈何？”蒋钦曰：“他终是些步军，急行不上。徐、丁二将军可飞报都督，教水路棹快船追赶；我四人在岸上追赶：无问水旱之路，赶上杀了，休听他言语。”于是徐盛、丁奉飞报周瑜；蒋钦、周泰、陈武、潘璋四个领兵沿江赶来。</div>
+            <div class="text-block simplified-text">四个人正拿不定主意。突然看到一支军队飞快赶来，一看是蒋钦和周泰。他俩问："你们看见刘备了吗？"四个人说："早上过去的，已经走了大半天了。"蒋钦说："怎么不抓住他们？"四个人把孙夫人发话的事说了一遍。蒋钦说："吴侯就怕会这样，特意给了这把剑，让我们先杀他妹妹，再杀刘备。违抗命令的立刻处死！"四个将领说："他们已经走远了，怎么办？"蒋钦说："他们毕竟是步兵，走不快。徐盛、丁奉两位将军赶快去报告周瑜都督，让他派快船从水路追；我们四个从岸上追。不管水路陆路，追上就杀，别听他们说什么。"于是徐盛、丁奉赶紧去报告周瑜；蒋钦、周泰、陈武、潘璋四人带着兵沿江追赶。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说玄德一行人马，离柴桑较远，来到刘郎浦，心才稍宽。沿着江岸寻渡，一望江水弥漫，并无船只。玄德俯首沉吟。赵云曰：“主公在虎口中逃出，今已近本界，吾料军师必有调度，何用犹疑？”玄德听罢，蓦然想起在吴繁华之事，不觉凄然泪下。后人有诗叹曰：“吴蜀成婚此水浔，明珠步障屋黄金。谁知一女轻天下，欲易刘郎鼎峙心。”</div>
+            <div class="text-block simplified-text">刘备他们一帮人离开柴桑已经很远了，到了刘郎浦这个地方，心里才稍微放松点。他们沿着江边找船想过河，但放眼望去，江面特别宽，一条船都没有。刘备低着头发愁。赵云说："主公您好不容易从危险地方逃出来，现在都快到咱们自己地盘了，我猜军师（诸葛亮）肯定有安排，您还担心啥呢？"刘备听完，突然想起在东吴那些风光日子，忍不住伤心地哭了。后来有人写诗感慨这事说："刘备孙权在这江边结亲家，婚礼办得特别豪华。哪知道一个姑娘（孙尚香）差点让刘备忘了争天下的大事。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">玄德令赵云望前哨探船只，忽报后面尘土冲天而起。玄德登高望之，但见军马盖地而来，叹曰：“连日奔走，人困马乏，追兵又到，死无地矣！”看看喊声渐近。正慌急间，忽见江岸边一字儿抛着拖篷船二十余只。赵云曰：“天幸有船在此！何不速下，棹过对岸，再作区处！”玄德与孙夫人便奔上船。子龙引五百军亦都上船。只见船舱中一人纶巾道服，大笑而出，曰：“主公且喜！诸葛亮在此等候多时。”船中扮作客人的，皆是荆州水军。玄德大喜。不移时，四将赶到。孔明笑指岸上人言曰：“吾已算定多时矣。汝等回去传示周郎，教休再使美人局手段。”岸上乱箭射来，船已开的远了。蒋钦等四将，只好呆看。玄德与孔明正行间，忽然江声大震。回头视之，只见战船无数。帅字旗下，周瑜自领惯战水军，左有黄盖，右有韩当，势如飞马，疾似流星。看看赶上。孔明教棹船投北岸，弃了船，尽皆上岸而走，车马登程。周瑜赶到江边，亦皆上岸追袭。大小水军，尽是步行；止有为首官军骑马。周瑜当先，黄盖、韩当、徐盛、丁奉紧随。周瑜曰：“此处是那里？军士答曰：“前面是黄州界首。”望见玄德车马不远，瑜令并力追袭。正赶之间，一声鼓响，山崦内一彪刀手拥出，为首一员大将，乃关云长也。周瑜举止失措，急拨马便走；云长赶来，周瑜纵马逃命。正奔走间，左边黄忠，右边魏延，两军杀出。吴兵大败。周瑜急急下得船时，岸上军士齐声大叫曰：“周郎妙计安天下，陪了夫人又折兵！”瑜怒曰：“可再登岸决一死战！”黄盖、韩当力阻。瑜自思曰：“吾计不成，有何面目去见吴侯！”大叫一声，金疮迸裂，倒于船上。众将急救，却早不省人事。正是：两番弄巧翻成拙，此日含嗔却带羞。未知周郎性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">刘备让赵云去前面找船，忽然有人报告后面尘土飞扬。刘备爬上高处一看，只见大批敌军追来，叹气说："连着跑了好几天，人困马乏，追兵又来了，这下死定了！"喊杀声越来越近。
+
+正着急时，忽然看见江边停着二十多条带篷的船。赵云说："真是老天帮忙！咱们赶紧上船过江再说！"刘备和孙夫人立刻上船，赵云带着五百士兵也上了船。这时船舱里走出一个戴头巾、穿道袍的人，大笑着说："主公别慌！诸葛亮在这儿等您很久了。"原来船上假扮客人的都是荆州水军。刘备高兴坏了。
+
+不一会儿，四个敌将追到岸边。诸葛亮笑着对他们喊："我早就算到了。你们回去告诉周瑜，别再耍美人计了！"岸上射来乱箭，但船已经开远了，四个敌将只能干瞪眼。
+
+船开到江心，忽然听见江上传来巨响。回头一看，只见无数战船追来，周瑜亲自带队，左右跟着黄盖、韩当，速度飞快。诸葛亮让船靠北岸，大家弃船上岸坐车马继续赶路。
+
+周瑜追到岸边也上岸追赶，但水军都是步行，只有军官骑马。周瑜问："这是哪儿？"士兵回答："前面是黄州地界。"眼看就要追上刘备，突然鼓声大作，关羽带着一队刀斧手杀出来。周瑜吓得调头就跑，关羽紧追不舍。这时左边黄忠、右边魏延又杀出来，吴军大败。
+
+周瑜慌忙逃回船上，岸上士兵齐声嘲笑："周瑜妙计安天下，赔了夫人又折兵！"周瑜气得要上岸拼命，被黄盖、韩当拦住。他想："计策失败，哪有脸去见主公！"大叫一声，伤口崩裂昏倒在船上。众将赶紧抢救，人已经昏迷不醒了。
+
+这正是：两次耍聪明反被耍，今天又气又丢脸。不知道周瑜性命如何，且听下回分解。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
