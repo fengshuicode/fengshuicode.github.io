@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四十二回 张翼德大闹长坂桥　刘豫州败走汉津口</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./041.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第四十二回 张翼德大闹长坂桥　刘豫州败走汉津口</h1>
+        <a href="./043.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说钟缙、钟绅二人拦住赵云厮杀。赵云挺枪便刺，钟缙当先挥大斧来迎。两马相交，战不三合。被云一枪刺落马下，夺路便走。背后钟绅持戟赶来，马尾相衔，那枝戟只在赵云后心内弄影。云急拨转马头，恰好两胸相拍。云左手持枪隔过画戟，右手拔出青釭宝剑砍去，带盔连脑，砍去一半，绅落马而死，余众奔散。赵云得脱，望长坂桥而走，只闻后面喊声大震，原来文聘引军赶来。赵云到得桥边，人困马乏。见张飞挺矛立马于桥上，云大呼曰：“翼德援我！”飞曰：“子龙速行，追兵我自当之。”</div>
+            <div class="text-block simplified-text">话说钟缙、钟绅两兄弟一起拦住赵云打了起来。赵云拿起长枪就刺，钟缙抢先用大斧头迎战。两人骑着马打在一起，没打几个回合，赵云一枪就把钟缙刺下马，然后赶紧找路逃跑。这时候钟绅拿着长戟从后面追上来，马都快贴着马屁股了，那杆长戟一直在赵云后背晃悠。赵云赶紧调转马头，正好和钟绅面对面。赵云左手用长枪挡开长戟，右手抽出青釭宝剑砍过去，连头盔带脑袋砍掉半边，钟绅当场掉下马死了，剩下的士兵都吓跑了。赵云这才脱身，赶紧往长坂桥跑。只听见后面喊杀声震天，原来是文聘带着兵追来了。赵云跑到桥边时，人和马都累得不行了。他看见张飞拿着长矛站在桥上，赶紧大喊："张飞救我！"张飞说："子龙你快走，追兵交给我来对付。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">云纵马过桥，行二十余里，见玄德与众人憩于树下。云下马伏地而泣。玄德亦泣。云喘息而言曰：“赵云之罪，万死犹轻！糜夫人身带重伤，不肯上马，投井而死，云只得推土墙掩之。怀抱公子，身突重围；赖主公洪福，幸而得脱。适来公子尚在怀中啼哭，此一会不见动静，多是不能保也。”遂解视之，原来阿斗正睡着未醒。云喜曰：“幸得公子无恙！”双手递与玄德。玄德接过，掷之于地曰：“为汝这孺子，几损我一员大将！”赵云忙向地下抱起阿斗，泣拜曰：“云虽肝脑涂地，不能报也！”后人有诗曰：“曹操军中飞虎出，赵云怀内小龙眠。无由抚慰忠臣意，故把亲儿掷马前。”</div>
+            <div class="text-block simplified-text">赵云骑马过桥，走了二十多里地，看见刘备和一群人在树下休息。赵云赶紧下马跪在地上哭。刘备也跟着哭了。赵云喘着气说："我赵云罪该万死！糜夫人受了重伤不肯上马，自己跳井死了，我只能推倒土墙把井埋了。抱着小主公冲出包围圈，全靠主公的福气才侥幸逃出来。刚才孩子还在我怀里哭呢，这会儿没动静了，怕是活不成了。"说完解开衣服一看，原来阿斗正睡得香呢。赵云高兴地说："太好了！小主公没事！"双手把阿斗递给刘备。刘备接过来却把孩子往地上一扔，说："就为了你这小崽子，差点折损我一员大将！"赵云赶紧从地上抱起阿斗，哭着跪拜说："我就算粉身碎骨也报答不了主公啊！"后来有人写诗说："曹操军中的猛将像老虎，赵云怀里的小主公睡得香。刘备没法表达对忠臣的感谢，就把亲儿子扔在赵云马前。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说文聘引军追赵云至长坂桥，只见张飞倒竖虎须，圆睁环眼，手绰蛇矛，立马桥上，又见桥东树林之后，尘头大起，疑有伏后，便勒住马，不敢近前。俄而曹仁、李典、夏侯惇、夏侯渊、乐进、张辽、张郃、许褚等都至。见飞怒目横矛，立马于桥上，又恐是诸葛孔明之计，都不敢近前。扎住阵脚，一字儿摆在桥西，使人飞报曹操。操闻知，急上马，从阵后来。张飞睁圆环眼，隐隐见后军青罗伞盖、旄钺旌旗来到，料得是曹操心疑，亲自来看。飞乃厉声大喝曰：“我乃燕人张翼德也！谁敢与我决一死战？”声如巨雷。曹军闻之，尽皆股栗。曹操急令去其伞盖，回顾左右曰：“我向曾闻云长言：翼德于百万军中，取上将之首，如探囊取物。今日相逢，不可轻敌。”言未已，张飞睁目又喝曰：“燕人张翼德在此！谁敢来决死战？”曹操见张飞如此气概，颇有退心。飞望见曹操后军阵脚移动，乃挺矛又喝曰：“战又不战，退又不退，却是何故！”喊声未绝，曹操身边夏侯杰惊得肝胆碎裂，倒撞于马下。操便回马而走。于是诸军众将一齐望西奔走。正是：黄口孺子，怎闻霹雳之声；病体樵夫，难听虎豹之吼。一时弃枪落盔者，不计其数，人如潮涌，马似山崩，自相践踏。后人有诗赞曰：“长坂桥头杀气生，横枪立马眼圆睁。一声好似轰雷震，独退曹家百万兵。”</div>
+            <div class="text-block simplified-text">话说文聘带兵追赵云到长坂桥，看见张飞胡子炸开、瞪大眼睛、手握长矛站在桥上。又发现桥东边树林后面尘土飞扬，怀疑有埋伏，就勒住马不敢上前。不一会儿，曹仁、李典、夏侯惇等大将都到了。他们看张飞横着长矛瞪眼站在桥上，又怕是诸葛亮的计谋，都不敢靠近。曹军在桥西边排开阵势，派人赶紧报告曹操。
+
+曹操听说后急忙骑马赶来。张飞远远看见曹操的仪仗队，知道曹操起疑亲自来查看，就大吼一声："我是燕人张飞！谁敢来跟我拼命？"声音像打雷一样，曹军听了都吓得腿软。曹操赶紧让人撤掉伞盖，对旁边人说："我听关羽说过，张飞能在百万军中轻松取敌将首级。今天碰上，不能大意。"话没说完，张飞又瞪眼大喊："燕人张飞在此！谁敢来决一死战？"
+
+曹操看张飞这么勇猛，有点想撤退。张飞发现曹军阵型松动，又举着长矛喊："要打不打，要退不退，到底想怎样！"这一嗓子把曹操身边的夏侯杰吓得摔下马死了。曹操赶紧调头逃跑，整个曹军跟着往西边溃逃。当时场面乱成一团，士兵们丢盔弃甲，互相踩踏，逃跑的人像潮水一样。
+
+后人写诗称赞："长坂桥上杀气冲天，张飞横枪立马瞪圆眼。一声吼像打雷，一个人吓退曹操百万兵。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说曹操惧张飞之威，骤马望西而走，冠簪尽落，披发奔逃。张辽、许褚赶上，扯住辔环。曹操仓皇失措。张辽曰：“丞相休惊。料张飞一人，何足深惧！今急回军杀去，刘备可擒也。”曹操神色方才稍定，乃令张辽、许褚再至长坂桥探听消息。且说张飞见曹军一拥而退，不敢追赶；速唤回原随二十余骑，解去马尾树枝，令将桥梁拆断，然后回马来见玄德，具言断桥一事。玄德曰：“吾弟勇则勇矣，惜失于计较。”飞问其故。玄德曰：“曹操多谋。汝不合拆断桥梁，彼必追至矣。”飞曰：“他被我一喝，倒退数里，何敢再追？”玄德曰：“若不断桥，彼恐有埋伏，不敢进兵，今拆断了桥，彼料我无军而怯，必来追赶。彼有百万之众，虽涉江汉，可填而过，岂惧一桥之断耶？”于是即刻起身，从小路斜投汉津，望沔阳路而走。却说曹操使张辽、许褚探长坂桥消息，回报曰：“张飞已拆断桥梁而去矣。”操曰：“彼断桥而去，乃心怯也。”遂传令差一万军，速搭三座浮桥，只今夜就要过。李典曰：“此恐是诸葛亮之诈谋，不可轻进。”操曰：“张飞一勇之夫，岂有诈谋！”遂传下号令，火速进兵。</div>
+            <div class="text-block simplified-text">曹操被张飞吓破了胆，骑马就往西边逃，帽子都跑掉了，披头散发地狂奔。张辽和许褚追上去拉住他的马。曹操吓得六神无主。张辽说："丞相别怕！张飞就一个人，有什么好怕的？咱们现在杀回去，准能抓住刘备。"曹操这才镇定下来，派张辽和许褚去长坂桥打探消息。
+
+再说张飞看见曹军全跑了，也没敢追。他叫回跟着的二十多个骑兵，把绑在马尾巴上的树枝解下来，让人把桥拆了，然后回去见刘备，说了拆桥的事。刘备说："三弟你虽然勇猛，但这事办得欠考虑。"张飞问为啥，刘备解释："曹操诡计多端。你不该拆桥，这一拆他肯定要来追。"张飞不服："我吼一嗓子就把他吓退好几里，他哪还敢追？"刘备说："要是桥不拆，他怕有埋伏不敢追。现在桥断了，他反而觉得咱们人少胆怯。他带着百万大军，就算长江汉水都能填平了过河，还在乎一座断桥？"说完立刻带人抄小路往汉津、沔阳方向撤退。
+
+曹操派去打探的人回来报告："张飞把桥拆了跑了。"曹操大笑："他拆桥逃跑，分明是害怕！"马上下令派一万士兵连夜搭三座浮桥，准备追击。李典劝他："这可能是诸葛亮的计谋，不能轻举妄动。"曹操不以为然："张飞就是个莽夫，哪会用什么计谋！"坚持下令全军火速进军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说玄德行近汉津，忽见后面尘头大起，鼓声连天，喊声震地。玄德曰：“前有大江，后有追兵，如之奈何？”急命赵云准备抵敌。曹操下令军中曰：“今刘备釜中之鱼，阱中之虎；若不就此时擒捉，如放鱼入海，纵虎归山矣。众将可努力向前。”众将领命，一个个奋威追赶。忽山坡后鼓声响处，一队军马飞出，大叫曰：“我在此等候多时了！”当头那员大将，手执青龙刀，坐下赤兔马，原来是关云长，去江夏借得军马一万，探知当阳长坂大战，特地从此路截出。曹操一见云长，即勒住马回顾众将曰：“又中诸葛亮之计也！”传令大军速退。</div>
+            <div class="text-block simplified-text">刘备一行人快到汉津的时候，突然看见后面尘土飞扬，战鼓震天，喊杀声不断。刘备着急地说："前面是大江，后面有追兵，这可怎么办啊？"赶紧让赵云准备迎战。
+
+曹操对手下将士们喊话："现在刘备就像锅里的鱼、陷阱里的老虎，要是现在不抓住他，就等于把鱼放回大海，把老虎放回山里。大家给我拼命往前冲！"将领们听了命令，都拼命追赶。
+
+突然山坡后面响起战鼓声，冲出一支军队，带头的大将大喊："我在这儿等你们好久了！"这人骑着赤兔马，拿着青龙刀，正是关羽。原来他去江夏借了一万兵马，听说当阳长坂在打仗，专门走这条路来拦截。
+
+曹操一看见关羽，赶紧拉住马，回头对手下说："又中了诸葛亮的计了！"立刻下令全军撤退。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">云长追赶十数里，即回军保护玄德等到汉津，已有船只伺候，云长请玄德并甘夫人、阿斗至船中坐定。云长问曰：“二嫂嫂如何不见？”玄德诉说当阳之事。云长叹曰：“曩日猎于许田时，若从吾意，可无今日之患。”玄德曰：“我于此时亦投鼠忌器耳。”正说之间，忽见江南岸战鼓大鸣，舟船如蚁，顺风扬帆而来。玄德大惊。船来至近，只见一人白袍银铠，立于船头上大呼曰：“叔父别来无恙！”小侄得罪。”玄德视之，乃刘琦也。琦过船哭拜曰：“闻叔父困于曹操，小侄特来接应。”玄德大喜，遂合兵一处，放舟而行。在船中正诉情由，江西南上战船一字儿摆开，乘风唿哨而至，刘琦惊曰：“江夏之兵，小侄已尽起至此矣。今有战船拦路，非曹操之军，即江东之军也，如之奈何？”玄德出船头视之，见一人纶巾道服，坐在船头上，乃孔明也，背后立着孙乾。玄德慌请过船，问其何故却在此。孔明曰：“亮自至江夏，先令云长于汉津登陆地而接。我料曹操必来追赶，主公必不从江陵来，必斜取汉津矣；故特请公子先来接应，我竟往夏口，尽起军前来相助。”玄德大悦，合为一处，商议破曹之策。孔明曰：“夏口城险，颇有钱粮，可以久守。请主公且到夏口屯住。公子自回江夏，整顿战船，收拾军器，为掎角之势，可以抵当曹操。若共归江夏，则势反孤矣。”刘琦曰：“军师之言甚善。但愚意欲请叔父暂至江夏；整顿军马停当，再回夏口不迟。”玄德曰：“贤侄之言亦是。”遂留下云长，引五千军守夏口。玄德、孔明、刘琦共投江夏。</div>
+            <div class="text-block simplified-text">关羽追了十几里地就撤回来，护送刘备他们到汉津渡口。那里早有船等着，关羽请刘备、甘夫人和阿斗上船坐好。关羽问："怎么没看见两位嫂子？"刘备说了当阳长坂坡的事。关羽叹气说："当年在许田打猎时要是听我的，哪会有今天这麻烦。"刘备回答："那时候我也是怕伤着皇帝啊。"
+
+正说着，突然听见江南岸战鼓震天，密密麻麻的船队顺风驶来。刘备吓坏了。等船靠近，看见船头站着个穿白袍银甲的人大喊："叔叔别来无恙！小侄来给您赔罪了。"刘备一看是刘琦。刘琦上船跪下哭着说："听说叔叔被曹操围困，我特地来接应。"刘备很高兴，两路人马合在一起开船。
+
+刚在船上说起事情经过，江西南边又开来一队战船。刘琦惊慌地说："江夏的兵我都带过来了。现在拦路的不是曹操就是孙权的兵，怎么办？"刘备到船头一看，船头坐着个戴头巾穿道袍的人，原来是诸葛亮，后面站着孙乾。刘备赶紧请他们过来问怎么回事。诸葛亮说："我到江夏后，先派关羽在汉津接应。我猜曹操会追来，您肯定没法从江陵走，只能绕道汉津，所以让刘琦先来接应。我自己去夏口调兵来帮忙。"刘备很高兴，大家合兵一处商量怎么打曹操。
+
+诸葛亮说："夏口城易守难攻，粮草充足，可以长期坚守。主公先去夏口驻扎。刘琦回江夏整顿战船兵器，两边互相照应就能挡住曹操。要是都去江夏反而容易被包围。"刘琦说："军师说得对。不过我想请叔叔先去江夏整顿兵马，再去夏口也不迟。"刘备说："侄儿说得有理。"就让关羽带五千兵守夏口，自己和诸葛亮、刘琦去了江夏。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说曹操见云长在旱路引军截出，疑有伏兵，不敢来追；又恐水路先被玄德夺了江陵，便星夜提兵赴江陵来。荆州治中邓义、别驾刘先，已备知襄阳之事，料不能抵敌曹操，遂引荆州军民出郭投降。曹操入城、安民已定，释韩嵩之囚，加为大鸿胪。其余众官，各有封赏。曹操与众将议曰：“今刘备已投江夏，恐结连东吴，是滋蔓也，当用何计破之？”荀攸曰：“我今大振兵威，遣使驰檄江东，请孙权会猎于江夏，共擒刘备，分荆州之地，永结盟好。孙权必惊疑而来降，则吾事济矣。”操从其计，一面发檄遣使赴东吴；一面计点马步水军共八十三万，诈称一百万，水陆并进，船骑双行，沿江而来，西连荆、峡、东接蕲、黄、赛栅联络三百余里。</div>
+            <div class="text-block simplified-text">话说曹操看见关羽带着兵在陆路上拦截，怀疑有埋伏，不敢追过去。又怕刘备走水路抢先占了江陵，就连夜带兵赶往江陵。这时候，荆州的官员邓义和刘先已经知道襄阳失守的事，觉得打不过曹操，就带着荆州的老百姓出城投降了。曹操进城安抚百姓后，把之前关起来的韩嵩放了，还给他升了官。其他官员也都给了封赏。  
+
+曹操跟手下将领商量说："现在刘备跑到江夏去了，要是他跟东吴联手就麻烦了，咱们得想个办法对付他。"荀攸出主意说："咱们现在兵强马壮，不如派人去江东送信，邀请孙权一起来江夏打猎，顺便联手抓刘备，平分荆州的地盘，以后还能做盟友。孙权肯定又惊又疑，最后只能投降，这样咱们就成功了。"曹操觉得这主意不错，一边派人去东吴送信，一边清点兵马——实际有八十三万人，对外号称一百万。大军分水陆两路出发，战船和骑兵齐头并进，沿着长江一路推进，西边到荆州、三峡，东边到蕲春、黄州，军营帐篷连绵三百多里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">话分两头。却说江东孙权，屯兵柴桑郡，闻曹操大军至襄阳，刘琮已降，今又星夜兼道取江陵，乃集众谋士商议御守之策。鲁肃曰：“荆州与国邻接，江山险固，士民殷富。吾若据而有之，此帝王之资也。今刘表新亡，刘备新败，肃请奉命往江夏吊丧，因说刘备使抚刘表众将，同心一意，共破曹操；备若喜而从命，则大事可定矣。”权喜从其言，即遣鲁肃赍礼往江夏吊丧。却说玄德至江夏，与孔明、刘琦共议良策。孔明曰：“曹操势大，急难抵敌，不如往投东吴孙权，以为应援。使南北相持，吾等于中取利，有何不可？”玄德曰：“江东人物极多，必有远谋，安肯相容耶？”孔明笑曰：“今操引百万之众，虎踞江汉，江东安得不使人来探听虚实？若有人到此，亮借一帆风，直至江东，凭三寸不烂之舌，说南北两军互相吞并。若南军胜，共诛曹操以取荆州之地；若北军胜，则我乘势以取江南可也。”玄德曰：“此论甚高。但如何得江东人到？”</div>
+            <div class="text-block simplified-text">事情要分开说。另一边，孙权的部队驻扎在柴桑郡，他听说曹操的大军已经到了襄阳，刘琮已经投降，现在曹操又连夜赶路去打江陵。于是孙权召集谋士们商量怎么对付。鲁肃说："荆州和我们地盘挨着，地势险要，百姓富裕。要是我们能占下来，这可是当皇帝的本钱啊。现在刘表刚死，刘备刚败，我请求去江夏假装吊丧，顺便劝刘备收服刘表的旧部，大家一起打曹操。要是刘备同意，这事就成了。"孙权很高兴，马上派鲁肃带着礼物去江夏吊丧。
+
+再说刘备到了江夏，和诸葛亮、刘琦一起商量办法。诸葛亮说："曹操势力太大，硬拼不行，不如去投靠东吴的孙权，让他帮我们。让他们两边打起来，我们好从中得利。"刘备说："江东能人很多，他们肯定有长远打算，怎么会收留我们呢？"诸葛亮笑着说："现在曹操带着百万大军压境，江东怎么可能不派人来打探情况？要是他们的人来了，我就搭个顺风船去江东，靠我这张嘴说服他们和曹操打。要是孙权赢了，我们就一起打曹操占荆州；要是曹操赢了，我们就趁机拿下江南。"刘备说："这主意不错。可是怎么让江东的人来呢？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">正说间，人报江东孙权差鲁肃来吊丧，船已傍岸。孔明笑曰：：大事济矣！”遂问刘琦曰：“往日孙策亡时，襄阳曾遣人去吊丧否？”琦曰：“江东与我家有杀父之仇，安得通庆吊之礼！”孔明曰：“然则鲁肃之来，非为吊丧，乃来探听军情也。”遂谓玄德曰：“鲁肃至，若问曹操动静，主公只推不知，再三问时，主公只说可问诸葛亮。”计会已定，使人迎接鲁肃。肃入城吊丧；收过礼物，刘琦请肃与玄德相见。礼毕，邀入后堂饮酒，肃曰：“久闻皇叔大名，无缘拜会；今幸得见。实为欣慰。近闻皇叔与曹操会战，必知彼虚实：敢问操军约有几何？”玄德曰：“备兵微将寡，一闻操至即走，竟不知彼虚实。”鲁肃曰：“闻皇叔用诸葛孔明之谋，两场火烧得曹操魂亡胆落，何言不知耶？”玄德曰：“徐非问孔明，便知其详。”肃曰：“孔明安在？愿求一见。”玄德教请孔明出来相见。</div>
+            <div class="text-block simplified-text">他们正说着，有人报告说江东的孙权派鲁肃来吊丧，船已经靠岸了。诸葛亮笑着说："这下事情好办了！"然后问刘琦："以前孙策死的时候，襄阳派人去吊丧了吗？"刘琦回答："江东和我们家有杀父之仇，怎么可能互相往来吊丧呢！"诸葛亮说："那鲁肃这次来，肯定不是真的来吊丧，而是来打探军情的。"于是对刘备说："等鲁肃来了，要是问曹操的情况，您就说不知道。他要是再三追问，您就让他来问我诸葛亮。"商量好后，就派人去接鲁肃。
+
+鲁肃进城吊丧，收完礼物后，刘琦请他见刘备。行完礼，他们到后堂喝酒。鲁肃说："早就听说刘皇叔的大名，一直没机会见面，今天能见到真是高兴。最近听说您和曹操打仗，一定知道他的底细。请问曹操有多少兵马？"刘备说："我兵少将寡，一听说曹操来了就跑，根本不知道他的情况。"鲁肃说："听说皇叔用了诸葛亮的计谋，两把火烧得曹操魂都吓飞了，怎么说不知道呢？"刘备回答："除非你去问诸葛亮，他才知道详情。"鲁肃说："诸葛亮在哪？我想见见他。"刘备就叫人请诸葛亮出来见面。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">肃见孔明礼毕，问曰：“向慕先生才德，未得拜晤；今幸相遇，愿闻目今安危之事。”孔明曰：“曹操奸计，亮已尽知；但恨力未及，故且避之。”肃曰：“皇叔今将止于此乎？”孔明曰：“使君与苍梧太守吴臣有旧，将往投之。”肃曰：“吴臣粮少兵微，自不能保，焉能容人？”孔明曰：“吴臣处虽不足久居，今且暂依之，别有良图。”肃曰：“孙将军虎踞六郡，兵精粮足，又极敬贤礼士，江表英雄，多归附之。今为君计。莫若遣心腹往结东吴，以共图大事。”孔明曰：“刘使君与孙将军自来无旧，恐虚费词说。且别无心腹之人可使。”肃曰：“先生之兄，现为江东参谋，日望与先生相见。肃不才，愿与公同见孙将军，共议大事。”玄德曰：“孔明是吾之师，顷刻不可相离，安可去也？”肃坚请孔明同去。玄德佯不许。孔明曰：“事急矣，请奉命一行。玄德方才许诺。鲁肃遂别了玄德、刘琦，与孔明登舟，望柴桑郡来。正是：只因诸葛扁舟去，致使曹兵一旦休。不知孔明此去毕竟如何，且看下文分解。</div>
+            <div class="text-block simplified-text">鲁肃见到诸葛亮，行完礼后说：“我一直仰慕先生的才华和品德，但一直没机会见面；今天能见到您，真是幸运。我想请教您对当前局势的看法。”诸葛亮回答：“曹操的那些阴谋诡计，我都清楚；只是我们现在力量不够，所以暂时避开他。”鲁肃问：“刘皇叔现在打算就待在这儿吗？”诸葛亮说：“我家主公和苍梧太守吴臣有交情，准备去投奔他。”鲁肃说：“吴臣那边粮食少、兵力弱，自己都难保，哪能收留别人呢？”诸葛亮说：“吴臣那儿确实不能长待，但现在只能暂时投靠，以后再想别的办法。”鲁肃说：“孙将军（孙权）占据六个郡，兵强马壮，粮食充足，而且特别尊重人才，江南的英雄豪杰都去投奔他。我替您考虑，不如派个信得过的人去和东吴结盟，一起对付曹操。”诸葛亮说：“我家主公和孙将军素不相识，怕说了也是白说。再说也没有合适的人能派去。”鲁肃说：“先生的哥哥现在就在东吴当参谋，天天盼着和您见面。我虽然没什么本事，但愿意陪您一起去见孙将军，商量大事。”刘备插话说：“孔明是我的军师，一刻都离不开，怎么能让他去呢？”鲁肃坚持要诸葛亮一起去。刘备假装不同意。诸葛亮说：“现在情况紧急，我就去一趟吧。”刘备这才答应。于是鲁肃告别了刘备和刘琦，和诸葛亮一起坐船去柴桑郡。这正是：诸葛亮这一坐船去，直接让曹操的大军后来吃了大败仗。至于诸葛亮这趟去的结果到底怎样，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
