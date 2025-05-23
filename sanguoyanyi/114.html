@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百十四回 曹髦驱车死南阙　姜维弃粮胜魏兵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./113.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百十四回 曹髦驱车死南阙　姜维弃粮胜魏兵</h1>
+        <a href="./115.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说姜维传令退兵，廖化曰：“将在外，君命有所不受。今虽有诏，未可动也。”张翼曰：“蜀人为大将军连年动兵，皆有怨望；不如乘此得胜之时，收回人马，以安民心，再作良图。”维曰：“善。”遂令各军依法而退。命廖化、张翼断后，以防魏兵追袭。却说邓艾引兵追赶，只见前面蜀兵旗帜整齐，人马徐徐而退。艾叹曰：“姜维深得武侯之法也！”因此不敢追赶，勒军回祁山寨去了。且说姜维至成都，入见后主，问召回之故。后主曰：“朕为卿在边庭，久不还师，恐劳军士，故诏卿回朝，别无他意。”维曰：“臣已得祁山之寨，正欲收功，不期半途而废。此必中邓艾反间之计矣。”后主默然不语。姜维又奏曰：“臣誓讨贼，以报国恩。陛下休听小人之言，致生疑虑。”后主良久乃曰：“朕不疑卿；卿且回汉中，俟魏国有变，再伐之可也。”姜维叹息出朝，自投汉中去讫。</div>
+            <div class="text-block simplified-text">姜维下令撤军，廖化说："将军在外打仗，有时候可以不按皇帝的命令行事。现在虽然有撤军的圣旨，但我们不用急着执行。"张翼说："咱们蜀国老百姓因为连年打仗，对大将军已经有怨言了。不如趁着现在打了胜仗，先把军队撤回去安抚民心，以后再找机会出兵。"姜维说："好。"就按规矩安排撤军，让廖化、张翼在后面掩护，防止魏国军队追击。
+
+邓艾带兵追过来，看见蜀军队伍整齐、慢慢往后撤，感叹说："姜维真是学到了诸葛亮用兵的精髓啊！"就没敢再追，带兵回祁山大营了。
+
+姜维回到成都见皇帝刘禅，问他为什么突然叫自己回来。刘禅说："我看你在边境待得太久，担心将士们太辛苦，就叫你回来休息，没别的意思。"姜维说："我本来已经拿下祁山大营，眼看就要成功了，没想到半路撤军。这肯定是中了邓艾的离间计。"刘禅没说话。姜维又说："我发誓要消灭魏国报答国家。皇上您别听信小人的话。"过了好一会儿，刘禅才说："我没有怀疑你。你先回汉中吧，等魏国那边有动静了再出兵。"姜维叹了口气离开皇宫，回汉中去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">却说党均回到祁山寨中，报知此事。邓艾与司马望曰：“君臣不和，必有内变。”就令党均入洛阳，报知司马昭。昭大喜，便有图蜀之心，乃问中护军贾充曰：“吾今伐蜀，如何？”充曰：“未可伐也。天子方疑主公，若一旦轻出，内难必作矣。旧年黄龙两见于宁陵井中，群臣表贺，以为祥瑞；天子曰：‘非祥瑞也。龙者君象，乃上不在天，下不在田，屈于井中，是幽困之兆也。’遂作《潜龙诗》一首。诗中之意，明明道着主公。其诗曰：‘伤哉龙受困，不能跃深渊。上不飞天汉，下不见于田。蟠居于井底，鳅鳝舞其前。藏牙伏爪甲，嗟我亦同然！’”司马昭闻之大怒，谓贾充曰：“此人欲效曹芳也！若不早图，彼必害我。”充曰：“某愿为主公早晚图之。”时魏甘露五年夏四月，司马昭带剑上殿，髦起迎之。群臣皆奏曰：“大将军功德巍巍，合为晋公，加九锡。”髦低头不答。昭厉声曰：“吾父子兄弟三人有大功于魏，今为晋公，得毋不宜耶？”髦乃应曰：“敢不如命？”昭曰：“《潜龙》之诗，视吾等如鳅鳝，是何礼也？”髦不能答。昭冷笑下殿，众官凛然。髦归后宫，召侍中王沈、尚书王经、散骑常侍王业三人，入内计议。髦泣曰：“司马昭将怀篡逆，人所共知！朕不能坐受废辱，卿等可助朕讨之！”王经奏曰：“不可。昔鲁昭公不忍季氏，败走失国；今重权已归司马氏久矣，内外公卿，不顾顺逆之理，阿附奸贼，非一人也。且陛下宿卫寡弱，无用命之人。陛下若不隐忍，祸莫大焉。且宜缓图，不可造次。”髦曰：“是可忍也，孰不可忍也！朕意已决，便死何惧！”言讫，即入告太后。王沈、王业谓王经曰：“事已急矣。我等不可自取灭族之祸，当往司马公府下出首，以免一死。”经大怒曰：“主忧臣辱，主辱臣死，敢怀二心乎？”王沈、王业见经不从，径自往报司马昭去了。少顷，魏主曹髦出内，令护卫焦伯，聚集殿中宿卫苍头官僮三百余人，鼓噪而出。髦仗剑升辇，叱左右径出南阙。王经伏于辇前，大哭而谏曰：“今陛下领数百人伐昭，是驱羊而入虎口耳，空死无益。臣非惜命，实见事不可行也！”髦曰：“吾军已行，卿无阻当。”遂望云龙门而来。</div>
+            <div class="text-block simplified-text">党均回到祁山寨里，把情况报告给邓艾和司马望。邓艾和司马望说："皇帝和大臣关系不好，内部肯定要出事。"于是派党均去洛阳向司马昭报告。司马昭听了很高兴，就有了攻打蜀国的想法。他问贾充："我现在去打蜀国，怎么样？"贾充说："现在不行。皇帝正怀疑您呢，要是您突然带兵出去，国内肯定要出事。去年有两条黄龙出现在宁陵的井里，大臣们都说是好事，但皇帝说：'这不是好事。龙代表皇帝，现在龙不上天也不下地，困在井里，这是要倒霉的预兆。'还写了一首《潜龙诗》。诗里明显是在说您。诗的大意是：可怜的龙被困住，不能游进深水。上不了天，也下不了地，只能窝在井底，看着泥鳅在面前蹦跶。收起爪牙，我也只能这样！"司马昭听了大怒，对贾充说："这小子想学曹芳（被废的皇帝）！不早点收拾他，他肯定要害我。"贾充说："我愿意帮您想办法解决这事。"
+
+这时候是魏国甘露五年四月，司马昭带着剑上朝，皇帝曹髦起身迎接。大臣们都说："大将军功劳这么大，应该封为晋公，加九锡。"曹髦低着头不说话。司马昭厉声说："我们父子兄弟三人对魏国有大功，现在当晋公，难道不合适吗？"曹髦只好说："当然合适。"司马昭又说："你那首《潜龙诗》，把我们比作泥鳅，这是什么意思？"曹髦答不上来。司马昭冷笑着走了，大臣们都吓坏了。
+
+曹髦回到后宫，叫来王沈、王经、王业三人商量。他哭着说："司马昭想造反，大家都知道！我不能等着被他废掉，你们要帮我讨伐他！"王经劝道："不行啊。以前鲁昭公受不了季氏，结果失败逃亡；现在大权早就落在司马家手里了，朝廷内外的人都巴结他们。再说您身边也没多少可靠的护卫。您要是硬来，肯定要遭殃。这事得慢慢来。"曹髦说："这都能忍，还有什么不能忍的！我决定了，死也不怕！"说完就去告诉太后。
+
+王沈、王业对王经说："情况紧急了。我们不能跟着送死，得赶紧去告诉司马昭。"王经生气地说："皇帝有难，臣子就该拼命，怎么能背叛？"王沈、王业不听，直接跑去向司马昭告密了。
+
+过了一会儿，曹髦带着护卫焦伯，召集了三百多个侍卫和仆人，大喊着冲出来。他拿着剑上车，命令直接往南门冲。王经跪在车前哭着劝："陛下带着这几百人去打司马昭，简直是羊入虎口，白白送死啊！我不是怕死，是这事真的不行！"曹髦说："军队都出发了，你别拦着。"说完就往云龙门去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">只见贾充戎服乘马，左有成倅，右有成济，引数千铁甲禁兵，呐喊杀来。髦仗剑大喝曰：“吾乃天子也！汝等突入宫庭，欲弑君耶？”禁兵见了曹髦，皆不敢动。贾充呼成济曰：“司马公养你何用？正为今日之事也！”济乃绰戟在手，回顾充曰：“当杀耶？当缚耶？”充曰：“司马公有令；只要死的。”成济撚戟直奔辇前。髦大喝曰：“匹夫敢无礼乎！”言未讫，被成济一戟刺中前胸，撞出辇来；再一戟，刃从背上透出，死于辇傍。焦伯挺枪来迎，被成济一戟刺死。众皆逃走。王经随后赶来，大骂贾充曰：“逆贼安敢弑君耶！”充大怒，叱左右缚定，报知司马昭。昭入内，见髦已死，乃佯作大惊之状，以头撞辇而哭，令人报知各大臣。</div>
+            <div class="text-block simplified-text">贾充穿着军装骑着马，左边跟着成倅，右边跟着成济，带着几千个全副武装的皇宫卫兵，大喊大叫地杀过来。曹髦（当时的皇帝）拿着剑大声喊道："我是皇帝！你们闯进皇宫，是想杀皇帝吗？"卫兵们看到曹髦，都不敢动手。
+
+贾充对成济喊道："司马昭养你是干什么用的？就是为了今天这种事！"成济拿起长戟，回头问贾充："是杀了他？还是抓起来？"贾充说："司马昭有命令：只要死的。"成济就拿着长戟直接冲向皇帝的车驾。
+
+曹髦大骂道："你这个混蛋竟敢这么无礼！"话还没说完，就被成济一戟刺中胸口，从车上摔下来；成济又刺了一戟，戟尖从后背穿出来，曹髦死在车旁边。焦伯拿着枪冲过来，也被成济一戟刺死。其他人都吓跑了。
+
+王经从后面赶过来，大骂贾充："你这个反贼竟敢杀皇帝！"贾充很生气，命令手下把王经绑起来，然后去报告司马昭。司马昭进来看到曹髦已经死了，就假装很吃惊的样子，用头撞着皇帝的车大哭，又让人去通知各位大臣。
+
+（说明：原文描写的是《三国演义》中曹髦讨伐司马昭反被杀害的历史场景。我用现代口语重新表述时：1.把"戎服"译为"穿着军装"；2.把"铁甲禁兵"译为"全副武装的皇宫卫兵"；3.用"混蛋"翻译"匹夫"更符合现代骂人用语；4.保留了所有关键人物和动作细节；5.把"辇"统一译为"车"或"车驾"更易理解；6.保持原文情节顺序不变。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">时太傅司马孚入内，见髦尸，首枕其股而哭曰：“弑陛下者，臣之罪也！”遂将髦尸用棺椁盛贮，停于偏殿之西。昭入殿中，召群臣会议。群臣皆至，独有尚书仆射陈泰不至。昭令泰之舅尚书荀顗召之。泰大哭曰：“论者以泰比舅，今舅实不如泰也。”乃披麻带孝而入，哭拜于灵前。昭亦佯哭而问曰：“今日之事，何法处之？”泰曰：“独斩贾充，少可以谢天下耳。”昭沉吟良久，又问曰：“再思其次？”泰曰：“惟有进于此者，不知其次。”昭曰：“成济大逆不道，可剐之，灭其三族。”济大骂昭曰：“非我之罪，是贾充传汝之命！”昭令先割其舌。济至死叫屈不绝。弟成倅亦斩于市，尽灭三族。后人有诗叹曰：“司马当年命贾充，弑君南阙赭袍红。却将成济诛三族，只道军民尽耳聋。”</div>
+            <div class="text-block simplified-text">当时太傅司马孚进宫，看到曹髦的尸体，他把曹髦的头枕在自己腿上，哭着说："害死皇上，是我的罪过啊！"然后他用棺材装好曹髦的尸体，停放在偏殿西侧。
+
+司马昭进殿后，召集大臣们开会。大臣们都来了，只有尚书仆射陈泰没到。司马昭就让陈泰的舅舅尚书荀顗去叫他。陈泰大哭着说："别人都说我和舅舅差不多，现在看来舅舅还不如我啊。"他穿着孝服进来，跪在灵前痛哭。司马昭也假装哭着问："现在这事该怎么处理？"陈泰说："只有杀了贾充，才能稍微平息天下人的愤怒。"司马昭想了一会儿，又问："还有别的办法吗？"陈泰说："只有这个办法最好，我不知道还有什么别的办法。"司马昭说："成济犯上作乱，应该千刀万剐，灭他三族。"成济大骂司马昭："不是我的错，是贾充传达你的命令！"司马昭就让人先割了他的舌头。成济到死都在喊冤。他弟弟成倅也被当街斩首，全家都被杀光了。
+
+后来有人写诗感叹说："当年司马昭派贾充，在皇宫南门杀害穿红袍的皇帝。现在却把成济全家杀光，还以为老百姓都聋了听不见呢。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">昭又使人收王经全家下狱。王经正在廷尉厅下，忽见缚其母至。经叩头大哭曰：“不孝子累及慈母矣！”母大笑曰：“人谁不死？正恐不得死所耳！以此弃命，何恨之有！”次日，王经全家皆押赴东市。王经母子含笑受刑。满城士庶，无不垂泪。后人有诗曰：“汉初夸伏剑，汉末见王经：真烈心无异，坚刚志更清。节如泰华重，命似鸿毛轻。母子声名在，应同天地倾。”太傅司马孚请以王礼葬曹髦，昭许之。贾充等劝司马昭受魏禅，即天子位。昭曰：昔文王三分天下有其二，以服事殷，故圣人称为至德。魏武帝不肯受禅于汉，犹吾之不肯受禅于魏也。”贾充等闻言，已知司马昭留意于子司马炎矣，遂不复劝进。是年六月，司马昭立常道乡公曹璜为帝，改元景元元年。璜改名曹免，字景明。乃武帝曹操之孙，燕王曹宇之子也。奂封昭为相国、晋公，赐钱十万、绢万匹。其文武多官，各有封赏。早有细作报入蜀中。姜维闻司马昭弑了曹髦，立了曹奂，喜曰：“吾今日伐魏，又有名矣。”遂发书入吴，令起兵问司马昭弑君之罪；一面奏准后主，起兵十五万，车乘数千辆，皆置板箱于上；令廖化、张翼为先锋：化取子午谷，翼取骆谷；维自取斜谷，皆要出祁山之前取齐。三路兵并起，杀奔祁山而来。时邓艾在祁山寨中，训练人马，闻报蜀兵三路杀到，乃聚诸将计议。参军王瓘曰：“吾有一计，不可明言，现写在此，谨呈将军台览。”艾接来展看毕，笑曰：“此计虽妙，只怕瞒不过姜维。”瓘曰：“某愿舍命前去。”艾曰：“公志若坚，必能成功。”遂拨五千兵与瓘。瓘连夜从斜谷迎来，正撞蜀兵前队哨马。瓘叫曰：“我是魏国降兵，可报与主帅。”</div>
+            <div class="text-block simplified-text">司马昭派人把王经全家抓进大牢。王经在衙门里突然看到士兵押着他母亲进来，立刻跪下哭着说："儿子不孝，连累您老人家了！"他母亲反而大笑："人早晚都要死，就怕死得没意义！咱们今天死得其所，有什么好遗憾的！"第二天，王经全家被押到刑场，母子俩面带笑容赴死。全城百姓看到都忍不住流泪。后来有人写诗称赞他们母子气节。
+
+司马孚请求用王爷的规格安葬曹髦，司马昭同意了。贾充等人劝司马昭直接当皇帝，司马昭说："当年周文王拥有天下三分之二还服从商朝，这才是圣人的品德。就像曹操当年没取代汉朝一样，我现在也不会取代魏国。"贾充等人一听就明白，司马昭这是想把皇位留给儿子司马炎，就不再劝了。
+
+这年六月，司马昭立曹璜（后改名曹奂）为皇帝，改年号景元。曹奂是曹操的孙子。新皇帝封司马昭为相国、晋公，赏赐大量财物，文武官员也都得到封赏。
+
+消息传到蜀国，姜维听说司马昭杀了曹髦改立曹奂，高兴地说："这下我们讨伐魏国更有理由了！"他一面写信让吴国一起出兵问罪，一面向刘禅请示，率领十五万大军出征。军队分三路：廖化走子午谷，张翼走骆谷，姜维自己走斜谷，约定在祁山会师。
+
+当时邓艾正在祁山练兵，听说蜀军分三路杀来，就召集将领商量对策。参军王瓘说："我有个计策，写在纸上请您过目。"邓艾看完笑着说："计策不错，就怕骗不过姜维。"王瓘说："我愿意冒险一试。"邓艾就给他五千兵马。王瓘连夜赶到斜谷，正好遇到蜀军侦察兵，他大喊："我是来投降的魏将，快带我去见你们主帅！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">哨军报知姜维，维令拦住余兵，只教为首的将来见。瓘拜伏于地曰：“某乃王经之侄王瓘也。近见司马昭弑君，将叔父一门皆戮，某痛恨入骨。今幸将军兴师问罪，故特引本部兵五千来降。愿从调遣，剿除奸党，以报叔父之恨。”维大喜，谓瓘曰：“汝既诚心来降，吾岂不诚心相待？吾军中所患者，不过粮耳。今有粮车数千，现在川口，汝可运赴祁山。吾只今去取祁山寨也。”瓘心中大喜，以为中计，忻然领诺。姜维曰：“汝去运粮，不必用五千人，但引三千人去，留下二千人引路，以打祁山。”瓘恐维疑惑，乃引三千兵去了。维令傅佥引二千魏兵随征听用。忽报夏侯霸到。霸曰：“都督何故准信王瓘之言也？吾在魏，虽不知备细，未闻王瓘是王经之侄。其中多诈，请将军察之。”维大笑曰：“我已知王瓘之诈，故分其兵势，将计就计而行。”霸曰：“公试言之。”维曰：“司马昭奸雄比于曹操，既杀王经，灭其三族，安肯存亲侄于关外领兵？故知其诈也。仲权之见，与我暗合。”于是姜维不出斜谷，却令人于路暗伏，以防王瓘奸细。不旬日，果然伏兵捉得王瓘回报邓艾下书人来见。维问了情节，搜出私书，书中约于八月二十日，从小路运粮送归大寨，却教邓艾遣兵于墵山谷中接应。维将下书人杀了，却将书中之意，改作八月十五日，约邓艾自率大兵，于墵山谷中接应。一面令人扮作魏军往魏营下书；一面令人将现有粮车数百辆卸了粮米，装载干柴茅草引火之物，用青布罩之，令傅佥引二千原降魏兵，执打运粮旗号。维却与夏侯霸各引一军，去山谷中埋伏。令蒋舒出斜谷，廖化、张翼俱各进兵，来取祁山。却说邓艾得了王瓘书信，大喜，急写回书，今来人回报。至八月十五日，邓艾引五万精兵径往墵山谷中来，远远使人凭高眺探，只见无数粮车，接连不断，从山凹中而行。艾勒马望之，果然皆是魏兵。左右曰：“天已昏暮，可速接应王瓘出谷口。”艾曰：“前面山势掩映，倘有伏兵，急难退步；只可在此等候。”正言间，忽两骑马骤至，报曰：“王将军因将粮草过界，背后人马赶来，望早救应。”艾大惊，急催兵前进。</div>
+            <div class="text-block simplified-text">探子报告姜维，姜维下令拦住投降的部队，只让带头的将领来见他。王瓘跪在地上说："我是王经的侄子王瓘。最近看到司马昭杀了皇帝，还把我叔叔全家都杀了，我恨得要命。现在正好将军您带兵讨伐他，所以我带着五千人马特地来投靠。愿意听您指挥，除掉那些奸臣，给我叔叔报仇。"姜维很高兴，对王瓘说："你诚心来投靠，我肯定真心待你。现在我们军队最缺的就是粮食。正好有几千车粮食在川口，你帮忙运到祁山去。我这就去攻打祁山。"王瓘心里暗喜，以为姜维中计了，爽快地答应了。姜维又说："运粮食不用五千人，带三千人去就行，剩下两千人留下带路，好打祁山。"王瓘怕姜维起疑，就带着三千兵走了。姜维让傅佥带着投降的两千魏兵跟着自己。这时夏侯霸来了，说："将军怎么相信王瓘的话？我在魏国的时候，虽然不清楚具体情况，但没听说王经有个侄子叫王瓘。这里面肯定有诈，您要小心。"姜维大笑："我早就看出王瓘是假投降，所以故意分散他的兵力，将计就计。"夏侯霸问："您说说看？"姜维解释："司马昭比曹操还奸诈，既然杀了王经全家，怎么可能让他的亲侄子在边境带兵？所以肯定是假的。咱们想到一块儿去了。"于是姜维不直接走斜谷，而是派人在路上埋伏，防备王瓘的奸细。没过十天，果然抓住王瓘派去给邓艾送信的人。姜维审问后搜出密信，信上说八月二十日从小路运粮回大营，让邓艾在墵山谷接应。姜维杀了送信的，把日期改成八月十五，让邓艾亲自带兵接应。然后派人假扮魏军去送信，又把几百辆粮车的粮食换成干柴茅草等引火物，用青布盖着，让傅佥带着两千投降的魏兵假装运粮队。姜维和夏侯霸各自带兵在山谷埋伏，派蒋舒走斜谷，廖化、张翼带兵攻打祁山。邓艾收到王瓘的信很高兴，马上回信让送信人带回去。到了八月十五，邓艾带五万精兵来到墵山谷，远远看到很多粮车从山间经过。邓艾仔细看，确实都是魏兵。手下说："天快黑了，快去接应王瓘出谷吧。"邓艾说："前面地形复杂，万一有埋伏就麻烦了，还是在这里等吧。"正说着，两个骑兵跑来报告："王将军运粮过界时后面有追兵，请快去救援！"邓艾大惊，赶紧带兵前进。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">时值初更，月明如昼，只听得山后呐喊，艾只道王瓘在山后厮杀。径奔过山后时，忽树林后一彪军撞出，为首蜀将傅佥，纵马大叫曰：“邓艾匹夫！已中吾主将之计，何不早早下马受死！”艾大惊，勒回马便走。车上火尽着，那火便是号火。两势下蜀兵尽出，杀得魏兵七断八续，但闻四下山上只叫：“拿住邓艾的，赏千金，封万户侯！”?得邓艾弃甲丢盔，撇了坐下马，杂在步军之中，爬山越岭而逃。姜维、夏侯霸只望马上为首的径来擒捉，不想邓艾步行走脱。维领得胜兵去接王瓘粮车。却说王瓘密约邓艾，先期将粮草车仗，整备停当，专候举事。忽有心腹人报：“事已泄漏，邓将军大败，不知性命如何。”瓘大惊，令人哨探，回报三路兵围杀将来，背后又见尘头大起，四下无路。瓘叱左右令放火，尽烧粮草车辆。一霎时，火光突起，烈火烧空。灌大叫曰：“事已急矣！汝等宜死战！”乃提兵望西杀出。背后姜维三路追赶。维只道王瓘舍命撞回魏国，不想反杀入汉中而去。瓘因兵少，只恐追兵赶上，遂将栈道并各关隘尽皆烧毁。姜维恐汉中有失，遂不追邓艾，提兵连夜抄小路来追杀王瓘。瓘被四面蜀兵攻击，投黑龙江而死。余兵尽被姜维坑之。维虽然胜了邓艾，却折了许多粮车，又毁了栈道，乃引兵还汉中。邓艾引部下败兵，逃回祁山寨内，上表请罪，自贬其职。司马昭见艾数有大功，不忍贬之，复加厚赐。艾将原赐财物，尽分给被害将士之家。昭恐蜀兵又出，遂添兵五万，与艾守御。姜维连夜修了栈道，又议出师。正是：连修栈道兵连出，不伐中原死不休。未知胜负如何，且看下文分解。</div>
+            <div class="text-block simplified-text">晚上七八点钟，月亮特别亮。邓艾听到山后面有喊杀声，以为王瓘在那边打仗。他带兵冲过去，突然从树林里杀出一队蜀军，领头的将军傅佥骑马大喊："邓艾你个老混蛋！中了我家主将的计了，还不快下马投降！"邓艾吓坏了，掉头就跑。这时粮车突然全着火了，这是蜀军的信号。埋伏的蜀军全冲出来，把魏军打得七零八落。满山遍野都在喊："活捉邓艾的，赏一千两黄金，封大官！"邓艾吓得扔了盔甲武器，连马都不要了，混在步兵里翻山逃跑。姜维和夏侯霸光顾着抓骑马的将领，没想到邓艾步行溜走了。
+
+另一边，王瓘本来和邓艾约好要造反，正等着动手。突然手下慌慌张张来报："出事了！邓将军被打败了，生死不明。"王瓘吓坏了，派人去打探，结果发现三路蜀军杀过来，后面尘土飞扬，无路可逃。他赶紧命令放火烧粮车，大火一下子烧红了天。王瓘大喊："现在只能拼命了！"带着兵往西冲。姜维带兵在后面追，以为他要逃回魏国，没想到他反而往汉中跑。王瓘怕人少被追上，把栈道和关卡全烧了。姜维怕汉中有危险，就不追邓艾了，改走小路追王瓘。王瓘被蜀军包围，最后跳黑龙江自杀，剩下的兵都被姜维活埋了。
+
+姜维虽然打赢了邓艾，但损失很多粮车，栈道也毁了，只好带兵回汉中。邓艾带着残兵败将逃回祁山大营，写信向朝廷请罪，主动要求降职。司马昭觉得他立过不少功，不但没罚还给了赏赐。邓艾把这些赏赐全分给了战死将士的家属。司马昭怕蜀军再来，又给邓艾增派五万兵。姜维连夜修好栈道，又准备出兵打仗。这正是：修好栈道接着打，不灭魏国不罢休。后面战况如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
