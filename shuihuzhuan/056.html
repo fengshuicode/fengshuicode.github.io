@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十六　回吴用使时迁盗甲　汤隆赚徐宁上山</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./055.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十六　回吴用使时迁盗甲　汤隆赚徐宁上山</h1>
+        <a href="./057.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原句翻译：
+"诗里这样写道：" 或 "诗里说的是："</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">雁翎铠甲人稀见，寝室高悬未易图。</div>
+            <div class="text-block simplified-text">这种带羽毛的铠甲很少有人见过，平时都高高挂在房间里，很难画出来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">寅夜便施掏摸手，潜行不畏虎狼徒。</div>
+            <div class="text-block simplified-text">半夜偷偷摸摸地溜进去，连凶猛的野兽都不怕。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">河倾斗落三更后，烛灭灯残半夜初。</div>
+            <div class="text-block simplified-text">半夜三更天快亮的时候，蜡烛烧完灯也快灭了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">神物窃来如拾芥，前身只恐是钱驴。</div>
+            <div class="text-block simplified-text">这东西偷来容易得像捡草籽，我上辈子八成是个贪财的蠢驴。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当时汤隆对众头领说道：“小可是祖代打造军器为生。先父因此艺上遭际老种经略相公，得做延安知寨。先朝曾用这连环甲马取胜。欲破阵时，须用钩镰枪可破。汤隆祖传已有画样在此，若要打造便可下手。汤隆虽是会打，却不会使。若要会使的人，只除非是我那个姑舅哥哥。他在东京，见做金枪班教师。这钩镰枪法，只有他一个教头。他家祖传习学，不教外人。或是马上，或是步行，都有法则。端的使动神出鬼没。”说言未了，林冲问道：“莫不是见做金枪班教师徐宁？”汤隆应道：“正是此人。”林冲道：“你不说起，我也忘了。这徐宁的金枪法、钩镰枪法，端的是天下独步。在京师时，多与我相会，较量武艺，彼此相敬相爱。只是如何能勾得他上山来？”汤隆道：“徐宁先祖留下一件宝贝，世上无对，乃是镇家之宝。汤隆比时曾随先父知寨往东京视探姑姑时，多曾见来，是一副雁翎砌就圈金甲。这一副甲，披在身上，又轻又稳，刀剑箭矢急不能透，人都唤做赛唐猊。多有贵公子要求一见，造次不肯与人看。这副甲是他的性命，用一个皮匣子盛着，直挂在卧房中梁上。若是先对付得他这副甲来时，不由他不到这里。”吴用道：“若是如此，何难之有。放着有高手弟兄在此，今次却用着鼓上蚤时迁去走一遭。”时迁随即应道：“只怕无有此一物在彼。若端的有时，好歹定要取了来。”汤隆道：“你若盗的甲来，我便包办赚他上山。”宋江问道：“你如何去赚他上山？”汤隆去宋江耳边低低说了数句。宋江笑道：“此计大妙！”</div>
+            <div class="text-block simplified-text">汤隆对大伙儿说："我家祖祖辈辈都是打兵器的。我爹就因为这门手艺被老种经略相公看中，当过延安知寨。以前打仗用连环甲马特别厉害，要破这个阵就得用钩镰枪。我家有祖传的钩镰枪图纸，现在就能打造。我会打但不会用，要说会用的人，只有我表哥徐宁。他在京城当金枪班教头，钩镰枪就他一个人会教，这是他家祖传的功夫，不教外人。马上步下都耍得神乎其神。"
+
+林冲插话："是不是金枪班教师徐宁？"汤隆说："对就是他。"林冲说："你不提我都忘了，徐宁的金枪和钩镰枪确实是天下第一。在京城时我们常切磋武艺，互相佩服。可怎么才能让他上山呢？"
+
+汤隆出主意："徐宁家有个传家宝，是件刀枪不入的雁翎金甲，他当命根子似的收在卧房梁上的皮箱里。要是能先把这甲弄来，不怕他不来找。"
+
+吴用一听就说："这好办，让时迁去偷就行。"时迁马上答应："只要真有这东西，我肯定给弄来。"汤隆打包票："只要你把甲偷来，我保证把徐宁骗上山。"他又凑到宋江耳边嘀咕了几句，宋江听完直夸："这主意太妙了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">吴学究道：“再用得三个人，同上东京走一遭：一个到京收买烟火药料并炮内用的药材，两个去取凌统领家老小。”彭玘见了，便起身禀宋江道：“若得一人到颍州取得小弟家眷上山，实拜成全之德。”宋江便道：“团练放心。便请二位修书，小可自教人去。”便唤杨林，可将金银书信，带领伴当前往颍州取彭玘将军老小。薛永扮作使枪棒卖药的，往东京取凌统领老小。李云扮作客商，同往东京收买烟火药料等物。乐和随汤隆同行，又帮薛永往来作伴。一面先送时迁下山去了。次后且叫汤隆打起一把钩镰枪做样，却叫雷横提调监督。原来雷横祖上也是打铁出身。</div>
+            <div class="text-block simplified-text">吴用说："还需要三个人一起去东京：一个去买火药和炮里用的材料，另外两个去接凌振的家人。"彭玘听了，马上站起来对宋江说："要是能派人去颍州接我的家人上山，那就太感谢了。"宋江说："彭团练别担心，你们俩写封信，我这就派人去。"于是叫来杨林，让他带着钱和信去颍州接彭玘的家人。薛永假扮成卖艺卖药的，去东京接凌振的家人。李云假装成商人，去东京买火药材料。乐和跟着汤隆一起走，顺便帮薛永。先派时迁下山去了。接着让汤隆打一把钩镰枪当样品，让雷横负责监督。因为雷横家里祖辈是打铁的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">再说汤隆打起钩镰枪样子，教山寨里打军器的照着样子打造，自有雷横提督，不在话下。</div>
+            <div class="text-block simplified-text">汤隆画好了钩镰枪的设计图，让山寨里负责打造兵器的人照着图样制作。这事儿由雷横负责监督，就不用多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">大寨做个送路筵席，当下杨林、薛永、李云、乐和、汤隆辞别下山去了。次日又送戴宗下山，往来探听事情。这段话一时难尽。</div>
+            <div class="text-block simplified-text">大寨摆了一桌送行酒席。当时杨林、薛永、李云、乐和、汤隆几个人告别下山走了。第二天又送戴宗下山，让他去打探消息。这些事说来话长，一时半会儿讲不完。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">这里且说时迁离了梁山泊，身边藏了暗器、诸般行头，在路迤逦来到东京，投个客店安下了。次日，踅进城来，寻问金枪班教师徐宁家。有人指点道：“入得班门里，靠东第五家黑角子门便是。”时迁转入班门里，先看了前门；次后踅来相了后门，见是一带高墙，墙里望见两间小巧楼屋，侧手却是一根戗柱。时迁看了一回，又去街坊问道：“徐教师在家里么？”人应道：“敢在内里随直未归。”时迁又问道：“不知几时归？”人应道：“直到晚方归来，五更便去内里随班。”时迁叫了“相扰”，且回客店里来，取了行头，藏在身边，分付店小二道：“我今夜多敢是不归，照管房中。”小二道：“但放心自去干事，并不差池。”</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+话说时迁离开梁山泊，随身带着工具和装备，一路来到东京，找了个旅馆住下。第二天，他进城打听金枪班教师徐宁的住处。有人告诉他："进了班门，往东数第五家，黑色小门的就是。"时迁找到地方，先看了前门，又绕到后面观察，看到一圈高墙，墙里有两间小楼，旁边有根柱子。他看完后又问邻居："徐老师在家吗？"邻居回答："可能在宫里值班还没回来。"时迁问："知道什么时候回来吗？"邻居说："一般要晚上才回来，天不亮又要去宫里值班。"时迁说了声"打扰了"，回到旅馆，拿好装备带在身上，对店小二说："我今晚可能不回来了，帮我看着房间。"小二说："你放心去办事吧，不会有问题的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">再说时迁入到城里，买了些晚饭吃了，却踅到金枪班徐宁家左右看时，没一个好安身去处。看看天色黑了，时迁捵入班门里面。是夜，寒冬天色，却无月光。时迁看见土地庙后一株大柏树，便把两只腿夹定，一节节扒将上去树头顶，骑马儿坐在枝柯上。悄悄望时，只见徐宁归来，望家里去了。又见班里两个人提着灯笼出来关门，把一把锁锁了，各自归家去了。早听得谯楼禁鼓，却转初更。但见：</div>
+            <div class="text-block simplified-text">时迁进了城，先买了点晚饭吃。然后他溜达到徐宁家附近转悠，想找个地方藏身，可看来看去没找到合适的。天渐渐黑了，时迁就偷偷摸进了金枪班的院子。那天晚上特别冷，天上连月亮都没有。时迁发现土地庙后面有棵大柏树，就用腿夹着树干，一节一节地爬到了树顶，像骑马似的骑在树枝上。他悄悄观察，正好看见徐宁回家去了。接着又看见两个值班的人提着灯笼出来锁大门，锁好后就各自回家了。这时更鼓敲响，已经是晚上七点多了。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">角韵才闻三弄，钟声早转初更。云寒星斗无光，露散霜花渐白。六街三市，但闻喝号提铃；万户千家，各自关门闭户。对青灯学子攻经史，秉画烛佳人上绣床。</div>
+            <div class="text-block simplified-text">刚听到几段笛声，钟声就敲响了初更天（晚上七点左右）。云层厚重遮得星星都不亮了，露水凝结成霜让地面渐渐发白。大街小巷里，只听见巡逻打更的声音；每家每户都关紧了门窗。读书人对着油灯苦读诗书，姑娘们点着蜡烛准备上床绣花。
+
+（说明：通过以下方式实现白话转换：
+1. "角韵三弄"译为"几段笛声"（用常见乐器代指）
+2. "钟声早转初更"拆解为"钟声敲响初更天"并加注具体时间
+3. "云寒星斗无光"转为"云层厚重遮得星星不亮"
+4. "六街三市"译为"大街小巷"等常见说法
+5. 保留"青灯""画烛"的意象但补充说明（油灯/蜡烛）
+6. "攻经史""上绣床"等动作具体化为"苦读诗书""准备绣花"
+7. 整体采用主谓宾短句结构，避免文言句式）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">这时迁见班里静悄悄地，却从树上溜将下来，踅到徐宁后门边，从墙上下来，不费半点气力，扒将过去，看里面时，却是个小小院子。时迁伏在厨房外张时，见厨房下灯明，两个丫环兀自收拾未了。时迁却从戗柱上盘到博风板边，伏做一块儿。张那楼上时，见那金枪手徐宁和娘子正对坐炉边向火，怀里抱着一个六七岁孩儿。时迁看那卧房里时，见梁上果然有个大皮匣拴在上面。卧房门口挂着一副弓箭、一口腰刀。衣架上挂着各色衣服。徐宁口里叫道：“梅香，你来与我折了衣服。”下面一个丫嬛上来，就侧手春台上先折了一领紫绣圆领，又折一领官绿衬里袄子，并下面五色花绣踢串，一个护项彩色锦帕，一条红绿结子，并手帕一包。另用一个小黄帕儿，包着一条双獭尾荔枝金带，也放在包袱内，把来安在烘笼上。时迁都看在眼里。</div>
+            <div class="text-block simplified-text">时迁看到营房里静悄悄的，就从树上溜下来，悄悄绕到徐宁家后门，轻松翻过墙，看到里面是个小院子。他趴在厨房外面偷看，发现厨房灯还亮着，两个丫鬟正在收拾东西。时迁又顺着柱子爬到屋檐边躲着。往楼上瞧，看见徐宁和他老婆正围着炉子烤火，怀里抱着个六七岁的孩子。时迁往卧室看，果然看见房梁上挂着个大皮箱子。卧室门口挂着弓箭和腰刀，衣架上搭着各种衣服。徐宁喊："梅香，来帮我收拾衣服。"一个丫鬟上楼来，先在桌上叠了件紫色绣花外套，又叠了件绿色里衬的棉袄，还有彩色绣花裤子、彩色围巾、红绿穗子手帕包。另外用黄手帕包了条金腰带，都放进包袱，搁在烘笼上。这些都被时迁看得一清二楚。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">约至二更以后，徐宁收拾上床。娘子问道：“明日随直也不？”徐宁道：“明日正是天子驾幸龙符宫，须用早起五更去伺候。”娘子听了，便分付梅香道：“官人明日要起五更出去随班，你们四更起来烧汤，安排点心。”时迁自忖道：“眼见得梁上那个皮匣子，便是盛甲在里面。我若趁半夜下手便好，倘若闹将起来，明日出不得城，却不误了大事！且捱到五更里下手不迟。”听得徐宁夫妻两口儿上床睡了，两个丫嬛在房门外打铺，房里桌上却点着碗灯。那五个人都睡着了。两个梅香一日伏侍到晚，精神困倦，亦皆睡了。时迁溜下来，去身边取个芦管儿，就窗棂眼里只一吹，把那碗灯早吹灭了。</div>
+            <div class="text-block simplified-text">快到半夜的时候，徐宁收拾完准备睡觉。他老婆问他："明天要去值班吗？"徐宁说："明天皇上要去龙符宫，我得凌晨三点就起来去伺候。"他老婆听完就对丫鬟说："老爷明天要早起去值班，你们半夜两点就得起来烧水做饭。"这时躲在暗处的时迁心想："房梁上那个皮盒子肯定装着宝甲。我要是现在动手，万一闹出动静，明天就出不了城了，那可就坏事了！不如等到凌晨三点再动手。"等到徐宁两口子睡下，两个丫鬟在门外打地铺，屋里桌上还点着盏油灯。不一会儿五个人都睡着了。两个丫鬟忙活一天累坏了，也睡得死死的。时迁悄悄溜下来，掏出根芦苇杆，从窗户缝往里一吹，把油灯给吹灭了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">看看伏到四更左侧，徐宁觉来，便唤丫嬛起来烧汤。那两个使女从睡梦里起来，看房里没了灯，叫道：“阿呀，今夜却没了灯！”徐宁道：“你不去后面讨灯，等几时。”那个梅香开楼门下胡梯响，时迁听得，却从柱上只一溜，来到后门边黑影里伏了。听得丫嬛正开后门出来，便去开墙门。时迁却潜入厨房里，贴身在厨桌下。梅香讨了灯火入来看时，又去关门，却来灶前烧火。这个女使也起来生炭火上楼去。多时汤滚，捧面汤上去。徐宁洗漱了，叫荡些热酒上来。丫嬛安排肉食炊饼上去，徐宁吃罢，叫把饭与外面当直的吃。时迁听得徐宁下楼，叫伴当吃了饭，背着包袱，拕了金枪出门。两个梅香点着灯送徐宁出去。时迁却从厨桌下出来，便上楼去，从槅子边直踅到梁上，却把身躯伏了。两个丫嬛又关闭了门户，吹灭了灯火，上楼来，脱了衣裳，倒头便睡。</div>
+            <div class="text-block simplified-text">快到凌晨四点的时候，徐宁醒了，叫丫鬟起来烧热水。两个丫鬟睡得迷迷糊糊地爬起来，发现屋里灯灭了，就叫："哎呀，今晚怎么没灯啊！"徐宁说："还不快去后面拿灯，磨蹭什么呢。"其中一个丫鬟开门下楼，楼梯嘎吱响。这时躲在暗处的时迁听见动静，赶紧从柱子后面溜到后门边躲着。他听见丫鬟开了后门出去拿灯，又去开院门。时迁趁机溜进厨房，钻到灶台底下藏好。丫鬟拿着灯回来，关好门，开始生火做饭。另一个丫鬟也起来烧炭火送上楼。过了一会水烧开了，丫鬟端着热水上楼。徐宁洗漱完，让送热酒上来。丫鬟又端了肉和饼上去，徐宁吃完后，让把饭送给外面值班的人吃。时迁听见徐宁下楼，叫人吃完饭，背着包袱拿着金枪出门。两个丫鬟点着灯送徐宁出去。时迁这才从灶台底下钻出来，摸上楼，顺着隔板爬到房梁上藏好。两个丫鬟关好门窗，吹灭灯，上楼脱了衣服倒头就睡。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">时迁听那两个梅香睡着了，在梁上把那芦管儿指灯一吹，那灯又早灭了。时迁却从梁上轻轻解了皮匣，正要下来。徐宁的娘子觉来，听得响，叫梅香道：“梁上甚么响？”时迁做老鼠叫，丫嬛道：“娘子不听得是老鼠叫？因厮打，这般响。”时迁就便学老鼠厮打，溜将下来，悄悄地开了楼门，款款地背着皮匣，下得胡梯，从里面直开到外门。来到班门口，已自有那随班的人出门，四更便开了锁。时迁得了皮匣，从人队里趁闹出去了。有诗为证：</div>
+            <div class="text-block simplified-text">时迁听到那两个丫鬟睡着了，就在房梁上用芦管把灯吹灭了。他轻轻解下梁上的皮匣子，正准备下来。这时徐宁的老婆醒了，听到动静，问丫鬟："梁上什么声音？"时迁赶紧学老鼠叫，丫鬟说："夫人没听见是老鼠在叫吗？它们打架才这么响。"时迁又假装老鼠打架的声音，趁机溜下来。他悄悄打开楼门，小心地背着皮匣子，走下楼梯，从里面一直走到大门外。到了值班的地方，正好赶上值班的人开门（古代四更天就开门）。时迁混在人群里，趁乱带着皮匣子溜走了。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">狗盗鸡鸣出在齐，时迁妙术更多奇。</div>
+            <div class="text-block simplified-text">这段话说的是：偷鸡摸狗的把戏最早出现在齐国，而时迁（《水浒传》里的神偷）的招数比这还要厉害得多。  
+
+简单来说就是：齐国早就有小偷小摸的事儿，但时迁的偷盗本事更绝。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">雁翎金甲逡巡得，钩引徐宁大解危。</div>
+            <div class="text-block simplified-text">徐宁穿着那身闪亮的雁翎金甲，来回走动想办法，最后用钩镰枪成功解除了危机。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">且说时迁奔出城外，到客店门前，此时天色未晓。敲开店门，去房里取出行李，拴束做一担儿挑了，计算还了房钱，出离店肆，投东便走。行到四十里外，方才去食店里打火做些饭吃。只见一个人也撞将入来，时迁看时，不是别人，却是神行太保戴宗。见时迁已得了物，两个暗暗说了几句话，戴宗道：“我先将甲投山寨去，你与汤隆慢慢地来。”时迁打开皮匣，取出那副雁翎锁子甲来，做一包袱包了。戴宗拴在身上，出了店门，作起神行法，自投梁山泊去了。</div>
+            <div class="text-block simplified-text">话说时迁连夜跑出城外，来到之前住的旅店门口，天还没亮。他敲开店门，进屋拿了行李，捆成一担挑着，付清房钱就离开旅店，往东边赶路。走了四十里地，才找了个饭馆生火做饭。这时突然有个人闯进来，时迁一看，原来是会神行术的戴宗。见时迁已经得手，两人低声说了几句。戴宗说："我先带着盔甲回山寨，你和汤隆不用着急，慢慢走就行。"时迁打开皮箱，取出那套雁翎锁子甲，用包袱包好。戴宗把包袱绑在身上，出了店门就施展神行术，直奔梁山泊去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">时迁却把空皮匣子明明的拴在担子上，吃了饭食，还了打火钱，挑上担儿，出店门便走。到二十里路上，撞见汤隆，两个便入酒店里商量。汤隆道：“你只依我从这条路走，但过路上酒店、饭店、客店，门上若见有白粉圈儿，你便可就在那店里买酒买肉吃。客店之中，就便安歇。特地把这皮匣子放在他眼睛头。离此间一程外等我。”时迁依计去了。汤隆慢慢地吃了一回酒，却投东京城里来。</div>
+            <div class="text-block simplified-text">时迁把空皮箱明晃晃地挂在扁担上，吃完饭，付了饭钱，挑起担子就离开客栈。走了二十里路，碰到汤隆，两人进了一家酒馆商量。汤隆说："你就顺着这条路走，只要看见酒馆、饭店、客栈的门上有用白粉画的圆圈，你就进去买酒买肉吃。晚上就在那家客栈住。记得故意把皮箱放在显眼的地方。然后到离这儿一天路程的地方等我。"时迁按他说的走了。汤隆慢悠悠地喝了会儿酒，才往东京城方向去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">且说徐宁家里。天明，两个丫嬛起来，只见楼门也开了，下面中门大门都不关。慌忙家里看时，一应物件都有。两个丫嬛上楼来对娘子说道：“不知怎地门户都开了，却不曾失了物件。”娘子便道：“五更里听得梁上响，你说是老鼠厮打，你且看那皮匣子没甚么事？”两个丫嬛看了，只叫得苦：“皮匣子不知那里去了！”那娘子听了，慌忙起来道：“快央人去龙符宫里报与官人知道，教他早来跟寻！”丫嬛急急寻人去龙符宫报徐宁，连连央了三替人，都回来说道：“金枪班直随驾内苑去了，外面都是亲军护御守把，谁人能勾入去？直须等他自归。”徐宁妻子并两个丫嬛如热鏊子上蚂蚁，走投无路，不茶不饭，慌做一团。</div>
+            <div class="text-block simplified-text">咱们来说说徐宁家发生的事。天亮了，两个丫鬟起床，发现楼门开着，楼下的大门也都没关。她们慌慌张张检查家里，发现其他东西都在。两个丫鬟上楼跟女主人说："奇怪，门都开着，但好像没丢东西。"女主人说："天快亮时我听见房梁上有动静，你们说是老鼠打架。快去看看装盔甲的皮匣子还在不在！"丫鬟一看，当场急得直叫："哎呀！皮匣子不见了！"女主人一听赶紧爬起来说："快找人去龙符宫通知老爷，让他赶紧回来找！"丫鬟急忙找人去报信，连着托了三拨人，结果都回来说："金枪班的人都跟着皇上去内苑了，外面全是御林军守着，谁都进不去。只能等老爷自己回来。"徐宁老婆和两个丫鬟急得像热锅上的蚂蚁，想不出办法，饭也吃不下，乱成一团。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">徐宁直到黄昏时候，方才卸了衣袍服色，着当直的背了，将着金枪，径回家来。到得班门口，邻舍说道：“娘子在家失盗，等候得观察不见回来。”徐宁吃了一惊，慌忙奔到家里。两个丫嬛迎门道：“官人五更出去，却被贼人闪将入来，单单只把梁上那个皮匣子盗将去了！”徐宁听罢，只叫那连声的苦，从丹田底下直滚出口角来。娘子道：“这贼正不知几时闪在屋里？”徐宁道：“别的都不打紧，这副雁翎甲乃是祖宗留传四代之宝，不曾有失。花儿王太尉曾还我三万贯钱，我不曾舍得卖与他，恐怕久后军前阵后要用。生怕有些差池，因此拴在梁上。多少人要看我的，只推没了。今次声张起来，枉惹他人耻笑。今却失去，如之奈何？”徐宁一夜睡不着，思量道：“不知是甚么人盗了去？也是曾知我这副甲的人。”娘子想道：“敢是夜来灭了灯时，那贼已躲在家里了。必然是有人爱你的，将钱问你买不得，因此使这个高手贼来盗了去。你可央人慢慢缉访出来，别作商议，且不要打草惊蛇。”徐宁听了，到天明起来，在家里纳闷。怎见得徐宁纳闷？正是：</div>
+            <div class="text-block simplified-text">天快黑的时候，徐宁才脱下官服，让手下人背着，自己拿着金枪往家走。刚到巷子口，邻居就告诉他："你老婆在家遭贼了，一直等你回来呢！"徐宁吓了一大跳，赶紧跑回家。两个丫鬟在门口说："老爷您早上出门后，就有贼溜进来，别的都没拿，专门偷走了房梁上那个皮箱子！"徐宁听完直跺脚，气得心口疼。他老婆说："这贼什么时候躲进来的啊？"徐宁说："别的丢了都无所谓，可那件雁翎甲是咱家四代传下来的宝贝。之前有个王太尉出三万贯钱我都没舍得卖，就怕以后打仗要用。平时怕出事都拴在房梁上，多少人想看我都推说找不着了。现在闹得人尽皆知，白白让人看笑话。这可怎么办啊？"徐宁整晚睡不着，一直在想："到底是谁偷的？肯定是知道我有这件宝贝的人。"他老婆出主意："说不定昨晚关灯时贼就藏屋里了。肯定是有人特别想要，花钱买不到才找高手来偷。你托人悄悄打听，先别声张。"徐宁听完，第二天一早就坐在家里发愁。到底有多愁呢？这么说吧——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">凤落荒坡，尽脱浑身羽翼；龙居浅水，失却颔下明珠。蜀王春恨啼红，宋玉悲秋怨绿。吕虔亡所佩之刀，雷焕失丰城之剑。好似蛟龙缺云雨，犹如舟楫少波涛。奇谋勾引来山寨，大展擒王铁马蹄。</div>
+            <div class="text-block simplified-text">凤凰掉在荒山坡上，羽毛掉光了；龙困在浅水里，丢了最宝贵的珠子。蜀王春天伤心哭红了眼，宋玉秋天难过看啥都发愁。吕虔弄丢了随身带的宝刀，雷焕丢了丰城的名剑。就像龙没了云雨飞不起来，船没了水划不动。用妙计把敌人引上山寨，再派骑兵狠狠收拾他们。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">当日金枪手徐宁正在家中纳闷，早饭时分，只听得有人扣门。当直的出来问了姓名，入去报道：“有个延安府汤知寨儿子汤隆，特来拜望哥哥。”徐宁听罢，教请汤隆进客位里相见。汤隆见了徐宁，纳头拜下，说道：“哥哥一向安乐！”徐宁答道：“闻知舅舅归天去了，一者官身羁绊，二乃路途遥远，不能前来吊问。并不知兄弟信息，一向正在何处？今次自何而来？”汤隆道：“言之不尽。自从父亲亡故之后，时乖命蹇，一向流落江湖。今从山东径来京师探望兄长。”徐宁道：“兄弟少坐。”便叫安排酒食相待。汤隆去包袱内取出两锭蒜条金，重二十两，送与徐宁，说道：“先父临终之日，留下这些东西，教寄与哥哥做遗念。为因无心腹之人，不曾捎来。今次兄弟特地到京师纳还哥哥。”徐宁道：“感承舅舅如此挂念。我又不曾有半分孝顺之心，怎地报答？”汤隆道：“哥哥休恁地说。先父在日之时，只是想念哥哥这一身武艺，只恨山遥水远，不能勾相见一面，因此留这些物与哥哥做遗念。”徐宁谢了汤隆，交收过了，且安排酒来管待。</div>
+            <div class="text-block simplified-text">那天早上，徐宁正在家里发呆吃早饭，忽然听见有人敲门。家里的仆人出去问了名字，进来报告说："有个延安府汤知寨的儿子汤隆，特地来拜访您。"徐宁听了，就让请汤隆到客厅见面。
+
+汤隆见到徐宁，立刻跪下磕头说："哥哥最近过得还好吗？"徐宁回答说："听说舅舅去世了，但我一来公务在身走不开，二来路途太远，没能去吊唁。也不知道兄弟你的消息，这些年都在哪儿？这次是从哪儿来的？"
+
+汤隆说："说来话长啊。自从父亲去世后，我运气不好，一直在外面流浪。这次是从山东直接来京城看哥哥的。"徐宁说："兄弟先坐会儿。"就让人准备酒菜招待。
+
+汤隆从包袱里拿出两根金条，总共二十两重，递给徐宁说："这是父亲临终时留下的，让我带给哥哥留作纪念。之前一直没找到可靠的人送，这次我专门来京城还给哥哥。"
+
+徐宁说："舅舅这么惦记我，我都没能尽孝，这要怎么报答啊？"汤隆说："哥哥别这么说。父亲在世的时候，就惦记着哥哥这身好武艺，只恨离得太远见不着面，所以才留这些东西给哥哥当纪念。"
+
+徐宁谢过汤隆，收下金条，又叫人准备酒菜好好招待他。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">汤隆和徐宁饮酒中间，见徐宁眉头不展，面带忧容。汤隆起身道：“哥哥如何尊颜有些不喜？心中必有忧疑不决之事。”徐宁叹口气道：“兄弟不知，一言难尽。夜来家间被盗！”汤隆道：“不知失去了何物？”徐宁道：“单单只盗去了先祖留下那副雁翎锁子甲，又唤做赛唐猊。昨夜失了这件东西，以此心下不乐。”汤隆道：“哥哥那副甲，兄弟也曾见来，端的无比。先父常常称赞不尽。却是放在何处来，被盗了去？”徐宁道：“我把一个皮匣子盛着，拴缚在卧房中梁上，正不知贼人甚么时候入来盗了去。”汤隆问道：“却是甚等样皮匣子盛着？”徐宁道：“我是个红羊皮匣子盛着，里面又用香绵裹住。”汤隆假意失惊道：“红羊皮匣子？不是上面有白线刺着绿云头如意、中间有狮子滚绣球的？”徐宁道：“兄弟，你那里见来？”汤隆道：“小弟夜来离城四十里，在一个村店里沽些酒吃，见个鲜眼睛黑瘦汉子担儿上挑着。我见了，心中也自暗忖道：‘这个皮匣子却是盛甚么东西的？’临出门时，我问道：‘你这皮匣子作何用？’那汉子应道：‘原是盛甲的，如今胡乱放些衣服。’必是这个人了。我见那厮却是闪肭了腿的，一步步捱着了走。何不我们追赶他去？”徐宁道：“若是赶得着时，却不是天赐其便！”汤隆道：“既是如此，不要担阁，便赶去罢。”</div>
+            <div class="text-block simplified-text">汤隆和徐宁一起喝酒时，看到徐宁皱着眉头，一脸愁容。汤隆站起来问："大哥，看你脸色不太好，是不是有什么烦心事？"徐宁叹了口气说："唉，兄弟你不知道，说来话长。昨晚我家遭贼了！"汤隆问："丢了什么东西？"徐宁说："就偷走了我家祖传的那副雁翎锁子甲，也叫赛唐猊。昨晚丢了这件宝贝，我正发愁呢。"汤隆说："大哥那副甲我也见过，确实是个好东西。我爹以前经常夸它。这甲原来放在哪儿被偷的？"徐宁说："我把它装在一个皮箱里，挂在卧室房梁上，不知道贼什么时候进来偷走的。"汤隆假装吃惊地问："是不是个红羊皮箱子？上面绣着白色花纹，有绿云头如意图案，中间还有个狮子滚绣球？"徐宁惊讶地问："兄弟你在哪儿看到的？"汤隆说："昨晚我出城四十里，在一个小村酒店喝酒时，看见一个眼睛很亮、黑瘦的男人挑着这个箱子。我当时还想：这箱子是装什么的？临走时我问他：'你这皮箱装什么的？'他说：'本来是装盔甲的，现在随便放点衣服。'肯定就是这个人偷的。我看那家伙走路一瘸一拐的，走得很慢。咱们现在去追还来得及！"徐宁说："要是能追上，那可真是老天帮忙！"汤隆说："那还等什么，咱们赶紧去追吧！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">徐宁听了，急急换了麻鞋，带了腰刀，提条朴刀，便和汤隆两个出了东郭门，拽开脚步，迤逦赶来。前面见有白圈壁上酒店里，汤隆道：“我们且吃碗酒了赶，就这里问一声。”汤隆入得门坐下，便问道：“主人家，借问一问：曾有个鲜眼黑瘦汉子挑个红羊皮匣子过去么？”店主人道：“昨夜晚是有这般一个人，挑着个红羊皮匣子过去了。一似腿上吃跌了的，一步一攧走。”汤隆道：“哥哥你听，却何如？”徐宁听了，做声不得。有诗为证：</div>
+            <div class="text-block simplified-text">徐宁一听，赶紧换上麻鞋，带上腰刀，拎着朴刀，就和汤隆一起出了东城门，大步流星地往前追。前面看到一家墙上画着白圈的酒店，汤隆说："咱们先喝碗酒再赶路，顺便在这儿打听一下。"汤隆进门坐下就问："老板，跟您打听个事：有没有看见一个眼睛发亮、皮肤黝黑的瘦子，挑着个红羊皮箱子经过？"老板回答："昨晚是有这么个人，挑着红羊皮箱子过去了。走路一瘸一拐的，像是腿受了伤。"汤隆转头对徐宁说："哥你听听，我说的没错吧？"徐宁听完，一句话都说不出来。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">汤隆诡计赚徐宁，便把黄金表至情。</div>
+            <div class="text-block simplified-text">汤隆用计骗徐宁，拿出黄金表真心。  
+
+（解释：这句话讲的是汤隆设了个圈套让徐宁上当，还假装拿出黄金表示诚意。改写成更直白的白话，意思就是汤隆耍手段骗徐宁，用黄金假装很真诚。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">诱引同归忠义寨，共施威武破雄兵。</div>
+            <div class="text-block simplified-text">原文翻译成大白话就是：
+
+"（他们）把人骗到忠义寨，然后一起用武力打败了强大的敌人。"
+
+简单解释：
+- "诱引同归"：用计谋把人引过来
+- "忠义寨"：一个叫"忠义寨"的地方
+- "共施威武"：大家一起使出全力
+- "破雄兵"：打败了厉害的军队
+
+这样说更接地气：
+"设了个套把人引到忠义寨，然后大伙儿齐心协力干掉了那支厉害的军队。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">且说两个人连忙还了酒钱，发门便去。前面又见一个客店，壁止硼那白圈。汤隆立住了脚，说道：“哥哥，兄弟走不动了，和哥哥且就这客店里歇了，明日早去赶。”徐宁道：“我却是官身，倘或点名不到，官司必然见责，如之奈何？”汤隆道：“这个不用兄长忧心，嫂嫂必自推个事故。”当晚又在客店里问时，店小二答道：“昨夜有一个鲜眼黑瘦汉子，在我店里歇了一夜，直睡到今日小日中，方才去了。口里只问山东路程。”汤隆道：“恁地可以赶了。明日起个四更，定是赶着，拿住那厮，便有下落。”当夜两个歇了。次日起个四更，离了客店，两个又迤逦赶来。汤隆但见壁上有白粉圈情报，便做买酒买食，吃了问路，处处皆说得一般。徐宁心中急切要那副甲，只顾跟随着汤隆赶了去。</div>
+            <div class="text-block simplified-text">话说两人赶紧付了酒钱，出门就走。前面又看到一家旅馆，墙上画着白圈记号。汤隆停下脚步说："大哥，我实在走不动了，咱们今晚就在这旅馆住下，明天一早再赶路吧。"徐宁说："我可是有公职在身，万一上头点名我不在，肯定要受处分，这可怎么办？"汤隆安慰道："大哥别担心，嫂子肯定会帮你找理由应付过去的。"
+
+当晚他们向店小二打听消息，小二说："昨晚有个眼睛发亮、皮肤黝黑的瘦子在这儿住了一夜，一直睡到今天快中午才走。临走时还一直打听去山东的路。"汤隆听了就说："这样咱们肯定能追上。明天四更天就出发，一定能抓住那家伙，找回东西。"
+
+当晚两人住下休息。第二天四更天就离开旅馆继续赶路。汤隆只要看见墙上有白粉圈的标记，就假装买酒买饭，顺便问路，得到的说法都对得上。徐宁一心想着找回那副宝甲，就紧跟着汤隆一路追去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">看看天色又晚了，望见前面一所古庙，庙前树下，时迁放着担儿在那里坐地。汤隆看见叫道：“好了，前面树下那个，不是哥哥盛甲的匣子？”徐宁见了，抢向前来，一把揪住时迁，喝道：“你这厮好大胆！如何盗了我这副甲来？”时迁道：“住，住，不要叫！是我盗了你这副甲来，你如今却是要怎地？”徐宁喝道：“畜生无礼，倒问我要怎地！”时迁道：“你且看匣子里有甲也无。”汤隆便把匣子打开看时，里面却是空的。徐宁道：“你这厮把我这副甲那里去了？”时迁道：“你听我说。小人姓张，排行第一，泰安州人氏。本州有个财主，要结识老种经略相公，知道你家有这副雁翎锁子甲，不肯货卖，特地使我同一个李三两人来你家偷盗，许俺们一万贯。不想我在你家柱子上跌下来，闪肭了腿，因此走不动。先教李三把甲拿了去，只留得空匣在此。你若要奈何我时，我到官司，只是拚着命，就打死我也不招，休想我指出别人来。若还肯饶我官司时，我和你去讨这副甲还你。不知尊意如何？”徐宁踌躇了半晌，决断不下。汤隆便道：“哥哥，不怕他飞了去，只和他去讨甲。若无甲时，须有本处官司告理。”徐宁道：“兄弟也说的是。”三个厮赶着，又投客店里来歇了。徐宁、汤隆监住时迁一处宿歇。原来时迁故把些绢帛扎缚了腿，只做闪肭了脚。徐宁见他又走不动，因此十分中只有五分防他。三个又歇了一夜，次日早起来再行。时迁一路买酒买肉陪告，又行了一日。次日，徐宁在路上心焦起来，不知毕竟有甲也无。有诗为证：</div>
+            <div class="text-block simplified-text">天又快黑了，看见前面有座破庙，庙前大树下，时迁放下担子坐在那儿。汤隆一瞧就喊："太好了！树下那人旁边放着的，不就是装你盔甲的箱子吗？"徐宁冲上去一把抓住时迁大骂："你好大的胆子！竟敢偷我的宝甲！"时迁连忙说："别喊别喊！是我偷的，你想怎么样吧？"徐宁更火了："你这混蛋还敢顶嘴！"时迁说："你先看看箱子里有没有甲。"汤隆打开箱子一看，里面是空的。徐宁急了："你把我的甲藏哪儿了？"时迁这才解释："实话跟你说吧。我姓张，家里排行老大，是泰安人。本地有个财主想巴结种师道将军，听说你家有这雁翎锁子甲不肯卖，就派我和李三来偷，答应给一万贯钱。结果我在你家房梁上摔下来扭了脚，跑不动了。李三先把甲拿走，就剩个空箱子。你要送官也行，大不了打死我，我死也不会供出同伙。要是肯放过我，我就带你去找甲。你看怎么样？"徐宁犹豫半天拿不定主意。汤隆帮腔说："哥，他跑不了，就跟他去要甲。要是拿不回甲，再去报官也不迟。"徐宁点头："你说得对。"三人一块儿住进客栈，徐宁和汤隆盯着时迁睡。其实时迁是故意用布条缠腿装瘸，徐宁看他真走不动路，就放松了警惕。第二天继续赶路，时迁一路上买酒买肉讨好他们。又走了一天，徐宁开始着急了，不知道到底能不能找回宝甲。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">宝铠悬梁夜已偷，谩将空匣作缘由。</div>
+            <div class="text-block simplified-text">大半夜的，有人偷偷把贵重的铠甲从房梁上拿走了，却还装模作样地拿着空盒子当借口。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">徐宁不解牢笼计，相趁相随到水头。</div>
+            <div class="text-block simplified-text">徐宁没看穿这是个圈套，一路跟着人家到了水边。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">三人正走之间，只见路旁边三四个头口，拽出一辆空车子，背后一个人驾车；旁边一个客人，看着汤隆，纳头便拜。汤隆问道：“兄弟因何到此？”那人答道：“郑州做了买卖，要回泰安州去。”汤隆道：“最好。我三个要搭车子，也要到泰安州去走一遭。”那人道：“莫说三个搭车，再多些也不计较。”汤隆大喜，叫与徐宁相见。徐宁问道：“此人是谁？”汤隆答道：“我去年在泰安州烧香，结识得这个兄弟，姓李名荣，是个有义气的人。”徐宁道：“既然如此，这张一又走不动，都上车子坐地。只叫车客驾车了行。”四个人坐在车子上，徐宁问时迁道：“你且说与我那个财主姓名。”时迁吃逼不过，三回五次推托，只得胡乱说道：“他是有名的郭大官人。”徐宁却问李荣道：“你那泰安州曾有个郭大官人么？”李荣答道：“我那本州郭大官人，是个上户财主，专好结识官宦来往，门下养着多少闲人。”徐宁听罢，心中想道：“既有主坐，必不碍事。”又见李荣一路上说些枪棒，唱几个曲儿，不觉的又过了一日。</div>
+            <div class="text-block simplified-text">三个人正走着，忽然看见路边有三四头牲口拉着一辆空车，后面有个人在赶车。车旁边还有个客人，一看见汤隆就跪下磕头。汤隆问："兄弟你怎么在这儿？"那人回答："我在郑州做完生意，正要回泰安州。"汤隆说："太好了！我们三个也想搭车去泰安州。"那人说："别说三个人，再多几个也没关系。"汤隆很高兴，就介绍他和徐宁认识。
+
+徐宁问："这位是谁？"汤隆说："去年我去泰安州烧香时认识的兄弟，叫李荣，是个讲义气的人。"徐宁说："那正好，这个张一（时迁）走不动了，大家都上车吧，让车夫赶车就行。"
+
+四个人上了车，徐宁问时迁："你倒是说说那个有钱人叫什么名字？"时迁被逼得没办法，支支吾吾半天才瞎编道："他是有名的郭大官人。"徐宁转头问李荣："你们泰安州是不是有个郭大官人？"李荣回答："我们那儿确实有个郭大官人，是个大财主，专门爱结交当官的，家里养着不少闲人。"徐宁听了心想："既然真有这个人，应该没问题。"
+
+一路上李荣又是耍枪弄棒，又是唱小曲儿，不知不觉又过了一天。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">话休絮烦。看看到梁山泊只有两程多路，只见李荣叫车客把葫芦去沽些酒来，买些肉来，就车子上吃三杯。李荣把出一个瓢来，先倾一瓢来劝徐宁，徐宁一饮而尽。李荣再叫倾酒，车客假做手脱，把这一葫芦酒都倾翻在地下。李荣喝骂车客再去沽些。只见徐宁口角流涎，扑地倒在车子上了。李荣是谁？却是铁叫子乐和。三个从车上跳将下来，赶着车子，直送到旱地忽律朱贵酒店里。众人就把徐宁扛扶下船，都到金沙滩上岸。宋江已有人报知，和众头领下山接着。</div>
+            <div class="text-block simplified-text">简单来说：
+
+别啰嗦了。眼看离梁山泊只剩两天的路程，李荣让车夫用葫芦去打点酒，买点肉，就在车上喝几杯。李荣拿出个瓢，先倒了一瓢劝徐宁喝，徐宁一口干了。李荣又叫倒酒，车夫假装失手，把整葫芦酒都洒在地上。李荣骂车夫再去打酒。这时徐宁嘴角流口水，直接倒在车上了。这个李荣是谁？其实是乐和假扮的。三个人跳下车，赶着车直奔朱贵的酒店。大家把徐宁扶上船，送到金沙滩上岸。宋江早就收到消息，带着众头领下山迎接。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">徐宁此时麻药已醒，众人又用解药解了。徐宁开眼见了众人，吃了一惊，便问汤隆道：“兄弟，你如何赚我来到这里？”汤隆道：“哥哥听我说。小弟今次闻知宋公明招接四方豪杰，因此上在武冈镇拜黑旋风李逵做哥哥，投托大寨入伙。今被呼延灼用连环甲马冲阵，无计可破。是小弟献此钩镰枪法，只除是哥哥会使。因此定这条计，使时迁先来盗了你的甲，却教小弟赚哥哥上路，后使乐和假做李荣，过山时，下了蒙汗药，请哥哥上山来坐把交椅。”徐宁道：“都是兄弟送了我也！”宋江执杯向前陪告道：“见今宋江暂居水泊，专待朝廷招安，尽忠竭力报国，非敢贪财好杀，行不仁不义之事。万望观察怜此真情，一同替天行道。”林冲也来把盏陪话道：“小弟亦在此间，多说兄长清德，休要推却。”徐宁道：“汤隆兄弟，你却赚我到此，家中妻子必被官司擒捉，如之奈何？”宋江道：“这个不妨，观察放心，只在小可身上，早晚便取宝眷到此完聚。”有诗为证：</div>
+            <div class="text-block simplified-text">徐宁这时候麻药的劲儿已经过了，大家又给他吃了解药。徐宁睁开眼睛看到这么多人，吓了一跳，就问汤隆："兄弟，你怎么把我骗到这儿来了？"汤隆说："哥你听我说。我听说宋江正在招揽各路好汉，就在武冈镇认了李逵当大哥，投奔梁山入伙。现在呼延灼用连环甲马冲阵，咱们没办法破解。只有你会使钩镰枪法能破这个阵。所以我想出这个主意，先让时迁偷了你的宝甲，再让我骗你上路，又叫乐和假扮李荣，在半路给你下药，把你请上山来坐把交椅。"徐宁说："兄弟你可把我害苦了！"宋江端着酒杯过来赔罪说："我们梁山现在暂时落脚，就等着朝廷招安，好为国效力，绝不是贪财害命的不义之徒。希望你看在大家诚心的份上，一起替天行道。"林冲也过来敬酒说："我也在这儿，常跟大家夸你的人品，就别推辞了。"徐宁说："汤隆兄弟，你把我骗来，我家里老婆孩子肯定被官府抓了，这可怎么办？"宋江说："这个不用担心，包在我身上，很快就把你家人接来团聚。"有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">钩镰枪法古今稀，解破连环铁马蹄。</div>
+            <div class="text-block simplified-text">这种钩镰枪的招式非常厉害，从古到今都很少见，专门用来破解敌人连环马阵的战术。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">不是徐宁施妙手，梁山怎得解重围？</div>
+            <div class="text-block simplified-text">要不是徐宁使出高招，梁山好汉哪能冲出重围？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">晁盖、吴用、公孙胜都来与徐宁陪话，安排筵席作庆。一面选拣精壮小喽啰学使钩镰枪法，一面使戴宗和汤隆星夜往东京搬取徐宁老小。</div>
+            <div class="text-block simplified-text">晁盖、吴用、公孙胜都来跟徐宁说好话赔不是，还摆了酒席给他接风。同时做了两件事：一是挑了些身体强壮的小兵，教他们学用钩镰枪；二是马上派戴宗和汤隆连夜赶去东京，把徐宁的家人接过来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">话休絮繁。旬日之间，杨林自颍州取到彭玘老小，薛永自东京取到凌振老小，李云收买到五车烟火药料回寨。更过数日，戴宗、汤隆取到徐宁老小上山。徐宁见了妻子到来，吃了一惊，问是如何便得到这里，妻子答道：“自你转背，官司点名不到，我使了些金银首饰，只推道患病在床，因此不来叫唤。忽见汤叔叔赍着雁翎甲来说道：‘甲便夺得来了，哥哥只是于路染病，将次死在客店里，叫嫂嫂和孩儿便来看视。’把我赚上车子。我又不知路径，迤逦来到这里。”徐宁道：“兄弟，好却好了，只可惜将我这副甲陷在家里了。”汤隆笑道：“我教哥哥欢喜，打发嫂嫂上车之后，我便复翻身去赚了这甲，诱了这两个丫嬛，收拾了家中应有细软，做一担儿挑在这里。”徐宁道：“恁地时，我们不能勾回东京去了。”汤隆道：“我又教哥哥再知一件事来：在半路上撞见一伙客人，我把哥哥的雁翎甲穿了，搽画了脸，说哥哥名姓，劫了那伙客人的财物。这早晚，东京已自遍行文书捉拿哥哥。”徐宁道：“兄弟，你也害得我不浅！”晁盖、宋江都来陪话道：“若不是如此，观察如何肯在这里住。”随即拨定房屋与徐宁安顿老小。众头领且商议破连环马军之法。</div>
+            <div class="text-block simplified-text">简单来说：
+
+没过多久，杨林从颍州接来了彭玘的家人，薛永从东京接来了凌振的家人，李云也买了五车火药回山寨。几天后，戴宗和汤隆把徐宁的家人也接上了山。
+
+徐宁看到老婆孩子来了，吓了一跳，问："你们怎么来的？"他老婆说："你走后，官府点名你不在，我花钱打点，假装生病才躲过去。后来汤叔叔拿着你的雁翎甲来说：'甲抢回来了，但你哥在路上病得快死了，叫你们赶紧去看看。'我就被骗上车，迷迷糊糊到了这儿。"
+
+徐宁对汤隆说："兄弟，你做得不错，可惜我的甲还在家里。"汤隆笑着说："别担心，送走嫂子后，我又回去把甲偷来了，还顺手拿了家里值钱的东西。"徐宁说："这下我们回不去东京了。"汤隆接着说："还有呢，我半路穿着你的甲，冒充你抢了路人。现在东京肯定到处在通缉你。"徐宁叹气："兄弟，你可把我坑惨了！"
+
+晁盖和宋江过来打圆场："不这样你哪肯留下？"然后给徐宁一家安排了住处。接着大家开始商量怎么对付连环马军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">此时雷横监造钩镰枪已都完备，宋江、吴用等启请徐宁教众军健学使钩镰枪法。徐宁道：“小弟今当尽情剖露，训练众军头目，拣选身材长壮之士。”众头领都在聚义厅上看徐宁选军，说那个钩镰枪法。</div>
+            <div class="text-block simplified-text">这时候，雷横负责打造的钩镰枪已经全部做好了。宋江、吴用他们请徐宁来教士兵们使用钩镰枪。徐宁说："我一定毫无保留，好好训练这些军官和士兵，专门挑那些个子高、身体壮的人来学。"所有头领都聚在大厅里，看徐宁挑选士兵，听他讲解钩镰枪的用法。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">不争山寨之人学了这件武艺，有分教：三千甲马，斗时脑裂蹄崩；一个英雄，见后魂飞魄丧。正是：撺掇天罡来聚会，招摇地煞共相逢。毕竟金枪徐宁怎地敷演钩镰枪法，且听下回分解。</div>
+            <div class="text-block simplified-text">那些山寨的人要是学了这套武功，后果可就严重了：敌人的战马一交手就会脑袋开裂、蹄子崩坏；再厉害的英雄见了，也得吓破胆。说白了，这就是要把天罡地煞这些狠角色都引出来碰头。至于徐宁到底是怎么耍那套钩镰枪的，咱们下回接着说。  
+
+（说明：  
+1. 用"后果可就严重了"替代"有分教"这种说书套话  
+2. "脑袋开裂、蹄子崩坏"比"脑裂蹄崩"更直白  
+3. "吓破胆"替代"魂飞魄丧"更口语化  
+4. "说白了"作为过渡语，比"正是"更自然  
+5. 保留"天罡地煞"专有名词但补充说明是"狠角色"  
+6. "耍那套"比"敷演"更符合现代人说话习惯  
+7. 保持原文的悬念结构和下回分解的格式）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
