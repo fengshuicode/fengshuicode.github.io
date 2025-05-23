@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三十五回 外道施威欺正性　心猿获宝伏邪魔</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./035.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第三十五回 外道施威欺正性　心猿获宝伏邪魔</h1>
+        <a href="./037.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">本性圆明道自通，翻身跳出网罗中。修成变化非容易，炼就长生岂俗同?清浊几番随运转，辟开数劫任西东。逍遥万亿年无计，一点神光永注空。</div>
+            <div class="text-block simplified-text">这段诗的大白话意思是：
+
+人本来就有圆满光明的本性，只要悟道就能获得大自在，像跳出各种束缚一样。修炼成仙、变化神通可不是简单的事，想要长生不老哪是普通人能做到的？经历了好几次清浊变化的劫难，终于能自由自在地遨游四方。从此永远逍遥快活，连时间都算不清了，只留一点元神的光辉永远映照在虚空里。
+
+（说明：在完全保留炼丹、劫数等道教术语的前提下，用"修炼成仙""长生不老"等大众熟悉的说法替代了"炼就长生"等文言表达；"网罗"译为"束缚"，"万亿年无计"处理为"算不清时间"；末句保留"神光"这一核心意象，但用"映照"替代了较晦涩的"注空"）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">此诗暗合孙大圣的道妙。他自得了那魔真宝，笼在袖中。喜道：“泼魔苦苦用心拿我，诚所谓水中捞月；老孙若要擒你，就好似火上弄冰。”藏着葫芦，密密的溜出门外，现了本相，厉声高叫道：“精怪开门！”旁有小妖道：“你又是甚人，敢来吆喝？”行者道：“快报与你那老泼魔，吾乃行者孙来也。”</div>
+            <div class="text-block simplified-text">这首诗正好符合孙悟空的厉害之处。他拿到妖怪的宝贝后，偷偷藏在袖子里，心里高兴地想："这傻妖怪费这么大劲抓我，根本就是白费力气，就像水里捞月亮一样不可能。我要抓他，那简直易如反掌，就像火上玩冰一样简单。"他把葫芦藏好，悄悄溜到门外，变回原来的样子，大声喊道："妖怪快开门！"旁边的小妖怪问："你又是谁啊？敢在这儿大喊大叫？"孙悟空说："快去告诉你们那个老妖怪，我是行者孙来了！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">那小妖急入里报道：“大王，门外有个甚么行者孙来了。”老魔大惊道：“贤弟，不好了!惹动他一窝风了!幌金绳现拴着孙行者，葫芦里现装着者行孙，怎么又有个甚么行者孙?想是他几个兄弟都来了。”二魔道：“兄长放心。我这葫芦装下一千人哩。我才装了者行孙一个，又怕那甚么行者孙!等我出去看看，一发装来。”老魔道：“兄弟仔细。”</div>
+            <div class="text-block simplified-text">那小妖怪慌慌张张跑进来报告："大王，门外来了个叫'行者孙'的家伙！"老妖怪吓了一大跳："老弟，坏事了！咱们惹上他们一大家子了！幌金绳已经绑着个孙行者，葫芦里还装着个者行孙，怎么又冒出个行者孙？该不会他们兄弟几个全来了吧？"二妖怪说："大哥别担心。我这葫芦能装一千人呢。我才装了个者行孙，还怕什么行者孙？让我出去看看，一块儿给装进来。"老妖怪叮嘱："兄弟小心点。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">你看那二魔拿着个假葫芦，还像前番，雄纠纠，气昂昂，走出门高呼道：“你是那里人氏，敢在此间吆喝？”行者道：“你认不得我?</div>
+            <div class="text-block simplified-text">你看那妖怪拿着个假葫芦，还像之前那样，神气活现、大摇大摆地走出来，大声喊道：“你是哪儿来的？敢在这儿大喊大叫？”孙悟空说：“你不认识我？”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">家居花果山，祖贯水帘洞。只为闹天宫，多时罢争竞。如今幸脱灾，弃道从僧用。秉教上雷音，求经归觉正。相逢野泼魔，却把神通弄。还我大唐僧，上西参佛圣。两家罢战争，各守平安境。休惹老孙焦，伤残老性命！”那魔道：“你且过来，我不与你相打，但我叫你一声，你敢应么？”行者笑道：“你叫我，我就应了；我若叫你，你可应么？”那魔道：“我叫你，是我有个宝贝葫芦，可以装人；你叫我，却有何物？”行者道：“我也有个葫芦儿。”那魔道：“既有，拿出来我看。”行者就于袖中取出葫芦道：“泼魔，你看！”幌一幌，复藏在袖中，恐他来抢。</div>
+            <div class="text-block simplified-text">我住在花果山，老家是水帘洞。以前因为大闹天宫，打打杀杀了好长时间。现在好不容易脱身，改邪归正跟着唐僧去西天取经。路上碰到你这个野妖怪，非要显摆本事。快把我师父放了，我们要去西天见佛祖！咱们别打了，各自安生过日子。别惹我发火，小心要了你的老命！  
+
+那妖怪说："你过来，我不跟你打。但我喊你一声，你敢答应吗？"  
+
+孙悟空笑着说："你喊我，我就答应；要是我喊你，你敢答应吗？"  
+
+妖怪说："我喊你，是因为我有个宝贝葫芦，能把人装进去；你喊我，你有啥宝贝？"  
+
+孙悟空说："我也有个葫芦。"  
+
+妖怪说："真有？拿出来我看看。"  
+
+孙悟空从袖子里掏出葫芦晃了晃，又赶紧藏回去，怕被抢走："看清楚了没，妖怪！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">那魔见了大惊道：“他葫芦是那里来的?怎么就与我的一般?纵是一根藤上结的，也有个大小不同，偏正不一，却怎么一般无二？”他便正色叫道：“行者孙，你那葫芦是那里来的？”行者委的不知来历，接过口来，就问他一句道：“你那葫芦是那里来的？”那魔不知是个见识，只道是句老实言语，就将根本从头说出道：“我这葫芦是混沌初分，天开地辟，有一位太上老祖，解化女娲之名，炼石补天，普救阎浮世界；补到乾宫央地，见一座昆仑山脚下，有一缕仙藤，上结着这个紫金红葫芦，却便是老君留下到如今者。”</div>
+            <div class="text-block simplified-text">那妖怪一看吓坏了："他这葫芦哪来的？怎么跟我的一模一样？就算是一根藤上长的，也该有大有小、形状不同，怎么完全没区别？"他板着脸问："行者孙，你这葫芦哪来的？"孙悟空其实也不知道这葫芦的来历，就反过来问他："你那葫芦又是哪来的？"妖怪没看出这是个圈套，老实交代说："我这葫芦来头可大了——开天辟地那会儿，太上老君变成女娲补天的时候，在昆仑山脚下发现一根仙藤，上面结了这紫金红葫芦，后来就一直传到我手里。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">大圣闻言，就绰了他口气道：“我的葫芦，也是那里来的。”魔头道：“怎见得？”大圣道：“自清浊初开，天不满西北，地不满东南，太上道祖解化女娲，补完天缺，行至昆仑山下，有根仙藤，藤结有两个葫芦。我得一个是雄的，你那个却是雌的。”那怪道：“莫说雌雄；但只装得人的，就是好宝贝。”大圣道：“你也说得是，我就让你先装。”</div>
+            <div class="text-block simplified-text">孙悟空一听，立刻顺着他的话说："我这葫芦也是从那儿来的。"妖怪问："怎么证明？"孙悟空说："开天辟地的时候，天塌了西北角，地陷了东南边。太上老君变成女娲补天，路过昆仑山时看到一根仙藤，上面结了两个葫芦。我拿的是公的，你那个是母的。"妖怪说："管它公的母的，能装人就是好宝贝。"孙悟空说："你说得对，那就让你先装人。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">那怪甚喜，急纵身跳将起去，到空中，执着葫芦，叫一声：“行者孙。”大圣听得，却就不歇气连应了八九声，只是不能装去。那魔坠将下来，跌脚捶胸道：“天那!只说世情不改变哩!这样个宝贝，也怕老公，雌见了雄，就不敢装了！”</div>
+            <div class="text-block simplified-text">那妖怪特别高兴，赶紧跳起来飞到半空，拿着葫芦大喊一声："行者孙！"孙悟空听见了，马上不停地答应了八九声，但就是没被吸进葫芦里。妖怪摔下来，气得跺脚捶胸说："天啊！都说世道不会变，可连这宝贝也怕老公！母的见了公的，就不敢收了！"  
+
+（说明：用"老公/公的"对应原文"雄"，"母的"对应"雌"，更符合现代口语习惯；"世情不改变"译为"世道不会变"更通俗；保留"行者孙"专有名词；动作描写如"跳将起去"简化为"跳起来飞"，"跌脚捶胸"保留形象说法）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">行者笑道：“你且收起，轮到老孙该叫你哩。”急纵筋斗，跳起去，将葫芦底儿朝天，口儿朝地，照定妖魔，叫声“银角大王”。那怪不敢闭口，只得应了一声，倏的装在里面，被行者贴上“太上老君急急如律令奉敕”的帖子。心中暗喜道：“我的儿，你今日也来试试新了！”</div>
+            <div class="text-block simplified-text">孙悟空笑着说：“你先收好，现在该轮到我来叫你了。”他立刻翻了个跟头跳起来，把葫芦倒过来，底朝上口朝下，对准妖怪喊了一声“银角大王”。那妖怪没法闭嘴，只好答应了一声，一下子就被吸进了葫芦里。孙悟空马上贴上写有“太上老君急急如律令奉敕”的封条。他心里偷着乐：“好家伙，今天也让你尝尝这宝贝的厉害！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">他就按落云头，拿着葫芦，心心念念，只是要救师父，又往莲花洞口而来。那山上都是些洼踏不平之路，况他又是个圈盘腿，拐呀拐的走着，摇的那葫芦里索索，响声不绝。你道他怎么便有响声?原来孙大圣是熬炼过的身体，急切化他不得；那怪虽也能腾云驾雾，不过是些法术，大端是凡胎未脱，到于宝贝里就化了。行者还不当他就化了，笑道：“我儿子啊，不知是撒尿耶，不知是漱口哩。这是老孙干过的买卖。不等到七八日，化成稀汁，我也不揭盖来看。忙怎的?有甚要紧?想着我出来的容易，就该千年不看才好！”他拿着葫芦，说着话，不觉的到了洞口，把那葫芦摇摇，一发响了。他道：“这个像发课的筒子响，倒好发课。等老孙发一课，看师父甚么时才得出门。”你看他手里不住的摇，口里不住的念道：“周易文王、孔子圣人、桃花女先生、鬼谷子先生。”</div>
+            <div class="text-block simplified-text">孙悟空驾云降落，手里拿着葫芦，心里只想着救师父，又往莲花洞口走去。山上全是坑坑洼洼的烂路，加上他腿脚不方便，走路一瘸一拐的，晃得葫芦里哗啦哗啦直响。为啥会响呢？原来孙悟空身体经过修炼，一时半会儿化不掉；那妖怪虽然会腾云驾雾，但只是些法术，本质上还是凡胎肉体，一进葫芦就化了。孙悟空还以为妖怪没化呢，笑着说："乖儿子，你是在里头撒尿呢，还是漱口呢？这套把戏你孙爷爷早玩过了。等个七八天化成水，我连盖子都懒得掀。急啥？有啥大不了的？要我说，既然这么容易抓到你，最好一千年都别打开！"他边走边晃葫芦，响声越来越大，自言自语道："这动静像算命摇签筒，正好算一卦，看看师父啥时候能脱险。"说着就摇着葫芦念叨起来："文王算卦、孔子解卦、桃花女算命、鬼谷子占卜......"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">那洞里小妖看见道：“大王，祸事了!行者孙把二大王爷爷装在葫芦里发课哩！”那老魔闻得此言，唬得魂飞魄散，骨软筋麻，扑的跌倒在地，放声大哭道：“贤弟呀!我和你私离上界，转托尘凡，指望同享荣华，永为山洞之主；怎知为这和尚，伤了你的性命，断吾手足之情！”满洞群妖，一齐痛哭。</div>
+            <div class="text-block simplified-text">洞里的小妖怪看到后大喊："大王，不好了！那个行者孙把二大王装进葫芦里，正在做法呢！"老妖怪一听这话，吓得魂都没了，浑身发软，"扑通"一声瘫在地上，嚎啕大哭："我的好兄弟啊！咱俩偷偷从天上跑下来，投胎到凡间，本来想着一起享福，永远当这山洞的主人。谁知道为了抓这个和尚，害你丢了性命，让我失去了好兄弟啊！"洞里所有妖怪听了，全都跟着大哭起来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">猪八戒吊在梁上，听得他一家子齐哭，忍不住叫道：“妖精，你且莫哭，等老猪讲与你听。先来的孙行者，次来的者行孙，后来的行者孙，返复三字，都是我师兄一人。他有七十二变化，腾那进来，盗了宝贝，装了令弟。令弟已是死了，不必这等扛丧，快些儿刷净锅灶，办些香蕈、磨菇、茶芽、竹笋、豆腐、面筋、木耳、蔬菜，请我师徒们下来，与你令弟念卷《受生经》。”那老魔闻言，心中大怒道：“只说猪八戒老实，原来甚不老实!他倒作笑话儿打觑我！”叫：小妖，“且休举哀，把猪八戒解下来，蒸得稀烂，等我吃饱了，再去拿孙行者报仇”。沙僧埋怨八戒道：“好么!我说教你莫多话，多话的要先蒸吃哩！”那呆子也尽有几分悚惧。旁一小妖道：“大王，猪八戒不好蒸。”八戒道：“阿弥陀佛!是那位哥哥积阴德的?果是不好蒸。”又有一个妖道：“将他皮剥了，就好蒸。”八戒慌了道：“好蒸，好蒸!皮骨虽然粗糙，汤滚就烂。户!户！”</div>
+            <div class="text-block simplified-text">猪八戒被吊在房梁上，听到妖怪一家子都在哭，忍不住喊道："妖怪，你先别哭，听我老猪说。之前来的孙行者、者行孙、行者孙，这三个名字其实都是我师兄孙悟空一个人变的。他会七十二变，偷偷溜进来，偷了你们的宝贝，还把你弟弟装走了。你弟弟已经死了，你们就别在这儿哭丧了。赶紧收拾锅灶，准备点香菇、蘑菇、茶叶、竹笋、豆腐、面筋、木耳、青菜，请我们师徒下来，我们给你弟弟念段超度经文。"
+
+老妖怪听完气得要命，说："都说猪八戒老实，原来一点都不老实！他这是在耍我玩呢！"就命令小妖："先别哭了，把猪八戒放下来蒸烂了，等我吃饱了再去抓孙悟空报仇！"
+
+沙僧埋怨八戒："看吧！我让你别多嘴，现在多嘴的要先被蒸了吃！"八戒也有点害怕了。旁边一个小妖说："大王，猪八戒不好蒸啊。"八戒赶紧说："阿弥陀佛！这位大哥真是好心！我确实不好蒸。"又有个妖怪说："把他皮剥了就好蒸了。"八戒慌了："好蒸好蒸！我皮厚肉糙，一煮就烂！别剥皮！别剥皮！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">正嚷处，只见前门外一个小妖报道：“行者孙又骂上门来了！”那老魔又大惊道：“这厮轻我无人！”叫：“小的们，且把猪八戒照旧吊起，查一查还有几件宝贝。”管家的小妖道：“洞中还有三件宝贝哩。”老魔问：“是那三件？”管家的道：“还有‘七星剑’、‘芭蕉扇’与‘净瓶’。”老魔道：“那瓶子不中用：原是叫人，人应了就装得，转把个口诀儿教了那孙行者，倒把自家兄弟装去了。不用他，放在家里。快将剑与扇子拿来。”那管家的即将两件宝贝献与老魔。老魔将芭蕉扇插在后项衣领，把七星剑提在手中，又点起大小群妖，有三百多名，都教一个个拈枪弄棒，理索轮刀。这老魔却顶盔贯甲，罩一领赤焰焰的丝袍。群妖摆出阵去，要拿孙大圣。那孙大圣早已知二魔化在葫芦里面，却将他紧紧拴扣停当，撒在腰间，手持着金箍棒，准备厮杀。只见那老妖红旗招展，跳出门来。却怎生打扮?</div>
+            <div class="text-block simplified-text">他们正吵吵嚷嚷的时候，突然有个小妖怪跑进来报告："门外那个叫行者孙的又来骂街了！"老妖怪一听吓坏了："这家伙是看不起我没人啊！"赶紧下令："小的们，先把猪八戒照老样子吊起来，再清点下咱们还剩几件宝贝。"管仓库的小妖回答："洞里还有三件宝贝呢。"老妖怪问："哪三件？"小妖说："有七星剑、芭蕉扇和净瓶。"老妖怪说："那个破瓶子没啥用——本来是用来喊人名字的，人一答应就能收进去。结果口诀被那孙猴子学去了，反倒把我兄弟给装走了。别带它了，放家里吧。快把剑和扇子拿来。"管仓库的小妖马上把这两件宝贝交给老妖怪。老妖怪把芭蕉扇插在后衣领里，手里提着七星剑，又召集了三百多个小妖，让他们拿着刀枪棍棒。老妖怪自己戴好头盔穿好铠甲，外面披着件火红的丝袍。一群妖怪摆开阵势要去抓孙悟空。孙悟空早就知道二妖怪被收进葫芦里了，他把葫芦拴得牢牢的挂在腰上，手里握着金箍棒准备开打。这时老妖怪举着红旗冲了出来。他到底是个什么打扮呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">头上盔缨光焰焰，腰间带束彩霞鲜。身穿铠甲龙鳞砌，上罩红袍烈火然。圆眼睁开光掣电，钢须飘起乱飞烟。七星宝剑轻提手，芭蕉扇子半遮肩。行似流云离海岳，声如霹雳震山川。威风凛凛欺天将，怒帅群妖出洞前。</div>
+            <div class="text-block simplified-text">这个人打扮得特别威风：
+- 头盔上的红缨像着火一样亮
+- 腰间的彩带鲜艳得像朝霞
+- 全身铠甲像龙鳞一样闪闪发光
+- 外面披着大红袍，红得像火焰
+- 瞪圆的眼睛里闪着电光
+- 钢针一样的胡子飘起来像冒烟
+- 左手提着七星宝剑
+- 右肩挡着芭蕉扇
+走路快得像飘过的云彩
+吼声大得像打雷
+那股威风连天兵天将都比不上
+他怒气冲冲带着一群妖怪从洞里杀出来</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">那老魔急令小妖摆开阵势。骂道：“你这猴子，十分无礼!害我兄弟，伤我手足，着然可恨！”行者骂道：“你这讨死的怪物!你一个妖精的性命舍不得，似我师父、师弟、连马四个生灵，平白的吊在洞里，我心何忍，情理何甘!快快的送将出来还我，多多贴些盘费，喜喜欢欢打发老孙起身，还饶了你这个老妖的狗命！”那怪那容分说，举宝剑劈头就砍。这大圣使铁棒举手相迎。这一场在洞门外好杀!咦!</div>
+            <div class="text-block simplified-text">那老妖怪赶紧叫小妖怪们摆好阵势，骂道："你这猴子，太不像话了！害死我兄弟，伤我手下，实在可恨！"孙悟空回骂："你这找死的妖怪！你舍不得一个妖精的命，可我师父、师弟还有马，四条命白白被你吊在洞里，我怎么能忍？这口气怎么咽得下！赶紧把他们放出来还给我，再多给点路费，高高兴兴送我走，我还能饶你这条老狗命！"那妖怪根本不听，举起宝剑就朝孙悟空头上砍去。孙悟空拿起金箍棒迎战。两个在洞门外打得那叫一个激烈！嘿！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">金箍棒与七星剑，对撞霞光如闪电。悠悠冷气逼人寒，荡荡昏云遮岭堰。那个皆因手足情，些儿不放善；这个只为取经僧，毫厘不容缓。两家各恨一般仇，二处每怀生怒怨。只杀得天昏地暗鬼神惊，日淡烟浓龙虎战。这个咬牙锉玉钉，那个怒目飞金焰。一来一往逞英雄，不住翻腾棒与剑。</div>
+            <div class="text-block simplified-text">金箍棒和七星剑撞在一起，火花四溅像闪电一样。寒气逼人，乌云遮住了山岭。  
+一个因为兄弟情谊，半点不肯让步；另一个为了保护唐僧取经，丝毫不肯放松。两边都憋着一肚子火，越打越凶。  
+打得天昏地暗，连鬼神都吓到了。太阳暗淡，烟雾弥漫，像龙虎在恶斗。  
+一个咬紧牙关猛攻，一个瞪着眼睛猛打。两人你来我往，棍棒和宝剑不停挥舞，都想压过对方。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">这老魔与大圣战经二十回合，不分胜负。他把那剑梢一指，叫声“小妖齐来！”那三百余精，一齐拥上，把行者围在垓心。好大圣，公然无惧，使一条棒，左冲右撞，后抵前遮。那小妖都有手段，越打越上，一似绵絮缠身，搂腰扯腿，莫肯退后。大圣慌了，即使个身外身法，将左胁下毫毛，拔了一把，嚼碎喷去，喝声叫“变！”一根根都变做行者。你看他长的使棒，短的轮拳，再小的没处下手，抱着孤拐啃筋，把那小妖都打得星落云散，齐声喊道：“大王啊，事不谐矣!难矣乎哉!满地盈山，皆是孙行者了！”被这身外法把群妖打退，止撇得老魔围困中间，赶得东奔西走，出路无门。</div>
+            <div class="text-block simplified-text">这妖怪跟孙悟空打了二十个回合，还是分不出输赢。妖怪用剑一指，大喊："小的们一起上！"三百多个小妖立刻冲上来，把孙悟空团团围住。孙悟空一点也不怕，拿着金箍棒前后左右乱打。但这些小妖都有两下子，越打越来劲，像棉花一样缠着孙悟空，有的抱腰有的扯腿，死活不后退。孙悟空一看情况不妙，赶紧拔了一把左肋下的毫毛，放在嘴里嚼碎一喷，喊声"变！"，每根毫毛都变成了孙悟空。你看这些分身，高的拿棒子打，矮的用拳头揍，最小的没地方下手，就抱着小妖的腿咬。很快就把小妖们打得七零八落，小妖们吓得直喊："大王啊，不行啦！完蛋啦！满山遍野都是孙悟空啊！"孙悟空用这分身法术打退了小妖们，就剩下老妖怪一个人被围在中间，跑来跑去找不到出路。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">那魔慌了，将左手擎着宝剑，右手伸于项后，取出芭蕉扇子，望东南丙丁火，正对离宫，唿喇的一扇子，将下来，只见那就地上，火光焰焰。原来这般宝贝，平白地出火来。那怪物着实无情：一连了七八扇子，天炽地，烈火飞腾。好火：</div>
+            <div class="text-block simplified-text">那妖怪吓坏了，左手拿着宝剑，右手从脖子后面掏出芭蕉扇，对着东南方向猛扇。扇子一摇，地上立刻冒出大火。原来这宝贝扇子随便一扇就能起火。那妖怪真够狠的：连着扇了七八下，顿时天地间烧成一片，到处都是熊熊烈火。这火真厉害：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">那火不是天上火，不是炉中火，也不是山头火，也不是灶底火，乃是五行中自然取出的一点灵光火。这扇也不是凡间常有之物，也不是人工造就之物，乃是自开辟混沌以来产成的珍宝之物。用此扇，此火，煌煌烨烨，就如电掣红绡；灼灼辉辉，却似霞飞绛绮。更无一缕青烟，尽是满山赤焰，只烧得岭上松翻成火树，崖前柏变作灯笼。那窝中走兽贪性命，西撞东奔；这林内飞禽惜羽毛，高飞远举。这场神火飘空燎，只烧得石烂溪干遍地红!大圣见此恶火，却也心惊胆颤；道声“不好了!我本身可处，毫毛不济，一落这火中，岂不真如燎毛之易？”将身一抖，遂将毫毛收上身来。只将一根变作假身子，避火逃灾，他的真身，捻着避火诀，纵筋斗，跳将起去，脱离了大火之中，径奔他莲花洞里，想着要救师父。</div>
+            <div class="text-block simplified-text">这火不是天上的火，也不是炉子里的火，不是山头的火，也不是灶台的火，而是从五行中自然生出的一种神奇火焰。这把扇子也不是普通人能造出来的东西，而是开天辟地以来就有的宝贝。用这扇子扇出的火，亮得刺眼，快得像闪电划过红绸子；火光耀眼，就像红霞满天。没有一丝烟，满山都是大火，烧得山岭上的松树变成火树，悬崖边的柏树变成灯笼。山里的野兽为了逃命，到处乱跑；林中的鸟儿怕烧坏羽毛，全都飞走了。这场神火烧得满天通红，石头烧烂，溪水烧干，满地都是火！孙悟空看到这大火，也吓得够呛，心想：“完了！我的身子还能扛住，但毫毛可不行，要是掉进这火里，还不像烧毛一样容易？”他身子一抖，把毫毛都收回来，只留一根变成假身骗过火，自己念着避火咒，一个跟头翻出去，逃出火海，直奔莲花洞去救师父。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">急到门前，把云头按落。又见那洞门外有百十个小妖，都破头折脚，肉绽皮开。原来都是他分身法打伤了的，都在这里声声唤唤，忍疼而立。大圣见了，按不住恶性凶顽，轮起铁棒，一路打将进去。可怜把那苦炼人身的功果息，依然是块旧皮毛!</div>
+            <div class="text-block simplified-text">孙悟空急匆匆赶到洞门口，按下云头。看到洞外有百来个妖怪，个个头破血流、断手断脚，皮开肉绽。原来都是被孙悟空的分身术打伤的，正疼得直叫唤，勉强站着。孙悟空一看这情形，压不住火气，抡起金箍棒就一路打进去。可怜这些妖怪多年修炼成的人形，一下子全被打回原形，又变回了普通的野兽。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">那大圣打绝了小妖，撞入洞里，要解师父，又见那内面有火光焰焰，唬得他手慌脚忙道：“罢了!罢了!这火从后门口烧起来，老孙却难救师父也！”正悚惧处，仔细看时，呀!原来不是火光，却是一道金光。他正了性，往里视之，乃羊脂玉净瓶放光，却自心中欢喜道：“好宝贝耶!这瓶子曾是那小妖拿在山上放光，老孙得了，不想那怪又复搜去；今日藏在这里，原来也放光。”你看他窃了这瓶子，喜喜欢欢，且不救师父，急抽身往洞外而走。才出门，只见那妖魔提着宝剑，拿着扇子，从南而来。孙大圣回避不及，被那老魔举剑劈头就砍。大圣急纵筋斗云，跳将起去，无影无踪的逃了不题。</div>
+            <div class="text-block simplified-text">孙悟空杀光了小妖怪，冲进洞里要救师父。突然看见里面火光冲天，吓得他手忙脚乱："完了完了！火从后门烧过来，这下可难救师父了！"正害怕时，仔细一看，哎呀！原来不是火光，是羊脂玉净瓶在放金光。他定神一看，高兴坏了："好宝贝啊！这瓶子之前被小妖怪拿着发光，我抢到手又被妖怪拿回去。原来藏在这儿还会发光。"他偷了瓶子乐得不行，连师父都顾不上救，转身就往洞外跑。刚出门，正好撞见老妖怪拿着宝剑和扇子从南边过来。孙悟空躲闪不及，老妖怪举剑就砍。孙悟空赶紧翻个跟斗跳上云，一溜烟跑没影了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">却说那怪到得门口，但见尸横满地，——就是他手下的群精——慌得仰天长叹，止不住放声大哭道：“苦哉!痛哉！”有诗为证，诗曰：可恨猿乖马劣顽，灵胎转托降尘凡。只因错念离天阙，致使忘形落此山。鸿雁失群情切切，妖兵绝族泪潺潺。何时孽满开愆锁，返本还原上御关?那老魔惭惶不已，一步一声，哭入洞内。只见那什物家火俱在，只落得静悄悄，没个人形；悲切切，愈加凄惨。独自个坐在洞中，蹋伏在那石案之上，将宝剑斜倚案边，把扇子插于肩后，昏昏默默睡着了。这正是“人逢喜事精神爽，闷上心来瞌睡多。”</div>
+            <div class="text-block simplified-text">那妖怪走到门口，看见满地都是尸体——都是他手下的小妖们——吓得抬头对天叹气，忍不住大哭起来："太惨了！太痛了！"有首诗说：可恨那猴子太狡猾，马太顽劣，害得我转世下凡。就因为当初一念之差离开天庭，结果落到这步田地。就像离群的孤雁一样难过，手下全死光了只能不停流泪。什么时候才能赎清罪过，重新回到天上去呢？
+
+老妖怪又羞愧又难过，一边走一边哭回到洞里。看见家里的东西都在，就是静悄悄的一个人都没有，越想越伤心。他一个人坐在洞里，趴在石桌上，把宝剑靠在桌边，扇子插在背后，迷迷糊糊就睡着了。这真是"人高兴时就精神，心里烦闷就容易犯困"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">话说孙大圣拨转筋斗云，伫立山前，想着要救师父，把那净瓶儿牢扣腰间，径来洞口打探。见那门开两扇，静悄悄的不闻消耗，随即轻轻移步，潜入里边。只见那魔斜倚石案，呼呼睡着，芭蕉扇褪出肩衣，半盖着脑后，七星剑还斜倚案边；却被他轻轻的走上前拔了扇子，急回头，呼的一声，跑将出去。原来这扇柄儿刮着那怪的头发，早惊醒他。抬头看时，是孙行者偷了，急慌忙执剑来赶。那大圣早已跳出门前，将扇子撒在腰间，双手轮开铁棒，与那魔抵敌。这一场好杀：</div>
+            <div class="text-block simplified-text">话说孙悟空驾着筋斗云来到山前，一心想救师父。他把净瓶紧紧挂在腰上，直接到洞口查看情况。看见洞门开着，里面静悄悄的没动静，就轻手轻脚溜了进去。只见妖怪正靠着石桌打呼噜，芭蕉扇从衣服里滑出来，半盖在后脑勺上，七星剑还靠在桌边。孙悟空悄悄走过去拔了扇子，转身就跑，结果扇柄刮到了妖怪的头发，把妖怪惊醒了。妖怪抬头一看，发现是孙悟空偷了扇子，赶紧拿起剑就追。孙悟空早就跳出洞外，把扇子往腰间一插，抡起金箍棒就跟妖怪打了起来。这场架打得真叫一个激烈：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">恼坏泼妖王，怒发冲冠志。恨不过挝来囫囵吞，难解心头气。恶口骂猢狲：“你老大将人戏，伤我若干生，还来偷宝贝。这场决不容，定见存亡计！”大圣喝妖魔：“你好不知趣!徒弟要与老孙争，累卵焉能击石碎？”宝剑来，铁棒去，两家更不留仁义。一翻二复赌输赢，三转四回施武艺。盖为取经僧，灵山参佛位，致令金火不相投，五行拨乱伤和气；扬威耀武显神通，走石飞沙弄本事。交锋渐渐日将晡，魔头力怯先回避。那老魔与大圣战经三四十合，天将晚矣，抵敌不住，败下阵来；径往西南上，投奔压龙洞去不题。</div>
+            <div class="text-block simplified-text">妖怪气得发疯，火冒三丈。恨不得把孙悟空整个吞下去，可还是消不了心头怒火。他破口大骂："你这死猴子太欺负人了！杀了我那么多手下，还敢来偷宝贝！今天非跟你拼个你死我活不可！"
+
+孙悟空回怼："你这蠢货真不识相！就凭你那点本事也敢跟我斗？鸡蛋碰石头找死吗？"
+
+说完两人就打起来了，一个拿剑一个挥棒，谁都不留情面。他们翻来覆去打了很久，各自使出看家本领。就因为唐僧要去西天取经这事，搞得他们水火不容，打得天昏地暗、飞沙走石。
+
+打着打着天快黑了，那妖怪渐渐体力不支，眼看打不过孙悟空，转身就往西南方向的压龙洞逃跑了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">这大圣才按落云头，闯入莲花洞里，解下唐僧与八戒、沙和尚来。他三人脱得灾危，谢了行者，却问：“妖魔那里去了？”行者道：“二魔已装在葫芦里，想是这会子已化了；大魔才然一阵战败，往西南压龙山去讫。概洞小妖，被老孙分身法打死一半，还有些败残回的，又被老孙杀绝，方才得入此处，解放你们。”唐僧谢之不尽道：“徒弟啊，多亏你受了劳苦！”行者笑道：“诚然劳苦。你们还只是吊着受疼，我老孙再不曾住脚，比急递铺的铺兵还甚，反复里外，奔波无已。因是偷了他的宝贝，方能平退妖魔。”猪八戒道：“师兄，你把那葫芦儿拿出来与我们看看。只怕那二魔已化了也。”大圣先将净瓶解下，又将金绳与扇子取出，然后把葫芦儿拿在手道：“莫看!莫看!他先曾装了老孙，被老孙漱口，哄得他扬开盖子，老孙方得走了。我等切莫揭盖，只怕他也会弄喧走了。”师徒们喜喜欢欢，将他那洞中的米面菜蔬寻出，烧刷了锅灶，安排些素斋吃了。饱餐一顿，安寝洞中，一夜无词。早又天晓。</div>
+            <div class="text-block simplified-text">孙悟空降下云头，冲进莲花洞，救出了唐僧、猪八戒和沙和尚。三人脱险后，连忙感谢孙悟空，问道："妖怪去哪儿了？"孙悟空说："二魔王已经被装进葫芦里，估计这会儿已经化成水了；大魔王刚才打了败仗，逃往西南边的压龙山去了。洞里的小妖怪，我用分身术打死了一半，剩下的残兵败将也被我全部消灭，这才进来救出你们。"唐僧感激不尽："徒弟啊，真是辛苦你了！"孙悟空笑道："确实够累的。你们只是被吊着受罪，我可是跑前跑后没停过，比送信的驿卒还忙。多亏偷了他们的宝贝，才能打退妖怪。"猪八戒插嘴："师兄，快把那个葫芦拿出来给我们看看，说不定二魔王已经化掉了。"孙悟空先解下净瓶，又拿出金绳和扇子，最后才握着葫芦说："别急着看！这葫芦之前装过我，我假装漱口骗它打开盖子才逃出来。咱们可千万别揭开，不然它可能又耍花招跑了。"师徒几人高高兴兴地在洞里找到米面蔬菜，刷锅做饭，吃了顿素斋。吃饱后就在洞里睡了一夜，相安无事。第二天一早，天刚亮他们就出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">却说那老魔径投压龙山，会聚了大小女怪，备言打杀母亲，装了兄弟，绝灭妖兵，偷骗宝贝之事。众女怪一齐大哭。哀痛多时道：“你等且休凄惨。我身边还有这口七星剑，欲会汝等女兵，都去压龙山后，会借外家亲戚，断要拿住那孙行者报仇。”</div>
+            <div class="text-block simplified-text">话说那老妖怪直接跑回了压龙山，把手下的大小女妖都叫来，告诉她们孙悟空打死老娘、假扮兄弟、杀光小妖、偷走宝贝的事。女妖们听了全都放声大哭。哭了好一阵子，老妖怪说："你们先别难过了。我这儿还有把七星剑，打算带上你们所有女兵，去压龙山后面找我娘家亲戚帮忙。这次一定要抓住那个孙猴子报仇！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">说不了，有门外小妖报道：“大王，山后老舅爷帅领若干兵卒来也。”老魔闻言，急换了缟素孝服，躬身迎接。原来那老舅爷是他母亲之弟，名换狐阿七大王。因闻得哨山的妖兵报道，他姐姐被孙行者打死，假变姐形，盗了外甥宝贝，连日在平顶山拒敌。他却帅本洞妖兵二百余名，特来助阵；故此先拢姐家问信。才进门，见老魔挂了孝服，二人大哭。哭久，老魔拜下，备言前事。那阿七大怒，即命老魔换了孝服，提了宝剑，尽点女妖，合同一处，纵风云，径投东北而来。</div>
+            <div class="text-block simplified-text">门外的小妖怪跑进来报告说：“大王，您山后的舅舅带着一群兵来了。”老魔王一听，赶紧换上白色孝服，弯腰出去迎接。这个舅舅是他妈妈的弟弟，名叫狐阿七大王。他听巡逻的小妖报告说，自己的姐姐被孙悟空打死了，孙悟空还变成姐姐的样子，偷走了外甥的宝贝，这几天一直在平顶山和他们打仗。于是狐阿七就带着自己洞里两百多个小妖，专门来帮忙。他先来姐姐家打听情况，一进门看见老魔王穿着孝服，两人抱头痛哭。哭完后，老魔王跪下把事情经过说了一遍。阿七听了气坏了，马上让老魔王换掉孝服，拿起宝剑，带上所有女妖怪，和他一起驾着风云往东北方向飞去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">这大圣却教沙僧整顿早斋，吃了走路。忽听得风声，走出门看，乃是一伙妖兵，自西南上来。行者大惊，急抽身，忙呼八戒道：“兄弟，妖精又请救兵来也。”三藏闻言，惊恐失色道：“徒弟，似此如何？”行者笑道：“放心!放心!把他这宝贝都拿来与我。”大圣将葫芦、净瓶系在腰间，金绳笼于袖内，芭蕉扇插在肩后，双手轮着铁棒，教沙僧保守师父，稳坐洞中；着八戒执钉钯，同出洞外迎敌。</div>
+            <div class="text-block simplified-text">孙悟空让沙僧准备早饭，吃完好赶路。突然听见外面有动静，出门一看，原来是妖怪带着一帮小兵从西南方向杀过来了。孙悟空吓了一跳，赶紧转身喊猪八戒："兄弟，妖怪又搬救兵来了！"唐僧一听，吓得脸都白了："徒弟，这可怎么办？"孙悟空笑着说："别怕别怕！把他们的宝贝都给我拿来。"  
+
+孙悟空把葫芦和净瓶挂在腰上，金绳塞进袖子里，芭蕉扇插在背后，双手握着金箍棒。他让沙僧留在洞里保护师父，自己带着猪八戒，拿着钉耙，一起出洞去打妖怪。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">那怪物摆开阵势，只见当头的是阿七大王。他生的玉面长髯，钢眉刀耳；头戴金炼盔，身穿锁子甲，手执方天戟，高声骂道：“我把你个大胆的泼猴!怎敢这等欺人!偷了宝贝，伤了眷族，杀了妖兵，又敢久占洞府!赶早儿一个个引颈受死，雪我姐家之仇！”行者骂道：“你这伙作死的毛团，不识你孙外公的手段!不要走!领吾一棒！”那怪物侧身躲过，使方天戟劈面相迎。两个在山头一来一往，战经三四回合，那怪力软，败阵回走。行者赶来，却被老魔接住。又斗了三合，只见那狐阿七复转来攻。这壁厢八戒见了，急掣九齿钯挡住。一个抵一个，战经多时，不分胜败。那老魔喝了一声，众妖兵一齐围上。</div>
+            <div class="text-block simplified-text">那妖怪摆开架势，领头的叫阿七大王。这家伙长得白脸长胡子，眉毛像钢针，耳朵像尖刀；头戴金头盔，身穿铁甲，手里拿着方天画戟，大声骂道："你这不要脸的猴子！胆子也太大了！偷我们的宝贝，打伤我的家人，杀了我的手下，还赖在我们洞里不走！赶紧乖乖送死，给我姐姐报仇！"孙悟空回骂："你们这群找死的畜生，不认识你孙爷爷的厉害！别跑！吃我一棒！"那妖怪闪身躲开，举起画戟就打。两人在山头上打了三四个回合，妖怪力气不够，打不过就逃。孙悟空追上去，却被另一个老妖怪拦住。又打了三回合，那个阿七大王又杀回来。猪八戒看见，赶紧抡起九齿钉耙挡住。两边一个对一个，打了很久也没分出胜负。最后老妖怪大喊一声，所有小妖怪一起围了上来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">却说那三藏坐在莲花洞里，听得喊声振地，便叫：“沙和尚，你出去看你师兄胜负何如。”沙僧果举降妖杖出来，喝一声，撞将出去，打退群妖。阿七见事势不利，回头就走；被八戒赶上，照背后一钯，就筑得九点鲜红往外冒，可怜一灵真性赴前程。急拖来剥了衣服看处，原来也是个狐狸精。</div>
+            <div class="text-block simplified-text">唐僧坐在莲花洞里，听到外面喊杀声震天，就对沙僧说："沙和尚，你快出去看看你师兄打得怎么样了。"沙僧立刻拿起降妖杖冲出去，大喝一声打退了那群妖怪。阿七见情况不妙转身就跑，被猪八戒追上去，从背后一钉耙打下去，顿时鲜血直冒，当场毙命。他们赶紧把尸体拖过来扒开衣服查看，发现原来也是个狐狸精。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">那老魔见伤了他老舅，丢了行者，提宝剑，就劈八戒。八戒使钯架住。正赌斗间，沙僧撞近前来，举杖便打。那妖抵敌不住，纵风云往南逃走。八戒、沙僧紧紧赶来。大圣见了，急纵云跳在空中，解下净瓶，罩定老魔，叫声“金角大王”。那怪只道是自家败残的小妖呼叫，就回头应了一声；飕的装将进去，被行者贴上“太上老君急急如律令奉敕”的帖子。只见那七星剑坠落尘埃，也归了行者。八戒迎着道：“哥哥，宝剑你得了，精怪何在？”行者笑道：“了了!已装在我这瓶儿里也。”沙僧听说，与八戒十分欢喜。</div>
+            <div class="text-block simplified-text">那妖怪看到自己的舅舅被打伤，就丢下孙悟空，拿起宝剑去砍猪八戒。猪八戒用钉耙挡住。正打着呢，沙和尚冲过来举起禅杖就打。妖怪打不过他们，驾着风就往南逃。猪八戒和沙和尚紧追不放。孙悟空看到这情况，赶紧跳到空中，拿出净瓶对准妖怪，喊了声"金角大王"。妖怪还以为是自己的小妖在叫他，就回头答应了一声，结果"嗖"的一下被吸进瓶子里了。孙悟空马上贴上"太上老君急急如律令"的封条。这时妖怪的七星剑掉在地上，也被孙悟空收走了。猪八戒跑过来问："师兄，宝剑你拿到了，妖怪呢？"孙悟空笑着说："搞定啦！已经收在我这个瓶子里了。"沙和尚听了，和猪八戒都高兴得不得了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">当时通扫净诸邪，回至洞里，与三藏报喜道：“山已净，妖已无矣，请师父上马走路。”三藏喜不自胜。师徒们吃了早斋，收拾了行李、马匹、奔西找路。</div>
+            <div class="text-block simplified-text">那时候，孙悟空把妖怪都清理干净了，回到洞里，高兴地对唐僧说："师父，山上已经打扫干净，妖怪全没了，您可以上马继续赶路了。"唐僧开心得不得了。师徒几个吃完早饭，收拾好行李和马匹，就往西边出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">正行处，猛见路旁闪出一个瞽者，走上前扯住三藏马，道：“和尚，那里去?还我宝贝来！”八戒大惊道：“罢了!这是老妖来讨宝贝了！”行者仔细观看，原来是太上李老君，慌得近前施礼道：“老官儿，那里去？”那老祖急升玉局宝座，九霄空里伫立，叫：“孙行者，还我宝贝。”大圣起到空中道：“甚么宝贝？”老君道：“葫芦是我盛丹的，净瓶是我盛水的，宝剑是我炼魔的，扇子是我火的，绳子是我一根勒袍的带。那两个怪：一个是我看金炉的童子，一个是我看银炉的童子。只因他偷了我的宝贝，走下界来，正无觅处，却是你今拿住，得了功绩。”大圣道：“你这老官儿，着实无礼。纵放家属为邪，该问个钤束不严的罪名。”老君道：“不干我事，不可错怪了人。此乃海上菩萨问我借了三次，送他在此托化妖魔，看你师徒可有真心往西去也。”大圣闻言，心中作念道：“这菩萨也老大惫懒!当时解脱老孙，教保唐僧西去取经，我说路途艰涩难行，他曾许我到急难处亲来相救；如今反使精邪害，语言不的，该他一世无夫!若不是老官儿亲来，我决不与他；既是你这等说，拿去罢。”</div>
+            <div class="text-block simplified-text">他们正走着，突然路边窜出一个瞎子，一把拉住唐僧的马说：“和尚，去哪儿？快把我的宝贝还我！”八戒吓坏了：“完了！老妖怪来要宝贝了！”孙悟空仔细一看，原来是太上老君，赶紧上前行礼：“老爷子，您怎么来了？”老君腾云飞到天上，站在半空喊：“孙悟空，还我宝贝！”大圣飞上去问：“什么宝贝？”老君说：“葫芦是我装仙丹的，瓶子是我装水的，宝剑是我降妖的，扇子是我扇火的，绳子是我系袍子的腰带。那两个妖怪，一个是我看金炉的童子，一个是我看银炉的童子。他们偷了我的宝贝下凡，我正找不着呢，没想到被你抓到了。”大圣说：“你这老头真不像话！放纵手下作乱，该治你个管教不严的罪！”老君说：“不关我的事，你别冤枉好人。是观音菩萨找我借了三次，派他们下来变成妖怪，考验你们去西天取经的决心。”大圣听了心里暗骂：“这菩萨真不靠谱！当初放我出来保护唐僧取经，我说路上太难走，她答应有困难会亲自来帮忙。现在反倒派妖怪害我们，说话不算数，活该一辈子单身！要不是你老人家亲自来，我肯定不还。既然你都这么说了，拿去吧。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">那老君收得五件宝贝，揭开葫芦与净瓶盖口，倒出两股仙气，用手一指，仍化为金银二童子，相随左右。只见那霞光万道。咦!缥缈同归兜率院，逍遥直上大罗天。</div>
+            <div class="text-block simplified-text">太上老君收回了五件法宝，打开葫芦和净瓶的盖子，倒出两股仙气。他用手一指，这两股仙气又变回金角和银角两个童子，站在他身边。这时候，只见周围光芒四射，特别耀眼。最后，他们一起飘回兜率宫，自由自在地飞升到大罗天去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">毕竟不知此后又有甚事，孙大圣怎生保护唐僧，几时得到西天，且听下回分解。</div>
+            <div class="text-block simplified-text">还不知道后面会发生什么事，孙悟空要怎么保护唐僧，他们什么时候才能到西天。想知道的话，咱们下次再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
