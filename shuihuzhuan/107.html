@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一百零七回　宋江大胜纪山军　朱武打破六花阵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./106.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第一百零七回　宋江大胜纪山军　朱武打破六花阵</h1>
+        <a href="./108.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话说宋江统领将佐军马，杀奔荆南来。每日兵行六十里下寨。大军所过地方，百姓秋毫无犯。兵马已到纪山地方屯札。那纪山在荆南之北，乃荆南重镇。上有贼将李怀，管领兵马三万，在山上镇守。那李怀是李助之侄。王庆封他做宣抚使。他闻知宋江等打破山南军，段二被擒，差人星夜到南丰飞报王庆、李助，知会说：“宋兵势大，已被他破了两个大郡。目今来打荆南。又分调卢俊义兵将，往取西京。”李助闻报大惊，随即进宫来报王庆。内侍传奏入内里去，传出旨意来说道：“教军师俟候着，大王即刻出殿了。”</div>
+            <div class="text-block simplified-text">宋江带着军队向荆南进发。每天走六十里就扎营休息。军队经过的地方，老百姓一点都没受到骚扰。部队到了纪山就驻扎下来。纪山在荆南北边，是荆南的重要据点。山上有贼将李怀带着三万兵马把守。李怀是李助的侄子，被王庆封为宣抚使。他听说宋江他们攻破了山南军，还抓了段二，就连夜派人赶去南丰报告王庆和李助，说："宋江军队很强，已经攻下两个大城。现在要来打荆南，还派了卢俊义带兵去攻打西京。"李助听到消息吓坏了，马上进宫告诉王庆。太监进去通报后，传话说："让军师等着，大王马上就来上朝。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">李助等候了两个时辰，内里不见动静。李助密问一个相好的近侍，说道：“大王与段娘娘正在厮打的热闹哩。”李助问道：“为何大王与娘娘厮闹？”近侍附李助的耳说道：“大王因段娘嘴脸那个，大王久不到段娘娘宫中了。段娘娘因此蒿恼。”李助又等了一回，有内侍出来说道：“大王有旨，问军师还在此么？”李助道：“在此鹄候。”内侍传奏进去。少顷，只见若干内侍宫娥，簇拥着那王庆出到前殿升坐。李助伏俯拜舞毕，奏道：“小臣侄儿李怀申报来说：宋江等将勇兵强，打破了宛州、山南两座城池。目今宋江分拨兵马，一路取西京，一路打荆南。伏乞大王发兵去救援。”</div>
+            <div class="text-block simplified-text">李助等了两个小时，里面还是没动静。他偷偷问一个关系好的贴身侍从："大王和段娘娘正打得热闹呢。"李助问："大王为什么和娘娘吵架？"侍从凑到他耳边说："大王嫌段娘娘长得丑，很久不去她宫里了。段娘娘因为这个生气。" 
+
+李助又等了一会儿，有个太监出来问："大王问军师还在不在？"李助说："一直在这儿等着呢。"太监进去报告。没多久，就看到一群太监宫女围着王庆出来，在前殿坐下。李助跪拜行礼后说："我侄儿李怀申报告说：宋江他们兵强马壮，已经攻下宛州、山南两座城。现在宋江正分兵两路，一路打西京，一路攻荆南。请大王赶快派兵去救。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">王庆听罢，大怒道：“宋江这夥，是水洼草寇，如何恁般猖獗！”随即降旨，令都督杜，管领将佐十二员，兵马二万，到西京救援。又令统军大将谢宁，统领将佐十二员，兵马二万，救援荆南。二将领了兵符令旨，挑选兵马，整顿器械。那伪枢密院分拨将佐，伪转运使龚正运粮草接济。二将辞了王庆，各统领兵将，分路来援二处，不在话下。</div>
+            <div class="text-block simplified-text">王庆听完后，气得大骂："宋江这帮人就是水洼子里的土匪强盗，怎么敢这么嚣张！"他马上下了命令：派都督杜带着十二个将领和两万兵马，去西京支援；又派大将谢宁带着十二个将领和两万兵马，去救荆南。两个将军领了兵符和命令，挑好士兵，准备好武器。那个假枢密院分配将领，假转运使龚正负责运送粮草支援。两个将军告别王庆后，各自带兵分头去支援这两个地方。后面的事就不多说了。
+
+（说明：原文中""为无法显示的字符，故保留原样）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">且说宋江等兵马到纪山北十里外札寨屯兵，准备冲击。军人侦探贼人消息的实回报。宋江与吴用计议了，对众将说道：“俺闻李怀手下都是勇猛的将士。纪山乃荆南之重镇。我这里将士兵马虽倍于贼，贼人据险，我处山之阴下，为敌所囚。那李怀狡猾诡谲。众兄弟厮杀，须看个头势，不得寻常看视。”于是下令；“将军入营，即闭门清道。有敢行者诛，有敢高言者诛。军无二令，二令者诛。留令者诛。”</div>
+            <div class="text-block simplified-text">话说宋江带着军队在纪山北面十里外安营扎寨，准备攻打敌人。侦察兵把打探到的敌情详细汇报后，宋江和吴用商量了一下，对将领们说："我听说李怀手下的兵将都很能打。纪山是荆南的重要据点。咱们虽然人多，但敌人占了有利地形，咱们在山背阴处扎营，容易被敌人困住。那李怀又狡猾多诈。兄弟们打仗时一定要看清形势，不能像平常那样大意。"于是下令："所有将士回营后立即关闭营门，清理道路。敢随便走动的杀，敢大声喧哗的杀。军中只听一道命令，违抗命令的杀，私自传令的也杀。"  
+
+（说明：改写时主要做了以下处理：  
+1. 将"札寨屯兵"改为"安营扎寨"等白话表达  
+2. 用"能打"代替"勇猛"，"狡猾多诈"代替"狡猾诡谲"等通俗说法  
+3. 将"为敌所囚"转化为"容易被敌人困住"的主动句式  
+4. 保留所有原始指令内容，但将文言句式改为"敢...的杀"的口语表达  
+5. 确保每处改写都严格对应原文信息，未增减内容）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">传令方毕，军中肃然。宋江教戴宗传令水军头领李俊等，将粮食船只，须谨慎堤防，陆续运到军前接济。差人打战书去与李怀，约定次日决战。宋先锋传信，教秦明、董平、呼延灼、徐宁、张清、琼英、金鼎、黄钺，领兵马二万，前去厮杀。教焦挺、郁保四、段景住、石勇率领步兵二千，斩伐林木，极广吾道，以便战所。分拨已定，宋江与其余众将，俱各守寨。</div>
+            <div class="text-block simplified-text">命令刚传下去，军队里立刻安静下来。宋江让戴宗通知水军头领李俊他们，运粮食的船要小心防备，一批批送到前线补给。又派人给李怀送战书，约好第二天开战。  
+
+宋江命令秦明、董平、呼延灼、徐宁、张清、琼英、金鼎、黄钺带两万兵马去打头阵。再派焦挺、郁保四、段景住、石勇带两千步兵去砍树开路，把战场周围的道路拓宽。  
+
+安排好后，宋江和其他将领都留在营寨里待命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">次日五更造饭，军士饭餐，马食刍料。平明合战。李怀统领偏将马勥、马劲、袁朗、滕戣、滕戡，兵马二万，冲杀下来。这五个人乃贼中最骁勇者。王庆对他做虎威将军。当下贼兵与秦明等两军相对。贼兵排列在北麓平阳处。山上又有许多兵马接应。当下两阵里旗号招展，两边列成阵势，各用强弓硬弩射住阵脚。鼍鼓喧天，彩旗迷日。贼阵里门旗开处，贼将袁朗骤马当先，头顶熟铜盔，身穿团花绣罗袍，乌油对嵌铠甲，骑一匹卷毛乌骓，赤脸黄须，九尺长短身材，手掿两个水磨炼钢挝，左手的重十五斤，右手的十六斤，高叫道：“水洼草寇，那个敢上前来纳命！”</div>
+            <div class="text-block simplified-text">第二天天还没亮就做饭，士兵们吃饱饭，马也喂饱了草料。天刚亮就开打。李怀带着手下大将马勥、马劲、袁朗、滕戣、滕戡，领着两万兵马冲杀下来。这五个人是叛军里最能打的，王庆封他们做虎威将军。这时候叛军和秦明的部队正面对上。叛军在北边山脚平地上摆开阵势，山上还有大批人马支援。两边军旗哗啦啦地飘，各自摆好阵型，都用强弓硬弩压住阵脚。战鼓敲得震天响，彩旗多得把太阳都挡住了。叛军阵前大旗一开，大将袁朗骑着马冲在最前面，他头上戴着铜盔，穿着绣花绸袍，套着乌黑发亮的铠甲，骑一匹黑色卷毛马，红脸黄胡子，身高九尺，两手各拿一个精钢打造的挝（兵器），左手的重十五斤，右手的重十六斤，扯着嗓子喊："你们这群水洼子里的土匪，谁敢上来送死！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">宋阵中河北降将金鼎、黄钺，要干头功，两骑马一齐抢出阵来，喝骂道：“反国逆贼，何足为道！”金鼎舞着一把泼风大刀，黄钺拈浑铁点钢枪，骤马直抢袁朗。那袁朗使着两个钢挝来迎。三骑马丁字儿摆开厮杀。三将斗过三十合，袁朗将挝一隔，拨转马便走。金鼎、黄钺驰马赶去。袁朗霍地回马。金鼎的马稍前。金鼎正轮刀砍来，袁朗左手将挝望上一迎，铛的一声，那把刀口砍缺。金鼎收刀不迭，早被袁朗右手一钢挝，把金鼎连盔透顶，打的粉碎，撞下马来。黄钺马到，那根枪早刺到袁朗前心。袁朗眼明手快，将身一闪，黄钺那根枪刺空，从右软胁下过去。袁朗将左臂抱了两把挝，右手顺势将枪杆挟住，望后一扯，黄钺直跌入怀来。袁朗将右手拦腰抱住，捉过马来，掷于地上。</div>
+            <div class="text-block simplified-text">宋朝军队里有两个从河北投降过来的将领，一个叫金鼎，一个叫黄钺。他们想抢头功，就一起骑马冲出来，对着敌人大骂："你们这些叛徒，算什么东西！"金鼎挥着一把大刀，黄钺拿着铁枪，直接冲向袁朗。袁朗用两把钢挝迎战。三个人骑着马打成一团。
+
+打了三十个回合后，袁朗假装挡了一下，掉头就跑。金鼎和黄钺赶紧追上去。袁朗突然转身回马。金鼎跑得比较快，正要举刀砍袁朗，袁朗左手用钢挝往上一挡，"铛"的一声，把金鼎的刀砍出了缺口。金鼎还没反应过来，袁朗右手一挝打过去，直接把金鼎的脑袋连头盔一起打碎，金鼎从马上摔了下来。
+
+这时黄钺骑马赶到，一枪刺向袁朗胸口。袁朗反应很快，身子一闪躲开了，黄钺的枪从他右肋下刺空。袁朗左手夹住两把钢挝，右手顺势抓住枪杆往后一拉，把黄钺整个人拽了过来。袁朗右手一把抱住黄钺的腰，把他从马上抓过来，重重地摔在地上。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">贼兵发声喊，急抢出来，捉入阵去了。那匹马直跑过本阵来。宋阵里霹雳火秦明，见折了二将，心中大怒。跃马上前，舞起狼牙棍，直取袁朗。袁朗舞挝来迎。两个战到五十余合，宋阵中女将琼英骤放银鬃马，挺着方天画戟，头戴紫金点翠凤冠，身穿红罗挑绣战袍，袍上罩着白银嵌金细甲，出阵来助秦明。贼将滕戣看见是女子，拍马出阵，大笑道：“宋江等真是草寇，怎么用那妇人上阵！”滕戣舞着一把三尖两刃刀，接住琼英厮杀。两个斗到十合之上，琼英将戟分开滕戣的那口刀，拨马望本阵便走。滕戣大喝一声，骤马赶来。</div>
+            <div class="text-block simplified-text">敌人那边大喊一声，赶紧冲出来把人抓进阵里去了。那匹马直接跑回了自己队伍。宋江这边的秦明看到连折两员大将，气得要命，骑着马冲上前去，抡起狼牙棒就朝袁朗打过去。袁朗也挥着兵器迎战。两人打了五十多个回合不分胜负，宋江阵营的女将琼英突然骑着银鬃马冲出来帮忙。她头戴镶宝石的凤冠，身穿红色绣花战袍，外面套着银光闪闪的盔甲，手里拿着方天画戟。敌将滕戣一看是个女的，拍马出阵大笑道："宋江这帮土匪真没出息，居然派女人打仗！"说着抡起三尖两刃刀就跟琼英打起来。打了十几个回合，琼英用戟挑开他的刀，调转马头就往回跑。滕戣大喊一声，骑着马紧追不舍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">琼英向鞍鞒边绣囊中，暗取石子，纽转柳腰，觑定滕戣，只一石子飞来，正中面门，皮伤肉绽，鲜血迸流，翻身落马。琼英霍地回马赶上，复一画戟，把滕戣结果。滕戡看见女将杀了他的哥哥，心中大怒，拍马抢出阵来，舞一条虎眼竹节钢鞭，来打琼英。这里双鞭将呼延灼，纵马舞鞭接住厮杀。众将看他两个本事，都是半斤八两的，打扮也差不多。呼延灼是冲天角铁幞头，销金黄罗抹额，七星打钉皂罗袍，乌油对嵌铠甲，骑一匹踢雪乌难。滕戡是交角铁幞头，大红罗抹额，百花点翠皂罗袍，乌洞戗金甲，骑一匹黄鬃马。</div>
+            <div class="text-block simplified-text">琼英悄悄从马鞍边的绣花袋里摸出一块石子，扭腰瞄准滕戣，一石子打过去，正好打中他脸，打得皮开肉绽，满脸是血，从马上摔了下来。琼英立刻调转马头追上去，又补了一戟，把滕戣杀了。滕戡看见这女将杀了自己哥哥，气得要命，催马冲出来，抡起虎眼竹节钢鞭就打琼英。这时双鞭将呼延灼拍马上前，挥鞭接住滕戡打了起来。大家看这两人武艺不相上下，穿着也差不多：呼延灼戴铁角头巾，扎金色抹额，穿钉着七颗星的黑色战袍，披乌黑铠甲，骑一匹踢雪乌骓马；滕戡戴交角铁头巾，扎红色抹额，穿绣百花的黑色战袍，披乌金铠甲，骑一匹黄鬃马。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">呼延灼只多得一条水磨八棱钢鞭。两个在阵前左盘右旋，一来一往，斗过五十余合，不分胜败。那边秦明、袁朗两个，已斗到一百五十余合。贼阵中主帅李怀，在高阜处看见女将飞石利害，折了滕戣。即令鸣金收兵。秦明、呼延灼见贼将骁勇，也不去追赶。袁朗、秦明两家，各自回阵。贼兵上山去了。</div>
+            <div class="text-block simplified-text">呼延灼多拿了一条水磨八棱钢鞭。两人在战场上打来打去，打了五十多个回合，还是不分胜负。另一边，秦明和袁朗已经打了一百五十多个回合。敌方主帅李怀在高处看到女将的飞石很厉害，还折损了滕戣，就下令收兵。秦明和呼延灼看敌将很厉害，也没去追。袁朗和秦明各自回到自己队伍里。敌兵都撤到山上去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">秦明等收兵回到大寨，说：“贼将骁勇，折了金鼎、黄钺。若不是张将军夫人，却不是挫了我军锐气。”宋江十分烦恼。与吴学究计议道：“似此怎么打得荆南？”吴用叠着两个指头，画出一条计策，说道：只除如此如此。宋江依允。当下唤鲁智深、武松、焦挺、李逵、樊瑞、鲍旭、项充、李衮、郑天寿、宋万、杜迁、龚旺、丁得孙、石勇十四个头领，同了凌振，带领勇捷步兵五千，乘今夜月黑时分，各披软战，用短兵团牌，标枪飞刀，抄小路到山后行事。众将遵令去了。次日，李怀差军下战书。宋江与吴用商议。吴用道：“贼人必有狡计。鲁智深等已是深入重地，可速准备交战。”</div>
+            <div class="text-block simplified-text">秦明他们带兵回到大营，说："敌将太厉害，我们损失了金鼎、黄钺两员大将。要不是张将军的夫人帮忙，咱们军队的士气就要被打没了。"宋江听了特别发愁。他跟军师吴用商量："照这样下去，怎么才能打下荆南啊？"吴用伸出两根手指，想了个办法，说："咱们就这么这么办。"宋江同意了。
+
+当天晚上，宋江叫来鲁智深、武松、焦挺、李逵、樊瑞、鲍旭、项充、李衮、郑天寿、宋万、杜迁、龚旺、丁得孙、石勇这十四个头领，带着凌振和五千精锐步兵。趁着天黑，穿着轻便盔甲，拿着短刀盾牌、标枪飞刀，从小路绕到山后行动。将领们都按命令出发了。
+
+第二天，敌方李怀派人来下战书。宋江又找吴用商量。吴用说："敌人肯定有诈。鲁智深他们现在已经深入敌后，咱们得赶紧准备迎战。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">宋江批：“即日交战。”军人持书上山去了。宋江仍令秦明、董平、呼延灼、徐宁、张清、琼英为前部，统领兵马二万，弓弩为表，楯戟为里，战车在前，骑兵为辅，前去冲击。教黄信、孙立、王英、扈三娘整顿兵马一万，在营俟候。李应、柴进、韩滔、彭玘，整顿兵马一万，也在营中俊候。“听吾前军号炮，你等从东西两路抄到军前。”再教关胜、朱仝、雷横、孙新、顾大嫂、张青、张二娘，统领马步军兵二万，屯札大寨之后，防备贼人救兵到来。分拨已定，宋江同吴用、公孙胜，亲自督战。其余将佐守寨。是日辰牌时分，吴用上云梯观看山形险峻，急教传令：“军马再退后二里列阵，好教两路奇兵做手脚。”</div>
+            <div class="text-block simplified-text">宋江下令："今天就开打。"士兵拿着命令上山去了。宋江安排秦明、董平、呼延灼、徐宁、张清、琼英打头阵，带两万兵，前面用弓箭手，后面用盾牌和长枪兵，战车在前，骑兵配合，直接进攻。又让黄信、孙立、王英、扈三娘带一万兵在营地等着；李应、柴进、韩滔、彭玘也带一万兵在营地待命。宋江说："等我们前军放信号炮，你们就从东西两边包抄过去。"再派关胜、朱仝、雷横、孙新、顾大嫂、张青、张二娘带两万步兵骑兵，在大营后面守着，防止敌人援兵过来。安排好后，宋江和吴用、公孙胜亲自指挥，其他将领守大营。早上八九点钟，吴用爬上云梯看地形，发现山路太险，赶紧下令："部队再往后撤两里地摆阵，这样两边包抄的部队才好行动。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">这里列阵才完，纪山贼将李怀，统领袁朗、滕戡、马勥、马劲四个虎将，二万五千兵马。滕戡教军士用竹竿挑着黄钺首级，押着冲阵的五千铁骑，军士都顶深盔，披铁铠，只露着一双眼睛。马匹都带重甲，冒面具，只露得四蹄悬地。这是李怀昨日见女将飞石打伤了一将，今日如此结束。虽有矢石，那里甲护住了。那五千军马，两个弓手，夹辅一个长枪手，冲突下来。后面军士，分两路夹攻拢来。宋兵抵当不住，望后急退。宋江忙教把号炮施放，早被他射伤了推车的数百军士。幸有战车挡住，因此铁骑不能上前。车后虽有骑兵，不能上前用武。</div>
+            <div class="text-block simplified-text">白话文改写：
+
+这边军队刚摆好阵势，纪山的贼将李怀就带着手下四大猛将袁朗、滕戡、马勥、马劲，率领两万五千兵马杀来。滕戡让士兵用竹竿挑着黄钺的脑袋打头阵，派五千全副武装的重骑兵冲锋。这些骑兵连人带马都裹得严严实实——士兵戴着头盔，穿着铁甲，只露出眼睛；战马也披着厚甲，戴着面罩，就露出四个蹄子。这是李怀昨天看到女将用飞石打伤将领后想出的对策，现在普通弓箭石头根本伤不了他们。
+
+这五千重骑兵摆出特殊队形：每两个弓箭手配一个长枪手，直接冲杀过来。后面的步兵还分成两路包抄。宋江的部队根本挡不住，被打得连连后退。宋江赶紧下令放信号炮，结果推炮车的几百士兵先被射伤。幸好有战车挡着，重骑兵冲不过来。但战车后面的骑兵也因为被阻挡，没法上前助战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">正在危急，只听得山后连珠炮响，被鲁智深等这夥将士，爬山越岭，杀上山来。山寨里贼兵吸有五千老弱，二个偏将。被鲁智深等杀个罄尽，夺了山寨。李怀等见山后变起，急退兵时，又被黄信等四将，李应等四将，两路抄杀到来。宋江又教铳炮手打击铁骑。贼兵大溃。鲁智深、李逵等十四个头领，引着步兵，于山上冲击下来。杀得贼兵雨零星散，乱窜逃生。可惜袁朗好个猛将，被火炮打死。李怀在后，被鲁智深打死。马劲、滕戡被乱兵所杀。只走了马勥一个。夺获盔甲金鼓马匹无算。三万军兵，杀死大半。山上山下，尸骸遍满。宋江收兵，计点兵士，也折了千余。因日暮，仍札寨纪山北。</div>
+            <div class="text-block simplified-text">情况紧急时，突然听到山后传来一连串炮响。原来是鲁智深带着一队人马翻山越岭杀上山来。山寨里的敌人只有五千老弱残兵和两个副将，被鲁智深他们杀得干干净净，占领了山寨。李怀等人发现后方出事，急忙撤退，结果又被黄信等四将和李应等四将从两边包抄夹击。宋江还命令火炮手轰击敌军骑兵。敌人彻底崩溃了。鲁智深、李逵等十四个头领带着步兵从山上冲下来，杀得敌人七零八落，四处逃命。可惜猛将袁朗被火炮打死。李怀在后面被鲁智深打死。马劲、滕戡死在乱军之中。只有马勥一个人逃走了。缴获的盔甲、战鼓、战马多得数不清。三万敌军大半被杀，山上山下到处都是尸体。宋江清点自己部队，也损失了一千多人。因为天快黑了，部队就在纪山北面扎营休息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">次日，宋江率领兵将上山，收拾金银粮食，放火烧了营寨。大赏三军将士。标写鲁智深等十五人并琼英功次。督兵前进。过了纪山，大兵屯札荆南十五里外。与军师吴用计议，调拨将士，攻打城池，不在话下。</div>
+            <div class="text-block simplified-text">第二天，宋江带着队伍上山，把金银粮食都收拾好，然后一把火烧了军营。他重重犒赏了所有士兵，特别表扬了鲁智深等十五个人和琼英的战功。接着队伍继续前进，过了纪山后，在离荆南城十五里的地方驻扎下来。宋江和军师吴用商量怎么安排人手攻打城池，这些具体细节就不多说了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">话分两头，回文再说卢俊义这支兵马，望西京进发。逢山开路，遇水填桥。所过地方，宝丰等处贼将武顺等，香花灯烛，献纳城池，归顺天朝。卢俊义慰抚劝劳，就令武顺镇守城池。因此贼将皆感泣，倾心露胆，弃邪归正。自此卢俊义等无南顾之忧，兵马长驱直入。不则一日，来到西京城南三十里外，地名伊阙山屯札。探听得城中主帅是伪宣使龚端，与统军奚胜，及数员猛将，在那里镇守。那奚统军曾习阵法，深知玄妙。卢俊义随即与朱武计议：“当用何策取城？”朱武道：“闻奚胜那厮，颇知阵法。一定要来斗敌。我兵先布下阵势，待贼兵来，慢慢地挑战。”卢俊义道：“军师高论极明”随即遣调军马，向山南平坦处，排下循环八卦阵势。</div>
+            <div class="text-block simplified-text">咱们把故事分成两边说。现在回头说说卢俊义这支队伍，他们正往西京方向前进。一路上遇到山就开路，碰到河就搭桥。经过宝丰这些地方时，当地的贼将武顺等人带着香烛贡品，主动献出城池投降朝廷。卢俊义好好安抚他们，还让武顺继续管理这些城池。这些投降的将领都很感动，真心实意地改邪归正了。
+
+这样一来，卢俊义他们就不用担心后方出问题，大军可以放心往前推进。没过多久，队伍就到了离西京城南三十里的伊阙山驻扎下来。打听到城里守军的主将是假冒宣使的龚端，还有统军奚胜和几个厉害将领。那个奚胜学过兵法，很懂排兵布阵。
+
+卢俊义马上找军师朱武商量："咱们该怎么拿下这座城？"朱武说："听说奚胜那家伙懂阵法，肯定会出来迎战。咱们先摆好阵型，等他们来了再慢慢周旋。"卢俊义说："军师说得对。"立刻派兵在山南边的平地上摆开了八卦阵。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">等候间，只见贼兵分作三队而来。中一队是红旗，左一队是青旗，右一队是红旗，三军齐到。奚胜见宋军摆成阵势，便令青、红旗二军，分在左右，紥下营寨。上云梯看了宋兵是循环八卦阵。奚胜道：“这个阵势谁不省得！待俺排个阵势惊他。”令众军擂三通画鼓，竖起将台。就台上用两把号旗招展左右，列成阵势已了，下将台来上马，令首将哨开阵势。到阵前与卢俊义打话。那奚统军怎生结束？但见：</div>
+            <div class="text-block simplified-text">等着的时候，看见敌军分成三队过来了。中间那队举着红旗，左边那队举着青旗，右边那队也举着红旗，三支队伍一起到了。奚胜看到宋军摆好了阵型，就让举青旗和红旗的两支队伍分别在左右两边扎营。他爬上云梯一看，发现宋军摆的是循环八卦阵。奚胜说："这种阵法谁不懂啊！看我也摆个阵吓唬吓唬他们。"于是命令士兵擂了三通鼓，搭起将台。他站在台上用两面令旗指挥左右，摆好阵型后，走下将台骑上马，命令先锋官摆开阵势。他自己来到阵前和卢俊义对话。这个奚统军打扮成什么样呢？只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">金盔日耀喷霞光，银铠霜铺吞月影。绛征袍锦绣攒成，黄鞓带珍珠钉就。抹绿靴斜踏宝镫，描金鞓随定丝鞭。阵前马跨一条龙，手内剑横三尺水。</div>
+            <div class="text-block simplified-text">这人一身装备特别威风：头盔金光闪闪像太阳一样耀眼，铠甲银光发亮像铺了一层霜。红色战袍绣满了精美花纹，黄色腰带上镶满珍珠。脚蹬绿色靴子踩着马镫，描金的马鞍上挂着丝鞭。骑在战阵前的战马像条飞龙，手里握着的宝剑寒光闪闪有三尺长。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">奚胜勒马直到阵前，高声叫道：“你摆循环八卦阵，待要瞒谁！你却识得俺的阵么？”卢俊义听得奚胜要斗阵法，同朱武上云梯观望贼兵阵势。结三人为小队，合三小队为一中队，合五中队为一大队。外方而内圆，大阵包小阵，相附联络。朱武对卢俊义道：“此是李药师六花阵法。药师本武侯八阵，裁而为六花阵。贼将欺我这里不识他这个阵。不知就我这个八卦阵，变为八八六十四，即是武侯八阵图法，便可破他六花阵了。”</div>
+            <div class="text-block simplified-text">奚胜骑马冲到阵前，大声喊道："你摆这个八卦阵想骗谁！你认得我的阵法吗？"卢俊义听见奚胜要比阵法，就和朱武一起登上云梯观察敌军的阵型。敌军把三个人组成一个小队，三个小队合成一个中队，五个中队又合成一个大队。外面是方的，里面是圆的，大阵套着小阵，互相连接。朱武对卢俊义说："这是李药师的六花阵。李药师原本用的是诸葛亮的八阵图，后来改成了六花阵。敌军以为我们不认识这个阵法。他们不知道，只要把我们这个八卦阵变成八八六十四种变化，就是诸葛亮的八阵图，就能破他的六花阵了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">卢俊义出到阵前喝道：“量你这个六花阵，何足为奇！”奚胜道：“你敢来打么？”卢俊义大笑道：“量此等小阵，有何难哉！”卢俊义入阵，朱武在将台上将号旗左招右展，变成八阵图法。朱武教卢俊义传令杨志、孙安、卞祥，领披甲马军一千，去打阵。今日属金，将我阵正南离位上军，一齐冲杀过去。杨志等遵令。擂鼓三通，众将上前，荡开贼将西方门旗，杀将入去。这里卢俊义率马灵等将佐军兵，掩杀过去，贼兵大败。</div>
+            <div class="text-block simplified-text">卢俊义走到阵前大喊："就你这破六花阵，有什么了不起的！"奚胜挑衅道："有本事你来打啊？"卢俊义大笑说："这种小破阵，打起来还不简单！"
+
+卢俊义冲进敌阵，朱武在指挥台上挥动令旗，把阵法变成了八阵图。朱武让卢俊义命令杨志、孙安、卞祥带着一千名骑兵去攻打敌阵。当天属金，朱武指挥我军从正南方向发起冲锋。杨志等人按命令行动，战鼓擂响三遍后，众将领冲上前去，冲破敌军西边的防线杀了进去。同时卢俊义带着马灵等将领和士兵从另一侧夹击，打得敌军大败而逃。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">且说杨志等杀入军中，正撞着奚胜，领着数员猛将保护，望北逃奔。孙安、卞祥要干功绩，领兵追赶上去。却不知深入重地。只听得山坡后一棒锣声响，赶出一彪军来。杨志、孙安等急退不迭。正是：冲阵马亡青嶂下，戏波船陷绿蒲中。毕竟这支是那里兵马？孙安等如何迎敌？且听下回分解。</div>
+            <div class="text-block simplified-text">话说杨志他们冲进敌营，正好碰上奚胜带着几个猛将保护着往北逃跑。孙安和卞祥想立功，就带兵追了上去。没想到他们追得太深，中了埋伏。突然山坡后面一阵锣响，杀出一队人马。杨志、孙安他们赶紧撤退，但已经来不及了。这下可惨了：冲锋的战马死在山脚下，打仗的船陷在烂泥里。这支突然杀出来的军队到底是哪来的？孙安他们怎么对付？咱们下回再说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">此一回内，折了河北降将二员：</div>
+            <div class="text-block simplified-text">这一回故事里，死了两个从河北投降过来的将领：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">金鼎，黄钺。</div>
+            <div class="text-block simplified-text">金鼎：金子做的鼎（古代煮东西的器具）  
+黄钺：黄金装饰的大斧头（古代权力的象征）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
