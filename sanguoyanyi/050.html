@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十回 诸葛亮智算华容　关云长义释曹操</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./049.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十回 诸葛亮智算华容　关云长义释曹操</h1>
+        <a href="./051.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说当夜张辽一箭射黄盖下水，救得曹操登岸，寻着马匹走时，军已大乱。韩当冒烟突火来攻水寨，忽听得士卒报道：“后梢舵上一人，高叫将军表字。”韩当细听，但闻高叫“义公救我？”当曰：“此黄公覆也！”急教救起。见黄盖负箭着伤，咬出箭杆，箭头陷在肉内。韩当急为脱去湿衣，用刀剜出箭头，扯旗束之，脱自己战袍与黄盖穿了，先令别船送回大寨医治。原来黄盖深知水性，故大寒之时，和甲堕江，也逃得性命。却说当日满江火滚，喊声震地。左边是韩当、蒋钦两军从赤壁西边杀来；右边是周泰、陈武两军从赤壁东边杀来；正中是周瑜、程普、徐盛、丁奉大队船只都到。火须兵应，兵仗火威。此正是：三江水战，赤壁鏖兵。曹军着枪中箭、火焚水溺者，不计其数。后人有诗曰：“魏吴争斗决雌雄，赤壁楼船一扫空。烈火初张照云海，周郎曾此破曹公。”又有一绝云：“山高月小水茫茫，追叹前朝割据忙。南士无心迎魏武，东风有意便周郎。”不说江中鏖兵。且说甘宁令蔡中引入曹寨深处，宁将蔡中一刀砍于马下，就草上放起火来。吕蒙遥望中军火起，也放十数处火，接应甘宁。潘璋、董袭分头放火呐喊，四下里鼓声大震。曹操与张辽引百余骑，在火林内走，看前面无一处不着。正走之间，毛玠救得文聘，引十数骑到。操令军寻路。张辽指道：“只有乌林地面，空阔可走。”操径奔乌林。正走间，背后一军赶到，大叫：“曹贼休走！”火光中现出吕蒙旗号。操催军马向前，留张辽断后，抵敌吕蒙。却见前面火把又起，从山谷中拥出一军，大叫：“凌统在此！”曹操肝胆皆裂。忽刺斜里一彪军到，大叫：“丞相休慌！徐晃在此！”彼此混战一场，夺路望北而走。忽见一队军马，屯在山坡前。徐晃出问，乃是袁绍手下降将马延、张顗，有三千北地军马，列寨在彼；当夜见满天火起，未敢转动，恰好接着曹操。操教二将引一千军马开路，其余留着护身。操得这枝生力军马，心中稍安。马延、张顗二将飞骑前行。不到十里，喊声起处，一彪军出。为首一将，大呼曰：“吾乃东吴甘兴霸也！”马延正欲交锋，早被甘宁一刀斩于马下；张顗挺枪来迎，宁大喝一声，顗措手不及，被宁手起一刀，翻身落马。后军飞报曹操。操此时指望合淝有兵救应；不想孙权在合淝路口，望见江中火光，知是我军得胜，便教陆逊举火为号，太史慈见了，与陆逊合兵一处，冲杀将来。操只得望彝陵而走。路上撞见张郃，操令断后。纵马加鞭，走至五更，回望火光渐远，操心方定，问曰：“此是何处？”左右曰：“此是乌林之西，宜都之北。”操见树木丛杂，山川险峻，乃于马上仰面大笑不止。诸将问曰：“丞相何故大笑？”操曰：“吾不笑别人，单笑周瑜无谋，诸葛亮少智。若是吾用兵之时，预先在这里伏下一军，如之奈何？”说犹未了，两边鼓声震响，火光竟天而起，惊得曹操几乎坠马。刺斜里一彪军杀出，大叫：“我赵子龙奉军师将令，在此等候多时了！”操教徐晃、张郃双敌赵云，自己冒烟突火而去。子龙不来追赶，只顾抢夺旗帜。曹操得脱。</div>
+            <div class="text-block simplified-text">那天晚上，张辽一箭把黄盖射下水，救曹操上岸找马逃跑时，曹军已经乱成一团。韩当正带着兵在烟火中攻打水寨，突然有士兵报告："船尾有人大喊将军的名字！"韩当仔细一听，听见有人喊"义公救我？"韩当说："是黄盖！"赶紧让人把他救上来。只见黄盖中箭受伤，自己咬断了箭杆，箭头还扎在肉里。韩当急忙帮他脱掉湿衣服，用刀挖出箭头，撕下旗子包扎伤口，又脱下自己的战袍给黄盖穿上，先派人用船送他回大营治疗。原来黄盖水性特别好，所以大冬天穿着铠甲掉进江里也能活命。
+
+这时候整个江面都在燃烧，喊杀声震天动地。左边韩当、蒋钦从赤壁西边杀来，右边周泰、陈武从赤壁东边杀来，中间周瑜带着程普、徐盛、丁奉的大队战船也到了。火借兵势，兵助火威。这场赤壁大战，曹军被枪刺箭射、火烧水淹的，死伤无数。
+
+另一边，甘宁让蔡中带路深入曹营，一刀把蔡中砍下马，就在草地上放起火来。吕蒙看见中军起火，也跟着放了十几处火。潘璋、董袭也分头放火呐喊，四面战鼓震天响。曹操和张辽带着一百多骑兵在火海里逃命，发现前面到处都在烧。正跑着，毛玠救下文聘，带着十几骑赶来。曹操让士兵找路，张辽指着说："只有乌林那边空地可以走。"曹操就往乌林跑。
+
+半路后面追来一支部队大喊："曹贼别跑！"火光中看见是吕蒙的旗号。曹操让部队快跑，留张辽断后挡住吕蒙。结果前面又冒出一支火把，山谷里冲出一队人马喊："凌统在此！"曹操吓得半死。这时斜刺里杀出一支救兵喊："丞相别怕！徐晃来了！"两边打了一阵，曹操才往北逃去。
+
+突然看见山坡前驻扎着一队兵马，徐晃去问，原来是袁绍的旧部马延、张顗，带着三千北方士兵。他们看见满天大火没敢乱动，正好接应了曹操。曹操让他们带一千人开路，其余保护自己。有了这支生力军，曹操心里才踏实点。
+
+结果马延、张顗刚走不到十里，就撞上甘宁的伏兵。甘宁大喊："我是东吴甘兴霸！"马延刚要交手就被甘宁一刀砍死，张顗挺枪来战，也被甘宁一刀劈下马。后面士兵赶紧报告曹操。曹操还指望合肥有援兵，没想到孙权在合肥路口看见江上火光，知道东吴赢了，就让陆逊点火为号。太史慈看见信号，和陆逊合兵杀来。曹操只好往彝陵跑。
+
+路上遇到张郃，曹操让他断后。拼命跑到五更天，看见火光远了才放心，问："这是哪儿？"手下说："乌林西边，宜都北边。"曹操见这里山高林密，突然在马上哈哈大笑。将领们问："丞相笑什么？"曹操说："我笑周瑜没脑子，诸葛亮缺智慧。要是我用兵，肯定先在这里埋伏一支部队。"话还没说完，两边突然战鼓齐鸣火光冲天，吓得曹操差点摔下马。斜刺里杀出一支军队喊："我赵子龙奉军师之命，等你好久了！"曹操赶紧让徐晃、张郃挡住赵云，自己冲过火线逃跑。赵云也不追，只顾抢军旗。曹操这才逃掉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">天色微明，黑云罩地，东南风尚不息。忽然大雨倾盆，湿透衣甲。操与军士冒雨而行，诸军皆有饥色。操令军士往村落中劫掠粮食，寻觅火种。方欲造饭，后面一军赶到。操心甚慌。原来却是李典、许褚保护着众谋士来到，操大喜，令军马且行，问：“前面是那里地面？”人报：“一边是南彝陵大路，一边是北彝陵山路。”操问：“那里投南郡江陵去近？”军士禀曰：“取南彝陵过葫芦口去最便。”操教走南彝陵。行至葫芦口，军皆饥馁，行走不上，马亦困乏，多有倒于路者。操教前面暂歇。马上有带得锣锅的，也有村中掠得粮米的，便就山边拣干处埋锅造饭，割马肉烧吃。尽皆脱去湿衣，于风头吹晒；马皆摘鞍野放，咽咬草根。操坐于疏林之下，仰面大笑。众官问曰：“适来丞相笑周瑜、诸葛亮，引惹出赵子龙来，又折了许多人马。如今为何又笑？”操曰：“吾笑诸葛亮、周瑜毕竟智谋不足。若是我用兵时，就这个去处，也埋伏一彪军马，以逸待劳；我等纵然脱得性命，也不免重伤矣。彼见不到此，我是以笑之。”正说间，前军后军一齐发喊、操大惊，弃甲上马。众军多有不及收马者。早见四下火烟布合，山口一军摆开，为首乃燕人张翼德，横矛立马，大叫：“操贼走那里去！”诸军众将见了张飞，尽皆胆寒。许褚骑无鞍马来战张飞。张辽、徐晃二将，纵马也来夹攻。两边军马混战做一团。操先拨马走脱，诸将各自脱身。张飞从后赶来。操迤逦奔逃，追兵渐远，回顾众将多已带伤。</div>
+            <div class="text-block simplified-text">天刚蒙蒙亮，乌云压得很低，东南风刮个不停。突然下起大雨，把士兵们的衣服盔甲都淋透了。曹操带着士兵冒雨赶路，大家都饿得脸色发青。曹操命令士兵到附近村子里抢粮食、找生火的东西。刚准备做饭，后面又来了一队人马。曹操吓了一大跳，结果发现是李典、许褚带着谋士们赶来了。曹操很高兴，让部队继续前进，问："前面是什么地方？"士兵报告说："一边是南彝陵大路，一边是北彝陵山路。"曹操问："哪条路去南郡江陵更近？"士兵说："走南彝陵过葫芦口最近。"曹操就决定走南彝陵。
+
+走到葫芦口时，士兵们饿得走不动了，马也累得不行，很多马都倒在路边。曹操让部队停下来休息。有人带着锅，有人从村里抢来了粮食，就在山边干燥的地方架锅做饭，还把死马肉割下来烤着吃。大家都把湿衣服脱下来晾着，把马鞍卸下来让马吃草。曹操坐在树林里，突然仰头大笑。官员们问他："刚才丞相笑周瑜、诸葛亮，结果引来了赵云，折损了不少人马。现在为什么又笑？"曹操说："我笑诸葛亮、周瑜还是不够聪明。如果是我用兵，就在这种地方埋伏一支军队，以逸待劳；我们就算能逃命，也得损失惨重。他们想不到这点，所以我笑他们。"
+
+正说着，前后军队突然一起喊叫起来。曹操吓坏了，丢下盔甲跳上马。很多士兵都来不及牵马。只见四周烟火四起，山口出现一支军队，领头的是张飞，他拿着长矛大喊："曹操老贼往哪跑！"曹军将士见到张飞都吓破了胆。许褚骑着没鞍的马去迎战张飞，张辽、徐晃也冲上去帮忙。两边军队混战成一团。曹操先骑马逃走了，其他将领也各自逃命。张飞在后面紧追不舍。曹操一路逃跑，追兵渐渐远了，回头一看，手下将领大多都受了伤。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">正行时，军士禀曰：“前面有两条路，请问丞相从那条路去？”操问：“那条路近？”军士曰：“大路稍平，却远五十余里。小路投华容道，却近五十余里；只是地窄路险，坑坎难行。”操令人上山观望，回报：“小路山边有数处烟起；大路并无动静。”操教前军便走华容道小路。诸将曰：“烽烟起处，必有军马，何故反走这条路？”操曰：“岂不闻兵书有云：虚则实之，实则虚之。诸葛亮多谋，故使人于山僻烧烟，使我军不敢从这条山路走，他却伏兵于大路等着。吾料已定，偏不教中他计！”诸将皆曰：“丞相妙算，人不可及。”遂勒兵走华容道。此时人皆饥倒，马尽困乏。焦头烂额者扶策而行，中箭着枪者勉强而走。衣甲湿透，个个不全；军器旗幡，纷纷不整：大半皆是彝陵道上被赶得慌，只骑得秃马，鞍辔衣服，尽皆抛弃。正值隆冬严寒之时，其苦何可胜言。</div>
+            <div class="text-block simplified-text">军队正走着，士兵报告说：“前面有两条路，丞相咱们走哪条？”曹操问：“哪条路近？”士兵回答：“大路平坦些，但远了五十多里。小路是华容道，近五十多里，但路窄难走，坑坑洼洼的。”曹操派人上山查看，回报说：“小路那边有几处冒烟，大路没动静。”曹操就下令走华容道。将领们问：“冒烟的地方肯定有埋伏，为啥偏走这条路？”曹操说：“兵法上不是说过吗？虚的其实是实的，实的其实是虚的。诸葛亮鬼点子多，故意让人在偏僻处放烟，吓唬我们不敢走小路，其实他肯定在大路埋伏。我早看穿了，偏不上当！”将领们都说：“丞相高明，我们比不了。”于是军队转向华容道。这时候人饿得站不稳，马累得走不动。受伤的人拄着棍子勉强前进，中箭挨刀的都硬撑着走。军服湿透破烂，武器旗帜乱七八糟——大半都是在彝陵被打败时逃得太狼狈，只能骑着光背马，连马鞍和外套都扔了。正是大冬天最冷的时候，那惨状简直没法说。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">操见前军停马不进，问是何故。回报曰：“前面山僻路小，因早晨下雨，坑堑内积水不流，泥陷马蹄，不能前进。”操大怒，叱曰：“军旅逢山开路，遇水叠桥，岂有泥泞不堪行之理！”传下号令，教老弱中伤军士在后慢行，强壮者担土束柴，搬草运芦，填塞道路。务要即时行动，如违令者斩。众军只得都下马，就路旁砍伐竹木，填塞山路。操恐后军来赶，令张辽、许褚、徐晃引百骑执刀在手，但迟慢者便斩之。此时军已饿乏，众皆倒地，操喝令人马践踏而行，死者不可胜数。号哭之声，于路不绝。操怒曰：“生死有命，何哭之有！如再哭者立斩！”三停人马：一停落后，一停填了沟壑，一停跟随曹操。过了险峻，路稍平坦。操回顾止有三百余骑随后，并无衣甲袍铠整齐者。操催速行。众将曰：“马尽乏矣，只好少歇。”操曰：“赶到荆州将息未迟。”又行不到数里，操在马上扬鞭大笑。众将问：“丞相何又大笑？”操曰：“人皆言周瑜、诸葛亮足智多谋，以吾观之，到底是无能之辈。若使此处伏一旅之师，吾等皆束手受缚矣。”</div>
+            <div class="text-block simplified-text">曹操看到前面的部队停下不走了，就问怎么回事。手下报告说：“前面的山路又窄又偏，早上刚下过雨，坑里积满了水，马蹄陷在泥里走不动了。”曹操一听就火了，骂道：“当兵的遇到山就该开路，遇到水就该搭桥，哪有因为一点泥巴就不走的道理！”立刻下令：让老弱病残的士兵在后面慢慢走，身体强壮的赶紧去挖土砍柴、搬草运芦苇来填路。必须马上行动，谁敢违令就砍头。士兵们没办法，只好下马去路边砍竹子木头填路。曹操怕后面的追兵赶上来，派张辽、许褚、徐晃带一百个拿刀的骑兵盯着，谁动作慢就直接杀掉。这时候军队又饿又累，很多人累得倒在地上，曹操直接命令人马从他们身上踩过去，死的人多得数不清。一路上全是哭声。曹操发火说：“生死都是命，哭什么哭！谁再哭立刻砍头！”结果军队分成三部分：一部分掉队了，一部分填沟累死了，只剩三分之一跟着曹操。过了最难走的路，前面稍微平坦些。曹操回头一看，只剩下三百多个骑兵跟着，而且个个衣甲不整。曹操催着快走，将领们说：“马都累坏了，稍微休息一下吧。”曹操说：“等到了荆州再休息也不晚。”又走了没几里地，曹操突然在马上挥着鞭子大笑。将领们问：“丞相为什么又笑？”曹操说：“人人都说周瑜、诸葛亮聪明，我看他们根本不行。要是在这儿埋伏一支军队，我们早就被活捉了。”
+
+（说明：全文用口语化短句改写，替换了"坑堑""叱曰""袍铠"等文言词汇，将"三停人马"转化为具体描述，保留所有关键情节：道路泥泞、填路命令、残酷行军、人员损失、曹操嘲笑对手等要素。新增的"拿刀的骑兵""累得倒在地上"等表述使场景更直观。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">言未毕，一声炮响，两边五百校刀手摆开，为首大将关云长，提青龙刀，跨赤兔马，截住去路。操军见了，亡魂丧胆，面面相觑。操曰：“既到此处，只得决一死战！”众将曰：“人纵然不怯，马力已乏，安能复战？”程昱曰：“某素知云长傲上而不忍下，欺强而不凌弱；恩怨分明，信义素著。丞相旧日有恩于彼，今只亲自告之，可脱此难。”操从其说，即纵马向前，欠身谓云长曰：“将军别来无恙！”云长亦欠身答曰：“关某奉军师将令，等候丞相多时。”操曰：“曹操兵败势危，到此无路，望将军以昔日之情为重。”云长曰：“昔日关某虽蒙丞相厚恩，然已斩颜良，诛文丑，解白马之围，以奉报矣。今日之事，岂敢以私废公？”操曰：“五关斩将之时，还能记否？大丈夫以信义为重。将军深明《春秋》，岂不知庾公之斯追子濯孺子之事乎？”云长是个义重如山之人，想起当日曹操许多恩义，与后来五关斩将之事，如何不动心？又见曹军惶惶，皆欲垂泪，一发心中不忍。于是把马头勒回，谓众军曰：“四散摆开。”这个分明是放曹操的意思。操见云长回马，便和众将一齐冲将过去。云长回身时，曹操已与众将过去了。云长大喝一声，众军皆下马，哭拜于地。云长愈加不忍。正犹豫间，张辽纵马而至。云长见了，又动故旧之情，长叹一声，并皆放去。后人有诗曰：“曹瞒兵败走华容，正与关公狭路逢。只为当初恩义重，放开金锁走蛟龙。”</div>
+            <div class="text-block simplified-text">话还没说完，突然一声炮响，两边冲出五百名拿刀的士兵。领头的将军是关云长，他手握青龙刀，骑着赤兔马，拦住了去路。曹操的军队一看，吓得魂都没了，你看着我我看着你。曹操说："既然到这儿了，只能拼死一战了！"手下将领们说："人还能打，可马都累坏了，怎么再打？"程昱说："我了解关云长，他这人吃软不吃硬，对弱者心软。而且他恩怨分明，最讲信用。丞相您以前对他有恩，现在亲自去求他，说不定能逃过这一劫。"曹操听了，骑马走上前，对关云长客气地说："将军别来无恙啊！"关云长也客气地回礼："我奉军师命令，在这儿等丞相很久了。"曹操说："我现在兵败走投无路，希望将军看在过去的情分上网开一面。"关云长说："当年我确实受过丞相的恩情，但我已经杀了颜良、文丑，解了白马之围来报答了。今天这事，我不能因私废公。"曹操又说："你还记得我放你过五关的事吗？大丈夫最重信义。将军熟读《春秋》，难道不知道古人报恩的故事吗？"关云长是个重情义的人，想起曹操以前的恩情，加上过五关的事，心里有点动摇。又看到曹军个个害怕得要哭的样子，更不忍心了。于是调转马头，对手下说："都让开。"这明显是要放曹操走。曹操一看，赶紧带着手下冲了过去。等关云长转身时，曹操他们已经跑过去了。关云长大喊一声，曹军士兵都下马跪地痛哭。关云长更不忍心了。正犹豫时，张辽骑马赶来。关云长看到老朋友，长叹一声，把他们都放了。后来有人写诗说："曹操兵败逃到华容道，正好碰上关公。就因为当年的恩情重，关公放走了这条大鱼。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">曹操既脱华容之难。行至谷口，回顾所随军兵，止有二十七骑。比及天晚，已近南郡，火把齐明，一簇人马拦路。操大惊曰：“吾命休矣！”只见一群哨马冲到，方认得是曹仁军马。操才心安。曹仁接着，言：“虽知兵败，不敢远离，只得在附近迎接。”操曰：“几与汝不相见也！”于是引众入南郡安歇。随后张辽也到，说云长之德。操点将校，中伤者极多，操皆令将息。曹仁置酒与操解闷。众谋士俱在座。操忽仰天大恸。众谋士曰：“丞相于虎窟中逃难之时，全无惧怯；今到城中，人已得食，马已得料，正须整顿军马复仇，何反痛哭？”操曰：“吾哭郭奉孝耳！若奉孝在，决不使吾有此大失也！”遂捶胸大哭曰：“哀哉，奉孝！痛哉，奉孝！惜哉！奉孝！”众谋士皆默然自惭。次日，操唤曹仁曰：“吾今暂回许都，收拾军马，必来报仇。汝可保全南郡。吾有一计，密留在此，非急休开，急则开之。依计而行，使东吴不敢正视南郡。”仁曰：“合淝、襄阳，谁可保守？”操曰：“荆州托汝管领；襄阳吾已拨夏侯惇守把；合淝最为紧要之地，吾令张辽为主将，乐进、李典为副将，保守此地。但有缓急，飞报将来。”操分拨已定，遂上马引众奔回许昌。荆州原降文武各官，依旧带回许昌调用。曹仁自遣曹洪据守彝陵、南郡，以防周瑜。</div>
+            <div class="text-block simplified-text">曹操刚从华容道逃出来。走到山谷口时，回头看跟着的士兵，只剩二十七个人了。天快黑时，快到南郡了，突然看见前面火把通明，一队人马挡住去路。曹操吓坏了，大喊："我完蛋了！"结果发现是曹仁带兵来接应，这才放下心来。  
+
+曹仁见到曹操说："虽然知道您打了败仗，但我不敢走远，就在附近等着接您。"曹操说："差点就见不到你了啊！"于是带人进南郡休息。后来张辽也到了，跟曹操说了关羽放他们走的事。曹操清点手下将领，发现受伤的人很多，就让他们好好养伤。曹仁摆酒给曹操解闷，谋士们都在场。  
+
+突然曹操抬头大哭。谋士们问："丞相您在虎口逃命时都没怕，现在到了城里，人吃饱了，马喂好了，正该整顿兵马报仇，怎么反而哭起来了？"曹操说："我是哭郭嘉啊！要是郭嘉还活着，绝不会让我吃这么大的亏！"说完捶胸大哭："郭嘉啊！心疼死我了！太可惜了！"谋士们听了都低头不说话，觉得自己比不上郭嘉。  
+
+第二天，曹操对曹仁说："我现在先回许都整顿兵马，一定会回来报仇。你守住南郡。我给你留个锦囊妙计，不到万不得已别打开，紧急时再打开看。"曹仁问："那合肥和襄阳谁来守？"曹操说："荆州交给你管；襄阳我已经派夏侯惇去守；合肥最重要，让张辽当主将，乐进、李典当副将守着。有紧急情况立刻报告。"  
+
+安排好后，曹操带人骑马回许昌。原来投降的荆州官员也都带回许昌重新安排。曹仁派曹洪去守彝陵和南郡，防备周瑜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">却说关云长放了曹操，引军自回。此时诸路军马，皆得马匹、器械、钱粮，已回夏口；独云长不获一人一骑，空身回见玄德。孔明正与玄德作贺，忽报云长至。孔明忙离坐席，执杯相迎曰：“且喜将军立此盖世之功，与普天下除大害。合宜远接庆贺！”云长默然。孔明曰：“将军莫非因吾等不曾远接，故尔不乐？”回顾左右曰：“汝等缘何不先报？”云长曰：“关某特来请死。”孔明曰：“莫非曹操不曾投华容道上来？”云长曰：“是从那里来。关某无能，因此被他走脱。”孔明曰：“拿得甚将士来？”云长曰：“皆不曾拿。”孔明曰：“此是云长想曹操昔日之恩，故意放了。但既有军令状在此，不得不按军法。”遂叱武士推出斩之。正是：拚将一死酬知己，致令千秋仰义名。未知云长性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">关羽放走了曹操，带着部队回来了。这时候其他各路军队都抢到了马匹、武器和粮草，已经回到夏口了。只有关羽一个人也没抓到，空着手回来见刘备。
+
+诸葛亮正在给刘备道喜，忽然听说关羽来了。诸葛亮赶紧站起来，拿着酒杯迎上去说："恭喜将军立了大功，为天下除掉了大祸害。我们该去远处迎接你才对啊！"关羽低着头不说话。
+
+诸葛亮问："将军是不是因为我们没去远处迎接，所以不高兴？"又转头问旁边的人："你们怎么不提前报告？"
+
+关羽说："我是来请死的。"
+
+诸葛亮问："难道曹操没走华容道？"
+
+关羽说："是从那儿走的。是我没用，让他跑了。"
+
+诸葛亮问："那你抓到他的将领了吗？"
+
+关羽说："一个都没抓到。"
+
+诸葛亮说："这是你念着曹操以前对你的恩情，故意放走的。但是军令状在这儿摆着，只能按军法处置。"说完就让士兵把关羽推出去斩首。
+
+这正是：为了报答恩人情，甘愿一死留美名。不知道关羽性命如何，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
