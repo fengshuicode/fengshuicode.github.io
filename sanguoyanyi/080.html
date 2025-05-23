@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八十回 曹丕废帝篡炎刘　汉王正位续大统</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./079.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第八十回 曹丕废帝篡炎刘　汉王正位续大统</h1>
+        <a href="./081.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说华歆等一班文武，入见献帝。歆奏曰：“伏睹魏王，自登位以来，德布四方，仁及万物，越古超今，虽唐、虞无以过此。群臣会议，言汉祚已终，望陛下效尧、舜之道，以山川社稷，禅与魏王，上合天心，下合民意，则陛下安享清闲之福，祖宗幸甚！生灵幸甚！臣等议定，特来奏请。”帝国奏大惊，半晌无言，觑百官而哭曰：“朕想高祖提三尺剑，斩蛇起义，平秦灭楚，创造基业，世统相传，四百年矣。朕虽不才，初无过恶，安忍将祖宗大业，等闲弃了？汝百官再从公计议。”华歆引李伏、许芝近前奏曰：“陛下若不信，可问此二人。”李伏奏曰：“自魏王即位以来，麒麟降生，凤凰来仪，黄龙出现，嘉禾蔚生，甘露下降。此是上天示瑞，魏当代汉之象也。”许芝又奏曰：“臣等职掌司天，夜观乾象，见炎汉气数已终，陛下帝垦隐匿不明；魏国乾象，极天际地，言之难尽。更兼上应图谶，其谶曰：鬼在边，委相连；当代汉，无可言。言在东，午在西；两日并光上下移。以此论之，陛下可早禅位。鬼在边，委相连，是魏字也；言在东，午在西，乃许字也；两日并光上下移，乃昌字也：此是魏在许昌应受汉禅也。愿陛下察之。”帝曰：“祥瑞图谶，皆虚妄之事；奈何以虚妄之事，而遽欲朕舍祖宗之基业乎？”王朗奏曰：“自古以来，有兴必有废，有盛必有衰，岂有不亡之国、不败之家乎？汉室相传四百余年，延至陛下，气数已尽，宜早退避，不可迟疑；迟则生变矣。”帝大哭，入后殿去了。百官哂笑而退。</div>
+            <div class="text-block simplified-text">华歆带着一群官员去见汉献帝。华歆说："魏王曹操自从掌权以来，品德高尚，仁爱百姓，功绩超过了古代圣君。我们商量过了，觉得汉朝的气数已尽，希望您能学尧舜那样，把皇位让给魏王。这样既顺从天意，又符合民心，您也能安心享福，对大家都好。这是我们一致的意见，特地来请示您。"
+
+献帝听完大吃一惊，半天说不出话，看着大臣们哭道："我想当年汉高祖刘邦提着宝剑起义，打下这四百年的江山。我虽然没什么本事，但也没犯过大错，怎么能随便把祖宗基业让出去？你们再好好商量商量吧。"
+
+华歆就叫李伏和许芝上前说话。李伏说："自从魏王掌权，各地出现麒麟、凤凰、黄龙等祥瑞，庄稼丰收，天降甘露。这都是老天爷预示魏国要取代汉朝的征兆啊。"许芝接着说："我们负责观天象，发现汉朝运势已尽，而魏国运势兴旺。还有预言说'鬼在边，委相连'就是个'魏'字；'言在东，午在西'是个'许'字；'两日并光上下移'是个'昌'字。这预言就是说魏国要在许昌接受汉朝的禅让啊。"
+
+献帝反驳："这些祥瑞预言都是瞎说的，怎么能因为这些没影的事就让我放弃祖宗基业？"王朗插嘴说："自古以来朝代兴衰很正常，哪有永远不亡的国家？汉朝传了四百多年，到您这儿气数已尽，还是早点退位吧，拖久了要出乱子的。"
+
+献帝听完大哭，转身回后宫去了。官员们都讥笑着退朝。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">次日，官僚又集于大殿，令宦官入请献帝。帝忧惧不敢出。曹后曰：“百官请陛下设朝，陛下何故推阻？”帝泣曰：“汝兄欲篡位，令百官相逼，朕故不出。”曹后大怒曰：“吾兄奈何为此乱逆之事耶！”言未已，只见曹洪、曹休带剑而入，请帝出殿。曹后大骂曰：“俱是汝等乱贼，希图富贵，共造逆谋！吾父功盖寰区，威震天下，然且不敢篡窃神器。今吾兄嗣位未几，辄思篡汉，皇天必不祚尔！”言罢，痛哭入宫。左右侍者皆歔欷流涕。曹洪、曹休力请献帝出殿。帝被逼不过，只得更衣出前殿。华歆奏曰：“陛下可依臣等昨日之议，免遭大祸。”帝痛哭曰：“卿等皆食汉禄久矣；中间多有汉朝功臣子孙，何忍作此不臣之事？”歆曰：“陛下若不从众议，恐旦夕萧墙祸起。非臣等不忠于陛下也。”帝曰：“谁敢弑朕耶？”歆厉声曰：“天下之人，皆知陛下无人君之福，以致四方大乱！若非魏王在朝，弑陛下者，何止一人？陛下尚不知恩报德，直欲令天下人共伐陛下耶？”帝大惊，拂袖而起，王朗以目视华歆。歆纵步向前，扯住龙袍，变色而言曰：“许与不许，早发一言！”帝战栗不能答，曹洪、曹休拔剑大呼曰：“符宝郎何在？”祖弼应声出曰：“符宝郎在此！”曹洪索要玉玺。祖弼叱曰：“玉玺乃天子之宝，安得擅索！”洪喝令武士推出斩之。祖弼大骂不绝口而死。后人有诗赞曰：“奸宄专权汉室亡，诈称禅位效虞唐。满朝百辟皆尊魏，仅见忠臣符宝郎。”</div>
+            <div class="text-block simplified-text">第二天，大臣们又聚集在大殿上，让太监去请汉献帝上朝。皇帝又害怕又担心，不敢出来。曹皇后问："大臣们请您上朝议事，您为什么不去？"皇帝哭着说："你哥哥想抢我的皇位，让大臣们来逼我，所以我不出去。"曹皇后大怒："我哥哥怎么能干这种大逆不道的事！"话还没说完，曹洪、曹休就拿着剑闯进来，逼皇帝上殿。
+
+曹皇后大骂："你们这些乱臣贼子，为了升官发财，合伙造反！我父亲功劳那么大，威震天下，都不敢抢皇位。现在我哥哥刚掌权没多久，就想篡位，老天爷不会保佑你们的！"说完哭着回后宫去了，旁边的侍从也都跟着掉眼泪。
+
+曹洪、曹休硬把汉献帝拉出来。皇帝没办法，只好换了衣服上殿。华歆说："陛下还是按我们昨天说的办吧，免得惹祸上身。"皇帝哭着说："你们都是汉朝的老臣，很多人祖上还是汉朝功臣，怎么能干这种不忠不义的事？"华歆威胁说："您要是不听劝，恐怕马上就有杀身之祸。不是我们不忠，是您不识时务。"皇帝问："谁敢杀我？"华歆恶狠狠地说："全天下都知道您没当皇帝的命，搞得天下大乱！要不是魏王镇着，想杀您的人多了去了！您不知感恩，难道要让天下人都来讨伐您吗？"
+
+皇帝吓坏了，站起来就要走。王朗给华歆使眼色，华歆冲上去抓住皇帝的龙袍，凶巴巴地说："行不行，给句痛快话！"皇帝吓得直哆嗦，说不出话来。曹洪、曹休拔出剑大喊："管玉玺的官员在哪？"祖弼站出来说："我在这儿！"曹洪要抢玉玺，祖弼呵斥道："玉玺是皇帝的宝物，怎么能随便要！"曹洪叫武士把祖弼推出去杀了。祖弼一路骂不绝口，直到被杀。后来有人写诗称赞祖弼："奸臣当道汉朝亡，假模假样学尧舜。满朝文武都投靠魏国，就数管玉玺的官员最忠心。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">帝颤栗不已。只见阶下披甲持戈数百余人，皆是魏兵。帝泣谓群臣曰：“朕愿将天下禅于魏王，幸留残喘，以终天年。”贾诩曰：“魏王必不负陛下。陛下可急降诏，以安众心。”帝只得令陈群草禅国之诏，令华歆赍捧诏玺，引百官直至魏王宫献纳。曹丕大喜。开读诏曰：“朕在位三十二年，遭天下荡覆，幸赖祖宗之灵，危而复存。然今仰瞻天象，俯察民心，炎精之数既终，行运在乎曹氏。是以前王既树神武之迹，今王又光耀明德，以应其期。历数昭明，信可知矣。夫大道之行，天下为公；唐尧不私于厥子，而名播于无穷，朕窃慕焉，今其追踵尧典，禅位于丞相魏王。王其毋辞！”</div>
+            <div class="text-block simplified-text">皇帝吓得浑身发抖。他看见台阶下站着好几百个全副武装的魏国士兵，哭着对大臣们说："我愿意把皇位让给魏王，只求能留我一条命，让我安度晚年。"贾诩说："魏王肯定不会亏待陛下。陛下赶快下诏书吧，好让大家安心。"皇帝只好让陈群写退位诏书，派华歆捧着诏书和玉玺，带着百官去魏王宫献上。曹丕高兴极了。诏书上写着："我当了32年皇帝，天下大乱，全靠祖宗保佑才活到现在。如今天意民心都转向曹家，前代魏王立下大功，现在魏王又德行高尚，正是顺应天意的时候。天下不是一个人的天下，当年尧帝把位子传给贤人而不是儿子，我一直很佩服。现在我也要学尧帝，把皇位让给魏王。请魏王不要推辞！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">曹丕听毕，便欲受诏。司马懿谏曰：“不可。虽然诏玺已至，殿下宜且上表谦辞，以绝天下之谤。”丕从之，令王朗作表，自称德薄，请别求大贤以嗣天位。帝览表，心甚惊疑，谓群臣曰：“魏王谦逊，如之奈何？”华歆曰：“昔魏武王受王爵之时，三辞而诏不许，然后受之，今陛下可再降诏，魏王自当允从。”帝不得已，又令桓阶草诏，遣高庙使张音，持节奉玺至魏王宫。曹丕开读诏曰：“咨尔魏王，上书谦让。朕窃为汉道陵迟，为日已久；幸赖武王操，德膺符运，奋扬神武，芟除凶暴，清定区夏。今王丕缵承前绪，至德光昭，声教被四海，仁风扇八区；天之历数，实在尔躬。昔虞舜有大功二十，而放勋禅以天下；大禹有疏导之绩，而重华禅以帝位。汉承尧运，有传圣之义，加顺灵袛，绍天明命，使行御史大夫张音，持节奉皇帝玺绶。王其受之！”</div>
+            <div class="text-block simplified-text">曹丕听完诏书后，正想接受。司马懿劝他说："先别急着接。虽然诏书和玉玺都送来了，您最好先上个奏折假装推辞一下，免得天下人说闲话。"曹丕照做了，让王朗写了份奏折，说自己德行不够，请皇上另选贤能的人继承皇位。
+
+汉献帝看了奏折，心里又惊讶又疑惑，问大臣们："魏王这么谦虚推让，这可怎么办？"华歆出主意说："当年曹操接受王爵的时候，也是推让了三次才接受。现在陛下可以再下一道诏书，魏王自然就会答应了。"汉献帝没办法，只好让桓阶再写诏书，派高庙使张音带着玉玺去魏王宫。
+
+曹丕打开新诏书，上面写着："魏王啊，你上书推让皇位。但我认为汉朝已经衰败很久了，全靠你父亲曹操平定乱世。如今你继承了父亲的功业，德行高尚，名声传遍天下。就像古代尧舜禅让一样，现在汉朝也该把皇位传给你。特派张音带着皇帝玉玺来，你就接受了吧！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">曹丕接诏欣喜，谓贾诩曰：“虽二次有诏，然终恐天下后世，不免篡窃之名也。”诩曰：“此事极易，可再命张音赍回玺绶，却教华歆令汉帝筑一坛，名受禅坛；择吉日良辰，集大小公卿，尽到坛下，令天子亲奉玺绶，禅天下与王，便可以释群疑而绝众议矣。”丕大喜，即令张音赍回玺绶，仍作表谦辞。音回奏献帝。帝问群臣曰：“魏王又让，其意若何？”华歆奏曰：“陛下可筑一坛，名曰受禅坛，集公卿庶民，明白禅位；则陛下子子孙孙，必蒙魏恩矣。”帝从之，乃遣太常院官，卜地于繁阳，筑起三层高坛，择于十月庚午日寅时禅让。</div>
+            <div class="text-block simplified-text">曹丕接到诏书后很高兴，对贾诩说："虽然下了两次诏书，但我还是怕后人说我篡位。"贾诩说："这事好办。可以让张音把玉玺送回去，再让华歆叫汉献帝搭个台子叫'受禅台'。选个好日子，把大臣们都叫到台下，让皇帝亲自把玉玺交给你，公开把皇位让给你。这样大家就没话说了。"曹丕听了特别高兴，马上让张音把玉玺送回去，还写了封信假装推辞。张音回去报告汉献帝，献帝问大臣们："魏王又推辞，他到底想干嘛？"华歆说："陛下可以搭个受禅台，当着所有大臣和百姓的面正式让位。这样您的子孙后代还能得到魏王的照顾。"献帝同意了，派太常院的官员在繁阳选地方，建了个三层高的台子，定在十月庚午日寅时举行让位仪式。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">至期，献帝请魏王曹丕登坛受禅，坛下集大小官僚四百余员，御林虎贲禁军三十余万，帝亲捧玉玺奉曹丕。丕受之。坛下群臣跪听册曰：“咨尔魏王！昔者唐尧禅位于虞舜，舜亦以命禹：天命不于常，惟归有德。汉道陵迟，世失其序；降及朕躬，大乱滋昏，群凶恣逆，宇内颠覆。赖武王神武，拯兹难于四方，惟清区夏，以保绥我宗庙；岂予一人获乂，俾九服实受其赐。今王钦承前绪，光于乃德；恢文武之大业，昭尔考之弘烈。皇灵降瑞，人神告徵；诞惟亮采，师锡朕命。全曰尔度克协于虞舜，用率我唐典，敬逊尔位。於戏！天之历数在尔躬，君其袛顺大礼，飨万国以肃承天命！”</div>
+            <div class="text-block simplified-text">到了约定的日子，汉献帝请魏王曹丕登上高台接受皇位。台下站着四百多名大小官员，还有三十多万皇家卫队。献帝亲手把传国玉玺交给曹丕，曹丕接了过来。台下所有官员跪着听宣读诏书：
+
+"魏王啊！以前尧把皇位让给舜，舜后来又让给禹：老天爷不会永远保佑一家一姓，只会把天下交给有德行的人。汉朝的气数已经尽了，天下乱成一团，到处都是造反的人。全靠你父亲曹操英明神武，才平定了叛乱，保住了我们刘家的宗庙。这不光是我一个人得了好处，全天下都跟着沾光。
+
+现在你继承了父亲的事业，发扬了他的功德，继续完成文治武功的大业。老天爷降下祥瑞，人和神都表示这是天意。大家都说你应该像舜继承尧那样，按照古代圣王的规矩，恭敬地接受这个皇位。听好了！现在上天的旨意落在你身上，你就好好举行登基大典，接受各国朝拜，顺应天命当皇帝吧！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">读册已毕，魏王曹丕即受八般大礼，登了帝位。贾诩引大小官僚朝于坛下。改延康元年为黄初元年。国号大魏。丕即传旨，大赦天下。谥父曹操为太祖武皇帝，华歆奏曰：“‘天无二日，民无二主’。汉帝既禅天下，理宜退就藩服。乞降明旨，安置刘氏于何地？”言讫，扶献帝跪于坛下听旨。丕降旨封帝为山阳公，即日便行。华歆按剑指帝，厉声而言曰：“立一帝，废一帝，古之常道！今上仁慈，不忍加害，封汝为山阳公。今日便行，非宣召不许入朝！”献帝含泪拜谢，上马而去。坛下军民人等见之，伤感不已。丕谓群臣曰：“舜、禹之事，朕知之矣！”群臣皆呼万岁。后人观此受禅坛，有诗叹曰：“两汉经营事颇难，一朝失却旧江山。黄初欲学唐虞事，司马将来作样看。”百官请曹丕答谢天地。丕方下拜，忽然坛前卷起一阵怪风，飞砂走石，急如骤雨，对面不见；坛上火烛，尽皆吹灭。丕惊倒于坛上，百官急救下坛，半晌方醒。侍臣扶入宫中，数日不能设朝。后病稍可，方出殿受群臣朝贺。封华歆为司徒，王朗为司空；大小官僚，一一升赏。不疾未痊，疑许昌宫室多妖，乃自许昌幸洛阳，大建宫室。</div>
+            <div class="text-block simplified-text">魏王曹丕读完诏书后，正式登基当了皇帝。贾诩带着文武百官在祭坛下跪拜。他把年号从"延康"改成"黄初"，定国号为"魏"。曹丕下令大赦天下，追封他父亲曹操为"太祖武皇帝"。
+
+这时华歆站出来说："天上不能有两个太阳，百姓不能有两个主子。汉献帝既然把皇位让出来了，就该搬出皇宫。请皇上明示，怎么安置他？"说完就拉着汉献帝跪在台下听令。曹丕下旨封汉献帝为山阳公，命令他马上离京。华歆握着剑指着汉献帝，凶巴巴地说："换个皇帝很正常！现在皇上心善不杀你，封你当山阳公。今天就走，没叫你不许回来！"汉献帝哭着谢恩，骑马走了。老百姓看到这场景都很伤心。
+
+曹丕对大臣们说："我现在明白舜和禹当年是怎么当皇帝的了！"大臣们都高呼万岁。后来有人写诗感叹："汉朝打天下多不容易，说没就没了。曹丕学古代禅让那一套，将来司马家也会这样对他。"
+
+大臣们请曹丕祭拜天地。他刚要跪拜，突然刮起一阵妖风，飞沙走石像暴雨一样，连对面的人都看不见。祭坛上的蜡烛全被吹灭。曹丕吓得昏倒在台上，大臣们赶紧把他抬下来，好半天才醒。之后他在宫里养了好几天病，等身体好些才上朝。他封华歆当司徒，王朗当司空，其他官员也都升了官。
+
+因为病一直不好，曹丕怀疑许昌的皇宫不干净，就搬到了洛阳，在那里大兴土木建新皇宫。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">早有人到成都，报说曹丕自立为大魏皇帝，于洛阳盖造宫殿；且传言汉帝已遇害。汉中王闻知，痛哭终日，下令百官挂孝，遥望设祭，上尊谥曰“孝愍皇帝”。玄德因此忧虑，致染成疾，不能理事，政务皆托与孔明。</div>
+            <div class="text-block simplified-text">有人在成都传消息，说曹丕自己当上了大魏皇帝，还在洛阳修宫殿；还有人说汉献帝已经被害死了。刘备听到后，哭了一整天，命令所有官员穿孝服，朝着远方祭拜，给汉献帝追封了"孝愍皇帝"的谥号。刘备因为这事太难过，结果病倒了，没法处理公务，所有事情都交给诸葛亮去办。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">孔明与太傅许靖、光禄大夫谯周商议，言天下不可一日无君，欲尊汉中王为帝。谯周曰：“近有祥风庆云之瑞；成都西北角有黄气数十丈，冲霄而起；帝星见于毕、胃、昴之分，煌煌如月。此正应汉中王当即帝位，以继汉统，更复何疑？”于是孔明与许靖，引大小官僚上表，请汉中王即皇帝位。汉中王览表，大惊曰：“卿等欲陷孤为不忠不义之人耶？”孔明奏曰：“非也。曹丕篡汉自立，王上乃汉室苗裔，理合继统以延汉祀。”汉中王勃然变色曰：“孤岂效逆贼所为！”拂袖而起，入于后宫。众官皆散。</div>
+            <div class="text-block simplified-text">诸葛亮和太傅许靖、光禄大夫谯周一起商量，说国家不能一天没有皇帝，想推举汉中王刘备当皇帝。谯周说："最近有吉祥的风和云出现；成都西北角有几十丈高的黄气直冲天上；皇帝星出现在毕宿、胃宿、昴宿这几个地方，亮得像月亮一样。这些征兆都说明汉中王应该当皇帝，继承汉朝的正统，还有什么好犹豫的？"于是诸葛亮和许靖带着大小官员上书，请汉中王登基当皇帝。
+
+汉中王看了奏章，大吃一惊说："你们是想让我变成不忠不义的人吗？"诸葛亮解释说："不是这样的。曹丕篡夺了汉朝的皇位，主公您是汉朝皇室的后代，理应继承皇位延续汉朝。"汉中王突然变了脸色说："我怎么能学那些造反的逆贼！"说完甩袖子就走，回后宫去了。官员们也都散了。
+
+（说明：译文完全保留原文情节和对话，将"孔明"改为更广为人知的"诸葛亮"，"孤"译为"我"，"苗裔"译为"后代"，"继统"译为"继承皇位"，其他古语如"祥风庆云""冲霄而起"等都转化为现代人容易理解的白话表达，同时确保不增减原文信息。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">三日后，孔明又引众官入朝，请汉中王出。众皆拜伏于前。许靖奏曰：“今汉天子已被曹丕所弑，王上不即帝位，兴师讨逆，不得为忠义也。今天下无不欲王上为君，为孝愍皇帝雪恨。若不从臣等所议，是失民望矣。”汉中王曰：“孤虽是景帝之孙，并未有德泽以布于民；今一旦自立为帝，与篡窃何异！”孔明苦劝数次，汉中王坚执不从。</div>
+            <div class="text-block simplified-text">三天后，诸葛亮又带着大臣们上朝，请汉中王（刘备）出来。大家都跪在地上。许靖说："现在汉朝皇帝已经被曹丕害死了，大王您要是不马上当皇帝，带兵去讨伐叛贼，那就不算忠义了。现在天下人都想让您当皇帝，给死去的孝愍皇帝报仇。您要是不听我们的建议，会让老百姓失望啊。"  
+
+刘备回答："我虽然是汉景帝的后代，但没给老百姓做过什么好事。现在突然自己当皇帝，跟那些篡位的人有什么区别！"  
+
+诸葛亮劝了好几次，刘备就是不同意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">孔明乃设一计，谓众官曰：如此如此。于是孔明托病不出。汉中王闻孔明病笃，亲到府中，直入卧榻边，问曰：“军师所感何疾？”孔明答曰：“忧心如焚，命不久矣！”汉中王曰：“军师所忧何事？”连问数次，孔明只推病重，瞑目不答。汉中王再三请问。孔明喟然叹曰：“臣自出茅庐，得遇大王，相随至今，言听计从；今幸大王有两川之地，不负臣夙昔之言。目今曹丕篡位，汉祀将斩，文武官僚，咸欲奉大王为帝，灭魏兴刘，共图功名；不想大王坚执不肯，众官皆有怨心，不久必尽散矣。若文武皆散，吴、魏来攻，两川难保。臣安得不忧乎？”汉中王曰：“吾非推阻，恐天下人议论耳。”孔明曰：“圣人云：名不正则言不顺，今大王名正言顺，有何可议？岂不闻天与弗取，反受其咎？”汉中王曰：“待军师病可，行之未迟。”孔明听罢，从榻上跃然而起，将屏风一击，外面文武众官皆入，拜伏于地曰：“王上既允，便请择日以行大礼。”汉中王视之，乃是太傅许靖、安汉将军糜竺、青衣侯向举、阳泉侯刘豹、别驾赵祚、治中杨洪、议曹杜琼、从事张爽、太常卿赖恭、光禄卿黄权、祭酒何宗、学士尹默、司业谯周、大司马殷纯、偏将军张裔、少府王谋、昭文博士伊籍、从事郎秦宓等众也。</div>
+            <div class="text-block simplified-text">诸葛亮想了个办法，对官员们说："咱们这样这样办。"然后他就装病不出门。刘备听说诸葛亮病得厉害，亲自到他家里，直接走到床边问："军师得了什么病？"诸葛亮回答："我心里急得要命，快不行了！"刘备问："军师在担心什么事？"连问好几遍，诸葛亮都装作病重，闭着眼睛不说话。刘备一直追问，诸葛亮才叹口气说："我从出山跟着您到现在，您一直听我的建议。现在您有了蜀地，实现了我们当初的约定。如今曹丕篡位，汉朝要完了，大家都想拥立您当皇帝，讨伐魏国复兴汉室。可您死活不同意，官员们都有意见，这样下去大家都要走了。要是人都走了，吴国魏国打过来，蜀地就保不住了。我能不着急吗？"刘备说："我不是不愿意，是怕天下人说闲话。"诸葛亮说："圣人说过，名分不正说话就不硬气。您现在名正言顺，怕什么闲话？机会来了不抓住，反而要倒霉的。"刘备说："等军师病好了再说吧。"诸葛亮一听这话，马上从床上跳起来，一拍屏风，外面的官员们全进来了，跪在地上说："主公既然答应了，就赶快选日子登基吧！"刘备一看，来的都是许靖、糜竺、向举这些重要官员。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">汉中王惊曰：“陷孤于不义，皆卿等也！”孔明曰：“王上既允所请，便可筑坛择吉，恭行大礼。”即时送汉中王还宫，一面令博士许慈、谏议郎孟光掌礼，筑坛于成都武担之南。诸事齐备，多官整设銮驾，迎请汉中王登坛致祭。谯周在坛上，高声朗读祭文曰：“惟建安二十六年四月丙午朔，越十二日丁巳，皇帝备，敢昭告于皇天后土：汉有天下，历数无疆。曩者王莽篡盗，光武皇帝震怒致诛，社稷复存。今曹操阻兵残忍，戮杀主后，罪恶滔天；操子丕，载肆凶逆，窃据神器。群下将士，以为汉祀堕废，备宜延之，嗣武二祖，躬行天罚。备惧无德忝帝位，询于庶民，外及遐荒君长，佥曰：天命不可以不答，祖业不可以久替，四海不可以无主。率土式望，在备一人。备畏天明命，又惧高、光之业，将坠于地，谨择吉日，登坛告祭，受皇帝玺绶，抚临四方。惟神飨祚汉家，永绥历服！”读罢祭文，孔明率众官恭上玉玺。汉中王受了，捧于坛上，再三推辞曰：“备无才德，请择有才德者受之。”孔明奏曰：“王上平定四海，功德昭于天下，况是大汉宗派，宜即正位。已祭告天神，复何让焉！”文武各官，皆呼万岁。拜舞礼毕，改元章武元年。立妃吴氏为皇后，长子刘禅为太子；封次子刘永为鲁王，三子刘理为梁王；封诸葛亮为丞相，许靖为司徒；大小官僚，一一升赏。大赦天下。两川军民，无不欣跃。次日设朝，文武官僚拜毕，列为两班。先主降诏曰：“朕自桃园与关、张结义，誓同生死。不幸二弟云长，被东吴孙权所害；若不报仇，是负盟也。朕欲起倾国之兵，剪伐东吴，生擒逆贼，以雪此恨！”言未毕，班内一人拜伏于阶下，谏曰：“不可。”先主视之，乃虎威将军赵云也。正是：君王未及行天讨，臣下曾闻进直言。未知子龙所谏若何，且看下文分解。</div>
+            <div class="text-block simplified-text">汉中王（刘备）一听就急了："你们这不是把我往不仁不义的火坑里推吗！"诸葛亮劝道："大王既然答应了大家的请求，咱们就赶紧选个好日子搭台子，把登基大典办了吧。"说完就送刘备回宫，同时安排许慈、孟光两位官员负责筹备，在成都武担山南边搭起了祭坛。
+
+等一切准备妥当，文武百官排着仪仗队，恭请刘备登坛祭天。谯周站在台上大声念祭文："公元221年4月12日，刘备在此向天地神明禀告：我们汉朝本来应该永远统治天下。当年王莽篡位，幸亏光武皇帝重振汉室。现在曹操父子更坏，杀害皇后、抢夺皇位。将士们都说汉室不能倒，该由我这个汉室后代来继承皇位。我本来觉得自己德行不够，但问遍百姓和边远部族，大家都说天命不可违，天下不能没主子。我只好选个好日子登基，求神明保佑汉室江山永固！"
+
+读完祭文，诸葛亮带着百官献上玉玺。刘备接过玉玺放在祭坛上，连连推辞："我实在没这个本事，还是让更有才能的人当皇帝吧。"诸葛亮劝道："您平定乱世功劳大，又是汉室正宗，连老天爷都同意了，就别推辞啦！"百官立刻高呼万岁。登基大典结束后，定年号为章武元年。
+
+新皇帝刘备册封吴氏为皇后，立大儿子刘禅当太子，二儿子刘永为鲁王，三儿子刘理为梁王。任命诸葛亮当丞相，许靖当司徒，其他官员也都升了官。全国上下欢天喜地，还大赦天下。
+
+第二天上朝时，刘备对百官说："当年我和关羽、张飞桃园结拜，发誓同生共死。现在二弟关羽被东吴孙权害死，这个仇不报，我就是背信弃义！我打算发动全国兵马讨伐东吴，活捉孙权！"话还没说完，赵云将军就站出来反对："皇上，这事不能干啊！"（故事讲到这儿突然打住，要知赵云怎么劝谏，且听下回分解）</div>
+        </div>
+    
+    </main>
+</body>
+</html>
