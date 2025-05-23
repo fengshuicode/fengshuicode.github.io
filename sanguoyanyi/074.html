@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十四回 庞令明抬榇决死战　关云长放水淹七军</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./073.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十四回 庞令明抬榇决死战　关云长放水淹七军</h1>
+        <a href="./075.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说曹操欲使于禁赴樊城救援，问众将谁敢作先锋。一人应声愿往。操视之，乃庞德也。操大喜曰：“关某威震华夏，未逢对手；今遇令明，真劲敌也。”遂加于禁为征南将军，加宠德为征西都先锋，大起七军，前往樊城。这七军，皆北方强壮之士。两员领军将校：一名董衡，一名董超；当日引各头目参拜于禁。董衡曰：“今将军提七枝重兵，去解樊城之厄，期在必胜，乃用庞德为先锋，岂不误事？”禁惊问其故。衡曰：“庞德原系马超手下副将，不得已而降魏；今其故主在蜀，职居五虎上将；况其亲兄庞柔亦在西川为官，今使他为先锋，是泼油救火也。将军何不启知魏王，别换一人去？”</div>
+            <div class="text-block simplified-text">曹操想派于禁去樊城救人，就问手下将领谁愿意当先锋。庞德立刻站出来说愿意。曹操很高兴，说："关羽现在名声很大，没人打得过他。现在有庞德出马，正好能对付他。"于是曹操封于禁为征南将军，让庞德当征西先锋，带着七支精锐部队去樊城。这些士兵都是北方来的精兵。部队里有两个将领，一个叫董衡，一个叫董超。他们带着手下来见于禁时，董衡说："将军您带着这么多精兵去救樊城，一定要打赢才行。可您让庞德当先锋，这不是要坏事吗？"于禁吃惊地问为什么。董衡解释说："庞德原来是马超的副将，后来没办法才投降魏国。现在他的老上司马超在蜀国当五虎上将，他亲哥哥庞柔也在西川做官。让他当先锋去打仗，这不是火上浇油吗？将军您为什么不告诉魏王，换个人去呢？"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">禁闻此语，遂连夜入府启知曹操。操省悟，即唤庞德至阶下，令纳下先锋印。德大惊曰：“某正欲与大王出力，何故不肯见用？”操曰：“孤本无猜疑；但今马超现在西川，汝兄庞柔亦在西川，俱佐刘备。孤纵不疑，奈众口何？”庞德闻之，免冠顿首，流血满面而告曰：“某自汉中投降大王，每感厚恩，虽肝脑涂地，不能补报；大王何疑于德也？德昔在故乡时，与兄同居，嫂甚不贤，德乘醉杀之；兄恨德入骨髓，誓不相见，恩已断矣。故主马超，有勇无谋，兵败地亡，孤身入川，今与德各事其主，旧义已绝。德感大王恩遇，安敢萌异志？惟大王察之。”操乃扶起庞德，抚慰曰：“孤素知卿忠义，前言特以安众人之心耳。卿可努力建功。卿不负孤，孤亦必不负卿也。”德拜谢回家，令匠人造一木榇。次日，请诸友赴席，列榇于堂。众亲友见之，皆惊问曰：“将军出师，何用此不祥之物？”德举杯谓亲友曰：“吾受魏王厚恩，誓以死报。今去樊城与关某决战，我若不能杀彼，必为彼所杀；即不为彼所杀，我亦当自杀。故先备此榇，以示无空回之理。”众皆嗟叹。德唤其妻李氏与其子庞会出，谓其妻曰：“吾今为先锋，义当效死疆场。我若死，汝好生看养吾儿；吾儿有异相，长大必当与吾报仇也。”妻子痛哭送别，德令扶榇而行。临行，谓部将曰：“吾今去与关某死战，我若被关某所杀，汝等即取吾尸置此榇中；我若杀了关某，吾亦即取其首，置此榇内，回献魏王。”部将五百人皆曰：“将军如此忠勇，某等敢不竭力相助！”于是引军前进。有人将此言报知曹操。操喜曰：“庞德忠勇如此，孤何忧焉！”贾诩曰：“庞德恃血气之勇，欲与关某决死战，臣窃虑之。”操然其言，急令人传旨戒庞德曰：“关某智勇双全，切不可轻敌。可取则取，不可取则宜谨守。”庞德闻命，谓众将曰：“大王何重视关某也？吾料此去，当挫关某三十年之声价。”禁曰：“魏王之言，不可不从。”德奋然趱军前至樊城，耀武扬威，鸣锣击鼓。</div>
+            <div class="text-block simplified-text">有人把一些话偷偷报告给曹操，曹操听完连夜把庞德叫来，让他交出先锋官的印信。庞德非常惊讶，说："我正想为您卖力打仗，为什么突然不让我当先锋了？"曹操解释："我本来不怀疑你，但现在马超在西川，你哥哥庞柔也在西川，都在刘备手下做事。就算我相信你，也堵不住别人的嘴啊。"
+
+庞德听完立刻摘下帽子磕头，磕得满脸是血，激动地说："我从汉中投奔您以来，一直感激您的恩情，就算拼上性命也报答不完。您怎么会怀疑我呢？当年在家乡时，我哥和我住一起，他老婆特别坏，我喝醉酒把她杀了，我哥恨我入骨，发誓老死不相往来。至于旧主马超，他有勇无谋，打了败仗逃到西川，现在我们各为其主，早就没关系了。我受您这么大恩惠，怎么可能有二心？请您明察！"
+
+曹操赶紧扶起庞德，安慰道："我一直知道你的忠心，刚才那么说只是为了安抚其他人。你好好去立功吧，只要你不辜负我，我绝不会亏待你。"庞德谢过曹操回家后，马上叫木匠做了口棺材。第二天请亲朋好友吃饭时，直接把棺材摆在客厅。大家都吓坏了："将军要去打仗，摆这么不吉利的东西干什么？"
+
+庞德举着酒杯说："魏王对我恩重如山，我发誓用命报答。这次去樊城和关羽决战，不是我杀了他，就是他杀了我。就算他没杀我，我也要自杀。所以提前准备好棺材，表明绝不空手回来的决心。"在场的人听了都叹气。
+
+庞德把妻子李氏和儿子庞会叫出来，对妻子说："我当先锋官，战死沙场是应该的。我要是死了，你把儿子抚养好。这孩子长得不一般，长大肯定能替我报仇。"妻子哭着送别时，庞德让人抬着棺材出发。临走前对手下将领说："这次和关羽拼命，要是我死了，你们就把我尸体装进这棺材；要是我杀了关羽，就把他脑袋装棺材里带回来献给魏王。"五百名部下都感动地说："将军这么忠勇，我们一定拼死相助！"
+
+消息传到曹操耳朵里，曹操高兴地说："庞德这么忠心勇猛，我还担心什么！"但谋士贾诩提醒："庞德光凭一时血勇去和关羽拼命，我总觉得不妥。"曹操觉得有理，赶紧派人传令警告庞德："关羽智勇双全，千万别轻敌。打得过就打，打不过就守住阵地。"庞德接到命令却不以为然，对将领们说："大王也太看得起关羽了！我这次去，非要让关羽三十年积攒的名声毁于一旦。"于禁劝他："魏王的命令还是要听的。"但庞德不管不顾，带着部队冲到樊城，大张旗鼓地炫耀武力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说关公正坐帐中，忽探马飞报：“曹操差于禁为将，领七枝精壮兵到来。前部先锋庞德，军前抬一木榇，口出不逊之言，誓欲与将军决一死战。兵离城止三十里矣。”关公闻言，勃然变色，美髯飘动，大怒曰：“天下英雄，闻吾之名，无不畏服；庞德竖子，何敢藐视吾耶！关平一面攻打樊城，吾自去斩此匹夫，以雪吾恨！”平曰：“父亲不可以泰山之重，与顽石争高下。辱子愿代父去战庞德。”关公曰：“汝试一往，吾随后便来接应。”关平出帐，提刀上马，领兵来迎庞德。两阵对圆，魏营一面皂旗上大书“南安庞德”四个白字。庞德青袍银铠，钢刀白马，立于阵前；背后五百军兵紧随，步卒数人肩抬木榇而出。关平大骂庞德：“背主之贼！”庞德问部卒曰：“此何人也？”或答曰：“此关公义子关平也。”德叫曰：“吾奉魏王旨，来取汝父之首！汝乃疥癞小儿，吾不杀汝！快唤汝父来！”平大怒，纵马舞刀，来取庞德。德横刀来迎。战三十合，不分胜负，两家各歇。早有人报知关公。公大怒，令廖化去攻樊城，自己亲来迎敌庞德。关平接着，言与庞德交战，不分胜负。关公随即横刀出马，大叫曰：“关云长在此，庞德何不早来受死！”鼓声响处，庞德出马曰：“吾奉魏王旨，特来取汝首！恐汝不信，备榇在此。汝若怕死，早下马受降！”关公大骂曰：“量汝一匹夫，亦何能为！可惜我青龙刀斩汝鼠贼！”纵马舞刀，来取庞德。德轮刀来迎。二将战有百余合，精神倍长。两军各看得痴呆了。魏军恐庞德有失，急令鸣金收军。关平恐父年老，亦急鸣金。二将各退。庞德归寨，对众曰：“人言关公英雄，今日方信也。”正言间，于禁至。相见毕，禁曰：“闻将军战关公，百合之上，未得便宜，何不且退军避之？”德奋然曰：“魏王命将军为大将，何太弱也？吾来日与关某共决一死，誓不退避！”禁不敢阻而回。</div>
+            <div class="text-block simplified-text">关羽正在营帐里坐着，突然探子跑来报告："曹操派于禁当大将，带着七支精锐部队来了。先锋庞德让人抬着口棺材，嘴里骂骂咧咧的，非要和您拼个你死我活。现在离城只有三十里了。"
+
+关羽一听，气得胡子都翘起来了，拍桌子大骂："全天下谁听到我关羽的名字不害怕？庞德这小子竟敢瞧不起我！关平你继续打樊城，我亲自去宰了这个混蛋！"关平劝道："父亲您身份尊贵，何必跟这种小角色计较？让儿子替您去会会他吧。"关羽说："你先去，我随后就来支援。"
+
+关平提着刀上马迎战。两军对阵时，只见魏军阵前竖着黑旗，写着"南安庞德"四个大白字。庞德穿着青色战袍银色铠甲，骑着白马拎着钢刀，身后士兵还抬着那口棺材。关平骂道："叛徒！"庞德问手下："这谁啊？"有人回答："是关羽的干儿子关平。"庞德嚣张喊话："我奉魏王之命来取你爹脑袋！你这种小喽啰不配死在我手里，快叫你爹来！"
+
+关平气得冲上去就打，两人打了三十回合不分胜负，各自收兵。关羽听说后更生气了，让廖化继续打樊城，自己亲自来找庞德算账。关平告诉父亲没打赢，关羽提着刀就冲出去喊："庞德！你爷爷关羽在此，快来送死！"战鼓声中庞德骑马出来叫阵："我专门带了棺材来装你脑袋！要是怕死就赶紧投降！"关羽骂道："就凭你也配？看我用青龙刀砍了你这个鼠辈！"
+
+两人大战一百多回合越打越精神，两边士兵都看呆了。魏军怕庞德出事赶紧鸣金收兵，关平也担心父亲年纪大，同样下令收兵。庞德回营后跟手下说："都说关羽厉害，今天算是见识了。"正说着于禁来了，劝他："听说你和关羽打了一百回合都没占到便宜，要不咱们先撤退？"庞德激动地说："魏王让你当主帅怎么这么怂？明天我非要和关羽分个生死，绝不后退！"于禁不敢再多说就走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">却说关公回寨，谓关平曰：“庞德刀法惯熟，真吾敌手。”平曰：“俗云初生之犊不惧虎，父亲纵然斩了此人，只是西羌一小卒耳；倘有疏虞，非所以重伯父之托也。”关公曰：“吾不杀此人，何以雪恨？吾意已决，再勿多言！”次日，上马引兵前进。庞德亦引兵来迎。两阵对圆，二将齐出，更不打话，出马交锋。斗至五十余合，庞德拨回马，拖刀而走。关公随后追赶。关平恐有疏失，亦随后赶去。关公口中大骂：“庞贼！欲使拖刀计，吾岂惧汝？”原来庞德虚作拖刀势，却把刀就鞍鞒挂住，偷拽雕弓，搭上箭，射将来。关平眼快，见庞德拽弓，大叫：“贼将休放冷箭！”关公急睁眼看时，弓弦响处，箭早到来；躲闪不及，正中左臂。关平马到，救父回营。庞德勒回马轮刀赶来，忽听得本营锣声大震。德恐后军有失，急勒马回。原来于禁见庞德射中关公，恐他成了大功，灭己威风，故鸣金收军。庞德回马，问：“何故鸣金？”于禁曰：“魏王有戒：关公智勇双全。他虽中箭，只恐有诈，故鸣金收军。”德曰：“若不收军，吾已斩了此人也。”禁曰：“紧行无好步，当缓图之。”庞德不知于禁之意，只懊悔不已。</div>
+            <div class="text-block simplified-text">关羽回到军营，对儿子关平说："庞德的刀法很厉害，确实是个对手。"关平劝道："俗话说初生牛犊不怕虎。父亲就算杀了庞德，他也只是西羌的一个小兵；万一出什么意外，反而辜负了伯父的重托。"关羽坚决地说："不杀此人难消我心头之恨！我意已决，你别再说了！"
+
+第二天，关羽带兵出战。庞德也率军迎战。两军摆开阵势，两位大将直接交手，连话都不说就打了起来。打了五十多个回合后，庞德突然调转马头，拖着刀假装逃跑。关羽紧追不舍。关平担心父亲中计，也跟了上去。关羽边追边骂："庞德你这奸贼！想用拖刀计骗我？我才不怕！"其实庞德是假装用拖刀计，暗中把刀挂在马鞍上，偷偷拿出弓箭，回身射向关羽。关平眼尖，看到庞德拉弓，大喊："小心暗箭！"关羽急忙抬头，箭已射到，躲闪不及，左臂中箭。关平赶紧上前救回父亲。
+
+庞德正要追上去补刀，忽然听到自家军营鸣金收兵。他担心后方出事，只好掉头回去。原来于禁看到庞德射中关羽，怕他立下大功压过自己，就故意下令收兵。庞德回来后问："为什么收兵？"于禁借口说："魏王说过，关羽智勇双全。虽然中箭，说不定是诈败，所以先收兵。"庞德懊恼地说："要不是收兵，我早就杀了关羽！"于禁假意劝道："心急吃不了热豆腐，这事得从长计议。"庞德不明白于禁的真实想法，只能暗自后悔。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">却说关公回营，拔了箭头。幸得箭射不深，用金疮药敷之。关公痛恨庞德，谓众将曰：“吾誓报此一箭之仇！”众将对曰：“将军且暂安息几日，然后与战未迟。”次日，人报庞德引军搦战。关公就要出战。众将劝住。庞德令小军毁骂。关平把住隘口，分付众将休报知关公。庞德搦战十余日，无人出迎，乃与于禁商议曰：“眼见关公箭疮举发，不能动止；不若乘此机会，统七军一拥杀入寨中，可救樊城之围。”于禁恐庞德成功，只把魏王戒旨相推，不肯动兵。庞德累欲动兵，于禁只不允，乃移七军转过山口，离樊城北十里，依山下寨，禁自领兵截断大路，令庞德屯兵于谷后，使德不能进兵成功。</div>
+            <div class="text-block simplified-text">关羽回到军营，拔掉胳膊上的箭。幸好箭射得不深，敷上金疮药就行了。关羽特别恨庞德，对手下将领说："我一定要报这一箭之仇！"将领们劝他："将军先好好休息几天，过些日子再打也不迟。"
+
+第二天，有人报告说庞德带兵来叫阵。关羽马上要出去迎战，被手下将领拦住了。庞德派小兵在营外辱骂。关平守住营门，特意嘱咐大家别告诉关羽。庞德连着十几天天天来挑战，就是没人应战，他就和于禁商量："看样子关羽的箭伤发作了，动不了。不如趁这个机会，带着七路大军一起杀进他们大营，这样樊城的包围就能解了。"
+
+于禁怕庞德立大功，就拿魏王的命令当借口，不肯出兵。庞德好几次想出兵，于禁就是不答应。最后于禁带着大军转移到山口另一边，在离樊城北面十里的地方靠着山扎营。他自己带兵堵住大路，让庞德的部队驻扎在山谷后面，故意不让庞德有机会立功。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">却说关平见关公箭疮已合，甚是喜悦。忽听得于禁移七军于樊城之北下寨，未知其谋，即报知关公。公遂上马，引数骑上高阜处望之，见樊城城上旗号不整，军士慌乱；城北十里山谷之内，屯着军马；又见襄江水势甚急，看了半响，唤向导官问曰：“樊城北十里山谷，是何地名？”对曰：“罾口川也。”关公喜曰：“于禁必为我擒矣。”将士问曰：“将军何以知之？”关公曰：“鱼入罾口，岂能久乎？”诸将未信。公回本寨。时值八月秋天，骤雨数日。公令人预备船筏，收拾水具。关平问曰：“陆地相持，何用水具？”公曰：“非汝所知也。于禁七军不屯于广易之地，而聚于罾口川险隘之处；方今秋雨连绵，襄江之水必然泛涨；吾已差人堰住各处水口，待水发时，乘高就船，放水一淹，樊城罾口川之兵皆为鱼鳖矣。”关平拜服。却说魏军屯于罾口川，连日大雨不止，督将成何来见于禁曰：“大军屯于川口，地势甚低；虽有土山，离营稍远。即今秋雨连绵，军士艰辛。近有人报说荆州兵移于高阜处，又于汉水口预备战筏；倘江水泛涨，我军危矣，宜早为计。”于禁叱曰：“匹夫惑吾军心耶！再有多言者斩之！”成何羞惭而退，却来见庞德，说此事。德曰：“汝所见甚当。于将军不肯移兵，吾明日自移军屯于他处。”</div>
+            <div class="text-block simplified-text">关平看到关羽的箭伤好了，非常高兴。这时他听说于禁把军队移到樊城北边扎营，但不知道他想干什么，就赶紧报告关羽。关羽骑马带了几个人到高处查看，发现樊城城上的旗帜乱七八糟，士兵们慌慌张张；城北十里的山谷里驻扎着军队；又看到襄江水势很急。看了一会儿，关羽问带路的军官："樊城北边十里的山谷叫什么名字？"军官回答："叫罾口川。"关羽高兴地说："于禁肯定会被我抓住。"手下将领问："将军怎么知道的？"关羽说："鱼进了渔网，还能跑得掉吗？"大家不太相信。关羽回到军营。当时是八月秋天，连着下了好几天大雨。关羽让人准备船只和防水用具。关平问："我们在陆地上打仗，要这些水上装备干什么？"关羽说："这你就不懂了。于禁的军队不在开阔的地方扎营，却挤在狭窄的罾口川；现在秋雨不断，襄江水肯定要涨；我已经派人堵住各个出水口，等水涨起来时，我们坐船从高处冲下去，放水一淹，樊城和罾口川的敌军就都成水里的鱼鳖了。"关平听了很佩服。再说魏军驻扎在罾口川，雨一直下个不停，将领成何对于禁说："大军驻扎在谷口，地势太低；虽然有土山，但离营地太远。现在秋雨不停，士兵们很辛苦。听说荆州兵已经移到高处，还在汉水口准备了战船；要是江水上涨，我们就危险了，得早做打算。"于禁骂道："你这是在扰乱军心！再说这种话就砍了你！"成何羞愧地退下，去找庞德说了这事。庞德说："你说得对。于将军不肯移营，明天我自己带兵换个地方驻扎。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">计议方定，是夜风雨大作。庞德坐于帐中，只听得万马争奔，征鼙震地。德大惊，急出帐上马看时，四面八方，大水骤至；七军乱窜，随波逐浪者，不计其数。平地水深丈余，于禁、庞德与诸将各登小山避水。比及平明，关公及众将皆摇旗鼓噪，乘大船而来。于禁见四下无路，左右止有五六十人，料不能逃，口称愿降。关公令尽去衣甲，拘收入船，然后来擒庞德。时庞德并二董及成何，与步卒五百人，皆无衣甲，立在堤上。见关公来，庞德全无惧怯，奋然前来接战。关公将船四面围定，军士一齐放箭，射死魏兵大半。董衡、董超见势已危，乃告庞德曰：“军士折伤大半，四下无路，不如投降。”庞德大怒曰：“吾受魏王厚恩，岂肯屈节于人！”遂亲斩董衡、董超于前，厉声曰：“再说降者，以此二人为例！”于是众皆奋力御敌。自平明战至日中，勇力倍增。关公催四面急攻，矢石如雨。德令军士用短兵接战。德回顾成何曰：“吾闻勇将不怯死以苟免，壮士不毁节而求生。今日乃我死日也。汝可努力死战。”成何依令向前，被关公一箭射落水中。众军皆降，止有庞德一人力战。正遇荆州数十人，驾小船近堤来，德提刀飞身一跃，早上小船，立杀十余人，余皆弃船赴水逃命。庞德一手提刀，一手使短棹，欲向樊城而走。只见上流头，一将撑大筏而至，将小船撞翻，庞德落于水中。船上那将跳下水去，生擒庞德上船。众视之，擒庞德者，乃周仓也。仓素知水性，又在荆州住了数年，愈加惯熟；更兼力大，因此擒了庞德。于禁所领七军，皆死于水中。其会水者料无去路，亦皆投降。后人有诗曰：“夜半征鼙响震天，襄樊平地作深渊。关公神算谁能及，华夏威名万古传。”</div>
+            <div class="text-block simplified-text">他们刚定好计划，当晚就下起大暴雨。庞德在帐篷里坐着，突然听见像万马奔腾的声音，战鼓震得地面直抖。庞德吓坏了，赶紧跑出帐篷骑马查看，结果发现四面八方突然发大水，军队全乱套了，士兵被洪水冲走的数都数不清。平地积水有一丈多深，于禁、庞德和将领们只能爬上山头躲水。
+
+天刚亮，关羽带着士兵们摇旗呐喊，开着大船杀过来。于禁看无路可逃，身边只剩五六十人，知道跑不掉就投降了。关羽让人扒了他们的盔甲关进船里，接着去抓庞德。
+
+这时庞德带着两个姓董的将领、成何和五百步兵，都没穿盔甲站在堤坝上。庞德看见关羽一点不怂，抄起武器就冲上去干。关羽让船队包围他们，士兵们万箭齐发，魏军死了一大半。董衡、董超见情况危急，劝庞德："兄弟们都快死光了，无路可走，不如投降吧。"庞德气得当场把这俩人砍了，吼道："谁再敢说投降，这就是下场！"剩下的人只好拼命抵抗。
+
+从早上打到中午，庞德越战越勇。关羽加紧围攻，箭和石头像下雨一样。庞德让士兵们近身搏斗，对成何说："好汉宁死也不当怂包！今天就是我的死期，你给我往死里打！"结果成何刚冲上去就被关羽一箭射进水里。最后所有士兵都投降了，只剩庞德还在死磕。
+
+这时荆州几十个人划小船靠近堤坝，庞德突然跳上船砍死十几人，其他人吓得跳河逃命。庞德一手拿刀一手划桨想逃往樊城，突然上游冲来个大木筏撞翻小船，庞德掉进水里。周仓跳下水把他活捉了——周仓水性特别好，力气又大，所以能抓住庞德。
+
+于禁带的七军全淹死了，会游泳的见逃不掉也都投降。后人写诗夸关羽："半夜战鼓震翻天，襄樊瞬间变汪洋。关公妙计无人敌，威名流传千万年。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">关公回到高阜去处，升帐而坐。群刀手押过于禁来。禁拜伏于地，乞哀请命。关公曰：“汝怎敢抗吾？”禁曰：“上命差遣，身不由己。望君侯怜悯，誓以死报。”公绰髯笑曰：“吾杀汝，犹杀狗彘耳，空污刀斧！”令人缚送荆州大牢内监候：“待吾回，别作区处。”发落去讫。关公又令押过庞德。德睁眉怒目，立而不跪，关公曰：“汝兄现在汉中；汝故主马超，亦在蜀中为大将。汝如何不早降？”德大怒曰：“吾宁死于刀下，岂降汝耶！”骂不绝口。公大怒，喝令刀斧手推出斩之。德引颈受刑。关公怜而葬之。于是乘水势未退，复上战船，引大小将校来攻樊城。却说樊城周围，白浪滔天，水势益甚，城垣渐渐浸塌，男女担土搬砖，填塞不住。曹军众将，无不丧胆，慌忙来告曹仁曰：“今日之危，非力可救；可趁敌军未至，乘舟夜走，虽然失城，尚可全身。”仁从其言。方欲备船出走，满宠谏曰：“不可。山水骤至，岂能长存？不旬日即当自退。关公虽未攻城，已遣别将在郏下。其所以不敢轻进者，虑吾军袭其后也。今若弃城而去，黄河以南，非国家之有矣。”愿将军固守此城，以为保障。”仁拱手称谢曰：“非伯宁之教，几误大事。”乃骑白马上城，聚众将发誓曰：“吾受魏王命，保守此城；但有言弃城而去者斩！”诸将皆曰：“某等愿以死据守！”仁大喜，就城上设弓弩数百，军士昼夜防护，不敢懈怠。老幼居民，担土石填塞城垣。旬日之内，水势渐退。</div>
+            <div class="text-block simplified-text">关羽回到高坡上的营地，坐在帐篷里。士兵们把于禁押了上来。于禁跪在地上磕头，求关羽饶命。关羽问："你胆子不小，敢跟我作对？"于禁回答："我是奉命行事，实在没办法。求您开恩饶我一命，我发誓以后一定报答。"关羽摸着胡子笑道："杀你就像杀猪狗一样，还怕弄脏我的刀！"让人把他绑了关进荆州大牢："等我回来再处理。"说完就让人把他带走了。
+
+接着庞德被押上来。他瞪着眼睛站着不肯跪，关羽说："你哥哥在汉中，你原来的主子马超也在蜀国当大将。你为什么不早点投降？"庞德气得大骂："我宁愿被你砍头，也绝不投降！"骂个不停。关羽大怒，下令把他拉出去砍头。庞德伸着脖子等死。关羽觉得他是条汉子，好好安葬了他。
+
+这时洪水还没退，关羽又带着将士们坐船去攻打樊城。樊城周围全是水，城墙都被泡塌了，老百姓拼命搬砖运土也堵不住。曹军将领都吓坏了，赶紧找曹仁说："现在情况太危险，硬撑不行。咱们趁敌人还没到，连夜坐船逃跑吧。虽然丢了城，至少能保命。"曹仁正要准备船逃跑，满宠拦住说："不行！这洪水来得快退得也快，不出十天就会退。关羽虽然没来攻城，但已经派兵到郏县了。他不敢轻易进攻是怕我们偷袭。要是现在弃城逃跑，黄河以南就全完了。"他劝曹仁死守城池。曹仁感谢说："要不是你提醒，我差点误了大事。"于是骑着马上城墙，召集将领发誓："我奉魏王之命守城，谁再说逃跑就砍头！"将领们都说："我们誓死守城！"曹仁很高兴，在城墙上布置了几百张弓弩，士兵日夜防守。老百姓也忙着运土石修城墙。果然不到十天，洪水就退了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">关公自擒魏将于禁等，威震天下，无不惊骇。忽次子关兴来寨内省亲。公就令兴赍诸官立功文书去成都见汉中王，各求升迁。兴拜辞父亲，径投成都去讫。</div>
+            <div class="text-block simplified-text">关羽活捉了魏国大将比如于禁这些人之后，名声大得吓人，天下人都怕他。这时候他二儿子关兴来军营看他。关羽就让关兴带着将士们立战功的证明文件去成都找刘备（汉中王），给大伙儿申请升官。关兴跟他爸告别后，直接往成都去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">却说关公分兵一半，直抵郏下。公自领兵四面攻打樊城。当日关公自到北门，立马扬鞭，指而问曰：“汝等鼠辈，不早来降，更待何时？”正言间，曹仁在敌楼上，见关公身上止披掩心甲，斜袒着绿袍，乃急招五百弓弩手，一齐放箭。公急勒马回时，右臂上中一弩箭，翻身落马。正是：水里七军方丧胆，城中一箭忽伤身。未知关公性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">关羽分出一半兵力直接杀到郏县，自己带着剩下的兵从四面围攻樊城。这天关羽来到北门，骑着马举起鞭子指着城上大骂："你们这些没用的家伙，还不赶紧投降，要等到什么时候？"正骂着，城楼上的曹仁看见关羽只穿了护心甲，绿战袍斜披着，立刻叫来五百名弓箭手一起射箭。关羽赶紧调转马头要跑，结果右臂中了一箭，从马上摔了下来。这正是：水淹七军刚把敌人吓破胆，城里一箭却让关羽受了伤。不知道关羽是死是活，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
