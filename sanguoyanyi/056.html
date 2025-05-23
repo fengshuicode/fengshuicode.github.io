@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十六回 曹操大宴铜雀台　孔明三气周公瑾</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./055.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十六回 曹操大宴铜雀台　孔明三气周公瑾</h1>
+        <a href="./057.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说周瑜被诸葛亮预先埋伏关公、黄忠、魏延三枝军马，一击大败。黄盖、韩当急救下船，折却水军无数。遥观玄德、孙夫人车马仆从，都停住于山顶之上，瑜如何不气？箭疮未愈，因怒气冲激，疮口迸裂，昏绝于地。众将救醒，开船逃去。孔明教休追赶，自和玄德归荆州庆喜，赏赐众将。</div>
+            <div class="text-block simplified-text">周瑜被诸葛亮事先安排好的关羽、黄忠、魏延三路军队打得大败。黄盖和韩当赶紧把他救上船，水军死伤惨重。周瑜远远看见刘备和孙夫人的车马随从都在山顶上观战，气得要命。他本来箭伤就没好，这一发火，伤口裂开，直接昏死过去。手下把他救醒后，赶紧开船逃跑。诸葛亮让大家别追，自己和刘备高高兴兴回荆州庆祝，还犒赏了将士们。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">周瑜自回柴桑。蒋钦等一行人马自归南徐报孙权。权不胜忿怒，欲拜程普为都督，起兵取荆州。周瑜又上书，请兴兵雪恨。张昭谏曰：“不可。曹操日夜思报赤壁之恨，因恐孙、刘同心，故未敢兴兵。今主公若以一时之忿，自相吞并，操必乘虚来攻，国势危矣。”顾雍曰：“许都岂无细作在此？若知孙、刘不睦，操必使人勾结刘备。备惧东吴，必投曹操。若是，则江南何日得安？为今之计，莫若使人赴许都，表刘备为荆州牧。曹操知之，则惧而不敢加兵于东南。且使刘备不恨于主公。然后使心腹用反间之计，令曹、刘相攻，吾乘隙而图之，斯为得耳。”权曰：“元叹之言甚善。但谁可为使？”雍曰：“此间有一人，乃曹操敬慕者，可以为使。”权问何人。雍曰：“华歆在此，何不遣之？”权大喜。即遣歆赍表赴许都。歆领命起程，径到许都来见曹操。闻操会群臣于邺郡，庆赏铜雀台，歆乃赴邺郡候见。</div>
+            <div class="text-block simplified-text">周瑜回到柴桑。蒋钦他们带着军队回南徐向孙权报告。孙权气得不行，想任命程普当都督，出兵攻打荆州。周瑜也写信来，请求出兵报仇。张昭劝孙权说："不能打。曹操一直想报赤壁之仇，就是怕我们和刘备联手才不敢动手。您现在要是因为一时生气去打刘备，曹操肯定会趁机来打我们，国家就危险了。"顾雍接着说："许都肯定有曹操的探子在这儿。要是知道我们和刘备闹翻了，曹操肯定会拉拢刘备。刘备怕我们东吴，一定会投靠曹操。真这样的话，江南还能有安稳日子吗？现在最好的办法，是派人去许都，上表推荐刘备当荆州牧。曹操知道这事就会害怕，不敢来打我们。还能让刘备不记恨您。然后再派心腹用离间计，让曹操和刘备打起来，我们找机会出手，这才是上策。"孙权说："你说得对。但派谁去好呢？"顾雍说："这儿有个人，曹操很欣赏他，可以派他去。"孙权问是谁。顾雍说："华歆在这儿，为什么不派他去？"孙权很高兴，马上让华歆带着奏表去许都。华歆领命出发，直接到许都见曹操。听说曹操正在邺郡和大臣们庆祝铜雀台建成，华歆就赶去邺郡等着见曹操。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">操自赤壁败后，常思报仇；只疑孙、刘并力，因此不敢轻进，时建安十五年春，造铜雀台成，操乃大会文武于邺郡，设宴庆贺。其台正临漳河，中央乃铜雀台，左边一座名玉龙台，右边一座名金凤台，各高十丈，上横二桥相通，千门万户，金碧交辉。是日，曹操头戴嵌宝金冠，身穿绿锦罗袍，玉带珠履，凭高而坐。文武侍立台下。</div>
+            <div class="text-block simplified-text">曹操在赤壁打了败仗后，一直想着要报仇。但他担心孙权和刘备联手对付他，所以不敢轻易出兵。到了建安十五年春天，铜雀台建好了，曹操就在邺城大摆宴席，召集所有文武官员来庆祝。这个铜雀台正对着漳河，中间是铜雀台，左边是玉龙台，右边是金凤台，每座都有十丈高，上面有两座桥把它们连起来。整个建筑群有很多门窗，金碧辉煌，特别气派。那天，曹操戴着镶满宝石的金帽子，穿着绿色锦缎袍子，系着玉带，踩着珍珠装饰的鞋子，高高在上地坐着。文武官员都站在台下伺候着。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">操欲观武官比试弓箭，乃使近侍将西川红锦战袍一领，挂于垂杨枝上，下设一箭垛，以百步为界。分武官为两队：曹氏宗族俱穿红，其余将士俱穿绿：各带雕弓长箭，跨鞍勒马，听候指挥。操传令曰：“有能射中箭垛红心者，即以锦袍赐之；如射不中，罚水一杯。”号令方下，红袍队中，一个少年将军骤马而出，众视之，乃曹休也。休飞马往来，奔驰三次，扣上箭，拽满弓，一箭射去，正中红心。金鼓齐鸣，众皆喝采。曹操于台上望见大喜，曰：“此吾家千里驹也！”方欲使人取锦袍与曹休，只见绿袍队中，一骑飞出，叫曰：“丞相锦袍，合让俺外姓先取，宗族中不宜搀越。”操视其人，乃文聘也。众官曰：“且看文仲业射法。”文聘拈弓纵马一箭，亦中红心。众皆喝采，金鼓乱鸣。聘大呼曰：“快取袍来！”只见红袍队中，又一将飞马而出，厉声曰：“文烈先射，汝何得争夺？看我与你两个解箭！”拽满弓，一箭射去，也中红心。众人齐声喝采。视其人，乃曹洪也。洪方欲取袍，只见绿袍队里又一将出，扬弓叫曰：“你三人射法，何足为奇！看我射来！”众视之，乃张郃也。郃飞马翻身，背射一箭，也中红心。四枝箭齐齐的攒在红心里。众人都道：“好射法！”郃曰：“锦袍须该是我的！”言未毕，红袍队中一将飞马而出，大叫曰：“汝翻身背射，何足称异！看我夺射红心！”众视之，乃夏侯渊也，渊骤马至界口，纽回身一箭射去，正在四箭当中，金鼓齐鸣。渊勒马按弓大叫曰：“此箭可夺得锦袍么？”只见绿袍队里，一将应声而出，大叫：“且留下锦袍与我徐晃！”渊曰：“汝更有何射法，可夺我袍？”晃曰：“汝夺射红心，不足为异。看我单取锦袍！”拈弓搭箭，遥望柳条射去，恰好射断柳条，锦袍坠地。徐晃飞取锦袍，披于身上，骤马至台前声喏曰：“谢丞相袍！”曹操与众官无不称羡。晃才勒马要回，猛然台边跃出一个绿袍将军，大呼曰：“你将锦袍那里去？早早留下与我！”众视之，乃许褚也。晃曰：“袍已在此，汝何敢强夺！”褚更不回答，竟飞马来夺袍。两马相近，徐晃便把弓打许褚。褚一手按住弓，把徐晃拖离鞍鞒。晃急弃了弓，翻身下马，褚亦下马，两个揪住厮打。操急使人解开。那领锦袍已是扯得粉碎。操令二人都上台。徐晃睁眉怒目，许褚切齿咬牙，各有相斗之意。操笑曰：“孤特视公等之勇耳。岂惜一锦袍哉？”便教诸将尽都上台，各赐蜀锦一匹，诸将各各称谢。操命各依位次而坐。乐声竞奏，水陆并陈。文官武将轮次把盏，献酬交错。操顾谓众文官曰：“武将既以骑射为乐，足显威勇矣。公等皆饱学之士，登此高台，可不进佳章以纪一时之胜事乎？”众官皆躬身而言曰：“愿从钧命。”时有王朗、钟繇、王粲、陈琳一班文官，进献诗章。诗中多有称颂曹操功德巍巍、合当受命之意。曹操逐一览毕，笑曰：“诸公佳作，过誉甚矣。孤本愚陋，始举孝廉。后值天下大乱，筑精舍于谯东五十里，欲春夏读书，秋冬射猎，以待天下清平，方出仕耳。不意朝廷徵孤为典军校尉，遂更其意，专欲为国家讨贼立功，图死后得题墓道曰：‘汉故征西将军曹侯之墓’，平生愿足矣。念自讨董卓，剿黄巾以来，除袁术、破吕布、灭袁绍、定刘表，遂平天下。身为宰相，人臣之贵已极，又复何望哉？如国家无孤一人，正不知几人称帝，几人称王。或见孤权重，妄相忖度，疑孤有异心，此大谬也。孤常念孔子称文王之至德，此言耿耿在心。但欲孤委捐兵众，归就所封武平侯之国，实不可耳：诚恐一解兵柄，为人所害；孤败则国家倾危；是以不得慕虚名而处实祸也。诸公必无知孤意者。”众皆起拜曰：“虽伊尹、周公，不及丞相矣。”后人有诗曰：“周公恐惧流言日，王莽谦恭下士时：假使当年身便死，一生真伪有谁知！”</div>
+            <div class="text-block simplified-text">曹操想搞个武将射箭比赛。他让人把一件西川红锦战袍挂在柳树上，前面百步远放个箭靶。把武将分成两队：姓曹的穿红衣服，其他将领穿绿衣服。大家都拿着弓箭骑着马，等着比赛开始。
+
+曹操宣布规则："谁能射中靶心，这件锦袍就归谁；射不中的罚喝一杯水。"刚说完，穿红队里有个年轻将军冲出来，是曹休。他骑马跑了个来回，一箭正中靶心。大家鼓掌叫好，曹操高兴地夸他："真是我们曹家的千里马啊！"
+
+正要给曹休发奖品，绿队里文聘不服气地喊："丞相应该先让我们外姓人比试！"说完也一箭射中靶心。接着红队曹洪、绿队张郃轮流上场，都射中靶心，四支箭密密麻麻扎在靶心上。
+
+最精彩的是徐晃，他直接射断挂战袍的柳枝，战袍掉下来被他抢到。没想到许褚跳出来要抢，两人打成一团，把战袍都撕烂了。曹操赶紧劝架，笑着说："我就是想看看你们的本事，哪在乎一件衣服？"最后给所有人都发了奖品。
+
+喝酒时曹操对文官们说："武将们玩得开心，你们这些文化人也写点诗吧！"文官们写的都是拍马屁的诗。曹操看完说："你们夸太过了。我本来只想当个普通官员，后来乱世不得不出来做事。现在当丞相已经到顶了，要是没我，不知多少人要称王称帝呢。有人说我权力太大想造反，纯属胡说！我不是贪权，是怕交出兵权会被害，国家也会乱。"
+
+官员们赶紧奉承："您比古代贤臣还厉害！"后来有人写诗说："周公王莽是忠是奸，要是死得早还真说不清。"（暗指曹操的历史评价要看最终结果）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">曹操连饮数杯，不觉沉醉，唤左右捧过笔砚，亦欲作《铜雀台诗》。刚才下笔，忽报：“东吴使华歆表奏刘备为荆州牧，孙权以妹嫁刘备，汉上九郡大半已属备矣。“操闻之，手脚慌乱，投笔于地。程昱曰：“丞相在万军之中，矢石交攻之际，未尝动心；今闻刘备得了荆州，何故如此失惊？”操曰：“刘备，人中之龙也，生平未尝得水。今得荆州，是困龙入大海矣。孤安得不动心哉！”程昱曰：“丞相知华歆来意否？”操曰：“未知。”昱曰：“孙权本忌刘备，欲以兵攻之；但恐丞相乘虚而击，故令华歆为使，表荐刘备，乃安备之心，以塞丞相之望耳。”操点头曰：“是也。”昱曰：“某有一计，使孙、刘自相吞并，丞相乘间图之，一鼓而二敌俱破。”操大喜，遂问其计。程昱曰：“东吴所倚者，周瑜也。丞相今表奏周瑜为南郡太守，程普为江夏太守，留华歆在朝重用之；瑜必自与刘备为仇敌矣。我乘其相并而图之，不亦善乎？”操曰：“仲德之言，正合孤意。”遂召华歆上台，重加赏赐。当日筵散，操即引文武回许昌，表奏周瑜为总领南郡太守、程普为江夏太守。封华歆为大理少卿，留在许都。</div>
+            <div class="text-block simplified-text">曹操喝了好几杯酒，有点醉了，叫人拿来纸笔，想写首《铜雀台诗》。刚拿起笔，突然有人报告：“东吴派华歆来送信，说让刘备当荆州的老大，孙权还把妹妹嫁给了刘备，现在荆州一大半地盘都归刘备了。”曹操一听，吓得连笔都掉地上了。程昱问：“丞相您打仗的时候枪林箭雨都不怕，怎么听说刘备占了荆州就慌成这样？”曹操说：“刘备就像条龙，以前一直没水游。现在得了荆州，等于困龙进了大海。我能不慌吗？”程昱又问：“您知道华歆为啥来吗？”曹操说不知道。程昱解释：“孙权其实怕刘备，本来想打他，但又怕您趁机偷袭，所以让华歆来推荐刘备当官，就是为了稳住刘备，顺便堵住您的嘴。”曹操点头说对。程昱接着说：“我有个办法，让孙权和刘备自己打起来，咱们趁机捡便宜，一次干掉俩敌人。”曹操很高兴，问他啥办法。程昱说：“东吴最厉害的是周瑜。您现在就封周瑜当南郡太守，程普当江夏太守，再把华歆留在京城当大官。这样周瑜肯定跟刘备结仇。等他们打起来，咱们再出手，多好！”曹操说：“正合我意！”马上把华歆叫来，给了重赏。当天酒席散了，曹操就带人回许昌，正式任命周瑜管南郡、程普管江夏，还让华歆在朝廷当了大官。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">使命至东吴，周瑜、程普各受职讫。周瑜既领南郡，愈思报仇，遂上书吴侯，乞令鲁肃去讨还荆州。孙权乃命肃曰：“汝昔保借荆州与刘备，今备迁延不还，等待何时？”肃曰：“文书上明白写着，得了西川便还。”权叱曰：“只说取西川，到今又不动兵，不等老了人！”肃曰：“某愿往言之。”遂乘船投荆州而来。却说玄德与孔明在荆州广聚粮草，调练军马，远近之士多归之。忽报鲁肃到。玄德问孔明曰：“子敬此来何意？”孔明曰：“昨者孙权表主公为荆州牧，此是惧曹操之计。操封周瑜为南郡太守，此欲令我两家自相吞并，他好于中取事也。今鲁肃此来，又是周瑜既受太守之职，要来索荆州之意。”玄德曰：“何以答之？”孔明曰：“若肃提起荆州之事，主公便放声大哭。哭到悲切之处，亮自出来解劝。”</div>
+            <div class="text-block simplified-text">周瑜和程普在东吴都当上官了。周瑜管南郡后，更想找刘备报仇，就给孙权写信，让鲁肃去要回荆州。孙权对鲁肃说："当初是你作保把荆州借给刘备的，现在他拖着不还，要等到什么时候？"鲁肃回答："借条上写得清清楚楚，等刘备拿下西川就还。"孙权生气地说："光说打西川，到现在还不动手，难道要等到我们都老死吗！"鲁肃说："我这就去找他们谈。"于是坐船去了荆州。
+
+这时候刘备和诸葛亮正在荆州招兵买马，囤积粮草，很多人都来投奔他们。突然听说鲁肃来了，刘备问诸葛亮："鲁肃这次来想干嘛？"诸葛亮说："之前孙权推荐您当荆州牧，其实是怕曹操。曹操让周瑜当南郡太守，就是想让我们两家打起来，他好趁机搞事。现在鲁肃来，肯定是周瑜当上太守后，又来要荆州了。"刘备问："那咱们怎么应付？"诸葛亮说："等鲁肃提起荆州的事，您就使劲哭。等您哭得最伤心的时候，我自然会出来打圆场。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">计会已定，接鲁肃入府，礼毕，叙坐。肃曰：“今日皇叔做了东吴女婿，便是鲁肃主人，如何敢坐？”玄德笑曰：“子敬与我旧交，何必太谦？”肃乃就坐。茶罢，肃曰：“今奉吴侯钧命，专为荆州一事而来。皇叔已借住多时，未蒙见还。今既两家结亲，当看亲情面上，早早交付。”玄德闻言，掩面大哭。肃惊曰：“皇叔何故如此？”玄德哭声不绝。</div>
+            <div class="text-block simplified-text">计划已经商量好了，孙权请鲁肃到府里，客气一番后坐下。鲁肃说："现在刘皇叔成了我们东吴的女婿，就是我的主人了，我怎么敢坐呢？"刘备笑着说："子敬（鲁肃的字）你是我的老朋友，不用这么客气。"鲁肃这才坐下。喝完茶，鲁肃说："这次我是奉孙权的命令，专门来谈荆州的事。皇叔借住荆州这么久了还没还。现在咱们两家结亲了，看在这份亲戚情分上，您就早点把荆州还给我们吧。"刘备一听这话，马上捂着脸大哭起来。鲁肃吓了一跳，问："皇叔您这是怎么了？"刘备还是一个劲地哭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">孔明从屏后出曰：“亮听之久矣。子敬知吾主人哭的缘故么？”肃曰：“某实不知。”孔明曰：“有何难见？当初我主人借荆州时，许下取得西川便还。仔细想来，益州刘璋是我主人之弟，一般都是汉朝骨肉，若要兴兵去取他城池时，恐被外人唾骂；若要不取，还了荆州，何处安身？若不还时，于尊舅面上又不好看。事实两难，因此泪出痛肠。”孔明说罢，触动玄德衷肠，真个捶胸顿足，放声大哭。鲁肃劝曰：“皇叔且休烦恼，与孔明从长计议。”孔明曰：“有烦子敬，回见吴侯，勿惜一言之劳，将此烦恼情节，恳告吴侯，再容几时。”肃曰：“倘吴侯不从，如之奈何？”孔明曰：“吴侯既以亲妹聘嫁皇叔，安得不从乎？望子敬善言回覆。”</div>
+            <div class="text-block simplified-text">诸葛亮从屏风后面走出来说："我听了半天了。子敬（鲁肃）你知道我家主公为什么哭吗？"鲁肃说："我真不知道。"诸葛亮说："这有什么难懂的？当初我家主公借荆州的时候，答应打下西川就还。但仔细想想，益州的刘璋是我家主公的堂弟，都是汉朝皇室血脉。要是派兵去打他，怕被天下人骂；要是不打，把荆州还给你们，我们又没地方落脚；要是不还，在你家主公（孙权）面前又不好交代。左右为难，所以伤心得哭。"诸葛亮说完，刘备越想越难过，真的捶胸顿足大哭起来。鲁肃劝道："刘皇叔别太难过，和诸葛亮再好好商量商量。"诸葛亮说："麻烦子敬回去见吴侯（孙权）时，帮我们说说话，把这些难处好好告诉吴侯，请他多宽限些时日。"鲁肃问："要是吴侯不同意怎么办？"诸葛亮说："吴侯既然把亲妹妹嫁给皇叔，怎么会不同意呢？希望子敬帮我们说点好话。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">鲁肃是个宽仁长者，见玄德如此哀痛，只得应允。玄德、孔明拜谢。宴毕，送鲁肃下船。径到柴桑，见了周瑜，具言其事。周瑜顿足曰：“子敬又中诸葛亮之计也！当初刘备依刘表时，常有吞并之意，何况西川刘璋乎？似此推调，未免累及老兄矣。吾有一计，使诸葛亮不能出吾算中。子敬便当一行。”肃曰：“愿闻妙策。”瑜曰：“子敬不必去见吴侯，再去荆州对刘备说：孙、刘两家，既结为亲，便是一家；若刘氏不忍去取西川，我东吴起兵去敢，取得西川时，以作嫁资，却把荆州交还东吴。”肃曰：“西川迢递，取之非易。都督此计，莫非不可？”瑜笑曰：“子敬真长者也。你道我真个去取西川与他？我只以此为名，实欲去取荆州，且教他不做准备。东吴军马收川，路过荆州，就问他索要钱粮，刘备必然出城劳军。那时乘势杀之，夺取荆州，雪吾之恨，解足下之祸。”</div>
+            <div class="text-block simplified-text">鲁肃是个老实厚道的人，看到刘备哭得那么伤心，只好答应了他的请求。刘备和诸葛亮连忙道谢。吃完饭，送鲁肃上船离开。鲁肃直接回到柴桑，见到周瑜，把事情经过全说了。周瑜气得直跺脚："子敬（鲁肃的字），你又上了诸葛亮的当！当初刘备投靠刘表时，就老想着吞并人家，更何况现在对西川的刘璋？这样推来推去，最后倒霉的肯定是你。我倒有个主意，让诸葛亮逃不出我的手掌心。你再去跑一趟吧。"鲁肃问："什么好办法？"周瑜说："你不用去见孙权主公，直接去荆州告诉刘备：既然孙刘两家结了亲，就是一家人。要是刘备不忍心去打西川，我们东吴愿意出兵帮他打，等拿下西川就当嫁妆送给他，但要把荆州还给我们东吴。"鲁肃犹豫："西川路远，打下来不容易。都督（周瑜）这计策能行吗？"周瑜笑道："子敬你太实在了。你以为我真要替他打西川？这只是个借口，实际上是要偷袭荆州，让他们放松警惕。等我们东吴军队假装去西川，路过荆州时，就找刘备要粮草。刘备肯定会出城犒劳军队，那时候我们突然动手，杀了刘备拿下荆州，既解了我的心头之恨，也替你解决了麻烦。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">鲁肃大喜，便再往荆州来。玄德与孔明商议。孔明曰：“鲁肃必不曾见吴侯，只到柴桑和周瑜商量了甚计策，来诱我耳。但说的话，主公只看我点头，便满口应承。”计会已定。鲁肃入见。礼毕，曰：“吴侯甚是称赞皇叔盛德，遂与诸将商议，起兵替皇叔收川。取了西川，却换荆州，以西川权当嫁资。但军马经过，却望应些钱粮。”孔明听了，忙点头曰：“难得吴侯好心！”玄德拱手称谢曰：“此皆子敬善言之力。”孔明曰：“如雄师到日，即当远接犒劳。”鲁肃暗喜，宴罢辞回。</div>
+            <div class="text-block simplified-text">鲁肃很高兴，又去了荆州。刘备和诸葛亮商量这事。诸葛亮说：“鲁肃肯定没见孙权，只是到柴桑和周瑜商量了个计策，来骗我们。等会儿他说话时，主公你看我点头，就只管答应。”商量好了。鲁肃进来见面，行完礼说：“孙权很佩服刘皇叔的为人，和将领们商量后决定出兵帮您拿下西川。等得了西川，就拿它换荆州，把西川当彩礼。只是大军路过时，希望您能提供点粮草。”诸葛亮听完赶紧点头说：“孙权真是太好了！”刘备拱手道谢：“这都多亏您鲁肃帮忙说话。”诸葛亮接着说：“等大军到了，我们一定远道迎接，好好犒劳。”鲁肃心里暗喜，吃完饭就回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">玄德问孔明曰：“此是何意？”孔明大笑曰：“周瑜死日近矣！这等计策，小儿也瞒不过！”玄德又问如何，孔明曰：“此乃假途灭虢之计也。虚名牧川，实取荆州。等主公出城劳军，乘势拿下，杀入城来，攻其不备，出其不意也。”玄德曰：“如之奈何？”孔明曰：“主公宽心，只顾准备窝弓以擒猛虎，安排香饵以钓鳌鱼。等周瑜到来，他便不死，也九分无气。”便唤赵云听计：“如此如此，其余我自有摆布。”玄德大喜。后人有诗云：“周瑜决策取荆州，诸葛先知第一筹。指望长江香饵稳，不知暗里钓鱼钩。”</div>
+            <div class="text-block simplified-text">刘备问诸葛亮："这是啥意思？"诸葛亮大笑着说："周瑜快完蛋了！这种计策，连小孩都骗不了！"刘备又问怎么回事，诸葛亮说："这就是假借帮忙实际抢地盘的老套路。表面说来帮我们打益州，其实是想偷袭荆州。等你出城慰劳军队时，他们就会突然动手，打我们个措手不及。"刘备问："那怎么办？"诸葛亮说："老大别担心，咱们就准备好陷阱抓老虎，备好鱼饵钓大鱼。等周瑜来了，就算不死也得脱层皮。"然后叫来赵云吩咐："你按我说的做，其他的我来安排。"刘备高兴坏了。后来有人写诗说："周瑜想夺荆州地，诸葛亮早算第一计。以为香饵钓大鱼，哪知自己上钩去。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">却说鲁肃回见周瑜，说玄德、孔明欢喜一节，准备出城劳军。周瑜大笑曰：“原来今番也中了吾计！”便教鲁肃禀报吴侯，并遣程普引军接应。周瑜此时箭疮已渐平愈，身躯无事，使甘宁为先锋，自与徐盛、丁奉为第二，凌统、吕蒙为后队，水陆大兵五万，望荆州而来。周瑜在船中，时复欢笑，以为孔明中计。前军至夏口，周瑜问：“荆州有人在前面接否！”人报：“刘皇叔使糜竺来见都督。”瑜唤至，问劳军如何。糜竺曰：“主公皆准备安排下了。”瑜曰：“皇叔何在？”竺曰：“在荆州城门外相等，与都督把盏。”瑜曰：“今为汝家之事，出兵远征；劳军之礼，休得轻易。”糜竺领了言语先回。</div>
+            <div class="text-block simplified-text">鲁肃回去见周瑜，告诉他刘备和诸葛亮很高兴，正准备出城犒劳军队。周瑜大笑着说："哈哈，这次他们可算上了我的当！"他马上让鲁肃去报告孙权，又派程普带兵接应。这时候周瑜的箭伤已经好得差不多了，身体没啥问题。他让甘宁打头阵，自己和徐盛、丁奉带第二队，凌统、吕蒙压后，总共五万水陆大军向荆州进发。周瑜在船上一直乐呵呵的，觉得诸葛亮中了他的计。
+
+先锋部队到了夏口，周瑜问："荆州那边有人来接应吗？"手下报告说："刘备派糜竺来见都督。"周瑜叫来糜竺，问他犒劳军队的事准备得怎么样。糜竺说："我家主公都安排好了。"周瑜问："刘备现在在哪儿？"糜竺回答："就在荆州城门外等着，要亲自给都督敬酒呢。"周瑜说："这次是为了帮你们打仗，大老远带兵过来。犒劳军队的事可不能马虎。"糜竺听完这话就先回去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">战船密密排在江上，依次而进，看看至公安，并无一只军船，又无一人远接。周瑜催船速行。离荆州十余里，只见江面上静荡荡的。哨探的回报：“荆州城上，插两面白旗，并不见一人之影。”瑜心疑，教把船傍岸，亲自上岸乘马，带了甘宁、徐盛、丁奉一班军官，引亲随精军三千人，径望荆州来。既至城下，并不见动静。瑜勒住马，令军士叫门。城上问是谁人。吴军答曰：“是东吴周都督亲自在此。”言未毕，忽一声梆子响，城上军一齐都竖起枪刀。敌楼上赵云出曰：“都督此行，端的为何？”瑜曰：“吾替汝主取西川，汝岂犹未知耶？”云曰：“孔明军师已知都督假途灭虢之计，故留赵云在此。吾主公有言：孤与刘璋，皆汉室宗亲，安忍背义而取西川？若汝东吴端的取蜀，吾当披发入山，不失信于天下也。”周瑜闻之，勒马便回。只见一人打着令字旗，于马前报说：“探得四路军马，一齐杀到：关某从江陵杀来，张飞从姊归杀来，黄忠从公安杀来，魏延从孱陵小路杀来，四路正不知多少军马。喊声远近震动百余里，皆言要捉周瑜。”瑜马上大叫一声，箭疮复裂，坠于马下。正是：一着棋高难对敌，几番算定总成空。未知性命如何，且看下文分解。</div>
+            <div class="text-block simplified-text">周瑜带着战船密密麻麻地沿江前进，快到公安时，发现江上一条敌船都没有，也没人来迎接。他命令船队加速前进。离荆州还有十几里时，江面静悄悄的。侦察兵报告说："荆州城头插着两面白旗，连个人影都看不见。"
+
+周瑜觉得不对劲，就让船靠岸，自己带着甘宁、徐盛、丁奉等将领和三千精兵，骑马直奔荆州。到了城下还是没动静。周瑜勒住马，让士兵叫门。城上问是谁，吴军回答："是东吴周都督亲自来了！"话音刚落，突然一声梆子响，城上士兵齐刷刷亮出武器。敌楼上的赵云站出来问："都督这次来到底想干什么？"
+
+周瑜说："我是来帮你们主公打西川的，你不知道吗？"赵云说："孔明军师早就看穿你是假借路过想偷袭的计谋，特意让我在这儿等着。我家主公说了：他和刘璋都是汉室宗亲，绝不会做背信弃义的事。要是你们东吴真去打蜀地，他就隐居山林，绝不让天下人笑话。"
+
+周瑜听完调头就走。这时有人举着令旗跑来报告："不好了！四路兵马同时杀过来了：关羽从江陵、张飞从姊归、黄忠从公安、魏延从孱陵小路杀来，到处都是喊杀声，方圆百里都听得见，都说要活捉周瑜！"周瑜气得大叫一声，伤口崩裂，从马上摔了下来。这正是：再高明的计策也有克星，算来算去终究一场空。不知周瑜性命如何，咱们下回接着说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
