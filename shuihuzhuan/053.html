@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五十三回　戴宗智取公孙胜　李逵斧劈罗真人</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">水浒传 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./052.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第五十三回　戴宗智取公孙胜　李逵斧劈罗真人</h1>
+        <a href="./054.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">诗曰：</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+诗里说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">堪叹人心毒似蛇，谁知天眼转如车。</div>
+            <div class="text-block simplified-text">人心狠毒起来比蛇还可怕，但这些人不知道老天爷看得一清二楚，报应来得特别快。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">去年妄取东邻物，今日还归北舍家。</div>
+            <div class="text-block simplified-text">去年我从东边邻居那儿拿了不该拿的东西，今天我把东西还给了北边的邻居。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">无义钱财汤泼雪，倘来田地水推沙。</div>
+            <div class="text-block simplified-text">不义之财就像热水泼在雪上，一下子就没了；白捡来的土地就像被水冲走的沙子，根本留不住。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">若将奸狡为生计，恰似朝霞与暮霞。</div>
+            <div class="text-block simplified-text">如果把耍心眼、使坏当成谋生的手段，那就像早晚的彩霞一样，虽然好看但很快就消失了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">话说当下吴学究对宋公明说道：“要破此法，只除非快教人去蓟州寻取公孙胜来，便可破得高廉。”宋江道：“前番戴宗去了几时，全然打听不着，却那里去寻？”吴用道：“只说蓟州，有管下多少县治、镇市、乡村，他须不曾寻得到。我想公孙胜他是个清高的人，必然在个名山洞府，大川真境居住。今番教戴宗可去绕蓟州管下县治名山仙境去处，寻觅一遭，不愁不见他。”宋江听罢，随即教请戴院长商议，可往蓟州寻取公孙胜。戴宗道：“小可愿往，只是得一个做伴的去方好。”吴用道：“你作起神行法来，谁人赶得你上？”戴宗道：“若是同伴的人，我也把甲马拴在他腿上，教他也走得许多路程。”李逵便道：“我与戴院长做伴走一遭。”戴宗道：“你若要跟我去，须要一路上吃素，都听我的言语。”李逵道：“这个有甚难处，我都依你便了。”宋江、吴用分付道：“路上小心在意，休要惹事。若得见了，早早回来。”李逵道：“我打死了殷天锡，却教柴大官人吃官司，我如何不要救他！今番并不敢惹事了。”二人同行。有诗为证：</div>
+            <div class="text-block simplified-text">吴用对宋江说："要打败高廉，就得赶紧派人去蓟州找公孙胜来帮忙。"宋江说："上次戴宗去了那么久都没找到，现在去哪儿找啊？"吴用说："蓟州那么大，有那么多县城、乡镇和村子，他上次肯定没找全。我觉得公孙胜是个清高的人，肯定住在有名的山里或风景好的地方。这次让戴宗把蓟州所有有名气的山水胜地都找一遍，肯定能找到。"
+
+宋江听完，马上叫来戴宗商量去蓟州找人的事。戴宗说："我愿意去，但最好有个人陪我一起去。"吴用说："你用神行法赶路，谁能跟得上你啊？"戴宗说："要是有人陪我去，我可以用法术让他也走得很快。"李逵插话说："我陪戴院长走一趟吧。"戴宗说："你要跟我去，路上得吃素，还得听我的话。"李逵说："这有什么难的，我都听你的。"
+
+宋江和吴用嘱咐他们："路上小心点，别惹事。找到人就赶紧回来。"李逵说："我打死了殷天锡，害得柴大官人吃官司，我一定要救他！这次保证不惹事。"于是两人就一起出发了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">飞步神行说戴宗，李逵同伴去如风。若还寻着公孙胜，要使高廉永绝踪。豪杰士，黑旋风。一时赤手逞英雄。谁知一路经行处，惹祸招灾顷刻中。</div>
+            <div class="text-block simplified-text">这段话说的是戴宗和李逵两个人跑得飞快，像风一样赶路去找公孙胜。他们想找到公孙胜帮忙对付高廉，彻底解决这个麻烦。李逵是个莽撞的汉子，空着手就敢逞英雄。可没想到他们这一路上到处惹事，灾祸说来就来。
+
+（说明：译文完全保留原文中的人物、事件和因果关系，将"飞步神行""去如风"译为"跑得飞快，像风一样"，"永绝踪"意译为"彻底解决"，"赤手逞英雄"译为"空着手就敢逞英雄"，最后两句直接点明"惹事招灾"的结果。全文采用"两个人""找帮手""解决麻烦""莽撞汉子"等生活化表达，确保现代读者能立即理解水浒传这段情节。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">话说戴宗、李逵各藏了暗器，拴缚了包裹，两个拜了宋江并众人，离了高唐州，取路投蓟州来。走了三十余里，李逵立住脚道：“大哥，买碗酒吃了走也好。”戴宗道：“你要跟我作神行法，须要只吃素酒，且向前面去。”李逵答道：“便吃些肉也打甚么紧？”戴宗道：“你又来了。今日已晚，且寻客店宿了，明日早行。”两个又走了三十余里，天色昏黑，寻着一个客店歇了，烧起火来做饭，沽一角酒来吃。李逵搬一碗素饭并一碗菜汤，来房里与戴宗吃。戴宗道：“你如何不吃饭？”李逵应道：“我且未要吃饭哩。”戴宗寻思道：“这厮必然瞒着我背地里吃荤。”戴宗自把素饭吃了，却悄悄地来后面张时，见李逵讨两角酒，一盘牛肉，在那里自吃。戴宗道：“我说甚么！且不要道破他，明日小小的耍他耍便了。”戴宗自去房里睡了。李逵吃了一回酒肉，恐怕戴宗说他，自暗暗的来房里睡了。到五更时分，戴宗起来，叫李逵打火做些素饭吃了，各分行李在背上，算还了房宿钱，离了客店。行不到二里多路，戴宗说道：“我们昨日不曾使神行法，今日须要赶程途，你先把包裹拴得牢了，我与你作法，行八百里便住。”戴宗取四个甲马，去李逵两只腿上也缚了，分付道：“你前面酒食店里等我。”戴宗念念有词，吹口气在李逵腿上，李逵拽开脚步，浑如驾云的一般，飞也似去了。戴宗笑道：“且着他忍一日饿！”戴宗也自拴上甲马，随后赶来。李逵不省得这法，只道和他走路一般。只听耳朵边风雨之声，两边房屋树木一似连排价倒了的，脚底下如云催雾趱。李逵怕将起来，几遍待要住脚，两条腿那里收拾得住。这脚却似有人在下面推的相似，脚不点地，只管得走去了。看见酒肉饭店，又不能勾入去买吃。李逵只得叫：“爷爷，且住一住！”走的甚是神捷。有诗为证：</div>
+            <div class="text-block simplified-text">戴宗和李逵收拾好东西，带上武器，跟宋江他们告别后，离开高唐州往蓟州走。走了三十多里地，李逵停下来说：“大哥，喝碗酒再走吧？”戴宗说：“你要跟我用神行法赶路，只能喝素酒。继续往前走吧。”李逵说：“吃点肉又能怎样？”戴宗说：“你又来了。天快黑了，先找地方住下，明早再走。” 
+
+两人又走了三十多里，天黑了，找到一家客栈住下。他们生火做饭，买了点酒。李逵端了一碗素饭和菜汤给戴宗。戴宗问：“你怎么不吃？”李逵说：“我等会儿再吃。”戴宗心想：“这家伙肯定背着我偷吃肉。”他自己吃完素饭，偷偷去后面看，果然发现李逵在喝酒吃肉。戴宗想：“我就知道！先不揭穿他，明天逗逗他。”说完回房睡觉。李逵吃完怕戴宗说他，也悄悄回房睡了。
+
+天没亮戴宗就起来，叫李逵生火做素饭吃。两人收拾行李，付了房钱离开客栈。走了不到两里路，戴宗说：“昨天没用神行法，今天得赶路。你把包捆紧，我施法带你一天走八百里。”他把四个甲马绑在李逵腿上，说：“你去前面酒馆等我。”念完咒，朝李逵腿上一吹，李逵就像飞一样冲出去了。戴宗笑道：“让他饿一天！”自己也绑上甲马追上去。
+
+李逵不懂这法术，以为和平时走路一样。结果听见耳边呼呼响，两边房子树木飞快往后倒，脚底下像踩了风火轮。他害怕了，想停下，可腿根本不受控制，像有人推着他跑。路过饭店也停不下来，只能喊：“爷爷啊，快停下！”可跑得比箭还快。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">李逵禀性实凶顽，酒肉堆盘似虎餐。</div>
+            <div class="text-block simplified-text">李逵这个人性格特别暴躁凶狠，喝酒吃肉的时候像老虎一样狼吞虎咽。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">只为一时贪口腹，足行千里不能安。</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+"就为了贪吃那一口好吃的，结果跑得再远心里也不踏实。"
+
+或者更口语化：
+"就为了一时嘴馋想吃好的，搞得跑多远都心里不安生。"
+
+解释说明：
+1. 保留了"贪吃"和"心神不宁"的核心意思
+2. "足行千里"译为"跑得再远/跑多远"，更符合现代人说法
+3. "不能安"译为"心里不踏实/不安生"，更通俗易懂
+4. 添加"就为了"这样的口语化表达
+5. 整体意思完全一致，只是表达方式更现代化
+6. 没有添加或删减原意</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">李逵看看走到红日平西，肚里又饥又渴，越不能勾住脚，惊得一身臭汗，气喘做一团。戴宗从背后赶来，叫道：“李大，怎的不买些点心吃了去？”李逵应道：“哥哥，救我一救！饿杀铁牛也！”戴宗怀里摸出几个炊饼来自吃。李逵叫道：“我不能勾住脚买吃，你与两个充饥。”戴宗道：“兄弟，你走上来与你吃。”李逵伸着手，只隔一丈来远近，只赶不上。李逵叫道：“好哥哥，等我一等！”戴宗道：“便是今日有些跷蹊，我的两条腿也不能勾住。”李逵道：“阿也！我的这鸟脚，不由我半分，自这般走了去，只好把大斧砍了那下半截下来！”戴宗道：“只除是恁的般方好，不然直走到明年正月初一日，也不能住。”李逵道：“好哥哥，休使道儿耍我！砍了腿下来，你却笑我！”戴宗道：“你敢是昨夜不依我，今日连我也走不得住。你自走去。”李逵叫道：“好爷爷！你饶我住一住！”戴宗道：“我的这法第一不许吃荤并吃牛肉，若还吃了一块牛肉，只要走十万里方才得住。”李逵道：“却是苦也！我昨夜不合瞒着哥哥，真个偷买几斤牛肉吃了。正是怎么好！”戴宗道：“怪得今日连我的这腿也收不住。只用去天尽头走一遭了，慢慢地却得三五年方才回得来。”李逵听罢，叫起撞天屈来。戴宗笑道：“你从今已后只依得我一件事，我便罢得这法。”李逵道：“老爹，我今都依你便了。”戴宗道：“你如今敢再瞒我吃荤么？”李逵道：“今后但吃时，舌头上生碗来大疔疮！我见哥哥要吃素，铁牛却吃不得，因此上瞒着哥哥。今后并不敢了。”戴宗道：“既是恁的，饶你这一遍。”退后一步，把衣袖去李逵腿上只一拂，喝声：“住！”李逵却似钉住了的一般，两只脚立定地下，那移不动。其法甚是灵。有诗为证：</div>
+            <div class="text-block simplified-text">李逵走到太阳快下山的时候，肚子又饿又渴，实在走不动了，累得满身大汗，上气不接下气。戴宗从后面追上来问："李大哥，怎么不买点吃的垫垫肚子？"李逵喊道："哥啊，快救救我！饿死我了！"戴宗从怀里掏出几个烧饼自己吃起来。李逵急得大叫："我实在走不动去买吃的，你给我两个填填肚子吧！"戴宗说："你走过来就给你吃。"李逵伸手去够，就差一丈远，可就是追不上。李逵喊："好哥哥，等等我！"戴宗说："今天真是怪了，我的腿也停不下来。"李逵说："哎呀！我这破腿完全不听使唤，自己往前跑，干脆拿斧子把下半截砍掉算了！"戴宗说："除非这样，不然走到明年大年初一都停不下来。"李逵说："好哥哥别耍我了！真砍了腿你要笑话我的！"戴宗说："谁让你昨晚不听我的话，现在连我也停不下来。你自己走吧。"李逵哀求道："好爷爷，饶了我吧！让我停下！"戴宗说："我这法术第一条就是不能吃肉和牛肉，要是吃了一块牛肉，非得走上十万里才能停。"李逵哭丧着脸说："完蛋了！我昨晚不该瞒着你，偷偷买了几斤牛肉吃。这可怎么办啊！"戴宗说："难怪今天连我的腿也停不下来。这下只能走到天边，慢慢走个三五年才能回来了。"李逵听了直喊冤枉。戴宗笑着说："只要你答应我一件事，我就解除法术。"李逵赶紧说："老爹，我什么都听你的！"戴宗问："以后还敢背着我吃肉吗？"李逵发誓："要是再吃，让我舌头上长碗大的疮！我是看哥哥吃素，自己嘴馋才偷吃的。以后再也不敢了。"戴宗说："既然这样，饶你这一次。"说完退后一步，用袖子往李逵腿上一甩，喊声："停！"李逵立刻像钉在地上一样，再也动不了了。这法术真灵验。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">戴宗神术极专精，十步攒为两步行。</div>
+            <div class="text-block simplified-text">戴宗的本事特别厉害，别人走十步的时间，他只要走两步就能搞定。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">可惜李逵多勇健，云车风驾莫支撑。</div>
+            <div class="text-block simplified-text">可惜李逵虽然勇猛强壮，但还是挡不住云车风驾（指强大的对手或不可抗拒的力量）。  
+
+（注：原文中的“云车风驾”是比喻强大的力量或对手，这里用括号解释，以便更清楚表达原意。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">戴宗道：“我先去，你且慢慢的来。”李逵正待抬脚，那里移得动，拽也拽不起，一似生铁铸就了的。李逵大叫道：“又是苦也！晚夕怎地得去？”便叫道：“哥哥，救我一救！”戴宗转回头来，笑道：“你今番依我说么？”李逵道：“你是我亲爷，却是不敢违了你的言语。”戴宗道：“你今番却要依我。”便把手绾了李逵，喝声：“起！”两个轻轻地走了去。李逵道：“哥哥可怜见铁牛，早歇了罢！”前面到一个客店，两个且来投宿。戴宗、李逵入到房里，去腿上都卸下甲马来，取出几陌纸钱烧送了。问李逵道：“今番却如何？”李逵道：“这两条腿方才是我的了。”戴宗道：“谁着你夜来私买酒肉吃！”李逵道：“为是你不许我吃荤，偷了些吃，也吃你耍得我勾了！”</div>
+            <div class="text-block simplified-text">戴宗说："我先走，你慢慢跟上来。"李逵刚要抬脚，却发现腿像灌了铅一样根本动不了，怎么使劲都抬不起来。他急得大喊："完蛋了！晚上可怎么赶路啊？"赶紧叫住戴宗："大哥快救救我！"
+
+戴宗回头笑着问："这下肯听我的话了吧？"李逵连忙说："您就是我亲爹，我哪还敢不听啊！"戴宗说："这回可得乖乖听话。"说完拉住李逵的手，喊了声"走！"，两人就轻飘飘地上路了。
+
+走了一会儿李逵求饶："大哥行行好，让铁牛我歇会儿吧！"正好前面有家客栈，两人就住下了。进屋后，他们从腿上取下绑着的纸马，烧了些纸钱。戴宗问李逵："现在感觉怎么样？"李逵活动着腿说："这两条腿总算又是我的了。"戴宗说："谁让你昨晚偷喝酒吃肉的！"李逵抱怨："还不是你不让我吃荤，我才偷吃了一点，结果被你整得够呛！"
+
+（说明：原文中"甲马"是道教神行法术用的纸马，"几陌纸钱"是成串的纸钱，直译会妨碍理解，故转化为现代人能理解的"绑着的纸马"和"纸钱"；"苦也"译为口语化的"完蛋了"；"晚夕"译为"晚上"更符合现代说法；保留了"铁牛"这个李逵绰号以体现人物特色）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">戴宗叫李逵安排些素酒素饭吃了，烧汤洗了脚，上床歇了。睡到五更，起来洗漱罢，吃了饭，还了房钱，两个又上路。行不到三里多路，戴宗取出甲马道：“兄弟，今日与你只缚两个，教你慢行些。”李逵道：“我不要缚了。”戴宗道：“你既依我言语，我和你干大事，如何肯弄你？你若不依我，教你一似夜来，只钉住在这里，只等我去蓟州寻见了公孙胜，回来放你。”李逵慌忙叫道：“</div>
+            <div class="text-block simplified-text">戴宗让李逵简单吃了点素菜淡饭，烧水洗了脚，就上床睡觉了。天还没亮，大概五更天（凌晨三点到五点）他们就起床，洗漱完吃了早饭，付了住宿费，两人又出发赶路。走了不到三里地，戴宗拿出甲马（一种符咒道具）说："兄弟，今天只给你绑两个甲马，让你走得慢点。"李逵说："我不要绑这个。"戴宗说："你要是听我的，咱们一起干大事，我怎么会害你？你要是不听话，我就让你像昨晚那样定在原地不能动，等我一个人去蓟州找到公孙胜，回来再放你。"李逵一听赶紧喊：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">我依，我依！”戴宗与李逵当日各只缚两个甲马，作起神行法，扶着李逵，两个一同走。原来戴宗的法，要行便行，要住便住。李逵从此那里敢违他言语，于路上只是买些素酒素饭，吃了便行。李逵方才放心。有诗为证：</div>
+            <div class="text-block simplified-text">我答应，我答应！”戴宗和李逵当天各自在腿上绑了两个甲马（一种能让人跑得快的道具），施了神行法。戴宗扶着李逵，两人一起赶路。其实戴宗的法术想走就走，想停就停。这下李逵再也不敢不听戴宗的话了，路上只敢买些简单的酒饭，吃完就接着赶路。李逵这才放下心来。有首诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">戴宗术法久通神，去住迟延总在心。</div>
+            <div class="text-block simplified-text">戴宗的法术练了很久特别厉害，想快就快想慢就慢，全凭他自己控制。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">从此李逵方畏服，二人交谊断黄金。</div>
+            <div class="text-block simplified-text">打这以后，李逵才真正服气了，他俩的友情比金子还牢靠。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">话休絮烦。两个用神行法，不旬日，迤逦来蓟州城外客店里歇了。次日，两个入城来。戴宗扮做主人，李逵扮做仆者。绕城中寻了一日，并无一个认得公孙胜的。两个自回店里歇了。次日，又去城中小街狭巷寻了一日，绝无消耗。李逵心焦，骂道：“这个乞丐道人却鸟躲在那里！我若见时，脑揪将去见哥哥！”戴宗瞅道：“你又来了！若不听我的言语，我又教你吃苦！”李逵笑道：“我自这般说耍。”戴宗又埋怨了一回，李逵不敢回话。两个又来店里歇了。次日早起，都去城外近村镇市寻觅。戴宗但见老人，便施礼拜问公孙胜先生家在那里居住，并无一人认得。戴宗也问过数十处。</div>
+            <div class="text-block simplified-text">简单直白的版本：
+
+长话短说。戴宗和李逵用神行术赶路，不到十天就到了蓟州城外，在客栈住下。第二天两人进城，戴宗假装是主人，李逵装成仆人。他们在城里找了一整天，没一个人认识公孙胜。两人只好回客栈休息。
+
+第三天，他们又去城里的小街小巷找了一天，还是没消息。李逵急了，骂道："这要饭的道士死哪儿去了！让我找到，非揪着他脑袋去见大哥不可！"戴宗瞪他一眼："又来了！再不听话，看我怎么收拾你！"李逵赔笑说："我就开个玩笑。"戴宗又训了他几句，李逵不敢顶嘴。两人又回客栈休息。
+
+第四天一大早，他们去城外附近的村镇找人。戴宗见到老人就行礼打听公孙胜的住处，可问了几十个人，没一个认识的。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">当日晌午时分，两个走得肚饥，路傍边见一个素面店，两个直入来买些点心吃。只见里面都坐满，没一个空处。戴宗、李逵立在当路。过卖问道：“客官要吃面时，和这老人合坐一坐。”戴宗见个老丈独自一个占着一副大座头，便与他施礼，唱个喏，两个对面坐了。李逵坐在戴宗肩下。分付过卖造四个壮面来。戴宗道：“我吃一个，你吃三个不少么？”李逵道：“不济事，一发做六个来，我都包办！”过卖见了也笑。等了半日，不见把面来，李逵却见都搬入里面去了，心中已有五分焦躁。只见过卖却搬一个热面放在合坐老人面前，那老人也不谦让，拿起面来便吃。那分面却热，老儿低着头，伏桌儿吃。李逵性急，见不搬面来，叫一声：“过卖！”骂道：“却教老爷等了这半日！”把那桌子只一拍，溅那老人一脸热汁，那分面都泼翻了。老儿焦躁，便来揪住李逵喝道：“你是何道理打翻我面！”李逵捻起拳头，要打老儿。戴宗慌忙喝住。老人不肯罢休。有四句诗单说李逵，诗曰：</div>
+            <div class="text-block simplified-text">中午的时候，两个人走得肚子饿了，看见路边有个面馆，就进去想买点吃的。结果里面坐满了人，一个空位都没有。戴宗和李逵站在过道上。服务员问："两位要吃面的话，可以跟这位老人家拼个桌。"戴宗看见一个老头自己占着张大桌子，就跟他打了个招呼，两人面对面坐下了。李逵坐在戴宗旁边。他们点了四碗大份的面。戴宗说："我吃一碗，你吃三碗还不够吗？"李逵说："不够！干脆来六碗，我全包了！"服务员听了都笑了。等了半天面还没来，李逵发现面都送到里面去了，开始有点不耐烦。这时服务员端了碗热面放在老头面前，老头也不客气，拿起来就吃。那碗面很烫，老头低着头趴在桌上吃。李逵等不及了，大喊一声："服务员！"骂道："让老子等这么久！"说着猛地一拍桌子，热汤溅了老头一脸，面也打翻了。老头火了，揪住李逵吼道："你凭什么打翻我的面！"李逵抡起拳头要打老头，戴宗赶紧拦住。老头不依不饶。有首诗专门说李逵的，诗是这样的：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">李逵平昔性刚凶，欺负年高一老翁。</div>
+            <div class="text-block simplified-text">李逵这人平时脾气又臭又硬，连上了年纪的老头都敢欺负。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">面汁溅来盈脸上，怒中说出指挥功。</div>
+            <div class="text-block simplified-text">热汤溅了我一脸，气得我直骂那个瞎指挥的人。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">戴宗与他陪话道：“丈丈休和他一般见识，小可陪丈丈一分面。”那老人道：“客官不知，老汉路远，早要吃了面回去听讲长生不死之法，迟时误了程途。”戴宗问道：“丈丈何处人氏？却听谁人讲说长生不死之法？”老儿答道：“老汉是本处蓟州管下九宫县二仙山下人氏。因来这城中买些好香，回去听山上罗真人讲说长生不死之法。”戴宗寻思道：“莫不公孙胜也在那里？”便问老人道：“丈丈，贵村曾有个公孙胜么？”老人道：“客官问别人定不知，多有人不认的他，老汉和他是邻舍。他只有个老母在堂。这个先生一向云游在外，比时唤做公孙一清。如今出姓，都只叫他清道人，不叫做公孙胜。此是俗名，无人认得。”戴宗道：“正是踏破铁鞋无觅处，得来全不费工夫！”戴宗又拜问丈丈道：“九宫县二仙山离此间多少路？清道人在家么？”老人道：“二仙山只离本县四十五里便是。清道人他是罗真人上首徒弟，他本师如何放他离左右。”戴宗听了大喜，连忙催趱面来吃，和那老儿一同吃了，算还面钱，同出店肆，问了路途。戴宗道：“丈丈先行，小可买些香纸，也便来也。”老人作别去了。</div>
+            <div class="text-block simplified-text">戴宗赶紧跟老人道歉说："老爷子别跟他计较，我请您吃碗面赔罪。"老人回答："你不知道，我家住得远，得赶紧吃完面回去听讲长生不老的法子，晚了就赶不上了。"戴宗问："您老家是哪儿的？听谁讲长生不老啊？"老人说："我是蓟州九宫县二仙山下的。来城里买些好香，回去听山上罗真人讲长生不老的方法。"戴宗心里一动："公孙胜会不会也在那儿？"就问："老爷子，你们村是不是有个叫公孙胜的？"老人说："你问别人肯定不知道，好多人都不认识他。我是他邻居，他家就剩个老母亲。这人一直在外头云游，以前叫公孙一清，现在改名叫清道人，没人知道他本名公孙胜。"戴宗高兴地说："这可真是找遍天下找不着，没想到在这儿碰上了！"接着又问："二仙山离这儿多远？清道人在家吗？"老人说："二仙山离县城就四十五里。清道人是罗真人的大徒弟，他师父哪会让他离开身边。"戴宗听了特别高兴，赶紧催着上面，和老人一起吃完，付了钱，出店问清路线。戴宗说："您先走，我去买点香烛纸钱，随后就到。"老人就先走了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">戴宗、李逵回到客店里，取了行李包裹，再拴上甲马，离了客店，两个取路投九宫县二仙山来。戴宗使起神行法，四十五里片时到了。二人来到县前，问二仙山时，有人指道：“离县投东，只有五里便是。”两个又离了县治，投东而行，果然行不到五里，早望见那座仙山，委实秀丽。但见：</div>
+            <div class="text-block simplified-text">戴宗和李逵回到旅馆，拿了行李，绑好甲马，离开旅馆，两人往九宫县二仙山方向走。戴宗用神行法，四十五里路一会儿就到了。他们到了县城，打听二仙山在哪儿，有人指着说："出县城往东走五里就到。"两人离开县城往东走，果然不到五里路，就远远看见那座仙山，确实很漂亮。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">青山削翠，碧岫堆云。两崖分虎踞龙蟠，四面有猿啼鹤唳。朝看云封山顶，暮观日挂林梢。流水潺湲，涧内声声鸣玉珮；飞泉瀑布，洞中隐隐奏瑶琴。若非道侣修行，定有仙翁炼药。</div>
+            <div class="text-block simplified-text">这座山风景特别美：
+
+青绿色的山峰像刀削过一样陡峭，云雾缠绕在山间。两边山崖像龙虎盘踞，四周能听到猿猴和鹤的叫声。早上能看到云雾笼罩山顶，傍晚可以看见太阳挂在树梢。山涧里流水哗哗响，像玉佩碰撞的声音；瀑布飞溅，听起来像有人在洞里弹琴。这地方要不是道士修炼的场所，就肯定有神仙在炼仙丹。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">当下戴宗、李逵来到二仙山下。见个樵夫，戴宗与他施礼说道：“借问此间清道人家在何处居住？”樵夫指道：“只过这个山嘴，门外有条小石桥的便是。”两个抹过山嘴来，见有十数间草房，一周遭矮墙，墙外一座小小石桥。两个来到桥边，见一个村姑提一篮新果子出来。戴宗施礼问道：“娘子从清道人家出来，清道人在家么？”村姑答道：“在屋后炼丹。”戴宗心中暗喜。有诗为证：</div>
+            <div class="text-block simplified-text">戴宗和李逵到了二仙山脚下。他们碰到一个砍柴的，戴宗上前行礼问："请问清道人住在哪儿？"砍柴的指着路说："翻过前面那个山包，门口有座小石桥的就是。"两人翻过山包，看见十几间草房围着一圈矮墙，墙外确实有座小石桥。走到桥边，正好碰见一个村姑拎着一篮新鲜水果出来。戴宗行礼问："大姐是从清道人家出来的吧？请问他在家吗？"村姑回答："在屋后头炼丹药呢。"戴宗听了心里暗暗高兴。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">半空苍翠拥芙蓉，天地风光迥不同。</div>
+            <div class="text-block simplified-text">半空中青翠的山峰像一朵盛开的芙蓉花，这里的风景和别的地方完全不一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">十里青松栖野鹤，一溪流水泛春红。</div>
+            <div class="text-block simplified-text">山路上有十里长的松树林，野鹤在树上休息；小溪里流水潺潺，漂着春天的花瓣。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">疏烟白鸟长空外，玉殿琼楼罨画中。</div>
+            <div class="text-block simplified-text">远处的天空飘着淡淡的烟雾，几只白鸟在飞。华丽的宫殿楼阁倒映在色彩斑斓的画里。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">欲识真仙高隐处，便从林下觅形踪。</div>
+            <div class="text-block simplified-text">想找神仙高人住的地方，直接去树林里找他们的踪迹就行了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">戴宗、李逵两个立在门前，戴宗分付李逵道：“你且去树背后躲一躲，待我自入去见了他，却来叫你。”戴宗自入到里面看时，一带三间草房，门上悬挂一个芦帘。戴宗咳嗽了一声，只见一个婆婆从里面出来。戴宗看那婆婆，但见：</div>
+            <div class="text-block simplified-text">戴宗和李逵站在门口，戴宗对李逵说："你先去树后面躲一下，等我进去见了他，再来叫你。"戴宗自己进去一看，里面是三间连着的茅草屋，门上挂着芦苇做的帘子。戴宗咳嗽了一声，一个老太太从里面走了出来。戴宗仔细看那老太太，只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">苍然古貌，鹤发酡颜。眼昏似秋月笼烟，眉白如晓霜映日。青裙素服，依稀紫府元君；布袄荆钗，仿佛骊山老姥。形如天上翔云鹤，貌似山中傲雪松。</div>
+            <div class="text-block simplified-text">这位老人看起来古朴庄重，头发雪白，脸色红润。他的眼睛有些昏花，像被薄雾遮住的秋月；眉毛雪白，像清晨阳光下反光的霜。穿着朴素的青色裙子和白色衣服，有点像天上的仙女；粗布上衣和木头簪子，又像传说中的骊山老母。身形像在天上飞翔的仙鹤，样貌像山里傲立雪中的松树。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">戴宗当下施礼道：“告禀老娘，小可欲求清道人相见一面。”婆婆问道：“官人高姓？”戴宗道：“小可姓戴名宗，从山东到此。”婆婆道：“孩儿出外云游，不曾还家。”戴宗道：“小可是旧时相识，要说一句紧要的话，求见一面。”婆婆道：“不在家里。有甚话说，留下在此不妨，待回家自来相见。”戴宗道：“小可再来。”就辞了婆婆，却来门外对李逵道：“今番须用着你。方才他娘说道不在家里，如今你可去请他。他若说不在时，你便打将起来。却不得伤犯他老母，我来喝住你便罢。”</div>
+            <div class="text-block simplified-text">戴宗上前行礼说："大娘您好，我想见见清道人。"老太太问："您贵姓？"戴宗答："我姓戴名宗，从山东来的。"老太太说："我儿子出门游历去了，还没回来。"戴宗说："我是他老朋友，有重要的事要说，想见他一面。"老太太说："真不在家。有什么话可以留下，等他回来我让他去见您。"戴宗说："那我改天再来。"说完告别老太太，出门对李逵说："现在该你出马了。刚才他娘说不在家，你现在去叫他。要是还说不在，你就直接动手闹。但别伤着他老娘，我会及时拦住你。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">李逵先去包裹里取出双斧，插在两胯下，入的门里，叫一声：“着个出来！”婆婆慌忙迎着问道：“是谁？”见了李逵睁着双眼，先有八分怕他，问道：“哥哥有甚话说？”李逵道：“我是梁山泊黑旋风，奉着哥哥将令，教我来请公孙胜。你教他出来，佛眼相看；若还不肯出来，放一把鸟火，把你家当都烧做白地。莫言不是。早早出来！”婆婆道：“好汉莫要恁地。我这里不是公孙胜家，自唤做清道人。”李逵道；“你只叫他出来，我自认得他鸟脸！”婆婆道：“出外云游未归。”李逵拔出大斧，先砍翻一堵壁。婆婆向前拦住。李逵道：“你不叫你儿子出来，我只杀了你！”拿起斧来便砍，把那婆婆惊倒在地。只见公孙胜从里面走将出来，叫道：“不得无礼！”有诗为证：</div>
+            <div class="text-block simplified-text">李逵先从包袱里拿出两把斧头，别在腰两边，走进门就喊："出来个人！"老太太赶紧迎上来问："谁啊？"一看李逵瞪着眼睛，先就吓得够呛，问："这位大哥有什么事？"李逵说："我是梁山好汉黑旋风，奉大哥命令来请公孙胜。你叫他出来，咱们好说好商量；要是不肯出来，我就放把火把你家烧个精光。别说我没提醒你。赶紧叫他出来！"老太太说："好汉别这样。这儿不是公孙胜家，我家主人叫清道人。"李逵说："少废话！叫他出来，我认得他那张脸！"老太太说："他出门云游还没回来。"李逵抡起斧子先把一堵墙劈倒了。老太太赶紧拦着。李逵说："不叫你儿子出来，我就砍死你！"举起斧子就要砍，把老太太吓得摔倒在地。这时公孙胜从里面跑出来喊："住手！别乱来！"后来有人写诗说这件事：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">李逵巨斧白如霜，惊得婆婆命欲亡。</div>
+            <div class="text-block simplified-text">李逵举着一把雪亮的大斧头，把老太太吓得差点没命。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">幸得戴宗来救护，公孙方肯出中堂。</div>
+            <div class="text-block simplified-text">多亏戴宗来帮忙，公孙胜才肯从屋里出来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">戴宗便来喝道：“铁牛如何吓倒老母！”戴宗连忙扶起。李逵撇了大斧，便唱个喏道：“阿哥休怪，不恁地你不肯出来。”公孙胜先扶娘入去了，却出来拜请戴宗、李逵，邀进一间静室坐下，问道：“亏二位寻得到此。”戴宗道：“自从师父下山之后，小可先来蓟州寻了一遍，并无打听处，只纠合得一伙弟兄上山。今次宋公明哥哥因去高唐州救柴大官人，致被知府高廉两三阵用妖法赢了，无计奈何，只得叫小可和李逵径来寻请足下。绕遍蓟州，并无寻处，偶因素面店中，得个此间老丈指引到此。却见村姑说足下在家烧炼丹药，老母只是推却，因此使李逵激出师父来。这个太莽了些，望乞恕罪。哥哥在高唐州界上度日如年，请师父便可行程，以见始终成全大义之美。”公孙胜道：“贫道幼年飘荡江湖，多与好汉们相聚。自从梁山泊分别回乡，非是昧心，一者母亲年老，无人奉侍；二乃本师罗真人留在座前听教。恐怕山寨有人寻来，故意改名清道人，隐居在此。”戴宗道：“今者宋公明正在危急之际，师父慈悲，只得去走一遭。”公孙胜道：“干碍老母无人养赡，本师罗真人如何肯放，其实去不得了。”戴宗再拜恳告。公孙胜扶起戴宗，说道：“再容商议。”公孙胜留戴宗、李逵在净室里坐定，出来叫个庄客安排些素酒素食相待。三个吃了一回，戴宗又苦苦哀告公孙胜道：“若是师父不肯去时，宋公明必被高廉捉了。山寨大义，从此休矣！”公孙胜道：“且容我去禀问本师真人，若肯容许时，便一同去。”戴宗道：“只今便去启问本师。”公孙胜道：“且宽心住一宵，明日早去。”戴宗道：“哥哥在彼一日，如度一年。烦请师父同往一遭。”</div>
+            <div class="text-block simplified-text">戴宗赶紧喊道："铁牛你怎么把老太太吓倒了！"说着连忙扶起老人。李逵扔下斧头，抱拳道歉："大哥别生气，不这样你也不肯出来啊。"
+
+公孙胜先把母亲扶进屋，然后出来招呼戴宗和李逵，请他们到静室坐下，问道："难为你们能找到这儿。"戴宗说："自从师父下山后，我先来蓟州找过一圈，完全打听不到消息，只好先带兄弟们回山。这次宋江哥哥为了救柴大官人去高唐州，结果被知府高廉用妖法连败几阵，实在没办法，才派我和李逵专程来请您。我们把蓟州翻了个底朝天，最后在一家面馆碰到位老人家指路。到了村里，姑娘们说您在家炼丹，老太太一直推脱，这才让李逵用激将法。这事确实鲁莽了，您多包涵。宋江哥哥在高唐州度日如年，求师父赶紧动身，成全大义。"
+
+公孙胜回答："我年轻时闯荡江湖，结交不少好汉。自从梁山分别回家，一是老母亲需要照顾，二是要跟随罗真人修行。怕山寨有人来找，才改名叫清道人隐居在此。"戴宗着急道："现在宋江危在旦夕，求师父发发慈悲走一趟吧。"公孙胜为难地说："可老母亲没人照顾，罗真人也不会同意，实在去不了啊。"戴宗连连作揖恳求。公孙胜扶起他说："再商量商量。"
+
+公孙胜安排庄客准备素菜招待他们。吃饭时戴宗又哀求："师父要是不去，宋江肯定会被高廉抓住，山寨的大业就完了！"公孙胜松口道："这样吧，我先去请示罗真人，他要是同意，我就跟你们走。"戴宗立刻说："那现在就去问吧！"公孙胜劝道："别急，住一晚，明早再去。"戴宗急得直搓手："那边多等一天就像熬一年，求师父赶紧动身吧。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">公孙胜便起身引了戴宗、李逵离了家里，取路上二仙山来。此时已是秋残冬初时分，日短夜长，容易得晚。来到半山腰，却早红轮西坠。松阴里面一条小路，直到罗真人观前，见有朱红牌额上写三个金字，书着“紫虚观”。三人来到观前，看那二仙山时，果然是好座仙境。但见：</div>
+            <div class="text-block simplified-text">公孙胜带着戴宗和李逵离开家，往二仙山走。这时候快到冬天了，白天短夜晚长，天很快就黑了。他们走到半山腰时，太阳已经下山了。松树林里有条小路，直通罗真人的道观。道观门口有块红匾，上面用金字写着"紫虚观"。三人走到观前一看，这二仙山真是个好地方，像仙境一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">青松郁郁，翠柏森森。一群白鹤听经，数个青衣碾药。青梧翠竹，洞门深锁碧窗寒；白雪黄芽，石室云封丹灶暖。野鹿衔花穿径去，山猿擎果引雏来。时闻道士谈经，每见仙翁论法。虚皇坛畔，天风吹下步虚声；礼斗殿中，鸾背忽来环珮韵。只此便为真紫府，更于何处觅蓬莱。</div>
+            <div class="text-block simplified-text">这段文字描述的是一个像仙境一样的道士修行的地方。简单来说就是：
+
+松树柏树长得又高又密。几只白鹤在听人念经，几个穿青衣服的人在捣药。梧桐和竹子绿油油的，山洞的门关得紧紧的，石屋窗户透着凉气；屋里炼丹的炉子烧得暖暖的。野鹿叼着花从路上走过，猴子捧着果子带着小猴子过来。经常能听到道士讲经说法，看到老神仙讨论道法。祭坛旁边，天上传来念经的声音；大殿里头，突然响起神仙佩玉的叮当声。这地方简直就是神仙住的紫府仙境，还用得着去找什么蓬莱仙岛啊！
+
+（说明：原文用大量典故和道教术语描写道观仙境景象，改写时：
+1. "青衣"译为"穿青衣服的人"而非道童
+2. "黄芽""丹灶"等炼丹术语简化为"炼丹的炉子"
+3. "虚皇坛""礼斗殿"等专业建筑名用"祭坛""大殿"替代
+4. 保留所有景物元素但用口语表达，如"白鹤听经"变"白鹤在听人念经"
+5. 末句用意译方式突出"这里就是仙境"的核心意思）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">三人就着衣亭上，整顿衣服，从廊下入来，径投殿后松鹤轩里去。两个童子看见公孙胜领人入来，报知罗真人。传法旨，教请三人入来。当下公孙胜引着戴宗、李逵到松鹤轩内，正值真人朝真才罢，坐在云床上养性。公孙胜向前行礼起居，躬身侍立。戴宗、李逵看那罗真人时，端的有神游八极之表。但见：</div>
+            <div class="text-block simplified-text">三个人在衣亭整理好衣服，顺着走廊走进去，直接来到殿后的松鹤轩。两个童子看到公孙胜带人进来，赶紧告诉罗真人。真人传话让他们进来。公孙胜就带着戴宗、李逵走进松鹤轩，正好赶上罗真人刚做完早课，正坐在云床上休息。公孙胜上前行礼问安，恭敬地站在一旁。戴宗和李逵打量罗真人，只见他确实有神仙般的气度。具体模样是：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">星冠攒玉叶，鹤氅缕金霞。神清似长江皓月，貌古似泰华乔松。踏魁罡朱履步丹霄，歌步虚琅函浮瑞气。长髯广颊，修行到无漏之天；碧眼方瞳，服食造长生之境。三岛十洲骑凤往，洞天福地抱琴游。高餐沆瀣，静品鸾笙。正是：三更步月鸾声远，万里乘云鹤背高。都仙太史临凡世，广惠真人住世间。</div>
+            <div class="text-block simplified-text">这位神仙头戴镶满玉片的星冠，身披绣着金云纹的鹤羽大衣。他气质清朗如江上明月，面容古朴似泰山青松。脚穿红鞋踏着星斗登天，口诵仙经身绕祥云。长须宽脸，已修成不坏仙体；碧眼方瞳，靠仙丹达到长生。常骑凤凰游历蓬莱仙岛，抱着古琴玩遍洞天福地。饿了吃露水，闲时吹仙箫。真可谓：夜半踏月听鸾鸟鸣叫，驾鹤飞云游万里高空。这位从天庭下凡的都仙太史，正是人间广惠真人的化身。
+
+（说明：全文用"神仙穿搭+日常活动"的白话结构展开，将"无漏之天"译为"不坏仙体"，"沆瀣"译为"露水"，保留骑凤、抱琴等核心意象，用"饿了吃/闲时吹"等生活化表达替代原文典雅用语，末句点明神仙身份，确保所有原始信息完整呈现。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">戴宗当下见了，慌忙下拜。李逵只管着眼看。罗真人问公孙胜道：“此二位何来？”公孙胜道：“便是昔日弟子曾告我师，山东义友是也。今为高唐州知府高廉显逞异术，有兄宋江特令二弟来此呼唤。弟子未敢擅便，故来禀问我师。”罗真人道：“吾弟子既脱火坑，学炼长生，何得再慕此境？自宜慎重，不可妄为。”戴宗再拜道：“容乞暂请公孙先生下山，破了高廉，便送还山。”罗真人道：“二位不知，此非出家人闲管之事。汝等自下山去商议。”公孙胜只得引了二人，离了松鹤轩，连晚下山来。</div>
+            <div class="text-block simplified-text">戴宗一见罗真人，赶紧跪下磕头。李逵却直愣愣地站着盯着看。罗真人问公孙胜："这俩人是谁？"公孙胜回答："就是之前我跟师父提过的，我在山东结交的好兄弟。现在因为高唐州的知府高廉用邪法害人，我大哥宋江特地派他们来叫我帮忙。我不敢自作主张，所以来请示师父。"  
+
+罗真人说："你既然已经跳出江湖是非，跟我修行长生之道，怎么还想着回去掺和这些事？要慎重考虑，别乱来。"戴宗又磕头请求："求您让公孙先生跟我们下山一趟，收拾了高廉就马上送他回来。"罗真人摇头："你们不明白，这不是出家人该管的事。你们自己下山商量吧。"公孙胜没办法，只好带着两人离开道观，连夜下山去了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">李逵问道：“那老仙先生说甚么？”戴宗道：“你偏不听得？”李逵道：“便是不省得这般鸟则声。”戴宗道：“便是他的师父说道，教他休去。”李逵听了，叫起来道：“教我两个走了许多路程，千难万难寻见了，却放出这个屁来！莫要引老爷性发，一只手捻碎你这道冠儿，一只手提住腰胯，把那老贼倒直撞下山去！”戴宗瞅着道：“你又要钉住了脚？”李逵道：“不敢，不敢！说一声儿耍。”</div>
+            <div class="text-block simplified-text">李逵问："那老道士说了啥？"  
+戴宗说："你刚才没听见？"  
+李逵说："听不懂他叽里呱啦说啥。"  
+戴宗解释："他师父不让他跟我们走。"  
+李逵一听就炸了："咱俩跑这么远好不容易找到人，结果放这种屁！别逼我发火，不然一只手捏碎你的道士帽，一只手拎着你裤腰，把那老东西直接扔下山去！"  
+戴宗瞪他："你又想惹事？"  
+李逵马上怂了："不敢不敢！我就开个玩笑。"  
+
+（说明：用"老道士"替代"老仙先生"，"叽里呱啦"替代"鸟则声"，"炸了/发火"替代"性发"，"拎裤腰"替代"提腰胯"，"老东西"替代"老贼"，"惹事/怂了"等口语化表达，完整保留原文冲突情节和人物性格）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">三个再到公孙胜家里，当夜安排些晚饭吃了。公孙胜道：“且权宿一宵，明日再去恳告本师。若肯时，便去。”戴宗至夜，叫了安置，两个收拾行李，都来净室里睡了。两个睡到三更左侧，李逵悄悄地爬将起来，听得戴宗齁齁的睡着。自己寻思道：“却不是干鸟气么！你原是山寨里人，却来问甚么鸟师父！明朝那厮又不肯，却不误了哥哥的大事！我忍不得了，只是杀了那个老贼道，教他没问处，只得和我去。”李逵要害真人。有诗为证：</div>
+            <div class="text-block simplified-text">三个人又回到公孙胜家，当晚简单吃了晚饭。公孙胜说："今晚先住一夜，明天再去求我师父。他要是答应，咱们就走。"到了晚上，戴宗说了声"早点休息"，两人收拾好东西，在干净房间里睡下了。
+
+睡到半夜三点左右，李逵偷偷爬起来，听见戴宗睡得直打呼噜。他心里想："真他妈憋屈！你本来就是山寨的人，还找什么狗屁师父！明天那老东西要是不答应，岂不坏了大哥的正事？老子忍不了了，干脆宰了那老道士，让他没机会说不，只能跟咱们走。"李逵准备对真人下毒手。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">欲请公孙去解围，真人不肯着他为。</div>
+            <div class="text-block simplified-text">原文翻译成现代白话文：
+
+（有人）想请公孙去解决这个难题，但真人不同意让他去干这事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">李逵夜奋英雄力，斧到应教性命危。</div>
+            <div class="text-block simplified-text">李逵晚上发狠使出全力，他挥斧头砍人，谁碰上谁就得死。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">李逵当时摸了两把板斧，悄悄地开了房门，乘着星月明朗，一步步摸上山来。到得紫虚观前，却见两扇大门关了。旁边篱墙苦不甚高，李逵腾地跳将过去，开了大门，一步步摸入里面来。直至松鹤轩前，只听隔窗有人看诵玉枢宝经之声。李逵爬上来舐破窗纸张时，见罗真人独自一个坐在云床上，面前桌儿上烧着一炉名香，点起两枝画烛，朗朗诵经。李逵道：“这贼道却不是当死！”一踅，踅过门边来，把手只一推，呀地两扇亮槅齐开。李逵抢将入去，提起斧头，便望罗真人脑门上劈将下来，砍倒在云床上，流出白血来。李逵看了，笑道：“眼见的这贼道是童男子身，颐养得元阳真气，不曾走泻，正没半点的红。”李逵再仔细看时，连那道冠儿劈做两半，一颗头直砍到项下。李逵道：“今番且除了一害，不烦恼公孙胜不去。”便转身出了松鹤轩，从侧首廊下奔将出来。只见一个青衣童子拦住李逵，喝道：“你杀了我本师，待走那里去！”李逵道：“你这个小贼道，也吃我一斧！”手起斧落，把头早砍下台基边去。二人都被李逵砍了。有诗为证：</div>
+            <div class="text-block simplified-text">李逵拿起两把斧头，偷偷打开房门，趁着月光亮堂堂，一步步摸黑上了山。到了紫虚观门口，发现大门关着。边上的篱笆墙不算高，李逵纵身跳了过去，打开大门，轻手轻脚往里走。来到松鹤轩前，听见屋里有人念经。李逵扒着窗户舔破窗纸一看，只见罗真人一个人坐在云床上，面前桌上点着好香和两支蜡烛，正在大声念经。李逵心想："这臭道士该死了！"转身走到门边，用力一推，门"呀"地开了。他冲进去抡起斧头就往罗真人脑袋上砍，把人砍倒在云床上，流出的竟是白血。李逵笑道："看来这老道是个童子身，养得好真气，血里一点红色都没有。"再仔细看，连道士的帽子都被劈成两半，脑袋直接砍到了脖子根。李逵说："这下除掉一个祸害，不怕公孙胜不来了。"说完转身往外走，刚跑到走廊，被一个穿青衣的道童拦住："你杀了我师父，还想跑？"李逵说："小兔崽子，吃我一斧！"手起斧落，把道童的脑袋砍飞到了台阶下。就这样，李逵连杀两人。有诗为证：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">李逵双斧白如霜，劈倒真人命已亡。</div>
+            <div class="text-block simplified-text">李逵的两把斧头雪亮雪亮的，他挥斧砍下去，那个道士当场就没命了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">料得精魂归碧落，一心暗地喜非常。</div>
+            <div class="text-block simplified-text">我猜他的灵魂已经去了天上，心里暗暗高兴得不得了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">且说李逵笑道：“只好撒开！”径取路出了观门，飞也似奔下山来。到得公孙胜家里，闪入来，闭上了门，净室里听戴宗时，兀自未觉。李逵依然原又去睡了。直到天明，公孙胜起来，安排早饭，相待两个吃了。戴宗道：“再请先生同引我二人上山恳告真人。”李逵听了，暗暗地冷笑。三个依原旧路，再上山来。入到紫虚观里松鹤轩中，见两个童子。公孙胜问道：“真人何在？”道童答道：“真人坐在云床上养性。”李逵听说，吃了一惊，把舌头伸将出来，半日缩不入去。三个揭起帘子入来看时，见罗真人坐在云床上中间。李逵暗暗想道：“昨夜莫非是错杀了？”罗真人便道：“汝等三人又来何干？”戴宗道：“特来哀告我师慈悲，救取众人免难。”罗真人道：“这黑大汉是谁？”戴宗答道：“是小可义弟，姓李名逵。”真人笑道：“本待不教公孙胜去，看他的面上，教他去走一遭。”戴宗拜谢。李逵自暗暗寻思道：“那厮知道我要杀他，却又鸟说！”</div>
+            <div class="text-block simplified-text">话说李逵笑着说："算了算了！"说完就走出道观大门，飞快地跑下山去。到了公孙胜家，悄悄溜进门，关上门，去静室看戴宗，发现他还在睡觉。李逵就照原样回去继续睡了。
+
+天亮后，公孙胜起床做早饭，三个人一起吃了。戴宗说："请先生再带我们上山求见真人吧。"李逵听了，心里冷笑。三个人按原路上山，来到紫虚观松鹤轩，见到两个小道童。公孙胜问："真人在哪儿？"道童回答："真人在云床上打坐呢。"李逵一听，吓了一跳，舌头伸出来半天缩不回去。
+
+三人掀开帘子进去，看见罗真人好端端坐在云床上。李逵心里嘀咕："难道昨晚杀错人了？"罗真人问："你们三个又来干什么？"戴宗说："求师父发发慈悲，救救大家。"罗真人指着李逵问："这个大黑汉子是谁？"戴宗回答："是我结拜兄弟，叫李逵。"真人笑着说："本来不想让公孙胜去的，看在你的面子上，就让他去一趟吧。"戴宗连忙道谢。李逵心里却想："这老家伙明知道我要杀他，还在这儿装模作样！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">只见罗真人道：“我教你三人片时便到高唐州如何？”三个谢了。戴宗寻思：“这罗真人又强似我的神行法。”真人唤道童取三个手帕来。戴宗道：“上告我师，却是怎生教我们便能勾到高唐州？”罗真人便起身：“都跟我来。”三个人随出观门外石岩上来。先取一个红手帕铺在石上，道：“吾弟子可登。”公孙胜双脚踏在上面。罗真人把袖一拂，喝声道：“起！”那手帕化做一片红云，载了公孙胜，冉冉腾空便起，离山约有二十余丈。罗真人喝声：“住！”那片红云不动。却铺下一个青手帕，教戴宗踏上，喝声：“起！”那手帕却化作一片青云，载了戴宗，起在半空里去了。那两片青红二云，如芦席大，起在天上转。李逵看得呆了。罗真人却把一个白手帕，铺在石上，唤李逵踏上。李逵笑道：“却不是耍！若跌下来，好个大疙疸！”罗真人道：“你见二人么？”李逵立在手帕上。罗真人喝一声：“起！”那手帕化做一片白云，飞将起去。李逵叫道：“阿也！我的不稳，放我下来！”罗真人把右手一招，那青红二云，平平坠将下来。戴宗拜谢，侍立在面前。公孙胜侍立在左手。李逵在上面叫道：“我也要撒尿撒屎，你不着我下来，我劈头便撒下来也！”罗真人问道：“我等自是出家人，不曾恼犯了你，你因何夜来越墙而过，入来把斧劈我？若是我无道德，已被杀了。又杀了我一个道童。”李逵道：“不是我，你敢错认了！”罗真人笑道：“虽然只是砍了我两个葫芦，其心不善，且教你吃些磨难。”把手一招，喝声：“去！”一阵恶风，把李逵吹入云端里。只见两个黄巾力士押着，李逵耳边只听得风雨之声，不觉径到蓟州地界，唬得魂不着体，手脚摇战。忽听得刮剌剌地响一声，却从蓟州府厅屋上骨碌碌滚将下来。</div>
+            <div class="text-block simplified-text">罗真人说："我能让你们三个马上到高唐州，怎么样？"三人连忙道谢。戴宗心想："这罗真人的法术比我的神行法还厉害。"
+
+罗真人叫小道童拿来三块手帕。戴宗问："师父，您要怎么送我们去高唐州啊？"罗真人站起来说："都跟我来。"三人跟着他来到道观外的石崖上。
+
+罗真人先拿出一块红手帕铺在石头上，说："徒弟，站上去。"公孙胜就踩了上去。罗真人一挥袖子，喊了声"起！"那手帕变成一朵红云，托着公孙胜慢慢升到二十多丈高的空中。罗真人又喊"停！"红云就停住了。
+
+接着铺了块青手帕让戴宗站上去，喊"起！"手帕变成青云，把戴宗也送上了天。两朵云彩像席子那么大，在天上转圈。李逵都看傻了。
+
+罗真人又铺了块白手帕叫李逵站上去。李逵笑着说："这可不是闹着玩的！要是掉下来，非得摔个大包不可！"罗真人说："你没看见他们俩吗？"李逵这才站上去。罗真人喊"起！"白手帕变成白云飞起来。李逵吓得大叫："哎呀！我站不稳，快放我下来！"
+
+罗真人一招手，青红两朵云慢慢降下来。戴宗行礼道谢，站在一旁。公孙胜也站在旁边。李逵在天上喊："我要拉屎撒尿！再不让我下来，我就直接往下拉了！"
+
+罗真人问他："我们出家人没得罪你，你昨晚为什么翻墙进来用斧子砍我？要不是我有道行，早被你杀了。你还杀了我一个小道童。"李逵抵赖说："不是我干的，你认错人了！"
+
+罗真人笑着说："虽然只是砍了我两个葫芦，但你没安好心，得让你吃点苦头。"他一招手，喊了声"去！"突然刮起一阵狂风，把李逵吹到云里。只见两个黄巾力士押着他，耳边呼呼风声，一眨眼就到了蓟州地界，吓得他魂飞魄散，手脚发抖。突然哗啦一声响，他从蓟州府衙的屋顶上骨碌碌滚了下来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">当日正值府尹马士弘坐衙，厅前立着许多公吏人等。看见半天里落下一个黑大汉来，众皆吃惊。有诗为证：</div>
+            <div class="text-block simplified-text">那天正好是府尹马士弘在衙门里办公，大厅前站着很多衙役和办事的人。突然看见一个黑大汉从半空中掉下来，大家都吓了一大跳。有首诗可以证明这事：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">李逵唬得大痴呆，忽向云端落下来。</div>
+            <div class="text-block simplified-text">李逵吓得整个人都傻了，突然从天上掉了下来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">官吏见来俱丧胆，只疑妖怪降庭阶。</div>
+            <div class="text-block simplified-text">官员们一看见他，全都吓得半死，还以为是什么妖怪跑到衙门里来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">话说马知府见了，叫道：“且拿这厮过来。”当下十数个牢子狱卒，把李逵驱至当面。马府尹喝道：“你这厮是那里妖人？如何从半天里吊将下来？”李逵吃跌得头破额裂，半晌说不出话来。马知府道：“必然是个妖人！”教去取些法物来。牢子、节级将李逵捆翻，驱下厅前草地里。一个虞候掇一盆狗血，劈头一淋；又一个提一桶尿粪来，望李逵头上直浇到脚底下。李逵口里、耳朵里都是尿屎。李逵叫道：“我不是妖人，我是跟罗真人的伴当。”原来蓟州人都知道罗真人是个现世的活神仙，因此不肯下手伤他，再驱李逵到厅前。早有吏人禀道：“这蓟州罗真人是天下有名的得道活神仙，若是他的从者，不可加刑。”马府尹笑道：“我读千卷之书，每闻今古之事，未见神仙有如此徒弟，即系妖人。牢子，与我加力打那厮！”众人只得拿翻李逵，打得一佛出世，二佛涅槃。马知府喝道：“你那厮快招了妖人，便不打你！”李逵只得招做“妖人李二”。取一面大枷钉了，押下大牢里去。李逵来到死囚狱里，说道：“我是直日神将，如何枷了我？好歹教你这蓟州一城人都死！”那押牢节级、禁子，都知罗真人道德清高，谁不钦服，都来问道：“你这个端的是甚么人？”李逵道：“我是罗真人亲随直日神将，因一时有失，恶了真人，把我撇在此间，教我受些苦难，三两日必来取我。你们若不把些酒食来将息我时，我教你们众人全家都死！”那节级、牢子见了他说，倒都怕他，只得买酒买肉请他吃。李逵见他们害怕，越说起风话来。牢里众人越怕了，又将热水来与他洗浴了，换些干净衣裳。李逵道：“若还缺了我酒食，我便飞了去，教你们受苦！”牢里禁子只得倒陪告他。李逵陷在蓟州牢里不提。</div>
+            <div class="text-block simplified-text">马知府看到李逵，大喊："把这小子带过来！"十几个狱卒把李逵押到他面前。马知府骂道："你这家伙是哪来的妖怪？怎么从天上掉下来的？"李逵摔得头破血流，半天说不出话。马知府说："肯定是个妖怪！"叫人拿驱邪的东西来。狱卒们把李逵捆起来拖到院子里，一个当差的端来狗血泼在他头上，另一个提着粪桶从他头顶浇到脚底。李逵嘴里、耳朵里都是粪尿。
+
+李逵大喊："我不是妖怪！我是罗真人的跟班！"蓟州人都知道罗真人是活神仙，所以没人敢再动手，又把李逵带回大厅。有个小官报告说："罗真人是全国闻名的活神仙，如果是他的人，不能动刑。"马知府笑道："我读过那么多书，从古至今没见过神仙有这么丑的徒弟，肯定是妖怪！给我往死里打！"狱卒们只好按住李逵狠狠打了一顿。
+
+马知府威胁说："老实承认你是妖怪就不打了！"李逵只好假认是"妖怪李二"。他们给李逵戴上重枷关进死牢。李逵在牢里吹牛："我是值班神仙，你们敢锁我？小心全城人都得死！"狱卒们都知道罗真人的厉害，吓得赶紧问："您到底是什么人？"李逵继续编："我是罗真人的贴身神仙，因为犯了错被罚到这儿受几天苦，过两天他就来接我。你们要是不给我好吃好喝，我就让你们全家死光！"
+
+狱卒们真被吓住了，只好买酒买肉伺候他。李逵见他们害怕，吹得更起劲了。狱卒们还给他打水洗澡、换干净衣服。李逵又威胁："要是敢饿着我，我就飞走让你们倒霉！"狱卒们只好继续讨好他。就这样，李逵在蓟州大牢里过起了舒服日子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">且说罗真人把上项的事，一一说与戴宗。戴宗只是苦苦哀告，求救李逵。罗真人留住戴宗在观里宿歇，动问山寨里事务。戴宗诉说晁天王、宋公明仗义疏财，专只替天行道，誓不损害忠臣烈士、孝子贤孙、义夫节妇，许多好处。罗真人听罢甚喜。一住五日。戴宗每日磕头礼拜，求告真人，乞救李逵。罗真人道：“这等人只可驱除了罢，休带回去。”戴宗告道：“真人不知，这李逵虽然愚蠢，不省理法，也有些小好处。第一，耿直，分毫不肯苟取于人。第二，不会阿谄于人，虽死其忠不改。第三，并无淫欲邪心，贪财背义。敢勇当先。因此宋公明甚是爱他。不争没了这个人，回去教小可难见兄长宋公明之面。”罗真人笑道：“贫道已知这人是上界天杀星之数，为是下土众生作业太重，故罚他下来杀戮。吾亦安肯逆天，坏了此人，只是磨他一会。我叫取来还你。”戴宗拜谢。罗真人叫一声：“力士何在？”就鹤轩前起一阵风。风过处，一尊黄巾力士出现。但见：</div>
+            <div class="text-block simplified-text">话说罗真人把之前发生的事都详细告诉了戴宗。戴宗一个劲儿地哀求，求他救救李逵。罗真人留戴宗在道观住下，顺便打听梁山的情况。戴宗就说晁盖、宋江他们怎么讲义气、怎么劫富济贫、专门替天行道，保证不伤害忠臣好人、孝子贤孙、贞洁妇女这些好话。罗真人听完很高兴。
+
+戴宗在道观住了五天，天天磕头作揖求罗真人救李逵。罗真人说："这种人干脆别要了，你别带他回去了。"戴宗赶紧解释："真人您不知道，李逵虽然傻乎乎的，不懂规矩，但也有几个优点：第一，为人直爽，绝不白拿别人东西；第二，从不会拍马屁，就算死也忠心不改；第三，不贪女色钱财，打仗总是冲在最前面。所以宋江哥哥特别喜欢他。要是把他弄丢了，我回去没法跟宋江哥哥交代啊。"
+
+罗真人笑着说："我早算到这家伙是天上的天杀星转世。因为人间作恶的人太多，老天罚他下凡来收拾坏人。我哪敢违抗天意害他呢？就是让他吃点苦头罢了。我这就叫人把他带来还给你。"戴宗连忙道谢。
+
+罗真人大喊一声："力士在哪儿？"话音刚落，鹤亭前突然刮起一阵大风。风过后，出现一个黄巾力士。只见：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">面如红玉，须似皂绒。仿佛有一丈身材，纵横有千斤气力。黄巾侧畔，金环耀日喷霞光；绣袄中间，铁甲铺霜吞月影。常在坛前护法，每来世上降魔。脚穿抹绿雕蹾靴，手执宣花金蘸斧。</div>
+            <div class="text-block simplified-text">这人长得特别壮实：脸像红玉一样红润，胡子又黑又密像绒线。个子高得吓人，差不多有一丈高，力气大得能扛起千斤重的东西。他头上扎着黄巾，旁边戴着个金环，太阳一照闪闪发亮；身上穿着绣花棉袄，里面套着铁甲，冷冰冰的像结了一层霜。他平时就在祭坛边上保护法事，专门到人间来收拾妖魔。脚上蹬着绿色雕花的厚底靴，手里拎着一把金光闪闪的大斧头。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">那个黄巾力士上告：“我师有何法旨？”罗真人道：“先差你押去蓟州的那人，罪业已满。你还去蓟州牢里取他回来，速去速回。”力士声喏去了。约有半个时辰，从虚空里把李逵撇将下来。戴宗连忙扶住李逵，问道：“兄弟这两日在那里？”李逵看了罗真人，只管磕头拜说道：“铁牛不敢了也！”罗真人道：“你从今以后，可以戒性，竭力扶持宋公明，休生歹心。”李逵再拜道：“敢不遵依真人言语！”戴宗道：“你正去那里走了这几日？”李逵道：“自那日一阵风，直刮我去蓟州府里，从厅屋脊上直滚下来，被他府里众人拿住。那个马知府道我是妖人，捉翻我捆了，却教牢子狱卒把狗血和尿屎淋我一头一身，打得我两腿肉烂，把我枷了，下在大牢里去。众人问我是何神从天上落下来？只吃我说道罗真人的亲随直日神将，因有些过失，罚受此苦，过三二日，必来取我。虽是吃了一顿棍棒，却也诈得些酒肉噇。那厮们惧怕真人，却与我洗浴，换了一身衣裳。方才正在亭心里诈酒肉吃，只见半空里跳下这个黄巾力士，把枷锁开了，喝我闭眼，一似睡梦中，直扶到这里。”公孙胜道：“师父似这般的黄巾力士有一千余员，都是本师真人的伴当。”李逵听了，叫道：“活佛！你何不早说，免教我做了这般不是。”只顾下拜。戴宗也再拜恳告道：“小可端的来的多日了，高唐州军马甚急，望乞师父慈悲，放公孙先生同弟子去救哥哥宋公明，破了高廉，便送还山。”罗真人道：“我本不教他去，今为汝大义为重，权教他去走一遭。我有片言，汝当记取。”公孙胜向前跪听真人指教。</div>
+            <div class="text-block simplified-text">那个穿黄衣服的神仙手下问："师父有什么吩咐？"罗真人说："之前让你押到蓟州的那个人，惩罚时间到了。你现在去蓟州大牢把他带回来，快去快回。"手下答应着走了。大约过了半小时，李逵突然从天上掉下来。戴宗赶紧扶住他问："兄弟，这两天你去哪儿了？"李逵看见罗真人就拼命磕头说："铁牛再也不敢了！"罗真人说："从今以后你要改改脾气，好好帮宋江，别起坏心眼。"李逵又磕头说："我一定听您的话！"戴宗问："你这几天到底去哪儿了？"
+
+李逵说："那天一阵大风把我刮到蓟州府，从房顶上摔下来，被官府的人抓住了。那个马知府说我是妖怪，把我捆起来，让狱卒用狗血和屎尿浇我全身，打得我腿都烂了，戴上枷锁关进大牢。他们问我是什么神仙从天上掉下来，我就骗他们说我是罗真人的手下，因为犯错被罚受罪，过两三天就会有人来接我。虽然挨了打，但也骗到些酒肉吃。那些人怕罗真人，还给我洗澡换衣服。刚才我正在院子里骗酒喝，突然从天上跳下来那个黄衣神仙，打开我的枷锁，让我闭眼，跟做梦似的就把我带回来了。"
+
+公孙胜说："师父像这样的黄衣手下有一千多个呢。"李逵听了大叫："活菩萨啊！你早说不就完了，害我吃这么多苦头！"又跪下直磕头。戴宗也跪下请求："我们真的来很久了，高唐州那边军情紧急，求您开恩让公孙先生跟我去救宋江，打败高廉后一定送他回来。"罗真人说："我本来不想让他去，但看在你重情义的份上，就让他去一趟吧。我有几句话要交代。"公孙胜上前跪下听师父教导。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">只因罗真人说了那几句话，传授秘诀，有分教：额角有光，日中无影。炼丹在石屋云房，飞步去蓬莱阆苑。正是：满还济世安邦愿，来作乘鸾跨凤人。毕竟罗真人说教公孙胜怎地下山，且听下回分解。</div>
+            <div class="text-block simplified-text">罗真人跟公孙胜说了些话，教了他一些本事。这下好了，公孙胜以后会变得很厉害：脑门发亮，大太阳底下没影子。他能在山里的石屋炼丹，还能飞去神仙住的地方。说白了就是：他学这些本事是为了救世安民，以后要成仙得道。至于罗真人具体让公孙胜怎么下山，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
