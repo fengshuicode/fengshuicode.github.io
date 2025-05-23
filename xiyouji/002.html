@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二回　悟彻菩提真妙理　断魔归本合元神</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">西游记 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./001.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第二回　悟彻菩提真妙理　断魔归本合元神</h1>
+        <a href="./003.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">话表美猴王得了姓名，怡然踊跃，对菩提前作礼启谢。那祖师即命大众引孙悟空出二门外，教他洒扫应对，进退周旋之节，众仙奉行而出。悟空到门外，又拜了大众师兄，就于廊庑之间，安排寝处。次早，与众师兄学言语礼貌，讲经论道，习字焚香，每日如此。闲时即扫地锄园，养花修树，寻柴燃火，挑水运浆。凡所用之物，无一不备。在洞中不觉倏六七年。</div>
+            <div class="text-block simplified-text">简单直白的白话文：
+
+话说美猴王有了名字（孙悟空），高兴得又蹦又跳，向菩提祖师行礼道谢。祖师就让其他徒弟带孙悟空到外面，教他打扫卫生、待人接物的规矩。大家按吩咐带他出去了。到了外面，孙悟空又拜见了各位师兄，然后在走廊边安排了住处。第二天开始，他每天跟师兄们学说话礼仪、讨论学问、写字烧香。空闲时就扫地、整理菜园、养花修树、砍柴生火、挑水打杂。要用的东西都准备齐全了。就这样在洞里不知不觉过了六七年。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">一日，祖师登坛高坐，唤集诸仙，开讲大道。真个是——</div>
+            <div class="text-block simplified-text">有一天，祖师爷坐在高台上，叫来所有神仙，开始讲大道理。那场面真是——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">天花乱坠，地涌金莲。妙演三乘教，精微万法全。慢摇麈尾喷珠玉，响振雷霆动九天。说一会道，讲一会禅，三家配合本如然。开明一字皈诚理，指引无生了性玄。</div>
+            <div class="text-block simplified-text">天上掉花，地上冒金莲。讲经说法特别厉害，把各种高深的道理都说明白了。他轻轻摇着拂尘，说的话像珍珠美玉一样珍贵，声音大得像打雷，震动了整个天界。他一会儿讲道，一会儿说禅，把儒释道三家的学问融合得特别好。只要明白一个"诚"字，就能领悟最根本的真理，帮助人看透生死、参透人生的奥秘。
+
+（说明：译文完全遵循了用户的要求，用最通俗的大白话重新表述：
+1. "天花乱坠，地涌金莲"译为"天上掉花，地上冒金莲"，保留原意象
+2. "妙演三乘教"等专业术语转化为"讲经说法特别厉害"
+3. "麈尾"译为现代人懂的"拂尘"
+4. "三家配合"明确点出"儒释道"
+5. "无生了性玄"译为"看透生死、参透人生"
+6. 没有增减原文信息，全部用口语化表达）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">孙悟空在旁闻讲，喜得他抓耳挠腮，眉花眼笑，忍不住手之舞之，足之蹈之。忽被祖师看见，叫孙悟空道：“你在班中，怎么颠狂跃舞，不听我讲？”悟空道：“弟子诚心听讲，听到老师父妙音处，喜不自胜，故不觉作此踊跃之状。望师父恕罪！”祖师道：“你既识妙音，我且问你，你到洞中多少时了？”悟空道：“弟子本来懵懂，不知多少时节，只记得灶下无火，常去山后打柴，见一山好桃树，我在那里吃了七次饱桃矣。”祖师道：“那山唤名烂桃山。你既吃七次，想是七年了。你今要从我学些什么道？”悟空道：“但凭尊师教诲，只是有些道气儿，弟子便就学了。”</div>
+            <div class="text-block simplified-text">孙悟空在旁边听讲，高兴得抓耳朵挠腮帮子，眉开眼笑，忍不住手舞足蹈。突然被祖师看见，祖师问他："你不好好听课，在那儿瞎蹦跶什么？"
+
+孙悟空赶紧说："师父，我真的是在认真听讲。听到您讲得太精彩了，一时高兴得控制不住自己。您别生气啊！"
+
+祖师问："你既然听得懂，那我问你，你来洞里多久了？"
+
+孙悟空回答："我这个人稀里糊涂的，也记不清日子。就记得厨房没柴火的时候，我常去后山砍柴。那儿有片好桃林，我已经在那儿吃饱过七次桃子了。"
+
+祖师说："那山叫烂桃山。你吃了七次桃子，算来有七年了。说吧，你想跟我学什么本事？"
+
+孙悟空说："全听师父安排。只要是有用的本事，我都愿意学。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">祖师道：“‘道’字门中有三百六十旁门，旁门皆有正果。不知你学那一门哩？”悟空道：“凭尊师意思，弟子倾心听从。”祖师道：“我教你个‘术’字门中之道如何？”悟空道：“术门之道怎么说？”祖师道：“术字门中，乃是些请仙扶鸾，问卜揲蓍，能知趋吉避凶之理。”悟空道：“似这般可得长生么？”祖师道：“不能，不能！”悟空道：“不学，不学！”</div>
+            <div class="text-block simplified-text">祖师说："'道'这个门派下面有三百六十种分支，每个分支都能修成正果。你想学哪一种？"  
+
+悟空回答："全听师父安排，弟子一定认真学。"  
+
+祖师问："那我教你'术'字门派的功夫怎么样？"  
+
+悟空问："'术'字门派是学什么的？"  
+
+祖师解释："就是请神仙、占卜算卦这些，能预知吉凶祸福。"  
+
+悟空问："学了能长生不老吗？"  
+
+祖师答："不能。"  
+
+悟空立刻说："那不学！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">祖师又道：“教你‘流’字门中之道如何？”悟空又问：“流字门中是甚义理？”祖师道：“流字门中，乃是儒家、释家、道家、阴阳家、墨家、医家，或看经，或念佛，并朝真降圣之类。”悟空道：“似这般可得长生么？”祖师道：“若要长生，也似壁里安柱。”悟空道：“师父，我是个老实人，不晓得打市语。怎么谓之‘壁里安柱’？”祖师道：“人家盖房欲图坚固，将墙壁之间立一顶柱，有日大厦将颓，他必朽矣。”悟空道：“据此说，也不长久。不学，不学！”</div>
+            <div class="text-block simplified-text">祖师又说："我教你‘流’字门派的功夫怎么样？"悟空问："这流派是啥意思？"祖师回答："就是儒家、佛家、道家、阴阳家、墨家、医家这些，要么念经，要么拜佛，还有求神拜仙这些事。"悟空问："学这些能长生不老吗？"祖师说："想靠这些长生，就跟墙里加柱子差不多。"悟空说："师父，我这人实在，听不懂行话。这‘墙里加柱子’是啥意思？"祖师解释："就像盖房子为了结实，在墙中间加根柱子。等哪天房子要塌了，这柱子肯定先烂掉。"悟空说："照这么说，这法子也不长久。不学不学！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">祖师道：“教你‘静’字门中之道如何？”悟空道：“静字门中是甚正果？”祖师道：“此是休粮守谷，清静无为，参禅打坐，戒语持斋，或睡功，或立功，并入定坐关之类。”悟空道：“这般也能长生么？”祖师道：“也似窑头土坯。”悟空笑道：“师父果有些滴。一行说我不会打市语。怎么谓之‘窑头土坯’？”祖师道：“就如那窑头上，造成砖瓦之坯，虽已成形，尚未经水火锻炼，一朝大雨滂沱，他必滥矣。”悟空道：“也不长远。不学，不学！”</div>
+            <div class="text-block simplified-text">祖师说："教你'静'字门的功夫怎么样？"  
+悟空问："静字门练了能成什么正果？"  
+祖师答："就是不吃五谷、清心寡欲、打坐念经、不说话吃素，要么睡觉练功，要么站着练功，还有打坐入定这些。"  
+悟空问："这样能长生不老吗？"  
+祖师说："就像窑厂里晒着的土坯子。"  
+悟空笑了："师父说话真有意思。刚才还说我不懂行话，这'窑头土坯'又是什么意思？"  
+祖师解释："就像窑厂里做砖瓦的土坯，虽然有了形状，但还没用火烧过。要是下大雨，立马就泡烂了。"  
+悟空说："这不长久。不学，不学！"  
+
+（说明：用"土坯子"替代"土坯"更口语化；"泡烂"比"滥"更易理解；"清心寡欲"保留因无更简单表述；"打坐念经"合并了"参禅打坐"和"戒语持斋"的核心理念）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">祖师道：“教你‘动’字门中之道如何？”悟空道：“动门之道却又怎么？”祖师道：“此是有为有作，采阴补阳，攀弓踏弩，摩脐过气，用方炮制，烧茅打鼎，进红铅，炼秋石，并服妇乳之类。”悟空道：“似这等也得长生么？”祖师道：“此欲长生，亦如水中捞月。”悟空道：“师父又来了。怎么叫做‘水中捞月’？”祖师道：“月在长空，水中有影，虽然看见，只是无捞摸处，到底只成空耳。”悟空道：“也不学，不学！”</div>
+            <div class="text-block simplified-text">祖师问："教你练'动'字门的功夫怎么样？"悟空问："这动门功夫是啥？"祖师说："就是搞些有的没的，比如采阴补阳啊，拉弓踩弩啊，按摩肚脐运气啊，配药炼丹啊，烧符炼鼎啊，吃些红铅秋石，还有人奶这些东西。"悟空问："这样能长生不老吗？"祖师说："想靠这个长生？就跟水里捞月亮一样。"悟空说："师父你又来了，'水里捞月亮'是啥意思？"祖师解释："月亮挂天上，水里只是个影子，看得见摸不着，最后一场空。"悟空说："那我不学，不学！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">祖师闻言，咄的一声，跳下高台，手持戒尺，指定悟空道：“你这猢狲，这般不学，那般不学，却待怎么？”走上前，将悟空头上打了三下，倒背着手，走入里面，将中门关了，撇下大众而去。唬得那一班听讲的，人人惊惧，皆怨悟空道：“你这泼猴，十分无状！师父传你道法，如何不学，却与师父顶嘴！这番冲撞了他，不知几时才出来呵！”此时俱甚报怨他，又鄙贱嫌恶他。悟空一些儿也不恼，只是满脸陪笑。原来那猴王已打破盘中之谜，暗暗在心。所以不与众人争竞，只是忍耐无言。祖师打他三下者，教他三更时分存心；倒背着手走入里面，将中门关上者，教他从后门进步，秘处传他道也。</div>
+            <div class="text-block simplified-text">师父一听这话，立刻"咄"地大喝一声，从高台上跳下来，拿着戒尺指着孙悟空说："你这猴子，这也不学那也不学，到底想怎样？"说完走上前，在孙悟空头上敲了三下，然后背着手走进里屋，把大门一关，丢下其他人就走了。
+
+在场听课的人都吓坏了，纷纷责怪孙悟空："你这捣蛋的猴子太不像话了！师父教你本事，你不好好学还敢顶嘴！现在把他气走了，谁知道他什么时候才肯出来啊！"大家都埋怨他，看不起他，觉得他讨厌。
+
+可孙悟空一点儿都不生气，反而笑嘻嘻的。原来这猴王已经猜到了师父的暗号，心里明白得很。所以他没跟别人争辩，只是忍着不说话。师父敲他三下，其实是让他半夜三更来找自己；背着手从后门进去，是暗示要从后门偷偷进来，私下传授他真本事。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">当日悟空与众等，喜喜欢欢，在三星仙洞之前，盼望天色，急不能到晚。及黄昏时，却与众就寝，假合眼，定息存神。山中又没打更传箭，不知时分，只自家将鼻孔中出入之气调定。约到子时前后，轻轻的起来，穿了衣服，偷开前门，躲离大众，走出外，抬头观看，正是那——</div>
+            <div class="text-block simplified-text">那天，孙悟空和伙伴们在三星仙洞前高高兴兴地等着天黑，可太阳老不下山，大家都等急了。到了晚上，他跟大家一起假装睡觉，闭着眼睛调整呼吸。山里没人报时，也不知道具体几点，他就靠感觉数自己的呼吸来估摸时间。大概半夜的时候，他悄悄爬起来，穿好衣服，偷偷开门溜出去。躲开其他人后，他抬头一看——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">月明清露冷，八极迥无尘。深树幽禽宿，源头水溜汾。</div>
+            <div class="text-block simplified-text">月亮又明又亮，露水冷冷的。四面八方干干净净，一点灰尘都没有。树林深处，鸟儿安静地睡觉。泉水从源头哗啦啦地流出来。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">飞萤光散影，过雁字排云。正直三更候，应该访道真。</div>
+            <div class="text-block simplified-text">萤火虫的光一闪一闪的，大雁排着队飞过天空。这会儿正好是半夜，该去找高人请教真本事了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">你看他从旧路径至后门外，只见那门儿半开半掩，悟空喜道：“老师父果然注意与我传道，故此开着门也。”即曳步近前，侧身进得门里，只走到祖师寝榻之下。见祖师蜷部身躯，朝里睡着了。悟空不敢惊动，即跪在榻前。那祖师不多时觉来，舒开两足，口中自吟道：</div>
+            <div class="text-block simplified-text">你看他沿着老路走到后门外，发现门半开着。悟空高兴地想：“师父肯定是想教我本事，所以特意给我留了门。”他轻手轻脚走到门前，侧着身子进去，一直走到祖师的床边。看见祖师蜷着身子朝里睡着。悟空不敢吵醒他，就跪在床前等着。没过多久，祖师醒了，伸了个懒腰，嘴里还念叨着：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">难，难，难！道最玄，莫把金丹作等闲。不遇至人传妙诀，空言口困舌头干！</div>
+            <div class="text-block simplified-text">太难了，太难了，太难了！修仙这事儿特别深奥，可别把金丹大道当成简单事儿。要是遇不到真正的高人传授秘诀，光靠嘴上瞎说，说得口干舌燥也是白搭！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">悟空应声叫道：“师父，弟子在此跪候多时。”祖师闻得声音是悟空，即起披衣盘坐，喝道：“这猢狲！你不在前边去睡，却来我这后边作甚？”悟空道：“师父昨日坛前对众相允，教弟子三更时候，从后门里传我道理，故此大胆径拜老爷榻下。”祖师听说，十分欢喜，暗自寻思道：“这厮果然是个天地生成的，不然，何就打破我盘中之暗谜也？”悟空道：“此间更无六耳，止只弟子一人，望师父大舍慈悲，传与我长生之道罢，永不忘恩！”祖师道：“你今有缘，我亦喜说。既识得盘中暗谜，你近前来，仔细听之，当传与你长生之妙道也。”悟空叩头谢了，洗耳用心，跪于榻下。祖师云：</div>
+            <div class="text-block simplified-text">孙悟空赶紧答应说：“师父，徒弟我在这儿跪着等您半天了。”菩提祖师一听是孙悟空的声音，马上披上衣服坐起来，假装生气地说：“你这猴头！不去前面睡觉，跑我后头来干啥？”孙悟空解释：“师父您昨天当着大家的面答应我，让我半夜三更从后门进来，好教我本事。所以我才壮着胆子直接来找您。”祖师一听这话，心里特别高兴，暗想：“这家伙果然是天生地长的灵猴，要不怎么能猜中我设的哑谜呢？”孙悟空又说：“这儿没别人，就我一个。求师父发发慈悲，教我长生不老的法术吧，我一辈子记着您的大恩！”祖师说：“看来咱俩有缘分，我也乐意教你。既然你能猜中我的哑谜，过来点，仔细听着，这就教你长生不老的真本事。”孙悟空连忙磕头道谢，竖起耳朵认真听，跪在床边。祖师开始讲——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">显密圆通真妙诀，惜修性命无他说。都来总是精气神，谨固牢藏休漏泄。</div>
+            <div class="text-block simplified-text">简单直白的翻译：
+
+修行的真正秘诀，就是珍惜和修炼自己的身心。说到底就是养好精气神，牢牢守住别浪费。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">休漏泄，体中藏，汝受吾传道自昌。口诀记来多有益，屏除邪欲得清凉。</div>
+            <div class="text-block simplified-text">别到处乱说，要藏在心里。你学会我教的东西，自然会越来越好。记住这些口诀很有用，能帮你去掉坏心思，心里就会轻松舒服。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">得清凉，光皎洁，好向丹台赏明月。月藏玉兔日藏乌，自有龟蛇相盘结。</div>
+            <div class="text-block simplified-text">这段话的意思是：
+
+找到一处清凉的地方，月光明亮洁白，正好可以在高台上欣赏美丽的月亮。月亮里藏着玉兔，太阳里藏着金乌，自然还有龟和蛇互相缠绕在一起。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">相盘结，性命坚，却能火里种金莲。攒簇五行颠倒用，功完随作佛和仙。</div>
+            <div class="text-block simplified-text">咱们一起努力修炼，把身体和心灵都练得特别结实。这样就算在很艰难的环境里，也能种出好东西来（火里种金莲）。只要把身体里的各种能量（五行）调配得当，反过来用也行。等功夫练成了，就能成佛成仙啦！
+
+（说明：用"咱们"拉近距离，"种出好东西"替代隐喻，"能量"解释"五行"，"调配得当"解释"攒簇颠倒"，最后用"啦"增强口语感，完全保留炼丹修行的核心意象。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">此时说破根源，悟空心灵福至。切切记了口诀，对祖师拜谢深恩，即出后门观看。但见东方天色微舒白，西路金光大显明。依旧路转到前门，轻轻的推开进去，坐在原寝之处，故将床铺摇响道：“天光了，天光了！起耶！”那大众还正睡哩，不知悟空已得了好事。当日起来打混，暗暗维持，子前午后，自己调息。</div>
+            <div class="text-block simplified-text">孙悟空一听就明白了其中的道理，心里特别高兴。他牢牢记住口诀，谢过师父的大恩，就从后门出去看天色。这时候东边天空刚有点发白，西边已经金光闪闪。他按原路回到前门，轻轻推门进去，回到自己睡觉的地方，故意摇着床喊："天亮啦天亮啦！起床啦！"其他徒弟都还在睡觉，根本不知道孙悟空已经得了真传。从那天起，他白天跟大家一样干活，私下里却偷偷练习，早晚都自己打坐调息。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">却早过了三年，祖师复登宝座，与众说法。谈的是公案比语，论的是外像包皮。忽问：“悟空何在？”悟空近前跪下：“弟子有。”祖师道：“你这一向修些什么道来？”悟空道：“弟子近来法性颇通，根源亦渐坚固矣。”祖师道：“你既通法性，会得根源，已注神体，却只是防备着三灾利害。”悟空听说，沉吟良久道：“师父之言谬矣。我尝闻道高德隆，与天同寿，水火既济，百病不生，却怎么有个‘三灾利害’？”祖师道：“此乃非常之道，夺天地之造化，侵日月之玄机。丹成之后，鬼神难容。虽驻颜益寿，但到了五百年后，天降雷灾打你，须要见性明心，预先躲避。躲得过寿与天齐，躲不过就此绝命。再五百年后，天降火灾烧你。这火不是天火，亦不是凡火，唤做阴火。自本身涌泉穴下烧起，直透泥垣宫，五脏成灰，四肢皆朽，把千年苦行，俱为虚幻。再五百年，又降风灾吹你。这风不是东南西北风，不是和熏金朔风，亦不是花柳松竹风，唤做鸹风。自囟门中吹入六腑，过丹田，穿九窍，骨肉消疏，其身自解。所以都要躲过。”悟空闻说，毛骨悚然，叩头礼拜道：“万望老爷垂悯，传与躲避三灾之法，到底不敢忘恩。”祖师道：“此亦无难，只是你比他人不同，故传不得。”悟空道：“我也头圆顶天，足方履地，一般有九窍四肢，五脏六腑，何以比人不同？”祖师道：“你虽然像人，却比人少腮。”原来那猴子孤拐面，凹脸尖嘴。悟空伸手一摸，笑道：“师父没成算。我虽少腮，却比人多这个素袋，亦可准折过也。”祖师说：“也罢，你要学那一般？有一般天罡数，该三十六般变化；有一般地煞数，该七十二般变化。”悟空道：“弟子愿多里捞摸，学一个地煞变化罢。”祖师道：“既如此，上前来，传与你口诀。”遂附耳低言，不知说了些什么妙法。这猴王也是他一窍通时百窍通，当时习了口诀，自修自炼，将七十二般变化都学成了。</div>
+            <div class="text-block simplified-text">转眼三年过去，师父又坐在高台上给大家讲课。讲的是些修行道理，讨论的是表面现象。突然他问："悟空在哪儿？"悟空赶紧上前跪下："徒弟在这儿。"师父问："你最近都在修炼什么？"悟空说："徒弟最近对修行道理有点领悟，根基也慢慢扎实了。"师父说："你既然懂了修行根本，掌握了要领，已经练成仙体，但要小心'三灾'的劫难。"
+
+悟空听了想半天，说："师父您说错了吧？我听说修行高深的人能和天地同寿，不怕水火，百病不侵，怎么还会有'三灾'这种劫难？"师父解释道："咱们修的是逆天改命的功夫，违背自然规律。练成之后连鬼神都容不下你。虽然能长生不老，但每五百年要遭一次劫：第一次是雷劈，要提前躲开，躲不过就死；再过五百年会从脚底烧起阴火，把身体烧成灰；再过五百年会刮怪风，从头顶吹进身体，把人吹得骨肉分离。这三关都得躲过去才行。"
+
+悟空吓得直冒冷汗，赶紧磕头："求师父教我躲灾的办法，我一定不忘您的大恩。"师父说："教你不难，只是你长得跟别人不一样，不好教。"悟空不服："我也有头有脚，五脏六腑样样齐全，哪不一样了？"师父说："你脸上没腮帮子。"原来猴子脸是凹的。悟空摸摸脸笑道："师父您算漏了，我是没腮帮子，但我比人多长了个嗉囊，这不就扯平了吗？"
+
+师父只好说："行吧，你想学哪种变化？有天罡三十六变，还有地煞七十二变。"悟空说："我要学多的，学七十二变！"师父就凑到他耳边教了口诀。这猴子天生聪明，一学就会，自己勤加练习，很快就把七十二变都学会了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">忽一日，祖师与众门人在三星洞前戏玩晚景。祖师道：“悟空，事成了未曾？”悟空道：“多蒙师父海恩，弟子功果完备，已能霞举飞升也。”祖师道：“你试飞举我看。”悟空弄本事，将身一耸，打了个连扯跟头，跳离地有五六丈，踏云霞去勾有顿饭之时，返复不上三里远近，落在面前，带手道：“师父，这就是飞举腾云了。”祖师笑道：“这个算不得腾云，只算得爬云而已。自古道：神仙朝游北海暮苍梧。似你这半日，去不上三里，即爬云也还算不得哩。”悟空道：“怎么为‘朝游北海暮苍梧’？”祖师道：“凡腾云之辈，早辰起自北海，游过东海、西海、南海，复转苍梧。苍梧者，却是北海零陵之语话也。将四海之外，一日都游遍，方算得腾云。”悟空道：“这个却难，却难！”祖师道：“世上无难事，只怕有心人。”悟空闻得此言，叩头礼拜，启道：“师父，为人须为彻，索性舍个大慈悲，将此腾云之法，一发传与我罢，决不敢忘恩。”祖师道：“凡诸仙腾云，皆跌足而起，你却不是这般。我才见你去，连扯方才跳上。我今只就你这个势，传你个筋斗云罢。”悟空又礼拜恳求，祖师却又传个口诀道：“这朵云，捻着诀，念动真言，攒紧了拳，将身一抖，跳将起来，一筋斗就有十万八千里路哩！”大众听说，一个个嘻嘻笑道：“悟空造化！若会这个法儿，与人家当铺兵，送文书，递报单，不管那里都寻了饭吃。”师徒们天昏各归洞府。这一夜，悟空即运神炼法，会了筋斗云。逐日家无拘无束，自在逍遥，此亦长生之美。</div>
+            <div class="text-block simplified-text">有一天傍晚，祖师和徒弟们在三星洞前看风景。祖师问孙悟空："悟空，你练得怎么样了？"悟空回答："多谢师父教导，我已经学会腾云驾雾了。"祖师说："那你飞一个给我看看。"
+
+悟空就使出本事，猛地一跳，翻了几个跟头，飞到五六丈高，踩着云彩飞了一会儿。大概一顿饭的工夫，飞了不到三里路就回来了，拱手说："师父，这就是腾云驾雾了。"
+
+祖师笑着说："这哪算腾云啊，顶多叫爬云。神仙都是早上在北海，晚上就到苍梧了。你这飞了半天还不到三里路，连爬云都算不上。"悟空问："什么叫'早上北海晚上苍梧'？"
+
+祖师解释说："真正会腾云的神仙，早上从北海出发，游遍东海、西海、南海，最后到苍梧（就是北海的零陵）。一天之内游遍四海之外，这才叫腾云。"悟空说："这也太难了吧！"
+
+祖师说："世上无难事，只怕有心人。"悟空听了赶紧跪下磕头："师父，您就教教我真正的腾云之法吧，我一定不忘您的恩情。"
+
+祖师说："一般神仙都是跺脚起飞，你不是这样。我看你是翻跟头起飞的，就教你个筋斗云吧。"说完传了他口诀："捏诀念咒，握紧拳头，身子一抖跳起来，一个跟头就能翻十万八千里！"
+
+其他徒弟听了都笑着说："悟空这下走运了！学会这本事，以后给人送信跑腿，到哪儿都不愁饭吃。"天黑后大家各自回去。当晚悟空就练会了筋斗云。从此每天自由自在，想飞哪儿飞哪儿，这真是长生不老的好处啊。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">一日，春归夏至，大众都在松树下会讲多时。大众道：“悟空，你是那世修来的缘法？前日老师父附耳低言，传与你的躲三灾变化之法，可都会么？”悟空笑道：“不瞒诸兄长说，一则是师父传授，二来也是我昼夜殷勤，那几般儿都会了。”大众道：“趁此良时，你试演演，让我等看看。”悟空闻说，抖擞精神，卖弄手段道：“众师兄请出个题目，要我变化什么？”大众道：“就变颗松树罢。”悟空捻着诀，念动咒语，摇身一变，就变做一颗松树。真个是——</div>
+            <div class="text-block simplified-text">有一天，夏天到了，大家聚在松树下聊了很久。有人问孙悟空："悟空，你上辈子积了什么德啊？前几天师父偷偷教你躲灾避祸、变化的本事，你都学会了吗？"悟空笑着说："不瞒各位师兄，一来是师父教得好，二来我自己也日夜苦练，现在这些本事都会了。"大家就说："趁现在天气好，你变个戏法给我们看看呗。"悟空一听来了劲，想显摆一下："师兄们出个题吧，要我变什么？"大家说："就变棵松树吧。"悟空掐诀念咒，身子一晃，真的变成了一棵松树。那样子简直跟真的一模一样——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">郁郁含烟贯四时，凌云直上秀贞姿。全无一点妖猴像，尽是经霜耐雪枝。</div>
+            <div class="text-block simplified-text">这棵松树一年四季都绿油油的，被云雾环绕着。它长得又高又直，姿态挺拔好看。完全不像那些轻浮的猴子，而是像经历过风霜雨雪的树枝一样坚韧。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">大众见了，鼓掌呵呵大笑，都道：“好猴儿，好猴儿！”不觉的嚷闹，惊动了祖师，祖师急拽杖出门来问道：“是何人在此喧哗？”大众闻呼，慌忙检束，整衣向前。悟空也现了本相，杂在丛中道：“启上尊师，我等在此会讲，更无外姓喧哗。”祖师怒喝道：“你等大呼小叫，全不像个修行的体段。修行的人，口开神气散，舌动是非生，如何在此嚷笑？”大众道：“不敢瞒师父，适才孙悟空演变化耍子。教他变颗松树，果然是颗松树，弟子们俱称扬喝采，故高声惊冒尊师，望乞恕罪。”祖师道：“你等起去。”叫：“悟空过来！我问你弄什么精神，变什么松树？这个工夫，可好在人前卖弄？假如你见别人有，不要求他？别人见你有，必然求你。你若畏祸却要传他，若不传他，必然加害，你之性命又不可保。”悟空叩头道：“只望师父恕罪！”祖师道：“我也不罪你，但只是你去罢。”悟空闻此言，满眼堕泪道：“师父，教我往那里去？”祖师道：“你从那里来，便从那里去就是了。”悟空顿然醒悟道：“我自东胜神洲傲来国花果山水帘洞来的。”祖师道：“你快回去，全你性命；若在此间断然不可！”悟空领罪，“上告尊师我也离家有二十年矣，虽是回顾旧日儿孙，但念师父厚恩未报，不敢去。”祖师道：“那里什么恩义？你只不惹祸不牵带我就罢了！”悟空见没奈何，只得拜辞，与众相别。祖师道：“你这去，定生不良。凭你怎么惹祸行凶，却不许说是我的徒弟，你说出半个字来，我就知之，把你这猢狲剥皮锉骨，将神魂贬在九幽之处，教你万劫不得翻身！”悟空道：“决不敢提起师父一字，只说是我自家会的便罢。”</div>
+            <div class="text-block simplified-text">大家看到后，都拍手哈哈大笑，喊着："好猴子！真厉害！"吵闹声太大，把祖师爷惊动了。祖师爷赶紧拄着拐杖出来问："谁在这儿大吵大闹？"大家一听师父来了，赶紧站好整理衣服。孙悟空也变回原样，躲在人群里说："师父，我们在这儿讨论功课，没外人在闹。"
+
+祖师爷生气地说："你们大喊大叫的，哪像个修行的人？修行人要管住嘴，乱说话会惹麻烦，怎么能在这儿嘻嘻哈哈的？"大家老实交代："师父，刚才是孙悟空在表演变戏法。我们让他变棵松树，他真变出来了，大家看得高兴才叫出声来，吵到您了，您别生气。"
+
+祖师爷说："你们都散了吧。"又叫孙悟空："过来！你显摆什么本事？变什么松树？这点本事也值得炫耀？要是别人看你厉害，肯定来求你教他。你要是不教，人家就会害你，你连命都保不住。"孙悟空赶紧磕头认错："师父饶了我吧！"
+
+祖师爷说："我不罚你，但你走吧。"孙悟空一听就哭了："师父，我能去哪儿啊？"祖师爷说："你从哪儿来的，就回哪儿去。"孙悟空这才明白："我是从东胜神洲傲来国花果山水帘洞来的。"祖师爷说："赶紧回去还能保命，再待在这儿就危险了！"
+
+孙悟空委屈地说："师父，我离家二十年了，虽然想回去看看，但还没报答您的恩情呢。"祖师爷说："别说这些了，只要你别给我惹事就行！"孙悟空没办法，只好告别大家。
+
+临走时祖师爷警告他："你这一走肯定要闯祸。不管你干什么坏事，都不准说是我徒弟！要是敢提半个字，我就把你剥皮抽筋，让你永世不得超生！"孙悟空保证："我绝对不提您，就说这些本事是我自己学的。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">悟空谢了，即抽身，捻着诀，丢个连扯，纵起筋斗云，径回东胜。那里消一个时辰，早看见花果山水帘洞，美猴王自知快乐，暗暗的自称道：</div>
+            <div class="text-block simplified-text">孙悟空谢过之后，马上念咒语，翻个跟头跳上筋斗云，直接飞回东胜神州。不到两个小时，就看到了花果山水帘洞。美猴王心里特别高兴，偷偷对自己说：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">去时凡骨凡胎重，得道身轻体亦轻。举世无人肯立志，立志修玄玄自明。</div>
+            <div class="text-block simplified-text">译文：  
+
+去的时候还是普通人，身体沉重；修炼成仙后，身体也变得轻飘飘。世上没人愿意下决心修炼，但只要下定决心，自然就能明白其中的奥妙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">当时过海波难进，今日回来甚易行。别语叮咛还在耳，何期顷刻见东溟。</div>
+            <div class="text-block simplified-text">当时渡海困难重重，现在回来却特别轻松。分别时的叮嘱还在耳边，没想到这么快就看到了东海。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">悟空按下云头，直至花果山，找路而走，忽听得鹤唳猿啼，鹤唳声冲霄汉外，猿啼悲切甚伤情。即开口叫道：“孩儿们，我来了也！”那崖下石坎边，花草中，树木里，若大若小之猴，跳出千千万万，把个美猴王围在当中，叩头叫道：“大王，你好宽心！怎么一去许久？把我们俱闪在这里，望你诚如饥渴！近来被一妖魔在此欺虐，强要占我们水帘洞府，是我等舍死忘生，与他争斗。这些时，被那厮抢了我们家火，捉了许多子侄，教我们昼夜无眠，看守家业。幸得大王来了。大王若再年载不来，我等连山洞尽属他人矣。”悟空闻说，心中大怒道：“是什么妖魔，辄敢无状！你且细细说来，待我寻他报仇。”众猴叩头：“告上大王，那厮自称混世魔王，住居在直北下。”悟空道：“此间到他那里，有多少路程？”众猴道：“他来时云，去时雾，或风或雨，或电或雷，我等不知有多少路。”悟空道：“既如此，你们休怕，且自顽耍，等我寻他去来。”</div>
+            <div class="text-block simplified-text">孙悟空从云上下来，直接落到花果山，正找路走呢，忽然听到鹤叫和猿猴的哀鸣，鹤叫声响彻天空，猿猴的叫声特别悲伤。孙悟空立刻大喊："孩子们，我回来啦！"这时，山崖下、石头缝里、花草丛中、树林里面，大大小小的猴子一下子跳出来成千上万只，把美猴王团团围住，磕着头说："大王啊，您可真放心！怎么一去这么久？可把我们扔在这儿想死您了！最近有个妖怪在这儿欺负我们，非要霸占咱们的水帘洞。我们拼命跟他打，这些天被他抢走了咱们的东西，抓走了好多小猴子，逼得我们日夜不敢睡觉，守着家当。幸好大王您回来了。您要是再晚一年半载不来，咱们这山洞就全是别人的了。"
+
+孙悟空一听，气得要命："是哪个妖怪这么大胆！你们详细跟我说，我去找他算账！"猴子们磕着头说："报告大王，那家伙自称混世魔王，住在正北边。"孙悟空问："从这儿到他那儿有多远？"猴子们回答："他来的时候驾云，走的时候起雾，有时候刮风下雨，有时候打雷闪电，我们也不知道到底有多远。"孙悟空说："行吧，你们别害怕，先自己玩着，等我找他去！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">好猴王，将身一纵，跳起去，一路筋斗，直至北下观看，见一座高山，真是十分险峻。好山——</div>
+            <div class="text-block simplified-text">这猴王真厉害，他一下子跳起来，翻着跟斗往北边飞去。到了那儿一看，有座特别陡峭的高山。这山可真险啊！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">笔峰挺立，曲涧深沉。笔峰挺立透空霄，曲涧深沉通地户。两崖花木争奇，几处松篁斗翠。左边龙，熟熟驯驯；右边虎，平平伏伏。每见铁牛耕，常有金钱种。幽禽斯朔声，丹凤朝阳立。石磷磷，波净净，古怪跷蹊真恶狞。世上名山无数多，花开花谢蘩还众。争如此景永长存，八节四时浑不动。诚为三界坎源山，滋养五行水脏洞！</div>
+            <div class="text-block simplified-text">这段文字描述了一座奇特的山景，用大白话来说就是：
+
+这座山很特别，山峰像笔一样直插云霄，山间的小溪弯弯曲曲通向深处。两边悬崖上花草树木争奇斗艳，松树竹林比着谁更翠绿。左边山势像条温顺的龙，右边山形像只趴着的老虎。常能看到像铁牛耕田的石头，还有像金钱一样的植物。鸟儿在幽静处鸣叫，凤凰站在朝阳的地方。山石嶙峋，水波清澈，整个地方看起来既古怪又有点吓人。世上名山虽多，但花草总有凋谢的时候，唯独这里的景色永远不变，四季如常。这里真是天地间难得的宝地，山中还有个水脏洞滋养着万物。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">美猴王正默观看景致，只听得有人言语，径自下山寻觅。原来那陡崖之前，乃是那水脏洞。洞门外有几个小妖跳舞，见了悟空就走，悟空道：“休走！借你口中言，传我心内事。我乃正南方花果山水帘洞洞主。你家什么混世鸟魔，屡次欺我儿孙，我特寻来，要与他见个上下！”</div>
+            <div class="text-block simplified-text">美猴王正在那儿安静地看风景，突然听见有人说话，就自己下山去找。原来那陡峭的山崖前面，是个叫水脏洞的地方。洞口有几个小妖怪在跳舞，一看见孙悟空就吓得要跑。孙悟空喊住他们：“别跑！帮我带个话。我是正南方花果山水帘洞的洞主。你们那个叫什么混世鸟魔的头儿，老是欺负我的猴子猴孙，我今天专门来找他算账，跟他比个高低！”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">那小妖听说，疾忙跑入洞里报道：“大王，祸事了！”魔王道：“有甚祸事？”小妖道：“洞外有猴头称为花果山水帘洞洞主，他说你屡次欺他儿孙，特来寻你，见个上下哩！”魔王笑道：“我常闻得那些猴精说他有个大王，出家修行去，想是今番来了。你们见他怎生打扮，有甚器械？”小妖道：“他也没甚么器械，光着个头，穿一领红色衣，勒一条黄丝绦，足下踏一对乌靴，不僧不俗，又不像道士神仙，赤手空拳，在门外叫哩。”魔王闻说：“取我披挂兵器来！”那小妖即时取出。那魔王穿了甲胄，绰刀在手，与众妖出得门来，即高声叫道：“那个是水帘洞洞主？”悟空急睁睛观看，只见那魔王——</div>
+            <div class="text-block simplified-text">那小妖怪一听，赶紧跑进洞里报告：“大王，出大事了！”魔王问：“出啥事了？”小妖怪说：“洞口有个猴子自称是花果山水帘洞的洞主，他说你老是欺负他的猴子猴孙，专门来找你算账呢！”魔王笑着说：“我常听那些猴精说他们有个大王，出门修行去了，估计这回是他来了。他长啥样？带什么武器没有？”小妖怪回答：“他没带武器，光着头，穿件红衣服，腰上系着黄丝带，脚上蹬着黑靴子，打扮得不和尚不道士的，空着手在门口叫骂呢。”魔王一听就说：“把我的盔甲和兵器拿来！”小妖怪立刻取来。魔王穿上盔甲，提着刀，带着一群妖怪出门，大声喊道：“哪个是水帘洞的洞主？”孙悟空睁大眼睛一看，只见那魔王——</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">头戴乌金盔，映日光明；身挂皂罗袍，迎风飘荡。下穿着黑铁甲，紧勒皮条；足踏着花褶靴，雄如上将。腰广十围，身高三丈。手执一口刀，锋刃多明亮。称为混世魔，磊落凶模样。</div>
+            <div class="text-block simplified-text">这人头上戴着黑金头盔，在太阳底下闪闪发亮；身上披着黑色战袍，被风吹得直飘。下身穿着黑铁铠甲，用皮带紧紧绑着；脚上蹬着花纹靴子，威风得像个大将军。腰粗得要十个人才抱得过来，身高足足有三丈（约9米）。手里拿着一把大刀，刀刃亮得晃眼。外号叫"混世魔王"，长得高大威猛，一脸凶相。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">猴王喝道：“这泼魔这般眼大，看不见老孙！”魔王见了，笑道：“你身不满四尺，年不过三旬，手内又无兵器，怎么大胆猖狂，要寻我见什么上下？”悟空骂道：“你这泼魔，原来没眼！你量我小，要大却也不难。你量我无兵器，我两只手彀着天边月哩！你不要怕，只吃老孙一拳！”纵一纵跳上去，劈脸就打。那魔王伸手架住道：“你这般矬矮，我这般高长，你要使拳，我要使刀，使刀就杀了你，也吃人笑，待我放下刀，与你使路拳看。”悟空道：“说得是。好汉子，走来！”那魔王丢开架子便打，这悟空钻进去相撞相迎。他两个拳捶脚踢，一冲一撞。原来长拳空大，短簇坚牢，那魔王被悟空掏短胁，撞丫裆，几下筋节，把他打重了。他闪过，拿起那板大的钢刀，望悟空劈头就砍。悟空急撤身，他砍了一个空。悟空见他凶猛，即使身外身法，拔一把毫毛，丢在口中嚼碎，望空喷去，叫一声：“变！”即变做三二百个小猴，周围攒簇。</div>
+            <div class="text-block simplified-text">孙悟空大喊：“你这妖怪眼睛长哪儿去了？看不见你孙爷爷在这儿吗？”妖怪一看就笑了：“你个矮冬瓜，身高不到一米三，年纪不到三十岁，连个武器都没有，还敢这么嚣张，想跟我比划比划？”  
+
+孙悟空骂道：“瞎了你的狗眼！嫌我矮？我变大容易得很！嫌我没武器？我这两只手能摘月亮！别废话，先吃我一拳！”说完跳起来就朝妖怪脸上打。  
+
+妖怪抬手挡住：“你这么矮，我这么高，你用拳头，我用刀，用刀砍死你，别人该笑话我欺负人了。我把刀放下，跟你比划比划拳头。”  
+
+孙悟空说：“行啊，是条汉子，来吧！”妖怪摆开架势就打，孙悟空冲上去跟他扭打在一起。俩人拳打脚踢，你推我撞。结果发现，高个子拳头挥得远但不灵活，矮个子拳头短但结实。孙悟空专打妖怪的软肋和裤裆，几下就把妖怪打疼了。  
+
+妖怪躲开，抄起那把门板大的钢刀，朝孙悟空脑袋就砍。孙悟空赶紧闪开，刀砍空了。孙悟空见妖怪来势汹汹，立刻使出分身法，拔了一把毫毛，放嘴里嚼碎，朝空中一喷，喊一声：“变！”瞬间变出两三百只小猴子，把妖怪团团围住。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">原来人得仙体，出神变化无方。不知这猴王自从了道之后，身上有八万四千毛羽，根根能变，应物随心。那些小猴，眼乖会跳，刀来砍不着，枪去不能伤。你看他前踊后跃，钻上去把个魔王围绕，抱的抱，扯的扯，钻裆的钻裆，扳脚的扳脚，踢打挦毛，抠眼睛，捻鼻子，抬鼓弄，直打做一个攒盘。这悟空才去夺得他的刀来，分开小猴，照顶门一下，砍为两段，领众杀进洞中，将那大小妖精，尽皆剿灭。却把毫毛一抖，收上身来，又见那收不上身者，却是那魔王在水帘洞擒去的小猴，悟空道：“汝等何为到此？”约有三五十个，都含泪道：“我等因大王修仙去后，这两年被他争吵，把我们都摄将来，那不是我们洞中的家火？石盆石碗都被这厮拿来也。”悟空道：“既是我们的家火，你们都搬出外去。”随即洞里放起火来，把那水脏洞烧得枯干，尽归了一体。对众道：“汝等跟我回去。”众猴道：“大王，我们来时，只听得耳边风响，虚飘飘到于此地，更不识路径，今怎得回乡？”悟空道：“这是他弄的个术法儿，有何难也！我如今一窍通，百窍通，我也会弄。你们都合了眼，休怕！”</div>
+            <div class="text-block simplified-text">原来成了仙的身体，可以随意变化。这猴王自从修炼成仙后，全身八万四千根毫毛都能随心变化。那些小猴子机灵得很，蹦蹦跳跳的，刀砍不着，枪刺不伤。你看它们围着魔王上蹿下跳，有的抱腿，有的扯胳膊，有的钻裤裆，有的扳脚，又踢又打又揪毛，还抠眼睛、捏鼻子，把魔王折腾得团团转。悟空趁机夺过魔王的刀，让小猴们散开，对准魔王脑袋一刀劈成两半，带着猴群杀进洞里，把大小妖怪全消灭了。
+
+悟空抖抖身子收回毫毛，发现有些收不回来的——原来是之前被魔王抓到水帘洞的小猴。悟空问："你们怎么在这儿？"约有三五十只小猴哭着说："大王您去修仙后，这两年魔王总来闹事，把我们都抓来了。您看，洞里这些石盆石碗都是他从我们那儿抢的。"悟空说："既然是咱们的东西，你们都搬出去。"说完就放火烧了水脏洞，烧得干干净净。
+
+悟空对大家说："都跟我回家吧。"小猴们说："大王，我们来的时候只听见耳边呼呼响，迷迷糊糊就到这儿了，根本不认得路，现在怎么回去啊？"悟空笑道："这不过是他的小法术，有什么难的！我现在是通了窍门，什么都会。你们闭上眼睛别怕！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">好猴王，念声咒语，驾阵狂风，云头落下，叫：“孩儿们，睁眼。”众猴脚髹实地，认得是家乡，个个欢喜，都奔洞门旧路。那在洞众猴，都一齐簇拥同入。分班序齿，礼拜猴王。安排酒果，接风贺喜。启问降魔救子之事，悟空备细言了一遍，众猴称扬不尽道：“大王去到那方，不意学得这般手段。”悟空又道：“我当年别汝等，随波逐流，飘过东洋大海，径至南赡部洲，学成人像。着此衣，穿此履，摆摆摇摇，云游了八九年余，更不曾有道。又渡西洋大海，到西牛贺洲地界，访问多时，幸遇一老祖，传了我与天同寿的真功果，不死长生的大法门。”众猴称贺，都道：“万劫难逢也！”悟空又笑道：“小的们，又喜我这一门皆有姓氏。”众猴道：“大王姓甚？”悟空道：“我今姓孙，法名悟空。”众猴闻说，鼓掌忻然道：“大王是老孙，我们都是二孙三孙细孙小孙，一家孙，一国孙，一窝孙矣！”都来奉承老孙，大盆小碗的椰子酒、葡萄酒、仙花仙果，真个是合家欢乐！咦！贯通一姓身归本，只待荣迁仙箓名。毕竟不知怎生结果，居此界终始如何，且听下回分解。</div>
+            <div class="text-block simplified-text">好个猴王！他念了咒语，驾着狂风从云头落下，喊道："孩子们，睁眼吧！"猴子们脚踩到实地，认出是家乡，个个高兴得直往水帘洞跑。洞里那些猴子也一窝蜂涌出来，按年龄排好队，向猴王行礼。大伙儿摆上酒水果子，给他接风庆祝，七嘴八舌问怎么打败妖怪救出小猴的。孙悟空把事情经过详细说了一遍，猴子们听得直夸："大王您出去一趟，没想到学了这么大本事！"
+
+孙悟空又说："当年我离开你们，漂洋过海到了南赡部洲，学了人的样子。穿着这身衣服鞋子，到处晃悠了八九年，也没找到真本事。后来我又过海到西牛贺洲，找了好久，运气好碰到个老神仙，教了我长生不老的神通。"猴子们齐声祝贺："这可是天大的好事啊！"
+
+孙悟空笑着补充："还有个喜事，咱们现在都有姓氏啦！"猴子们忙问："大王您姓啥？"他回答："我姓孙，法名叫悟空。"猴子们听了拍手叫好："大王是老孙，那我们就是二孙、三孙、小孙、细孙，全家都姓孙，全国都姓孙，一窝子孙喽！"大家围着老孙献殷勤，端来椰子酒、葡萄酒和各种仙果，真是热闹极了！
+
+你看这：认祖归宗有了姓，就等着上天当神仙。要知后事如何，咱们下回再说。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
