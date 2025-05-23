@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七十六回 徐公明大战沔水　关云长败走麦城</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">三国演义 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./075.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">第七十六回 徐公明大战沔水　关云长败走麦城</h1>
+        <a href="./077.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">却说糜芳闻荆州有失，正无计可施。忽报公安守将傅士仁至，芳忙接入城，问其事故。士仁曰：“吾非不忠。势危力困，不能支持，我今已降东吴。将军亦不如早降。”芳曰：“吾等受汉中王厚恩，安忍背之？“士仁曰：“关公去日，痛恨吾二人；倘一日得胜而回，必无轻恕。公细察之。”芳曰：“吾兄弟久事汉中王，岂可一朝相背？”正犹豫间，忽报关公遣使至，接入厅上。使者曰：“关公军中缺粮，特来南郡、公安二处取白米十万石，令二将军星夜解去军前交割。如迟立斩。”芳大惊，顾谓傅士仁曰：“今荆州已被东吴所取，此粮怎得过去？”士仁厉声曰：“不必多疑！”遂拔剑斩来使于堂上。芳惊曰：“公如何斩之？”士仁曰：“关公此意，正要斩我二人。我等安可束手受死？公今不早降东吴，必被关公所杀。”正说间，忽报吕蒙引兵杀至城下。芳大惊，乃同傅士仁出城投降。蒙大喜，引见孙权。权重赏二人。安民已毕，大犒三军。</div>
+            <div class="text-block simplified-text">糜芳听说荆州丢了，正不知道该怎么办。突然有人报告说公安守将傅士仁来了，糜芳赶紧把他接进城，问他怎么回事。傅士仁说："我不是不忠心，实在是形势危急顶不住了，现在已经投降东吴了。将军你也早点投降吧。"糜芳说："我们受汉中王刘备的大恩，怎么能背叛他？"傅士仁说："关羽走的时候就很恨我们俩，要是他打了胜仗回来，肯定不会放过我们。你好好想想。"糜芳说："我们兄弟跟着汉中王这么多年，怎么能说背叛就背叛？"正犹豫的时候，突然有人报告关羽派使者来了。使者被带进来后说："关羽军中缺粮，特意来南郡、公安调十万石白米，命令你们连夜送去。要是耽误了立刻处斩。"糜芳吓坏了，转头对傅士仁说："现在荆州已经被东吴占了，这粮食怎么送得过去？"傅士仁突然拔剑把使者当场杀了。糜芳吃惊地问："你怎么把他杀了？"傅士仁说："关羽这是存心要杀我们，难道我们等着送死吗？你现在不投降东吴，肯定会被关羽杀掉。"正说着，又有人报告说吕蒙带兵杀到城下了。糜芳吓坏了，只好跟着傅士仁出城投降。吕蒙很高兴，带他们去见孙权。孙权重赏了他们。安抚好百姓后，犒赏全军。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">时曹操在许都，正与众谋士议荆州之事，忽报东吴遣使奉书至。操召人，使者呈上书信。操拆视之，书中具言吴兵将袭荆州，求操夹攻云长；且嘱勿泄漏，使云长有备也。操与众谋士商议，主簿董昭曰：“今樊城被困，引颈望救，不如令人将书射入樊城，以宽军心；且使关公知东吴将袭荆州。彼恐荆州有失，必速退兵，却令徐晃乘势掩杀，可获全功。”操从其谋，一面差人催徐晃急战；一面亲统大兵，径往洛阳之南阳陵坡驻扎，以救曹仁。</div>
+            <div class="text-block simplified-text">当时曹操正在许都，和手下谋士们商量荆州的事情，突然有人报告说东吴派使者送信来了。曹操叫使者进来，使者把信递上。曹操打开信一看，信里说东吴要攻打荆州，请曹操一起对付关羽；还特别提醒要保密，别让关羽提前防备。曹操和谋士们商量这事，主簿董昭说："现在樊城被围，城里的人正盼着救兵。我们不如把这封信射进樊城，好让他们安心；同时也能让关羽知道东吴要打荆州。他怕荆州出事，肯定会赶紧撤兵。到时候再让徐晃趁机追杀，就能大获全胜。"曹操采纳了这个主意，一边派人催徐晃加紧进攻，一边亲自带大军去洛阳的南阳陵坡驻扎，准备救援曹仁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">却说徐晃正坐帐中，忽报魏王使至。晃接入问之，使曰：“今魏王引兵，已过洛阳；令将军急战关公，以解樊城之困。”正说间，探马报说：“关平屯兵在偃城，廖化屯兵在四冢：前后一十二个寨栅，连络不绝。”晃即差副将徐商、吕建假着徐晃旗号，前赴偃城与关平交战。晃却自引精兵五百，循沔水去袭偃城之后。且说关平闻徐晃自引兵至，遂提本部兵迎敌。两阵对圆，关平出马，与徐商交锋，只三合，商大败而走；吕建出战，五六合亦败走。平乘胜追杀二十余里，忽报城中火起。平知中计，急勒兵回救偃城。正遇一彪军摆开，徐晃立马在门旗下，高叫曰：“关平贤侄，好不知死！汝荆州已被东吴夺了，犹然在此狂为！”平大怒，纵马轮刀，直取徐晃；不三四合，三军喊叫，偃城中火光大起。平不敢恋战，杀条大路，径奔四冢寨来。廖化接着。化曰：“人言荆州已被吕蒙袭了，军心惊慌，如之奈何？”平曰：“此必讹言也。军士再言者斩之。”</div>
+            <div class="text-block simplified-text">徐晃正在营帐里坐着，突然有人报告说魏王的使者来了。徐晃请使者进来问话，使者说："魏王已经带兵过了洛阳，命令将军赶紧去打关羽，好解樊城之围。"正说着，侦察兵又来报告："关平的部队驻扎在偃城，廖化的部队在四冢，前后建了十二个营寨，连成一片。"
+
+徐晃马上派副将徐商和吕建打着他的旗号，去偃城和关平交战。他自己则带着五百精兵，沿着沔水绕到偃城后面偷袭。关平听说徐晃带兵来了，就带着自己的部队迎战。两军对阵，关平出马和徐商交手，才打了三个回合，徐商就败退了；吕建接着出战，打了五六个回合也败走了。关平乘胜追击了二十多里，突然接到报告说城里着火了。关平这才知道中计了，赶紧带兵回去救偃城。
+
+半路上遇到一支军队拦住去路，徐晃在军旗下大喊："关平贤侄，你不要命了！你们荆州已经被东吴占领了，你还在这儿瞎折腾！"关平大怒，骑马挥刀直冲徐晃。才打了三四个回合，就听到士兵们大喊，偃城那边火光冲天。关平不敢再打，杀出一条路，直奔四冢寨找廖化。
+
+廖化见到关平就说："大家都在传荆州被吕蒙偷袭了，军心不稳，这可怎么办？"关平说："这肯定是谣言。谁再敢乱传就砍头！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">忽流星马到，报说正北第一屯被徐晃领兵攻打。平曰：“若第一屯有失，诸营岂得安宁？此间皆靠沔水，贼兵不敢到此。吾与汝同去救第一屯。”廖化唤部将分付曰：“汝等坚守营寨，如有贼到，即便举火。”部将曰：“四冢寨鹿角十重，虽飞鸟亦不能入，何虑贼兵！”于是关平、廖化尽起四冢寨精兵，奔至第一屯住扎。关平看见魏兵屯于浅山之上，谓廖化曰：“徐晃屯兵，不得地利，今夜可引兵劫寨。”化曰：“将军可分兵一半前去，某当谨守本寨。”</div>
+            <div class="text-block simplified-text">突然有快马赶来报告，说正北面的第一营正被徐晃带兵攻打。关平说："要是第一营丢了，其他营地还能安全吗？我们这儿靠着沔水，敌人不敢来。我跟你一起去救第一营。"廖化叫来手下将领吩咐："你们好好守住营地，要是敌人来了，马上点火报信。"将领说："咱们四冢寨防守严密，连鸟都飞不进来，还怕什么敌人！"于是关平和廖化带着四冢寨的精锐部队，赶到第一营驻扎。关平看到魏军驻扎在矮山上，对廖化说："徐晃选的地方不好，今晚咱们可以去偷袭。"廖化说："将军可以带一半兵力去，我来守住大本营。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">是夜，关平引一枝兵杀入魏寨，不见一人。平知是计，火速退时，左边徐商，右边吕建，两下夹攻。平大败回营，魏兵乘势追杀前来，四面围住。关平、廖化支持不住，弃了第一屯，径投四冢寨来。早望见寨中火起。急到寨前，只见皆是魏兵旗号。关平等退兵，忙奔樊城大路而走。前面一军拦住，为首大将，乃是徐晃也。平、化二人奋力死战，夺路而走，回到大寨，来见关公曰：“今徐晃夺了偃城等处；又兼曹操自引大军，分三路来救樊城；多有人言荆州已被吕蒙袭了。”关公喝曰：“此敌人讹言，以乱我军心耳！东吴吕蒙病危，孺子陆逊代之，不足为虑！”</div>
+            <div class="text-block simplified-text">那天晚上，关平带了一队人马冲进魏军营寨，结果发现里面空无一人。关平立刻意识到中计了，赶紧下令撤退。但这时左边杀出徐商，右边杀出吕建，两边夹攻。关平被打得大败，只能撤回营地。魏军趁机追杀过来，把他们团团围住。关平和廖化实在顶不住了，只好放弃第一道防线，逃往四冢寨。结果远远就看见寨子里火光冲天，赶到寨前才发现全是魏军的旗帜。关平他们只能继续撤退，往樊城方向跑。没想到半路又被一支军队拦住，领头的正是大将徐晃。关平和廖化拼死杀出一条血路，好不容易逃回大本营。见到关羽后报告说："现在徐晃已经攻占了偃城等地，曹操还亲自带着大军分三路来救樊城。而且好多人说荆州已经被吕蒙偷袭拿下了。"关羽听完大声呵斥："这都是敌人造的谣言！想扰乱我们的军心！东吴的吕蒙病得快死了，现在换了个毛头小子陆逊接班，根本不用怕！"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">言未毕，忽报徐晃兵至。公令备马。平谏曰：“父体未痊，不可与敌。”公曰：“徐晃与吾有旧，深知其能；若彼不退，吾先斩之，以警魏将。”遂披挂提刀上马，奋然而出。魏军见之，无不惊惧。公勒马问曰：“徐公明安在？”魏营门旗开处，徐晃出马，欠身而言曰：“自别君侯，倏忽数载，不想君侯须发已苍白矣！忆昔壮年相从，多蒙教诲，感谢不忘。今君侯英风震于华夏，使故人闻之，不胜叹羡！兹幸得一见，深慰渴怀。”公曰：“吾与公明交契深厚，非比他人；今何故数穷吾儿耶？”晃回顾众将，厉声大叫曰：“若取得云长首级者，重赏千金！”公惊曰：“公明何出此言？”晃曰：“今日乃国家之事，某不敢以私废公。”言讫，挥大斧直取关公。公大怒，亦挥刀迎之。战八十余合，公虽武艺绝伦，终是右臂少力。关平恐公有失，火急鸣金，公拨马回寨。忽闻四下里喊声大震。原来是樊城曹仁闻曹操救兵至，引军杀出城来，与徐晃会合，两下夹攻，荆州兵大乱。关公上马，引众将急奔襄江上流头。背后魏兵追至。关公急渡过襄江，望襄阳而奔。忽流星马到，报说：“荆州已被吕蒙所夺，家眷被陷。”关公大惊。不敢奔襄阳，提兵投公安来。探马又报：“公安傅士仁已降东吴了。”关公大怒。忽催粮人到，报说：“公安傅士仁往南郡，杀了使命，招糜芳都降东吴去了。”</div>
+            <div class="text-block simplified-text">话还没说完，突然有人报告说徐晃带兵来了。关羽下令准备马匹。关平劝他说："父亲伤还没好，不能去打仗。"关羽说："我和徐晃是老交情，知道他的本事。要是他不退兵，我就先杀了他，给魏国将领们看看。"说完就穿上盔甲，拿着大刀上马冲了出去。魏军看到他，都吓坏了。
+
+关羽勒住马问："徐晃在哪？"魏军营门旗子一开，徐晃骑马出来，微微欠身说："自从和您分别，一晃好几年了，没想到您的胡子头发都白了！想起当年跟着您的时候，得到您很多教导，我一直记在心里。现在您威震天下，我这个老朋友听了真是又佩服又羡慕。今天能见到您，实在太高兴了。"
+
+关羽说："我和你的交情不一般，跟别人不一样。可你现在为什么老是欺负我儿子？"徐晃转头对手下将领们大喊："谁能砍下关羽的脑袋，赏一千两黄金！"关羽吃惊地问："你怎么说这种话？"徐晃回答："现在是国家大事，我不能因为私交耽误公事。"说完就抡着大斧头朝关羽冲过来。关羽气坏了，也挥刀迎战。
+
+两人打了八十多个回合，关羽虽然武艺高强，但右臂受伤使不上劲。关平怕父亲出事，赶紧敲锣收兵。关羽调转马头回营，忽然听到四周喊杀声震天。原来是樊城的曹仁听说曹操救兵到了，带兵杀出城来，和徐晃一起前后夹击，荆州兵乱成一团。
+
+关羽赶紧上马，带着将士们往襄江上游跑。后面魏军紧追不舍。关羽匆忙渡过襄江，往襄阳方向逃去。这时有探子飞马来报："荆州已经被吕蒙占领，您的家眷都被抓了。"关羽大吃一惊，不敢去襄阳，改道往公安跑。又有探子来报："公安的傅士仁已经投降东吴了。"关羽气得要命。这时运粮的人赶来报告："傅士仁跑到南郡，杀了咱们的人，带着糜芳一起投降东吴了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">关公闻言，怒气冲塞，疮口迸裂，昏绝于地。众将救醒，公顾谓司马王甫曰：“悔不听足下之言，今日果有此事！”因问：“沿江上下，何不举火？”探马答曰：“吕蒙使水手尽穿白衣，扮作客商渡江，将精兵伏于【舟冓】【舟鹿】之中，先擒了守台士卒，因此不得举火。”公跌足叹曰：“吾中奸贼之谋矣！有何面目见兄长耶！”管粮都督赵累曰：“今事急矣，可一面差人往成都求救，一面从旱路去取荆州。”关公依言，差马良、伊籍赍文三道，星夜赴成都求救；一面引兵来取荆州，自领前队先行，留廖化、关平断后。却说樊城围解，曹仁引众将来见曹操，泣拜请罪。操曰：“此乃天数，非汝等之罪也。”操重赏三军，亲至四冢寨周围阅视，顾谓众将曰：“荆州兵围堑鹿角数重，徐公明深入其中，竟获全功。孤用兵三十余年，未敢长驱径入敌围。公明真胆识兼优者也！”众皆叹服。操班师还于摩陂驻扎。徐晃兵至，操亲出寨迎之，见晃军皆按队伍而行，并无差乱。操大喜曰：“徐将军真有周亚夫之风矣！”遂封徐晃为平南将军，同夏侯尚守襄阳，以遏关公之师。操因荆州未定，就屯兵于摩陂，以候消息。却说关公在荆州路上，进退无路，谓赵累曰：“目今前有吴兵，后有魏兵，吾在其中，救兵不至，如之奈何？”累曰：“昔吕蒙在陆口时，尝致书君侯，两家约好，共诛操贼，今却助操而袭我，是背盟也。君侯暂驻军于此，可差人遗书吕蒙责之，看彼如何对答。”关公从其言，遂修书遣使赴荆州来。</div>
+            <div class="text-block simplified-text">关羽一听这话，气得伤口都裂开了，直接昏死过去。手下人赶紧把他救醒，他转头对王甫说："真后悔没听你的话，现在果然出事了！"接着问："江边怎么没点烽火报信？"探子回答："吕蒙让士兵扮成商人穿白衣服过江，把精兵藏在船舱里，先抓了咱们放哨的人，所以没法点火报信。"关羽跺脚叹气："我中计了！这下哪有脸去见大哥啊！"管粮的赵累说："现在情况紧急，得赶紧派人去成都求救，同时从陆路去打荆州。"关羽照办，派马良、伊籍带着求救信连夜赶往成都，自己带兵去打荆州，让廖化、关平断后。
+
+另一边，曹仁从樊城撤围后去见曹操，哭着请罪。曹操说："这是天意，不怪你们。"曹操犒赏全军，亲自查看战场，对将领们说："荆州军设了那么多路障，徐晃居然能带兵直接杀进去大获全胜。我打仗三十多年，都不敢这么冲。徐晃真是又勇猛又有谋略！"大家都佩服。曹操回师驻扎在摩陂，见徐晃的部队军容整齐，高兴地说："徐将军真有古代名将周亚夫的风范！"于是封徐晃为平南将军，让他和夏侯尚一起守襄阳，防备关羽。
+
+这时关羽在荆州进退两难，对赵累说："前面有东吴兵，后面有曹魏兵，咱们被夹在中间，救兵又没到，怎么办？"赵累说："当初吕蒙在陆口时曾写信说要联合抗曹，现在却帮曹操偷袭我们，这是背信弃义。您先按兵不动，写封信去质问吕蒙，看他怎么回。"关羽就写了封信派人送去荆州。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">却说吕蒙在荆州，传下号令：凡荆州诸郡，有随关公出征将士之家，不许吴兵搅扰，按月给与粮米；有患病者，遣医治疗。将士之家，感其恩惠，安堵不动。忽报关公使至，吕蒙出郭迎接入城，以宾礼相待。使者呈书与蒙。蒙看毕，谓来使曰：“蒙昔日与关将军结好，乃一己之私见；今日之事，乃上命差遣，不得自主。烦使者回报将军，善言致意。”遂设宴款待，送归馆驿安歇。于是随征将士之家，皆来问信；有附家书者，有口传音信者，皆言家门无恙，衣食不缺。</div>
+            <div class="text-block simplified-text">话说吕蒙在荆州下了命令：只要是跟着关羽出征的将士家属，都不许吴国士兵骚扰，还按月发粮食；有生病的，就派医生去看病。将士家属们都很感激，安心过日子。突然有人报告说关羽的使者来了，吕蒙亲自出城迎接，按贵宾礼节招待。使者把信交给吕蒙。吕蒙看完后对使者说："我以前和关羽将军交好，那是我个人的想法；现在这事是上头命令，我做不了主。麻烦你回去告诉将军，替我带个好。"然后摆酒席招待使者，送他去宾馆休息。那些出征将士的家属都跑来打听消息，有的托使者带家信，有的让传口信，都说家里一切平安，吃穿不愁。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">使者辞别吕蒙，蒙亲送出城。使者回见关公，具道吕蒙之语，并说：“荆州城中，君侯宝眷并诸将家属，俱各无恙，供给不缺。”公大怒曰：“此奸贼之计也！我生不能杀此贼，死必杀之，以雪吾恨！”喝退使者。使者出寨，众将皆来探问家中之事；使者具言各家安好，吕蒙极其恩恤，并将书信传送各将。各将欣喜，皆无战心。</div>
+            <div class="text-block simplified-text">使者告别吕蒙时，吕蒙亲自送他出城。使者回去见到关羽，把吕蒙的话都告诉他，还说："荆州城里，将军您的家眷和各位将领的家属都平安无事，生活用品也都没缺。"关羽听了非常生气，说："这是那奸贼的诡计！我活着杀不了这个贼人，死了也一定要杀他，才能解我心头之恨！"说完就把使者赶走了。使者走出营寨后，将领们都来打听家里人的情况；使者说各家都很好，吕蒙对他们特别照顾，还把家信带给各位将领。将领们听了都很高兴，都不想打仗了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">关公率兵取荆州，军行之次，将士多有逃回荆州者。关公愈加恨怒，遂催军前进。忽然喊声大震，一彪军拦住，为首大将，乃蒋钦也，勒马挺枪大叫曰：“云长何不早降！”关公骂曰：“吾乃汉将，岂降贼乎！”拍马舞刀，直取蒋钦。不三合，钦败走。关公提刀追杀二十余里，喊声忽起，左边山谷中韩当领军冲出，右边山谷中周泰引军冲出，蒋钦回马复战，三路夹攻。关公急撒军回走。行无数里，只见南山冈上人烟聚集，一面白旗招飐，上写“荆州土人”四字，众人都叫本处人速速投降。关公大怒，欲上冈杀之。山崦内又有两军撞出：左边丁奉，右边徐盛；并合蒋钦等三路军马，喊声震地，鼓角喧天，将关公困在核心。手下将士，渐渐消疏。比及杀到黄昏，关公遥望四山之上，皆是荆州土兵，呼兄唤弟，觅子寻爷，喊声不住。军心尽变，皆应声而去。关公止喝不住，部从止有三百余人。杀至三更，正东上喊声连天，乃是关平、廖化分两路兵杀入重围，救出关公。关平告曰：“军心乱矣，必得城池暂屯，以待援兵。麦城虽小，足可屯扎。”关公从之，催促残军前至麦城，分兵紧守四门，聚将士商议。赵累曰：“此处相近上庸，现有刘封、孟达在彼把守，可速差人往求救兵。若得这枝军马接济，以待川兵大至，军心自安矣。”</div>
+            <div class="text-block simplified-text">关羽带着军队去打荆州，路上有不少士兵偷偷跑回荆州。关羽气得要命，催着部队赶紧前进。突然杀声震天，一队人马拦住去路，领头的将军是蒋钦，他骑着马举着枪大喊："关羽还不快投降！"关羽骂道："我是汉朝大将，怎么可能投降你们这些反贼！"说完骑马挥刀就朝蒋钦冲过去。打了不到三个回合，蒋钦就败退了。关羽追杀了二十多里地，突然两边山谷里又杀出两支部队，左边是韩当，右边是周泰，蒋钦也掉头杀回来，三路人马一起围攻关羽。关羽赶紧带兵撤退。
+
+跑了没多远，看见南山坡上聚着一群人，举着白旗写着"荆州老乡"四个字，都在喊让关羽的士兵赶快投降。关羽气坏了，想冲上山坡杀他们。这时山坡后面又杀出两支队伍：左边丁奉，右边徐盛，加上之前的三路人马，喊杀声震天响，把关羽团团围住。关羽手下的兵越打越少。打到天黑时，关羽看见四周山上全是荆州本地的士兵，他们喊着兄弟找着爹，叫声不断。军心彻底乱了，士兵们一个个都跑了。关羽怎么喊都没用，最后身边只剩三百多人。
+
+打到半夜，东边突然杀声震天，原来是关平和廖化带着两队人马杀进重围，救出了关羽。关平说："现在军心涣散，得先找个地方休整等援军。麦城虽然小，但可以暂时驻扎。"关羽同意了，带着剩下的士兵赶到麦城，派人守住四个城门，召集将领商量对策。赵累说："这里离上庸很近，刘封和孟达在那里驻守，赶紧派人去求救兵。要是能得到他们的支援，等四川的大军到了，军心就能稳定了。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">正议间，忽报吴兵已至，将城四面围定。公问曰：“谁敢突围而出，往上庸求救？”廖化曰：“某愿往。”关平曰：“我护送汝出重围。”关公即修书付廖化藏于身畔。饱食上马，开门出城。正遇吴将丁奉截往。被关平奋力冲杀，奉败走，廖化乘势杀出重围。投上庸去了。关平入城，坚守不出。</div>
+            <div class="text-block simplified-text">他们正在商量的时候，突然有人报告说吴国的军队已经到了，把城团团围住。关羽问："谁有胆量冲出去，到上庸搬救兵？"廖化说："我去！"关平说："我护送你杀出去。"关羽马上写了封信交给廖化贴身收好。廖化吃饱饭骑上马，城门一开就冲了出去。正好碰上吴国大将丁奉拦路，关平拼命厮杀，把丁奉打跑了，廖化趁机冲出包围圈，往上庸去了。关平退回城里，死守不出。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">且说刘封、孟达自取上庸，太守申耽率众归降，因此汉中王加刘封为副将军，与孟达同守上庸。当日探知关公兵败，二人正议间，忽报廖化至。</div>
+            <div class="text-block simplified-text">话说刘封和孟达占了上庸城，当地太守申耽带着手下投降了。因为这个功劳，刘备（当时是汉中王）就升刘封当副将军，让他和孟达一起守上庸。有一天他们听说关羽打了败仗，正在商量这事的时候，突然有人报告说廖化来了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">封令请人问之。化曰：“关公兵败，现困于麦城，被围至急。蜀中援兵，不能旦夕即至。特命某突围而出，来此求救。望二将军速起上庸之兵，以救此危。倘稍迟延，公必陷矣。”封曰：“将军且歇，容某计议。”</div>
+            <div class="text-block simplified-text">刘封让人把传令兵叫来问话。传令兵说："关公打了败仗，现在被困在麦城，情况非常危急。蜀中的援兵一时半会儿赶不到。他特意派我突围出来，到这里求救。希望二将军赶快调动上庸的军队去救援。要是再拖下去，关公肯定要完蛋。"刘封说："你先去休息，让我考虑一下。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">化乃至馆驿安歇，专候发兵。刘封谓孟达曰：“叔父被困，如之奈何？”达曰：“东吴兵精将勇；且荆州九郡，俱已属彼，止有麦城，乃弹丸之地；又闻曹操亲督大军四五十万，屯于摩陂：量我等山城之众，安能敌得两家之强兵？不可轻敌。”封曰：“吾亦知之。奈关公是吾叔父，安忍坐视而下救乎？”达笑曰：“将军以关公为叔，恐关公未必以将军为侄也。某闻汉中王初嗣将军之时，关公即不悦。后汉中王登位之后，欲立后嗣，问于孔明，孔明曰：‘此家事也，问关、张可矣，’汉中王遂遣人至荆州问关公，关公以将军乃螟蛉之子，不可僭立，劝汉中王远置将军于上庸山城之地，以杜后患。此事人人知之，将军岂反不知耶？何今日犹沾沾以叔侄之义，而欲冒险轻动乎？”封曰：“君言虽是，但以何词却之？”达曰：“但言山城初附，民心未定，不敢造次兴兵，恐失所守。”封从其言。次日，请廖化至，言此山城初附之所，未能分兵相救。化大惊，以头叩地曰：“若如此，则关公休矣！”达曰：“我今即往，一杯之水，安能救一车薪之火乎？将军速回，静候蜀兵至可也。”化大恸告求，刘封、孟达皆拂袖而入。廖化知事不谐，寻思须告汉中王求救，遂上马大骂出城，望成都而去。</div>
+            <div class="text-block simplified-text">他们到了驿站住下，等着发兵。刘封问孟达：“我叔父被围，怎么办？”孟达说：“东吴兵强马壮，荆州大部分地方都被他们占了，麦城那么小一块地。听说曹操还亲自带了四五十万大军驻扎在摩陂。就咱们这点山里的小兵，哪打得过他们两家？不能乱来。”刘封说：“我也知道。可关公是我叔父，怎么能见死不救？”孟达笑了：“你把关公当叔叔，他可不一定把你当侄子。听说当初汉中王收你当儿子时，关公就不高兴。后来汉中王当上皇帝想立继承人，问诸葛亮，诸葛亮说这是家事，问关羽张飞就行。结果关公说你是收养的，不能继承王位，还建议把你打发到上庸这山沟里，免得以后出事。这事谁都知道，你怎么还傻乎乎地认这个叔叔？现在还要冒险去救？”刘封说：“你说得对，可怎么推脱呢？”孟达出主意：“就说咱们刚占这地方，老百姓还不服，不敢随便出兵，怕丢了地盘。”刘封同意了。第二天见廖化，就说这里刚归顺，没法分兵去救。廖化急得直磕头：“这样关公就完了！”孟达说：“我们现在去救，就像一杯水救一车着火的柴，顶什么用？你赶紧回去等蜀国大军吧。”廖化哭着求他们，刘封和孟达直接甩手进屋了。廖化知道没戏了，想着只能找汉中王求救，骑上马一路骂着出城，往成都赶去。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">却说关公在麦城盼望上庸兵到，却不见动静；手下止有五六百人，多半带伤；城中无粮，甚是苦楚。忽报城下一人教休放箭，有话来见君侯。公令放入，问之，乃诸葛瑾也。礼毕茶罢，瑾曰：“今奉吴侯命，特来劝谕将军。自古道识时务者为俊杰，今将军所统汉上九郡，皆已属他人类；止有孤城一区，内无粮草，外无救兵，危在旦夕。将军何不从瑾之言，归顺吴侯，复镇荆襄，可以保全家眷。幸君侯熟思之。”关公正色而言曰：“吾乃解良一武夫，蒙吾主以手足相待，安肯背义投敌国乎？城若破，有死而已。玉可碎而不可改其白，竹可焚而不可毁其节，身虽殒，名可垂于竹帛也。汝勿多言，速请出城，吾欲与孙权决一死战！”瑾曰：“吴侯欲与君侯结秦晋之好，同力破曹，共扶汉室，别无他意。君侯何执迷如是？”言未毕，关平拔剑而前，欲斩诸葛瑾。公止之曰：“彼弟孔明在蜀，佐汝伯父，今若杀彼，伤其兄弟之情也。”遂令左右逐出诸葛瑾。瑾满面羞惭，上马出城，回见吴侯曰：“关公心如铁石，不可说也。”孙权曰：“真忠臣也！似此如之奈何？’吕范曰：“某请卜其休咎。”权即令卜之。范揲蓍成象，乃“地水师卦”，更有玄武临应，主敌人远奔。权问吕蒙曰：“卦主敌人远奔，卿以何策擒之？”蒙笑曰：“卦象正合某之机也。关公虽有冲天之翼，飞不出吾罗网矣！”正是：龙游沟壑遭虾戏，凤入牢笼被鸟欺。毕竟吕蒙之计若何，且看下文分解。</div>
+            <div class="text-block simplified-text">关羽在麦城等着上庸的援兵，但一直没动静。他手下只剩五六百人，大多还带着伤，城里粮食也吃光了，情况非常艰难。这时有人来报，说城下有人要见他。关羽放人进来，发现是诸葛瑾。
+
+两人客套几句后，诸葛瑾说："我是奉孙权之命来劝您的。俗话说'识时务者为俊杰'，您现在管的九个郡都被别人占了，就剩这座孤城，没粮没救兵，随时会完蛋。不如投降孙权，还能继续管荆襄，保全家人。您好好想想。"
+
+关羽严肃地说："我就是个普通武将，承蒙主公像亲兄弟一样待我，怎么可能背叛他投靠敌人？城破了我就死。玉石可以碎但不能变黑，竹子可以烧但不能弯。我死了名声还能流传。你别说了，快走吧，我要和孙权拼个死活！"
+
+诸葛瑾又说："孙权是想和您联姻，一起打曹操，扶持汉室，没别的意思。您怎么这么固执？"话没说完，关平就拔剑要杀他。关羽拦住说："他弟弟诸葛亮在蜀国帮咱们主公，杀了他伤和气。"就把诸葛瑾赶走了。
+
+诸葛瑾羞愧地回去见孙权，说："关羽铁了心，劝不动。"孙权感叹："真是忠臣！现在怎么办？"吕范说："我算一卦。"卦象显示敌人会逃跑。孙权问吕蒙："卦说关羽会跑，你有什么办法抓他？"
+
+吕蒙笑道："这卦正合我意。关羽就算有翅膀，也逃不出我的手掌心！"这正是：龙掉进小水沟被虾戏弄，凤凰关进笼子被鸟欺负。吕蒙到底要怎么抓关羽？且听下回分解。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
