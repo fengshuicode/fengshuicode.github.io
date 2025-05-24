@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西游记 - 章节目录</title>
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --link-color: #333333;
+            --link-hover-color: #0056b3;
+            --base-font-size: 17px;
+            --line-height: 1.7;
+            --item-gap: 0.8rem; /* Gap between links */
+            --section-gap: 2.5rem; /* Gap between static links and chapter list */
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem;
+            box-sizing: border-box;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+
+        .main-title {
+            font-size: 2.2em;
+            color: var(--title-color);
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 0.1em;
+        }
+
+         .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .static-links-section {
+            margin-bottom: var(--section-gap);
+            padding-bottom: calc(var(--section-gap) / 2); /* Add some padding below */
+            border-bottom: 1px solid #eee; /* Separator line */
+        }
+
+        /* Common list styles */
+        .static-links-list,
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--item-gap);
+        }
+
+         /* Common list item styles */
+        .static-links-list li,
+        .chapter-list li {
+            /* Default: 5 columns */
+            flex: 0 0 calc(20% - var(--item-gap) * 4 / 5);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+         /* Common link styles */
+        .static-links-list a,
+        .chapter-list a {
+            text-decoration: none;
+            color: var(--link-color);
+            font-size: 0.9em;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            display: block;
+            padding: 0.2rem 0.3rem;
+            border-radius: 3px;
+        }
+
+        .static-links-list a:hover,
+        .static-links-list a:focus,
+        .chapter-list a:hover,
+        .chapter-list a:focus {
+            color: var(--link-hover-color);
+            background-color: #f0f0f0;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .static-links-list li,
+            .chapter-list li {
+                /* 4 columns */
+                flex-basis: calc(25% - var(--item-gap) * 3 / 4);
+            }
+        }
+
+        @media (max-width: 992px) {
+             body { padding: 2rem; }
+             .static-links-list li,
+             .chapter-list li {
+                 /* 3 columns */
+                flex-basis: calc(33.333% - var(--item-gap) * 2 / 3);
+            }
+        }
+
+        @media (max-width: 768px) {
+             body { padding: 1.5rem; }
+             .main-title { font-size: 1.9em; letter-spacing: 0.05em; }
+             .static-links-list li,
+             .chapter-list li {
+                 /* 2 columns */
+                flex-basis: calc(50% - var(--item-gap) * 1 / 2);
+            }
+            .static-links-section {
+                 margin-bottom: var(--section-gap) * 0.8;
+                 padding-bottom: calc(var(--section-gap) / 2.5);
+            }
+        }
+
+         @media (max-width: 480px) {
+             body { padding: 1.5rem 1rem; }
+             .main-title { font-size: 1.7em; }
+             .static-links-list li,
+             .chapter-list li {
+                 /* 1 column */
+                flex-basis: 100%;
+                text-align: left;
+             }
+             .static-links-list a,
+             .chapter-list a { padding: 0.3rem 0.5rem; }
+             .static-links-section {
+                 margin-bottom: var(--section-gap) * 0.6;
+                 padding-bottom: calc(var(--section-gap) / 3);
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1 class="main-title">西游记</h1>
+    </header>
+
+    <div class="content-container">
+
+        <div class="static-links-section">
+             <ul class="static-links-list">
+             </ul>
+        </div>
+
+        <ul class="chapter-list" id="chapterList">
+            <!-- Chapter links will be generated here by JavaScript -->
+        </ul>
+    </div>
+
+    <script>
+        const chapterList = document.getElementById('chapterList');
+        const totalChapters = 101;
+
+        // Function to convert number to Chinese numeral (simplified version)
+        function toChineseNumeral(n) {
+             if (n < 1 || n > 120) return '';
+             const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+             const units = ['', '十', '百'];
+             let s = '';
+             const hundred = Math.floor(n / 100);
+             const ten = Math.floor((n % 100) / 10);
+             const one = n % 10;
+
+             if (hundred > 0) { // 100-120
+                 s += digits[hundred] + units[2]; // 一百
+                 if (ten === 0 && one > 0) s += digits[0]; // Add 零 for 101-109
+             }
+
+             if (ten > 0) { // 10-19, 20-29, ..., 110-119
+                 if (ten === 1 && (n < 20 || n >= 110)) { // Special handling for 10-19 and 110-119
+                     if (n < 20) s += units[1]; // Just add 十 for 10-19
+                     else s += digits[ten] + units[1]; // Add 一十 for 110-119
+                 } else { // 20, 30..90, 100, 120
+                     s += digits[ten] + units[1]; // 二十, 三十...九十, 一百二十
+                 }
+             } else if (hundred > 0 && one > 0 && ten === 0) {
+                 // If 101-109, the '零' is already added.
+                 // If 1-9, ten is 0, no need to add zero.
+             } else if (n > 100 && ten === 0 && one === 0) {
+                 // Handles 100 - already done.
+             } else if ( n < 10) {
+                 // Handled by 'one > 0' below
+             } else if (n % 10 === 0 && n >= 20 && n < 100) {
+                  // Handles 20, 30..90 - already done
+             }
+
+
+             if (one > 0) {
+                // Add digit for 1-9, 21-29, ..., 101-109, 111-119
+                s += digits[one];
+             }
+
+             // Handle n=10 separately as logic above results in just "十"
+            if (n === 10) return '第十';
+
+             return `第${s}`; // Prepend '第' for chapter number
+        }
+
+
+        // Generate links (Ensuring it runs only once)
+        if (chapterList.children.length === 0) { // Check if list is empty before populating
+             for (let i = 1; i <= totalChapters; i++) {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                const chapterNumber = String(i).padStart(3, '0'); // Format as 001, 002, etc.
+                link.href = `${chapterNumber}.html`;
+                link.textContent = `${toChineseNumeral(i)}回`; // Add 回 character
+                listItem.appendChild(link);
+                chapterList.appendChild(listItem);
+            }
+        } else {
+            console.warn("Chapter list already populated. Skipping generation.");
+        }
+    </script>
+
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
