@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./001.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 2</h1>
+        <a href="./003.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">The Siberian Solution
+Hairless dogs have imperfect teeth; long-haired and coarse-haired animals are apt to have, as is asserted, long or many horns; pigeons with feathered feet have skin between their outer toes; pigeons with short beaks have small feet, and those with long beaks large feet. Hence, if man goes on selecting, and thus augmenting any peculiarity, he will almost certainly unconsciously modify other parts of the structure, owing to the mysterious laws of the correlation of growth.
+Charles Darwin, On the Origin of Species, chapter 1, “Variation Under Domestication”
+An economic franchise arises from a product or service that (1) is needed or desired; (2) is thought by its customers to have no close substitute; and (3) is not subject to price regulation. The existence of all three conditions will be demonstrated by a company’s ability to regularly price its product or service aggressively and thereby to earn high rates of return on capital. Moreover, franchises can tolerate mismanagement. Inept managers may diminish a franchise’s profitability, but they cannot inflict mortal damage.
+Warren Buffett, annual letter to shareholders, 1991
+Lyudmila Trut was dumbfounded.
+It had all started almost exactly five years ago when she had met Dmitri Belyaev, the famous director of the institute. When she heard about Dmitri’s project from her professor, she enthusiastically volunteered. Dmitri’s candor, passion, and intellect immediately enamored her. And surprisingly, in this male-dominated field in which women were treated as second-class citizens, he had talked to her as a peer, though he was a couple decades older and a renowned personality in the field.
+Dmitri was trying to enlist a graduate student for a secret project, but Lyudmila had not yet even finished her undergraduate studies. He must have seen something unique in the young and talented student to recruit her after just one meeting. She remembered his warnings about the physical hardship, the long hours, and, most importantly, the uncertain fate of her budding scientific career. Dmitri’s project carried a lot of risk and could come to naught. And even if the project succeeded, they could not talk about it openly because scientists had been killed for less, including Dmitri’s brother.
+She was grateful to Dmitri for not sugarcoating the work. But it turned out to be far more demanding than she had imagined. She was living in the middle of Siberia, and although she had grown up in Moscow, she had not yet become accustomed to the bone-chilling cold. Worse, the project required her to travel far across the Siberian wilderness on cold, dark, and dreary trains, and she desperately missed her fast-growing toddler, Marina. There were no phones, so she could not even hear her child’s voice. It had been five years of unrelenting hard work and sacrifice, and she had precious little to show Dmitri.
+In April 1963, as she approached one of the cages, she was stopped in her tracks. She had never seen anything like this before. Nor had any other human being. Was she really witnessing this, or was it an illusion? Had her patience and diligence paid off? She was a scientist and knew that she could not get carried away by emotion. But she could not contain the feeling when it welled up: pure joy.
+Unbelievably, inconceivably, Ember was wagging his tail.
+Oh, Where Do I Begin?
+You have decided to become an investor in listed companies. You value your intellect and discipline, and it seems that many of your friends and cousins are successful investors. Most of them are lying, but that’s another story. If they can do it, why can’t you?
+You choose to ignore Buffett’s advice about investing in index funds1 and launch headlong into analyzing businesses. You have read the first chapter of this book, and although you are mildly peeved at the author’s degree of risk aversion, you decide that maybe he has a point (thank you!). Heeding his advice, you have done your best to reject the many categories of companies that may increase your blood pressure at a later date.
+Having shot down hundreds of businesses, you are now excited about selecting high-quality businesses. You open your laptop, launch the application or a website with data on companies, and then . . . what? What do you do?
+For every company, you see a gazillion pieces of information on tap: revenue growth, profit growth, debt level, margin profile, stock price movement, analysts’ views, bond ratings, Twitter commentary, shareholder information, top management résumés, conference call transcripts, annual reports, quarterly filings, media coverage, competitor profiles, shares bought or sold by senior management, receivable and inventory levels, CEO statements, Reddit threads, hedge fund ownership, and so much more. And all this is just at the company level.
+You have listened to so-called experts on TV, many of whom seem to believe that one must also consider macro factors when making a buy decision. You start wallowing in the data on historical GDP growth, projected GDP growth, inflation, inflationary expectations, interest rates, government deficit, employment levels, commodity price movement, projected demographics, money supply, political and regulatory forces, and many such readily available factors supposedly crucial for your buy decision.
+Should you study all of them or only some of them? How do you start short-listing the businesses that you want to explore further? What macro factors, if any, should you consider?
+In short, where do you begin? One option would be to analyze each listed business after you have cast aside the high-risk ones. The problem is that you do not have unlimited time. The number of companies may be in the hundreds, and you may need to spend months, if not years, to go through the entire list.
+One alternative would be to use a two-step process that we use at Nalanda. In the first step, we use one selection criterion that filters out low-quality or average-quality businesses and yields a preliminary list of high-quality companies. In the second step, we do more work on this preliminary list to further whittle it down to a final list.
+Our investable universe is around 800 Indian businesses (with a market value of more than $150 million). Of these, we have rejected close to 350 companies to minimize the risks outlined in the previous chapter. About 450 businesses remain. We then apply a single filter to cut down this list to about 150 firms. Let me call this single filter “F.” Remember that F simply gives us the preliminary list on which we need to work further to reject or choose businesses. After doing this work, our final list has only about 75 to 80 businesses. F gave us an excellent head start. And it continues to do so because we don’t spend any time analyzing a business unless F has cleared it.
+This chapter is about the F filter: what it is and why. What, in your opinion, is F? To do its job, it needs to satisfy three criteria. First, it should be easily measurable. Second, it should remove most, if not all, low-quality businesses. Last, it should select most, if not all, high-quality businesses.
+Let’s start with some guesses.
+A first plausible assumption would be “a great management team.” Great businesses and outstanding management teams seem like tautologies. Finding an excellent set of leaders may automatically lead us to a high-quality business. Even if it does not, it looks like a good starting point for our filter. An exceptional management team would ensure revenue and profit growth ahead of the competition, a balance sheet that is not risky, a sustainable competitive advantage, and products or services that customers love. Easy, right? Not so fast.
+How is an investor supposed to find a great management team? If you are a small investor, the best you can do is read their interviews, listen to their conference call recordings, check out their Twitter feeds, watch some of their interviews on YouTube, and peruse their annual reports. If you are a large or prominent investor, you might even be able to meet the senior leaders. However, in my experience as an investor, none of these activities helps an investor calibrate the quality of a management team.
+Here is a stark example. If you have time, I suggest watching the YouTube video of the January 2000 presentation by the president of Enron, Jeffrey Skilling, and his senior management on the launch of Enron Broadband.2 I dare you not to be impressed. The guys are poised, confident, and, at least to my eyes, extremely competent. It is hard to find fault with their strategy or vision, and their execution plan for broadband services seems spot on. However, in less than two years after this impressive presentation, Enron went bankrupt, and in 2006 Skilling was sent to prison for perpetrating a massive fraud.3 Except for a few short sellers, no professional analysts or investors could have guessed what was going on at Enron even though the management was quite open to the media and regularly gave interviews.</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的段落：
+
+**西伯利亚解决方案**
+无毛狗的牙齿不完美；长毛和粗毛动物，正如所言，往往角长或多角；脚上有羽毛的鸽子，其外趾间有蹼；喙短的鸽子脚小，喙长的鸽子脚大。因此，如果人类持续选择并强化某一特征，几乎必然会无意中改变结构的其他部分，这是由于生长相关的神秘法则。
+查尔斯·达尔文，《物种起源》，第一章 “驯化下的变异”
+
+**经济特许经营权**
+经济特许经营权源于一种产品或服务，它（1）是必需或渴求的；（2）被其顾客认为没有近似的替代品；并且（3）不受价格管制。所有这三个条件的存在，将通过公司能够定期主动为其产品或服务定价并因此获得高资本回报率的能力来证明。此外，特许经营权能够承受管理不善。无能的经理人可能会降低特许经营权的盈利能力，但他们无法造成致命损害。
+沃伦·巴菲特，1991年致股东信
+
+柳德米拉·特鲁特惊呆了。
+这一切始于差不多五年前，她遇见研究所的著名所长德米特里·别利亚耶夫时。当她的教授告知德米特里的项目后，她热情地自愿参加。德米特里的坦率、热情和才智立刻让她着迷。令人惊讶的是，在这个男性主导、女性被视为二等公民的领域里，他竟将她视为同行与她交谈，尽管他年长她几十岁，并且是该领域的知名人物。
+德米特里当时想招募一名研究生参与一个秘密项目，但柳德米拉甚至还没完成本科学业。他一定是在这位年轻有才华的学生身上看到了独特之处，才会在仅一次会面后就招募她。她记得他曾警告过工作的艰辛、漫长的工时，以及最重要的——她初露头角的科学生涯那不确定的命运。德米特里的项目风险很大，可能徒劳无功。即使项目成功，他们也不能公开谈论，因为曾有科学家因更小的原因而丧命，包括德米特里的兄弟。
+她感谢德米特里没有美化工作的艰辛。但事实证明，这远比她想象的更严苛。她住在西伯利亚腹地，虽然她在莫斯科长大，却仍未适应那刺骨的寒冷。更糟的是，项目要求她乘坐寒冷、黑暗、沉闷的火车穿越西伯利亚荒野，她无比思念她快速成长的小女儿玛丽娜。那里没有电话，她甚至听不到孩子的声音。五年不懈的艰苦努力和牺牲过去了，她却几乎没什么成果能展示给德米特里。
+1963年4月，当她走近其中一个笼子时，她猛地停住了脚步。她从未见过这样的景象。其他任何人也没有。她真的亲眼目睹了这一切吗？还是幻觉？她的耐心和勤奋终于得到回报了吗？作为一名科学家，她知道不能感情用事。但当那感觉涌上心头时，她无法抑制：那是纯粹的喜悦。
+难以置信，不可思议，余烬（Ember）在摇尾巴。
+
+**哦，该从何说起？**
+你已决定成为上市公司的投资者。你珍视自己的才智和纪律，而且似乎你的许多朋友和亲戚都是成功的投资者。他们中的大多数在说谎，但那另当别论。如果他们能做到，你为什么不能？
+你选择忽略巴菲特关于投资指数基金的建议，一头扎进了分析企业的工作中。你读了本书的第一章，虽然对作者的风险厌恶程度有些恼火，但你认为他也许有道理（谢谢你！）。听从他的建议，你已尽力排除了那些日后可能让你血压升高的众多类型公司。
+在淘汰了数百家企业之后，你现在为挑选高质量企业而兴奋不已。你打开笔记本电脑，启动提供公司数据的应用程序或网站，然后……怎么办？你该做什么？
+对于每一家公司，你都能看到海量的信息：收入增长、利润增长、债务水平、利润率、股价变动、分析师观点、债券评级、推特评论、股东信息、高层管理人员简历、电话会议记录、年报、季报、媒体报道、竞争对手概况、高管买卖股票情况、应收款和库存水平、CEO声明、Reddit讨论串、对冲基金持股情况等等。而这还仅仅是在公司层面。
+你听过电视上所谓的专家言论，其中许多人似乎认为在做出买入决策时还必须考虑宏观因素。你开始深陷于历史GDP增长、预测GDP增长、通货膨胀、通胀预期、利率、政府赤字、就业水平、大宗商品价格变动、预测人口结构、货币供应、政治和监管力量等数据中，以及许多这些唾手可得、据称对你的买入决策至关重要的因素。
+你是应该研究所有这些因素，还是只研究其中一部分？你如何开始筛选出你想进一步研究的企业？应该考虑哪些宏观因素（如果有的话）？
+简而言之，你该从哪里开始？一个选择是，在排除高风险企业后，逐一分析每家上市公司。问题在于你的时间有限。公司数量可能多达数百家，你可能需要数月甚至数年才能看完整个名单。
+另一个选择是采用我们那烂陀资本（Nalanda）使用的两步流程。第一步，我们使用一个筛选标准，剔除低质量或中等质量的企业，得到一份初步的高质量公司名单。第二步，我们对这份初步名单做更多工作，进一步缩减至最终名单。
+我们的可投资范围是大约800家印度企业（市值超过1.5亿美元）。其中，我们剔除了近350家公司，以最小化前一章概述的风险。剩下约450家企业。然后我们应用一个单一的过滤器将这个名单缩减到约150家公司。让我把这个单一过滤器称为“F”。记住，F只是为我们提供了一个需要进一步工作以剔除或选择企业的初步名单。完成这项工作后，我们的最终名单只有大约75到80家企业。F为我们提供了一个极好的开端。而且它持续发挥作用，因为除非F筛选通过，否则我们不会花任何时间分析一家企业。
+本章讲的就是F过滤器：它是什么以及为什么。你认为F是什么？要完成它的工作，它需要满足三个标准。首先，它应该易于衡量。其次，它应该剔除大部分（即使不是全部）低质量企业。最后，它应该选出大部分（即使不是全部）高质量企业。
+让我们从一些猜测开始。
+第一个可能的假设是“一个卓越的管理团队”。伟大的企业和杰出的管理团队似乎是同义反复。找到一个优秀的领导团队或许会自动引领我们找到一家高质量企业。即使不能，这看起来也是我们筛选器的一个良好起点。一个卓越的管理团队会确保收入和利润增长领先于竞争对手，资产负债表没有风险，拥有可持续的竞争优势，以及客户喜爱的产品或服务。很简单，对吧？别急。
+投资者该如何找到一个卓越的管理团队？如果你是一个小投资者，最多只能阅读他们的访谈、听他们的电话会议录音、查看他们的推特、在YouTube上观看他们的部分采访以及细读他们的年报。如果你是大投资者或知名投资者，甚至可能有机会与高层领导会面。然而，根据我作为投资者的经验，这些活动都无法帮助投资者评估管理团队的质量。
+这里有一个鲜明的例子。如果你有时间，我建议你看一下2000年1月安然公司总裁杰弗里·斯基林及其高层管理团队关于推出安然宽带（Enron Broadband）的YouTube演讲视频。我敢说你不会不被震撼。这些人沉着自信，至少在我看来极其能干。很难对他们的战略或愿景挑出毛病，他们对宽带服务的执行计划似乎恰到好处。然而，在这次令人印象深刻的演讲后不到两年，安然公司破产了，2006年斯基林因犯下大规模欺诈罪被送进监狱。除了少数做空者外，没有专业分析师或投资者能猜到安然内部的情况，尽管管理层对媒体相当开放并定期接受采访。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">I know what you are thinking. Am I building my entire case on an outlier like Enron? Let’s look at it another way. I assume you have read the interviews of many CEOs or company presidents. Did any mention that they don’t care for the customer, that they have stopped innovating, or that they hire people who have been rejected by other companies? Have you ever heard a company leader disparage their products or services or admit that their competition is doing a better job or that they are sick and tired of company politics? You will rarely—if ever—learn anything insightful from what the management says. They always say what they have been taught to say, which at best is useless and at worst is harmful, because, as with Enron, their words are persuasive. In my experience, when someone says, “This is a great management team,” what they are actually saying is, “These guys talk so well!” The “great management team” filter thus fails the first criterion of measurability (being easily measurable).
+I know that many professional investors will disagree with me. Many people in the fund management world pride themselves on their purported ability to separate the wheat from the chaff after a series of management meetings. Some of them may have this rare skill, but most are either deluded or lying. And if there is someone out there who can assess a company’s quality by meeting management, we can applaud them from the sidelines without falling into the trap ourselves.
+What about other guesses for choosing a single company trait that could point to its overall quality? Could it be revenue growth? Markets seem to love companies growing at a fast pace. The problem with a revenue growth measure is this: How do we know what went into achieving this growth?
+In the previous chapter, I discussed the dot-com bust in the context of fast-changing industries. This period is also relevant when assessing high-growth businesses. In the late 1990s, most internet businesses were growing fast, but they were achieving this gravity-defying feat by spending millions of dollars of cash far in excess of their revenues. Predictably and unfortunately, growth did not turn out to be the blessing investors had hoped it would be. They ignored the cost of growth and suffered for it. Almost all the dot-coms went belly-up eventually.4 By the end of 2005, the loss of market value of these newfangled businesses was almost $2 trillion.
+More recently, the spectacular failure of WeWork provides a lesson in funding hyper-growth by burning cash.5 As many of you may already know, Softbank-funded WeWork became one of the largest coworking-space companies on the planet and was once valued at $47 billion. In late 2021, its market value had fallen to about $5 billion. The company grew its revenues from $415 million in 2016 to $3.5 billion in 2019, an eight-fold jump over just three years. Also in 2019, IWG, the old-world coworking giant, had revenue of $2.7 billion, a growth of “only” 28 percent since 2016. WeWork was consuming cash as if it had a side business running a printing press for dollars; in the third quarter of 2019 alone, the company declared a loss of $1.25 billion. It had to pull its IPO in the fourth quarter.
+Many high-growth companies don’t burn equity for growth but rely on debt instead, which is even worse because debt holders need their money back with great regularity, unlike equity investors. Do you remember the fast-growing Lehman Brothers and Bear Stearns? Lehman grew its revenue by 36 percent annually from $17 billion in 2003 to $59 billion in 2007.6 This incremental revenue of about $40 billion was funded by an incremental debt of almost $90 billion. Similarly, Bear Stearns grew its revenue seven-fold from 2003 to 2007.7 Its incremental revenue of $3.5 billion during this period was primarily funded by an additional debt of $42 billion. When the financial crisis hit in 2008, these highly leveraged entities—which had contributed to the problem—had nowhere to hide. They both collapsed that year.
+I also have a personal reason for not wanting revenue growth to be the primary selection criterion. In my experience, high-growth businesses can hide myriad problems, ranging from issues of product or service quality, employee culture, and accounting to a bloated balance sheet. According to a study conducted by the Kauffman Foundation and Inc. Magazine, five to eight years after the magazine had identified five thousand businesses as “fastest-growing,” two-thirds of those had shut down, downsized, or been sold disadvantageously.8 I hope you will agree that while “high growth” is easy to measure, it stumbles on our second filtering criterion (removing most, if not all, low-quality businesses).
+I know, I know. You will counter me with just one word: Apple. This fantastic business grew its revenue thirty-three-fold from 2004 to 2020 at an annualized growth of 25 percent. But for every Apple, there are hundreds, if not thousands, of lemons.
+Okay, let’s recap. We want to use a single filter, F, to select businesses for further analysis. This should hopefully save us a lot of time and effort. We wondered if we could use “quality management teams” or “fast growth” as our starting point. We rejected both as good candidates for F because it is tough to assess the former, and the latter can end up causing heartburn.
+A third guess for a criterion for short-listing businesses for further analysis could be margins. Is a high-margin business a high-quality business? Many seem to think so. Margins can mean many things: gross margin (sales minus cost of goods sold divided by sales), EBITDA margin (earnings before interest, tax, depreciation, and amortization divided by sales), or EBIT margin (earnings before interest and tax divided by sales). Which of these, if any, should we choose for F?
+Let’s start with gross margin, which measures the direct cost of producing the product or service being sold; accountants call this the “cost of goods sold.” If a bar of bath soap retails for $1 and costs 30 cents to make, then the gross margin is 70 percent. Does a high gross margin tell us anything about the quality of the business? Not really. Several internet businesses boasted a gross margin of more than 90 percent in the dot-com era, but almost all experienced huge losses because of their marketing spends.
+What about EBITDA margin or EBIT margin (also called operating margin)? Measuring EBIT margin would be more sensible because it accounts for depreciation, which is a real cost of doing business. But just because it is a better measure does not mean it is a good measure.
+Take this example of two real-world businesses: Business C has had an operating margin of about 3 percent over the past fifteen years. Business T has delivered an operating margin of 19 percent over the same period. Would you reject Business C and select Business T because T is “better” than C? If you did so, you would have spurned Costco, one of America’s best-run businesses. Business T is Tiffany & Co., a reasonably well-run business but not as well run as Costco. What makes Costco at a margin of 3 percent a better company than Tiffany at 19 percent?9 I will get to that shortly. Suffice it to say that using margins as a starting point to narrow our list of companies may lead us astray. It fails our second and third criteria (removing most, if not all, low-quality businesses and selecting high-quality businesses).
+We haven’t yet considered macro factors for building the short list. But which single piece of macro data should we consider for short-listing individual businesses? For example, if “experts” believe that inflation will rise, should we short-list only consumer goods businesses able to pass on the increased cost to their customers? If we do so, should we then completely revise the list if the inflation expectations get reversed within six months? I don’t know how to account for macro factors for short-listing high-quality businesses. I am not suggesting that it is the wrong thing to do—just that I don’t know how it can be done. And so, we avoid considering any macro factor as our preliminary filter F. What about accounting for macro factors when making our final list? More on that later.
+The Evolutionary Cascade of a Single Selection Criterion
+Meanwhile, we seem to be stuck. What could F be? Maybe Lyudmila and her tail-wagging Ember can help us.
+But before we seek guidance from them, let’s briefly visit the Russia of the 1920s and ’30s. The brutal Communist regime under Joseph Stalin was forcing individual farmers to give up their land and consolidate their holdings under kolkhozy, or collective farms.10 The central planners of the Communist Party had envisaged a dramatic increase in agriculture production and productivity arising from scale economies and improved control of output by the State. They expected to be able to feed the rising urban population and increase exports. The opposite happened.
+The farmers strongly resisted giving up their ancestral land and property; in fact, many chose to destroy their crops and slaughter their animals instead of giving in to collectivization. Stalin sent millions of people to prison camps, and millions more died of starvation as famine set in owing to the reduction in agriculture production.
+In the middle of this disaster, Trofim Lysenko, an agriculture scientist, claimed that he had invented a new technique to significantly increase agriculture production. This “new” technique envisaged that a plant’s acquired characteristics could be inherited. This was in stark contrast to Mendelian genetics and Darwinism, which had demonstrated—by this time, experimentally—that genes were the unit of inheritance. Lysenko, however, promised an agricultural revolution with his unscientific techniques and got the attention of Stalin, who desperately needed a Russian hero to solve his food crisis.</div>
+            <div class="text-block simplified-text">好的，这是符合您要求的译文：
+
+我知道你在想什么。我是不是把整个论点都建立在一个像安然这样的特例上了？让我们换个角度看。我猜你读过很多CEO或公司总裁的访谈。有谁提到过他们不关心客户、停止了创新，或者雇佣了被其他公司拒绝的人吗？你听过公司领导人贬低自己的产品或服务，承认竞争对手做得更好，或者抱怨厌倦了公司政治吗？你几乎不可能——如果曾经有过的话——从管理层的话里学到任何有深度的东西。他们总是说着被教导要说的话，这些话往好了说毫无用处，往坏了说则有害，因为就像安然那样，他们的话很有说服力。根据我的经验，当有人说“这是个优秀的管理团队”时，他们实际想说的是“这些人真能说！”因此，“优秀管理团队”这个筛选器未能通过第一个标准（易于衡量）。
+
+我知道很多专业投资者会不同意我的观点。基金管理界的许多人以自己号称具备在一系列管理层会议后去伪存真的能力而自豪。其中一些人可能真有这种罕见的技能，但多数人要么是自欺欺人，要么就是在撒谎。如果真有人能通过与管理层会面来评估一家公司的质量，我们可以在场边为他们鼓掌，但自己不必落入这个陷阱。
+
+那么，对于选择能反映公司整体质量的单一特质，还有其他猜想吗？会不会是营收增长？市场似乎很青睐高速增长的公司。营收增长衡量标准的问题在于：我们如何知道这种增长是如何实现的？
+
+在上一章中，我在快速变化的行业背景下讨论了互联网泡沫的破灭。在评估高增长企业时，这段时期同样具有参考价值。上世纪90年代末，大多数互联网企业增长迅猛，但它们实现这一违背常理壮举的方式，是花费远超其营收的数百万美元现金。不幸且可预见的是，增长并未如投资者所愿成为福音。他们忽视了增长的成本并为此付出了代价。几乎所有互联网公司最终都倒闭了。
+
+更近的例子是，WeWork的惊人失败为通过烧钱推动超高速增长提供了教训。如你们许多人所知，软银投资的WeWork曾是全球最大的共享办公空间公司之一，估值一度高达470亿美元。到2021年底，其市值已跌至约50亿美元。该公司的营收从2016年的4.15亿美元增长到2019年的35亿美元，短短三年翻了八倍。同样在2019年，老牌共享办公巨头IWG的营收为27亿美元，自2016年以来“仅”增长了28%。WeWork消耗现金的速度仿佛还经营着一家印钞厂；仅在2019年第三季度，该公司就宣布亏损12.5亿美元。它不得不在第四季度撤回首次公开募股（IPO）。
+
+许多高增长公司不是靠消耗股权来实现增长，而是依赖债务，这更糟糕，因为债务持有者需要非常规律地收回资金，不像股权投资者。还记得高速增长中的雷曼兄弟和贝尔斯登吗？雷曼的营收从2003年的170亿美元增长到2007年的590亿美元，年均增长36%。这约400亿美元的增量营收是靠近900亿美元的增量债务支撑的。同样，贝尔斯登从2003年到2007年营收增长了七倍。其期间35亿美元的增量营收主要由420亿美元的额外债务提供资金。当2008年金融危机来袭时，这些高杠杆实体——它们本身就是问题的一部分——无处可逃。两者都在当年倒闭了。
+
+我还有一个个人原因，不希望营收增长作为首要筛选标准。根据我的经验，高增长企业可以掩盖无数问题，包括产品或服务质量、员工文化、会计问题以及臃肿的资产负债表。考夫曼基金会和《Inc.》杂志的一项研究显示，在该杂志将五千家企业评为“增长最快”的五到八年后，其中三分之二的公司已倒闭、缩减规模或被低价出售。我希望你会同意，“高增长”虽然易于衡量，但它未能通过我们的第二个筛选标准（排除大部分，即使不是全部，低质量企业）。
+
+我知道，我知道。你会用一个词来反驳我：苹果。这家了不起的企业从2004年到2020年营收增长了三十三倍，年化增长率达25%。但每出现一个苹果，就有成百上千个烂公司（柠檬）。
+
+好吧，我们来回顾一下。我们想用一个单一的筛选器F来挑选企业进行深入分析。这有望节省我们大量时间和精力。我们曾思考能否以“高质量管理团队”或“快速增长”为起点。我们否定了两者作为F的良好候选，因为前者难以评估，后者最终可能带来麻烦。
+
+第三个猜想作为初步筛选标准以进行深入分析的可能是利润率。高利润率的企业就是高质量企业吗？许多人似乎这么认为。利润率可以指很多方面：毛利率（销售收入减销售成本除以销售收入）、EBITDA利润率（息税折旧摊销前利润除以销售收入）或EBIT利润率（息税前利润除以销售收入）。我们应该选择其中哪一个作为F呢？
+
+让我们从毛利率开始，它衡量的是生产所售产品或服务的直接成本；会计师称之为“销售成本”。如果一块香皂零售价为1美元，制造成本为30美分，那么毛利率就是70%。高毛利率能说明企业的质量吗？其实不能。在互联网泡沫时代，好几家互联网企业宣称毛利率超过90%，但几乎都因营销支出而遭受巨额亏损。
+
+那么EBITDA利润率或EBIT利润率（也称为营业利润率）呢？衡量EBIT利润率会更合理，因为它考虑了折旧这一真实的经营成本。但仅仅因为它是一个更好的衡量标准，并不意味着它就是一个好的衡量标准。
+
+以现实中两家企业为例：企业C在过去十五年的营业利润率约为3%。企业T在同一时期的营业利润率为19%。你会因为T“优于”C而拒绝企业C选择企业T吗？如果你这样做了，你就错过了开市客（Costco）——美国经营最好的企业之一。企业T是蒂芙尼公司（Tiffany & Co.），一家经营相当不错但不如开市客的企业。为什么利润率仅3%的开市客能比利润率19%的蒂芙尼更好？我稍后会谈到。足以说明，以利润率作为起点来缩小公司范围可能会把我们引入歧途。它未能通过我们的第二和第三条标准（排除大部分低质量企业并选择高质量企业）。
+
+我们尚未考虑用于构建初步名单的宏观因素。但我们应该考虑哪一项宏观数据来筛选单个企业呢？例如，如果“专家”认为通胀将上升，我们是否只应筛选那些能够将增加的成本转嫁给客户的消费品企业？如果我们这样做，那么如果通胀预期在六个月内逆转，我们是否应该完全重新修订名单？我不知道如何用宏观因素来筛选高质量企业。我并非暗示这是错误的做法——只是我不知道该如何做到。因此，我们避免将任何宏观因素作为我们的初步筛选器F。那在制定最终名单时考虑宏观因素呢？稍后再谈。
+
+单一筛选标准的演变过程
+与此同时，我们似乎陷入了困境。F可能是什么呢？也许柳德米拉和她摇尾巴的安珀能帮到我们。
+
+但在向它们寻求指导之前，让我们简要回顾一下20世纪二三十年代的俄国。约瑟夫·斯大林领导下的残酷共产主义政权强迫个体农民放弃土地，将其财产合并到集体农庄（kolkhozy）之下。共产党的中央计划者曾设想，通过规模经济和国家对产出的更好控制，农业生产和生产力将大幅提高。他们期望能够养活不断增长的城市人口并增加出口。结果却恰恰相反。
+
+农民强烈抵制放弃祖传的土地和财产；事实上，许多人宁愿毁掉庄稼、宰杀牲畜也不愿屈服于集体化。斯大林将数百万人送进劳改营，还有数百万人因农业生产减少引发的饥荒而饿死。
+
+在这场灾难中，农学家特罗菲姆·李森科声称他发明了一种能显著提高农业生产的新技术。这种“新”技术设想植物后天获得的特性可以遗传。这与孟德尔遗传学和达尔文主义形成鲜明对比，后者当时已通过实验证明基因是遗传单位。然而，李森科用他非科学的技术承诺了一场农业革命，并引起了斯大林的注意，斯大林迫切需要一个俄国英雄来解决他的粮食危机。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">Over time, as Lysenko became more powerful, he declared genetics a pseudoscience, and practicing geneticists were either executed or sent to labor camps. In this environment, the authorities fired the leading geneticist Dmitri Belyaev from his job at the Department of Fur Animal Breeding at the Central Research Laboratory. Belyaev’s elder brother, who was studying the genetics of silkworms, was executed at Lysenko’s behest in 1937.
+Dmitri, however, kept studying genetics in secret. In 1959, with Nikita Khrushchev’s ascension to power, he became the director of the Institute of Cytology and Genetics of the Russian Academy of Sciences in Novosibirsk, Siberia. Dmitri held this post for twenty-six years, until his death in 1985. And during this time, he conducted one of the most remarkable, longest-running experiments in the history of biology.11 The investigation continues today.
+Dmitri Belyaev wanted to answer two questions: (1) How had the domestication of animals (e.g., dogs, pigs, goats, and cows) started, and (2) Why did most domestic animals have similar characteristics, including floppy ears, curly tails, a piebald coloration (patches of black and white), and babyish faces? He believed that the domestication of animals resulted from underlying heritable genetic changes that had occurred during the course of selection over millennia.
+The big unanswered question was, What was being selected? Natural and artificial selection can occur only if something is selected for generation after generation. For example, whereas both cheetahs and lions are ferocious predators, among many other factors, cheetahs have been selected for speed and lions for their size and strength. In other words, a slow cheetah is unlikely to leave any offspring, but a big, strong lion is likely to leave many.
+Dmitri hypothesized that the key factor selected when our ancestors domesticated wild animals was tameness. Thus, the unit of selection was not related to an animal’s physical attributes but to its behavior. This was an audacious guess since most scientists then assumed that physical morphology was the unit of selection. How could Dmitri test his bold theory? Only by going back to the time when animals first started becoming domesticated. For dogs, this would have meant experimenting on wild wolves. But getting a supply of wolves would have been very hard in Siberia, so he chose the silver fox. He designed a selective breeding experiment that focused only on tameness as the selection factor.
+As described earlier, he recruited Lyudmila Trut, an undergraduate student at the prestigious Moscow University, to lead and manage the experiment in Siberia. Lyudmila would forever change the field of behavioral genetics with her tenacity and creativity.12
+Lyudmila’s first task was to select a location for breeding the foxes. She chose a large commercial farm (that sold fox fur) called Lesnoi, more than 350 kilometers from Novosibirsk, where she and her family lived. She began the experiment in the fall of 1960 with about a dozen foxes. She also hired several women from nearby villages to be caretakers and experimenters. Here is how it worked.
+The experimenters gave the foxes a series of tests from the time they were one month old to their sexual maturity at six to seven months. When a fox pup was one month old, the experimenter extended her hand to offer it food while trying to stroke it. She tested the fox pup twice: once in the cage and once while the pup was roaming freely with other pups in a larger enclosure. She repeated this test monthly until the pup reached sexual maturity. To ensure that the pup’s reaction to these tests was based solely on genetic selection, the pups were not trained and did not have any human contact except for their brief interactions with the experimenters. The pups were caged with their mothers until they were about two months old and then with their litter mates. At about three months of age, they were put into their own cages.
+When the pups were about seven months old, the experimenters assigned them to one of three categories based on their tameness. Class III foxes were unfriendly toward the handlers and either ran away from them or were aggressive. Class II foxes behaved neutrally and displayed no emotional response toward the handlers. Class I foxes were the friendliest and seemed to want to engage with the handlers.
+Lyudmila and her team selected a few of the calmest Class I foxes for mating and repeated the experiment with the next generation of pups. By the third generation in 1962, Lyudmila noticed that some of the tamer foxes had started mating a few days earlier than usual and were producing slightly larger litters than wild foxes. Otherwise, there was no indication of any significant change.
+In April 1963, as Lyudmila approached the cages of the fourth generation of pups, she saw a male pup called Ember vigorously wagging his tail. This was precisely what a puppy would do. But no one had ever witnessed a silver fox—whether in a cage or the wild—wag its tail at a human. Ember wagged his tail at other humans, too. No other pup of his generation did so, but even a single fox radically altering its behavior to mimic a dog was significant news. Dmitri had told Lyudmila in their first meeting that he wanted to make a dog out of a fox. Had the process begun?
+In 1966, many of the sixth-generation pups that Ember had sired started wagging their tails at the handlers. Ember had not been an anomaly—he was a trailblazer. Lyudmila had categorically demonstrated that tail wagging was genetically heritable. By this time, the researchers had to add another class of foxes called Class IE: the elites. These foxes were extremely friendly, were eager to establish human contact, and, like dogs, whimpered to attract attention. In the sixth generation, about 1.8 percent of the pups were elites. By the twentieth generation, almost 35 percent had reached elite status. After about thirty-five generations, more than 70 percent of the population had attained elite status.
+This is a breakneck pace of evolution: In less than forty years, Dmitri and Lyudmila’s experiment had essentially converted a population of wild foxes who avoided humans into dog-like creatures that could be kept as pets in any of our homes. These foxes were very docile, competed for human attention, and formed deep emotional bonds with their handlers. It had become hard to distinguish their behavior from that of dogs. Lyudmila and her team had erased their wildness almost completely. But don’t raise your eyebrows in astonishment just yet. I haven’t even told you the most interesting result of the experiment.
+The experimenters noticed that the eighth generation of these tamer foxes also started displaying some novel physical traits. The first change was in coat color: Some of the foxes’ fur had a piebald pattern, which is common among domesticated animals like sheep, dogs, horses, pigs, goats, mice, and guinea pigs. A piebald pattern forms when two colors—typically black and white—form irregular patches on the animal’s skin. No wild foxes in the experiment were piebald, but as their tameness increased over the generations, they started showing this coloration. Further physical traits to appear were floppy ears and rolled tails—again, common among many domesticated species, especially dogs.
+In 1974, Lyudmila decided to raise the experiment’s stakes by living with the foxes in the same house. To start, she chose a friendly fox called Pushinka. One evening, Lyudmila was sitting on a bench outside her home with Pushinka relaxing next to her as usual. Suddenly, Pushinka got up as if she had heard something and started barking. It turned out to be the night guard, and Pushinka stopped her aggressive posturing and barking when she realized that the guard posed no imminent danger to Lyudmila. This guard-dog-like behavior—rushing to protect a human from a potential threat—had never been observed before by Lyudmila.
+In the early 1990s, the team also started noticing that the skulls and jaws of the domesticated foxes had started diverging from those of their wild brethren. The cranial height and width of the domesticated foxes’ skulls had shortened. Their snouts had become shorter and wider giving them a baby-like appearance—almost exactly mimicking the differences between a dog and a wolf.
+Let’s consider this for a moment. Remember, Dmitri and his team were selecting for only one trait: the willingness of foxes to be tamed. They weren’t interested in body size, coat color, skull shape, ear stiffness, or anything else. The experimenters took great care to ensure selection based only on tameness. But this single filter of a behavioral characteristic had triggered many physical changes in the animals. How could this have happened?
+There were no new mutations in the domesticated silver foxes, but their gene expression had changed owing to the selection for tameness. This is how a gene does not change but alters what it expresses: It produces more or fewer chemicals like proteins or hormones. For example, when a dog owner stares lovingly into their canine’s eyes, oxytocin is released in the systems of both the dog and the owner, creating a positive feedback loop in which the two enjoy each other’s company more and more. If the same owner encounters an unknown dog on the street, no oxytocin is released. Although it’s the same gene in question, the gene expression is different in different situations. Scientists have demonstrated that gene expression needs to change only a little to have a significant impact on an animal’s body and behavior.</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的书籍段落：
+
+随着时间的推移，李森科权势日盛，将遗传学斥为伪科学，从事遗传学研究的学者或被处决，或被送入劳改营。在这种环境下，当局解雇了顶尖遗传学家德米特里·别利亚耶夫在中央研究实验室毛皮动物繁育部的职务。别利亚耶夫的兄长当时在研究蚕的遗传学，于1937年奉李森科之命被处决。
+
+然而，德米特里仍秘密研究遗传学。1959年，随着尼基塔·赫鲁晓夫掌权，他成为西伯利亚新西伯利亚市俄罗斯科学院细胞学与遗传学研究所所长。德米特里担任此职长达二十六年，直至1985年去世。在此期间，他进行了一项生物学史上最引人注目、持续时间最长的实验之一，该研究至今仍在继续。
+
+德米特里·别利亚耶夫想回答两个问题：（1）动物（如狗、猪、山羊和牛）的驯化是如何开始的？（2）为何大多数家养动物都具有相似的特征，包括下垂的耳朵、卷曲的尾巴、花斑毛色（黑白斑块）以及稚嫩的面容？他相信动物的驯化源于数千年选择过程中发生的潜在可遗传基因变化。
+
+悬而未决的核心问题是：选择的对象是什么？自然选择和人工选择只有在世代选择某种特性时才会发生。例如，尽管猎豹和狮子都是凶猛的捕食者，但除其他因素外，猎豹因速度而被选择，狮子则因其体型和力量而被选择。换言之，速度慢的猎豹不太可能留下后代，但体型庞大、强壮的狮子则可能留下众多后代。
+
+德米特里假设，我们祖先驯化野生动物时选择的关键因素是温顺。因此，选择的单位与动物的身体属性无关，而是与其行为相关。这是一个大胆的猜测，因为当时大多数科学家认为身体形态才是选择的单位。德米特里如何验证他的大胆理论？唯有回到动物最初开始被驯化的时代。对于狗而言，这意味着要在野生狼身上做实验。但在西伯利亚获取狼非常困难，因此他选择了银狐。他设计了一项选择性繁殖实验，仅将温顺作为选择因素。
+
+如前所述，他招募了莫斯科国立大学的本科生柳德米拉·特鲁特，在西伯利亚领导和管理这项实验。柳德米拉以其坚韧和创造力，将彻底改变行为遗传学领域。
+
+柳德米拉的首要任务是为狐狸繁育选址。她选择了一家距离她家所在的新西伯利亚市350多公里的大型商业农场（出售狐皮）——“列斯诺伊”。她于1960年秋季开始实验，起始约有十几只狐狸。她还从附近村庄雇佣了几名妇女担任饲养员和实验员。实验是这样进行的：
+
+实验员从狐狸一个月大开始到它们六七个月性成熟期间，对其进行一系列测试。当幼狐一个月大时，实验员伸出手向其提供食物，同时试图抚摸它。她对幼狐进行两次测试：一次在笼内，一次在幼狐与其他幼狐在较大围栏中自由活动时。她每月重复此测试，直至幼狐性成熟。为确保幼狐对这些测试的反应完全基于基因选择，幼狐未经训练，除与实验员的短暂互动外，未与人类有任何接触。幼狐与母狐同笼饲养至约两个月大，之后与同窝幼狐同笼。约三个月大时，它们被放入单独的笼中。
+
+当幼狐约七个月大时，实验员根据其温顺程度将其归入三类。III级狐狸对饲养员不友好，要么逃跑，要么表现出攻击性。II级狐狸行为中立，对饲养员无情绪反应。I级狐狸最友好，似乎渴望与饲养员互动。
+
+柳德米拉和她的团队挑选了几只最温顺的I级狐狸进行交配，并在下一代幼狐身上重复实验。到了1962年的第三代，柳德米拉注意到一些更温顺的狐狸开始比通常提前几天交配，且产仔数略多于野生狐狸。除此之外，未见任何显著变化的迹象。
+
+1963年4月，当柳德米拉走近第四代幼狐的笼子时，她看到一只名叫“余烬”的雄性幼狐在使劲摇尾巴。这正是小狗会做的动作。但此前从未有人见过银狐——无论是在笼中还是野外——向人类摇尾巴。“余烬”也向其他人摇尾巴。它同代的其他幼狐没有这样做，但即使仅有一只狐狸彻底改变行为模仿狗，也是重大新闻。德米特里在初次见面时就告诉柳德米拉，他想把狐狸变成狗。这个过程开始了吗？
+
+1966年，“余烬”所生的第六代幼狐中，许多开始向饲养员摇尾巴。“余烬”并非特例——它是先驱者。柳德米拉明确证明了摇尾巴行为具有基因遗传性。此时，研究人员不得不增加一类狐狸，称为IE级：精英级。这些狐狸极其友好，渴望与人类接触，并且像狗一样呜呜叫以吸引注意。在第六代中，约1.8%的幼狐成为精英级。到第二十代，近35%达到精英级。大约三十五世代后，超过70%的种群达到精英级。
+
+这是极其迅速的进化速度：在不到四十年的时间里，德米特里和柳德米拉的实验实质上将一群躲避人类的野生狐狸转变成了类似狗的动物，可以在我们任何家庭中作为宠物饲养。这些狐狸非常温顺，会争抢人类的关注，并与饲养员建立了深厚的情感纽带。它们的行为与狗的行为已难以区分。柳德米拉和她的团队几乎完全抹去了它们的野性。但先别惊讶地扬起眉毛。我还没告诉你实验最有趣的结果呢。
+
+实验员注意到，第八代这些更温顺的狐狸也开始表现出一些新的身体特征。第一个变化是毛色：一些狐狸的皮毛出现了花斑图案，这在绵羊、狗、马、猪、山羊、小鼠和豚鼠等家养动物中很常见。花斑图案是指两种颜色（通常是黑色和白色）在动物皮肤上形成不规则斑块。实验中野生狐狸没有花斑，但随着世代更迭温顺度提高，它们开始显现这种毛色。随后出现的身体特征是下垂的耳朵和卷曲的尾巴——同样常见于许多驯化物种，尤其是狗。
+
+1974年，柳德米拉决定提高实验的挑战性，与狐狸同住一屋。起初，她选择了一只名叫“普辛卡”的友好狐狸。一天晚上，柳德米拉像往常一样坐在屋外的长凳上，“普辛卡”在她旁边休息。突然，“普辛卡”像听到了什么似的站起来，开始吠叫。原来是夜班警卫，当“普辛卡”意识到警卫对柳德米拉没有直接威胁时，便停止了攻击姿态和吠叫。这种护卫犬般的行为——冲过来保护人类免受潜在威胁——柳德米拉此前从未观察到。
+
+20世纪90年代初，研究团队还开始注意到驯化狐狸的头骨和颌骨开始与其野生同类产生差异。驯化狐狸头骨的颅高和颅宽缩短。它们的口吻部变得更短更宽，呈现出幼态特征——几乎完全模仿了狗与狼之间的差异。
+
+让我们思考一下。记住，德米特里和他的团队仅选择了一个特征：狐狸被驯化的意愿。他们对体型大小、毛色、头骨形状、耳朵挺立程度或其他任何特征都不感兴趣。实验员非常谨慎地确保选择仅基于温顺度。但这一单一的行为特征筛选，却引发了动物身体的诸多变化。这怎么可能发生？
+
+驯化银狐并未出现新的基因突变，但由于对温顺度的选择，它们的基因表达发生了变化。这就是基因本身不变但改变了其表达内容：它会产生更多或更少的蛋白质或激素等化学物质。例如，当狗主人深情注视爱犬的眼睛时，狗和主人的体内都会释放催产素，形成一个积极的反馈循环，使两者越来越享受彼此的陪伴。如果同一位主人在街上遇到一只陌生的狗，则不会释放催产素。尽管涉及的是同一个基因，但在不同情境下基因表达是不同的。科学家已证明，基因表达只需发生微小变化，就能对动物的身体和行为产生重大影响。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">As Lyudmila and her team selected tamer foxes, they unknowingly impacted the expression of a select set of genes. This selection altered the amount and timing of release of certain neurochemicals and hormones that regulated the developmental and physical traits of the foxes. For example, the hormone melatonin is known to manipulate the timing of mating in many species. The researchers found that the elite females released a lot more melatonin than their Class II and III peers and were ready for mating a few days earlier than normal. The hormonal change was so extreme that some females were ready to mate twice a year, a phenomenon never seen in the wild. Selecting for tameness had impacted the reproductive cycle of the species! A gene called HTR2C produced much higher levels of serotonin and dopamine in the elites than in wild foxes. Serotonin is a key hormone in shaping the early development of an animal and its increase is likely to have changed the physiology and behavior of the domesticated foxes. The researchers also discovered that the tamed foxes had much lower levels of adrenaline than their wild cousins. Adrenaline regulates the production of melanin, which determines the coloration of skin and fur.
+The silver fox experiment also solved the centuries-old puzzle of the numerous physical similarities among domesticated animals discussed earlier. Dmitri had rightly hypothesized that since mammals share similar hormonal and neurotransmitter regulatory systems, selecting for tameness would unleash broadly similar developmental and physical changes in them as well.
+Dmitri and Lyudmila’s experiment, now running for more than sixty years, has demonstrated that evolution does not occur piecemeal. The behavior and physiology of animals are intimately connected. Darwin, with his acute powers of observation, knew this. His statement at the beginning of this chapter asserts that hairless dogs have imperfect teeth and pigeons with feathered feet have skin between their outer toes. He predicted that if humans choose to select for one characteristic, they will surely also cause transformations in other characteristics owing to what he called the “mysterious laws of the correlation of growth.”
+Dmitri and Lyudmila had proven Darwin right.
+Select One, Get Many Free
+As an investor, would you not want to be in the position of selecting just one trait of a business but getting many high-quality attributes for “free”? As discussed earlier, this single trait should satisfy three criteria: it should be measurable, reject most businesses of poor quality, and select most high-quality businesses. Most, not necessarily all. We have seen that some factors like high-quality management, revenue growth, and margins do not serve the purpose well enough.
+At Nalanda, here is what we begin with while short-listing businesses: historical return on capital employed (ROCE).
+The first word first. Historical. I devote an entire chapter to this important and oft-ignored word, but for now I wanted to clarify that the ROCE number is what a business has delivered in the past. We don’t listen to stories about how ROCE will improve in the future. We want to assess a company purely on its historically delivered ROCE.
+Now let’s look at some definitions. ROCE is simply the operating profit of the business as a percentage of total capital employed. As defined earlier, operating profit is earnings before interest and taxes, or EBIT. Why do we not use profit after tax (PAT) instead? Remember, we want to understand a business’s operating performance, and mixing it with financial measures like tax and interest will muddy the waters. We do not ignore tax or interest charges in our overall evaluation of the business, but for calculating ROCE, we limit ourselves to operating performance.
+What about total capital employed? This typically comprises two factors: net working capital and net fixed assets. In the net working capital number, we like to exclude excess cash (i.e., cash minus debt if cash happens to be much greater than debt) because extra cash is not an operating asset. Also, high-ROCE companies generate a lot of cash, and incorporating cash into the capital employed number will unnecessarily reduce ROCE. If you are uncomfortable with this, you can include a portion of cash in capital employed. For an acquisitive company, we also include the capital invested in acquiring businesses, but let’s keep things simple for the moment. Thus, ROCE for nonfinancial companies can be defined as follows:
+EBIT ÷ (net working capital + net fixed assets)
+Do you now see why using operating margin to filter businesses may not be the best approach? Margins do not tell us what we had to invest to get those margins. The advantage of measuring ROCE is that it accounts for the quality of P&L (in the numerator) as well as the balance sheet (in the denominator). Let’s return to Costco and Tiffany.
+I claimed that Costco at an operating margin of 3 percent is a better business than Tiffany at 19 percent. If we limit our definition of “better” to the level of ROCE, then I was right. This is because Costco’s average ROCE from 2014 to 2019 (pre-pandemic) was 22 percent compared to Tiffany’s 16 percent. Costco is deploying its capital much more effectively than Tiffany, and this more than compensates for Costco’s low margin. Let’s take the example of just one important part of its capital employed: inventory. Costco keeps about 31 days of inventory in its warehouses and retail stores. Guess the same number for Tiffany. It is 521 days, or almost a year and half! Tiffany’s operating margin is impressive, but Costco’s dramatically better management of its inventory and other assets ensures it earns a higher ROCE than Tiffany.
+Many investors prefer return on equity (ROE). I don’t. ROE is calculated after taxes and interest payments, and hence mixes operating performance with financing strategy and tax structure. As a business owner, I am much more concerned with the superior operating performance of a business. While taking on leverage (which will improve ROE but not ROCE) and “planning” for taxes may benefit a firm in the short to medium term, in my experience, success over the long term comes only by running great operations. Which brings us back to ROCE.
+What does a high ROCE of, say, 20 percent tell us? A simple fact: This business earns $20 for every $100 it invests. This is equivalent to making a bank deposit of $100 and earning $20 on it after a year. No, you are not in a hyper-inflationary Latin American economy but in the “normal” world. I assume you would be on the moon if you owned a high-ROCE business like that. They are rare, but they do exist, and when you find them, they will tell you a lot.
+High ROCE is a lot like tameness in the Siberian silver foxes. Just as tameness brings with it a curly tail, piebald fur, and floppy ears, a high-ROCE business ushers in many attributes relevant for an owner like us at Nalanda. Here are some examples.
+A Consistently High-ROCE Business Is Likely to Be Run by an Excellent Management Team
+What? “Excellent management team” again? If we can’t measure it directly, why am I sneaking it in indirectly?
+Just because we can’t measure management quality through interviews and discussions does not mean quality management teams do not exist. Of course they do. What we need is not some airy-fairy impression of an investor made over a coffee (or a Zoom call) but a quantitative measure. We don’t vote for the best cricket bowler, best running back, or best marathoner based on their interviews or their ability to articulate their excellence, so why should we do it for management teams? The best bowling statistics and the best finish times determine the best bowler and the best marathoner. Similarly, in my view, an excellent—but not the only—indicator of the quality of the management team is their historical track record on the quantity of ROCE.
+Sustaining high ROCE in any industry over any length of time is extraordinarily hard. Microeconomic theory states that excess returns should be driven to zero in competitive markets, which means that businesses need to run very hard simply to earn their cost of capital. This may be true for most businesses, but there are a select set of companies that defy logic and competition to earn high returns on capital year on year, decade after decade.
+The median historical ROCE of our portfolio of thirty businesses—most of which are more than thirty-five to forty years old—is about 42 percent. I am obviously biased since I am an investor in these businesses, but I do think the management teams of these businesses are excellent. Are they exemplary, or am I just calling them first rate because they happen to have high ROCE? I don’t know. Does it matter?
+We should expect the following from a quality management team. That they deliver products and services to their customers that are superior to those of their competitors, allocate capital prudently, attract and retain quality employees, manage their cost structure (which is commensurate with their size and revenue), maintain a quality balance sheet, and continuously innovate by taking calculated risks. All this should—and does—correlate with high ROCE.
+A Consistently High-ROCE Business Is Likely to Have a Strong Competitive Advantage
+All long-term investors, mentored by more than five decades of Buffett’s letters and annual meetings, demand that companies have a “sustainable competitive advantage” (SCA). But how does one go about assessing whether a company has an SCA? If you peruse business and investment books, the sources of SCA turn out to be the usual suspects: brand, intellectual property, network effect, economies of scale, and low cost.13</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的段落：
+
+**银狐实验段落：**
+
+当柳德米拉和她的团队挑选温顺的狐狸时，他们在无意中影响了一组特定基因的表达。这种选择改变了调节狐狸发育和生理特征的某些神经化学物质和激素的分泌量与时间。例如，众所周知，褪黑素这种激素控制着许多物种的交配时机。研究人员发现，精英雌性狐狸分泌的褪黑素远多于其二级和三级同类，并且比正常情况提前几天准备好交配。这种激素变化如此剧烈，以至于一些雌性狐狸每年能准备好交配两次，这种现象在野外从未见过。对温顺度的选择竟影响了该物种的繁殖周期！一种名为HTR2C的基因在精英狐狸体内产生的血清素和多巴胺水平远高于野生狐狸。血清素是塑造动物早期发育的关键激素，其水平的提升很可能改变了驯化狐狸的生理和行为。研究人员还发现，驯化狐狸的肾上腺素水平远低于它们的野生近亲。肾上腺素调节黑色素的产生，而黑色素决定了皮肤和毛发的颜色。
+
+银狐实验也解开了前文讨论的家养动物间众多生理相似性这一困扰人们数个世纪的谜题。德米特里正确地假设，由于哺乳动物拥有相似的激素和神经递质调节系统，选择温顺度同样会在它们身上引发广泛相似的发育和生理变化。
+
+德米特里和柳德米拉的实验至今已持续六十多年，它证明进化并非零散地发生。动物的行为与生理紧密相连。达尔文凭借其敏锐的观察力深知这一点。他在本章开篇的论述指出，无毛狗的牙齿不健全，而脚上有羽的鸽子其外趾间有蹼。他预言，如果人类选择某一特征进行选育，由于他所说的“相关生长的神秘法则”，他们必然也会引起其他特征的改变。
+
+德米特里和柳德米拉证实了达尔文是对的。
+
+**选一得多**
+
+作为一名投资者，难道你不想处于这样一种境地：只需挑选企业的一个特质，就能“免费”获得许多优质属性？如前所述，这个单一特质应满足三个标准：它应是可衡量的、能排除大多数劣质企业、并能选出大多数优质企业。是大多数，而非全部。我们已经看到，像高质量管理、收入增长和利润率等因素并不能很好地达到这个目的。
+
+在那烂陀基金（Nalanda），我们筛选企业时首先看的是：历史动用资本回报率（ROCE）。
+
+先说第一个词：历史。我将用整整一章来阐述这个重要却常被忽视的词，但此刻我想澄清的是，ROCE数字代表的是企业过去实现的业绩。我们不听信ROCE未来会如何改善的故事。我们只想纯粹依据其历史实现的ROCE来评估一家公司。
+
+现在来看一些定义。ROCE简单来说就是企业的营业利润占动用资本总额的百分比。如前所定义，营业利润是指息税前利润，即EBIT。我们为何不使用税后利润（PAT）？请记住，我们希望了解企业的经营业绩，而将其与税收和利息等财务指标混杂会使情况变得复杂。我们在企业整体评估中并非忽视税收或利息支出，但计算ROCE时，我们仅限关注经营业绩。
+
+动用资本总额又是什么？它通常包含两个要素：净营运资本和净固定资产。在净营运资本数字中，我们倾向于剔除超额现金（即，若现金远大于债务，则为现金减去债务后的值），因为多余的现金不是经营性资产。而且，高ROCE公司会产生大量现金，将现金计入动用资本会不必要地降低ROCE。如果你对此感到不适，也可以将部分现金计入动用资本。对于收购频繁的公司，我们还会计入用于收购业务的资本，但眼下我们力求简化。因此，非金融企业的ROCE可定义如下：
+**EBIT ÷ (净营运资本 + 净固定资产)**
+
+你现在明白为何用营业利润率筛选企业可能不是最佳方法了吗？利润率并未告诉我们为获得该利润率投入了多少资本。衡量ROCE的优势在于，它同时考虑了损益表（分子）和资产负债表（分母）的质量。让我们回到好市多（Costco）和蒂芙尼（Tiffany）的例子。
+
+我曾断言，营业利润率为3%的好市多是比利润率为19%的蒂芙尼更优秀的企业。如果我们把“更优秀”的定义限定在ROCE水平上，那么我是对的。这是因为好市多在2014至2019年（疫情前）的平均ROCE为22%，而蒂芙尼为16%。好市多运用资本的效率远高于蒂芙尼，这足以弥补其较低的利润率。仅以其动用资本的一个重要组成部分——库存为例。好市多在其仓库和零售店中保持约31天的库存。猜猜蒂芙尼的这个数字是多少？是521天，将近一年半！蒂芙尼的营业利润率令人印象深刻，但好市多在库存及其他资产管理上的显著优势确保了其获得比蒂芙尼更高的ROCE。
+
+许多投资者偏好净资产收益率（ROE）。我不这样。ROE是在支付税收和利息后计算的，因此将经营业绩与融资策略和税收结构混为一谈。作为企业所有者，我更关心企业卓越的经营业绩。虽然利用杠杆（这会提高ROE但不影响ROCE）和税务“筹划”可能在中短期对公司有利，但根据我的经验，长期的成功只能通过卓越的运营来实现。这又让我们回到了ROCE。
+
+例如，20%的高ROCE告诉我们什么？一个简单的事实：该企业每投入100美元就能赚取20美元。这相当于在银行存入100美元，一年后获得20美元收益。不，你并非身处恶性通胀的拉丁美洲经济体，而是在“正常”世界。我认为，如果你拥有这样一家高ROCE的企业，你会欣喜若狂。它们很稀有，但确实存在，当你找到它们时，它们会告诉你很多。
+
+高ROCE很像西伯利亚银狐的温顺度。正如温顺度伴随着卷尾、花斑毛色和耷拉的耳朵而来，一家高ROCE的企业也为我们这样的那烂陀基金所有者带来了许多相关属性。以下是一些例子。
+
+**持续高ROCE的企业很可能由卓越的管理团队运营**
+
+什么？“卓越的管理团队”又来了？如果我们无法直接衡量它，为何我要间接地引入它？
+
+仅仅因为我们无法通过访谈和讨论来衡量管理质量，并不意味着高质量的管理团队不存在。它们当然存在。我们需要的不是投资者在喝咖啡（或Zoom通话）时形成的虚无缥缈的印象，而是一个量化指标。我们不会根据采访或其阐述自身优势的能力来评选最佳板球投球手、最佳跑卫或最佳马拉松运动员，那么我们为何要对管理团队这样做呢？最佳的投球数据和最佳的完赛时间决定了谁是最佳投球手和最佳马拉松运动员。同样地，在我看来，衡量管理团队质量的一个卓越（虽非唯一）指标是其历史ROCE的量化记录。
+
+在任何行业中持续保持高ROCE都异常艰难。微观经济理论指出，在竞争性市场中超额回报应被驱至零，这意味着企业需要非常努力地运营才能赚回其资本成本。这对大多数企业可能是真的，但有一小部分公司能违背逻辑和竞争，年复一年、十年复十年地赚取高资本回报。
+
+我们由三十家企业组成的投资组合（其中大多数企业历史超过三十五至四十年）的历史ROCE中位数约为42%。作为这些企业的投资者，我显然有偏向性，但我确实认为这些企业的管理团队是卓越的。他们是楷模，还是仅仅因为他们恰好拥有高ROCE我才称他们为一流？我不知道。这重要吗？
+
+我们期望一个高质量的管理团队做到以下几点：向客户提供优于竞争对手的产品和服务、谨慎配置资本、吸引并留住优秀员工、管理与其规模和收入相称的成本结构、维护高质量的资产负债表、并通过承担可控风险持续创新。所有这些都应——也确实——与高ROCE相关联。
+
+**持续高ROCE的企业很可能拥有强大的竞争优势**
+
+所有受巴菲特五十多年致股东信和年会熏陶的长期投资者都要求企业拥有“可持续竞争优势”（SCA）。但如何评估一家公司是否拥有SCA呢？如果你翻阅商业和投资书籍，SCA的来源不外乎是那些常见的因素：品牌、知识产权、网络效应、规模经济和低成本。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">Let’s analyze “brand” as a source of competitive advantage. Almost every investor I know justifies a consumer-focused company’s stock market success by touting brand and distribution as the sources of competitive advantage. One of the great consumer-focused investment success stories began more than thirty years ago in 1988 and 1989 when Buffett purchased Coke and Gillette shares. Berkshire invested almost $600 million in Coke in 1988 and nearly the same amount in Gillette in 1989. By 1993, the combined value of these two shareholdings for Berkshire was $5.6 billion, which was equal to all other holdings combined, and Buffett was sitting on a gain of about $4 billion in these businesses. His commentary on Coke and Gillette in his 1993 annual letter is as follows: “The might of their brand names, the attributes of their products, and the strength of their distribution systems give them an enormous competitive advantage, setting up a protective moat around their economic castles.”
+Buffett, as usual, is correct. Almost three decades after this letter, Coke and Gillette continue to be enormous successes and, given their increasing market share, continue to have a solid competitive advantage. But did Buffett conclude that they had a strong competitive advantage because they had strong brands and product attributes, or was his claim based on the empirical fact that these businesses had high ROCE and an increasing market share over a long period? We will never know of course. My guess (contention?) is that it was the latter.
+The reality is that most brands don’t have any—forget about “sustainable”—competitive advantage. Depending on which source you believe, across tens of thousands of brand launches annually in the United States, the failure rate is 80 to 90 percent.14 It’s not as bad as buying a lottery ticket, but it’s also not that far off. You may also think that failure is limited to small and untested businesses and that the likes of Coke and Pepsi do very well. You would be wrong. Here is just a small sample of spectacular brand failures from large companies: New Coke (Coca-Cola), Crystal Pepsi (Pepsi), Premier smokeless cigarettes (R. J. Reynolds), Maxwell House ready-to-drink coffee (General Mills), Souper Combo (a combined soup-and-sandwich meal from Campbell), and All Natural Cleaning Vinegar (Heinz).
+Just having a brand means nothing. If something as simple to understand as a “brand” does not necessarily confer a competitive advantage (and even if it does, it is probably very tough to definitively say so), how do we know if a company has a competitive advantage? No prizes for guessing. Yes, a sustained high ROCE is a good starting point to conclude that the company may have some kind of competitive advantage. And if it is a consumer company like Coca-Cola, maybe it is the brand, maybe the distribution, maybe the management, and maybe some combination of these and other factors.
+Once we have short-listed a company based on its sustained high ROCE, we start analyzing its competitive advantages. After weeks or months of research, we may conclude that this high ROCE is unsustainable and that the company just got lucky historically. So be it. We then choose to stay away. But taking this route—of starting our assessment of competitive advantage only for high-ROCE companies—saves us a lot of time and effort.
+A Consistently High-ROCE Business Allocates Capital Well
+As a (very) long-term investor, when we choose to buy shares of a business, we allocate our capital to that business. We are doing so hoping that we will earn a decent return on this capital over the long run. Hopefully, we have evaluated other options for our capital and have made the correct decision that it is best invested in this business. Investors who allocate capital well perform well. Those who don’t don’t.
+Businesses are no different. They, too, allocate capital on an ongoing basis. They have many options, and they try to choose the best one. They, too, hope to earn a decent return on their investment. Some do; most don’t. ROCE is an excellent measure of a company’s ability to deploy capital. High ROCE implies that these businesses earn high operating profit relative to their capital deployed. Great businesses try neither to maximize operating profit nor minimize capital deployed; they try to earn the maximum operating profit per unit of capital deployed.
+Investors may not realize it, but strategy and most capital allocation decisions are deeply intertwined. For instance, is setting up a manufacturing plant in Milwaukee versus outsourcing to China a strategic or a capital allocation decision? It doesn’t matter; it is a decision that will significantly influence the company’s success. And so, it is both.
+Some more examples of strategic decisions that allocate capital in radically different ways are as follows: setting up one’s own R&D division versus copying the best designs from the market, hiring a chief technology officer to build one’s technology unit versus outsourcing it, building a manufacturing unit for critical parts versus funding a supplier, hiring young graduates and training them over many years versus hiring qualified professionals laterally, making an acquisition to enter new geography versus growing organically, funding a loss-making product in a large addressable market versus investing in profitable products in a small market, and advertising for many months on social media versus buying a single Super Bowl ad.
+How does an investor know if these myriad capital allocation decisions are sensible? One way is to analyze them thoroughly. For example, one could interview the marketing head to understand why they bought the Super Bowl ad instead of spreading the same expense over many weeks or months of advertising on Google or Facebook. One could then build financial models to test the company’s likelihood of success, compare its advertising strategy to other companies, and then reach a conclusion that either supports or contradicts its decision.
+The second way—our way—is to select companies with high ROCE as the first filter. We assume that a company with high ROCE is, on average, deploying its capital well. It may make some poor decisions, but overall, we believe its capital allocation and strategic decisions are quite sound.
+Also, frankly, it’s just easier this way. If I were to try to build multi-megabyte spreadsheets to test various scenarios of a particular capital decision, I would fail miserably. Twice. Once in making the spreadsheet and again in reaching an erroneous conclusion.
+So why try?
+A Consistently High-ROCE Business Allows Companies to Take Business Risk Without Taking Financial Risk, Which Increases the Chance of Business Success
+Capitalism thrives on risk-taking. And risk-taking is not limited just to teenagers starting companies in their garages in Silicon Valley. All companies, if they want to grow and succeed, need to keep taking calculated risks. Those that don’t take risks either atrophy or remain small and irrelevant; those that venture to take bigger risks than warranted implode. It is in the Goldilocks zone of calculated risk-taking that most companies thrive. High ROCE allows a company to keep taking calculated business risks. This is how.
+A company delivering high ROCE with modest revenue growth will generate excess cash. This is not an opinion—just a mathematical fact. For example, Company X growing its sales at 10 percent with ROCE of 25 percent can grow from zero cash to a cash balance of almost 18 percent of sales in five years (other assumptions: margin 15 percent, tax 30 percent). With an increasing cash cushion, X’s management team can choose to launch new products or target new geography. Even if the new business fails, X can recover given its ability to generate cash from its core business.
+Now let’s look at its competitor, Y, which is growing at the same rate (10 percent) with the same margin (15 percent) but with a lower ROCE of 12 percent. In five years, Y would have a negative cash balance of 3 percent of revenue. In other words, Y would have to borrow to grow at the same rate as X. With a weaker balance sheet and a lack of spare cash, Y would be forced to either forgo new opportunities or borrow more money to launch a new product or venture in new geography. If the venture fails, Y could be in deep trouble because its core business is not generating enough cash to repay the loan and interest when due. This would further widen the gap between companies X and Y. Over time, X would grow larger and more successful, and Y would be just a shadow of X. We see this phenomenon play out across many industries in which a few players have tended to become more dominant given their ability to generate cash on account of high ROCE.
+What happens if a company with high ROCE stumbles? Let me share the example of Havells, a Nalanda portfolio company since 2011. Havells is India’s largest consumer electrical equipment business and sells fans, lights and lighting fixtures, circuit breakers, wire, water heaters, and kitchen appliances like blenders and toasters.15
+Havells delivered 52 percent ROCE (!) from 2007 to 2017 under its exceptional leader, Anil Gupta. Its annualized revenue growth was about 15 percent during this period, and Havells was sitting on a cash balance of $230 million in March 2017. This was about 28 percent of revenue that year. In May 2017, Havells acquired the consumer business of Lloyd Electric, primarily for Lloyd’s fast-growing air conditioner business.
+We were not too thrilled with this acquisition. While the company was clearly not taking a financial risk with the acquisition, since its cash balance was larger than the acquisition price, it was taking a risk that was outside our comfort zone.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+让我们分析“品牌”作为竞争优势的来源。我认识的几乎所有投资者在解释一家面向消费者的公司在股市上的成功时，都会将品牌和分销作为竞争优势的来源来吹捧。其中一个伟大的面向消费者的投资成功故事始于三十多年前的1988年和1989年，当时巴菲特购买了可口可乐和吉列的股票。伯克希尔在1988年向可口可乐投资了近6亿美元，并在1989年向吉列投资了几乎相同的金额。到1993年，这两项持股对伯克希尔的总价值达到了56亿美元，相当于其所有其他持股的总和，巴菲特在这些业务上坐拥约40亿美元的收益。他在1993年致股东信中这样评论可口可乐和吉列：“它们强大的品牌名称、产品特性以及分销系统的实力，赋予了它们巨大的竞争优势，在其经济城堡周围建立了一道护城河。”
+
+巴菲特一如既往地正确。在这封信发出近三十年后，可口可乐和吉列仍然取得了巨大的成功，并且鉴于其不断增长的市场份额，它们持续拥有稳固的竞争优势。但是，巴菲特得出结论认为它们具有强大竞争优势，是因为它们拥有强大的品牌和产品特性，还是他的论断是基于这些业务长期拥有高资本回报率（ROCE）且市场份额不断增长的实证事实？我们当然永远无法确切知道。我的猜测（或主张？）是后者。
+
+现实是，大多数品牌根本不具备任何（更别提“可持续的”）竞争优势。根据你所相信的信息来源，在美国每年推出的数以万计的品牌中，失败率高达80%至90%。这虽然不像买彩票那样糟糕，但也相差不远了。你可能认为失败仅限于小型和未经考验的企业，而像可口可乐和百事可乐这样的公司则做得很好。那你就错了。这里仅列举一些大型公司惨痛品牌失败的小样本：新可乐（可口可乐）、水晶百事（百事可乐）、Premier无烟香烟（雷诺烟草）、Maxwell House即饮咖啡（通用磨坊）、Souper Combo（金宝汤的汤品三明治组合餐）以及All Natural Cleaning Vinegar（亨氏）。
+
+仅仅拥有一个品牌毫无意义。如果像“品牌”这样易于理解的东西都不一定能带来竞争优势（即使能带来，也很难明确断定），我们如何知道一家公司是否拥有竞争优势？猜猜看，答案显而易见。没错，持续的高资本回报率（ROCE）是推断该公司可能拥有某种竞争优势的良好起点。如果是一家像可口可乐这样的消费品公司，也许是品牌，也许是分销，也许是管理，也许是这些因素与其他因素的综合作用。
+
+一旦我们基于持续的高ROCE筛选出一家公司，我们便开始分析其竞争优势。经过数周或数月的研究，我们可能得出结论：这种高ROCE是不可持续的，该公司只是历史上运气好罢了。如果是这样，我们就选择远离它。但采取这条路径——只对高ROCE公司开始评估其竞争优势——能为我们节省大量的时间和精力。
+
+**持续高ROCE的企业善于配置资本**
+
+作为（非常）长期投资者，当我们选择购买一家企业的股票时，我们就是在将资本配置给该企业。我们这样做是希望长期来看能在这笔资本上获得可观的回报。希望我们已经评估了资本的其他选项，并做出了正确的决定，即将其投资于该企业是最佳选择。善于配置资本的投资者表现良好。不善于配置的则不然。
+
+企业也是如此。它们也在持续进行资本配置。它们有许多选择，并试图选择最优的一个。它们同样希望在其投资上获得可观的回报。有些能做到；大多数则不能。ROCE是衡量公司资本运用能力的绝佳指标。高ROCE意味着这些企业相对于其投入的资本获得了较高的营业利润。优秀的企业既不会试图最大化营业利润，也不会试图最小化投入资本；它们试图在单位投入资本上获得最大的营业利润。
+
+投资者可能没有意识到，但战略与大多数资本配置决策是紧密交织的。例如，在密尔沃基建厂与外包给中国相比，这是一个战略决策还是资本配置决策？这无关紧要；这是一个将显著影响公司成功的决策。因此，它既是战略决策，也是资本配置决策。
+
+以下是一些以截然不同方式配置资本的战略决策示例：建立自己的研发部门与从市场上复制最佳设计、雇佣首席技术官来组建技术部门与将其外包、为关键部件建立制造单元与资助供应商、雇佣年轻毕业生并多年培养他们与横向招聘合格专业人士、通过收购进入新地域与有机增长、在庞大的目标市场中为亏损产品提供资金与在小市场中投资盈利产品、在社交媒体上投放数月的广告与购买一次超级碗广告。
+
+投资者如何知道这无数的资本配置决策是否明智？一种方法是进行彻底分析。例如，可以采访市场部负责人，了解他们为何选择购买超级碗广告，而不是在谷歌或脸书上进行数周或数月的广告投放，分摊相同费用。然后可以建立财务模型来测试公司成功的可能性，将其广告策略与其他公司进行比较，最终得出支持或反驳其决策的结论。
+
+第二种方法——我们的方法——是选择高ROCE公司作为第一道筛选标准。我们假设一家拥有高ROCE的公司，平均而言，其资本配置是良好的。它可能做出一些糟糕的决策，但总体而言，我们认为其资本配置和战略决策是相当合理的。
+
+而且，坦白说，这样也更省事。如果我试图建立数兆字节的电子表格来测试某个特定资本决策的各种情景，我会惨败两次。一次是在制作电子表格时，另一次是在得出错误结论时。
+
+所以，何必尝试呢？
+
+**持续高ROCE的企业使公司能够承担业务风险而不承担财务风险，从而提高业务成功几率**
+
+资本主义因承担风险而繁荣。承担风险并不仅限于硅谷车库里创业的青少年。所有公司，若想成长和成功，都需要持续承担经过计算的风险。不承担风险的公司要么萎缩，要么保持小而无关紧要；冒险承担超出合理范围的大风险的公司则会内爆。大多数公司是在经过计算的、恰到好处的风险承担区域（Goldilocks zone）中蓬勃发展。高ROCE使公司能够持续承担经过计算的业务风险。其原理如下：
+
+一家ROCE高但收入增长适中的公司将产生超额现金。这不是一种观点——而是一个数学事实。例如，X公司销售额增长10%，ROCE为25%，在五年内可以从零现金增长到现金余额接近销售额的18%（其他假设：利润率15%，税率30%）。随着现金缓冲增加，X的管理团队可以选择推出新产品或进军新地域。即使新业务失败，凭借其核心业务产生现金的能力，X也能恢复元气。
+
+现在看看它的竞争对手Y，它以相同的速度增长（10%），拥有相同的利润率（15%），但ROCE较低，为12%。五年后，Y的现金余额将为负，占收入的3%。换句话说，Y必须借款才能以与X相同的速度增长。由于资产负债表较弱且缺乏闲置现金，Y将被迫要么放弃新机会，要么借更多钱来推出新产品或进军新地域。如果该业务失败，Y可能会陷入大麻烦，因为其核心业务无法产生足够的现金来按时偿还贷款和利息。这将进一步拉大X公司与Y公司之间的差距。随着时间的推移，X将变得更强大、更成功，而Y则仅仅是X的影子。我们看到这种现象在许多行业中上演，少数几家公司凭借其高ROCE产生现金的能力，往往变得更具主导地位。
+
+如果一家高ROCE的公司遭遇挫折会怎样？让我以哈维尔斯（Havells）为例，它是那烂陀投资组合公司（Nalanda portfolio company）自2011年起持有的股票。哈维尔斯是印度最大的消费电器设备企业，销售风扇、灯具、断路器、电线、热水器以及搅拌机和烤面包机等厨房电器。
+
+在其杰出领导者Anil Gupta的带领下，哈维尔斯在2007年至2017年间实现了52%的ROCE（！）。此期间其年化收入增长约为15%，到2017年3月，哈维尔斯拥有2.3亿美元的现金余额，约占当年收入的28%。2017年5月，哈维尔斯收购了劳埃德电气（Lloyd Electric）的消费业务，主要是为了劳埃德快速增长的空调业务。
+
+我们当时并不太看好这项收购。虽然公司显然没有因收购而承担财务风险（因为其现金余额大于收购价格），但它承担的风险超出了我们的舒适区。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">The biggest issue, we thought, was the difference in culture and company mindset. Havells sells high-quality products at a premium to the discerning Indian consumer. It does so by setting up high-tech manufacturing plants, customizing product features to the needs of the consumer, staying ahead of the technology curve, and creating brand pull by advertising on TV and the internet. Lloyd seemed to be the exact opposite of Havells in many ways: It had gained market share over the past decade by aggressively pushing low-priced air conditioners imported from China. While Havells “pulled” consumers, Lloyd “pushed” its products by offering large dealer incentives and product discounts. Lloyd seemed singularly focused on growth at any price, whereas Havells’ growth was an outcome of delivering quality products and building the trust of dealers and consumers over six decades.
+Prior to Lloyd, one of the main sources of Havells’ success was its ability to launch new products through its existing sales channel. The company has built a loyal and high-performing dealership network over many decades. This symbiotic relationship has allowed Havells to manufacture and sell an extensive range of consumer durables from fans to circuit breakers to toasters. However, for the first time, with the Lloyd acquisition, Havells was unable to use the strength of its dealer network because the air conditioner sales channel was completely different from the consumer electricals channel in India.
+Unsurprisingly, the company immediately began facing problems with the acquisition. It started with the resignation of the CEO of Lloyd and many senior managers within a few months of the change in ownership. Havells found that Lloyd was selling its products through only a few dealers who had grown quite powerful over the years. These dealers were demanding higher margins and a greater share of Lloyd’s business. When Havells refused, many of these dealers left, adversely impacting the sales and profitability of the business. There was also some level of dissonance while the Havells management tried to reconcile two radically different brand positioning approaches: the premium positioning of Havells versus the aggressive price warrior stance of Lloyd. Within two years of the acquisition, research analysts downgraded Havells as Lloyd’s numbers continued to disappoint.
+At this stage, Gupta could have taken the easy route of allowing Lloyd to revert to its old business ways. This would have preserved revenue and profit momentum and created two different kinds of business under the same umbrella. But he decided to take the much tougher road of instituting long-term fundamental changes to Lloyd’s organization and business model.
+Gupta repositioned the Lloyd brand from being a low-priced, average-quality product that offered only basic features to a high-quality product whose features matched or exceeded the best in the market. Havells invested about $35 million to set up a new state-of-the-art air conditioner plant that is now producing high-end, feature-rich air conditioners. Over many months, Gupta gradually replaced the senior management of Lloyd with leaders steeped in the Havells culture. The company refused to be blackmailed by a few powerful dealers and built a new, more resilient distribution network despite losing sales in the short term. Lloyd is now integrated with Havells, and there is complete alignment with their strategic and organizational priorities.
+One key reason Havells was able to withstand short-term pain to achieve its longer-term goals was the availability of cash on the balance sheet. And the reason it had accumulated cash was its exceptionally high ROCE over many years. It’s easy for any company to claim that it is “working for long-term value creation,” but these words are worthless without the courage provided by a cash cushion. We will never know what would have happened if Havells had had a lot of debt and interest to repay, but I doubt it would have had the same determination to continue on a challenging, lengthy, and uncertain path with bankers breathing down its neck.
+Havells made a moderately risky acquisition, took the time and effort to integrate it despite initial hiccups, and converted what could have been a significant misstep into a strategic success. Anil Gupta rocks. Havells rocks. Because 52 percent ROCE rocks.
+There Are No Guarantees in Investing
+Just as selecting for tameness in silver foxes helped Dmitri and Lyudmila generate many other traits in the animals, selecting for high ROCE has ensured that we have chosen businesses with many other desirable qualities. After the companies have been through the risk filter, as I discussed in chapter 1, we reject companies with long-term historical ROCE lower than 20 percent. Our preliminary short list of about 150 companies consists only of those that have delivered ROCE of more than 20 percent over the past five to ten years or more.
+I have not claimed that we look only at ROCE to arrive at our conclusion on a business. That would border on being reckless and foolish. What I have said, though, is that we start the evaluation of a business by studying the record of its delivered historical ROCE. If you are an investor or choose to be one, you will develop your method and style of investing. But whatever you do, starting with a good understanding of the historical ROCE of a business will ensure you are miles ahead of your competition.
+Buy one, get many free.
+As you may have guessed, there are two problems with the approach of choosing ROCE as the first filter. First, a consistently high ROCE in the past does not guarantee that ROCE will be high in the future.
+For example, if a business has a monopoly in its industry, say, of operating local bus services or a copper mine, even a poor-quality management team would probably be able to earn a decent return on capital. When the monopoly ends, however, we may see ROCE trend downward. Similarly, if there is high tariff protection for a product or commodity, domestic companies manufacturing the same product or commodity may earn decent profits without breaking a sweat. And then there is luck. A company can make decent ROCE for a few years if its key competitors get in trouble of their own making.
+While making the preliminary short list, we can easily eliminate these kinds of companies because they are easy to identify. However, another category of potential losers (with high historical ROCE) is tough to identify beforehand. A high-quality business can also lose its way if the founder gets distracted, the company decides to change its strategy, the management bets the company on a failed acquisition, or an aggressive new competitor makes life difficult for the company. While high ROCE can provide some cushion in the face of these mishaps, there are limits to which it can safeguard a business hell-bent on destroying itself.
+But remember this chapter is about where you start looking for great businesses, not what guarantees great investment return (spoiler alert: nothing does).
+The second problem with making a preliminary list of only high-ROCE businesses is that it rejects companies that may become hugely successful in the future. Take Netflix. If we had evaluated Netflix in early 2018, its median ROCE for the previous ten years (2008 to 2017) of 10 percent would have been too low for us to include it on our preliminary list. We would have missed out on a spectacular wealth-creation opportunity: Netflix’s stock price jumped 2.9 times from January 2018 to December 2021.
+But here is the thing. We would have looked at this lost opportunity and not regretted it one bit. I know we will lose Netflix-like businesses, and I am okay with it. Our strategy of selecting only high-ROCE companies for our initial list invariably excludes some potential winners, but it also excludes hundreds of low-quality businesses that we would never want to own. Thus, on average, I believe this approach works well for us.
+We will not change our approach just because others have made money with a strategy that we have chosen to avoid.
+C’est la vie.
+✳✳✳
+In early 2022, I wrote to the Institute of Cytology and Genetics at Novosibirsk. I had two questions for them. First, was the fox experiment still ongoing, and second, was Lyudmila Trut still active? I assumed the answer to both would be an emphatic no; after all, Lyudmila had begun the experiment in 1959, more than sixty years ago.
+I was surprised when Yury Herbeck, the deputy head of the Laboratory for Evolutionary Genetics at the institute promptly replied to my email. Can one be “pleasantly shocked”? If so, I was.
+Not only is the experiment still ongoing, but Lyudmila Trut, who is now almost 90 years old, is still active! And not only is she active in the institute, she is also publishing path-breaking scientific articles. Herbeck was kind enough to attach four research articles published by Lyudmila Trut (and others) in prestigious scientific journals in recent years. The latest one was published in the Journal of Neuroscience on July 14, 2021, and is titled “Neuromorphological Changes Following Selection for Tameness and Aggression in the Russian Farm-Fox Experiment.”
+I used to feel proud that we have been successfully investing for over fifteen years. No longer. After reading about Lyudmila Trut, who has maintained her passion, discipline, and excellence over more than sixty years, I am confronted with a stark and painful reality.
+We have a very long way to go.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . to avoid getting drowned by a deluge of data and information, we can reimagine investing by initially selecting a single business trait that brings with it many favorable business qualities.
+1. In nature, selection for just one trait can influence many other behavioral and physical qualities of an organism.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的书籍段落：
+
+---
+
+我们认为，最大的问题在于文化和公司理念的差异。Havells向挑剔的印度消费者销售优质高价产品。它通过建立高科技制造工厂、根据消费者需求定制产品功能、保持技术领先以及在电视和互联网上投放广告建立品牌拉力来实现这一目标。而Lloyd在许多方面似乎与Havells截然相反：在过去的十年里，它通过大力推销从中国进口的低价空调获得了市场份额。当Havells“拉动”消费者时，Lloyd则通过提供丰厚的经销商激励和产品折扣来“推动”其产品。Lloyd似乎只专注于不计代价的增长，而Havells的增长则是六十年如一日地提供优质产品并建立经销商和消费者信任的结果。
+
+在收购Lloyd之前，Havells成功的主要来源之一是其通过现有销售渠道推出新产品的能力。公司经过数十年建立了一个忠诚且高效的经销商网络。这种共生关系使Havells能够制造和销售从风扇到断路器再到烤面包机等各种耐用消费品。然而，首次通过收购Lloyd，Havells却无法利用其经销商网络的优势，因为在印度，空调销售渠道与消费电子产品渠道完全不同。
+
+不出所料，公司收购后立即开始面临问题。先是Lloyd的首席执行官和许多高级管理人员在所有权变更后几个月内辞职。Havells发现Lloyd仅通过少数几家经销商销售产品，这些经销商多年来已变得相当强势。他们要求更高的利润分成和更大的业务份额。当Havells拒绝时，许多经销商离去，严重影响了业务的销售和盈利能力。当Havells管理层试图调和两种截然不同的品牌定位策略——Havells的高端定位与Lloyd的激进价格战立场时，也产生了一些不和谐。在收购后的两年内，随着Lloyd的业绩持续令人失望，研究分析师下调了Havells的评级。
+
+在此阶段，古普塔本可以走一条轻松的路，让Lloyd回归其旧的经营方式。这样可以保持收入和利润势头，并在同一把伞下创建两种不同的业务。但他决定选择一条艰难得多的道路：对Lloyd的组织结构和商业模式进行长期的根本性变革。
+
+古普塔将Lloyd品牌从仅提供基本功能的低价、中等质量产品，重新定位为功能匹配或超越市场最佳水平的高质量产品。Havells投资约3500万美元建立了一座全新的现代化空调工厂，现在生产高端、功能丰富的空调。古普塔用了数月时间，逐步将Lloyd的高层管理人员替换为深谙Havells文化的领导者。公司拒绝被少数强势经销商胁迫，尽管短期内损失了销售额，仍建立了一个新的、更具韧性的分销网络。Lloyd现在已与Havells融为一体，在战略和组织优先事项上完全保持一致。
+
+Havells之所以能够承受短期痛苦以实现其长期目标，一个关键原因在于其资产负债表上可用的现金。而它之所以能积累现金，是因为其多年来异常高的已动用资本回报率（ROCE）。任何公司都可以轻易宣称自己“致力于长期价值创造”，但若没有现金储备带来的勇气，这些话语毫无价值。我们永远无法知道，如果Havells背负着大量债务和利息需要偿还，结果会如何，但我怀疑它是否还有同样的决心，在银行家步步紧逼的情况下，坚持走这条充满挑战、漫长且不确定的道路。
+
+Havells进行了一次中等风险的收购，尽管初期遭遇波折，仍投入时间和精力进行整合，将可能成为重大失误的交易转变为战略上的成功。阿尼尔·古普塔了不起。Havells了不起。因为52%的已动用资本回报率（ROCE）了不起。
+
+**投资没有保证**
+
+正如选择银狐的温顺性帮助德米特里和柳德米拉在动物身上培育出许多其他特征一样，选择高ROCE也确保了我们选择了具备许多其他优良品质的企业。如第一章所述，在公司经过风险筛选后，我们会剔除长期历史ROCE低于20%的公司。我们初步筛选出的约150家公司名单，仅包含那些在过去五年、十年或更长时间内ROCE持续超过20%的公司。
+
+我并未声称我们仅凭ROCE就对一家企业下结论。那近乎鲁莽和愚蠢。我所说的是，我们通过研究一家企业已实现的历史ROCE记录来开始对其评估。如果你是一名投资者或选择成为投资者，你会形成自己的投资方法和风格。但无论你做什么，从深入了解企业的历史ROCE开始，都将确保你遥遥领先于竞争对手。
+
+买一送多。
+
+你可能已经猜到，将ROCE作为首要筛选标准存在两个问题。第一，过去持续的高ROCE并不能保证未来ROCE也会很高。
+
+例如，如果一家企业在行业中拥有垄断地位，比如经营本地公交服务或铜矿，即使是一个低质量的管理团队也可能获得不错的资本回报。然而，当垄断结束时，我们可能会看到ROCE呈下降趋势。同样，如果某种产品或商品享有高关税保护，国内生产同类产品或商品的公司可能无需费力就能获得可观的利润。此外还有运气因素。如果其主要竞争对手自找麻烦陷入困境，一家公司也可能在几年内获得不错的ROCE。
+
+在进行初步筛选时，我们可以轻易剔除这类公司，因为它们很容易识别。然而，另一类潜在失败者（具有高历史ROCE）却很难事先识别。一家优质企业也可能迷失方向——如果创始人分心、公司决定改变战略、管理层孤注一掷进行失败的收购，或者出现一个激进的新竞争对手让公司日子难过。虽然高ROCE能在面对这些不幸时提供一定的缓冲，但对于一家执意自我毁灭的企业，它的保护作用也是有限的。
+
+但请记住，本章讲的是你该从何处开始寻找伟大的企业，而不是什么能保证伟大的投资回报（剧透预警：没有任何东西能保证）。
+
+第二个问题是，仅将高ROCE企业列入初步名单会排除那些未来可能取得巨大成功的公司。以Netflix为例。如果我们在2018年初评估Netflix，其前十年（2008年至2017年）10%的中位数ROCE对我们来说太低，无法进入我们的初步名单。我们将错过一个惊人的财富创造机会：从2018年1月到2021年12月，Netflix的股价上涨了2.9倍。
+
+但关键在于。即使看到这个错失的机会，我们也不会感到丝毫遗憾。我知道我们会错过像Netflix这样的企业，而我对此坦然接受。我们初步名单只选择高ROCE公司的策略，不可避免地会排除一些潜在的赢家，但它同时也排除了数百家我们永远不想拥有的低质量企业。因此，平均而言，我相信这种方法对我们很有效。
+
+我们不会仅仅因为别人用一种我们选择避开的策略赚了钱，就改变自己的方法。
+
+这就是生活。
+
+✳✳✳
+
+2022年初，我致信新西伯利亚细胞学与遗传学研究所。我有两个问题。第一，狐狸实验是否仍在进行？第二，柳德米拉·特鲁特是否仍在活跃？我本以为这两个问题的答案都会是坚决的否定；毕竟，柳德米拉在1959年就开始了这项实验，距今已六十多年。
+
+当研究所进化遗传学实验室副主任尤里·赫贝克迅速回复了我的邮件时，我很惊讶。一个人能否“惊喜地感到震惊”？如果可以，那我就是。
+
+实验不仅仍在进行，而且年近90岁的柳德米拉·特鲁特依然活跃！她不仅活跃在研究所，还在发表开创性的科学文章。赫贝克十分友善地附上了柳德米拉·特鲁特（及他人）近年来在著名科学期刊上发表的四篇研究文章。最新一篇于2021年7月14日发表在《神经科学杂志》上，标题为《俄罗斯农场狐狸实验中温顺性与攻击性选择后的神经形态学变化》。
+
+我曾为我们成功投资超过十五年而感到自豪。现在不再如此。在了解到柳德米拉·特鲁特六十多年如一日地保持着她的热情、纪律性和卓越成就后，我面对着一个严酷而痛苦的现实。
+
+我们还有很长的路要走。
+
+**章节总结**
+
+进化论教会我的是...
+
+...为了避免被海量数据和信息淹没，我们可以重新构想投资方式：首先选择一个能带来诸多有利商业特质的单一企业特征。
+
+1.  在自然界中，仅选择一个性状就能影响生物体许多其他行为与生理特征。
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">2. Dmitri Belyaev and Lyudmila Trut’s long-term experiment in Siberia has shown that selecting for tameness in wild silver foxes transforms them into a creature not unlike a pet dog over very few generations. The foxes become docile and crave human attention. They also develop floppy ears, a piebald coloration, and a shorter snout and can be reproductively active more than once a year.
+3. Investors could benefit immensely by homing in on a business trait that, when selected, brings along many other favorable qualities with it. Some popular parameters like management quality, high growth, and high margins are inappropriate or inadequate.
+4. The single business quality that correlates favorably with many other areas of business excellence is historical return on capital employed (ROCE). We start our analysis by selecting only those businesses that have historically delivered high ROCE.
+5. High ROCE generally (but not necessarily) indicates that the management team is stellar, they allocate capital effectively, they have built a strong competitive advantage over their peers, and they have room to innovate and grow.
+6. Selecting for ROCE is a good starting point of analysis. It helps us narrow down our choices. We do a lot more work to create a short list of attractive businesses after this initial filter.
+7. However, not all businesses with high historical ROCE will necessarily continue to be considered good businesses. There are no guarantees in investing.</div>
+            <div class="text-block simplified-text">以下是严格遵循要求的译文：
+
+2. 西伯利亚的德米特里·别利亚耶夫与柳德米拉·特鲁特长期实验表明：对野生银狐的温顺特性进行筛选后，仅数代之间它们就变得酷似家养犬类。这些狐狸不仅温顺亲人、渴求关注，更出现垂耳、花斑毛色及短吻等特征，且年繁殖周期可突破单次限制。
+
+3. 投资者若能锁定某项可联动多维度优势的企业特质，将获益匪浅。常见参数如管理水平、高增长性或高利润率均存在适用局限。
+
+4. 资本回报率（ROCE）是唯一与多重卓越经营维度呈高度正相关的指标。我们筛选分析对象时，仅纳入具备持续高ROCE历史记录的企业。
+
+5. 高ROCE通常（非必然）意味着：管理层卓越、资本配置高效、具备显著竞争优势，并拥有创新增长空间。
+
+6. ROCE筛选是分析的初阶步骤，可有效缩小标的范围。在此预筛选后，仍需深度研究以确立优质企业候选名单。
+
+7. 然则，历史高ROCE企业未必持续优质。投资没有万无一失的保证。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
