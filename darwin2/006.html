@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./005.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 6</h1>
+        <a href="./007.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Bacteria and Business Replay the Tape
+I am inclined to believe that in nearly the same way as two men have sometimes independently hit on the very same invention, so natural selection, working for the good of each being and taking advantage of analogous variations, has sometimes modified in very nearly the same manner two parts in two organic beings, which owe but little of their structure in common to inheritance from the same ancestor.
+Charles Darwin, On the Origin of Species, chapter 6, “Difficulties of the Theory”
+Charlie and I have many reasons to be thankful for our association with Chuck and See’s. The obvious ones are that we’ve earned exceptional returns and had a good time in the process. Equally important, ownership of See’s has taught us much about the evaluation of franchises. We’ve made significant money in certain common stocks because of the lessons we learned at See’s.
+Warren Buffett, annual letter to shareholders, 1991
+Tim Cooper had no idea that that cold and windy Saturday morning in a lab at Michigan State University in January 2003 would be one of the most important of his life.
+Tim started performing his well-rehearsed routine. He had done it dozens of times over the past three years, but he knew that he had to be very careful. He was. The experiment had been going for fourteen straight years, and he was not going to be the one responsible for any mishap.
+First, he took a set of twelve new flasks and carefully measured exactly 9.9 milliliters of fluid into each. Next, he went to the incubator and removed the twelve old flasks housing generation number 33,127. He would inoculate the new flasks with 0.1 milliliters of fluid from each of these twelve old flasks. But he needed to check the old flasks first.
+He picked up two of them and saw what he expected. The next two flasks also seemed acceptable. But in the third set of two flasks, in the flask labeled “Ara-3,” he saw that the fluid had turned opaque instead of being mildly cloudy like in the other old flasks. That shouldn’t have happened. The lab had seen similar problems in the past owing to contamination. There was a strict protocol for solving the issue, and Tim was well versed in it.
+Tim replaced the “faulty” old Ara-3 flask and came back on Sunday to check the outcome. Of course, he expected the usual result. But he was in for the same surprise: The new Ara-3 flask, too, had turned turbid.
+Something was very wrong. Or very right.
+The Astonishing Anoles
+Our investment strategy has an unusual feature. We don’t invest in individual businesses. It may seem like we do, but we don’t.
+What in the world do we invest in then?
+Let’s do an evolutionary thought experiment to answer the question. Imagine another Earth-like planet that is at a similar distance from its sun-like star. This is not entirely improbable since there are a billion trillion (1021) stars in the universe. Would this planet evolve the same life forms as those on Earth? How likely is it to have honeysuckles and hornbills?
+Philosophers may have pondered this question for millennia, but the first modern scientist to attempt an answer was the late Harvard paleontologist and evolutionary biologist Stephen Jay Gould. In his excellent book Wonderful Life, Gould took the position that evolution was unpredictable: “Replay the tape a million times . . . and I doubt that anything like Homo sapiens would ever evolve again.”
+If the “evolutionary tape” were replayed a million times, each outcome would depend on two opposing forces. On the one hand, the nonrandom force of natural selection would ensure that organisms develop a small set of foreseeable solutions to the obstacles imposed on them by the environment. On the other, chance mutations and rare environmental events would make any kind of prediction impossible. Which would win? “The bad news is that we can’t possibly perform the experiment,” Gould mused.
+The good news is that although we can’t perform the experiment, nature can and has. Do you want evidence? Let’s start with lizards.
+More than seven hundred Caribbean islands are home to about one hundred and fifty species of lizard called anoles (genus Anolis). All the Caribbean species are the descendants of just two species that arrived from the mainland millions of years ago. Dr. Jonathan Losos, a professor of biology at Washington University, has been studying the anoles since the late 1980s on the four larger Caribbean islands of Cuba, Jamaica, Hispaniola, and Puerto Rico.1
+Professor Losos discovered that the one hundred and fifty species across these four islands are broadly clustered into six groups, or “ecomorphs”: Trunk, Twig, Crown-giant, Trunk-crown, Trunk-ground, and Grass-bush. This classification rests on body length, tail length, limb length, toe pad lamellae (scales on the feet of the anoles that help them stick to a surface), color, and habitat.
+For example, the Trunk ecomorph lives on tree trunks, has an average body length of about five centimeters, has a short tail, and is gray. A very different ecomorph, the Grass-bush, lives in the grasses and bush, has an average body length of four centimeters, has a very long tail, and is brown.
+The behavioral and physical traits of various anole ecomorphs have adapted very well to the anoles’ unique local environments. Thus, the long tail of the Grass-bush ecomorph helps the anole achieve spectacular balance on narrow and unstable surfaces like blades of grass, and its brown color melds with the color of the bush and grasses. The Trunk ecomorph is very different because it has a solid tree trunk underneath its feet for most of its life—it does not need a long tail for balance. But it does need its gray color, which can provide camouflage against the gray tree trunk, thereby fooling its predators and prey. The Twig anole has short legs to help it navigate the small twigs on which it lives. Finally, the Trunk-ground ecomorph has evolved long legs to run efficiently on tree trunks and the ground.
+No surprises here—Darwinian natural selection is alive and well on the gorgeous islands of the Caribbean.
+What is surprising, however, is that the same ecomorphs are seen across the four islands. Thus, the Trunk ecomorph in Cuba looks and behaves very similarly to the Trunk ecomorph in Hispaniola, and the Crown-giant ecomorph in Puerto Rico is indistinguishable from the one in Jamaica.
+I know what you are thinking: Are the Trunk anoles the same species that colonized Cuba and Hispaniola? DNA analysis has demonstrated that they aren’t! The six ecomorph anoles on the island of Cuba are much more closely related to one another than they are to anoles on other islands. Thus, the Trunk anoles in Cuba are much more closely related to the Twig anoles in Cuba than to the Trunk anoles in Hispaniola. The anoles living on tree trunks on the islands of Cuba and Hispaniola are very different species but have developed the same physical and behavioral characteristics on encountering similar environments. This is true for all six ecomorphs. When presented with a specific problem, the Caribbean anoles on different islands have evolved the same solutions, such as tail length, body length, and color. Amazingly, they have done it independently of one another.
+The anoles are a textbook example of evolutionary “convergence” wherein unrelated organisms in similar environments develop the same body form and adaptations independently.2
+Convergence Is Ubiquitous
+The fascinating example of convergence in Caribbean anoles is a rule, not an exception, in the natural world.
+Dolphins are mammals just like us, and sharks are fish. But their fusiform body shapes are pretty similar, and, more interestingly, they have the same coloration. Both have a light underbelly and darker back, making them harder to spot from above and below. George McGhee, a paleontologist, claims that the reason sharks, dolphins, tuna, and the extinct ichthyosaur look alike is that there is only one way for a fast-swimming animal to evolve.3
+In vertebrates, powered flight evolved in birds, bats, and (the now extinct) pterosaurs. Their common ancestor, a land-based quadruped, had no wings. Their wings appear to be the same, but they have evolved separately and independently. In all three, the forearms have been modified into wings, and all take (or took) to the sky in the same way: by flapping their wings downward to create upward lift and forward movement.4
+Australia punches much above its weight in the sporting world. This nation of only twenty-five million people won 547 medals in the Summer Olympics (before Tokyo 2020), exceeding many nations much more significant in population.5 For example, its medal tally is one-fifth that of the United States, whose population is thirteen times larger. (Now is not the time or place for me to comment on India’s medal tally.)
+Sport is not the only thing that makes this country, or continent if you prefer, unique. Australia was part of the supercontinent Pangea and its southern segment Gondwanaland, which started breaking apart about 180 million years ago. As a result, Australia has been a free-standing continent for about 35 million years. The mammals on this massive island have been taking a unique evolutionary path during this time.
+The Australian mammals are all marsupials who give birth to undeveloped young ones and raise them in an external pouch; most of the world has placental mammals (like us) who give birth to fully developed infants. Does the dramatic difference in their life histories and development process mean that marsupials look very different from the placentals? Surprisingly not.</div>
+            <div class="text-block simplified-text">以下是严格遵循要求的译文：
+
+细菌与商业：重放录像带
+我倾向于相信，正如两人有时会独立创造出相同的发明，自然选择在为每个生物谋利并利用相似变异的过程中，也时常以几乎相同的方式改造两个生物体的不同部位——尽管二者从共同祖先继承的结构特征微乎其微。
+查尔斯·达尔文《物种起源》第六章"理论的难点"
+
+查理和我有诸多理由感激与喜诗糖果的结缘。最显著的是我们获得了可观回报并乐在其中。同样重要的是，控股喜诗教会我们评估特许经营权的精髓。正是基于这些经验，我们在某些普通股上获得了巨大收益。
+沃伦·巴菲特1991年致股东信
+
+2003年一月那个寒风凛冽的周六清晨，蒂姆·库珀未曾料到密歇根州立大学的实验室将成为他生命的转折点。他像过去三年重复过数十次那样开始操作，深知必须万分谨慎。这项持续十四年的实验不容闪失。
+他先将9.9毫升培养液精确注入十二支新烧瓶，接着从恒温箱取出承载着第33,127代菌群的旧烧瓶准备移植。但检查时发现标有"Ara-3"的培养液异常浑浊——这本不该发生。遵循既定的污染处理流程，蒂姆更换问题烧瓶后于周日复查，却震惊地发现新Ara-3烧瓶同样浑浊。
+异常背后，或许藏着重大发现。
+
+惊人的安乐蜥
+我们的投资策略独具特色：看似投资企业，实则不然。
+究竟投资什么？让我们通过进化思想实验解答：假设存在类地行星围绕类太阳恒星运行（宇宙存在10^21恒星并非不可能），该星球会演化出地球生命形态吗？出现忍冬花与犀鸟的概率几何？
+哈佛古生物学家斯蒂芬·古尔德在《奇妙的生命》中提出：即便将进化录像带重播百万次，智人重现的几率微乎其微。进化结果取决于自然选择的必然性与随机突变的偶然性。虽然人类无法实验，大自然却已完成。
+证据始于蜥蜴。加勒比海域七百余岛屿栖息着约150种安乐蜥，它们皆源自数百万年前登陆的两个物种。华盛顿大学洛斯教授研究发现，古巴、牙买加、伊斯帕尼奥拉和波多黎各四大岛的安乐蜥可划分为六种生态形态：树干型、细枝型、冠巨蜥型、树干-树冠型、树干-地面型及草丛-灌木型。
+分类依据包括体长、尾长、肢体尺寸、脚趾鳞片（脚底鳞片）、体色及栖息地。例如：平均五厘米的灰色树干型栖居树干，无需长尾维持平衡；而四厘米的褐色草丛-灌木型凭借修长尾部在草叶间保持平衡，褐色体表完美融入环境。细枝型演化出短肢适应枝桠，树干-地面型则发展长肢便于地面奔行。
+达尔文主义在加勒比群岛得到完美印证。令人惊异的是：相同生态形态跨越不同岛屿独立存在。古巴与伊斯帕尼奥拉的树干型不仅形态相似，行为模式也如出一辙；波多黎各与牙买加的冠巨蜥型同样难以区分。
+DNA分析揭示关键：古巴岛的树干型与同岛细枝型亲缘更近，却与伊斯帕尼奥拉岛的树干型迥异。面对相似环境压力，不同岛屿的安乐蜥独立演化出相同的尾部比例、体长与保护色。这成为趋同进化的典范——无亲缘关系的生物在相似生态环境中独立发展出相同形态。
+
+无处不在的趋同
+加勒比安乐蜥的趋同现象绝非特例。哺乳类海豚与鱼类鲨鱼不仅拥有相似的流线体型，更演化出相同的明暗体色：浅色腹部与深色背脊构成天然伪装。古生物学家麦吉指出：高速游动生物仅存在唯一优化形态。
+脊椎动物中，鸟类、蝙蝠及翼龙的飞行构造均由陆地四足动物的前肢独立演化而来，却采用相同的空气动力学原理：通过向下拍打翅膀产生升力与推进力。
+澳大利亚在体坛创下人口比例的奇迹。这个两千五百万人口的国家在奥运奖牌榜上超越众多人口大国，奖牌总数达美国的五分之一（考虑到其人口仅为美国十三分之一）。
+这片大陆的独特性远不止于此。自盘古大陆分裂三千五百万年来，澳洲有袋类哺乳动物开辟了独特的进化路径——它们分娩未发育幼体并在育儿袋哺育，迥异于胎生哺乳动物。然而生命史的差异并未导致形态分化：澳洲有袋动物与全球各地的胎盘哺乳动物展现出惊人的形态对应。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">Compare the images of the Australian marsupials to those of the placentals in figure 6.1.6 If we were to place them next to one another, it would not be easy to differentiate a wolf from the (now extinct) thylacine, the mouse from the mulgara, or the marmot from the wombat. They look similar despite being unrelated genetically because they have solved a similar problem in a similar way in vastly different regions of the world.
+6.1 The stark convergence between placental mammals—(a) wolf, (b) mouse, and (c) marmot—and marsupial mammals—(d) thylacine, (e) mulgara, and (f) wombat.
+Sources: (a) and (f) courtesy of Wikimedia Commons; (b), (c), (d), and (e) licensed from Science Photo Library.
+Now let’s take the example of a niche predator that preys mainly on termites. How would you design such an organism? What traits should it possess? I assume you will agree that it should have a long and sticky tongue to trap and eat termites, it should have solid front claws for digging into termite mounds, its head should be small, and it should have a long snout that can enter termite mounds with ease. Congratulations, you have designed the marsupial anteater (called the numbat) as well as the placental anteater. As you may expect, they look surprisingly alike. Through convergence, they have developed a similar appearance and body parts without having a close common ancestor because both needed to solve the problem of how to eat termites.
+Charles Darwin recognized the power of convergence when he asserted, “Animals, belonging to two most distinct lines of descent, may readily become adapted to similar conditions, and thus assume a close external resemblance.”7 Darwin was right, but not entirely so.
+Convergence is ubiquitous and not limited just to the external appearance or morphology of animals. It is also widely observed and documented in animal behavior and in plants, fungi, and even bacteria.
+Let’s start with behavior. What do you think these four species—a cobra, a stickleback fish, an octopus, and a spider—share? There is no convergence in body form here, unlike the Caribbean anoles. But a behavior has converged among them that has led to the success of each of their species: the females of the species guard their eggs.
+One of the best examples of convergent behavior is observed in humans and—hold your breath—ants! And I have witnessed this convergence with my own eyes. When I was on a family vacation in the stunningly beautiful Peruvian Amazon, I stumbled upon the tiny creatures that had beaten our human ancestors to the discovery of agriculture by many millions of years: the leafcutter ants.
+I had waited years to witness the miracle, and there it was in its full linear glory. A long single column of thousands of large green leaves appeared to be miraculously moving in perfect synchrony of their own volition on the forest floor. Each large leaf was being carried by a single tiny ant, who purposefully disappeared underground to pass on the booty to her specialist sisters. These ants chew the leaves to grow a fungus garden used for food for the entire colony. Not unlike human farmers, these ants produce fertilizers (amino acids and enzymes) to aid the fungal growth, remove contaminants that can hinder the agricultural output, are highly selective in what they grow, and continuously tend to their enormous gardens.8
+And just as agriculture helped us become the dominant species on this planet, leafcutter ants have become the dominant herbivores of the New World: They consume close to one-sixth of all leaves produced in tropical forests. Humans and leafcutter ants have solved their food problems by converging toward a similar solution, crossing time and species boundaries.
+Let’s move on to plants. Most of us have had coffee, tea, and chocolate (derived from cacao). The Brazilians among us will be familiar with the drink Guaraná Antarctica, made from the guaraná plant in the Amazon rainforest. All four plants produce the same chemical desired by humans: a purine alkaloid called 1,3,7-trimethylpurine-2,6-dione—in short, caffeine.9
+These four plants may seem to be closely related, but they aren’t. The common ancestor of tea and coffee dates back a hundred million years. Cacao is more closely related to maple and eucalyptus trees than to tea and coffee. Bizarrely, the ancestor of coffee gave rise to potatoes and tomatoes but not tea! Plants have many defense mechanisms against predators, and it appears that some have converged toward the same solution: producing caffeine.
+Many plants rely on birds to pollinate their flowers. So if a plant depends on hummingbirds for pollination, what should it do? Develop red flowers because red is attractive to hummingbirds. Consequently, eighteen types of plants that hummingbirds pollinate have evolved bright red flowers.
+Other plants have developed a different strategy, one that exploits flies’ and beetles’ penchant for laying eggs on smelly decomposing carcasses. Seven types of plants—including the corpse lily and the Zulu giant (or carrion flower)—have evolved to produce a smell that resembles rotting meat. The odor fools the insects, and while visiting the plants to lay their eggs, they transfer pollen from one flower to another.10
+I could go on and on to fill this book with examples of convergent evolution in the natural world. But scientists now agree that convergence is the rule, not an exception, in nature. This sentiment is best expressed by the most famous advocate of convergence, the Cambridge paleontologist Simon Conway Morris, who has written two books on the subject. He has explained convergence by saying, “Certainly it’s not the case that every Earth-like planet will have life let alone humanoids. But if you want a sophisticated plant, it will look awfully like a flower. If you want a fly, there are only a few ways you can do that. If you want to swim, like a shark, there are only a few ways you can do that. If you want to invent warm-bloodedness, like birds and mammals, there are only a few ways to do that.”
+Convergence in nature symbolizes a profound fact: There is a pattern to success and failure.
+What can the Caribbean anole, the crest-tailed marsupial mouse, and caffeine teach us about investing?
+Convergence in business symbolizes a profound fact: There is a pattern to success and failure.
+We Don’t Invest in Individual Businesses
+Earlier in the chapter, I made the following assertion about our investment strategy: We don’t invest in individual businesses. It may seem like we do, but we don’t.
+So what in the world do we invest in then?
+We invest in convergent patterns. We seek patterns that repeat. As we saw, “replaying the tape of life” often yields the same result. We operate on the principle that the business world is no different. There is a big difference between asserting “I love this business” and “I love this business construct.” We are fans of the latter, not the former. We don’t care about a business; we are deeply attached to a business template.
+Not unlike the natural world, which converges toward a small subset of answers to the same questions, we have seen that companies around the globe behave in similar ways when facing a similar environment. Not always, but often enough. We have benefited enormously by asking this simple convergence question up front: “Have we seen this pattern elsewhere?”
+The cost of ignoring patterns, as usual, is best demonstrated through a painful personal experience.
+In 1999 or 2000, an investment bank showed us a “hot” private equity deal. There was a lot of interest from many investors (or so the bank led us to believe!). The company processed credit cards and had shown modest growth over the past few years. Unsurprisingly, the investment bank’s projections showed dramatic growth starting the following year. Skeptical initially, I met the management team and talked to industry participants and investors in the business. Then, after reviewing India’s low credit card penetration rates, I convinced myself that while the management’s and the bank’s projections were aggressive, they weren’t too far off the mark. So we invested in the business at a fancy valuation.
+I wasn’t wrong. I was catastrophically wrong. The company did not meet its projections for more than five years. The J-curve growth never arrived. I want to emphasize that this was neither the bank’s nor the management’s fault. They were doing their job. But, unfortunately, I forgot to do mine.
+A few years after this disaster, when I looked back at the projections, I realized that we would have saved our precious capital if I had applied the principle of convergence by asking a few simple questions. The questions I should have asked but did not were as follows: “Sure, credit card penetration is low in India, but so is penetration for every consumer product. What other consumer products in India have seen these growth rates over the long term? Do you have examples of other countries where we have seen such rapid credit card growth? If so, was their stage of development similar to India’s today?” I should have demanded a convergent template, but I didn’t.
+Let’s see what happens when we do. We invested in Info Edge in late 2013. It runs India’s leading job site, Naukri.com, and is led by Sanjeev Bikhchandani and Hitesh Oberoi, two of the most well-regarded entrepreneurs in India. We did not invest in Naukri because of Sanjeev and Hitesh but because of the convergent patterns Naukri represents.</div>
+            <div class="text-block simplified-text">以下是严格按照要求翻译的文本：
+
+对比图6.1中的澳洲有袋类动物与胎盘类动物。若将它们并置，我们很难区分狼与（已灭绝的）袋狼、家鼠与澳洲袋鼬、土拨鼠与袋熊。尽管基因上毫无关联，它们却因在世界不同区域以相似方式解决相似问题而呈现出趋同形态。
+
+6.1 胎盘哺乳动物——(a)狼、(b)鼠、(c)土拨鼠——与有袋哺乳动物——(d)袋狼、(e)澳洲袋鼬、(f)袋熊——的显著趋同现象。
+
+现在以专食白蚁的生态位捕食者为例。如何设计这种生物？它应具备哪些特征？想必各位认同：需有黏性长舌捕食白蚁，强壮前爪挖掘蚁丘，头部小巧，吻部修长以深入蚁穴。恭喜，您已设计出有袋食蚁兽（袋食蚁兽）与胎盘食蚁兽。如您所料，它们惊人地相似。因需解决捕食白蚁的难题，这些无近缘关系的物种通过趋同进化发展出相似的形态结构。
+
+达尔文洞悉趋同力量时断言："分属不同谱系的动物，极易适应相似环境，从而获得高度近似的外形。"达尔文所言正确，但未尽全面。
+
+趋同现象无处不在，不限于动物外形或结构。动物行为、植物、真菌乃至细菌中均有广泛记录。
+
+从行为切入。眼镜蛇、刺鱼、章鱼和蜘蛛这四类物种有何共性？它们虽无加勒比安乐蜥般的形态趋同，却因共有的护卵行为获得种族延续。最典型的行为趋同案例是人类与——请屏息——蚂蚁！我曾亲眼见证：在秘鲁亚马逊的家庭旅行中，偶遇早于人类数百万年掌握农业的切叶蚁。
+
+我期待多年的奇观此刻尽现眼前：数千片绿叶在森林地表自主同步移动，组成绵长纵队。每片叶子由单只蚂蚁搬运，它们有目的地潜入地下将战利品传递给专职同伴。这些蚂蚁咀嚼叶片培育菌圃供养族群，与人类农夫惊人相似：分泌肥料（氨基酸与酶）促进真菌生长，清除危害农产的杂质，精挑栽培品种，持续照料广袤菌园。
+
+正如农业助人类成为地球主导物种，切叶蚁也成为新大陆核心食草者：它们消耗近六分之一热带雨林叶片。人类与切叶蚁跨越时空与物种界限，以趋同方案解决食物难题。
+
+转向植物领域。多数人饮用过咖啡、茶与可可饮品，巴西人则熟悉由亚马逊瓜拉纳植物制成的瓜拉纳饮料。这四种植物为人类提供同种化学物质：嘌呤生物碱1,3,7-三甲基黄嘌呤——简称咖啡因。这些植物看似近缘，实则不然。茶与咖啡的共同祖先可溯至一亿年前，可可与枫树、桉树的亲缘远高于同茶与咖啡的关系。奇特的是，咖啡祖先衍生出马铃薯与番茄，却与茶无关！植物拥有多种御敌机制，部分物种显然趋同于相同策略：生成咖啡因。
+
+许多植物依赖鸟类授粉。若依靠蜂鸟传粉，植物该如何进化？演化红色花朵——因蜂鸟钟爱红色。最终，十八种由蜂鸟授粉的植物均进化出鲜红花冠。另一些植物则利用蝇甲喜在腐尸产卵的习性。包括尸花与祖鲁巨花（腐尸花）在内的七种植物，进化出类似腐肉的气味。昆虫受骗前来产卵时，便在不同花朵间传递花粉。
+
+自然界的趋同案例不胜枚举，但科学家已达成共识：趋同是自然法则而非特例。剑桥古生物学家西蒙·康威·莫里斯——趋同论最著名的倡导者——在其两部专著中精辟阐释："类地行星未必都有生命，更非皆存类人生物。但若进化复杂植物，必将酷似花朵；设计飞行生物，可行方案寥寥；实现鲨鱼般游弋，路径屈指可数；创造鸟类与哺乳类的恒温机制，方法同样有限。"
+
+自然界的趋同昭示深刻真理：成败皆有迹可循。
+
+加勒比安乐蜥、冠尾袋鼩与咖啡因对投资有何启示？商界的趋同印证深刻真理：成败皆有迹可循。
+
+我们不投资单体企业
+前文曾阐明投资策略：我们不投资单体企业。表面似有，实则不然。
+
+那我们究竟投资什么？我们投资趋同模式，追寻重复出现的规律。如我们所知，"重播生命磁带"常获相同结果。我们坚信商界亦如此。"青睐某企业"与"推崇某业务结构"截然不同。我们执着于后者而非前者。我们不关注企业本身，而深系业务模板。
+
+正如自然界对相同问题趋近于有限解集，全球企业在相似环境下常呈现相似行为模式。虽非绝对，但足够频繁。我们通过前置关键问题获益良多："此模式是否他处可见？"
+
+忽视模式的代价，总在切肤之痛中显现。1999或2000年，某投行推荐"热门"私募交易。该信用卡处理公司数年增长平缓，但投行预测次年将爆发增长。核查印度信用卡低普及率后，我虽质疑仍被说服，最终以高估值投资。
+
+我错得灾难性。公司连续五年未达预期，J型增长从未出现。需强调此非银行或管理层之过。他们恪尽职守，而我却玩忽职守。
+
+数年后复盘方醒悟：若运用趋同原则追问"印度其他消费品可否长期维持此增速？他国信用卡爆发增长时发展阶段是否与当今印度类似？"本可保全资本。我们当时未要求提供趋同模板。
+
+而践行此原则时：2013年末投资Info Edge。这家印度领先招聘网站由顶级企业家桑吉夫与希泰什执掌。我们投资并非因人，而是看重其代表的趋同模式。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">Naukri allows job-seeking candidates to post their résumés for free and charges companies a subscription fee to access these and list job vacancies. When we invested in 2013, Naukri had a dominant 65 percent traffic share and was four times larger than the second player, Monster India. Given Naukri’s dominance, if you are a job seeker in India, you would almost certainly post your résumé there. If you are a company trying to hire, you are almost compelled to subscribe to Naukri because it has the most extensive and diverse pool of candidates. It is emblematic of the classic network effect: Naukri is number one because it is number one.
+Our confidence in Info Edge was high because it represents not one but two convergent patterns. First, the erstwhile Yellow Pages business. Many of you have probably never heard of this life-saving invention, but they were my lifeline until the early 1990s. Yellow Pages were a fixture in every home, just like a television or a refrigerator, in the era of rotary landline phones before the age of the internet and mobile phones. Yellow Pages were ungainly, thick telephone directories usually printed on yellow paper that listed local businesses and their goods or services on offer.
+Yellow Pages could give you a list of tens, even hundreds, of options, whether you were looking for a language teacher, a plumber, a wedding planner, a car dealer, or a recording studio. The directory was distributed free to the consumers, and businesses paid a fee to be listed. As a result, the largest Yellow Pages business in any city or region was usually highly profitable because of the virtual monopoly enjoyed by their network effect: Consumers went to them because they listed the largest number of businesses, and businesses subscribed to them because they attracted the largest number of consumers.
+They were highly defensible businesses, and for the leading companies, the network effect ensured high profits over long periods. It was not unusual for leading Yellow Pages businesses to earn a profit margin in excess of 40 percent.11 While Naukri operates in a different era in a different medium, our view was that it converged with many of the virtuous traits of a leading Yellow Pages business.
+The second convergent pattern we noted was the performance of the leading internet job boards in other countries. This pattern was even more powerful than that of Yellow Pages. We found at least seven other job boards globally with obscenely high operating margins (more than 30 to 40 percent) and infinite ROCE, just like Naukri; for example, Seek in Australia, Dice and CareerBuilder in the United States, 51Job in China, EN in Japan, 104 Corp in Taiwan, and JobStreet in Singapore and Malaysia. These dominant franchises became more dominant each year. Their margin and return profile kept improving; they were all cash machines; the number two in any of these markets showed no signs of catching up; and LinkedIn and offline competitors had no impact on them. In other words, they were indistinguishable from Naukri.
+When we first encountered a 49 percent operating margin and infinite ROCE for Naukri, we were skeptical. Who earns that kind of money? But after studying the Yellow Pages and companies in other markets, we concluded that this was no fluke. In 2021, Naukri’s operating margin was 55 percent.
+We invested in Naukri not just because Sanjeev and Hitesh are impressive folks (which they are), or because Naukri makes gobs of money (which it does), or because it has annihilated the competition (which it has). Instead, we invested in Naukri because the convergent models of Yellow Pages and global job board businesses gave us the confidence to believe that the Naukri template is tough to beat. Make that almost impossible to beat.
+I will state two counterfactuals to highlight the importance of this method of investing. First, what if Sanjeev and Hitesh, impressive as they are, were operating the number 2 or 3 job board in India? We would not have touched the business. Winner takes all in the classifieds business, and we would never have bet against that pattern. Second, what if Sanjeev and Hitesh had come to us in the early days of the internet when there was no proof of concept for this business model? Again, we would have walked away because the answer to the question “Where else has this worked?” would have been “No idea.”
+Nevertheless, some venture capitalists did fund Naukri in its early days. Kudos to them. They recognized the genius of Sanjeev and Hitesh and deserved their mouthwatering returns.
+We detest the phrases “This time, it’s different” and “My gut tells me this will work.” We need to see the evidence that our investment thesis has worked elsewhere. If it hasn’t, we are unlikely to touch it. We are the antithesis of the venture capital community, which earns its living by betting on untested and unproven businesses. I am in awe of successful venture capital firms, but my admiration for them will never translate into a desire to emulate them.
+Kahneman’s Outside View and Convergence
+I have learned to invest by investing and by observing other investors. I wish I could have learned from the learned finance and economics academics. Have you tried reading a finance journal or research article on economics or finance? I have, and I must admit I can’t understand most of them. They are inundated with Greek symbols, complicated mathematical equations, and esoteric arguments. They leave me baffled as to their utility for actual practitioners like me. But occasionally, one of the intellectuals will take my breath away.
+Daniel Kahneman is one such individual. His masterpiece Thinking, Fast and Slow should be compulsory reading for all investing 101 classes. If you are already an investor, there is no more valuable chapter to read (and re-read) than chapter 23, “The Outside View.”
+Here, Kahneman describes his experience of leading a team in Israel designing a curriculum and writing a textbook for high school students on judgment and decision-making. After a year, the team had made reasonable progress. They had prepared a detailed outline of the syllabus, written a couple chapters, and conducted some classroom lessons.
+One day, Kahneman asked his colleagues to write down an estimate of the time it would take the team to submit a finished textbook draft to the Ministry of Education. Everyone on the team, including Kahneman’s colleague Seymour Fox, an expert in curriculum development, estimated that it would take them about two years. Kahneman then asked Fox, who had witnessed many other teams develop similar textbooks and curricula over the years, how long it usually takes teams to finish their textbook projects.
+Fox’s answer stunned Kahneman. Seemingly embarrassed, Fox admitted that 40 percent of such teams never finished the task, and those who did took anywhere from seven to ten years. The actual time it took Kahneman’s team? Eight years. A far cry from the two years they had estimated.
+Kahneman labels the team’s initial estimate of two years the “inside view.” It was based on the team members’ specific circumstances, their confidence in their abilities, an extrapolation based on recent goals achieved, and a hazy idea of the future. And it was wrong by a wide margin.
+Kahneman calls the 40 percent failure estimate of similar projects and the completion time of seven to ten years the “outside view.” As he describes, his questioning of Fox revealed two great insights. First, although Fox was aware of the outside view, he did not even consider it while initially writing down his estimate. And second, although the other team members, including Kahneman, did not have access to the information Fox did, none even attempted to understand the outside view when the project began.
+But applying convergent thinking or an outside view is neither natural nor easy. As Kahneman himself states succinctly, “ ‘Pallid’ statistical information is routinely discarded when it is incompatible with one’s personal impression of a case. In the competition with the inside view, the outside view does not stand a chance.”
+The outside view does not have a chance in the investment community because, ironically, fund managers and analysts are savvy. Given a choice between applying their intellectual horsepower to a single business by making a ten-year projection of profits or stepping back and asking if any of it even makes sense, brilliant folks often choose the former. As I was transitioning from consulting in my early investing days, I was the biggest believer in the myth that more work produces better answers for investors. It doesn’t.
+Let me illustrate the power of Kahneman’s outside view by outlining two ways of analyzing a potential investment in an airline.
+Imagine that I have just flown to Singapore from New York aboard the über-comfortable A380 in January 2019. I have thoroughly enjoyed the legendary Singapore Airlines service. After I land, I pick up a financial newspaper and read an interesting article on the enormous potential for airlines in Asia, particularly in India and China. This article also informs me that the famous Tata Group in India launched not one but two airlines a few years ago. The journalist gushes about the limitless growth possibilities on the continent. Having just had a great flying experience and feeling excited about the potential of the fast-growing Asian airline market, I decide to start some serious work on the subject to evaluate an investment in an Asian airline.
+If you are not from the finance industry, please do not treat this as a frivolous example. Believe it or not, this is how fund managers sometimes get interested in companies.</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的书籍段落：
+
+---
+
+Naukri允许求职者免费发布简历，并向企业收取订阅费以访问这些简历和发布职位空缺。我们于2013年投资时，Naukri占据了主导性的65%流量份额，规模是第二名Monster India的四倍。鉴于Naukri的主导地位，如果你是一名印度的求职者，你几乎肯定会在这里发布简历。如果你是一家试图招聘的企业，你几乎不得不订阅Naukri，因为它拥有最庞大、最多样化的候选人库。这正是经典网络效应的体现：Naukri是第一，因为它就是第一。
+
+我们对Info Edge（Naukri母公司）信心十足，因为它不仅体现了一种，而是两种趋同的模式。首先是昔日的黄页业务。你们许多人可能从未听说过这项救命发明，但在1990年代初之前，它们曾是我的生命线。在互联网和手机时代之前的转盘式固定电话时代，黄页就像电视机或冰箱一样，是每个家庭的必备品。黄页是笨重、厚厚的电话簿，通常印在黄纸上，上面列出了当地企业及其提供的商品或服务。
+
+无论你是寻找语言教师、水管工、婚礼策划师、汽车经销商还是录音室，黄页都能为你提供数十甚至数百种选择。该目录免费分发给消费者，企业付费即可被列入其中。因此，任何城市或地区最大的黄页业务通常都利润丰厚，这得益于其网络效应带来的近乎垄断地位：消费者使用它是因为它列出了最多的企业，而企业订阅它是因为它吸引了最多的消费者。
+
+它们是防御性极强的业务，对于领先公司而言，网络效应确保了长期的高利润。领先的黄页业务利润率超过40%并不罕见。尽管Naukri在不同的时代、以不同的媒介运营，但我们认为它与领先黄页业务的诸多优良特质趋同。
+
+我们注意到的第二种趋同模式是其他国家领先的互联网招聘网站的表现。这种模式甚至比黄页更强大。我们发现全球至少有另外七家招聘网站拥有高得离谱的营业利润率（超过30%至40%）和无限的资本回报率（ROCE），就像Naukri一样；例如，澳大利亚的Seek、美国的Dice和CareerBuilder、中国的前程无忧（51Job）、日本的EN、台湾的104人力银行（104 Corp）以及新加坡和马来西亚的求职街（JobStreet）。这些占据主导地位的企业每年都变得更加强大。它们的利润率和回报状况持续改善；它们都是印钞机；各自市场中的第二名都毫无赶超迹象；而LinkedIn和线下竞争对手对它们毫无影响。换句话说，它们与Naukri别无二致。
+
+当我们最初看到Naukri拥有49%的营业利润率和无限的资本回报率时，我们持怀疑态度。谁能赚到这种钱？但在研究了黄页和其他市场的公司后，我们得出结论：这绝非偶然。2021年，Naukri的营业利润率达到了55%。
+
+我们投资Naukri，不仅仅是因为Sanjeev和Hitesh是令人印象深刻的人物（他们确实是），或者因为Naukri赚得盆满钵满（它确实如此），又或者因为它消灭了竞争对手（它确实做到了）。相反，我们投资Naukri，是因为黄页和全球招聘网站业务的趋同模式给了我们信心，让我们相信Naukri的模式难以被击败。几乎可以说是不可能被击败。
+
+我将陈述两个反事实来强调这种投资方法的重要性。首先，假设Sanjeev和Hitesh虽然令人印象深刻，但运营的是印度排名第二或第三的招聘网站呢？我们就不会碰这家公司。分类广告业务是赢家通吃，我们绝不会违背这个模式去下注。其次，假设Sanjeev和Hitesh在互联网早期就来找我们，而当时这种商业模式还未得到验证呢？同样，我们会选择放弃，因为对于“这种模式在其他地方成功过吗？”这个问题的答案会是“不知道”。
+
+尽管如此，一些风险投资家确实在Naukri早期资助了它。向他们致敬。他们认识到了Sanjeev和Hitesh的天赋，并理应获得令人垂涎的回报。
+
+我们厌恶“这次不一样”和“直觉告诉我这能行”这类说辞。我们需要看到证据，证明我们的投资论点在其他地方是行得通的。如果不行，我们就不太可能碰它。我们与风险投资界截然相反，后者靠押注未经检验和验证的业务为生。我钦佩成功的风险投资公司，但我的钦佩永远不会转化为效仿他们的愿望。
+
+**卡尼曼的外部视角与趋同思维**
+
+我是通过亲身投资和观察其他投资者学会投资的。真希望能从那些学识渊博的金融学和经济学家那里学习。你试过阅读金融期刊或关于经济学或金融的研究文章吗？我试过，必须承认其中大部分我都看不懂。它们充斥着希腊符号、复杂的数学方程和深奥的论点。它们让我困惑不解，对于像我这样的实际从业者有何用处。但偶尔，某位知识分子的洞见会让我叹为观止。
+
+丹尼尔·卡尼曼就是这样一个人。他的杰作《思考，快与慢》应该成为所有投资入门课程的必读书目。如果你已经是一名投资者，那么没有比第23章“外部视角”更有价值的章节值得（反复）阅读了。
+
+在这里，卡尼曼描述了他领导以色列一个团队的经历，该团队负责为高中生设计一门关于判断与决策的课程并编写教材。一年后，团队取得了合理的进展。他们制定了详细的教学大纲，编写了几个章节，并进行了一些课堂教学。
+
+一天，卡尼曼让同事们写下团队需要多久才能向教育部提交一份完整的教材草稿的预估时间。团队中的每个人，包括卡尼曼的同事、课程开发专家西摩·福克斯（Seymour Fox），都估计大约需要两年时间。卡尼曼接着问福克斯（他多年来见证过许多其他团队开发类似的教材和课程），这类团队通常需要多久才能完成教材项目。
+
+福克斯的回答让卡尼曼大吃一惊。福克斯似乎有些尴尬地承认，40%的此类团队从未完成任务，而那些完成的团队则花了七到十年不等的时间。卡尼曼团队实际花了多久？八年。与他们预估的两年相去甚远。
+
+卡尼曼将团队最初预估的两年称为“内部视角”。它基于团队成员的具体情况、他们对自身能力的信心、根据近期达成目标的进度进行的推断，以及对未来的模糊设想。而它错得离谱。
+
+卡尼曼将类似项目40%的失败率以及七到十年的完成时间称为“外部视角”。正如他所描述的，他对福克斯的提问揭示了两大洞见。首先，尽管福克斯知道外部视角的存在，但他在最初写下预估时甚至根本没有考虑它。其次，尽管包括卡尼曼在内的其他团队成员没有福克斯掌握的信息，但在项目开始时，甚至没有人试图去了解外部视角。
+
+然而，应用趋同思维或外部视角既不自然也不容易。正如卡尼曼本人简洁地指出：“当‘苍白’的统计信息与个人对案例的印象不符时，人们通常会将其丢弃。在与内部视角的竞争中，外部视角毫无胜算。”
+
+讽刺的是，外部视角在投资界毫无胜算，因为基金经理和分析师们都很精明。面对选择时——是运用智力对单个企业进行十年利润预测，还是退一步思考这一切是否合理——聪明人往往选择前者。在我从咨询转向投资的早期，我曾深信“投入越多工作就能为投资者带来更好答案”这一神话。事实并非如此。
+
+让我通过概述分析一家航空公司潜在投资的两种方式，来说明卡尼曼外部视角的力量。
+
+想象一下，我在2019年1月乘坐超级舒适的A380客机从纽约飞往新加坡。我充分享受了新加坡航空公司传奇般的服务。落地后，我拿起一份财经报纸，读到一篇关于亚洲（尤其是印度和中国）航空公司巨大潜力的有趣文章。文章还告诉我，印度著名的塔塔集团（Tata Group）几年前不仅创办了一家，而是两家航空公司。记者对这片大陆无限的增长可能性赞不绝口。刚刚有过一次美妙的飞行体验，又对快速增长中的亚洲航空市场潜力感到兴奋，我决定开始深入研究这个主题，以评估投资一家亚洲航空公司的可能性。
+
+如果你不是金融行业的人，请不要将此视为轻率的例子。信不信由你，基金经理们有时就是这样对公司产生兴趣的。
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">At first glance, there is a lot to like about the airline industry. But, to a fund manager’s ears, I can describe it in two words that sound better than Beethoven’s symphony: “large” and “growing.” Unless you live in a monastery in a remote corner of the world, your life in the modern world, directly or indirectly, is touched by the airline industry. And the industry is beginning to impact Africa and Asia—the phenomenal growth of Dubai and Singapore as airline hubs during the last decade is testimony to the region’s potential.
+At this stage, I have two options:
+1. Perform a detailed analysis of one Asian airline, or
+2. Focus on understanding the outside view of the airline industry.
+If I choose option one, which, incidentally, many fund managers choose, I will waste my time doing the following time-consuming and futile tasks.
+My team and I will interview the CEO and CFO at a fancy restaurant. Then, we will visit their corporate offices, where the senior management team will wax eloquent on the culture and systems of their unique airline. Finally, we will read tens of analyst reports (most of which will be favorable; do you seriously expect an airline analyst to denigrate their industry?), and we will build a fancy Excel spreadsheet with multiyear forecasts of fuel prices, passenger miles, average ticket prices, load factors, gross margins, capital expenditures, inventory levels, lease costs, personnel expenses, marketing costs, airport charges, freight revenues, and heaven knows what else.
+The result? After many weeks or months of meetings and late nights, we will either buy or choose a price at which we plan to purchase the company’s shares if we think the price is too high.
+Let’s see what we would do if we were to choose option two instead.
+We want to analyze the industry in greater depth, and so we start with an extensive study conducted by MIT on the U.S. airline industry from 2000 to 2013. The conclusions of this study are in an eighty-one-page document available for free on the internet.12 The results are humbling.
+Surprisingly, despite being a mature market, the U.S. industry grew during this period: The revenue of passenger miles grew about 20 percent from 709 million to 848 million. However, on total revenue of about $1.4 trillion during this period, the airlines made a cumulative loss of $44 billion. Thus, on an annual revenue of close to $100 billion, the airline industry lost about $3 billion every year from 2000 to 2013.
+But these averages hide an even sorrier story. During eight of these fourteen years (or almost 60 percent of the time), the airlines made no money; that is, they declared financial losses or only a meager profit. And in the six years they did manage to eke out profits, their total net profit was only about $40 billion.
+However, the real tragedy is that during just two bad years—2005 and 2008—the industry suffered losses of $54 billion, or $14 billion more than the cumulative profits of $40 billion during the entire period. It is generally assumed that the tragedy of September 11, 2001, was terrible for the airline industry, which is true; U.S. airlines suffered losses of about $19 billion in 2001 and 2002. But in 2005, four years after the tragedy and three years before the financial meltdown of 2008, the industry declared a total net loss of $28 billion, far exceeding the losses resulting from September 11.
+The remarkable consistency with which airlines lose money is not a problem unique to the United States. A report from the International Air Transport Association shows that from 2000 to 2014, the industry had not earned its cost of capital for fifteen years in a row.13 Not even in a single year!
+You must now be thinking what I am thinking. The industry may be destructive overall, but what about the top airlines? Would they not be much better than the industry? Let’s look at the return profiles of the top ten airlines (by revenue) in the world according to Aviation Week: Lufthansa, All Nippon, Southwest, Qantas, Air China, American, Singapore, Turk Hava, Aeroflot, and Ryanair. Using Morningstar, I calculated their return on equity (ROE) and return on assets (ROA) for ten years from 2004 to 2013, and the results are terrible. The median ROE of these airlines over ten years was 6.8 percent, and the median ROA was 2.5 percent. Scale does not guarantee success in this demanding industry.
+To sum it up: It’s as bad as it gets.
+After studying the historical patterns in the airline industry, we can conclude the following with a high degree of confidence:
+1. U.S. airlines do not make money.
+2. The global airline industry does not make money.
+3. The top ten airlines in the world do not make money.
+The detailed and unfortunate outside view of the industry is quite troubling. Airlines are great for consumers, not for investors. This pessimistic view advises us to stay away from the airline industry. Instead, we should choose to invest our excess cash in a bank deposit rather than buying a single airline share.
+I am sure many of you are now asking the obvious question. Can one make a decision about investing in an Asian airline based on learnings from U.S. and global airlines? If we can conclude that Asia is not dissimilar to the United States, maybe we can get comfortable with the fact that the fate of Asian airlines will be no different from their U.S. counterparts. At first glance, the industry may appear to be quite different in Asia owing to ownership and international routes. First, most airlines in Asia, including Singapore Airlines, are owned by the government, unlike in the United States, where airlines are under private ownership. Second, most of the heavy traffic routes in Asia are between international destinations, not domestic ones (there are no domestic flights in Singapore or Dubai!).
+But if we dig a bit deeper into the competitive dynamics, we may conclude that Asia is no different from the United States. In the prepandemic days, Expedia showed that if you wanted to fly from Singapore to New York, you could choose from among twenty-two airlines! Competition is no less severe just because the flights are international as opposed to domestic. The airline rivalry in Asia may be more intense than in the United States owing to the ownership structure! Since governments care much less about economics than private investors, they may not be perturbed by continued financial losses. Moreover, most countries seem to treat their airline as a national symbol, so shutting down a national airline, as prudent as it may be for the exchequer, is unheard of in Asia. As a result, in my view, invoking convergence to understand the Asian airline industry is a legitimate investment approach.
+In this case, applying the outside view to investing yielded us two significant benefits. First, we avoided investing in a company and in an industry in which the odds of making money are very slim indeed. I am not suggesting that it is impossible to make money by investing in airlines—if you bought an airline stock at a low enough price (no, I can’t define what is “low enough”) and then were lucky enough to sell it at some profit, good for you. But “I will find a greater fool for my crappy asset” is another way to say “speculating,” not investing. It’s not for us.
+The second benefit was the time, money, and effort saved. Instead of conducting lengthy and unproductive management meetings, schmoozing the investor relations person, paying fat fees to consultants, and spending weeks to construct a multimegabyte Excel spreadsheet, we spent a few hours on the internet, downloaded a few reports, and made our decision within a few minutes with enough time left to go home early to our families.
+Some Practical Ways of Applying the Principle of Convergence
+This discussion on airlines should not lead anyone to believe that all will be well just by applying the principle of convergence or the outside view to a specific investment situation. Convergence is not a panacea, nor is it a substitute for thoughtful analysis and synthesis. But when applied wisely, it can be a powerful investment tool.
+I don’t know about the rest of the world, but in India, a married person inherits their spouse’s family. Whether they like it or not. The likelihood of getting along with your spouse over the long term is relatively low if you don’t like your spouse’s first, second, and occasionally, even third cousins. For the record, my in-laws are the best.
+Investing in companies is no different. Buying into a business means also buying into the industry of that business. For example, while I may think I am investing in a company that makes and sells sanitaryware, I am inheriting all the good and the bad of the sanitaryware industry. No company is an island. We can never ignore the kinds of businesses that surround it.
+One of our principles of convergence investing is that if the industry allows its companies to make money consistently, we love it; if not, we better have a perfect reason for spending even one minute analyzing a business like an airline. Life is too short.
+There are three potential answers to the question of an industry’s attractiveness and profitability. First is that the companies in the industry struggle to keep their heads above water, just as we saw in the case of airlines. Industries like telecom towers, garment manufacturing, and commodity chemicals are notorious value destroyers. Most companies in these industries barely earn their cost of capital. As I have said repeatedly, one of the immensely underappreciated values of any strategy—including an investment strategy—is what it advises us not to do. The principle of convergence demands that I avoid investing in these industries. If most companies in the industry can’t hack it, why should I believe that this company is unique?</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+乍看之下，航空业有许多令人喜爱之处。但在基金经理听来，我能用两个词来形容它，比贝多芬的交响乐还动听：“规模大”和“增长快”。除非你隐居在世界某个偏僻角落的修道院，否则在现代生活中，你的生活直接或间接都与航空业相关。而且，该行业正开始影响非洲和亚洲——过去十年迪拜和新加坡作为航空枢纽的惊人增长，便是该地区潜力的明证。
+
+此刻，我有两个选择：
+1.  对一家亚洲航空公司进行详细分析，或
+2.  专注于理解航空业的“外部视角”。
+
+如果我选择第一个方案（顺便说一句，许多基金经理都这么选），我将浪费时间去做以下耗时且徒劳的事情。
+我和我的团队会在一家高档餐厅采访CEO和CFO。然后，我们会参观他们的公司总部，在那里，高管团队会滔滔不绝地讲述他们独特航空公司的文化和体系。最后，我们会阅读数十份分析师报告（其中大多数将是看好的；你真指望航空业分析师会贬低自己的行业吗？），并制作一份精美的Excel电子表格，里面包含对燃油价格、客运里程、平均票价、载客率、毛利率、资本支出、库存水平、租赁成本、人事费用、营销成本、机场收费、货运收入以及天知道还有什么东西的多年预测。
+结果呢？经过数周或数月的会议和熬夜，如果我们认为价格太高，我们要么买入，要么设定一个计划买入该公司股票的价格。
+
+让我们看看如果选择第二个方案会怎么做。
+我们希望更深入地分析这个行业，于是从麻省理工学院针对2000至2013年美国航空业进行的一项广泛研究入手。该研究的结论在一份81页的文件中，可在网上免费获取。其结果令人汗颜。
+令人惊讶的是，尽管是一个成熟市场，美国航空业在此期间仍有增长：客运里程收入从7.09亿增长到8.48亿，增幅约20%。然而，在此期间总收入约1.4万亿美元的情况下，航空公司累计亏损达440亿美元。也就是说，在年收入接近1000亿美元的情况下，从2000年到2013年，航空业每年亏损约30亿美元。
+但这些平均值掩盖了更糟糕的情况。在这十四年中的八年（或者说近60%的时间里），航空公司没有盈利；也就是说，它们报告了财务亏损或仅获得微薄利润。而在确实设法盈利的六年里，它们的净利润总额仅约400亿美元。
+然而，真正的悲剧在于，仅在2005年和2008年这两个糟糕的年份，行业就蒙受了540亿美元的损失，比整个期间的累计利润400亿美元还多出140亿美元。人们通常认为2001年9月11日的悲剧对航空业是毁灭性的，这没错；美国航空公司在2001年和2002年损失了约190亿美元。但在2005年，即悲剧发生四年后、2008年金融危机爆发三年前，该行业宣布净亏损总额达280亿美元，远超9·11事件造成的损失。
+
+航空公司持续亏损的惊人一致性并非美国独有。国际航空运输协会的一份报告显示，从2000年到2014年，该行业连续十五年未能赚回其资本成本。甚至一年都没有！
+你现在一定在想我所想的。整个行业可能具有破坏性，但顶尖航空公司呢？它们难道不比行业整体好得多吗？让我们看看《航空周刊》按收入排名的全球十大航空公司：汉莎航空、全日空、西南航空、澳洲航空、中国国航、美国航空、新加坡航空、土耳其航空、俄罗斯航空和瑞安航空的回报情况。我利用晨星的数据计算了它们2004年至2013年十年的净资产收益率（ROE）和总资产收益率（ROA），结果惨不忍睹。这些航空公司十年间的ROE中位数是6.8%，ROA中位数是2.5%。在这个要求严苛的行业，规模并不保证成功。
+总而言之：糟糕透顶。
+
+研究了航空业的历史模式后，我们可以高度确信地得出以下结论：
+1.  美国航空公司不赚钱。
+2.  全球航空业不赚钱。
+3.  全球十大航空公司不赚钱。
+
+对该行业详细而令人沮丧的外部视角相当令人不安。航空公司对消费者很有利，但对投资者不利。这种悲观的观点建议我们远离航空业。相反，我们应该选择将多余现金存入银行，而不是购买任何一家航空公司的股票。
+我敢肯定，你们很多人现在都在问一个显而易见的问题。能否基于对美国及全球航空业的了解，来决定是否投资一家亚洲航空公司？如果我们能断定亚洲与美国并无不同，或许就能坦然接受亚洲航空公司的命运将与美国同行别无二致的事实。乍看之下，由于所有权和国际航线，亚洲的航空业似乎相当不同。首先，亚洲的大多数航空公司，包括新加坡航空，都由政府所有，不像美国那样由私人所有。其次，亚洲的主要繁忙航线多是国际航线，而非国内航线（新加坡或迪拜根本没有国内航班！）。
+但如果我们更深入地探究竞争动态，可能会得出结论：亚洲与美国并无不同。在疫情前，Expedia显示，如果你想从新加坡飞往纽约，可以在22家航空公司中进行选择！仅仅因为航班是国际而非国内，竞争激烈程度丝毫不会降低。由于所有权结构，亚洲的航空竞争甚至可能比美国更激烈！因为政府远比私人投资者更不关心经济效益，它们可能不会因持续的财务亏损而困扰。此外，大多数国家似乎将其航空公司视为国家象征，因此，关闭一家国家航空公司，无论对国库多么审慎，在亚洲都是闻所未闻的。因此，在我看来，运用类比法来理解亚洲航空业是一种合理的投资方法。
+
+在这种情况下，将外部视角应用于投资为我们带来了两大显著好处。首先，我们避免了投资于一家公司和整个行业，因为在那里赚钱的几率实在微乎其微。我并不是说投资航空公司完全不可能赚钱——如果你以足够低的价格买入一只航空股（不，我无法定义何为“足够低”），然后有幸以一定的利润卖出，那算你走运。但“我会为我的糟糕资产找到一个更大的傻瓜”不过是“投机”的另一种说法，而非投资。这不适合我们。
+第二个好处是节省了时间、金钱和精力。我们没有进行冗长而无果的管理层会议，没有和投资者关系人员套近乎，没有向顾问支付高额费用，也没有花几周时间构建一个庞大的Excel表格，而是花了几小时上网，下载了几份报告，并在几分钟内做出了决定，还有足够的时间早点回家与家人团聚。
+
+**运用类比法的一些实用方法**
+
+关于航空业的讨论不应让人以为，只需将类比法或外部视角应用于特定投资情境，一切就会万事大吉。类比法不是万灵药，也不能替代深思熟虑的分析与综合。但若运用得当，它可以成为一个强大的投资工具。
+
+我不知道世界其他地方如何，但在印度，一个人结婚后就继承了配偶的家庭。无论喜欢与否。如果你不喜欢你配偶的一表亲、二表亲，偶尔甚至三表亲，那么长期与你配偶和睦相处的可能性就相对较低。顺便说一句，我的姻亲是最好的。
+投资公司也没什么不同。投资一家企业也意味着涉足该企业所在的行业。例如，虽然我可能认为自己在投资一家生产和销售卫浴洁具的公司，但我同时也继承了卫浴洁具行业的所有好坏面。没有哪家公司是孤岛。我们永远不能忽视其周围行业的环境。
+
+我们类比投资法的原则之一是：如果一个行业能让其中的公司持续赚钱，我们就喜欢它；否则，我们最好有一个完美的理由，才值得花哪怕一分钟去分析像航空公司这样的企业。人生苦短。
+
+关于一个行业的吸引力和盈利能力，有三个可能的答案。首先是该行业的公司艰难求生，正如我们在航空业案例中看到的那样。电信铁塔、服装制造和大宗化学品等行业是臭名昭著的价值毁灭者。这些行业中的大多数公司几乎赚不回其资本成本。正如我一再强调的，任何策略（包括投资策略）的巨大价值之一，就是它建议我们不要做什么，而这一点被严重低估。类比法的原则要求我避免投资于这些行业。如果行业里大多数公司都难以立足，我凭什么相信这家公司是独一无二的？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">The second conclusion could be that the industry is uniformly attractive for its participants. For example, companies like Accenture, Cognizant, Infosys, and TCS in the information technology (IT) outsourcing industry earn more than 40 to 50 percent ROCE and have been doing so for decades. If you accept convergence investing as we do, you should love assessing companies in the IT industry. For example, when we evaluated an investment in Mindtree, India’s leading midtier IT services business, we knew that the company had been very profitable for many years. But how could we be sure that it would continue to be successful? By witnessing the convergent outcomes of other businesses in the industry, all of which had been able to scale their revenues over many decades without sacrificing profitability. In other words, it happened there, so all else being equal, there was a high probability that it could happen here.
+My optimistic view does not mean that I will invest in any company in the IT services industry. Instead, my actual investment will depend on factors like valuation, financial risk, management track record, capital allocation, customer concentration, market share, and so on. But the companies in this industry would be right on top of my radar as Mindtree was.
+You may think these industries that churn money spinners would be rare—at least that is what microeconomic theory would espouse. But they aren’t. Our portfolio is full of companies in desirable industries: enzymes, paints, cookers, business process outsourcing, bearings, compressors, consumer electricals, sanitaryware, and steam turbines, to name just a few.
+Last, convergence can inform us that only some companies make money in specific industries, whereas most others don’t. For example, walking along Fifth Avenue in Manhattan, I am dazzled by the brilliance and splendor of fashion stores. But fashion is a brutal place to be in—very few companies grow revenues and profits steadily. Most are shooting stars that shine for a few moments and then disappear into oblivion. The same is true for retailers and restaurants. These are the trickiest companies for us to assess. Should we bet on a single business in an unattractive industry, or should we just walk away? If we evaluate a company in these industries, which we rarely do, we are exceptionally demanding—we will not invest in anyone but the undisputed leader.
+We use the principle of convergence across many other areas of business apart from assessing industry attractiveness. We use it much more often to figure out what not to do.
+I want to take you back to chapter 1, which focused exclusively on the importance of avoiding significant risks. I contended that avoiding risky investments is more important and more difficult for most investors than making good investments.
+As a quick reminder, I highlighted six types of businesses we avoid at all costs:
+1. Those owned and run by crooks
+2. Turnaround situations
+3. Those with high levels of debt
+4. M&A junkies
+5. Those in fast-changing industries
+6. Those with unaligned owners
+How did I arrive at this list? Through a combination of reliving bad experiences (1, 2, and 5), doing some factual data analysis (4, 5, and 6), watching others stumble (2, 3, and 6), and learning from owners of portfolio companies (4 and 5). The common thread through all of these was the hunger for detecting patterns and seeking a convergence of outcomes.
+Investors can detect (or manufacture) a vast range of patterns across businesses. This is not the place to discuss all of them. Instead, this chapter intends to make the simple claim that one of the most important questions an investor can ask is, “Where else has this worked?” Before moving on, let me discuss one more aspect of convergence investing that (I think) has been critical to our success.
+We are price sensitive. The median trailing price/earnings (PE) ratio for our portfolio at the time of our investment is less than 15 when the Indian market has been about 19 to 20. We have rarely ever paid more than twenty times trailing PE. Most importantly, we have never said, “This is such a great business that even 30 PE is justified.”
+As I have made clear in previous chapters, we have no interest in investing in low-quality or mediocre businesses at any price. Our portfolio companies are truly stellar based on verifiable empirical data on historical financials, industry market share, balance sheet quality, and customer satisfaction. Moreover, the markets are generally quite efficient—businesses like these are rarely available at a throwaway price. Since we have chosen to invest exclusively in world-class businesses, we have two options:
+1. Invest at a high valuation hoping that the price will rise further, or
+2. Stay inactive for long periods until we get the price we want.
+We have always chosen option two. Why? Convergence. Valuation matters for equity returns over the long run across years, countries, and the size of companies. The lower the valuation, the higher the prospective long-term returns. It has worked everywhere over very long periods, so who are we to defy it?
+There is a lot of empirical research on equity valuation and returns. The article on this topic that I like best is “Value and Growth Investing: Review and Update” by Louis K. C. Chan and Josef Lakonishok.14 I love this article for two reasons. First, it is a meta-research article that summarizes the conclusions of many other researchers over many years across several countries. Second, while Chan and Lakonishok are both academics (from the University of Illinois at Urbana-Champaign), Lakonishok is also the CEO and chief investment officer of a $100 billion fund called LSV Asset Management. It’s always good to hear from people whose research conclusions matter to their bank balance.
+The article has many tables with reams of data, and if you don’t have much time, I suggest focusing on table 2. It shows returns over twenty years (from 1975 to 1995) across thirteen countries for “value” stocks (those with low valuation) and “glamour” stocks (those with high valuation) across four valuation measures. The results are stark. The value portfolio beats the glamour portfolio across almost all countries. And the outperformance is not trivial: It ranges from 1.5 percentage points for Switzerland to 6.7 percentage points for the United States (based on PE ratio as the valuation measure).
+The first paragraph of their conclusion is worth repeating in full:
+A large body of empirical research indicates that value stocks, on average, earn higher returns than growth stocks. The reward to value investing is more pronounced for small-cap stocks, but it is also present in large-cap stocks. The value premium exists also in equity markets outside the United States.
+Why should we risk investing at high valuations when we know that the result will be poor on average? Some of you may detect a paradox here. Unlike LSV Asset Management, which relies on sophisticated quantitative analysis, we do in-depth qualitative research on industries and businesses. As a result, we know a lot about our portfolio companies and their industries. Given that we have an informed view of them, should we not be willing to pay up when the opportunity arises?
+No.
+Why? Because I have more respect for the convergence theme with respect to valuation and potential returns than my intellect. I wish I were more intelligent. But I am not.
+We now arrive at an obvious question. Under what situations should we not apply the principle of convergence?
+Not as Straightforward as It Sounds
+Someone wise—reputed to be Einstein, but there is no agreement—once remarked, “Everything should be made as simple as possible, but not simpler.” Life is complicated, and so is investing. The principle of convergence may seem intelligible (I hope) and its implementation a cinch. Sorry to disappoint you, but this seemingly easy-to-use tool generates its own set of thorny issues.
+Give me a conclusion you desire, and I am reasonably confident that I would rationalize it based on the principle of convergence. A couple of anecdotes may masquerade as a pattern, one pattern can be ignored in favor of another, or one can simply resort to telling a story that seems to weave in an outside view where there is none.
+If you are an investor or choose to be one, you will need to learn your lessons the hard way. However, here are some pointers based on my experience.
+The probability of convergent evolution is higher in living organisms if they share similarities in genetics, development, and ecology.15 Unsurprisingly, the greater the similarity of “conditions” in businesses, the greater is the benefit of using the principle of convergence in investing. “Conditions” here could mean industry structure, geography, competitive dynamics, stage of business, the similarity of business models, and much more. For example, we saw that the Caribbean anoles were endowed with the same physical attributes when conditions were similar across the islands. Therefore, businesses should operate under the same principle.
+Let me take the example of three types of businesses to explain the complications of applying the principle of convergence.
+Assume that I am evaluating an investment in a company that builds residential properties in Germany. To incorporate an outside view, I would start with developing an understanding of the dynamics of the German residential property market—the industry participants, track record of growth and profitability, extent of consolidation, and anything else that would get me smart on the overall German residential market. I would prefer not to draw parallels with Germany’s commercial or retail real estate market because the industry structure and types of players are usually different across these segments.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+第二个结论可能是该行业对其参与者具有普遍吸引力。例如，信息技术（IT）外包行业的埃森哲、高知特、印孚瑟斯和塔塔咨询等公司，其资本回报率（ROCE）持续数十年保持在40%至50%以上。如果您像我们一样接受趋同投资理念，您会乐于评估IT行业的公司。例如，当我们评估投资印度领先的中型IT服务公司Mindtree时，我们知道该公司多年来一直非常盈利。但我们如何确信它能持续成功？通过观察行业内其他企业的趋同结果——它们都能在数十年间扩大收入规模而无需牺牲盈利能力。换言之，既然在别处发生过，那么在条件相同的情况下，在此处发生的可能性就很高。
+
+我持乐观态度，但这并不意味着我会投资IT服务行业的任何公司。相反，我的实际投资将取决于估值、财务风险、管理层过往业绩、资本配置、客户集中度、市场份额等因素。但这个行业的公司，就像Mindtree一样，会是我优先关注的对象。
+
+您可能认为这类能持续产生丰厚利润的行业很罕见——至少微观经济理论会这么主张。但事实并非如此。我们的投资组合中充满了身处理想行业的公司：酶制剂、涂料、炊具、业务流程外包、轴承、压缩机、家用电器、卫浴洁具、蒸汽轮机等等，仅举几例。
+
+最后，趋同原理告诉我们，在特定行业中，只有部分公司能赚钱，而大多数则不能。例如，走在曼哈顿第五大道上，我被时尚精品店的璀璨华丽所震撼。但时尚业竞争极其残酷——很少有公司能稳定增长收入和利润。大多数公司如流星般闪耀片刻便归于沉寂。零售商和餐馆的情况也是如此。这些是最难评估的公司。我们是否应该在不具吸引力的行业中押注单个企业？还是干脆避开？如果我们评估这些行业的公司（我们很少这样做），我们的要求会异常苛刻——除非是无可争议的领导者，否则我们不会投资。
+
+除了评估行业吸引力，我们还在商业的许多其他领域运用趋同原理。我们更常用它来判断不应做什么。
+
+我想带您回顾第一章，该章专门强调了规避重大风险的重要性。我认为，对大多数投资者而言，避免高风险投资比做出好的投资更重要，也更困难。
+
+简单回顾一下，我曾强调过我们坚决避开的六类企业：
+1.  由骗子拥有和经营的企业
+2.  处于扭亏困境的企业
+3.  高负债企业
+4.  并购上瘾者
+5.  身处快速变化行业的企业
+6.  所有者利益不一致的企业
+
+我是如何得出这份清单的？结合了以下方式：反思痛苦经历（1、2、5）、进行事实数据分析（4、5、6）、观察他人失误（2、3、6）以及向投资组合公司的所有者学习（4、5）。贯穿所有这些的共同主线是渴望发现模式并寻求结果的趋同。
+
+投资者可以发现（或制造）企业间各种各样的模式。此处不讨论所有模式。相反，本章旨在提出一个简单的观点：投资者可以提出的最重要问题之一是，“这在别处成功过吗？”在继续之前，请允许我讨论趋同投资的另一个方面，我认为这对我们的成功至关重要。
+
+我们对价格敏感。在我们投资时，我们投资组合的过去十二个月市盈率（PE）中位数低于15倍，而当时印度市场约为19至20倍。我们很少支付超过20倍的过去十二个月市盈率。最重要的是，我们从未说过“这家企业如此优秀，即使30倍市盈率也合理”。
+
+正如我在前几章明确指出的，我们无意以任何价格投资低质量或平庸的企业。基于历史财务数据、行业市场份额、资产负债表质量和客户满意度等可验证的实证数据，我们投资组合中的公司确实非常出色。此外，市场通常相当有效——像这样的企业很少能以极低价格买到。由于我们选择只投资世界级企业，我们有两种选择：
+1.  以高估值投资，寄希望于价格进一步上涨；或者
+2.  长时间按兵不动，直到获得我们想要的价格。
+我们总是选择第二种。为什么？因为趋同原理。估值对跨越多年、多个国家和不同规模公司的长期股票回报至关重要。估值越低，预期的长期回报越高。这在任何地方、任何很长时期内都行之有效，我们凭什么去违背它？
+
+关于股票估值和回报有大量的实证研究。我最喜欢关于这个主题的文章是陈路易斯（Louis K. C. Chan）和约瑟夫·拉科尼肖克（Josef Lakonishok）的《价值投资与成长投资：回顾与更新》。14 我喜欢这篇文章有两个原因。首先，它是一篇元研究文章，总结了多年来多位研究者在多个国家得出的结论。其次，虽然陈和拉科尼肖克都是学者（来自伊利诺伊大学厄巴纳-香槟分校），但拉科尼肖克也是一家名为LSV资产管理、规模达1000亿美元基金的CEO和首席投资官。听取那些研究成果直接影响其银行账户盈亏的人的意见总是有益的。
+
+文章中有许多包含大量数据的表格，如果您时间不多，我建议您重点关注表2。它展示了十三个国家在二十年（1975年至1995年）间，基于四种估值指标的“价值”股（低估值）和“魅力”股（高估值）的回报情况。结果差异显著。价值股投资组合在几乎所有国家都跑赢了魅力股投资组合。且这种超额回报并非微不足道：按市盈率估值衡量，从瑞士的1.5个百分点到美国的6.7个百分点不等。
+
+他们结论的第一段值得全文引述：
+大量实证研究表明，价值股平均而言比成长股获得更高回报。价值投资的回报在小盘股中更为显著，但在大盘股中也存在。价值溢价在美国以外的股票市场同样存在。
+
+既然我们知道高估值投资平均结果会很差，为何还要冒险？你们中的一些人可能察觉到一个悖论。与依赖复杂量化分析的LSV资产管理不同，我们对行业和企业进行深入的定性研究。因此，我们对投资组合公司及其行业了解甚多。既然我们对它们有充分了解，难道不该在机会出现时愿意支付高价吗？
+
+不。
+为什么？因为相对于我个人的智力判断，我更尊重关于估值与潜在回报的趋同规律。我希望能更聪明些。但我不是。
+
+现在我们面临一个显而易见的问题。在什么情况下我们不应应用趋同原理？
+
+**并非听上去那么简单**
+某位智者——据传是爱因斯坦，但未有定论——曾言：“凡事应尽可能求简，但不可过分简化。”生活是复杂的，投资亦然。趋同原理看似易懂（我希望如此），执行起来似乎轻而易举。很抱歉让您失望，但这个看似易用的工具自身也产生了一系列棘手问题。
+
+给我一个您想要的结论，我相当有信心能基于趋同原理来合理化它。几个轶事可能伪装成一种模式，一种模式可能被另一种模式所忽视，或者干脆可以编造一个看似融入了外部观点而实际没有的故事。
+
+如果您是投资者或选择成为投资者，您将需要付出代价来吸取教训。不过，以下是我基于经验的一些建议。
+
+如果生物体在遗传、发育和生态方面具有相似性，其趋同进化的概率就更高。15 不出所料，企业“条件”的相似性越高，在投资中运用趋同原理的益处就越大。这里的“条件”可指行业结构、地域、竞争动态、业务阶段、商业模式的相似性等等。例如，我们看到当岛屿条件相似时，加勒比安乐蜥具有相同的身体特征。因此，企业也应遵循相同的原理。
+
+让我以三类企业为例来说明应用趋同原理的复杂性。
+
+假设我正在评估一家在德国开发住宅物业的公司。为了纳入外部视角，我会首先着手理解德国住宅物业市场的动态——行业参与者、增长和盈利记录、整合程度，以及其他任何能让我深入了解德国整体住宅市场的信息。我倾向于不将其与德国的商业或零售地产市场进行类比，因为这些细分领域的行业结构和参与者类型通常不同。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">Should I study the French, Spanish, or Brazilian residential real estate market? It depends whether these other markets have a similar industry structure to that of Germany (e.g., is the industry fragmented or consolidated?) or whether the regulations are primarily comparable (e.g., if a government subsidizes mortgage payments for its citizens, it will dramatically affect consumer behavior). Intuitively, given the cultural and historical affinity of the French and Spanish residential markets, I would be more inclined to draw lessons from those markets and not Brazil’s. But maybe someone can find a way to draw lessons even from Brazil. What about the U.S. residential real estate market? I am not sure. I would need to do some work to understand if there are any parallels between Germany and the United States.
+Take the case of a German company manufacturing industrial robots. These robots are supplied to manufacturing businesses across the world. Since this is a global business, I would not worry too much about the German angle here. Instead, I would research enterprises supplying the same or similar equipment worldwide, whether based in China, Italy, or Singapore, to understand their growth, profitability, and trends in market share. I would also go one level “higher” to analyze the performance of global businesses that supply sophisticated industrial machinery. I may not assign as much weight to this second analysis, but I would study it to discern any apparent trends if available.
+Some of you may argue that I was too quick to dismiss the German engineering businesses in general. Maybe something about German engineering strength can serve as a template for an industrial robot business. I am skeptical. But perhaps you are right. So go ahead and do the work.
+Third, take the case of a German hospital business. Should we use convergent investing by assessing the economics and industry structure of hospitals in the United Kingdom, Italy, and the Netherlands? Health care in most markets is heavily regulated, and this may significantly impact the economics of a hospital. It would be too cumbersome to assess the impact of local laws on the hospitals in each country. Instead, we could use a shortcut to see if the overall hospital economics—or those of the top five to ten hospitals if industry data are unavailable—are comparable across countries. Since hospitals are a services business, can we use the information from other German services sectors (say, hotels) to refine our assessment? Think about it.
+One situation in which we never apply convergence is when the industry is new or fast-changing. Convergent evolution is more evident in plants and insects since they have been around on Earth longer than birds and mammals.16 It takes time for convergence to emerge. This fact is equally applicable to the world of business.
+We have noticed greater convergence in older industries (e.g., paint, garments, engines, turbines, cars) and less in newer ones (e.g., virtual reality, robotics, electric vehicles, biotechnology). Industries converge toward similar fates after the companies have had enough time to plan and execute their strategies, after winners and losers have been (essentially) decided, and when the pace of change has declined. Thus, if we are exploring an investment in a paint company in Germany, it would be helpful to study the paint industry in the Western world. But if we were in the year 2000, drawing parallels from the U.S. e-commerce industry for an investment in a Chinese e-retailer may have been taking things a bit too far.
+As you can see, convergence investing is not an objective, bias-free, mathematical endeavor that always yields the same answer. As a result, you may have a different view of one or more of my conclusions. And therein lies all the fun and frustration of investing.
+This brings us back to Tim Cooper and the mysteriously turbid Ara-3 flask.
+Lessons from Lenski
+On February 24, 1988, Professor Richard Lenski seeded twelve sterile flasks containing ten milliliters of glucose solution with the common bacterium Escherichia coli (commonly called E. coli).
+Lenski had started an experiment that continues today and has yielded hundreds of research articles, dozens of doctorates, and global acclaim.17
+He started an experiment on long-term evolution like the one conducted on silver foxes by Lyudmila Trut and Dmitri Belyaev but with two key differences. First, he wanted to use microscopic organisms that have a generation time of only twenty minutes, thereby allowing tens of thousands of generations to evolve over a human lifetime. Second, unlike the artificial selection experiments on foxes (or dogs or wheat), in which the experimenter chooses who (or what) reproduces, Lenski wanted the experimental environment to choose.
+When the experiment started, all twelve flasks had genetically the same E. coli since all cells came from the same mother cell. Each flask contained hundreds of millions of bacteria, so there was ample opportunity for mutations to emerge. An essential experimental twist was that food was in limited supply. Every day, the E. coli population increased for about six hours until the glucose was exhausted. At this point, the bacteria would stop dividing and wait. The next day, a lab member—someone like Tim Cooper—would take 0.1 milliliters out of each flask (1 percent of the flask’s content) and inoculate a new flask containing 9.9 milliliters of fresh glucose solution. A new cycle would then begin until the next day, when the same procedure would be repeated. And the next day. Week after week, month after month, year after year.
+Lenski was replaying Gould’s proverbial tape of life simultaneously in twelve flasks. He wasn’t selecting the bacteria, and he wasn’t varying the medium. Instead, he was letting life run its course in parallel over thousands of generations. What he found was remarkable. In 2011, after fifty thousand generations of evolution, he said, “To my surprise, evolution was pretty repeatable. . . . Although the lineages certainly diverged in many details, I was struck by the parallel trajectories of their evolution, with similar changes in so many phenotypic traits and even gene sequences we examined.”
+It wasn’t that the bacteria had not evolved. On the contrary, they had evolved a lot. The E. coli in different flasks adapted differently to the starvation diet by either growing faster or becoming more numerous than earlier generations. But the general trend was unmistakable: On average, the population grew 70 percent faster than their founding ancestors. In addition, the researchers found another example of convergent evolution. All twelve populations of bacteria had lost the ability to synthesize a sugar called D-ribose because all had undergone the same set of genetic changes.
+Unlike Gould’s prediction, the replaying of the tape of life was yielding the same result.
+Until one day, fifteen years after the start of the experiment, Tim Cooper found that it didn’t.
+The reason the Ara-3 flask had turned opaque was that, unlike the other flasks, it had experienced a population explosion. The Ara-3 population was ten times the size of the populations in the other flasks. How could this have happened when all flasks had only a limited amount of glucose?
+The Ara-3 bacteria had developed the ability to feed on some other ingredient in the solution. The only other candidate was a molecule called citrate present in all glucose solutions from day one. However, at the time of the beginning of the experiment, E. coli was explicitly known not to synthesize citrate in the presence of oxygen. Therefore, this inability was used to identify whether a type of bacteria was E. coli or not!
+The 33,127th generation of Lenski’s bacteria had deviated drastically from the clean and simple story of inevitable convergence. It was as big a case of divergence as biology had ever seen experimentally. Lenski’s lab later found that the ability of the Ara-3 bacteria to digest citrate resulted from a series of mutations after about twenty thousand generations. Unfortunately, each mutation was rare, so no bacteria in any of the other flasks have developed this ability.
+It is worth paying attention to the two critical lessons from Lenski’s long-term experiment:
+1. Convergence is the dominant pattern in the natural world.
+2. On rare occasions, it isn’t.
+We can replace just one word to derive the same two critical lessons for us investors:
+1. Convergence is the dominant pattern in the business world.
+2. On rare occasions, it isn’t.
+I have been singing the praises of convergence as a powerful investing tool, which it is. Of course, there are only a few ways for businesses to succeed. As investors, identifying a convergent pattern of success or failure has helped us make (what we think are) some excellent investments and avoid many bad ones.
+But I have also reached a painful realization that patterns can break, and a successful Ara-3-type mutant can arise occasionally. Unfortunately, we would miss an opportunity to invest in it.
+If one replays the tape of business history across periods and countries, the overwhelming convergent pattern would be that business focus leads to success. Most of our portfolio comprises businesses with only one product or service or a small set of related products and services. We refuse to invest in diversified companies or conglomerates. We also express disappointment when any of our management teams try to deviate from their course.
+If I were an investor in the United States, I would have missed Amazon by adhering to this investment philosophy. Amazon has a market value of about one trillion dollars. This business started as an electronic book retailer and diversified into an ever-growing list of offerings, many of which have almost nothing to do with one another.</div>
+            <div class="text-block simplified-text">好的，这是严格按照您要求翻译的书籍段落：
+
+我应该研究法国、西班牙还是巴西的住宅房地产市场吗？这取决于这些其他市场的行业结构是否与德国相似（例如，行业是分散的还是集中的？），或者其法规是否基本可比（例如，如果政府为其公民补贴抵押贷款，这将极大影响消费者行为）。直觉上，鉴于法国和西班牙住宅市场的文化和历史亲缘性，我更倾向于从这些市场而非巴西市场汲取经验。但也许有人能找到从巴西市场学习的方法。那么美国的住宅房地产市场呢？我不确定。我需要做些研究，看看德国和美国之间是否存在任何相似之处。
+
+以一家制造工业机器人的德国公司为例。这些机器人供应给全球的制造企业。由于这是一项全球性业务，我不会过于担心这里的德国视角。相反，我会研究全球范围内提供相同或类似设备的企业，无论其总部设在中国、意大利还是新加坡，以了解它们的增长、盈利能力和市场份额趋势。我还会再“提升”一个层次，分析提供复杂工业机械的全球企业的表现。我对这第二层分析可能不会赋予同等权重，但我会研究它，以辨别任何明显的趋势（如果存在的话）。
+
+你们有些人可能会争辩，说我总体上过快否定了德国的工程企业。也许德国工程实力的某些方面可以作为工业机器人业务的模板。我对此存疑。但也许你们是对的。所以尽管去做这项研究吧。
+
+第三，以一家德国医院业务为例。我们是否应该通过评估英国、意大利和荷兰医院的经济状况和行业结构来进行趋同投资？大多数市场的医疗保健都受到严格监管，这可能显著影响医院的经济效益。评估各国当地法律对医院的影响将过于繁琐。相反，我们可以使用一个捷径，看看各国的整体医院经济状况——或者如果行业数据不可用，看看前五到十家医院的经济状况——是否具有可比性。由于医院属于服务性行业，我们能否利用其他德国服务业（例如酒店业）的信息来完善我们的评估？想想看。
+
+有一种情况我们从不应用趋同原则，那就是当行业是新兴或快速变化的时候。趋同进化在植物和昆虫中更为明显，因为它们在地球上存在的时间比鸟类和哺乳动物更长。趋同需要时间才能显现。这一事实同样适用于商业世界。
+
+我们注意到较古老的行业（例如油漆、服装、发动机、涡轮机、汽车）趋同性更强，而较新的行业（例如虚拟现实、机器人、电动汽车、生物技术）则较弱。当企业有足够时间规划和执行其战略、胜负（基本）已定且变化速度放缓之后，行业才会趋同于相似的命运。因此，如果我们在德国探索投资一家油漆公司，研究西方世界的油漆行业会有所帮助。但如果我们身处2000年，从美国电子商务行业寻找相似之处来投资一家中国电子零售商，可能就有点牵强了。
+
+如你所见，趋同投资并非一个客观、无偏见、总能得出相同答案的数学方法。因此，你可能对我的一个或多个结论持有不同看法。而投资的所有乐趣与挫折也正在于此。
+
+这让我们回到蒂姆·库珀和那瓶神秘浑浊的Ara-3。
+
+伦斯基的启示
+1988年2月24日，理查德·伦斯基教授在十二个无菌烧瓶中接种了普通细菌大肠杆菌（通常称为E. coli），每个烧瓶装有十毫升葡萄糖溶液。
+
+伦斯基启动了一项持续至今的实验，该实验已产出数百篇研究文章、数十个博士学位并赢得了全球赞誉。
+
+他开启了一项长期进化实验，类似于柳德米拉·特鲁特和德米特里·别利亚耶夫对银狐进行的实验，但有两个关键区别。首先，他想使用世代时间仅二十分钟的微生物，从而可以在人类寿命期内演化数万代。其次，与对狐狸（或狗或小麦）进行的人工选择实验不同（实验中实验者选择谁/什么繁殖），伦斯基想让实验环境来进行选择。
+
+实验开始时，所有十二个烧瓶中的大肠杆菌在基因上是相同的，因为所有细胞都来自同一个母细胞。每个烧瓶含有数亿细菌，因此有充足的机会产生突变。一个关键的实验设计是食物供应有限。每天，大肠杆菌种群增长约六小时，直到葡萄糖耗尽。此时，细菌会停止分裂并等待。第二天，实验室成员——像蒂姆·库珀这样的人——会从每个烧瓶中取出0.1毫升（占烧瓶内容的1%），接种到一个装有9.9毫升新鲜葡萄糖溶液的新烧瓶中。然后开始一个新的循环，直到第二天重复相同的程序。日复一日，周复一周，月复一月，年复一年。
+
+伦斯基同时在十二个烧瓶中重放古尔德那句著名的“生命磁带”。他没有选择细菌，也没有改变培养基。相反，他让生命在数千代的时间里并行发展。他的发现引人注目。2011年，在五万代进化之后，他说：“令我惊讶的是，进化具有相当高的可重复性……尽管不同谱系在许多细节上肯定存在差异，但它们进化的平行轨迹令我震惊，表型特征甚至我们检测的基因序列都发生了相似的变化。”
+
+并非细菌没有进化。恰恰相反，它们进化了很多。不同烧瓶中的大肠杆菌通过生长更快或数量比前代更多来适应这种饥饿饮食。但总体趋势是明确的：平均而言，种群比它们的祖先生长速度快了70%。此外，研究人员发现了趋同进化的另一个例子。所有十二个细菌种群都失去了合成一种叫做D-核糖的糖的能力，因为它们都经历了相同的基因变化。
+
+与古尔德的预测不同，重放生命磁带产生了相同的结果。
+
+直到实验开始十五年后的一天，蒂姆·库珀发现情况并非如此。
+
+Ara-3烧瓶变得浑浊的原因是，与其他烧瓶不同，它经历了种群爆炸。Ara-3种群的规模是其他烧瓶种群的十倍。在所有烧瓶葡萄糖含量都有限的情况下，这怎么可能发生？
+
+Ara-3细菌进化出了摄取溶液中其他成分的能力。唯一可能的候选者是从第一天起就存在于所有葡萄糖溶液中的一种叫做柠檬酸盐的分子。然而，在实验开始时，众所周知大肠杆菌在氧气存在下不能合成柠檬酸盐。因此，这种无能性曾被用来鉴定一种细菌是否是大肠杆菌！
+
+伦斯基实验第33,127代细菌彻底偏离了趋同必然发生的清晰简单故事。这是生物学实验中所见过的最大的趋异案例。伦斯基的实验室后来发现，Ara-3细菌消化柠檬酸盐的能力源于约两万代后的一系列突变。不幸的是，每个突变都很罕见，因此其他任何烧瓶中的细菌都没有发展出这种能力。
+
+值得关注伦斯基长期实验的两个关键启示：
+1.  趋同是自然界的主导模式。
+2.  在极少数情况下，情况并非如此。
+
+我们只需替换一个词，就能为我们投资者得出同样关键的两点启示：
+1.  趋同是商业世界的主导模式。
+2.  在极少数情况下，情况并非如此。
+
+我一直在颂扬趋同作为一种强大的投资工具，它确实如此。当然，企业成功的途径只有少数几种。作为投资者，识别成功或失败的趋同模式帮助我们做出了（我们认为的）一些出色的投资，并避免了许多糟糕的投资。
+
+但我也痛苦地意识到，模式可能会被打破，一个成功的Ara-3型突变体偶尔会出现。不幸的是，我们会错过投资它的机会。
+
+如果重放不同时期和国家的商业历史磁带，压倒性的趋同模式将是：业务专注带来成功。我们投资组合中的大部分企业只有一种产品或服务，或一小系列相关的产品和服务。我们拒绝投资于多元化公司或企业集团。当我们的任何管理团队试图偏离其轨道时，我们也会表示失望。
+
+如果我是一个美国投资者，遵循这种投资理念，我就会错过亚马逊。亚马逊市值约为一万亿美元。这家企业最初是一家电子书零售商，后来业务范围不断扩展到越来越多的领域，其中许多领域几乎彼此毫无关联。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">You can watch a movie on Prime Video after reading its review in a magazine bought on Kindle. You can be attired in comfortable Amazon Essentials when you order milk and eggs through Amazon Fresh delivery by talking to Alexa. Amazon Logistics will deliver your groceries and announce their arrival at your doorstep via Ring. While playing Amazon Music, you can earn some money by completing a Mechanical Turk survey hosted on Amazon Web Services. And you can be a citizen of any of the fifty-eight countries globally with Amazon’s presence.
+If Ara-3 had a brain, it would have been intensely jealous of Jeff Bezos, who seems to have broken every business rule to out-mutate the ultimate mutant.
+In 2017, Warren Buffett admitted on CNBC’s Squawk Box that he should have invested in Amazon. I have no such qualms. I know that I would have missed Amazon in the past, and I will miss an Amazon-like business in the future. So be it.
+The only saving grace of this failure? I doubt I will see another Bezos in my lifetime.
+✳✳✳
+When I advocate convergence investing, I admit my incompetence. I am effectively saying, “I don’t know how to assess this particular business.” Maybe this is why the approach of taking the outside or convergent view while being straightforward is not followed as widely as it should be. Yet, since 2007, we have kept doing what we love: asking questions that lead us to companies’ patterns of success and failure.
+In our profession, getting the correct answer is easy. But, unfortunately, asking the right question is not.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . an important element of reimagining investing is internalizing the recurring patterns of success and failure in the business world.
+1. Convergence—unrelated organisms developing the same solutions to similar problems—is ubiquitous in nature. It is seen across animals, plants, fungi, and even bacteria. In nature, every problem seems to have only a small set of solutions.
+2. For example, Australia’s flora and fauna has been evolving independently of those of the rest of the world for more than thirty-five million years (when Australia became a separate continent), but for every Australian marsupial, there seems to be a placental counterpart.
+3. The business world, too, is convergent. There are definitive patterns to the success and failure of companies. We exploit this property of the corporate world to select outstanding businesses and reject lousy ones by asking a simple question: “Where else have we seen this?”
+4. We are investors not in individual businesses but in proven and successful templates of businesses.
+5. We are big fans of Daniel Kahneman’s “outside view”—which is conceptually similar to convergence and compels us to seek similar patterns elsewhere before making an investment decision.
+6. However, applying the principle of convergence is tricky because we humans can see patterns where none exist. We can also miss out on one-off opportunities like Amazon that seem to defy the convergent notion that focus is the key to success.</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的段落：
+
+---
+
+在Kindle上读完杂志影评后，您可以在Prime Video上观看这部电影。当您通过Alexa语音订购亚马逊生鲜（Amazon Fresh）的牛奶和鸡蛋时，身上可能正穿着舒适的亚马逊基础款（Amazon Essentials）。亚马逊物流（Amazon Logistics）会将您的杂货送达，并通过Ring门铃通知您货已到门口。在播放亚马逊音乐（Amazon Music）时，您可以通过完成托管在亚马逊云服务（Amazon Web Services）上的“机械土耳其人”（Mechanical Turk）调查赚点外快。并且，您可以成为全球五十八个拥有亚马逊业务的国家中的任何一个国家的公民。
+如果变异体Ara-3有大脑，它一定会对杰夫·贝佐斯（Jeff Bezos）嫉妒得发狂，因为贝佐斯似乎打破了所有的商业规则，最终超越了终极变异体。
+2017年，沃伦·巴菲特（Warren Buffett）在CNBC的“财经论谈”（Squawk Box）节目中承认，他本应投资亚马逊。我毫无此等疑虑。我知道自己过去会错过亚马逊，将来也会错过像亚马逊这样的企业。错过就错过了。
+这次失败唯一聊以自慰之处？我怀疑在我有生之年，不会见到第二个贝佐斯了。
+✳✳✳
+当我倡导聚合投资（convergence investing）时，我承认了自己的无能。我实际上是在说：“我不知道如何评估这项特定的业务。”也许这就是为什么这种采用外部视角或聚合视角、直截了当的方法未能得到应有的广泛采用。然而，自2007年以来，我们一直坚持做我们热爱的事：提出那些引领我们发现企业成败模式的问题。
+在我们的职业中，得到正确答案很容易。但不幸的是，提出正确的问题却很难。
+章节总结
+进化论教会了我……
+……重新构想投资的一个重要元素，是内化商业世界中反复出现的成败模式。
+1.  聚合（Convergence）——即不相关的生物体为相似的问题发展出相同的解决方案——在自然界无处不在。它在动物、植物、真菌甚至细菌中都能观察到。在自然界中，每个问题似乎都只有少数几种解决方案。
+2.  例如，澳大利亚的动植物群已独立于世界其他地方进化了超过三千五百万年（自澳大利亚成为独立大陆起），但每一种澳大利亚有袋类动物，似乎都能找到对应的胎盘动物。
+3.  商业世界同样存在聚合现象。公司的成功与失败有着明确的模式。我们利用企业界的这一特性，通过提出一个简单的问题——“我们还在哪里见过这种情况？”——来甄选卓越的企业，淘汰糟糕的企业。
+4.  我们投资的不是单个企业，而是经过验证且成功的商业模板。
+5.  我们是丹尼尔·卡尼曼（Daniel Kahneman）“外部观点”（outside view）的忠实拥趸——它在概念上与聚合相似，促使我们在做出投资决策前，先在其他地方寻找相似的模式。
+6.  然而，应用聚合原理颇具挑战，因为我们人类可能会在不存在模式的地方看到模式。我们也可能错过像亚马逊这样的一次性机会，它似乎违背了“聚焦是成功关键”这一聚合定律。
+
+---</div>
+        </div>
+    
+    </main>
+</body>
+</html>
