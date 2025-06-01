@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./009.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 10</h1>
+        <a href="./011.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Where Are the Rabbits?
+One of the most remarkable features in our domesticated races is that we see in them adaptation, not indeed to the animal’s or plant’s own good, but to man’s use of fancy. . . . The key is man’s power of accumulative selection: nature gives successive variations; man adds them up in certain directions useful to him. In this sense he may be said to make useful breeds.
+Charles Darwin, On the Origin of Species, chapter 1, “Variation Under Domestication”
+Despite the enthusiasm for activity that has swept business and financial America, we will stick with our ’til-death-do-us-part policy. It’s the only one with which Charlie and I are comfortable, it produces decent results, and it lets our managers and those of our investees run their businesses free of distractions.
+Warren Buffett, annual letter to shareholders, 1986
+In October 1988, Forbes published a list of the four hundred wealthiest Americans.1 Sam Walton was the richest with a fortune of $6.7 billion, and Buffett was ranked tenth with $2.2 billion. The list was full of familiar names, including Gates, Helmsley, Hillman, Kluge, Mars, Newhouse, Packard, Perot, Pritzker, and Redstone.
+But who was Shelby Cullom Davis? Almost no one had heard of him. And how was he ranked as high as 197 while being a new entrant? Davis was tucked between the famous names of Joseph Albertson, the founder of the Albertsons stores, and Fritz Otto Haas, the founder of the global multinational chemical company Rohm and Haas. But what had he founded? Forbes mentioned that he was worth $370 million, was from Tarrytown, New York, and had created his wealth from investment banking. However, Forbes was not entirely correct. Shelby Davis was not an investment banker. Unlike everyone else on the list, he was not an entrepreneur and did not own a business.
+He was an investor like Buffett. But the similarity appeared to stop there. First, Buffett was a professional investor managing money for others, whereas Davis invested his own money (or his wife’s). Second, Buffett started investing in his early twenties, whereas Davis did not start investing until he was thirty-eight years old. Third, Buffett had studied finance and investing under the great Benjamin Graham; Davis had had no interest in economics or finance during his college days. Instead, he had majored in history and had a special love for the Russian Revolution. Finally, Buffett had spent his entire career investing; Davis had had at least five careers before age forty. He reported for CBS Radio (his first assignment was interviewing Amelia Earhart), was a freelance writer, and was a stock analyst (a “statistician”). He worked at the War Production Board in Washington during the Second World War and was a deputy superintendent in New York State’s insurance department.
+Even Davis’s investing style was radically different from Buffett’s. Buffett invested across a range of industries, whereas just one sector contributed to Davis’s colossal wealth; Buffett invested in very few businesses in the United States, whereas Davis invested in at least 1,600 businesses worldwide and occasionally traded heavily.
+But there was one way in which Davis and Buffett were alike. And it made Davis wealthier than most people who have ever lived on this planet.
+Darwin: The Unappreciated Math Wizard
+Darwin was a mathematical genius. But he didn’t think so.
+On July 29, 1828, the nineteen-year-old Charles Darwin wrote a letter to his close friend and second cousin, William Darwin Fox. He started with a complaint and then rued his lack of mathematical prowess: “What excuse have you to offer for not having answered my letter long before this? I hope it is nothing worse than idleness; or what would be still better, I hope it arises from your being ten fathoms deep in the Mathematics, and if you are God help you, for so am I, only with this difference I stick fast in the mud at the bottom and there I shall remain in status quo.”2
+Darwin reiterated his weakness in mathematics in his autobiography: “After years I have deeply regretted that I did not proceed far enough at least to understand something of the great leading principles of mathematics; for men thus endowed seem to have an extra sense.” He also admitted that the subject “was repugnant to me.”3 He detested complex mathematical formulations and once wrote to a friend, “I have no faith in anything short of actual measurement and the Rule of Three.” The Rule of Three is a simple mathematical calculation that answers the problem “If ten mangoes cost $8, how many mangoes can one buy for $40?”
+I regard Darwin as a math genius because of his intuitive grasp of the prodigious power of long-term compounding. Most of his peers didn’t understand it; in fact, neither did many of his successors. In chapter 3 of Origin, “Struggle for Existence,” Darwin’s exquisite grasp of the power of compounding is evident in his famous example of elephants. He wrote, “The elephant is reckoned to be the slowest breeder of all known animals, and I have taken some pains to estimate its probable minimum rate of increase: it will be under the mark to assume that it breeds when thirty years old, and goes on breeding till ninety years old, bringing forth three pair of young in this interval; if this be so, at the end the of fifth century there would be alive fifteen million elephants, descended from the first pair.”
+Like no one else before him, Darwin understood that an exponential increase of populations was theoretically possible but practically almost impossible—diseases, predators, lack of food, natural disasters, and many other factors kept populations in check. This realization led him to conclude that only the fittest variants would survive to pass on their traits to their offspring. These fitter variants would then start exponentially increasing, leading to evolution through natural selection. As he famously wrote in chapter 4 of Origin, “This preservation of favorable variations and the rejection of injurious variations, I call Natural Selection.”
+As I discussed earlier, Darwin’s theory of natural selection had no place for sudden and dramatic changes. His theory required variations to be small and continuous and natural selection to work over very long periods through accumulated changes. Despite its glaring simplicity and explanatory power—or maybe because of it—his theory remained on the periphery of biological sciences during his lifetime and was not entirely accepted by the scientific community.4
+In 1900, after the rediscovery of Gregor Mendel’s work on heredity, Hugo de Vries, a well-respected Dutch botanist and geneticist, proposed a new theory of evolution called mutationism.5 According to this theory, the slight continuous variation proposed by Darwin could not lead to the evolution and creation of species; only significant mutations could. In his Die Mutationstheorie (The Mutation Theory), de Vries claimed that new species arise suddenly owing to discontinuous alteration. He wrote, “The new species thus originates suddenly[;] it is produced by the existing one without visible preparation and without transition.”6
+Now that everyone could understand. Intellectually, this was a much simpler assertion to understand than Darwinism because it could be “visualized”—Darwin’s gradualism couldn’t be. The world of investing is eerily similar. Everyone seems to know that the stock price of AMC, a movie theater chain, tripled in May 2021, but how many know that Home Depot’s multiplied 140 times over thirty years from 1990 to 2020?
+According to mutationism, species are created not because of minor variations but because something big and strange happens that transforms the organism. The controversial debate between mutationism and Darwinism remained unresolved until the 1920s. Finally, mathematics rescued biology (who would have thought!). In the 1920s and ’30s, the theoretical geneticists R. A. Fisher, J. B. S. Haldane, Sewall Wright, and a few others explained in complex mathematical language how continuous variation was compatible with Mendel’s laws. Natural selection, acting cumulatively on minor variations, could produce significant evolutionary changes over surprisingly short periods.7
+These acknowledged mathematical geniuses restated what Darwin had asserted almost fifty years earlier.
+He was saying that if a particular variation—say color vision—could give an individual a slight advantage over its peers, almost the entire population would be able to see in color over many fewer generations than we would imagine. Let us assume that color vision has a “selective advantage” of 1 percent, meaning that individuals with this trait produce 101 viable offspring instead of 100 (maybe color vision allows the individuals to locate higher-quality fruits in the forest). Thus, the selective advantage here is equivalent to compound interest or annualized return. The advantage accumulates and grows exponentially over generations.
+Thus, in the second generation, the 101 offspring with color vision produce 10,201 offspring who can see color (101 x 101), whereas the 100 “normal” offspring produce 10,000 “normal” offspring (100 x 100). This slight advantage compounded at 1 percent per generation yields dramatic change over time.
+Suppose there are eight individuals with this trait (i.e., color vision) among a thousand individuals. Over how many generations do you think color vision would spread to 90 percent of the population? Only 3,000!8 Thus, if this were an organism with a life span of one month, most of this species would have color vision within 250 years with just a 1 percent selective advantage. In evolutionary terms, this is almost instantaneous transformation. And this is not just theory.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的书籍段落：
+
+**兔子去哪了？**
+
+我们驯化物种最显著的特征之一，是看到它们适应了——并非为了动植物自身的利益，而是为了人类的用途或喜好。……关键在于人类的积累性选择力量：自然界提供连续的变异；人类则将这些变异朝着对自己有用的方向进行积累。从这个意义上讲，可以说人类培育出了有用的品种。
+查尔斯·达尔文，《物种起源》，第一章 “驯化下的变异”
+
+尽管追求积极行动的热情席卷了美国商界和金融界，我们仍将坚持我们“至死方休”的政策。这是查理和我唯一感到自在的方式，它带来了不错的结果，也让我们的经理们以及投资对象企业的管理者们能够不受干扰地经营业务。
+沃伦·巴菲特，1986年致股东年度信
+
+1988年10月，《福布斯》发布了美国最富有的四百人榜单。山姆·沃尔顿以67亿美元资产位居榜首，巴菲特则以22亿美元排名第十。榜单上满是熟悉的名字。
+但谁是谢尔比·卡洛姆·戴维斯？几乎没人听说过他。作为新晋上榜者，他何以跻身如此高位？戴维斯的名字夹在著名杂货连锁店创始人与跨国化工巨头创始人之间。但他创立了什么？《福布斯》提到他身家3.7亿美元，来自纽约塔里敦，财富源于投资银行业。然而《福布斯》并非完全正确。谢尔比·戴维斯并非投资银行家。与榜单上其他人不同，他并非企业家，也不拥有企业。
+他和巴菲特一样是投资者。但相似之处似乎仅止于此。首先，巴菲特是管理他人资金的专业投资者，而戴维斯投资的是自己的钱（或其妻子的钱）。其次，巴菲特二十出头便开始投资，而戴维斯直到三十八岁才开始。第三，巴菲特曾师从伟大的本杰明·格雷厄姆学习金融与投资；戴维斯大学期间对经济学或金融毫无兴趣，主修历史并特别热爱研究俄国革命。最后，巴菲特毕生从事投资；戴维斯在四十岁前至少有过五份职业：担任CBS广播记者、自由撰稿人、股票分析师（“统计员”）、二战期间在华盛顿战时生产委员会工作，并担任过纽约州保险部门的副主管。
+甚至戴维斯的投资风格也与巴菲特截然不同。巴菲特跨多个行业投资，而戴维斯的巨额财富仅源于一个行业；巴菲特在美国投资的企业极少，而戴维斯在全球至少投资了1600家企业，且时常进行大额交易。
+但戴维斯与巴菲特有一个共同点。正是这点使他比地球上绝大多数曾生活过的人都更富有。
+
+**达尔文：被低估的数学奇才**
+
+达尔文是位数学天才。但他自己并不这么认为。
+1828年7月29日，十九岁的查尔斯·达尔文写信给他的密友兼表兄威廉·达尔文·福克斯。他先是抱怨，接着哀叹自己缺乏数学才能：“你这么久没回我信有什么借口？希望只是懒惰；或者更妙的是，希望是因为你深陷数学十英寻之深，如果是这样，上帝保佑你，因为我也一样，唯一区别是我深陷泥沼之底，并将原地不动。”
+达尔文在自传中再次提及数学上的不足：“多年后，我深悔当初未能深入学习数学，至少该理解其伟大主导原则；因为具备此天赋者仿佛拥有第六感。”他也承认这门学科“令我反感”。他厌恶复杂的数学公式，曾写信给朋友说：“我只相信实际测量和比例法。”比例法是一种简单的数学计算，用于解决诸如“若十个芒果花费8美元，40美元可买多少个芒果？”的问题。
+我认为达尔文是数学天才，源于他对长期复利巨大威力的直觉领悟。他的大多数同代人未能理解这点；实际上，他的许多后继者亦然。在《物种起源》第三章“生存斗争”中，达尔文通过著名的大象例子精妙地展现了其对复利力量的理解。他写道：“大象被视为所有已知动物中繁殖最慢的，我曾费力估算其可能的最低增长率：保守估计其三十岁开始繁殖，至九十岁停止，期间诞下三对幼象；若果真如此，五百年后，最初那对大象的后代将有一千五百万头存活。”
+达尔文比前人更透彻地理解到，种群指数级增长在理论上可能，但实践中几乎不可能——疾病、捕食者、食物短缺、自然灾害等诸多因素制约着种群数量。这一认识使他得出结论：只有最适应环境的变异个体才能存活并将其特性遗传给后代。这些更适应的变异随后开始指数级增长，通过自然选择推动进化。正如他在《物种起源》第四章的著名论述：“我将有利变异的保存和有害变异的剔除，称为自然选择。”
+如前所述，达尔文的自然选择理论不包含突变性的剧烈变化。他的理论要求变异微小且连续，自然选择通过长期积累的微小变化发挥作用。尽管其理论简洁有力且解释性强——或许正因如此——但在他有生之年，该理论仍处于生物学边缘，未获科学界完全接受。
+1900年，在格里高利·孟德尔遗传学研究被重新发现后，备受尊敬的荷兰植物学家、遗传学家雨果·德·弗里斯提出了名为突变论的新进化理论。该理论认为，达尔文提出的微小连续变异无法导致物种的进化和形成；唯有显著突变可以。德·弗里斯在其《突变理论》中断言新物种因不连续改变而突然产生：“新物种由此突然起源；它由现存物种产生，既无可见准备，亦无过渡形式。”
+这下人人都能理解了。在智力层面上，这比达尔文主义更易理解，因为它可以“被想象”——而达尔文的渐进主义则不能。投资世界与此惊人地相似。似乎人人都知道连锁影院AMC的股价在2021年5月翻了三倍，但有多少人知道家得宝的股价在1990至2020的三十年间上涨了140倍？
+突变论认为物种的形成并非源于微小变异，而是因发生重大奇特事件改变了生物体。突变论与达尔文主义之间的激烈争论在20世纪20年代前一直悬而未决。最终，数学拯救了生物学（谁能想到呢！）。20世纪20至30年代，理论遗传学家R. A. 费希尔、J. B. S. 霍尔丹、休厄尔·赖特等人用复杂的数学语言解释了连续变异如何与孟德尔定律兼容。自然选择作用于微小变异并不断累积，能在出人意料之短的时间内产生显著的进化改变。
+这些公认的数学天才们重新阐述了达尔文近五十年前的主张。
+达尔文的意思是，如果某种变异——比如色觉——能使个体获得相对于同类的微弱优势，那么经过远比我们想象更少的世代，几乎整个种群都将拥有色觉能力。假设色觉具有1%的“选择优势”，即拥有此特性的个体能繁衍101个可育后代而非100个（或许色觉使个体能在森林中找到更优质果实）。因此，此处的选择优势相当于复利或年化回报。该优势代代累积并呈指数级增长。
+因此，在第二代，101个有色觉的后代繁衍出10,201个有色觉的后代（101 x 101），而100个“正常”后代繁衍出10,000个“正常”后代（100 x 100）。每代仅1%的微弱优势经复利积累，终将带来巨变。
+假设一千个个体中有八位拥有此特性（即色觉）。你认为色觉需要多少代能扩散至90%的种群？仅需3,000代！因此，若这是一个寿命仅一个月的生物体，仅凭1%的选择优势，该物种在250年内大多数成员都将拥有色觉。在进化尺度上，这几乎是瞬间转变。而这并非仅是理论。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">Scientists observed the rapid evolution of peppered moths in Manchester in Britain in the nineteenth century.9 Peppered moths were generally white with small black splotches on their wings. They rested on lichen-covered tree trunks during the day, where they were camouflaged against birds, their main predator. The species also had a rare, black-colored mutant. But it did not survive long because it was visible to birds against the background of tree trunks. As a result, most populations of peppered moths were, well, peppered. But as Manchester became industrialized from the middle of the nineteenth century, air pollution blackened tree trunks, thereby reversing the advantage: The black mutant became invisible to birds, and the peppered form stood out. The first black peppered moth was recorded in Manchester in 1848, and by 1895, 98 percent of the population had become black. The cumulative impact of a slight advantage had converted the rare form into the dominant one. Interestingly, as Britain passed strict pollution laws in the middle of the twentieth century, trees began to lose their sooty coating. As a result, the black moth has become rare, and the peppered form is now dominant!
+This kind of microevolution (e.g., a change in color), given enough time, can lead to macroevolution (i.e., the creation of a new species). There isn’t a single mathematical formula in Darwin’s Origin. Still, it captures the power and essence of long-term compounding better than the complex formulas of the geneticists.
+Amazingly, a mathematically challenged naturalist could figure out what had eluded scientists over the millennia by applying a simple yet profound mathematical concept to the natural world: Compounding creates life—all of it.
+But why is this relevant for us investors? Because compounding also creates wealth. Almost all of it.
+The Assault on Australia
+We think we understand compounding, but we don’t. By “we,” I mean the investment community, myself included. Although Nalanda’s entire investing strategy rests on the pillar of slow and steady compounding over decades, even I am amazed at its stunning—even surreal—results when applied over long periods.
+Before we proceed any further, I want you to appreciate its tremendous power. Then, I will highlight two surprises, one small and one big, that cumulative growth has in store for students of evolution and investing.
+For this section, I will be an omniscient consultant (are there any other kinds?) in the nineteenth century, and you will be a savvy time traveler from 1925! Who said investment stories couldn’t be exciting?
+Let’s now go back in time to Winchelsea in Australia in 1859, where I am an adviser to one Mr. Thomas Austin. Mr. Austin has imported twenty-four rabbits from England, and he wants to release them into the wild for sport hunting. He is an intelligent fellow and is wary of the rabbits’ prodigious reproductive ability. As he does not wish the farmland in Winchelsea to be overrun by rabbits, he seeks my counsel.
+Just as I am about to advise him to release the rabbits, I see you swooping in from the future to issue a dire warning: “I come from 1925 and see a catastrophe ahead. Don’t release the rabbits.” On further inquiry, you reveal that the whole of Australia is in peril because of these twenty-four creatures. I laugh at your facetious remark, ignore the warning, and ask Mr. Austin to release the rabbits. You promise to visit me every five to ten years to continue to warn me about exterminating the rabbits. You fulfill your promise, and every time you come to see me, I ask the same question. Table 10.1 captures the history of our interactions.
+Table 10.1The first thirty-five years
+Years after 1859
+No. of rabbits
+Your advice
+My response
+5
+108
+Kill them before it’s too late.
+Where are the rabbits?
+10
+482
+Kill them before it’s too late.
+Where are the rabbits?
+20
+9,700
+Kill them before it’s too late.
+Where are the rabbits?
+35
+900,000
+Kill them before it’s too late.
+Where are the rabbits?
+Thirty-five years go by, and I continue to gloat over the fact that you have been proven wrong. There are fewer than a million rabbits in about eight million square kilometers of land area, and they don’t seem to pose any imminent danger. But you warn me that the historical growth rate is about 35 percent a year, and at this pace, Australia will be overtaken by rabbits in the not-too-distant future. As is my custom, I ignore the genie from the future. Table 10.2 tells the story of the next thirty-one years, until 1925.
+Table 10.2The next thirty-one years
+Years after 1859
+No. of rabbits
+Your advice
+My response
+45
+17.5 million
+Kill them before it’s too late.
+I can see some.
+55
+350 million
+Is it too late?
+No, it’s not.
+66
+10 billion
+I told you so.
+@#$%*!
+This is a true story. Unfortunately, the twenty-four rabbits released by Mr. Austin in Australia in 1859 did produce ten billion rabbits by 1925 and wreaked havoc on the flora and fauna of the continent.10 Despite more than one hundred fifty years of government efforts ranging from building fences, trapping, shooting, and conducting biological warfare (by releasing flies with the deadly myxoma virus), Australia has been unable to eliminate this pest.
+I said that there were two surprises in this story. The small surprise, at least for me, is that twenty-four rabbits became ten billion. At some intuitive level, we investors understand that compounding can lead to astronomical numbers given enough time. But even then, I doubt many of us would have been able to envision a number of ten billion rabbits in the mid-1920s when there had been fewer than a million in 1895.
+The bigger surprise—which is also counterintuitive—is the opposite observation: Nothing happened for a very long time! After twenty years, not many rabbits would have been visible in Australia, and even after forty-five years, there were fewer than two rabbits per square kilometer. So Australians ignored the rabbit problem for many decades because rabbits did not become a problem.
+This property of compounding—that its impact seemingly remains hidden for a long time—wreaks havoc on the performance of investors because most sell too soon. An investor can hold a great business for five years, multiply their money three times, and then sell off for two potential reasons. First, they think that they have made enough and that there are better fish in the sea. Second, they get tired of the slow progress. (After all, the share price of GameStop can jump seventeen-fold in a month!) Little do they realize that if the share price had continued to climb at the same rate, in twenty-five years, they would have made 243 times their money! I know that that is a big “if,” but it isn’t an insurmountable hurdle for a quality business, as we will soon see. Also, even if the incremental return from the fifth to the twenty-fifth year in this example falls by more than five percentage points, the investor would still make 100 times their money on the original investment! As I said, the bigger mystery of compounding is not that it leads to large numbers but that it doesn’t do so for a long time.
+The holding period of most funds is barely a few months, let alone years. If you explain this behavior to an intelligent noninvestor type (I have done so), they will find it rather odd. They say something like this: “You are telling me that it is tough to find great companies to invest in; you are also telling me that these companies can grow their profits reasonably predictably over long periods. So why would you sell such a company in a hurry after you have become fortunate enough to own it?” I haven’t had a good answer to this question except, “My community is not willing to wait for the rabbits.”
+I have seen too many people make a profit of 50 to 100 percent on an investment in a great company and then press the exit button. We investors take pride in being math savvy. Mention the word “compounding” to us, and you will get knowing smiles. Unfortunately, most of those knowing smiles do not seem to know that what they know about compounding—that it can lead to big numbers over time—hides two great unknowns.
+The first is that compounding does not lead to significant numbers for a very long time. The second is that investing would be easy if companies could compound predictably. But, alas, they don’t. The real world is quite messy, and the path to long-term success is treacherous, unpredictable, and full of disappointments.
+What is needed to become a successful investor is not intellect, a commodity, but patience, which is not.
+Many More Reasons We Don’t Sell
+Are we not convinced yet? With the power of compounding in evolutionary theory as the background, let me present some more reasons we are permanent owners in great businesses. “I will never sell” would be an understandable sentiment from a passionate entrepreneur, but it is somewhat unusual—some may even say wrongheaded—coming from a fund manager. It needs a more elaborate explanation. Here we go.
+Reason 1: Who Are the Richest? The Ones Who Never Sell
+Have you looked at the Forbes list of the twenty-five wealthiest people in the world in 2022?11 In case you are interested, Elon Musk is the leader ($219 billion), and the twenty-fifth-ranked is Zhang Yiming from China ($50 billion).
+This list consists entirely of people who have never sold.
+Even if you expand the list to the richest fifty, forty-eight are business owners (or their families) who haven’t sold. So, for example, there are two money managers—Jim Simons and Stephen Schwarzman—on the list who may buy and sell shares as a part of their fund management business. Still, they haven’t sold their businesses (Renaissance and Blackstone, respectively), which, in turn, has made them billions.</div>
+            <div class="text-block simplified-text">好的，这是严格按照您要求翻译的段落：
+
+科学家在19世纪的英国曼彻斯特观察到桦尺蠖的快速进化。桦尺蠖通常为白色，翅膀上有黑色斑点。白天它们栖息在覆盖着地衣的树干上，在那里可以伪装起来躲避其主要捕食者鸟类。该物种还有一种罕见的黑色变异体。但它无法存活太久，因为在树干的背景下，它很容易被鸟类发现。因此，大多数桦尺蠖种群都是斑点状的。但随着曼彻斯特从19世纪中叶开始工业化，空气污染使树干变黑，从而逆转了优势：黑色变异体在鸟类眼中变得不可见，而斑点形态则变得显眼。1848年，曼彻斯特首次记录到黑色桦尺蠖，到1895年，98%的种群已变为黑色。微小优势的累积影响将罕见形态转变成了主导形态。有趣的是，随着英国在20世纪中叶通过严格的污染法，树木开始失去煤烟覆盖层。结果，黑蛾变得罕见，而斑点形态如今再次占据主导地位！
+
+这种微观进化（例如颜色的变化），只要有足够的时间，就能导致宏观进化（即新物种的产生）。达尔文的《物种起源》中没有一条数学公式。然而，它比遗传学家的复杂公式更好地捕捉到了长期复利的威力和精髓。
+
+令人惊讶的是，一位数学能力平平的自然学家，通过将一个简单而深刻的数学概念应用于自然界，竟能揭示出数千年来科学家们未曾理解的事物：复利创造了生命——所有的生命。
+
+但这与我们投资者何干？因为复利也创造了财富。几乎所有的财富。
+
+**澳大利亚的灾难**
+
+我们以为自己懂得复利，其实不然。这里的“我们”，指的是投资界，包括我自己在内。尽管那兰达的整个投资策略都建立在数十年缓慢而稳定复利的支柱之上，但即使是我，当看到它在长期应用中所产生的惊人——甚至超现实的——结果时，也感到震惊。
+
+在我们继续深入之前，我希望你能领略其巨大的威力。接着，我将指出两个令进化和投资研究者感到惊讶之处，一个较小，一个较大。
+
+在这一部分，我将扮演一位无所不知的顾问（还有其他类型吗？）身处19世纪，而你则是一位来自1925年的精明时间旅行者！谁说投资故事不能激动人心？
+
+现在，让我们回到1859年澳大利亚的温切尔西，我是托马斯·奥斯汀先生的顾问。奥斯汀先生从英国进口了二十四只兔子，他想将它们放归野外用于狩猎运动。他是个聪明人，对兔子惊人的繁殖能力心存警惕。由于他不希望温切尔西的农田被兔子侵占，他向我寻求建议。
+
+正当我要建议他放生兔子时，我看到你从未来俯冲而来，发出严厉警告：“我来自1925年，预见到一场灾难。别放生兔子。”经过进一步询问，你透露整个澳大利亚都因这二十四只生物而面临危险。我对你玩笑般的话一笑置之，无视警告，并让奥斯汀先生放生了兔子。你承诺每五到十年来看我一次，继续警告我消灭兔子。你信守了承诺，每次你来看我，我都问同样的问题。
+
+三十五年过去了，我继续沾沾自喜，因为事实证明你错了。在约八百万平方公里的土地上只有不到一百万只兔子，它们似乎没有构成任何迫在眉睫的危险。但你警告我，历史上的年增长率约为35%，照此速度，在不久的将来澳大利亚将被兔子占领。按照我的习惯，我无视了来自未来的“精灵”。接下来的三十一年，直到1925年的故事如下所述。
+
+这是一个真实的故事。不幸的是，奥斯汀先生于1859年在澳大利亚放生的那二十四只兔子，到1925年确实繁衍出了百亿之众，并给这片大陆的动植物造成了严重破坏。尽管政府努力了一百五十多年，包括建造围栏、设陷阱捕捉、射杀以及发动生物战（释放携带致命粘液瘤病毒的苍蝇），澳大利亚仍未能根除这种害虫。
+
+我说过这个故事中有两个令人惊讶之处。较小的惊讶（至少对我来说）是二十四只兔子变成了百亿只。在某种直觉层面上，我们投资者明白，只要有足够时间，复利能带来天文数字。但即便如此，我怀疑我们中有多少人能在二十世纪二十年代中期想象出百亿只兔子的数量，要知道1895年时还不到一百万只。
+
+更大的惊讶——也反直觉——是相反的观察：在很长一段时间里，什么都没有发生！二十年后，在澳大利亚几乎看不到多少兔子，甚至四十五年后，每平方公里也不到两只。因此，澳大利亚人忽视了兔子问题几十年，因为兔子当时并没有成为问题。
+
+复利的这种特性——其影响似乎在很长一段时间内都隐藏不露——严重损害了投资者的业绩，因为大多数人过早卖出。一个投资者可能持有一家优秀企业五年，资金翻了三倍，然后出于两个潜在原因卖出。第一，他们认为赚够了，认为外面有更好的机会（天涯何处无芳草）。第二，他们对缓慢的进展感到厌倦。（毕竟，游戏驿站的股价一个月就能涨十七倍！）他们几乎没有意识到，如果股价继续以同样的速度上涨，二十五年后，他们将赚取243倍的收益！我知道这是个很大的“如果”，但对于一家优质企业来说，这并非不可逾越的障碍，我们很快就会看到。而且，即使在这个例子中，从第五年到第二十五年的增量回报率下降超过五个百分点，投资者在原投资上仍能赚取100倍！正如我所说，复利更大的奥秘不在于它最终导致巨大的数字，而在于它在很长一段时间里并不如此。
+
+大多数基金的持有期只有几个月，更不用说几年了。如果你向一个聪明的非投资者类型的人解释这种行为（我做过），他们会觉得相当奇怪。他们会这样说：“你是说找到优秀的公司投资很难；你又说这些公司能在长期内相当可预测地增长利润。那么，既然有幸持有这样的公司，为何要急着卖掉呢？”我对此一直没有很好的答案，除了说：“我圈子里的人不愿意等待兔子。”
+
+我看到太多人在一家优秀公司的投资上赚了50%到100%的利润，然后按下了退出键。我们投资者以精通数学为荣。对我们提到“复利”这个词，你会看到会心的微笑。不幸的是，大多数这种会心的微笑似乎并不知道，他们所知的关于复利的知识——即它随时间推移能带来巨大数字——隐藏着两个巨大的未知数。
+
+第一，复利在很长一段时间内不会带来显著的数字。第二，如果企业能可预测地复利增长，投资就会很容易。但是，唉，它们不能。现实世界相当混乱，通往长期成功的道路充满危险、不可预测且充满失望。
+
+成为一个成功投资者所需的不是智力（这是一种商品），而是耐心——这并非商品。
+
+**更多我们不卖出的理由**
+
+我们还没有被说服吗？以进化论中复利的力量为背景，让我再列举一些我们成为优秀企业永久所有者的理由。“我永不卖出”可能是出自一位充满热情的企业家之口、可以理解的情感，但若出自一位基金经理之口，就有些不同寻常了——有些人甚至可能说是错误的。这需要更详尽的解释。我们开始吧。
+
+**理由一：谁是最富有的人？是那些永不卖出的人**
+
+你看过2022年福布斯全球前25位富豪榜吗？如果你感兴趣的话，埃隆·马斯克位居榜首（2190亿美元），排名第二十五位的是来自中国的张一鸣（500亿美元）。
+
+这份榜单完全由从未卖出的人组成。
+
+即使你将榜单扩大到前五十名，其中四十八位是未出售企业的企业主（或其家族）。例如，榜单上有两位基金经理——吉姆·西蒙斯和史蒂芬·施瓦茨曼——他们作为基金管理业务的一部分可能会买卖股票。然而，他们并未出售自己的企业（分别是文艺复兴和黑石），这反过来又为他们创造了数十亿财富。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">If not selling is creating such humongous wealth globally, why do fund managers think they can make themselves rich by trading in and out of stocks? I know that I am not smarter or better than the richest people in the world. But if holding on to great businesses has worked wonderfully for them, why should I not simply emulate them?
+Many entrepreneurs on this list have had attractive offers over their lifetime. The reason for their being on the list is that they did not succumb to temptation. They intuitively understood that they were on to something quite extraordinary and that selling would have been value destroying, not value creating. For example, in 2005, Viacom offered Mark Zuckerberg $75 million for Facebook, which would have made the twenty-one-year-old a cool $35 million.12 Within a year of Viacom’s offer, Yahoo offered $1 billion for the company. Zuckerberg refused both these and many other offers. His net worth in 2022? More than $50 billion.
+In one way, while we may not create as much wealth as these stalwarts, we are better off than them. They are betting on just one business—their own. We have the luxury of owning many great businesses. What could be better than that?
+Reason 2: Empirical Evidence Shows That Owning Great Businesses Works (Oh, So Well!)
+Let’s go back to the Bessembinder study I referred to in the previous chapter.13 As a reminder, Bessembinder analyzed the price performance of 26,000 U.S.-listed stocks from 1926 to 2016. He also shares the raw data from 1926 to 2019, which is available at https://wpcarey.asu.edu/department-finance/faculty-research/do-stocks-outperform-treasury-bills.
+Let’s look at data from 1926 to 2019. Bessembinder defines “wealth creation” as returns earned above one-month U.S. treasuries. Of the 26,000 companies, about 60 percent (15,000) destroyed value. This is not surprising: Running a business is risky, and the data support this assertion.
+But I was surprised by two facts. First, the quantum of wealth creation is almost eight times the dollar value of wealth destruction, although wealth destroyers outnumber wealth creators by almost 40 percent. About 11,000 companies created a wealth of $54 trillion, and about 15,000 businesses destroyed a wealth of $7 trillion (leading to a net wealth creation of $47 trillion). When businesses do well, the sky’s the limit.
+My second revelation was that only a select few companies created most of the wealth, even among the wealth creators (table 10.3).
+Table 10.3Wealth creation is highly concentrated in a few businesses held for longer periods
+No. of companies
+Wealth, $ trillion
+% of total
+Years held (median)
+Top 10%
+2,617
+52
+110
+25
+Top 1%
+262
+35
+74
+47
+Top 30
+30
+15
+32
+59
+Thus, the top 10 percent, or about 2,600 companies, account for all (actually, 10 percent more) of the total wealth created by the 26,000 businesses. The top 1 percent contribute to three-quarters, and just thirty firms account for almost a third of total wealth created over ninety-three years.
+An even more interesting finding is shown in the last column of table 10.3. A disproportionate amount of wealth is created by businesses that have been held for longer periods. That does not mean that simply holding a business for an extended period creates value—it does not; the value will almost certainly go to zero for an average business. Table 10.3 shows that if we have a great business, on average, it is likely to generate more incredible wealth over a more extended period.
+But we have one prickly issue to deal with here: How do we know what a great business is so that we can hold it for as long as possible? (I hope you did not start reading the book from this chapter—I discussed this question in chapters 1 through 7.)
+We do not invest in mediocre or low-quality businesses at throw-away valuations because, as table 10.3 shows, it would be a waste of time. Only a handful of companies create wealth over very long periods, and, by definition, all need to be exceptional. Instead, we invest when we believe that the business is truly outstanding, and if it is, given the stark reality of table 10.3, why would we ever sell it?
+I have been wrong about assessing the quality of some of our businesses. Since we hold all our businesses forever, the continuous compounding of earnings and value of a few businesses has taken care of all my follies. You want numbers? Comin’ at you.
+Reason 3: If There Is an Unbeatable Formula, Why Not Copy It?
+When I was at McKinsey, we addressed client problems by sharing “best practices.” These could range from advice related to post-merger integration, the process of strategy formulation, and organizational design to the allocation of marketing expenses. Of course, as a consultant, I had to account for the idiosyncrasies of a particular client. Still, I discovered that discussing “how the best businesses do it” was a great way to nudge a client toward a better solution.
+Here is a puzzle for you to chew on. I assume you will agree that all fund managers want to earn decent returns while beating the market over the long run. Imagine a situation in which a multibillionaire investor shares his secret of getting rich with us every year in a detailed letter. His best practice is widely known and available to everyone, and it hasn’t changed for more than fifty years. We know his advice is invaluable because he continues to amass great wealth by following his teachings over almost six decades. We also know that doing what he does is not difficult to understand or even implement, at least for the professionals. But most choose to both laud him and ignore him.
+That investor, of course, is Warren Buffett, and his simple advice to buy exceptional businesses at a sensible price and hold them forever has made him one of the wealthiest people in the world. So then why does his advice fall on deaf ears? At first glance, this seems somewhat bizarre. Investors seem to be voluntarily giving up the chance to get rich. But if you think about it for a moment, you will realize that Buffett’s advice is hard to fathom for the same reason that Darwin’s insight was not accepted for many decades. We humans don’t understand compounding. We say we do, but we don’t.
+Buffett is the Darwin of investing—he changed the field forever and for the better. But if eminent scientists in the late nineteenth and early twentieth centuries could barely comprehend the power of cumulative growth, how can investors, who by and large are much more intellectually challenged, be expected to appreciate it? But the problem is worse than you think. Not only do investors blithely ignore Buffett, their behavior over the last fifty years indicates that they firmly believe the exact opposite! The holding period of stocks by mutual funds has fallen to less than a year from seven years in 1960.
+Let’s return to Shelby Cullom Davis. Despite being radically different from Buffett in almost every way, how did he create his wealth? Just like Buffett, Davis held on to a select few quality businesses for decades.
+Unlike Buffett, who always wanted to be an investor, Davis became an investor through a series of fortunate events. When he got married in January 1932, the Dow hit an all-time low of 41—it had fallen 89 percent from its peak in 1929. His wife, Kathryn, provided him his seed money for investing many years later; Davis was lucky that Kathryn’s father, Joseph Wasserman, had kept his money in government bonds and lost nothing in the Crash.
+After working as a reporter for CBS Radio, Davis earned his PhD along with Kathryn in political science at the University of Geneva (where Kathryn outscored him). In 1934, Davis was offered a job in Tokyo at the English-language newspaper, the Advertiser. Just as he and Kathryn were about to depart for Japan, an earthquake hit Tokyo, forcing them to cancel their trip. Also, the Advertiser offer fell through. Davis was now desperate for a job, but he could not find any employment in journalism in the sickening state of the U.S. economy. Kathryn asked her brother, Bill, to employ Davis in his investment firm.
+Davis worked as a “statistician” in Bill’s firm and traveled around the country meeting companies that looked promising for investment. But Davis and Bill did not get along, and Davis left the job to start writing full time. He published a book called America Faces the Forties, which explored the causes of the Great Depression and how the 1940s might lead to recovery. It was reasonably well received and caught the eye of Thomas E. Dewey, the governor of New York and Republican presidential hopeful (he lost to Roosevelt in 1944 and to Truman in 1948). In 1938, Dewey made Davis his speechwriter and economic adviser.
+After losing to Roosevelt in 1944, Dewey returned to his role as the governor of New York. He unknowingly put Davis on the path to fabulous riches by appointing him the deputy superintendent of the state’s insurance department. Could there be a more boring-sounding job? But Davis took it seriously. He was an outspoken advocate of insurance companies diversifying from bonds to real estate, mortgages, and stocks. Contrary to popular opinion in those days, Davis considered bonds extremely risky. Nevertheless, he was remarkably prescient. Bonds went into a thirty-five-year bear market from the mid-1940s; the government bond sold for $101 in 1946 sold for just $17 in 1981.</div>
+            <div class="text-block simplified-text">好的，这是符合您要求的译文：
+
+**如果持股不卖在全球创造了如此巨大的财富，为什么基金经理们却认为通过频繁买卖股票能让自己致富呢？我知道自己并不比世界上最富有的人更聪明或更优秀。但如果紧握优秀企业对他们来说成效卓著，我为什么不直接效仿他们呢？**
+
+这份名单上的许多企业家一生中都曾收到过诱人的收购要约。他们之所以能上榜，正是因为他们没有屈服于诱惑。他们凭直觉意识到自己拥有非凡的事业，出售将是价值的毁灭而非创造。例如，2005年，维亚康姆向马克·扎克伯格出价7500万美元收购Facebook，这能让当时21岁的扎克伯格净赚3500万美元。在维亚康姆出价后不到一年，雅虎又出价10亿美元收购该公司。扎克伯格拒绝了这两次以及许多其他收购要约。那么2022年他的净资产是多少？超过500亿美元。
+
+从某种意义上说，虽然我们可能无法创造出这些杰出人物那样多的财富，但我们却比他们更有优势。他们只押注于一家企业——他们自己的企业。而我们则幸运地能拥有多家优秀企业。还有什么比这更好的呢？
+
+**理由二：实证证据表明，持有优秀企业卓有成效（效果非凡！）**
+
+让我们回到我在前一章提到的贝塞姆宾德的研究。他分析了1926年至2016年间26,000只美国上市股票的价格表现。他还分享了1926年至2019年的原始数据。
+
+让我们看看1926年至2019年的数据。贝塞姆宾德将“财富创造”定义为超越一个月期美国国债的收益。在26,000家公司中，约60%（15,000家）毁灭了价值。这并不奇怪：经营企业是有风险的，数据支持这一论断。
+
+但我对两个事实感到惊讶。首先，财富创造的总额几乎是财富毁灭美元价值的八倍，尽管毁灭财富的公司数量比创造财富的公司多了近40%。约11,000家公司创造了54万亿美元的财富，约15,000家企业毁灭了7万亿美元的财富（净财富创造为47万亿美元）。当企业表现出色时，其潜力是无限的。
+
+我的第二个发现是，即使在创造财富的公司中，也只有少数精选公司创造了绝大部分财富（见表10.3）。
+
+因此，前10%（约2600家公司）贡献了26,000家企业所创造总财富的全部（实际上还多出10%）。前1%贡献了四分之三的财富，而仅仅30家公司就贡献了93年间总财富创造的近三分之一。
+
+表10.3最后一列显示了一个更有趣的发现：持有时间更长的企业创造了不成比例的巨额财富。这并不意味着简单地长期持有一家企业就能创造价值——并非如此；普通企业的价值几乎肯定会归零。表10.3表明，如果我们持有一家优秀的企业，平均而言，它在更长的时间内可能会产生更惊人的财富。
+
+但我们这里有一个棘手的问题：我们如何知道什么是优秀的企业，以便尽可能长久地持有它？（我希望你不是从本章才开始阅读本书的——我在第1至第7章讨论过这个问题。）
+
+我们不会以极低估值投资于平庸或低质的企业，因为正如表10.3所示，那将是浪费时间。只有极少数公司能在非常长的时期内创造财富，而且根据定义，它们都必须非常卓越。相反，我们只在确信某家企业真正杰出时才进行投资。而如果它确实如此，鉴于表10.3所揭示的严酷现实，我们有什么理由卖掉它呢？
+
+我在评估某些企业的质量上也曾犯过错。但由于我们永久持有所有投资的企业，少数企业盈利和价值的持续复利增长弥补了我所有的错误。你想要数据？这就来了。
+
+**理由三：如果存在必胜法则，为何不照搬？**
+
+我在麦肯锡工作时，我们通过分享“最佳实践”来解决客户的问题。这些实践涵盖从并购后整合、战略制定流程、组织设计到营销费用分配的建议。当然，作为顾问，我必须考虑特定客户的独特性。但我发现，讨论“最优秀的企业是如何做的”是推动客户找到更好解决方案的好方法。
+
+这里有个谜题供你思考。我猜你会同意，所有基金经理都希望在长期跑赢市场的同时获得体面的回报。想象一下，一位亿万富翁投资者每年都在详细的致股东信中与我们分享他的致富秘诀。他的最佳实践广为人知，人人都可获得，并且五十多年来从未改变。我们知道他的建议价值连城，因为在近六十年里，他遵循自己的教诲积累了巨额财富。我们也知道，他所做的事情并不难理解甚至实施，至少对专业人士而言如此。但大多数人选择既赞美他，又忽视他。
+
+这位投资者当然就是沃伦·巴菲特。他简单的建议——以合理价格买入卓越企业并永久持有——使他成为世界上最富有的人之一。那么，为什么他的建议无人倾听呢？乍一看，这似乎有些奇怪。投资者们似乎自愿放弃了致富的机会。但如果你稍加思考，就会意识到理解巴菲特的建议之所以困难，与达尔文的洞见在数十年间未被接受的原因相同。我们人类并不理解复利。我们嘴上说懂，其实并不懂。
+
+巴菲特是投资界的达尔文——他永远地改变了这个领域，使其变得更好。但如果19世纪末20世纪初的杰出科学家都几乎无法理解累积增长的力量，我们又怎能指望整体上智力挑战更大的投资者去理解它呢？但问题比你想的更糟。投资者们不仅轻率地忽视了巴菲特，他们过去五十年的行为表明他们坚信完全相反的做法！共同基金的股票持有期已从1960年的七年降至不到一年。
+
+让我们回到谢尔比·库洛姆·戴维斯。尽管在几乎各个方面都与巴菲特截然不同，他是如何创造财富的？和巴菲特一样，戴维斯将少数几家优质企业持有了数十年。
+
+与一直想成为投资者的巴菲特不同，戴维斯是通过一系列幸运事件成为投资者的。1932年1月他结婚时，道指创下41点的历史新低——比1929年的峰值下跌了89%。多年后，他的妻子凯瑟琳为他提供了投资种子资金；戴维斯很幸运，凯瑟琳的父亲约瑟夫·瓦瑟曼将钱投在政府债券上，在股市崩盘中毫发无损。
+
+在为哥伦比亚广播公司电台担任记者后，戴维斯和凯瑟琳在日内瓦大学获得了政治学博士学位（凯瑟琳的分数超过了他）。1934年，戴维斯收到东京英文报纸《广告人报》的工作邀请。就在他和凯瑟琳即将启程前往日本时，东京发生地震，迫使他们取消了行程。同时，《广告人报》的工作也泡汤了。戴维斯当时急需工作，但在美国经济萎靡不振的情况下，他找不到任何新闻工作。凯瑟琳请求她的哥哥比尔在其投资公司雇佣戴维斯。
+
+戴维斯在比尔的公司担任“统计员”，走遍全国拜访有投资潜力的公司。但戴维斯和比尔相处不睦，戴维斯离职开始全职写作。他出版了一本名为《美国面对四十年代》的书，探讨了大萧条的成因以及四十年代可能如何走向复苏。该书反响不错，并引起了纽约州州长、共和党总统候选人托马斯·E·杜威的注意（他在1944年输给了罗斯福，1948年输给了杜鲁门）。1938年，杜威任命戴维斯为他的演讲撰稿人和经济顾问。
+
+1944年输给罗斯福后，杜威回到纽约州州长职位。他任命戴维斯为州保险厅副厅长，无意中将戴维斯引向了惊人的财富之路。还有比这听起来更无聊的工作吗？但戴维斯认真对待了这份工作。他直言不讳地倡导保险公司将投资从债券分散到房地产、抵押贷款和股票。与当时普遍的看法相反，戴维斯认为债券风险极高。然而，他极具先见之明。债券从1940年代中期开始进入了长达三十五年的熊市；1946年价值101美元的政府债券，到1981年仅值17美元。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">Investors ignored insurance companies, usually quoted in the minor league of stock exchanges. Insurers were required to file their latest financials with the state agency, and Davis pored over these reports, becoming an expert at understanding their inner workings. He discovered that a typical insurer was selling for less than its “true” book value—just the bonds and mortgages in an insurer’s portfolio could be worth far more than its market value. He realized that insurance customers paid money up front and that insurers could deploy this “float” to buy bonds and mortgages. If customer claims weren’t excessive, this hidden float could slowly and silently balloon over time. A patient investor could wait for this hidden asset to compound until the market, too, recognized it.
+Davis left his job in 1947, borrowed $50,000 from Kathryn, and started investing in well-run and dividend-paying insurance companies selling for less than their book value. He also borrowed on the margin to fund some of his purchases. In a speech to the New York Insurance Brokers Association in 1952, Davis outlined his three criteria for selecting the stock of an insurer: (1) The insurer had to be profitable, (2) its assets (bonds, mortgages, stocks) needed to be of the highest quality, and (3) its market price had to be lower than its private market value. Davis was a value investor in high-quality insurers. And he held on to them.
+In 1992, two years before his death, his top twelve holdings were worth $261 million—about half his total portfolio. Except for Fannie Mae, all were insurance companies. And he had bought each decades ago. His best investment, worth $72 million, was AIG, and his third-best, worth $27 million, was Berkshire Hathaway. Once he bought a great business, he never sold it.
+Why should we reinvent the wheel when we have spectacular successes like Buffett and Davis to emulate? As I will discuss, Davis’s success shows that we don’t even have to be that good to succeed. Just patient. And so we are.
+Reason 4: How Else Do I Pay for My Mistakes?
+Shelby Davis bought about a hundred insurers that made up three-quarters of his portfolio, and about 1,500 companies globally made up the rest. Most of these investments turned out to be duds! His other big mistake was to buy junk bonds worth about $23 million—almost all turned out to be actual junk.
+Davis made all his wealth by investing in a few high-quality insurers and then refusing to sell them. As a result, his hundreds of mistakes became irrelevant in the context of the exceptional long-term compounding of his winners. In his book The Davis Dynasty, John Rothchild states this eloquently: “In the final analysis, Davis’s mistakes hindered his prosperity the way a gnat flusters a buffalo. Nevertheless, his portfolio proved once again that, over a lifetime of investing, a handful of high achievers’ ideas could support a multitude of ne’er-do-wells.”
+I have made many mistakes, and I know I will continue to do so. This is not humility but a cold hard fact. Waiting for a few great businesses to compound has paid for these mistakes. Let me share the actual numbers with you.
+Our first fund invested about INR 18 billion (about $400 million using the exchange rate prevalent at the time) in seventeen businesses from June 2007 to June 2011. In June 2022, given that enough time had passed, we could reliably assess the share price performance of individual companies in this fund. We had only one capital loss in the portfolio, so that was a failure. Let me arbitrarily label any business (or rather, the market value of the business) earning an annualized rupee return of less than 10 percent a “failure” as well. Six of the seventeen businesses had earned an annualized rupee return of less than 10 percent by June 2022. Thus, we had seven failures (one loss and six with an annualized return of less than 10 percent) out of seventeen businesses, or a “failure” rate of 40 percent.
+But the overall performance of this fund has been better than my wildest dreams. So how did we get here given the underperformance of seven of our businesses? Because we did not sell our winners.
+Let me call these seven “failed” businesses the “Sorry Seven.” We invested INR 7.8 billion in the Sorry Seven. Let’s see what happens when we hold a good business for a long time. Take Supreme, India’s leading plastic products company. We invested in Supreme in 2010, and by June 2022, we had owned it for almost twelve years. We invested INR 1 billion in Supreme, which was worth INR 13.9 billion in June 2022. The gain of INR 12.9 billion in Supreme is 1.7 times the total amount invested in the Sorry Seven (12.9 ÷ 7.8 = 1.7).
+But it’s much better than that. By June 2022, six investments had individually paid for the total amount invested in the Sorry Seven. Table 10.4 lists what I call the “Superb Six.”
+Table 10.4Long-term winners pay for the losers many times over (as of June 30, 2022 [in INR])
+Company
+No. of years held
+Multiple
+Gain ÷ total investment in the Sorry Seven
+Berger
+13.3
+32.2×
+3.3
+Mindtree
+9.6
+8.2×
+1.7
+Page
+13.7
+82.2×
+5.2
+Ratnamani
+11.7
+16.2×
+1.0
+Supreme
+11.6
+13.6×
+1.7
+WNS
+13
+10.6×
+3.2
+It’s almost ridiculous, isn’t it? Simply owning Page for fourteen years compensated for seven unsuccessful investments more than five times over. If the upside of holding companies for long periods is so significant, why don’t investors do it? One critical reason is an underappreciation of compounding, which makes fund managers value IRR more than the multiple, instead of the other way around.
+In finance jargon, IRR is the internal rate of return, or the annualized rate of return. If a stock doubles in four years, its IRR is 19 percent, and if it doubles in three, its IRR is 26 percent. For the same multiple, the shorter the period, the higher the IRR. Ignoring the beauty of compounding, investors like to boast about the IRR of their investment while undervaluing the benefits of the multiple.
+If we had been fans of IRR, we would have sold each of the Superb Six listed in table 10.4 a long time ago. The colossal downside of doing this is evident from the example of Page. In December 2012, after four years of our owning Page, it had delivered 65 percent IRR (!). For most investors, a holding period of four years seems long enough. It would not have been very intelligent to think that we could earn 65 percent IRR incrementally over the next five to ten years. If we were IRR fans, we would have exited Page in December 2012, crowed about the astronomical return delivered over four years, and described the return in bold in our marketing materials (actually, we don’t have any marketing materials, but that is beside the point).
+The multiple on Page in December 2012 was 7.8× (compared to 82.2× in June 2022), so the gain on investment was “only” INR 3.4 billion. Remember that the cost of investment in the Sorry Seven of INR 7.8 billion does not change, regardless of the holding period of Page. Thus, if we had sold Page in December 2012, we would have recouped only 44 percent (3.4 ÷ 7.8 = 44 percent) of our investment in the Sorry Seven. The remaining 56 percent burden would have had to be carried by the remaining businesses. However, since we have continued to hold Page, our gain has climbed to INR 40.8 billion, and the Sorry Seven have been paid for 5.2 times over by the gain of this single holding (40.8 ÷ 7.8 = 5.2).
+Remember the example of the rare mutant with color vision (just eight in one thousand) with only a 1 percent selective advantage that overwhelmed the population in three thousand generations? Only a handful of compounders in a portfolio, growing a little more than the rest, achieve the same result given enough time.
+We invest only in what we think are phenomenal businesses. But I also know that some may not perform and will need to be paid for. Hence, for investors like us, even thinking of selling our winners is worse than wrong. It’s foolish.
+Reason 5: The Only Way to Benefit from Compounding Is to Stay Invested
+If we are aggressive buyers during adverse stock price movements, logic dictates that we should be aggressive sellers when stock prices rise suddenly. But, thankfully, some of the essential things in life—believing our children are unique, falling in love, being a dedicated doctor or nurse during the COVID-19 pandemic, volunteering to be a soldier—are not driven by logic.
+We don’t sell when stock prices rise suddenly. These nonactions during market euphoria have been as important as—actually, more important than—our acts of buying during market panics. As I wrote earlier, as of June 2022, out of our portfolio of twenty-four businesses (excluding the ones bought during the previous two years), we had multiplied our money by more than ten times in INR in nine (of these, the largest multiple, 82×, was for Page, and the smallest, 13×, was for Info Edge). In five of these nine, our holding period had been more than eleven years, and we had held the remaining ten-baggers for more than eight years.
+Why do we not sell when stock prices rise dramatically?
+The answer is shown in table 10.5. Here, I have selected two of the nine businesses whose values have multiplied by more than ten times in INR.
+Table 10.5The prodigious power of positive punctuations (June 2007 to June 2022)
+Measure
+Havells
+Page
+Holding period
+Years
+8.5
+13.7
+Trading days
+2,724
+3,586
+Total gain
++1,270%
++8,890%
+90% gain in
+No. of days
+35
+58
+% of trading days
+1.3
+1.6
++5% gain or more
+No. of days
+44
+83
+% of trading days
+1.6
+2.3
+% of total gain
+142
+330
+Days of price decline
+No. of days
+1,293
+1,685
+% of trading days
+47
+47</div>
+            <div class="text-block simplified-text">以下是严格遵循要求的译文：
+
+投资者通常忽视保险公司这类在交易所边缘板块交易的股票。法律要求保险公司向州政府提交最新财报，戴维斯深入研究这些报告，逐渐精通其运作机制。他发现保险公司普遍以低于"真实"账面价值的价格交易——仅投资组合中的债券和抵押贷款价值就远超其市值。他意识到客户预先支付保费，保险公司可利用这笔"浮存金"购买债券和抵押贷款。只要理赔支出可控，这笔隐性资金便会随时间悄然膨胀。耐心的投资者可等待这笔隐形资产持续增值，直至市场最终发现其价值。
+
+1947年戴维斯辞职后，向妻子凯瑟琳借款五万美元，开始投资于管理优良、支付股息且股价低于账面价值的保险公司，并运用杠杆融资进行部分收购。1952年他在纽约保险经纪人协会演讲时，阐述了选择保险股的三大准则：(1)公司必须盈利；(2)资产质量须属顶尖；(3)市价须低于私有市场价值。戴维斯始终坚持投资优质保险公司的价值理念。
+
+1992年（逝世前两年），其前十二大持仓价值2.61亿美元（约占组合半数）。除房利美外均为保险公司，且均系数十年前买入。最成功的美国国际集团（AIG）价值7200万美元，第三大持仓伯克希尔·哈撒韦价值2700万美元。他买入优质企业后便永不抛售。
+
+已有巴菲特与戴维斯的成功典范，何必另辟蹊径？戴维斯的经历证明成功无需天赋异禀，只需保持耐心。这正是我们的信条。
+
+**理由四：如何弥补投资失误？**
+戴维斯组合中四分之三为约百家保险公司，其余为全球约1500家企业。多数投资沦为败笔！另一重大失误是购入2300万美元垃圾债券——几乎尽数成为真正废纸。
+
+戴维斯的全部财富源于长期持有少数优质保险股。在其赢家资产的复利奇迹面前，数百次失误变得微不足道。约翰·罗斯柴尔德在《戴维斯王朝》中精辟指出："这些错误对其财富的影响，犹如蚊虫撼动野牛。其投资组合再度印证：人生投资长河中，少数卓越标的足以抵消众多失败投资。"
+
+我犯过许多错误且必将重蹈覆辙，这非谦辞而是冰冷现实。等待优质企业复利增长终将弥补这些失误。以下实证数据可资佐证：
+
+2007至2011年间，我们首支基金向17家企业投入180亿卢比（按当时汇率约合4亿美元）。截至2022年6月，经充分时间沉淀后评估个股表现：仅1家出现本金亏损，另有6家年化卢比回报率不足10%（姑且统称"失败"）。合计7家失败案例（1家亏损+6家低回报），失败率达40%。
+
+但基金整体表现远超预期。如何在七家企业失利情况下实现佳绩？答案在于坚守赢家。
+
+将这七家"失败企业"称为"悲情七杰"，总投资额78亿卢比。现以印度塑料龙头Supreme为例：2010年投资10亿卢比，持有十二年后价值139亿卢比。单此标的129亿卢比收益，已是"悲情七杰"总投入的1.7倍（129÷78=1.7）。
+
+实际成效更为惊人：截至2022年6月，六项投资各自收益均能覆盖"悲情七杰"总投资。表10.4所列"卓越六雄"即为例证。
+
+这近乎荒谬，不是吗？仅持有Page公司十四年，其收益便足以抵偿七项失败投资逾五倍有余。既然长期持股收益如此显著，为何投资者鲜少为之？关键原因在于低估复利魔力，导致基金经理重年化回报率（IRR）而轻绝对收益倍数。
+
+金融术语中，IRR指内部收益率（即年化回报率）。股票四年翻倍则IRR为19%，三年翻倍则IRR为26%。相同收益倍数下，持有期越短IRR越高。忽视复利魅力的投资者往往夸耀IRR，却轻视绝对收益倍数的价值。
+
+若我们追捧IRR，早在多年前就会抛售表10.4所列的"卓越六雄"。以Page公司为例：持有四年后（2012年12月）IRR已达65%！对多数投资者而言四年持有期已属漫长，若预期未来五到十年仍能保持65%增速显然不智。倘若追逐IRR，我们必在2012年抛售Page，在宣传材料中大书特书四年惊人回报（尽管我们并无宣传材料）。
+
+2012年Page收益倍数仅7.8倍（2022年6月达82.2倍），投资收益"仅"34亿卢比。需知"悲情七杰"78亿卢比成本恒定不变。若当时抛售Page，仅能覆盖"悲情七杰"成本的44%（34÷78=44%），剩余56%亏损需由其他投资承担。而持续持有至今，Page收益已达408亿卢比，仅此单项收益便覆盖"悲情七杰"总成本5.2倍（408÷78=5.2）。
+
+还记得那个群体遗传案例吗？千分之八的色觉变异个体仅凭1%的选择优势，历经三千代便主宰种群。投资组合同理：只要少数标的以略高增速持续复利，经时间发酵终将缔造奇迹。
+
+我们只投资非凡企业，但深知部分企业可能表现不佳需要补偿。因此对我们这类投资者而言，考虑抛售赢家不仅错误，更是愚蠢。
+
+**理由五：唯有坚守方能获取复利**
+若股价低迷时我们积极买入，按逻辑股价飙升便应大举抛售。但所幸生命中最珍贵之事——坚信子女独一无二、陷入热恋、疫情期间医护坚守、志愿从军——皆非逻辑驱动。
+
+我们不在股价骤涨时抛售。市场狂热期的按兵不动，实则比恐慌期的买入更为重要。如前所述，截至2022年6月，在我们持有的24家企业中（近两年新购企业除外），9家实现逾十倍卢比收益（最高Page公司82倍，最低Info Edge公司13倍）。其中5家持有超十一年，其余4家十倍股持有超八年。
+
+为何不在股价飙涨时抛售？
+
+表10.5以九家企业中的两家为例揭示答案：
+（表格内容说明：Havells公司持有8.5年/2724个交易日，总收益1270%，其中90%涨幅集中于35个交易日（占比1.3%）；Page公司持有13.7年/3586个交易日，总收益8890%，其中90%涨幅集中于58个交易日（占比1.6%））
+
+（表格结束）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">The multiples for Page given in table 10.4 are slightly lower than those shown in table 10.5. The latter tracks the increase in stock price, whereas the former shows the appreciation of the values of our holdings. The values are marginally different because table 10.4 accounts for redemptions in the fund (which force us to sell all stocks in proportion to their value). The difference, as you can see, is very small.
+Let me explain what you see in Havells. As of June 2022, we had held Havells for 8.5 years, or 2,724 days of trading (not counting holidays). Our gain during this period was 1,270 percent. From table 10.5, the following facts stand out:
+• 90 percent of the gain of 1,270 percent came in just thirty-five days. Those thirty-five days account for only 1.3 percent of the total number of trading days during which we held Havells. What if we had sold Havells during one (or more) of those very few days? Those thirty-five days are distributed across all years. For example, the top three gains for the stock came on September 20, 2019; January 21, 2021; and June 5, 2014. If, excited by the sudden price rise, we had sold our shares on June 5, 2014, we would have missed the significant jumps on September 20, 2019, and January 21, 2021. As you can see, the numbers for Page are similar: 90 percent of the total gains came in just 2 percent of trading days.
+• Havells stock gained 5 percent or more on just forty-four days, or 1.6 percent of the total number of trading days during our holding period. If we add up the gains from those days, they sum to 1,800 percent, or 142 percent of the total gains over 8.5 years. Thus, the forty-four days of stock price gains of 5 percent or more accounted for more than the total gain during our entire holding period of almost nine years! The opportunity cost of not holding on to Havells shares during those significant days would have been egregiously high. Check out the astronomical impact of 5-percent-plus days in Page—they accounted for more than 300 percent of total gains! It would have been impossible for us to compound our capital if we had not remained invested in Page.
+• Last, please look at the data from the gloomy days (i.e., days when the stock price declined). I was pretty surprised to see that the negative days account for almost half the total number of trading days across all three businesses. But, as you can see, the negative days didn’t matter because we held on to the companies throughout this period.
+Do you see where I am going with this analysis? If we had sold Havells or our other compounders on any day when their stock prices rose significantly, we would have been celebrated for raking in cash. Still, we would have repented at leisure as the stock prices continued to rise over the long run.
+But how did I know that the Havells stock price would continue to rise? I didn’t because I cannot predict stock prices. I can make two predictions, though. First, if we own a high-quality business, the share price will most probably (but not assuredly) react positively over the long run. Second, the share price will rarely make big moves, and if I am not invested in the stock on those particular days, I can bid farewell to substantial potential gains.
+If we have done anything right, we have not done anything on days when selling seems to be the most logical thing to do.
+Reason 6: I Love Our Entrepreneurs
+I love our entrepreneurs. Behavioral economists have a quaint name for this disease: the endowment effect. It is the irrational mindset that assigns a disproportionately high value to what one owns.
+Investing is supposed to be a cut-and-dried profession where, à la Mr. Spock, fund managers dispassionately enter and exit businesses based on intellect, instinct, or insight. Unfortunately, we fulfill this requirement only for entry and some exits.
+Before investing, we base our decision entirely on empirical evidence, as I have shown in chapters 1 through 7. But after we have invested, and if a business continues to do well, I become emotionally attached to it. India is a tough place to do business (I am sure all countries are, but India is the only market I know), and almost every industry is fiercely competitive. In this cutthroat marketplace, any entrepreneur who stays ahead of the competition by taking calculated risks while maintaining high profitability and a clean balance sheet is genuinely admirable.
+I know that new-age technology companies are in vogue, and everyone in the world seems to laud them while they blow other people’s money by the millions or billions. (Where’s the glory in selling a dollar for eighty cents? Maybe I am getting too old.) In sharp contrast to these cash-guzzling sinkholes, take the cases of Ahluwalia, DB Corp, Triveni Turbine, and Voltamp, four companies in our portfolio that are leaders in their field. Like clockwork, they throw up significantly more cash than they consume every year. However, our investment in them has yielded subpar returns for a decade or more. My fault, not theirs. Part of the reason for continuing to own them is that we hope the tide will turn over time (as it has for many of our other businesses). Still, an important motivation is also that I love the leaders of these businesses. They are genuinely outstanding, as shown by their operating and financial track records over many decades.
+One of the great pleasures of our profession is that we get to know and build relationships with the likes of Shobhit Uppal, Sudhir Agarwal, Dhruv Sawhney, and K. S. Patel. I am in awe of them. So why should I give up this gratification for a few dollars?
+Reason 7: Not Selling Makes Us Better Buyers
+That seems like a weird assertion. How can not selling cause better buying? Here is how.
+How much time do you think fund managers devote to thinking about the “right” sale price for their businesses? If you manage money, you already know the answer, but if you aren’t a fund manager, please ask someone who is. The answer will probably range from 30 to 70 percent. Some fund managers argue, “If we are not a buyer, we are a seller.” These people are probably contemplating a sale all the time.
+Let’s say we want to figure out whether we should exit Ratnamani, one of our portfolio companies and India’s most significant specialty steel business. Ratnamani’s clients are primarily refineries and petrochemical plants, both of which are cyclical industries. Hence, Ratnamani’s revenues and profits, too, are cyclical.
+We first need to decide upon a time frame over which we will calculate the incremental return. It could be one year, three years, or five years, or some other period. At the end of that time frame, we will need to forecast Ratnamani’s profits and valuation multiple (PE, EV/EBITDA, or some other metric).
+If we want to calculate a three-year incremental return, we will need to forecast Ratnamani’s revenues, expenses, and tax rates for the next three years. This is a nontrivial exercise for a cyclical business. First, a hapless analyst in the organization will need to trash their weekends to collate the capital expenditure announcements of all the refineries and petrochemical plants that could be Ratnamani’s clients. Next, they will need to assume a particular market share for Ratnamani to forecast the company revenue. (“How?” you ask? I have no idea—ask the analyst.) Finally, they will conduct a similarly detailed exercise for the significant expense lines: depreciation, raw material, employees, sales and general administration, and taxes, to name just a few. And let’s not even discuss the myriad ways of projecting a valuation multiple three years from now.
+Some asset managers may not resort to such a detailed exercise; they may choose to sell if the multiple or the stock price reaches a certain level. But even these professionals will need to keep track of the businesses that approach the sale price and debate whether their initial assumptions are still valid (e.g., what if the company’s main competitor is in trouble?).
+All this takes time, energy, and, most importantly, mind space. We do no such analyses. We buy never to sell. None of our professionals spends even a minute thinking about selling unless the business makes an egregiously wrong capital allocation or if the company (according to us) is irreparably damaged.
+In the last chapter, in table 9.2, I showed you the three occasions—the 2008 financial crisis, the 2011 Euro crisis (the sovereign debt crisis in Europe that began in 2009 led to the change or collapse of the majority of euro zone governments from March 2011 to May 2012),15 and the COVID-19 pandemic—when we were highly aggressive buyers. Given that we were inactive for many years, what allowed us to buy stocks worth $288 million (16 percent of the total amount invested since our inception in 2007) in just seventeen days in March 2020? We acted decisively and disruptively because we were well prepared. We are always well prepared to buy because we have been freed of the concerns of selling.
+Just because I have time to think does not mean I will think correctly; I have made buying mistakes and will continue to do so. But freed from the worries of selling, our buying process is highly focused and disciplined. What more can I ask?
+“It Does Not Make Any Sense”
+It seems too easy, isn’t it? Buy a great business. Sit tight. Watch the moolah roll in.
+It is, and it is not. Over my decades of investing, I have heard many objections from my fund manager friends and investors who have refused to give us money because they were uncomfortable with our permanent owner approach. “It does not make sense” is a common refrain after I reveal that we plan to be permanent owners.
+Let me share with you some of these objections and my responses to them.
+Objection 1: Why Should I Hold On to 60 PE?
+We are price sensitive; we do not invest if the valuation is high. A logical question, then, is, Why aren’t we sellers when the valuation is high?</div>
+            <div class="text-block simplified-text">以下是符合要求的书籍段落翻译：
+
+表10.4所列的Page估值倍数略低于表10.5。后者追踪股价涨幅，前者则反映我们持股的价值增长。两者差异源于表10.4计算了基金赎回影响（迫使我们按比例出售所有股票）。如您所见，差异其实微乎其微。
+
+以哈维尔斯（Havells）为例说明：截至2022年6月，我们持有该股8.5年，涵盖2,724个交易日（不含假期）。期间收益率达1,270%。表10.5揭示三个关键现象：
+• 90%的收益仅来自35个交易日，占持股总交易日的1.3%。若在这些关键日抛售会如何？这些交易日分散在各年份：2019年9月20日、2021年1月21日及2014年6月5日涨幅最大。若因2014年6月5日的暴涨而抛售，将错失后续重大涨幅。Page数据同样显示：90%收益来自2%的交易日。
+• 哈维尔斯股价单日涨幅≥5%的天数仅44天（占持股期1.6%）。这些日涨幅总和达1,800%，相当于8.5年总收益的142%。换言之，44个暴涨日的收益贡献超过近九年总收益！错过这些关键日的代价极其高昂。Page的≥5%涨幅日贡献率更超300%——若非长期持有，我们绝无可能实现资本复利。
+• 最后观察股价下跌的阴雨天。令人惊讶的是，三家企业的下跌日占比均近总交易日的50%。但持续持有使这些负面日影响归零。
+
+现在您理解分析要旨了吗？若在股价大涨日抛售哈维尔斯或其他复利股，短期套现虽受追捧，长期却将因股价持续攀升而追悔。
+
+但我如何预知哈维尔斯股价会涨？我无法预测股价，但可确信两点：第一，持有优质企业长期大概率（非绝对）获正向回报；第二，重大涨幅往往集中于极少数交易日，错过这些日即错失核心收益。
+
+若说我们做对了什么，那就是在"看似最该抛售的时刻"选择了按兵不动。
+
+**理由六：珍视企业家精神**
+我热爱我们的创业者。行为经济学家称此为"禀赋效应"——对持有物过度高估的非理性心态。
+
+投资本应是如史波克先生般冷静的职业，基金经理当基于理性买卖企业。遗憾的是，我们仅对买入和部分卖出保持客观。
+
+如第1至7章所述，投资决策完全依据实证。但持股后若企业持续卓越，情感纽带便自然产生。印度商业环境严苛（各行业竞争白热化），能通过精准决策保持盈利与财务健康的企业家值得敬佩。
+
+当烧钱的新科技企业受追捧时（恕我难解"八折抛售"的荣光），我们持有的Ahluwalia、DB Corp、Triveni Turbine、Voltamp四家企业却如精密仪器般连年创造充沛现金流。尽管持股收益十年未达预期（此为我之过），坚守既因期待转机，更因敬重这些数十年用经营实绩证明卓越的领导者。
+
+结识肖布希特·乌帕尔、苏迪尔·阿加瓦尔等杰出企业家是本行业的至高享受。我既心怀敬仰，岂会为蝇头小利放弃这份珍视？
+
+**理由七：不卖出促进更优买入**
+此论断看似矛盾，实则不然。
+
+您认为基金经理耗费多少精力测算"合理抛售价"？业内人士答案约在30%-70%之间。部分人奉行"不买即卖"，时刻酝酿抛售。
+
+假设评估投资组合企业Ratnamani（印度顶级特种钢企）。其客户集中于周期性炼油与石化产业，故业绩亦呈周期性。
+
+首先需设定评估周期（1/3/5年），再预测该周期末利润与估值倍数（PE/EV/EBITDA等）。对周期性企业而言，三年期预测需分析师牺牲周末整理潜在客户的资本支出计划，估算市场份额预测收入（方法？请问分析师），最后逐项推演折旧/原材料/人工/税费等成本线——更不必提三年后估值倍数的海量推演模型。
+
+部分机构或简化流程，在股价/倍数达标时即抛售。即便如此，仍需持续追踪标的企业并验证初始假设（如竞争对手危机等）。
+
+这一切耗费时间、精力与认知资源。而我们截然不同：买入即永不卖出。除非企业犯下重大资本配置错误或遭遇不可逆损害，团队从不考量抛售。
+
+第九章表9.2显示，我们在2008金融危机/2011欧债危机/新冠疫情期间三次激进买入。多年蛰伏后，何以能在2020年3月的十七天内斥资2.88亿美元（占基金成立总投资额16%）？正因摆脱了抛售焦虑，我们方能果断出击。
+
+空余时间未必催生正确决策（我仍会犯买入错误），但无抛售压力的买入流程让我们保持高度专注与纪律。夫复何求？
+
+**"这不合常理"**
+看似简单：买入伟大企业，长期持有，坐享财富增长。
+
+实则不然。数十载投资生涯中，我屡遭质疑。许多基金经理因不认同"永久股东"理念拒绝投资，听闻此策略后总惊呼"不合常理"。且看典型质疑与我的回应：
+
+**质疑一：为何坚守60倍市盈率？**
+我们注重估值，不在高位买入。逻辑上自然引申：为何不在高估值时抛售？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">Take a concrete example of a business that went from a PE multiple of 15× to a PE multiple of 60× over five years of our holding period. Let’s say that earnings doubled during those five years. We would be sitting on a multiple of eight times our initial investment: four times from multiple expansion and two times from earnings growth.
+Many investors would justify selling at this point with the following calculation. Let’s say the business doubles its earnings over the next five years (the same as over the last five years). If the PE multiple stays the same, we will only double our money, and if it halves to 30 PE (which is possible because the long-term market PE is 19 to 20), we will not make any return for the next five years. So shouldn’t we be sellers?
+It’s a logical and fair question. It is so logical and fair that most fund managers will sell and exit at this point. We won’t. The reasons are three-fold.
+First, I have found that great businesses usually surprise on the upside. What if the earnings triple or quadruple in the next five years? Remember that we buy only phenomenal companies. They stand out because they are much better than the competition and usually keep gaining market share and, more importantly, market power. We saw evidence of the increasing concentration of leading businesses across most industries in the previous chapter.
+Second, valuation multiples generally don’t stay benign for great businesses. As I write this, Walmart, with a market value of $400 billion, has a PE of 33; L’Oréal, with a market value of $260 billion, has a PE of 61! We are interested only in stellar businesses. Their valuation multiples likely stay elevated over very long periods.
+Third, why should I limit my calculation to only the next five years? Let’s say I am wrong on earnings growth and PE multiple over the next five years. Assume that the earnings stay flat and the valuation multiple halves. I will be sitting with a loss of 50 percent over five years. So what? What if the business continues to perform for a decade after five years? After five years, I will fail to capture the value from years five to fifteen by selling at a high multiple. Let me share a theoretical case and a real case to make my point.
+Let’s go back to the example from the beginning of this section. I buy shares of Company A for $1 in the year 2000 for a PE multiple of 15. In 2005, the earnings have doubled, and the PE multiple has expanded to 60. The share price is now $8. If I sell, I will make eight times my money at an annualized return of 52 percent. Very nice, right? But I choose to hold.
+In the next five years, the earnings stay flat, and the valuation halves to 30 PE. The stock price is $4 in 2010. So I have lost half the capital relative to 2005. I look like a fool. But wait.
+If the business does well, and if the earnings quadruple over the next ten years, from 2010 to 2020 (this is an annualized growth of 15 percent, not an aggressive assumption for a great business), and if the multiple increases by 50 percent to 45 PE, the stock price would be $24 in 2020. It thus has an annualized return of 17 percent over twenty years. I have made twenty-four times my money in twenty years, which, for me, is a much better outcome than eight times my money in five years. Why? Because I would have made mistakes in between, and as I discussed earlier in this chapter, someone needs to compensate for it. As Shelby Davis has shown us, not all the businesses in our portfolio need to work from year five to year fifteen; a handful will be more than sufficient.
+Now let me share an actual example from our portfolio. We bought Ratnamani for INR 128 per share from late 2010 to early 2011. The price did not move for the next three years, and in January 2014, the stock price was INR 135. We stayed calm and continued to hold our shares because the company was doing fine. However, in January 2015, the share price jumped to INR 700, a five-fold increase in just one year. The earnings had expanded suddenly, and so had the valuation multiple.
+Should we have sold? We didn’t. Why? Because the business continued to be stellar. The price stayed around the same level of about INR 700 for the next two years until January 2017 before slowly moving upward. In January 2021, the price was INR 1,600. If we had sold our shares for INR 700 per share in 2015, we would have missed the run-up to INR 1,600 over the next six years. More importantly, what matters to us is our buy price of INR 128, and, relative to this price, INR 1,600 for a ten-year hold does not seem bad at all (an annualized return of 29 percent). Some may argue that we should have sold in January 2015 to make more than a 50 percent annualized return. That makes sense, but I prefer a 29 percent return over ten years (a 12.5× multiple) compared to a 53 percent return over four years (a 5.5× multiple). We continue to own Ratnamani.
+The answer to the objection “Why should I hold on to 60 PE?” is straightforward. Because, on average, over the long run, great businesses have a way of making us more prosperous than we ever thought possible.
+Objection 2: My “Incremental” Return Will Be Low from Now On
+I have gotten over my buying mistakes but will never forgive myself for my only selling blunder. I made it because I feared that our “incremental” return would dissipate.
+We invested in a company called Shree Cement in late 2011 for INR 1,700 per share. Shree is the best cement business in India and is probably one of the best in the world. Cement is a highly cyclical business, and we bought Shree when the sentiment in the cement industry seemed to have reached its nadir. Within a few months of our investing, to our great surprise, the cement cycle turned, and the stock price more than doubled.
+While I did believe that we should own businesses forever, I mistakenly thought we should make an exception for highly cyclical businesses. I assumed that we would “play” the commodity cycle by buying when the sentiment was weak and selling when the mood turned positive. I knew we could not time the cycle perfectly, but I thought we could do reasonably well. I sold Shree for about INR 3,800 per share in October 2012 because I thought our “incremental” return over the long run would be underwhelming. Instead, we made about 2.2 times our money in less than a year. We returned the proceeds of $80 million to our investors and felt proud to have trounced the market.
+It was the stupidest decision I have ever made. The cost to the fund? Four hundred million dollars and counting. The stock price of Shree Cement in June 2022 was about INR 19,009, or more than five times the selling price ten years ago. It hurts. Badly.
+Having learned the expensive Shree lesson, my response to this objection is, Incremental over what period? One day, one month, one year, three years, twenty years? And why bother if it’s a stellar business?
+The rule for selling a great business is simple: Don’t. You. Dare.
+Objection 3: There Is a Better Opportunity to Deploy Capital
+The holding period of stocks has kept falling over the past few decades. Investors aren’t trading for the sake of trading (I hope). They sell X to buy Y because they assume Y is a better prospect than X. Shortly after that, they get rid of Y to buy Z for the same reason. There always seems to be something better out there. One justification for this hamster-on-a-wheel behavior is that it is prudent to sell a business with 50 PE to buy a business with 15 PE. Not for us.
+We never indulge in “sell-high-to-buy-low” activity. We only sell if we have lost confidence in a business, and when we do, we return the money to our investors. The opportunity to own an outstanding business comes along very rarely, and if we have won this lottery, why should we kill the goose laying golden eggs? (Yes, yes, I know. I sold Shree Cement. Do I have to be reminded?)
+Look at it differently. I assume many of you own a home or know someone who does. Do you know of any homeowner who trades in and out of their home at frequent intervals? Does a homeowner check the price of their house every day, every month, or even every year to sell it at a high price and buy another one at a lower price? If not, I see no reason to treat holding shares in a business differently.
+And empirical evidence shows that this strategy does not work.16 As discussed earlier, there is a strong correlation between a fund’s underperformance and its portfolio turnover. I don’t know what causes what, and frankly, I don’t want to know.
+We are happy owning a great business and treating it as our home.
+Objection 4: What Should I Do the Whole Day?
+Believe it or not, a friend who used to work at a hedge fund told me many years ago, “But that is a lazy way to make money!” He is a rational fellow and did not disagree that money could be made by allowing a few quality businesses to compound. But he considered it almost immoral to make money with no hyperactivity involved. It takes all kinds. He has since left the hedge fund business because he got burnt out staring at his Bloomberg screen twelve to fourteen hours a day while worrying about his daily P&L.
+Another fund manager asked, “If I don’t trade, what should I do the whole day?” This person claims to have made all his money by owning a few high-quality businesses but wants to stay busy during the day! I wanted to say, “Take a vacation.” But I didn’t—different strokes.
+Investing is a unique profession in which inactivity can be hugely rewarding. It has been so for us. We will continue to be lazy. Very lazy.
+✳✳✳</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+---
+
+**具体示例：** 以我们持有期内一家企业为例，其市盈率（PE）在五年间从15倍升至60倍。假设此间公司盈利翻倍。我们初始投资的回报将达八倍：其中四倍源于估值倍数扩张，两倍源于盈利增长。
+
+此时，许多投资者会基于以下计算选择卖出：假设未来五年公司盈利再次翻倍（与过去五年相同）。若市盈率维持不变，我们仅能实现资金翻倍；若市盈率减半至30倍（这是可能的，因长期市场市盈率在19至20倍），未来五年我们将毫无收益。那么，我们是否该卖出？
+
+这是个合乎逻辑且公允的问题。正因其如此合理公允，多数基金经理会选择此时卖出离场。但我们不会。原因有三：
+
+首先，我发现卓越企业常带来超预期的惊喜。若未来五年盈利增长三倍或四倍呢？请记住，我们只投资非凡企业。它们之所以卓越，是因为远超竞争对手，通常能持续获取市场份额，更重要的是，市场主导权。我们在前一章已看到证据，显示各行业领先企业的集中度正日益提升。
+
+其次，卓越企业的估值倍数通常不会长期处于温和水平。在我撰写本文时，市值4000亿美元的沃尔玛市盈率为33倍；市值2600亿美元的欧莱雅市盈率为61倍！我们只关注杰出企业。其估值倍数很可能在极长时期内保持高位。
+
+第三，为何仅将计算局限于未来五年？假设我对未来五年的盈利增长和市盈率判断错误。假定盈利停滞不前且估值倍数减半，五年后我将承受50%的损失。那又如何？若五年后企业持续良好运营十年呢？若在高估值时卖出，五年后我将错失第五至第十五年间的价值。我将通过一个理论案例和一个真实案例阐明此点。
+
+回顾本节开篇的例子：2000年我以15倍市盈率买入A公司股票，每股1美元。2005年，盈利翻倍，市盈率扩张至60倍，股价现为8美元。若此时卖出，我将获利八倍，年化回报率52%。非常可观，对吗？但我选择继续持有。
+
+随后五年，盈利停滞，估值减半至30倍市盈率。2010年股价为4美元。相比2005年，我损失了一半本金，看似愚蠢。但请稍等。
+
+若企业表现优异，2010至2020年盈利增长四倍（年化增长15%，对卓越企业而言并非激进假设），且市盈率上升50%至45倍，2020年股价将达24美元。这意味着二十年间的年化回报率为17%。二十年内获利二十四倍，对我而言，远优于五年获利八倍。为何？因为期间我本会犯错，而如本章前文所述，需要有人为此补偿。正如谢尔比·戴维斯所示，我们投资组合中并非所有企业都需要从第五年盈利至第十五年；少数成功者便已足够。
+
+现在分享我们投资组合的真实案例。2010年末至2011年初，我们以每股128卢比买入Ratnamani公司股票。随后三年股价未动，2014年1月股价为135卢比。我们保持冷静并继续持有，因公司运营良好。然而，2015年1月，股价飙升至700卢比，一年内暴涨五倍。盈利与估值倍数均突然跃升。
+
+我们该卖出吗？没有。为何？因为企业依然卓越非凡。此后两年股价维持在700卢比左右，直至2017年1月后才缓慢上行。2021年1月，股价达1600卢比。若2015年以每股700卢比卖出，我们将错失随后六年升至1600卢比的涨幅。更重要的是，我们的买入价128卢比才是关键参照点。相比此价，持有十年获1600卢比（年化回报29%）绝非坏事。或有人主张应在2015年1月卖出以实现超50%的年化回报。此说有理，但我更倾向于十年29%的回报（12.5倍），而非四年53%的回报（5.5倍）。我们至今仍持有Ratnamani。
+
+对“为何要持有60倍市盈率股票？”的质疑，答案很直接：因为平均而言，长期来看，卓越企业总有办法让我们收获远超想象的财富。
+
+**反对观点二：未来“增量”回报将很低**
+
+我已能原谅自己的买入失误，却永难释怀唯一一次卖出错误。那次错误源于我担忧“增量”回报将消散。
+
+2011年末，我们以每股1700卢比投资印度Shree水泥公司。Shree是印度最佳水泥企业，或也是全球最佳之一。水泥业周期性极强，我们买入时行业情绪似已触底。投资后数月内，水泥周期意外反转，股价翻倍有余。
+
+尽管我深信应永久持有企业，却误以为应对强周期企业破例。我设想在行业低迷时买入，情绪转好时卖出以“驾驭”大宗商品周期。我自知无法精准择时，但以为能做得不错。2012年10月，我以约3800卢比卖出Shree，因认为其长期“增量”回报将令人失望。结果我们却在不足一年内获利约2.2倍。我们将8000万美元收益返还投资者，并为跑赢市场而自豪。
+
+这是我做过最愚蠢的决定。基金代价？四亿美元且仍在增长。2022年6月，Shree水泥股价约19,009卢比，是十年前卖出价的五倍有余。痛彻心扉。
+
+汲取Shree的昂贵教训后，我对该质疑的回应是：增量回报以何期限衡量？一日、一月、一年、三年还是二十年？若企业杰出，何必纠结？
+
+卖出卓越企业的规则很简单：不。要。卖。
+
+**反对观点三：存在更佳资金配置机会**
+
+过去数十年，股票持有期持续缩短。投资者并非为交易而交易（但愿如此）。他们卖出X买入Y，因认为Y前景优于X。不久后又因同样理由卖出Y买入Z。市场似乎总有更优选择。对此“仓鼠转轮”行为的辩解是：卖出50倍市盈率企业、买入15倍市盈率企业是审慎之举。但我们不以为然。
+
+我们绝不沉迷“高卖低买”行为。仅当对企业丧失信心时才卖出，此时我们会将资金返还投资者。拥有杰出企业的机会极其罕见，若已赢得此彩票，何苦杀死下金蛋的鹅？（是是是，我知道。我卖过Shree水泥。非要提醒我吗？）
+
+换个角度想。我猜诸位多有房产或认识有房者。可曾听闻哪位房主频繁买卖自住房？房主会每日、每月甚至每年评估房价，只为高价售出再低价另购吗？若非如此，我看不出有何理由区别对待企业持股。
+
+实证研究表明此策略无效。如前所述，基金表现不佳与其组合换手率高度相关。我不知孰因孰果，坦白说，亦无意深究。
+
+我们乐于持有杰出企业，视其为家园。
+
+**反对观点四：我整天该做什么？**
+
+信不信由你，多年前一位对冲基金朋友告诉我：“但那是懒人赚钱法！”他理性务实，不否认持有少数优质企业复利增长能赚钱，却认为毫不折腾就赚钱近乎不道德。人各有志。他后来离开了对冲基金业，因每天紧盯彭博终端十二至十四小时、忧心每日盈亏而精疲力竭。
+
+另一位基金经理问：“若不交易，我整天该做什么？”此人声称所有财富均来自持有少数优质企业，却想白天忙个不停！我想说“去度假吧”，但未出口——人各有志。
+
+投资是门独特职业，无为而治可能回报丰厚。对我们而言正是如此。我们将继续懒惰。非常懒惰。
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">Mahabharata is one of two great epics of ancient India (Ramayana being the other one). It was written over a few hundred years, starting about 400 BCE. At about 1.8 million words, it is the longest poem known to humanity and is seven times the length of the Iliad and the Odyssey combined. The epic describes the struggle for dominance between two groups of cousins but is a treatise on moral philosophy and the psychology of human behavior.
+There is a famous section in Mahabharata called Yaksha Prashna. The spirit or demigod (Yaksha) poses a series of questions (Prashna) to Yudhishthir, the eldest and wisest among the cousins. The stakes are high because giving correct answers will revive one of Yudhishthir’s four brothers killed by the Yaksha.
+One of the most famous questions posed by Yaksha is, “What is the greatest wonder in this world?” Yudhishthir’s reply is, “Everyone sees countless people dying every day, but they act and think as if they will live forever.” Yudhishthir’s insight was that we are strangely blind to a fact that is blindingly obvious.
+For us, the Yaksha Prashna would be, “What is the greatest wonder in the world of investing?” With due apologies to Yudhishthir, my answer is, “Everyone sees immeasurable wealth being created by people who never sell, but they think and act as if it is selling that creates wealth.”
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . reimagining investing requires me to be very patient and not to sell an outstanding business at almost any price.
+1. Darwin laid the foundation of evolutionary theory by asserting that if an organism has a small advantage over its peers (say, the ability to run faster), then given enough time, this favorable trait will spread across the entire population. Darwin understood, like no one else before him, that compounding can create macroevolution through microevolution.
+2. Investors, proficient in mathematics, think they understand compounding. But the evidence suggests otherwise—the holding period of stocks is barely a few months. Investors are unable or unwilling to exercise patience and typically press the exit button after meager gains or losses.
+3. We have internalized the lessons of long-term compounding from Darwin, and if a business is performing well, we refuse to sell it at any price.
+4. Some of the key reasons to stay invested forever are that the richest people in the world are the ones who refuse to sell; empirical evidence from a ninety-year-long study shows that great businesses create enormous wealth; Buffett has shown that the strategy of holding forever works beautifully; fund managers can pay for their mistakes by allowing the good businesses to multiply; and only those who stay invested can benefit from compounding.
+5. Most investors refuse to subscribe to the philosophy of owning businesses forever. This, in my opinion, is a big mistake.
+6. We have been successful not because we are better at buying, but because we refuse to succumb to the temptation of selling.
+Conclusion
+Honeybees Win by Repeating a Simple Process. So Can We
+He must be a dull man who can examine the exquisite structure of a comb, so beautifully adapted to its end, without enthusiastic admiration. We hear from mathematicians that bees have practically solved a recondite problem, and have made their cells of the proper shape to hold the greatest amount of honey, with the least possible consumption of precious wax in their construction.
+Charles Darwin, On the Origin of Species, chapter 8, “Instinct”
+Your goal as an investor should simply be to purchase, at a rational price, a part interest in an easily understandable business whose earnings are virtually certain to be materially higher five, ten and twenty years from now. Over time, you will find only a few companies that meet these standards—so when you see one that qualifies, you should buy a meaningful amount of stock. You must also resist the temptation to stray from your guidelines.
+Warren Buffett, annual letter to shareholders, 1996
+We started our journey with bumblebees, so it’s only fair that we end with honeybees.
+Making Sense of an Uncertain World
+The field of biology, particularly evolutionary biology, took a giant leap forward in 1953 with one of the most significant discoveries of the twentieth century: the molecular structure of DNA. This Nobel Prize–winning effort of Watson and Crick unraveled the mystery of how genetic information is encoded and transmitted through the double helix.
+Or did it?
+Even decades after this seminal event, scientists do not agree on the definition of what constitutes a gene.1 We are endowed with 22,500 genes; some scientists think that less than 2 percent are helpful, whereas others assert that more than 50 percent are. As a result, we do not know what most of our DNA—comprising more than six billion letters—does. More surprisingly, even when there is agreement on the function of a particular bit of DNA, it is still a mystery how this DNA translates into a phenotype, or observable trait.
+The plain truth is that despite hundreds of millions of dollars being spent every year by dedicated researchers globally, we don’t understand how evolution works at the molecular level.2 And this is a good—no, great—thing. It allows scientists to ask the right questions to explore the unknown further. Most scientific articles in biology discuss what has been discovered or proposed and what further questions or doubts should be explored. Unfortunately, it appears that these researchers never get to a definitive answer to any question; the best they do—and boy, do they do it well!—is to raise even more questions.
+As investors, we are supposed to have deep insights into our companies and industries. We are required to understand the business of the companies we invest in, with the implicit assumption that the individual who can comprehend a business better will become a better investor. Of course, we are also required to answer all the questions anyone might pose on the businesses we have invested in. But the problem is that if brilliant biologists are still struggling to unravel the mysteries of a lowly, discrete, organic molecule after seventy years of research, how can we think that an entity as amorphous as a company can be analyzed by investors in seventy days, or even seven hundred?
+A consistent pattern was present throughout all ten chapters of this book. Did you detect it? Our entire investment approach at Nalanda admits to, and hence compensates for, our profound ignorance:
+• We avoid many categories of risks because of the wide range of possible outcomes in these situations.
+• We invest only in exceptional businesses because most businesses fail, and we want to reduce uncertainty.
+• We buy at an attractive valuation because, while we don’t know what will go wrong, we assume that something will.
+• We rarely buy, and sell even more rarely, because every activity may have unintended consequences we can’t foresee.
+In this complex, unknowable, and uncertain world, we are not trying to make the best investments since we are in the dark about most things. We don’t know what the best investment would be. Instead, we are simply trying to invest well. These are very different ways of investing and lead to radically different investment models. Our model—that of investing well—tries to achieve just one objective amid uncertainty: increase the predictive accuracy of our investments.
+How have we done this? By emulating honeybees.
+She Dances Her Way to Eternal Success
+Apis mellifera, the honeybee, weighing one-tenth of a gram, has existed for thirty million years. She has faced multiple ice ages, thousands of environmental catastrophes, an unending stream of macro- and microscopic predators, and the arrival of the most destructive beings in the history of the planet: Home sapiens.
+The most consequential decision in the life of honeybees is the choice of their home. I call it a “decision” because that is what it is: It seems to follow a process, it can take many hours or even days, and every honeybee in the colony appears to have a say. Unlike eating, mating, or fighting, choosing a home appears to be a deliberate and “thoughtful” process for honeybees. Let me explain.
+Honeybees are highly social and live in colonies of thousands in very close proximity. A beehive typically has a single queen fed and protected by worker bees, all of whom happen to be sterile females.3 A single colony typically splits into a few colonies (called swarms) at the end of winter. Each of these swarms needs to find a new home to construct beeswax combs, raise worker bees, and build a store of honey for the following winter.
+Hence, as the bees create a new swarm, their most important task is finding a suitable nesting location for their hive. Their home needs to have a cavity volume to accommodate enough honey to last the entire winter. In addition, the entrance needs to be high enough above the ground to prevent land-based predators from targeting the bees. The entrance should also be small to ensure secrecy and warmth so that the bees’ home can be protected from the elements, such as extreme winds.
+So, how do honeybees select their home? By dancing.</div>
+            <div class="text-block simplified-text">以下是严格遵循要求的译文：
+
+《摩诃婆罗多》是古印度两大史诗之一（另一部是《罗摩衍那》）。其创作始于公元前400年左右，历时数百年完成。全诗约180万字，是人类已知最长的诗歌，篇幅相当于《伊利亚特》与《奥德赛》总和的七倍。这部史诗虽以两派堂兄弟的权力斗争为主线，实为探讨道德哲学与人类行为心理的经典著作。
+
+史诗中有个著名篇章《夜叉问》。夜叉（半神精灵）向最年长睿智的坚战提出系列诘问。因四兄弟死于夜叉之手，唯有正确作答方可令其复生，赌注极其高昂。
+
+夜叉最著名的发问是："世间最大的奇迹是什么？"坚战答曰："众生日日见证无数死亡，言行举止却恍若永生。"其深刻洞见在于：人类对如此昭然若揭的事实竟视而不见。
+
+若将诘问置于投资领域："投资界最大的奇迹是什么？"冒昧改写坚战的答案："世人目睹永不卖出者创造巨额财富，却坚信买卖交易方能致富。"
+
+**章节摘要**
+进化论启示我...
+...重新认识投资本质需保持极强耐心，几乎任何价位都不应抛售卓越企业。
+
+1.  达尔文创立进化论的核心观点是：若某生物具备微小优势（如奔跑更快），经足够时间累积，此优势将遍及整个种群。他比前人更深刻理解：微观进化经复利效应可引发宏观进化。
+2.  精于数学的投资者自认通晓复利，但持股期仅数月的事实证明其认知谬误。投资者缺乏耐心，微利或微损便急于退出。
+3.  我们汲取达尔文思想精髓：若企业持续卓越，坚决不以任何价格抛售。
+4.  永久持有的核心理由包括：全球顶级富豪皆拒绝卖出；九十年实证研究显示伟大企业创造巨额财富；巴菲特验证永久持有策略卓有成效；基金经理可借优质企业增长弥补失误；唯长期持有者能享受复利馈赠。
+5.  多数投资者拒绝奉行永久持有哲学，此乃重大谬误。
+6.  我们的成功并非源于精准买入，而在于抵制抛售诱惑。
+
+**结语**
+蜜蜂以简单重复致胜，人类亦可效仿
+"凡见蜂巢精妙结构者，若不为造物之匠心所震撼，必是愚钝之人。数学家证明蜜蜂已破解深奥难题：以最少蜂蜡构筑最合理结构，实现储蜜最大化。"  
+——达尔文《物种起源》第八章"本能"
+
+"投资者目标应简化为：以合理价格买入业务易懂的企业股权，确保其盈利未来五到二十年必然显著增长。符合标准的企业凤毛麟角，故遇良机当重仓出击，并恪守投资准则绝不偏离。"  
+——巴菲特1996年致股东信
+
+开篇既以熊蜂启程，结尾当以蜜蜂作结。
+
+**解读不确定世界**
+1953年DNA分子结构的发现（二十世纪最伟大突破之一）推动生物学尤其是进化论实现飞跃。沃森与克里克获诺贝尔奖的研究，揭示了双螺旋结构编码传递遗传信息的奥秘。
+
+果真如此吗？
+即便数十年后，科学家对基因的定义仍存分歧。人类拥有22,500个基因，有学者认为其中不足2%具有功能，另有主张超50%具功能性。这意味着我们尚不了解60亿碱基对构成的大部分DNA功能。更惊人的是，即便就某段DNA功能达成共识，其如何转化为表型（可观测特征）仍是未解之谜。
+
+残酷现实是：全球研究者每年投入数亿美元，仍未能从分子层面诠释进化机制。但这实为幸事——促使科学家提出关键问题探索未知。多数生物学论文聚焦已有发现，并指出待验证的新疑点。可惜研究者似乎永远无法给出终极答案——他们最擅长（确实极其出色！）的是不断提出新问题。
+
+作为投资者，我们被要求深度洞察企业与行业。理解所投企业业务的潜台词是：认知越深则投资越优。同时还需应对各方关于持仓企业的质询。但试想：杰出生物学家七十年未能破解区区有机分子的奥秘，投资者岂能在七十天乃至七百天内看透变幻莫测的企业实体？
+
+本书十章贯穿同一逻辑，您可曾发现？那烂陀投资坦承认知局限并据此构建体系：
+• 规避多类风险：因这些领域结果可能性过于分散
+• 只投卓越企业：因多数企业终将失败，此举可降不确定性
+• 坚持低估买入：因虽不知具体风险，但预判必有变数
+• 极少交易：因任何操作皆存不可预见的连锁反应
+
+在这复杂难测的世界里，我们放弃追求最佳投资（因多数事物处于迷雾中），转而专注践行优质投资。二者催生截然不同的投资模式。我们的"优质投资"模式在不确定性中唯求一个目标：提升投资决策的预测准确性。
+
+如何实现？效仿蜜蜂。
+
+**以舞步铸就永恒成功**
+体重仅0.1克的西方蜜蜂已存续三千万年。它历经多次冰河期、数千环境灾难、无数微观宏观天敌，更遭遇地球史上最具破坏力的生物——智人。
+
+蜜蜂生命中最重大的抉择是择居。称其为"抉择"因其符合决策特征：遵循流程、耗时数小时甚至数日、蜂群成员皆具话语权。与进食、交配或争斗不同，择居对蜜蜂而言是审慎的"思考"过程。
+
+蜜蜂高度社会化，数千成员紧密群居。蜂巢由工蜂（均为不育雌蜂）供养护卫单一蜂后。每至冬末，蜂群分裂为若干新群（称分蜂群），各群需寻新址筑巢、育幼、储蜜越冬。
+
+故当新蜂群形成，首要任务即寻觅理想筑巢点。巢穴需有足够空间储藏越冬蜂蜜，入口需高于地面以防陆生天敌，开口狭小以确保隐蔽保暖，抵御强风等侵袭。
+
+那么蜜蜂如何选址？以舞为引。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">Let’s say you have decided to study how honeybees choose their nesting site. Here is what you will observe. When the bees from the mother colony split into a swarm, a few dozen scouts fly away in different directions to inspect nesting sites within a five-kilometer radius. When a scout encounters an attractive site, she returns to the swarm and performs a waggle dance to communicate the site’s distance, direction, and quality to her sisters. (The males are lazy bums and don’t do any work; their only job is to impregnate the queen.) The duration of the dance is proportional to the distance to the new site, the angle at which the bee waggles represents the angle of the outward run relative to the sun, and the vigorousness of the waggle (the number of dance circuits) denotes the quality of the new site.
+Since the scouts have flown over a large area, they advertise many widely separated locations to their hive mates. The honeybees in the swarm follow the lead of various scouts to check out the widely dispersed sites and return to the swarm to perform their waggle dance.
+Thus, initially, the scouts advertise several possible nesting sites, seemingly trying to recruit their hive mates to each of the chosen sites in what appears to be a quite chaotic scene. However, after a few hours or days, all of the bees begin to dance in favor of just one location. Once a consensus has been established, the swarm flies to the chosen location. But, of course, the bees don’t have a leader. (The queen bee is just a reproduction machine and is entirely dependent on the worker bees for her food and welfare.) So you will (rightly) conclude that the choice of nesting site is accomplished through a democratic process in which all the honeybees have participated.
+Once you have observed this phenomenon, here are some of the questions you will probably ask: How does this democratic process of building almost 100 percent consensus work? How does dancing lead to consensus over time? Do the bees reach the “right” decision? Is this decision-making a simple or complex process? Let’s proceed step by step.
+As I mentioned earlier, honeybees need to select a high-quality dwelling place to ensure their survival. But what is not apparent is that if they are given a choice of multiple high-quality sites, they will almost always choose the best possible site. “Good enough” is not acceptable to these discerning bees. When scientists artificially create a number of good nesting sites within the flying range of honeybees, they find that the bees almost always converge on the best possible site. Even more surprisingly, the bees seldom find the best nesting site first. But over time, even if the bees discover the best site much later than other slightly inferior sites, consensus is ultimately built around the best site.
+Researchers have conclusively proven that honeybees have an absolute standard for assessing the quality of a nesting site. The vigorousness of their waggle dance, translated into the number of dance circuits, indicates the quality of a particular site. A honeybee takes between fifteen minutes and an hour to evaluate a potential site. She inspects the cavity’s outside and spends a lot of time inside walking around and taking short flights. If the bee finds the nesting site desirable on first inspection, she returns to the swarm and advertises the site with a waggle dance. If another bee follows her to this site, she will perform almost the same waggle dance (in terms of duration and intensity) when she returns to the swarm. Honeybees have a universal standard for assessing nest quality.
+All honeybees have a congruent interest while choosing a nesting site. Their consensus is built over time so that eventually, all bees support just one site, and this almost always happens to be the best possible site. But how?
+Initially, scientists hypothesized that a honeybee scout compares her old nesting site with a new site (to which other dancing scouts recruited her). If she finds that the new site is of higher quality, she ceases support for the old site and dances more vigorously to demonstrate support for the new site. Thus, more dance circuits implies that the new site is better than the last one. This process builds consensus over time since the bees keep comparing the various nest sites, and the best site wins in the end. This hypothesis made perfect sense. But it has turned out to be wrong. Most honeybees visit just one nesting site, and very few visit two or more.
+So what’s going on? Painstaking work by Thomas Seeley and others revealed the mystery behind the consensus-building process.4 It has just two elements. First, as we already know, the bees dance more circuits for a better-quality site. Second, the bees in the swarm attach themselves randomly to a dancing honeybee to explore a new site.
+But how do these two simple actions lead to a consensus of nearly 100 percent over the best possible site? First, let’s look at a simplified version of what happens in the wild.
+Let’s assume there are three scouts to begin with, and they evaluate three possible new nesting sites—A, B, and C—of varying quality. Let’s assume site A is the best and site C is the worst. After assessing site A, the first scout returns to the swarm and performs twenty dance circuits. The second scout evaluates site B and performs ten dance circuits. Finally, the third scout performs only five dance circuits after evaluating site C.
+Let’s assume there are one hundred bees in the swarm waiting for their scout sisters to return. Remember that they will attach themselves randomly to any bee dancing and will then go and explore the site that this bee is excited about. Since the first bee contributes to 57 percent of the dance circuits (20 ÷ 35), fifty-seven of the one hundred bees in the swarm will attach themselves to the first bee. By the same logic, twenty-nine bees will end up assessing site B, and only fourteen will assess site C. What happens when these one hundred bees return to the swarm?
+57 honeybees from site A perform 20 dances each = 1,140 dance circuits
+29 honeybees from site B perform 10 dances each = 290 dance circuits
+14 honeybees from site C perform 5 dances each = 70 dance circuits
+Thus, site A now contributes 76 percent (1,140 ÷ 1,500) of the total number of dance circuits performed by the bees compared to 57 percent in the first round. In the next round, the bees attach themselves randomly to any of their dancing sisters. And so, 76 percent of the waiting bees will go and explore site A.
+If this process keeps going, you can see that the support for the best site, A, will keep increasing exponentially—in the third round, following the same logic, support for site A will increase to 88 percent—until almost all the bees are supporting only site A.
+Are you as gobsmacked as I was when I first read about this process? Do you see what has happened here? The honeybees have an extraordinarily complex and challenging decision to make. Yet, they make it through a very straightforward process: Dance harder for a better site, and attach yourself randomly to a dancing sister. That’s it.
+We Follow a Simple and Repeatable Process Like the Honeybees
+The investment community ties itself up in knots over finding the “best” investments. I have seen extraordinarily complex algorithms and multigigabyte spreadsheets to assess the value and quality of a business. On the other hand, we are interested only in executing a sound investment process.
+Our algorithm, while nowhere near as elegant as the honeybees’, has only three steps:
+1. Eliminate significant risks.
+2. Invest only in stellar businesses at a fair price.
+3. Own them forever.
+The honeybee algorithm does not lead to 100 percent success, and it need not. Some swarms are unable to find a suitable dwelling location and perish. But so what? It is a statistically robust process in which, on average, the simple nest-seeking model works beautifully. And the reason it is robust is that in addition to the algorithm being sound, it is repeatable. Deviations from this simple model are neither required nor allowed. A honeybee colony sticks to its nest-seeking process season after season, year after year, millennium after millennium.
+The failure of most investors does not lie in pursuing a wrong model but in failing to repeatedly pursue a good model. It does not take a genius to theorize that investing in quality management teams running excellent businesses should lead to success over the long term, but how many can translate this theory into practice day after day and year after year?
+I believe we at Nalanda have, and you probably do not vehemently disagree, a sound investment model. While we strayed on a few occasions in the first few years (selling Shree Cement), we have primarily been able to stay on the straight and narrow. Obviously—and sadly—this does not guarantee investment success. Some investments haven’t worked, and many more will not. But we will not second-guess our investment process. We will keep repeating it, whatever the outcome.
+We have always tried to be, although we know we never will be, like the honeybees.
+✳✳✳</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的中文段落：
+
+假设你决定研究蜜蜂如何选择筑巢地点。以下是你将观察到的现象：当母巢分蜂形成蜂群后，几十只侦查蜂会飞往不同方向，在方圆五公里内探查可能的巢址。当一只侦查蜂发现一个有吸引力的地点时，它会返回蜂群，通过摇摆舞向姐妹们传达该地点的距离、方向和质量。（雄蜂是懒汉，什么活儿也不干；它们的唯一职责就是给蜂后授精。）舞蹈的持续时间与到新地点的距离成正比，蜜蜂摇摆的角度代表外出飞行路线相对于太阳的角度，而摇摆的剧烈程度（舞蹈的圈数）则标示新地点的质量。
+
+由于侦查蜂飞越了广阔区域，它们向蜂群伙伴们宣传了许多相距甚远的备选地点。蜂群中的蜜蜂会跟随不同的侦查蜂去探查这些分散的地点，然后返回蜂群表演自己的摇摆舞。
+
+因此，起初侦查蜂们会宣传几个可能的筑巢点，似乎各自都在试图招募同伴支持自己选中的地点，场面颇为混乱。然而，几小时或几天后，所有蜜蜂的舞蹈都开始只支持唯一的地点。一旦达成共识，蜂群就会飞往选定的地点。但蜜蜂当然没有领导者。（蜂后只是一台生育机器，其食物和福祉完全依赖工蜂。）因此你（正确地）会得出结论：筑巢点的选择是通过所有蜜蜂参与的民主过程完成的。
+
+观察到这一现象后，你可能会提出以下问题：这种达成近乎百分之百共识的民主过程是如何运作的？舞蹈如何随时间推移促成共识？蜜蜂是否做出了“正确”的决定？这个决策过程是简单还是复杂？让我们逐步探究。
+
+如前所述，蜜蜂需要选择高质量的住所以确保生存。但不太明显的是，如果给它们提供多个高质量地点供选择，它们几乎总能选出最优的那个地点。“足够好”对这些挑剔的蜜蜂来说是不可接受的。当科学家在蜜蜂飞行范围内人为制造多个优质巢址时，他们发现蜜蜂几乎总能汇聚于最优的那个地点。更令人惊讶的是，蜜蜂很少能一开始就发现最优巢址。但随着时间的推移，即使蜜蜂发现最优地点比其他稍次地点晚得多，最终也能围绕最优地点达成共识。
+
+研究人员已确凿证明，蜜蜂评估巢址质量有一个绝对标准。它们摇摆舞的剧烈程度，即舞蹈圈数，标示着特定地点的质量。一只蜜蜂需要十五分钟至一小时来评估一个潜在地点。它会检查洞穴外部，并在内部长时间爬行和进行短途飞行。如果蜜蜂首次探查就认为该巢址理想，它会返回蜂群并通过摇摆舞宣传此地。如果另一只蜜蜂跟随它去了该地点，这只蜜蜂返回蜂群后也会表演几乎相同的摇摆舞（在持续时间和强度方面）。蜜蜂对评估巢穴质量有着统一的标准。
+
+所有蜜蜂在选择巢址时利益一致。它们的共识是随时间推移建立的，最终所有蜜蜂只支持一个地点，而这个地点几乎总是最优的那个。但这是如何做到的呢？
+
+起初，科学家假设侦查蜂会比较自己先前探查的旧巢址与新巢址（由其他跳舞的侦查蜂招募它去的）。如果它发现新址质量更高，就会停止支持旧址，并跳更剧烈的舞来支持新址。因此，更多的舞蹈圈数意味着新址优于上一个。随着时间的推移，这个过程促使蜜蜂不断比较不同巢址，最终最优者胜出，从而达成共识。这个假说似乎非常合理，但后来被证明是错误的。大多数蜜蜂只探查一个巢址，极少数的蜜蜂会探查两个或更多。
+
+那么真相是什么？托马斯·西利等人的艰辛工作揭示了共识形成背后的奥秘。它仅包含两个要素：第一，如我们已知，蜜蜂为质量更好的地点跳更多圈数的舞。第二，蜂群中的蜜蜂会随机跟随一只正在跳舞的蜜蜂去探查新地点。
+
+但这两个简单的行为如何能导致对最优地点近乎百分之百的共识呢？首先，我们来看一个简化的野外情况模拟。
+
+假设最初有三只侦查蜂，它们评估了质量不同的三个可能新巢址——A、B和C。假设地点A最优，地点C最差。第一只侦查蜂评估完地点A后返回蜂群，跳了二十圈舞。第二只侦查蜂评估地点B后跳了十圈舞。最后，第三只侦查蜂评估地点C后只跳了五圈舞。
+
+假设蜂群中有一百只蜜蜂在等待侦查姐妹们返回。记住，它们会随机跟随任何一只跳舞的蜜蜂，然后去探查这只蜜蜂所热衷的地点。由于第一只蜜蜂的舞蹈圈数占总圈数的57%（20÷35），蜂群中一百只蜜蜂里的五十七只会跟随它。同理，二十九只蜜蜂将去评估地点B，只有十四只会去评估地点C。当这一百只蜜蜂返回蜂群后会发生什么？
+
+来自地点A的57只蜜蜂各跳20圈舞 = 1140圈舞
+来自地点B的29只蜜蜂各跳10圈舞 = 290圈舞
+来自地点C的14只蜜蜂各跳5圈舞 = 70圈舞
+因此，地点A的蜜蜂现在贡献的舞蹈圈数占总圈数的76%（1140÷1500），而第一轮是57%。在下一轮中，蜜蜂会随机跟随任何一只正在跳舞的姐妹。于是，76%的等待蜜蜂会去探查地点A。
+
+如果这个过程持续下去，你会看到对最优地点A的支持会呈指数级增长——在第三轮，按照同样逻辑，对地点A的支持将上升到88%——直到几乎所有蜜蜂都只支持地点A。
+
+当我第一次读到这个过程时感到无比震惊，你是否也有同感？你明白发生了什么吗？蜜蜂面临的是一个极其复杂且充满挑战的决策。然而，它们通过一个非常直接的过程就完成了：为更好的地点跳更剧烈的舞，并随机跟随一位正在跳舞的姐妹。仅此而已。
+
+**我们效仿蜜蜂，遵循一个简单且可重复的过程**
+
+投资界为寻找“最佳”投资而绞尽脑汁。我见过评估企业价值和质量的极其复杂的算法和数GB大小的电子表格。另一方面，我们只专注于执行一个稳健的投资过程。
+
+我们的算法虽远不如蜜蜂的优雅，但只有三个步骤：
+1.  排除重大风险。
+2.  仅以公平价格投资于杰出企业。
+3.  永久持有。
+
+蜜蜂的算法并非百分百成功，也无需如此。有些蜂群无法找到合适的筑巢地点而消亡。但那又如何？这是一个统计上稳健的过程，平均而言，这个简单的寻巢模型运作得非常出色。而它之所以稳健，除了算法本身可靠之外，还在于其可重复性。偏离这个简单模型既无必要也不被允许。一个蜜蜂群落年复一年，千年复千年地坚持着它们的寻巢过程。
+
+大多数投资者的失败不在于追求了一个错误的模型，而在于未能持续执行一个好的模型。投资于由优秀管理团队运营的杰出企业长期应能成功，这个理论构想无需天才，但有多少人能日复一日、年复一年地将此理论付诸实践呢？
+
+我相信我们那烂陀资本拥有一个稳健的投资模型，你大概也不会强烈质疑。尽管在最初几年我们曾有过几次偏离（如出售Shree Cement），但总体上我们得以保持在正途上。显然——并且令人遗憾的是——这并不能保证投资成功。有些投资未能奏效，未来还会有更多失败。但我们不会事后质疑自己的投资过程。无论结果如何，我们都将不断重复它。
+
+我们一直努力想要像蜜蜂那样，尽管深知永远无法企及。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">Investors, unlike biologists, are rarely filled with doubts and uncertainties. I am not talking about a typical television “expert” here—who is meant to entertain, not educate—but about self-perception and actual behavior. A scientist may spend her life working on the genetics of a maize plant (Barbara McClintock, winner of the Nobel Prize in Physiology or Medicine, 1983), deciphering the organization of the olfactory system (Linda Buck, cowinner of the Nobel Prize in Physiology or Medicine, 2004), or inventing a gene-editing technique (Jennifer Doudna and Emmanuelle Charpentier, winners of the Nobel Prize in Chemistry, 2020) and still admit that she has barely scratched the surface of what is knowable. In contrast, an investor, at the end of a one-hour group meeting with a company he has never met before, confidently declares that he has found the next P&G.
+My circle of ignorance has expanded in lockstep with my age. As a young McKinsey consultant, I thought I had all the answers. As an older investor, I have only questions. I wish I had ready solutions for them, but I don’t. So my only option is to internalize and implement a process that can simplify the world’s complexity in a way that my intellect can’t.
+If we are surviving and outperforming the market many years from now, it will not be because we know a lot. Instead, it will be because we know that we don’t.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . we can reimagine investing by executing a simple and repeatable investment process.
+1. The honeybees’ choice of a new nesting site is extremely consequential (a suboptimal site can lead to death) and seemingly complex.
+2. Honeybees don’t have a leader; they make their decision through a consensus-building process that is surprisingly simple. This process does not lead to the best nesting site every time, but on average, it has served honeybees extremely well for more than thirty million years.
+3. The business and investing worlds are highly complex, and I know that my limited intellect is incapable of fully comprehending them.
+4. Hence, we at Nalanda have no interest in finding the “best investment” but in executing a sound investment process.
+5. Our three-step investment process is simple and repeatable:
+a. Eliminate significant risks.
+b. Invest only in stellar businesses at a fair price.
+c. Own them forever.
+6. We know this process does not guarantee investment success every time, but on average, it has worked out quite well for us.
+7. We always have and always will stick to our process irrespective of individual outcomes.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+**译文：**
+
+与生物学家不同，投资者很少充满疑虑和不确定性。我这里说的不是那种通常为了娱乐而非教育的电视“专家”，而是指自我认知和实际行为。一位科学家可能毕生研究玉米的遗传学（芭芭拉·麦克林托克，1983年诺贝尔生理学或医学奖得主），破译嗅觉系统的组织结构（琳达·巴克，2004年诺贝尔生理学或医学奖共同得主），或发明一种基因编辑技术（詹妮弗·杜德纳和埃玛纽埃勒·沙尔庞捷，2020年诺贝尔化学奖得主），却依然承认自己对可知领域所知甚浅。相比之下，一位投资者在与一家从未接触过的公司进行一小时的集体会议后，却会自信地宣称自己发现了下一个宝洁公司。
+
+我的无知圈随着年龄同步扩大。作为年轻的麦肯锡顾问时，我以为自己无所不知。成为年长的投资者后，我却只有满腹疑问。我希望能有现成的答案，但我没有。因此，我唯一的选择就是将一套能够简化世界复杂性的流程内化于心并付诸实践，而这复杂性是单凭我的智力所无法驾驭的。
+
+如果我们多年后依然存活并跑赢市场，那不会是因为我们懂得很多，而是因为我们深知自己懂得有限。
+
+**章节总结**
+进化论教会我……
+……通过执行一个简单且可重复的投资流程，我们可以重新构想投资。
+1.  蜜蜂选择新筑巢地点的决策至关重要（次优地点可能导致死亡）且看似复杂。
+2.  蜜蜂没有领导者；它们通过一个出奇简单的共识形成过程做出决定。这个过程并非每次都选出最佳筑巢地点，但平均而言，它已为蜜蜂高效服务了超过三千万年。
+3.  商业和投资世界高度复杂，我深知自己有限的智力无法完全理解它们。
+4.  因此，在那烂陀，我们无意寻找“最佳投资”，而是专注于执行一个稳健的投资流程。
+5.  我们的三步投资流程简单且可重复：
+    a.  排除重大风险。
+    b.  仅以公允价格投资于卓越企业。
+    c.  永久持有它们。
+6.  我们知道这个流程不能保证每次投资都成功，但平均而言，它为我们带来了相当好的结果。
+7.  无论单个结果如何，我们过去、现在和未来都将始终坚持我们的流程。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
