@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 9</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./008.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 9</h1>
+        <a href="./010.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Eldredge and Gould Dredge Up Investing Gold
+Why should not Nature have taken a leap from structure to structure? On the theory of natural selection, we can clearly understand why she should not; for natural selection can act only by taking advantage of slight successive variations; she can never take a leap, but must advance by the shortest slowest steps.
+Charles Darwin, On the Origin of Species, chapter 6, “Difficulties of the Theory”
+Charlie and I decided long ago that in an investment lifetime it’s just too hard to make hundreds of smart decisions. That judgment became ever more compelling as Berkshire’s capital mushroomed and the universe of investments that could significantly affect our results shrank dramatically. Therefore, we adopted a strategy that required our being smart—and not too smart at that—only a very few times. Indeed, we’ll now settle for one good idea a year. (Charlie says it’s my turn.)
+Warren Buffett, annual letter to shareholders, 1993
+Look back upon your life. Yes, I know you will need to stop reading to reflect on the years gone by. Please do so, and contemplate the events or moments that have made you you: life, work, business—all of it. Go ahead, take a deep breath, pause, and roll that reel backward.
+Done? All right. What did you see? Let me share the snippets of my movie. Most of my five decades on this glorious planet seem to have passed in a blur. I could remember only a few moments spontaneously: when my mother cried on losing her mother, when my history teacher praised me, when my father allowed me to drive his car, when the first company I interviewed for rejected me, when a herd of elephants chased us on a safari in South Africa, when the first company I invested in had a successful IPO, when I first saw my newborn son, when I, well, you get the picture.
+I may be able to list maybe thirty such events but not three thousand. It seems a bit odd since I have been alive for about thirty million minutes. Where are the remaining minutes? Were they all uninteresting? Is my life nothing but a long period of nothingness punctuated by moments to remember? What about your life?
+And what about life on our planet? Some moments may not be forgotten even a century from now.
+One came on January 11, 2020, when the Chinese media reported the first death of a person, a sixty-one-year-old man, from an unknown virus. He had been a regular at the local seafood and poultry market in the city of Wuhan. Within less than two weeks, dozens of countries across the world started reporting infections from the same virus. On January 30, the World Health Organization declared a global health emergency, and on February 11, it named the disease caused by the virus: COVID-19.
+In March 2020, the world witnessed what it never had before: a complete global shutdown. Future generations will accuse us of photoshopping images of the empty streets of Mumbai, London, Rome, and New York in 2020. And no photograph will capture the scale or depth of human suffering and hardship.
+Every equity market in the world started falling precipitously, and in the months of March and April, there seemed to be no end to the bottom. The Indian Sensex crashed 23 percent in March 2020.
+What were we at Nalanda to do in these unprecedented times?
+Maybe evolutionary theory could give us a hint.
+The Absence of Evidence Is Evidence of Absence
+In 1972, the paleontologists Stephen Jay Gould and Niles Eldredge published an essay that seemed to blow a reasonably large hole in the tower of classical Darwinism.
+Darwin’s theory of natural selection makes a robust case for “phyletic gradualism.” Darwin theorized that natural selection eliminates unfit individuals so that only the better adapted will reproduce. If this continues long enough, a new species is imperceptibly created, and the original species goes extinct. He makes his view on gradualism explicit in the concluding chapter of Origin: “As natural selection acts solely by accumulating slight, successive, favourable variations, it can produce no great or sudden modification; it can act only by very short and slow steps.”
+If this is accurate, we should find intermediate forms of species in the fossil record providing evidence of phyletic gradualism. Let’s take the example of whales, which evolved about fifty million years ago from a four-legged, land-dwelling vertebrate called Pakicetus.1 Figure 9.1 lists some descendants of Pakicetus, including Ambulocetus, Remingtoncetus, Protocetus, and Dorudon, which ultimately evolved into current-day whales and dolphins. Given the large size of whales, we should find hundreds, maybe even thousands, of intermediate forms. The problem is that we don’t. For example, where are the intermediate fossils between Remingtoncetus and Protocetus? We have a decent fossil record that helped paleontologists piece together the puzzle of whale evolution, but we don’t have most of the transitional forms.
+9.1 The evolution of whales: Where are the other transitional forms?
+Source: Licensed from Science Photo Library.
+I discussed the evolution of giraffes in chapter 5. If natural selection exterminated giraffes with shorter necks over time and the longer-necked ones evolved gradually, why have we not found giraffe fossils with necks ranging from very short to very long? Given that we haven’t, how can anyone claim that evolution proceeds gradually and not suddenly?
+Intellect and integrity are mutually exclusive traits—one does not guarantee the other. However, Darwin was that rare genius who was also unsparingly honest. He penned an entire chapter on the potential problems with his theory. He starts chapter 6 of Origin, “Difficulties of the Theory,” by stating an obvious issue with the idea of natural selection. He argues that since natural selection gradually eliminates minor well-adapted forms, extinction and natural selection must operate simultaneously. Hence, logic dictates that innumerable transitional forms that were unable to adapt to their surroundings should have existed. But, as Darwin himself points out, transitional fossils have rarely been found. He admits that the incomplete fossil record poses a significant hurdle to anyone trying to prove that species evolve gradually.
+But he had a solution: He asserted that the geological record is incomplete. He stated, “The geological record is imperfect, and this fact will to a large extent explain why we do not find interminable varieties, connecting all the extinct and existing forms of life by the finest graduated steps. He who rejects these views on the nature of the geological record will rightly reject my whole theory” (emphasis mine).
+He considered the issue of a lack of transitional forms so devastating to the theory of natural selection that he went on to devote chapter 9 of Origin to a discussion of just this one problem, aptly titled “On the Imperfection of the Geological Record.” He made his case by presenting several convincing arguments: Only a tiny portion of the earth has been geologically explored; an organism with only soft parts cannot be preserved; if shells and bones sink to the bottom of the sea where sediment does not accumulate, they will disappear; many species (like land shells) existed in the distant past, but hardly any fossils can be found.
+If Darwin was right about gradualism, paleontologists should witness a gradual change in the fossil records over millions of years. But this is not what they find. Instead, before and since Darwin, a large number of paleontologists have found that the majority of species appear suddenly in the fossil record and then persist unchanged until they go extinct.2
+Hugh Falconer (1808–1865) was one of the greatest paleontologists of the nineteenth century.3 He went to India as a surgeon in 1830 but spent most of his time digging up fossils. He discovered ancient fossil beds in the southern Himalayas and excavated several extinct species like the mastodon and saber-toothed tiger. He also studied the fossils of European elephants. Darwin had colossal respect for Falconer and sent him a copy of the first edition of Origin in November 1859 with a personal note.
+Falconer discovered that most fossil species remained stable over very long periods, even through significant environmental changes. In his 1863 monograph, after describing that the mammoths had experienced extreme changes of climate, he wonders, “If species are so unstable, and so susceptible to mutations through such influences, why does that extinct form stand out so signally, a monument of stability?”
+In 1903, the famous paleontologist H. F. Cleland noted a similar stasis in Devonian fossils (from 420 to 360 million years ago). He stated, “A careful examination of the fossils of all the zones, from the lowest to the highest, failed to reveal any evolutionary changes, with the possible exception of Ambocoelia praeumbona. . . . The evolution of brachiopods, gastropods, and pelecypods either does not take place at all or takes place very seldom.” Many other paleontologists had been making similar observations.
+None of these practitioners defied Darwin’s claim of gradualism, although their field observations seemed to indicate otherwise. This tension between theory and practice finally broke in 1972 when Niles Eldredge and Stephen Jay Gould published their famous essay, “Punctuated Equilibria: An Alternative to Phyletic Gradualism.”4
+They claimed that the history of the organic world could be viewed as comprising long periods of stability interspersed with brief periods during which new species emerge. In the authors’ words, “As a central proposition, punctuated equilibrium holds that the great majority of species, as evidenced by their anatomical and geographical histories in the fossil record, originate in geological moments (punctuations) and then persist in stasis throughout their long durations.”</div>
+            <div class="text-block simplified-text">好的，这是严格按照您要求翻译的段落：
+
+**埃尔德里奇与古尔德淘得投资真金**
+
+为什么大自然不能从一个结构飞跃到另一个结构？根据自然选择理论，我们完全可以理解为什么她不能；因为自然选择只能利用微小的连续变异；她永远无法飞跃，而必须通过最简短的缓慢步骤前进。
+查尔斯·达尔文，《物种起源》，第六章，“理论的难点”
+
+查理和我很久以前就认定，在投资生涯中，要做出数百个明智的决定实在太难了。随着伯克希尔的资本急剧膨胀，能显著影响我们业绩的投资领域大幅萎缩，这一判断变得愈发具有说服力。因此，我们采取了一种策略，只要求我们明智——而且不必太明智——的次数非常少。实际上，我们现在一年能有一个好主意就满足了。（查理说轮到我。）
+沃伦·巴菲特，1993年致股东信
+
+回顾你的人生。是的，我知道你需要停下阅读来反思过去的岁月。请这样做吧，并思考那些造就了今日之你的事件或时刻：生活、工作、事业——所有这一切。来吧，深吸一口气，暂停一下，把时光卷轴往回倒。
+
+好了吗？好的。你看到了什么？让我分享我人生电影的几个片段。我在这个辉煌星球上度过的五十年，大部分时光似乎都在模糊中流逝。我能自然而然记起的只有几个瞬间：母亲失去她母亲时嚎啕大哭，历史老师表扬我，父亲允许我开他的车，我面试的第一家公司拒绝了我，在南非游猎时一群大象追逐我们，我投资的第一家公司成功上市，第一次看到我新生的儿子，嗯，你明白了吧。
+
+我或许能列出三十件这样的事，但列不出三千件。这似乎有点奇怪，因为我已生活了大约三千万分钟。剩下的分钟都去哪儿了？它们都索然无味吗？难道我的人生只是一段漫长的虚无，点缀着一些值得铭记的瞬间？你的人生又如何呢？
+
+我们这个星球上的生命又如何呢？有些时刻，即使一个世纪后也可能不会被遗忘。
+
+一个时刻出现在2020年1月11日，中国媒体报道了首例因未知病毒死亡的患者，一名六十一岁的男子。他曾是武汉当地海鲜和禽类市场的常客。不到两周内，全球数十个国家开始报告感染同一病毒的病例。1月30日，世界卫生组织宣布全球卫生紧急状态，2月11日，该组织将病毒引起的疾病命名为：COVID-19。
+
+2020年3月，世界见证了前所未有的景象：全球完全停摆。未来几代人会指责我们篡改了2020年孟买、伦敦、罗马和纽约空荡街头的照片。任何照片都无法捕捉人类苦难与艰辛的规模和深度。
+
+全球所有股票市场开始急剧下跌，在三月和四月，下跌似乎深不见底。印度敏感指数在2020年3月暴跌了23%。
+
+在那史无前例的时期，我们纳伦达该怎么做？
+
+也许进化论能给我们一点提示。
+
+**没有证据即是证据缺失**
+
+1972年，古生物学家斯蒂芬·杰伊·古尔德和奈尔斯·埃尔德里奇发表了一篇论文，似乎对古典达尔文主义大厦凿出了一个相当大的洞。
+
+达尔文的自然选择理论为“种系渐变论”提供了强有力的论据。达尔文推论，自然选择淘汰不适应的个体，只有适应度更高的个体才能繁殖。如果这个过程持续足够长的时间，一个新物种就在不知不觉中产生，而原始物种则走向灭绝。他在《物种起源》的结论章中明确表达了他对渐变论的看法：“自然选择只能通过积累微小的、连续的、有利的变异来发挥作用，它无法产生巨大或突然的修改；它只能通过非常短促而缓慢的步骤进行作用。”
+
+如果这是准确的，我们应该在化石记录中找到物种的中间形态，为种系渐变论提供证据。让我们以鲸鱼为例，它们大约在五千万年前从一种名为巴基鲸的四足陆生脊椎动物进化而来。图9.1列出了巴基鲸的一些后代，包括走鲸、雷明顿鲸、原鲸和矛齿鲸，它们最终进化成了今天的鲸鱼和海豚。鉴于鲸鱼的巨大体型，我们应该找到成百上千个中间形态。问题是，我们没有找到。例如，雷明顿鲸和原鲸之间的中间化石在哪里？我们有相当不错的化石记录帮助古生物学家拼凑出鲸鱼进化的谜题，但我们并没有大部分过渡形态。
+
+9.1 鲸鱼的进化：其他过渡形态在哪里？
+来源：经科学图片库授权使用。
+
+我在第五章讨论了长颈鹿的进化。如果自然选择随着时间的推移淘汰了脖子较短的长颈鹿，而脖子较长的个体是逐渐进化来的，那为什么我们没有发现脖子从极短到极长范围的长颈鹿化石呢？既然我们没有找到，又怎么能断言进化是逐渐而非突然进行的呢？
+
+智慧与诚实是相互独立的特质——拥有其一并不能保证拥有另一项。然而，达尔文是罕见的兼具这两种品质的天才，他极其诚实。他专门写了一整章来讨论其理论可能存在的问题。他在《物种起源》第六章“理论的难点”开头就指出了自然选择思想的一个明显问题。他认为，既然自然选择会逐渐淘汰那些适应度稍差的形态，那么灭绝和自然选择必然是同时运作的。因此，逻辑上必然存在过无数无法适应环境的过渡形态。但是，正如达尔文自己指出的，过渡化石很少被发现。他承认，不完整的化石记录给任何试图证明物种逐渐进化的人带来了重大障碍。
+
+但他有一个解决方案：他断言地质记录是不完整的。他说：“地质记录是不完整的，这一事实将在很大程度上解释为什么我们找不到连接所有灭绝生物和现存生物的无尽变种，以及它们之间最精细的渐变阶梯。任何拒绝接受关于地质记录本质的这些观点的人，都应当正当地拒绝我的整个理论”（重点为我所加）。
+
+他认为过渡形态的缺失对自然选择理论具有毁灭性影响，以至于他在《物种起源》第九章专门讨论这个问题，恰如其分地命名为“论地质记录的不完备”。他提出了几个令人信服的论据来论证：只有地球的极小部分经过地质勘探；只有软体部分的生物无法保存；如果贝壳和骨骼沉入没有沉积物堆积的海底，它们会消失；许多物种（如陆生贝类）存在于遥远的过去，但几乎找不到任何化石。
+
+如果达尔文关于渐变论是正确的，古生物学家应该能在数百万年的化石记录中见证逐渐的变化。但这并非他们的发现。相反，在达尔文之前和之后，大量古生物学家发现，大多数物种在化石记录中突然出现，然后保持不变，直至灭绝。
+
+休·福尔克纳（1808–1865）是十九世纪最伟大的古生物学家之一。他1830年作为外科医生前往印度，但大部分时间都在挖掘化石。他在喜马拉雅山南部发现了古老的化石层，并挖掘出乳齿象和剑齿虎等几种已灭绝的物种。他还研究了欧洲大象的化石。达尔文对福尔克纳极为敬重，并于1859年11月寄给他一本《物种起源》初版，并附上私人便条。
+
+福尔克纳发现，大多数化石物种在极长的时期内保持稳定，即使经历了重大的环境变化。在1863年的专著中，他描述了猛犸象经历过极端的气候变化后，不禁思考：“如果物种如此不稳定，如此易受此类影响而发生突变，那么那种已灭绝的形式为何如此显著地作为稳定性的纪念碑屹立不倒？”
+
+1903年，著名古生物学家H. F. 克莱兰在泥盆纪化石（距今4.2亿至3.6亿年前）中观察到类似的停滞现象。他指出：“仔细检查从最低到最高所有区域的化石，未能揭示任何进化变化，可能除了前凸双腔贝……腕足动物、腹足动物和双壳类动物的进化要么根本不发生，要么发生得非常稀少。”许多其他古生物学家也一直在做类似的观察。
+
+尽管他们的实地观察似乎指向相反方向，但这些实践者中没有人挑战达尔文的渐变论主张。理论与实践的紧张关系最终在1972年被打破，当时奈尔斯·埃尔德里奇和斯蒂芬·杰伊·古尔德发表了他们著名的论文《间断平衡：种系渐变论的一种替代方案》。
+
+他们声称，生物世界的历史可以被视为由长期的稳定期组成，其间穿插着新物种出现的短暂时期。用作者的话说：“间断平衡的核心主张是，绝大多数物种——正如它们在化石记录中的解剖学和地理学历史所证明的那样——起源于地质瞬间（间断点），然后在它们漫长的存在期内持续处于停滞状态。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">Gould and Eldredge were admonishing their peers for confusing an “absence of evidence” with “evidence of absence.” Gould (who died in 2002) was a paleontologist at Harvard University and conducted extensive research on West Indian land snails. Eldredge, now curator emeritus at the American Museum of Natural History, specialized in trilobites (which are now extinct). Paleontologists study fossils to learn about an organism’s evolutionary history and its relationship to other organisms and its environment. In fact, until the rise of modern DNA extraction techniques, paleontology was the only science capable of studying ancient life. But even the latest and most modern DNA extraction techniques can study samples of only up to about a million years old.5 So fossils, and hence paleontology, are our only reliable window onto the ancient past.
+Gould and Eldredge’s brilliant insight pointed out what may seem obvious now: The gaps in the fossil record were not a bug but a vital feature of the evolution of species. They declared that when paleontologists found a sudden change in the morphology of a particular species, they should assume that there had been a sudden change in morphology and not make the Darwinian error of trying to explain away this sudden change by invoking gaps in the fossil record.
+According to them, the absence of evidence of intermediate forms is evidence of their absence. Therefore, there was no need to take refuge in the theory of the imperfection of the fossil record. If a brief punctuation followed a prolonged stasis, we should not find any intermediate forms because there aren’t any.
+In their seminal article, Gould presented evidence of sudden evolutionary change after long periods of stasis by analyzing the evolution of a Bermudan snail, Poecilozonites bermudensis, over three hundred thousand years into three species: P.b. fasolti, P.b. sieglindae, and P.b. bermudensis. He showed that sharp morphological differences in these three species, as measured by differences in color, the form of their spire, the thickness of the shell, and the shape of the apertural lip, did not arise gradually. Instead, they came about owing to a punctuation event of allopatric speciation (i.e., a new species arising as a result of the geographic isolation of a small group of individuals from their parent species). Similarly, Eldredge outlined the evolutionary history of a trilobite species, Phacops rana, and presented evidence for the drastic changes in eye morphology of the various subspecies of P. rana arising out of punctuation events, not through gradual evolution.
+After Eldredge and Gould published their pathbreaking article on the fossils of snails and trilobites, scientists discovered more examples of evolution through punctuated equilibrium across all of life, including animals, plants, bacteria, and even viruses (although whether viruses are “life” is debatable).
+Box 9.1: There is no contradiction here
+Punctuated equilibrium seems to contradict the observations made by Kurtén and others as described in the previous chapter. Kurtén had shown that the rate of change in organisms is higher over the short term and is lower over the long term. But the theory of punctuated equilibrium asserts that living things change dramatically (i.e., create new species) after a long period of stasis. What’s going on? If you read carefully, you will notice that these theories actually complement each other.
+Kurtén’s observations were for a single species over thousands of years, and the changes observed were within reasonable limits. The Grants’ beak measurements were spread over a few decades, and the variations in beak size and shape weren’t so drastic as to warrant the creation of a new species. Eldredge and Gould, on the other hand, discuss the process of the creation of a new species after the original species has been in stasis for millions of years. Both views are correct—they are explaining different phenomena over different periods.
+In his research article published in 1985, A. L. A. Johnson studied thirty-four scallop species from the Jurassic period (from 200 to 145 million years ago) and found copious evidence of stasis as well as an example of abrupt speciation.6 He concluded, “One case . . . was discovered where . . . the sudden appearance of a descendant form could fairly be ascribed to rapid evolution (within no more than one million years). Inconclusive evidence of gradual change over some twenty-five million years was discovered in one of the other lineages studied. But in the remaining thirty-two lineages, morphology appears to have been static.”
+One of the most extensive documentations of punctuated equilibrium started as a research project to refute it! Alan H. Cheetham of the Smithsonian National Museum of Natural History in Washington, DC, is an expert on bryozoan fossils. (Bryozoa are tiny animals that look like worms and have tentacles on the outside; they live in colonies that resemble trees or flowers.) He started his work on the bryozoan species Metrarabdotos to illustrate gradualism.7 Cheetham measured forty-six characters in seventeen species of Metrarabdotos over fifteen million years. He found that eleven of the seventeen species persisted unchanged for two to six million years, followed by a punctuational change over 160,000 years. Cheetham emphasized “the remarkably clear-cut evidence for a punctuated evolutionary pattern in these Metrarabdotos species.”
+Many such studies have found evidence of punctuated equilibrium. One of the most interesting—and conclusive—was reported in the Proceedings of the Royal Society in 2008 by Tiina Mattila and Folmer Bokma from Umeå University in Sweden.8 Instead of examining fossil records, Mattila and Bokma analyzed the change in body mass of 2,143 mammal species of a total of 4,510 extant species to assess whether their evolution was punctuated or gradual. They concluded, “Our Bayesian estimates from mammals as well as separate sub-clades such as primates and carnivores suggest that gradual evolution is responsible for only a small part of the body size variation between mammal species.” Their study confirmed that punctuated equilibrium played a big part in the evolution of most mammal species’ body mass. Most research on punctuated equilibrium—including that by Gould and Eldredge—typically focuses on one species at a time. In contrast, Mattila and Bokma showed that the theory applied to the entire mammalian clade.
+Gould and Eldredge’s essay has turned out to be highly controversial and has many supporters and detractors.9 Many researchers have found evidence of punctuated equilibria in species evolution, and others haven’t found any. The debates are fierce and even personal—the gradualists have called the punctuated equilibria principle “evolution by jerks,” and the other side has countered by calling the gradualist principle “evolution by creeps”!10 So much for scientific decency.
+One of the most significant sources of controversy is their use of the words “rapid” and “sudden” when discussing the birth of new species. The critics of punctuated equilibria accuse Gould and Eldredge of reviving the discredited mutationism theory of Hugo de Vries and the macromutation theory of Richard Goldschmidt.11 Goldschmidt, a German-born American zoologist, argued in his book The Material Basis of Evolution in 1940 that species were created not by accumulating minor variations but through significant mutations (called saltations) in a single generation. However, the scientific community has discredited this theory of sudden evolution, derisively termed the “theory of hopeful monsters.”
+Gould has rightly argued in many of his writings that punctuated equilibrium is not saltation. The theory was written for paleontologists who understand that “instantaneous” refers to geological time, spanning tens of thousands of years, and should not be confused with human time scales. In his book The Structure of Evolutionary Theory, Gould uses the analogy of human gestation: “As the gestation time of a human being represents 1 to 2 percent of an ordinary lifetime, perhaps we should permit the same general range for punctuational speciation relative to later duration in stasis. At an average lifetime of four million years, a 1-percent criterion allows forty thousand years of speciation.”
+A bizarre unintended consequence of the brouhaha among biologists was that the creationists crashed their party!12 Creationists have always used the lack of intermediate forms in the fossil record as evidence that Darwin’s theory is wrong. The idea of punctuated equilibrium seemed to substantiate their claim when Gould and Eldredge emphasized that “stasis is data.” Creationists believe that animals and plants emerge suddenly in the fossil record because they were created instantaneously by God; thus, they took refuge in the theory of punctuated equilibrium, which seemed to affirm the sudden emergence of species.
+Gould was scathing in his takedown of the creationists with the following choice words: “ . . . punctuated equilibrium provides an even easier target for this form of intellectual dishonesty (or crass stupidity if a charge of dishonesty grants them too much acumen), no one should be surprised that our views have become grist for their mills and skills of distortion.”
+I am not an evolutionary biologist, but as I said in the introduction, one of the skills I possess is the ability to read. I know that the famous biologists and philosophers of biology like Richard Dawkins and Daniel Dennett belittle punctuated equilibrium and claim that it’s barely a wrinkle on Darwin’s theory. Maybe.</div>
+            <div class="text-block simplified-text">古尔德和埃尔德里奇曾告诫同行，切勿将"证据缺失"与"不存在证据"混为一谈。古尔德（2002年逝世）作为哈佛大学古生物学家，对西印度陆地蜗牛进行过深入研究。埃尔德里奇现任美国自然历史博物馆名誉馆长，专攻三叶虫（现为灭绝物种）。古生物学家通过化石研究生物体的演化历程及其与其他生物体、生存环境的关系。事实上，在现代DNA提取技术兴起之前，古生物学是研究古生物的唯一科学手段。即便最先进的DNA提取技术也只能分析距今约百万年内的样本。因此，化石及古生物学成为我们探索远古的唯一可靠窗口。
+
+古尔德与埃尔德里奇的卓越洞见揭示了如今看似浅显的道理：化石记录的空白并非缺陷，而是物种演化的关键特征。他们主张，当古生物学家发现某物种形态突然变化时，应直接认定形态确实发生了突变，而非重蹈达尔文主义覆辙——用化石记录缺失来辩解这种突变。
+
+他们认为，过渡形态证据的缺失恰恰证明其不存在。因此无需以化石记录不完善作为托辞。若漫长停滞期后出现短暂突变，我们本就不会发现过渡形态——因其根本不存在。
+
+古尔德在开创性论文中，通过分析百慕大蜗牛（Poecilozonites bermudensis）三十万年间演化为三个亚种（P.b. fasolti, P.b. sieglindae 和 P.b. bermudensis）的过程，证实了长期停滞后的突发演化。研究表明，这三个亚种在壳色、螺旋形态、壳壁厚度及壳唇形状等方面的显著形态差异并非渐变产生，而是源于异域物种形成事件（即小群体因地理隔离脱离母种群形成新物种）。同样，埃尔德里奇梳理三叶虫物种Phacops rana的演化史，证明其多个亚种眼部形态的剧变源自突变事件而非渐进演化。
+
+自蜗牛与三叶虫化石研究论文发表后，科学家在动物、植物、细菌乃至病毒（尽管病毒是否属于"生命"尚有争议）中发现了更多间断平衡演化的例证。
+
+**框9.1 无矛盾性**
+间断平衡理论看似与库尔腾等学者前一章的观察相悖。库尔腾证明生物体短期变化速率高而长期变化速率低，但间断平衡论宣称生物经历长期停滞会发生剧变（即形成新物种）。矛盾何在？细读可知，二者实为互补。
+
+库尔腾观测的是单一物种数千年内的变化，其变异幅度在合理范围内。格兰特夫妇对雀鸟喙型的数十年观测中，喙部尺寸形态变化亦未达到形成新物种的程度。而埃尔德里奇与古尔德探讨的，是原始物种经历数百万年停滞后的新物种形成过程。两种观点均正确——它们诠释的是不同时间尺度的不同现象。
+
+约翰逊在1985年发表的研究中，分析侏罗纪（2亿至1.45亿年前）34种扇贝化石，发现大量停滞证据及一个突然物种形成案例。他总结道："其中一例...可明确归因于快速演化（不超过百万年）。另一谱系中发现约两千五百万年渐进演化的非决定性证据。其余三十二个谱系形态均保持静止。"
+
+对间断平衡最详实的记录，竟始于一项试图证伪该理论的研究！史密森尼国家自然历史博物馆的契塔姆是苔藓虫化石专家。（苔藓虫为微型触手动物，形似蠕虫，群居呈树状或花状。）他选取Metrarabdotos属苔藓虫本欲论证渐进主义，却在测量十五百万年间十七个物种的四十六项特征后发现：其中十一个物种保持两至六百万年不变，随后在十六万年间发生突变。契塔姆强调："这些Metrarabdotos物种为间断演化模式提供了极其清晰的证据。"
+
+大量研究支持间断平衡理论。最具说服力的成果之一来自瑞典于默奥大学的马蒂拉与博克马——他们2008年在《皇家学会学报》发表论文，通过分析4510种现存哺乳动物中2143种的体重演化模式（非依赖化石记录），得出结论："贝叶斯估计显示，哺乳动物（包括灵长类、食肉类等子类群）的体型差异仅有极小部分源于渐进演化。"该研究证实间断平衡在多数哺乳动物体型演化中占据主导。以往研究（含古尔德与埃尔德里奇）多聚焦单一物种，而此项研究证明该理论适用于整个哺乳动物演化支。
+
+古尔德与埃尔德里奇的论文引发巨大争议，拥趸与反对者甚众。部分学者发现物种间断平衡演化的证据，另一些则毫无所获。争论激烈甚至演变为人身攻击——渐进主义者讥讽间断平衡论为"抽搐式进化"，对方则回敬渐进主义为"蠕动式进化"！科学尊严荡然无存。
+
+核心争议点在于他们使用"快速"、"突然"描述新物种诞生。批评者指责二人复活了德弗里斯遭摒弃的突变论与戈德施密特的大突变理论。这位德裔美籍动物学家在1940年《进化的物质基础》中主张：物种形成非微小变异积累所致，而源于单代重大突变（即飞跃）。但科学界已否定这种被戏称为"有希望的怪物"的突变理论。
+
+古尔德在多部著作中澄清：间断平衡绝非飞跃论。该理论面向的古生物学家深知"瞬间"指地质时间尺度（数万年），不可与人类时间尺度混淆。他在《进化理论的结构》中以人类妊娠作比："人类妊娠期约占生命周期的1%-2%，我们或可允许物种形成期与后续停滞期保持相近比例。以物种平均存续四百万年计，1%标准意味着四万年的物种形成期。"
+
+这场学术论战引发意外后果——创世论者竟借机闯入！他们历来以化石记录缺乏过渡形态否定达尔文理论。当古尔德强调"停滞即是实证"时，创世论者认为间断平衡论印证了其观点：动植物化石突然出现证明上帝瞬时创造万物。
+
+古尔德以犀利言辞驳斥创世论者："...间断平衡论为这类智力欺诈（若谴责欺诈抬举了他们，姑称愚昧）提供了更易攻击的靶标，我们的观点沦为对方曲解伎俩的素材实不足奇。"
+
+身为进化生物学外行，但如前言所述，我具备阅读能力。深知道金斯、丹尼特等著名生物学家与哲学家贬低间断平衡论，视其为达尔文理论细枝末节的修正。或许如此。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">The issue for me is not whether Gould and Eldredge proposed something revolutionary, but whether what they offered was a new way to look at evolution and whether it stands up to empirical analysis. A search of “punctuated equilibrium” on Google Scholar (which searches only for scientific articles) throws up more than 85,000 results. Not all may be relevant, but a glance through the first few pages of these results clearly shows that scientists have gathered enough evidence for this phenomenon over the years. To a layperson like me, it seems that the theory of punctuated equilibrium did move Darwin’s theory forward, as the research articles described in this chapter demonstrate.
+When I first read about the theory many years ago, my first thought was that life was all about not just biological life but life. No wonder a two-hour movie can capture—or seem to capture—the entire life of Mahatma Gandhi, Frida Kahlo, Muhammad Ali, or Coco Chanel. Moviemakers use punctuated equilibria to eliminate the stasis from the lives of heroes and celebrities, highlighting only the punctuations. History books apply the same technique to chronicle the life of an entire civilization over thousands of years by compressing narratives into a few hundred pages. On my desk lies a copy of Duff McDonald’s book The Firm: The Story of McKinsey and Its Secret Influence on American Business, which compresses almost a century of the consulting firm’s existence into a mere four hundred pages. Now that I have seen the theory, I can no longer unsee it; it seems to apply everywhere I look. But let me not get carried away.
+Let’s return to investing. Here are my main investing lessons from the theory of punctuated equilibrium:
+1. Business stasis is the default, so why be active?
+2. Stock price fluctuation is not business punctuation.
+3. Take advantage of the rare stock price punctuations to create a new “species.”
+Business Stasis Is the Default, so Why Be Active?
+In the business world, as in the organic world, stasis is the default.
+Great businesses stay great. Bad businesses remain bad.
+Yes, yes, I know. Off the top of your head, you can name an incredible business in deep trouble (so can I: SoftBank) and a lousy business that has revived from the dead (so can I: SoftBank). This assertion about business stasis is not about starting a battle of anecdotes.
+My contention is not that counterexamples don’t exist but that we should be more concerned about dominant relative frequency, an apt term I learned from Gould’s magnum opus, The Structure of Evolutionary Theory. He argues that punctuated equilibrium “does not merely assert the existence of a phenomenon, but ventures a stronger claim for a dominant role as a macroevolutionary pattern in geological time.” Similarly, my three-decade-long journey in the corporate world has led me to believe that great businesses stay great and that, more often than not, bad businesses stay bad.
+Allow me to clarify the meaning of some words. “Stasis” does not mean “static.” A corner store in your neighborhood selling the same products since you were a toddler is static. The corner store hasn’t changed. Dollar General, a variety store chain that sells deeply discounted products across more than 16,000 stores and grew its revenue two and a half times between 2011 and 2021 to $33 billion, is in stasis. The character of Dollar General hasn’t changed.
+I am excluding industries in which “greatness” and “badness” haven’t had time to settle. These include areas like AI, space travel, autonomous vehicles, food delivery, WeWork clones, quantum computing, nanotechnology, and other sectors into which substantial venture capital investments are pouring.
+I wish I could apply deductive reasoning (“All humans are mortal; Socrates is a human; therefore Socrates is mortal”) to prove without doubt that the great and not-so-great businesses stay in stasis over long periods. But, unfortunately, I cannot find such a route, so as usual, let me take the inductive path by presenting you with multiple strands of evidence.
+I have divided this section into four parts, each of which separately asserts that great businesses remain outstanding and that inadequate businesses continue to underperform. Of course, none of these sections makes an infallible argument (hey, this is investing, not linear algebra). But, taken together, I hope to make a convincing case for the third leg of our investment philosophy: Don’t be lazy—be very lazy.
+Part I: Proof from Personal Experience
+Don’t you detest arguments that take refuge in personal anecdotes? We Homo sapiens can reason—rationalize—almost anything. We have spotted UFOs, witnessed election fraud, not worn masks during the COVID-19 crisis, and believed that baseball is somehow superior to cricket.
+However, in this case, in which I need to show that stasis is the default for businesses, I ask that you give me some leeway for two reasons. First, I have been in the business world for almost thirty-five years, and at some point, anecdotes can transform into patterns. Second, this belief is not the result of armchair philosophizing but the very foundation of how we manage money for our clients and for ourselves. Almost all my wealth is in my fund. Not believing in the right way to manage money will cost me serious money.
+My first job was as a production management trainee at Unilever in India in 1989. Unilever had, and I believe continues to have, an exceptional training program for its new managers. During my first year, I circulated through all the critical departments of Brooke Bond, a Unilever subsidiary that manufactured and sold tea and coffee. I remember my four-week stint at the sales office in the city of Coimbatore in South India. Every day, I went to the market with the sales officer, who should have been called the no-sales officer. On paper, his job was to sell tea, but in reality, the dominance of Brooke Bond’s brands compelled him to ration the orders to the various retailers clamoring for more tea. The respect and awe he commanded would have shamed many local political leaders.
+Unilever has maintained its preeminent position in tea and dozens of other consumer products in India over many decades. It was exceptional in 1989, and it is exceptional today. For example, Unilever’s subsidiary listed in India, Hindustan Unilever, has a market value of almost half that of its parent listed in the United Kingdom. The same phenomenon has been confirmed across many other product and service categories in India over more than two decades: toothpaste (Colgate), chocolate (Nestlé), cars (Maruti Suzuki), innerwear (Page), consumer electricals (Havells), biscuits (Parle, Britannia), hair oil (Marico), paint (Asian Paints, Berger), tires (MRF), diagnostic services (Dr Lal), IT outsourcing (TCS, Infosys), kitchen appliances and cookware (Hawkins, TTK Prestige), herbal supplements (Dabur), and many more.
+Whichever country you are in, I bet you may have noticed the same phenomenon in many industries: Most of the leading players of the 1990s or early 2000s are the leaders today. The new-age internet businesses have taken this continued dominance to a level unseen in almost any other era, whether Amazon, Facebook, Google, Twitter, or Uber. Stasis is the default.
+Since great businesses remain great for an eternity, everyone knows about them. Investors bid their prices up, and rightly so. The ten-year average price/earnings (PE) multiples of some of the leading consumer businesses in India are astronomical. For example, Asian Paints, 56; Colgate India, 43; Dabur, 44; Hindustan Unilever, 51; and Page Industries, 65. As price-sensitive investors, we should not buy these businesses since their valuations would almost always be too high for us. And we don’t. From the list provided two paragraphs earlier, the only companies we have been able to buy since 2007 are Page, Havells, and TTK Prestige. Our window of opportunity for buying these three was only two to three months over almost fifteen years—a punctuation event that lasted just 1 to 2 percent of this period.
+There are very few great businesses, and they are almost always unbuyable. Hence, we buy very rarely, and when we do, we buy a lot. So, having purchased these winners, given the stasis of their success, why should we sell?
+Part II: The Fate of the Fortune 500
+I want to revisit the comparison of the Fortune 500 lists from 1955 and 2015 detailed in chapter 8. We saw that a plausible case could be made for 40 to 45 percent of the Fortune 500 businesses of 1955 maintaining their excellence for sixty years. Of course, this is not perfect stasis (nor is organic life in pure stasis, as we saw earlier in this chapter), but it sure is a pretty good case of long-term stasis.
+Thus, if we were an owner in a collection of these excellent businesses—and I know that is a very big “if”—it would have made no sense to sell and leave. As a portfolio, not necessarily individually, the businesses in this group should have done well for us. With a reasonable degree of confidence, we can state that at least 40 to 45 percent of the largest five hundred U.S. businesses in 1955 performed exceptionally well over sixty years. Stasis was the default for this group of companies.</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的段落：
+
+对我来说，问题不在于古尔德和埃尔德里奇是否提出了革命性的东西，而在于他们提供的是否是一种看待进化的新方式，以及它是否能经得起实证分析的检验。在谷歌学术（仅搜索科学文章）上搜索“间断平衡”会出现超过85,000条结果。并非所有都相关，但浏览结果的前几页清楚地表明，多年来科学家们已经为这一现象收集了足够的证据。对我这样的外行来说，间断平衡理论似乎确实推动了达尔文理论的发展，正如本章所述的研究文章所展示的那样。
+
+多年前我第一次读到这个理论时，首先想到的是生命不仅仅是生物意义上的生命，而是广义的生命。难怪一部两小时的电影就能捕捉——或似乎能捕捉——圣雄甘地、弗里达·卡罗、穆罕默德·阿里或可可·香奈儿的整个一生。电影制作人运用间断平衡原理，剔除英雄和名人生活中的停滞期，只突出那些突变时刻。历史书也采用同样的手法，将跨越数千年的整个文明的叙事压缩成几百页，来记述其生命历程。我的书桌上放着一本达夫·麦克唐纳的书《麦肯锡之道：麦肯锡公司及其对美国商业的秘密影响》，它将这家咨询公司近一个世纪的存在压缩成区区四百页。既然我了解了这个理论，我就无法再视而不见了；它似乎在我目光所及之处都适用。但我还是不要跑题了。
+
+让我们回到投资上来。以下是我从间断平衡理论中得出的主要投资经验：
+1.  商业稳态是常态，为何要折腾？
+2.  股价波动并非商业突变。
+3.  利用罕见的股价突变创造新“物种”。
+
+**商业稳态是常态，为何要折腾？**
+
+在商业世界，如同在有机世界，稳态是常态。
+伟大的企业保持伟大。糟糕的企业依旧糟糕。
+
+是的，是的，我知道。你马上就能想到一家陷入严重困境的出色企业（我也能：软银），和一家起死回生的糟糕企业（我也能：软银）。关于商业稳态的论断，并非要挑起一场口水战。
+
+我的论点不是反例不存在，而是我们更应该关注主导的相对频率——这是我从古尔德的巨著《进化理论的结构》中学到的一个贴切的术语。他认为间断平衡“不仅仅是断言一种现象的存在，而是大胆地主张其在地质时间尺度上作为宏观进化模式的主导作用。” 同样，我在企业界长达三十年的经历让我相信，伟大的企业会持续伟大，而糟糕的企业多半会持续糟糕。
+
+请允许我澄清一些词语的含义。“稳态”不等于“静止不变”。你家街角那家自你蹒跚学步起就卖同样商品的杂货店是静止不变的。街角小店没有改变。而Dollar General，一家在超过16,000家门店销售深度折扣商品的杂货连锁店，其收入在2011至2021年间增长了两倍半，达到330亿美元，它就处于稳态。Dollar General的特质没有改变。
+
+我排除那些“伟大”和“糟糕”尚未有时间沉淀下来的行业。这些领域包括人工智能、太空旅行、自动驾驶汽车、食品配送、WeWork模仿者、量子计算、纳米技术以及其他有大量风险资本涌入的行业。
+
+我希望能运用演绎推理（“凡人皆有一死；苏格拉底是人；故苏格拉底会死”）来毫无疑问地证明伟大和不那么伟大的企业在长时期内都保持稳态。但不幸的是，我找不到这样的路径，所以和往常一样，让我采取归纳法，向你们展示多方面的证据。
+
+我将这一部分分为四个小节，每一节都分别阐述伟大的企业持续卓越，而平庸的企业持续表现不佳。当然，没有哪一节能提供无懈可击的论证（嘿，这是投资，不是线性代数）。但综合起来，我希望能为我们的投资哲学第三支柱提供一个令人信服的案例：不要懒惰——要极度无为。
+
+**第一部分：来自个人经验的证明**
+
+难道你不讨厌那些诉诸个人轶事的论点吗？我们智人几乎可以为任何事情找到理由——或者说合理化。我们看到过不明飞行物，目击过选举舞弊，在新冠危机期间不戴口罩，还相信棒球不知怎的就比板球高级。
+
+然而，在这个我需要证明稳态是企业常态的情况下，我请求你给我一些余地，原因有二。首先，我在商界已近三十五年，在某些时候，轶事可以转化为模式。其次，这一信念并非纸上谈兵的结果，而是我们为客户和自己管理资金的根本基础。我几乎所有的财富都在我的基金里。不相信正确的资金管理方式会让我损失惨重。
+
+我的第一份工作是1989年在印度联合利华担任生产管理培训生。联合利华过去有，我相信现在依然有，一个针对新经理的卓越培训项目。第一年，我在布鲁克邦德（联合利华旗下生产和销售茶与咖啡的子公司）所有关键部门轮岗。我记得我在印度南部哥印拜陀市销售办事处为期四周的经历。每天，我都和那位本应被称为“无销售专员”的销售专员一起去市场。理论上，他的工作是销售茶叶，但现实中，布鲁克邦德品牌的统治地位迫使他只能向那些吵着要更多茶叶的零售商们限量分配订单。他所赢得的尊重和敬畏会让许多当地政客自愧不如。
+
+几十年来，联合利华在印度茶叶和数十种其他消费品领域一直保持着卓越地位。它在1989年出类拔萃，如今依然如此。例如，联合利华在印度的上市子公司印度斯坦联合利华，其市值几乎达到其英国母公司市值的一半。在印度其他许多产品和服务类别中，同样的现象在过去二十多年里也得到了印证：牙膏（高露洁）、巧克力（雀巢）、汽车（马鲁蒂铃木）、内衣（Page）、消费电器（Havells）、饼干（Parle, Britannia）、发油（Marico）、涂料（亚洲涂料、Berger）、轮胎（MRF）、诊断服务（Dr Lal）、IT外包（TCS, Infosys）、厨房电器和炊具（Hawkins, TTK Prestige）、草药补充剂（Dabur）等等。
+
+无论你在哪个国家，我敢打赌你可能已经在许多行业注意到同样的现象：大多数20世纪90年代或21世纪初的领先者，今天仍然是领导者。新时代的互联网企业将这种持续的统治地位提升到了几乎任何其他时代都未曾见过的水平，无论是亚马逊、脸书、谷歌、推特还是优步。稳态是常态。
+
+既然伟大的企业永远保持伟大，那么所有人都知道它们。投资者推高了它们的价格，这理所应当。印度一些领先消费品企业的十年平均市盈率（PE）高得惊人。例如：亚洲涂料（56）、高露洁印度（43）、Dabur（44）、印度斯坦联合利华（51）、Page Industries（65）。作为对价格敏感的投资者，我们不应买入这些企业，因为它们的估值对我们来说几乎总是太高。我们也没买。从前面两段列出的公司名单中，自2007年以来我们能买到的公司只有Page、Havells和TTK Prestige。我们买入这三家公司的机会窗口在近十五年中只有两到三个月——一次仅占此时间段1%到2%的突变事件。
+
+伟大的企业非常稀少，而且几乎总是买不到。因此，我们极少出手，而一旦出手，就大笔买入。那么，既然买入了这些赢家，考虑到其成功的稳态，我们为何要卖出呢？
+
+**第二部分：财富500强的命运**
+
+我想重温一下第8章中详述的1955年和2015年财富500强名单的对比。我们看到，有理由认为1955年财富500强企业中40%到45%的企业在六十年间保持了卓越。当然，这并非完美的稳态（有机生命也非纯粹的稳态，正如我们在本章前面看到的），但这确实是一个相当好的长期稳态案例。
+
+因此，如果我们是一批这类卓越企业的所有者——我知道这是一个非常大的“如果”——那么卖出并离开就毫无意义。作为一个投资组合（不一定是个体），这个群体中的企业本应为我们带来良好收益。我们可以相当有把握地说，1955年美国最大的五百家企业中至少有40%到45%在六十年间表现异常出色。稳态是这群公司的常态。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">Here is another way to look at stasis. Let’s shine a light on the businesses that did not make it. We saw that at least 40 percent of businesses (about two hundred) from the 1955 list maintained their excellence for sixty years, until 2015. How many firms, both private and public, in 1955 could have made it on to the Fortune 500 list in 2015 but did not? Would ten thousand be a fair estimate? That is probably a highly conservative guess because businesses would have had sixty years to make it onto the list, and we are not counting the thousands of businesses created after 1955 that could have made it to the list in 2015. Anyway, let’s stick to ten thousand. Of these ten thousand in 1955 that could have made it to the 2015 Fortune 500 list, only three hundred did (the remaining two hundred had stayed on the list for sixty years). An apparent 3 percent “success rate.” The actual number is probably closer to 1 to 2 percent or even lower. Thus, 97 to 99 percent of the not-so-great businesses could not “succeed” over sixty years. Stasis is the default.
+I know I have been unfair here. To count listing among the Fortune 500 as a measure of “success” is undoubtedly an unreasonable demand. Many of the ten thousand businesses of 1955 may have achieved great success without necessarily becoming too large—they may have focused much more on profits or may have been merged or acquired, creating massive value for shareholders. My intention here was to demonstrate directionally that great businesses remain great much longer than we think. The probability that a not-so-great business becomes excellent over time is infinitesimal.
+Our investment strategy is thus quite simple:
+1. Since the vast majority of businesses do not become great, our default strategy is not to buy. We are lazy buyers.
+2. We buy only if we can find a high-quality business that can stay in stasis over decades. If we believe we have such a business, we don’t sell. We are very lazy sellers.
+Part III: A Conclusion from Climbing Concentration
+In an article from the July 2019 issue of Review of Finance, Grullon, Larkin, and Michaely ask, “Are U.S. industries becoming more concentrated?”13 It turns out to be a rhetorical question: Of course they are. The authors demonstrate this with copious data. Their article shows two trends occurring from 1997 to 2014 that seem to reinforce each other: (1) Since the 1990s, in over three-quarters of U.S. industries, the market share of the leading players has increased, and (2) these companies show higher profit margins and provide higher returns to shareholders, which, in turn, allows them to increase their market power even more.
+While the article does not state so explicitly, it is also evident that the market power of smaller and less powerful businesses has declined over this period. The authors show that not only did the revenue share of the four largest public and private companies in almost every industry increase but also that the average size of the leading companies also tripled in real terms during the period of measurement.
+And this is not a recent phenomenon. It turns out that the specter of increasing market power among the more extensive and more successful businesses has haunted the corporate world since the beginning of the twentieth century. In 1977, Leslie Hannah and J. A. Kay published Concentration in Modern Industry: Theory, Measurement, and the U.K. Experience. Hannah and Kay demonstrate the inexorable rise of the biggest firms’ market share in the United States and the United Kingdom from the early 1900s to the mid-1970s. The first graph in the book tracks the share of the largest hundred firms in manufacturing net output during this period. Over seventy years, the market share of these firms rose from 15 percent to 50 percent in the United Kingdom and from 20 percent to more than 30 percent in the United States. Hannah and Kay claimed increasing market power (which cuts across industries) and not increasing industry concentration (which measures the increasing power of companies within an industry). Ideally, I would like to demonstrate greater industry concentration to make my case, but it is still instructive to note the longer-term success of the largest firms in the United States and the United Kingdom.
+A January 2019 OECD working paper titled “Industry Concentration in Europe and North America” presents evidence for the increasing power of more successful firms quite emphatically.14 Between 2001 and 2012, the largest 10 percent of companies in the average industry in ten European countries increased their market share by 2 to 3 percentage points. In the United States, the increase in market share of the leading firms of the average industry between 2000 and 2014 was 4 to 8 percentage points. The paper also clarifies that the numbers were not driven by digital-intensive sectors (e.g., search engines, social media, e-commerce) but by old-world manufacturing and services firms.
+In March 2016, the Economist magazine’s cover bemoaned, “Winners Take All: Why High Profits Are a Problem for America.”15 Of course, I am not qualified to pass judgment on the appropriateness of the sky-high profits of giant corporations, but I do want to quote the magazine’s view on the stasis of businesses.
+The article discusses three key reasons—technology, globalization, and decline in trade union membership—for profit accumulation among the more successful firms and then follows with the following: “None of these accounts though, explain the most troubling aspect of America’s profit problem: its persistence.” It mentions that a highly profitable firm in 2003 had an 83 percent chance of being very profitable in 2013. A powerful visual plot of the share of the top four companies in 893 industry sectors from 1997 to 2012 clearly shows the increasing power of larger businesses.
+The summary of all this research on industry and market concentration is as follows:
+1. There are a few large and successful firms in most industries.
+2. These successful companies are becoming even more successful.
+3. Weak companies are getting weaker.
+Numbers 1 and 2 are direct conclusions of the research, and number 3 is an indirect but logical outcome of 1 and 2.
+As I wrote earlier, our investing experience in India is not different from what research from the United States, the United Kingdom, or Europe says. Our investee companies have been gaining share over the competition over decades. Some examples are Berger in the paint industry, Supreme in plastic pipes, Voltamp in industrial transformers, Page in innerwear, Havells and V-Guard in consumer electricals, Amara Raja in batteries, Info Edge in job boards, MRF in tires, and Ratnamani in specialty steel pipes.
+In India, too, great businesses continue to be great, and poor businesses continue to suffer. The observation that “stasis is the default” does not respect national boundaries.
+As permanent owners, we want to own successful businesses that will maintain their rewarding run. That sounds straightforward, but the problem is that there are very few successful businesses. Throwing a dart at the business landscape will land us in real trouble. So we don’t. We invest rarely.
+We should not sell once we own a “winner” like Havells or Ratnamani since it will likely keep gaining market share. So we don’t. We sell even more rarely than we buy.
+Part IV: The Narrative of a Ninety-Year Study
+In May 2018, Hendrik Bessembinder of the W. P. Carey School of Business at Arizona State University published an article titled “Do Stocks Outperform Treasury Bills?”16 He analyzed the price performance of about 26,000 common stocks listed on the New York Stock Exchange, the American Stock Exchange, and the NASDAQ from 1926 to 2016.
+Unsurprisingly, 51 percent of these stocks lost their entire value over their lifetime. The majority of businesses should not be in business. Bessembinder’s research demonstrates that since the average common stock will lose its value over time, owning stocks can harm one’s wealth. Our default position should be not to buy. So we don’t. We are lazy.
+Can you guess the number of those 26,000 stocks, if purchased in 1926 and held until 2016 (or acquired or merged), that beat the market? The answer is about 8,000, or about 31 percent of the universe.17 Again, I was surprised at how high this number was. Remember that we are talking about the companies not just doing well but beating the market over 90 years (or until they were merged or acquired). These great businesses maintained their greatness over a very long period. Stasis was the default for them. Once we own such a business, selling would border on being sinful.
+Stock Price Fluctuation Is Not Business Punctuation
+A critical element of the theory of punctuated equilibrium is that fluctuation is not punctuation. During long periods of stasis, the character traits of living organisms do vary but within limits.
+A critical element of our investment philosophy is that we do not confuse stock price fluctuation with business punctuation. During long periods of business stasis, stock prices vary, but the character of excellent businesses tends to stay within limits.
+As Gould clarifies, “Stasis does not imply absolute stability, but rather directionless fluctuation that generally does not stray beyond the boundaries of geographic variation within similar species and, particularly, does not trend in any given direction, especially towards the modal morphology of descendant forms.” The character traits of species do fluctuate while they are in stasis, but they are range bound.
+There is a tendency among investors to interpret stock price movement as the measure of business direction. Shouldn’t it be the other way around? Does the cart drive the horse? You bet it does, more often than you can imagine. And it does strange things to even the best of us. Our community can and does accord a level of priority to ticker symbols that they don’t deserve.</div>
+            <div class="text-block simplified-text">好的，这是符合您要求的译文：
+
+**看待停滞的另一种视角**
+
+让我们关注那些未能成功的企业。我们看到1955年榜单上至少有40%的企业（约200家）在六十年间（直到2015年）保持了卓越。那么，在1955年，有多少企业（包括私营和上市）本可以进入2015年的《财富》500强榜单却未能如愿？一万家算是一个合理的估计吗？这很可能是一个非常保守的猜测，因为企业有六十年时间进入榜单，而且我们还没有计入1955年后创建的数以千计本可能进入2015年榜单的企业。无论如何，我们暂且认定是一万家。在这1955年的一万家本可能进入2015年《财富》500强的企业中，只有三百家成功了（其余两百家在榜单上保持了六十年）。表面看是3%的“成功率”。实际数字可能更接近1%至2%，甚至更低。因此，97%至99%的非顶尖企业无法在六十年间“成功”。停滞是常态。
+
+我知道这有失公允。将入选《财富》500强作为衡量“成功”的标准无疑是不合理的要求。1955年这一万家企业中的许多可能取得了巨大成功，却未必变得过于庞大——它们可能更注重利润，或者被合并收购，为股东创造了巨大价值。我的本意是从方向上说明，伟大的企业保持伟大的时间远比我们想象的要长。而非顶尖企业随时间推移变得卓越的概率微乎其微。
+
+因此，我们的投资策略相当简单：
+1.  由于绝大多数企业无法变得伟大，我们的默认策略是不买。我们是懒买家。
+2.  我们只在找到能够数十年保持停滞状态的高质量企业时才买入。如果我们确信拥有这样的企业，我们就不卖出。我们是极其懒的卖家。
+
+**第三部分：集中度攀升的结论**
+
+格里隆、拉金和迈克利在2019年7月《金融评论》的一篇文章中提出：“美国产业集中度正在提高吗？”这显然是个反问：当然在提高。作者用大量数据证明了这一点。他们的文章展示了1997年至2014年间发生的两个相互强化的趋势：(1) 自1990年代以来，在美国超过四分之三的行业中，领先企业的市场份额有所增加；(2) 这些公司显示出更高的利润率，并为股东提供了更高的回报，这反过来又使它们能够进一步增强市场力量。
+
+虽然文章没有明确说明，但同样显而易见的是，在此期间，规模较小、实力较弱的企业的市场力量有所下降。作者指出，在几乎所有行业中，前四大上市和私营公司的收入份额不仅增加了，而且在衡量期间，领先企业的平均实际规模也增长了两倍。
+
+这并非新近现象。事实证明，自二十世纪初以来，更大、更成功的企业市场力量不断增强的阴影就一直困扰着企业界。1977年，莱斯利·汉娜和J.A.凯出版了《现代产业集中：理论、测量与英国经验》。汉娜和凯展示了从1900年代初到1970年代中期，美国和英国最大公司市场份额的持续上升。书中的第一张图表追踪了该时期制造业净产出中最大一百家企业的份额。七十年间，这些企业的市场份额在英国从15%上升到50%，在美国则从20%上升到30%以上。汉娜和凯关注的是市场力量的增强（跨行业），而非行业集中度的提高（衡量行业内公司实力的增强）。理想情况下，我更希望用行业集中度的提高来佐证我的观点，但注意到美国和英国最大企业的长期成功仍然具有启发性。
+
+2019年1月，经合组织（OECD）一份题为“欧洲和北美产业集中度”的工作论文有力地强调了更成功企业力量的增强。2001年至2012年间，十个欧洲国家普通行业中前10%最大企业的市场份额增加了2至3个百分点。在美国，2000年至2014年间，普通行业领先企业的市场份额增幅为4至8个百分点。该论文还澄清，这些数字并非由数字密集型行业（如搜索引擎、社交媒体、电子商务）驱动，而是由传统制造业和服务业公司驱动。
+
+2016年3月，《经济学人》杂志的封面哀叹道：“赢家通吃：为何高利润对美国是个问题。”当然，我无权评判巨头公司天价利润的合理性，但我确实想引用该杂志对企业停滞的看法。
+
+文章讨论了更成功企业利润积累的三个关键原因——技术、全球化和工会成员减少——随后指出：“然而，这些都无法解释美国利润问题最令人不安的方面：它的持续性。”文章提到，一家在2003年盈利能力很强的公司，到2013年仍有83%的可能性保持高盈利。一张关于1997年至2012年893个行业部门前四大公司份额的清晰图表，明确显示了更大企业力量的增强。
+
+所有这些关于产业和市场集中度研究的总结如下：
+1.  大多数行业中存在少数大型且成功的企业。
+2.  这些成功企业正变得愈发成功。
+3.  弱势企业正变得更弱。
+
+第1点和第2点是研究的直接结论，而第3点是前两点的间接但合乎逻辑的结果。
+
+正如我之前所写，我们在印度的投资经验与美国、英国或欧洲的研究结论并无二致。我们的被投资公司数十年来一直在竞争中赢得份额。例如涂料行业的伯杰（Berger）、塑料管道行业的苏普里姆（Supreme）、工业变压器行业的沃尔坦普（Voltamp）、内衣行业的佩奇（Page）、消费电器行业的哈维尔（Havells）和V-Guard、电池行业的阿马拉拉贾（Amara Raja）、招聘门户网站行业的Info Edge、轮胎行业的MRF，以及特种钢管行业的拉特纳马尼（Ratnamani）。
+
+在印度，优秀的企业持续优秀，而糟糕的企业持续挣扎。“停滞是常态”这一观察结论不受国界限制。
+
+作为永久所有者，我们希望持有那些能保持其高回报状态的成功企业。这听起来很直接，但问题在于成功企业寥寥无几。随意投资会让我们陷入大麻烦。因此我们不会这样做。我们极少投资。
+
+一旦我们持有像哈维尔或拉特纳马尼这样的“赢家”，就不应卖出，因为它很可能持续赢得市场份额。所以我们不卖出。我们卖出的次数甚至比买入更少。
+
+**第四部分：一项九十年研究的叙述**
+
+2018年5月，亚利桑那州立大学凯瑞商学院的亨德里克·贝森宾德发表了一篇题为《股票表现优于国库券吗？》的文章。他分析了1926年至2016年间在纽约证券交易所、美国证券交易所和纳斯达克上市的约26,000只普通股的价格表现。
+
+不足为奇的是，其中51%的股票在其存续期内价值归零。大多数企业本就不该存在。贝森宾德的研究表明，由于普通股票平均而言会随时间推移而贬值，持有股票可能损害财富。我们的默认立场应是不买。因此我们不买。我们很懒。
+
+你能猜到在这26,000只股票中，如果在1926年买入并持有至2016年（或被收购或合并），有多少跑赢了市场吗？答案大约是8,000只，约占整体的31%。我再次对这个数字之高感到惊讶。请记住，我们谈论的是那些不仅表现良好，而且在90年间（或直到被合并收购为止）跑赢市场的公司。这些伟大的企业在非常长的时期内保持了其伟大。停滞对它们而言是常态。一旦我们拥有这样的企业，卖出近乎罪恶。
+
+**股价波动并非企业中断**
+
+间断平衡理论的一个关键要素是：波动不等于间断。在漫长的停滞期，生物体的特征性状确实会变化，但幅度有限。
+
+我们投资哲学的一个关键要素是：我们不将股价波动与企业中断混为一谈。在漫长的企业停滞期，股价会波动，但优秀企业的特质往往保持在一定的界限内。
+
+正如古尔德所阐明：“停滞并不意味着绝对稳定，而是指在类似物种地理变异范围内的、通常无方向的波动，尤其不会趋向任何特定方向，特别是不会趋向其后代形态的典型模式。”物种在停滞期间的特征性状确实会波动，但幅度是有界的。
+
+投资者中普遍存在一种倾向，即把股价变动解读为企业方向变化的衡量标准。难道不该反过来吗？是本末倒置吗？确实如此，而且发生的频率远超想象。这甚至会让最优秀的人也做出奇怪的行为。我们投资界能够也确实常常赋予股票代码不应有的优先关注度。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">Here is a true story. A venture capitalist (VC) friend and I were meeting for lunch one afternoon in Mumbai. As you may know, VCs invest in start-ups and early-stage privately held businesses. Every few minutes, he would glance at his phone and then return to our conversation. I had known him for more than a decade but had never witnessed this odd behavior before. After a few minutes, I became mildly irritated and asked him the reason for his distraction. He apologized and sheepishly remarked that two of his portfolio companies had gone public in the past two weeks. After that, he said he felt compelled to check their stock prices every few minutes. He admitted that he couldn’t help himself.
+My friend is an intelligent guy. He knows that the business of his listed portfolio companies is not changing by the minute. A few weeks earlier, when the companies were unlisted, he hardly ever thought about them. But now that they each had a stock exchange ticker that gyrated a few percentage points every day, he had gotten caught up in the action. Now imagine if he were running a public market fund like ours in which every portfolio company is listed. That may have driven him up the wall, which is what happens to many in our community.
+A great example of stock prices getting the upper hand is provided by Amazon. The company had its IPO in May 1997 at $18. By December 1998, when dot-com mania was sweeping through the U.S. markets, the stock had climbed almost fourteen times to $243. The star analyst at CIBC Oppenheimer, Henry Blodget, published a price target of $400 within twelve months.18 The stock promptly jumped almost 20 percent to $289 in one day. In January 1999, Blodget wrote, “Unlike with other famous bubbles . . . the Internet bubble is riding on rock-solid fundamentals, perhaps stronger than any the market has seen before.” Well, where was the evidence? None of the rising dot-com stars was even close to earning any profit; worse, they were burning cash as if the market faucet would remain open forever. The only empirical evidence backing Blodget’s claim of solid business fundamentals seemed to be that the stock prices were rising.
+By the time the dot-com bubble burst in the summer of 2000, Amazon had dropped more than 60 percent from its peak. Ravi Suria, a young Lehman bond analyst, issued a withering twenty-seven-page report predicting that Amazon was doomed and that if the company did not change its ways, it would be out of cash within a year.19 In this highly bearish environment for all dot-coms, Amazon fell 19 percent in a single day. Bezos brushed the criticism aside, and Amazon kept doing its business the way it had always done: by caring more about cash flow than profits. Suria had predicted that Amazon would be left with $125 million in the bank at the end of 2001; instead, Amazon ended the year with $1 billion. Amazon’s bonds, which Suria had predicted would collapse, were up 50 percent.
+Just as Blodget had gained stardom by predicting that Amazon would keep rising, Suria became the darling of financial pundits with his prediction that Amazon would fail. The only difference? Blodget was cheerleading when all stocks were rising, and Suria predicted doomsday in the middle of a catastrophic bear market.
+It is unfair to pick on only Blodget and Suria. They were two among thousands of analysts and investors who got carried away by the rising and falling stock prices of the dot-com era. The saga repeated itself during the global financial crisis of 2008 when the rising market capitalizations of highly leveraged lenders blinded most financial experts to the deepening malaise that finally brought the global economy to its knees.
+In my opinion, investors can commit two types of grave errors.
+First, they can treat an unfavorable stock price fluctuation as a negative business punctuation. This mindset compels the investor either to sell a good business or not to buy a good business when the price declines owing to a negative piece of news or event. I covered this first error in the previous chapter when discussing the Grant–Kurtén principle of investing (GKPI). As a reminder, GKPI says the following: When we find high-quality businesses that do not fundamentally alter their character over the long term, we should exploit the inevitable short-term fluctuations in their businesses for buying and not selling. Since chapter 8 addressed this issue, let me not dwell any more on it here.
+The second error is to regard a positive stock price fluctuation as positive business punctuation. Doing so can lead to buying a lousy business (because it seems that things have permanently improved) or not selling one. Ask any long-term investor about their investment strategy, and almost all will proclaim that they buy and hold high-quality businesses. I doubt even one would admit to buying poor-quality businesses to trade later at a higher price. They are not lying. Then why is the portfolio of many funds filled with the latest Chamath SPAC? Who knows? FOMO, envy, greed, and some other quality human attributes probably play a role. It doesn’t matter. These investors changed their minds about the quality of a business based on some positive evaluation of the opportunity.
+We see the same news flow as everyone else. We often see industry brethren rake in moolah by investing in airlines, real estate, infrastructure, education, public sector banks (i.e., government-owned banks), or some other hyped-up Indian industry that does not live up to its expectations.
+How have we avoided succumbing to the temptation of investing in a bad business on a stock market (or even a private market) upswing? By following three simple rules.
+No Sweets in the Fridge
+My wife has a sweet tooth but is also very health conscious. Over more than two decades, she has followed a simple yet powerful way of avoiding the enticement of desserts. Our fridge just doesn’t have any.
+In my view, the best way to avoid investing in bad businesses is to ignore them and their stock prices. We never discuss what we consider bad companies or industries in our team meetings. Never. It doesn’t matter if an airline has declared spectacular results recently or if every analyst recommends buying airline shares. We are indifferent to a public sector bank that has hired a new CEO from the private sector and has pushed its stock price to an all-time high. We ignore an infrastructure business that has been awarded a new multibillion-dollar contract and a gold loan business that has announced 30 percent ROE in its latest quarterly result and is touted by the bulls to be the next billion-dollar opportunity. No one on our team is allowed to utter the famous last words of many investors: “This time, it’s different.” If we never discuss a business, how will we ever buy it? No sweets in the fridge: no snacking possible.
+The origin of every lousy investment is a good story. Table 9.1 shows many examples of Indian industries that became newsworthy after rising stock prices or soaring private market valuations.
+Table 9.1We ignore positive stock price fluctuations in bad places
+News or event
+Date
+Foreign Funds Chase DLF (India’s largest real estate company)
+Jun 2007
+Reliance Power IPO to Make Anil Ambani the Richest Indian
+Jan 2008
+Infrastructure PE: Investors Seek Returns in Mid–High Teens on Growth Potential
+Dec 2009
+How Gold Loans Became Popular Over the Years
+Oct 2010
+PEs Sharpen Focus on Green Energy
+Dec 2010
+PE Firms Eye to Invest in Indian Agriculture and Food Sector
+Sep 2011
+Three Reasons Why India Will Lead EdTech in the Twenty-First Century
+Aug 2012
+Benefits of Infrastructure Stimulus
+Feb 2013
+GoAir Joins the Profit League
+Nov 2013
+Blackstone Sees Indian Real Estate Turnaround
+Jun 2014
+How Rahul Bhatia Built InterGlobe and Its Airline IndiGo Into a Class Act
+Sep 2014
+Online Education: The Next Big Thing in India
+Feb 2015
+GSK Bets Big on Emerging Markets with $1 Billion Investment in India
+Mar 2016
+The Education Sector Will Grow at 7.5% to $144 Billion by 2020
+Oct 2017
+Health-Tech Sector Seen Generating Significant Value Over the Next Decade
+Sep 2018
+Jet, SpiceJet Rival Indigo Posts Profits as Fuel, Rupee Cool Off
+Jan 2019
+How the Airline Industry Grew Profitable Over the Decade
+Dec 2019
+Private Equity Firms Sense Ample Opportunity in Last-Mile Real Estate Funding
+Dec 2019
+Indian Healthcare Sector—A Promising $353 Billion Opportunity by 2025
+Nov 2020
+Take infrastructure. Anyone who has been to India knows that the country needs quality roads, power, ports, airports, and water. While the national highways in India are now better than highways in the United States, that’s not saying much. In the mid- to late 2000s, many investors salivated at the billions (or was it trillions?) of dollars that were waiting to be made by investing in Indian infrastructure. The valuations of private and public companies were soaring, and there seemed to be a consensus that the gold rush was beginning. Amid this infrastructure mania, Reliance Power launched an IPO in January 2008 that was oversubscribed seventy-two times! It made the company’s owner, Anil Ambani, the richest Indian. Despite having a power capacity of less than 1,000 megawatts at the time of the IPO, the company’s value was about $35 billion. Did this lead to a large number of IPOs for infrastructure businesses that investors lapped up hungrily? Does the sun rise in the east? Both private and public equity investors in the hyped-up story of Indian infrastructure forgot or chose to ignore some uncomfortable truths: Every infrastructure business is held hostage to the whims and fancies of the government; the government hates to be a paying customer—underpayment and late payment are the rule, not the exception; and even if the government behaves well, the returns on these projects are capped according to law. So why would we want to spend a single minute debating if any power business is worth investing in?</div>
+            <div class="text-block simplified-text">以下是根据要求翻译的书籍段落：
+
+这是一个真实故事。某天下午在孟买，我与一位风险投资家朋友共进午餐。众所周知，风投机构主要投资初创企业和早期私营企业。席间他每隔几分钟就看一次手机，然后继续交谈。我们相识十余年，此前从未见他如此反常。片刻后我忍不住询问原因，他赧然道歉说，过去两周他投资的两家公司刚上市，自此便不由自主地每隔几分钟查看股价。
+
+这位朋友很聪明。他清楚上市公司业务不会每分钟变化。几周前企业未上市时，他几乎不想它们。但如今股票代码每日波动几个百分点，他便深陷其中。试想若他管理像我们这样的公募基金——所有持仓企业都已上市，恐怕会彻底崩溃，这正是业内许多人的现状。
+
+亚马逊完美诠释了股价如何主导判断。1997年5月其IPO发行价18美元，到1998年12月互联网狂热席卷美国市场时，股价飙升至243美元，涨幅近十四倍。CIBC奥本海默明星分析师亨利·布洛杰特预言十二个月内将达400美元，股价应声单日暴涨20%至289美元。1999年1月他宣称："与其他著名泡沫不同...互联网泡沫建立在坚实的基本面上，可能比市场此前任何时期都强劲。"证据何在？当时风光无限的互联网企业无一接近盈利，更糟的是它们挥霍现金仿佛市场永续供水。支撑布洛杰特论点的唯一实证，似乎只剩上涨的股价。
+
+2000年夏互联网泡沫破裂时，亚马逊较高点跌超60%。雷曼年轻债券分析师拉维·苏里亚发布27页檄文，预言亚马逊若不改变经营模式，一年内必将现金枯竭走向灭亡。在互联网企业集体看跌的环境中，亚马逊单日暴跌19%。贝佐斯无视批评，坚持重视现金流胜过利润的经营策略。苏里亚预测2001年末亚马逊账面仅余1.25亿美元，实际结存10亿美元；他预言将崩盘的亚马逊债券反而上涨50%。
+
+正如布洛杰特因唱多亚马逊成名，苏里亚凭预言其破产成为财经界宠儿。区别在于：前者在普涨行情中摇旗呐喊，后者于熊市深渊预言末日。
+
+单指责这两人有失公允。互联网时代股价涨跌裹挟了成千上万分析师与投资者。2008年全球金融危机重演此景：高杠杆贷款机构市值膨胀，使多数专家忽视最终压垮全球经济的深层痼疾。
+
+我认为投资者会犯两类严重错误：
+其一，将不利股价波动视为业务恶化的标志。这种思维迫使投资者因负面消息引发的股价下跌而抛售优质企业或不敢买入。前一章讨论格兰特-库尔滕投资原则(GKPI)时已阐述此错误：发现长期本质未变的高质量企业时，应利用短期波动买入而非卖出。第八章既已详述，此处不再赘言。
+
+其二，将股价上涨视为业务向好的标志。这会导致买入劣质企业（因看似永久改善）或拒绝卖出。任何长期投资者被问及策略时，几乎都宣称持有优质企业。恐怕无人承认会买入劣质企业待涨抛售。他们未说谎，但为何众多基金持仓充斥着最新热门的SPAC项目？或许是错失恐惧症、嫉妒、贪婪等人性使然。关键在于：这些投资者因某些积极评估改变了对企业质量的判断。
+
+我们目睹同行在航空、房地产、基建、教育、国有银行等名不副实的印度热门行业赚得盆满钵满。如何避免在市场上涨时误投劣质企业？依靠三条简单法则：
+
+**冰箱禁存甜食**
+妻子嗜甜却注重健康。二十余年来她遵循简单有效的方法抵御甜点诱惑：家中冰箱从不存放甜食。
+
+我认为避免投资劣质企业的最佳方式是彻底忽视其股价。团队会议从不讨论认定的劣质公司或行业。航空公司近期业绩暴增也好，分析师集体推荐航空股也罢，我们漠不关心；国有银行聘请私企CEO推动股价创新高，我们无动于衷；基建企业获数十亿美元新合同，黄金贷款公司季报公布30%净资产收益率并被多头吹捧为下个十亿级机遇——我们统统无视。团队严禁任何人说出投资者经典遗言："这次不一样。"既然从不讨论，何来买入可能？冰箱无甜食，宵夜无从起。
+
+所有糟糕投资皆起源于动听故事。表9.1列举了印度诸多因股价暴涨或私募估值飙升成为新闻焦点的行业案例。
+
+以基建为例。到过印度的人都知该国亟需优质道路、电力、港口、机场及水利设施。尽管印度国道现已优于美国，但这并非高标准。2000年代中后期，无数投资者垂涎投资印度基建将创造的亿万美元（或是万亿？）财富。公私企业估值飙升，"淘金热开启"成为共识。基建狂热中，信实电力2008年1月IPO获七十二倍超额认购！其持有者安尼尔·安巴尼跃居印度首富。这家发电能力不足1000兆瓦的公司估值竟达350亿美元。随后是否涌现大批遭投资者疯抢的基建企业IPO？太阳会从东边升起吗？公私投资者在这场印度基建狂欢中遗忘或刻意忽视了残酷真相：所有基建企业皆受制于政府反复无常的决策；政府惯于拖欠服务款项；即便政府履约，项目回报也受法律封顶。我们何必浪费一分钟争论电力企业是否值得投资？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">We did not discuss a single story listed in table 9.1 in our team meetings. We ignore the stock prices and businesses of businesses we detest. By the way, that doesn’t mean that we are right to do so; some investors may possess the skill to trade in and out of low-quality businesses, and that’s fine. They have my admiration and best wishes.
+The market value of Reliance Power at the end of 2021 was $600 million, down 95 percent from its peak.
+Business Knowledge, Not Stock Price Data
+As I discussed earlier, we ignore many conspicuously poor-quality industries like power, infrastructure, and airlines. But most industries and businesses don’t fall neatly into this category. So what do we do when we see increasing valuation in businesses or industries that we haven’t encountered before?
+We ignore the hype around valuation and focus exclusively on business quality. I have devoted the whole of section II to this topic, so let me confine this discussion to an example.
+Table 9.1 includes the news item “The Education Sector Will Grow at 7.5% to $144 Billion by 2020.” This headline is from late 2017 when many new-age education companies (appropriately christened “EdTech”) in India had started getting funded at unheard-of valuations in the private market.
+We don’t know of a single listed education business in India that has made money over the long term. However, many have had soaring stock prices over the years with the unfulfilled promise of untold riches that would accrue to an intrepid investor. One did appear to break the mold but sadly—and predictably—turned out to be a fraud. When I assess the finances of listed education businesses in a large market like the United States, I find that most don’t earn even their cost of capital. For example, in 2021, the U.S. education company with the most considerable market value was Grand Canyon Education, whose market capitalization was only about $4 billion. It’s a dangerous place to be.
+So what should we think about the dozens of Indian EdTech unicorns or soon-to-be-unicorns? I just do not have enough information to know. At their current rate of blowing cash that would put Usain Bolt to shame, they will probably not enter our radar until 2032 (because they would need to have demonstrated at least a five-year history of being highly profitable). For us, their soaring valuation is not an indicator that they are great businesses but that they have mastered the art of raising capital.
+Until the business numbers (e.g., ROCE and free cash flow, not revenue growth) become attractive, we refuse to engage with companies, and EdTechs are no exception.
+Do We Want to Own This Forever?
+Our best protection against getting swayed by a false positive—a stock price fluctuation that makes a lousy business look better than it is—is the question we pose for every investment: Do we want to be permanent owners of this business? Are we absolutely sure that we are willing to live with it permanently? Are we willing never to sell it?
+We presume guilt until innocence is proven; our starting hypothesis with every business is that we don’t want to own it. As you have seen throughout this book, a business needs to jump through several hoops before we choose to be permanent owners in it. One of India’s largest real estate companies launched a $2 billion IPO in July 2007. Its stock price shot up by 70 percent before the end of the year. News anchors screamed until they were hoarse about the unlimited potential of Indian real estate; a journalist friend told me that it was easier to get an appointment with a Bollywood star than a real estate entrepreneur.
+We launched Nalanda in June 2007, smack in the middle of this frenzy. We did not make a single real estate investment because we did not want to be permanent owners in a real estate business. The reasons were many, but let me just state the first one, so I don’t even have to go on to the second: Real estate businesses in India aren’t known for Gandhian governance, to put it mildly.
+What about that company today? The stock price is down 75 percent from its peak. Given its bloated balance sheet, the company has also had to raise multiple equity funding rounds in the past few years, diluting existing shareholders. The suffering for the owners of this business seems endless.
+We have saved a lot of heartburn by studying business quality while ignoring stock prices. We have stayed focused on getting married and have eschewed casual hookups, to draw an analogy from the dating world. A world intent on swiping left and right at breakneck speed probably finds it very hard to notice a marriageable candidate even when that candidate has been staring at them for decades. That gives us a competitive advantage we never asked for and probably didn’t deserve.
+But we will take it. Thank you very much.
+Take Advantage of the Rare Stock Price Punctuations to Create a New “Species”
+Eldredge and Gould’s bold claim was not just that organisms changed their morphology during punctuation events but also that these events created a new species. As they elaborate, “The theory of punctuated equilibrium attempts to explain the macroevolutionary role of species and speciation as expressed in geological time.” They disagreed with Darwin’s claim of speciation through gradual change (biologists call this process “anagenesis”). Instead, they focused the minds of paleontologists and evolutionary biologists on the punctuation events that gave birth to novel species.
+Suppose you agree with the premise that markets are usually quite efficient and that it is very hard to buy high-quality businesses at an attractive valuation. In that case, it should be evident that long-term investors like us must take advantage of stock price punctuation events to create a new and improved portfolio.
+Let’s return to the question I asked at the beginning of the chapter. As the COVID-19 pandemic created panic across the world, what were we at Nalanda to do in these unprecedented times? We bought. A lot.
+Since our inception in 2007, we have bought only at times of adverse stock price punctuations. In other words, we have bought only when a stock is being abandoned by investors owing to an adverse macro event, industry troubles, or pessimism regarding a company’s prospects. On three occasions (the global financial crisis, the Euro crisis, and the COVID-19 pandemic), all three combined to offer us an unprecedented buying opportunity.
+Talk is cheap, so let me share some actual numbers. Table 9.2 presents the three main occasions over fourteen years, from June 2007 until June 2021, when we took advantage of stock price punctuations to dramatically alter the character of our portfolio.
+Table 9.2Punctuation events have helped us create new “species”
+Period
+Market decline
+Amount invested
+Jan 2008–Mar 2009
+73%
+$182 million
+Apr 2011–Dec 2011
+28%
+$264 million
+Mar 2020–May 2020
+26% (Feb–May)
+$405 million
+There were 169 months from June 1, 2007, until June 30, 2021. We invested a total of $1.86 billion during this period. However, as you can see from table 9.2, the pace of investment was highly punctuated: We invested $851 million, or 46 percent of the total amount invested from 2007 to 2021, over only twenty-six months (15 percent of the total number of months)—months of severely damaging market punctuations.
+The impact of the COVID-19 pandemic’s negative punctuation on our buying behavior was even starker. We invested 22 percent of our capital in just 2 percent of the period of our existence. That is because, as shown in table 9.2, we invested $405 million (22 percent of our total capital invested over fourteen years) in only three months, from March to May 2020 (which comprises 2 percent of the 169 months).
+What I have not shown in table 9.2 is our investment pace during March 2020. We invested 16 percent of our capital in 0.5 percent of working days. As the Indian Midcap Index declined 28 percent during March 2020, we invested $288 million (16 percent of the total amount invested until June 2021) over just seventeen days (0.5 percent of about 3,500 working days over fourteen years). This amount, $288 million, invested in March 2020 exceeds the amount invested in twelve of the fourteen calendar years since our inception—the only two calendar years during which we invested more than $288 million are 2011 ($320 million) and 2020 ($486 million). Call us what you want, but scared we aren’t.
+I guess we can all agree that we would make a sloth envious with our rare bouts of activity. So what do we do the rest of the time? We wait. Occasionally, we have had to wait many years. For example, we invested only $34 million and $66 million in 2018 and 2019, respectively. The amount we invested in 2020 turned out to be 45 percent more than in the previous five years combined.
+But I could have done a much better job. You may have noticed that we did invest a fair bit ($182 million) as the market panic started gathering around the global financial crisis, but we could have and should have invested a lot more. My excuse is that I had just started the fund (in June 2007) and had not done enough work on enough companies to take advantage of the panic.
+The Occam’s razor explanation is that I was a moron. (“Don’t use the past tense,” my wife reminds me dutifully.)
+Table 9.2 shows the data on the overall market levels during three punctuation events. But we don’t buy the market; we are interested only in quality businesses. Hence, it would be nice to find out the extent of the negative punctuation in the companies we bought. We had been tracking many businesses for years, and we were well prepared when the pandemic panic struck in March 2020.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+在团队会议中，我们从未讨论过表9.1中列出的任何一个故事。我们无视那些我们厌恶的企业的股价和业务。顺便说一句，这并不意味着我们这样做是对的；有些投资者可能拥有在低质量企业中进进出出的交易技巧，这也没问题。我钦佩他们并致以最美好的祝愿。
+
+**关注业务知识，而非股价数据**
+
+如前所述，我们无视许多明显低质量的行业，如电力、基础设施和航空业。但大多数行业和企业并不能简单地归入此类。那么，当我们遇到以前未曾接触过的企业或行业估值上升时，我们该怎么办呢？
+
+我们无视围绕估值的炒作，只专注于业务质量。我在本书第二部分已经专门讨论过这个话题，因此这里仅以一个例子来说明。
+
+表9.1中包含一则新闻：“到2020年，教育行业将以7.5%的速度增长至1440亿美元”。这个标题出现在2017年底，当时印度许多新兴教育公司（恰当地被称为“教育科技”）开始在私募市场以前所未闻的估值获得融资。
+
+在印度，我们不知道有任何一家上市的教育企业能够长期盈利。然而，多年来，许多公司的股价飙升，伴随着对无畏投资者将获得巨大财富的、最终未能兑现的承诺。有一家公司似乎打破了常规，但可悲且可预见地，结果证明是一场骗局。当我评估像美国这样的大市场中上市教育企业的财务状况时，我发现大多数甚至无法赚回其资本成本。例如，2021年美国市值最大的教育公司是大峡谷教育公司（Grand Canyon Education），其市值仅约40亿美元。这是一个危险的领域。
+
+那么，我们应该如何看待印度数十家教育科技独角兽或准独角兽公司呢？我只是没有足够的信息来判断。以它们目前烧钱的速度（令博尔特都自愧不如），它们很可能要到2032年才会进入我们的视野（因为它们需要证明至少有五年持续高盈利的历史）。对我们来说，它们飙升的估值并非其业务卓越的指标，而是表明它们精通融资之道。
+
+在业务数据（例如资本回报率和自由现金流，而非收入增长）变得有吸引力之前，我们拒绝与公司接触，教育科技公司也不例外。
+
+**我们想永远拥有它吗？**
+
+我们抵御虚假正面信号（即股价波动让糟糕业务看起来比实际更好）的最佳保护措施，是我们在每次投资时提出的问题：我们想成为这家企业的永久所有者吗？我们绝对确定愿意永远与之相伴吗？我们愿意永不卖出吗？
+
+我们采取的是“有罪推定”，直到证明清白为止；我们对每家企业的初始假设都是不想拥有它。正如你在本书中所见，一家企业需要跨越重重障碍，我们才会选择成为其永久所有者。印度最大的房地产公司之一于2007年7月进行了20亿美元的首次公开募股（IPO）。其股价在当年年底前飙升了70%。新闻主播们声嘶力竭地鼓吹印度房地产的无限潜力；一位记者朋友告诉我，约见宝莱坞明星都比约见房地产企业家容易。
+
+我们恰好在2007年6月这场狂热之中成立了那烂陀基金（Nalanda）。我们没有进行任何房地产投资，因为我们不想成为房地产企业的永久所有者。原因有很多，但仅说第一个就够了，甚至无需提及第二个：委婉地说，印度的房地产企业并不以甘地式的治理而闻名。
+
+那家公司今天怎么样了呢？其股价较峰值下跌了75%。由于其资产负债表臃肿，该公司在过去几年还不得不进行多轮股权融资，稀释了现有股东权益。这家企业的所有者似乎苦海无边。
+
+通过研究业务质量而忽略股价，我们避免了许多心痛。打个比方，我们专注于寻找“结婚对象”，避开了“露水情缘”。一个以惊人速度左右滑动的世界，可能很难注意到一个合适的结婚对象，即使这个对象已经凝视了他们几十年。这给了我们一个我们从未要求、也可能不该拥有的竞争优势。
+
+但我们会接受它。非常感谢。
+
+**利用罕见的股价“间断期”创造新“物种”**
+
+埃尔德里奇和古尔德的大胆主张不仅是生物体在间断期改变了形态，还在于这些事件创造了新物种。正如他们所阐述的：“间断平衡论试图解释物种和物种形成在地质时间尺度上所表达的宏观进化作用。”他们不同意达尔文关于物种通过渐进变化形成的观点（生物学家称此过程为“前进演化”）。相反，他们将古生物学家和进化生物学家的注意力集中在催生新物种的间断事件上。
+
+假设你同意市场通常是相当有效的、并且很难以便宜的估值买到高质量企业这一前提，那么显而易见，像我们这样的长期投资者必须利用股价间断事件来创建一个全新且改进的投资组合。
+
+让我们回到本章开头提出的问题。当新冠疫情在全球引发恐慌时，我们那烂陀基金在这前所未有的时期做了什么？我们买入了。大量买入。
+
+自2007年成立以来，我们只在股价出现不利间断期时才买入。换句话说，我们只在股票因不利的宏观事件、行业困境或对公司前景的悲观情绪而被投资者抛弃时才买入。有三次（全球金融危机、欧元区危机和新冠疫情），三者叠加，为我们提供了前所未有的买入机会。
+
+空谈无益，让我分享一些实际数字。表9.2展示了从2007年6月到2021年6月的十四年间，我们利用股价间断期显著改变投资组合特征的三个主要时期。
+
+从2007年6月1日到2021年6月30日共有169个月。我们在此期间总共投资了18.6亿美元。然而，如表9.2所示，投资节奏是高度间断的：在仅仅26个月里（占总月数的15%）——即市场遭受严重破坏的间断期——我们投资了8.51亿美元，占2007年至2021年总投资额的46%。
+
+新冠疫情造成的负面间断期对我们买入行为的影响更为显著。我们在仅占基金存续期2%的时间里投入了22%的资本。这是因为，如表9.2所示，我们在2020年3月至5月仅仅三个月内（占169个月的2%）投资了4.05亿美元（占十四年总投资资本的22%）。
+
+表9.2没有展示的是我们在2020年3月的投资节奏。我们在0.5%的工作日内投入了16%的资本。随着印度中型股指数在2020年3月下跌28%，我们在仅仅17天里（占十四年约3500个工作日的0.5%）投资了2.88亿美元（占截至2021年6月总投资额的16%）。这个在2020年3月投资的2.88亿美元，超过了我们成立以来十四年中有十二个日历年度的投资额——只有2011年（3.2亿美元）和2020年（4.86亿美元）的投资额超过2.88亿美元。随你怎么称呼我们，但我们并不害怕。
+
+我想我们都同意，我们这种罕见的活跃期会让树懒都羡慕不已。那么其余时间我们做什么呢？我们等待。偶尔，我们不得不等待多年。例如，我们在2018年和2019年分别只投资了3400万美元和6600万美元。我们在2020年的投资额结果比前五年的总和还多45%。
+
+但我本可以做得更好得多。你可能注意到，随着全球金融危机恐慌加剧，我们确实投资了不少（1.82亿美元），但我们本可以而且本应该投资更多。我的借口是基金刚刚成立（2007年6月），没有完成足够多公司的研究工作来充分利用恐慌。
+
+奥卡姆剃刀的解释是：我当时是个傻瓜。（“别用过去时，”我妻子尽责地提醒我。）
+
+表9.2显示了三个间断期内整体市场水平的数据。但我们不买市场；我们只对优质企业感兴趣。因此，了解我们所购公司股价负面间断的程度会更好。我们多年来一直在跟踪许多企业，当2020年3月疫情恐慌袭来时，我们已做好充分准备。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">During March 2020, we bought eight businesses and continued to buy them until May 2020. Our previous monthly record was in October 2008 when we bought six companies. (Lehman had collapsed only a few weeks earlier, on September 15, 2008, and we had started gorging on quality enterprises.) So yes, we waited almost twelve years before getting hyperactive. And you thought the comparison to a sloth was an exaggeration.
+Table 9.3 lists the eight businesses we bought between March and May 2020. Four—MRF, Sundaram, Thermax, and Thyrocare—were new to the portfolio, and the remaining four were existing companies. We had been waiting to buy these eight for many years. For a few, our wait had lasted more than a decade.
+Table 9.3The pandemic punctuation created a new species/portfolio for us (prices in INR except where specified)
+Company
+All-time high before Mar 2020
+Date of previous all-time high
+Nalanda avg buy price, Mar–May 2020
+Discount to all-time high
+Cera
+3,796
+Dec 2017
+2,383
+−33%
+Genpact
+$44.3
+Jan 2020
+$27.7
+−37%
+MRF
+78,477
+Aug 2018
+55,487
+−29%
+Sundaram
+2,033
+Jan 2018
+1,218
+−40%
+Thermax
+1,293
+Jan 2018
+708
+−45%
+Thyrocare
+753
+Apr 2017
+507
+−33%
+Triveni
+151
+Jul 2017
+87
+−42%
+WNS
+$73.4
+Feb 2020
+$46.1
+−37%
+Just as it does in nature, this rare punctuation event dramatically altered the nature of our portfolio. We were able to buy companies at prices and in quantities we never thought possible. For example, in table 9.3, check out the discount at which we bought WNS, a business we have known well (since it is in our portfolio) since 2008. In February 2020, it was trading at almost $74 per share. Within a few weeks, by March 2020, the pandemic scare had crushed the stock, allowing us to deploy almost $100 million at only $46 per share! Similarly, we bought Thermax, a business we had been tracking for more than a decade, at a 45 percent discount to its previous high in early 2018.
+Remember that in March 2020, there was no discussion of vaccines, the world was reeling under a pandemic that no one had ever seen before, and it was impossible to predict how things would turn out. The world was shell-shocked, and rightly so. During this period of hyperactivity from March to May 2020 we were often asked, “Why aren’t you waiting for things to get worse before buying?”
+My answer was, “We can’t.”
+We have a straightforward rule that is also easy to implement: Buy when the price is right. Unfortunately, not everyone follows this rule. As implied by the question, a widely practiced rule is to buy when the time is right. That is also a straightforward rule, but is it easy to implement? We follow the former because we know the price we want to pay for the business we want to own. It may or may not be the “right” price, but we know it for sure. We have no way of figuring out the right time. Maybe some folks do. Good for them.
+There is another way to answer this question. Long-term investors, including us, always claim that we are “buying businesses, not stock prices” because this is what Buffett has been saying for decades. As a philosophical outlook, this is generally deemed a sensible strategy.
+But what does that statement mean? For us, it means the following. Let’s say we have valued a business at $100 per share. If the stock price falls to $100 and our business assessment remains unchanged, we buy as much of the business as we can at or below $100. We then tell ourselves that this is a private business that we will own forever, and while it happens to be listed, the stock prices quoted by the ever-fluctuating markets are irrelevant to us. As a result, we don’t care if the business quotes at $50 or $75 or $500. We are public market investors, but we behave as if we are investing in private businesses for all practical purposes.
+An afterthought: There is almost no business in our portfolio that we could buy at an absolute bottom, including the ones listed in table 9.3. If you are searching for an abysmal market-timer, look no further.
+Our 2008/09 and 2011 investments have primarily turned out well. I don’t know if our aggression in 2020 will yield fruit. But I am happy about our process, which was in our control; the outcome will be what it will be. We will know in eight to ten years if we were foolish or intelligent. Don’t you love long-term investing?
+✳✳✳
+A housefly lives for a month, a mosquito for one to three months, and a cockroach for up to six months. Unfortunately, most insects live only for a brief period. There is one notable exception, though. Three species of periodical cicadas found in the United States can live for up to seventeen years.
+After hatching, baby cicadas, called nymphs, spend seventeen years underground feeding on the roots of plants and trees. After that time, the adults emerge together in billions (some say even trillions) beginning in the second week of May, get into a mating frenzy, lay their eggs on trees, and are dead by the end of June. The eggs hatch in about six weeks, the nymphs drop down from the trees and burrow underground, and the seventeen-year cycle begins again. This evolutionary strategy, called prey satiation, has been supremely successful for eons because no predator can consume such a large number of cicadas in just a few weeks.20
+There are currently twelve groups, called broods, of seventeen-year cicadas. In May and June 2021, enormous broods called Brood X (meaning “ten”) emerged mainly in Pennsylvania, Virginia, Indiana, and Tennessee. We will see them next in 2038.
+Our patience for a punctuation event seems pedestrian compared to the remarkable restraint of the cicadas. They wait seventeen years for a life-changing event. We have had at least three during just fourteen years. When will we witness the next one? I have no idea. But I know this: As a species, we investors are nowhere as disciplined as the cicadas. Our community will take things to an extreme before all hell breaks loose again.
+We are waiting.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . reimagining investing requires us to accept the pervasiveness of business stasis. In other words, great businesses generally remain great, and bad businesses generally remain bad.
+1. The theory of punctuated equilibrium contends that evolutionary change occurs quite suddenly after long periods of stasis, not through a gradual process, as claimed by Darwin. Stasis is the default in the natural world, except when punctuations arise to create a new species.
+2. Stasis is the default in the business world, too. Great businesses generally stay great, and bad businesses generally remain bad. This is evident not only from my personal experience of investing in India over a few decades but also from empirical data from the United States on the longevity of high-quality businesses.
+3. Not all fluctuations in the long-term evolution of an organism are punctuations. Over a period of stasis, organisms do vary within limits.
+4. We do not confuse stock price fluctuations with business punctuations. This has allowed us to be aggressive buyers three times in our history, including during the market panic of the COVID-19 pandemic.
+5. We avoid investing in bad businesses when their stock prices are on an upswing by focusing on the (bad) quality of the business and asking ourselves if we want to own it forever.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的书籍段落：
+
+---
+
+2020年3月，我们收购了八家企业，收购行动一直持续到2020年5月。我们此前的月度收购纪录是在2008年10月创下的，当时我们收购了六家公司。（雷曼兄弟在几周前的2008年9月15日刚刚倒闭，我们便开始大举收购优质企业。）所以没错，我们等待了近十二年才迎来这次大举出手的时机。现在你还觉得把我们比作树懒是夸张吗？
+
+表9.3列出了我们在2020年3月至5月间收购的八家企业。其中四家——MRF、Sundaram、Thermax和Thyrocare——是投资组合中的新成员，其余四家是原有公司。我们等待收购这八家企业已有多年。对其中几家的等待甚至持续了十年以上。
+
+正如自然界中的情况一样，这次罕见的突变事件极大地改变了我们投资组合的性质。我们得以以从未想象过的价格和数量收购公司。例如，请看表9.3中我们收购WNS的折扣率，这家公司我们自2008年起就非常熟悉（因为它就在我们的投资组合中）。2020年2月，它的股价接近每股74美元。几周之内，到2020年3月，疫情的恐慌就重创了该股，使我们得以仅以每股46美元的价格投入近1亿美元！同样，我们以相对于其2018年初历史高点45%的折扣收购了Thermax，这家公司我们已跟踪了十多年。
+
+请记住，在2020年3月，疫苗还无从谈起，世界正遭受着前所未见的疫情冲击，根本不可能预测事情会如何发展。世界震惊了，这是理所当然的。在2020年3月至5月这段我们异常活跃的时期，我们经常被问及：“你们为什么不等到情况变得更糟再买呢？”
+
+我的回答是：“我们等不及。”
+
+我们有一条简单且易于执行的规则：价格合适时就买入。不幸的是，并非所有人都遵循这条规则。正如问题所暗示的，一条广泛实践的规则是：时机合适时才买入。这也是一条简单的规则，但它容易执行吗？我们遵循前者，因为我们知道自己愿意为想要拥有的企业支付什么价格。这个价格可能“合适”，也可能不合适，但我们对此有明确的判断。我们无法判断何时是“合适”的时机。也许有人能做到。那对他们来说是好事。
+
+还有另一种方式来回答这个问题。包括我们在内的长期投资者总是声称我们“买的是企业，而不是股价”，因为这是巴菲特几十年来一直倡导的理念。作为一种哲学观点，这通常被视为明智的策略。
+
+但这句话是什么意思呢？对我们而言，它意味着：假设我们评估一家企业的价值为每股100美元。如果股价跌至100美元，而我们对企业的评估不变，我们就会在100美元或更低的价格尽可能多地买入该企业。然后我们告诉自己，这是一家我们将永远持有的私营企业，虽然它碰巧上市了，但不断波动的市场所报出的股价对我们来说无关紧要。因此，我们不在乎它的股价是50美元、75美元还是500美元。我们是公开市场的投资者，但在实际操作中，我们表现得像是在投资私营企业。
+
+事后想来：我们投资组合中几乎没有哪家企业是在绝对底部买入的，包括表9.3中列出的那些。如果你想找一个糟糕透顶的市场择时者，不用看别人了。
+
+我们2008/09年和2011年的投资总体上结果不错。我不知道2020年的激进策略是否会带来回报。但我对我们的流程感到满意，这是我们可以控制的；结果如何，顺其自然。我们将在八到十年后知道自己当时是愚蠢还是明智。你不喜欢长期投资吗？
+
+✳✳✳
+
+家蝇活一个月，蚊子活一到三个月，蟑螂最多活六个月。不幸的是，大多数昆虫的生命都很短暂。不过有一个显著的例外。在美国发现的三种周期蝉可以活到十七年。
+
+孵化后，被称为若虫的幼蝉在地下生活十七年，以植物和树木的根为食。此后，成蝉在五月的第二周开始，以数十亿（甚至有人说是数万亿）的规模同时破土而出，疯狂交配，在树上产卵，并在六月底前死去。卵在大约六周后孵化，若虫从树上落下，钻入地下，十七年的周期再次开始。这种被称为“猎物饱和”的进化策略在漫长岁月中取得了巨大成功，因为没有捕食者能在短短几周内吃掉如此多的蝉。
+
+目前有十二群十七年蝉，称为“群”（broods）。2021年5月和6月，主要分布在宾夕法尼亚州、弗吉尼亚州、印第安纳州和田纳西州的巨大群组——第十群（Brood X）破土而出。我们下次看到它们将是2038年。
+
+与蝉非凡的克制力相比，我们等待突变事件的耐心似乎微不足道。它们为改变生命的事件等待了十七年。而我们在仅仅十四年里就至少经历了三次。下一次会在何时？我不知道。但我知道一点：作为一个物种，我们投资者远不如蝉有纪律。我们这个群体会把事情推向极端，直到下一次大混乱的爆发。
+
+我们等待着。
+
+**本章总结**
+
+进化论教会了我……
+
+……重新构想投资需要我们接受企业经营普遍存在停滞状态这一事实。换句话说，优秀的企业通常保持优秀，糟糕的企业通常保持糟糕。
+
+1.  间断平衡理论认为，进化变化是在长期的停滞之后相当突然地发生的，而不是像达尔文所声称的那样通过渐进过程实现的。停滞是自然界的常态，除非出现突变创造新物种。
+2.  停滞也是商业世界的常态。优秀的企业通常保持优秀，糟糕的企业通常保持糟糕。这不仅从我个人在印度几十年的投资经验中可见一斑，美国关于高质量企业寿命的实证数据也证明了这一点。
+3.  生物长期进化过程中的所有波动并非都是突变。在停滞期内，生物体会在有限范围内发生变异。
+4.  我们不把股价波动与商业突变混为一谈。这让我们在历史上得以三次成为积极的买家，包括在新冠疫情引发的市场恐慌期间。
+5.  当糟糕企业的股价上涨时，我们通过关注其（糟糕的）企业质量并自问是否愿意永远持有它来避免投资。
+
+---</div>
+        </div>
+    
+    </main>
+</body>
+</html>
