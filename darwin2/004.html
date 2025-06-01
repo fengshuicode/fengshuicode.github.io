@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./003.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 4</h1>
+        <a href="./005.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">The Perils of a Pavlovian
+As many more individuals of each species are born than can possibly survive; and as, consequently, there is a frequently recurring struggle for existence, it follows that any being, if it vary however slightly in any manner profitable to itself, under the complex and sometimes varying conditions of life, will have a better chance of surviving, and thus be naturally selected.
+Charles Darwin, On the Origin of Species, introduction
+In our view, it is folly to forgo buying shares in an outstanding business whose long-term future is predictable, because of short-term worries about an economy or a stock market that we know to be unpredictable. Why scrap an informed decision because of an uninformed guess?
+Warren Buffett, annual letter to shareholders, 1994
+You are going bald. Not because of age, but because you have been tearing your hair out.
+A few months ago, you committed to investing $100,000 with a money manager. This fund manager did not want to raise cash and said that he would call commitments if he saw attractive opportunities to invest in the market. He made a strong pitch with a snazzy PowerPoint presentation, and, like everyone in the industry, he promised to be long-term oriented. He also claimed that he does not like to lose money (as if everyone else does!) and that he carefully assesses the quality of businesses and buys when everyone else is selling. Very Buffettesque. Very old world. You have heard the same spiel from everyone, but he seems quite sincere. Or at least he put on a good act.
+A few quarters have passed, and he has called $40,000 from you. At the end of the quarter, the value of your $40,000 investment is $38,000. You know that the market has been a bit weak lately, so you ignore the minor loss. You are a patient sort and don’t fret over the value of your investments daily like many of your friends.
+But when you check your investments next quarter, you see that the value of your portfolio is now only $32,000. You have taken a hit of 15 percent in a single quarter. To rub salt into your wounds, the fund manager demands $15,000 more from you. He is entitled to; you have signed an agreement with him that commits you to keep investing until your $100,000 limit is reached. You invest the additional $15,000.
+One more quarter goes by, and you are aghast to discover that the value of your $55,000 is now only $39,000. You are down 30 percent within six months! The fund manager repeats the same mantra, “We are long term, patient, blah . . . blah  . . . blah,” while asking for an additional $15,000! You talk to some of your friends who appear to be stock market experts. All of them advise you to stop investing more and to withdraw your remaining capital promptly. Unfortunately, your lawyer advises you that there is no way out. Not only can you not redeem your capital (because you have agreed to a lock-up for many years), but you must honor your commitment. With great reluctance, you invest an additional $15,000. Your total investment is now $70,000.
+You have read Buffett’s great annual letters and listened to his interviews on TV. You remember that he advises investors not to check their stock holdings obsessively. Hence, this time, you decide to wait six months before reviewing how your portfolio has performed. Kudos for your patience!
+The day finally arrives. You haven’t felt this nervous since the first time you used a fake ID to enter a bar. You open your account statement with increasing dread. Your worst fears are realized. Your $70,000 investment has now almost halved to $36,000. Your portfolio has lost about 40 percent during the past six months. Oh, and your money manager is threatening to ask for more money.
+Apart from continuing to tear at your remaining hair, what should you do?
+The horns of dung beetles. Maybe they have the answer.
+The How Versus the Why
+Dung beetles love poop. Duh. With about eight thousand species, this cleanup crew of the insect world eats poop. They build their nests with poop, live in those nests, and lay their eggs in them to sustain their larvae.1 Check out figure 4.1 for a small sample of the astonishing variety of dung beetles. Among insects, they have the unique distinction of caring for their young: dad provides food, and mom tends to the nest.
+4.1a–f The impressive variety of dung beetles.
+Source: Licensed from iStockphoto (Getty Images).
+Many years ago, while taking a poop in the open in Masai Mara in Kenya (don’t ask), I heard them before I saw them. They scurry noisily at a surprisingly brisk pace. The males have impressive-looking horns, and the eight thousand species have almost as many different kinds of horns. Their shape resembles rhinoceros horns, elephant tusks, deer antlers, and even a serrated knife; their size varies from very small to massive. Some are even larger than the entire dung beetle’s body.
+What explains these horns? One way evolutionary biologists describe them is through hormonal, developmental, and genetic mechanisms. For example, a 2019 Science article provides evidence that dung beetles use wing genes to grow their horns.2 The wing genes get turned on in the early stages of the growth of the horns. Later, these genes switch off, and a new set of genes grows and shapes the horns. An article in the Journal of Insect Physiology explores the types and quantities of hormones that control the length of horns in males.3 It showed that the hormone methoprene has a significant influence on the production of horns. These scientists are asking “how” questions. How do the horns grow? How does horn length differ?
+Another route of exploring the cause of horns is to understand the adaptive nature of them. These are “why” questions: Why did horns arise? Why do they increase the fitness of the beetle? Why can horns be considered an adaptation? The selectionist explanation contends that the horns of male dung beetles allow the bearer to garner more resources, defend their nests, and compete for the best females, thereby reproducing more than the males without horns. For example, an article in the Journal of Insect Behavior describes an experiment providing evidence that males with larger horns get preferential access to females and thus can be considered adaptive. The same article also describes the adaptive value of small horns in some males. These males have greater mobility and can sneak around the larger males to mate with the females!
+The first category of explanations for the dung beetle’s horns—addressing the “how” question—are called proximate causes, and the second—addressing the “why” question—are ultimate causes. Proximate mechanisms explore immediate, physical influences on a trait. The history of the organism determines ultimate causes, specifically the role played by natural selection to favor one trait versus another.
+To elaborate further, let’s talk about sex.
+Or more precisely, polyandry in the predatory mite species Neoseiulus californicus.4 Polyandry implies multiple matings by the female of a species and is the opposite of polygyny, wherein a male succeeds in mating with multiple females. Bateman’s principle, named after an English geneticist, argues for the prevalence of polygyny in the animal kingdom. He contended that since females invest much more in offspring than do males, they are the limiting factor over which males compete, leading to polygyny. However, polyandry is more widespread than Bateman believed; in many species, females are not just waiting around to get impregnated—they are actively scouting for multiple partners. And one of these species is the mite N. californicus.
+But what drives this mite to become polyandrous when the dominant trend in the animal world is toward polygyny? Peter Schausberger and his colleagues tackled this question in a PLoS One article, and they came up with two different sets of explanations: one “proximate” and one “ultimate.”
+The scientists discovered that the ultimate cause of polyandry in N. californicus consists of both direct and indirect fitness benefits. Females that mated multiple times produced more offspring than females that mated just once, and these offspring also survived longer. As for the proximate cause, the authors identified a key one: first mating duration. If the females’ first mating period was below a certain threshold (150 minutes), the likelihood of their continuing to seek male partners increased. The immediate cause of females seeking more sex was a lack of sex. Who says science is boring?
+Ernst Mayr, one of the greatest evolutionary biologists of the twentieth century, proposed the proximate–ultimate duality in a landmark article titled “Cause and Effect in Biology” in the journal Science in 1961.5
+Using the example of bird migration, he posed the following question: “Why did the warbler on my summer place in New Hampshire start his southward migration on the night of the 25th of August?” He proposed four causes for this migration. First, an ecological cause: The bird would starve if it stayed in New Hampshire for the winter. Second, a genetic cause honed over millions of years that induced the warbler to respond to external stimuli and gain selective advantage over warblers that did not migrate. Third, an internal physiological cause that propelled the bird to leave once the number of daylight hours dropped below a certain level. And last, an external physiological cause that was reflected in a sudden drop in temperature on August 25. The warbler was already physiologically ready for migration, and this sudden cold wave made it leave that day. Mayr called the first two explanations ultimate causes and the latter two proximate causes.
+Problems of Proximate Focus
+Among all the philosophical issues that we have imbibed from evolutionary biology, recognizing the difference between proximate and ultimate causes is right on top.</div>
+            <div class="text-block simplified-text">以下是严格遵循要求的译文：
+
+**巴甫洛夫式陷阱**
+由于每个物种诞生的个体数量远超其生存资源承载力，因而频繁上演的生存斗争便不可避免。据此推论：任何生物只要在复杂多变的环境中，产生丝毫对自身有利的变异，就能获得更大的生存机会，从而被自然选择所青睐。
+查尔斯·达尔文《物种起源》导论
+
+我们认为，因担忧难以预测的短期经济或股市波动，就放弃投资前景可期的优质企业，实属愚行。岂能为盲目猜测推翻深思熟虑的决策？
+沃伦·巴菲特1994年致股东信
+
+你正在秃顶。无关年岁，全因焦虑抓狂。
+数月前，你承诺向某基金经理注资十万美元。此人宣称无需现金储备，若遇良机将随时催缴资金。他用炫酷的PPT激情路演，与同业者如出一辙地标榜长期理念，还声称厌恶亏损（仿佛他人热衷亏损似的），强调会精研企业质量并在市场恐慌时买入——十足的巴菲特做派，十足的传统风范。这套说辞你耳熟能详，但他显得尤为诚恳，至少演技精湛。
+
+几度季度轮回，你被催缴四万美元。季末持仓市值仅余三万八。你知近期市况疲软，对小额亏损不以为意。你生性沉稳，不似友人那般每日紧盯账户。
+
+新季度再查持仓，市值竟缩至三万二。单季暴亏15%。雪上加霜的是，基金经理竟再索一万五。你签约时承诺注资至十万限额，只得照办。
+
+又过一季，五万五本金骤降至三万九的噩耗令你目瞪口呆。半年亏损30%！经理重复着"着眼长期、保持耐心"的陈词滥调，同时再索一万五！咨询几位股市专家友人后，众口一词劝你停止注资并火速撤资。律师却直言无路可退：不仅因锁定期无法赎回本金，更须履行注资承诺。你极其不情愿地追加投资，累计注资达七万。
+
+你研读过巴菲特经典年报，聆听过他的电视访谈。铭记着"勿过度关注持股"的忠告，此番决意等待半年再查账户。这份耐心值得嘉许！
+
+当日终临，久违的紧张感堪比首次持假证混入酒吧。颤抖着打开对账单，最坏的预想成为现实：七万本金惨遭腰斩至三万六。半年再蚀40%。更甚者，经理竟威胁继续催缴。
+
+除了揪扯残存的头发，你当如何？
+
+蜣螂的犄角，或许暗藏答案。
+
+**过程之因与本源之因**
+蜣螂嗜粪，毋庸置疑。约八千虫族组成昆虫界清道夫大军。它们筑粪巢而居，产卵育雏。图4.1呈现了部分蜣螂的奇异形态。其在昆虫界独树一帜：雄虫觅食，雌虫守巢。
+
+多年前，我在肯尼亚马赛马拉露天便溺时（莫问缘由），先闻其声后见其形。它们窸窣疾行，雄虫犄角形态摄人——八千虫族便有近八千种犄角：犀角、象牙、鹿茸乃至锯齿刀之形制，尺寸从微末到巨硕不一而足，更有甚者超过本体。
+
+犄角因何存在？演化生物学家或从激素、发育及基因机制阐释。2019年《科学》论文证实蜣螂调动翅基因发育犄角：犄角萌生初期激活翅基因，后期切换新基因塑形。《昆虫生理学杂志》则探究调控雄虫犄角的激素类型与剂量，揭示烯虫酯对犄角生长的关键影响。此类研究聚焦"过程"：犄角如何生长？长度何以有别？
+
+另一路径探索犄角的适应本质，叩问"本源"：犄角为何演化？如何提升生存优势？为何视作适应性特征？选择论者主张雄虫犄角助其争夺资源、守卫巢穴、竞逐佳偶，使有角者较无角者繁衍更盛。《昆虫行为杂志》载实验证实：大角雄虫优先获得交配权，故属适应性特征。该文亦阐释某些小角雄虫的适应性价值——机动性更强，可避让大角雄虫偷会雌虫！
+
+阐释蜣螂犄角的首类理论解答"过程之因"（近因），次类解答"本源之因"（远因）。近因机制探究性状的直接物理影响，远因则溯及生物演化史中自然选择对特定性状的筛选作用。
+
+为深入阐发，且论繁衍之道。
+更精确而言，论加州新绥螨的一雌多雄制。此现象与一雄多雌制相悖。英国遗传学家贝特曼提出的原则主张动物界以一雄多雌制为主流：因雌性对后代投入远超雄性，故成为雄性竞逐的稀缺资源。然一雌多雄制分布之广远超其预想——许多物种雌性主动寻求多偶，加州新绥螨即属此列。
+
+当动物界以一雄多雌制为主导时，此螨何以反其道而行？彼得·绍斯伯格团队在PLoS One论文中给出双重解释：近因与远因。
+
+科学家发现加州新绥螨行一雌多雄制的远因兼具直接与间接的适应优势：多次交配雌性的后代数量更多且存活更久。近因方面，首轮交配时长是关键：若初次交配不足150分钟阈值，雌性持续求偶概率激增。雌性渴求交配的直接动因竟是交配不足——谁说科学无趣？
+
+二十世纪顶尖演化生物学家恩斯特·迈尔在1961年《科学》期刊的里程碑论文《生物学中的因果律》中确立近因远因二元论。
+他以鸟类迁徙为例设问："为何新罕布什尔夏居地的林莺在8月25日夜启程南迁？"提出四重归因：其一生态远因——留居越冬将致饿殍；其二遗传远因——经百万年锤炼的基因使林莺响应外界刺激，较不迁徙同类更具选择优势；其三生理近因——日照时数跌破阈值触发迁徙冲动；其四外界近因——8月25日寒流突至。彼时林莺生理准备就绪，寒流遂成南飞导火索。迈尔称前两者为远因，后两者为近因。
+
+**近因偏执之弊**
+在演化生物学馈赠的哲学洞见中，明辨近因远因之别当居首位。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">We want the businesses we own to increase in value over the long run. And the only way for this to happen is for the company to perform well over many years, preferably decades. Investment success may not correlate with business success for a day trader or short-term investor. But for us, the ultimate success of an investment is almost entirely dependent on the ultimate success of the business.
+If you accept this premise, then as permanent owners, we should focus exclusively on the quality and performance of the business over the long run. And that is what we do.
+However, this is easier said than done. In today’s world of Facebook, Instagram, Reddit, Twitter, WhatsApp, and other soul-destroying inventions, it is not easy to escape the din of proximate noise that can drown out the desire to seek sources of ultimate success. When there is a specter of a Greek default, an announcement of reduced jobs growth in the United States, OPEC negotiations break down, the Federal Reserve hints that the days of low interest rates are over, or company revenue falls, stocks can fall. Similarly, a bullish projection by the International Monetary Fund (IMF) on world growth, the recapitalization of banks in China, the success of a new product launch, or the increased pace of vaccination for a global pandemic can lead to higher stock prices.
+All these are proximate causes of price movement. And all are divorced from what could ultimately lead to the business success or failure—and hence a higher or lower market value—of a company. The question we investors don’t ask often enough but should is relatively straightforward: Does this proximate cause have anything to do with the cause of ultimate business success?
+The interesting thing about proximate causes is that they are almost always evident in screaming newspaper headlines and hyperventilating news anchors. Ultimate causes, thankfully, are way too dull for media coverage. Why “thankfully”? I will get to it.
+The sections that follow describe four categories of proximate causes of share price gyrations: macroeconomic, market-related, thematic, and company-specific factors. This list is not exhaustive; there are way too many to count. But after reading this, I hope you will be able to spot a proximate cause when you encounter it.
+Proximate Macroeconomic Causes
+We live in an uncertain world. But it’s actually worse than that. We live in an uncertain hyperconnected world. On balance, hyperconnectedness has benefited humanity. (I get to eat Norwegian salmon in Singapore.) My use of the adjective “worse” here is limited to the impact of hyperconnectedness on my community—that is, fund managers. Before I became an investor in 1998, if someone had told me that inflation or U.S. employment data would affect the stock price of a paint company in India, I would have concluded that that person had no idea what they were talking about. But this is precisely what happens.
+On October 27, 1997, the Dow Jones Industrial Average suffered one of its largest single-day drops in history. It fell 554 points, or 7.2 percent. For the first time in its history, the New York Stock Exchange halted trading. All major world markets were affected: Hong Kong’s Hang Seng fell 6 percent, the United Kingdom’s FTSE fell 6 percent, the Australian market fell 7 percent, and Germany’s DAX fell almost 6 percent. In short, if you were looking for a definition of financial panic, your search would have ended here.
+The proximate cause of this mayhem? The spreading of the Asian financial crisis.6 It had all started on July 2, 1997, when the Thai government floated the baht since it did not have the foreign currency to support the baht’s peg to the U.S. dollar. The currencies of Indonesia, South Korea, Malaysia, and the Philippines also suffered precipitous declines. Many companies in these countries had borrowings in dollars, and these firms started defaulting on their payments.
+Table 4.1 tracks the U.S. and UK market indices at the time, along with the stock prices of a few well-known businesses. The U.S. market decline is for October 27 (Monday) relative to October 24 (Friday). The UK market reacts to the U.S. market’s movement with a day’s delay owing to time difference; thus, the UK market data is for October 28 (Tuesday) relative to October 24 (Friday).
+Table 4.1U.S. and UK market indices after October 27, 1997
+Index
+October 27/28, 1997
+After 6 months
+U.S. market
+Dow
+−7%
++25%
+Wal-Mart
+−6%
++57%
+Citigroup
+−11%
+−7%
+Boeing
+−11%
++16%
+Microsoft
+−5%
+−35%
+Exxon
+−7%
++26%
+UK market
+FTSE 250
+−6%
++23%
+BP
+−5%
++14%
+Rolls-Royce
+−4%
++29%
+Diageo
+−7%
++50%
+Unilever
+−8%
++40%
+HSBC
+−7%
++23%
+Every number in the first column is negative. Why? Why did Wal-Mart, a local U.S. business, and Boeing, a global enterprise, fall on October 27? And why did Thai bond defaults impact Unilever, which earned about 70 percent of its revenue and profits from the developed world in 1997, and BP, a global oil company?
+Proximate paranoia confused with ultimate reality.
+The evidence is in the second column, which provides the index levels and stock prices six months after October 27, 1997. The Dow, as well as the FTSE, were up 25 percent, and the dramatic upward movement of companies like Wal-Mart, Diageo, and Unilever may have led to the firing of some fund managers who had pressed the panic button on October 27.
+If you want to lash out at the fund management community for being impulsive and trigger-happy, go ahead. But please don’t blame us for being inconsistent. Whenever the markets get excited about a macroeconomic event, the fund managers behave predictably by riding the proximate bandwagon of stock prices. And then they repent at leisure.
+Fund managers have a Pavlovian reaction to macro or market data. Will interest rates be higher? Sell. Will inflation be lower? Buy. If the fiscal deficit shoots up? Sell. Or is it a buy? Most businesses should be (and are) relatively immune to short-term macro movements. As shown in table 4.1, their stock prices, for some inexplicable reasons, are not.
+Some argue that for certain types of businesses—say, banks or financial companies that rely on lending and deposit-taking—interest rates should significantly impact long-term performance. Hence, interest rate movements should be proximate and ultimate causes of business performance. Let’s look at the following data of stock price changes for three large Indian banks over twenty years from December 31, 1999, to December 31, 2019:
+HDFC Bank81x
+ICICI Bank33x
+State Bank of India16x
+During these two decades, the Reserve Bank of India had increased or decreased interest rates more than fifty times.7 Rates varied between 5 percent and 12 percent, with wild gyrations in between. More importantly, all these banks were subject to the same regime of interest rates and other macro factors. If you were an HDFC Bank shareholder, did it matter what the interest rate was, or at what pace the Reserve Bank of India changed it?
+HDFC Bank’s business, and therefore its stock price, did spectacularly well because of its CEO, Aditya Puri, one of the most outstanding leaders in Indian corporate history. In October 2020, The Economist called him the best banker in the world.8 Interest rates, current account deficits, exchange rates, and other such esoteric measures did not get in the way of Puri achieving excellence.
+I am not cherry-picking here. Over the long run, well-run businesses create a lot of value irrespective of the macroeconomic environment. Do we seriously think Amazon, JPMorgan, Michelin, Nestlé, Siemens, Tesco, Walmart, Zara, and other excellent businesses are held hostage to inflation and fiscal deficit? If the business and stock price performance of exceptional companies is immune to macroeconomic perturbations, aren’t we, as investors in those companies, better off ignoring the economy?
+There is another big problem with considering macroeconomic data while analyzing individual businesses. Let’s confront this headache through the example of tires. There are many listed tire businesses in India, so it should be a happy hunting ground for us. Let’s say the World Bank announces that India will grow its GDP by 8 percent next year. This seems like good news for the country. What about tires? Someone could argue that GDP growth will lead to an increase in personal wealth, which would lead to consumers buying more cars, and hence more tires.
+Should we buy a tire business then? But wait. A sales increase is not the same as a profit increase. The primary raw material for tire companies is rubber, which accounts for about 60 percent of revenue. What if rubber prices shoot up in anticipation that Indian tire businesses will need to buy more rubber next year? This is getting way too complicated. You need a number-crunching analyst with a lot of computing power at their disposal.
+Your super-smart analyst builds their 100-gigabyte Excel model after burning the midnight oil for a couple weeks and predicts that rubber prices will be benign. Whew. Should we buy a tire business now? Hold on. How do we know what strategy or tactics the dozen or so tire companies will employ in a favorable environment? What if one of the smaller companies decides to wage a price war to shore up market share? Some have done so in the past. Or what if the dominant player increases its advertising budget significantly by sponsoring international cricket tournaments?
+Let’s assume the same astute analyst predicts that no company will “misbehave.” (This analyst is brilliant!) OK, are we ready to invest now? Not at all. How are we to know the relative growth of various tire segments that will ultimately impact overall industry profits? The truck segment is the largest and the least profitable, whereas two-wheeler tires are the most profitable but generate only a tiny fraction of industry revenue. Thus, if the truck tire segment grows faster than the rest of the tire market, the profits of tire companies may decline.</div>
+            <div class="text-block simplified-text">好的，这是您要求的书籍段落翻译：
+
+---
+
+我们期望所持有的企业价值能长期增长。而实现这一目标的唯一途径，是公司在多年（最好是几十年）内持续表现出色。对于日内交易者或短期投资者而言，投资成功可能与业务成功无关。但对我们来说，一项投资的最终成功几乎完全取决于其所投企业的最终成功。
+
+如果你认同这个前提，那么作为永久所有者，我们就应该专注于企业长期的业务质量和绩效。这正是我们所做的。
+
+然而，知易行难。在如今充斥着Facebook、Instagram、Reddit、Twitter、WhatsApp以及其他灵魂毁灭性发明的世界里，要避开那些可能淹没追求终极成功欲望的、喧嚣的近因噪音实非易事。当希腊违约的幽灵浮现、美国就业增长放缓的消息发布、欧佩克谈判破裂、美联储暗示低利率时代结束，或是公司营收下滑时，股价就可能下跌。同样地，国际货币基金组织（IMF）对全球增长做出乐观预测、中国银行资本重组、新产品发布成功，或是全球大流行疫苗接种速度加快，也可能推高股价。
+
+所有这些都是价格波动的近因。它们都与最终导致企业成功或失败（进而影响其市值高低）的因素无关。我们投资者不够常问、但理应提出的问题其实相当简单：这个近因与业务最终成功的根源有关吗？
+
+近因的有趣之处在于，它们几乎总是醒目地出现在报纸头条和亢奋的新闻主播口中。而幸好，终极原因则太过乏味，媒体不屑报道。为何说“幸好”？我稍后会解释。
+
+接下来的章节描述了股价波动的四类近因：宏观经济因素、市场相关因素、主题因素以及公司特定因素。此清单并非详尽无遗；此类因素数不胜数。但读完本节后，我希望你能在遇到近因时将其识别出来。
+
+**近因：宏观经济因素**
+
+我们生活在一个不确定的世界。但现实其实更糟。我们生活在一个不确定且高度互联的世界。总体而言，高度互联性造福了人类。（我能在新加坡吃到挪威三文鱼。）我这里用“更糟”这个形容词，仅限于高度互联性对我所在群体——即基金经理——的影响。在1998年成为投资者之前，如果有人告诉我通胀或美国就业数据会影响印度一家涂料公司的股价，我肯定会认为此人不知所云。但事实正是如此。
+
+1997年10月27日，道琼斯工业平均指数经历了有史以来最大的单日跌幅之一。它下跌了554点，跌幅达7.2%。纽约证券交易所历史上首次暂停交易。全球所有主要市场均受影响：香港恒生指数下跌6%，英国富时指数下跌6%，澳大利亚市场下跌7%，德国DAX指数下跌近6%。简而言之，如果你当时在寻找金融恐慌的定义，那么你的搜索到此就可以结束了。
+
+这场混乱的近因是什么？亚洲金融危机的蔓延。这一切始于1997年7月2日，当时泰国政府因无力支撑泰铢与美元的固定汇率而让泰铢自由浮动。印尼、韩国、马来西亚和菲律宾的货币也随即暴跌。这些国家的许多公司背负美元债务，并开始出现债务违约。
+
+第一列数字皆为负数。为什么？为什么美国本土企业沃尔玛和全球企业波音的股价在10月27日下跌？为什么泰国债券违约会影响1997年约70%收入和利润来自发达国家的联合利华，以及全球石油公司英国石油（BP）？
+
+**近因的妄想混淆了终极现实。**
+
+证据在第二列，它显示了1997年10月27日六个月后的指数水平和股价。道指和富时指数都上涨了25%，而像沃尔玛、帝亚吉欧和联合利华这样公司的股价大幅上涨，可能导致那些在10月27日按下恐慌按钮的基金经理被解雇。
+
+如果你想抨击基金管理界冲动鲁莽，请便。但请不要指责我们言行不一。每当市场因某个宏观经济事件而兴奋时，基金经理的行为是可预测的：他们会乘上股价波动的近因潮流。然后他们才有闲暇懊悔。
+
+基金经理对宏观或市场数据有巴甫洛夫式的条件反射。利率会上升吗？卖出。通胀会下降吗？买入。财政赤字激增？卖出。还是该买入？大多数企业本应（也确实）相对不受短期宏观波动的影响。但如表4.1所示，它们的股价却因某些难以解释的原因并非如此。
+
+有人认为，对于某些类型的企业——比如依赖借贷和吸储的银行或金融公司——利率应显著影响其长期表现。因此，利率变动应是业务表现的近因和终极原因。让我们看看以下三家印度大型银行在1999年12月31日至2019年12月31日这二十年间的股价变化数据：
+
+> HDFC银行 81倍
+> ICICI银行 33倍
+> 印度国家银行 16倍
+
+在这二十年里，印度储备银行加息或降息超过五十次。利率在5%到12%之间剧烈波动。更重要的是，所有这些银行都处于相同的利率制度和其他宏观因素影响下。如果你是HDFC银行的股东，利率是多少，或者印度储备银行调整利率的速度快慢，真的重要吗？
+
+HDFC银行的业务及其股价表现卓越，是因为其首席执行官阿迪亚·普里（Aditya Puri），他是印度企业史上最杰出的领导者之一。2020年10月，《经济学人》称他为世界最佳银行家。利率、经常账户赤字、汇率以及其他此类深奥的指标，都未能阻碍普里成就卓越。
+
+我并非刻意挑选特例。长期来看，无论宏观经济环境如何，经营良好的企业都能创造巨大价值。我们真的认为亚马逊、摩根大通、米其林、雀巢、西门子、乐购、沃尔玛、Zara以及其他优秀企业会被通胀和财政赤字所挟持吗？如果卓越公司的业务和股价表现不受宏观经济扰动的影响，那么作为这些公司的投资者，忽略宏观经济岂不更好？
+
+在分析单个企业时考虑宏观经济数据还有另一个大问题。让我们通过轮胎的例子来直面这个难题。印度有许多上市的轮胎企业，本应是我们理想的猎场。假设世界银行宣布印度明年GDP将增长8%。这对国家似乎是好消息。那对轮胎业呢？有人可能会说GDP增长将导致个人财富增加，从而促使消费者购买更多汽车，进而需要更多轮胎。
+
+那么我们应该买入一家轮胎企业吗？且慢。销量增长不等于利润增长。轮胎公司的主要原材料是橡胶，约占收入的60%。如果橡胶价格因预期印度轮胎企业明年需采购更多橡胶而飙升呢？这变得过于复杂了。你需要一个拥有强大计算能力的、擅长数字分析的专家。
+
+你那位超级聪明的分析师在熬夜数周后，建成了一个100GB大小的Excel模型，并预测橡胶价格将保持温和。呼。那我们现在可以买入轮胎企业了吗？等等。我们如何知道十几家轮胎公司在有利环境下会采取何种策略或战术？如果其中一家小公司为提升市场份额决定发动价格战怎么办？过去就有人这么干过。或者，如果主导企业通过赞助国际板球赛事大幅增加广告预算呢？
+
+假设同一位精明的分析师预测不会有公司“行为不端”。（这位分析师真是天才！）好吧，我们现在可以准备投资了吗？还不行。我们如何知道各类轮胎细分市场的相对增长情况？这些增长最终将影响整个行业的利润。卡车轮胎是最大但利润最低的细分市场，而两轮车轮胎利润最高却只占行业收入的很小一部分。因此，如果卡车轮胎细分市场的增速快于其他轮胎市场，轮胎公司的利润反而可能下降。
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">You ask the analyst to forecast segmental growth. After they have come up with the answer (again!), you go back to the drawing board. And now you are perturbed by an uncomfortable realization. Since tires are highly capital intensive, they can significantly impact the debt level of a business, which could affect its robustness and the stock price. How are you to predict which tire company will invest and how much? I know. Back to our resourceful analyst!
+I could go on and on. But it gets worse (or better, if you are that smart analyst on overtime pay). Note that in the tire example, I have tried to predict the performance of a business by analyzing only GDP growth. But macroeconomic data encompass a much more comprehensive range of indicators such as employment level, exchange rate, inflation, government deficit, money supply, current account balance, and many more. How can we assess all these factors in the context of a tire business? And fund managers don’t invest only in tires. Are we supposed to repeat this mega-exercise across the dozens of industries and hundreds of companies we track? Also, given the connectedness of the global economy, should we also incorporate the macroeconomic data of other countries into our decision-making?
+Are we ready to give up now?
+We have seen two problems with treating macroeconomic factors as critical proximate variables. First, we noticed that even big macro events (like the Asian financial crisis) are uncorrelated with longer-term stock price performance. Second, taking the example of the Indian tire industry, we concluded that using proximate economic data to assess industry and company performance is very hard, if not impossible.
+The third problem with using economic data is the most obvious of all. No one knows anything. Okay, that is exaggerating a bit. But only a bit. Since even expert economists are abysmal at forecasting the economy, why should we investors squander our time giving it any importance?
+I assume you will agree that an economist’s most important task is to forecast a recession. This would enable the government to take the necessary steps to prevent widespread pain and suffering. In March 2018, the IMF published a working paper titled “How Well Do Economists Forecast Recessions?”9 The authors compared real GDP forecasts with actual growth data for sixty-three countries from 1992 to 2014. They showed that while GDP contracted by an average of 2.8 percentage points during recessions, the consensus forecast from the year before the recession was a growth of 3 percent! Worse, even during the year of the recession, the average forecast was a contraction of 0.8 percent when the real contraction turned out to be 2.8 percent.
+Prakash Loungani, one of the authors of this IMF paper, told The Guardian in an interview that according to his analysis, economists had failed to predict 148 of the last 150 recessions! “The record of failure to predict recessions is virtually unblemished,” he said. One would have thought that with a greater volume of data, more computing power, and better algorithms, our ability to forecast would have improved over the years. Yeah, right. In the same Guardian article, Mark Pearson, the deputy director for employment, labour and social affairs at the Organisation for Economic Co-operation and Development in Paris, said, “We are getting worse at making forecasts because the world is getting more complicated.” Way to go, Mark.
+I know that many investors spend a lot of time poring over economic data. Maybe they have figured out a way to factor in exchange rate movement or the external debt levels of the country in their decision-making. I am unable to do so. I do not know how to translate any economic indicator into the prospects of a specific business.
+We ignore every piece of proximate macroeconomic information. We do not believe these data help us assess the ultimate success or failure of a business. We have no economic advisers, we do not talk to economists at banks or brokerage houses, and we do not discuss any economic indicators in our team meetings.
+Their weightage in our investment decision is a big zero.
+Proximate Market-Related Causes
+I don’t fraternize with folks in the financial services industry to exchange ideas or information. However, when I started my investing career with Warburg Pincus in 1998, I spent a fair bit of time with fund managers and finance professionals connected with the Indian equity markets. I had a consulting background and wanted to understand the workings of the capital market and its participants. I thought I had a lot to learn. I was right, just not in the way I had imagined.
+After just a couple months at Warburg, I could predict the exact words of a finance industry professional’s greeting. It wasn’t “How are you?” or “How’s it going?” or just “Hello.” It would almost always be “Kya lagta hai?” Translated from Hindi, in stock market parlance, this means “What do you think the market will do?” I remember being confused. Here I was, a novice trying to understand how the markets work, while this “expert” was seeking my opinion? Do they not know? It took me a while to conclude that they don’t. No one does.
+The previous section explained market decline owing to a proximate macroeconomic problem: the Asian financial crisis. Maybe you did not notice my sleight of hand—I claimed to know the cause of market correction. The fact is that I do not know why the markets corrected, but it looked like the crumbling of Asian currencies played a role. I had established a connection between the market movement and economic data, however spurious that connection may have been.
+But there are many other occasions when the market moves because, well, it moves. Such is the nature of markets. The proximate causes of market movements are unknown, and in my view, unknowable. Let’s go back to July 24, 2002. The Dow soared 489 points, the second-best point gain ever and the best percentage gain since 1987.10 The reason? Even after reading many news articles, I am not sure. Anyway, according to various media sources, the rally was the result of congressional negotiators reaching some kind of an agreement on corporate fraud. Also, some executives who had been defrauding the cable company Adelphia were arrested. Whatever.
+Let’s now look at table 4.2 on markets and how stock prices in the United States and the United Kingdom reacted to this “great” news.
+Table 4.2U.S. and UK market indices after July 24, 2002
+Index
+July 24/25, 2002
+After 6 months
+U.S. market
+Dow
++6%
+−2%
+Wal-Mart
++6%
++2%
+Citigroup
++10%
++16%
+Boeing
++6%
+−26%
+Microsoft
++7%
++11%
+Exxon
++10%
++1%
+UK market
+FTSE 250
++1.5%
+−14%
+BP
++6%
+−18%
+Rolls-Royce
++2%
+−31%
+Diageo
++9%
+−15%
+Unilever
++7%
++6%
+HSBC
++2%
+−7%
+As you can see, over the following six months, the Dow in the U.S. shrugged off the gains of July 24, 2002, and declined by 2 percent. The significant upward moves in the share prices of large companies like Wal-Mart, Citigroup, and Boeing could not keep pace with the euphoria of this one day. Boeing declined by a fourth over the next six months.
+Even more remarkable is the behavior of the markets in the United Kingdom. You would have thought that the so-called corruption investigations in the United States should not affect the UK markets. Well, we fund managers never cease to amaze. The FTSE 250 went up by 1.5 percent the day after the U.S. markets moved up 6 percent, and the stock prices of large companies, as shown in the first column of table 4.2, shot up by 2 to 9 percent. These are not small moves for companies with large market values. The euphoria did not last. Just six months after the event, Rolls-Royce was down by almost a third, and BP and Diageo had declined by 15 percent or more.
+Why did fund managers in the United Kingdom start piling on to BP, Rolls-Royce, and Diageo on July 25 after a huge increase in the U.S. indices on July 24? The explanation that comes to mind was offered by the great John Maynard Keynes when he opined that the stock market players were playing a complex guessing game.11 He asked us to imagine a game in which competitors pick the six prettiest faces from one hundred photographs. The winner is not the one who picks the prettiest faces but whose choices match the average of all the competitors.
+How would you play a game like this? My approach would be to not choose the six prettiest faces and instead spend my time guessing which six the other players will select. Before I were to start feeling smug about my second-level strategy, I would realize that a more insightful competitor would go a step further to a third level. They would try to guess what the average opinion expects the average beauty to be. And so on to even higher levels.
+Keynes had learned from bitter experience that this market guessing game is a colossal waste of time. In the 1920s, he used a detailed economic model to predict market levels and failed to see the Great Crash of 1929. He also underperformed the market during this period. He switched to picking stocks and, like Buffett, eschewed diversification. He declared, “The right method of investment is to put fairly large sums of money into enterprises one thinks one knows something about.”
+No wonder he turned out to be an excellent investor. Keynes managed the endowment of King’s College, Cambridge, from 1924 to 1946. During this twenty-two-year period, he compounded the college’s wealth by almost 14 percent a year. If someone had invested £100 with Keynes at the start of 1924, it would have been worth about £1,675 at the time of his death in 1946. The same money invested in the UK stock market index would have been worth only £424. Astonishingly, this period included the Great Crash of 1929, the Great Depression, and the Second World War.
+Should the financial world not have absorbed Keynes’s insights? Ha!</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+你让分析师预测细分市场的增长。等他们得出答案（又一次！），你又回到起点。这时你意识到一个令人不安的事实：由于轮胎行业资本高度密集，投资会显著影响企业的债务水平，进而可能损害其稳健性和股价。你该如何预测哪家轮胎公司会投资、投多少？我知道。又得找我们那位足智多谋的分析师了！
+我还能举很多例子。但情况更糟（或者更好，如果你就是那位拿加班费的聪明分析师）。注意，在轮胎的例子中，我只尝试通过分析GDP增长来预测企业业绩。但宏观经济数据涵盖的范围要广得多，包括就业水平、汇率、通胀、政府赤字、货币供应、经常账户余额等等。我们如何在轮胎行业的背景下评估所有这些因素？而且基金经理并不只投资轮胎。难道我们要在跟踪的几十个行业和数百家公司中重复这项浩大工程？此外，考虑到全球经济的互联性，我们是否还应将其他国家的宏观经济数据纳入决策？
+我们现在要放弃了吗？
+我们已经看到将宏观经济因素视为关键直接变量存在的两个问题。首先，我们注意到即使是重大的宏观事件（如亚洲金融危机）也与长期股价表现无关。其次，以印度轮胎行业为例，我们得出结论：使用直接经济数据来评估行业和公司业绩即使不是不可能，也非常困难。
+使用经济数据的第三个问题是最明显的：没人能预测准。好吧，这有点夸张。但也只是有点夸张。既然连专业经济学家在预测经济方面都糟糕透顶，我们投资者为何还要浪费时间重视它？
+我认为你会同意，经济学家最重要的任务是预测经济衰退。这将使政府能够采取必要措施防止广泛的痛苦。2018年3月，IMF发表了一篇题为《经济学家预测衰退的能力如何？》的工作论文。作者比较了1992年至2014年63个国家的实际GDP预测与实际增长数据。他们指出，尽管衰退期间GDP平均收缩2.8个百分点，但衰退前一年的共识预测却是增长3%！更糟的是，即使在衰退当年，平均预测是收缩0.8%，而实际收缩却高达2.8%。
+该IMF论文的作者之一普拉卡什·朗加尼在接受《卫报》采访时表示，根据他的分析，经济学家未能预测过去150次衰退中的148次！“预测衰退失败的记录几乎是毫无瑕疵的，”他说。人们本以为，随着数据量增大、计算能力增强、算法改进，我们的预测能力会逐年提升。是啊，说得对。在同一篇《卫报》文章中，巴黎经合组织就业、劳工和社会事务部副主任马克·皮尔逊说：“我们做预测的能力越来越差，因为世界正变得越来越复杂。”说得真好，马克。
+我知道许多投资者花大量时间钻研经济数据。也许他们找到了在决策中考虑汇率变动或国家外债水平的方法。我做不到。我不知道如何将任何经济指标转化为具体企业的发展前景。
+我们忽略所有直接的宏观经济信息。我们不相信这些数据能帮助我们评估企业最终的成败。我们没有经济顾问，不与银行或券商的经济学家交流，团队会议中也从不讨论任何经济指标。
+它们在投资决策中的权重是零。
+
+**直接的市场相关因素**
+
+我不与金融服务业人士交流想法或信息。然而，1998年我在华平投资开始投资生涯时，曾花了不少时间与关注印度股市的基金经理和金融专业人士相处。我有咨询背景，想了解资本市场及其参与者的运作方式。我以为自己有很多要学。我没错，只是方式与我设想的不同。
+在华平才几个月，我就能准确预判金融业人士打招呼的用语。不是“你好吗？”、“最近怎么样？”或简单的“你好”。几乎总是“Kya lagta hai?”（印地语，股市行话意为“你觉得市场会怎么走？”）。我记得当时很困惑。我是个试图理解市场如何运作的新手，而这位“专家”却在征求我的意见？他们不知道吗？我花了点时间才得出结论：他们不知道。没人知道。
+上一节解释了由直接宏观经济问题（亚洲金融危机）引发的市场下跌。也许你没注意到我的小把戏——我声称知道市场回调的原因。事实是我并不知道市场为何回调，但看起来亚洲货币崩溃是因素之一。我建立了市场变动与经济数据之间的联系，无论这种联系多么牵强。
+但市场很多时候波动只是因为……它就是要波动。这就是市场的本性。市场波动的直接原因未知，在我看来，也是不可知的。让我们回到2002年7月24日。道指飙升489点，创下有史以来第二大点数涨幅和1987年以来的最大百分比涨幅。原因？即使读了很多新闻报道，我仍不确定。总之，据各种媒体消息，这轮上涨是因为国会谈判代表就公司欺诈达成了某种协议。此外，一些欺诈有线电视公司Adelphia的高管被捕了。管他呢。
+现在我们来看表4.2，了解市场情况以及美国和英国股价对这条“重大”消息的反应。
+如表所示，在接下来的六个月里，美国道指抹去了2002年7月24日的涨幅，下跌了2%。沃尔玛、花旗集团和波音等大公司股价的显著上涨也无法跟上这一天的狂热。波音在接下来的六个月里下跌了四分之一。
+更引人注目的是英国市场的表现。你可能会认为美国所谓的腐败调查不应影响英国市场。好吧，基金经理们总能“创造惊喜”。美国市场上涨6%的次日，富时250指数上涨了1.5%，大公司股价如表4.2第一列所示，飙升了2%至9%。对市值巨大的公司来说，这并非小幅波动。狂热未能持久。事件发生仅六个月后，劳斯莱斯下跌了近三分之一，英国石油（BP）和帝亚吉欧（Diageo）下跌了15%或更多。
+7月24日美国股指大涨后，为何英国基金经理在7月25日就开始大举买入英国石油、劳斯莱斯和帝亚吉欧？我想到的解释是伟大的约翰·梅纳德·凯恩斯提出的，他认为股市玩家在进行一场复杂的竞猜游戏。他让我们想象一个游戏：参赛者从一百张照片中选出六张最漂亮的脸蛋。赢家不是选出最漂亮脸蛋的人，而是其选择与所有参赛者平均选择最匹配的人。
+你会如何玩这种游戏？我的策略是不选最漂亮的六张脸，而是花时间猜测其他玩家会选哪六张。在我为自己的二级策略沾沾自喜之前，我会意识到一个更有洞察力的竞争者会再进一步到第三级。他们会试图猜测平均意见所预期的平均之美是什么。如此类推，甚至到更高层级。
+凯恩斯从惨痛经历中得知，这种市场竞猜游戏是巨大的时间浪费。20世纪20年代，他使用详细的经济模型预测市场水平，却未能预见1929年的大崩盘。在此期间，他的表现也逊于市场。他转向选股，并像巴菲特一样避免分散投资。他宣称：“正确的投资方法是把相当大数额的钱投入到你自认为有所了解的企业中。”
+难怪他后来成为了一位出色的投资者。凯恩斯在1924年至1946年间管理剑桥大学国王学院的捐赠基金。在这22年间，他以近14%的年化回报率使学院的财富不断增长。如果有人在1924年初交给凯恩斯100英镑投资，到他1946年去世时，这笔钱将增值至约1675英镑。而同样的钱如果投资于英国股市指数，则仅值424英镑。令人惊讶的是，这段时间包括了1929年大崩盘、大萧条和第二次世界大战。
+金融界难道不该吸收凯恩斯的见解吗？哈！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">December 2019 looked like any other December, and the Wall Street stock market strategists were at it again—forecasting market growth for 2020. Since the year 2000, the median Wall Street forecast has never predicted a stock market decline in the next year. Yes, you read that right. Not once did the forecasters believe that the stock market could go down. The reality? The market fell on six occasions. The median forecasts from the year 2000 to 2020 missed the actual number by 12.9 percent points—more than double the average annual increase of 6 percent over these years!
+Back to December 2019. Remember that no one was aware of the COVID-19 pandemic then. The median consensus among the forecasters was that the market would rise by 2.7 percent in 2020.12 If the forecasters had known then that a pandemic would rage across the world from March 2020 until December 2020, what do you think their forecast for 2020 would have been? We will never know, but I bet they would have predicted a huge fall in the market. In any event, the S&P 500 rose by 16.3 percentage points in 2020. But 2020’s pandemic was a once-in-a-century event, and we should not hold it against the forecasters that they were wrong by 13.6 percentage points. Fair enough.
+What if we assess the forecast of an acknowledged master forecaster from early May 2020? Only eight months of the year remain, the pandemic has been raging for four months, and the dire impact on the economy seems quite evident. I would think that an “expert” could go wrong at this stage but probably not by much.
+Harry S. Dent Jr., called by some the “contrarian’s contrarian,” accurately predicted Japan’s economic collapse, the dot-com bust in 2000, and the election of Donald Trump.13 After receiving his MBA from Harvard Business School, he joined Bain & Company and now runs an independent research firm. He is a regular guest on CNBC, CNN, Fox, Fox Business, Good Morning America, and PBS. He has also been featured in Barron’s, Fortune, Business Week, the Wall Street Journal, and many other publications. He also publishes a monthly newsletter called the HS Dent Forecast. In short, Dent embodies as much expertise as an expert can muster.
+In early May 2020, in an interview with ThinkAdvisor, Dent predicted that the market would peak in August 2020 and that investors might be able to make a return of 5 to 10 percent. He advised them to “get out” and counseled against buying. How wrong was he? The market kept rising until December 31, and from the time of Dent’s interview in early May, the S&P 500 rose 32 percent! Even if you take the highest number of 10 percent returns in Dent’s band, that is an error of 22 percentage points over eight months. Or an annualized error of 33 percent. Oops.
+Before you blame me for choosing a forecaster who turned out to be egregiously wrong, I challenge you to find me an expert who asserted in May 2020 that the market would be up by 25 to 30 percent by the end of December. I could not find one. Trust me, I tried.
+To be fair, I have not met a single finance professional who claims that markets can be predicted. So why do industry players spend so much time obsessing over future market levels? Why do fund managers devote enormous time and effort obsessing over what other fund managers think and do? Flawed incentives, false comfort, one-upmanship, you name it. It doesn’t really matter.
+We ignore all market forecasts. Well, maybe not entirely.
+I do look at them on days when I want to have a good laugh.
+Proximate Thematic Causes
+At the end of annus horribilis 2020, I realized I was wrong by $6 billion.
+In early September 2020, Nikola was a stock market darling. The start-up had listed barely a year earlier at a valuation of $4 billion. Its value had since quintupled to almost $20 billion. Led by its charismatic founder, Trevor Milton, who was often compared to Elon Musk, Nikola was planning to develop semitrucks powered by hydrogen fuel cells and batteries. It had just announced a partnership with GM wherein the Detroit giant would get an 11 percent stake for $2 billion in return for a contract to engineer and build Nikola’s semitrucks.
+On September 10, 2020, a reputed investment fund and short seller called Hindenburg Research published a scathing report titled Nikola: How to Parlay an Ocean of Lies Into a Partnership with the Largest Auto OEM in America. The first line of the report states that Nikola was “an intricate fraud built on dozens of lies over the course of its founder and executive chairman Trevor Milton’s career.”14
+In 2017, to prove that its technology worked, Nikola shared a video titled “Nikola One in Motion,” which showed its prototype semitruck speeding along a road. Hindenburg claimed that the company had simply towed an ordinary truck to the top of a hill in a remote area and had filmed it rolling down the hill. After the report was published, Nikola felt compelled to acknowledge this fact by stating, “Nikola never stated its truck was driving under its own propulsion in the video.” What?! What else was a speeding truck supposed to show? The road?
+The revelation of this bare-faced lie was just the start of the lengthy report. Hindenburg’s research unearthed several more problems. Nikola did not have a battery technology despite Milton’s claims to the contrary; it did not possess hydrogen fuel cell expertise; Milton had a history of taking technology from others and then claiming it as his own; Milton also had a track record of troubled partnerships that ended in failure, lawsuits, and recriminations; and Milton had claimed that Nikola’s corporate headquarters were completely off-grid and used 3.5-megawatt solar panels, though no headquarters existed. I could list many more damning assertions made by Hindenburg in its lengthy report, but suffice to say that the future seemed bleak for Nikola.
+Trevor Milton resigned within a few days of the report, and GM ended its partnership discussions with the company. The Securities and Exchange Commission and the Department of Justice launched their own investigations. Unsurprisingly, the stock price started crashing.
+Here is my question for you: What do you think Nikola’s market value was at the end of December 2020, three months after the Hindenburg exposé? Remember that the company had no battery or fuel cell technology, had no prototype, its founder had exited ignominiously, GM had terminated the partnership, and the government had begun investigating fraud. My answer would be close to zero.
+Nope. It was $6 billion!
+The Hindenburg report appeared to be fact based: They backed up almost all their assertions with documents, photographs, text messages, videos, and interviews. I am in no position to double-check their research. However, the facts that Milton resigned and GM terminated the partnership seem to indicate that a reasonable portion—if not all—of the report was credible. If so, how does one explain a $6 billion valuation for a company like Nikola? That’s an unfair question because I doubt anyone fully understands how companies are valued. But in this case, I want to offer a two-word answer.
+Thematic investing.
+The theme being “new-age automotive companies will rule the world.” Automotive tech start-ups have been a rage since 2020.15 According to an article in the Financial Times in January 2021, these companies had amassed a market value of $60 billion, but most had not generated a single dollar of revenue. And why didn’t they have any revenue? Because, like Nikola, they didn’t even have a product! The popular saying “fact is stranger than fiction” is tailor made for the valuation of new-age automotive start-ups.
+The FT article names nine listed start-ups, the largest of which was QuantumScape, valued at $19 billion. This company projects its first revenue of $14 million in 2024. In 2028, just four years after generating its first revenue, the company expects to touch $10 billion revenue! As a matter of comparison, after recording its first revenue in 2008, Tesla took nine years to cross $10 billion. And remember that Tesla had the lion’s share of the market in those years. The QuantumScape website proclaims that the company’s mission is “to revolutionize energy storage to enable a sustainable future.” Its investors range from blue-blooded venture capital firms like Kleiner Perkins and Lightspeed to car companies like Volkswagen and SAIC.
+And there were many others. Hyliion’s market value was $2.6 billion, and it was planning to manufacture hybrid trucks; Velodyne Lidar, $3.9 billion, sensing solutions for autonomous vehicles; Fisker, $4.1 billion, electric cars; Luminar Technologies, $10.1 billion, object detection technology; Canoo, $4 billion, electric vehicles. You get the picture.
+A foolproof method of checking the interest level in a concept or theme is to analyze Google searches using Google Trends. If you do so for the term “electric vehicles” between January 2014 and January 2019 in the United States, you will see a relatively flat trend. However, between January 2019 and February 2021, interest in electric vehicles quadrupled. Now, check out the dates the companies just mentioned went public:
+NikolaJune 2020
+Velodyne LidarSeptember 2020
+FiskerOctober 2020
+HyliionOctober 2020
+QuantumScapeNovember 2020
+CanooDecember 2020
+LuminarDecember 2020
+I don’t know if the IPOs of these companies increased the interest level in the search term or whether the increased searches of “electric vehicles” were a leading indicator of public listings. Maybe they just fed each other in a positive feedback loop. Whatever the case may be, as you can see, there is a strong correlation between the theme of electric vehicles and the IPOs of these businesses—a classic example of a strong proximate mechanism at work.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+---
+
+2019年12月看起来和往常的十二月没什么不同，华尔街股市策略师们重操旧业——预测2020年的市场增长。自2000年以来，华尔街预测的中位值从未预示过下一年股市会下跌。是的，你没看错。预测者从未相信过股市会下跌。现实情况如何呢？市场曾六次下跌。2000年至2020年的预测中位值与实际数字相差12.9个百分点——是这些年平均年增幅6%的两倍多！
+
+回到2019年12月。请记住，当时没人意识到新冠疫情即将爆发。预测者们的普遍共识是市场将在2020年上涨2.7%。如果预测者当时知道一场大流行将从2020年3月肆虐到12月，你认为他们对2020年的预测会是什么？我们永远无法得知，但我敢打赌他们会预测市场将大幅下跌。无论如何，2020年标普500指数上涨了16.3个百分点。但2020年的疫情是百年一遇的事件，我们不应因为他们预测偏差了13.6个百分点而苛责他们。这很公平。
+
+那么，如果我们评估一下2020年5月初一位公认的预测大师的预测会怎样？当时这一年只剩八个月，疫情已肆虐四个月，其对经济的严重影响似乎相当明显。我认为“专家”在这个阶段也可能出错，但偏差应该不会太大。
+
+哈里·登特被一些人称为“逆向者的逆向者”，他曾准确预测了日本经济崩溃、2000年的互联网泡沫破灭以及唐纳德·特朗普当选。他获得哈佛商学院MBA学位后，加入了贝恩公司，如今经营着一家独立研究公司。他是CNBC、CNN、福克斯、福克斯商业频道、《早安美国》和PBS的常客。他也常出现在《巴伦周刊》、《财富》、《商业周刊》、《华尔街日报》等众多出版物上。他还出版一份名为《登特预测》的月度通讯。简而言之，登特集专家所能拥有的专业素养于一身。
+
+2020年5月初，在接受ThinkAdvisor采访时，登特预测市场将在2020年8月见顶，投资者或许能获得5%至10%的回报。他建议投资者“抛售”并反对买入。他的预测偏差有多大？市场一直上涨到12月31日，从登特5月初接受采访算起，标普500指数上涨了32%！即使你取登特预测区间中最高的10%回报率，这也是八个月内22个百分点的误差。或者说年化误差率达33%。糟糕。
+
+在你指责我挑选了一位结果错得离谱的预测者之前，我挑战你能否找到一位专家，他在2020年5月就断言市场到12月底会上涨25%至30%。我一个也找不到。相信我，我试过了。
+
+公平地说，我从未遇到过任何声称市场可以预测的金融专业人士。那么，为何业内人士要花费如此多的时间沉迷于预测未来市场水平？为什么基金经理要耗费大量时间和精力去琢磨其他基金经理的想法和行动？动机扭曲、虚假安慰、争强好胜，诸如此类。这其实并不重要。
+
+我们忽略所有市场预测。嗯，也许并非完全忽略。
+在我想要开怀大笑的日子里，我确实会看看它们。
+
+**直接主题原因**
+
+在2020这个灾难之年结束时，我意识到自己错了60亿美元。
+
+2020年9月初，尼古拉是股市的宠儿。这家初创公司上市仅一年左右，估值40亿美元。其市值此后已增长五倍，接近200亿美元。在魅力非凡的创始人特雷弗·米尔顿（常被比作埃隆·马斯克）的领导下，尼古拉计划开发氢燃料电池和电池驱动的半挂卡车。该公司刚刚宣布与通用汽车（GM）建立合作伙伴关系，根据协议，这家底特律巨头将出资20亿美元获得11%的股份，作为回报，它将负责尼古拉半挂卡车的工程设计和制造。
+
+2020年9月10日，一家名为兴登堡研究的知名投资基金和做空机构发布了一份措辞严厉的报告，题为《尼古拉：如何将弥天大谎转化为与美国最大汽车OEM的合作关系》。报告第一行就指出，尼古拉是“一个精心设计的骗局，建立在其创始人兼执行董事长特雷弗·米尔顿职业生涯中的数十个谎言之上”。
+
+2017年，为了证明其技术可行，尼古拉分享了一段名为“尼古拉一号在行驶中”的视频，展示了其半挂卡车原型在路上疾驰。兴登堡声称，该公司只是将一辆普通卡车拖到一个偏远地区的山顶上，然后拍摄其从山上滑下来的画面。报告发布后，尼古拉被迫承认：“尼古拉从未在视频中声称其卡车是依靠自身动力行驶的。”什么？！一辆疾驰的卡车还能展示什么？路吗？
+
+揭露这个赤裸裸的谎言只是这份冗长报告的开始。兴登堡的研究还发现了更多问题：尽管米尔顿声称拥有，但尼古拉实际上没有电池技术；它不具备氢燃料电池专业知识；米尔顿有剽窃他人技术并据为己有的历史；米尔顿的合作伙伴关系也屡屡出现问题，最终以失败、诉讼和互相指责告终；米尔顿声称尼古拉的公司总部完全离网运行并使用3.5兆瓦的太阳能电池板，然而其总部根本不存在。我还可以列出兴登堡在其长篇报告中提出的更多指控，但足以说明尼古拉的前景似乎一片黯淡。
+
+报告发布几天内，特雷弗·米尔顿辞职，通用汽车终止了与该公司的合作谈判。美国证券交易委员会和司法部也启动了调查。不出所料，股价开始暴跌。
+
+我的问题是：你认为在兴登堡报告曝光三个月后，即2020年12月底，尼古拉的市值是多少？请记住，这家公司没有电池或燃料电池技术，没有原型车，其创始人已不光彩地退出，通用汽车终止了合作，政府已开始调查欺诈行为。我的答案会是接近零。
+
+不对。是60亿美元！
+
+兴登堡的报告似乎基于事实：他们几乎所有的指控都得到了文件、照片、短信、视频和访谈的支持。我无法核实他们的研究。然而，米尔顿辞职和通用汽车终止合作的事实似乎表明，报告中有相当一部分（即使不是全部）是可信的。如果是这样，如何解释像尼古拉这样的公司能有60亿美元的估值？这是个不公平的问题，因为我怀疑没人完全理解公司是如何估值的。但在这种情况下，我想用两个词来回答：
+主题投资。
+
+主题是“新时代汽车公司将统治世界”。自2020年以来，汽车科技初创公司热潮席卷市场。根据2021年1月《金融时报》的一篇文章，这些公司已积累了600亿美元的市值，但其中大多数尚未产生一分钱收入。为什么没有收入？因为，就像尼古拉一样，它们甚至还没有产品！“现实比小说更离奇”这句俗语，简直就是为新时代汽车初创公司的估值量身定做的。
+
+该《金融时报》文章列举了九家上市的初创公司，其中最大的是估值190亿美元的QuantumScape。该公司预计其首次收入1400万美元将在2024年实现。到2028年，即产生首次收入仅四年后，公司预计收入将达到100亿美元！作为比较，特斯拉在2008年录得首次收入后，用了九年时间才突破100亿美元。请记住，特斯拉在那些年占据了市场的大部分份额。QuantumScape网站宣称其使命是“革新储能技术，实现可持续的未来”。其投资者范围广泛，从Kleiner Perkins和Lightspeed等老牌风投公司，到大众和上汽等汽车制造商。
+
+还有许多其他公司：Hyliion，市值26亿美元，计划生产混合动力卡车；Velodyne Lidar，市值39亿美元，提供自动驾驶汽车传感解决方案；Fisker，市值41亿美元，生产电动汽车；Luminar Technologies，市值101亿美元，专注于物体检测技术；Canoo，市值40亿美元，生产电动汽车。你应该明白这个情况了。
+
+要想检验某个概念或主题的热度，一个可靠的方法是使用谷歌趋势分析相关搜索量。如果你分析2014年1月至2019年1月期间美国“电动汽车”一词的搜索趋势，会发现曲线相对平缓。然而，在2019年1月至2021年2月期间，对电动汽车的兴趣翻了两番。现在，看看刚才提到的这些公司上市的时间：
+
+尼古拉：2020年6月
+Velodyne Lidar：2020年9月
+Fisker：2020年10月
+Hyliion：2020年10月
+QuantumScape：2020年11月
+Canoo：2020年12月
+Luminar：2020年12月
+
+我不知道是这些公司的上市增加了该搜索词的热度，还是“电动汽车”搜索量的增加是公司上市的先行指标。也许它们在积极的反馈循环中相互促进。无论如何，正如你所见，电动汽车主题与这些企业的上市之间存在很强的关联性——这是强有力的直接机制在起作用的典型例证。
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">In addition, in January 2021, there were at least eight to ten more private start-ups ready to go public, all with obvious-sounding names like ChargePoint, EVgo, Lightning eMotors, Lion Electric, and Motiv Power Systems. If the market value of the listed companies holds, I bet that in the next few years, there will be dozens more listed companies with this theme.
+These companies, valued at billions, with not even millions in revenue, epitomize investment strategies based on proximate themes. Like almost every proximate theme before and since, the automotive tech theme has three properties. It hypes up total addressable market (TAM), is simple to understand, and is actionable.
+First, TAM. Every theme I have encountered since the start of my investing career in 1998 plays on the enormous size of the addressable market. And the size is usually so large that it dwarfs the businesses currently operating in that industry or theme. No wonder it is usually the most salient proximate cause of a theme gone wild.
+In March 2021, a UBS report touted the zero-emission trucking market as potentially $1.5 trillion in size, and current manufacturers and start-ups raced to grab dominance. Tesla, which did not manufacture trucks in March 2021, had revenue of “only” $32 billion in 2020.
+In my experience, there is only one problem with chasing a proximate theme based on TAM. It’s useless. It makes astrology-based forecasts look respectable. TAM is pointless because it does not tell us whether any profits will be made, and even if a business can be profitable, TAM is silent on who will make that moolah.
+One of the largest TAMs is that of apparel and footwear.16 The U.S. market for apparel and footwear is about $370 billion. It is also one of the hardest places to make money. The lack of robustness of this industry was also evident during the pandemic when scores of apparel and footwear companies declared bankruptcies: Brooks Brothers, Centric Brands, Century 21, G-Star, JCPenney, J. Crew, John Varvatos, Neiman Marcus, Tailored Brands, and many more. Someone forgot to tell these companies that their TAM would save them.
+Even prepandemic, most apparel brands struggled to grow and make a decent income. Take the example of a well-known brand like Gap. It hasn’t grown in the United States since 2007, with sales almost flat at $15 to $16 billion, and it achieved its peak net income of $1.3 billion back in 2014. Guess’s revenue fluctuated between $2 billion to $2.6 billion between 2009 and 2020, and its ROCE hasn’t crossed 10 percent since 2016. Abercrombie & Fitch’s revenue in 2006 was $3.3 billion, and it grew to only $3.6 billion by 2019. It, too, has not earned more than 10 percent ROCE since 2014.
+The global market for apparel and footwear is about $1.9 trillion, a colossal TAM. But the only apparel companies that seem to consistently grow their sales and churn profits are H&M, Uniqlo, and Zara. Other industries like airlines, restaurants, infrastructure, banking, and retailing are the same. Their TAMs are quite high, but most industry players don’t make any money. So what use is TAM to a long-term investor?
+The second reason for the seductiveness of a proximate theme is its simplicity. Even a casual reader of business news will be aware of themes like e-commerce, renewable energy, electric vehicles, fintech, food delivery, artificial intelligence, self-driving cars, infrastructure, and biotech. Unlike economic forecasting, which is full of jargon like “GDP” and “monetary supply,” a layperson can relate to themes. Anyone can understand what renewable energy is and that the country needs a lot more infrastructure investment. For the automotive tech start-ups, the simple argument goes as follows. Electric and autonomous vehicles will conquer the world, and since Tesla’s market value is $700 billion, shouldn’t this theme capture trillions of dollars of value in the near future? And if so, why shouldn’t a start-up be valued at billions of dollars? The premise is seductive because it is straightforward.
+Third, it is actionable. If you believe in the theme that consumers will order more food sitting at home because it is cheaper and easier than dining out, you can invest in DoorDash or Deliveroo. Are you interested in an electric vehicle company with actual revenues? Hail Tesla. Do you believe in the providers of technology rather than the car? Velodyne Lidar beckons. Do you think trucks are a bigger opportunity? Nikola is pining for you. Why does it matter that its founder was probably a charlatan?
+I don’t know where the theme of automotive start-ups will end up in 2025 or 2030. What I do know, based on the history of capital markets and new-age technologies like railways and the internet, is that this theme will face its comeuppance someday.
+Many readers will (not fondly) remember the theme ascendant in the early 2000s that home prices will rise forever. Any bank or financial company riding this theme was rewarded with increasing stock prices. Now we know that home prices don’t keep rising, and pricier homes bought with heavy borrowing need to fall in price only slightly for panic to set in. No one investing in the theme “homes are an unbeatable investment” could have imagined that the following marquee names would go bankrupt or need a huge bailout: Lehman (assets of $691 billion), Washington Mutual ($328 billion), CIT Group ($80 billion), Thornburg Mortgage ($39 billion), General Growth Properties ($30 billion), and several more.
+The Indian market is no different. At various times since the start of my investing career in 1998, I have witnessed the following themes create and then destroy billions of dollars of value in the capital markets: real estate, infrastructure, education, microfinance, consumer lending, and technology services. In addition, until early 2022, on paper, the following themes have created (but not yet destroyed) a lot of value in Indian private markets: edtech, fintech, e-commerce, software-as-a-service (SaaS), logistics, and social media. Based on history, many of these concepts will crater; I just don’t know which ones or when.
+How should we separate the proximate causes from the ultimate ones when there is euphoria or bearishness in a theme? Unfortunately, I am not aware of a foolproof method for doing so. But here is what we do.
+We define our unit of analysis clearly as the company. Not the economy, not the market, not a theme. We care about the fundamentals of the company—nothing else. We have never invested in a theme and never will.
+Again, just to be clear, I am not implying that thematic investing is flawed. Maybe some fund managers can do it successfully.
+We would if we could, but we can’t, so we won’t.
+Proximate Company-Specific Causes
+In December 2016, after almost three years of Vaibhav Global’s continuous underperformance, for the first time we actively debated whether we should exit entirely. Were we confusing an ultimate cause for a proximate one?
+Vaibhav is a retailer of low-priced jewelry and other accessories in the United States and the United Kingdom that sells through TV and the internet. One can shop at https://www.shoplc.com in the United States or https://www.tjc.co.uk in the United Kingdom. Please do—you will find its deals unbeatable. Vaibhav competes primarily with home shopping giants like QVC and HSN, as well as hundreds of other online and offline retailers.
+We invested in Vaibhav in late 2007. After underwhelming performance for a few years, the company grew its revenue and operating profit at an annualized rate of about 30 percent from the year ended March 2011 to 2014. In July 2014, the stock price hit an all-time high of INR 174; our buy price was INR 48. Sunil Agarwal, the founder and CEO, had done a stellar job in recent years.
+However, from April 2014, the company’s sales and profits started falling primarily owing to three self-inflicted missteps. First, Vaibhav did not respond to a significant strategic move by competition in the United States. Every major competitor of Vaibhav had started offering customers an option to pay in installments. However, Vaibhav refused to follow in their footsteps. Sunil did not want to take an unnecessary financial risk. Also, Vaibhav’s average sale price is only about $20 to $25 per piece compared to $50 to $100 for competition. Sunil thought that customers would not care about installments if they got a quality product at a low enough price. It turns out that they did.
+Second, the company faltered in designing and implementing a robust technology platform. The company lagged behind all its peers on the quality of its customer-facing websites and apps. Even some of its back-end technology platforms (e.g., which helped decide which products to merchandise when) were outdated and inflexible. Vaibhav’s internet sales accounted for 16 percent of company revenue, whereas this number was 51 percent for QVC. The company fired its head of technology, but the new leader was taking time to fix the problems.
+Last, Vaibhav lost a few key senior managers. Sunil had fired some of them, but some had left for greener pastures. He was also finding it hard to attract quality talent to fill the vacancies.
+From the year ended March 2014 to March 2016, sales fell by 2 percent, but profits declined by almost 70 percent. ROCE collapsed from 55 percent in 2014 to 13 percent in 2016. The stock market had reacted appropriately: Vaibhav’s stock price was INR 54 in December 2016, a fall of almost 70 percent from its previous peak in July 2014.</div>
+            <div class="text-block simplified-text">以下是根据要求翻译的书籍段落：
+
+此外，2021年1月至少还有八到十家私营初创企业准备上市，公司名称都直白易懂，例如ChargePoint、EVgo、Lightning eMotors、Lion Electric和Motiv Power Systems。若已上市公司的市值保持稳定，我敢断言未来几年将涌现数十家同类主题的上市公司。
+
+这些估值数十亿却营收微薄的企业，正是基于近似主题投资策略的典型代表。与既往多数近似主题相似，汽车科技主题具备三大特征：夸大总可寻址市场规模、概念简单易懂、具备可操作性。
+
+首先是市场规模。自我1998年开启投资生涯以来，每个热门主题都在渲染可寻址市场的庞大规模。其规模通常远超当前行业参与者的体量，难怪这往往成为主题炒作最显著的直接诱因。
+
+追逐基于市场规模的近似主题唯有一个致命缺陷——毫无价值。它甚至让占星预测都显得体面。市场规模指标毫无意义，因为它既无法预示盈利可能，更不会揭示利润归属者。
+
+市场规模最大的领域当属服装鞋履行业，但这里恰恰最难盈利。疫情期间大批相关企业破产已印证了该行业的脆弱性。即便在疫情前，多数服装品牌也增长乏力。以盖璞为例，其美国市场自2007年起停滞不前，2014年达到13亿美元净利润峰值后再未突破。其他品牌同样深陷增长困境。
+
+全球服装鞋履市场规模高达1.9万亿美元，然而能持续盈利的企业屈指可数。航空、餐饮、基建、银行、零售等行业皆如此——市场规模庞大，多数参与者却无利可图。对长期投资者而言，市场规模指标究竟价值何在？
+
+近似主题的第二重诱惑在于其简明性。即便是商业新闻的普通读者，也能理解电商、可再生能源、电动汽车等概念。与经济预测充斥着专业术语不同，主题投资通俗易懂。汽车科技主题的逻辑极其简单：电动车将统治世界，特斯拉市值已达七千亿，整个产业岂非蕴含数万亿美元价值？初创企业估值数十亿何足为奇？这种直白的推论极具蛊惑力。
+
+第三重优势是可操作性。若相信"外卖比堂食更便捷实惠"的主题，可投资外卖平台；看好电动车企业就选择特斯拉；青睐技术供应商则押注激光雷达企业；认定卡车领域潜力更大还有尼古拉可选——谁在乎其创始人是否江湖骗子？
+
+我无法预言2025年汽车初创企业的命运，但资本市场历史昭示：正如铁路与互联网技术曾经历的泡沫，这类主题终将迎来清算。
+
+读者们当忆起千禧年初"房价永涨"的主题狂潮。当时搭乘顺风车的金融机构股价疯涨，最终却迎来雷曼兄弟等巨头的覆灭。印度市场同样屡现主题泡沫：房地产、基建、教育、小额信贷等领域都曾创造继而毁灭数百亿美元市值。当前在线教育、金融科技等主题虽账面风光，但历史经验表明多数终将崩塌。
+
+当主题投资陷入狂热或悲观时，如何区分直接诱因与根本动因？遗憾的是并无万全之策。我们的应对之道是：将分析单位明确定义为企业本身。我们只关注企业基本面，从不也永不会进行主题投资。需要澄清的是，我并非否定主题投资策略——或许某些基金经理能驾驭它，但我们做不到，故不为。
+
+以Vaibhav Global为例。2016年末，面对这家企业持续三年的低迷，我们首次严肃讨论是否该清仓退出——是否混淆了根本原因与直接原因？
+
+这家通过电视与网络在欧美销售平价珠宝的零售商，曾创下辉煌业绩。2011至2014年间其营收与经营利润年增30%，股价在2014年7月飙升至174卢比历史高点。但随后因三大战略失误陷入困境：拒绝提供分期付款选项导致客户流失；技术平台建设滞后；核心管理人才出走。2014至2016年间销售额微降2%，利润却暴跌70%，股本回报率从55%骤降至13%，股价较峰值重挫近七成。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">We were now in a dilemma. Were these problems—a delay in responding to competition, the lack of a robust technology platform, a paucity of senior leaders—proximate causes of stock price decline? Or did these headaches reflect a more fundamental and long-term issue with the company? Were these issues “fixable,” or should we abandon any hope of revival? We are permanent owners in businesses and do not sell unless there is irreparable damage to a business. Were these lapses temporary, or would the company be able to overcome this adversity?
+As I have discussed in this chapter, we ignore proximate problems related to the economy, the market, and even the industry. But the dilemma is much trickier to address when the proximate cause of problems relates to the company itself. Suppose the sales growth and profitability of the company has declined in the past few quarters, whereas its main competitors showed no such struggle. How would you decide if the performance issues are related to proximate (and hence temporary) causes or ultimate (and hence more permanent) causes? In my experience, developing a method and an instinct to separate proximate and ultimate causes of failure or success when they relate to a company event is invaluable for a long-term investor.
+I have been an investor for more than two decades, and this is where I stumble most often. As usual, at the extremes, the decision is straightforward. If the share price declines owing to a downturn in one or two quarters, we ignore the decline, considering it a proximate event. But if the decline results from a loss of market share for three years in a row, we ask if there is something fundamentally wrong with the business. It is the gray area in between these extremes that creates the worst headaches for us. I do not know of any foolproof method of cracking the conundrum; the answer is almost always very company specific.
+Vaibhav was in this gray zone. Maybe the proximate issues indicated ultimate problems, but maybe they didn’t.
+We decided to stay with the business. Under Sunil’s leadership, the company had performed exceedingly well until only three years earlier, and nothing had changed in the market since then. There were no new entrants, and customer behavior remained the same. More importantly, Vaibhav’s competitive position of selling jewelry and accessories in the range of $20 to $25 remained intact even during the difficult years. None of its competitors was able or willing to match Vaibhav’s value proposition. Also, as time passed, we saw Sunil taking timely steps to address the issues. Late in 2014, he started offering installment plans, which put a stop to customer attrition. Despite declining profits, he invested aggressively in building the technology team and infrastructure. Finally, as he promoted some internal staff to leadership positions instead of hiring from outside, we could discern some early signs of progress.
+Luckily for us, Sunil and his team did turn the business around. Sales grew by 11 percent annually from the year ended March 2016 to 2020, but, more impressively, operating profits grew almost five-fold. ROCE jumped from 13 percent to 45 percent during this period, and the annual free cash flow almost quadrupled. The stock price jumped six-and-a-half-fold from INR 54 in December 2016 to INR 352 in September 2022.
+Vaibhav may have turned out well for us (for now). But this was a touch-and-go decision. It could have gone either way. Our instinct to stay in business as permanent owners helped us stay the course. Most importantly, we got very lucky.
+The Pain and the Gain of Headline Harassment
+Let’s go back to the question I raised at the beginning of the chapter. You have sunk $70,000 in a fund that is now worth $36,000. Everything the fund manager touches seems to be heading down. Apart from continuing to tear your hair out, what should you do?
+Nothing.
+At the end of the anecdote, the time was March 2009. If you had done nothing and continued to hold the fund, your $36,000 would be worth a little more than $770,000 at the end of September 2022. Which is a multiple of 21.4 times over 13.5 years. In comparison, the main stock index grew six-fold during these years.
+As you may have guessed, this was not a hypothetical situation. I have described what transpired at Nalanda. What you see in the numbers I’ve given is the result of our aggressive buying during the global financial crisis of 2008 and its dramatic longer-term impact on the fund’s performance. The only change you would need to make is to switch dollars to rupees.17 Your patience would have paid. A lot.
+As the Indian market started falling from March 2008, we started buying high-quality businesses, and we did not stop until early 2009. The further the market fell, the greater our buying frenzy was. In December 2008, the fund had delivered an annualized return (called the internal rate of return, or IRR, in investing parlance) of −55 percent (!), and we continued to invest as much as we could. The fund’s annualized rupee return as of September 2022 was 20.3 percent (after payment of all fees and expenses).
+What allowed us to invest when the world seemed to be coming to an end? We ignored all proximate causes of stock price decline and focused exclusively on the ultimate sources of success of a business. Let’s walk through an example.
+Our most successful investment to date is Page Industries. In October 2008, the company had a stellar track record of performance over more than a decade and was the number-one innerwear brand in the country. It had overtaken competitors that had started many decades before it entered India in 1995. Over the previous five years, the company had grown revenue at 32 percent per year and had earned 57 percent ROCE.
+On October 7, 2008, three weeks after Lehman’s collapse, we bought 8 percent of the company for INR 455 per share. This was a 23 percent premium to the prevailing stock price of INR 370 per share. We took a notional loss the very next day after our purchase. In fact, the stock price did not cross our buy price for six months, until April 2009. At the end of July 2022, Page was at INR 48,873, a multiple of 107 times our buy price. During this period, the Sensex went up 5.5 times.
+Our view on Page and seven other businesses we bought during the financial crisis was that global events may affect the stock prices of high-quality companies but not their business strength; the fact that investors were dumping stocks was not a problem but an opportunity; businesses’ market valuations may take a hit but not their intrinsic value; the opportunity cost of not investing in troubled times far exceeds any near-term pain owing to notional losses. Our success with Page is only partly the result of our aggression at a time of market panic; it is largely the result of our unwillingness to sell a great business at any price. But more on that later.
+The title of section II of this book is “Buy High Quality at a Fair Price.” This is a nice-sounding strategy but far from easy to implement in practice. The problem is that high-quality businesses are seldom available at a fair price. Markets are very efficient most of the time. However, when proximate causes get divorced from ultimate ones, markets can offer even great businesses at a fair price. We took full advantage of this temporary insanity to wade in all guns blazing. Our trailing twelve-month (TTM) PE multiple for buying Page? 18 times. Can you believe it?
+This undeserved luck was the direct result of what I call “headline harassment.” While we were busy buying stellar businesses in 2008 and early 2009, the following headlines (and others like them) appeared in the most widely read Indian business daily, the Economic Times18:
+“Mark-to-Market Losses Worry India Inc.” (July 18, 2008)
+“Economic Activity Is Slowing Down Fast” (August 25, 2008)
+“Financial Crisis: Are MNC Jobs Secure?” (September 26, 2008)
+“Sensex, Nifty Hit New 2008 Lows” (October 16, 2008)
+“Economic Recession, Lay-Offs Shift Balance of Power” (November 15, 2008)
+“Why Did Sensex Crash from 20K to 10K?” (December 20, 2008)
+It is common knowledge that lousy news attracts way more eyeballs than good news.19 We may blame the media for this bias, but psychologists have shown that people prefer reading bad news and remember it better. The media simply exploit an existing prejudice. In an article titled “On Wildebeests and Humans: The Preferential Detection of Negative Stimuli” in the journal Psychological Science, researchers showed that subjects remembered negative words faster and more often than positive ones.20
+In times of crisis, this predisposition gets a steroid boost. Imagine reading the newspapers and watching TV in the weeks and months surrounding the Lehman collapse—headline harassment would have taken its toll across the globe. No wonder wonderful businesses were finally available at a price we could not refuse.
+In sharp contrast, there was no celebration of business as usual at the high-quality companies that were becoming part of our portfolio during this period. No headlines screamed, “WNS Processes Another Mortgage Application,” “Triveni’s Factory Manufactures Turbine Number 39 for the Year,” “Page Industries Adds Two More Retailers Today in the City of Aurangabad,” or “Carborundum Factory in Chennai Finishes Another Shift.”
+Earlier I wrote, “Ultimate causes, thankfully, are way too dull for media coverage.” Now you know why.</div>
+            <div class="text-block simplified-text">好的，这是严格按照您的要求翻译的段落：
+
+---
+
+我们当时陷入了两难境地。这些问题——对竞争反应迟缓、缺乏强大的技术平台、高级领导人手不足——是股价下跌的直接原因吗？还是这些麻烦反映了公司更深层次、更长期的问题？这些问题“可以解决”吗，还是我们应该放弃任何复苏的希望？我们是企业的永久持有者，除非企业遭受无法弥补的损害，否则不会卖出。这些失误是暂时的吗？公司有能力克服这次逆境吗？
+
+正如我在本章所述，我们忽略与经济、市场甚至行业相关的直接问题。但当问题的直接原因涉及公司本身时，困境就棘手得多。假设公司的销售增长和盈利能力在过去几个季度出现下滑，而其主要竞争对手却并未遭遇此困境。你如何判断业绩问题是与直接（因而是暂时的）原因相关，还是与根本（因而是更持久的）原因相关？以我的经验，当涉及公司事件时，培养一种区分失败或成功直接原因和根本原因的方法和直觉，对长期投资者来说是无价的。
+
+我做了二十多年投资者，这是我最常栽跟头的地方。通常，在极端情况下，决策是明确的。如果股价因一两个季度的下滑而下跌，我们忽略下跌，视其为直接事件。但如果下跌是由于连续三年市场份额流失所致，我们就要问企业是否出现了根本性问题。正是这两个极端之间的灰色地带，最让我们头疼。我不知道有什么万全之法能破解这个难题；答案几乎总是因公司而异。
+
+Vaibhav就处在这个灰色地带。也许直接问题预示着根本问题，也许并非如此。
+
+我们决定继续持有该企业。在苏尼尔的领导下，仅仅三年前公司还表现极为出色，此后市场环境也并无变化。没有新进入者，客户行为保持不变。更重要的是，即使在困难时期，Vaibhav在20至25美元价位销售珠宝和配饰的竞争地位依然稳固。其竞争对手没有一个能够或愿意匹配Vaibhav的价值主张。而且，随着时间的推移，我们看到苏尼尔及时采取措施解决问题。2014年下半年，他开始提供分期付款计划，止住了客户流失。尽管利润下滑，他仍大力投资建设技术团队和基础设施。最后，当他提拔一些内部员工担任领导职位，而非从外部招聘时，我们能看到一些初步的进展迹象。
+
+幸运的是，苏尼尔和他的团队确实扭转了局面。从截至2016年3月的财年到2020年，销售额每年增长11%，但更令人印象深刻的是，营业利润增长了近五倍。在此期间，资本使用回报率（ROCE）从13%跃升至45%，年度自由现金流几乎翻了两番。股价从2016年12月的54卢比飙升至2022年9月的352卢比，上涨了六倍半。
+
+Vaibhav的结果对我们来说可能是好的（至少目前如此）。但这曾是个千钧一发的决定。结果本可能走向任何一方。我们作为永久持有者留在企业中的本能帮助我们坚持了下来。最重要的是，我们非常幸运。
+
+**头条骚扰的代价与收获**
+
+让我们回到本章开头提出的问题。你在一个基金上投入了7万美元，现在价值仅为3.6万美元。基金经理似乎碰什么都下跌。除了继续抓狂，你该怎么办？
+
+什么也不做。
+
+在这个轶事结束时，时间是2009年3月。如果你什么也没做，继续持有该基金，那么到2022年9月底，你的3.6万美元将价值超过77万美元。这是在13.5年里增长了21.4倍。相比之下，同期主要股指仅上涨了六倍。
+
+你可能已经猜到，这并非假设情景。我描述了当时在Nalanda发生的情况。你在我给出的数字中看到的，是我们在2008年全球金融危机期间积极买入的结果，及其对该基金长期表现的巨大影响。你唯一需要做的变动就是把美元换成卢比。你的耐心会得到回报。而且是丰厚的回报。
+
+随着印度市场从2008年3月开始下跌，我们开始买入高质量的企业，并且直到2009年初才停止。市场跌得越深，我们买入的热情就越高。2008年12月，该基金的年化回报率（投资术语中称为内部收益率或IRR）为-55%（！），而我们仍在尽最大能力持续投资。截至2022年9月，该基金以卢比计算的年化回报率为20.3%（扣除所有费用和开支后）。
+
+是什么让我们在仿佛世界末日来临之际仍能投资？我们忽略了所有导致股价下跌的直接原因，只专注于企业成功的根本源泉。让我们看一个例子。
+
+我们迄今为止最成功的投资是Page Industries。2008年10月，该公司拥有超过十年的卓越业绩记录，是该国排名第一的内衣品牌。它超越了那些早在1995年它进入印度之前几十年就已成立的竞争对手。在过去五年中，该公司收入年增长率为32%，资本使用回报率（ROCE）达57%。
+
+2008年10月7日，雷曼兄弟倒闭三周后，我们以每股455卢比的价格购买了该公司8%的股份。这比当时每股370卢比的股价溢价了23%。我们买入后第二天就出现了账面损失。事实上，该股价格在六个月后，直到2009年4月才超过我们的买入价。2022年7月底，Page股价为48,873卢比，是我们买入价的107倍。在此期间，Sensex指数仅上涨了5.5倍。
+
+我们对Page以及我们在金融危机期间买入的其他七家企业的看法是：全球事件可能影响高质量公司的股价，但不会影响其业务实力；投资者抛售股票不是问题而是机遇；企业的市值可能受挫，但其内在价值不会；不在困难时期投资的机遇成本，远超过因账面损失带来的任何短期痛苦。我们在Page上的成功，部分源于我们在市场恐慌时的积极买入；但更大程度上源于我们不愿以任何价格出售一家优秀的企业。这一点稍后再详述。
+
+本书第二部分的标题是“以合理价格买入高质量企业”。这听起来是个不错的策略，但在实践中远非易事。问题在于，高质量企业很少能以合理价格买到。市场在大多数时候都非常有效。然而，当直接原因与根本原因脱节时，市场甚至可能以合理价格提供优秀的企业。我们充分利用了这种暂时的疯狂，全力以赴地投入。我们买入Page时的过去十二个月（TTM）市盈率倍数是多少？18倍。你能相信吗？
+
+这种不应得的运气，正是我称之为“头条骚扰”的直接结果。当我们在2008年和2009年初忙于买入优秀企业时，印度阅读最广的商业日报《经济时报》上出现了以下（及类似）标题：
+
+“按市值计价损失困扰印度企业界”（2008年7月18日）
+“经济活动正在快速放缓”（2008年8月25日）
+“金融危机：跨国公司的职位安全吗？”（2008年9月26日）
+“Sensex、Nifty创2008年新低”（2008年10月16日）
+“经济衰退、裁员改变权力平衡”（2008年11月15日）
+“为何Sensex从2万点暴跌至1万点？”（2008年12月20日）
+
+众所周知，糟糕的新闻比好消息吸引眼球得多。我们或许会责怪媒体的这种偏见，但心理学家已证明，人们更喜欢阅读坏消息并且记得更牢。媒体只是利用了现有的偏见。在一篇题为《论角马与人类：负面刺激的优先识别》刊登于《心理科学》期刊的文章中，研究人员表明，受试者记住负面词汇的速度比正面词汇更快、次数更多。
+
+在危机时期，这种倾向性会像打了类固醇般增强。想象一下在雷曼倒闭前后数周数月里阅读报纸和看电视——头条骚扰肯定已在全球范围内造成影响。难怪优秀的企业最终能以我们无法拒绝的价格买到。
+
+与此形成鲜明对比的是，在此期间成为我们投资组合一部分的那些高质量公司，其一切如常的运营并未得到任何庆祝。没有头条新闻会尖叫：“WNS又处理了一份抵押贷款申请”、“Triveni工厂生产了今年第39台涡轮机”、“Page Industries今天在奥兰加巴德市又新增两家零售商”或“金奈的金刚砂工厂又完成了一个班次”。
+
+我之前写道：“幸运的是，根本原因太过平淡无奇，不值得媒体报道。”现在你明白为什么了。
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">There is one more important reason we could embrace a diametrically opposite attitude to that of many of our peers in 2008. We are fortunate to have long-term investors—primarily U.S. university endowments and U.S. and European family offices—who have supported our aggression when the world seemed to be coming to an end. Not even one investor defaulted on their commitment. No one (I hope) tore at their hair! I know that many private equity and hedge funds could not persuade their investors to commit more capital in 2008.
+We were very fortunate.
+✳✳✳
+I don’t make predictions, but after the global financial crisis of 2008, I told myself that I was unlikely to witness the same degree of stock market panic for decades. I couldn’t have been more wrong.
+At the height of the COVID-19 pandemic dread, in March 2020, the Indian market fell 23 percent. We could not stop buying, and our investment in that single month was 12 percent more than in the previous four years combined. In sharp contrast, the foreign portfolio investors in India withdrew $8.7 billion from the Indian stock market in March 2020. We continued to be hyperactive until September 2020 and then had to stop because the prices of the businesses we were interested in had increased sharply. The total amount we invested in 2020 turned out to be more than one-third of our cumulative investments over the thirteen years from 2007 until 2019.
+I don’t know if we made the right decision. However, I do know that the proximate worries of impending doom for businesses like tires, enzymes, boilers, diagnostic services, vehicle lending, and sanitaryware were divorced from their ultimate causes of success. We had been tracking many of these companies for about a decade and had great confidence that they would overcome any short-term pain over the longer run. In any event, we will know soon enough.
+2030 isn’t far away.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . we can reimagine investing by ignoring proximate causes of stock price movements while focusing on ultimate explanations of business success.
+1. Evolutionary biology explores natural phenomena by searching for proximate and ultimate causes. Proximate mechanisms explain immediate influences on a trait. The role played by natural selection explains the ultimate cause of an organism’s success or failure in an environment.
+2. Thus, to understand the impressive size and variety of dung beetle horns, evolutionary biologists ask the proximate question (e.g., which network of genes was switched on?), as well as the ultimate question (e.g., what is the adaptive value of the horns?). Scientists understand that these are different types of questions with different types of answers and that both types must be asked.
+3. The investing world, too, must differentiate between proximate and ultimate causes. Proximate causes of share price changes can result from the macroeconomy, the markets, the industry, or the company itself. Since proximate causes are highly salient (e.g., the Fed announcing an interest rate cut or a company announcing a slowing of sales growth), investors may erroneously overweight them in their decision-making process.
+4. We ignore all proximate causes when analyzing businesses. We focus exclusively on the business fundamentals, or the ultimate causes of the success or failure of businesses.
+5. We were aggressive investors during the financial crisis of 2008 and the early days of the COVID-19 pandemic because proximate worries compelled the markets to overlook the ultimate causes of the success of many high-quality businesses.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的中文段落：
+
+---
+
+我们在2008年能够采取与许多同行截然相反的立场，还有一个重要原因。我们很幸运，拥有长期投资者——主要是美国大学捐赠基金以及美国和欧洲的家族办公室——在世界似乎行将终结之时，他们支持了我们的激进策略。没有一个投资者违约。也没有人（我希望如此）捶胸顿足！我知道，许多私募股权基金和对冲基金在2008年都无法说服其投资者承诺投入更多资金。
+我们非常幸运。
+✳✳✳
+我不做预测，但在2008年全球金融危机之后，我曾告诉自己，未来几十年我都不太可能再目睹同等程度的股市恐慌了。我大错特错。
+在新冠疫情恐慌最严重的2020年3月，印度市场下跌了23%。我们无法停止买入，仅那一个月的投资额就比前四年总和还高出12%。形成鲜明对比的是，2020年3月，印度的外国证券投资者从印度股市撤出了87亿美元。我们一直大举投资直至2020年9月，之后才不得不停止，因为我们感兴趣的企业的股价已大幅上涨。结果我们在2020年的总投资额，超过了2007年至2019年这十三年累计投资总额的三分之一。
+我不知道我们是否做出了正确的决定。但我确实知道，当时对轮胎、酶制剂、锅炉、诊断服务、汽车贷款和卫生洁具等企业即将毁灭的担忧，与其最终成功的根本原因相去甚远。我们追踪其中许多公司已有大约十年之久，并坚信它们能在长期内克服任何短期阵痛。无论如何，我们很快就会知道答案。
+2030年并不遥远。
+
+进化论教会我...
+...我们可以通过忽略股价波动的直接原因，专注于企业成功的根本解释，来重新构想投资。
+1.  进化生物学通过探寻直接原因和根本原因来探索自然现象。直接机制解释影响性状的直接因素。而自然选择的作用则解释生物体在环境中成功或失败的根本原因。
+2.  因此，为了理解粪甲虫角的大小和种类的惊人之处，进化生物学家既要问直接问题（例如，哪些基因网络被激活了？），也要问根本问题（例如，角的适应价值是什么？）。科学家明白这是不同类型的问题，有不同的答案，两类问题都必须提出。
+3.  投资界也必须区分直接原因和根本原因。股价变化的直接原因可能来自宏观经济、市场、行业或公司本身。由于直接原因非常显眼（例如美联储宣布降息或公司宣布销售增长放缓），投资者可能会在决策过程中错误地过分看重它们。
+4.  我们在分析企业时忽略所有直接原因。我们只专注于企业基本面，即企业成功或失败的根本原因。
+5.  在2008年金融危机和新冠疫情初期，我们是激进的投资者，因为当时的直接担忧迫使市场忽视了许多高质量企业成功的根本原因。
+
+---</div>
+        </div>
+    
+    </main>
+</body>
+</html>
