@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./004.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 5</h1>
+        <a href="./006.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Darwin Ate My DCF
+When we no longer look at an organic being as a savage looks at a ship, as at something wholly beyond his comprehension; when we regard every production of nature as one which has had a history; when we contemplate every complex structure and instinct as the summing up of many contrivances, each useful to the possessor, nearly in the same way as when we look at any great mechanical invention as the summing up of the labour, the experience, the reason and even the blunders of numerous workmen; when we thus view each organic being, how far more interesting, I speak from experience, will the study of natural history become!
+Charles Darwin, On the Origin of Species, chapter 15, “Recapitulation and Conclusion”
+We prefer demonstrated consistent earning power (future projections are of little interest to us, nor are “turn-around” situations).
+Warren Buffett, annual letter to shareholders, 1982
+It was a once-in-a-lifetime opportunity for a trip around the world. But there was a significant hurdle.
+The twenty-two-year-old man had arrived home late in the night and had been surprised to find a large envelope addressed to him. It contained two letters. One was from his college tutor and the other from his favorite teacher, Reverend John Stevens Henslow. The first informed him that a two-year voyage around the world would start in a month, and the second tried to persuade him to accept the offer.
+The cost of the trip was not an issue for the young man’s wealthy father, Robert. The problem was that the young man had already changed his profession twice and showed no signs of settling down; he knew that his father was frustrated with him. Robert considered his son’s excitement at the global voyage as evidence of his preoccupation with entertaining but wasteful pursuits. Also, Robert demanded, why on Earth was the young man being offered a “naturalist” post on this voyage when he was qualified to be a priest? The whole scheme appeared dubious. The young man’s three sisters, Susan, Caroline, and Catherine, agreed with their father, Robert, to make matters worse. With deep sadness, he declined the offer.
+The next day, he carried a sealed letter from Robert to his uncle Jos. Jos was a close friend and confidant of Robert. In the letter, Robert wrote that his son’s obsession with navigating the world was a mistake but added, “If you think differently from me, I wish him to follow your advice.”
+Fortunately for the young man, Jos disagreed with Robert and wholeheartedly supported the voyage. In his letter back to Robert, Jos argued that the trip would build the young man’s character, and, far from being a waste, it would do him a lot of good. Jos’s clinching argument was that the young man would be better prepared for the Church because, after all, “Natural history . . . is very suitable to a clergyman.” Robert gave his permission.
+On December 27, 1831, on a beautiful sunny morning, the Beagle lifted anchor from Plymouth. Charles Darwin’s global circumnavigation would take him to Brazil, Argentina, Uruguay, Chile, Peru, New Zealand, Australia, Mauritius, Madagascar, South Africa, and the Galápagos Islands. The Beagle’s voyage would last five years.
+It would change the young man. It would change science. It would change the world.
+An Overlooked Reason for the Underperformance of Fund Managers
+We encountered two harsh realities in the introduction to this book: About 90 percent of fund managers cannot beat the market, and their performance has worsened over time.
+Why do fund managers underperform?
+Talk to a dozen insiders, and you will get a dozen different reasons for this sorry state. One oft-repeated complaint is the misalignment of incentives for the fund manager. The fund management company gets paid based on the size of the fund, not on its performance. But over the long term, many researchers have found that an increase in fund size can lead to declining performance. For example, in a study published in 2009 in the Journal of Financial and Quantitative Analysis, an analysis of actively managed funds in the United States from 1993 to 2002 demonstrated a “significant inverse relation between fund size and fund performance.”1 Similarly, in a 1996 article in the journal Financial Services Review, the authors write, “Once large, equity funds do not outperform their peers.”2 They go on to advise investors to invest in smaller funds.
+In some ways related to the problem of misaligned incentives, another reason fund managers underperform is that funds don’t like to underperform the market. Yes, ironic, isn’t it? In their attempt not to underperform the market, funds end up underperforming! Here is how. For simplicity’s sake, let’s assume there are ten stocks in an index, each with a weight of 10 percent. If the fund invests $100 in the market, with $10 invested in each business, it has perfectly replicated the index. In such a case, its active share is said to be zero. If the fund invests in none of these stocks, its active share is 100 percent.
+Thus, active share is a measure of the courage and conviction of fund managers. Those unwilling to risk their careers, but happy to compromise returns for their investors, have a low active share. The daring ones willing to stick their necks out and not mimic the index have a high active share.
+In a 2013 Financial Analysts Journal article, the author, Antti Petajisto, calculates the active share of 1,380 mutual funds in the United States in 2009 and concludes, “The performance of closet indexers has been predictably poor.”3 He also points out that funds with a high active share add value for investors. Of the mutual funds he examined, only 44 percent had an active share of more than 80 percent.
+Have you heard the saying that no one gets fired for hiring IBM? Something similar seems to be going on in the fund management industry. If a fund manager has a low active share, they are unlikely to get beaten by the market by a significant margin, and since everyone else is in the same boat, their risk of getting fired is relatively low. At least one thing fund managers have learned from herbivores in the wild is that there is safety in numbers.
+There are many other reasons for fund managers’ underperformance. For example, poor performance also correlates with higher portfolio turnover, owning stocks with greater liquidity, investing in growth stocks, higher expense ratios, and many other factors. You can find all these and many more reasons for the dismal performance of fund managers in numerous research articles in prestigious finance journals.
+What you will not find in these articles is the crux of this chapter. I believe a crucial reason for the continued underperformance of fund managers is their focus on future rewards while ignoring the treasures of the past.
+We at Nalanda pursue the profession of investing the same way evolutionary biologists do: We interpret the present in the context of history. Evolutionary biology does not make predictions as physics and chemistry do. Nor do we. Instead, our investment approach attempts to explain the present by interpreting what occurred in the past.
+In an essay on the theory of evolution, the late Harvard paleontologist Stephen Jay Gould wrote, “The present becomes relevant, and the past, therefore, becomes scientific, only if we can sum the small effects of present processes to produce observed results.”4 He could have been writing about the way we invest.
+“How Extremely Stupid Not to Have Thought of That”
+Let’s join the young Charles Darwin, who has embarked on a life-altering journey aboard the Beagle.5 Although Darwin attained fame as a zoologist and botanist, he boarded the Beagle as an enthusiastic geologist. Darwin’s first foray as a scientist was with his professor Adam Sedgwick when they tried to map the geology of Northern Wales in the summer of 1831. He concluded after this trip that “science consists in grouping facts so that the general laws or conclusions may be drawn from them.” At the end of the Beagle expedition, he had 368 pages of zoology notes compared to 1,383 pages of geology notes.6
+The famous geologist Charles Lyell was a great inspiration to Darwin. He took the first volume of Lyell’s book Principles of Geology with him on the Beagle. He received the second volume later in the voyage and read the third after his return home. Lyell was a strong proponent of Uniformitarianism as the core tenet of geology; Darwin would later adopt it as a guiding principle of his evolutionary theory. Uniformitarianism claims that all significant changes on Earth result from slow and steady natural processes operating over millions of years.
+As a result of his interest in and exposure to geology, Darwin was preprogrammed to conceptualize very long periods unimaginable to most humans. He was the first to comprehend the importance of deep time in evolution. He wrote, “I always feel as if my books came half out of Lyell’s brain, and that I have never acknowledged it sufficiently. . . . I have always thought that great merit of Principles was that it altered the whole tone of one’s mind.”
+Darwin wrote more than twenty-five books,7 and hundreds more have been written about him and his oeuvre. We can’t cover even a fraction of his genius here. In this chapter, I want to focus on only one aspect of his method, which is evident in his groundbreaking book On the Origin of Species: his focus on historical information to make deductions about ongoing evolutionary processes.
+Darwin proposed not one, not two, but three revolutionary theories in Origin: natural selection, sexual selection, and common ancestry. Let’s briefly see what these theories are and how he used history in all of them to arrive at his radical explanation of all organic life.
+First, let’s discuss his best-known theory: natural selection.</div>
+            <div class="text-block simplified-text">好的，这是严格按照您要求翻译的段落：
+
+**达尔文颠覆了我的现金流折现模型**
+
+当我们不再像野蛮人看待一艘船那样，认为有机生命体完全超出其理解范围；当我们把每一个自然产物都看作是有其历史的事物；当我们把每一个复杂的构造和本能都视为众多精巧设计的总结，每一种设计对拥有者都很有用，这几乎就像我们把任何伟大的机械发明视为众多工匠的劳动、经验、理性乃至失误的总结一样；当我们这样看待每一个有机生命体时，我凭经验说，自然历史的研究将变得多么更有趣啊！
+查尔斯·达尔文，《物种起源》，第十五章“综述与结论”
+
+我们更看重经过证明的持续盈利能力（我们对未来预测不感兴趣，对“扭亏为盈”的情况也不感兴趣）。
+沃伦·巴菲特，1982年致股东年度信
+
+这是一生中难得一次的环球旅行机会。但有一个巨大的障碍。
+这位二十二岁的年轻人深夜回到家，惊讶地发现一个寄给他的大信封。里面有两封信。一封来自他的大学导师，另一封来自他最敬爱的老师约翰·史蒂文斯·亨斯洛牧师。第一封信通知他一次为期两年的环球航行将在一个月后启程，第二封信则试图说服他接受这个邀请。
+旅行的费用对于年轻人富有的父亲罗伯特来说不是问题。问题在于这个年轻人已经两次改变职业方向，且毫无安定下来的迹象；他知道父亲对他很失望。罗伯特认为儿子对环球航行的兴奋，恰恰证明了他沉迷于有趣但无益的追求。此外，罗伯特质问，为什么这个有资格成为牧师的年轻人，会被邀请担任这次航行的“博物学家”职位？整个计划看起来都值得怀疑。更糟的是，年轻人的三个姐妹——苏珊、卡罗琳和凯瑟琳——都站在父亲罗伯特一边。怀着深深的遗憾，他拒绝了邀请。
+第二天，他带着一封罗伯特写给他舅舅乔斯的密封信去找乔斯。乔斯是罗伯特的密友和知己。罗伯特在信中写道，儿子痴迷于环球航行是个错误，但又补充说：“如果你和我的看法不同，我希望他听从你的建议。”
+对年轻人来说幸运的是，乔斯不同意罗伯特的看法，并全力支持这次航行。在给罗伯特的回信中，乔斯争辩说这次旅行将塑造年轻人的品格，绝非浪费，反而对他大有裨益。乔斯的关键论点是，这次经历将让年轻人更好地为进入教会做准备，因为毕竟“自然历史……对牧师非常合适”。罗伯特同意了。
+1831年12月27日，在一个阳光明媚的美丽早晨，“小猎犬号”从普利茅斯起锚。查尔斯·达尔文的环球航行将带他去往巴西、阿根廷、乌拉圭、智利、秘鲁、新西兰、澳大利亚、毛里求斯、马达加斯加、南非和加拉帕戈斯群岛。“小猎犬号”的航行将持续五年。
+这将改变这个年轻人。这将改变科学。这将改变世界。
+
+**基金经理表现不佳的一个被忽视的原因**
+
+我们在本书导言中遇到了两个严峻的现实：大约90%的基金经理无法跑赢市场，而且他们的表现随着时间的推移在恶化。
+为什么基金经理表现不佳？
+询问十几位业内人士，你会得到十几个不同的原因来解释这种可悲的状况。一个常被提及的抱怨是基金经理的激励机制错位。基金管理公司按基金规模收取费用，而非基于其业绩。但从长远来看，许多研究人员发现基金规模的增长会导致业绩下降。例如，2009年发表在《金融与定量分析杂志》上的一项研究，分析了1993年至2002年间美国的主动管理型基金，证明了“基金规模与基金业绩之间存在显著的负相关关系”。同样，在1996年《金融服务评论》杂志的一篇文章中，作者写道：“大型股票基金一旦规模变大，其表现并不优于同行。”他们进而建议投资者投资于规模较小的基金。
+在某种程度上与激励机制错位问题相关，基金经理表现不佳的另一个原因是基金不愿跑输市场。是的，这很讽刺，不是吗？在试图不跑输市场的过程中，基金最终反而跑输了！过程是这样的。为简化起见，假设某个指数包含十只股票，每只权重为10%。如果基金投资100美元于该市场，每家企业投10美元，它就完美复制了该指数。在这种情况下，其主动份额为零。如果该基金完全不投资于这些股票，其主动份额就是100%。
+因此，主动份额衡量的是基金经理的勇气和信念。那些不愿拿自己职业生涯冒险，却乐于牺牲投资者回报的基金经理，主动份额较低。那些敢于冒险、不模仿指数的勇敢者，主动份额则很高。
+在2013年《金融分析师杂志》的一篇文章中，作者安蒂·佩塔伊斯托计算了2009年美国1,380只共同基金的主动份额，得出结论：“隐形指数基金的表现正如预期般糟糕。”他还指出，主动份额高的基金能为投资者创造价值。在他考察的共同基金中，只有44%的主动份额超过80%。
+你听说过“没人会因为雇用了IBM而被解雇”的说法吗？基金管理行业似乎也存在着类似的情况。如果基金经理的主动份额低，他们就不太可能大幅跑输市场，而且既然大家都差不多，他们被解雇的风险相对较低。基金经理从野生食草动物身上至少学到了一点：数量即安全。
+基金经理表现不佳还有许多其他原因。例如，业绩不佳还与较高的投资组合换手率、持有流动性更强的股票、投资于成长股、较高的费用比率以及许多其他因素相关。你可以在众多知名金融期刊的研究文章中找到所有这些以及更多关于基金经理糟糕表现的原因。
+你在这些文章中找不到的，正是本章的核心。我认为基金经理持续表现不佳的一个关键原因，是他们专注于未来的回报，却忽视了过去的宝藏。
+我们那烂陀公司从事投资行业的方式与进化生物学家相同：我们在历史的背景下解读当下。进化生物学不像物理和化学那样进行预测。我们也不预测。相反，我们的投资方法试图通过解读过去发生的事件来解释当下。
+已故哈佛大学古生物学家斯蒂芬·杰伊·古尔德在一篇关于进化论的文章中写道：“只有当我们能够将当前过程的微小效应累积起来以产生观察到的结果时，当下才变得有意义，过去也才因此成为科学。”他简直就是在描述我们的投资方式。
+
+**“竟然没想到，真是太愚蠢了”**
+
+让我们回到年轻的查尔斯·达尔文身边，他已登上“小猎犬号”，开始了一段改变人生的旅程。尽管达尔文后来以动物学家和植物学家闻名，但他登上“小猎犬号”时是一位充满热情的地质学家。达尔文首次涉足科学领域是在1831年夏天，他与教授亚当·塞奇威克一起尝试绘制北威尔士的地质图。那次旅行后他得出结论：“科学在于将事实分组，从而得出普遍规律或结论。”在“小猎犬号”探险结束时，他记录了368页的动物学笔记，而地质学笔记则多达1383页。
+著名地质学家查尔斯·莱尔对达尔文产生了巨大影响。他随身携带了莱尔所著《地质学原理》的第一卷上船。在航行途中他收到了第二卷，并在回家后阅读了第三卷。莱尔是均变论作为地质学核心信条的坚定支持者；达尔文后来将其采纳为自己进化论的指导原则。均变论认为，地球上所有重大变化都是数百万年来缓慢而稳定的自然过程作用的结果。
+由于对地质学的兴趣和接触，达尔文天生就善于构思大多数人类无法想象的漫长时期。他是第一个理解“深时”在进化中重要性的人。他写道：“我总是觉得我的书有一半来自莱尔的头脑，而我从未充分承认这一点……我一直认为《原理》的巨大价值在于它改变了人思想的整个基调。”
+达尔文撰写了超过二十五本书，还有数百本关于他及其作品的著作。我们在此无法涵盖他天才的哪怕一小部分。在本章中，我只想聚焦于他研究方法的一个方面，这在他开创性的著作《物种起源》中显而易见：他利用历史信息来推断正在进行的进化过程。
+达尔文在《物种起源》中提出了不止一个，也不止两个，而是三个革命性的理论：自然选择、性选择和共同祖先。让我们简要看看这些理论是什么，以及他如何在所有这些理论中运用历史，从而得出他对所有有机生命的根本性解释。
+首先，我们讨论他最著名的理论：自然选择。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">In my layperson’s view, the reason Darwin’s crowning achievement—the theory of natural selection—was not discovered earlier and remained unaccepted by many stalwarts during and after his lifetime was that few understood the powerful effect of small changes accumulated over very long periods of time. But for those who understood the relevance of history, the theory was so powerful and straightforward that the famous biologist Thomas Huxley remarked, “How extremely stupid not to have thought of that.”8
+Natural selection requires three key ingredients.9 First, there needs to be random variation among the progeny of an organism. Note the word “random.” Variation does not seek any goal. Second, there needs to be differential fitness among these variants such that injurious variations get rejected and favorable ones are preserved. Last, the favorable traits must be heritable so that they are passed on to the next generation. Then, these three elements repeat ad infinitum over millions, even billions, of years. Resulting in a pangolin from a protozoan. In Darwin’s own words, “This preservation of favorable individual differences and variations, and the destruction of those which are injurious, I have called natural selection.”
+Let’s look at giraffes to understand Darwin’s insight. They are members of the order Artiodactyla and diverged from the other members—cattle, antelope, deer, and sheep—about thirty-four million years ago.10
+An ancestor of the current giraffe may have given birth to a baby with a slightly longer neck owing to a random mutation. There was no reason for this mutation; the animal was not looking to grow a longer neck. It just happened.
+This long-necked creature may have had better nutrition on reaching adulthood than its herbivore competitors because it could reach taller trees to eat more succulent shoots and leaves. Better and more food could have made this giraffe healthier and more robust, helping it evade predators. Consequently, it could have mated more frequently and produced more offspring than its shorter-necked competitors. These offspring would generally have had long necks, but neck length would have varied. The longer-necked ones would be likely to have better nutrition, be subject to lower predation, and have more mates than their shorter-necked siblings. And because long necks are heritable (Darwin did not know that genes are responsible for heredity, but he knew that something was), some of the offspring of these longer-necked giraffes would also have had longer necks and continue to be more advantaged than their shorter-necked siblings and competitors, generation after generation. This arms race for long necks has gone on for millennia, and voilà, we have the current-day giraffe.
+Darwin collated a vast range of historical clues to arrive at his theory of natural selection, and this is not the place to list all of them. So instead, let me share just a few.
+Darwin was a creationist when he started his journey aboard HMS Beagle. “Whilst on board the Beagle, I was quite orthodox,” he writes in his autobiography.11 At Cambridge, Darwin had studied the books of Reverend William Paley, who had made the famous watch analogy to prove the existence of God.12 Paley’s argument ran as follows. He asserted that if someone were to find a watch with all its complex machinery lying on the ground, one would conclude that someone knowledgeable had produced it. The various parts of the watch, working in perfect unison, could not have been assembled by accident. Hence, Paley argued that since nature is infinitely more complex than a watch, we must conclude that an intelligent designer is behind the universe’s creation.
+As Darwin sailed around the world observing nature, collecting specimens, and writing copious notes, he started harboring doubts. Then, in 1832, he found his first fossil remains in an Argentinian bay called Punta Alta. The fossilized thigh bone and teeth seemed to be from an extinct giant sloth.
+Georges Cuvier, the founder of paleontology, showed that the earth had witnessed many extinction episodes and presented two indisputable facts.13 First, the fossil remains of the past have no living peers; second, the older the fossil, the greater the divergence from living species. However, Cuvier explained these facts by invoking God, claiming that God repopulated the earth with new species after each extinction.
+If this were so, Darwin wondered, why would today’s sloths have a very similar bone structure to the extinct sloths of the past? If God had created them independently, why did the extinct giant sloth and the currently living sloth species appear related? He found many more fossils during the voyage, and the question continued to trouble him.
+One of the core tenets of creationism is that God populated similar plants and animals in comparable climatic and physical environments. But Darwin discovered that this wasn’t so. The creatures on the tropical Galápagos Islands did not resemble the flora and fauna of the tropics elsewhere in the world. Instead, they seemed closely allied with the organisms on the mainland of South America. As he wrote in Origin, “The most striking and important fact for us is the affinity of the species which inhabit islands to those of the nearest mainland, without being actually the same.”14
+Darwin’s ornithologist friend, John Gould, informed him in March 1837 that twenty-five of the twenty-six birds from Galápagos were endemic to the islands and found nowhere else.15 Creationism’s contention had always been that God created species individually and that all species remained unchanged following their creation.16 But then, how did one explain the diversity of the Galápagos bird species? All were similar to, but also quite different from, mainland species. Darwin reached a much different conclusion: that a species of bird from the mainland had accidentally arrived on Galápagos eons ago and had then diverged into many species occupying different niches.
+To me, one of the best examples of Darwin’s remarkable ability to view history in a new light is his discussion of domestic pigeons in the first chapter of Origin. He studied the pigeons closely for many years. He bought every breed he could lay his hands on and reared them himself. He also procured pigeon skins from as far away as Persia. He made friends with many well-regarded London breeders and joined two pigeon clubs. Pigeons were big business in nineteenth-century England, and they obsessed Darwin as well.
+Over six pages of Origin, Darwin outlines the distinctiveness of various breeds. He starts, “Compare the English carrier and the short-faced tumbler, and see the wonderful difference in their beaks, entailing corresponding differences in their skulls.” Next, he described various breeds’ diversity of beaks, sizes, shapes, colors, and flight patterns. Like most naturalists of the era, he believed that all these varieties had descended from an ancestral rock pigeon (Columba livia). In Origin, he also provides ample evidence for this belief.
+His friend Professor Lepsius had informed Darwin that humans had been domesticating pigeons for thousands of years—there were records of pigeons in the fifth Egyptian dynasty in 3000 BCE. Pigeons also had high prestige and monetary value in the time of the Romans and Mughals in India. It was evident that humans had altered pigeons over many years to suit their unique tastes. He called this phenomenon “artificial selection.”
+And then he took the bold leap that no one else had taken before him. He asserted, “Slow though the process of selection may be if a feeble man can do much by his powers of artificial selection, I can see no limit to the amount of change, to the infinite beauty and infinite complexity of the coadaptations between all organic beings, one with another and with their physical conditions of life, which may be affected in the long course of time by nature’s power of selection.”17
+If humans could alter pigeons drastically, given the immensely long time at its disposal, why couldn’t nature vary organic beings to create the diversity we see today? It may seem blindingly obvious to us, but no naturalist had connected the artificially created variety of breeds of pigeons, dogs, or plants to the ubiquitous natural heterogeneity of the natural world.
+The Puzzle of the Peacock’s Tail
+Darwin’s second bold conjecture in Origin was sexual selection.
+“The sight of a feather in a peacock’s tail, whenever I gaze at it, makes me sick,” Darwin wrote.18 He felt that a male ornament like the resplendent peacock’s tail contradicted the theory of natural selection because it was a handicap to the peacock’s survival. Why would a peacock evolve to endanger its chances of a long life? Darwin concluded that the currency of natural selection is not just survival but reproduction.
+Any character trait that allows an animal to produce more offspring is a winner in the long run because those offspring, in turn, are able to produce more of themselves. A peacock with a showier tail will attract more peahens to sire more offspring over his lifetime. Consequently, there would be a race for even more elaborate tails. In Origin he writes, “This form of selection depends, not on a struggle for existence in relation to other organic beings or to external conditions, but on a struggle between the individuals of one sex, generally the males, for the possession of the other sex.” Male peacocks struggle with each other through the beauty of their tails. The struggle is not for existence but sexual partners.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+以我这个外行的观点来看，达尔文的最高成就——自然选择理论——之所以未能更早被发现，并且在他生前身后都未被许多权威人士接受，原因在于很少有人理解微小变化在极长时间内积累所产生的强大效应。但对于那些理解历史关联性的人来说，这个理论是如此强大且直白，以至于著名生物学家托马斯·赫胥黎感叹道：“怎么之前就没人想到，这简直太愚蠢了。”
+
+自然选择需要三个关键要素。第一，生物的后代之间需要存在随机变异。注意“随机”这个词。变异并无特定目标。第二，这些变异体之间需要存在适应性差异，使得有害变异被淘汰，有利变异得以保留。第三，有利特征必须可遗传，以便传递给下一代。然后，这三个要素在数百万年乃至数十亿年间无限重复，最终使原生动物演化成穿山甲。用达尔文自己的话说：“我把这种有利的个体差异和变异的保存，以及那些有害变异的毁灭，称为自然选择。”
+
+我们以长颈鹿为例来理解达尔文的洞见。它们属于偶蹄目，大约在三千四百万年前从该目其他成员——牛、羚羊、鹿和绵羊——中分化出来。
+
+现今长颈鹿的某个祖先可能因随机突变产下了一只脖子稍长的幼崽。这种突变没有原因；动物并非有意要长出更长的脖子。它只是发生了。
+
+这只长脖子生物成年后，可能比它的植食性竞争者获得更好的营养，因为它能够到更高的树木，吃到更多多汁的嫩枝和树叶。更优质、更充足的食物可能使这只长颈鹿更健康强壮，帮助它躲避捕食者。因此，与短脖子竞争者相比，它可能交配更频繁，后代更多。这些后代通常会长脖子，但脖子长度会有差异。脖子更长的个体可能比脖子较短的兄弟姐妹获得更好的营养，被捕食的概率更低，交配机会更多。而且由于长脖子是可遗传的（达尔文当时并不知道基因负责遗传，但他知道有某种东西在起作用），这些长脖子长颈鹿的部分后代也会拥有更长的脖子，并在一代又一代中持续比其短脖子兄弟姐妹和竞争者更具优势。这场长脖子的“军备竞赛”持续了数千年，于是乎，我们有了今天的长颈鹿。
+
+达尔文整理了大量的历史线索才得出自然选择理论，此处无法一一列举。因此，我只分享其中几个。
+
+达尔文登上“小猎犬号”开始旅程时，还是一名神创论者。他在自传中写道：“在小猎犬号上时，我非常正统。”在剑桥时，达尔文学习过威廉·佩利牧师的著作，这位牧师曾以著名的钟表类比来证明上帝的存在。佩利的论证如下：他坚称，如果有人在地上发现一块带有所有复杂机械构造的手表，人们会断定是某个有知识的人制造了它。手表各部分完美协同运作，不可能偶然形成。因此，佩利认为，既然自然比手表复杂无限倍，我们就必须得出结论：宇宙的创造背后有一位智慧的设计者。
+
+随着达尔文航行世界，观察自然、收集标本并撰写大量笔记，他开始心生疑虑。随后在1832年，他在阿根廷一个叫蓬塔阿尔塔的海湾发现了他的第一具化石遗骸。那根大腿骨化石和牙齿似乎属于一种已灭绝的巨型树懒。
+
+古生物学奠基人乔治·居维叶证明地球曾经历多次灭绝事件，并提出了两个无可辩驳的事实。第一，过去的化石遗骸没有活着的同类；第二，化石越古老，与现存物种的差异越大。然而，居维叶用上帝来解释这些事实，声称上帝在每次灭绝后都用新物种重新填充地球。
+
+达尔文思忖，如果真是这样，为何今天的树懒与过去灭绝的树懒骨骼结构如此相似？如果上帝是独立创造它们的，为何灭绝的巨型树懒和现存的树懒物种看起来有亲缘关系？他在航行中发现了更多化石，这个问题持续困扰着他。
+
+神创论的核心信条之一是，上帝在相似的气候和自然环境中安置相似的动植物。但达尔文发现事实并非如此。热带加拉帕戈斯群岛上的生物与世界上其他热带动植物并不相似。相反，它们似乎与南美大陆上的生物密切相关。正如他在《物种起源》中所写：“对我们来说最引人注目且重要的事实是，栖息在岛上的物种与最近大陆上的物种具有亲缘关系，但并不完全相同。”
+
+1837年3月，达尔文的鸟类学家朋友约翰·古尔德告诉他，来自加拉帕戈斯群岛的26种鸟中有25种是该群岛特有的，其他地方找不到。神创论一直主张上帝单独创造物种，且所有物种自创造后保持不变。那么，如何解释加拉帕戈斯群岛鸟类的多样性呢？它们都与大陆物种相似，但又颇为不同。达尔文得出了一个截然不同的结论：很久以前，一种来自大陆的鸟类偶然抵达加拉帕戈斯群岛，随后分化成占据不同生态位的多个物种。
+
+在我看来，达尔文以全新视角审视历史的卓越能力，在《物种起源》第一章关于家鸽的论述中得到了最佳体现之一。他多年潜心研究鸽子。他买下所有能找到的品种，亲自饲养。他还从远至波斯的地方获取鸽皮标本。他结交了许多伦敦知名的养鸽人，并加入了两家鸽类俱乐部。在19世纪的英格兰，鸽子是门大生意，达尔文也为之着迷。
+
+在《物种起源》超过六页的篇幅里，达尔文概述了各种鸽类的独特性。他开篇写道：“比较一下英国信鸽和短面翻飞鸽，看看它们喙部惊人的差异，这导致了它们头骨的相应差异。”接着，他描述了不同品种在喙、大小、形状、颜色和飞行模式上的多样性。和那个时代的大多数博物学家一样，他相信所有这些品种都源自一种祖先岩鸽（Columba livia）。在《物种起源》中，他也为此观点提供了充分的证据。
+
+他的朋友莱普修斯教授曾告知达尔文，人类驯养鸽子已有数千年历史——公元前3000年埃及第五王朝就有鸽子的记载。在古罗马和印度莫卧儿王朝时期，鸽子也享有很高的声望和金钱价值。显然，人类多年来为满足独特品味而改变了鸽子。他将这种现象称为“人工选择”。
+
+随后，他做出了前无古人的大胆跨越。他断言：“选择的过程虽然缓慢，但既然一个能力有限的人通过人工选择都能做很多事，那么在自然选择力量的作用下，经过漫长的岁月，我看不出所有有机生物彼此之间及其与生存物理条件之间相互适应的变化程度、无限美丽与无限复杂性会有什么极限。”
+
+既然人类能在有限时间内大幅改变鸽子，那么拥有无限时间的自然，为何不能改变有机生物，创造出我们今天所见的多样性呢？这对我们来说可能显而易见，但此前没有博物学家将人工培育出的鸽子、狗或植物的品种多样性，与自然界无处不在的异质性联系起来。
+
+**孔雀尾巴之谜**
+
+达尔文在《物种起源》中的第二个大胆猜想是性选择。
+
+“每当我凝视孔雀尾巴上的一根羽毛，都让我难受，”达尔文写道。他认为像华丽孔雀尾巴这样的雄性装饰物与自然选择理论相悖，因为它对孔雀的生存是一种负担。为什么孔雀会演化出危及自身长寿的特征？达尔文得出结论：自然选择的“通货”不仅仅是生存，还有繁殖。
+
+任何能使动物产生更多后代的性状特征从长远来看都是赢家，因为这些后代又能繁衍更多后代。一只尾巴更华丽的雄孔雀在其一生中会吸引更多雌孔雀，从而繁育更多后代。因此，雄孔雀会竞相长出更精致的尾巴。在《物种起源》中他写道：“这种形式的选择所依赖的，并非与其他有机体或外部条件为生存而进行的斗争，而是同一性别（通常是雄性）的个体之间为占有另一性别而进行的斗争。”雄孔雀通过它们尾巴的美丽彼此竞争。这种斗争不是为了生存，而是为了配偶。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">Darwin also shocked his Victorian-era readers by giving agency to the females, contending, “I can see no good reason to doubt that female birds, by selecting, during thousands of generations, the most melodious or beautiful males, according to their standard of beauty, might produce a marked effect.” He was claiming that the beauty of the peacock’s tail was under the control of the peahens. It was the peahens who arbitrarily decided the aesthetics of a tail.
+Sexual selection is not limited to birds, of course. Like generations of naturalists before him, Darwin observed male stags, cocks, beetles, and predatory species fight aggressively over females. “A hornless stag or spurless cock would have a poor chance of leaving numerous offspring,” he rightly pointed out. He compared male appendages like a lion’s mane or the hooked jaw of a salmon to a sword or spear. A stag with unwieldy horns may be easier fodder for a lion but would end up fathering many more offspring than a stag with unimpressive horns.
+Just as with natural selection, Darwin formulated his theory of sexual selection by examining well-established facts in a new light.
+We Are One
+Darwin’s third assertion of common ancestry in Origin was his most significant intellectual leap in my layperson’s view.
+In his words, “I believe that animals have descended from at most only four or five progenitors, and plants from an equal or lesser number. Analogy would lead me one step further, namely to the belief that all animals and plants have descended from some prototype.” Many Victorians did not even accept that Black and White humans descended from a common stock, and here was Darwin claiming unity across disparate species.
+Chapter 14 of Origin presents copious evidence to bolster his claim that most species have evolved from very few common ancestors. He called this phenomenon “descent with modification.” He starts by pointing out the obvious: Organic beings are nested within groups.19 The hierarchy levels, in ascending order, are as follows: species, genus, family, order, class, phylum, and kingdom.
+Thus, dogs are the species Canis familiaris and belong to the genus Canis. When grouped with wolves and jackals, they belong to the family Canidae. When Canidae is grouped with other families like Felidae (cats), Ursidae (bears), Mustelidae (weasels), and many others, we get to the order Carnivora. Carnivora brackets along Cetacea (whales and dolphins), Perissodactyla (horses, tapirs), Sirenia (dugongs), Lagomorpha (rabbits), and others to form the class Mammalia. Mammalia, Amphibia, and other classes merge to form the phylum Chordata. Chordates, mollusks, nematodes, and numerous other phyla cluster to create the kingdom Animalia.
+Carolus Linnaeus, the Swedish botanist, laid the groundwork for this classification system in 1735 in Systema Naturae (The System of Nature).20 Naturalists had made mutually exclusive divisions before Linnaeus; his genius was to see all of life as a nested hierarchy. Linnaeus was a highly devout man and believed that nature’s hierarchical system resulted from God’s plan. Amazingly, the modern organization of the living world follows Linnaeus’s system with only a few modifications.
+As you can see, there seems to be a particular natural order to this system; dogs appear rightly classified along with jackals; Canidae and Felidae are at the same level of family; and how else does one group horses and dugongs except under the class of mammals? But, as Darwin writes in chapter 14 of Origin, “Some deeper bond is included in our classifications than mere resemblance. I believe that this is the case, and that community of descent—the one known cause of close similarity in organic beings—is the bond, which though observed by various degrees of modification, is partially revealed to us by our classifications.”
+Darwin was making a strikingly original argument. The classification system seems right to us because it reflects the path of evolution of all living beings on Earth. Linnaeus demonstrated that all organic life is connected. He credited God for this natural order; Darwin concluded that it could be so only if all organisms had one or just a few common ancestors.
+Darwin provides two additional pieces of proof of common ancestry. First, the early-stage embryos of seemingly unrelated groups like mammals, birds, and reptiles resemble one another so closely that it is hard to distinguish between them. I guarantee that the similarities in figure 5.1 will floor you. It is almost impossible to distinguish the five species in the figure when they are in the early embryonic stage. In a later stage of development, a salamander resembles a fish, and a human looks like a turtle. Why should this be so? “Thus, community in embryonic structure reveals community of descent,” Darwin writes.
+5.1 The stages of development of five species. Is there a difference among the early embryos of a fish, a turtle, and a human?
+Source: Licensed from iStockphoto (Getty Images).
+Second, he offers rudimentary organs as evidence of the kinship of ancestral and living forms. By “rudimentary organs,” Darwin meant vestigial organs that persist in an organism but have lost their function. He offered many examples: mammaries in male mammals, fused and useless wings in beetles, gills in the land-dwelling tadpoles of the common salamander, teeth in the upper jaw of calves that never cut through the gums, and rudiments of hind limbs and a pelvis in boa constrictors. Darwin opined that formerly functional parts might become vestigial if they aren’t used. Ergo, vestigial body parts establish a direct line between organisms and a distant common ancestor. A tadpole that breathes on land but has useless gills should have a common ancestor with waterborne animals. The hidden hind limbs in a boa constrictor unite it ancestrally with animals that have legs; fused wings in beetles show that it has descended from an ancestor that gave rise to insects with wings, and so on.
+Darwin was right, of course. Scientists have concluded that our last universal common ancestor (LUCA) arose somewhere between 3.5 and 4 billion years ago.21 LUCA then gave rise to the six significant kingdoms of life: animals, plants, fungi, protists, eubacteria, and archaea. Although Darwin wasn’t aware of four of these six kingdoms, I find it staggering that he still arrived at the correct conclusion. What a genius.
+Investing as a Historical Discipline
+The investment profession invites soothsayers of all kinds. Some are shady, but most are well-meaning professionals who expend enormous energy pontificating over the future. We aren’t one of them.
+I want to clarify an important point before we march ahead. Darwin and his theories are incomparable. In my view, no scientist comes close to him in greatness; maybe only Einstein, but probably not even him. When I compare Darwin’s scientific process to what we do, I do it with full knowledge that it is markedly worse than comparing a gargantuan apple with a tiny orange. In the broad scheme of things, I think we financial investors are irrelevant to this world. Darwin wasn’t.
+Back to the lessons from Darwin. Like Darwin:
+• We interpret the present only in the context of history.
+• We see the same set of historical facts as everyone else.
+• We have no interest in forecasting the future.
+We study the history of a business to understand its financials, assess its strategies, gauge its competitive position, and finally assign value to it. So let’s take them one by one.
+Understanding the Financials of a Business
+Those of you in the financial industry must have seen analyst reports. However, if you aren’t a finance professional or haven’t seen an analyst report before, here is a brief description. The brokerage firms (like JPMorgan, Morgan Stanley, and Goldman Sachs) employ research analysts who, as the name suggests, perform detailed research on publicly listed businesses and publish reports for their clients, the investors. A typical analyst report describes a company’s business and financials, expresses its overall strategy and direction, and recommends that the clients buy, hold, or sell the business. Depending on the brokerage, the analysts use a wide variety of phrases—“underperform,” “overweight,” “accumulate,” “neutral,” and other esoteric terms—to make their recommendations. Still, their recommendations essentially fall into the buy, hold, or sell category.
+Along with business commentary, most analyst reports typically carry the profit-and-loss account and the balance sheet of the latest fiscal year and financial projections for the next two to five years. In many of these reports, you will not find the financials of the past two to three years, let alone the last five to ten years. If you are keen to know the company’s revenue growth over the past five years, the long-term historical trend of margins, or how ROCE and free cash flow have fluctuated over a decade, you are on your own.
+As I write this, I have in my hand analyst reports from five brokerages for Tata Consultancy Services, India’s largest technology services business with a market value of about $150 billion. They all have financial projections for the next two to three years and actual financials for the past year. Only one provides three-year historical financials. None has a five-to-ten-year financial history.
+An actual incident will illuminate the reason for this state of affairs. Three of us were visiting one of our portfolio companies a few years ago. We met with the CEO and CFO for about an hour or so. As we were about to depart, the CFO received a call on his mobile phone, got visibly upset at the caller, and exclaimed, “I can’t say anything; the results will be out after a few weeks.” It turns out that the caller was a well-known investor who was checking to see how the quarter was progressing on the revenue and profit front.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+达尔文同样震惊了维多利亚时代的读者，因为他赋予了雌性选择权，他主张：“我找不到任何充分的理由来怀疑，雌鸟在成千上万代的繁衍中，根据其自身的审美标准选择鸣声最悦耳或外表最漂亮的雄鸟，可能会产生显著的效果。”他宣称，孔雀尾羽的美丽是由雌孔雀掌控的。正是雌孔雀在随意决定尾羽的审美标准。
+当然，性选择并不仅限于鸟类。如同他之前的历代博物学家一样，达尔文观察到雄鹿、公鸡、甲虫以及掠食性物种为争夺雌性而激烈打斗。他正确地指出：“一只无角的雄鹿或没有距的公鸡，留下大量后代的机会将十分渺茫。”他将雄性的附加结构，如狮子的鬃毛或鲑鱼的钩状颌，比作剑或矛。一只长着笨重鹿角的雄鹿可能更容易成为狮子的猎物，但它最终会比鹿角平平无奇的雄鹿繁衍出更多的后代。
+正如自然选择理论一样，达尔文通过以全新视角审视既定事实，提出了他的性选择理论。
+
+**万物同源**
+在我这个外行看来，达尔文在《物种起源》中关于共同祖先的第三个论断，是他最重大的思想飞跃。
+用他的话来说：“我相信动物最多仅由四、五种祖先类型传衍而来，植物则来自同等或更少的数量。类比会让我更进一步，即相信所有动植物都起源于某个原始类型。”许多维多利亚时代的人甚至不认同黑人与白人拥有共同祖先，而达尔文却在此宣称不同物种之间具有统一性。
+《物种起源》第十四章提供了大量证据来支持他的主张，即大多数物种是从极少数共同祖先演化而来的。他称这种现象为“伴随着变异的传衍”。他首先指出了显而易见的事实：生物被嵌套在分类群中。层级由低到高依次为：种、属、科、目、纲、门、界。
+因此，狗是物种 *Canis familiaris*，属于犬属（*Canis*）。当与狼和豺归为一类时，它们属于犬科（Canidae）。当犬科与猫科（Felidae）、熊科（Ursidae）、鼬科（Mustelidae）以及其他许多科归在一起时，我们得到了食肉目（Carnivora）。食肉目与鲸豚目（Cetacea）、奇蹄目（Perissodactyla）、海牛目（Sirenia）、兔形目（Lagomorpha）等并列，共同构成哺乳纲（Mammalia）。哺乳纲、两栖纲（Amphibia）和其他纲合并形成脊索动物门（Chordata）。脊索动物、软体动物、线虫动物以及众多其他门汇集构成了动物界（Animalia）。
+瑞典植物学家卡尔·林奈（Carolus Linnaeus）在1735年的《自然系统》（Systema Naturae）中为这个分类系统奠定了基础。在林奈之前，博物学家们也曾进行过互不兼容的划分；他的天才之处在于将整个生命世界视为一个嵌套的层级系统。林奈是一位非常虔诚的人，他认为自然的层级系统是上帝计划的产物。令人惊叹的是，现代生命世界的组织形式遵循着林奈的系统，仅做了少量修改。
+正如你所见，这个系统似乎遵循着某种特定的自然秩序；狗与豺被正确地归在一起；犬科与猫科同属于科这一层级；除了归入哺乳纲，还能如何归类马和海牛？但是，正如达尔文在《物种起源》第十四章所写：“我们的分类所包含的联系，比单纯的相似性更为深刻。我相信情况正是如此，而共同血统——这一造成生物紧密相似的已知原因——就是这种联系，尽管经历了不同程度的变异，但我们的分类体系部分地揭示了这一点。”
+达尔文提出了一个极具原创性的论点。分类体系在我们看来正确，是因为它反映了地球上所有生物的演化路径。林奈证明了所有有机生命都是相互联系的。他将这种自然秩序归因于上帝；达尔文则得出结论：这种情况只有可能发生在所有生物都拥有一个或仅仅少数几个共同祖先的前提下。
+达尔文提供了另外两项证明共同祖先的证据。首先，看似无关的类群（如哺乳动物、鸟类和爬行动物）的早期胚胎彼此极为相似，难以区分。我敢保证，图5.1中的相似性会让你震惊。图中五个物种处于早期胚胎阶段时，几乎不可能区分它们。在发育的稍后阶段，蝾螈像鱼，而人则像龟。为什么会这样？达尔文写道：“因此，胚胎结构的相似性揭示了血统的共同性。”
+其次，他提出退化器官作为祖先形态与现存形态亲缘关系的证据。达尔文所说的“退化器官”，是指生物体内持续存在但已丧失功能的痕迹器官。他举了许多例子：雄性哺乳动物的乳腺、甲虫中融合而无用的翅膀、陆生蝾螈蝌蚪的鳃、小牛上颌永不穿透牙龈的牙齿、以及蟒蛇中退化的后肢和骨盆遗迹。达尔文认为，如果某些曾经有用的器官不再使用，就可能退化为痕迹器官。因此，痕迹器官在生物与其遥远的共同祖先之间建立了直接联系。一只在陆地呼吸却拥有无用鳃的蝌蚪，应该与水生动物拥有共同祖先；蟒蛇体内隐藏的后肢将其在血统上与有腿的动物联系起来；甲虫中融合的翅膀表明它起源于一个有翅膀昆虫的祖先，依此类推。
+当然，达尔文是正确的。科学家们已得出结论，我们最后的普遍共同祖先（LUCA）出现于大约35至40亿年前。LUCA随后演化出生命的六大主要界：动物、植物、真菌、原生生物、真细菌和古细菌。尽管达尔文并不知道这六界中的四界，但他仍能得出正确结论，这让我感到无比震撼。真是个天才。
+
+**作为历史学科的金融投资**
+投资行业吸引着形形色色的预言家。其中有些是可疑的，但大多数是善意的专业人士，他们耗费巨大精力对未来高谈阔论。我们并非其中之一。
+在继续深入之前，我想澄清一个重要观点。达尔文及其理论是无与伦比的。在我看来，没有哪位科学家在伟大程度上能与他比肩；或许只有爱因斯坦，但可能连他也不行。当我把达尔文的科学过程与我们做的事情相比较时，我完全清楚这远比拿一个巨大的苹果与一个微小的橙子作比较更不相称。从宏观角度来看，我认为我们金融投资者对这个世界无关紧要。达尔文则不然。
+回到从达尔文那里得到的启示。像达尔文一样：
+*   我们仅在历史的背景下解读当下。
+*   我们看到的是与其他人相同的一组历史事实。
+*   我们对预测未来毫无兴趣。
+我们研究企业的历史是为了理解其财务状况、评估其战略、衡量其竞争地位，并最终为其估值。让我们逐一来看。
+
+**理解企业的财务状况**
+金融行业的各位肯定见过分析师报告。然而，如果你不是金融专业人士或从未见过分析师报告，这里简单描述一下。经纪公司（如摩根大通、摩根士丹利、高盛）雇佣研究分析师，顾名思义，他们对上市公司进行详细研究，并为客户（即投资者）发布报告。一份典型的分析师报告会描述一家公司的业务和财务状况，阐述其整体战略和方向，并建议客户买入、持有或卖出该公司股票。不同经纪公司的分析师会使用多种多样的术语——“表现不佳”（underperform）、“增持”（overweight）、“买入”（accumulate）、“中性”（neutral）以及其他晦涩的词汇——来给出建议，但其建议本质上仍属于买入、持有或卖出三类。
+除了业务评论，大多数分析师报告通常还包含最近财年的损益表和资产负债表，以及未来两到五年的财务预测。在这些报告中，很多都找不到过去两到三年的财务数据，更不用说过去五到十年的了。如果你渴望了解公司过去五年的收入增长、利润率的长期历史趋势，或者ROCE（已动用资本回报率）和自由现金流在过去十年间的波动情况，那就只能靠自己了。
+在我撰写此文时，我手中有五家经纪公司为印度最大的技术服务公司塔塔咨询服务（Tata Consultancy Services，市值约1500亿美元）出具的分析师报告。它们都包含未来两到三年的财务预测和过去一年的实际财务数据。只有一家提供了三年的历史财务数据。没有一家提供五到十年的财务历史数据。
+一个真实事例可以说明造成这种状况的原因。几年前，我们三人拜访了我们的一家投资组合公司。我们与CEO和CFO会谈了大约一个小时。当我们即将离开时，CFO的手机响了，他明显对来电者感到恼火，大声说道：“我无可奉告；财报几周后就会公布。”原来，来电者是一位知名投资者，他打来是想了解该公司本季度营收和利润情况进展如何。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">If investors hound the company management for following quarter results, wouldn’t they do the same with research analysts? So why should the analysts bother with longer-term history? Analysts produce forecasts because their clients demand they produce forecasts. I am sure many of them know it is a futile exercise. Here is why.
+Let’s say I need to project the following year’s financials. I will need to forecast at least ten (if not more) numbers ranging from units sold, price per unit, cost of goods sold, sales expenses, receivables, capital expenditure, and so on. Let’s assume that I am a great guesser and that I will correctly guess each of the ten numbers with a 90 percent probability. Hence, the chance of guessing all ten numbers correctly for next year would be only 35 percent (0.9010). One may quibble that not all ten are independent variables, so we should not multiply them. True, but the number of variables is much greater than ten, and they are all at least semi-independent. Whichever way you evaluate the probability of guessing the next year’s financials correctly, it is probably worse than guessing heads or tails after tossing a coin.
+But this was only for next year. I also need to project for the following year and the year after that. How accurate do you think my estimates will be?
+The only financials we prepare are for the past decade or more. Our financial trackers have no projections. Instead, we use the same factual financial information to which everyone else has access. Not unlike Darwin.
+In developing his theories, Darwin did not have special access to any confidential data or information. The Beagle trip did expose him to new lands and creatures, but he did not make any discoveries. During the five-year trip, Darwin did collect 1,529 species in spirits and 3,907 samples of skin, bone, and other specimens.22 But in all my research, I did not get the sense that he had stumbled upon anything significant unknown to science.
+There were occasions when experts enlightened Darwin with new facts about the specimens he had collected. For example, in 1845, Darwin’s botanist friend Joseph Hooker identified more than 200 plant species collected by Darwin and his team on Galápagos.23 About 150 of these were unique to single islands, but they were also related to plants on other islands that weren’t found anywhere else on Earth. Some plant ancestors, like those of the birds, had accidentally arrived on Galápagos a long time ago and had diversified into many species over time by adapting to the local environment.
+Ornithologists and naturalists had been observing the mating rituals of peacocks for centuries, but no one else had given agency to the female for selecting male feathers. Even amateur ornithologists knew that only the male birds were adorned gorgeous plumage and that the diversity of size, shape, and color of feathers was truly staggering across all bird species. But no ornithologist interpreted their observations in the light of sexual selection the way Darwin did.
+Similarly, Linnaeus’s Systema Naturae was no secret. Its botanical classification system based on male and female sexes of plants had built Linnaeus’s reputation and fame. Linnaeus modified his sexual classification system of plants in his subsequent publication, Genera Plantarum. Genera classified plants based on what he called the “natural characters” of the genera: the morphological traits of flowers and fruits. However, neither he nor anyone else could explain the source of this natural order except to claim that it was God’s plan. Eighty years after Linnaeus’s death, Darwin finally explained this natural order by invoking his theory of common descent.
+As you can see, in every case, Darwin had the same historical facts as everyone else. It was only his interpretations that were radically new and different. I would like to believe our approach is no different.
+If we don’t forecast financials, what do we do with historical numbers? A lot. As permanent owners, we are incredibly paranoid about the financial performance of our businesses. So here is the way we use historical financials to assess our portfolio companies.
+Let me take the example of Berger Paints, India’s second-largest paint business. We have owned Berger since 2008. When Berger declares its quarterly results, we perform two broad historical analyses: absolute and relative.
+For example, why has revenue growth declined to 10 percent over the past year compared to its longer-term average of 15 to 16 percent? What could be the reasons for high margins for the third year in a row? Has the company started spending less than usual on sales and marketing? What has led to a significant decline in receivables this quarter? Is the capital expenditure over the past year higher than usual? What has driven the increase in ROCE over the last two years versus the five years before?
+We don’t stop at analyzing Berger’s results in the context of its long-term history. As permanent owners, we want to invest in a business that performs well on a relative basis; that is, one that performs better than the overall competition. We compare Berger’s quarter, last twelve months, and longer-term performance against the competition on parameters like revenue and profit market share, ROCE, and free cash flow, among many others. We track Berger primarily against four competitors: Asian Paints (the industry leader), Kansai Nerolac, Akzo Nobel, and Indigo. In addition, we seek market feedback on smaller or private businesses that may have started growing aggressively. This competitive analysis through the financials can lead us to ask if Berger has lost or gained market share this quarter and last year. What has driven Kansai’s increased revenue share over the past two years? Who is gaining the most from Akzo’s share loss? Has Indigo been able to expand outside Kerala? What is the trend in Berger’s advertising expenses relative to its competitors?
+As you can see, there is a lot we do with historical financial information. What I have outlined here are the sample issues we raise for a portfolio company. The analysis is no different when evaluating a new business. We demand stellar absolute and relative financial performance based on any potential investment’s actual financial track record.
+Why fritter away time making useless forecasts with so much to do with the historical information we already have?
+Assessing the Strategies of a Business
+“Strategy” is a loaded word. For our purpose, let me just define it as “whatever companies do to achieve their goals under conditions of uncertainty.” Purists will quibble on the definition of “tactics” versus “strategy.” Let them. As folks investing real money, we can move on to more practical problems.
+By now, I assume you can “predict” what I am about to write! Yes, we assess historical strategies to understand businesses. A small sample of strategic issues we focus on: Which customer segments have you targeted? How have your products or services served the needs of customers? In what ways have you been different from the competition? How have you allocated capital historically? What has been your capital structure, and why?
+Two things may be evident to you as you read these questions: They are about the company’s strategic steps in the past, and these are issues that even a first-year undergrad could raise. What’s so great about these questions? Nothing. We ask these questions not to evaluate the answers objectively but to subjectively assess if they fit our preexisting hypotheses of success or failure. Yes, we know the answer we want before we have asked the first question.
+If we have done a decent job over many years, it is not a result of asking these mundane questions but because our underlying bias demands the answers fit our template. We have our templates for success and failure, and we aim to assess if the company’s strategy fits a pattern. Very few do—more on this in chapter 6.
+This approach is not very different from Darwin’s, who famously wrote in a letter to one Henry Fawcett in 1861, “How odd it is that everyone should not see that all observation must be for or against some view if it is to be of any service.”24 Darwin’s unique ability was to assess objective information—available to everyone—in the light of his subjective hypothesis.
+Take his view on why there should be a struggle for existence. In 1798, Thomas Malthus, an English economist, published an essay on the principle of population growth.25 Malthus argued that the human population increases exponentially, whereas food resources grow linearly, so human prosperity will be impossible unless there are strict limits on reproduction. Further, Malthus wrote that unless humans started having fewer children, the inevitable food shortage would curse humanity to an eternal struggle for existence—only famine, war, and disease would check population growth. It was a dark and pessimistic view of humanity.
+Darwin read Malthus’s essay in 1838, and he extended the domain of applicability of Malthus’s principle to the entire living world.26 No one had done this before. I can’t do better than the master’s own words: “Every being, which during its natural lifetime produces several eggs or seeds, must suffer destruction during some period of its life, and during some season or occasional year[;] otherwise, on the principle of geometric increase, its numbers would quickly become so inordinately great that no country could support the product. Hence, as more individuals are produced than can survive, there must in every case be a struggle for existence. Either one individual with another of the same species, or with the individuals of distinct species, or with the physical conditions of life.”</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的段落：
+
+如果投资者紧盯公司管理层索要下季度业绩，他们难道不会同样逼迫研究分析师吗？既然如此，分析师何必费心研究更长远的历史呢？分析师之所以做预测，是因为他们的客户要求他们做预测。我确信其中许多人都知道这是徒劳之举。原因如下。
+
+假设我需要预测下一年的财务状况。我至少需要预测十个（甚至更多）数字，涵盖销量、单价、销售成本、销售费用、应收账款、资本支出等等。再假设我猜得很准，每个数字都有90%的概率猜对。那么，猜中所有十个数字的概率就只有35%（0.9^10）。有人可能会说这十个变量并非完全独立，所以不该简单相乘。确实如此，但实际变量远多于十个，而且它们至少是半独立的。无论你如何评估准确预测下一年财务状况的概率，它都可能比抛硬币猜正反面还要低。
+
+但这只是针对下一年。我还需要预测再下一年以及之后。你觉得我的预测能有多准？
+
+我们准备的唯一财务数据是过去十年或更长时间的。我们的财务追踪记录不含预测。相反，我们使用的是与其他所有人都能获取的相同事实性财务信息。这与达尔文并无二致。
+
+达尔文在构建其理论时，并未掌握任何特殊的机密数据或信息。“小猎犬号”之旅确实让他接触到新大陆和新生物，但他并未做出任何开创性发现。在那五年的航行中，达尔文确实收集了1529个保存在酒精中的物种以及3907份皮肤、骨骼和其他样本。但在我的研究中，我并未觉得他偶然发现了任何科学界未知的重要事物。
+
+有时，专家们会就他收集的标本向达尔文提供新的事实。例如，1845年，达尔文的植物学家朋友约瑟夫·胡克鉴定出达尔文及其团队在加拉帕戈斯群岛收集的200多种植物物种。其中约150种是单个岛屿特有的，但它们也与地球上其他地方找不到、其他岛屿上的植物存在亲缘关系。一些植物的祖先，如同鸟类的祖先一样，很久以前偶然抵达加拉帕戈斯群岛，并随时间推移适应当地环境，分化成许多物种。
+
+几个世纪以来，鸟类学家和博物学家一直在观察孔雀的求偶仪式，但此前无人认为雌性在选择雄性羽毛方面起着主导作用。即使是业余鸟类学家也知道，只有雄性鸟类才拥有华丽的羽毛，而且所有鸟类羽毛的大小、形状和颜色的多样性都令人惊叹。但没有哪位鸟类学家像达尔文那样，从性选择的角度来解读他们的观察。
+
+同样，林奈的《自然系统》也并非秘密。其基于植物雄雌性别的植物分类体系为林奈赢得了声誉和名望。林奈在后续著作《植物属志》中修改了他的植物性别分类系统。《植物属志》依据他所谓的属的“自然特征”——即花和果实的形态特征——对植物进行分类。然而，无论是他还是其他任何人都无法解释这种自然秩序的来源，只能声称这是上帝的安排。林奈去世八十年后，达尔文最终通过他的共同由来理论解释了这种自然秩序。
+
+如你所见，在每一个案例中，达尔文掌握的历史事实与他人并无二致。唯独他的解读是全新的、截然不同的。我相信我们的方法也别无二致。
+
+既然我们不预测财务状况，那么我们用历史数据做什么？很多事。作为永久所有者，我们对自己企业的财务表现极其谨慎。以下是我们如何利用历史财务数据来评估投资组合中的公司。
+
+让我以印度第二大涂料企业贝格涂料（Berger Paints）为例。我们从2008年起持有贝格。当贝格公布季度业绩时，我们会进行两大类历史分析：绝对分析和相对分析。
+
+例如，为什么过去一年的营收增长降至10%，而其长期平均水平为15%至16%？连续三年高利润率的原因可能是什么？公司是否开始削减销售和营销支出？是什么导致本季度应收账款大幅下降？过去一年的资本支出是否高于往常？是什么驱动了过去两年资本回报率（ROCE）相较于前五年的提升？
+
+我们不会止步于在贝格自身长期历史背景下分析其业绩。作为永久所有者，我们希望投资于一家在相对层面上表现优异的企业，即表现优于整体竞争对手的企业。我们将贝格的当季、过去十二个月及长期表现与竞争对手在诸多参数上进行比较，如营收和利润市场份额、资本回报率以及自由现金流等。我们主要将贝格与四家竞争对手进行对标：亚洲涂料（行业领导者）、关西涂料（Kansai Nerolac）、阿克苏诺贝尔（Akzo Nobel）和Indigo涂料。此外，我们还会寻求关于可能开始激进增长的小型或私营企业的市场反馈。这种通过财务数据进行的竞争分析会引导我们提出以下问题：贝格在本季度和去年是丢失了还是获得了市场份额？是什么驱动了关西涂料在过去两年营收份额的增长？谁从阿克苏诺贝尔的份额流失中获益最多？Indigo是否成功拓展了喀拉拉邦以外的市场？贝格的广告支出相对于其竞争对手的趋势如何？
+
+如你所见，我们能从历史财务信息中做很多事情。我在此概述的是我们对一家投资组合公司提出的典型问题范例。在评估一家新企业时，分析方式也别无二致。我们要求卓越的绝对和相对财务表现，这基于任何潜在投资对象的实际财务记录。
+
+既然已有如此丰富的历史信息可供挖掘，何必浪费时间去做无用的预测呢？
+
+**评估企业战略**
+
+“战略”一词内涵丰富。为便于讨论，我将其定义为“企业在不确定条件下为实现目标所采取的任何行动”。纯粹主义者会对“战术”和“战略”的定义吹毛求疵。随他们去吧。作为投入真金白银的投资者，我们可以转向更实际的问题。
+
+至此，我猜你大概能“预测”我要写什么了！没错，我们评估历史战略以理解企业。我们关注的战略问题举例如下：你们瞄准了哪些客户群体？你们的产品或服务如何满足客户需求？你们在哪些方面与竞争对手不同？你们历史上如何配置资本？你们的资本结构是怎样的，为什么？
+
+阅读这些问题时，你可能注意到两点：它们关乎公司过去的战略步骤，并且这些问题即使是一年级本科生也能提出。这些问题有什么了不起？没什么。我们提出这些问题，并非为了客观评估答案，而是为了主观判断它们是否符合我们事先设定的关于成功或失败的假设。是的，在提出第一个问题之前，我们就已知晓想要的答案。
+
+如果我们多年工作成效尚可，那并非源于提出这些平凡问题，而是因为我们的潜在偏见要求答案必须符合我们的框架。我们有自己关于成功和失败的框架，我们的目标是评估公司的战略是否符合某种模式。符合者寥寥无几——更多内容详见第六章。
+
+这种方法与达尔文的方法并无太大不同。他在1861年给亨利·福西特的一封著名信件中写道：“多么奇怪，竟然不是每个人都明白，任何观察若要有用，都必须支持或反对某种观点。”达尔文的独特能力在于，他能依据自己的主观假说来评估人人皆可获取的客观信息。
+
+以他对“生存斗争”必然存在的观点为例。1798年，英国经济学家托马斯·马尔萨斯发表了一篇关于人口增长原理的论文。马尔萨斯认为，人口呈指数级增长，而食物资源呈线性增长，因此除非严格限制生育，否则人类繁荣是不可能的。此外，马尔萨斯写道，除非人类开始减少生育，否则不可避免的食物短缺将使人类陷入永恒的生存斗争——只有饥荒、战争和疾病才能抑制人口增长。这是一种对人类黑暗而悲观的看法。
+
+达尔文于1838年阅读了马尔萨斯的论文，并将马尔萨斯原理的适用范围扩展到了整个生物界。此前无人做到这一点。大师的原话最为精辟：“在其自然寿命期间产出数个卵或种子的每一个生物，在其生命的某个时期，在某个季节或偶发的年份，必定遭受毁灭；否则，根据几何级数增长的原理，其数量将迅速变得极其庞大，以至于任何地域都无法承载其产物。因此，由于产生的个体数量多于能存活的个体数量，在任何情况下都必定存在生存斗争。这种斗争或存在于同种个体之间，或存在于不同种个体之间，或存在于与生存的物理条件之间。”</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">Like everyone around him, Darwin saw that no animal or plant species dominated our planet, although many produced hundreds or thousands of seeds or offspring. However, no one else interpreted history the way he did. With Malthus’s inspiration, he explained the current state of the organic world by invoking the hypothesis of the unimaginable historical destruction and annihilation of organisms. His observations fit the template of the struggle for existence.
+There is probably no better way to explain this than with a real example from the world of investing. We are shareholders in a company called NRB Bearings. Its owner and CEO, Harshbeena Zaveri, is an anthropology graduate from Wellesley. She is probably the best strategic thinker in our portfolio. NRB manufactures needle roller bearings for the automotive industry and has about 65 to 70 percent market share in India. The global giant Schaeffler accounts for the rest. Bearings account for just 1 to 2 percent of the cost of a vehicle but are critical components—failure can lead to severe accidents.
+We avoid the automotive component space because, in general, its clients, the automotive companies, do not allow them to make money. In the United States, for example, the top five car companies controlled about two-thirds of the market in 2021.27 This concentration allows them to drive a tough bargain with their suppliers: the automotive component companies. Unsurprisingly, not many parts suppliers can consistently earn a decent profit. India is even more consolidated than the United States—the dominant car company, Maruti Suzuki, controls half the Indian market. The Indian motorcycle market is an oligopoly of just three companies. It is not unusual for a parts supplier to have a huge customer concentration—a top customer typically accounts for 30 to 50 percent of revenues.
+Hence, our bias is to reject almost every automotive component business. There can be an exception, though. But that exception must fit the following template. First, the parts supplier would need to manufacture a critical component requiring proprietary technology and have a low customer concentration over many years. It should have only one or two competitors, and the competitive dynamics in the industry should be stable over the long term. Finally, there should have been no new entrants to the industry for many years, and the company should have delivered good financials historically. Note that not a single criterion here is about the future.
+NRB ticked every box, and so when the company valuation came to the level we liked, we swooped in to buy 10 percent of the business. We studied history, built hypotheses, did not bother predicting, and have been happy owners in the business since 2013.
+Assessing the strategy of a business is useless unless we have a strategy to comprehend the strategy.
+Gauging the Competitive Position of a Business
+Darwin discovered that the success of a species is not dependent on its being the best but simply being better than the competition. This joke will make it more straightforward. When two friends hiking in a forest spot a lion, one starts putting on his running shoes. His friend says, “What are you doing that for? You can’t possibly outrun a lion.” The man replies, “I know, but I need only to run faster than you, not the lion!”
+We humans do not possess an ideal body or brain design, as those with back pain, hernias, or the desire to make leveraged crypto trades will confess. But as a species, we were undoubtedly better than tens of other sister species in the Homo genus, and that has allowed more than eight billion of us to rule the world.
+Investors, analysts, and academics have beaten the term “sustainable competitive advantage” to death. Still, as in evolutionary theory, the real question is not just about sustainable competitive advantage but about being consistently better than the competition. And what is the meaning of “better”? For us, it relates to measurable parameters like ROCE, market share, free cash flow, balance sheet strength, consistency of financials, and other such measures.
+We assess all these historically. So the question for us is never, “Will you be better than the competition,” but “Have you consistently been better than the competition?”
+Let’s pick market share as an example. If a company is consistently losing market share, and if SoftBank, Tiger, Alibaba, or Naspers has not offered a billion dollars to its competitors so they can burn cash mindlessly, no one can convince me that the company has a sustainable competitive advantage. On the other hand, if a company is consistently gaining market share, isn’t it highly likely that they have built a defensible moat? We want our businesses to gain market share over the long term, recognizing full well that the trend line may occasionally reverse in the short term.
+In this context, it may be informative to share one of my early mistakes in the fund with you. This small-sized business was in a fragmented industry in which most businesses made decent ROCE. This business had ROCE of over 30 percent and had grown at an annualized rate of 29 percent over the previous three years. The company had no leverage. We invested at what we thought was an attractive price. After selling it at a loss of about 40 percent after five years, I concluded that price was the least of my problems. I had erred in sizing up the competitive advantage of the business.
+The company had performed reasonably well in the past few years, but it had lost significant market share over the long term. The two most prominent players in the industry, founded around the same time as this company, were more than twenty times the revenue of this business. The third-largest business founded twelve years after the inception of our company was already eleven times larger in revenue.
+In our diligence process, we received a lot of qualitative information from the management, customers, and even competitors about how the company’s strategy and direction had started yielding fruit in recent years. The company had been performing well recently, but, with a longer-term lens, I should have seen that the company was a chronic underperformer. Moreover, the same team of founder-managers had been running the business since its inception. So how could the following five-year result be any different from the past twenty-five?
+I had made a big blunder. When it comes to gauging competitive position, barring some exceptions, there is almost nothing better than measuring market share of volume, revenue, and profit over a long period.
+We live and learn.
+Assigning Value to a Business
+A few years ago, a fund manager friend and I were meeting for coffee. He wanted to know how our portfolio was performing, and I started complaining mildly about the high valuation of our businesses. I wanted to buy more of these companies, but the prices seemed to have run up a lot. My friend was surprised and countered that the valuations weren’t too high. They seemed reasonable. I would say, “Company A is at 45 PE [price/earnings ratio],” and he would counter, “No, it’s only 25 PE.” I would then complain about Company Y being 55 PE, and he would appear surprised and correct me that the PE for the company was only 28. I was now frustrated, and he appeared pretty surprised—did I not know the valuation of my businesses?
+And then it struck me.
+When I said 45 PE, I meant to say 45 times trailing PE. When he said 25 PE, he meant 25 times forward PE. His forward PE was not for the next year but for two years later! For those unfamiliar with our industry’s terminology, I had valued our business based on the actual delivered earnings of the past year. On the other hand, my friend had taken the average industry estimates of company earnings two years in the future and calculated the PE based on these forecasted earnings.
+The following example will make this clearer. Let’s say that the profit after tax of a company in the past twelve months is $10 million and that its market value is $450 million. This gives a trailing PE of 45 (450 ÷ 10). If the consensus analyst estimates are that the company’s earnings will be $14 million next year and $18 million the year after that, the one-year forward PE for the same business will be 32 (450 ÷ 14), and the two-year forward PE will be 25 (450 ÷18).
+Which of these three—45, 32, or 25—is the correct PE? It depends on the investor. For us, it is the backward-looking 45, and for my friend, it is the forward-looking 25. Most discussions of PE or other valuation ratios (like price/book or enterprise value/EBITDA) are forward-looking. The only PE ratio we discuss relates to the delivered earnings of the past. It may be the previous twelve months or the past three years, or, for some highly cyclical businesses, even the past ten-year average PE (i.e., current market value divided by the average earnings of the past ten years). We also use other valuation metrics, but all value the current business based on its past performance.
+I can understand if some investors project earnings over one or two years since that’s not too far in the future. It’s not ideal, but I get it. What I fail to fathom is why investors do something worse. Much worse.
+It’s called discounted cash flow (DCF) analysis.
+Here is a simple way to understand it. Let’s say it’s the year 2000, and your mom promises to give you $100 a year for the next two years. You need the cash urgently, and you ask Mom to give you the cash today instead. She will not give you $200 since the value of $100 in 2001 and 2002 is lower than in 2000 (yes, Mom is a stickler and a good mathematician). How much money should she give you? You will need a DCF analysis to arrive at the answer.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的书籍段落：
+
+和周围的人一样，达尔文看到没有任何动植物物种主宰着我们的星球，尽管许多物种能产下数百或数千粒种子或后代。然而，没有人像他那样解读历史。在马尔萨斯的启发下，他通过提出生物在历史长河中经历了难以想象的毁灭和消亡这一假说，来解释有机世界的现状。他的观察符合生存斗争的模板。
+
+可能没有比用一个真实的投资实例更好的方式来解释这一点了。我们是NRB轴承公司（NRB Bearings）的股东。其所有者和首席执行官哈什比娜·扎维里（Harshbeena Zaveri）是韦尔斯利学院（Wellesley）的人类学毕业生。她可能是我们投资组合中最好的战略思考者。NRB为汽车行业生产滚针轴承，在印度拥有约65%至70%的市场份额。全球巨头舍弗勒（Schaeffler）占据了其余部分。轴承仅占车辆成本的1%至2%，但却是关键部件——失效可能导致严重事故。
+
+我们通常避开汽车零部件领域，因为其客户——汽车公司——通常不允许它们赚钱。例如，在美国，前五大汽车公司2021年控制了约三分之二的市场。这种集中度使它们能够与供应商——即汽车零部件公司——进行艰难的议价。不足为奇，没有多少零部件供应商能持续获得可观的利润。印度市场比美国更为集中——主导的汽车公司玛鲁蒂铃木（Maruti Suzuki）控制了印度一半的市场。印度摩托车市场是由三家公司组成的寡头垄断。零部件供应商拥有巨大的客户集中度并不罕见——通常，一个顶级客户就占其收入的30%至50%。
+
+因此，我们倾向于拒绝几乎所有汽车零部件业务。不过，可能存在例外。但这个例外必须符合以下模板。首先，该零部件供应商需要生产一种需要专有技术的关键部件，并且在多年内客户集中度较低。它应该只有一两个竞争对手，并且行业内的竞争格局长期保持稳定。最后，该行业多年内应无新进入者，并且该公司历史上应具备良好的财务状况。请注意，这里没有任何一条标准是关于未来的。
+
+NRB满足了所有条件，因此当公司估值达到我们认可的水平时，我们迅速出手收购了其10%的股份。我们研究历史，建立假设，不去费心预测，自2013年以来一直是这家公司满意的股东。
+
+除非我们拥有理解战略的策略，否则评估企业的战略是徒劳的。
+
+**评估企业的竞争地位**
+
+达尔文发现，一个物种的成功并不依赖于它是最优的，而仅仅需要比竞争对手更好。这个笑话能更直白地说明：当两个在森林里徒步的朋友发现一头狮子时，其中一人开始穿上跑鞋。他的朋友说：“你干嘛要穿跑鞋？你不可能跑得比狮子快。”那人回答：“我知道，但我只需要跑得比你快，而不是比狮子快！”
+
+我们人类并不拥有理想的身体或大脑设计，正如那些患有背痛、疝气或渴望进行杠杆加密交易的人会承认的那样。但作为一个物种，我们无疑比智人属（Homo genus）中其他数十个姊妹物种更胜一筹，这才使得超过80亿的我们得以统治世界。
+
+投资者、分析师和学者们已经把“可持续竞争优势”这个词用滥了。然而，正如进化论所揭示的，真正的问题不仅在于可持续的竞争优势，更在于持续地比竞争对手更好。而“更好”是什么意思？对我们而言，它关系到可衡量的参数，如资本使用回报率（ROCE）、市场份额、自由现金流、资产负债表实力、财务数据的稳定性以及其他类似指标。
+
+我们从历史角度评估所有这些指标。因此，我们提出的问题从来不是“你将来会比竞争对手更好吗？”，而是“你是否一直比竞争对手更好？”
+
+以市场份额为例。如果一家公司持续失去市场份额，并且软银（SoftBank）、老虎基金（Tiger）、阿里巴巴（Alibaba）或南非报业集团（Naspers）没有向其竞争对手提供十亿美元让它们肆意烧钱，那么没有人能说服我这家公司拥有可持续的竞争优势。另一方面，如果一家公司持续获得市场份额，难道这不极可能意味着它已经建立了可防御的护城河吗？我们希望我们的企业能长期获得市场份额，同时充分认识到这一趋势线在短期内偶尔可能出现逆转。
+
+在此背景下，分享我在基金早期犯下的一个错误或许具有启发性。这家小型企业身处一个分散的行业中，该行业大多数企业都能获得不错的资本使用回报率（ROCE）。该企业的ROCE超过30%，并且在过去三年中以29%的年化增长率增长。公司没有负债。我们以自认为有吸引力的价格进行了投资。五年后以约40%的亏损卖出后，我得出结论：价格是我最不需要担心的问题。我错判了该企业的竞争优势。
+
+该公司在过去几年表现相当不错，但从长期看却失去了显著的市场份额。该行业最大的两家公司，成立时间与该公司大致相同，其收入规模是这家公司的二十多倍。第三大公司在我们投资的公司成立十二年后才成立，其收入规模已是该公司的十一倍。
+
+在我们的尽职调查过程中，我们从管理层、客户甚至竞争对手那里获得了大量定性信息，关于该公司的战略和方向近年来如何开始见效。公司近期表现良好，但如果以更长远的眼光来看，我本应看出这家公司长期表现不佳。此外，自公司成立以来，一直是由同一批创始人管理团队在经营。那么，接下来的五年业绩又怎么可能与过去的二十五年有本质不同呢？
+
+我犯了一个大错。在评估竞争地位时，除少数例外情况外，几乎没有比长期衡量销量、收入和利润的市场份额更好的方法了。
+
+吃一堑，长一智。
+
+**为企业估值**
+
+几年前，我和一位基金经理朋友喝咖啡。他想了解我们投资组合的表现，我开始温和地抱怨我们持仓企业估值过高。我想增持这些公司，但价格似乎已经涨了很多。我的朋友感到惊讶并反驳说估值并不太高，看起来是合理的。我说：“公司A的市盈率（PE）是45倍”，他会反驳：“不对，只有25倍。”接着我抱怨公司Y的市盈率是55倍，他会显得很惊讶并纠正我说该公司的市盈率只有28倍。我当时很沮丧，而他显得相当困惑——难道我不知道自己持仓公司的估值吗？
+
+然后我恍然大悟。
+
+当我说45倍市盈率时，我指的是45倍的**历史**市盈率（trailing PE）。当他说25倍市盈率时，他指的是25倍的**未来**市盈率（forward PE）。而且他的未来市盈率不是指下一年的，而是指两年后的！对于不熟悉我们行业术语的人来说，我是根据过去一年**实际实现的**盈利来评估我们的企业价值。而我的朋友则采用了行业对公司**两年后**盈利的平均预测，并根据这些预测盈利来计算市盈率。
+
+下面的例子会更清楚。假设一家公司过去十二个月的税后利润是1000万美元，其市值为4.5亿美元。那么它的历史市盈率就是45倍（450 ÷ 10）。如果分析师普遍预测该公司明年的盈利为1400万美元，后年为1800万美元，那么该企业的一年期未来市盈率将是32倍（450 ÷ 14），两年期未来市盈率将是25倍（450 ÷ 18）。
+
+这三个数字——45、32或25——哪个是“正确”的市盈率？这取决于投资者。对我们来说，是向后看的45倍；对我的朋友来说，是向前看的25倍。大多数关于市盈率或其他估值比率（如市净率或企业价值倍数）的讨论都是前瞻性的。而我们讨论的唯一市盈率与过去已实现的盈利相关。它可能是过去十二个月的，也可能是过去三年的，或者对于某些强周期性企业，甚至是过去十年的平均市盈率（即当前市值除以过去十年的平均盈利）。我们也使用其他估值指标，但都是基于企业过去的业绩来评估其当前价值。
+
+我能理解有些投资者会预测未来一两年的盈利，因为这还不算太遥远。虽然不够理想，但我能接受。我无法理解的是，为什么有些投资者会做更糟糕的事情。糟糕得多的事情。
+
+那就是现金流折现（DCF）分析。
+
+这里有一个简单的理解方法。假设现在是2000年，你妈妈承诺在接下来两年里每年给你100美元。你急需用钱，于是请求妈妈今天就给你现金。她不会给你200美元，因为2001年和2002年的100美元价值低于2000年（是的，妈妈是个严谨的好数学家）。她应该给你多少钱呢？你需要进行DCF分析才能得出答案。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">For this, you will need a discount rate or cost of capital.28 Mom decides that it should be 5 percent (maybe because this is the bank interest rate). Thus, the value of $100 in 2001 is $95 in 2000 ($100 ÷ 1.05). The value of $100 in 2002 is $91 in 2000 ($100 ÷ 1.052). Thus, if you choose to take all the money today, she should give you $186 ($95 + $91). This is a simple DCF analysis.
+So far, so good.
+The problem starts when you replace your mom with a company. Whoa! Did I just say that? But you know what I mean. If you don’t, let me elaborate. As per corporate finance theory, the value of a business is simply the sum of all its future cash flows discounted to the present time. This makes academic sense. It’s true mathematically. But as a practical way to invest, it borders on being nonsensical. Let’s understand why. There are two main requirements for building a DCF spreadsheet: the discount rate and the cash flow projection.
+Let’s start with the discount rate.
+The discount rate is the weighted average costs of debt and equity; it is equivalent to the 5 percent we used in the example with your mom. I understand the cost of debt, but what is the cost of equity? Corporate finance theory comes to the rescue and provides a clean-cut official formula. The formula is as follows: (risk-free rate) + β × (expected market return – risk-free rate). Looks neat, right? Just plug in the numbers to get the answer. Don’t be fooled, though; it hides several vast issues.
+Let’s begin with the Greek letter β (beta), which indicates riskiness. It measures the volatility of a stock relative to the market. Thus, a stock that moves in perfect synchrony with the market will have a β of 1. But, again, isn’t the notion of measuring risk by using volatility as a proxy quite silly? As I discussed in chapter 1, how does riskiness have anything to do with volatility? For an investor, the riskiness of a business is directly proportional to the probability of capital loss of investing in that business. The higher the potential loss, the higher the risk. I don’t care about β and never will.
+As you can see in the formula, we need a number for the expected market return. Ask ten experts, and you will get ten different answers for expected market return. What number should I pick? Average, median, whatever I like? The formula has no advice to offer.
+Do you see anything in the formula about how much debt the company is carrying? Do you think a company with a considerable debt load should have the same cost of equity as a company with no debt? The formula does not believe so. It is bizarre and almost laughable. Distressed companies with high leverage get sold for a pittance because the equity investors demand a high cost of equity.
+As if all this is not enough, let’s look at the damaging impact of pretending that an impressive-looking math formula will protect us from egregious errors.
+Let’s go back to your mom. If she decides to discount cash flow by 7 percent instead of 5 percent, she will give you only $181, not $186. But if she discounts at 3 percent, you will receive $5 extra, or $191. A DCF analysis assumes cash flows in perpetuity, and so the present value of this formulation is much more sensitive to the discount rate than the one used by your mom. For example, assume that a cash flow of $100 grows by 10 percent over twenty-five years. Using a discount rate of 10 percent, the discounted present value of this series is $2,273. What if we reduce the discount rate by just one percentage point to 9 percent? The value jumps by 13 percent to $2,565. Similarly, a one-percentage-point increase in discount rate chops off 11 percent of the present value.
+What’s the use of fooling oneself that the mathematical precision of a discount rate with two decimal places is any better than guesswork?
+And now, believe it or not, we come to the real problem of using DCF. Yes, we haven’t even started yet!
+Back to Mom. She had promised us $100 for the next two years. Can a company promise to do the same for an indefinite future? Of course not. But the DCF technique demands that we forecast cash flows. So that is what everyone does.
+Theoretically, I need to make these projections in perpetuity, but for convenience, I will just use a “terminal value” at the end of the tenth year to make my task easy. Let’s not wade into the problems of terminal value, which is a cesspit. Trust me; you will get indigestion.
+Even if you aren’t from the financial community, you may have read or heard of the stock prices of individual companies suddenly dropping or increasing massively. Let’s take the example of Snapchat, an app that every teenager with a smartphone seems to be using.29 In early May 2017, Snapchat’s share price dropped almost 25 percent in a single day after the company declared financial results that showed slower growth than expected and a massive loss of $2.2 billion. There was a lot of public information available on the company, and since Snapchat had listed only recently, investors and analysts had analyzed its future cash flows in gory detail. They had not foreseen the abysmal financial results.
+If investors can’t forecast cash flows even a few days or months in advance, how can they be expected to project cash flows years ahead? But this is what the DCF methodology demands. Investors and analysts rarely fail to build massive, complicated financial models that assess dozens of factors to project cash flows over many years in the future. Hail Excel.
+It’s not that the builders of these Excel models—whether analysts, bankers, consultants, or investors—are unaware of the pitfalls. But for some reason, the deep desire to look far in the future to arrive at an exact number overwhelms the rational voice admonishing the person to stop pretending they are doing anything useful.
+One of the best ways for you to get a sense of this future obsession is to read the transcripts of a company’s quarterly results conference calls. Most companies post such transcripts in their websites’ “Investor Relations” section. I analyzed three conference call transcripts—for Walmart (for Q2 2018), P&G (for Q4 2017), and General Motors (for Q2 2017)—and the results are stark.
+For Walmart, analysts and investors focused twenty-eight out of forty-nine questions on the future (e.g., “implied EBIT margin direction within the guidance”). On the P&G call, fourteen out of twenty questions asked the management to make some kind of prediction (e.g., “Do you have more initiatives hitting the market?”). At General Motors, a staggering twenty-seven out of thirty-three questions were forward-looking (e.g., “What should we think about the cadence of the expected savings from the restructuring actions?”).
+The tug-of-war between the analyst and the management team is occasionally painful to witness: The former tries to pin down exact forecasts for revenues and margins (so that they can populate the DCF model). Knowing full well that the future is inherently unpredictable, the latter attempts to sidestep the question with some broad generic comments.
+For example, on the General Motors call for Q2 2017, an analyst wanted to know the revenue projection for OnStar, an advanced communication system installed in GM cars. The answer from the CFO was, “As we have talked about before, yes, OnStar is generating revenue. We don’t disclose it separately. It continues to grow.” My sympathies lie with company management; they know that they don’t know what the future will bring. But, on the other hand, most analysts and fund managers, having never worked in a company, think that it is the management’s job to know the future; how else how will they be able to populate their DCF models?
+I have been on the boards of more than twenty-five companies, and over the years I have never seen a management team meet its budgets. Some exceed their projections, and some undershoot. Occasionally, the over- or underperformance is by a wide margin. If the company management can’t forecast correctly, how can investors do so? They can’t. More importantly, they shouldn’t try.
+We have never done a DCF analysis and never will. However, I know many—if not most—investors and analysts do. Maybe they have figured out a method to look far into the future that eludes me. In any event, our approach is straightforward.
+Let me take the example of a noncyclical business growing at a moderate pace. We know the market-trailing PE multiple is about 19 or 20. We pay a multiple at or below the market for an exceptional business with high ROCE, a wide moat, and low business and financial risk. Occasionally, we stretch a bit by paying a trailing multiple in the high teens or low 20s for a truly unique business, but these occasions are few and far between. The median trailing PE multiple for our portfolio when we bought the companies is 14.9.
+We refine this method for cyclical businesses and those that haven’t shown steady growth in earnings (e.g., if earnings stayed flat for the previous five years or doubled in the past year). But the general principle is that we assign a fair valuation based on historical, delivered financials.
+Oh, one last point on valuation. It is always the last thing we discuss. When evaluating a business, risk comes first, quality second, and valuation last.
+What Is Necessary Need Not Be Sufficient
+In the words of Douglas Futuyma, a professor at the State University of New York at Stony Brook, “The core of evolutionary biology consists of describing and analyzing the history of evolution, and of analyzing the causes and mechanisms of evolution.”30 As a result, the natural world throws up several questions that we can’t answer without drawing inferences about historical processes. For example, why do females fight over males in some species? Why are there two sexes and not five? Why does only a tiny part of our genome code for proteins? Why do lions commit infanticide? How did birds evolve from dinosaurs?</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的段落：
+
+为此，你需要一个折现率或资本成本。妈妈决定它应该是5%（也许因为这是银行利率）。因此，2001年的100美元在2000年价值95美元（100美元 ÷ 1.05）。2002年的100美元在2000年价值91美元（100美元 ÷ 1.05²）。所以，如果你选择今天拿走所有钱，她应该给你186美元（95美元 + 91美元）。这就是一个简单的现金流折现（DCF）分析。
+到目前为止，一切顺利。
+问题始于当你把妈妈换成一家公司时。哇！我刚才说了什么？但你明白我的意思。如果你不明白，让我解释一下。根据公司金融理论，企业的价值仅仅是其未来所有现金流折现到当前的总和。这在学术上有道理。在数学上是成立的。但作为一种实用的投资方法，它近乎荒谬。我们来理解一下为什么。构建一个DCF模型有两个主要要求：折现率和现金流预测。
+让我们从折现率开始。
+折现率是债务和权益的加权平均成本；它等同于我们在你妈妈的例子中使用的5%。我理解债务成本，但权益成本是什么？公司金融理论来解围，提供了一个清晰明确的官方公式。公式如下：（无风险利率） + β ×（预期市场回报 - 无风险利率）。看起来很简洁，对吧？只需代入数字就能得到答案。不过别被它骗了；它隐藏着几个巨大的问题。
+让我们从希腊字母β（贝塔）开始，它表示风险。它衡量股票相对于市场的波动性。因此，与市场完美同步波动的股票β值为1。但是，再次强调，用波动性作为风险的代理指标，这个想法难道不是很荒谬吗？正如我在第一章讨论过的，风险与波动性究竟有什么关系？对投资者而言，企业的风险与投资该企业造成资本损失的概率成正比。潜在损失越高，风险就越大。我不在乎β，也永远不会在乎。
+如公式所示，我们需要一个预期市场回报的数字。问十个专家，你会得到十个不同的预期市场回报答案。我该选哪个数字？平均值、中位数，还是我喜欢的随便哪个？公式对此没有建议。
+在公式中，你看到任何关于公司负债多少的内容了吗？你认为一个负债累累的公司应该和一个没有负债的公司拥有相同的权益成本吗？公式可不这么认为。这很奇怪，简直可笑。高杠杆的陷入困境的公司被以极低价格出售，正是因为权益投资者要求很高的权益成本。
+似乎所有这些还不够，让我们看看假装一个看起来高大上的数学公式能保护我们免犯严重错误所带来的破坏性影响。
+回到你妈妈。如果她决定用7%而不是5%来折现现金流，她只会给你181美元，而不是186美元。但如果她用3%折现，你会多得5美元，拿到191美元。DCF分析假设现金流是永续的，因此这个公式的现值对折现率的敏感度远比你妈妈的例子高得多。例如，假设一笔100美元的现金流在二十五年内以10%增长。使用10%的折现率，该系列现金流的折现现值为2,273美元。如果我们将折现率仅降低一个百分点至9%呢？价值跃升13%，达到2,565美元。同样，折现率增加一个百分点会使现值减少11%。
+自欺欺人地认为保留两位小数的折现率的数学精度比猜测好，这有什么用呢？
+现在，信不信由你，我们才真正触及使用DCF的核心问题。是的，我们甚至还没开始呢！
+回到妈妈。她承诺在接下来的两年每年给我们100美元。一家公司能承诺在不确定的未来也这样做吗？当然不能。但DCF技术要求我们预测现金流。所以大家都这么做了。
+理论上，我需要做出永续的预测，但为了方便，我会在第十年末用一个“终值”来简化我的任务。我们就不深入探讨终值的问题了，那是个泥潭。相信我；你会消化不良的。
+即使你不是金融界人士，你可能也读过或听说过个别公司的股价突然暴跌或暴涨。以Snapchat为例，这个应用似乎每个有智能手机的青少年都在使用。2017年5月初，Snapchat宣布的财务结果显示增长低于预期且录得巨额亏损后，其股价在一天内下跌了近25%。关于该公司的公开信息很多，而且由于Snapchat上市不久，投资者和分析师已经对其未来现金流进行了极其详尽的剖析。他们并未预见到如此糟糕的财务结果。
+如果投资者连几天或几个月后的现金流都无法预测，又怎能期望他们预测多年后的现金流呢？但这正是DCF方法论要求的。投资者和分析师很少不构建庞大复杂的财务模型，评估数十个因素来预测未来多年的现金流。Excel万岁。
+并不是这些Excel模型的构建者——无论是分析师、银行家、顾问还是投资者——没有意识到其中的陷阱。但出于某种原因，那种想要展望遥远未来以获得一个精确数字的强烈渴望，压倒了理性声音告诫他们停止假装在做有用之事的警告。
+让你感受这种未来痴迷的最好方法之一，是阅读公司季度业绩电话会议的记录。大多数公司会在其网站“投资者关系”部分发布此类记录。我分析了三份电话会议记录——沃尔玛（2018年第二季度）、宝洁（2017年第四季度）和通用汽车（2017年第二季度）——结果非常明显。
+对于沃尔玛，分析师和投资者的49个问题中有28个集中在未来（例如，“指引中隐含的息税前利润利润率走向”）。在宝洁的电话会议上，20个问题中有14个要求管理层做出某种预测（例如，“你们有更多举措推向市场吗？”）。在通用汽车，33个问题中有惊人的27个是前瞻性的（例如，“我们应该如何看待重组行动预期节省成本的时间节奏？”）。
+分析师和管理团队之间的拉锯战有时令人不忍目睹：前者试图锁定对收入和利润率的精确预测（以便他们能填充DCF模型）。后者深知未来本质上是不可预测的，试图用一些宽泛笼统的评论来回避问题。
+例如，在通用汽车2017年第二季度的电话会议上，一位分析师想知道OnStar（安装在通用汽车中的先进通信系统）的收入预测。首席财务官的回答是：“正如我们之前所说，是的，OnStar正在产生收入。我们不单独披露它。它持续增长。”我同情公司管理层；他们知道自己无法预知未来。但另一方面，大多数分析师和基金经理从未在公司工作过，认为了解未来是管理层的职责；否则他们怎么能填充自己的DCF模型呢？
+我曾担任过超过25家公司的董事，多年来从未见过一个管理团队达成其预算。有些超出预期，有些未达标。偶尔，超额或不足的幅度很大。如果公司管理层都无法正确预测，投资者又怎么能做到呢？他们做不到。更重要的是，他们不应该尝试。
+我们从未做过DCF分析，也永远不会做。然而，我知道许多（即使不是大多数）投资者和分析师会做。也许他们找到了一种我无法企及的展望遥远未来的方法。无论如何，我们的方法很简单直接。
+让我以一个以温和速度增长的非周期性业务为例。我们知道市场追踪市盈率倍数约为19或20倍。对于一个资本回报率高、护城河宽、商业和财务风险低的卓越企业，我们支付等于或低于市场水平的倍数。偶尔，对于真正独特的企业，我们会略微提高，支付高十位数或低二十位数的追踪市盈率倍数，但这种情况少之又少。我们购买公司时投资组合的中位追踪市盈率倍数是14.9倍。
+我们对周期性业务和那些尚未显示稳定盈利增长的业务（例如，如果过去五年盈利持平或过去一年翻倍）会改进这种方法。但总体原则是，我们根据历史已实现的财务数据赋予一个合理的估值。
+哦，关于估值还有最后一点。它总是我们最后讨论的事情。评估一家企业时，风险第一，质量第二，估值最后。
+
+**必要非充分**
+纽约州立大学石溪分校的道格拉斯·富图马教授曾言：“进化生物学的核心在于描述和分析进化的历史，以及分析进化的原因和机制。”因此，自然界提出了几个问题，若不借助历史过程的推断，我们便无法解答。例如：为何某些物种中雌性会争夺雄性？为何存在两种性别而非五种？为何我们基因组中只有一小部分编码蛋白质？狮子为何会杀婴？鸟类是如何从恐龙进化而来的？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">As long-term investors, we have dissociated ourselves from the “what will happen?” obsession and replaced it with “what has actually happened?” The former is a laundry list of conjectures and opinions, and the latter, to a large extent, consists of facts. Of course, facts in and of themselves are empty, and what matters is the opinions we build onto those facts, but at least they give us a foundation for a discussion.
+For example, if a company has had a historical ROCE over the past decade of 40 percent, two investors could have widely different opinions of this “fact.” One could assert that the company has a great future, and the other could argue that microeconomic theory demands that these returns will be competed away. Understanding that the company has had unusually high returns in the past focuses the investors’ attention on the sources of these returns and their sustainability. For example, did the company earn these returns because of regulatory protection from overseas competition, and, if so, are we comfortable backing a business that has not faced genuine competition? Or were these returns earned despite fierce competition? What has the company done relative to the competition that has made it so unique?
+Our focus on interpreting the present in the context of history is not free of problems. Let me share two categories of issues. Both relate to the issue of necessity versus sufficiency of track record.
+The once-famous company Nokia exemplifies the first category of issues. Nokia was a high-flying company in the late 1990s and dominated the mobile phone market in the same way that the iPhone does today.31 Large emerging markets like China and India were severely underpenetrated in the mobile phone sector in the 1990s. Based on historical performance, it appeared that Nokia would conquer the world.
+Investors couldn’t buy enough Nokia stock, and, at its peak in the year 2000, Nokia’s market value was about $325 billion. Since then, it has lost more than 90 percent of its value. In the year 2000, all the historical signals from the company—its financial performance, competitive position, reputation, and dealer and customer feedback—would have screamed, “This is an amazing company.” But Nokia could not compete with Apple, Samsung, or tens of local Chinese and Indian competitors over the next decade, and the Nokia phone is now a museum relic.
+Anyone relying only on the history of Nokia would have suffered massive losses. Giving weight to a track record is a necessary condition for investment success, but it is in no way sufficient. We find this to be especially true in fast-changing industries that may or may not be technology related. Thus, in the case of Nokia, while most historical signals would have led one to conclude that the company had been truly outstanding, the very nature of the technology industry, in which rapid change is the norm, should have made any investor pause.
+We have avoided fast-changing industries like the plague, and many are not even in the technology space. Industries like retailing, microfinance, food delivery, and e-commerce are in the early stages of evolution in India. There is way too much turmoil in these industries for us to feel comfortable using only historical information to invest.
+Should an investor avoid technology companies and other rapidly evolving industries? We do, mainly because we are unable to decipher historical signals for companies in these industries. But many investors have figured out ways of assessing these industries. I don’t know how to analyze fast-evolving sectors and businesses, so I don’t. When encountering a Nokia-like business, I am very comfortable saying, “I can’t figure this out, so thanks, but no thanks.”
+We can summarize the second problem of historical analysis in one word: Starbucks.
+In this case, relying on history would not have helped us identify a spectacular turnaround, thereby depriving us of potentially a substantial money-making opportunity. Howard Schultz bought Starbucks in 1982, and from a mere four stores in Seattle, he grew it to about $2 billion in revenue by 2000. Unfortunately, he left Starbucks in 2000 owing to exhaustion, and not long after, Starbucks started underperforming.
+When Schultz returned to the company in 2008, there was bad news all around.32 Sales had been flagging for some time. McDonald’s and Dunkin’ Donuts had dramatically increased pressure on the company by launching their own gourmet coffee brands. As a result, the stock price had fallen by almost half over the previous year. From 2008, Schultz led a dramatic turnaround in Starbucks’ fortunes by cutting back on expansion, closing hundreds of stores, creating a new instant coffee brand, and refocusing on the consumer. Investors fell in love with the company again—the stock price jumped more than eighteen-fold from December 2008 to December 2019.
+Let’s take ourselves back to 2008 when everything seemed to be falling apart at Starbucks. All the historical signals—customer feedback, market share, same-store sales growth—pointed to a company struggling to regain its lost glory. Schultz may have been the CEO eight years previously, but the company had changed a lot since then; there were thousands of new stores, the management was different, and customer and competitor behavior were different, too. Schultz may have revived the company, but there is no evidence that founders are the best turnaround artists. In 2008, given the lack of historical data pointing to a turnaround, I would not have invested in the company and lost out on a huge potential gain.
+What is the solution? I don’t know a way, but if you can somehow figure out a company’s future in a fast-changing industry or bet on a turnaround, all power to you.
+For the rest of us who are mere mortals, relying on history is a time-tested way to keep the odds firmly in our favor. Of course, it will not guarantee a win every time—no investment approach can—but it will allow us to win often enough.
+✳✳✳
+I changed seven schools in twelve years because my father was in the armed forces, and they transferred him every two years. These were all government schools where the quality of teachers wasn’t usually the best, to put it mildly. However, I doubt even the best private schools had someone like the incredible Mr. Rathod.
+We had recently arrived in a small town called Jamnagar when I was in grade 7. I was miserable because I had to bid farewell to my friends in the previous town (called Dehu Road), and I found it hard to fit in socially at this new school. However, Mr. Rathod and his history class got me through that year. He refused to teach us history from the prescribed textbook. Instead, he ordered us to use the school library to read about ancient and modern Indian history from books and popular comics. And then he asked each student to pick a topic and educate the class on what they had learned. Of course, the rest of us were free to disagree with the presenter, and Mr. Rathod encouraged us to be methodical and logical in our arguments. I distinctly remember a group of twelve-year-olds almost coming to blows when debating the British influence on India.
+Before meeting Mr. Rathod, history for me was objective, undisputed, unchanging. Before him, every history teacher had drilled into me that there was only one correct answer to any question. Mr. Rathod taught us that most answers to questions in a history test should begin with, “It depends.” Throughout grade 7, he showed us directly and indirectly that history can teach us less about who they were and much more about who we are.
+The notion that we can all be great investors just by gauging history is nonsense. It has been fundamental to our process, but it works for us because of who we are. So I bring my prejudices and biases to something as simple as a historical balance sheet. Occasionally, there are vehement disagreements on how to interpret the past. It occurs even within our small, well-knit team, which has worked together for many years. In the middle of these fiery debates, I often yearn for Mr. Rathod. Why couldn’t he be here to adjudicate this?
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . we investors can reimagine investing by studying and understanding the history of a business and an industry instead of constantly obsessing over the future.
+1. Darwin, the founder of modern evolutionary theory, understood better than anyone before him that the present was the result of the cumulative effect of the past.
+2. He proposed his three groundbreaking theories—natural selection, sexual selection, and common descent—by construing history in a new light.
+3. Unlike physics and chemistry, the science of evolutionary biology does not make predictions. Rather than answering the question, “What will happen to humans?” it ponders over the conundrum, “How did bipedal humans evolve from an ancestral quadruped ape?”
+4. The investment world is obsessed with the future. Studying history has taken a backseat to making bold forecasts.
+5. Taking a leaf out of evolutionary biology, we focus exclusively on widely and openly available historical information to analyze businesses. We spend no time building projections and forecasts.
+6. We develop a point of view on company financials, strategy, competitive position, and valuation by analyzing what has already happened without bothering about what will happen.
+7. However, concentrating on the past does have two main downsides. We may wrongly assume that (1) a historically successful business will continue to be so, or (2) a failed or failing business will continue to be so.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的中文段落：
+
+作为长期投资者，我们已摆脱了“未来会发生什么？”的执念，转而关注“过去实际发生了什么？”。前者是各种猜测与观点的罗列，而后者在很大程度上由事实构成。当然，事实本身是空洞的，重要的是我们基于这些事实形成的观点，但至少它们为讨论提供了基础。
+
+例如，如果一家公司过去十年的历史资本使用回报率（ROCE）达到40%，两位投资者可能对这一“事实”持有截然不同的看法。一位可能断言公司前景光明，而另一位可能辩称微观经济学理论要求这些回报率终将被竞争侵蚀。认识到公司过去拥有异常高回报这一事实，能将投资者的注意力集中到这些回报的来源及其可持续性上。例如，公司获得这些回报是因为受到监管保护免于海外竞争吗？如果是，我们是否放心投资一家从未面对真正竞争的企业？还是说这些回报是在激烈竞争中取得的？相较于竞争对手，公司做了什么使其如此独特？
+
+我们在历史背景下解读当下的方法并非毫无问题。让我分享两类问题，它们都涉及过往业绩的必要性与充分性问题。
+
+曾赫赫有名的诺基亚公司是第一类问题的例证。诺基亚在1990年代末风光无限，主导着手机市场，其地位堪比今天的iPhone。在1990年代，像中国和印度这样的大型新兴市场在手机领域的渗透率严重不足。基于历史表现，诺基亚似乎将要征服世界。
+
+投资者对诺基亚股票趋之若鹜，2000年其市值顶峰时达到约3250亿美元。此后，其市值蒸发了90%以上。在2000年，公司所有的历史信号——其财务表现、竞争地位、声誉以及经销商和客户反馈——都会高呼：“这是一家了不起的公司。”但诺基亚在接下来的十年中无法与苹果、三星或数十家中国和印度的本土竞争对手抗衡，诺基亚手机如今已成为博物馆展品。
+
+任何仅依赖诺基亚历史的人都会遭受巨大损失。重视过往业绩是投资成功的必要条件，但绝非充分条件。我们发现这一点在快速变化的行业中尤其正确，无论这些行业是否与技术相关。因此，在诺基亚的案例中，尽管大多数历史信号会让人得出该公司曾极其出色的结论，但技术行业快速变化的本性本应让任何投资者都三思。
+
+我们像躲避瘟疫一样避开快速变化的行业，其中许多甚至并非技术行业。在印度，零售、小额信贷、食品配送和电子商务等行业仍处于发展的早期阶段。这些行业动荡太多，使我们无法仅凭历史信息就安心投资。
+
+投资者是否应该避开科技公司和其他快速演变的行业？我们是这样做的，主要是因为我们无法破译这些行业公司的历史信号。但许多投资者已经找到了评估这些行业的方法。我不知道如何分析快速演变的行业和企业，所以我不参与。当遇到类似诺基亚的企业时，我很坦然地说：“我搞不懂，所以谢谢，但我不参与。”
+
+我们可以用一个词概括历史分析的第二个问题：星巴克。
+
+在这个案例中，依赖历史非但无助于我们识别一场惊人的逆转，反而让我们错失了一个潜在的巨大盈利机会。霍华德·舒尔茨于1982年收购星巴克，将其从西雅图仅有的四家门店发展到2000年营收约20亿美元。遗憾的是，他因精疲力竭于2000年离开了星巴克，不久后星巴克开始表现不佳。
+
+当舒尔茨于2008年重返公司时，坏消息铺天盖地。销售疲软已持续一段时间。麦当劳和唐恩都乐通过推出自己的精品咖啡品牌，极大地增加了对星巴克的压力。结果，公司股价在过去一年下跌了近一半。从2008年起，舒尔茨通过缩减扩张、关闭数百家门店、创建新速溶咖啡品牌以及重新聚焦消费者，引领了星巴克命运的戏剧性逆转。投资者再次爱上了这家公司——股价从2008年12月到2019年12月飙升了超过十八倍。
+
+让我们回到2008年，当时星巴克的一切似乎都在分崩离析。所有的历史信号——客户反馈、市场份额、同店销售额增长——都指向一家苦苦挣扎、试图重拾昔日辉煌的公司。舒尔茨八年前或许是CEO，但公司自那时起已发生巨变：新增了数千家门店，管理层不同了，客户和竞争对手的行为也不同了。舒尔茨可能重振了公司，但并无证据表明创始人就是最佳的扭亏为盈专家。在2008年，鉴于缺乏指向逆转的历史数据，我不会投资这家公司，从而错失了一个巨大的潜在收益。
+
+解决方案是什么？我不知道有什么办法，但如果你能设法在快速变化的行业中判断出一家公司的未来，或者押注于一场逆转，那就全看你的本事了。
+
+对于我们这些凡夫俗子而言，依赖历史是一种久经考验、能让我们稳操胜券的方法。当然，它无法保证每次都赢——没有任何投资方法能做到这一点——但它能让我们经常获胜。
+
+✳✳✳
+
+我在十二年内换了七所学校，因为我父亲在军队服役，每两年就被调动一次。这些都是公立学校，委婉地说，教师质量通常不是最好的。然而，我怀疑即使是最好的私立学校，也不会有像非凡的拉索德先生这样的人。
+
+我刚升入七年级时，我们搬到了一个叫贾姆讷格尔的小镇。我很痛苦，因为我不得不告别上一个城镇（叫德胡路）的朋友们，而且我发现在这所新学校很难融入社交圈。然而，拉索德先生和他的历史课帮我度过了那一年。他拒绝按指定教科书教我们历史。相反，他要求我们利用学校图书馆，从书籍和流行漫画中了解印度古代和现代史。然后他让每个学生选一个主题，把学到的知识讲给全班听。当然，我们其他人可以自由质疑演讲者，拉索德先生鼓励我们的论证要有条理、合乎逻辑。我清楚地记得，一群十二岁的孩子在辩论英国对印度的影响时，几乎要打起来。
+
+在遇到拉索德先生之前，历史对我来说是客观的、无可争议的、一成不变的。在他之前，每位历史老师都向我灌输：任何问题都只有一个正确答案。拉索德先生教导我们，历史考试中大多数问题的答案都应该以“视情况而定”开头。在整个七年级，他直接或间接地向我们展示，历史能教给我们的关于“他们是谁”的知识较少，而更多是关于“我们是谁”。
+
+那种认为仅凭衡量历史就能成为伟大投资者的想法是无稽之谈。历史分析一直是我们投资方法的基础，但它对我们有效是因为我们自身的特质。因此，即使面对像一张历史资产负债表这样简单的东西，我也带着自己的偏见和倾向。偶尔，在如何解读过去的问题上会出现激烈的分歧。即使在我们这个紧密合作多年的小团队内部也会发生。在这些激烈的辩论中，我常常渴望拉索德先生在场。为什么他不能在这里为我们仲裁呢？
+
+**章节总结**
+
+进化论教会我...
+...我们投资者可以通过研究和理解一个企业和一个行业的历史来重新构想投资，而不是持续沉迷于未来。
+
+1.  现代进化论的奠基人达尔文比前人更深刻地理解到，当下是过去累积效应的结果。
+2.  他通过以新视角诠释历史，提出了三个开创性理论：自然选择、性选择和共同由来。
+3.  与物理学和化学不同，进化生物学的科学不做预测。它不回答“人类将会怎样？”的问题，而是思考“双足行走的人类是如何从四足行走的猿类祖先进化而来？”的难题。
+4.  投资世界痴迷于未来。研究历史已让位于大胆预测。
+5.  借鉴进化生物学，我们完全专注于广泛公开的历史信息来分析企业。我们不花时间构建预测。
+6.  我们通过分析已经发生的情况（而不关心将要发生什么），来形成关于公司财务状况、战略、竞争地位和估值的观点。
+7.  然而，专注于过去确实有两个主要弊端。我们可能错误地假设：（1）历史上成功的企业将继续成功，或（2）失败或正在衰落的企业将继续如此。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
