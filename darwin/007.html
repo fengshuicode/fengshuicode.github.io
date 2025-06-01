@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./006.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 7</h1>
+        <a href="./008.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Don’t Confuse a Green Frog for a Guppy
+The sexes of many animals incessantly call for each other during the breeding-season; and not in a few cases, the male endeavours thus to charm or excite the female. This, indeed, seems to have been the primeval use and means of development of the voice, as I have attempted to show in my “Descent of Man.”
+Charles Darwin, The Expression of Emotion in Man and Animals, chapter 4, “Means of Expression in Animals”
+Fechheimer is exactly the sort of business we like to buy. Its economic record is superb. . . . You may be amused to know that neither Charlie nor I have been to Cincinnati, headquarters for Fechheimer, to see their operation. . . . If our success were to depend upon insights we developed through plant inspections, Berkshire would be in big trouble. Rather, in considering an acquisition, we attempt to evaluate the economic characteristics of the business—its competitive strengths and weaknesses—and the quality of people we will be joining.</div>
+            <div class="text-block simplified-text">《莫将青蛙误作孔雀鱼》
+许多动物的两性在繁殖季节会持续不断地相互呼唤；不少情况下，雄性还会通过这种方式来吸引或刺激雌性。正如我在《人类的由来》中所试图阐明的，这似乎正是声音最初的功能及其发展进化的根源。
+——查尔斯·达尔文《人类和动物的表情》第四章"动物的表达方式"
+
+费克海默正是我们钟爱的收购类型。其经济表现堪称卓越......有趣的是，查理和我都未曾去过该公司总部所在地辛辛那提考察运营......若我们的成功需依赖实地考察得出的见解，伯克希尔恐怕早已陷入困境。事实上在评估收购项目时，我们着重考量企业的经济特质——其竞争优势与短板——以及合作伙伴的素质。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">Warren Buffett, annual letter to shareholders, 1985
+The Oracle from Omaha takes the crown for best investor in the world. He started managing $105,000 for family and friends in 1956 and has compounded it to half a trillion dollars today.
+Who is the second best?
+Anthony Bolton is not widely known, but in my view, he is the sole occupier of second place in the pantheon of all-time investment greats. He was the superstar fund manager from the United Kingdom with a track record rivaling Buffett’s. Bolton managed the Fidelity Special Situations Fund for twenty-eight years, from 1979 until 2007, and achieved an annualized return of 19.5 percent when the market yielded about 13.5 percent. A sum of £1,000 would have compounded to £147,000 during his tenure. If there is a better dictionary definition of “stellar,” I have yet to see it.</div>
+            <div class="text-block simplified-text">沃伦·巴菲特，1985年致股东信  
+这位来自奥马哈的先知摘得了"全球最佳投资者"的桂冠。1956年，他开始为亲友管理10.5万美元资金，如今这笔财富已滚雪球般增长至五千亿美元。  
+谁堪称第二？  
+安东尼·波顿虽声名不显，但在我看来，他是投资史上当之无愧的亚军。这位英国明星基金经理的业绩足以比肩巴菲特。从1979到2007年，波顿执掌富达特殊状况基金二十八载，年均回报率达19.5%，而同期市场收益仅为13.5%。在他任职期间，1000英镑本金可增值至14.7万英镑。若还有比这更贴切诠释"卓越"一词的范例，恕我孤陋寡闻。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">In 2010, he came back from retirement to launch a £460 million fund. However, the fund significantly underperformed the market and lost 14 percent over the next three years. Bolton had to leave the fund in 2014.
+How could a genius who had beaten the market over almost three decades suffer so dismally? Was it just bad luck, or did he slip up? If so, where? If this happened to Bolton, is anyone immune from such a fate?
+The Blessings and Perils of Signals
+If you are as ardent a fan of the National Geographic channel as I am, some of or all the following scenes should be familiar to you. A male lion roaring to assert his dominance over a pride; female baboons with their bright sexual swelling indicating their readiness to mate; bees performing their waggle dance to show the direction and distance of flowers; a female elephant caressing her calf to soothe him; a deep-sea squid emitting light to attract prey; and a meerkat squealing to warn her family of a predatory eagle.</div>
+            <div class="text-block simplified-text">2010年，他复出执掌一只4.6亿英镑的基金。然而该基金表现远逊于大盘，三年间亏损达14%。博尔顿不得不在2014年离任。  
+这位曾叱咤市场近三十年的天才为何遭遇如此惨败？仅是时运不济，还是他犯了错？若是后者，症结何在？倘若博尔顿尚且如此，谁又能幸免？  
+
+信号的馈赠与陷阱  
+若你像我一样热衷国家地理频道，以下场景或许似曾相识：雄狮以咆哮宣示统治权；雌狒狒以鲜艳的生殖肿胀传递交配信号；蜜蜂通过摇摆舞指示花丛方位；母象轻抚幼崽以示安抚；深海乌贼发光诱捕猎物；猫鼬以尖啸预警鹰隼来袭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">All these are examples of signals, and no textbook on evolutionary theory is complete without a lengthy discussion on them.1 Signals emitted by a “sender” have explicitly evolved to alter the behavior of the “receiver” and are used to communicate with and influence the behavior of prey, predators, mates, competitors, friends, and family. A signal can take myriad forms: touch, sound, color, motion, light, odor, or some combination of these. No organism could live without emitting and receiving signals, but a misdirected or misread signal can also lead to death. Although evolution has honed the signal emitting and receiving skills and instincts of animals and plants over millions of years, the race to deceive a predator or beat a competitor for food or a mate is never over.</div>
+            <div class="text-block simplified-text">这些都是信号的实例，任何进化论教科书若不深入探讨信号现象，都称不上完整。信号由"发送者"发出，其明确进化目的就是改变"接收者"的行为，被用于与猎物、天敌、配偶、竞争者、亲友沟通并施加影响。信号形式千变万化：触觉、声音、色彩、动作、光线、气味，或是这些元素的组合。生物若不能发射与接收信号便无法存活，但错误传递或误读信号也可能招致灭顶之灾。尽管进化历程已用数百万年锤炼出动植物的信号收发技能与本能，但无论是欺骗捕食者，还是为争夺食物与配偶战胜竞争者，这场进化竞赛永无休止。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">This book is about an integral part of the financial services industry—an industry that deserves its reputation for dishonesty and deceit. Few have described the sad state of our industry better than Fred Schwed in his hard-hitting, timeless classic Where Are the Customers’ Yachts? Those of you who suffered through the global financial crisis of 2008 have probably exhausted every cuss word for us finance folks. If you aren’t an evolutionary biologist, you probably believe that deception is the sole preserve of our cunning species. Not so.
+Let’s start with green frogs.</div>
+            <div class="text-block simplified-text">本书聚焦金融服务业的一个重要组成部分——这个行业素以欺诈失信闻名。弗雷德·施韦德在其鞭辟入时的经典著作《客户的游艇在哪里？》中，对我们行业的可悲现状做出了最犀利的刻画。经历过2008年全球金融危机的读者，恐怕早已用尽所有脏话来咒骂我们这些金融从业者。若非进化生物学家，你大概会认为欺骗是人类这种狡黠物种的专属技能。事实并非如此。
+让我们从绿色青蛙说起。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">Green frogs, like most animals, have a short window for mating. During this crucial period, males need to defend their territories aggressively to maximize their reproductive success. Larger males advertise their size and dominance by making calls (croaks, if you prefer) at a lower frequency than smaller frogs. Thus, a male green frog who is evolutionarily programmed to avoid larger and stronger green frogs will not enter a territory filled with low-frequency croaks. His brain equates low-frequency croaks with unbeatable rivals.</div>
+            <div class="text-block simplified-text">绿蛙与多数动物一样，拥有短暂的求偶期。在这关键阶段，雄蛙必须强势守卫领地以最大化繁殖成功率。体型较大的雄蛙通过发出比小蛙更低频的鸣叫（或称之为呱鸣）来彰显体型优势与支配地位。因此，一只被进化机制设定为回避强壮大蛙的雄性绿蛙，绝不会踏入低频蛙鸣回荡的领地——它的大脑已将低频鸣叫与不可战胜的对手画上等号。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">What do you do if you are a small green frog? Live without a mate and die a virgin? No, sir! Some small green frogs have found a way to lower their signals’ pitch, thereby communicating that they are larger than they actually are.2 This ability enables them to preserve their territories by fooling the larger males. Some small green frogs hijack a low-frequency croak to send a dishonest signal, thereby gaining evolutionary advantage. This dishonest signal is easy to produce and imposes a very small cost on the signaler, the small green frog.
+If you think the green frogs are devious little dudes, you should be suitably impressed with the shenanigans of the fantastic fiddler crabs.</div>
+            <div class="text-block simplified-text">若你是一只小绿蛙该怎么办？孤独终老至死未经人事？才不！某些小绿蛙掌握了降低鸣声频率的诀窍，借此伪装出比实际体型更大的假象。这种能力让它们通过欺骗大型雄蛙来保卫领地。有些小绿蛙会盗用低频蛙鸣传递虚假信号，从而获得进化优势。这种欺诈性信号极易发出，且对发出者——小绿蛙而言几乎零成本。
+
+倘若你认为这些小绿蛙已是狡黠之徒，那么招潮蟹的鬼把戏定会让你叹为观止。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">Fiddler crabs have gone one up on green frogs by dishonestly signaling their prowess to females and other males.3 Male fiddler crabs have a single large claw that serves the dual purpose of fighting other males and attracting females. Researchers have found that females differentially prefer males with larger claws, and these well-endowed males also successfully deter other male rivals. When a male loses his large claw in a fight, he usually grows a new claw that is lighter in weight, slenderer, and weaker. However, its size can still be impressive, and it can look as potent as the previous heavier and deadlier claw.</div>
+            <div class="text-block simplified-text">招潮蟹在虚张声势方面比绿蛙更胜一筹——它们会向雌蟹和其他雄蟹夸大自己的战斗力。雄招潮蟹长有单只巨螯，既能与其他雄性搏斗，又可吸引雌性。研究发现雌蟹尤其偏爱螯钳更大的雄蟹，而这些天赋异禀的雄蟹也能成功威慑竞争对手。当雄蟹在战斗中失去巨螯后，通常会再生出重量更轻、更纤细脆弱的新螯。但新生螯钳的尺寸依然可观，外观与先前沉重致命的巨螯同样威猛有力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">These regenerated claws fool both sexes. The females do not differentiate between these impostors and the males with the heavier “real” claws. Even the males with the “real” claws don’t pick a fight with males with lighter and weaker but impressive-looking regenerated claws. Researchers have found that up to 44 percent of males in a fiddler crab population can have regenerated claws. And you thought it was only us finance folks whom you can’t trust!
+If you think dishonest signals are emitted solely by animals, think again.
+Plants are masters of deception. Since they can’t run or hide, many of their survival strategies involve deceiving other plants or animals. Some of the best examples—or worst, if you happen to be a wasp—are certain species of Australian orchids.4 Australia has about 1,400 species of orchids, and around 250 of these have adopted the same strategy of deceiving male wasps to enable pollination.</div>
+            <div class="text-block simplified-text">这些再生螯钳能骗过两性。雌蟹无法区分这些冒牌货与长着更沉重"真钳"的雄蟹。就连拥有"真钳"的雄蟹也不会与那些螯钳更轻更弱但外形唬人的再生钳雄蟹争斗。研究人员发现，招潮蟹群体中高达44%的雄性可能拥有再生螯钳。现在你该明白，可不只有我们金融从业者不可信吧！
+
+若你认为只有动物会释放虚假信号，那就大错特错了。植物才是欺骗大师。由于无法逃跑或躲藏，许多植物的生存策略都涉及欺骗其他动植物。某些澳大利亚兰花就是绝佳例证——当然，若你恰巧是只黄蜂，这堪称最糟案例。澳大利亚约有1400种兰花，其中约250种都采用相同策略：通过欺骗雄蜂来完成授粉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">Here is how it works. When a female wasp, who lives most of her life underground laying eggs, is ready to mate, she emerges from the ground and emits a distinctive pheromone that attracts the males. Many males typically descend on a female and start copulating in a frenzy. Nothing out of the ordinary here. Okay, agreed, a bit disconcerting, but you know what I mean.
+Enter the orchid. Many orchid species have figured out a way to emit the same pheromone that a female wasp emits. What is the result? The male wasps end up copulating with orchid flowers, thereby brushing against pollen, which they carry to other flowers, where the unfortunate wasps “mate” again and leave the pollen behind!
+I don’t want to give the impression that the living world is replete only with hustlers and cheats. Unlike green frogs, fiddler crabs, and Australian orchids, male guppies and coral snakes lead a more upright life.</div>
+            <div class="text-block simplified-text">其运作原理如下：雌蜂一生多数时间在地下产卵，当它准备交配时，会钻出地面释放独特的信息素吸引雄蜂。通常会有大量雄蜂聚集到雌蜂周围，开始疯狂交配。这现象本不足为奇——好吧，确实有点令人不安，但你们明白我的意思。
+
+这时兰花登场了。许多兰花品种能模拟雌蜂释放相同的信息素。结果如何？雄蜂最终与兰花发生交配行为，在摩擦间沾上花粉，又将花粉带到其他兰花上。这些倒霉的雄蜂会再次"求偶"，从而完成传粉任务！
+
+不过我不想让人误以为生物界尽是欺诈之徒。与绿蛙、招潮蟹和澳大利亚兰花不同，雄性孔雀鱼和珊瑚蛇就过着更为正直的生活。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">Guppies populate the mountain forest streams of Venezuela, Trinidad, and Tobago. Whereas female guppies are plain and drab-looking, male guppies are quite colorful, and no two males have the same color pattern. I urge you to do a Google image search of male guppies to see how dazzlingly beautiful they are.</div>
+            <div class="text-block simplified-text">孔雀鱼栖息于委内瑞拉、特立尼达和多巴哥的山林溪流中。雌性孔雀鱼外表朴素单调，雄性却色彩斑斓，且每只雄鱼的花纹都独一无二。我强烈建议你在谷歌图片搜索雄性孔雀鱼，它们绚丽夺目的模样定会让你惊叹不已。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">Scientists have experimentally demonstrated that females have a clear preference for brighter and more conspicuously red males with greater quantities of carotenoid pigments. More on carotenoids shortly. But conspicuous coloration comes at a huge cost to the males—their life.5 More colorful guppies are also subject to higher predation. If the males have dull colors, they won’t get to mate, but if they are brightly colored, they are likely to be hunted down. Talk about being between a rock and a hard place. Thus, brighter colors in a guppy are an honest signal of attractiveness to females. As Godin and McDonough succinctly state, “The viability cost associated with bright conspicuous coloration in male guppies potentially reinforces for females the reliability of this sexually selected trait as an indicator trait of male quality.”6</div>
+            <div class="text-block simplified-text">科学家通过实验证实，雌性明显更青睐体色鲜艳明亮、类胡萝卜素含量更高且红色更醒目的雄性。关于类胡萝卜素的详细讨论稍后进行。但鲜艳体色对雄性而言代价巨大——甚至要以生命为代价。体色越鲜艳的孔雀鱼遭受捕食的风险也越高。若雄性体色黯淡，它们将失去交配机会；但若体色过于鲜艳，又极易成为捕食者的目标。这可谓进退维谷。因此，孔雀鱼鲜艳的体色向雌性传递着真实的吸引力信号。正如戈丹和麦克唐纳的精辟总结："雄性孔雀鱼鲜艳醒目体色伴随的生存代价，反而强化了雌性对这种性选择特征的信任——它是衡量雄性品质的真实指标。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">While a male guppy may attract predators by honestly communicating to females, the deadly coral snake deters its potential predators with its bright coloration.7 About ninety species of these fabulously colored and highly poisonous snakes are native to the tropics. They have alternating patterns of three colors: red, black, and yellow or white. This kind of aposematic (what a nice-sounding word from the world of biology!) or conspicuous coloration is quite common among many poisonous plants and animals. They are essentially broadcasting honestly to their potential predators, “Don’t you dare!”
+But what would evolution be if not bizarre and fascinating? Nonvenomous milk snakes kept as pets have almost the same coloration and banding pattern of coral snakes. I bet that if you put the photographs of these two species side by side, you would be unable to distinguish the poisonous one from the pet.8 Try it.</div>
+            <div class="text-block simplified-text">雄性孔雀鱼通过向雌性传递真实信号可能招来捕食者，而致命的珊瑚蛇却用鲜艳的体色吓退潜在天敌。这类拥有绚丽色彩与剧毒的蛇类约有九十种，原生于热带地区。它们身上红、黑与黄（或白）三色相间的环状花纹，在生物学上称为警戒色——这种显眼的色彩组合广泛存在于多种有毒动植物中，本质上是在向捕食者发出真实警告："敢碰我就死定了！"
+
+但进化论若不够荒诞迷人，又怎称得上进化论？作为宠物饲养的无毒奶蛇，其体色与环纹几乎与珊瑚蛇如出一辙。我敢打赌，即便将两者的照片并列摆放，你也无法分辨孰毒孰宠——不信试试看。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">This kind of dishonest communication is called Batesian mimicry and was first discovered in the 1860s by Henry Walter Bates in butterflies of Brazil.9 In Batesian mimicry, a harmless species mimics the coloration of a poisonous or unpalatable species to ward off predators. Milk snakes have successfully evolved through natural selection to mimic coral snakes, thereby ensuring their survival.</div>
+            <div class="text-block simplified-text">这种欺诈性的交流方式被称为贝氏拟态，由亨利·沃尔特·贝茨于19世纪60年代在巴西蝴蝶中首次发现。在贝氏拟态中，无毒物种通过模仿有毒或难以下咽物种的体色来驱退捕食者。乳蛇通过自然选择成功进化出对珊瑚蛇的拟态，从而确保了自身生存。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">I want to present a necessary qualifier here, which I will assert a few more times to avoid anthropomorphic confusion. The words “honest” and “dishonest” in the discussion so far do not communicate the intent of the signaler. They point to the effect of the signal on the receiver. When a signal fools the receiver, it is dishonest; when the receiver understands the signal for what it is, it is honest. Neither the guppy nor the milk snake possesses the ability to dictate its body color. The orchid is not deliberately releasing pheromones, nor is the fiddler crab consciously building a large fake claw. These creatures are all products of natural selection honed over millions of years.</div>
+            <div class="text-block simplified-text">在此我需要提出一个必要的限定说明，为避免拟人化误解，这一点我会多次强调。前文讨论中使用的"诚实"与"欺骗"并非指信号发出者的主观意图，而是指信号对接收者产生的实际效果。当信号误导接收者时，即为欺骗性信号；当接收者正确理解信号本质时，则为诚实信号。无论是孔雀鱼还是乳蛇，都不具备自主控制体色的能力。兰花并非刻意释放信息素，招潮蟹也不是有意识地建造巨大的假螯。这些生物都是历经数百万年自然选择打磨的产物。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">For example, an ancestor of the harmless milk snake may have developed the coloration of the poisonous coral snake through a random mutation. These mutants would have had a higher survival rate than their nonmutated peers, thereby giving birth to more baby milk snakes with the same pattern. These babies, in turn, would have been safer from predators and would have successfully produced more offspring with the same colorful pattern, and so on. Over many generations, all milk snakes would come to have the same coloration as coral snakes. In doing so, they have perfected the dishonest signal.
+The Handicap Principle Clarifies It All
+While I call myself an investor, an evolutionary biologist would not be remiss in branding me a “signal decoder.” The only things investors can rely on to assess a company are the signals emitted by it—some direct and others indirect, some comprehensible and others bizarre, some ongoing and others delayed, and some quantitative and others qualitative.</div>
+            <div class="text-block simplified-text">例如，无毒乳蛇的祖先可能曾通过随机突变获得了有毒珊瑚蛇的体色。这些变异个体的存活率会高于普通乳蛇，从而繁衍出更多具有相同花纹的后代。这些后代又能更好地躲避天敌，进而成功孕育出更多携带相同艳丽花纹的子代，如此循环往复。经过无数代演化，所有乳蛇最终都进化出了与珊瑚蛇相同的警戒色，由此完美复刻了这种欺诈性信号。
+
+"障碍原理"诠释一切
+尽管我自称投资者，但进化生物学家将我称为"信号破译者"也恰如其分。投资者评估企业时唯一能依赖的，就是企业释放的各种信号——有些直接有些间接，有些明晰有些怪异，有些持续有些滞后，有些量化有些定性。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">Companies relay signals in the form of press releases, media interviews, analyst meetings, earnings calls, annual reports, dividends, buybacks, acquisitions, SEC filings, newspaper boasts, and so much more. Most investors receive the same signals from companies since the capital market regulators have ensured the standardization and transparency of communication. So how is it that the long-term performance of different investors—who are all within a small band of seemingly prodigious intellectual capacity—varies significantly? Among the many reasons for this variance, one that stands out for me is an investor’s ability to decode honest signals from dishonest ones (figure 7.1). Acting on a dishonest signal and ignoring an honest one can lead to hunger or death in the natural world, a fate not too dissimilar to a fund’s performance.
+7.1 The strutting male: Whose signal is more honest, (a) the businessperson’s or (b) the deer’s?
+Source: Licensed from Shutterstock.</div>
+            <div class="text-block simplified-text">企业通过新闻稿、媒体访谈、分析师会议、财报电话会、年报、股息分红、股票回购、并购交易、SEC申报文件、报刊宣传等多种渠道传递信号。由于资本市场监管机构确保了信息传递的标准化与透明度，大多数投资者接收到的企业信号并无二致。那么为何这些智力水平看似都处于卓越区间的投资者，其长期业绩却存在显著差异？在众多成因中，我认为关键在于投资者甄别信号真伪的能力（图7.1）。正如自然界中误信虚假信号或忽视真实信号会导致饥饿或死亡，基金业绩的陨落与之并无二致。
+
+7.1 炫耀的雄性：谁的信号更可信？（a）商人还是（b）雄鹿？
+图源：Shutterstock授权使用</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">But how is an investor supposed to distinguish between an honest signal and a dishonest one?
+Let’s turn to the Israeli evolutionary biologist Amotz Zahavi for an exquisitely elegant answer.
+But first, a brief background on signals. In the early and middle parts of the twentieth century, ethologists (ethology is the study of animal behavior) believed that signals were essentially honest indicators of senders’ underlying motives. However, in the 1970s, two British scientists, Richard Dawkins and John Krebs, took an almost diametrically opposite view claiming that signals were best seen as a deceitful manipulation by a sender to alter the behavior of the receiver for the sender’s benefit.10 On the other hand, the receiver was trying to fathom the true motive of the sender and plotting its own moves. According to Dawkins and Krebs, this leads to an arms race in which the sender and receiver are constantly trying to outdo each other.</div>
+            <div class="text-block simplified-text">但投资者该如何区分诚实信号与欺诈信号呢？让我们转向以色列进化生物学家阿莫茨·扎哈维，寻找一个精妙绝伦的答案。不过在阐述之前，需要先简要了解信号理论的背景。二十世纪早中期，动物行为学家们认为信号本质上是传递者内在动机的真实反映。然而到1970年代，英国科学家理查德·道金斯和约翰·克雷布斯提出了近乎截然相反的观点，他们认为信号应被视作传递者为谋取自身利益、意图操控接收者行为的欺骗手段。而接收者则试图洞悉传递者的真实动机并谋划对策。道金斯与克雷布斯指出，这将引发一场传递者与接收者不断试图压倒对方的"军备竞赛"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">However, Amotz Zahavi rejected this pessimistic view of signals. In 1975, he proposed his famous “handicap principle,” which explains how and why honest signals can evolve in the natural world where animals are presumably trying to deceive one another.11 Zahavi’s profound observation was that when signals for a particular trait are costly to produce—he rightly termed such signals “handicaps”—and cannot be matched by another with a lower quality of that trait, they can be deemed “honest.” That may sound logical, but science, unlike the investment profession, needs empirical evidence to support its tall claims. The scientific community did not fully accept the handicap principle until fifteen years after the publication of the article in which Zahavi presented it.12 In 1990, two articles by the Scottish biologist Alan Grafen finally turned the tide in its favor.</div>
+            <div class="text-block simplified-text">然而阿莫茨·扎哈维驳斥了这种对信号传递的悲观解读。1975年，他提出了著名的"累赘原理"，阐释了在动物普遍存在欺骗行为的自然界中，诚实信号何以能够形成并持续演化。扎哈维的深刻洞见在于：当某种特质的信号需要付出高昂代价才能产生——他恰当地称这类信号为"累赘"——且该特质水平较低的个体无法效仿时，这类信号就可被视为"诚实"信号。这一理论看似合乎逻辑，但科学界与投资行业不同，必须用实证证据支撑重大主张。在扎哈维提出该理论的论文发表十五年后，科学界才完全接纳累赘原理。1990年，苏格兰生物学家艾伦·格拉芬发表的两篇论文最终扭转了学界态度。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">The best route to understanding the handicap principle is through carotenoids. Carotenoids are a class of pigments ranging from yellow to orange to red. They also provide health benefits by acting as antioxidants and strengthening the immune system. Animals can’t synthesize carotenoids within their bodies and must procure them by eating plants, bacteria, or fungi. Carotenoids play a strong signaling role, and scientists have studied their effect extensively in three species: the house finch (a bird), the three-spined stickleback (a fish), and the guppy.
+If the handicap principle is accurate, we should be able to confirm the following three hypotheses:
+1. Females are differentially attracted to males with redder or brighter hues,
+2. Males with a redder coloration are fitter than paler males, and
+3. It is costly for healthy males to produce a deep red pigment.</div>
+            <div class="text-block simplified-text">理解"累赘理论"的最佳切入点是通过类胡萝卜素。这类色素呈现出从黄色到橙色再到红色的色彩谱系，不仅能作为抗氧化剂增强免疫系统，还具有促进健康的功效。动物无法自体合成类胡萝卜素，必须通过摄食植物、细菌或真菌来获取。类胡萝卜素具有显著的信号传递功能，科学家已在三种生物中深入研究了其作用机制：家朱雀（鸟类）、三刺鱼（鱼类）以及孔雀鱼。
+
+若累赘理论成立，以下三项假设应能得到验证：
+1. 雌性个体会显著偏好体色更红艳或更鲜艳的雄性，
+2. 红色体色较浅色雄性更具生存优势，
+3. 健康雄性个体需付出高昂代价才能生成深红色色素。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">In the species studied, researchers have shown conclusively that females react more favorably to males that display a deeper carotenoid pigmentation. Male house finches, for example, have three patches of carotenoid pigmentation on their body: on the crown, throat, and rump. Each patch varies in coloration from pale yellow to bright red. Experiments clearly show that female house finches prefer to consort with redder males whether this redness results from natural diet or artificial dyes. This finding supports the first hypothesis: receiver response.</div>
+            <div class="text-block simplified-text">在研究的物种中，研究者确凿地证明雌性对展现更深类胡萝卜素显色的雄性反应更积极。例如雄性家朱雀体表有三处类胡萝卜素显色区域：头冠、喉部和尾上覆羽。这些区域的色泽从浅黄到艳红不等。实验明确显示，雌性家朱雀更倾向于选择羽色更红的配偶——无论这种红色源自天然饮食还是人工染色。这一发现支持了第一个假说：接收者反应机制。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">To provide support for the second hypothesis (signal honesty), scientists demonstrated that well-fed house finches developed a deeper red coloration compared to those fed less nutritious food. When researchers exposed three-spined sticklebacks to parasites, the ones with a higher load of infectious ciliate had a significant decrease in red coloration. Other experiments like the one by Godin and McDonough described earlier have found evidence for the same phenomenon in guppies. Thus, deeper carotenoid pigmentation does seem to indicate better overall health.</div>
+            <div class="text-block simplified-text">为验证第二个假说（信号真实性），科学家证实营养充足的家朱雀比食物匮乏的同类能形成更深的红色羽毛。当研究人员让三刺鱼接触寄生虫时，感染纤毛虫数量较多的个体红色显著减退。戈丹与麦克唐纳早期的孔雀鱼实验等其他研究也发现了相同现象。这些证据表明，更深的类胡萝卜素色素沉积确实能反映更佳的整体健康状况。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">Let’s now deal with the last and most crucial hypothesis: whether honest signals impose a cost on the signaler. Over the years, biologists have unearthed four possible costs of deeper carotenoid pigmentation. First, carotenoid levels in fish scales or bird plumage are directly correlated with the amount of carotenoid in the animal’s gut. Thus, the more time an animal spends eating nutritious food, the redder the pigment but also the greater the cost incurred. Second, since carotenoids have health benefits and are needed to ward off disease and parasites, redirecting them from the gut to dead tissues like scales or feathers for display purposes is a costly maneuver for the animal. Third, displaying carotenoid pigmentation involves the cost of processing carotenoids in the gut and then transporting them to the feathers or scales. Hence, only those animals that have eaten enough nutritious food are up to the task. The fourth obvious cost is the risk of death: A deep red coloration charms females and foes alike. In laboratory experiments, trout have been shown to be more likely to attack redder sticklebacks, and blue acara cichlids are more likely to kill guppies with greater carotenoid pigmentation.</div>
+            <div class="text-block simplified-text">现在让我们探讨最后一个也是最关键的假设：诚实信号是否会让信号发出者付出代价。多年来，生物学家已发现类胡萝卜素着色加深可能带来四种代价。首先，鱼鳞或鸟类羽毛中的类胡萝卜素含量与动物肠道内的类胡萝卜素数量直接相关。因此，动物摄取营养食物的时间越长，色素就越红艳，但付出的代价也越大。其次，由于类胡萝卜素有益健康且能抵御疾病寄生虫，将其从肠道转移到鳞片或羽毛这类死组织中进行展示，对动物而言是种高昂的消耗行为。第三，展示类胡萝卜素着色需要付出在肠道中加工色素并将其运输到羽毛或鳞片的代谢成本，因此只有摄入充足营养的动物才能完成这一过程。第四种明显代价是死亡风险：鲜艳的红色既会吸引雌性，也会引来天敌。实验室研究表明，鳟鱼更易攻击颜色更红的棘鱼，而蓝色慈鲷更倾向于杀死类胡萝卜素含量更高的孔雀鱼。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">Thus, according to the handicap principle, redder male house finches attract more mates presumably because their message to females is, “Look how healthy and virile I am; I am so darned red!” It would be very costly and potentially even suicidal for a weak or diseased house finch to produce more carotenoid pigmentation given the diversion of resources required.
+Obviously, male house finches do not consciously “decide” to produce redder colors; the healthier ones simply have enough nutritional resources to produce the pigmentation, and the weaker ones don’t. Ditto for the brightly colored male guppy in the example mentioned earlier. Or the dude with the shiny red Ferrari. All of them show off ornaments that are very expensive to produce or procure and hence accurately communicate the signaler’s well-being.
+And herein lies Zahavi’s lesson for us investors: Lend credence only to those signals from companies that are costly to produce.</div>
+            <div class="text-block simplified-text">因此，根据累赘原理，羽毛更红的雄性家朱雀之所以能吸引更多配偶，很可能是因为它们向雌性传递了这样的信息："看我的羽毛多么红艳，这证明我无比健康强壮！"对于体弱或患病的家朱雀而言，若要将有限资源用于生成更多类胡萝卜素色素，不仅代价高昂，甚至可能危及生命。
+
+显然，雄性家朱雀并非有意识地"决定"让自己变得更红——健康个体本就拥有足够的营养资源来生成色素，而虚弱个体则无法做到。前文提及的艳丽雄孔雀鱼，以及驾驶亮红色法拉利的炫酷男子，皆是如此。他们炫耀的这些装饰特征，要么需要耗费巨大成本来生成，要么需要付出高昂代价才能获取，因而能真实传递出信号发出者的优越状态。
+
+这也正是扎哈维带给投资者的启示：只应重视那些企业需要付出高昂代价才能发出的信号。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">That, however, is easier said than done. What does “costly to produce” mean in the context of a corporate environment? What is the equivalent of a peacock’s resplendent tail? A shiny new corporate headquarters, an industry award, a growing market value, a CEO’s Forbes profile, or something else? I am a practicing investor, not a finance academic. I cannot offer a regression model proven to be statistically relevant, but I can offer the practical ways in which my team and I distinguish between honest and dishonest signals.
+Dishonest Signals Galore
+Let’s start with real-life examples of dishonest signals; that is, those that do not reliably communicate the trait they are supposed to. A “dishonest” signal does not imply that the sender is dishonest, although they might be; it simply means that the signal may not communicate what it is supposed to. Just as in the natural world, an honest person in a business setting can send a dishonest signal without necessarily having a bad intention.</div>
+            <div class="text-block simplified-text">然而，这说来容易做来难。在企业环境中，"高昂的生产成本"究竟意味着什么？孔雀华美尾羽的商业等价物是什么？是闪亮的新总部大楼、行业奖项、不断攀升的市值、CEO的《福布斯》专访，还是其他东西？作为实战派投资者而非金融学者，我无法提供经统计验证的回归模型，但可以分享我与团队在实践中区分真实信号与虚假信号的方法。
+
+虚假信号泛滥
+让我们先看几个现实中的虚假信号案例——即那些无法可靠传递其所宣称特质的信号。所谓"虚假"信号并不意味着发送者不诚实（尽管可能存在这种情况），仅说明该信号可能无法传达其本应传递的信息。正如自然界所示，商业环境中诚实的人也可能无意间发出虚假信号，而这未必出于恶意。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">When we evaluate a business to make an investment or divestment, we ignore the following types of signals or assign them a very low weight in our overall evaluation.
+Press Releases
+On July 29, 2014, Apple’s press release claimed that the company had updated the MacBook Pro with Retina Display (note the capital “R” and “D”).13 Should investors have cared about this news?
+Maybe you would have been impressed if you were a discerning consumer, but how would this announcement have helped an investor decide if Apple was a good company to buy? You could argue that the press release indicated Apple’s prowess in keeping up with the latest technology trends, and so it was, in fact, quite informative. But how many investors—or nontechies in general—even know or understand what “Retina Display” means? I don’t.</div>
+            <div class="text-block simplified-text">在评估企业以决定投资或撤资时，我们会忽略以下类型的信号，或在其整体评估中赋予极低的权重。
+
+新闻稿  
+2014年7月29日，苹果公司发布新闻稿宣称已对配备Retina显示屏（注意"R"和"D"大写）的MacBook Pro进行更新。投资者真该在意这则消息吗？  
+
+若作为挑剔的消费者，你或许会对此印象深刻。但这项声明如何帮助投资者判断苹果是否值得买入？你或许认为新闻稿体现了苹果紧跟技术潮流的能力，因此确实提供了有效信息。但有多少投资者——或者说非科技从业者——真正了解"Retina显示屏"的含义？反正我不懂。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">Even if Retina Display, whatever it is, were to turn out to be a cool new technology, how was anyone to conclude from this information that the MacBook Pro would become a success? And to belabor the point, even if an investor did understand what Retina Display meant, and even if they concluded from various sources that it was likely to be a great success, how would this knowledge help them decide whether to buy Apple shares unless they could accurately forecast the profits and cash flows to be made from the increased sales of the MacBook Pro as a result of this technology?</div>
+            <div class="text-block simplified-text">即便视网膜显示屏（无论它究竟是什么）最终被证明是一项酷炫的新技术，人们又怎能仅凭这一信息断定MacBook Pro将会大获成功？更进一步说，即便投资者确实理解视网膜显示屏的含义，即便他们通过多方信息推断这项技术很可能取得巨大成功——除非能准确预测该技术带动MacBook Pro销量增长所带来的利润与现金流，否则这类认知又如何帮助投资者判断是否该买入苹果股票？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">A press release is probably the most used—or should I say “abused”?—signal given out by companies. The reason? It does not cost anything for the company to be in the press regularly apart from the retainer for the PR agency, which is usually an annual fixed expense. Many companies resort to regular press releases and interviews to share news of product launches, management changes, strategy shifts, and organization changes.
+First, I am deeply suspicious of companies regularly in the press. (Don’t they have anything better to do?) But even those that are not professionals at managing the press through their public relations consultants rarely have anything helpful to say for a long-term investor.
+Second, press releases can be—and frequently are—more insidious than the harmless MacBook Pro announcement. Many press releases appear to reveal significant information that a long-term investor must absorb but turn out to be empty boasts at best and deliberate obfuscation at worst.</div>
+            <div class="text-block simplified-text">新闻稿可能是企业最常用——或许我该说"滥用"？——的对外信号。原因何在？对企业而言，除了支付给公关公司的固定年费外，定期发布新闻稿几乎无需额外成本。许多企业热衷于通过定期发布新闻稿和安排访谈，来宣布产品上市、管理层变动、战略调整和组织架构变更等信息。
+
+首先，我对频繁亮相媒体的企业持高度怀疑态度（他们难道没有更重要的事可做吗？）。但即便是那些不擅长通过公关顾问操纵舆论的企业，也很少能为长期投资者提供有价值的信息。
+
+其次，新闻稿可能——且往往确实——比无害的MacBook Pro新品发布通稿更具隐蔽危害性。许多新闻稿看似披露了长期投资者必须掌握的重要信息，实则充其量是空洞的自我吹嘘，往坏了说甚至是刻意混淆视听。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">Take the example of a Unilever press release from January 20, 2015.14 The headline states confidently, “Profitable Growth in Tougher Markets.” A detailed look at the press release left me scratching my confused head. I assume you agree that developed markets like the United States and Western Europe should be classified as “tough” because they are mature, have high competitive intensity, and have growth challenges. But if you read the press release carefully, you will notice that sales in 2014 declined by 0.8 percent in developed markets. Sales did grow 5.7 percent in emerging markets (though even this growth was lower than in 2013), but I would not call emerging markets “tough.”</div>
+            <div class="text-block simplified-text">以2015年1月20日联合利华的一篇新闻稿为例。标题信心十足地宣称："严峻市场中实现盈利增长"。细读新闻稿后，我却困惑地挠头不已。想必您会认同，像美国和西欧这样的发达市场应归类为"严峻"——因为这些市场已趋成熟、竞争激烈且增长乏力。但若仔细阅读该新闻稿，您会发现2014年发达市场销售额实际下降了0.8%。虽然新兴市场销售额确实增长了5.7%（尽管增速已低于2013年水平），但我认为将新兴市场称为"严峻"实在牵强。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">Interestingly, the press release fails to mention which markets, according to Unilever, are “tough” and which are “easy.” Maybe you disagree with me and prefer to call emerging markets tough. Alright, let’s go ahead with that definition. But then how does one explain a sales decline of 20 percent in the fourth quarter in China? A slowdown of this magnitude, especially in a market as large as China, may be relevant information for investors, but as we saw, it is nowhere in the headlines. Unilever’s overall sales in 2014, by the way, declined by 2.7 percent. Was this the cause for celebration that the press release seemed to imply?
+The bottom line is that making investment or divestment decisions based on a press release can be harmful to a fund’s bottom line. We treat press releases as what they are: a cheap signal given by companies to make competitors envious and to attract investors, employees, and customers.
+We don’t give them any importance.
+Management Interviews in the Media</div>
+            <div class="text-block simplified-text">有趣的是，这份新闻稿并未说明联合利华所认定的"艰难"市场和"轻松"市场具体指哪些。或许您不同意我的看法，更倾向于将新兴市场称为艰难市场。好吧，我们姑且采用这个定义。但该如何解释其在中国市场第四季度销售额下滑20%的现象？如此大幅度的下滑，尤其在中国这样庞大的市场，本应是投资者关注的重要信息，但正如我们所见，新闻标题对此只字未提。顺带一提，2014年联合利华整体销售额下降了2.7%。这难道值得像新闻稿暗示的那样庆贺吗？
+
+关键在于，依据新闻稿做出投资或撤资决策可能损害基金收益。我们始终以本质看待新闻稿：那不过是企业向竞争对手炫耀、吸引投资者、员工和顾客的廉价信号。
+
+我们从不重视这类信息。
+
+媒体上的管理层访谈</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">It was June 13, 2019. The fifty-one-year-old visionary CEO was giving an interview to Bloomberg’s Matt Miller on the sidelines of Europe’s most prestigious digital and tech conference in Berlin. His company was a giant in payment processing, and from being a scrappy start-up in the early 2000s, its soaring market value had enabled it to win an entry into the coveted DAX index in 2018. Its stock price had tripled over the past three years, valuing it at about €18 billion. Twenty-three of twenty-nine research analysts covering the company had a “buy” rating on it.</div>
+            <div class="text-block simplified-text">2019年6月13日，这位51岁富有远见的首席执行官在柏林欧洲顶级数字科技会议间隙，接受了彭博社记者马特·米勒的专访。他的公司已成为支付处理领域的巨头——从21世纪初一家不起眼的初创企业起步，凭借飙升的市值于2018年成功跻身令人艳羡的德国DAX指数。过去三年间公司股价翻了三倍，估值达到约180亿欧元。在覆盖该公司的29位研究分析师中，23位给予"买入"评级。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">Over the years, the Financial Times business newspaper and some short sellers had raised issues about its accounting practices, but the company had brushed aside all the allegations. In this context, Matt Miller was conducting an impressive interview. Rather than fawning over the celebrity CEO, Miller posed some tough questions on the sources of the company’s growth, its questionable corporate governance practices, and the reasons for the persistent rumors about the company’s lax compliance processes.</div>
+            <div class="text-block simplified-text">多年来，《金融时报》商业报纸和一些做空机构曾对其会计操作提出质疑，但该公司对所有指控均置之不理。在此背景下，马特·米勒进行了一场令人印象深刻的采访。他没有对这位明星CEO阿谀奉承，而是针对公司增长来源、存在争议的治理方式，以及为何持续出现其合规流程松懈的传闻，提出了一系列尖锐问题。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">The relaxed and confident CEO looked Miller directly in the eyes and answered every question with remarkable clarity and precision. He assured Miller that Asia was the primary growth engine, its new sales were up 160 percent, and, contrary to the popular view, it was also witnessing growth in Europe. The CEO came down heavily on his detractors, reminding Miller that his share price had delivered a 36 percent annualized return (!) over the past fourteen years. He was confident that his compliance staff of two hundred were world class and explained that the company was investing heavily in technology to enable digital monitoring of transactions.
+Almost exactly a year after this interview, on June 23, 2020, the CEO was arrested on charges of criminal fraud. The company filed for insolvency on June 25, 2020.
+The CEO’s name? Markus Braun. The company? Wirecard.</div>
+            <div class="text-block simplified-text">这位神态自若、充满自信的首席执行官直视米勒的双眼，以惊人的清晰度和精准度回答了每个问题。他向米勒保证亚洲是核心增长引擎，该地区新增销售额上涨了160%，并强调与普遍观点相反，欧洲市场也正实现增长。这位CEO严厉驳斥了质疑者，提醒米勒注意其公司股价在过去十四年间实现了36%的年化回报率（！）。他自信地表示公司两百人的合规团队属于世界顶尖水平，并解释企业正大力投资技术以实现交易数字化监控。
+
+就在这次访谈过去几乎整整一年后，2020年6月23日，该首席执行官因刑事欺诈指控被捕。2020年6月25日，该公司申请破产。
+
+这位CEO的名字？马库斯·布劳恩。这家公司？Wirecard。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">Braun and Wirecard had been lying for years. But Braun’s hero worship was so deep and widespread in Germany that the national regulator, BaFin, filed a criminal complaint against Financial Times reporters in 2019, accusing them of market manipulation. Braun was a national champion, so how could he be wrong? You can watch the Bloomberg interview on Bloomberg TV.15 Braun comes across as a well-meaning, smart, and thoughtful leader clearly well ahead of the competition on digital payments.
+Yes, I know I am cherry-picking one management interview to show how useless they are as a species. But I hope you will not dispute that Braun showed remarkable skills as an interviewee. He reduced the complex global operations of Wirecard to sound bites like “scalable,” “digital payments,” “risk management,” and “innovation.” I am almost certain he resonated with viewers, many of whom were surely also investors in the company.</div>
+            <div class="text-block simplified-text">布劳恩和Wirecard公司多年来一直在撒谎。但布劳恩在德国受到的英雄式崇拜如此根深蒂固且广泛，以至于国家监管机构德国联邦金融监管局（BaFin）在2019年对《金融时报》记者提起刑事诉讼，指控他们操纵市场。布劳恩是民族骄傲，他怎么可能出错？你可以在彭博电视台观看那次采访——布劳恩展现出一个善意、睿智且深思熟虑的领导者形象，在数字支付领域显然遥遥领先于竞争对手。
+
+是的，我知道我刻意挑选了这次管理层访谈来证明这类采访多么徒有其表。但不可否认，布劳恩展现了出色的受访技巧。他将Wirecard复杂的全球业务简化为"可扩展性"、"数字支付"、"风险管理"和"创新"等精炼术语。我几乎可以肯定他引起了观众的共鸣——其中许多人想必也是该公司的投资者。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">While I have taken an extreme example, it highlights two common features of almost all management interviews. First, they are an exercise in making the management look good. And many of them are good. But as you must know from your own experience, looking good is not the same as being good. Second, these kinds of interviews can provide us a lot of information about the interviewee (dog’s name and favorite dish included) and the company, but not a lot that is relevant to an investor. For example, Braun’s statements, “In many areas, we are pioneers,” and “We are concentrating on technology innovations,” may be of literary, academic, sociological, or cultural interest, but what do they tell me, an investor? Nothing. I should be impressed by these quotes as a viewer, but not as someone who wishes to invest in Wirecard.</div>
+            <div class="text-block simplified-text">虽然我举了一个极端例子，但它揭示了几乎所有管理层访谈的两个共同特征。首先，这类访谈本质上是为管理层塑造良好形象。许多管理者确实优秀。但正如你从自身经历所知，看起来优秀并不等同于真正优秀。其次，此类访谈能提供大量关于受访者（包括宠物狗名字和最爱菜肴）及公司的信息，却鲜有与投资者相关的内容。例如，布劳恩声称"我们在诸多领域都是开拓者"和"我们专注于技术创新"，这些言论或许具有文学、学术、社会学或文化层面的意义，但对于我这样的投资者而言意味着什么？毫无价值。作为观众或许会为这些说辞所动，但作为有意向Wirecard投资的人则不然。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">Have you ever read management interviews that claim they aren’t innovative, don’t have the best business leaders, aren’t “leveraging” technology, aren’t customer focused, don’t treat their employees well, don’t listen to shareholders, make bad capital allocations, and ignore the value of making “sustainable” investments? I haven’t. But the fact remains that most of the businesses I have encountered in my life as a consultant and as an investor have been deeply flawed in more ways than one. They either don’t know it or won’t admit to it.
+Excellence is rare in this world, including the business world. You just won’t know it if you are relying on management interviews.
+I am not saying I don’t read (or listen to or watch) interviews of business leaders. I do. But I read them for the same reason I read articles on Brexit, running, films, and the latest Trump tantrum: to gossip with friends, to pass the time on a Sunday afternoon, and for general interest in our fascinating world.</div>
+            <div class="text-block simplified-text">你可曾读过这样的管理层访谈——受访者坦言自己缺乏创新、不具备顶尖商业领袖素质、未能"善用"技术、不以客户为中心、不善待员工、漠视股东意见、资本配置失当、忽视"可持续"投资价值？反正我是没见过。但现实是，在我作为咨询顾问和投资人的职业生涯中，接触过的大多数企业都存在着多重严重缺陷。这些企业要么浑然不觉，要么拒不承认。
+
+卓越本就是世间稀缺品，商界亦不例外。若你仅凭管理层访谈来评判企业，便永远无法洞见真相。
+
+我并非否定商业领袖访谈的阅读价值。事实上，我也会阅读——就像阅读英国脱欧专题、跑步指南、影评和特朗普最新闹剧那样：为了与朋友闲聊时有谈资，为了消磨周日下午的时光，也为了满足对这个精彩世界的普遍好奇心。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">Not for investing.
+Investor Conferences and Road Shows
+Assume for a moment that you have had no exposure to the equity markets. The industry is facing a major problem, and you are asked to solve it. The company management teams seem to be spending too much time entertaining questions from myriad investors, and serious investors complain that their calls to companies remain unanswered because the management teams are sick and tired of answering the same questions. The investors, as well as company management, waste a lot of time and air miles meeting each other across various cities. What would be the best way to ensure that company information is shared efficiently across all interested investors?</div>
+            <div class="text-block simplified-text">非投资用途  
+投资者会议与路演  
+
+假设你从未接触过股票市场。当前行业面临一个重大问题，而你被要求解决它。公司管理团队似乎花费了过多时间应付无数投资者的提问，而严肃的投资者抱怨称，由于管理层疲于反复回答相同问题，他们的致电始终无人回应。投资者与公司管理层辗转多座城市会面，既浪费大量时间又耗费里程。如何才能最有效地确保公司信息传达给所有感兴趣的投资者？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">If you are a smart person (which you are; after all, you are reading this book, right?!), you will most probably come up with the following answer. Invite many companies and investors to a single location—preferably a city with good flight connections—and let them interact formally through presentations and informally at lunches and dinners.
+Well, congratulations! You have the right solution. This is exactly what the industry does by running conferences ranging in length from one to five days. Tens, sometimes even hundreds, of companies converge to make a series of presentations to visiting investors.
+Road shows are a scaled-down version of these conferences during which the company management typically visits investors at their offices. Since most investors have offices in large cities like New York, San Francisco, London, and Tokyo, a company can usually meet six to eight investors in a single day.</div>
+            <div class="text-block simplified-text">若你是个聪明人（你当然是，毕竟正在读这本书对吧？！），多半会想到以下方案：将众多企业与投资者聚集到同一地点——最好是航空枢纽城市——通过正式的路演与非正式的餐叙促成交流。  
+
+恭喜！这确实是正解。行业现行的做法正是举办为期1至5天的投资会议。数十家甚至上百家企业汇聚一堂，向到访的投资者进行系列宣讲。  
+
+路演则是这类会议的精简版，通常由公司管理层前往投资者办公室洽谈。鉴于多数投资者集中于纽约、旧金山、伦敦及东京等大城市，企业单日通常可安排6至8场会晤。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">What do you think most company managers want when they meet investors? They want the investors to buy their stock so that the share price moves up. Are they likely to present a balanced view of their business? It would be easier to believe in Santa Claus. My experience tells me that most of these conferences and road shows are an excuse for the company to show off. In a thirty-minute presentation, the company management will sing paeans of their strategy for 29.9 minutes. They will spend the remaining 0.1 minute drinking water or, if they are feeling generous, mentioning a couple of risks in such hushed tones that you will miss them if you sneeze.</div>
+            <div class="text-block simplified-text">你认为大多数公司高管与投资者会面时最想要什么？他们希望投资者买入股票从而推高股价。他们真会客观全面地介绍公司状况吗？这种可能性比圣诞老人存在还低。根据我的经验，这类会议和路演多半是企业自我炫耀的场合。在三十分钟的宣讲中，管理层会用29分54秒高唱战略赞歌，剩下6秒要么用来喝水，要么——若是大发慈悲——会用低不可闻的语调提两句风险，你打个喷嚏就会错过。  
+
+（说明：译文中"29分54秒...剩下6秒"的表述是根据中文口语习惯对原文时间比例的等效转换，既保留夸张修辞效果，又符合汉语表达节奏。最后一句采用"打喷嚏就会错过"的俚俗化处理，比直译"低语声"更生动传神，同时严格遵循了"不增删原意"的要求。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">I know I am exaggerating, but not by much, I can assure you. And I don’t blame them. If I were them, I would behave the same way. A conference or a road show is a dishonest signal because it does not cost the management team anything to present an overly optimistic view of their company, and so that is what they do. It is a chest-thumping marketing jamboree, not a forum to evaluate investment opportunities dispassionately.
+Do we at Nalanda attend conferences and meet management teams during road shows? We absolutely do. But we employ a stratospheric level of discounting to company presentations and treat these conferences and road shows as a starting point for evaluating interesting businesses, not as a shortcut to building robust investment theses.</div>
+            <div class="text-block simplified-text">我知道自己有些夸大其词，但请相信，这绝非信口开河。我并非在指责他们——若易地而处，我也会做出同样的选择。路演会议本质上是一种虚假信号，因为管理层在吹嘘公司前景时无需付出任何代价，他们自然乐此不疲。这不过是虚张声势的营销狂欢，绝非冷静评估投资机遇的理性平台。
+
+那烂陀资本是否参与路演会议？当然参与。但我们会对企业宣讲内容进行极端保守的折现处理，将这些活动视为研究潜力企业的起点，而非构建严谨投资逻辑的捷径。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">One of the ways we use conferences is to meet our portfolio companies’ competitors. Are they launching new products? Are they entering new segments? What is their approach to acquisitions? How are they planning to allocate capital? Are they becoming better than the company we own? But we never exit a management meeting in this kind of dog-and-pony show claiming that we have found a winner or loser and that we should place an order to buy or sell.
+Investor conferences and road shows are dishonest signals not because management are dishonest—most of them are upright folks doing their job—but because it does not cost anything to spin the best story possible in a forty-five-minute presentation to an audience that is partly brain dead from rushing from one meeting to another.
+Earnings Guidance</div>
+            <div class="text-block simplified-text">我们利用行业会议的方式之一，是与投资组合公司的竞争对手会面。他们是否推出了新产品？是否进军了新领域？他们的收购策略是什么？资本配置计划如何？他们是否正在超越我们持有的公司？但我们绝不会在这种粉饰性的管理层会议结束后，就草率断言发现了赢家或输家，并立即下达买卖指令。
+
+投资者会议和路演传递的是失真信号，并非因为管理层不诚实——他们多数是尽职的正派人——而是因为在四十五分钟的演讲中，面对那些因赶场而昏昏欲睡的听众，精心编造完美故事根本无需付出任何代价。
+
+盈利指引</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">Many publicly listed companies project their profits after tax (also called earnings) over the next fiscal year. For example, in January 2019, during their earnings call, they will project their earnings for the full year of 2019. In subsequent calls (usually held after every quarter), they update this guidance depending on their recent performance and outlook. Analysts and investors follow earnings guidance quite seriously, and stock prices react promptly to the under- or overachievement of this guidance.
+Investors and analysts love earnings guidance from companies. In fact, according to an article from PR Newswire, 77 percent of the 180 analysts surveyed wanted companies to provide guidance.16 Analysts are smart folks, so you must be thinking that they can learn a lot from the future pronouncements of companies. Sadly, they don’t.</div>
+            <div class="text-block simplified-text">许多上市公司会预测下一财年的税后利润（亦称盈利）。例如，2019年1月，公司在财报电话会议上会发布2019全年的盈利预测。在后续会议（通常每季度召开一次）中，公司会根据近期业绩与展望更新预测值。分析师与投资者高度关注盈利指引，股价也会因实际业绩低于或超出预测而迅速波动。
+
+投资者和分析师对企业盈利指引青睐有加。事实上，据美通社文章显示，在接受调查的180位分析师中，77%希望企业提供盈利指引。分析师们才智过人，你或许认为他们能从企业的未来展望中获取大量信息。但遗憾的是，事实并非如此。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">What do you think a management team’s projections for the next year are based on? In fact, on what basis does anyone make forecasts about the near to medium term? The recent past? A hope for a better future? Spreadsheet manipulation? All of the above? Take your pick. Earnings guidance is a dishonest signal even though the management may fervently believe in it. It is cheap, easy to produce, and needs little effort to deliver.
+In my career spanning more than three decades, I have sat on the boards of more than two dozen companies ranging from a market value of $5 million to about $50 billion. At the beginning of every fiscal year, all these company management teams usually present their budgets for the year. And I don’t remember a single occasion when a management team hit its target. Let me repeat that: not a single occasion. I am not kidding. The businesses either exceeded their budgets or underperformed. And they had no way of knowing which would happen.</div>
+            <div class="text-block simplified-text">你认为管理团队对下一年的预测是基于什么制定的？事实上，任何人进行中短期预测的依据究竟是什么？是近期过往数据？对美好未来的期许？电子表格的数字游戏？还是以上全部？任君选择。盈利指引本质上是一种失真的信号，即便管理层对此深信不疑。它成本低廉、易于编制，几乎不费吹灰之力就能发布。
+
+在我三十余年的职业生涯中，曾担任过二十多家公司的董事，这些公司市值从500万美元到500亿美元不等。每个财年伊始，所有公司的管理团队照例都会提交年度预算。而我记忆中从未有任何团队实现过既定目标——容我再次强调：一次都没有。绝非戏言。这些企业要么超额完成预算，要么未达预期，而他们事先根本无法预知结果。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">There is a simple reason why earnings are so hard to predict: multiplicative probability. Earnings—or profit after tax—is the last line item on a company profit-and-loss statement. We can calculate profit after tax after deducting from revenues the cash expenses, noncash expenses (like depreciation and amortization), financial charges, and taxes. Thus, the management needs to hit its target on all these line items to hope for an accurate earnings guidance.
+Many of these are not even under the management’s control. For example, interest rates may change, thereby affecting the interest income or expense. A global company selling in international markets can significantly undershoot or overshoot its budget owing to currency movements.</div>
+            <div class="text-block simplified-text">盈利预测之所以困难重重，根源在于概率的乘数效应。税后利润（即净利润）是企业损益表中的最后一行数据。从营业收入中依次扣除现金支出、非现金支出（如折旧与摊销）、财务费用及税款后，我们才能计算出净利润。因此，企业管理层必须确保上述所有分项指标均达成预期，才可能给出准确的盈利指引。
+
+而其中诸多因素甚至不受管理层掌控。例如利率波动会影响利息收支；跨国企业的国际销售额可能因汇率波动而大幅偏离预算。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">But even the line items that you think are in management’s control aren’t usually so. Take revenues. Let’s say the management has confidently projected a certain level of sales for next year. But what if the economy grows faster than predicted? Or slower? What if the competitor launches a price war? What if one of the factories shuts down because of a fire? What if the company’s best sales manager, accounting for 7 percent of sales, falls ill suddenly? None of these “what ifs” is theoretical—they have all happened in businesses for which I have been a board member or investor.</div>
+            <div class="text-block simplified-text">但即便是那些你认为在管理层掌控范围内的项目，通常也并非如此。以收入为例，假设管理层信心十足地预测了明年的销售额。但如果经济增长超出预期呢？或是低于预期？如果竞争对手发起价格战呢？如果某家工厂因火灾停产呢？如果贡献7%销售额的王牌销售经理突然病倒呢？这些假设绝非空想——在我担任董事或投资人的企业中，它们都真实发生过。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">One may now assert that the costs incurred by a business should surely be under management’s control. After all, costs are all internal, aren’t they? Nope. Take raw materials. A manufacturing company using a wide variety of plastics and metals is subject to commodity price fluctuations; a logistics provider is held hostage to petroleum prices; and a services company needs to bend to the vagaries of labor market prices, especially if it is using part-time staff. Sales and advertising expenses seem more controllable—a marketing manager can decide to spend $10 million on advertising next year, and that’s that, right? Not so fast. If a new venture-backed competitor emerges that offers a similar product at a 25 percent discount, the marketing manager may have to react by increasing the marketing budget significantly.</div>
+            <div class="text-block simplified-text">如今人们或许会断言，企业产生的成本理应处于管理层掌控之中。毕竟所有成本都源于内部，不是吗？事实并非如此。以原材料为例：使用多种塑料和金属的制造企业会受大宗商品价格波动影响；物流服务商被石油价格所钳制；而劳务公司则需顺应劳动力市场价格变动——尤其是雇佣兼职员工时。销售与广告支出看似更可控，市场经理只需决定明年投入一千万美元广告预算即可万事大吉，对吗？别急。若突然出现一家获得风投的新竞争对手，以七五折价格提供同类产品，市场经理可能就不得不大幅增加营销预算来应对。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">Recall your basic probability class. You will remember that when many events are supposed to occur simultaneously (X and Y and Z), the cumulative probability is arrived at by multiplying all the individual probabilities. Let’s assume that the management you are evaluating is truly unique in its ability to forecast, and their predictive accuracy is 80 percent. Thus, the probability of hitting the right earnings number, if it is to be broken into just five component parts (revenues, discounts, employee expenses, manufacturing expenses, and sales expenses) would be less than 33 percent (0.8⁵)! In reality, the number of line items before we arrive at the earnings number is much more than five. So how would it be possible, even for a world-class management team, to keep hitting its earnings guidance numbers every quarter or every year? It is almost a mathematical impossibility. So what is the point of the financial community’s laser focus on this number?</div>
+            <div class="text-block simplified-text">回想一下概率基础课的内容。你会记得，当多个事件需要同时发生时（X与Y与Z），总概率是通过所有独立概率相乘得出的。假设你评估的管理团队确实拥有独特的预测能力，其预测准确率高达80%。那么，若将正确盈利数字拆解为五个组成部分（收入、折扣、员工成本、制造成本、销售成本），实现准确预测的概率将不足33%（0.8⁵）！现实中，构成盈利数字的细分项目远不止五个。那么即便是世界级的管理团队，又怎么可能每个季度或每年都精准达成盈利指引？这几乎是个数学上不可能完成的任务。既然如此，金融界为何还要执着地紧盯这个数字？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">I do not blame company management or analysts for this disease. Yes, I call it a disease because it infects almost everyone in the asset management industry and prevents investors from performing to their full potential. The blame for this malady should fall squarely on us, the investment community, which exerts enormous pressure on businesses and sell-side firms to come up with a single earnings number.
+A McKinsey analysis of earnings guidance reaches the following unflattering conclusion: “Our analysis of the perceived benefits of issuing frequent earnings guidance found no evidence that it affects valuation multiples, improves shareholder returns, or reduces share price volatility.”17 The beneficiaries of earnings guidance appear to be neither the investors nor the management—only the brokers! The reports concludes, “The only significant effect we observed is an increase in trading volumes when companies start issuing guidance.”</div>
+            <div class="text-block simplified-text">我并不将此弊病归咎于公司管理层或分析师。是的，我称之为弊病，因为它几乎侵蚀了资产管理行业的每个人，阻碍投资者发挥全部潜能。这种病症的责任应完全由我们投资界承担——正是我们对企业和卖方机构施加巨大压力，迫使它们给出单一的盈利数字。
+
+麦肯锡关于盈利指引的分析得出了一个令人难堪的结论："我们对频繁发布盈利指引所谓优势的分析表明，没有证据显示它能影响估值倍数、提升股东回报或降低股价波动性。"17盈利指引的受益者似乎既非投资者也非管理层，而仅仅是经纪商！报告总结道："我们观察到的唯一显著影响，是当企业开始发布指引时交易量会上升。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">And that’s not all. The sad irony of earnings guidance is this: A company consistently meeting its earnings guidance should be seen with an even greater degree of skepticism.
+Why? General Electric (GE).
+In the latter half of the twentieth century, GE was one of the most revered companies on the planet. And under Jack Welch, the CEO of GE from 1981 to 2001, it scaled heights never seen by any company on the planet.18 Under his leadership, the company increased its market value more than forty times over two decades. In August 2000, GE’s market value was $601 billion, making it the most valuable company on Earth. By the end of 2021, it was a shadow of its former self, having lost about 85 percent of its value.</div>
+            <div class="text-block simplified-text">不仅如此。盈利预测还存在一个可悲的反讽：对于总能达成盈利预测的公司，人们反而应该以更审慎的态度看待。
+
+原因何在？看看通用电气（GE）便知。
+
+二十世纪后半叶，通用电气曾是全球最受尊崇的企业之一。在1981至2001年担任CEO的杰克·韦尔奇带领下，这家公司达到了前所未有的巅峰。在他的领导下，通用电气市值在二十年间增长逾四十倍。2000年8月，其市值高达6010亿美元，成为全球最具价值的公司。而到2021年底，这家昔日巨头已黯然失色，市值缩水约85%。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">Many things went wrong at GE, and this is not the place to list them, but one of the most striking things about GE during the Jack Welch era was its ability to hit its earnings target quarter after quarter, year after year. Analysts and investors loved GE. When GE declared it would meet its earnings the next year, it always did. As Welch said in an interview with Carol Loomis of Fortune, “What investor would want to buy a conglomerate like GE unless its earnings were predictable?” The company had become so blasé and arrogant about “managing” its numbers that the CFO, Dennis Dammerman, was bold enough to admit to Fortune, “OK, we’re going to take these large gains and offset them with discretionary decisions with restructurings.” He was smoothening his profits in plain sight.</div>
+            <div class="text-block simplified-text">通用电气曾陷入多重困境，但此处不赘述其具体失误。杰克·韦尔奇执掌时期最令人惊叹的，是该公司总能季复一季、年复一年地精准达成盈利目标。分析师与投资者对通用电气青睐有加——只要它承诺次年实现预期收益，就从未食言。正如韦尔奇接受《财富》杂志卡罗尔·卢米斯采访时所言："若不能保证盈利稳定，哪个投资者会愿意收购通用电气这样的综合集团？"这家企业对于财务数据的"调控"已习以为常乃至傲慢自大，其财务总监丹尼斯·达默曼甚至公然向《财富》承认："没错，我们将通过重组等自主决策，用这些巨额收益来对冲调整。"他这是在众目睽睽之下平滑利润曲线。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">The managers were under enormous pressure to hit their earnings targets. When Jeff Immelt, the CEO after Jack Welch, took over the plastics division at GE and found that the previous management had been fudging the profits, he chose to keep quiet. He was a rising star within GE and knew that not meeting his budget was not an option.
+GE had a special-purpose vehicle called Edison Conduit that was supposed to be independent of the company but wasn’t. GE Capital guaranteed Edison’s liabilities, effectively making it a GE company. Why did it exist? Its stated purpose was to issue commercial paper, but its main objective was to create profits out of thin air. It periodically bought assets from GE Capital at higher prices than the book value, thereby showing profits. But how can a company buy its own assets to show profits, you ask? Good question. Today it can’t—it would be considered fraud. But the company was exploiting an accounting loophole of the pre-Enron era.</div>
+            <div class="text-block simplified-text">管理层承受着实现盈利目标的巨大压力。当杰克·韦尔奇的继任者杰夫·伊梅尔特接手通用电气塑料部门时，发现前任管理层一直在虚报利润，却选择了保持沉默。作为通用电气内部冉冉升起的新星，他深知预算目标必须达成。  
+
+通用电气曾设立了一个名为"爱迪生管道"的特殊目的实体，名义上独立于公司，实则不然。通用电气资本公司为该实体的债务提供担保，使其实质上仍属通用电气旗下。该实体为何存在？其宣称目的是发行商业票据，但主要目标实为凭空创造利润——它会定期以高于账面价值的价格从通用电气资本公司购入资产，从而制造盈利记录。你或许会问：企业怎能通过购买自家资产来虚增利润？问得好。如今这种行为已被视为欺诈，但当时公司钻了安然事件前会计制度的漏洞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">In 2002, the Sarbanes–Oxley Act passed, and many accounting tricks being used by GE became illegal. Jack Welch had timed his retirement almost perfectly in 2001. Jeff Immelt, the new CEO, never got the leeway from the accountants that his boss had and kept missing investor expectations. GE’s stock price went into a decline that hasn’t been arrested more than two decades after Welch’s retirement.
+I am not suggesting that all of GE’s problems resulted from its guidance culture, but I think it played a significant role. When business managers are hyper-focused on meeting quarterly numbers, their long-term orientation takes a back seat; when a company is desperate to make an acquisition just to meet its earnings, it can overpay for a bad asset; when a manager is unable to speak the truth about accounting obfuscations, they pile up over time.</div>
+            <div class="text-block simplified-text">2002年《萨班斯-奥克斯利法案》颁布后，通用电气惯用的许多会计手段被列为非法。杰克·韦尔奇在2001年选择退休可谓时机精准，继任CEO杰夫·伊梅尔特再未能获得其前任享有的财务操作空间，屡屡辜负投资者预期。通用电气股价自此持续下跌，在韦尔奇退休二十余年后仍未止住颓势。
+
+我并非将通用电气的所有问题归咎于其业绩指引文化，但认为这确是重要诱因。当管理者过度执着于达成季度指标，长远发展便退居次席；当企业为达成盈利目标而仓促收购，往往高价购入不良资产；当管理者对财务造假三缄其口，隐患便随时间不断累积。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">Last, let’s assume for a moment that a company can accurately predict its earnings without any accounting shenanigans of the kind employed by GE. So what? Should it matter to a long-term investor that the next year’s earnings will grow at 5 percent or decline by 10 percent?
+We base our assessment of a company on its riskiness, competitive moat, quality of financials, and management integrity—not on its ability to forecast earnings accurately. We know it is very hard to predict earnings consistently, so why measure anyone on it? We have never bothered to assess earnings guidance from companies and have tried to persuade many of our portfolio companies to cease providing guidance. The results, I will admit, have been mixed. Old habits die hard.
+Face-to-Face Meetings with Management</div>
+            <div class="text-block simplified-text">最后，我们姑且假设一家公司能够在不使用通用电气那种会计花招的情况下准确预测盈利。但这又怎样？对于长期投资者而言，来年盈利是增长5%还是下滑10%真的重要吗？
+
+我们评估一家公司的依据是其风险程度、竞争壁垒、财务质量和管理诚信——而非其精准预测盈利的能力。我们深知持续准确预测盈利极为困难，又何必以此苛责他人？我们从不费心研判企业提供的盈利指引，并曾试图说服投资组合中的多家公司停止发布这类预测。必须承认，成效参差不齐——积习难改。
+
+与管理层面对面会谈</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">In mid-2015, Valeant, a pharmaceutical company run by a McKinsey alum called Mike Pearson, was the darling of the stock market and had a market value of about $90 billion. Just five years before, in 2010, its market value was only about $5 billion.
+There was no business magazine that had not covered the stupendous success of Valeant. Nothing could stop this juggernaut acquiring pharma companies and cutting costs to the bone to enhance profits. Investors loved Mike and his seemingly unbeatable strategy, and marquee investors like Pershing Square, Sequoia, and ValueAct were big fans.</div>
+            <div class="text-block simplified-text">2015年年中，由麦肯锡校友迈克·皮尔森执掌的制药公司Valeant是股市宠儿，市值约900亿美元。而就在五年前的2010年，其市值仅为50亿美元左右。
+
+没有哪家商业杂志不曾报道Valeant惊人的成功。这架战车通过收购药企和极致压缩成本来提升利润，势不可挡。投资者们钟爱迈克和他那看似无懈可击的策略，潘兴广场、红杉资本与ValueAct等知名投资机构都是其忠实拥趸。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">Charlie Munger, however, was having none of it. He rightly spotted that Valeant’s debt-fueled acquisition spree was a recipe for disaster. Combined with Valeant’s numerous unethical business practices (e.g., raising the prices of life-saving drugs many times after acquiring them), he opined that Valeant would fail spectacularly sooner or later. In a May 2016 interview with Fox Business, Munger called the company worse than a sewer!19
+Munger’s views irritated some of Valeant’s largest shareholders, including Bill Ackman, the CIO of Pershing Square. He wrote a lengthy letter to Munger in April 2015 requesting him to meet with Mike Pearson, but Munger refused. Munger did not need a meeting to detect the “honest” signals of Valeant’s corruption and incompetence. Valeant had its comeuppance soon after and by mid-2016 had lost 90 percent of its value. Bill Ackman’s Pershing Square took a loss of $3 billion on Valeant.</div>
+            <div class="text-block simplified-text">然而，查理·芒格对此毫不买账。他敏锐地指出，瓦尔兰特公司依靠债务推动的收购狂潮注定酿成灾难。结合该公司诸多违背商业道德的行为（例如收购救命药后多次大幅提价），他断言瓦尔兰特迟早会惨烈崩盘。2016年5月接受福克斯商业频道采访时，芒格甚至斥责这家公司"比下水道还肮脏"！
+
+芒格的言论激怒了包括潘兴广场首席投资官比尔·阿克曼在内的多位大股东。2015年4月，阿克曼曾致长信恳请芒格与首席执行官迈克·皮尔森会面，但遭到拒绝。对芒格而言，根本无需会面就能洞悉瓦尔兰特腐败无能的"诚实"信号。该公司不久便遭报应——截至2016年年中，市值蒸发90%，致使比尔·阿克曼的潘兴广场蒙受30亿美元损失。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">Why were so many experienced investors blind to the problems that Munger had highlighted publicly? Why could Munger correctly predict Valeant’s demise without meeting Mike Pearson when many of Valeant’s board members and investors continued to be passionate supporters? My hypothesis is this: Mike Pearson was a fantastic salesperson. Correction. He was probably one of the best salespeople to have enamored Wall Street.
+The smartest people lost their sense of judgment when faced with Mike Pearson’s persuasive skills. Valeant’s honest signals of its myriad problems remained undetected or ignored in the light of the dishonest signals emitted by Mike Pearson in face-to-face meetings, which by definition were cheap to produce.
+Again, I am not asserting that Mike Pearson was dishonest. Maybe he genuinely believed what he said. It doesn’t really matter. The reason Munger was right was that he knew that any face-to-face meeting is a dishonest signal.</div>
+            <div class="text-block simplified-text">为何众多经验丰富的投资者对芒格公开指出的问题视而不见？为何芒格无需会见迈克·皮尔森就能准确预测凡利亚的衰败，而该公司董事会成员和投资者们却仍是其狂热支持者？我的假设是：迈克·皮尔森是个极擅推销的高手。确切地说，他或许是令华尔街为之倾倒的最强销售奇才之一。
+
+当面对迈克·皮尔森的说服技艺时，最聪明的人也丧失了判断力。在皮尔森亲自出席的会议中，那些成本低廉却充满误导性的信号，掩盖了凡利亚公司真实存在的诸多问题——这些问题信号要么未被察觉，要么直接被忽视。
+
+需要再次申明：我并非指控迈克·皮尔森存心欺诈。或许他真心相信自己所言。但这并不重要。芒格之所以正确，正是因为他深谙所有当面会谈本质上都是不可靠的信号。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">This claim that face-to-face meetings aren’t a reliable signal may seem strange at first glance given the importance of management teams for most investors, whether they are venture capitalists, private equity funds, or mutual funds. Many investors take pride in judging management teams based on a single meeting, and if you are one such investor, good for you. I am not.
+The odds are that many investors think they are good at judging people, but they generally aren’t. Let’s assume we encounter a genius who is genuinely able to judge a person’s character based on a face-to-face meeting. My assertion here is even if they possess this rare skill, it will be useless in a management meeting and will not enable them to become a better investor. The reason is simple: Any signal that management gives during a meeting is a cheap signal requiring minimal effort. And since it is cheap, the signal may be dishonest even if the management is not.</div>
+            <div class="text-block simplified-text">乍看之下，"面对面会议并非可靠信号"这一主张或许显得奇怪——毕竟管理团队对多数投资者（无论是风险投资人、私募基金还是共同基金）都至关重要。许多投资者以仅凭一次会面就能评判管理团队为傲，若你正是此类投资者，那很为你高兴。但我并非如此。
+
+现实情况很可能是：多数投资者自以为擅长识人，实则不然。即便我们假设存在一位真正能通过面谈洞察人性的天才，我的核心论点在于：这种罕见能力在管理层会议中毫无用处，也无助于成为更优秀的投资者。原因很简单：管理层在会议中传递的任何信号都是低成本信号，几乎无需费力。正因其成本低廉，即便管理层本身诚实，这些信号仍可能失真。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">For example, management may believe that their product is high quality, and they will say so in a meeting. Would you believe their assertion, or would you do independent checks to assess the product’s quality? Management may genuinely believe that their recent underperformance relative to domestic competition is a result of their focus on overseas markets. If you are a good judge of people and conclude that management is telling the truth, would you take their stated belief to be true? Management knows what you want to hear, and quite often, that is what you will hear.
+We do meet management teams. We use these meetings to build relationships and to understand their corporate history and some of their past decisions. We never use management meetings to build an investment case or test key hypotheses because we know we will hear what they want us to hear, not what we want to know.
+Invoking Zahavi to Interpret Signals That Matter</div>
+            <div class="text-block simplified-text">例如，管理层可能认为自家产品质量上乘，并在会议中如此宣称。你会轻信他们的断言，还是通过独立核查来评估产品品质？管理层或许真心认为近期国内市场竞争失利源于其海外市场战略。即便你深谙识人之道并判定其言辞可信，是否就会全盘接受他们的观点？须知管理层清楚你想听什么，而你所闻往往正是他们想让你听到的内容。
+
+我们确实会与管理层会面，但这类会谈仅用于建立关系、了解企业发展史及部分历史决策。我们从不依赖管理层会议来构建投资逻辑或验证关键假设——因为我们深知，会上只会听到对方想传递的信息，而非我们真正需要了解的真相。
+
+援引扎哈维理论解析关键信号</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">It looks like we are in a bit of soup here. If we can’t rely on press releases, investor conferences, earnings guidance, or management meetings, what kinds of signals can we, as investors, trust?
+Let’s go back to Amotz Zahavi, whose assertion about the natural world is highly relevant to the investing world: We should trust only costly signals emitted by companies because they are the only ones we can rely on. But what signals are costly to produce and hence reliable? Broadly, there are two.
+We know the first one from chapter 5.
+Past Operating and Financial Performance</div>
+            <div class="text-block simplified-text">看来我们现在的处境有些棘手。如果无法依赖新闻稿、投资者会议、盈利指引或管理层会议，那么我们作为投资者还能信任哪些信号呢？
+
+让我们回到阿莫茨·扎哈维的观点——他关于自然界的论断对投资界极具启发性：我们只应信任企业发出的高成本信号，因为唯有这些信号才值得信赖。但哪些信号因成本高昂而具备可靠性呢？主要有两类。
+
+第一类信号我们在第五章已经讨论过：
+过往经营与财务表现</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">I will not rehash the logic I outlined in chapter 5 for visiting the past to assess a business and industry; suffice it to say that we at Nalanda treat the past as one of two critical and reliable signals for our investment and divestment decisions. The past has happened. It is there for us to see. It is an undeniable signal of the company’s actions and outcomes. The problem, of course, is that investors seem intently focused on receiving signals about the future.
+Let’s take the example of a ubiquitous phenomenon in the world of investing: conference calls.</div>
+            <div class="text-block simplified-text">我不会重复第五章阐述的逻辑——即通过回溯历史来评估企业和行业；只需说明一点：在那烂陀，我们将历史视作投资与撤资决策中两个关键可靠信号之一。历史已然发生，清晰可见，是企业行动与结果的无可辩驳的证明。问题在于，投资者似乎执着于接收关于未来的信号。
+
+以投资界普遍存在的电话会议为例。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">I know I discussed conference calls in chapter 5, but it’s important to revisit the phenomenon in the light of honest and dishonest signals. A quarterly call is a strong signal sent by the management to the broader analyst and investor community. The CEO, CFO, and some other key business leaders typically attend the calls. If there is one place where you can get all your answers, this is it. Jamie Dimon of JPMorgan, Mark Zuckerberg of Facebook, Jack Dorsey formerly of Twitter, Tim Cook of Apple, Elon Musk of Tesla—all these business leaders regularly attend their companies’ quarterly calls.</div>
+            <div class="text-block simplified-text">虽然我在第五章讨论过电话会议，但结合诚实信号与虚假信号重新审视这一现象很有必要。季度电话会议是管理层向分析师和投资者群体发出的重要信号。首席执行官、财务总监及其他核心高管通常都会出席——若想一次性获得所有答案，这里就是最佳场合。摩根大通的杰米·戴蒙、脸书的马克·扎克伯格、推特前掌门杰克·多尔西、苹果的蒂姆·库克、特斯拉的埃隆·马斯克，这些商界领袖都定期出席各自公司的季度财报会。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">Let’s take a concrete example. Chevron, one of the world’s largest oil companies, had revenues of about $140 billion and a market value of about $190 billion in 2019. The management held a conference call for investors and analysts on January 31, 2020, to highlight its performance.20 The analysts and investors asked twenty-nine questions. What percentage of these do you think were about the future? More than 70 percent.
+Here is a small sample of these future-directed questions:
+• Can you talk a little bit more about how you think about volumes in 2020? (Remember that this call is from the start of 2020.)
+• I was curious where else we could see some upside in the portfolio in 2020.
+• As you continue to shed assets and capital intensity is lowered, just wondering how repeatable outsized dividend growth could be over the long term.</div>
+            <div class="text-block simplified-text">我们来看一个具体例子。2019年，全球最大石油企业之一的雪佛龙公司营收约1400亿美元，市值约1900亿美元。2020年1月31日，管理层为投资者和分析师举行业绩电话会议时，分析师与投资者共提出29个问题。这些提问中有多少比例涉及未来展望？超过70%。
+
+以下是几个聚焦未来的典型提问：
+• 能否详细谈谈对2020年产量的预期？（请注意这是2020年初的会议）
+• 想了解2020年投资组合中还有哪些潜在增长点？
+• 随着资产持续剥离和资本密集度降低，长期来看超额股息增长是否具备可持续性？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">In and of themselves, the questions on volumes, potential upside, and potential dividend growth are important. But just because a question is important does not mean it has a good or reliable answer. I want to know my fund returns next year, but I would be foolish to pick a number.</div>
+            <div class="text-block simplified-text">关于交易量、潜在上涨空间和股息增长潜力的问题本身固然重要。但问题重要并不意味着就能得到可靠答案。我想预知明年基金收益，但若妄下定论便是愚不可及。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">Let’s take the questions on volumes and potential upside. Chevron management gave a lengthy answer to these queries but essentially said that volume growth would be in the same ballpark as in previous years. Little did they—or anyone else for that matter—know that the COVID-19 pandemic would strike or that the price of and demand for oil would drop precipitously. Chevron would end 2020 with a net loss of $5.5 billion compared to a net profit of $2.9 billion in 2019. In the fourth quarter of 2020, revenue had dropped to $25 billion from $35 billion a year earlier, a reduction of almost 30 percent. During the conference call, management predicted capital spending of $21 billion in 2020. The actual number? $13 billion.</div>
+            <div class="text-block simplified-text">以产量和潜在增长空间的问题为例。雪佛龙管理层对这些问题给出了冗长的答复，但核心意思不过是产量增长将与往年相当。然而他们——或者说当时所有人——都未能预见到新冠疫情会突然爆发，石油价格与需求会急剧下跌。雪佛龙最终以55亿美元的净亏损结束了2020年，而2019年其净利润还达29亿美元。2020年第四季度，公司收入从上年同期的350亿美元骤降至250亿美元，降幅近30%。在电话会议上，管理层曾预测2020年资本支出将达到210亿美元。实际数字呢？130亿美元。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">All the questions related to Chevron’s performance in 2020 and beyond essentially turned out to be useless. I know I am being unfair because I have chosen the year of the pandemic to talk about the difficulty of making predictions. But by doing so, I want to highlight the absurdity of the financial sector’s focus on a company’s future. No business could have predicted the calamities of 2020, and Chevron was no exception.
+We can assume that Chevron management are honest and willing to answer questions to the best of their abilities. But how can any signal they give about the future be anything but cheap, and hence dishonest, given that pontification of future events does not demand much effort? Any talk of the future is unreliable and just speculation.</div>
+            <div class="text-block simplified-text">所有关于雪佛龙2020年及未来业绩的提问最终都被证明毫无意义。我知道这有失公允——特意选择疫情爆发的年份来讨论预测之难。但通过这种方式，我想揭示金融界执着于企业未来前景的荒谬性。没有企业能预见到2020年的灾难，雪佛龙也不例外。
+
+我们可以假设雪佛龙管理层诚实守信，且愿意竭尽所能回答问题。但当预言未来只需信口开河时，他们给出的任何未来信号除了是廉价且虚伪的承诺，还能是什么呢？所有关于未来的讨论都不可靠，不过是臆测罢了。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">If I were in a senior management position at Chevron and asked these questions, my replies would have been no different. The problem is not with Chevron. It is with us, the financial industry folks, who want to coerce the management of companies to do the undoable and then blame them when they don’t meet our impossible standards.
+An honest signal is not “our margin will be 15 percent next year” but “our average margin was 12 percent over the last ten years”; an honest signal is not “we will have robust free cash flows starting two years from now” but “we generated free cash flow only one year in the last decade”; an honest signal is not “we will launch six new products next year” but “in our recent history, we have launched an average of one product every two years.”
+No stories, no projections, just facts about the past.
+“Because She Said So”</div>
+            <div class="text-block simplified-text">若我身处雪佛龙公司高管之位，面对这些问题时，给出的回答也别无二致。问题不在雪佛龙，而在于我们这些金融从业者——总想强迫企业管理层完成不可能的任务，又因其达不到我们设定的荒谬标准而横加指责。
+
+真实的信号不是"明年利润率将达到15%"，而是"过去十年平均利润率为12%"；真实的信号不是"两年后我们将产生充沛自由现金流"，而是"过去十年间仅有一年实现自由现金流"；真实的信号不是"明年将推出六款新产品"，而是"近年来我们平均每两年才推出一款产品"。
+
+无需故事，无需预测，只需陈述过往事实。
+"因为她说了算"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">67.</span>
+            <div class="text-block original-text">While most people show positive bias in evaluating themselves and their kids, they can be remarkably candid and accurate when it comes to analyzing other people and their spouses. As an investor, we have used this well-proven human quality to solicit positive and negative signals on companies. A good reputation is a very costly signal—and hence an honest one—because building a name for oneself in any industry consumes enormous management time and effort over many years, if not decades.
+Therefore, before we make an investment, we spend many months speaking to dealers, competitors, ex-employees, suppliers, and industry experts to get a holistic understanding of a company and its industry. We consider these “scuttlebutt” signals to be sincere for two reasons.</div>
+            <div class="text-block simplified-text">尽管多数人在评价自己和子女时都带有积极偏见，但在分析他人及其配偶时却能异常坦率且准确。作为投资者，我们利用这一经过充分验证的人性特质，来收集关于企业的正面与负面信号。良好声誉是一种代价高昂的信号——因而也是诚实的信号——因为要在任何行业树立声望，都需要管理层投入大量时间与精力，往往持续数年甚至数十年。
+
+因此在进行投资前，我们会耗费数月时间走访经销商、竞争对手、前雇员、供应商及行业专家，以全面了解企业及其所处行业。我们认为这些"小道消息"信号真实可靠的原因有二：</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">68.</span>
+            <div class="text-block original-text">First, in general, I have found that few people have an incentive to lie unless they bear a serious grudge against a company. If a competitor is impressed with the company you are evaluating, it will say so and give you many reasons for saying so. Second, once we have performed enough interviews with people connected to the company (but not necessarily from the company), we start to get a good sense of the management’s reputation and quality.</div>
+            <div class="text-block simplified-text">首先，我发现大多数人通常没有动机撒谎，除非对公司怀有严重怨恨。如果竞争对手对你评估的公司评价颇高，他们会如实相告并列举诸多理由。其次，当我们对与公司相关（但未必来自公司内部）的人员进行充分访谈后，就能清晰把握管理层的声誉与能力水准。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">69.</span>
+            <div class="text-block original-text">I learned a valuable scuttlebutt lesson in 2008, less than a year after starting Nalanda. We had become deeply interested in a manufacturing company in India with a market value of almost $2 billion. The company had a very high return on capital over its long history, claimed to design and manufacture products that others couldn’t, and had a roster of marquee clients. The financial community was all praises for the businesses. We met the management and came away suitably impressed with the articulation of its strategy and philosophy. Our analysis of past results and performance yielded only positive news.</div>
+            <div class="text-block simplified-text">2008年，我学到了一个宝贵的小道消息教训，那时我创立Nalanda还不到一年。我们对印度一家市值近20亿美元的制造企业产生了浓厚兴趣。该公司在漫长历史中始终保持着极高的资本回报率，宣称能设计制造他人无法复制的产品，并拥有一批知名客户群。金融界对该企业交口称赞。我们与管理层会面后，对其战略理念的清晰阐述印象深刻。过往业绩与经营表现的分析结果也完全呈现积极态势。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">70.</span>
+            <div class="text-block original-text">We started talking to the company’s customers, who were largely in the health care sector. We were surprised when all the customers we spoke to categorized it as a commodity supplier, not a specialist manufacturer. They told us that they were buying from this company only because it offered the lowest prices, not because it sold the latest high-tech products. It was clear to us after a few customer calls that the company had been resorting to hyperbole when it touted the quality of its products and depth of customer relationships.</div>
+            <div class="text-block simplified-text">我们开始与该公司的客户交谈，这些客户主要来自医疗保健行业。令我们惊讶的是，所有受访客户都将该公司归类为大宗商品供应商，而非专业制造商。他们表示选择这家公司仅仅是因为其价格最低，而非销售最新高科技产品。经过几轮客户访谈后，我们清楚地意识到——该公司在吹嘘产品质量和客户关系深度时，始终充斥着夸大其词的宣传。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">71.</span>
+            <div class="text-block original-text">We also spotted a strange anomaly in its balance sheet. A number of receivable days of 270 seemed too high for a company that claimed to have a strong relationship with its customers. Why would customers take nine months to pay? When we asked the company, their glib response was that this was customary in the health care industry. During our scuttlebutt calls, we checked with the customers, and all of them told us that they were paying the company within 90 days as per their agreement. Where was the cash hiding for the remaining 180 days?</div>
+            <div class="text-block simplified-text">我们在其资产负债表上还发现了一个异常现象。应收账款周转天数高达270天，这对于一家自称与客户关系稳固的公司来说实在过高。客户为何需要九个月才付款？面对我们的质询，该公司轻描淡写地回应称这是医疗保健行业的惯例。然而通过外围访谈求证时，所有客户都表示他们严格遵循合约在90天内完成付款。那么剩余180天的资金究竟隐匿在何处？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">72.</span>
+            <div class="text-block original-text">Our third scuttlebutt signal turned out to be the most damaging. We were able to interview the company’s previous head of sales who had resigned a few months earlier. When we asked him about company performance, he quipped, “You are financial sector folks. So maybe you can explain this anomaly to me. I was the global sales head and was responsible for 100 percent of company revenues. But my actual delivered sales numbers for the quarter were always much lower than what the company stated in its quarterly financial results. How could it be so?” We didn’t need to hear any more.
+The market value of this business is down 98 percent from its peak in early 2008.
+If we had relied only on the company’s stated past financial and operating performance and had not performed our extensive scuttlebutt research, maybe Nalanda would not exist today. It may not have been possible to recover from making a dud investment of $150 to $200 million.</div>
+            <div class="text-block simplified-text">我们获取的第三条坊间线索最终成为最具破坏力的证据。通过访谈数月前离职的前任销售总监，当问及公司业绩时，他反诘道："你们是金融界人士，或许能解释这个反常现象。作为全球销售负责人，我本应掌控公司100%营收。但每季度我实际达成的销售额，总是远低于财报公布的数字。这怎么可能？"无需多言，答案已昭然若揭。
+
+该企业市值较2008年初峰值已暴跌98%。
+
+倘若当初仅凭公司披露的历史财务与运营数据，而未开展深入的坊间调研，那烂陀资本或许早已不复存在。若真做出1.5至2亿美元的失败投资，恐怕再无翻身之日。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">73.</span>
+            <div class="text-block original-text">As an aside, the great investor Philip A. Fisher first popularized the scuttlebutt approach in his 1958 classic, Common Stocks and Uncommon Profits. In chapter 2 (“What ‘Scuttlebutt’ Can Do”), he asserts, “The business ‘grapevine’ is a remarkable thing. It is amazing what an accurate picture of the relative points of strength and weakness of each company in an industry can be obtained from a representative cross-section of the opinions of those who in one way or another are concerned with any particular company.”
+Truer words have rarely been uttered.
+Back to Bolton
+Let’s get back to the mystery of the underperformance of the £460 million fund launched by Anthony Bolton in 2010. I deliberately withheld a key piece of information from you earlier: Bolton launched his fund in China, not the United Kingdom. I don’t know what he was thinking, but having shown his mettle in the United Kingdom, I am assuming Bolton wanted a new challenge.</div>
+            <div class="text-block simplified-text">顺便一提，著名投资家菲利普·A·费舍尔在其1958年的经典著作《普通股与不普通利润》中首次推广了"小道消息"投资法。在第二章《"小道消息"的妙用》中，他提出："商业界的'传言链'现象非常奇妙。通过收集与某家公司存在关联的各类人士的代表性意见，往往能惊人地准确勾勒出该行业各企业间的相对优劣势。"  
+此言可谓至理。  
+
+回到博尔顿  
+让我们回到2010年安东尼·博尔顿发行的4.6亿英镑基金表现不佳之谜。先前我刻意隐去了一个关键信息：博尔顿这支基金是在中国而非英国发行的。虽不知他当时作何考量，但既然已在英国证明过实力，我推测博尔顿是想迎接新的挑战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">74.</span>
+            <div class="text-block original-text">But China is not the United Kingdom, especially when it comes to the behavior and track record of listed companies (as an aside, India is not that different from China in this regard). You may have heard of Luckin Coffee, which was supposed to be the Starbucks of China. It claimed to have a more scalable model than Starbucks because it sold cheap coffee, primarily for takeout and delivery. It had positioned itself as a tech company because customers could order through its app. Many marquee investors, including one of China’s largest venture capital firms, Joy Capital, and Singapore’s sovereign wealth fund, GIC, had invested in Luckin at a valuation of $1 billion.</div>
+            <div class="text-block simplified-text">但中国终究不是英国，尤其在上市公司的行为记录方面（顺带一提，印度在这方面与中国差异不大）。你可能听说过瑞幸咖啡——这家号称要成为中国星巴克的企业。它宣称拥有比星巴克更具扩张性的商业模式，主打平价外带咖啡，并自我定位为科技公司，因其支持用户通过应用程序下单。包括中国顶级风投愉悦资本和新加坡主权财富基金GIC在内的多家知名机构，曾以10亿美元估值投资瑞幸。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">75.</span>
+            <div class="text-block original-text">The company went public in the United States in May 2019, and by January 2020, its stock price had reached $50, valuing the company at more than $12 billion. In late January, the famous short seller Muddy Waters released a scathing report on Luckin alleging that its sales numbers were falsely elevated.21 To make matters worse, Luckin’s auditor, Ernst & Young, unearthed fraudulent behavior by Luckin’s senior employees. By May 2020, the stock had crashed more than 95 percent.
+Luckin, unfortunately, is not an exception. Chinese companies like China Agritech, China Green Agriculture, China Integrated Energy, GSX Techedu, iQIYI, Longwei Petroleum, Orient Paper, Puda Coal, and Sino Clean Energy have all been accused of accounting irregularities or outright fraud.22</div>
+            <div class="text-block simplified-text">该公司于2019年5月在美国上市，至2020年1月股价已达50美元，公司估值超120亿美元。1月下旬，著名做空机构浑水发布严厉报告，指控瑞幸虚增销售数据。雪上加霜的是，瑞幸审计机构安永发现其高管存在造假行为。截至2020年5月，瑞幸股价暴跌逾95%。
+
+此类事件并非孤例。中国农业生态、中国绿色农业、中国综合能源、跟谁学、爱奇艺、龙威石油、东方纸业、普大煤业、中洁能源等中国企业均曾被指控财务违规或直接欺诈。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">76.</span>
+            <div class="text-block original-text">There are probably as many explanations as there are “experts” to account for Anthony Bolton’s failure in China. Mine is this: Bolton confused the Chinese signals for British ones. He did not realize that the signals from many Chinese companies were fundamentally dishonest and that he should have been much more skeptical of their veracity.23
+In an interview with South China Morning Post, the Morningstar analyst Zhao Hu pointed out that not one or two but three investee companies of Bolton’s China fund had reeled under accounting and product recall scandals. Bolton was accustomed to honest signals from British companies, but in Zhao Hu’s words, “Obviously, he had not discounted enough risk into his investments in those small, unproven Chinese firms.”
+Wasp and orchid redux.
+✳✳✳</div>
+            <div class="text-block simplified-text">关于安东尼·波顿在中国折戟的原因，各路"专家"众说纷纭。我的观点是：波顿误将中国的市场信号当作英国信号。他未能意识到，许多中国公司发出的信号本质上是不可信的，本应对其真实性保持更高警惕。  
+《南华早报》采访晨星分析师赵虎时，他指出波顿中国基金投资的企业中，陷入财务造假和产品召回丑闻的并非一两家，而是三家。波顿习惯了英国企业诚实的市场信号，但用赵虎的话说："显然，他对这些未经市场检验的中国小企业投资时，风险折价远远不够。"  
+黄蜂与兰花的戏码再度上演。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">77.</span>
+            <div class="text-block original-text">There is almost never a clear winner in the arms race between the senders and receivers of signals in the natural world. You may have heard of cuckoos leaving their eggs in the nests of other bird species so that someone else can rear their chicks. The signals here are the size, shape, and color of the cuckoo egg, which match those of the eggs of some other bird species. However, scientists have found that some of the parasitized bird species have not allowed themselves to be exploited—they have evolved to produce eggs that are distinctly different, even compared to eggs of their own species.24 As a result, they recognize cuckoo eggs as interlopers. They have evolved a way to detect the dishonest signal from cuckoos. This race has no winner, and there will probably never be one.</div>
+            <div class="text-block simplified-text">自然界中信号发送者与接收者之间的军备竞赛几乎从未有过明确的赢家。你可能听说过杜鹃将卵产在其他鸟类的巢中，让其他鸟代为养育幼鸟。这里的关键信号是杜鹃卵的大小、形状和颜色——它们与某些宿主鸟类的卵相匹配。但科学家发现，部分被寄生的鸟类并未坐以待毙，它们进化出与同类差异显著的卵，甚至与本物种其他个体的卵也截然不同。如此一来，它们就能识别出杜鹃卵这个入侵者。这些鸟类进化出了侦破杜鹃欺诈信号的能力。这场竞赛没有赢家，或许永远都不会有。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">78.</span>
+            <div class="text-block original-text">In sharp contrast, in the business world, the senders of signals—the companies—are clearly winning over the receivers—us, the gullible investors. No wonder our community performs poorly compared to the broader market. What should we long-term investors do?
+Ignore the green frog and heed the guppy.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . reimagining investing requires us to differentiate between the honest and dishonest signals of businesses.
+1. In nature, the “sender” of a signal attempts to influence the behavior of the “receiver.” For the receiver, differentiating between an honest and a dishonest signal can be the difference between life and death.
+2. A green frog mimicking the low-pitched croak of its larger rival is a dishonest signal, whereas the conspicuous coloration of a male guppy is an honest indicator of its health and virility.</div>
+            <div class="text-block simplified-text">与此形成鲜明对比的是，在商业世界中，信号的发送者——企业——显然正在战胜接收者，即我们这些轻信的投资者。难怪我们的投资群体表现逊色于整体市场。作为长期投资者，我们该如何应对？  
+忽略那只绿蛙，关注孔雀鱼。  
+
+**本章要点**  
+进化论教会我……  
+……重塑投资理念需要我们辨别企业发出的诚实与欺骗性信号。  
+
+1. 在自然界中，信号的"发送者"试图影响"接收者"的行为。对接收者而言，区分诚实与欺骗性信号可能关乎生死存亡。  
+2. 模仿大型对手低沉叫声的绿蛙发出的是欺骗性信号，而雄性孔雀鱼鲜艳的体色则是其健康与活力的真实指标。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">79.</span>
+            <div class="text-block original-text">3. Zahavi’s handicap principle contends that a signal that is costly to produce is honest and can thus be relied upon by the receiver. The “cost” may be in the form of additional resources required to produce the signal or an increased risk of mortality.
+4. As investors, we, too, are bombarded with signals, many of which are dishonest. Examples include press releases, management meetings and interviews, investor conferences, and earnings guidance. All these signals attempt to favorably impress investors and are generally quite easy to produce. We ignore all of them.
+5. We rely exclusively on honest signals from businesses that, as in the natural world, are costly to produce. These include past operating and financial performance and scuttlebutt signals from suppliers, customers, competitors, ex-employees, and industry experts.
+Section III
+DON’T BE LAZY—BE VERY LAZY</div>
+            <div class="text-block simplified-text">3. 扎哈维的累赘原理指出，高成本发出的信号具有诚实性，因而能被接收方采信。这种"成本"可能体现为制造信号所需的额外资源，也可能表现为更高的死亡风险。
+
+4. 作为投资者，我们同样被各种信号包围，其中多数并不可信。例如新闻通稿、管理层会议与访谈、投资者会议以及盈利指引——这些试图给投资者留下好印象的信号通常极易炮制。我们对它们一概不予理会。
+
+5. 我们只采信企业发出的诚实信号，正如自然界所示，这些信号必然伴随着高昂成本。包括企业过往的经营与财务表现，以及来自供应商、客户、竞争对手、前雇员和行业专家的小道消息。
+
+第三部分
+拒绝低效勤奋——追求极致懒惰</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">80.</span>
+            <div class="text-block original-text">If you have come this far, I hope you have been nodding your head in agreement more often than cursing the reviewers who persuaded you to buy or borrow this book. What’s not to like about avoiding significant risks and buying high-quality businesses? Of course, you and I can quibble about how much weight to give management meetings, whether 20 percent ROCE is acceptable, or at which stage of a turnaround one should invest. However, suppose you are a long-term investor or desire to be one. In that case, I am assuming we agree directionally—taking on avoidable risks is bad, and investing in great businesses is good.
+Alas, our bonhomie may not last beyond this page.</div>
+            <div class="text-block simplified-text">若你已读到这里，我期待你频频颔首认同的时刻，多过咒骂那些劝你购买或借阅此书的评论家。规避重大风险并投资优质企业——这有何不妥？当然，你我或可争论该赋予管理层访谈多少权重、20%的资本回报率是否合格，又或该在企业转型的哪个阶段投资。但倘若你是或渴望成为长期投资者，我想我们方向一致：承担可规避的风险实属不智，投资卓越企业方为正道。
+
+可惜，这份共识或许翻过这页便不复存在。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">81.</span>
+            <div class="text-block original-text">When it comes to buying and selling businesses, we are not just lazy. We are very lazy. We rarely buy and seldom sell. Many—probably most—longterm investors ultimately sell their investments, especially when the price is egregious. We don’t. We are permanent owners. We will not sell a single share in a business we love. There are some minor caveats to this (which I will get to), but while some of you may accept the notion of buying rarely, the thought of never selling may seem wrong—even foolish—to you. That’s all right. My task in this book is not to tell you what you should do but to share what we do.</div>
+            <div class="text-block simplified-text">在买卖企业这件事上，我们不仅懒惰，而且极其懒惰。我们几乎不买，更极少卖出。许多——很可能是大多数——长期投资者最终都会抛售投资标的，尤其是当价格高得离谱时。但我们不会。我们是永久持有者。对于钟爱的企业，我们一股都不会卖出。虽然存在一些细微例外（后文会提及），但即便你们当中有人能接受"极少买入"的理念，"永不卖出"的想法或许仍显得荒谬——甚至愚蠢。这很正常。本书的使命并非指导你该如何行事，而是分享我们的实践之道。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">82.</span>
+            <div class="text-block original-text">Chapters 8 and 9 invoke two relatively unknown tenets of evolutionary theory to bolster the case for buying rarely and selling even more rarely. Chapter 10 focuses on selling, or rather not selling, by elaborating on a well-known but underappreciated concept that unites evolution and long-term investing. Finally, I conclude the book by highlighting a key lesson for investors from evolutionary theory: A simple process can lead to a stellar outcome.
+I end with rabbits and honeybees. But we must begin with birds and bears.</div>
+            <div class="text-block simplified-text">第八章和第九章援引进化论中两个相对冷门的原理，论证"少买、更少卖"的投资策略。第十章聚焦于卖出——更准确地说是不卖出，通过阐释一个广为人知却未被充分重视的概念，将进化论与长线投资联系起来。最后，我在全书结尾强调了进化论带给投资者的关键启示：简单的过程也能造就非凡成果。
+
+收尾处我将谈及兔子和蜜蜂，但我们的故事必须从鸟类与熊开始。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
