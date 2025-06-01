@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./007.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 8</h1>
+        <a href="./009.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Birds and Bears Bare an Aberration
+It may be said that natural selection is daily and hourly scrutinising, throughout the world, every variation, even the slightest; rejecting that which is bad, preserving and adding up all that is good; silently and insensibly working, whenever and wherever opportunity offers, at the improvement of each organic being in relation to its organic and inorganic conditions of life.
+Charles Darwin, On the Origin of Species, chapter 4, “Natural Selection”
+Despite the difficulties we have had in reserving and the commodity economics of the industry, we expect our insurance business to both grow and make significant amounts of money—but progress will be distinctly irregular and there will be major unpleasant surprises from time to time.
+Warren Buffett, annual letter to shareholders, 1986
+The island looked like a war zone. And one side had lost badly. The carcasses of dead birds were strewn everywhere.
+Peter Boag and Laurene Ratcliffe returned to the island in January 1978 and found that almost 80 percent of the birds had succumbed to the drought of 1977. Only about 290 were alive. They searched for their favorite bird—a female who had followed them around the camp in 1977—but they could not find her body. Of the two main species of birds on the island, fortis was especially hard hit. In 1977, not a single fortis laid an egg or built a nest, so no fortis babies were born. Also, every fortis born the year before the drought—in 1976—had perished. Peter and Laurene took careful measurements of the dead and the living birds and went to Princeton to tabulate their findings with a heavy heart.
+The results were astounding.
+Had they proven Darwin wrong?
+What Unites Fed Rates, Chinese Ports, and German Regulators?
+One of the biggest Bollywood blockbusters of the 1970s was Roti Kapda Aur Makaan (Bread, Clothes, and Shelter). Over more than two and a half hours (yes, Bollywood movies can be lengthy) of nonstop melodrama, the film dwells on the importance of the lowest rung of Maslow’s hierarchy of needs. If it were to be made today, it would be named Wi-Fi, Roti, Kapda, Aur Makaan. To me, the pre-internet era seems unimaginably dull. But then, there was always a lot happening in the world; the difference now is that I am made aware of it with barely a second’s delay.
+For a hospital nurse, a chocolate salesperson, or an automotive engineer, the flood of nonstop news can be like background noise. They have the option of tuning in or out of it depending on their mood and the amount of free time they have. Some may choose to obsess over specific topics on social media, but their jobs and the general news flow are denizens of nonoverlapping worlds for most of them.
+Not so for investors. Most will tell you that the flow of news—especially business news—is a critical input for their decision-making. So it would be highly unusual not to find CNBC playing on mute in their offices or a shiny Bloomberg terminal with scrolling news stories on their desks.
+Why? Let me explain by sampling some headlines from the June 22, 2021, online edition of the Financial Times:
+“Wall Street Rebounds as Markets Adjust to Fed Rate Rise Outlook”
+“Covid Outbreak at Chinese Port Exacerbates Global Supply Chain Delays”
+“German Regulator Launches Antitrust Probe Into Apple”
+“Emerging Markets Are Right to Worry About Capital Flows”
+“Solar Power Investors Burnt by the Rise in Raw Material Costs”
+Did your heart start to beat faster by the time you reached the headline on solar power? Knowing my industry, I am sure that many investors reacted to one or more of these news items by making small but significant changes to their portfolios.
+Start with the first news item on the Fed rate rise outlook. Remember the discounted cash flow (DCF) models we encountered in chapter 5? I bet that most investors worldwide, not just in the United States, would have adjusted their DCF models to reflect the potential change in rates. The U.S. dollar is the world’s currency, and any interest rate movement in the United States is vital to any country’s interest rate. I don’t know if this is actually so—the issue is too esoteric for me—but I do know that it is seen to be so. My inbox receives detailed commentary from Indian analysts whenever the U.S. Fed tinkers or threatens to tinker with the interest rate. And what happens when someone changes the discount rate of their model? The stocks appear cheap or expensive, which is a trigger for buying or selling.
+A newspaper headline about the U.S. interest rate triggered stock market activity across the world.
+Let’s take the second headline about the COVID-19 outbreak at a Chinese port. The article discusses the closure of Shenzhen port in China, one of the world’s largest container terminals, for a week after some workers tested positive for COVID. We learn that the container freight rate has quintupled since the previous October. A clothing factory owner in Guangzhou laments that the situation is “like a nightmare.” For her, it certainly is. But should it be for investors? It almost certainly was. I would not be surprised if the shares of companies in the following industries witnessed frenetic activity after this news: container shipping companies, shopping manufacturers, ports, clothing manufacturers, logistics companies, companies anywhere in the world that import a lot of products from China—and companies anywhere in the world that don’t import a lot of products from China (after all, wouldn’t they be saving money compared to those who do import from China?).
+A headline about a Chinese port triggered stock market activity across the world.
+Last one. Why should a German regulator launching an antitrust probe into Apple affect the stock prices of companies other than Apple, you ask? It is not inconceivable that the stock price of quasi-monopolies like Amazon, Facebook, Google, and Twitter would have reacted to this news because fund managers in the United States and elsewhere decided that a Rubicon had been crossed owing to the action of the German regulator. And this would have led to a zillion buy or sell orders—depending on whether fund managers thought it was a good or bad thing for their portfolio holdings—for consumer technology and media businesses. If it could happen in Germany, why not in any other country?
+A headline about a German regulator’s action on a U.S. company triggered stock market activity across the world.
+Alright, I know. I am on thin ice here. Without offering proof, I am claiming that fund managers bought and sold stocks globally in various businesses based on these three pieces of news. I have no idea if my specific claim about these three news items is valid, but there is no denying that mutual funds have become more trigger-happy over the years. According to a 2018 Morgan Stanley report titled Long-Term Conviction in a Short-Term World, the average holding period of mutual funds had fallen to less than one year from seven years in 1960.1 Funds are not being bought and sold in a vacuum; fund managers decide to buy or sell based on something. Often that something is the latest news from a highly reputed and reliable financial newspaper.
+I will let you figure out the impact of the two remaining news items on my list—they were on emerging market capital flows and the rising raw material costs in the solar power industry. It shouldn’t be too hard.
+Based on what I discussed in chapter 4 (proximate and ultimate causes of success) and the title of section III, which advises to be very lazy, you will correctly conclude that we did not react to any of these five pieces of news in June 2021. Our activity was zero.
+But couldn’t we have been wrong? Why should I not have adjusted my Indian portfolio based on the Fed’s interest rate outlook? Many of our portfolio companies import goods from China—shouldn’t we have sold them since their profits were certain to get squeezed? And why didn’t we tinker with even one of our three internet businesses, which enjoy a virtual monopoly in their respective markets? After all, couldn’t the Indian regulator have followed the footsteps of its German counterpart? And what could be more worrying for us than the specter of declining capital flows to India?
+I will get to these answers, but before that, let’s examine a different kind of news flow that hits much closer to home and is much harder to ignore.
+Unceasing Upheavals Can Be Upsetting
+We have seen the potential stock market effect of only a few news items on a single day from a single newspaper. Yet this phenomenon repeats itself day after day—actually, moment to moment—across newspapers, TV channels, social media platforms, whispers from brokers and fund managers, and heaven knows what else.
+Notwithstanding special-purpose acquisition companies (SPACs) and WeWork, fund managers invest in real businesses with real money. Instead of studying generic news as we have just done, what if we track the news flow of a single company over time?
+Let’s do a brief thought experiment. Assume you are a long-term investor. In early January 2009, in the middle of the global financial crisis, you chose to invest in the French company L’Oréal, the world’s largest and most successful cosmetics company. Your view was that a quality business like L’Oréal should be able to overcome any short-term pains owing to the financial crisis. You paid about €60 per share. Because you are a long-term investor, you plan to own the business for many years. Over the next few years, apart from the company’s quarterly and annual financial results, you will also be bombarded with a wide range of news on the company. Table 8.1 provides five headlines for L’Oréal from various news sources from every year from 2009 to 2021. Before reading further, please take a quick look.
+Table 8.1Select news headlines for L’Oréal from January 2009 to December 2021
+2009
+May
+Cosmetics Industry Threatened by Bee Demise
+May
+eBay Wins L’Oréal UK Court Case
+Aug</div>
+            <div class="text-block simplified-text">以下是严格遵循要求的译文：
+
+鸟类与熊类的异常现象
+自然选择每时每刻都在全球审视最细微的变异，淘汰有害变异，保存并积累有利变异。它悄无声息地运作，抓住一切机会改善每个生物体与其生存环境的适应关系。  
+——查尔斯·达尔文《物种起源》第四章  
+
+尽管保险业面临储备难题与商品经济学制约，我们仍预期其将实现增长并创造可观利润——但进程必然波折起伏，且将不时遭遇重大意外打击。  
+——沃伦·巴菲特1986年致股东信  
+
+岛屿如战场般满目疮痍，败局触目惊心。鸟类的尸体遍布各处。  
+1978年1月，彼得·博格与劳伦·拉特克利夫重返该岛，发现近80%的鸟类死于1977年旱灾，幸存者仅约290只。他们搜寻曾于1977年跟随营地活动的雌鸟，却未见其踪迹。岛上两大鸟类物种中，大地雀遭受灭顶之灾——1977年无一产卵筑巢，1976年诞生的幼鸟尽数夭亡。二人沉重地测量死鸟与幸存者的数据，返回普林斯顿进行整理。  
+结果令人震惊：这难道推翻了达尔文理论？  
+
+美联储利率·中国港口·德国监管有何关联？  
+1970年代宝莱坞巨制《面包·衣服·房子》用近三小时演绎马斯洛需求底层要义。若当代翻拍，片名当为《Wi-Fi·面包·衣服·房子》。于我而言，前互联网时代沉闷得难以想象。如今全球动态皆能瞬时触达，差异尽在于此。  
+
+对护士、巧克力销售或汽车工程师而言，海量新闻如同背景噪音，可凭心情与闲暇选择性接收。有人沉迷社交媒体议题，但职业领域与新闻洪流通常泾渭分明。  
+投资者则不然。多数人视新闻流——尤以财经新闻为甚——为决策关键要素。办公室静音播放CNBC或闪烁彭博终端实属常态。  
+
+何以至此？以2021年6月22日《金融时报》头条为例：  
+《美联储加息预期促华尔街反弹》  
+《中国港口疫情加剧全球供应链延误》  
+《德国监管机构对苹果启动反垄断调查》  
+《新兴市场资本外流之忧有理可循》  
+《原材料涨价灼伤太阳能投资者》  
+阅读至末条时，您是否心跳加速？业内经验表明，许多投资者正据此微调持仓配置。  
+
+美联储加息前景头条首当其冲。第五章论及的贴现现金流模型（DCF）想必全球投资者均已依据利率预期调整参数。美元作为世界货币，其利率波动牵动各国。印度分析师在美国利率异动时必发详评。贴现率变更意味着股票估值重估，触发买卖决策。  
+一条美国利率新闻引发全球股市波动。  
+
+次条中国港口疫情报道提及深圳港（全球最大集装箱港之一）因疫情关闭一周，集装箱运费五个月内翻五倍。广州服装厂主哀叹"如陷噩梦"。投资者岂能无动于衷？集装箱航运、制鞋、港口、服装制造、物流企业，乃至全球对华贸易商——无论依赖或疏离中国供应链者——股价皆可能剧烈波动。  
+一条中国港口新闻引发全球股市波动。  
+
+末条德国监管调查苹果案。亚马逊、脸书等准垄断企业股价何以随之震荡？欧美基金经理或视此事件为监管临界点突破，进而对消费科技与媒体股下达海量交易指令。德国既开先河，他国焉能不效？  
+一条德国监管动态引发全球股市波动。  
+
+我明白此论缺乏实证，但共同基金交易日益频繁确系事实。摩根士丹利2018年报告显示，基金平均持有期已从1960年的七年缩至不足一年。基金经理的决策依据，往往正是权威财经媒体的最新消息。  
+剩余两条新闻（新兴市场资本流动与太阳能原料涨价）的影响，相信您已能自行推演。  
+
+参照第四章所述"成功的近因与远因"及"保持极度懒惰"的章节标题，您当能料想：2021年6月我们对此五条新闻皆无应对。  
+然此举是否失当？印度持仓岂不应随美联储政策调整？投资组合中诸多对华进口企业利润必受挤压，为何不出售？旗下三家互联网企业虽具市场支配地位，却未因德国监管案例调整策略——印度监管机构难道不会效仿？资本外流阴影岂非最大忧患？  
+解答这些问题前，且看另一种更切身、更难忽视的新闻流。  
+
+持续动荡令人不安  
+单日单报数条新闻已具如此股市影响力。而此类事件日复一日——实为分秒不息——通过报章、电视、社交平台、经纪人传言持续冲击市场。  
+
+基金经理以真金白银投资实体企业。若聚焦单家公司长期新闻流会如何？  
+试以欧莱雅为例：假设2009年初金融危机期间，您以每股60欧元投资这家全球最大化妆品企业，决心长期持有。此后数年除财报外，还将接收海量公司动态（参见表8.1精选标题）：  
+
+**表8.1 欧莱雅2009-2021年新闻标题精选**  
+2009年5月 蜂群崩溃威胁化妆品产业  
+2009年5月 欧莱雅英国诉eBay案败诉  
+2009年8月 ...  
+（后续标题按相同格式延续）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">L’Oréal Claims Products Were Diverted from Casinos to Pharmacies
+Nov
+Denmark Declares Nivea and Biotherm Potentially Dangerous
+Dec
+L’Oréal Chairman in a Legal Battle Over Gifts
+2010
+Feb
+L’Oréal Seeking One Billion New Customers
+Mar
+Nestlé Seen Seller not the Buyer of L’Oréal Shares
+Apr
+L’Oréal Acquires Essie
+Jul
+Police Arrest Four as L’Oréal Scandal Escalates
+Dec
+Eyelash Enhancers Have Become a Booming Market
+2011
+Feb
+Owen-Jones Ends Era as L’Oréal Chairman
+Mar
+L’Oréal, P&G Fined for Cosmetics Price Fixing
+Jul
+L’Oréal Adverts Are Banned for Being “Too Airbrushed”
+Aug
+L’Oréal Margins Narrow on Higher Costs
+Oct
+L’Oréal Beautifies Emerging Markets; the Stock Looks Pretty
+2012
+Mar
+L’Oréal Reorganises its Luxury Division
+Aug
+Jean-Paul Agon (L’Oréal), Confident About Second-Half 2012
+Sep
+FDA Creams L’Oréal Over Anti-Aging Advertising Claims
+Oct
+L’Oréal Gets to Know Indian Consumers
+Nov
+L’Oréal to Buy Urban Decay Cosmetics
+2013
+Feb
+After 2012 Sales Grow, L’Oréal Expected to Outperform the Market in 2013
+Apr
+“Made in France” Luxury Beauty Drives L’Oréal Growth
+Apr
+Savvy Social Networking Pays Off for L’Oréal China
+Aug
+L’Oréal Makes $843m Bid for Chinese Skincare Brand
+Oct
+L’Oréal Revenue Falls on Currency Effects, U.S. Slowdown
+2014
+Jan
+L’Oréal Pulls Back from China Market
+Mar
+L’Oréal Recognized as One of the World’s Most Ethical Companies
+Jun
+L’Oréal Outlines Plans to Double Its Consumer Base by 2020
+Jul
+Nestlé Offloads Major Stake in L’Oréal
+Aug
+L’Oréal’s Age-Defying Claims Mislead
+2015
+May
+L’Oréal Corners the Market on Bio-printed Skin
+Jun
+L’Oréal to Lure China Shoppers with Price Cuts
+Jul
+Two Scenarios That Impact L’Oréal’s Valuation in Opposing Ways
+Oct
+Why Is L’Oréal Increasing Its Focus on India?
+Nov
+L’Oréal Sales +13.2 Percent to $20.4bn in First 9m
+2016
+May
+L’Oréal Paris Ranked the World’s Most Valuable Beauty Brand
+Jul
+L’Oréal to Acquire IT Cosmetics in $1.2 Billion Deal
+Sep
+Tests Show Mercury in L’Oréal Products: Maharashtra FDA
+Nov
+L’Oréal Shares Surge as Demand Grows for Premium Makeup
+Dec
+L’Oréal Steps Up Investments in Digital Start-Ups
+2017
+Jan
+L’Oréal to Acquire Three U.S. Skin-Care Brands for $1.3 Billion
+Feb
+L’Oréal Is Benefitting from a Higher Digital Spending
+Mar
+L’Oréal Paris Launches Its Largest Loyalty Rewards Program
+Jun
+L’Oréal Finalises Sale of The Body Shop
+Aug
+Spotlight on Luxury: L’Oréal Results Suggest Huge Appetite for Premium
+2018
+May
+L’Oréal Snaps up South Korean Cosmetics Firm Nanda
+Jul
+L’Oréal Shares Fall as Mass-Market Drugstore Brands Struggle
+Oct
+Strong Asian Demand Gives L’Oréal a Sales Bounce
+Oct
+L’Oréal CEO Sees No Slowdown in China Despite U.S. Trade Tariffs
+Nov
+Garnier Goes Organic in L’Oréal Bid to Lift Mass Market Sales
+2019
+Feb
+L’Oréal Results Thrive Thanks to Strong Demand from Chinese Consumers
+Feb
+Best Sales Growth Reported by L’Oréal in the Last 10 Years
+Jun
+L’Oréal and Amazon Combine Artificial Intelligence and Beauty
+Sep
+L’Oréal Bets on Hair.com as Its e-Commerce Home for Hair Care
+Dec
+Fashion House Prada Appoints L’Oréal to Run Its Luxury Beauty Products
+2020
+Apr
+L’Oréal Q1 Sales Shrink
+Jul
+L’Oréal Sales Slump as Makeup Loses Allure During Lockdowns
+Oct
+L’Oréal Sales Rebound After Lockdowns Ease
+Nov
+L’Oréal Turns to Google as Coronavirus Spurs Virtual Make-Up Shift
+Dec
+L’Oréal Strengthens Its Asian Business with the Acquisition of Takami
+2021
+Jan
+Older Shoppers Are the Hot New Things for Consumer Brands
+Feb
+L’Oréal Profit Falls but Sees Recovery Signs
+Apr
+L’Oréal Sales Rise, Helped by Chinese Duty-Free Demand in Hainan
+Jun
+Global Companies Leaving HK After Beijing’s Political Crackdown
+Jun
+How L’Oréal Doubles e-Commerce Growth in a Pandemic
+Done? OK, first question. Would you have stayed invested at the end of 2009? All five headlines look worrisome. Let’s look at three of them. First, eBay seems to have scored a significant victory over L’Oréal in the UK courts, which ruled that eBay was not responsible for any counterfeit products sold on its website. Could this ruling lead to L’Oréal losing the e-commerce race? Second, even more worrisome, the Danish Consumer Council declared that Biotherm, a L’Oréal skin product, contained harmful substances. What kind of reputational and real damage would the company suffer in other parts of Europe? Third, L’Oréal’s chair is embroiled in a legal battle among the family members who own L’Oréal. Sir Lindsay Owen-Jones, the chair, had allegedly received about €100 million from Liliane Bettencourt, who owned 31 percent of the company in return for his long service. As an investor, should we be worried that the chair might be distracted, given the public nature of the feud?
+Let’s examine the potentially damaging events of 2011. The regulator has fined L’Oréal for price-fixing and banned many of its advertisements, and the financial results for the second quarter clearly show that the company has been unable to pass higher costs on to consumers, thereby suffering lower margins. Does this indicate that L’Oréal is finally losing its brand power and that the competition has caught up? Owen-Jones has resigned abruptly, although his term wasn’t expiring until 2014. He was widely acknowledged as the key driving force behind the company’s global success and was one of France’s most respected business leaders. He delivered double-digit profit growth for almost two decades when he was the company’s CEO from 1988 to 2006. Should you be selling your stake in L’Oréal because it will be hard for a new leader to emulate him, or should you be buying more if the price reacts negatively?
+As you glance through table 8.1, you will notice dozens of such news items that point to a potentially significant event in the company’s life. Some may even seem self-contradictory. For example, in August 2013, L’Oréal made an aggressive bid to acquire a Chinese company. But by January 2014, the company appears to have pulled back from China by stopping the sale of its Garnier brand. Then, in June 2015, the company cut prices aggressively in a blatant attempt to gain market share.
+We don’t invest in France, but if we did, should we have reacted to these headlines? If not, why? And if so, how?
+By studying Kurtén’s bears and Darwin’s finches.
+Evolution Is Not What It Seems
+The metaphor “never judge a book by its cover” should also apply to bland research articles with titles like “Rates of Evolution in Fossil Mammals.” Contrary to what you would expect from this title, this article, in my layperson’s opinion, is one of the most exciting in the history of the development of evolutionary theory.
+In 1959, exactly a century after the publication of Darwin’s Origin, a Finnish scientist named Björn Kurtén published this article in a biology journal.2 Instead of celebrating Darwinism’s centenary, Kurtén poked a seemingly large hole in it. To comprehend Kurtén’s stunning claim, we need to revisit Darwin’s assertion in Origin:
+I do believe that natural selection will always act very slowly, often only at long intervals of time, and generally only on a very few of the inhabitants of the same region at the same time. I further believe that this prolonged, intermittent action of natural selection accords perfectly well with what geology tells us of the rate and manner at which the inhabitants of this world have changed.
+As we learned in chapter 5, Darwin was inspired by the famous geologist Charles Lyell who proposed the theory of uniformitarianism. Lyell contended that the earth has slowly and uniformly changed over the millennia and that understanding the present is key to interpreting the past. He directly contradicted the prevailing theory of catastrophism, which suggested that the features of the earth, like mountains, resulted from extensive and sudden changes or catastrophes. Darwin applied Lyell’s theory of geological evolution to the biological world. He believed that just as the earth evolves slowly over very long periods, so does the world of animals and plants.
+The upshot of Darwin’s insight is that if we were to measure the pace of evolution, it would correlate proportionately with the measurement period: It would be slow over brief periods and fast over long periods. Darwin’s theory stressed that species evolve slowly. This idea was gospel until Kurtén’s article was published in 1959.
+Kurtén plotted the evolution of the length of the second lower molar of the brown bear in Europe during the Pleistocene epoch (between 2.6 million and 11,700 years ago). Let’s examine the data in table 8.2 for the rate of change of the molar measured in Darwins (one Darwin is a change of 1/1000 in 1,000 years) and the period of measurement.
+Table 8.2The inverse relationship between measurement period and evolutionary change
+Measurement period (years)
+Rate of change (Darwins)
+400,000
+0.41
+100,000
+0.90
+80,000
+0.76
+50,000
+2.20
+22,000
+3.20
+8,000
+13.8
+Do you see a trend here? Kurtén’s data show that evolution appeared to occur quite quickly when measured over short periods and slowly when the measurement period was prolonged. Thus, when measured over 400,000 years, the rate of change of the molar was 0.41 Darwins, but over 8,000 years, the rate of change was an astounding 13.8 Darwins. He demonstrated a similar trend in other fossilized mammalian species, including horses.
+I was incredulous when I first read about Kurtén’s conclusion. Suppose we accept the Darwinian notion that the current diversity of the world is the result of species transforming slowly (but surely) throughout the eons. How is it possible that the pace of evolution is slower over more extended periods and faster over shorter periods?</div>
+            <div class="text-block simplified-text">好的，这是按照您的要求翻译的书籍段落：
+
+---
+
+**欧莱雅称产品从赌场流入药店**
+11月
+**丹麦宣布妮维雅和碧欧泉产品可能有害**
+12月
+**欧莱雅主席深陷礼品纠纷法律战**
+2010年
+2月
+**欧莱雅寻求赢得十亿新客户**
+3月
+**雀巢被视为欧莱雅股票的卖家而非买家**
+4月
+**欧莱雅收购艾茜 (Essie)**
+7月
+**欧莱雅丑闻升级，警方逮捕四人**
+12月
+**睫毛增强产品市场蓬勃发展**
+2011年
+2月
+**欧文-琼斯结束欧莱雅主席任期**
+3月
+**欧莱雅、宝洁因化妆品价格操纵被罚款**
+7月
+**欧莱雅广告因“过度修图”被禁**
+8月
+**成本上升挤压欧莱雅利润率**
+10月
+**欧莱雅妆点新兴市场；股票前景靓丽**
+2012年
+3月
+**欧莱雅重组其奢侈品部门**
+8月
+**欧莱雅让-保罗·安巩对2012年下半年充满信心**
+9月
+**FDA就抗衰老广告宣传警告欧莱雅**
+10月
+**欧莱雅深入了解印度消费者**
+11月
+**欧莱雅将收购衰败城市 (Urban Decay) 化妆品**
+2013年
+2月
+**2012年销售增长后，欧莱雅预计2013年将跑赢市场**
+4月
+**“法国制造”的奢华美妆推动欧莱雅增长**
+4月
+**精明的社交媒体策略为欧莱雅中国带来回报**
+8月
+**欧莱雅出价8.43亿美元收购中国护肤品牌**
+10月
+**受汇率影响及美国市场放缓拖累，欧莱雅营收下滑**
+2014年
+1月
+**欧莱雅撤离中国市场**
+3月
+**欧莱雅被评为全球最具商业道德公司之一**
+6月
+**欧莱雅概述到2020年消费者基数翻番计划**
+7月
+**雀巢减持欧莱雅主要股份**
+8月
+**欧莱雅抗衰老宣传涉嫌误导**
+2015年
+5月
+**欧莱雅抢占生物打印皮肤市场**
+6月
+**欧莱雅拟降价吸引中国消费者**
+7月
+**两种相反方式影响欧莱雅估值的设想**
+10月
+**欧莱雅为何日益关注印度？**
+11月
+**欧莱雅前9个月销售额增长13.2%至204亿美元**
+2016年
+5月
+**巴黎欧莱雅荣膺全球最具价值美妆品牌**
+7月
+**欧莱雅将以12亿美元收购IT Cosmetics**
+9月
+**马哈拉施特拉邦FDA检测显示欧莱雅产品含汞**
+11月
+**高端化妆品需求增长推动欧莱雅股价飙升**
+12月
+**欧莱雅加大对数字初创企业的投资**
+2017年
+1月
+**欧莱雅将以13亿美元收购三个美国护肤品牌**
+2月
+**欧莱雅受益于数字支出增加**
+3月
+**巴黎欧莱雅推出其最大规模的会员奖励计划**
+6月
+**欧莱雅完成出售美体小铺**
+8月
+**聚焦奢侈品：欧莱雅业绩显示高端产品需求旺盛**
+2018年
+5月
+**欧莱雅收购韩国化妆品公司Nanda**
+7月
+**大众药妆品牌遇挫，欧莱雅股价下跌**
+10月
+**强劲的亚洲需求提振欧莱雅销售**
+10月
+**欧莱雅CEO认为尽管美国加征关税，中国市场未见放缓**
+11月
+**卡尼尔转向有机产品，欧莱雅力推大众市场销售**
+2019年
+2月
+**得益于中国消费者的强劲需求，欧莱雅业绩亮眼**
+2月
+**欧莱雅报告十年来最佳销售增长**
+6月
+**欧莱雅与亚马逊结合人工智能与美妆**
+9月
+**欧莱雅押注Hair.com作为其护发电商平台**
+12月
+**时尚品牌普拉达任命欧莱雅运营其奢华美妆产品**
+2020年
+4月
+**欧莱雅第一季度销售额萎缩**
+7月
+**封锁期化妆品失宠，欧莱雅销售暴跌**
+10月
+**封锁解除后欧莱雅销售反弹**
+11月
+**疫情催生虚拟试妆，欧莱雅转向谷歌**
+12月
+**欧莱雅收购Takami以加强亚洲业务**
+2021年
+1月
+**老年消费者成为消费品牌新热点**
+2月
+**欧莱雅利润下滑但现复苏迹象**
+4月
+**受海南免税需求推动，欧莱雅销售增长**
+6月
+**北京政治整肃后，跨国公司撤离香港**
+6月
+**欧莱雅如何在疫情期间实现电商增长翻倍**
+
+好了？那么第一个问题。2009年底，你还会继续持有（欧莱雅股票）吗？所有五条头条新闻看起来都令人担忧。我们来看看其中三条。首先，eBay似乎在英国法庭上对欧莱雅取得了重大胜利，法庭裁定eBay无需对其网站上出售的任何假冒产品负责。这一裁决是否会导致欧莱雅输掉电子商务竞争？其次，更令人担忧的是，丹麦消费者委员会宣布欧莱雅的护肤品牌碧欧泉含有有害物质。该公司在欧洲其他地区将遭受何种声誉和实际损害？第三，欧莱雅主席卷入了拥有欧莱雅的家族成员之间的法律纠纷。据称，主席林赛·欧文-琼斯爵士因长期服务，从持有公司31%股份的利利亚娜·贝当古处获得了约1亿欧元。作为投资者，鉴于这场争执的公开性，主席可能会分心，我们是否应该担忧？
+
+让我们审视2011年可能造成损害的事件。监管机构因价格操纵对欧莱雅处以罚款，并禁止了其许多广告；第二季度的财务结果清楚地表明，公司未能将更高的成本转嫁给消费者，因而利润率下降。这是否表明欧莱雅终于开始失去品牌力量，竞争对手已经赶超？欧文-琼斯突然辞职，尽管他的任期要到2014年才结束。他被公认为公司全球成功背后的关键推动力，也是法国最受尊敬的商业领袖之一。在1988年至2006年担任公司CEO期间，他实现了近二十年的两位数利润增长。你是应该抛售欧莱雅的股份，因为新领导者很难效仿他，还是如果股价因此出现负面反应，你应该买入更多？
+
+浏览表8.1时，你会注意到数十条此类新闻，指向公司生命中可能发生的重大事件。有些甚至看起来自相矛盾。例如，2013年8月，欧莱雅积极出价收购一家中国公司。但到了2014年1月，该公司似乎通过停止销售其卡尼尔品牌撤出了中国。然后，在2015年6月，公司又大幅降价，公然试图抢占市场份额。
+
+我们不在法国投资，但如果我们投资了，我们应该对这些头条新闻做出反应吗？如果不应该，为什么？如果应该，该如何反应？
+
+通过研究库尔滕的熊和达尔文的雀鸟。
+**进化并非表面所见**
+
+“切勿以貌取书”的比喻也应适用于标题平淡的研究文章，例如《哺乳动物化石的进化速率》。与这个标题给你的预期相反，以我这个外行的观点看，这篇文章是进化论发展史上最激动人心的文章之一。
+
+1959年，恰逢达尔文《物种起源》出版一百周年之际，一位名叫比约恩·库尔滕的芬兰科学家在生物学杂志上发表了这篇文章。库尔滕非但没有庆祝达尔文主义百年诞辰，反而似乎在其理论中戳了一个大洞。要理解库尔滕惊人的主张，我们需要重温达尔文在《物种起源》中的论断：
+
+> 我确实相信自然选择总是作用得非常缓慢，通常只在很长的间隔时间内发生，而且通常只同时作用于同一地区的少数居民。我还相信，自然选择这种缓慢、间歇性的作用，与地质学告诉我们的这个世界居民变化的速度和方式完全吻合。
+
+正如我们在第五章所学，达尔文受到著名地质学家查尔斯·莱尔提出的均变论启发。莱尔主张，地球在数千年间缓慢而均匀地变化，理解现在是解释过去的关键。他直接反驳了当时盛行的灾变论，后者认为地球的特征，如山脉，是由大规模、突然的变化或灾难造成的。达尔文将莱尔的地质演化理论应用于生物界。他认为，正如地球在极长时期内缓慢演化一样，动植物世界也是如此。
+
+达尔文见解的结果是，如果我们测量进化的速度，它与测量周期成正比：在短周期内缓慢，在长周期内快速。达尔文的理论强调物种进化缓慢。这一观点在库尔滕1959年的文章发表前一直是金科玉律。
+
+库尔滕绘制了更新世（距今260万年至11,700年前）欧洲棕熊第二下臼齿长度的进化图。让我们看看表8.2中测量到的臼齿变化速率（以达尔文为单位，1达尔文表示1000年内发生千分之一的变化）和测量周期。
+
+**表8.2 测量周期与进化变化的反比关系**
+测量周期（年） | 变化速率（达尔文）
+---|---
+400,000 | 0.41
+100,000 | 0.90
+80,000 | 0.76
+50,000 | 2.20
+22,000 | 3.20
+8,000 | 13.8
+
+你看出趋势了吗？库尔滕的数据表明，在短周期内测量时，进化似乎发生得相当快；而当测量周期延长时，进化则显得缓慢。因此，在40万年周期内测量时，臼齿的变化速率为0.41达尔文，但在8000年周期内，变化速率却高达惊人的13.8达尔文。他在其他哺乳动物化石物种（包括马）中也证明了类似的趋势。
+
+我第一次读到库尔滕的结论时感到难以置信。假设我们接受达尔文的观点，即当今世界的多样性是物种在漫长岁月中缓慢（但确定地）转变的结果。那么，进化速度在更长的周期内反而更慢，在更短的周期内反而更快，这怎么可能呢？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">Kurtén’s article was not an outlier. In a 2009 article titled “Rates of Evolution,” Philip D. Gingerich, a paleontologist at the University of Michigan, also supported Kurtén’s claim.3 He demonstrated mathematically and empirically that phenotypic change (i.e., changes in the bodily characteristics of a species) could be rapid from one generation to the next. In contrast, evolution can be slow on long time scales.
+Does this inverse correlation between the rate of change of bodily parts and the time interval of measurement also apply to genes? It does. Simon Ho, an Australian evolutionary biologist, and his colleagues provide an excellent overview of this seemingly un-Darwinian phenomenon in their 2011 article, “Time-Dependent Rates of Molecular Evolution.”4 They summarize the research done by several scientists on the genomes of humans, insects, birds, fish, and even bacteria and viruses. Most of this research points in the same direction: Contrary to expectation, the pace of genetic evolution is inversely correlated with the period of measurement.
+The Grants Take It One Step Further
+All the research studies mentioned so far have examined evolution over hundreds or thousands of years. Do these conclusions also apply over a few years or decades?
+We now return to Peter Boag and Laurene Ratcliffe, who had been stunned by the result of their analysis of Darwin’s finches, both dead and living. On the small island of Daphne Major in the Galápagos, they witnessed what no one had seen before: natural selection and evolution occurring in real time in two species of finches. As Boag stated in his famous 1981 Science article, the intensity of natural selection in the birds was “the highest yet recorded for a vertebrate population.”5
+Fossils show that evolution has occurred, and Darwin’s irrefutable logic argues that natural selection can drive evolution. However, no one had ever seen natural selection and evolution in action. Darwin didn’t think it was even possible. In 1893, the German evolutionary biologist August Weismann wrote, “It is very difficult to imagine this process of natural selection in its details; and to this day, it is impossible to demonstrate it in any one point” (author’s emphasis).
+In their book, The Variation of Animals in Nature, the British evolutionary biologists Guy C. Robson and Owain W. Richards wrote in 1936, “In Darwin’s treatment of the subject, no proof is adduced that a selective process has ever been detected in nature. . . . It is a very unsatisfactory state of affairs for biological science that a first-class theory should still dominate the field of inquiry though largely held on faith or rejected on account of prejudice.”
+The unsatisfactory state of affairs had finally ended. Boag and Ratcliffe’s observations changed the field of evolution forever. They were part of a long-term project started by Peter and Rosemary Grant, a married British couple and currently emeritus professors at Princeton. The Grants wanted to study evolution in the wild and discover the key factors that lead to new species. So they decided to study Darwin’s finches, also called Galápagos finches. Figure 8.1 provides illustrations of four species of finches (out of a total of fourteen) that have adapted and evolved from one mother species that landed on the Galápagos Islands two to three million years ago.6
+8.1 Four of the fourteen species of Darwin’s finches. Note the difference in the size and shape of their beaks, which have adapted to the flora and fauna of the various Galápagos Islands. This phenomenon, in which a single species evolves into many species adapted to specialized modes of life, is called adaptive radiation.
+Source: Licensed from Science Photo Library.
+The Grants landed on the island Daphne Major in 1973 to start their project.7 As I shared in chapter 5, Darwin had visited the Galápagos in 1835. The Galápagos group of islands is almost one thousand kilometers off the west coast of Ecuador. Owing to its remote location, it is home to several endemic species (i.e., species not found anywhere else in the world). There are about a dozen central and minor islands in the archipelago.
+Daphne Major is small, nondescript, and remote even by the standards of Galápagos (Darwin did not even see it) and measures barely a square kilometer in area.
+The next time I feel like complaining about the firmness of the mattress or the softness of the pillows in a hotel room, I hope I remember what the Grants endured on Daphne Major for six months every year for forty consecutive years. Before the Grants and their research staff made it their home, no humans had lived there. How could they? There is only one way to enter the island, and that is the base of a cliff since the island has no shoreline.
+To set up their camp every year, here is what the Grants had to do. They had to abandon their boat as they neared the island and approach the cliff base at low tide in a rowboat called a panga. A single black ledge filled with barnacles was their only landing point; it’s the size of a large exercise mat. They needed to leap onto this mat while the panga swayed wildly in the ocean waves. From here, they had to walk up the cliff on hard, wet rocks until they arrived at another ledge that they called the Landing. Then they formed a human chain and passed up tents, poles, water, food, and everything else they would need for the next six months. Daphne Major has no water or food. They could pitch their tents only at one spot, which was the size of a table and on the rim of a volcano. They had to lug all their supplies there from the base of the cliff. They cooked their meals in a small cave protected from the harsh sun by a sheet of cloth. Once settled, they would spend the next six months measuring the body size, beak size, and beak shape of every finch on the island. They would also extract blood to do a genetic analysis.
+Why would anyone in their right mind spend time on such an island? Because it offered many advantages that few other places could.
+Daphne Major was so far removed from the other islands that there was only a minimal chance that the finches or other island species could escape or that new ones could arrive. It was a perfect petri dish for evolutionary studies because it would not get “contaminated.” Also, the Grants realized that the Galápagos were a gold mine for testing and refining Darwin’s theory. The Galápagos Islands undergo extreme climate swings—from severe drought to copious rain—thereby providing ample opportunity for natural selection. Last, Daphne Major was small enough to track every bird that lives there over many years, which they did. From 1973 to 2012, the Grants tagged about twenty thousand birds over eight generations, and they tracked almost every copulating pair and their offspring.
+In the first four years of their study—from 1973 to 1976—the island received average or excess rainfall. But in 1977, after a brief spell of rain in January, Daphne Major suffered a severe drought. Almost all the greenery disappeared from the island, and the only plants that survived the drought were cactus bushes. The finches fed on seeds of all sizes. The small and medium-sized seeds disappeared very soon, and the finches were then left with only large and hard seeds. But only the finches with larger beaks could break open these larger seeds; finches with small and medium-sized beaks could not open these seeds and so starved and perished.
+The island was inhabited mainly by two species. At the start of 1977, there were about 1,200 Geospiza fortis and 280 Geospiza scandens. By the end of the year, only 180 fortis and 110 scandens were left. About 85 percent of the fortis and 60 percent of the scandens had succumbed to the drought.
+The Grants’ data showed that the surviving fortis were, on average, 5 to 6 percent larger than the ones that had died. The average beak length of the survivors was 11.07 millimeters compared to 10.68 millimeters for the species before the drought; the average beak depth had increased from 9.42 millimeters to 9.96 millimeters. These differences may appear small to us, but they can tilt the balance between life and death in the wild. For example, a fortis with a beak length of 11 millimeters can crack a seed from a plant called a caltrop, but an individual with a beak length of 10.5 millimeters will not even attempt to do so. Just half a millimeter can make all the difference.
+The intensity of natural selection the Grants observed wasn’t limited just to beak length and depth. At the start of 1977, there were 600 male and 600 female fortis. By the end of the drought, more than 150 males and only a few females were alive. The males are typically larger than the females by about 5 percent, so the males were more likely to survive. There were now six males to every female.
+Natural selection can occur in a single generation, but evolution takes place only over many generations. Given the dramatic change in the beak size and sex ratio of the finches, natural selection had happened. But what about evolution? The Grants had to wait one more year to measure the beak size and shape of the offspring of the drought survivors of 1977. But then, they saw evolution in action, too—the new generation was 4 to 5 percent larger than the population before the onset of the drought.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+库尔滕的文章并非个例。在2009年一篇题为《演化速率》的文章中，密歇根大学的古生物学家菲利普·D·金格里奇也支持了库尔滕的观点。他通过数学和实证方法证明，表型变化（即物种身体特征的变化）可以在代际之间迅速发生。相比之下，在漫长的时间尺度上，演化则可能非常缓慢。
+
+身体部位变化速率与测量时间间隔之间的这种负相关性是否也适用于基因？确实如此。澳大利亚进化生物学家西蒙·何及其同事在2011年的文章《随时间变化的分子演化速率》中，对这种看似非达尔文式的现象做了出色的综述。他们总结了几位科学家对人类、昆虫、鸟类、鱼类乃至细菌和病毒基因组所做的研究。这些研究大多指向同一个结论：与预期相反，遗传演化的速度与测量周期呈负相关。
+
+格兰特夫妇更进一步
+迄今为止提到的所有研究都考察了数百年乃至数千年的演化。这些结论是否也适用于短短几年或几十年呢？
+
+现在我们回到彼得·博格和劳伦·拉特克利夫，他们对分析结果——无论是已故还是现存的达尔文雀——感到震惊。在加拉帕戈斯群岛的小岛大戴夫尼岛上，他们目睹了前所未见的现象：自然选择和演化在两种雀鸟身上实时发生。正如博格在他1981年那篇著名的《科学》杂志文章中所说，这些鸟类经历的自然选择强度是“迄今为止在脊椎动物种群中记录到的最高值”。
+
+化石证明演化已然发生，而达尔文无可辩驳的逻辑也论证了自然选择可以驱动演化。然而，此前从未有人亲眼目睹过自然选择和演化的实际发生过程。达尔文甚至认为这是不可能的。1893年，德国进化生物学家奥古斯特·魏斯曼写道：“很难在细节上想象自然选择的过程；时至今日，仍无法在任何一点上证实它”（作者强调）。
+
+英国进化生物学家盖伊·C·罗布森和欧文·W·理查兹在1936年的著作《自然界动物的变异》中写道：“在达尔文对主题的论述中，并未提供任何证据表明在自然界中曾检测到选择过程……一个主要依靠信念维持或因偏见而遭拒绝的一流理论，竟仍主导着研究领域，这对生物科学而言是极不令人满意的状况。”
+
+这种不令人满意的状况终于结束了。博格和拉特克利夫的观察永远改变了演化研究领域。他们参与的是一个长期项目，该项目由彼得·罗斯玛丽·格兰特夫妇启动。这对英国夫妇当时是普林斯顿大学的教授，现已荣休。格兰特夫妇希望研究野外环境中的演化，并发现导致新物种形成的关键因素。因此他们决定研究达尔文雀，也称加拉帕戈斯雀。图8.1展示了十四种雀鸟中的四种，它们由两三百万年前抵达加拉帕戈斯群岛的一个祖先物种适应演化而来。请注意它们喙部大小和形状的差异，这些差异使它们适应了不同加拉帕戈斯岛上的动植物群。这种单一物种演化为多个适应特定生活方式的物种的现象，称为适应辐射。
+
+格兰特夫妇于1973年登上大戴夫尼岛开始他们的项目。正如我在第五章所述，达尔文曾于1835年造访加拉帕戈斯。加拉帕戈斯群岛位于厄瓜多尔西海岸近一千公里之外。由于其地理位置偏远，这里栖息着数种特有物种（即世界其他地方找不到的物种）。该群岛由大约十几个主要岛屿和小岛组成。
+
+即使以加拉帕戈斯的标准衡量，大戴夫尼岛也显得狭小、不起眼且偏远（达尔文甚至未曾见到它），面积仅约一平方公里。
+
+下次我在酒店房间抱怨床垫太硬或枕头太软时，希望我能想起格兰特夫妇在大戴夫尼岛上连续四十年、每年忍受六个月的艰苦生活。在他们和研究团队安家于此之前，岛上从未有人居住过。怎么可能有人住呢？岛上只有一处入口，即一处悬崖底部，因为该岛没有海岸线。
+
+他们每年搭建营地时，必须这样做：在靠近岛屿时弃船，乘一种名为“潘加”的小划艇在退潮时靠近悬崖底部。唯一登岸点是一块布满藤壶的黑色岩架，大小仅如一张大型健身垫。他们必须在“潘加”艇随着海浪剧烈摇晃时跳上这块“垫子”。从这里，他们必须沿着坚硬湿滑的岩石爬上悬崖，到达另一处被称为“登陆点”的岩架。然后他们组成人链，将帐篷、杆子、水、食物以及未来六个月所需的一切物资传递上去。大戴夫尼岛既无水源也无食物。他们只能在火山口边缘一块桌子大小的空地上搭帐篷。所有物资都必须从悬崖底部费力拖运至此。他们在一处小洞穴里做饭，仅用一块布遮挡烈日。安顿下来后，他们将在接下来的六个月里测量岛上每只雀鸟的体型、喙的大小和形状，并抽取血液进行基因分析。
+
+头脑正常的人为何要在这样的岛上耗费时光？因为它提供了其他地点鲜有的诸多优势。
+
+大戴夫尼岛与其他岛屿相距遥远，岛上的雀鸟或其他物种几乎无法逃离，新物种也难以抵达。这为演化研究提供了一个完美的“培养皿”，因为它不会受到“污染”。此外，格兰特夫妇意识到加拉帕戈斯是检验和完善达尔文理论的宝库。加拉帕戈斯群岛气候极端波动——从严重干旱到暴雨如注——从而为自然选择提供了充分的机会。最后，大戴夫尼岛面积足够小，能够多年追踪生活在岛上的每一只鸟，他们也确实做到了。从1973年到2012年，格兰特夫妇在八代雀鸟中标记了约两万只，追踪了几乎每一对交配的鸟及其后代。
+
+在他们研究的前四年（1973-1976年），该岛降雨量正常或偏多。但在1977年1月短暂降雨后，大戴夫尼岛遭遇了严重干旱。岛上几乎所有绿色植物消失殆尽，只有仙人掌丛在干旱中幸存。雀鸟以各种大小的种子为食。中小型种子很快耗尽，雀鸟只剩下硕大坚硬的种子。但只有喙较大的雀鸟才能啄开这些大种子；喙型中小型的雀鸟无法啄开这些种子，因此饥饿而死。
+
+岛上主要栖息着两种雀鸟。1977年初，约有1200只强壮地雀和280只仙人掌地雀。到年底时，仅剩180只强壮地雀和110只仙人掌地雀。约85%的强壮地雀和60%的仙人掌地雀死于干旱。
+
+格兰特夫妇的数据显示，幸存的强壮地雀平均体型比死去的同类大5%到6%。幸存者的平均喙长为11.07毫米，而干旱前该物种的平均喙长为10.68毫米；平均喙深从9.42毫米增至9.96毫米。这些差异在我们看来或许微小，但在野外却足以决定生死。例如，一只喙长11毫米的强壮地雀能啄开蒺藜草的种子，而喙长10.5毫米的个体甚至不会尝试去啄。仅仅半毫米就能改变一切。
+
+格兰特夫妇观察到的自然选择强度不仅限于喙长和喙深。1977年初，有600只雄性和600只雌性强壮地雀。干旱结束时，仅有150多只雄性和寥寥数只雌性存活。雄性通常比雌性大5%左右，因此雄性存活几率更高。此时雄雌比例达到六比一。
+
+自然选择可以在一代之内发生，但演化却需要经历许多世代。鉴于雀鸟喙的大小和性别比例发生了剧变，自然选择已然发生。但演化呢？格兰特夫妇必须再等一年，才能测量1977年干旱幸存者后代的喙的大小和形状。然而，他们也亲眼目睹了演化的进行——新一代雀鸟的体型比干旱开始前的种群大了4%到5%。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">They soon realized that their observation of 1977 was not a fluke. In 1983, there was a very heavy rainfall because of El Niño, and the island became lush and green. Green vines covered even the cactus bushes. This changed vegetation had a significant impact two years later when drought struck again. This time, tiny seeds were abundant (produced by the vines of 1983), and large seeds became rare. As a result, the finches with large beaks found it hard to pick up the seeds, and a large proportion of the survivors of this drought were the small-beaked finches. Their offspring, as a result, also had smaller beaks. Natural selection and evolution were evident again, except that, unlike in 1977, the beaks had evolved to become smaller.
+Thus, in less than a decade, the finches’ beak size increased and then decreased because of natural selection. When observed over a decade, beak size may not have appeared to change that much, but it had fluctuated significantly in the intervening period owing to the two extreme climate events.
+The Grants published the results of their long-term study of the evolution of the two species of finches—fortis and scandens—in Science in April 2002 under the title “Unpredictable Evolution in a 30-Year Study of Darwin’s Finches.”8 Before starting their research, they had hypothesized that the body traits of the finches would vary within a narrow band over the period of the study. But as they say at the beginning of the article, “The data do not support the expectation of no change.”
+If you examine the graphs of the body size, beak size, and beak shape of fortis and scandens in the Grants’ article, you will notice the inverse correlation between the measurement period and the pace of evolution pointed out by Kurtén in brown bears. Thus, while the body size of fortis fluctuated a lot between the mid-1980s and the early 2000s, the overall change over those two decades was small. Similarly, the annual variation of the beak size of scandens appeared to be much greater than the variation from the mid-1970s until the early 2000s. The beak shape of fortis was practically the same when measured in the mid-1980s and the early 2000s, but its annual change was much more significant.
+There is a lovely fractal-like property to this phenomenon. It does not seem to matter if the measurement period is thousands of years (bears) or just a few decades (finches). The pace of evolution speeds up over shorter periods and slows down over more extended periods.
+But so what? Why should long-term investors care about Kurtén’s bears and the Grants’ finches?
+The Grants and Kurtén Dictate When We Buy and Sell
+My observations are nowhere as scientific as the Grants’ or Kurtén’s. However, I know that the daily, weekly, monthly, and quarterly rate of change in exceptional businesses appears much greater than the rate of change measured over years and decades.
+This realization has helped me formulate an investing principle that I call the Grant–Kurtén principle of investing (GKPI). It goes as follows:
+When we find high-quality businesses that do not fundamentally alter their character over the long term, we should exploit the inevitable short-term fluctuations in their businesses for buying and not selling.
+GKPI requires us to own high-quality businesses that do not fundamentally alter their character over the long term. “High-quality businesses” is a loaded term and can mean different things to different investors. If you have come this far, I assume you know our definition. For us, the critical character traits of a high-quality business are stellar operating and financial track records, a stable industry, a high governance standard, a defensible moat, increasing market share, and low business and financial risk.
+How do we use GKPI for buying? By exploiting short-term fluctuations.
+We are highly demanding. We want a company to be run by an honest management team, and show solid operating and financial track records over many years. It needs to stay ahead of the competition and be debt free, and we also want it to keep taking calculated risks while not unduly burdening the business. And, as if all these demands were not enough, we dare to insist on a fair price for these rare gems! How is this even possible? The market should almost never offer us an attractive price for such a business, and it doesn’t.
+However, on rare occasions, investors who don’t subscribe to GKPI succumb to the pressure of temporary macro, industry, or company issues, and we can then swoop in to buy a piece of an exceptional company. It doesn’t—and shouldn’t—happen often, but when it does, we go all in.
+Take WNS, one of our largest investments to date. It is one of India’s leading business process outsourcing (BPO) companies and is listed on the New York Stock Exchange. It was set up in 1996 as a captive back office by British Airways and started serving third-party clients in 1999. In 2002, Warburg Pincus acquired a controlling stake in WNS. (I wasn’t involved in the deal.) Although British Airways contributed to about 90 percent of WNS’s revenues at the time of acquisition by Warburg Pincus in 2002, its revenue share had fallen to less than 10 percent by early 2008. The management at WNS had done a stellar job of diversifying away from British Airways and the travel industry. By outsourcing back-office functions like finance and accounting, mortgage processing, and customer analytics, WNS’s clients typically get higher-quality service (e.g., faster turnaround times, lower error rates) at a much lower cost.
+In January 2008, the stock price of WNS fell sharply from a previous high of $35 to $13. Three factors seemed to have contributed to this steep correction. First, one of its large mortgage lender clients, First Magnus, declared bankruptcy in late 2007 owing to the ongoing subprime mortgage crisis in the United States. First Magnus had contributed to about 5 percent of WNS’s revenue, so the management lowered its revenue guidance for the next year. Second, the management indicated that it may lose Aviva, a large insurance client that was contributing to about 8 percent of WNS’s revenue, by May 2008 if Aviva were to acquire the WNS facility servicing it. And third, the appreciating rupee had the analysts worried since most of WNS’s delivery presence was in India. (A stronger rupee could make WNS less competitive and squeeze margins.)
+The question for us was this: Was this a temporary blip, or was it a more permanent decline of achievable revenue and profit growth? We decided it was the former. The loss of First Magnus wasn’t WNS’s fault, and even the potential loss of Aviva would be due to Aviva’s change of strategy, not because WNS wasn’t serving it well. Also, we didn’t believe WNS’s long-term competitive advantage would be adversely affected by exchange rate fluctuations. WNS’s annualized revenue growth of 64 percent from 2004 to 2007 was proof that it offered high-quality back-office processing services to its clients at competitive prices.
+Also, we love the Indian BPO industry. It is lucrative for well-established incumbents because it has high entry barriers for new entrants (businesses are extremely wary of outsourcing their mission critical applications to a start-up) and high exit barriers for existing clients (WNS and other leading players almost never lose a customer given the sticky nature of back-office processing). I assume you have heard the song “Hotel California” by the Eagles. The song’s last line, “You can check out any time you like, but you can never leave,” applies to the clients of the leading companies in the Indian BPO industry. WNS was—and is—in a great place.
+The bottom line was that despite the market pessimism, we had no reason to believe that anything fundamental had changed at the company.
+We bought aggressively and invested $41 million in early 2008 at an average price of $15.2 per share. By March 2022, the stock price ($85.5) had gained 462 percent, whereas the Indian indexes (the Sensex as well as the Midcap Index) had gained only 97 percent in dollars.
+Then, almost exactly twelve years after our initial investment in WNS in early 2008, we got an opportunity to buy again during the early days of pandemic panic from March to May 2020. We invested an additional $98 million in the business at an average price of $46.1 per share just when the markets seemed to think that the world was ending. Some gifts just keep on giving.
+How do we use GKPI for selling? By ignoring short-term fluctuations.
+If we get lucky by owning a high-quality business like WNS, GKPI requires us not to sell. Why? Because, as shown by the Grants and Kurtén, short-term changes do not usually impact the long-term character of an exceptional enterprise. Let’s revisit L’Oréal to marvel at the beauty of GKPI.
+Table 8.3 provides a snapshot of the business in 2009 and 2020.9 If you go through the annual reports for these years, you will get a sense of déjà vu—the language, the tone, and the business focus seem eerily similar even though eleven years separate the two commentaries.
+Table 8.3L’Oréal from 2009 to 2020: Some things don’t change
+2009
+2020
+Business
+Focused on beauty
+Focused on beauty
+Customer segments
+Mass to premium
+Mass to premium
+Geographies
+Global
+Global
+Sales (bill euros)
+17.5
+28
+Profits (bill euros)
+1.8
+4
+Divisions
+Professional Products, Consumer Products, Luxury Products, Active Cosmetics
+Professional Products, Consumer Products, Luxury Products, Active Cosmetics
+Consumer and luxury products
+77 percent of sales
+78 percent of sales
+W. Europe and U.S.
+66 percent of sales
+52 percent of sales
+Sales from Asia
+13 percent of sales
+35 percent of sales
+Professional brands
+Kerastase, Redken, L’Oréal Professional
+Kerastase, Redken, Genesis, Blond Absolu
+Consumer brands
+L’Oréal Paris, Garnier, Maybelline
+L’Oréal Paris, Garnier
+Luxury brands
+Lancôme, Yves Saint Laurent, Kiehl’s
+Lancôme, Kiehl’s, Helena Rubinstein
+Active brands
+La Roche-Posay, Vichy</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的书籍段落：
+
+---
+
+他们很快意识到1977年的观测并非偶然。1983年，由于厄尔尼诺现象，降雨量极大，岛屿变得郁郁葱葱，一片翠绿。绿色的藤蔓甚至覆盖了仙人掌灌木丛。这种植被变化在两年后干旱再次来袭时产生了重大影响。这一次，小种子（由1983年的藤蔓产生）非常丰富，而大种子变得稀少。结果，大嘴的地雀难以捡拾种子，在这场干旱中幸存下来的大部分是小嘴地雀。因此，它们的后代也拥有更小的喙。自然选择和进化再次显现，只不过与1977年不同，这次鸟喙是朝着更小的方向进化了。
+
+因此，在不到十年的时间里，由于自然选择，地雀的喙尺寸先增大后减小。如果以十年为观察期，喙尺寸的变化似乎并不显著，但在这期间由于两次极端气候事件，它已经发生了剧烈的波动。
+
+格兰特夫妇于2002年4月在《科学》杂志上发表了他们对强壮地雀（*fortis*）和仙人掌地雀（*scandens*）这两种地雀进化的长期研究结果，标题为《达尔文雀30年研究中的不可预测进化》。在研究开始之前，他们曾假设地雀的身体特征在研究期间会在一个狭窄的范围内变化。但正如他们在文章开头所言：“数据并不支持预期中的无变化观点。”
+
+如果你查看格兰特夫妇文章中关于强壮地雀和仙人掌地雀的体型大小、喙尺寸和喙形状的图表，你会注意到库尔滕在棕熊研究中所指出的测量时间跨度与进化速度之间的反比关系。因此，虽然强壮地雀的体型在1980年代中期至2000年代初期间波动很大，但这两个十年间的总体变化却很小。同样，仙人掌地雀喙尺寸的年度变化似乎远大于从1970年代中期到2000年代初的变化。强壮地雀的喙形状在1980年代中期和2000年代初测量时几乎相同，但其年度变化则要显著得多。
+
+这种现象具有一种美妙的分形特征。无论测量期是数千年（熊）还是仅仅几十年（雀），似乎都无关紧要。进化速度在较短的时期内加快，在更长的时期内则放缓。
+
+但这又如何呢？长期投资者为何要关心库尔滕的熊和格兰特夫妇的雀？
+
+**格兰特与库尔滕指导我们何时买卖**
+
+我的观察远不如格兰特夫妇或库尔滕的那样科学。然而，我知道卓越企业的每日、每周、每月和每季变化率，看起来远大于以年或十年为单位衡量的变化率。
+
+这一认识帮助我制定了一条投资原则，我称之为格兰特-库尔滕投资原则（GKPI）。其内容如下：
+
+> 当我们发现那些长期基本面特征不会发生根本性改变的高质量企业时，我们应利用其业务中不可避免的短期波动来进行**买入**，而非卖出。
+
+GKPI要求我们持有那些长期基本面特征不会根本性改变的高质量企业。“高质量企业”是一个内涵丰富的术语，对不同投资者可能有不同含义。如果你读到这里，我假设你了解我们的定义。对我们而言，高质量企业的关键特征包括：出色的运营和财务记录、稳定的行业、高治理标准、可防御的护城河、不断增长的市场份额以及较低的业务和财务风险。
+
+**我们如何运用GKPI进行买入？通过利用短期波动。**
+
+我们要求极为苛刻。我们希望公司由诚实的管理团队运营，并展现出多年稳固的运营和财务记录。它需要保持领先于竞争且无债务负担，同时我们还希望它在不过度加重业务负担的前提下持续承担精算风险。而且，仿佛所有这些要求还不够，我们竟敢坚持为这些稀世珍宝支付公允价格！这怎么可能实现？市场几乎永远不会为这样的企业提供吸引人的价格，事实也确实如此。
+
+然而，在极少数情况下，那些不认同GKPI的投资者会屈服于暂时的宏观、行业或公司问题的压力，我们便能趁机买入一家卓越公司的一部分股权。这种情况不会——也不应该——经常发生，但一旦发生，我们就会全力投入。
+
+以我们迄今为止最大的投资之一WNS为例。它是印度领先的业务流程外包（BPO）公司之一，在纽约证券交易所上市。它于1996年由英国航空公司作为内部后台部门成立，并于1999年开始服务第三方客户。2002年，华平投资收购了WNS的控股权（我未参与该交易）。尽管在2002年华平投资收购时，英国航空公司贡献了WNS约90%的收入，但到2008年初，其收入占比已降至不足10%。WNS的管理层在业务多元化（摆脱对英航和旅游业的依赖）方面做得非常出色。通过外包财务与会计、抵押贷款处理和客户分析等后台职能，WNS的客户通常能以低得多的成本获得更高质量的服务（例如更快的周转时间、更低的错误率）。
+
+2008年1月，WNS的股价从之前35美元的高点急剧下跌至13美元。似乎有三个因素导致了这次大幅回调。首先，它的一家大型抵押贷款客户First Magnus因美国持续的次贷危机于2007年底宣布破产。First Magnus曾贡献WNS约5%的收入，因此管理层下调了下一年的收入预期。其次，管理层表示，如果客户安盛保险（Aviva）收购为其服务的WNS设施，它可能在2008年5月失去这家贡献约8%收入的大型保险客户。第三，卢比升值令分析师担忧，因为WNS的大部分交付中心位于印度（卢比走强可能削弱WNS的竞争力并挤压利润空间）。
+
+对我们而言，问题是：这是一个暂时的挫折，还是可实现收入和利润增长的更持久的衰退？我们判断是前者。失去First Magnus并非WNS的过错，即使可能失去安盛保险，也是由于安盛保险的战略转变，而非WNS服务不佳。此外，我们不相信汇率波动会对WNS的长期竞争优势产生不利影响。WNS在2004年至2007年间64%的年化收入增长证明，它能够以有竞争力的价格向客户提供高质量的后台处理服务。
+
+同时，我们看好印度BPO行业。对于根基稳固的现有企业而言，这个行业利润丰厚，因为它对新进入者壁垒高（企业极其警惕将关键任务应用程序外包给初创公司），对现有客户退出壁垒也高（鉴于后台处理的粘性特征，WNS和其他领先厂商几乎从不丢失客户）。我猜你听过老鹰乐队的《加州旅馆》这首歌。歌词的最后一句，“你可以随时结账，但你永远无法离开”，正适用于印度BPO行业领先公司的客户。WNS当时——现在也是——处于绝佳的位置。
+
+关键在于，尽管市场悲观，但我们没有理由相信公司的基本面发生了任何改变。
+
+我们在2008年初积极买入，以每股15.2美元的平均价格投资了4100万美元。到2022年3月，其股价（85.5美元）上涨了462%，而印度指数（Sensex和Midcap指数）以美元计仅上涨了97%。
+
+接着，几乎就在我们2008年初首次投资WNS整整十二年后，在2020年3月至5月疫情恐慌的初期，我们再次获得了买入机会。就在市场似乎认为世界末日来临之际，我们以每股46.1美元的平均价格向该业务追加投资了9800万美元。有些馈赠真是源源不断。
+
+**我们如何运用GKPI进行卖出？通过忽略短期波动。**
+
+如果我们有幸持有像WNS这样的高质量企业，GKPI要求我们不要卖出。为什么？因为正如格兰特夫妇和库尔滕所展示的那样，短期变化通常不会影响卓越企业的长期特性。让我们重新审视欧莱雅，以领略GKPI之美妙。
+
+表8.3展示了2009年和2020年该业务的概览。如果你翻阅这些年的年报，你会产生一种似曾相识的感觉——两篇评述的语言、语气和业务重点惊人地相似，尽管相隔了十一年。
+
+表8.3 欧莱雅从2009年至2020年：有些东西不变
+（表格内容略）
+
+---</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">La Roche-Posay, Vichy, CeraVe
+Operating margin
+14.8 percent of sales
+18.6 percent of sales
+Free cash flow
+> 100 percent of net profits
+> 100 percent of net profits
+Net debt
+€2 billion
+Net cash €3.9 billion
+Although the company’s sales grew from €17.5 billion to €28 billion during this period, it remained a global beauty business that derived most of its revenues from Western Europe and the United States. There were no unrelated diversifications, and the company did not make any significant, risky acquisitions. Its four divisions—Professional Products, Consumer Products, Luxury Products, and Active Cosmetics—remained the same during this period. Its top two divisions, Consumer and Luxury, accounted for about 80 percent of sales. Even the critical brands across divisions remained essentially unchanged. L’Oréal continued to be a cash machine, which allowed it to become a cash surplus company in 2020 after being indebted in 2009.
+One significant change during this period seems to be the dramatic growth in Asia (mainly China); the revenue contribution from Asia increased from 13 percent to 35 percent from 2009 to 2020. But this was not a sudden change, as is evident from the trend of the company’s Asian revenue contribution to total revenues from 2009 to 2020: 13 percent, 18 percent, 19 percent, 21 percent, 21 percent, 21 percent, 22 percent, 22 percent, 24 percent, 27 percent, 32 percent, and 35 percent. Aside from 2010 and 2019, Asia’s revenue contribution inched up by only 0 to 3 percentage points every year. Steady as she went.
+Let’s revisit where you were earlier, back in 2009. You had bought L’Oréal stock for €60 per share. If you were a follower of GKPI, you would have ignored every piece of bad news listed in table 8.1. Instead, you would have seen these news items for what they were: unimportant and irrelevant for the long-term performance of the business. In fact, at some points in this journey, you may have chosen to load up on more shares when you found the price attractive.
+Where do you think the stock price was at the end of June 2022? It was €329 per share. So your gain would have been 450 percent, which handsomely beat the French CAC 40 index, which grew only 80 percent during this period.
+This is not a recommendation to buy L’Oréal. But it is a tribute to the proper application of GKPI. You would have done spectacularly well by doing nothing.
+GKPI is our religion. And it reflects in all kinds of big and small ways in the way we work. Our office doesn’t have a TV screen playing CNBC or any other news; our lone TV screen is used only for video conferencing. The only Bloomberg terminal we have is in the corner of our office pantry; it remains unused and unwatched probably 99 percent of the time. We never discuss recent company news or share prices in our team meetings. I mainly read physical newspapers, in which the information is always one day late. We have never bought or sold a single business based on news flow and never will.
+GKPI demands that we be lazy when buying and very lazy when selling. And so we are. It has led to some decent outcomes for us.
+In June 2022, excluding purchases during the previous two years, we owned twenty-eight businesses. In one of these businesses, we made more than one hundred times our money (Page); in two of them, we multiplied our money more than twenty-five times (Berger and Ratnamani); and in six of them, we made more than ten times our money (in Indian rupees). Unfortunately, all nine have suffered small but significant setbacks, some of which lasted many years (e.g., Ratnamani and Page). However, our adherence to GKPI ensured that we didn’t panic, exercised patience, and stayed lazy.
+Why and When We Sell
+If GKPI requires that we not sell, then why do we?
+We don’t sell on valuation, a key reason many investors throw up their hands and exit. That is because we have no target price for selling in our portfolio. I have sold on valuation. Only once. I behaved foolishly and regret it even today. I will discuss this folly in chapter 10, so let’s ignore it for the moment.
+We sell under the following three conditions (the numbers in parentheses indicate the number of businesses sold):
+1. A decline in governance standards (0)
+2. Egregiously wrong capital allocation (3)
+3. Irreparable damage to the business (6)
+We have sold ten businesses since 2007 (the nine listed here plus the mistake). I am excluding three businesses that strategic buyers acquired. This translates to one exit every one and a half years. How’s that for laziness?
+As you can see, six of our nine exits occurred because we believed the business had been damaged beyond repair. And how did we come to that conclusion? An example can clarify.
+We had invested in an old-world manufacturing business that was the leader in an oligopolistic industry in India. It ticked all the boxes—enviable governance standard, impeccable financials, stable industry, zero leverage, and we were able to buy at what we thought was an attractive price. Everything was hunky-dory for the first couple years. However, in the third year of our ownership, we were surprised to see that the business lost market share for two quarters in a row. We spent time with the management to understand the reasons, and after some initial resistance, they agreed that there might have been some temporary share loss. However, they were confident that this was a transitory phenomenon.
+But it wasn’t. The company kept losing market share, and in one of the smaller (but highly profitable) segments, its share loss accelerated over the next few quarters. Again, the management seemed to have a compelling set of explanations, all of which sounded logical. They claimed they had made many changes to their manufacturing, sales, and marketing practices and that we would see the trend reverse soon. But the loss of market share continued. We waited for three more years after spotting the initial trouble and finally decided to pull the plug. Since we want to be permanent owners, we demand a high performance standard in both absolute and relative terms. When we exited, this business was delivering decent results: about 35 percent ROCE with modest revenue and profit growth. But we did not want to be owners in a business that consistently fell behind the competition.
+During those three years of waiting for the business to improve, several positive and negative news reports were made about the company. We ignored the news and focused on the trend in actual market share. Why did we hold the business for three more years after detecting the problem? Why did we not sell sooner? Because GKPI tells us that we should expect ups and downs in every business. There isn’t a single business in our portfolio that has gone up in a straight line. Not one. Over the long run, most businesses in our portfolio have done well, but every business has gyrated wildly in both directions when measured over weeks or quarters. Our default option is to overlook these temporary business upheavals.
+However, in some cases, like the one I’ve discussed here, what we think is temporary becomes more permanent. Fortunately, there have been only six such occasions in our history. Therefore, our default option will always be to continue to respect GKPI.
+Remember that the maximum we can lose is our investment amount, but there is no limit to how high a share price can climb. Given the quality of businesses in our portfolio, we prefer to run the risk of selling late and losing some capital than selling early and forgoing substantial gain.
+A Lot Can Happen Over Sixty Years. Or Can It?
+We apply evolutionary thinking by ignoring both small and big setbacks in our businesses to focus on the long term. Despite the L’Oréal example and our experience applying GKPI, the skeptical part of your brain should raise two valid questions: (1) How long is “long term,” and (2) since new businesses keep destroying old ones, won’t we be left with only failed businesses after a few decades if we keep holding on?
+A headline on the website of the American Enterprise Institute from October 2015 can help us answer these questions. It reads, “Fortune 500 Firms in 1955 v. 2015: Only 12% Remain, Thanks to the Creative Destruction That Fuels Economic Prosperity.”10 The article goes on to list the sixty-one U.S. companies that had survived sixty years on the list.
+Contrary to the article’s tone, which mourns the seemingly significant Schumpeterian destruction, I was pleasantly surprised that sixty-one companies had stayed on the list for sixty years. I would have guessed the number to be much smaller. The period from 1955 to 2015 was tumultuous and unpredictable for the United States and the world. Also, the world of 2015 seemed almost unrecognizable from that of 1955.
+During those sixty years, we witnessed the start and the end of the Cold War, the splintering of the USSR, the advent of the space age, the U.S. Civil Rights Act, the oil shock, the savings and loans crisis, multiple crises in the Middle East, the meteoric rise of China, the formation of the European Union, the internet boom and bust, the exponential growth of mobile phones, innumerable wars across the globe, the global financial crisis of 2008, the increasing dominance of technology firms, and the rapid digitization of all businesses. I haven’t stated at least a hundred more significant events that also would have impacted companies of all sizes in the United States. However, companies like 3M, Alcoa, Avon, Caterpillar, Kellogg, Pepsi, Pfizer, and many others did much better than simply endure these massive local and global shocks—they also prospered by maintaining their position in the top five hundred companies in the country.</div>
+            <div class="text-block simplified-text">好的，这是按照您要求翻译的书籍段落：
+
+尽管在此期间公司的销售额从175亿欧元增长至280亿欧元，它依然是一家主要收入来自西欧和美国的全球性美妆企业。公司没有进行任何非相关多元化扩张，也没有进行任何重大的、有风险的收购。其四大业务部门——专业产品部、大众化妆品部、高档化妆品部和活性健康化妆品部——在此期间保持不变。其最大的两个部门，大众化妆品部和高档化妆品部，贡献了约80%的销售额。甚至各部门的关键品牌也基本没有变化。欧莱雅持续充当着印钞机的角色，使其得以在2009年尚有负债的情况下，于2020年转变为一家现金盈余公司。
+
+这一时期的一个显著变化似乎是亚洲（主要是中国）的迅猛增长；从2009年到2020年，亚洲的收入贡献从13%提升至35%。但这并非突变，从公司亚洲收入占总收入的趋势即可看出：2009年至2020年依次为13%、18%、19%、21%、21%、21%、22%、22%、24%、27%、32%和35%。除了2010年和2019年，亚洲的收入贡献每年仅小幅提升0到3个百分点。稳扎稳打。
+
+让我们回顾一下您在2009年早些时候的情况。您以每股60欧元的价格购买了欧莱雅股票。如果您是GKPI的追随者，您会忽略表8.1中列出的每一条坏消息。相反，您会看清这些新闻的本质：它们对于企业的长期表现来说，既不重要也不相关。事实上，在这段历程中的某些时刻，当您发现股价具有吸引力时，您可能选择增持更多股票。
+
+您认为2022年6月底的股价是多少？是每股329欧元。因此，您的收益将达到450%，大幅领先同期仅增长80%的法国CAC 40指数。
+
+这并非推荐购买欧莱雅股票。而是对正确应用GKPI的致敬。您本可以通过无所作为而获得非凡的收益。
+
+GKPI是我们的信仰。它以各种或大或小的方式体现在我们的工作方式中。我们的办公室没有播放CNBC或任何其他新闻的电视屏幕；我们唯一的电视屏幕仅用于视频会议。我们唯一的一台彭博终端放在办公室茶水间的角落里；它大约99%的时间都处于闲置且无人观看的状态。我们在团队会议中从不讨论近期公司新闻或股价。我主要阅读实体报纸，其信息总是晚一天。我们从未也永远不会基于新闻流买入或卖出一家企业。
+
+GKPI要求我们在买入时保持懒惰，在卖出时极其懒惰。我们也确实如此。这为我们带来了一些不错的结果。
+
+2022年6月，排除前两年购买的企业，我们持有二十八家企业。在其中一家企业，我们赚取了超过一百倍的收益（Page）；在其中两家，我们获得了超过二十五倍的回报（Berger和Ratnamani）；在其中六家，我们赚取了超过十倍的收益（以印度卢比计）。不幸的是，这九家企业都曾遭受过轻微但显著的挫折，有些持续了多年（例如Ratnamani和Page）。然而，我们对GKPI的坚守确保了我们没有恐慌，保持了耐心，并坚持了懒惰。
+
+**我们为何卖出及何时卖出**
+
+如果GKPI要求我们不卖出，那么我们为何要卖出呢？
+
+我们不会因为估值过高而卖出——这是许多投资者无奈放弃退出的一个关键原因。这是因为我们的投资组合中没有设定卖出目标价。我曾因估值卖出过。仅此一次。那次行为很愚蠢，至今仍令我后悔。我将在第10章讨论这个错误，所以现在暂且忽略它。
+
+我们在以下三种情况下卖出（括号内数字表示卖出的企业数量）：
+1.  治理标准下降（0）
+2.  资本配置严重失误（3）
+3.  业务遭受不可挽回的损害（6）
+
+自2007年以来，我们卖出了十家企业（即此处列出的九家加上那个错误案例）。我排除了三家被战略买家收购的企业。这相当于每一年半退出一次。这够懒惰了吧？
+
+如您所见，我们九次退出中有六次是因为我们认为业务已遭受不可挽回的损害。我们是如何得出这个结论的？一个例子可以说明。
+
+我们曾投资过一家传统的制造业企业，它是印度一个寡头垄断行业的领导者。它符合所有标准——令人羡慕的治理标准、无可挑剔的财务状况、稳定的行业、零杠杆，而且我们是以自认为有吸引力的价格买入的。头几年一切顺风顺水。然而，在我们持有的第三年，我们惊讶地发现该企业连续两个季度市场份额下滑。我们与管理层花时间探讨原因，经过最初的一些推诿后，他们承认可能存在一些暂时的份额损失。但他们坚信这只是暂时现象。
+
+但事实并非如此。该公司市场份额持续下滑，并且在其中一个较小（但利润丰厚）的细分市场，其份额损失在接下来的几个季度加速。管理层似乎又有一套听起来很合理的解释。他们声称已对制造、销售和营销实践做了许多调整，我们很快会看到趋势逆转。但市场份额的流失仍在继续。在发现初步问题后，我们又等待了三年，最终决定退出。由于我们希望成为永久所有者，我们要求企业在绝对和相对表现上都达到高标准。当我们退出时，该业务仍能提供不错的结果：资本回报率（ROCE）约35%，收入和利润温和增长。但我们不想成为一家持续落后于竞争对手的企业的所有者。
+
+在等待该企业改善的那三年里，关于该公司出现了不少正面和负面的新闻报道。我们忽略新闻，专注于实际市场份额的趋势。为什么在发现问题后我们又持有了三年？为什么不早点卖出？因为GKPI告诉我们，每个企业都会经历起伏。我们的投资组合中没有一家企业是一帆风顺直线上升的。一家都没有。长期来看，我们投资组合中的大多数企业表现良好，但如果以周或季度来衡量，每家企业都曾经历过剧烈的双向波动。我们的默认选择是忽略这些暂时的业务动荡。
+
+然而，在某些情况下，就像我在此讨论的这个案例一样，我们认为是暂时的现象变成了更持久的问题。幸运的是，在我们的历史上，这种情况只发生过六次。因此，我们的默认选择将始终是继续尊重GKPI。
+
+记住，我们可能损失的最大金额就是我们的投资额，但股价的上涨潜力是无限的。鉴于我们投资组合中企业的质量，我们宁愿承担卖出过晚损失部分资本的风险，也不愿过早卖出而错失巨大收益。
+
+**六十年间可能发生很多事。真的吗？**
+
+我们运用进化思维，忽略业务中的大小挫折，专注于长期。尽管有欧莱雅的例子和我们应用GKPI的经验，您脑中怀疑的部分仍应提出两个合理的问题：(1) “长期”究竟有多长？(2) 既然新企业不断摧毁旧企业，如果我们一直持有，几十年后难道不会只剩下失败的企业吗？
+
+美国企业研究所网站2015年10月的一则标题可以帮助我们回答这些问题。标题写道：“1955年与2015年的财富500强企业：仅12%存活至今，多亏了推动经济繁荣的创造性破坏。”文章接着列出了六十年来始终留在榜单上的六十一家美国公司。
+
+与文章那种哀叹看似严重的熊彼特式破坏的基调相反，我对有六十一家公司能连续六十年留在榜单上感到惊喜。我猜想的数字会比这小得多。1955年至2015年这段时期对美国乃至世界来说都是动荡和不可预测的。而且，2015年的世界与1955年相比几乎面目全非。
+
+在那六十年间，我们见证了冷战的开端与结束、苏联解体、太空时代的到来、美国《民权法案》、石油危机、储贷危机、中东多次危机、中国的迅速崛起、欧盟的形成、互联网的繁荣与萧条、手机的指数级增长、全球无数的战争、2008年全球金融危机、科技公司日益占据主导地位以及所有业务的快速数字化。我还没有列举出至少另外一百件也会影响美国各种规模公司的重大事件。然而，像3M、美铝（Alcoa）、雅芳（Avon）、卡特彼勒（Caterpillar）、家乐氏（Kellogg）、百事（Pepsi）、辉瑞（Pfizer）等许多公司，不仅经受住了这些巨大的本土和全球冲击，还通过保持其国内前五百强公司的地位而蓬勃发展。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">But this number, sixty-one, was understated. First, there was a factual error. The author missed eleven businesses that appeared on both lists, companies including Colgate-Palmolive, Corning, H. J. Heinz, and PPG. It was probably just an oversight. Thus, seventy-two companies should appear on both lists.
+The second reason for understatement was that the author did not count the businesses that had been acquired by a Fortune 500 business between 1955 and 2015. Let’s take Gillette. In 2005, P&G acquired Gillette for $57 billion (Gillette remained a Fortune 500 business for fifty years after 1955; its rank was 215 when it was acquired). Should we consider Gillette to be a “failure”? Was it “creatively destroyed”? I don’t think so. I used their overpriced blades just this morning. Since it was a part of P&G, which was ranked 32 on the Fortune 500 list of 2015, I would also consider Gillette to be on the Fortune 500 list of 2015.
+United Technologies acquired Otis in 1975 (and so Otis stayed on the list for twenty years after 1955). United Technologies was ranked 45 on the 2015 Fortune 500 list, and I could reasonably argue that Otis should be counted as a continuing business as a part of United Technologies. We can reach the same conclusion for businesses like Wrigley, Quaker Oats, Carrier, Bestfoods, and McDonnell Douglas, acquired by the Fortune 500 companies Berkshire Hathaway, PepsiCo, United Technologies, Unilever, and Boeing, respectively.
+There are seventy-three companies like Gillette and Otis from the Fortune 500 list of 1955 acquired by the Fortune 500 companies of 2015. Here, I have also included the larger overseas acquirers like BP and Unilever, who, if they were in the United States, would have been a part of the Fortune 500 in 2015. Thus, one hundred forty-five businesses from 1955 could be included on the 2015 list: seventy-two that survived and seventy-three that have become part of the survivors.
+From 1955, sixty-three companies either went bankrupt or were untraceable (finding companies from the 1950s and 1960s is not easy). They were a part of the destruction process of capitalism.
+What happened to the remaining two hundred ninety-two businesses (500 – 145 − 63) from the Fortune 500 list of 1955? They either fell out of the top 500 or were acquired by or merged with other companies. Does that mean that all of them failed? Some may not have done well, but many may have continued to survive and prosper. There are a lot of high-quality businesses that aren’t in the Fortune 500, which, by definition, is a highly restrictive list.
+For example, Eaton ranked 189 in 1955 and fell out of the Fortune 500 in 2013. In June 2021, its market value was $60 billion. So I wouldn’t label it as a failure. Also, it stayed on the list for fifty-eight years after 1955, which is no mean achievement. Borden Chemical was acquired by the private equity giants KKR in 1995 and then by Apollo in 2004. Borden exists even today as part of Hexion Specialty Chemicals. USG, a building products company on the Fortune 500 list of 1955, was acquired by Knauf of Germany (revenue of €10 billion) for $7 billion in 2018.
+If we assume that 20 to 25 percent of these two hundred ninety-two businesses were acquired or fell out of the Fortune 500 of 1955 but continued to successfully deliver their products and services, we get an additional sixty to seventy-five businesses from the 1955 list that have been successful.
+Thus, the summary of the longevity of the Fortune 500 businesses of 1955 is as follows:
+• 72 companies (14 percent) continued to be a part of the Fortune 500 for sixty years.
+• 73 businesses (15 percent) became a part of a Fortune 500 business by 2015.
+• 60 to 75 companies (12–15 percent) continued to do well despite being acquired or falling out of the Fortune 500.
+• 280 to 295 (55 to 60 percent) of the firms on the 1955 list failed.
+In chapters 9 and 10, I present the results of a study of the change in stock prices of listed U.S. firms over ninety years from 1926 to 2016. It shows that about 60 percent of the listed stocks delivered less than U.S. treasury returns over the ninety years. Hence, my estimation of a 55 to 60 percent failure rate over sixty years (as calculated earlier) is probably on the higher side. Anyway, let’s stick with it.
+We can safely assume that the 1955 Fortune 500 businesses were high-quality businesses. Of course, they may not have been high quality strictly according to our definition (e.g., some may have had modest debt levels). But there is no denying that they were extraordinary companies—they couldn’t have become some of the largest businesses in the mecca of capitalism without being outstanding.
+We have seen that at least 30 percent (72 + 73 = 145) of these continued to be high quality as evidenced by remaining in the top 500 for sixty years. If we include companies that may have done well over this period despite not being part of the elite 500 in the year 2015 (about sixty to seventy-five businesses), we see that 40 to 45 percent (two hundred five to two hundred twenty) of companies from the 1955 Fortune 500 list performed well over sixty years. This is not a small number. Capitalism and creative destruction do work well, but not that well.
+So here are the answers to the two questions I posed at the start of this section. First, “long term” is genuinely long term: at least five decades, maybe more. And second, new businesses do replace old ones, but at a far slower rate than we think.
+This brings us back to the lesson from the Grants and Kurtén. There is no point wasting time, energy, and brainpower on worrying about day-to-day upheavals in high-quality businesses. They can be highly resilient over the long term.
+So why sell?
+✳✳✳
+Kodak was the Facebook or Google of its day; just like these two current giants, you would not have found it easy to name the second player in photography. In 1976, Kodak held a 90 percent market share in film sales and an 85 percent market share in the sale of cameras.11 And today? Smartphones are synonymous with cameras. Kodak is effectively dead. Ironically, an American electrical engineer at Kodak, Steve Sasson, invented the first digital camera in 1975! If we were analyzing Kodak in 1975, we would have concluded that the film industry was remarkably stable and that Kodak’s dominance was unlikely to be tested for the foreseeable future. Would I have sold after witnessing the dramatic growth of digital photography? Maybe, maybe not. I am not sure. But I do know that I would have reacted late and may have lost money as a result.
+Is there a solution to this problem? How do I know that ignoring this particular “small” event will work out in the long run? I don’t.
+Let me restate what I have mentioned before: All investing models have downsides. In my opinion, no investment strategy is foolproof. If you know of one that is, please write a book on it (or better still, email me the magic formula). Our application of GKPI will have Kodak-like downsides, but in my experience, it works well most of the time. And that’s the best we can expect of any model.
+An antelope is swift, agile, and alert and almost impossible to catch. But many do get caught and killed by cheetahs, leopards, and lions. Does it mean that the antelope’s design is flawed? Not at all. The antelope is very well adapted to its environment; not all will live to old age, but enough will, thereby allowing the species to survive for millions of years.
+We have applied GKPI consistently to every business we have invested in, but not all have prospered. However, as a portfolio, this approach has worked exceedingly well for us.
+This species has survived. Very well.
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . we can reimagine investing by embracing the tenet that the long-term character of high-quality businesses remains unaffected by short-term fluctuations in the economy, the industry, and even the business.
+1. Contrary to the expectations of Darwinism, evolution can be faster when measured over shorter periods and slower over longer periods. Björn Kurtén demonstrated this phenomenon in the evolution of the teeth of European brown bears.
+2. High-quality businesses, too, seem to undergo many changes when measured over days or weeks or months but are much more stable when the period of measurement is years or decades.
+3. Empirical data from the longevity of Fortune 500 businesses demonstrate the long-term resilience of exceptional businesses. About 40 to 45 percent of the Fortune 500 businesses of 1955 continued to be successful for the next sixty years.
+4. We have capitalized on the inevitable short-term fluctuations in high-quality businesses to invest at attractive valuations. However, since these opportunities arise infrequently, we rarely ever buy. We are lazy.
+5. After investing, we ignore near-term fluctuations because the fundamental characteristics of stellar businesses remain stable over the long term. We never sell on valuation—we are very lazy.
+6. We have sold only when there had been an egregiously bad capital allocation or irreparable damage to a business.</div>
+            <div class="text-block simplified-text">以下是严格按照要求翻译的书籍段落：
+
+但这个数字——61家——被低估了。首先存在事实错误。作者遗漏了同时出现在两份榜单上的11家企业，包括高露洁-棕榄、康宁、亨氏和PPG工业。这很可能只是疏忽。因此实际应有72家企业同时上榜。
+
+低估的第二个原因是作者未计入1955至2015年间被《财富》500强企业收购的公司。以吉列为例：2005年宝洁以570亿美元收购吉列（该企业在1955年后持续50年位列500强，被收购时排名第215位）。我们能认定吉列"失败"了吗？它遭遇了"创造性破坏"吗？我认为并非如此——今早我还在使用他们定价过高的刀片。由于吉列已成为2015年《财富》500强排名第32位的宝洁旗下业务，我同样将其视为2015年500强企业。
+
+联合技术公司于1975年收购奥的斯（后者在1955年后持续上榜20年）。鉴于联合技术位列2015年500强第45名，我有充分理由将奥的斯视为通过并购延续经营的企业。箭牌、桂格燕麦、开利、百仕福及麦克唐纳·道格拉斯等公司同样适用此结论，它们分别被伯克希尔哈撒韦、百事可乐、联合技术、联合利华和波音收购。
+
+1955年榜单中共有73家类似吉列和奥的斯的企业被2015年500强收购。此处统计包含英国石油、联合利华等大型海外收购方——若这些企业位于美国，本应入选2015年500强。因此1955年榜单中实际有145家企业可计入2015年名单：72家独立存续企业加73家被并购企业。
+
+1955年榜单中有63家企业破产或踪迹难寻（追溯1950-60年代的企业实非易事），它们体现了资本主义的淘汰机制。
+
+其余292家企业（500减145再减63）命运如何？它们要么跌出500强，要么被并购重组。这是否意味着全面失败？部分企业可能表现不佳，但更多企业仍在持续经营。许多优质企业本就无缘500强——这份榜单本身具有严苛的筛选标准。
+
+例如1955年排名189的伊顿集团，虽于2013年跌出500强，但2021年6月市值仍达600亿美元。我绝不视其为失败者——它在1955年后持续上榜58年已是非凡成就。博登化学1995年被私募巨头KKR收购，2004年又归入阿波罗旗下，如今仍是瀚森特种化学的组成部分。1955年上榜建筑企业USG于2018年被德国可耐福（营收百亿欧元）以70亿美元收购。
+
+若假设这292家企业中20%-25%虽被并购或跌出榜单却持续成功经营，则另有60-75家1955年企业应被视为成功案例。
+
+综上，1955年《财富》500强企业的存续情况如下：
+• 72家企业（14%）连续60年位列500强
+• 73家企业（15%）至2015年成为500强组成部分
+• 60-75家企业（12%-15%）在被并购或跌出榜单后仍持续成功经营
+• 280-295家企业（55%-60%）宣告失败
+
+第九章和第十章呈现的1926-2016年美股研究显示：约60%上市公司九十年间回报低于美国国债。因此前文估算的55%-60%的六十年失败率可能偏高，但我们仍采用该数据。
+
+可确证1955年500强企业整体资质优异。尽管未必完全符合我们的严格定义（例如部分企业负债适中），但它们无疑是卓越公司——若非出类拔萃，绝无可能跻身资本主义圣地的顶级企业之列。
+
+数据显示至少30%（72+73=145家）企业通过持续上榜证明其长期优质性。若计入虽未进入2015年500强但可能表现良好的60-75家企业，则1955年榜单中40%-45%（205-220家）企业实现了六十年成功经营。这个比例不容小觑——资本主义与创造性破坏确实有效，但效力有限。
+
+由此可回答本节初始的两个问题：其一，"长期"确指极长周期——至少五十年甚至更久；其二，新旧企业更替速度远低于普遍认知。
+
+这让我们回归格兰特与库尔滕的启示：无需为优质企业的短期波动耗费心神，它们具备强大的长期韧性。
+
+那么何必抛售？
+
+✳✳✳
+
+柯达曾是当年的脸书或谷歌——正如当今两大巨头，你很难说出摄影行业的第二名。1976年柯达占据胶片市场90%份额及相机市场85%份额。而今？智能手机已成相机代名词，柯达实质消亡。讽刺的是，首台数码相机正是柯达工程师史蒂夫·萨松1975年发明的！若当年分析柯达，我们必会认定胶片行业极度稳定，其统治地位短期内无可撼动。目睹数码摄影崛起后我会抛售吗？或许会，或许不会。但可确定的是，我必会反应滞后并因此亏损。
+
+此问题有解吗？如何确信忽略某个"微小"事件长期无虞？我无从知晓。
+
+重申前文观点：所有投资模型皆有缺陷。我认为不存在万全之策，若阁下知晓，请著书立说（或直接将神奇公式电邮予我）。我们运用GKPI模型时难免遭遇柯达式困境，但经验表明该模型多数时候行之有效——这已是任何模型所能企及的极致。
+
+羚羊迅捷机敏且警觉，几乎难以捕获。但仍有无数羚羊命丧猎豹、花豹与狮口。这意味羚羊的进化存在缺陷吗？绝非如此。羚羊高度适应环境——虽非全部终老，但足够存续的个体确保了物种百万年延续。
+
+我们始终将GKPI模型运用于所有投资企业，虽非每家企业都能繁荣，但作为投资组合整体，该策略成效卓著。
+
+这个物种存活下来了。活得精彩异常。
+
+本章核心洞见
+进化论启示我们......
+......通过领悟"优质企业的长期特质不受经济、行业乃至企业短期波动影响"这一原则，可重构投资认知。
+
+1. 与达尔文理论相悖：短期维度下进化更快，长期维度下反而更慢。比约恩·库尔滕通过欧洲棕熊牙齿演化证实此现象。
+2. 优质企业同理：按日/周/月衡量呈现高频波动，但以年/十年为周期则显现极强稳定性。
+3. 《财富》500强企业存续数据印证卓越企业的长期韧性：1955年榜单中约40%-45%的企业在后六十年持续成功。
+4. 我们利用优质企业必然的短期波动择机估值买入。因良机罕至，故极少出手——我们很懒。
+5. 投资后忽略短期波动，因卓越企业的根本特质长期稳定。我们永不因估值抛售——我们极懒。
+6. 仅当企业出现重大资本配置失误或不可逆损伤时才考虑卖出。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
