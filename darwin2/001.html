@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./000.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 1</h1>
+        <a href="./002.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">Oh, to Be a Bumblebee
+On the other hand, in some cases, as with the elephant and rhinoceros, none are destroyed by beasts of prey; even the tiger in India most rarely attacks a young elephant protected by its dam.
+Charles Darwin, On the Origin of Species, chapter 3, “Struggle for Existence”
+We have written in past reports about the disappointments that usually result from purchases and operation of “turnaround” businesses. Literally hundreds of turnaround possibilities in dozens of industries have been described to us over the years and, either as participants or observers, we have tracked performance against expectations. Our conclusion is that, with few exceptions, when a management with a reputation for brilliance tackles a business with a reputation for poor fundamental economics, it is the reputation of the business that remains intact.
+Warren Buffett, annual letter to shareholders, 1980
+When you start reading a book on investing, I assume you want to be dazzled by the author’s brilliance. It won’t happen this time. I will begin this journey by profiling my stupidity.
+After spending six years at McKinsey, I joined Warburg Pincus, a global private equity firm. After a few years of investing, I had learned the basics. Or at least I thought I had. They appeared simple: Invest in a high-quality entrepreneur running a growth business, and don’t overpay. I had lucked out on a couple of investments by then and so was flying high.
+An entrepreneur running a successful business approached us to raise funds for expansion in the early 2000s. The business had a reasonable scale by Indian standards, and the company had many marquee clients, including one of India’s largest businesses. Notably, this company had also made inroads in overseas markets. It wasn’t common to see Indian companies outside the software services industry build a thriving export business in those days.
+I started our diligence process and did the usual: spent time with the founder and senior managers to understand their strategy and competitive differentiation, visited the company offices, talked to several customers in India and Europe, employed a firm specializing in forensic diligence to assess governance issues, hired the leading legal and accounting firms in India to perform diligence, and quizzed some industry experts on the company’s potential for growth and value creation. Everything was looking good, and I didn’t even have to haggle much on valuation or the legal documents.
+I communicated my enthusiasm to my bosses and got the green light. The company raised $50 million—a big sum of money for a private equity investment in India at the time—and I enthusiastically led the investment. Warburg Pincus’s return on this investment? Zero. The firm lost all its money.
+It was entirely my fault. I had screwed up. Big time.
+Before Making Money, Learn Not to Lose Money
+The next time you are in a bookshop, go to the section with investing books. Many of you below the age of thirty probably don’t know what a bookshop is. No worries—go to Amazon and type in “investment books.” Do you notice anything common across titles that scream things like Investing 101 or One Up on Wall Street or You Can Be a Stock Market Genius or New Era Value Investing? All of them are about how to make money. Duh. What else is an investing book supposed to teach? I hope to convince you that an essential prerequisite for making money is the ability not to lose money.
+Almost everyone—and I say “almost” because this statement does not apply to my wife—makes mistakes. These errors fall into two broad categories: We do things we are not supposed to, and we don’t do things we are supposed to. For me, buying a hot fudge sundae at McDonald’s falls into the first category, and not keeping in regular touch with my school and college friends falls into the second.
+All investors, too, make these two mistakes. Let me borrow from the field of statistics to describe them. The first kind—dubbed a type I error1 by statisticians who can never be blamed for being creative—occurs when I make a bad investment because I erroneously think it is a good one. It is the error of committing self-harm and is also called a false positive or error of commission. A type II error occurs when I reject a good investment because I erroneously think it is bad. This is the error of rejecting a potential benefit and can be termed a false negative or error of omission. Every investor, including Warren Buffett, makes these two errors on a regular basis. They either harm themselves or walk away from a great opportunity.
+As any statistician will tell you, the risk of these two errors is inversely related.2 Minimizing the risk of a type I error typically increases the risk of a type II error, and minimizing the risk of a type II error increases the risk of a type I error. Intuitively, this seems logical. Imagine an overly optimistic investor who sees an upside in almost every investment. This individual will make several type I errors by committing to bad investments but also will not miss out on the few good investments. On the other hand, an overly cautious investor who keeps finding reasons to reject every investment is likely to make very few bad investments but will lose out on some good investments.
+Investors can’t have their cake and eat it, too! They need to choose to be more sensitive to making one type of error while living with the consequences of making more errors of the other kind. What should one do? What should you do?
+In other words, which of the following investment strategies should you use: (1) making a lot of investments so as not to lose out on some good opportunities and, as a result, living with some failed investments, or (2) being highly selective to avoid making bad investments, thereby missing out on some good investments?
+Let’s turn to evolution to seek the answer.
+The goal of all animals is to survive for as long as possible, at least until they reproduce. In the animal world, everyone is both prey and predator. Yes, even we, the Homo sapiens. How are we prey? Remember COVID-19?
+Let’s start with the prey. What would be a type I error for a prey animal? It would equate to inflicting sufficient harm on itself to compromise its fitness. Let me illustrate the case of an adult male deer to explore two kinds of type I errors.
+The first kind occurs when the deer is thirsty and is near a watering hole. Borne by instinct or experience or both, the deer knows that the watering hole could sound its death knell if a lion or leopard or crocodile is hiding, waiting for the opportunity of an easy meal. If the deer chooses to approach the watering hole, it slakes its thirst quickly and then moves away. And if it mistakenly draws near while a predator is ready and waiting, its life ends.
+From the fossil record, we know that the deer that we see today evolved from ungulates about fifteen to thirty million years ago.3 They have survived millions of years amid ferocious predators by being very sensitive to making type I errors—errors of not being too careful. If they weren’t so, the species would have become extinct. Obviously, some individual deer do end up making the fatal error of commission by drinking at watering holes when predators are present, but the species as a whole has done remarkably well.
+If you have seen African wildlife videos or gone on a safari, you will have noticed how vigilant wildebeests, antelopes, zebras, and other herbivores are. They seem to see danger where there is none. But it is this alertness that has allowed them to survive and thrive for millions of years. A type I error of underestimating a threat could be the last error one of these animals makes.
+The second kind of type I error that the deer can commit is seen in mating rituals. One fascinating sight in the wild for me, and dare I say for the female deer, is two adult male deer fighting over the exclusive control of a harem. Let me describe the mating behavior of the red deer found in many parts of Europe and in western and central Asia.4 The males are called stags, and the females hinds. The hinds live in groups called harems. Stags, armed with impressively large antlers, “fight” with one another to gain exclusive mating rights to the harem females. I have put the word “fight” in quotation marks because the stags rarely end up fighting physically. A type I error, or the error of commission, in this scenario would be the mistake of committing to fighting, thereby risking becoming injured or disabled. Although the prize of a harem is quite substantial, the stags show extreme sensitivity to the type I error by dueling very rarely. Here is how it works.
+Stags are capable of mating when they reach the age of about sixteen months, but they don’t usually mate for the first time until they are at least six years old. This is because they don’t develop large and powerful antlers before this age. They could fight and take a chance, but none do. They could get seriously hurt, which could compromise their fitness for future mating or even their life.
+When they do reach mating age, they approach the rutting grounds where hinds have gathered. But they don’t start fighting immediately. Scientists have observed that locking antlers is almost always the last resort, and a rutting stag will typically fight only five times during the three weeks of the rut. A series of highly choreographed rituals that serve to actively discourage physical contact precedes the locking of horns. When two stags challenge each other, one emits an impressive roar. The other then responds with seemingly equal vigor, because sound quality is a reliable indicator of the strength of one’s rival. The roaring may go on for more than an hour, with the number of roars peaking at three to four per minute. At this stage, based on the quality of roars, one of the stags typically withdraws.</div>
+            <div class="text-block simplified-text">以下是根据要求翻译的书籍段落内容：
+
+**达尔文《物种起源》第三章片段：**
+另一方面，某些动物如大象和犀牛，从不会被猛兽所伤；即使在印度，老虎也极少攻击受母象保护的幼象。
+
+**巴菲特1980年致股东信片段：**
+我们曾在既往报告中指出，收购"扭亏为盈"企业通常令人失望。多年来，数十个行业的数百个重组案例被推荐给我们，无论是作为参与者还是观察者，我们都追踪了实际表现与预期的差距。结论是：当以精明著称的管理层接手基本面差的企业时，鲜有例外的是，企业的糟糕声誉始终如故。
+
+**投资著作节选：**
+我猜想当你翻开投资类书籍时，总期待被作者的智慧所折服。但这次恐怕要让你失望了——我将以剖析自身愚行开启这段旅程。
+
+结束麦肯锡六年工作后，我加入全球私募机构华平投资。数年投资实践让我掌握了基本要义，至少自认为如此。道理看似简单：投资于优质企业家主导的成长型企业，避免支付过高溢价。当时几笔幸运投资令我志得意满。
+
+2000年代初，某成功企业家为业务扩张寻求融资。该企业规模在印度本土相当可观，拥有多家知名客户（包括印度顶级企业），更在海外市场取得突破——当时软件服务业外的印度公司鲜少能建立蓬勃的出口业务。
+
+我启动尽调流程：与创始人及高管探讨战略差异；实地考察办公场所；访谈印欧两地客户；聘请法务尽调公司评估治理；委托顶尖律所和会计师事务所审计；咨询行业专家评估增长潜力。所有环节进展顺利，估值谈判与法律文件也异常顺畅。
+
+经我极力推荐，管理层批准投资。企业成功融资5000万美元——当时印度私募史上巨额注资——我满怀激情主导了这次投资。华平最终回报？零。本金尽数亏损。
+
+这完全是我的失误。我搞砸了，彻头彻尾。
+
+**投资首要法则**
+步入书店的投资书籍区（三十岁以下读者或不知书店为何物，无妨——请在亚马逊搜索"投资类书籍"），可曾注意《投资入门》《华尔街制胜法则》《股市天才养成》《新世代价值投资》等书名共性？它们全在教人赚钱。投资书还能教什么？但我想阐明：不亏钱正是赚钱的必要前提。
+
+世人皆会犯错——"几乎"是因我妻子例外。错误分两类：不该为而为之，该为而不为。前者如我在麦当劳买热巧克力圣代，后者如疏于联络同窗。
+
+投资者同样犯这两类错。借用统计学术语：第一类称"Ⅰ型错误"（统计学家命名缺乏创意），指误判劣质投资为优质而招损，又称假阳性错误或作为之失；Ⅱ型错误指误判优质投资为劣质而错失良机，即假阴性错误或不作为之失。包括巴菲特在内，所有投资者都常犯这两类错误——或自损，或错失。
+
+统计学家会告诉你：两类错误风险呈负相关。降低Ⅰ型错误风险通常加剧Ⅱ型错误风险，反之亦然。试想过度乐观者认为每项投资皆可获利：其必多犯Ⅰ型错误，但鲜少错过良机。反之，过度谨慎者总能找到拒绝投资的理由：其少犯Ⅰ型错误，却错失优质投资。
+
+鱼与熊掌不可兼得！投资者必须选择对某类错误更敏感，同时承受另一类错误增加的代价。究竟该如何抉择？
+
+换言之：该采取哪种策略？（1）广泛投资以免错失良机，但需承受部分失败；（2）精挑细选规避劣质投资，但可能错失机遇？
+
+让我们从进化论中寻找答案。
+
+**生存法则的启示**
+所有动物的目标是尽可能生存——至少延续至繁衍后代。动物世界中，众生皆身兼猎手与猎物。人类亦然。何以成为猎物？请回忆新冠疫情。
+
+先看猎物。对猎物而言，Ⅰ型错误即自我伤害致生存受损。以成年雄鹿为例解析两类Ⅰ型错误。
+
+第一类发生在雄鹿口渴临近水源时。本能或经验告诉它：水源可能是葬身之地，狮豹鳄鱼常潜伏猎食。若雄鹿选择饮水，必速饮速离。若误判形势遭遇埋伏，生命即告终结。
+
+化石记录显示，现代鹿类由1500-3000万年前的偶蹄目进化而来。正因对Ⅰ型错误（不够谨慎之失）极度敏感，它们才能在猛兽环伺中延续百万年。若非如此，物种早已灭绝。固然个别鹿会犯致命错误，但整个物种繁衍兴盛。
+
+非洲野生动物纪录片或狩猎之旅中，你会注意到角马、羚羊、斑马等食草动物的高度警觉。它们常无危自警，却正因这份警惕存活百万年。对它们而言，低估威胁的Ⅰ型错误可能是生命终点。
+
+第二类Ⅰ型错误见于雄鹿求偶仪式。野生世界最震撼的景象——对雌鹿亦如此——莫过于两雄鹿为独占配偶权而战。以欧亚大陆广布的马鹿为例：雄称牡鹿，雌称牝鹿。牝鹿群居形成配偶群，长巨角的牡鹿通过"搏斗"争夺交配权。"搏斗"加引号因其极少真正肉搏。此场景下，Ⅰ型错误（作为之失）即贸然参战致伤残风险。尽管配偶群诱惑巨大，牡鹿却以极低决斗频率展现对Ⅰ型错误的规避。其机制如下：
+
+牡鹿16月龄即具交配能力，但实际初配多在6岁后——因至此才生壮角。它们本可冒险相搏，但无一为之：重伤将断送未来交配权乃至生命。
+
+进入繁殖期后，牡鹿来到牝鹿聚集的发情地。它们不会立即开战。科学家观察到：鹿角相抵永远是最终手段，发情期牡鹿平均仅搏斗五次。角斗前存在精心设计的仪式化行为以规避接触。当两牡鹿对峙，一方发出雄浑吼声，对方以同等力度回应——吼声质量是判断对手实力的可靠指标。吼叫可持续逾一小时，峰值频率达每分钟三至四次。此阶段，通常一方会根据吼声质量主动退却。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">If they are unable to decide their relative strengths based on roars, they move on to the next stage of the “fight” by walking with stiff legs parallel to each other. Yes, they threaten their opponent by walking! This parallel walking spectacle lasts many minutes during which time the rivals assess each other’s strength and physical condition from a distance of about two meters. During this period, they also thrash the vegetation and roar to appear more intimidating to their rival. Again, one may choose to withdraw at this stage. Only if both stags refuse to back down do they choose to clash antlers. To me, it seems more like a push-and-shove match. This “show”—most of these interactions don’t look like a real brawl—can last several minutes, at the end of which one stag admits defeat and runs away.
+If this were a human boxing match, the crowd would trash the arena because the boxers would be screaming and hitting the ground instead of each other! Stags have found great evolutionary success because at each stage of the contest, they minimize the error of committing self-harm: They do not even attempt to duel until they have big enough antlers, and even after acquiring their deadly weapons, they refuse to engage until they believe they have more than a fair chance of winning. Even their duel is not deadly—scientists have observed that only about 5 percent of rutting stags receive permanent injuries.
+The bottom line is that the stags’ evolutionary success, at least in part, can be attributed to their instinct to preserve life and limb—to minimize the risk of committing a type I error.
+But there is a significant trade-off to the approach of minimizing the risk of type I errors: the deer make many more type II errors. A type II error, or the error of omission, means avoiding a watering hole where no predator is waiting. Stags also too often withdraw from a rutting duel when they have a good chance of winning the harem. The cost is the lost opportunity to drink water or to mate.
+In some cases, a type II error may turn out to be a fatal mistake. A thirsty deer may not be able to run quickly enough to escape a predator, and an overcautious stag may not get to pass his genes on to the next generation. But on average, making this trade-off in favor of reducing the number of errors of self-harm while tolerating a higher number of errors of rejecting potential benefit has worked quite well for the species.
+Committing a type I error can be and has been deadlier than the loss of a single animal—it can lead to the extinction of an entire species. The flightless dodo bird, a native of Mauritius, was first spotted by sailors in 1507 and went extinct by 1681.5 Dodos were bigger than turkeys, and since they had no natural predators on the isolated island, they were not afraid of the human invaders. They committed the cardinal type I error—they did not avoid the humans when they should have—which led to their extinction.
+Let’s now turn our attention to the predator. The predator, too, can make two types of error: It can commit itself to killing prey that turns out to be too dangerous or too large or too fast (type I error), or it can refrain from attacking prey that it could easily have killed (type II error).
+Which error do you think a predator makes more often?
+A cheetah is the fastest mammal on Earth and routinely achieves speeds of eighty to one hundred kilometers per hour while chasing prey.6 It sacrifices size and bulk for speed. A cheetah typically weighs 34 to 54 kilograms (75 to 120 pounds), which is significantly less than a lion, whose weight typically ranges from 170 to 230 kilograms (375 to 500 pounds). Hence, a cheetah usually preys on smaller animals like birds, rabbits, and small antelopes. A cheetah will never attempt to kill an adult water buffalo, a favorite prey of lions. The cheetah is simply trying to avoid getting hurt. Committing a type I error will lead either to death—water buffalos can turn on their hunters aggressively—or wasted energy—when a cheetah chases an antelope that was too far away to begin with. These mistakes, in turn, will lead to hunger and poorer hunting performance. For a cheetah mother, a type I error can also lead to the death of her offspring. The fact the species has been successful for eons demonstrates that cheetahs, as a species, have not committed too many type I errors. A type II error for a cheetah would mean not chasing prey it should have. This would leave the cheetah and maybe even her babies hungry, but they would all live to see another day.
+Deer and cheetahs do not manufacture complex decision-tree diagrams with associated probabilities to make decisions in their lives. These animals do what they do because natural selection has honed their instincts over countless generations. Natural selection among animals is incessant and merciless and has produced millions of species, all of whom adhere to this simple principle: Minimize the risk of committing type I errors to curtail the risk of injury or death, and learn to live with type II errors or foregone benefits.
+What about plants, the ultimate source of all life on Earth?
+Plants have been immensely successful evolutionarily: The first land plants appeared in the Ordovician era about 490 million years ago, and there are about 400,000 plant species found on our green planet.7 Unlike animals, the dramas of whose lives play out on African safaris, on wildlife TV channels, and in children’s books, plants may seem uninteresting, sedate, peaceful, and “inactive.” Nothing could be further from the truth. Look closely, and you will notice that the life of a plant, in many ways, is more exciting and action-packed than that of almost any animal. Paradoxically, this is because plants can’t move. If they are malnourished, they can’t move to a different location to feed; when attacked by herbivores, they don’t have feet to run or claws to fight back; when infected by pathogens, they can’t be offered treatment and cuddles like we humans can.
+Plants can choose to commit resources broadly to two areas: defending against attacks or growing. As with deer and cheetahs, any error that significantly compromises life or fitness for a plant can be categorized as a type I error. Since the lack of a proper defense may prove fatal to a plant, a type I error, or an error of commission, occurs when the plant does not devote resources to protecting itself. A type II error occurs when a plant directs energy toward preservation when it should have invested in growth. This error of omission may not kill the plant but may compromise its ability to grow and reproduce relative to its competitors.
+Ample evidence from nature suggests that plants avoid type I errors at the cost of committing more type II errors.8 Let’s examine how plants handle insect herbivores.
+The first defense of plants against insects is physical structures like wax, thorns, and trichomes. A trichome is the layer of hairs on leaves, stems, and fruits and can be spiral, straight, hooked, or glandular. A dense trichome on a leaf impedes the movement of insects and their larvae, thereby reducing their ability to damage the leaf epidermis. Trichomes in glandular form can secrete poisonous or otherwise harmful chemicals like flavonoids and alkaloids, which repel insects. Some glandular trichomes can also trap insects.
+Producing and maintaining trichomes is metabolically expensive for a plant and prevents it from making additional leaves, stems, or fruits. Thus, when there are few or no insects, we should expect trichomes to be tiny or nonexistent. But when there is an insect attack, to reduce the risk of a type I error (erroneously investing in growth instead of preparing defenses), we should expect the plant to start making trichomes. And this is what we see. For example, scientists have observed that when adult leaf beetles attack the willow plant, new leaves grown after the attack develop higher trichome density. The willow plant redirects its resources from growth to defense as a result of sensing a predator. Trichome density also increases in other species like pepperwort and wild radish after an insect attack. When a butterfly species attacks a black mustard plant, the trichome density of the plant’s leaves increases, as does the production of pungent chemicals called glucosinolates. Within a few days or weeks following an insect attack, trichome density can increase from 25 to 1,000 percent!
+A plant’s defense mechanisms are not limited to trichomes, however. Lignin is a phenol compound that plays a vital role in a plant’s defense against insects. Lignin does two things to the leaves: It increases their toughness, thereby making them unpalatable, and it reduces their nutritional content. A leaf with excess lignin would be anathema for insects. Just as with trichomes, it is costly to produce lignin. Also as with trichomes, the plant ramps up its lignin production after an insect attack. In addition to lignin, compounds called flavonoids, tannins, lectins, and peroxidases also serve to reduce the risk of plants committing type I errors by directing resources to defense rather than growth.
+What I have described are direct defenses against pests. But many plants also resort to indirect defenses, which are rarely seen in animals.</div>
+            <div class="text-block simplified-text">好的，这是按照要求翻译的段落：
+
+如果雄鹿无法通过吼声判断彼此的实力强弱，它们就会进入“战斗”的下一阶段：迈着僵硬的腿，彼此平行地行走。没错，它们通过行走来威胁对手！这种平行行走的场面会持续好几分钟，期间两只鹿在大约两米的距离上评估对手的实力和身体状况。在此期间，它们还会抽打植被并吼叫，以显得对对手更具威慑力。同样，此时也可能有一方选择退出。只有双方都不愿退让时，它们才会选择用鹿角对撞。在我看来，这更像是推搡比赛。这场“表演”——大多数此类互动看起来都不像真正的打斗——可持续数分钟，最终以一方认输逃跑告终。
+
+如果这是人类的拳击比赛，观众肯定会怒砸赛场，因为拳击手们会冲着地面咆哮击打，而不是互殴！雄鹿在进化上取得了巨大成功，因为在竞赛的每个阶段，它们都最大限度地减少了自残的错误：在鹿角长得足够大之前，它们甚至不会试图决斗；即使在拥有了致命武器之后，除非它们相信自己胜算很大，否则也拒绝交战。甚至它们的对决也并非致命——科学家观察到只有大约5%的发情期雄鹿会遭受永久性伤害。
+
+关键在于，雄鹿在进化上的成功，至少部分归功于它们保全性命的本能——即最大限度地减少犯下I类错误的风险。
+
+但最小化I类错误风险的方法有一个重大代价：鹿会犯下多得多的II类错误。II类错误，或称错失良机型错误，意味着避开一个本无掠食者潜伏的水源。雄鹿也常常在拥有很大胜算赢得雌鹿群时退出对决。代价是失去了饮水或交配的机会。
+
+在某些情况下，II类错误可能变成致命的错误。一只口渴的鹿可能跑得不够快而无法逃脱掠食者，一只过分谨慎的雄鹿可能无法将基因传给下一代。但平均而言，做出这种权衡——倾向于减少自残错误的数量，同时容忍更多拒绝潜在收益的错误——对这个物种来说效果相当好。
+
+犯下I类错误可能并且曾经比损失单个个体更为致命——它可能导致整个物种的灭绝。不会飞的渡渡鸟是毛里求斯的特有物种，1507年首次被水手发现，到1681.5年便灭绝了。渡渡鸟比火鸡大，由于在孤岛上没有天敌，它们并不惧怕人类的入侵者。它们犯下了根本性的I类错误——在该避开人类时没有避开——这导致了它们的灭绝。
+
+现在让我们把注意力转向掠食者。掠食者也会犯两种错误：它可能执意捕杀最终证明过于危险、过于庞大或过于迅捷的猎物（I类错误），或者它可能放弃捕杀本可以轻易杀死的猎物（II类错误）。
+
+你认为掠食者更常犯哪种错误？
+
+猎豹是地球上最快的哺乳动物，在追逐猎物时通常能达到每小时80至100公里的速度。它以牺牲体型和块头来换取速度。猎豹的体重通常在34至54公斤（75至120磅）之间，远低于狮子（体重通常在170至230公斤（375至500磅）之间）。因此，猎豹通常捕食鸟类、兔子和小羚羊等较小的动物。猎豹永远不会试图猎杀成年水牛——那可是狮子的最爱。猎豹纯粹是为了避免受伤。犯下I类错误要么会导致死亡（水牛会凶猛地反击猎手），要么会浪费能量（当猎豹追逐一只一开始就离得太远的羚羊时）。这些错误反过来会导致饥饿和更差的捕猎表现。对于一只猎豹母亲来说，I类错误也可能导致其后代死亡。该物种成功繁衍了亿万年这一事实表明，猎豹作为一个物种，并未犯下太多I类错误。对猎豹而言，II类错误意味着没有追逐本该追逐的猎物。这会让猎豹甚至它的幼崽挨饿，但它们都能活到第二天。
+
+鹿和猎豹不会制作复杂的决策树图并附上概率来为生活做决定。这些动物之所以如此行事，是因为自然选择在无数代中磨砺了它们的本能。动物界的自然选择永不停息且冷酷无情，已造就了数百万个物种，它们都遵循这一简单原则：最大限度地减少犯下I类错误的风险以降低受伤或死亡的风险，并学会接受II类错误或放弃的收益。
+
+那么植物呢？地球上所有生命的终极源泉？
+
+植物在进化上取得了巨大成功：最早的陆生植物出现在约4.9亿年前的奥陶纪，如今在我们这颗绿色星球上发现了约40万种植物。与动物不同——它们的生活戏剧在非洲野生动物保护区、野生动物电视频道和儿童书籍中上演——植物可能显得无趣、沉静、平和且“不活跃”。事实远非如此。仔细观察，你会发现植物的生命在许多方面比几乎任何动物的生命都更激动人心且充满行动。矛盾的是，这恰恰是因为植物无法移动。如果营养不良，它们无法移动到别处觅食；当受到食草动物攻击时，它们没有腿可以逃跑，也没有爪子可以反击；当感染病原体时，它们无法像我们人类那样接受治疗和安抚。
+
+植物可以选择将资源大致投入两个领域：防御攻击或生长。如同鹿和猎豹一样，任何严重危及植物生命或健康的错误都可归为I类错误。由于缺乏适当的防御对植物可能是致命的，当植物没有投入资源保护自己时，就发生了I类错误（或称判断失误型错误）。当植物本应投资于生长却将能量导向防御时，则发生II类错误。这种错失良机型错误可能不会杀死植物，但可能削弱其相对于竞争对手的生长和繁殖能力。
+
+自然界的大量证据表明，植物以避免I类错误为代价，犯下更多的II类错误。让我们看看植物如何应对昆虫类食草动物。
+
+植物抵御昆虫的第一道防线是蜡质、尖刺和毛状体等物理结构。毛状体是覆盖在叶、茎和果实上的一层毛，可以是螺旋状、直状、钩状或腺状。叶片上浓密的毛状体会阻碍昆虫及其幼虫的活动，从而降低其破坏叶片表皮的能力。腺状毛状体能分泌类黄酮和生物碱等有毒或其他有害化学物质，以驱赶昆虫。有些腺状毛状体还能困住昆虫。
+
+对植物来说，生产和维持毛状体在代谢上是昂贵的，会妨碍其长出更多的叶、茎或果实。因此，当昆虫很少或没有时，我们应预期毛状体很小或不存在。但当昆虫来袭时，为了降低I类错误的风险（错误地投资于生长而非准备防御），我们应预期植物会开始制造毛状体。而这正是我们观察到的。例如，科学家观察到当成虫叶甲攻击柳树后，新长出的叶片毛状体密度更高。柳树因感知到掠食者而将资源从生长转向防御。在其他物种如水田芥和野生萝卜中，昆虫攻击后毛状体密度也会增加。当某种蝴蝶攻击黑芥菜时，其叶片的毛状体密度会增加，同时一种名为芥子油苷的辛辣化学物质的产量也会增加。昆虫攻击后的几天或几周内，毛状体密度可增加25%至1000%！
+
+然而，植物的防御机制不仅限于毛状体。木质素是一种酚类化合物，在植物抵御昆虫中起着至关重要的作用。木质素对叶片有两方面作用：增加其韧性使其难以下咽，以及降低其营养成分。含有过量木质素的叶片对昆虫来说是避之不及的。与毛状体一样，生产木质素代价高昂。同样与毛状体类似，植物在昆虫攻击后会提高木质素产量。除了木质素，类黄酮、单宁、凝集素和过氧化物酶等化合物也有助于通过将资源导向防御而非生长来降低植物犯I类错误的风险。
+
+我所描述的是针对害虫的直接防御。但许多植物也会采用间接防御，这在动物界相当罕见。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">An indirect defense works on the simple principle that “my enemy’s enemy is my friend.”9 It works simply—and beautifully—like this. When a plant senses an insect attack, it releases some chemical compounds from its leaves, flowers, and fruits into the atmosphere. These chemical compounds attract predators of the insects attacking the plants. For example, plants like lima beans and Arabidopsis release a chemical called methyl salicylate to attract insect predators like big-eyed bugs, ladybird beetles (commonly known as ladybugs), and green lacewings. This trick is not limited to the aerial parts of plants. Roots, too, can release chemicals that attract underground predators to underground pests. For example, when western corn rootworm threatens maize plants, the maize roots release a chemical that attracts a nematode species that preys upon the rootworm.
+When aphids attack, many plants emit a chemical called beta-farnesene. It does not appear to be a coincidence that when predators attack aphids, the aphids release this chemical, presumably warning other aphids to stay away. Thus, a plant releasing beta-farnesene is equivalent to a deer mimicking a lion roar when attacked by a leopard!
+Plants, like animals, have found a way to their spectacular evolutionary success by focusing on reducing their errors of commission. In other words, like their animal counterparts, they avoid taking risks to their life and well-being at the cost of giving up some potentially juicy opportunities.
+Buffett’s Two Rules of Investing
+As one should expect, Warren Buffett figured out this lesson from evolutionary theory before almost everyone else. He famously coined his two rules of investing as follows:
+Rule number 1: Never lose money.
+Rule number 2: Never forget rule number 1.10
+But wait a minute. What does he mean by commanding us to “never lose money”? How can one choose not to lose money? Isn’t that what every investor wants? Why would any investor deliberately wish to lose money?
+In fact, Buffett seems to have violated his own two rules on many occasions. For example, in 1993, Berkshire bought Dexter Shoe for $433 million in Berkshire stock. As he detailed in his 2007 annual letter, “What I had assessed as a durable competitive advantage vanished within a few years. . . . That move made the cost to Berkshire shareholders not $400 million, but rather $3.5 billion. In essence, I gave away 1.6 percent of a wonderful business—one now valued at $220 billion—to buy a worthless business.”
+In his 2014 annual letter, he admitted his mistake in Berkshire’s Tesco investment, “We sold Tesco shares throughout the year and now are out of this position. Our after-tax loss from this investment was $444 million. . . .” More recently, in the middle of the COVID-19 pandemic market meltdown, Buffett sold all his airline stocks. He had invested between $7 billion and $8 billion for large stakes in four airlines: American, Delta, Southwest, and United. Berkshire’s position was worth a bit more than $4 billion at the time of his sale.11 “It turned out I was wrong,” he said.
+Back to Buffett’s two rules. Despite losing money occasionally, what is he asking us to do when he orders us not to lose any? Buffett has never explicitly explained this (at least I have never found an explanation), but this is what I think he means: Avoid big risks. Don’t make type I errors. Don’t commit to an investment in which the probability of losing money is higher than the probability of making money. Think about risk first, not return.
+Before we go any further, allow me a slight digression to get the definition of “risk” out of the way. The definition I use in this book is not the same as the one defined by corporate finance theorists. Finance theory claims that risk is the chance that the actual investment return will differ from the expected investment return.12 Thus, if an asset is highly volatile, it will be classified as riskier than an asset that is not as volatile.
+If you think about this for a moment, you will conclude that this is nonsensical. For any investor, risk should simply be the probability of incurring a capital loss. The following example will make this clear. Let’s say I am evaluating an investment in a high-quality grocery retailer. The retailer has been performing quite well, resulting in a steadily increasing stock price over the years. Let’s say the market price was $90 in early 2020. After the COVID-19 crisis, the stock market became highly volatile, and the market price of this business dropped to $30. Let’s also assume that you have done your work and have concluded that grocery retailers may benefit from the crisis since consumers will stock up their pantries. Which would be a riskier investment: investing in the business at $90 or at $30? If your intuition says $90, you are right. This is because the risk of losing money is greater at $90 than at $30. But, believe it or not, academics of finance would argue exactly the opposite! No, I am not kidding. They would conclude that the post-COVID-19 crisis business is riskier because the volatility of the stock price has increased!
+We at Nalanda never bring stock price volatility into a risk discussion. We define “risk” as the probability of capital loss. The higher the probability of loss, the higher the risk. If my investment in Company A is likely to lose more money over my investment in Company B, I will deem Company A to be “riskier” than Company B irrespective of past or future volatility in their stock prices.
+As Buffett’s diktat shows, he is focused on minimizing risk and, in doing so, has become the envy of the entire investment world, which seems obsessed with running after every half-baked business idea. Buffett and the natural world are fixated on minimizing the risk of type I errors. Should we follow them blindly? Will the explicit lesson from Buffett and the implicit one from leopards and legumes work for ordinary mortals like us?
+Why or why not?
+A Great Investor Is a Great Rejector
+Let’s walk through a simple example that contrasts two different investment styles. And let’s then see if Buffett’s advice makes sense. According to data from the World Bank, the United States had 4,400 listed companies in 2018.13 For simplicity, let’s assume a round 4,000. First, we need to decide how many of these are “good investments.” Let’s keep it simple and classify a “good investment” as one that will make us a decent return over the long run. It has a competent and honest management team, a modest growth rate, makes enough money, and has low leverage. If you are a finance nerd, you are probably bristling at this moment. What in the world do I mean by vague terms like “decent,” “enough,” and “competent”? Don’t worry, we will get into numbers shortly, but at this stage, let’s just say we know a good investment when we see it.
+Let’s assume that 25 percent of the listed universe comprises “good investments.” If you talk to practitioners—that is, actual investors—you will not get a number too far from this percentage. In any event, the exact percentage is less significant, as we will see. Thus, we can say there are 1,000 good investments and 3,000 bad investments in the U.S. listed universe by this logic. Again, don’t get too pained about this strict dichotomy; it is serving a purpose that we will get to.
+Let’s say you encounter a savvy investor who claims that he is right 80 percent of the time in his investment decisions (it is usually a “he”; we men are evolutionarily programmed for empty exaggerations). Stated differently, if he encounters a bad investment (i.e., one in which he will not make any money), he rejects it 80 percent of the time. If he sees a good investment (i.e., one in which he will make money), he makes a favorable investment decision 80 percent of the time. Thus, his rates of type I and type II errors are both 20 percent. If this star investor makes an investment decision, what is the probability that it is a good investment? You’d say 80 percent, right? Wrong. The answer is 57 percent. But why? Isn’t he right 80 percent of the time? How can we go from 80 percent to 57 percent?
+Here is how.
+There are 1,000 good investments in the market, and since this investor makes a type II error 20 percent of the time (i.e., he mistakenly rejects 20 percent of these), he will select only 800 companies from his list. The market also has 3,000 bad investments, and since he makes type I errors 20 percent of the time (i.e., he mistakenly accepts 20 percent of these), he will mistakenly select 600 companies from this list, thinking that they are good investments. Thus, his universe of what he thinks are good investments will be 1,400 companies (800 + 600). Are you with me? Good. Now to the most interesting part.
+Of these 1,400 businesses that the investor thinks are good investments, how many do you think are good investments? Only 800. Hence, the probability of his making a good investment will be 800 ÷ 1,400 = 57 percent.
+So here is the unfortunate conclusion. Even if an investor is endowed with the divine power of being right 80 percent of the time, the probability that he will select a good investment is only 57 percent. Even though he is “right” 80 percent of the time, 43 percent of his investments will turn out to be bad! The reason is simple, especially when we incorporate our prior knowledge of the business world: There are very few good investments in the market.
+Let me repeat this statement, which is the bedrock of our philosophy and that of the rest of this book: There are very few good investments in the market.
+As we have just seen, the prevalence of type I and type II errors can lull us investors into thinking that we are better than we really are. But these errors carry a deeper meaning for our profession. Given a choice, which error would you like to reduce, and why?</div>
+            <div class="text-block simplified-text">以下是根据要求翻译的书籍段落：
+
+间接防御遵循一个简单原则："敌人的敌人就是朋友"。其运作方式简洁而精妙：当植物感知到昆虫侵袭时，会从叶片、花朵和果实释放特定化学物质到空气中。这些化合物能吸引捕食植食性昆虫的天敌。例如利马豆和拟南芥会释放水杨酸甲酯，吸引大眼蝽、瓢虫（俗称花大姐）和草蛉等捕食者。这种策略不仅限于地上部分——根系同样能释放化学物质吸引地下害虫的天敌。例如当玉米遭遇西部玉米根虫侵害时，根部会释放化学信号吸引捕食根虫的线虫。
+
+蚜虫侵袭时，许多植物会释放β-法尼烯。值得注意的是，当捕食者攻击蚜虫时，蚜虫也会释放这种物质以警告同类逃离。因此植物释放β-法尼烯，犹如被花豹追捕的鹿模仿狮吼！
+
+与动物界相似，植物通过着力减少"主动失误"实现惊人的进化成就。换言之，它们宁愿放弃潜在良机，也要避免危及生命和生存安全。
+
+**巴菲特的投资双律**
+
+沃伦·巴菲特早于众人洞悉这条进化论启示，并提炼出著名的投资准则：
+第一条：永远不要亏钱
+第二条：永远不要忘记第一条
+
+但"永不亏钱"究竟何意？投资者岂能选择不亏损？这不正是所有投资者的共同愿望？事实上，巴菲特本人曾多次违背这两条戒律。1993年伯克希尔以价值4.33亿美元的股票收购德克斯特鞋业，他在2007年致股东信中坦承："我判定的持久竞争优势几年内便荡然无存...此举使伯克希尔股东付出的代价不是4亿，而是35亿美元。本质上，我拱手让出了当前估值2200亿的优质企业1.6%股权，换来的却是零价值资产。"
+
+2014年信中他承认对乐购的投资失误："我们全年抛售乐购股票直至清仓，税后损失4.44亿美元..."近期新冠疫情期间的市场崩盘中，他悉数抛售航空股。此前伯克希尔以70-80亿美元重仓美国四大航空公司，出售时市值仅略超40亿。"事实证明我错了。"巴菲特表示。
+
+那么"永不亏钱"的真谛何在？我认为其核心是：规避重大风险。杜绝第一类错误。避免投资赔钱概率高于赚钱概率的项目。始终风险优先，收益次之。
+
+需特别澄清本书对"风险"的定义：区别于公司金融理论将风险定义为实际收益偏离预期收益的可能性，我们认为风险应是资本损失的概率。举例而言：某优质杂货零售商股价2020年初为90美元，疫情危机后跌至30美元。若研判该行业可能因民众囤货受益，90美元时的投资风险实则高于30美元——因为前者亏损概率更大。但金融学界会因股价波动加剧而认定后者风险更高。
+
+在纳兰达基金，我们从不将股价波动纳入风险考量。资本损失概率越高则风险越大。若投资A公司比B公司更可能亏损，无论股价波动如何，A公司风险必然更高。
+
+巴菲特箴言揭示其成功核心在于风险最小化，这使沉迷追逐半熟商机的投资界望尘莫及。巴菲特与自然界的共通点在于竭力规避第一类错误。但凡人是否应盲从？这套显性投资智慧与花豹、豆科植物的隐性生存法则对普通人是否适用？
+
+**卓越投资者必是卓越拒绝者**
+
+假设美国4000家上市公司中25%属于"优质投资"（即具备诚信管理层、稳健增长率、充足盈利及低负债的特质），则有1000家优质企业，3000家劣质企业。若某投资者声称决策正确率达80%（即拒绝劣质项目的概率为80%，选中优质项目的概率为80%），其两类失误率均为20%。
+
+当他进行投资时：1000家优质企业中正确选中800家（20%第二类错误导致漏选200家）；3000家劣质企业中错误选中600家（20%第一类错误）。其最终选中的1400家"优质企业"中，实际优质者仅800家。故其投资优质企业的真实概率仅为800/1400≈57%。
+
+残酷结论由此显现：即便拥有80%正确率的神助，投资者选中优质项目的概率仅57%。因其决策而导致的投资中，43%将沦为劣质项目。根本原因在于：市场中优质投资标的极其稀少。
+
+这正是本书哲学根基：优质投资标的凤毛麟角。第一类和第二类错误会诱使投资者高估自身能力。面对抉择，你更想减少哪类错误？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">Let’s say that our investor, Investor A, decides to become better at rejecting bad investments and reduces his rate of type I errors from 20 percent to 10 percent. Thus, from the 3,000 bad investments in the market, he will select only 300 businesses (10 percent × 3,000). As his type II error rate remains 20 percent, he will erroneously reject 200 of the 1,000 good investments, thereby selecting 800 investments. Thus, Investor A has selected 1,100 investments (300 + 800), but only 800 of these are good. In this scenario, Investor A’s probability of selecting a good investment improves from 57 percent to 73 percent (800 ÷ 1,100). I assume you will admit that this is quite a dramatic improvement in his success rate.
+Investor B, unlike Investor A, is more focused on not missing out on good opportunities. He chooses to reduce his rate of type II errors from 20 percent to 10 percent and keeps his rate of type I errors at 20 percent. Thus, of the 1,000 good investments, he will select 900 (90 percent × 1,000), and of the 3,000 bad investments, he will mistakenly assume that 600 are good (20 percent × 3,000). Thus, Investor B has selected 1,500 investments (600 + 900), but only 900 are good. Thus, Investor B’s probability of selecting a good business improves from 57 percent to 60 percent (900 ÷ 1,500). This is an improvement—but only by 3 percentage points. Good, but not great.
+The relative impact of reducing each type of error is quite stark, as shown in table 1.1.
+Table 1.1 Type I and II errors
+Type I error
+Type II error
+Success rate
+20%
+20%
+57%
+10%
+20%
+73%
+20%
+10%
+60%
+Thus, there is a 16-percentage-point improvement in investor performance by reducing the rate of type I errors from 20 percent to 10 percent. On the other hand, reducing the rate of type II errors by the same amount improves performance by only 3 percentage points.
+Guess what happens if another investor, Investor C, improves his rate of both type I and type II errors from 20 percent to 10 percent. I was flabbergasted when I first saw the answer: 75 percent. This is barely above the 73 percent achieved by Investor A, who was focused only on reducing type I errors. A dramatic improvement in performance comes only when the rate of type I errors—errors of making bad investments—is reduced.
+Thus, whereas most investment books and college curricula focus on teaching how to make good investments, everyone would be better off by learning how not to make bad investments. An investment career is probably among the very few that rewards the skeptic more than the optimist.
+Buffett is the best investor in the world because he is the best rejector in the world.
+How to Avoid Big Risks
+It’s all well and good to assert that we should learn from the evolutionary success of animals and plants to avoid big risks and become better investors. But how?
+There are myriad ways of learning life lessons—parents, siblings, one’s spouse, friends, books, movies, school, college, work, and leaders are a few sources that come to mind. I will never really know why I am what I am. But I am reasonably confident of the identity of my primary teacher and guide in the area of investing—my own mistakes.
+Early in my investing career at Warburg Pincus, I committed the cardinal sin of minimizing errors of omission instead of trying to control type I errors. I was too afraid to miss out on good opportunities. I founded Nalanda after gaining more than eight years of investing experience. Our reasonable success of staying away from trouble is the result of the follies of the first three to four years of my career. In my case, nothing has succeeded like a failure.
+Most investors will keep making type I errors (making bad investments) throughout their careers. At least I have, and I will. It’s inevitable. So when I say that we need to avoid type I errors, I am proposing that we try to avoid the avoidable type I error. By not taking on big risks. What is a big risk? It is not clear to me that a definition is possible or even desirable for a practitioner. Instead of defining “big risk,” let me describe the kinds of situations we avoid at Nalanda.
+This is not an exhaustive list, but hopefully it will give you a good sense of the kinds of risks we don’t price.
+Being Wary of Criminals, Crooks, and Cheats
+People don’t change. Especially criminals, crooks, and cheats. As permanent owners, we at Nalanda have no interest in a business owned or run by someone who defrauds customers, suppliers, employees, or shareholders. When we come across such a person, we don’t ask if the business is cheap enough for the risk to be mitigated; we don’t ask if we could persuade this individual to change; we don’t ask if their crimes are trivial enough to ignore. We simply walk away.
+I don’t know about other countries, but the Indian capital market, I am sad to admit, teems with dodgy and deceitful promoters (Indian parlance for the largest or controlling shareholders). As a result, we are highly vigilant and do not even start assessing the business fundamentals until we have convinced ourselves that the promoters have impeccable integrity. A KPMG report on the Indian private equity (PE) industry euphemistically claimed, “Many risks are common to all emerging markets—political and regulatory uncertainty and weak corporate governance among them. Many of these risks are more likely in India, even if they are not unique—such as working with family-owned businesses, navigating IPO exits and compliance risks.”14 This was a polite way of saying, “Beware of being swindled.”
+We employ a two-level process for this assessment. We always hire a forensic diligence expert to assess if the owner or senior managers have a dubious past. During this period, we conduct our parallel diligence on the promoters and managers by scouring the media, studying past annual reports, listening to their conference call recordings, reading their interviews, and talking to people who have had personal and business dealings with them. In almost half the cases, we ask the external firm to further probe issues that have arisen during our diligence (for example, money leakage for large capex contracts or a cash payment to senior managers). This dual check provided by outsourcing and insourcing has prevented a lot of heartburn for us over the years. More importantly, it has saved a lot of money for our investors.
+But shouldn’t this be obvious?
+There is nothing extraordinarily insightful about claiming that one needs to check for promoters’ integrity before committing capital. You are right. Governance checks in India should be par for the course. But they are not. Let’s take an example of investing in the infrastructure and real estate sectors. In India, these two industries are highly regulated, involve a lot of cash transactions, and require a plethora of approvals; hence, over the years, they have attracted a set of entrepreneurs who can successfully “manage” the system. Looking for the proverbial needle in a haystack would be a cakewalk compared to finding infrastructure and real estate entrepreneurs who don’t mistreat minority shareholders. We have chosen to avoid these industries completely.
+When we launched Nalanda in 2007, it was a boom time for fundraising in the real estate and infrastructure sectors. According to a McKinsey report, from 2005 to 2008, real estate absorbed almost a quarter of all PE investments, and infrastructure’s share was nearly 30 percent.15 A relatively large portion of these ended up in a disaster, and PE and public market investors lost billions of dollars. Real estate returns on exit were only 2 percent, and only 9 percent of energy segment investments could get an exit. One key reason for this unfortunate outcome was the adverse selection of entrepreneurs by the fund management community.
+But it would be hypocritical of me to complain about others when I, too, have fallen into the same trap.
+Let’s go back to the business for which I led the investment of $50 million from Warburg Pincus and which seemed to have ticked all the boxes. Here is what I did not tell you on the first page of this chapter: The governance check from the outsourced firm had given a clean chit to the promoter, but our internal team had heard some informal negative “buzz” about him. It wasn’t strong or unequivocal, but it was buzz nevertheless. I ignored it. I am still not sure why. Maybe I trusted our outsourced provider more than I should have, maybe I had become arrogant owing to recent successes, maybe I had been too charmed by the smooth-talking promoter, maybe I was in too deep after completing many months of diligence, or maybe all of the above.
+At this stage, I should have gone back to our service provider and asked them to do more work. I also should have dug deeper into the veracity of the criticisms of the promoter. I didn’t do either of these things. It was too late by the time we discovered this individual’s shenanigans; he had sucked the company dry, and Warburg lost almost all its money. Since this incident, I have been extra cautious, both at Warburg and at Nalanda. We never invest unless we are fully and absolutely satisfied with the governance standards. We haven’t lost a single dollar at Nalanda yet on dodgy promoters, but this doesn’t mean we never will. But if we ever do, it will not be because we didn’t do our best.
+Some investors may object that if the company’s survival is not under threat owing to the bad behavior of the promoter, investing in a somewhat shady business at a very cheap valuation may be a good way of making money over the medium to long term. The fact remains that there are some well-known dodgy businesses in India whose stock prices have done reasonably well over the past few years. But we have never played this game and never will. Our philosophy of permanent ownership requires—demands—that we partner only with promoters of the highest integrity. And so that is what we do.
+Avoiding Turnarounds</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的书籍段落：
+
+假设我们的投资者A决定提升甄别坏投资的能力，将I类错误率从20%降至10%。那么，在市场上的3000个坏投资中，他只会选300个（10%×3000）。由于他的II类错误率仍为20%，在1000个好投资中，他会错误地拒绝200个，从而选中800个。因此，投资者A总共选中了1100个投资（300+800），但其中只有800个是好的。在此情形下，他选中好投资的概率从57%提升至73%（800÷1100）。想必您也会承认，他的成功率有了显著提高。
+
+投资者B则与A不同，他更关注不错失良机。他选择将II类错误率从20%降至10%，同时保持I类错误率为20%。于是，在1000个好投资中，他会选中900个（90%×1000），而在3000个坏投资中，他会错误地认为600个是好的（20%×3000）。因此，投资者B总共选中了1500个投资（600+900），但其中只有900个是好的。这样，他选中好投资的概率从57%提升至60%（900÷1500）。这虽然也是进步，但仅提升了3个百分点。不错，但不算出色。
+
+如表1.1所示，降低两类错误所产生的相对影响差异巨大。
+（表1.1 I类和II类错误 略）
+
+因此，将I类错误率从20%降至10%，投资者表现提升了16个百分点。另一方面，将II类错误率同等幅度降低，表现仅提升3个百分点。
+
+您猜如果另一位投资者C同时将I类和II类错误率从20%降至10%，结果会怎样？我第一次看到答案时大吃一惊：75%。这仅比专注于降低I类错误的投资者A的73%高出一点点。只有当降低I类错误率——即避免进行坏投资的错误时，表现才会出现显著提升。
+
+因此，尽管大多数投资书籍和大学课程都专注于教授如何做好投资，但学习如何避免做坏投资对每个人才更有益。投资生涯恐怕是极少数对怀疑论者而非乐观主义者回报更丰厚的领域之一。
+
+巴菲特之所以是世界最佳投资者，正因为他是世界最佳“拒绝者”。
+
+**如何规避重大风险**
+
+主张我们应该学习动植物的进化成功经验以规避重大风险、成为更优秀的投资者固然很好。但具体怎么做呢？
+
+学习人生经验的方式数不胜数——父母、兄弟姐妹、配偶、朋友、书籍、电影、学校、大学、工作以及领导者，这些都是能想到的途径。我永远无法确切知道为何成为现在的我。但在投资领域，我相当确信谁是我的主要导师和引路人——我自己的错误。
+
+在华平投资集团（Warburg Pincus）的早期投资生涯中，我犯了一个根本性错误：专注于最小化遗漏错误（II类错误），而非努力控制I类错误。我过于害怕错失良机。在积累了八年多投资经验后，我创立了Nalanda基金。我们得以避开麻烦并取得尚可的成功，正是源于我职业生涯前三四年的愚蠢错误。对我而言，失败是成功之母。
+
+大多数投资者在整个职业生涯中会持续犯I类错误（进行坏投资）。至少我是如此，未来也仍会如此。这无可避免。因此，当我说我们需要避免I类错误时，我是指应努力避免那些可规避的I类错误。方法就是不承担重大风险。何为重大风险？对实践者而言，我认为很难甚至没必要去定义它。与其定义“重大风险”，不如让我描述Nalanda基金所规避的几种情形。
+
+以下并非详尽清单，但希望能让您清楚了解我们不承担定价的那些风险类型。
+
+**警惕罪犯、骗子和欺诈者**
+
+人不会改变。尤其是罪犯、骗子和欺诈者。作为永久所有者，Nalanda对由欺诈客户、供应商、员工或股东的人拥有或经营的企业毫无兴趣。当我们遇到这种人时，我们不会问企业是否足够便宜以抵消风险；不会问能否说服此人改变；也不会问其罪行是否轻微到可以忽略。我们直接放弃。
+
+我不了解其他国家情况，但遗憾地说，印度资本市场充斥着可疑欺诈的控股股东（印度对最大或控股股东的称谓）。因此，我们高度警惕，只有在确信控股股东诚信无瑕后，才会开始评估企业的基本面。毕马威（KPMG）一份关于印度私募股权（PE）行业的报告委婉地指出：“许多风险是所有新兴市场共有的——包括政治和监管不确定性以及薄弱的公司治理。其中许多风险在印度更可能出现，即使并非独有——例如与家族企业合作、应对IPO退出和合规风险。”14 这不过是“谨防受骗”的客套说法。
+
+我们采用两级流程进行此项评估。我们总会聘请法务尽职调查专家来评估所有者或高管是否有可疑过往。在此期间，我们通过搜索媒体、研究过往年报、听取电话会议录音、阅读访谈以及接触与其有私人和业务往来的人士，同步对控股股东和管理层进行尽职调查。近半数的案例中，我们会要求外部公司进一步深挖我们在尽职调查中发现的问题（例如，大型资本支出合同的资金流失或向高管的现金支付）。这种外包和内查相结合的双重检查机制，多年来使我们避免了许多糟心事。更重要的是，它为我们投资者省下了大笔资金。
+
+但这不是明摆着的道理吗？
+
+声称投入资金前需要核查控股股东的诚信，这并无非凡洞见。您说得对。在印度，治理核查本应是常规操作。但事实并非如此。以投资基础设施和房地产行业为例。在印度，这两个行业监管严格、涉及大量现金交易且需要众多审批；因此多年来吸引了一批能成功“搞定”系统的企业家。相比寻找不欺压小股东的基建和房地产企业家，大海捞针都算轻松。我们选择完全避开这些行业。
+
+2007年我们创立Nalanda时，正值房地产和基建行业的募资热潮。据麦肯锡（McKinsey）报告，2005至2008年间，房地产吸纳了近四分之一的私募投资，基建占比近30%。15 其中相当大一部分最终酿成灾难，私募和公开市场投资者损失了数十亿美元。房地产投资的退出回报率仅为2%，能源领域投资仅9%能实现退出。造成这一不幸结果的关键原因之一，是基金管理界对企业家进行了逆向选择。
+
+但若抱怨他人，我自己也曾落入同样的陷阱，未免虚伪。
+
+让我们回到那个我主导华平投资5000万美元、看似面面俱到的项目。本章开头我没说的是：外包公司的治理核查为控股股东出具了清白证明，但我们内部团队听到了一些关于他的非正式负面“传言”。传言既不强烈也非确凿，但毕竟是传言。我忽略了它。至今我也不确定原因。也许我过分信任了外包服务商，也许因近期成功而变得傲慢，也许被那位能说会道的控股股东迷住了，也许在完成数月尽职调查后已陷得太深，或者兼而有之。
+
+当时我本该要求服务商做更多工作，也该更深入地调查针对该控股股东批评的真实性。这两件事我都没做。待我们发现此人的欺诈行径时为时已晚；他已掏空公司，华平几乎血本无归。自此事后，无论在华平还是Nalanda，我都格外谨慎。除非对治理标准完全绝对满意，否则我们绝不投资。在Nalanda，我们尚未因可疑控股股东损失过一美元，但这不意味着永远不会。但若真有损失，绝不会是因为我们没尽力。
+
+或有投资者反对说，若控股股东的不良行为未危及公司生存，以极低估值投资一家有点不光彩的企业，或许是中长期赚钱的好方法。事实是，印度确有一些知名的问题企业，其股价在过去几年表现尚可。但我们从不也永不会参与这种游戏。我们永久所有权的理念要求——必须要求——我们只与诚信度最高的控股股东合作。我们正是这样做的。
+
+**避免扭亏为盈**</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">Imagine a tennis match in which Roger Federer is playing John, who is ranked 500 in the world. I ask you to bet 5 percent of your wealth on John winning the match. You refuse (I hope). But John wants you to bet on him. And so, before the match starts, in a face-to-face meeting with you, John makes an impassioned plea to ignore his ranking and recognize his innate talent. He speaks eloquently and makes a slick PowerPoint presentation on his plan to defeat Federer. John says he has been watching Federer’s game very closely for the past two years, and his plan, he believes, is exemplary. To bolster his claim, John invites one of the leading tennis coaches in the world, who admits that John’s plan is laudable and that he has a real chance of beating Federer. It’s decision time for you. Would you bet 5 percent of your wealth on John?
+This is exactly what happens in the world of investing. Managements that have underperformed for long periods are able to convince investors to bet on their businesses with nothing but fancy promises and McKinsey reports. I blame neither managements nor McKinsey because optimism is not a crime. But I do get baffled at investors who, despite having access to data that amply demonstrate the incompetence of incumbent management, are willing to bet their clients’ money on the hope that this management will suddenly morph into an industry beater in the near future. More often than not, the dream scenario hyped up by the management morphs into a nightmare.
+Occasionally, the board or the owner fires the previous CEO and brings in a new one to turn around a struggling business. The new CEO usually comes with an impressive resume, and many are highly qualified. But we don’t bet on these turnarounds either. An exceptional CEO was impressive in a certain context with a certain business—this context and this business are different. How are we to know that the new CEO, faced with a set of challenges they have almost certainly never met before, will do what they are promising to do? We don’t.
+I know what you are thinking. The upside, if we were able to detect a genuine turnaround, would be significant. Agreed. Let’s assess the following two situations.
+Case 1: A company that has been very profitable over many decades has recently fallen prey to smaller and more nimble competitors. It has suffered massive losses over the past two years. The company sells its highly engineered products to medium and large businesses. The board starts searching for a new CEO and identifies a promising candidate. There are, however, a few worrying problems with this choice: The candidate does not understand technology, he does not understand how to sell to businesses because he has run a company that sells biscuits to consumers (!), and he has had no experience turning around any business, let alone a complex engineering one like this.
+Would you invest in this business once this CEO takes over?
+Case 2: A venerated hundred-year-old department store has been struggling with falling sales. Over the past four years, sales have fallen 10 percent from $20 billion to $18 billion, and the operating income has plummeted about 65 percent from $1.1 billion to $380 million. The stock price has crashed from $81 to $32.
+The board appoints one of the world’s leading retail experts as the new CEO of this business. He has had two great successes in the past few years. As VP of merchandising at one of the largest U.S. retailers, he made the store appeal to young and trendy consumers. He also struck several designer partnerships that were a huge hit with shoppers. His next job was at a large company where he was responsible for opening retail stores. He hit the ball completely out of the park. The sales per square foot at these stores now exceeds even luxury retailers like LVMH. His innovations in design and service at these stores were so popular that shoppers now need to book an appointment many days in advance in many cities across the world.
+Would you invest in this business once this CEO takes over?
+I would not buy the shares of the first business but would load up on the second. I assume, dear reader, that you would do the same. We would both be dead wrong. You and I would have missed out on a seven-fold increase in stock price over the next ten years in the first business. We would have been wiped out completely—yes, with a 100 percent loss—in the second.
+The first business is IBM, and its famous turnaround in the late 1990s was led by Lou Gerstner, the ex-CEO of RJR Nabisco.16 Previously called International Business Machines, IBM was a behemoth that ruled the world of technology in the latter half of the twentieth century. In the early 1990s, about half its revenues came from huge mainframe computers sold to businesses. These mainframes had hardware and software bundled into one system. The world, however, was fast shifting to smaller and midsized machines running on microprocessors. The technology universe was witnessing the unbundling of hardware and software with different vendors specializing in each segment. Companies like HP, Sun, Compaq, and Dell were eating IBM’s lunch on hardware, and Microsoft and Oracle were starting to dominate software.
+To make matters worse, individual consumers had started buying personal computers, in which IBM had no expertise or experience. The company also had a huge internal bureaucracy that hobbled decision-making. From being the second most profitable company in the world in 1990, IBM lost $16 billion between 1991 and 1993.
+Lou Gerstner seemed like a strange choice for the board to make. But it worked wonders. Gerstner resorted to a massive cut in expenses by laying off staff, sold many assets to raise cash, transformed the organizational culture to encourage business units to cooperate and not compete, linked the compensation of senior managers to overall company performance, created a single brand message for all units of IBM, and much more. IBM’s stock price jumped seven times from $13 to $77 during his tenure from April 1, 1993, to December 31, 2002. If you want to learn more about Gerstner’s miracles, I urge you to read his book Who Says Elephants Can’t Dance? Inside IBM’s Historic Turnaround.
+The second business is JCPenney, where Ron Johnson, credited with transforming Target and creating the iconic Apple Stores, was brought in as CEO in late 2011.17 The stock price jumped 24 percent at the news! The market was betting that Johnson would be the miracle cure for JCPenney. He changed everything at the company—the logo, the store design, the advertisements, the pricing model, and the popular private labels. JCPenney was known for coupons and clearance sales—Johnson ended them. Big mistake. In 2012, sales dropped 25 percent, from $17 billion to $13 billion, as customers abandoned the stores en masse. More worryingly, the company suffered an operating loss of $1.3 billion. The board fired Johnson in mid-2013, just seventeen months after installing him as CEO. The stock price had dropped 60 percent during his short tenure. JCPenney never recovered from this fiasco and filed for bankruptcy in May 2020.
+If we could not predict the fate of turnaround efforts at what appeared to be slam-dunk cases (IBM and JCPenney), what hope do we have in situations that don’t seem so clear cut? The corporate world is brutally competitive. Even the best companies have to run hard just to stay in the same place. How could the probability of success at a troubled company be anything but minuscule? And if so, why would we indulge in the fantasy?
+Detesting Debt
+As a consultant in the early 1990s, I almost always focused on the profit-and-loss (P&L) account. Revenue, cost, profit. Almost nothing else mattered. Remarkably, a consultant’s P&L obsession remains intact. My niece is currently a consultant in London and primarily serves private equity clients. She is hyper-focused on just one aspect of P&L: EBITDA (earnings before interest, tax, depreciation, and amortization). P&L obsession is not limited to consultants. Read any analyst report or listen to conference call recordings that discuss quarterly results. You will be inundated with comments and questions on revenues, costs, and profit.
+After many years of investing, I realized that I needed to focus as much, if not more, on the company’s balance sheet. Receivables, inventory, payables, fixed assets. And most important of all, debt. Corporate finance theory has a thing for leverage. For those of you who are not familiar with it, finance academics claim that companies need to have an “optimal” level of leverage to improve returns.18 If a company can borrow money to purchase assets, its return on equity and earnings per share should improve. Mathematically, this is undoubtedly true. Realistically, this is undoubtedly dangerous.
+What could be more important than improving short-term return on equity and earnings per share for a business? In my view, two things.
+Start with the easy one. Survival. There is no point in improving return on equity by a few percentage points if it compromises long-term survival. The COVID-19 crisis demonstrated clearly that the companies caught with their pants down were the ones with substantial leverage. In the second quarter of 2020, the following are just some of the well-known companies that announced bankruptcy: Gold’s Gym, Hertz, Intelsat, J. Crew, JCPenney, Neiman Marcus, and Sur La Table.19 Here is what is common across all these names: All had a large amount of debt. It is not impossible for an unleveraged business to go belly up, but it sure is quite hard. If I were to list the twenty biggest bankruptcies in the United States,20 you would notice that all—with Lehman at the top and LyondellBasell at number 20—were heavily indebted.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+想象一场网球比赛，罗杰·费德勒对阵世界排名500开外的约翰。我请你将财富的5%押注约翰获胜。你拒绝了（我希望如此）。但约翰希望你押注他。于是，在比赛开始前，约翰与你面对面会晤，慷慨陈词，恳请你忽略他的排名，认可他的天赋。他口若悬河，并用精美的PPT展示了他击败费德勒的计划。约翰声称过去两年他一直在密切研究费德勒的打法，并坚信自己的计划堪称典范。为增强说服力，约翰请来世界顶尖网球教练之一，该教练也承认约翰的计划值得称赞，确实有战胜费德勒的机会。现在轮到你做决定了。你会把财富的5%押在约翰身上吗？
+投资世界的情形与此如出一辙。那些长期表现不佳的管理层，仅凭华丽的承诺和麦肯锡报告就能说服投资者押注他们的企业。我无意指责管理层或麦肯锡，因为乐观并非罪过。但令我困惑的是投资者：尽管掌握着充分证明现任管理层无能的数据，他们却甘愿拿客户的钱去赌，指望该管理层能在短期内突然蜕变成为行业翘楚。结果往往是，管理层大肆鼓吹的美梦最终化为噩梦。
+偶尔，董事会或所有者会解雇前任CEO，聘请新CEO来挽救陷入困境的企业。新任CEO通常拥有光鲜履历，许多人资历深厚。但我们同样不会押注这类转型。一位卓越的CEO在特定背景下的特定企业表现出色——而眼下的背景和企业已然不同。我们如何能确信，面对几乎前所未遇的挑战，新CEO能兑现其承诺？我们无法确信。
+我知道你在想什么。若能识别出真正的转型，回报将相当可观。我同意。让我们评估以下两种情况。
+案例一：一家数十年盈利丰厚的公司，近来被更小更灵活的竞争对手击败，过去两年遭受巨额亏损。该公司向大中型企业销售高精工程产品。董事会开始物色新CEO并锁定一位潜力人选。然而，此人选存在几个令人担忧的问题：他不懂技术，不懂如何向企业销售（因为他经营的是向消费者销售饼干的公司！），且毫无任何业务转型经验，更遑论像这样复杂的工程企业。
+这位CEO上任后，你会投资这家企业吗？
+案例二：一家备受尊崇的百年老牌百货公司销售额持续下滑。过去四年，销售额从200亿美元降至180亿美元，下降10%；营业利润从11亿美元暴跌至3.8亿美元，降幅约65%。股价从81美元暴跌至32美元。
+董事会任命一位世界顶尖零售专家担任公司新CEO。过去几年，他有过两次巨大成功。作为美国最大零售商之一的商品销售副总裁，他让店铺成功吸引年轻时尚的消费者。他还促成了多个与设计师的合作项目，深受顾客欢迎。他的下一份工作是在一家大公司负责开设零售门店，取得了惊人的成功。这些门店每平方英尺的销售额如今甚至超过了LVMH等奢侈品牌。他在门店设计和服务上的创新广受欢迎，如今在全球多个城市的门店购物需提前数日预约。
+这位CEO上任后，你会投资这家企业吗？
+我不会买入第一家公司的股票，但会重仓第二家。亲爱的读者，我猜你也会如此选择。然而我们都大错特错。你我都会错过第一家公司在未来十年股价上涨七倍的机会。而在第二家公司，我们会血本无归——是的，亏损100%。
+第一家公司是IBM。它在20世纪90年代末那场著名的转型由前RJR Nabisco CEO 郭士纳领导。IBM曾用名国际商业机器公司，是20世纪下半叶主宰科技界的巨擘。90年代初，其约一半收入来自销售给企业的大型主机。这些主机将软硬件捆绑在一个系统内。然而世界正迅速转向运行在微处理器上的中小型机器。科技界正经历软硬件解绑，不同供应商专攻不同领域。惠普、太阳微系统、康柏和戴尔等公司抢占了IBM的硬件市场，微软和甲骨文则开始主导软件领域。
+雪上加霜的是，个人消费者开始购买个人电脑，而IBM对此毫无专长或经验。公司内部庞大的官僚体系也严重阻碍了决策。IBM从1990年全球盈利第二的公司，沦落到在1991至1993年间亏损160亿美元。
+郭士纳对董事会而言似乎是个奇怪的选择。但这却创造了奇迹。郭士纳通过大规模裁员削减开支，出售大量资产筹集现金，转变组织文化鼓励业务单元合作而非竞争，将高管的薪酬与公司整体业绩挂钩，为IBM所有部门创建统一的品牌信息，等等。在他1993年4月1日至2002年12月31日的任期内，IBM股价从13美元跃升至77美元，上涨七倍。若想了解更多郭士纳的奇迹，我建议你阅读他的著作《谁说大象不能跳舞？》。
+第二家公司是J.C. Penney。2011年底，因改造塔吉特（Target）和创建标志性苹果零售店而闻名的罗恩·约翰逊被聘为CEO。消息一出，股价飙升24%！市场押注约翰逊将成为J.C. Penney的救星。他改变了公司的一切——标识、店铺设计、广告、定价模式和受欢迎的私有品牌。J.C. Penney以优惠券和清仓甩卖闻名——约翰逊取消了这些。大错特错。2012年，随着顾客大量流失，销售额暴跌25%，从170亿美元降至130亿美元。更令人担忧的是，公司遭受了13亿美元的营业亏损。董事会于2013年中解雇了约翰逊，距其上任仅17个月。在他短暂的任期内，股价下跌了60%。J.C. Penney未能从这场惨败中恢复，于2020年5月申请破产。
+如果我们连看似板上钉钉的转型案例（IBM和J.C. Penney）都无法预测其命运，那么在那些不那么明朗的情况下，我们又能有多少把握？企业界竞争残酷。即使最优秀的公司也必须奋力奔跑才能留在原地。一家陷入困境的公司成功概率又怎会不小之又小？既然如此，我们为何还要沉溺于幻想？
+**厌恶债务**
+90年代初担任顾问时，我几乎只关注损益表（P&L）。收入、成本、利润。其他几乎无关紧要。值得注意的是，顾问对损益表的痴迷至今未变。我的侄女目前是伦敦的顾问，主要服务私募股权客户。她极度关注损益表的一个方面：EBITDA（息税折旧摊销前利润）。痴迷损益表的不止顾问。阅读任何分析师报告或收听讨论季度业绩的电话会议录音，你都会被关于收入、成本和利润的评论和问题淹没。
+经过多年投资，我意识到需要同样（甚至更多）关注公司的资产负债表。应收款、存货、应付款、固定资产。而最重要的，是债务。公司金融理论推崇杠杆。对于不熟悉此概念的人，金融学者声称公司需要拥有“最优”杠杆水平以提高回报。如果一家公司能借钱购买资产，其股本回报率和每股收益理应提升。数学上，这无疑成立。现实中，这无疑危险。
+对于一家企业，有什么比提升短期股本回报率和每股收益更重要？我认为有两件事。
+从简单的说起：生存。如果以牺牲长期生存为代价来提升几个百分点的股本回报率，毫无意义。COVID-19危机清楚表明，措手不及的公司正是那些杠杆率高的公司。2020年第二季度，宣布破产的知名企业包括：Gold’s Gym, Hertz, Intelsat, J. Crew, JCPenney, Neiman Marcus, Sur La Table。这些公司的共同点是：均背负巨额债务。一家无杠杆的企业破产并非绝无可能，但确实相当困难。如果我列出美国二十家最大的破产企业，你会发现——从榜首的雷曼兄弟到第20位的利安德巴塞尔——全都负债累累。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">One might argue that these businesses were unlucky and that everything would have been fine if there had been no COVID-19. One might also contend that mismanagement or other factors contributed more to their downfall than debt. And that “correlation is not causation.” Maybe. But it’s one hell of a correlation. As a long-term investor in a business, I don’t want the company ever to go bankrupt—whether the times are good or bad. I can live with a slightly lower return on equity and lower earnings-per-share (EPS) growth, but at least I will live.
+Not having high leverage probably makes sense to everyone. But the following may not: I am an advocate of no leverage. More than 90 percent of our portfolio companies have—and have always had—excess cash. Only three businesses out of about thirty in our portfolio have some debt. But even this debt is quite small—the maximum debt/equity ratio among these three is 0.3.
+Why would I demand zero debt when a modest level would not compromise the survival of the business? The answer lies in the following Business Insider headline: “No Layoff, Asian Paints Will Give Salary Increments to Boost Employees Morale.”21
+Asian Paints is India’s largest paints business and probably one of the country’s best-run businesses. As an aside, it is sadly not in our portfolio. I had a chance to buy it during the global financial crisis of 2008, but I refused to pay 15 percent more for the privilege of owning this marvelous compounder. I was a fool. Anyway, let’s return to a more pleasant topic.
+This “no-layoff, salary increment” story would not be newsworthy in normal times. But this announcement was made on May 15, 2020. At the time, India had been under an almost complete lockdown since mid-March as a result of the COVID-19 pandemic. Every business was witnessing a catastrophic decline in revenues and profits. Also, no one had any visibility as to when the situation would improve—remember that the possibility of vaccines wasn’t even on the horizon in May 2020. Asian Paints was itself going through a catastrophic quarter—during the period from April to June 2020, the company’s revenue declined by 43 percent, and its net profit went down by 67 percent compared to the same period in 2019. Was the company foolish to be increasing salaries in this period? No. Just cash rich. In March 2020, at the start of the pandemic, the company had $220 million cash (its revenue for the year ended March 2020 was $2.9 billion).
+Which brings me to the second reason I detest any debt. This answer is often underappreciated and even ignored by investors and management. It is this: Debt diminishes strategic flexibility and hence long-term value creation. For a day trader or even an investor whose holding period ranges from three to five years, a reasonable amount of leverage may not matter. But for a permanent owner like Nalanda, any constraint that prevents a business from taking calculated strategic bets is undesirable.
+Asian Paints is the leader in the highly competitive Indian paints industry; its competitors can and do copy what the business is trying to do. However, every few years, the company gets an opportunity to make an investment or take a strategic bet that its competitors find hard to emulate. The salary increase was one such bet. But it did not stop there. The company sanitized its dealers’ paint shops without charging any fees, offered medical insurance to its painters, gave forty-five-day extensions on payments to its dealers, and announced relief worth more than $5 million to its contractors. The CEO, Amit Syngle, pointed out, “We have been debt free for years and are quite comfortably placed even if the uncertainty goes on for the next four or five months.”22
+The impact of the company’s largesse may not be felt in the short term, but the long-term impact is likely to be significant. Asian Paints was able to commit to these highly unusual actions only because—apart from their exceptional strategic vision—they had no debt.
+The global pandemic is an extreme case, and one may assert that it would be foolhardy to keep excess cash on hand for a once-in-a-century event. But this premise is false. Bad things happen to businesses at remarkably regular intervals. The harsh reality of companies in any capitalist society—and the reason to always have cash—is not that things can go wrong, but that they do go wrong. Businesses suffer adversity across a wide range of situations: The macroeconomic environment can become a stiff headwind as in the global financial crisis of 2008 or a recession; the industry can suffer a cyclical downturn; a well-funded competitor can start overspending on advertising or giving discounts; the company can lose some of its best employees to competitors; one or more major customers can leave or go belly up; consumer tastes can suddenly change; a large strategic acquisition or investment may not pay off; a factory can catch fire or a supplier may get in trouble; currency can move adversely in a foreign market that contributes to significant sales; regulations can get in the way; the company can get sued for a significant amount. I could go on and on.
+None of these issues is hypothetical—I have seen all of these happen to our portfolio companies over more than two decades of investing. Occasionally, two or more problems can arise simultaneously, putting significant pressure on businesses. While worrying about market share loss, low supplier commitment, competitor aggression, and employee dissatisfaction, the last thing management should worry about is interest payments. In my experience, only when the financial risk is low can management focus on mitigating business risks.
+I have always maintained that the notion of an “optimal” capital structure that requires companies to have leverage, which is espoused by corporate finance theorists, is not just wrong but dangerous. A strong balance sheet is not the one that maximizes debt to minimize the cost of capital but the one that minimizes debt to maximize the safety of capital.
+Fortunately, none of the owners of Nalanda portfolio companies studied finance at fancy business schools.
+Ignoring M&A Junkies
+Nothing happens in well-oiled businesses on a day-to-day basis. Sorry, a lot happens, but it’s largely mundane, repetitive, uninteresting, dull, and monotonous. And this is the way it should be. Imagine the day-to-day operations of a business that sells bars of bath soap. Here is a typical day or week or month or year: The factory manufactures bars of soap in the thousands and performs quality control checks to reject defects; the packing department stacks the bars in boxes; logistics ensures timely shipping at pre-agreed costs; warehouses stock the boxes in assigned positions; last-mile delivery delivers the bars on time; and the finance department records the payments received from the retailers. No news. No excitement.
+What would be the best way for such a business—or any business for that matter—to get reported on in the Wall Street Journal or the Financial Times? M&A. In industry parlance, “mergers and acquisitions.” For some reason, the media love the news of one business merging with or acquiring another one. The investment bankers and financiers who make fat fees love them even more. Following such an announcement, the CEO is typically invited to a CNBC interview during which they will extol the virtues of “strategic fit,” “synergies,” “culture fit,” and other boilerplate platitudes uttered in every single M&A. They are almost always wrong. Most mergers and acquisitions fail.
+Here are the statements made by the CEOs of AOL and Time Warner when they announced their $350 billion (!) merger on January 10, 2000. Stephen Case, the cofounder of AOL, proudly proclaimed, “This is a historic moment when new media has truly come of age.” Not to be left behind, Gerald Levin, the CEO of Time Warner, gushed philosophically that the internet had begun to “create unprecedented and instantaneous access to every form of media and to unleash immense possibilities for economic growth, human understanding and creative expression.” The result of this bromance? The largest failed merger in the history of the corporate world.23 Within two years, AOL took a write-off of $99 billion on the deal. Yes, “billion” with a “b.” The market value of AOL went from $226 billion in 2000 to $20 billion in 2002. In June 2015, it was acquired for a mere $4.4 billion by Verizon.
+Go ahead and blame me for cherry-picking. Guilty as charged. But think about this. AOL and Time Warner were undisputed leaders in their industries. They had highly regarded CEOs, their boards were exemplary, their financial position was rock solid, they employed supremely talented and motivated staff, they had access to the best consultants, and yet they failed. Miserably. If they couldn’t hack it, what chance do most companies have? The sad fact is the disastrous AOL Time Warner saga plays out thousands of times every year. And an even sadder fact is that everyone knows about it.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+有人可能会辩称，这些企业只是运气不佳，如果没有新冠疫情，一切都会安然无恙。也可能有人主张，管理不善或其他因素比债务对它们的倒闭贡献更大。并且“相关不等于因果”。也许吧。但这关联性也太强了。作为企业的长期投资者，无论顺境逆境，我都不希望公司破产。我可以接受股本回报率略低、每股收益（EPS）增长放缓，但至少我能活下来。
+
+避免高杠杆对所有人来说可能都讲得通。但下面这点可能就不然了：我主张零杠杆。我们投资组合中超过90%的企业都持有、并且一直持有超额现金。我们投资组合中约三十家企业里，只有三家有些债务。但即使这些债务也很小——这三家中最高的负债权益比也只有0.3。
+
+既然适度负债不会危及企业生存，我为何要求零债务？答案就在下面这篇《商业内幕》的标题里：“不裁员，亚洲涂料将加薪以提振员工士气。”21
+
+亚洲涂料是印度最大的涂料企业，可能也是该国管理最佳的企业之一。顺便提一句，遗憾的是它不在我们的投资组合中。2008年全球金融危机期间我曾有机会买入它，但我拒绝为拥有这家卓越的复利增长型企业多支付15%的溢价。我当时真傻。无论如何，让我们回到一个更愉快的话题。
+
+这个“不裁员、加薪”的故事在平时算不上新闻。但这项声明发布于2020年5月15日。当时，由于新冠疫情，印度自3月中旬以来几乎处于完全封锁状态。每家企业都在经历收入和利润的灾难性下滑。而且，没人知道情况何时会改善——别忘了，在2020年5月，疫苗的可能性还遥遥无期。亚洲涂料自身当时也正经历灾难性的季度——2020年4月至6月期间，公司收入同比下降43%，净利润下降67%。公司在这时期加薪是愚蠢的吗？不。它只是现金充裕。2020年3月疫情开始时，公司拥有2.2亿美元现金（其截至2020年3月的财年收入为29亿美元）。
+
+这就引出了我厌恶任何债务的第二个原因。这个答案常常被投资者和管理层低估甚至忽视。那就是：债务削弱战略灵活性，从而损害长期价值创造。对于日内交易者，甚至持有期为三到五年的投资者来说，合理水平的杠杆可能无关紧要。但对于像Nalanda这样的永久所有者而言，任何阻碍企业进行审慎战略押注的限制都是不可取的。
+
+亚洲涂料在竞争激烈的印度涂料行业处于领先地位；其竞争对手能够也的确在效仿它的做法。然而，每隔几年，公司就有机会进行一项其竞争对手难以效仿的投资或战略押注。这次加薪就是一次这样的押注。但它并未止步于此。公司还免费为经销商的门店消毒，为油漆工提供医疗保险，给予经销商45天的付款宽限期，并宣布为其承包商提供价值超过500万美元的救济。首席执行官阿米特·辛格尔指出：“我们多年来一直无负债，即使不确定性再持续四五个月，我们的处境也相当从容。”22
+
+公司慷慨之举的短期影响或许不易察觉，但长期影响可能意义重大。亚洲涂料之所以能承诺采取这些极不寻常的举措，仅仅是因为——除了其卓越的战略眼光之外——它们没有债务。
+
+全球疫情是一个极端案例，有人可能断言，为百年一遇的事件在手上保留超额现金是鲁莽之举。但这个前提是错误的。坏事会以相当规律的频率发生在企业身上。在任何资本主义社会中，企业面临的严酷现实——以及始终持有现金的理由——不在于事情可能会出错，而在于它们确实会出错。企业会在各种情况下遭遇逆境：宏观经济环境可能变成强劲的逆风，如2008年全球金融危机或经济衰退；行业可能遭遇周期性下滑；资金雄厚的竞争对手可能开始在广告上过度投入或打折促销；公司可能流失部分最优秀的员工给竞争对手；一个或多个主要客户可能离开或破产；消费者口味可能突然改变；重大的战略收购或投资可能无法获得回报；工厂可能失火或供应商可能陷入困境；在贡献可观销售额的海外市场，汇率可能出现不利变动；法规可能带来阻碍；公司可能因巨额索赔被起诉。我可以一直说下去。
+
+这些问题都不是假设性的——在二十多年的投资生涯中，我目睹过所有这些情况都发生在我们的投资组合公司身上。偶尔，两个或更多问题可能同时出现，给企业带来巨大压力。在担忧市场份额流失、供应商忠诚度低、竞争对手攻势和员工不满的同时，管理层最不该担心的就是利息支出。以我的经验，只有当财务风险较低时，管理层才能专注于化解业务风险。
+
+我一直坚持认为，公司金融理论家所鼓吹的、要求公司举债的“最优”资本结构概念不仅是错误的，而且是危险的。强劲的资产负债表并非通过最大化债务来最小化资本成本，而是通过最小化债务来最大化资本安全。
+
+幸运的是，Nalanda投资组合公司的所有者们都没有在顶尖商学院学过金融。
+
+**忽略并购狂魔**
+
+运转良好的企业里，日常不会有什么大事发生。抱歉，其实事情很多，但大多是平凡的、重复的、无趣的、单调的。而本该如此。想象一下销售香皂的企业日常运营。典型的一天、一周、一月或一年是这样的：工厂生产成千上万的香皂并进行质检剔除次品；包装部门将香皂装箱；物流部门确保按预定成本及时发货；仓库将箱子存放在指定位置；终端配送按时送达；财务部门记录零售商支付的款项。没有新闻。没有兴奋点。
+
+这样的企业——或任何企业——要登上《华尔街日报》或《金融时报》的最好方式是什么？并购。行业术语叫“兼并与收购”。出于某种原因，媒体热衷报道一家企业合并或收购另一家的消息。赚取丰厚费用的投资银行家和金融家们更是乐见其成。此类公告发布后，首席执行官通常会被邀请参加CNBC的访谈，期间他们会盛赞“战略契合”、“协同效应”、“文化契合”等每次并购中都会出现的陈词滥调。他们几乎总是错的。大多数兼并与收购都以失败告终。
+
+以下是2000年1月10日，美国在线（AOL）和时代华纳（Time Warner）宣布3500亿美元（！）合并时，其首席执行官们的发言。AOL联合创始人史蒂芬·凯斯自豪地宣称：“这是一个历史性时刻，新媒体真正成熟了。”不甘落后，时代华纳首席执行官杰拉尔德·莱文滔滔不绝地发表哲学感慨，说互联网已开始“以前所未有的即时方式接入各种媒体形式，并为经济增长、人类理解和创造性表达释放出巨大可能性。”这段联姻的结果？企业史上最大规模的失败合并。23两年内，AOL因此交易计提了990亿美元的减值。没错，是“亿”字打头的单位。AOL的市值从2000年的2260亿美元跌至2002年的200亿美元。2015年6月，它被威瑞森（Verizon）以区区44亿美元收购。
+
+尽管指责我选择性举例吧。我认罪。但想想这个：AOL和时代华纳都是各自行业无可争议的领导者。他们拥有备受尊敬的CEO，董事会堪称典范，财务状况坚如磐石，员工才华横溢且积极进取，能接触到最好的顾问，然而他们还是失败了。惨败。如果他们都不能成功，大多数公司又能有什么机会？可悲的事实是，灾难性的美国在线-时代华纳事件每年要上演数千次。更可悲的是，人尽皆知。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">There is a lot of literature available on the high failure rate of M&A.24 A Harvard Business Review article by Clayton Christensen and others titled “The Big Idea: The New M&A Playbook” claims that 70 to 90 percent of mergers and acquisitions fail; a KPMG study claims that 83 percent of merger deals did not create value; a Cornell University research article declares that “an abundance of empirical research has examined the performance of acquirers across all industries and in general has failed to find consistent evidence of improvements in value after the acquisition”; an Organizational Dynamics research article by Toby J. Tetenbaum asserts that 60 to 80 percent of all mergers are financial failures; and a study by Great Prairie Group cites studies from McKinsey, Harvard Business School, Bain, and the Wharton School to state that the M&A failure rate is over 70 percent. In all these studies, the reasons for failure include culture mismatch, overpayment, misevaluation of the opportunity, external factors, and integration problems, among many others.
+But they don’t point out the single biggest reason we detest M&A: opportunity cost. Let’s visit the German giant Bayer to understand this reason.
+Dr. Marijn Dekkers, the chair of Bayer AG, had every reason to be proud in 2015. During his five years as chair, this life sciences company has grown revenue from €35 billion to €46 billion, and its EPS had more than tripled from €1.6 per share to €5 per share. It continued its reign as the largest company on the German stock exchange with a market value of about €140 billion. The 2015 annual report was replete with good news. Without being boastful, Dr. Dekker’s excellent commentary made it evident that the company was one of the world’s leading life sciences businesses.
+The only piece of bad news was tucked away on page seven of the report. Dr. Dekkers wrote, “This is my last Chairman’s Letter to you as CEO of Bayer.”
+How bad was Dr. Dekker’s revelation for Bayer? In 2020, its sales had fallen to €41 billion from €46 billion in 2015; from being a highly profitable business with a return on equity of 18 percent in 2015, it declared a net loss of €10 billion; and its dividend per share was 20 percent lower than in 2015. Oh, and by June 2021, less than six years after the glorious year of 2015, Bayer’s market value had declined by 65 percent to €50 billion.
+What happened? Within ten days of Dr. Dekker’s departure, Bayer made a bid to acquire Monsanto, the U.S. agrochemical giant. Bayer ended up paying $63 billion for the acquisition, which was more than Bayer’s market value in June 2021!
+If you read reports on the reasons for this disaster, most will focus on Bayer losing multiple lawsuits and incurring billions in damages because plaintiffs were able to convince the U.S. courts that Monsanto’s Roundup weed killer causes cancer. The reports aren’t wrong, but they missed the real value destroyer invisible in the Bayer–Monsanto transaction, and the reason we abhor almost all M&A: opportunity cost. Stated simply, most analyses of M&A failure focus on the bad things that happened, rather than on the good things that didn’t happen.
+Let’s see what Bayer may have missed doing by making a gargantuan acquisition. These actions (and inactions) fall into three categories: divestiture of attractive businesses, reduced focus on existing businesses, and missed opportunities.
+After acquiring Monsanto, Bayer had to divest many of its core businesses for two reasons. First, regulators forced them to do so because both companies were large players in the agrochemical sector. Second, Bayer had to pay down the huge debt they had incurred to finance the deal. Bayer’s net debt had gone up ten times from €3.6 billion in 2017 to €36 billion in 2018!
+In 2017, Bayer divested large parts of its seed and herbicide businesses for €6 billion. In 2018, it sold its 60 percent stake in a highly lucrative business called Currenta for €1 billion and sold the consumer brands Coppertone and Dr. Scholl’s. In 2020, Bayer exited its leading and highly profitable Animal Health business for €7 billion. If we add up the sale value of these divestitures, that’s at least €15 billion, or about 30 percent of Bayer’s market value in mid-2021. These businesses had been owned and run by Bayer for decades, and so it is possible that the market was assigning a much higher value than €15 billion to them when they were inside Bayer. The future benefit from these attractive businesses was lost forever. The geese laying golden eggs were slaughtered to buy a hen that refused to lay any eggs.
+The second major opportunity cost is a reduced focus on existing businesses because of the distraction of a bad acquisition. You can see this in Bayer’s annual reports of 2018, 2019, and 2020, in which a lot of ink was expended on justifying the acquisition and on steps being taken to mitigate the disaster. As usual, numbers tell a better story, as I will explain next.
+Bayer has three business divisions: pharmaceuticals, consumer health, and crop science. From 2016 to 2020, the sales of its pharma division stayed flat at around €16 billion to €17 billion. (Although 2020 was the year of COVID, most global pharma companies did not experience a decline in sales.) Could this stagnation have been due to the acquisition distraction? From 2010 to 2015, pharma sales had more than doubled from €6.6 billion to €13.7 billion. From 2015 to 2020, rather than assuming a doubling of sales, let’s consider a modest 50 percent increase in a scenario in which management was not being compelled to fight fires. This would have led to pharma sales of €21 billion. The actual number was €17 billion. I think it’s fair to assume that Bayer’s pharma division “lost” sales of €4 billion as a result of the Monsanto acquisition. The market value of global pharma companies is about three to five times sales. Let’s be conservative and take a 2.5-times multiple. This is an opportunity cost of at least €10 billion.
+The operating income of Bayer’s consumer health division declined from €1.2 billion in 2015 to €0.8 billion in 2019 (let’s ignore 2020, when many consumer businesses were affected by COVID). Most global consumer businesses grew their operating income during this period. Similarly, the operating income of Bayer’s crop science division fell from €2.1 billion to €1.9 billion during this period while its competitors did much better. And remember that Monsanto’s acquisition is counted in the crop science division, and so despite the $63 billion acquisition, the operating income of the division fell from 2015 to 2019!
+In 2015, the operating income of the consumer health and crop science divisions added up to a little more than half the consolidated operating income of Bayer. Thus, we can conservatively assume that at least a third of Bayer’s value in 2015 was derived from these two divisions. Since Bayer’s value was €140 billion in 2015, we can assign a value of at least €45 billion to €50 billion to these divisions for 2015 (which was the total value of Bayer in June 2021). What was the opportunity cost of the underperformance of these two divisions? If the top management had not been consumed by Monsanto’s unending troubles, and if they had enhanced their 2015 value by 30 to 50 percent over the next five years, we see a likely missed gain of around €15 billion to €25 billion.
+Let’s now come to the third, and probably the largest, opportunity cost: missed opportunities. For Bayer, this was not making a COVID-19 vaccine.
+Imagine the end of 2019 at Bayer. The company’s leverage has multiplied more than nine times since 2017 to €34 billion, the U.S. litigation is getting uglier and more costly by the month, the return on capital is down to less than 4 percent from the high teens a few years earlier, and the investors are as angry as hell with the stock price falling to half its peak, also a few years earlier.
+And then COVID strikes in early 2020. Do you think the senior management assembled around the table at corporate headquarters and said, “Let’s bet billions on developing a vaccine that we do not even know is possible”? Would the Bayer management have been willing to take a bet on an uncertain outcome given their dire operating and financial condition? We will never know for sure, and your guess is as good as mine, but a shot in the dark for an uncertain payoff by this long-suffering company? Unlikely.
+Bayer’s 2020 annual report mentions that they signed an agreement with a biotech company to develop and manufacture a COVID-19 vaccine that would be launched in 2022. Meanwhile, four competitors of Bayer—AstraZeneca, Johnson & Johnson, Moderna, and Pfizer—had administered about five billion doses by July 2021.
+The COVID-19 vaccine contributes to almost all of Moderna’s revenues and profits, and so Moderna is a good candidate to use to assess the notional loss for Bayer. From December 2019 (before the pandemic hit) until July 2021, Moderna added about $120 billion (€100 billion) to its market value. If we assume that the probability of Bayer’s success would have been 50 to 75 percent (after all, it was one of the global leaders), Bayer has foregone €50 billion to €75 billion in value creation owing to its inability (or was it its unwillingness?) to develop a vaccine.
+If we add up all these numbers, the opportunity cost of Monsanto’s acquisition is probably in the range of €90 billion to €100 billion. In other words, instead of about €50 billion in June 2021, Bayer could have been valued at €140 billion to €150 billion. How do we know this is not a massive overstatement? Because Bayer’s value in 2015 was €140 billion. If anything, this opportunity cost calculation is a significant understatement because it assumes almost no additional value creation since 2015, while every other major pharmaceutical, consumer, and agrochemical business has added significant value since 2015.</div>
+            <div class="text-block simplified-text">以下是符合要求的译文：
+
+关于并购高失败率的研究文献众多。克莱顿·克里斯坦森等人在《哈佛商业评论》发表的《新并购战略》称70%至90%的并购以失败告终；毕马威研究指出83%的并购未创造价值；康奈尔大学论文宣称"大量实证研究显示，跨行业收购方普遍未能实现交易后价值提升"；托比·泰滕鲍姆在《组织动力学》的研究断言60%至80%的并购属于财务失败；大草原集团援引麦肯锡、哈佛商学院等机构研究称并购失败率超70%。这些研究列举的失败原因包括文化冲突、溢价过高、机会误判、外部因素及整合问题等。
+
+但它们都未指出我们厌恶并购的根本原因：机会成本。以德国巨头拜耳为例说明此问题。
+
+2015年的拜耳集团董事长马利德博士有充分理由自豪。在他掌舵的五年间，这家生命科学公司营收从350亿欧元增至460亿欧元，每股收益从1.6欧元升至5欧元。其以1400亿欧元市值稳居德国证交所榜首。年报捷报频传，德克尔斯博士的睿智论述毫不浮夸地彰显着企业全球领导地位。
+
+唯一坏消息隐现于报告第七页："这封致股东信将是我作为拜耳CEO的绝笔。"
+
+这一变动带来多大灾难？2020年公司营收从460亿欧元跌至410亿；净资产收益率从18%的高盈利转为净亏100亿欧元；每股分红缩水20%。更甚者，2021年6月市值较2015年巅峰暴跌65%至500亿欧元。
+
+根源何在？德克尔斯离职十日内，拜耳宣布收购美国农化巨头孟山都，最终支付630亿美元——超过其2021年6月总市值！
+
+多数分析将灾难归咎于拜耳输掉多起诉讼并赔偿数十亿美元，因原告成功证明孟山都"农达"除草剂致癌。这些解释无误却忽略真正的价值毁灭者——深藏于交易背后的机会成本，也是我们憎恶并购的主因。简言之，现有分析聚焦已发生的坏事，而非未发生的好事。
+
+通过审视这桩巨型收购导致的三大机会成本，可见拜耳付出的代价：剥离优质资产、主业失焦、错失良机。
+
+收购后拜耳被迫剥离核心业务：既因监管要求（双方均为农化巨头），更为偿还并购债务。其净负债从2017年36亿飙升至2018年360亿欧元！2017年以60亿出售种子与除草剂业务；2018年10亿抛售高利润Currenta公司60%股权及消费品牌；2020年70亿割让龙头动保业务。这些剥离资产总值超150亿欧元（占2021年市值30%），其持续创造的价值永远消失——如同杀掉下金蛋的鹅去买不下蛋的母鸡。
+
+第二大机会成本是主业失焦。2018-2020年报充斥对收购的辩解与补救措施。数据更具说服力：2016-2020年制药板块营收停滞在160-170亿欧元（同期全球药企未现衰退）。而2010-2015年该业务营收曾翻倍增长。若管理层未疲于应付并购危机，假设保守增长50%，制药业务本可达210亿欧元，实际缺口40亿。按药企市值约为销售额2.5倍计，机会成本至少100亿欧元。
+
+消费健康板块营业利润从2015年12亿缩至2019年8亿；作物科学板块从21亿降至19亿——此时孟山都已并入该部门！2015年这两板块贡献超集团半数利润，估值约450-500亿欧元（恰等于2021年拜耳总市值）。若专注经营实现30-50%增值，潜在损失达150-250亿欧元。
+
+第三大机会成本是错失新冠疫苗机遇。试想2019年末的拜耳：负债激增9倍至340亿欧元，美国诉讼费持续攀升，资本回报率跌破4%，股价腰斩激怒投资者。当疫情爆发时，深陷困境的管理层岂敢押注数十亿开发未知疫苗？其2020年报虽宣布2022年推出疫苗的研发计划，但竞争对手至2021年7月已接种50亿剂。
+
+以莫德纳为例：疫情期间其市值增长约1000亿欧元。作为全球巨头的拜耳若有50-75%成功率，因能力或意愿缺失导致的价值损失达500-750亿欧元。
+
+综合各项，收购孟山都的机会成本约900-1000亿欧元。换言之，拜耳2021年市值本可维持1400-1500亿欧元而非500亿。此计算实属保守——假设拜耳2015年后零增长，而同期同行均实现显著增值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">I don’t know anything about Bayer’s management, but presumably they are world class given their outsized success before 2016. If that’s the case, how did they get lulled into making such an acquisition? Because like most acquirers across the world, they genuinely believed that this time, it’s different. Managers—especially high-performing ones—and their advisers have a sense of invincibility and arrogance when evaluating a target. They firmly believe that they will buck the trend the corporate world has witnessed for a century. Most of them don’t realize their folly until it’s too late.
+If a business is a serial acquirer, we stay away. We know we can’t price the risk. If we had been evaluating Bayer as a new investment in 2016, we would have passed until we were convinced that management would not repeat its mistakes.
+Some of our portfolio companies do occasionally make acquisitions. Our counsel to them is to be deeply skeptical of the potential value creation in all cases. I will admit that the success rate of our advice has not been very high. Fortunately, none of our companies is addicted to M&A, and the ones that do make acquisitions have never bet the company. I am convinced that the cost of distraction—even if it was a small one—has not been worth the effort. If any of them start becoming serial acquirers, we will promptly press the exit button.
+Not Predicting Where the Puck Will Be
+What do mid-nineteenth-century railways and late-twentieth-century dot-coms have in common?
+Railways transformed the United Kingdom in the early nineteenth century.25 The first passenger railway between Liverpool and Manchester was authorized by Parliament in 1826 and opened in 1830. Railways allowed people to travel farther at a much lower cost and in less time than the alternatives. They also spurred the growth of cities by enabling cheaper and faster transport of people and building materials. Many entrepreneurs jumped into the fray and by 1844 had opened more than 2,200 miles of railroad line. The stock market loved these companies, which promised growth forever. Between 1843 and 1850, 442 railway companies made a public offering of shares. Between January 1, 1843, and August 9, 1845, the index of railway stock prices doubled. But the bubble burst, as they inevitably do. The railway index fell over 67 percent from 1845 to 1850—many companies collapsed owing to incompetence, poor financial planning, or fraud.
+Not unlike the railway mania of the 1840s, with the arrival of the internet in the mid-1990s for the masses, venture capitalists and public markets funded hundreds of companies in the rapidly changing landscape. This was called the dot-com boom.26 The NASDAQ index of technology stocks jumped five-fold between 1995 and 2000. For the first time in recent capital market history, losing money seemed to be the key to success. In October 1999, just six months before the bubble burst, the market value of 199 internet stocks tracked by Mary Meeker, Morgan Stanley’s internet analyst, was $450 billion. All these businesses were essentially start-ups; they had been created in the previous two to five years. More remarkably, their combined revenue was only $21 billion, and their cumulative loss was a staggering $6.2 billion. When discussing the initial public offering (IPO) of Priceline.com, a venture capitalist at Benchmark admitted, “We’re in an environment where the company doesn’t have to be successful for us to make money.”
+The year 2000 marked the end of this insanity. By the year 2005, listed Silicon Valley companies had lost two-thirds of their value from market peak; this was equivalent to a staggering $2 trillion loss of shareholder wealth. Venture capital funding collapsed from about $105 billion in 2000 to $21 billion in 2004. Nasdaq had reached its peak in March 2000. It took more than fifteen years for it to regain this level.
+You can now guess the answer to the question I raised at the beginning of this section: The common thread that binds eighteenth-century railways and twentieth-century dot-coms is the potential for enormous value destruction wrought by a fast-changing industry.
+There are many similar examples in India of various new and upcoming industries that catch the fancy of investors. When Nalanda was established in 2007, the infrastructure boom was at its peak, and some of the leading companies were valued at billions of dollars. The Indian government had finally begun focusing on building roads, airports, power plants, and ports, and private and public equity investors seemed to have an unlimited appetite for these companies. But the infrastructure business in India was in a fledgling state in the late 2000s, the regulations were nascent and untested, and the basis of long-term success was unclear. The ensuing value destruction assumed epic proportions. Two of the affected infrastructure businesses were Reliance Power and Jaiprakash Power Ventures, whose market values were $29 billion and $23 billion, respectively, in early 2008. Each was valued at less than $700 million at the end of 2021, a collapse of more than 97 percent.
+The Indian public equity market has witnessed similar booms and busts across other rapidly evolving industries like retail, real estate, education, and microfinance. Private equity has gone wild for nonbank finance companies (NBFCs), new-age e-commerce businesses like food and grocery delivery, and software-as-a-service and digital education companies, to name just a few.
+Some companies in industries that change fast ultimately do end up creating a lot of value. But very few companies. The only ones that have created truly significant value from the dot-com era are Amazon and Google (Facebook was founded in 2004). If you want to be charitable, you could add eBay and Priceline (now called Booking Holdings). But that’s it. Just step back and think about this for a moment. Only a handful of businesses from the 1995–2000 bubble have prospered. To give you a sense of the scale of destruction, 546 IPOs successfully raised $69 billion in 1999 alone. What would have been the probability of finding the next winner?
+The path to creating wealth in rapidly evolving industries is treacherous, and we refuse to walk on it. Many investors are slaves to the famous quote of the hockey legend Wayne Gretzky: “I skate to where the puck is going to be, not where it has been.”27 I am not one of them. I am just not that smart. In fast-changing industries, I have no idea who will win, when, or how. And to draw the parallel with hockey, since I don’t know where the puck is going to be, I refuse to play.
+We at Nalanda love stable, predictable, boring industries. Give us electric fans over electric vehicles, boilers over biotech, sanitaryware over semiconductors, and enzymes over e-commerce. We like industries in which the winners and losers have been largely sorted out and the rules of the game are apparent to everyone.
+For everything else, thanks, but no thanks.
+Not Aligning with Unaligned Owners
+As an outside and passive owner, we at Nalanda want the company owner to align their interest with the shareholders’. We have only one objective as a shareholder of any business: long-term value creation. The company must do this in an ethical, sustainable manner that is fair to all stakeholders, including employees, vendors, suppliers, and customers. But as strange as it may sound, not every owner has the same objective. There are broadly three categories of owners that we avoid to mitigate our type I risk.
+First, government-owned businesses. Unlike the Western world, India has a large number of publicly traded government-owned companies. They are almost always cheap, and, for a value investor, they have been unhappy hunting grounds for as long as I can remember. I say “unhappy” because most of these cheap businesses almost always stay cheap. Some fund managers may have figured out a way to invest successfully in government-owned businesses, but we will not invest in a government-owned enterprise at any price. The government wants to achieve multiple objectives with their businesses, some of which may have nothing to do with enhancing value and profits.
+For example, the Indian state and federal governments regularly resort to farm loan waivers.28 This involves forgiving the loans of farmers who have borrowed from government-owned banks. The loan waiver trend started in 1990 (the first waiver was for $1.4 billion) and continues today. Almost every state and federal government has gotten on the bandwagon over the past three decades. This may suit the governments and maybe even the farmers (I say “maybe” because farmers may not find it easy to borrow the next time they go to the bank). But it may be destructive for the minority shareholder.
+It is not unusual for the Indian government to reward a senior bureaucrat by giving them a senior position at a government-owned business. Again, this may suit the bureaucrat but not a shareholder. We have nothing against bureaucrats, but the skill required to run a company successfully in a competitive environment is not the same as that needed to manage a district or devise a sound social policy for a state. Some businesses, especially the public sector oil companies, occasionally become cash rich, and the government then uses them as a piggy bank to manage their fiscal deficit. It suits the government, but how can this be beneficial for a shareholder? It is not that the government objectives are “wrong”—they make sense in the light of the multiple constituencies whose needs they are trying to meet. Their objectives are just different from ours.</div>
+            <div class="text-block simplified-text">好的，这是根据您的要求翻译的段落：
+
+我对拜耳的管理层一无所知，但鉴于他们在2016年之前的巨大成功，想必他们是世界一流的。如果真是这样，他们又是如何被迷惑到做出如此收购的呢？因为和世界上大多数收购者一样，他们真心相信这次会不同。管理者——尤其是表现出色的管理者——及其顾问在评估目标时，往往怀有一种不可战胜的傲慢感。他们坚信自己将逆袭企业界一个世纪以来所见证的趋势。他们中的大多数人直到为时已晚才意识到自己的愚蠢。
+
+如果一家企业是连续收购者，我们会避而远之。我们知道无法为这种风险定价。如果我们在2016年将拜耳作为新投资进行评估，我们会选择放弃，直到确信管理层不会重蹈覆辙。
+
+我们投资组合中的一些公司偶尔也会进行收购。我们给他们的建议是，在任何情况下都要对潜在的价值创造保持高度怀疑。我承认，我们建议的成功率并不高。幸运的是，我们的公司中没有一家沉迷于并购，而那些进行收购的公司也从未押上整个公司。我深信，即使只是小小的分心，其成本也不值得付出努力。如果其中任何一家开始成为连续收购者，我们将立刻按下退出按钮。
+
+**不预测冰球将落向何方**
+
+十九世纪中期的铁路和二十世纪末的互联网公司有何共同之处？
+
+铁路在十九世纪初改变了英国。1826年议会批准了第一条连接利物浦和曼彻斯特的客运铁路，并于1830年开通。铁路让人们能以更低的成本和更少的时间前往更远的地方。它们还通过提供更便宜、更快捷的人员和建筑材料运输，促进了城市的增长。许多企业家纷纷涌入，到1844年已开通了超过2200英里的铁路线。股票市场青睐这些承诺永远增长的公司。1843年至1850年间，442家铁路公司公开发行股票。1843年1月1日至1845年8月9日期间，铁路股价指数翻了一番。但泡沫还是破灭了，正如它们必然会发生的那样。从1845年到1850年，铁路指数下跌超过67%——许多公司因无能、糟糕的财务规划或欺诈而倒闭。
+
+与1840年代的铁路狂热并无二致，随着互联网在1990年代中期进入大众视野，风险投资人和公开市场在快速变化的格局中为数百家公司提供了资金。这被称为互联网泡沫。1995年至2000年间，纳斯达克科技股指数飙升了五倍。在近代资本市场历史上，首次出现了亏钱似乎是成功关键的现象。1999年10月，就在泡沫破裂前仅六个月，由摩根士丹利互联网分析师玛丽·米克追踪的199家互联网公司的市值达到了4500亿美元。所有这些企业本质上都是初创公司；它们是在前两到五年内成立的。更引人注目的是，它们的总收入仅为210亿美元，而累计亏损却高达62亿美元。在讨论Priceline.com的首次公开募股（IPO）时，Benchmark的一位风险投资人坦言：“我们身处一个公司不必成功我们也能赚钱的环境。”
+
+2000年标志着这种疯狂的终结。到2005年，上市的硅谷公司市值从峰值损失了三分之二；这相当于股东财富惊人地损失了2万亿美元。风险投资资金从2000年约1050亿美元暴跌至2004年的210亿美元。纳斯达克指数在2000年3月达到顶峰。它花了超过十五年时间才恢复到这个水平。
+
+现在你可以猜到我本节开头所提问题的答案了：将十八世纪的铁路与二十世纪的互联网公司联系起来的共同主线，是一个快速变化的行业可能造成的巨大价值毁灭。
+
+在印度，也有许多类似的新兴行业吸引了投资者的青睐。当那烂陀资本在2007年成立时，基础设施热潮正值顶峰，一些龙头企业估值达到数十亿美元。印度政府终于开始专注于修建道路、机场、发电厂和港口，而私人和公共股权投资者似乎对这些公司有着无限的胃口。但在2000年代末，印度的基础设施行业尚处于起步阶段，法规初生且未经检验，长期成功的基础尚不明确。随之而来的价值毁灭达到了惊人的程度。受影响的其中两家基础设施企业是信实电力和贾普拉卡什电力，它们在2008年初的市值分别为290亿美元和230亿美元。到2021年底，每家的估值都不到7亿美元，暴跌超过97%。
+
+印度公开股票市场在其他快速发展的行业，如零售、房地产、教育和小额信贷，也见证了类似的繁荣与萧条。私募股权则对非银行金融公司（NBFC）、食品杂货配送等新型电子商务企业、软件即服务和数字教育公司等狂热追逐，仅举几例。
+
+在快速变化的行业中，确实有一些公司最终创造了巨大价值。但这样的公司非常少。在互联网时代创造了真正巨大价值的公司只有亚马逊和谷歌（Facebook成立于2004年）。如果你想放宽标准，可以加上eBay和Priceline（现名Booking Holdings）。但仅此而已。退一步想想，1995-2000年泡沫中繁荣起来的企业只有寥寥数家。为了让你感受毁灭的规模，仅1999年一年就有546宗IPO成功筹集了690亿美元。找到下一个赢家的概率能有多大呢？
+
+在快速发展的行业中创造财富的道路充满险恶，我们拒绝涉足。许多投资者是冰球传奇韦恩·格雷茨基那句名言的奴隶：“我滑向冰球将要去的地方，而不是它曾经所在的地方。”我不是他们中的一员。我只是没那么聪明。在快速变化的行业里，我不知道谁会赢，何时赢，或者如何赢。用冰球来比喻，既然我不知道冰球将落向何方，我就拒绝参与比赛。
+
+我们在那烂陀资本钟爱稳定、可预测、乏味的行业。给我们电风扇而不是电动汽车，锅炉而不是生物技术，卫浴洁具而不是半导体，酶制剂而不是电子商务。我们喜欢那些胜负已基本分明、游戏规则对所有人都显而易见的行业。
+
+至于其他一切，谢谢，但敬谢不敏。
+
+**不与非同心者同行**
+
+作为外部和被动的所有者，我们在那烂陀资本希望公司所有者将其利益与股东利益保持一致。作为任何企业的股东，我们只有一个目标：长期价值创造。公司必须以合乎道德、可持续且公平对待所有利益相关者（包括员工、供应商和客户）的方式来实现这一目标。但听起来可能很奇怪，并非每个所有者都有相同的目标。我们主要回避三类所有者以减轻我们的第一类风险。
+
+第一类，政府所有的企业。与西方世界不同，印度有大量公开上市的政府所有企业。它们几乎总是很便宜，并且就我记忆所及，对价值投资者来说，它们一直是令人失望的狩猎场。我说“令人失望”是因为这些廉价企业几乎总是保持廉价。一些基金经理可能找到了成功投资政府企业的方法，但我们绝不会以任何价格投资于政府所有的企业。政府希望通过其企业实现多重目标，其中一些可能与提升价值和利润毫无关系。
+
+例如，印度各邦政府和联邦政府经常诉诸农业贷款豁免。这涉及免除那些向国有银行贷款的农民的债务。贷款豁免趋势始于1990年（首次豁免额为14亿美元），并持续至今。过去三十年中，几乎每个邦政府和联邦政府都加入了这一行列。这可能符合政府的利益，甚至可能也符合农民的利益（我说“可能”是因为农民下次去银行时可能不那么容易借到钱了）。但这对少数股东可能是毁灭性的。
+
+印度政府通过让高级官僚在国有企业担任高管职位来奖励他们，这并不罕见。同样，这符合官僚的利益，但不符合股东的利益。我们并非反对官僚，但在竞争环境中成功运营一家公司所需的技能，与管理一个地区或为邦制定健全的社会政策所需的技能并不相同。一些企业，尤其是公共部门的石油公司，偶尔会现金充裕，政府就会把它们当作储蓄罐来管理其财政赤字。这符合政府的利益，但这怎么可能对股东有利呢？并非政府的目标“错误”——考虑到他们试图满足的众多选民的需求，这些目标是合理的。只是他们的目标与我们的不同。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">The second category of owners we avoid religiously is the listed subsidiaries of global giants. A few decades ago, the Indian government forced all Indian subsidiaries of global multinational companies (MNCs) to list in the domestic market. Global MNCs like Cummins, Nestlé, Procter & Gamble (P&G), Siemens, Unilever, and many others have locally listed subsidiaries. Some are fairly large by Indian standards. For example, the Unilever subsidiary in India, Hindustan Unilever, is valued at about $70 billion.
+At first glance, it may appear that these MNCs should be aligned with the Indian minority shareholder. But there have been many instances when they weren’t. A few decades ago, a large global MNC with a listed company in India set up a separate fully owned subsidiary. This makes no logical sense because the global giant has only one listing in its home market. For a minority shareholder of the listed Indian business, this was a stab in the back because the fully owned subsidiary now does a significant amount of business. So why would the parent company do this? Isn’t it interested in value creation? Yes, it is. But it is more interested in the value creation of the parent, not the Indian-listed child. By creating a separate fully owned business, the global MNC has ensured that value accrues to the shareholders in its home market at the cost of the Indian minority shareholder. It gets worse. My friends who have worked for many years in this MNC have told me that its best managers are sent to the privately held business, not the listed company. What can a minority shareholder do? Absolutely nothing.
+Not all MNCs resort to such shenanigans, but enough do. Even if an MNC has behaved well in the past, there is no reason it wouldn’t change its mind in the future. There is a structural problem with an arrangement in which a parent also has a listed subsidiary. We have better things to do than to participate in this inherent conflict.
+Last, we are not fans of the Indian conglomerates. The best known is the Tata Group, which Jamsetji Tata established in 1868.29 The group had twenty-nine listed businesses with combined revenues of $128 billion and a market value of $311 billion as of March 2022. They manufacture steel, gold jewelry, air conditioners, tea, and cars. Oh, and they also own and operate five-star luxury hotels from Mumbai to New York. There are many others, like Adani, Aditya Birla, L&T, Mahindra, and RP-Sanjiv Goenka. All typically run a gamut of unrelated businesses across a wide range of industries.
+We believe that value creation is possible only through sustained focus. However, while focus is necessary, it does not guarantee success in a competitive world; most focused businesses aren’t successful. So how does one achieve excellence in multiple entities across entirely different industries? It’s hard but not impossible. One of the world’s leading technology services businesses is a Tata Group company called TCS, whose market value of around $150 billion was about 25 percent more than that of IBM in mid-2022. You may have seen its name splashed across Manhattan in November in the years it sponsored the New York City Marathon. TCS is the exception that proves the rule.
+Maybe the Indian conglomerates will succeed in creating great businesses across their entire portfolios one day. But we are unwilling to wait for that glorious future.
+But You Would Have Missed Tesla!
+Yup. We would have.
+We eschew a very long list of risks. This is the core element of our investment strategy. We don’t invest in businesses run by crooks, we detest turnarounds, we stay as far away from leverage as possible, we refuse to engage with M&A addicts, we can’t figure out fast-changing industries, and we don’t align ourselves with unaligned owners. Are there any businesses left for us to invest in? In India, not many. At Nalanda, our shortlist comprises seventy-five to eighty companies out of a universe of about eight hundred with a market value of more than $100 million.
+Except for filial love, nothing in life comes free. Nalanda’s approach has a trade-off that many of you may find unacceptable.
+Imagine it’s late 2017, and you are impressed with all the media coverage of Tesla. The product seems like a winner based on its vast fan following. The CEO looks as impressive as the car he makes. But in 2017, Tesla had a net debt of about $7 billion and had suffered an operating loss of $1.6 billion. The company was also burning cash very fast—it had consumed $4.1 billion during the year. The traditional car businesses like BMW, Ford, GM, and Toyota had not yet entered the electric vehicle fray, but they had announced big plans. We abhor debt in general, but debt in a loss-making company with negative free cash flow in a fast-changing industry? One can get fired at Nalanda for proposing an investment in a business like this.
+If you had listened to what we had to say about the business, you would not have invested. Your opportunity loss? Ten times your money over the next three years.
+When we started Nalanda in 2007, there was a lot of buzz around a company called Eicher Motors led by a young, dynamic guy called Siddhartha Lal. Lal had inherited a hodgepodge of poor-quality businesses from his father in 2004. They manufactured motorcycles, footwear, garments, tractors, trucks, auto components, and a few other products, and none was an industry leader. In a remarkably bold strategic move, Lal decided to divest thirteen of the fifteen businesses to focus on just two products: trucks and motorcycles.30
+Almost every analyst was gung ho about the future of Eicher; they were all taken in by its dynamic leader who was aggressively culling businesses, something that Indian firms rarely did. However, in 2007, this was a turnaround story with no empirical evidence of success. The company’s biggest hit, the Enfield Classic motorcycle, was launched only in 2010.
+We decided not to invest in the business. By the 2010s, the company’s motorcycles had taken on cult status in the Indian consumer’s mind. Sales exploded from just 52,000 units in 2009 to 822,000 units in 2019: a sixteen-fold growth.
+If you had listened to what we had to say about the business, you would not have invested. Your opportunity loss? Seventy times your money from 2007 until 2021.
+Tesla and Eicher Motors are the kinds of type II error we will inevitably commit because we reject highly indebted businesses, rapidly evolving industry landscapes, and turnarounds. But we will not change our approach. For every Tesla and Eicher, hundreds of unproven business models and turnaround stories are unceremoniously consigned to the dustbin of history. We believe our success is contingent upon our being comfortable with missing out on Teslas and Eichers because on average, avoiding type I errors works wonders over the long term. It has done so for us.
+✳✳✳
+A bumblebee is a hairy insect that barely measures an inch in length.31 The species—there are about three hundred of them—have been around for about thirty million years. They are preyed upon by crab spiders and birds. Their survival strategy was beautifully demonstrated in an experiment conducted by Dr. Tom Ings and Professor Lars Chittka of Queen Mary University of London, whose work was published in Science Daily in 2008.
+The scientists created a garden of artificial flowers that also contained some robotic crab spiders. They hid some spiders and made others visible. Whenever a bumblebee landed on a flower with a crab spider, the spider “captured” the bumblebee between its foam pincers. Within a few seconds, the robotic spider released the bee. The team found that the bumblebees soon started committing more type II errors: they started avoiding flowers even where there were no spiders, thereby reducing their foraging efficiency. In the wild, this instinct to avoid danger at the cost of going hungry must have played a significant role in the tremendous success of the species over millions of years.
+If the bumblebee can, why can’t we?
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . the first and probably most important step in reimagining investing is to learn how not to invest.
+1. Living things prioritize survival over everything else. In the animal world, this applies to prey and predator. Plants give up on opportunities to grow by redirecting resources when survival is at stake.
+2. Millions of years of evolution have programmed the organic world to minimize errors of commission in favor of errors of omission.
+3. Buffett’s two rules of investing (never lose money, and don’t forget to never lose money) are essentially a diktat for eliminating significant risks.
+4. At Nalanda, we want to be permanent owners of high-quality businesses. Hence, we want to minimize risk before maximizing returns.
+5. Just like the living world, we forgo potentially juicy opportunities if the risk of losing our capital is high.
+6. We do this by avoiding crooks, turnarounds, high debt, serial acquirers, fast-changing industries, and unaligned owners. I believe we can be better investors only if we are better “rejectors.”
+7. One downside of this approach is that we occasionally walk away from a potentially attractive investment. We are willing to live with this downside.
+Section II
+BUY HIGH QUALITY AT A FAIR PRICE
+This section describes and, using evolutionary theory, justifies our
+buying philosophy at Nalanda. For many investors, identifying the right business to buy at the right time is almost all there is to investing. Switch on CNBC, open a financial newspaper, or read a blog, and you will witness a lot of time spent and ink spilled on companies to buy. This is unfortunate. As we have already seen in section I, not buying is an equally—if not more—important skill.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的书籍段落：
+
+**我们坚决避免的第二类所有者是全球巨头旗下的上市子公司。**几十年前，印度政府强制要求所有跨国公司的印度子公司在本土市场上市。像康明斯、雀巢、宝洁、西门子、联合利华等众多全球跨国公司都在当地拥有上市子公司。按印度标准衡量，其中一些公司规模相当大。例如，联合利华在印度的子公司印度斯坦联合利华，市值约为700亿美元。
+乍看之下，这些跨国公司似乎应该与印度的少数股东利益一致。但事实并非总是如此。几十年前，一家在印度拥有上市公司的全球大型跨国公司就曾设立了一家独立的、由其全资拥有的子公司。这在逻辑上说不通，因为该巨头在其本土市场只有一家上市公司。对于这家印度上市公司的少数股东来说，这无异于背后捅刀，因为这家全资子公司如今承担了大量业务。那么母公司为何要这样做？难道它对创造价值不感兴趣吗？不，它感兴趣。但它更感兴趣的是母公司本身的价值创造，而非印度上市子公司的价值创造。通过创建独立的独资业务，这家全球跨国公司确保了价值增值惠及其本土市场的股东，代价却由印度的少数股东承担。情况甚至更糟。我在该公司工作多年的朋友告诉我，它最优秀的管理者都被派往了私营业务部门，而非上市公司。少数股东能做什么？完全无能为力。
+并非所有跨国公司都会耍这种把戏，但这样做的足够多。即使一家跨国公司过去表现良好，也不能保证它未来不会改变主意。母公司同时拥有上市子公司的安排存在结构性缺陷。我们有更重要的事情要做，而不是参与这种内在的利益冲突。
+**最后，我们对印度财团（Conglomerates）也敬而远之。**最著名的是由詹姆斯特吉·塔塔于1868年创立的塔塔集团。该集团拥有29家上市公司。它们生产钢铁、黄金珠宝、空调、茶叶和汽车。哦，对了，它们还在孟买到纽约拥有并经营五星级豪华酒店。还有很多其他财团，如阿达尼、阿迪亚·博拉、L&T、马恒达和RP-Sanjiv Goenka集团。它们通常都横跨众多互不相干的行业。
+我们认为，价值创造只能通过持续的专注来实现。然而，专注虽然是必要条件，但并不能保证在竞争激烈的世界中取得成功；大多数专注的企业并不成功。那么，如何在完全不同的行业中同时在多个实体中追求卓越呢？这很难，但并非不可能。塔塔集团旗下的一家名为TCS的公司就是全球领先的科技服务企业之一，其约1500亿美元的市值在2022年中比IBM高出约25%。在赞助纽约市马拉松赛的那些年，你可能在11月的曼哈顿各处见过它的名字。TCS是个例外，恰恰印证了规则的存在。
+也许有一天印度财团会成功地在整个投资组合中打造出伟大的企业。但我们不愿意等待那个辉煌的未来。
+**但你会错过特斯拉！**
+**没错。我们会错过。**
+我们规避一长串风险。这是我们投资策略的核心要素。我们不投资骗子经营的企业，我们厌恶扭亏为盈的公司，我们尽可能远离杠杆，我们拒绝与并购瘾君子打交道，我们搞不懂快速变化的行业，我们也不与利益不一致的所有者为伍。那还有什么企业可供我们投资？在印度，不多。在Nalanda（那兰陀），我们的候选名单包括大约800家市值超过1亿美元的公司中的75到80家。
+除了父母之爱，生活中没有什么是免费的。那兰陀的策略存在一个权衡取舍，许多人可能会觉得难以接受。
+想象现在是2017年底，特斯拉铺天盖地的媒体报道让你印象深刻。凭借庞大的粉丝群，其产品看起来是赢家。其CEO和他制造的汽车一样令人印象深刻。但在2017年，特斯拉净债务约70亿美元，运营亏损16亿美元。公司烧钱也极快——当年就消耗了41亿美元。像宝马、福特、通用、丰田这样的传统汽车巨头虽然尚未加入电动车战局，但已宣布了宏伟计划。我们总体上厌恶债务，更何况是一家身处快速变化行业、自由现金流为负的亏损企业的债务？在那兰陀，提出投资这样的企业可能会被解雇。
+如果你当时听了我们对这家公司的看法，你就不会投资。你的机会损失？三年内损失十倍回报。
+当我们在2007年创立那兰陀时，一家由充满活力的年轻人悉达多·拉尔领导的名为Eicher Motors的公司引起了很大轰动。拉尔在2004年从他父亲那里继承了一堆质量不佳的业务。他们生产摩托车、鞋类、服装、拖拉机、卡车、汽车零部件和其他一些产品，但没有一个是行业领导者。拉尔做出了一个极其大胆的战略举措，决定剥离十五项业务中的十三项，只专注于两种产品：卡车和摩托车。
+几乎每一位分析师都对Eicher的未来热情洋溢；他们都被这位积极精简业务的活力领导者所吸引，这在印度公司中实属罕见。然而在2007年，这是一个扭亏为盈的故事，尚无成功的实证。该公司最成功的产品——恩菲尔德经典摩托车，直到2010年才推出。
+我们决定不投资这家公司。到了2010年代，该公司的摩托车在印度消费者心中已具有了偶像地位。销量从2009年仅5.2万辆猛增至2019年的82.2万辆：增长了十六倍。
+如果你当时听了我们对这家公司的看法，你就不会投资。你的机会损失？从2007年到2021年损失七十倍的回报。
+特斯拉和Eicher Motors就是我们必然会犯的第二类错误（Type II error），因为我们拒绝高负债企业、快速演变的行业格局和扭亏为盈的故事。但我们不会改变策略。对于每一个特斯拉和Eicher，都有成百上千个未经证实的商业模式和扭亏故事被无情地扫进历史的垃圾堆。我们相信，我们的成功取决于我们能够坦然接受错过特斯拉和Eicher，因为从长远来看，平均而言，避免第一类错误（Type I error）能创造奇迹。对我们来说确实如此。
+✳✳✳
+大黄蜂是一种毛茸茸的昆虫，身长仅约一英寸。大约有三百个种类的大黄蜂已存在约三千万年。它们会被蟹蛛和鸟类捕食。伦敦玛丽女王大学的汤姆·英斯博士和拉尔斯·奇卡教授在2008年发表于《每日科学》的研究中，精彩地展示了它们的生存策略。
+科学家们创建了一个人工花园，里面种满了假花，还放置了一些机器蟹蛛。他们隐藏了一些蜘蛛，让另一些可见。每当一只大黄蜂落在带有机器蟹蛛的花上时，蜘蛛就用其泡沫“钳子”“抓住”大黄蜂。几秒钟后，机器蜘蛛会释放蜜蜂。研究小组发现，大黄蜂很快就开始犯更多的第二类错误：它们开始避开花朵，即使那里没有蜘蛛，从而降低了觅食效率。在野外，这种宁愿挨饿也要避开危险的本能，必定在该物种数百万年的巨大成功中发挥了重要作用。
+大黄蜂能做到，我们为什么不能呢？
+**章节总结**
+进化论教会我……
+……重新构想投资的第一步，也可能是最重要的一步，是学会如何不去投资。
+1.  生物将生存置于一切之上。在动物世界，这适用于猎物和捕食者。当生存受到威胁时，植物会放弃生长机会，重新分配资源。
+2.  数百万年的进化使有机世界倾向于最小化“行动错误”（errors of commission），而接受“不作为错误”（errors of omission）。
+3.  巴菲特的两条投资规则（第一条：永远不要亏钱；第二条：永远不要忘记第一条）本质上是一条旨在消除重大风险的投资铁律。
+4.  在那兰陀，我们希望成为高质量企业的永久所有者。因此，我们希望在最大化回报之前先最小化风险。
+5.  就像生物界一样，如果损失资本的风险很高，我们就会放弃潜在回报丰厚的机会。
+6.  我们通过避开骗子、扭亏企业、高负债企业、并购狂、快速变化的行业以及利益不一致的所有者来实现这一点。我相信，只有成为更懂得拒绝的“拒绝者”，才能成为更好的投资者。
+7.  这种策略的一个缺点是，我们偶尔会错过潜在有吸引力的投资。我们愿意接受这个缺点。
+
+**第二部分**
+**买贵不如买对**
+本部分描述并用进化论论证了那兰陀的买入理念。对许多投资者来说，在正确的时间识别正确的企业几乎是投资的全部。打开CNBC、翻开财经报纸或阅读博客，你会看到大量时间和笔墨花在讨论值得买入的公司上。这很不幸。正如我们在第一部分已经看到的，不买入是一项同样重要（甚至更重要）的技能。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">There is also a profound conundrum about the buying strategy advocated by most fund managers. Everyone seems to spout the exact same philosophy as this section’s topic: Buy high quality at a fair price. I challenge you to find me a fund manager who professes to buy poor-quality businesses at high prices.
+Then why does the performance of professional investors vary so widely? One reason—not the only one, but a crucial one—is that our community has wildly different opinions on the meaning of “high,” “quality,” and “fair.” In this section, with many evolutionary theory elements as a backdrop, I will clarify the meaning of these words as they apply to Nalanda. I will discuss what we buy in chapters 2 to 4 and how we buy in chapters 5 to 7.
+Let’s begin. In Siberia.</div>
+            <div class="text-block simplified-text">好的，这是根据您要求翻译的段落：
+
+基金经理们普遍推崇的投资策略背后，存在一个深刻难题。似乎所有人都宣扬着与本节主题相同的理念：以合理价格买入优质资产。我敢说，你很难找到一位声称要以高价买入劣质资产的基金经理。
+
+那么，为何专业投资者的业绩差异如此巨大？一个原因——并非唯一，但至关重要——在于我们对“高”、“优质”和“合理”的含义理解迥异。在本节中，我将以诸多进化论元素为背景，阐明这些词语在那烂陀基金语境下的具体所指。我将在第二至第四章阐述我们买什么，在第五至第七章阐述我们怎么买。
+
+让我们开始吧。在西伯利亚。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
