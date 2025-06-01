@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            --body-bg-color: #fdfdfd;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --number-color: #888888;
+            --base-font-size: 17px;
+            --line-height: 1.8;
+            --column-gap: 2.5rem;
+            --row-margin-bottom: 1.5rem;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--body-bg-color);
+            color: var(--text-color);
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            margin: 0;
+            padding: 2rem 3rem; /* Add padding around the page */
+            box-sizing: border-box;
+        }
+
+        /* Site-wide Navigation Header */
+        .site-navigation {
+            display: flex;
+            justify-content: space-between; /* Aligns links to opposite ends */
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem; /* Space before chapter navigation */
+            border-bottom: 1px solid #eee; /* Consistent separator */
+        }
+
+        .site-nav-link {
+            text-decoration: none;
+            color: var(--number-color); /* Subdued, like paragraph numbers */
+            font-size: 0.9em;
+            padding: 0.25rem 0.1rem; /* Minimal padding, primarily text links */
+        }
+
+        .site-nav-link:hover {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Chapter Navigation Header (replaces old .page-header structure) */
+        .chapter-navigation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distributes space between buttons and title */
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .chapter-title { /* Style for the H1 chapter title */
+            font-size: 1.8em;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0 1rem; /* Provides space between title and nav buttons */
+            text-align: center; /* Ensures title text is centered */
+            flex-grow: 1; /* Allows title to take available space */
+            min-width: 0; /* Allows title to shrink if necessary, e.g., on very small screens */
+        }
+
+        .chapter-nav-button {
+            text-decoration: none;
+            color: var(--title-color); /* Match title color for prominence */
+            font-size: 1em; /* Base font size for buttons */
+            font-weight: bold;
+            padding: 0.4rem 0.8rem; /* Clickable area */
+            border: 1px solid transparent; /* Placeholder for hover/focus border */
+            border-radius: 4px; /* Slightly rounded corners */
+            white-space: nowrap; /* Prevents button text from wrapping */
+            flex-shrink: 0; /* Prevents buttons from shrinking */
+        }
+
+        .chapter-nav-button:hover {
+            color: var(--text-color);
+            background-color: #f0f0f0; /* Subtle background on hover */
+            border-color: #ddd; /* Subtle border on hover */
+        }
+
+        .content-container {
+            max-width: 1200px; /* Limit width for better readability on wide screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline; /* Align text start */
+            gap: 1rem; /* Gap between number and first text block */
+            margin-bottom: var(--row-margin-bottom);
+        }
+
+        .paragraph-number {
+            flex: 0 0 30px; /* Fixed width, don't grow/shrink */
+            color: var(--number-color);
+            font-size: 0.9em;
+            text-align: right;
+            padding-right: 0.5rem; /* Space after number */
+        }
+
+        .text-block {
+            flex: 1; /* Each text block takes equal space */
+            min-width: 0; /* Allow blocks to shrink if needed */
+        }
+
+        .original-text {
+            padding-right: calc(var(--column-gap) / 2); /* Space before simplified text */
+        }
+
+        .simplified-text {
+             padding-left: calc(var(--column-gap) / 2); /* Space after original text */
+             border-left: 1px solid #eee; /* Subtle separator */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem; /* Reduced padding for smaller screens */
+            }
+
+            .site-navigation {
+                margin-bottom: 1rem; /* Slightly less space below site nav */
+            }
+
+            .site-nav-link {
+                font-size: 0.85em; /* Slightly smaller text for site links */
+            }
+
+            .chapter-navigation-header {
+                margin-bottom: 2rem; /* Reduced space below chapter nav */
+            }
+
+            .chapter-title {
+                font-size: 1.5em; /* Smaller chapter title on mobile */
+                margin: 0 0.5rem; /* Reduced horizontal margin */
+            }
+
+            .chapter-nav-button {
+                font-size: 0.9em; /* Smaller nav buttons */
+                padding: 0.3rem 0.6rem; /* Smaller padding for buttons */
+            }
+
+            .content-row {
+                flex-direction: column; /* Stack vertically */
+                align-items: flex-start; /* Align items to start */
+                gap: 0.5rem;
+                border-bottom: 1px solid #eee; /* Add separator between stacked rows */
+                padding-bottom: 1rem;
+            }
+            .paragraph-number {
+                 flex-basis: auto; /* Reset fixed width */
+                 text-align: left;
+                 padding-right: 0;
+                 font-weight: bold; /* Make number stand out more when stacked */
+            }
+            .original-text, .simplified-text {
+                padding-left: 0; /* Remove side padding */
+                padding-right: 0;
+                border-left: none; /* Remove vertical separator */
+            }
+             .simplified-text {
+                 margin-top: 0.5rem; /* Add space before simplified text when stacked */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-navigation">
+        <a href="../../index.html" class="site-nav-link">返回图书馆</a>
+        <a href="../index.html" class="site-nav-link">我从达尔文那里学到的投资知识 主页</a>
+    </header>
+
+    <nav class="chapter-navigation-header">
+        <a href="./002.html" class="chapter-nav-button prev-button">&lt; 上一页</a>
+        <h1 class="chapter-title">Chapter 3</h1>
+        <a href="./004.html" class="chapter-nav-button next-button">下一页 &gt;</a>
+    </nav>
+
+    <main class="content-container">
+        
+        <div class="content-row">
+            <span class="paragraph-number">1.</span>
+            <div class="text-block original-text">The Paradox of McKinsey and Sea Urchins
+Moreover when a modification of structure has primarily arisen from the above or unknown causes, it may at first have been of no advantage to the species, but may subsequently have been taken advantage of by the descendants of the species under new conditions of life and with newly acquired habits.
+Charles Darwin, On the Origin of Species, chapter 6, “Difficulties of the Theory”
+We rarely use much debt and, when we do, we attempt to structure it on a long-term fixed basis. We will reject interesting opportunities rather than over-leverage our balance sheet. This conservatism has penalized our results but it is the only behavior that leaves us comfortable, considering our fiduciary obligations to policyholders, depositors, lenders and the many equity holders who have committed unusually large portions of their net worth to our care.
+Warren Buffett, annual letter to shareholders, 1983</div>
+            <div class="text-block simplified-text">麦肯锡与海胆的悖论  
+此外，当某种结构变异最初由上述或未知原因产生时，它可能对物种并无直接优势，但该物种的后代或许能在新的生存条件和新获得的习性中对其加以利用。  
+——查尔斯·达尔文《物种起源》第六章"学说的疑难"  
+
+我们极少大举借债，即便借贷也会尽量采用长期固定利率结构。我们宁愿放弃诱人的机会，也不愿让资产负债表过度承压。这种保守作风虽拖累了业绩，但考虑到我们对保单持有人、储户、债权人以及众多将异常高比例净资产托付给我们的股东所负的受托责任，唯有如此行事才能让我们心安。  
+——沃伦·巴菲特1983年致股东信</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">2.</span>
+            <div class="text-block original-text">The world is shrunk into a few square miles of New York: the filth of Mumbai, the art of Berlin, the style of Paris, the food of London, the bustle of Tokyo, the gaudiness of Shanghai, the rudeness of Delhi, the shopping of Singapore, the decadence of Monaco, the chaos of Cairo, and the magnificence of its own. I love it. This is why we hold Nalanda’s annual investor meeting in the city every year in late June.
+When my son was young (oh, why do they grow up?), he had two favorite spots in New York. Over time, they became mine, too: the Central Park Zoo and the FAO Schwarz toy store on Fifth Avenue. Our favorite activities there were petting the baby animals and dancing on the giant piano.</div>
+            <div class="text-block simplified-text">世界被浓缩在纽约的几平方英里内：孟买的脏乱、柏林的艺术、巴黎的时尚、伦敦的美食、东京的喧嚣、上海的浮华、德里的粗鲁、新加坡的购物、摩纳哥的颓废、开罗的混乱，以及它自身的壮丽。我爱这里。这就是为什么我们每年六月底都在纽约召开那烂陀年度投资者会议。
+
+我儿子年幼时（唉，孩子为何总要长大？），他在纽约有两个最喜爱的地方。久而久之，它们也成了我的最爱：中央公园动物园和第五大道上的FAO Schwarz玩具店。我们在那里最爱的活动是抚摸小动物和在巨型钢琴上跳舞。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">3.</span>
+            <div class="text-block original-text">I remember FAO Schwarz less for its dazzling array of toys, many of which we bought over the years, and more for being soaked in wonder and amazement. There were magicians, Rubik’s Cube artists, giant cuddly pandas, other-worldly jugglers, and, on one occasion, a group of singers and dancers who rivaled Broadway performers. Growing up in semi-urban India, I had never been to a toy store before, and I am not sure to this day if our visits to this iconic institution were more exciting for my son or me.
+After our ninth annual meeting in 2016, I remember walking up Fifth Avenue, waiting to be mesmerized by something new in the store. But it wasn’t there. A quick Google search on my phone sank my spirits. The store had shut permanently.
+How in the world could this have happened? Why would the store be closed when it was almost always teeming with customers, and there never seemed to be enough cash registers?
+The Mystery of McKinsey</div>
+            <div class="text-block simplified-text">我对FAO Schwarz玩具店的记忆，与其说源于那些令人眼花缭乱的玩具（多年来我们买过不少），不如说源于那种浸透在惊奇与赞叹中的氛围。这里有魔术师、魔方艺术家、巨型毛绒熊猫、超凡脱俗的杂耍艺人，还有一次，我甚至遇见堪比百老汇演员的歌舞表演团队。在印度半城市化地区长大的我，从未进过玩具店，时至今日仍说不清，在这家标志性商店的每一次造访，究竟是儿子更兴奋还是我更激动。
+
+2016年参加完第九届年度会议后，我记得自己沿着第五大道走去，满心期待能在店里邂逅新的惊喜。但它消失了。手机上的快速搜索让我心情骤沉——这家店已永久停业。
+
+这怎么可能呢？明明店里总是人潮涌动，收银台前永远排着长队，为何竟会关门大吉？
+
+这便是麦肯锡之谜。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">4.</span>
+            <div class="text-block original-text">McKinsey, the global strategy consulting firm, decided to enter India in 1992 following the beginning of the economic liberalization of the country in 1991.1 It decided to hire fresh interns from two MBA schools in the country. India did not have strategy consulting firms in 1992, and none of us knew anything about the industry. Remember that there was no internet then, so we could not even do basic research on the industry or the company. Our professors, too, were clueless.
+I was a final year MBA student in one of those two schools. The Firm (as it is called by insiders), for some inexplicable reason, had decided to pay more than twice the next highest-paying company (Citibank). The entire MBA class applied, including me. No one cared what McKinsey did—the lure of the lucre was too strong to resist.</div>
+            <div class="text-block simplified-text">全球战略咨询公司麦肯锡于1992年决定进军印度，此前一年印度刚启动经济自由化改革。当时麦肯锡决定从印度两所MBA院校招募应届实习生。1992年的印度尚无战略咨询公司，我们这群学生对这行业一无所知。须知当时互联网尚未普及，我们甚至无法对这个行业或这家企业进行基础调研。就连我们的教授们也毫无头绪。
+
+我当时正是这两所院校其中之一的MBA应届生。这家被内部人简称为"公司"的企业，出于某种难以解释的原因，开出了比第二高薪企业（花旗银行）两倍多的薪酬。整个MBA班级都递交了申请——包括我在内。没人在乎麦肯锡具体做什么，金钱的诱惑实在令人难以抗拒。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">5.</span>
+            <div class="text-block original-text">I happened to be at the right place at the right time (isn’t that life?) and was one of five MBA graduates hired. I was there for about six years. McKinsey is a great institution. Although life was quite tough—too many PowerPoint presentations and too many Air Miles—I enjoyed the competitive camaraderie, the satisfaction of working with CXOs, and its global oneness (I worked in four different international offices in six years). Having spent many years in the outside world after my departure from McKinsey, my admiration for the Firm has grown over the years as it has continued to dominate its industry.
+McKinsey was founded in 1926 by James O. McKinsey, but the man who deserves the lion’s share of credit for building the Firm to its current glory is Marvin Bower, who joined in 1933. He transformed the small engineering and accounting firm into the management consulting powerhouse it is today.</div>
+            <div class="text-block simplified-text">我恰好在正确的时间出现在正确的地点（人生不正是如此吗？），成为被录用的五名MBA毕业生之一。我在麦肯锡工作了约六年。这家机构堪称伟大——尽管工作强度令人窒息（制作了太多PPT报表，积累了太多航空里程），但我享受着那种竞争中的同袍之谊，为能与企业高管们共事而感到满足，更被它的全球一体化特质所吸引（六年内我曾在四个国家的分支机构工作）。离开麦肯锡多年后，当我目睹它始终屹立于行业之巅，对这家公司的敬意与日俱增。
+
+麦肯锡由詹姆斯·麦肯锡创立于1926年，但将公司推向今日辉煌的真正功臣当属1933年加入的马文·鲍尔。正是他将这家小型工程会计事务所，转型为如今叱咤风云的管理咨询巨头。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">6.</span>
+            <div class="text-block original-text">In the ninety-plus years since McKinsey’s founding, the Firm has suffered cataclysmic internal and external shocks. Let’s start with some of the external shocks first: the Great Depression, the Second World War, rapid decolonization, the Cold War, the oil shock, multiple recessions in the United States and other major economies of the world, the population explosion, massive poverty reduction, the creation and destruction of conglomerates, the hollowing-out of manufacturing in the United States, the rise of China, the exponential increase in computing power and communications technology including the internet, the global financial crisis, and the COVID-19 pandemic to name a few.</div>
+            <div class="text-block simplified-text">麦肯锡创立九十余年来，这家公司曾经历过剧烈的内外冲击。让我们先看看外部冲击：大萧条、第二次世界大战、快速的非殖民化进程、冷战、石油危机、美国及全球其他主要经济体的多次衰退、人口爆炸式增长、贫困人口大幅减少、企业集团的兴起与衰落、美国制造业空心化、中国的崛起、包括互联网在内的计算能力与通信技术的指数级提升、全球金融危机，以及新冠疫情等等。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">7.</span>
+            <div class="text-block original-text">As the external world was undergoing rapid change, McKinsey itself worked through a few internal shocks: the transfer of power from Marvin Bower to the next generation in the late 1950s, repeated internal pressures for the firm to go public (including when I was there), the imprisonment of Anil Kumar and Rajat Gupta, its massive expansion into new geographies and industry segments over the years, its dubious fees arrangement with the South African utility Eskom, and the $600 million settlement for its work with the opioid manufacturer Purdue Pharma.
+Not many of McKinsey’s competitors survived the rapid pace of change in the rough-and-tumble world of consulting—remember Monitor or Booz? On the other hand, McKinsey has not only survived but also continued to prosper doing exactly what it has always done: act as a trusted adviser to the CXOs. The Firm, at its core, has remained stubbornly immune to external and internal shocks.</div>
+            <div class="text-block simplified-text">当外部世界经历剧变时，麦肯锡自身也经历了几次内部震荡：1950年代末马文·鲍尔向下一代领导层的权力交接、公司多次面临上市的内部压力（包括我在职期间）、阿尼尔·库马尔与拉贾特·古普塔的锒铛入狱、多年来向新地域和行业领域的大规模扩张、与南非电力公司Eskom存疑的收费协议，以及因与阿片类药物生产商普渡制药合作而支付的6亿美元和解金。
+
+在咨询行业弱肉蚕食的快速变革中，麦肯锡的多数竞争对手都已销声匿迹——还记得摩立特或博斯吗？而麦肯锡不仅存活下来，更通过始终如一的经营之道持续繁荣：担任企业高管们值得信赖的顾问。这家公司的内核始终顽固地抵御着来自内外的冲击。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">8.</span>
+            <div class="text-block original-text">But here is the funny—even weird—reality. The Firm, while remaining robust to change, has also changed dramatically over the past decades. It started in the United States but is now also in Cairo, Casablanca, and Chengdu; it primarily offered strategic consulting until the 1990s but has expanded into operational and technology consulting; it used to serve mostly manufacturers in its early days, but you will now find it crawling all over Google, Facebook, or a hot new start-up in the Valley; in my time, it rarely hired laterally, but according to friends who are now senior partners, the company now hires hundreds of experienced industry specialists.
+Living Organisms Are Highly Robust</div>
+            <div class="text-block simplified-text">但现实却有趣得近乎荒诞。这家公司虽以抗拒变革著称，过去几十年间却经历了翻天覆地的变化：从最初扎根美国，到如今开罗、卡萨布兰卡、成都遍地开花；从1990年代前专注战略咨询，到如今业务涵盖运营与技术咨询；从早期主要服务制造商，到如今谷歌、脸书乃至硅谷热门初创企业里随处可见其身影；在我任职年代几乎不从外部挖人，而据现任资深合伙人的朋友透露，如今公司每年会引进数百名经验丰富的行业专家。
+
+（注：根据用户提供的补充信息"Living Organisms Are Highly Robust"，在译文中首段以"抗拒变革著称"呼应了生物体高度稳健性的隐喻，同时通过分号排比结构强化了企业"稳健却剧变"的矛盾张力，使译文在保持简洁的同时更具文学性。）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">9.</span>
+            <div class="text-block original-text">MBA degrees, management seminars, best-selling business books, and corporate titans all seem focused on ensuring that companies adapt to change and evolve into a better version of themselves. If one could bottle up corporate obsession, the label on this bottle would declare, “How do we change faster, better, and easier?”
+I beg to differ. The question that should be on the minds of business leaders and investors is almost the exact opposite: How do we change without changing?
+Let’s turn to evolutionary biology to understand why.</div>
+            <div class="text-block simplified-text">MBA学位、管理研讨会、畅销商业书籍以及企业巨头们似乎都执着于一件事：确保公司适应变革，蜕变成更好的自己。若要将这种企业界的执念装瓶封存，标签上必然写着："如何更快、更好、更轻松地变革？"
+
+我对此不敢苟同。商业领袖与投资者真正应该思考的问题几乎截然相反：如何在不变中求变？
+
+让我们从进化生物学中寻找答案。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">10.</span>
+            <div class="text-block original-text">Biologists have always been aware of a strange conundrum of the living world. Organisms—animals, plants, algae, fungi, and even bacteria—are incredibly complex. But they are not delicate. On the contrary, they have survived and thrived for hundreds of millions of years—and in the case of bacteria, billions of years—despite continuous assault from the turbulent and dynamic external environment. Even their internal environments seem to be constantly revolting against them in the form of unceasing mutations.</div>
+            <div class="text-block simplified-text">生物学家始终困惑于生命世界的一个奇特谜题：有机体——无论是动物、植物、藻类、真菌，甚至细菌——都展现出惊人的复杂性。但它们绝非脆弱之物。恰恰相反，尽管持续遭受动荡多变的外部环境侵袭，这些生命体仍能存活并繁衍生息数亿年（细菌更是延续了数十亿年）。就连它们的内部环境也仿佛在不断"造反"，以永不停息的基因突变形式持续发起挑战。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">11.</span>
+            <div class="text-block original-text">Despite these external and internal perturbations, not only have living things survived, but they have also successfully diversified into millions of species. They occupy almost every available niche on our planet, from icy glaciers to boiling deep-sea thermal vents. One of the greatest wonders of this world is this: Living things are highly resistant to internal and external changes while simultaneously possessing the ability to evolve.2 Let me call this ability to function well despite internal and external disturbances “robustness.”</div>
+            <div class="text-block simplified-text">尽管存在这些外部与内部的干扰，生物不仅存活了下来，还成功分化成数百万个物种。它们几乎占据了地球上所有可栖居的角落——从冰封的冰川到沸腾的深海热泉。这个世界最伟大的奇迹之一在于：生物在高度抵抗内外变化的同时，又具备进化的能力。2 我将这种在内外扰动下仍能良好运作的能力称为"鲁棒性"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">12.</span>
+            <div class="text-block original-text">If the first proto-single-celled organism were too robust, it would have remained unchanged over 3.5 billion years, and we would not have had mushrooms or meerkats or Manhattan. On the other hand, if it were not robust enough, it would have gone extinct quite quickly in the volcanic and violent days of the early earth. You and I and all the living things we see around us are here because organic life has been able to strike a delicate balance between maintaining the status quo and evolving when the need arises. How does this happen, and what can we learn from it as investors?
+This dual trick—of changing while remaining unchanged—results from two separate but intimately linked phenomena. First, living systems are robust at multiple levels. Second, this robustness helps neutral mutations become the source of future innovations.</div>
+            <div class="text-block simplified-text">若最初的原生单细胞生物过于强韧，它便会在35亿年间停滞不变，蘑菇、猫鼬与曼哈顿也就无从诞生。反之，若其韧性不足，它便会在早期地球的火山肆虐中迅速灭绝。你我与周遭万千生命得以存在，皆因有机生命在维持现状与必要进化间达成了精妙平衡。这种现象如何形成？作为投资者又能从中获得何种启示？
+
+这种"既变又不变"的双重特性，源于两个相互独立却紧密关联的现象：其一，生命系统具有多层次的强韧性；其二，这种韧性使中性变异成为未来创新的源泉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">13.</span>
+            <div class="text-block original-text">What multiple levels? And what is a neutral mutation? Does this sound like gobbledygook? Let’s start at the start. Our mother, our creator. The DNA (deoxyribonucleic acid) molecule.</div>
+            <div class="text-block simplified-text">何为多层次？中性突变又是什么？听起来是否像天书？让我们从头说起。我们的母亲，我们的造物主——DNA（脱氧核糖核酸）分子。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">14.</span>
+            <div class="text-block original-text">The DNA molecule in any organism—be it a plant or a human being—serves two key functions. It carries information to build the body parts of an organism (for example, skin, kidney, petals, leaves) and is transmitted to offspring. DNA-based genetic code determines who we are and what our children will be. The DNA molecule is shaped in the form of a double helix and consists of four types of units called nucleotides: A (adenosine), C (cytosine), G (guanine), and T (thymine). As shown at the top of figure 3.1, a gene comprises a chain of nucleotides that can number from a few hundred to a couple of million! I have shown nine nucleotides here for illustration. These DNA nucleotides always exist in pairs called base pairs. The T nucleotide always pairs with A, and the C nucleotide always pairs with G. Figure 3.1 shows just one-half of a base pair with the sequence ACGGATCGA.
+3.1 DNA makes mRNA makes protein.</div>
+            <div class="text-block simplified-text">任何生物体——无论是植物还是人类——的DNA分子都具有两大关键功能：携带构建生物体各部位（如皮肤、肾脏、花瓣、叶片）的信息，并将这些信息传递给后代。基于DNA的遗传密码决定了我们的本质特征以及后代的遗传性状。DNA分子呈双螺旋结构，由四种称为核苷酸的基本单位构成：A（腺苷）、C（胞嘧啶）、G（鸟嘌呤）和T（胸腺嘧啶）。如图3.1顶部所示，一个基因由数百至数百万个核苷酸链组成！此处为示意仅展示九个核苷酸。这些DNA核苷酸总是以碱基对的形式存在——T永远与A配对，C永远与G配对。图3.1仅显示碱基对单链的序列ACGGATCGA。
+3.1 DNA转录为mRNA再翻译成蛋白质。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">15.</span>
+            <div class="text-block original-text">The DNA of all organisms comprises the same four nucleotides (A, C, G, and T). Just think about it for a moment: Orchids and orangutans share these same four nucleotides in their DNA code; they are just arranged differently in each. Human beings have three billion base pairs of nucleotides. Not in our whole body. In almost every cell of our body. I find this quite astounding. Remember that the next time you are packing a tight suitcase! And just because we rule the world does not mean we have the largest genome. The size of the human genome is quite unremarkable. The lowly Amoeba dubia, a single-celled organism, has 670 billion base pairs in its DNA—that makes for a genome about 220 times larger than yours and mine.3</div>
+            <div class="text-block simplified-text">所有生物的DNA都由相同的四种核苷酸（A、C、G和T）构成。试想片刻：兰花与红毛猩猩的DNA编码中存在着完全相同的这四种核苷酸，只是排列方式各不相同。人类拥有三十亿对核苷酸碱基——并非存在于全身，而是几乎存在于身体的每个细胞中。这实在令人惊叹。下次你往塞得鼓鼓的行李箱里装东西时，不妨想想这一点！尽管人类统治着世界，却并不意味着我们拥有最大的基因组。人类基因组的规模其实相当普通。低等的杜比亚变形虫——一种单细胞生物——其DNA中竟有六千七百亿对碱基，基因组规模约是你我的220倍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">16.</span>
+            <div class="text-block original-text">For this discussion, let’s focus just on genes that manufacture proteins. We are all essentially a bag of proteins. Proteins build bodies and regulate, defend, and monitor their functioning. Our body parts differ because they have different proteins. For instance, keratin makes our skin, hemoglobin carries oxygen in our blood, and proteins called immunoglobulins defend us from parasites.</div>
+            <div class="text-block simplified-text">在本次讨论中，我们仅聚焦于制造蛋白质的基因。从本质上说，人类就是由蛋白质构成的集合体。蛋白质构建身体结构，并调控、防御及监督机体的运作。人体各部位之所以不同，正是由于它们含有不同的蛋白质。例如：角蛋白构成我们的皮肤，血红蛋白负责血液中的氧气运输，而被称为免疫球蛋白的蛋白质则能抵御寄生虫侵袭。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">17.</span>
+            <div class="text-block original-text">DNA makes protein in a two-step process: the first being transcription and the second translation.4 First, a single strand of DNA with a long chain of A, C, T, and G nucleotides gets transcribed onto a complementary messenger RNA (ribonucleic acid) sequence called mRNA (yes, this molecule is the basis of the COVID-19 vaccines made by Pfizer-BioNTech and Moderna). Thus, the DNA sequence ACGGATCGA shown in figure 3.1 will get transcribed to the mRNA sequence UGCCUAGCU. What is this new letter, U? In the transcription process, the DNA nucleotide A (adenosine) gets transcribed onto the mRNA nucleotide U (uracil), and, as described earlier, C pairs with G and T with A.</div>
+            <div class="text-block simplified-text">DNA制造蛋白质的过程分为两个步骤：第一步是转录，第二步是翻译。首先，一条由A、C、T、G核苷酸长链构成的DNA单链被转录成互补的信使RNA（核糖核酸）序列，即mRNA（没错，这种分子正是辉瑞-拜恩泰科与莫德纳公司生产的新冠疫苗的基础）。如图3.1所示，DNA序列ACGGATCGA将被转录为mRNA序列UGCCUAGCU。这个新出现的字母U是什么？在转录过程中，DNA核苷酸A（腺苷）会转录为mRNA核苷酸U（尿嘧啶），而如前所述，C与G配对，T与A配对。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">18.</span>
+            <div class="text-block original-text">A DNA sequence has produced a corresponding mRNA sequence. What now? In the second step, a sequence of mRNA molecules is translated into a sequence of amino acids that synthesize a protein. mRNA is a single-stranded molecule, and it comprises codons made of three nucleotides that code for specific amino acids. In the mRNA sequence UGCCUAGCU shown in figure 3.1, the first codon, UGC, makes the amino acid tyrosine; the second codon, CUA, codes for leucine, and the third codon, GCU, codes for the amino acid alanine. A sequence of amino acids folds into a protein. Voilà! DNA made mRNA, which then made a protein.</div>
+            <div class="text-block simplified-text">一段DNA序列已生成对应的mRNA序列，接下来会发生什么？在第二步中，mRNA分子序列被翻译成氨基酸序列，进而合成蛋白质。mRNA是单链分子，由三个核苷酸组成的密码子构成，每个密码子对应特定氨基酸。在图3.1所示的mRNA序列UGCCUAGCU中，第一个密码子UGC编码酪氨酸，第二个密码子CUA编码亮氨酸，第三个密码子GCU编码丙氨酸。氨基酸序列折叠形成蛋白质——看！DNA先制造mRNA，再由mRNA制造出蛋白质。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">19.</span>
+            <div class="text-block original-text">If you are a biologist, I hope you haven’t had a heart attack—I know that these few lines don’t fully capture the complexities and nuances of the working of the universal genetic code. We haven’t covered rRNA, tRNA, noncoding DNA, or enzymes. But hey, this is not a biology textbook, and I am simply trying to lay the basic groundwork to make sure we all have the same basic understanding of genetic code before moving ahead.
+To comprehend the robustness of living organisms at multiple levels, let’s start at the bottom: the universal genetic code.
+The Genetic Code Is Robust</div>
+            <div class="text-block simplified-text">如果你是生物学家，希望这段话没让你心脏病发作——我知道这几行文字远未涵盖通用遗传密码运作的全部复杂性与精妙之处。我们尚未提及核糖体RNA、转运RNA、非编码DNA或酶。但请注意，这并非生物学教材，我只是在奠定基础，确保我们在继续之前对遗传密码有统一的基本认知。  
+
+要理解生物体在多层次上的稳健性，让我们从最底层开始：通用遗传密码。  
+遗传密码具有稳健性。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">20.</span>
+            <div class="text-block original-text">As mentioned, a codon comprising three bases creates an amino acid. Thus, the codon AGC creates the amino acid serine, and GGC makes glycine. Since any of the four nucleotides (A, C, U, or G) can occupy one of the three bases, there are sixty-four possible amino acids (4 × 4 × 4). However, only twenty exist in nature. How so? This is because two or more codons can code for the same amino acid. For instance, GGU, GGC, GGA, and GGG are all glycine. Thus, any mutation on the third position of the codon with the first two positions GG will always form glycine. These are called synonymous mutations. The formation of glycine is thus highly robust to mutations on the third base. Overall, the universal genetic code has funneled down sixty-four possibilities to just twenty through this type of synonymous mutation.5</div>
+            <div class="text-block simplified-text">如前所述，由三个碱基组成的密码子会形成一个氨基酸。因此，密码子AGC对应丝氨酸，GGC对应甘氨酸。由于四个核苷酸（A、C、U或G）中的任意一个都可能占据三个碱基中的一个位置，因此理论上存在六十四种可能的氨基酸组合（4×4×4）。但自然界中实际只存在二十种氨基酸。这是为什么呢？因为两个或多个密码子可以编码同一种氨基酸。例如，GGU、GGC、GGA和GGG都对应甘氨酸。因此，只要密码子的前两位是GG，第三位发生任何突变都仍会形成甘氨酸。这类突变被称为同义突变。由此可见，甘氨酸的形成对第三位碱基的突变具有高度容错性。总体而言，通用遗传密码通过这种同义突变机制，将六十四种可能性精简为二十种实际存在的氨基酸。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">21.</span>
+            <div class="text-block original-text">Synonymous mutations are just the first level of robustness. Scientists have found that translation errors—errors at the point of codon formation—are most likely at the third position and least likely at the first position. Amazingly, the degree of robustness is also highest at the third position of the codon,6 as in the earlier example of glycine. Thus, even though the third position is most error prone in translation, it will have no impact on the type of amino acid formed! In other words, evolution has ensured that the genetic code is extremely robust to mutations and translation errors. Isn’t that cool?
+Proteins Are Robust
+Let’s now go one level beyond the genetic code to see if proteins are robust to changes in the sequence of amino acids.</div>
+            <div class="text-block simplified-text">同义突变只是稳健性的第一层体现。科学家发现翻译错误——即密码子形成过程中的错误——最常发生在第三位碱基，而第一位碱基出错的概率最低。令人惊叹的是，密码子第三位碱基的稳健性程度也最高（正如前文甘氨酸的例子所示）。因此，尽管第三位碱基在翻译过程中最容易出错，但这完全不会影响所形成氨基酸的类型！换言之，进化机制确保了遗传密码对突变和翻译错误具有极强的容错能力。这难道不酷吗？
+
+蛋白质的稳健性
+现在让我们超越遗传密码层面，探究蛋白质是否对氨基酸序列的变化具有稳健性。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">22.</span>
+            <div class="text-block original-text">As discussed, a protein is a large molecule made up of a certain amino acid sequence. They are in all living organisms and are directly involved in all the chemical processes essential for creating and sustaining life. Thus, given the stability of life forms, one would expect proteins to show a high degree of robustness, and that is exactly what we see.
+There are three types of protein robustness. First, scientists have found that the function of proteins is unaffected by the vast majority of amino acid changes. For example, the bacteria E. coli carries a protein called β-lactamase, which confers antibiotic resistance. This protein has 263 amino acids, 84 percent of which can experience mutation (i.e., they can be changed into another amino acid) without changing the enzyme’s basic function. Ponder that. It would be like making 84 mistakes on a math exam comprising 100 questions and still getting an A!</div>
+            <div class="text-block simplified-text">如前所述，蛋白质是由特定氨基酸序列构成的大分子。它们存在于所有生物体中，直接参与创造和维持生命所需的一切化学过程。鉴于生命形态的稳定性，我们可以预期蛋白质具有高度稳健性——事实正是如此。
+
+蛋白质稳健性表现为三种形式。首先，科学家发现绝大多数氨基酸变化不会影响蛋白质功能。以大肠杆菌携带的β-内酰胺酶为例，这种赋予抗生素抗性的蛋白质由263个氨基酸组成，其中84%的氨基酸即使发生突变（即被替换为其他氨基酸），也不会改变该酶的基本功能。试想：这就像在100道题的数学考试中答错84道题，却仍能获得A等成绩！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">23.</span>
+            <div class="text-block original-text">The second type of robustness results from proteins with similar functions and structures being able to be made from different amino acid sequences. For example, myoglobin and hemoglobin are oxygen-binding proteins in vertebrates, and they have many distant relatives in invertebrates (like crabs and spiders) and plants. The three-dimensional structure of whale myoglobin and clam hemoglobin can be almost perfectly superimposed! Despite this uncanny structural and functional similarity, the amino acid sequences of the two are very different. Only 18 percent of the amino acids of the whale myoglobin and clam hemoglobin overlap.</div>
+            <div class="text-block simplified-text">第二种稳健性源于具有相似功能和结构的蛋白质可由不同的氨基酸序列构成。例如，肌红蛋白和血红蛋白是脊椎动物体内的携氧蛋白，它们在无脊椎动物（如螃蟹和蜘蛛）及植物中拥有许多远亲。鲸鱼肌红蛋白与蛤蜊血红蛋白的三维结构几乎能完全重叠！尽管存在这种惊人的结构与功能相似性，但两者的氨基酸序列差异极大——鲸鱼肌红蛋白与蛤蜊血红蛋白仅有18%的氨基酸序列相同。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">24.</span>
+            <div class="text-block original-text">Third, scientists have found that the vast majority of amino acid sequences fold into very few structures. No, I really mean it—very few. Let’s see how few. A small protein may have 100 amino acids, and so the number of possible protein folds is 20100, which is more than the number of atoms in the universe.7 And how many proteins exist? About 10,000 (or 203). Thus, protein structure and function are extremely robust.
+The Body Is Robust
+Let’s now go one level up from proteins to the body by taking the example of sea urchins.
+Sea urchins evolved 250 million years ago and comprise about 1,000 species. For now, we will focus on just two found in shallow waters in Australia: Heliocidaris tuberculata and Heliocidaris erythrogramma. Let’s call them species T and E. Their body plans are conserved; in other words, they look the same but have dramatically different modes of development.</div>
+            <div class="text-block simplified-text">第三，科学家发现绝大多数氨基酸序列仅能折叠成极少数结构。注意，这里的"极少数"绝非夸张——让我们具体量化：一个小型蛋白质可能由100个氨基酸组成，其理论折叠方式可达20的100次方种，这甚至超过了宇宙中原子的总数。而实际存在的蛋白质有多少？约一万种（即20的3次方）。由此可见，蛋白质结构与功能具有惊人的稳健性。
+
+身体的稳健性机制
+让我们从蛋白质层面上升到生物体层面，以海胆为例展开说明。海胆早在2.5亿年前就已进化形成，现存约1000个物种。我们重点考察澳大利亚浅海分布的两种：结节海胆（Heliocidaris tuberculata）和红海胆（Heliocidaris erythrogramma），简称T种与E种。它们保持着相同的身体构造模式，但发育机制却存在显著差异。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">25.</span>
+            <div class="text-block original-text">T produces larvae (called pluteus) that bear no physical resemblance to the adult, and these free-swimming pluteus feed on plankton as they grow into adulthood. E, on the other hand, develops directly from an egg with no larval stage in between. But T and E are quite closely related and diverged only about five million years ago (almost the same time that chimpanzees and humans diverged; it would be as if chimps produced larvae that did not look like adult chimps!). The entire development programs—the shape and size of eggs, the location of cell formation for various body parts, the activation of genes that control development—of these two species differ so significantly that it is almost unbelievable that the two species have a common ancestor from only five million years ago. Despite these massive developmental changes, if you do a Google search for images of T and E, you will notice that they look almost the same.</div>
+            <div class="text-block simplified-text">T会产出具浮游幼体形态的幼虫（称为长腕幼虫），其外形与成体毫无相似之处。这些自由游动的长腕幼虫以浮游生物为食，逐渐发育为成体。而E则直接从卵中发育，不存在幼虫阶段。但T与E的亲缘关系非常接近，分化时间仅约五百万年前（几乎与黑猩猩和人类分化的时间相同；这情形就好比黑猩猩会产出与成体完全不同的幼虫！）。这两个物种的整套发育程序——包括卵的形状大小、各部位细胞的形成位置、控制发育的基因激活机制——差异如此显著，令人难以置信它们竟在五百万年前拥有共同祖先。尽管存在这些巨大的发育差异，若在谷歌搜索T与E的图片，你会发现它们的外形几乎一模一样。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">26.</span>
+            <div class="text-block original-text">How have the sea urchins maintained their body plans while changing many fundamental aspects of their development? And what have they achieved by maintaining highly robust body plans while evolving drastically different routes of development? We will get to these questions in a moment, but for now, let me summarize what we have learned.
+We have seen that the stability of living organisms and species is maintained through robustness at multiple levels: at the levels of genetic code, proteins, and even body plan. For the sake of brevity, I have chosen to omit details of robustness at many other levels: changes in the secondary structure of RNA, changes in the regulatory regions of a gene, and drastic changes in enzyme activity, just to name a few.</div>
+            <div class="text-block simplified-text">海胆如何在改变诸多发育基础要素的同时，仍能保持其体型结构？它们通过维持高度稳定的体型结构，却演化出截然不同的发育路径，究竟达成了怎样的进化成果？我们稍后将探讨这些问题，现在请容我总结已有发现。
+
+现有研究表明，生物体与物种的稳定性是通过多重层面的鲁棒性实现的：包括遗传密码、蛋白质乃至体型结构等层面。为求简洁，我略去了其他层面的鲁棒性细节——诸如RNA二级结构的改变、基因调控区域的变化、酶活性的剧烈改变等例证皆未赘述。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">27.</span>
+            <div class="text-block original-text">A mutation changes the DNA sequence of a gene? No problem. It produces the same amino acid. The amino acid sequence changes owing to mutation or recombination? No problem. It produces the same protein. There is a change in the arrangement of proteins? No problem. The same enzyme activity continues. And so on. Living things are built to be resilient and resistant to change.
+The Evolution of Evolvability
+This gets us to the paradox I mentioned at the start of the chapter. Given multiple levels of robustness, how in the world do species evolve? Should they not stay fixed? What propelled bacteria to become bonobos?
+The short and incredible answer is that robustness itself leads to evolvability!</div>
+            <div class="text-block simplified-text">基因突变改变了DNA序列？没关系。它仍会生成相同的氨基酸。突变或重组导致氨基酸序列变化？没关系。它仍会合成相同的蛋白质。蛋白质的排列方式发生改变？没关系。酶的活性依然保持不变。诸如此类。生命天生具备适应力，能够抵抗变化。
+
+可进化性的进化
+这让我们回到了本章开头提到的悖论。既然存在多重稳健机制，物种究竟如何进化？它们难道不该保持固定状态吗？是什么推动细菌进化成了倭黑猩猩？
+
+简短而惊人的答案是：稳健性本身正是可进化性的驱动力！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">28.</span>
+            <div class="text-block original-text">We need to make a brief foray into one aspect of the history of molecular biology to unravel the paradox. In 1968, the Japanese geneticist Motoo Kimura proposed the “neutral theory” of molecular evolution.8 Kimura contended that most changes at the level of DNA and amino acids do not impact the function of a molecule and hence the organism’s ability to survive and reproduce. He contended that a small number of mutations are favorable, and natural selection preserves them. Some mutations are rejected because they are harmful, but most mutations don’t really affect the organism. According to Kimura, most mutations are neutral, which causes robustness in the organism.
+So how does neutral mutation lead to evolution? While a neutral change does not alter the primary function, it can alter a secondary function, thereby becoming the source of a future innovation.</div>
+            <div class="text-block simplified-text">要解开这个悖论，我们需要简要回顾分子生物学的某段历史。1968年，日本遗传学家木村资生提出分子进化的"中性理论"。木村认为，大多数DNA和氨基酸层面的变化不会影响分子功能，因此也不会影响生物的生存与繁殖能力。他指出，少量突变是有利的，自然选择会保留这些突变；部分突变因有害而被淘汰，但绝大多数突变对生物体其实没有实质影响。根据木村的理论，中性突变占主导地位，这造就了生物体的稳健性。
+
+那么中性突变如何推动进化？虽然中性变化不会改变主要功能，但可能改变次要功能，从而成为未来创新的源泉。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">29.</span>
+            <div class="text-block original-text">Let’s say gene A has primary function F. Owing to a mutation, gene A becomes gene B, but since it’s a robust system, gene B continues to perform function F. But gene B affects a secondary function, FS. FS does not alter the fitness of the organism but can be used by the organism’s descendants for a completely new function, thereby leading to evolution. Thus, although the genetic code was robust (because gene A changing into gene B did not affect function F), the addition of function FS allowed the organism to evolve.
+In a robust biological system, evolvability comes free!</div>
+            <div class="text-block simplified-text">假设基因A的主要功能是F。由于发生突变，基因A变为基因B，但由于这是一个稳健的系统，基因B仍能执行功能F。不过，基因B会影响次要功能FS。FS不会改变生物体的适应性，但可以被该生物体的后代用于全新的功能，从而推动进化。因此，尽管遗传编码具有稳健性（因为基因A变为基因B并未影响功能F），但功能FS的增加使得生物体得以进化。
+
+在稳健的生物系统中，进化能力是自然获得的！</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">30.</span>
+            <div class="text-block original-text">Let’s now return to the sea urchin example. T and E have maintained their body plans’ robustness while changing their development cycle through neutral mutations over millions of years. For example, 16 of the 32 cells of the T embryo become the ectoderm (the outer layer of skin), whereas 26 of the 32 E embryo cells do so. The sea urchins’ body structures have stayed robust to multiple changes in embryonic development. As a result, they have exploited a completely new ecological niche and a novel way of life. For example, E is abundant in deep seas and polar latitudes where T cannot survive—this is because E develops directly and does not need to go through the larval stage critically dependent on plankton for survival.</div>
+            <div class="text-block simplified-text">让我们回到海胆的例子。T和E在数百万年间通过中性突变改变发育周期时，始终保持着身体构造的稳健性。例如，T型胚胎的32个细胞中有16个会发育成外胚层（皮肤表层），而E型胚胎的32个细胞中则有26个形成外胚层。尽管胚胎发育过程存在诸多差异，海胆的身体结构始终保持着稳定性。这使得它们成功开拓了全新的生态位与生存方式。例如E型海胆能大量存活于T型无法生存的深海及极地海域——这是因为E型采用直接发育模式，无需经历依赖浮游生物存活的幼体阶段。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">31.</span>
+            <div class="text-block original-text">Something similar has been happening at McKinsey over the past century. Today’s McKinsey bears no resemblance to Marvin Bower’s McKinsey in terms of geographical presence, organization processes, type of client work, and breadth of expertise. But at some fundamental level of culture, oneness, problem-solving, and working with CXOs, the firm has remained stubbornly Boweresque. It has changed without changing. This is what we seek as owners in our businesses: the ability to keep evolving while staying robust.
+Businesses Must Be Robust to Evolve
+Let’s recap our journey until now. We have eliminated serious risks (chapter 1) and have shortlisted businesses based on ROCE (chapter 2). Now we need to select companies for their robustness.
+Here are some learnings we have internalized at Nalanda.
+Robustness Takes Many Forms</div>
+            <div class="text-block simplified-text">过去一个世纪，麦肯锡也经历了类似的变化。如今的麦肯锡在地理布局、组织流程、客户项目类型和专业广度上，与马文·鲍尔时代的麦肯锡已毫无相似之处。但在文化内核、凝聚力、问题解决方式及高管协作等根本层面，这家公司依然顽固地保持着鲍尔基因。它实现了蜕变中的坚守。这正是我们作为企业所有者所追求的：在持续进化中保持强韧的生命力。
+
+企业必须强韧方能进化
+让我们回顾迄今的探索路径：我们已排除重大风险（第一章），并基于资本回报率筛选企业（第二章）。现在需要根据强韧度来甄选公司。以下是我们在Nalanda基金实践中领悟的心得：
+
+强韧之道 形态万千</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">32.</span>
+            <div class="text-block original-text">How does an investor measure robustness in a business? I wish I had a simple quantitative answer. I don’t. Like almost everything in investing, the solution is somewhat subjective, somewhat vague, and somewhat controversial. But it works for us. The best way to understand robustness is to contrast the two extremes listed in table 3.1.
+Table 3.1Examples of robustness in a business
+Most robust
+Least robust
+Has delivered high historical ROCE over a long period
+Has made operating losses for most or all of its history
+Has a fragmented customer base
+Is dependent on very few customers
+Has no debt and has excess cash
+Is highly leveraged
+Has built high competitive barriers
+Has been unable to keep competition away
+Has a fragmented supplier base
+Is dependent on a few suppliers
+Has a stable management team
+Management turnover is high
+Industry is slow changing
+Industry is evolving fast</div>
+            <div class="text-block simplified-text">投资者如何衡量企业的稳健性？我希望能给出一个简单的量化答案，可惜没有。和投资领域的大多数问题一样，答案多少带有主观性、模糊性和争议性——但这套方法对我们行之有效。理解稳健性最好的方式，就是对比表3.1中列出的两个极端案例。
+
+表3.1 企业稳健性对照表
+最具稳健性特征 | 最缺乏稳健性特征
+---|---
+长期保持高资本回报率 | 长期处于经营亏损状态
+客户群分散 | 依赖极少数客户
+零负债且现金充裕 | 负债率高企
+构筑了高竞争壁垒 | 难以抵御竞争压力
+供应商来源分散 | 依赖少数供应商
+管理层稳定 | 高管更替频繁
+行业发展缓慢 | 行业快速迭代</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">33.</span>
+            <div class="text-block original-text">This is not an exhaustive list, but I hope you will get the general drift of what I mean when I say a business is robust. A robust business lies on a continuum between the two “poles” described in the table, with a bias toward the left side.
+You will notice that, unlike in chapter 2, where we used the quantitative criterion of ROCE to select businesses, many factors contributing to robustness are qualitative. Also, almost no business falls entirely within the left or right column in my experience. Robustness is not a black-and-white measure. Thankfully. Or else, what would separate a good investor from a great one?
+Different investors attribute different weights to the factors listed in table 3.1. For instance, many investors do not consider customer concentration to be a problem for a business. We do. We took advantage of these contrasting opinions a few months after the inception of Nalanda.</div>
+            <div class="text-block simplified-text">这并非一份详尽无遗的清单，但希望诸位能大致理解我所言"企业具备韧性"的涵义。一家具有韧性的企业处于表格所述两个"极端"之间的连续区间，且更倾向于左侧特征。
+
+您会注意到，与第二章采用资本运用回报率（ROCE）这一量化标准筛选企业不同，构成企业韧性的诸多要素都属于定性范畴。根据我的经验，几乎没有企业会完全符合左侧或右侧的全部特征。韧性并非非黑即白的衡量标准——这实属幸事。否则，优秀投资者与卓越投资者的区别何在？
+
+不同投资者对表3.1所列要素的重视程度各异。例如，不少投资者认为客户集中度不构成企业问题，我们却持相反观点。在创办Nalanda基金数月后，我们正是利用了这类认知差异获利。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">34.</span>
+            <div class="text-block original-text">WNS is an Indian business process outsourcing (BPO) company with a U.S. listing. The leading BPO companies like WNS provide many mission-critical services to their clients of a quality and at a price that can typically not be matched by the company’s internal teams. For example, they help their clients close the books of accounts, manage payables and receivables, perform timely consumer analytics, process mortgage applications, and address customer issues. We had been tracking WNS since we started Nalanda in 2007. Despite its high ROCE, zero debt, strong competitive advantage, and stable management team, we did not like the business because of its dependence on just a few customers. In 2006, WNS’s top five customers accounted for 41 percent of revenue, and in 2007, this number had jumped to 55 percent.9 We worried that the company’s robustness was low and declining. But the markets did not seem to care, and WNS’s stock price reached $35 by the middle of 2007.</div>
+            <div class="text-block simplified-text">WNS是一家在美国上市的印度业务流程外包(BPO)企业。以WNS为代表的头部BPO公司能为客户提供诸多关键业务服务，其服务质量和价格通常远超企业自有团队。例如，它们帮助客户完成账目结算、管理应付应收款项、实施实时消费者分析、处理抵押贷款申请以及解决客诉问题。自2007年创办Nalanda基金以来，我们始终关注着WNS。尽管该公司资本回报率高、零负债、竞争优势显著且管理团队稳定，但由于其过度依赖少数客户，我们并不看好这项业务。2006年，WNS前五大客户贡献了41%的营收，到2007年该比例已跃升至55%。我们担忧该公司的抗风险能力正持续弱化。但市场似乎毫不在意，WNS股价在2007年年中一度触及35美元。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">35.</span>
+            <div class="text-block original-text">WNS lost a major client in the latter half of 2007, and another client threatened to terminate their agreement. This wasn’t great news in the short term, and the markets punished WNS severely. The stock crashed to $13 in early 2008. However, we concluded that the company would become more robust with a more fragmented customer base. We bought about 6 percent of the business from January to March 2008. Fast-forward thirteen years, and in 2020, WNS’s top five clients accounted for only 25 percent of revenue. What was supposedly lousy news in 2007 looked pretty good in 2020!
+We Assess Evolvability Indirectly by Measuring Robustness Directly</div>
+            <div class="text-block simplified-text">WNS在2007年下半年流失了一个大客户，另一家客户也威胁要终止合作。短期来看这绝非好消息，市场对WNS进行了严厉惩罚——2008年初其股价暴跌至13美元。但我们判断，随着客户结构分散化，公司将更具韧性。2008年1月至3月间，我们收购了该公司约6%的股份。十三年后的2020年，WNS前五大客户仅贡献25%营收。2007年看似糟糕的变故，到2020年却显现出积极意义！
+
+我们通过直接衡量稳健性来间接评估进化潜力</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">36.</span>
+            <div class="text-block original-text">As permanent owners, we Nalanda folks are hungry for companies that can successfully implement neutral strategies to evolve and adapt to a changing environment. We want evolvability. Correction. We need evolvability. Having invested, we need the business to survive the onslaught of AI or other technologies, to upstage its increasing online and offline competition, to withstand multiple recessions, to conquer the adverse effects of climate change, to survive management turnover, and much more. We need it to be able to adapt.
+However, just as evolutionary biologists struggle to measure evolvability,10 I haven’t yet figured out a reliable way in advance to directly assess a company’s propensity to adapt to a changing world. Many investors contend that management interviews and discussions are an excellent way to assess the future adaptability of a business. Maybe. I consider such interviews a waste of time—but more on that later (in chapter 7).</div>
+            <div class="text-block simplified-text">作为长期持有者，我们那烂陀人渴望找到能成功实施中性策略、不断进化以适应环境变化的企业。我们需要的是进化力。不，准确地说——我们必须拥有进化力。一旦投资，我们就需要企业能经受住人工智能等技术的冲击，在日益激烈的线上线下竞争中脱颖而出，扛过多次经济衰退，克服气候变化的不利影响，在管理层更迭中存活下来。归根结底，企业必须具备适应能力。
+
+但正如进化生物学家难以量化进化力，我至今也未能找到一种可靠方法，能预先直接评估企业适应世界变化的倾向。许多投资者认为管理层访谈是评估企业未来适应力的绝佳途径。或许吧。在我看来这类访谈纯属浪费时间——具体缘由将在第七章详述。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">37.</span>
+            <div class="text-block original-text">But there is an indirect—and I would argue a reasonably reliable—path of satisfying my need. It is by measuring the robustness of an organization. Robustness lays the groundwork for evolution in living things. It does the same in businesses. Robustness is a necessary—though not sufficient—requirement for businesses to evolve successfully.
+In a robust business, just as in a living organism, evolvability comes free.</div>
+            <div class="text-block simplified-text">但存在一条间接路径——我认为也是相当可靠的——可以满足我的需求，那就是衡量组织的稳健性。稳健性为生物的进化奠定基础，对企业亦是如此。稳健性是企业成功进化的必要条件（尽管并非充分条件）。正如在生物有机体中那样，一个稳健的企业天然具备进化能力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">38.</span>
+            <div class="text-block original-text">Take the example of two businesses in an industry. Company A is the leader, and on sales of $100, it earns a margin of 20 percent. Let’s assume its capital employed (in fixed assets, receivables, and inventory) is $50. Company A’s ROCE is quite healthy at 40 percent (100 × 20% ÷ 50). If a company’s growth is lower than its ROCE, it will also keep generating free cash flow, and so Company A has no debt. Company B is a weak player in the industry with half the sales of Company A, $50, and a margin of 15 percent. Since it does not have enough bargaining power with suppliers (who demand early payment) or customers (who pay late), its capital employed is the same as that of Company A ($50). Company B’s ROCE is 15 percent (50 × 15% ÷ 50). Company B has a debt of $10 (which is not much, given its operating profit of $7.50), and its cost of debt is 5 percent.
+Thus, both are earning decent ROCE and have a reasonably strong balance sheet—Company A is better, but Company B isn’t too bad.</div>
+            <div class="text-block simplified-text">以某行业的两家企业为例。A公司是行业龙头，每100美元销售额可实现20%的利润率。假设其资本占用（含固定资产、应收账款和存货）为50美元，则A公司的资本回报率高达40%（100×20%÷50）。当企业增长率低于资本回报率时，将持续产生自由现金流，因此A公司没有负债。B公司是行业弱势企业，销售额仅为A公司的一半（50美元），利润率15%。由于对供应商（要求提前付款）和客户（延迟付款）议价能力不足，其资本占用与A公司相同（50美元），资本回报率为15%（50×15%÷50）。B公司负债10美元（考虑到7.5美元的营业利润，负债规模不大），债务成本为5%。
+
+两家企业都保持着可观的资本回报率和较为稳健的资产负债表——A公司更胜一筹，但B公司也不算太差。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">39.</span>
+            <div class="text-block original-text">All seems fine. Until it’s not.
+COVID-19 strikes, and the country goes into a lockdown. Sales at both companies fall by half, and so do the operating margins. Company A, being a leader, can collect cash and liquidate inventory so that its capital employed falls to $25. Company B, on the other hand, while suffering the same drop in sales and margins as Company A, is rebuffed by its customers while asking for money and is also unable to sell its finished goods in a demand-poor environment. Its capital employed stays flat at $50. Company A’s ROCE is now 20 percent (50 × 10% ÷ 25), and Company B’s is 4 percent (25 × 7.5% ÷ 50).</div>
+            <div class="text-block simplified-text">一切看似风平浪静，直到变故突生。  
+新冠疫情暴发，全国进入封锁状态。两家公司的销售额与营业利润率均减半。作为行业领军者的A公司能迅速回笼资金并清仓变现，使资本投入降至25美元。而B公司虽面临与A公司相同的业绩下滑，却在催收货款时遭客户拒付，同时因需求萎靡无法售出成品，资本投入仍维持在50美元不变。此时A公司的资本回报率跃升至20%（50×10%÷25），B公司则跌至4%（25×7.5%÷50）。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">40.</span>
+            <div class="text-block original-text">Thus, even during the pandemic, Company A earns a respectable ROCE, allowing it to invest in growth. Fortified by its ROCE of 20 percent, Company A can also borrow in the market if it needs to, since the cost of debt is just 5 percent and the company is debt free. From being comfortably mediocre during the pre-pandemic era, Company B risks oblivion because it no longer has the money to invest in production, marketing, and distribution. At 4 percent ROCE, it would struggle to pay its debt at 5 percent. Given its precarious balance sheet and declining profits, lenders would also hesitate to lend it more money.
+At least in the near term, a likely outcome is that Company A gains market share and Company B further loses its position. Since Company A had a higher degree of robustness owing to its high ROCE, it could adapt and evolve in an adverse external environment.</div>
+            <div class="text-block simplified-text">因此，即便在疫情期间，A公司仍保持着可观的资本回报率（ROCE），使其有能力持续投资增长。凭借20%的资本回报率支撑，A公司必要时还可进行市场融资——毕竟其债务成本仅为5%，且公司本身零负债。反观B公司，疫情前尚能维持平庸但安稳的运营，如今却因无力投入生产、营销与分销而面临淘汰危机。4%的资本回报率使其难以偿付5%的债务利息。鉴于其摇摇欲坠的资产负债表与持续下滑的利润，债权人也不愿追加贷款。
+
+至少短期内，最可能的结果是A公司扩大市场份额，而B公司进一步丧失市场地位。由于高资本回报率赋予的强大韧性，A公司得以在不利的外部环境中灵活调整并实现进化。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">41.</span>
+            <div class="text-block original-text">What I have outlined is not a theoretical construct. We have seen this story play out in many of our businesses. When the pandemic began, the general opinion was that all Indian businesses would suffer. Sharp stock market declines in March and April 2020 mirrored this opinion. However, as the months passed, the differences in the impact on the business of companies with differential degrees of robustness became quite stark. During and after the COVID crisis, we have seen these divergent outcomes play out across many of our companies and industries, be it paint, innerwear, air conditioners, tires, pipes, or batteries.</div>
+            <div class="text-block simplified-text">我所概述的并非理论构想。我们已在旗下多家企业见证了这样的发展轨迹。疫情初起时，普遍观点认为所有印度企业都将遭受重创。2020年3月至4月股市的暴跌正印证了这一预期。然而随着时间推移，企业因经营稳健程度不同而产生的业绩分化日趋显著。无论是涂料、内衣、空调、轮胎、管材还是电池行业，在这场新冠危机期间及后续阶段，我们都目睹了旗下各企业与行业间悬殊的发展结局。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">42.</span>
+            <div class="text-block original-text">One of the best-run companies in our portfolio is Page Industries, which we were very fortunate to buy a few days after the collapse of Lehman in late 2008. Page is the exclusive licensee for the Jockey brand in India and is the largest seller of innerwear in the country.11 Page aggressively launched new products during the pandemic and opened new stores while many of its competitors either vanished or were significantly weakened.
+There are four listed innerwear companies in India, the other three being Maxwell, Rupa, and Lovable. Page’s market share among its listed peers in December 2018 was already relatively high at 66 percent. However, by December 2020, Page’s market share had grown to 70 percent. We don’t have data for the dozens of unlisted companies, but from anecdotal evidence and feedback from industry insiders, it appears that Page’s market share gain over this group during the pandemic has been even greater.</div>
+            <div class="text-block simplified-text">我们投资组合中运营最佳的企业之一是佩吉工业公司。2008年末雷曼兄弟破产后几天，我们非常幸运地收购了这家公司。佩吉是印度Jockey品牌的独家授权商，也是该国最大的内衣销售商。疫情期间，当多数竞争对手要么消失要么大幅衰退时，佩吉不仅积极推出新产品，还持续开设新门店。
+
+印度共有四家上市内衣企业，另外三家分别是Maxwell、Rupa和Lovable。早在2018年12月，佩吉在上市同行中的市场份额就已高达66%。而到2020年12月，其份额进一步攀升至70%。虽然我们无法获取数十家非上市企业的数据，但根据行业传闻和内部人士反馈，疫情期间佩吉从这些非上市企业夺取的市场份额可能更为可观。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">43.</span>
+            <div class="text-block original-text">I believe Page’s robustness was a significant—if not the primary or only—reason for its continued success during the crisis. Let’s see how Page scores on the various factors contributing to robustness listed in table 3.1. For the year ended March 2020, Page’s ROCE was 63 percent, and it was debt free. It has highly fragmented customer and supplier bases. In my opinion, it has built a deep and wide moat by investing in brand and distribution over twenty-five years. It has had the same owner since 1995. Its industry is changing very slowly, with the top players remaining the same for more than a decade.
+The greater the robustness, the greater the evolvability.
+We Demand Multiple Levels of Robustness in Our Businesses</div>
+            <div class="text-block simplified-text">我认为佩吉公司的强韧性是其在此次危机中持续取得成功的重要原因——即便不是首要或唯一原因。让我们对照表3.1中的强韧性要素来评估佩吉的表现：截至2020年3月的财年，其资本运用回报率达63%，且零负债；客户与供应商群体高度分散；在我看来，该公司通过25年来对品牌与分销渠道的投资，已构筑起深厚宽广的护城河；自1995年起其所有者始终未变；所处行业变化极其缓慢，头部企业十余年未有更迭。
+
+强韧性越强，进化潜力越大。
+
+我们要求旗下企业必须具备多层次的强韧性。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">44.</span>
+            <div class="text-block original-text">There is an unbroken chain of life between us and our last universal common ancestor (scientists call it LUCA) 3.5 billion years ago.12 Every part of this unbroken and evolving lineage has had robustness at multiple levels: genes, proteins, and body plan, to name just three. In a not dissimilar manner, I have discovered over more than two decades of investing that more levels of robustness lead to more evolvability.
+Let’s revisit table 3.1, which lists seven factors of robustness. As I have mentioned, there are more factors one can conjure (for example, propensity for M&A, governance), but let’s stick with these seven for now. My aim is to point you in a certain direction, not to spoon-feed.
+We want our companies to tilt toward the left side of table 3.1 across all factors. Thus, we want the business to be robust at the level of ROCE and concentration of customer base and degree of leverage and strength of competitive advantage, and so on.</div>
+            <div class="text-block simplified-text">我们与35亿年前的最后一个普遍共同祖先（科学家称之为LUCA）之间，存在着一条从未断裂的生命链条。这条持续演化的血脉在多个层面都具有稳健性：基因、蛋白质、身体结构仅是其中三例。经过二十余年的投资实践，我发现这种多层次的稳健性会带来更强的进化能力——这与生命演化的逻辑何其相似。
+
+请回顾表3.1所列的七大稳健性要素。虽然还能列举更多因素（比如并购倾向、治理结构），但现阶段我们聚焦这七项即可。我的目的是为你指明方向，而非事无巨细地灌输。
+
+我们要确保投资的企业在表3.1所有要素上都倾向于左侧特征：无论是资本回报率、客户集中度、杠杆水平，还是竞争优势强度，每个维度都需具备稳健特质。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">45.</span>
+            <div class="text-block original-text">Is this asking for a lot? You bet. We are permanent owners—the key word here being “permanent.” If a business can’t last permanently, we don’t want to own it. Without several levels of robustness, how will we be sure that the business will survive over the long term? I wish I could categorically answer the question, Is this a robust business? As a practicing investor, I know that assessing robustness is a matter of judgment and that there is no shortcut to this process. I have arrived at a certain heuristic after many years of investing. There clearly are black-and-white extremes to robustness (e.g., a business with just two customers) but in many, maybe even most, businesses, it is the gray zone that stares at us.</div>
+            <div class="text-block simplified-text">这样的要求是否过高？确实如此。我们是永久所有者——关键在于"永久"二字。若企业无法永续经营，我们便无意持有。若缺乏多重稳健特质，如何确保企业能长久生存？我多希望能斩钉截铁地回答"这是否属于稳健企业"。作为实战派投资者，我深知稳健性评估是见仁见智的判断过程，绝无捷径可走。经年累月的投资实践让我总结出若干经验法则：固然存在泾渭分明的极端案例（比如仅有两家客户的企业），但面对多数（甚至绝大多数）企业时，我们凝视的正是那片灰色地带。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">46.</span>
+            <div class="text-block original-text">For example, is a company with a debt/equity ratio of 2.0 robust? Probably not. What about a ratio of 0.2 or 0.5? Maybe. For me, the answer depends on the other factors of robustness. Almost all the companies in our portfolio are debt free. Still, in 2010 we invested in India’s leading plastic pipes business (used in homes and agriculture), Supreme Industries, whose debt/EBITDA ratio was 0.6. Not high, but not zero either. Despite the company having debt—which was small to begin with—we concluded that the company was robust because it was the clear industry leader, had been gaining market share over its competitors, had a return on capital of more than 30 percent, had successfully designed and launched many products over the past decade, had thousands of distribution points across India, was able to negotiate the best terms with its suppliers, and had not wasted time and money on unnecessary acquisitions. It was not perfectly robust, but it was resilient enough. Today, the company is debt free and continues to be the industry leader by a wide margin.</div>
+            <div class="text-block simplified-text">例如，一家负债权益比为2.0的公司是否稳健？很可能不是。那么0.2或0.5的比率呢？或许算得上。在我看来，答案取决于其他稳健性要素。我们投资组合中几乎所有企业都零负债。但2010年我们投资了印度领先的塑料管道企业（产品用于家居和农业）——Supreme Industries，其债务与EBITDA比率为0.6。虽不算高，但也不为零。尽管该公司存在少量债务，我们仍判定其具备稳健性，因为它是无可争议的行业龙头，持续从竞争对手手中夺取市场份额，资本回报率超过30%，过去十年成功设计推出多款产品，在全印度拥有数千个分销点，能争取最优供应商条款，且从未在非必要收购上浪费资源。它并非绝对完美，但足够坚韧。如今该公司已实现零负债，并继续保持遥遥领先的行业地位。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">47.</span>
+            <div class="text-block original-text">The more levels of robustness, the more we salivate.
+Highly Robust Businesses Evolve by Taking Calculated Risks
+As we have learned, neutral mutations make an organism robust while simultaneously planting the seeds of evolution. In the business world, neutral changes may not have a short-term impact but may be transformational over the long run. The corporate phenomenon equivalent to biological neutral mutations can be summarized in two words: calculated risks.</div>
+            <div class="text-block simplified-text">稳健层级越多，我们越心驰神往。  
+高度稳健的企业通过精算风险实现进化  
+正如我们所学，中性突变使生物体具备稳健性的同时，也为进化埋下种子。商界的中性变革或许短期内收效甚微，却可能引发长远蜕变。与生物中性突变对应的企业现象，可归结为四个字：精算风险。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">48.</span>
+            <div class="text-block original-text">There are millions of small businesses across the world that are incredibly robust but will stay small. And then there are businesses that test the limits of robustness and implode. The former risk nothing, and the latter risk everything. The Goldilocks zone between these two extremes is what I call “calculated risk.” It is the degree of risk that makes managers uncomfortable, but not too much; it compels the organization to innovate, but not too much; it forces the business to invest, but not too much; and it adds areas of potential growth, but not too many.
+To me, the company that best demonstrates calculated aggression and risk-taking is Walmart.</div>
+            <div class="text-block simplified-text">全球有数百万家极具韧性却始终维持小规模的企业，也有不断挑战韧性极限最终轰然倒塌的企业。前者不冒任何风险，后者则孤注一掷。而介于这两个极端之间的理想状态，我称之为"精算风险"——这种风险程度会让管理者感到不适但不至于恐慌；能推动组织创新但不会过度；迫使企业投资但有所节制；开辟潜在增长领域但数量适中。
+
+在我看来，将这种精算式进取与风险把控诠释得最完美的企业，当属沃尔玛。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">49.</span>
+            <div class="text-block original-text">Small digression. Let’s see if you know the answer to this question: What was Sam Walton’s age when he founded Walmart? If your answer begins with a one or a two, your answer was the same as mine. And like I was, you are wrong. Sam Walton was forty-four when he opened his first Wal-Mart store in 1962 in Rogers, Arkansas (Wal-Mart became Walmart in 2018).13 Not all the great founders of the modern era are from Silicon Valley, not all of them were hard-charging teenagers, and not all of them wanted to “change the world.”</div>
+            <div class="text-block simplified-text">小插曲。来猜猜这个问题的答案：山姆·沃尔顿创立沃尔玛时多大年纪？如果你的答案是十几或二十几岁，那你的想法和我最初一样。但和我一样，你也错了。1962年，44岁的山姆·沃尔顿在阿肯色州罗杰斯市开设了第一家沃尔玛商店（2018年"Wal-Mart"更名为"Walmart"）。并非所有现代商业巨擘都来自硅谷，并非都是锐意进取的青少年创业者，也并非人人都立志要"改变世界"。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">50.</span>
+            <div class="text-block original-text">After graduating from college, Walton started in sales at J. C. Penney in 1940, then enlisted for the war in 1942. In 1945, he started managing a franchise Ben Franklin store in Newport, Arkansas (where the population was then seven thousand). By 1950 he was running two stores in Newport and had achieved reasonable success by experimenting and innovating. One of his innovative ideas that had been a massive hit with his customers was an ice cream machine. As he writes in his autobiography, “Every crazy thing we tried hadn’t turned out as well as the ice cream machine, of course, but we hadn’t made any mistakes we couldn’t correct quickly, none so big that they threatened the business.”
+Could there be a better definition of calculated risk?</div>
+            <div class="text-block simplified-text">大学毕业后，沃尔顿于1940年进入J.C. Penney从事销售工作，1942年应征入伍。1945年，他开始在阿肯色州纽波特市（当时人口仅七千人）经营一家本·富兰克林特许经营店。到1950年，他已在该地经营两家门店，并通过不断试验与创新取得了可观成就。其中一台冰淇淋机成为最受顾客欢迎的创新之举。正如他在自传中所写："当然，并非每个疯狂点子都像冰淇淋机那样成功，但我们从未犯过无法迅速纠正的错误，也没有任何失误危及到生意存亡。"
+
+还有比这更精准的风险预判诠释吗？</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">51.</span>
+            <div class="text-block original-text">After Walmart’s initial success in Rogers, Sam Walton opened more stores.14 By 1967, he had opened twenty-four stores, which brought in sales of about $13 million. The company reached $1 billion in sales in 1980, by which time it had 276 stores and about 21,000 associates. Note that store openings and selling more products through the same stores propelled growth from 1967 to 1980. During these thirteen years, sales per store had increased about seven times. How had Walton done this? By continuously trying new things, expanding product offerings, and broadening the customer base.</div>
+            <div class="text-block simplified-text">沃尔玛在罗杰斯市首战告捷后，山姆·沃尔顿陆续开设了更多门店。截至1967年，他已创立24家门店，实现约1300万美元销售额。1980年公司销售额突破10亿美元时，旗下276家门店拥有约2.1万名员工。值得注意的是，1967至1980年间，沃尔玛的增长动力来自新店扩张与单店销售提升。这十三年间，单店销售额增长约七倍。沃尔顿如何实现这一成就？通过持续创新尝试、扩充商品品类及扩大客户群体。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">52.</span>
+            <div class="text-block original-text">Not all these experiments were successful. For example, in the early 1980s, Walton started two Hypermarts—giant stores selling groceries and general merchandise—in the Dallas–Fort Worth area. But the concept failed. He also experimented with discounted drugs (dot Discount Drug) and home improvement (Save Mor), both of which shuttered. One of his experiments, however, worked spectacularly well. Sam’s Club, focused on retailers who buy in bulk, was launched in 1983, and within a decade, it had crossed revenue of $10 billion. The spectacular success of Sam’s Club demonstrates the slight downside and colossal upside of taking manageable risks.</div>
+            <div class="text-block simplified-text">并非所有尝试都获得了成功。例如80年代初，沃尔顿在达拉斯-沃斯堡地区开设了两家销售杂货和日用商品的巨型商场Hypermart，但这个构想最终失败。他还尝试过折扣药店（Dot Discount Drug）和家居建材（Save Mor）业务，均以关张告终。然而其中一项实验却大获成功——1983年推出的山姆会员店专注于批发采购的零售商，不到十年便实现了百亿美元营收。山姆会员店的巨大成功印证了可控风险的微妙之处：可能伴随微小损失，却蕴含着惊人回报。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">53.</span>
+            <div class="text-block original-text">As discussed in chapter 1, most M&A fail, and the larger ones can destroy a business. Walmart has managed acquisitions the way they should be managed: It has kept targets small and manageable and funded them without taking on large debt. The company made its first acquisition fifteen years after inception. It was close to $500 million in sales, and by this time, as is evident from his autobiography, Sam Walton was feeling quite confident about the future of the business. Even then, he behaved prudently by acquiring a small discount store business called Mohr Value in 1977, which was about one-tenth the size of Walmart. As he says in his book, “We closed five stores and converted the remaining sixteen to Wal-Marts, and it wasn’t much of a shock to our system.”</div>
+            <div class="text-block simplified-text">如第一章所述，多数并购以失败告终，大规模并购更可能摧毁企业。沃尔玛的收购策略堪称典范：始终选择体量可控的小型标的，并通过自有资金完成收购避免大额负债。这家企业在创立十五年后才进行首次收购，当时其年销售额已接近5亿美元。从山姆·沃尔顿的自传可以看出，此时他对企业前景充满信心。即便如此，1977年收购莫尔价值折扣连锁时他仍保持谨慎——这家企业的规模仅为沃尔玛的十分之一。正如他在书中所言："我们关闭了五家门店，将其余十六家改造为沃尔玛，整个整合过程平稳无虞。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">54.</span>
+            <div class="text-block original-text">By 1991, Walmart was present in forty-nine states, and the management started exploring options outside their home country. Almost two decades after the first store’s inauguration, Walmart embarked on its maiden international foray by entering into a joint venture with CIFRA, Mexico’s largest retailer, and by 1997 it had acquired a majority position in CIFRA. Was this a “neutral” change? It sure seems like one in hindsight—the Mexico joint venture started small and would not have impacted Walmart’s U.S. operations. Also, a joint venture in a foreign country allowed Walmart to dip a toe to check the water temperature. Once the company had adjusted to the new geography, it felt confident in making a bigger commitment by acquiring the rest of CIFRA. Starting from scratch in 1991, Walmart’s revenue from the international segment in 2020 was $120 billion, or 23 percent of company sales.15</div>
+            <div class="text-block simplified-text">截至1991年，沃尔玛已进驻美国49个州，管理层开始将目光投向海外市场。在首家门店开业近二十年后，沃尔玛通过与墨西哥最大零售商西弗拉成立合资企业，迈出了国际化第一步；到1997年，沃尔玛已取得西弗拉的控股权。这算"温和"变革吗？事后看来确实如此——墨西哥合资项目规模小，当时并未波及美国本土业务。况且海外合资模式让沃尔玛得以小试水温。当企业适应新市场后，便通过收购剩余股权展现了更大决心。自1991年零起点起步，至2020年沃尔玛国际业务营收已达1200亿美元，占公司总销售额的23%。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">55.</span>
+            <div class="text-block original-text">The company did something similar—small, measured, and low risk—when it launched its web business. In 2000, Walmart joined hands with a leading Silicon Valley investment firm, Accel Partners, to launch Walmart.com. Accel, by the way, gained much fame (and a gargantuan fortune) as a result of its $12.7 million investment in an early-stage company called Facebook in 2005.16 In about eighteen months, in mid-2001, Walmart acquired the minority stake of Accel to own Walmart.com fully. By 2020, Walmart’s e-commerce sales had climbed to $24 billion and Walmart.com was approaching 10 percent of Walmart’s overall U.S. sales. What had started as a “neutral” strategy in 2000 is now fast becoming the centerpiece of Walmart’s approach to gaining market share.</div>
+            <div class="text-block simplified-text">这家公司在开展网络业务时采取了类似策略——规模小、有节制且低风险。2000年，沃尔玛与硅谷顶尖投资公司Accel Partners联手推出Walmart.com。值得一提的是，Accel曾因2005年向初创企业Facebook注资1270万美元而声名大噪（并收获巨额财富）。约十八个月后，即2001年年中，沃尔玛收购了Accel的少数股权，实现了对Walmart.com的完全控股。到2020年，沃尔玛电商销售额已攀升至240亿美元，Walmart.com占沃尔玛美国总销售额比例接近10%。这项始于2000年的"中性"策略，如今正迅速成为沃尔玛夺取市场份额的核心战略。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">56.</span>
+            <div class="text-block original-text">One of our largest investors is a well-known U.S. university endowment. They have been investing in funds globally for many decades. Their CFO visited our Singapore office in 2011. After he had finished grilling us on compliance and other related matters, I wanted to know if he could share any learnings with us. He said that the one industry in which their fund managers had consistently lost money across time and geographies was retailing. In this context, Walmart’s success is awe inspiring.</div>
+            <div class="text-block simplified-text">我们最大的投资者之一是某知名美国大学捐赠基金。该机构在全球范围内投资各类基金已有数十年历史。2011年其首席财务官到访我们在新加坡的办公室，完成对合规等事项的严格质询后，我询问他能否分享一些投资心得。他表示，纵观不同时期与地域，其基金经理唯一持续亏损的行业就是零售业。正因如此，沃尔玛取得的成功才更令人叹服。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">57.</span>
+            <div class="text-block original-text">And how robust was Walmart at the end of 2020? Let me point to just two indicators. Its return on tangible capital employed was 46 percent. Thus, for day-to-day operations in 2020, it deployed $49.7 billion capital to earn an operating income of $22.9 billion. Its net debt level was just $26.8 billion, substantially lower than its equity value of $52 billion and EBITDA (earnings before interest, tax, depreciation, and amortization) of $38 billion. Its continued robustness has helped the management take calculated risks in the United States, as well as across the globe.</div>
+            <div class="text-block simplified-text">2020年末沃尔玛的财务健康状况如何？仅举两个指标说明：其有形资本回报率高达46%。这意味着在2020年日常运营中，该公司投入497亿美元资本即获得229亿美元营业利润。净债务水平仅为268亿美元，远低于520亿美元的股权价值和380亿美元的息税折旧摊销前利润（EBITDA）。这种持续的强健实力，使得管理层能够在美国及全球范围内实施审慎的风险决策。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">58.</span>
+            <div class="text-block original-text">I don’t want to pretend that Walmart’s success is solely the result of its slow-and-steady approach to growth and expansion. Walmart has undoubtedly flourished for many reasons. Apart from Sam Walton being the founder, though, I don’t know what other factors have led to its success. I can rattle off a list of things from various business books and articles written on Walmart, but I don’t know if they were the cause or the effect of its success. But I do know that taking calculated risks and staying robustly healthy have had a strong correlation with its accomplishments over sixty years.
+As it has been for almost all the Nalanda portfolio companies. When we first invested in Page Industries in 2008, it primarily manufactured and sold men’s innerwear. Here are some of the milestones and neutral strategies implemented by Page since then:
+2008–09: Primarily a men’s innerwear company
+2009–10: Launched women’s leisurewear, men’s sportswear</div>
+            <div class="text-block simplified-text">我不想将沃尔玛的成功简单归因于其稳健缓慢的增长扩张策略。这家零售巨头的蓬勃发展必然有着多元动因——除了创始人山姆·沃尔顿的卓越领导外，我无法断言其他决定性因素。虽然我能列举商业书籍和报道中反复强调的诸多要素，但难以分辨这些究竟是成功的因还是果。唯一能确定的是，精准的风险把控与强健的运营体质，确实与沃尔玛六十年的辉煌成就密切相关。
+
+这种成功模式同样适用于那澜陀投资组合中的大多数企业。以2008年我们投资的佩吉工业为例，这家最初主营男士内衣的企业，通过以下战略节点实现了阶梯式发展：
+2008-09年度：专注男士内衣领域
+2009-10年度：开拓女士休闲服与男士运动装生产线</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">59.</span>
+            <div class="text-block original-text">2010–11: First store for women in Delhi, first training center for production staff
+2011–12: Boys’ and girls’ ranges, signed exclusive licensee agreement with Speedo
+2012–13: Sleepwear range for women, men’s performance stretch range, thermals
+2013–14: New international-format retail outlets, seamless sleepwear for women
+2014–15: Exclusive outlets in Dubai, Abu Dhabi
+2015–16: Boys’ collection (7–12 years)
+2017–18: Girls’ inner- and outerwear, men’s and women’s athleisure
+2018–19: Teenage girls’ range
+2019–20: First digital manufacturing unit with real-time production data</div>
+            <div class="text-block simplified-text">2010–11年度：德里首家女装门店开业，首个生产人员培训中心成立  
+2011–12年度：推出童装系列（男童/女童），与速比涛签署独家授权协议  
+2012–13年度：推出女式睡衣系列、男士弹性运动系列及保暖内衣  
+2013–14年度：开设国际化零售门店，推出女式无缝睡衣  
+2014–15年度：在迪拜、阿布扎比设立品牌专卖店  
+2015–16年度：推出大童系列（7-12岁）  
+2017–18年度：推出女童内衣外衣系列及男女运动休闲系列  
+2018–19年度：推出青少年女装系列  
+2019–20年度：建成首个实时生产数据数字化制造单元</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">60.</span>
+            <div class="text-block original-text">The remarkable aspect of this list is what it doesn’t include. There are no acquisitions, no unrelated diversifications, no “visionary” plans to change the world, no financial engineering. Only measured risks. For example, in 2009–10, the company launched men’s sportswear. It did so through its existing distribution channel and staff, its current manufacturing units, and the same brand name. As the sportswear segment has expanded over the years, it now has its own supply chain, its own business unit, and its own advertisements.</div>
+            <div class="text-block simplified-text">这份清单最引人注目之处在于它所省略的内容。没有收购案，没有无关的多元化扩张，没有改变世界的"宏伟"计划，没有财务运作。只有审慎的风险把控。例如在2009至2010年间，该公司推出了男士运动服饰系列。他们通过现有分销渠道与员工、现有生产设施及原有品牌进行操作。随着运动服饰业务逐年扩张，如今该品类已拥有独立供应链、专属事业部和专属广告体系。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">61.</span>
+            <div class="text-block original-text">You will notice here that the company launched a children’s range in 2011–12. Page describes this natural extension of the Jockey brand in its annual report: “With the launch of Jockey Kids, the brand reaches out to the consumers of tomorrow. . . . Keeping comfort as our topmost priority, we have brought in a range using 100 percent cotton, super soft, absorbent fabric, for both boys and girls.” As investors in Page, we were excited about this new target segment because it would double the Jockey brand’s addressable market.</div>
+            <div class="text-block simplified-text">您会注意到，该公司在2011-12年度推出了儿童系列产品。佩吉集团在年报中这样描述其Jockey品牌的自然延伸："随着Jockey Kids的推出，该品牌将触达未来的消费者......我们始终将舒适度作为首要考量，为男孩女孩们带来了采用100%纯棉、超柔软吸湿面料的全新产品线。"作为佩吉的投资者，我们为这一新目标群体感到振奋，因为它将使Jockey品牌的可触达市场规模翻倍。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">62.</span>
+            <div class="text-block original-text">After seventeen years in India, Page had earned the right to extend its brand into a new segment. Unexpectedly, it failed. The children’s range did not do well, and the company withdrew its products. Did this have any negative impact on the finance or operations of the company? No. This is because it was a calculated risk. It was a neutral strategy that did not affect the robustness of the business. Its operating ROCE in 2011–12 was 59 percent and was even higher in 2012–13 (when it realized the children’s range had failed) at 64 percent. In 2012–13, overall sales grew 26 percent, and profits rose 24 percent. In both these years, the company had negligible debt. The advantage of having a solid foundation that allowed it to take small bets was evident.</div>
+            <div class="text-block simplified-text">在印度经营十七年后，佩吉公司有资格将品牌拓展至新领域。但意外的是，这次尝试失败了。儿童产品线市场表现不佳，公司最终撤回了产品。这对公司的财务或运营造成负面影响了吗？答案是否定的。因为这是一次经过权衡的风险尝试。这个中性策略并未动摇企业的根基——2011至2012财年的运营资本回报率达59%，而在意识到儿童产品线失败的2012至2013财年，该指标进一步提升至64%。2012至2013财年期间，公司总销售额增长26%，利润上升24%。这两年公司的负债几乎可以忽略不计。由此可见，雄厚根基带来的优势，使其能够从容进行小规模试错。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">63.</span>
+            <div class="text-block original-text">Page went back to the drawing board and launched only a boys’ collection in 2015–16. Even within this segment, it introduced products only for boys aged seven to twelve years. Why not five- or thirteen-year-old boys? I have no idea. I don’t understand product marketing, but thankfully Page does. It launched girls’ inner- and outerwear a year later. By 2020, the boys’ and girls’ ranges had become a hit and had started contributing to the overall sales and profit growth of the business. What had started as a small experiment in 2011–12 was finally yielding fruit.
+As India went into a full lockdown in mid-March 2020 owing to the COVID-19 pandemic, the company’s annual sales grew only 3 percent for the year ended March 2020. Profits fell 15 percent, but it delivered ROCE of 63 percent while remaining debt free. This robustness, we believe, should allow the company to continue to take calculated strategic bets many years into the future.</div>
+            <div class="text-block simplified-text">佩吉公司重新调整策略，在2015至2016年度仅推出了男童系列。即便在这个细分市场中，也只针对7至12岁男童开发产品。为何不涵盖5岁或13岁男童？我不得而知。虽然我不懂产品营销，但值得庆幸的是佩吉团队深谙此道。一年后，公司相继推出女童内衣和外衣系列。截至2020年，其男女童产品线均大获成功，开始为整体销售额和利润增长作出贡献。这场始于2011至2012年间的小规模试水，终于迎来了收获期。
+
+2020年3月中旬，印度因新冠疫情实施全面封锁，但公司在截至2020年3月的财年中仍实现3%的年销售额增长。尽管利润下滑15%，其资本运用回报率仍达63%，且始终保持零负债。我们认为，这种强健的财务体质将使公司未来多年都能持续进行审慎的战略布局。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">64.</span>
+            <div class="text-block original-text">Robustness Is a Proxy for Evolutionary and Business Success but Doesn’t Guarantee It
+Dinosaurs, a diverse group of more than a thousand reptilian species, dominated our planet for 180 million years.17 As a matter of comparison, we Homo sapiens have been around for less than 0.2 million years. Dinosaurs couldn’t have survived and thrived for so long unless they were highly robust and adaptable. Molecular evidence has shown that many modern mammalian orders—Carnivora, Primata, Proboscidea—coexisted with dinosaurs for at least 30 million years during the Cretaceous period (145 to 66 million years ago), and maybe even earlier. The mammals during the era of dinosaurs were small, squirrel sized, and probably insectivores. If aliens had landed on our planet 65 million years ago, they never could have predicted that a small offshoot of the insignificant mammalians would reign supreme one day.</div>
+            <div class="text-block simplified-text">稳健性是进化和商业成功的代名词，但并非成功的保证  
+恐龙——这个包含上千种爬行类物种的庞大族群，曾统治地球长达1.8亿年。17作为对比，我们智人存在的时间不足20万年。若非具备极强的稳健性与适应力，恐龙不可能如此长久地生存繁衍。分子证据显示，现代哺乳动物中的食肉目、灵长目、长鼻目等类群，早在白垩纪（1.45亿至6600万年前）就与恐龙共存了至少3000万年，甚至可能更早。恐龙时代的哺乳动物体型娇小如松鼠，多以昆虫为食。倘若外星人于6500万年前造访地球，他们绝无可能预见到：这群微不足道的哺乳动物旁支，有朝一日会成为世界的主宰。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">65.</span>
+            <div class="text-block original-text">The cataclysmic aftermath of an asteroid strike in the Yucatan peninsula 65 million years ago wiped out the dinosaurs. But the mammals survived. No one is sure why. The extraordinary robustness of dinosaurs did not guarantee their evolvability.</div>
+            <div class="text-block simplified-text">六千五百万年前，尤卡坦半岛遭受小行星撞击后的灾难性后果使恐龙灭绝，但哺乳动物却幸存下来。无人确知其中缘由。恐龙非凡的强韧特性并未确保其进化潜力。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">66.</span>
+            <div class="text-block original-text">In general, the greater the robustness, the greater the evolvability. But sometimes, robustness ceases to help businesses adapt. We can see this in Gap’s failure to grow despite the company being very robust. Its revenue stayed flat at about $16 billion from 2005 to 2020, although it delivered ROCE of 20 percent or more for more than a decade and had no leverage. In general, multiple levels of robustness are better than a single level. But sometimes, even multiple levels of robustness can’t safeguard the future of a business, as has been the case for thousands of newspapers across the world. In general, highly robust businesses evolve by taking calculated risks. But sometimes, very rarely, businesses can succeed by taking huge risks, as shown by Netflix.</div>
+            <div class="text-block simplified-text">一般而言，稳健性越强，进化能力就越强。但有时稳健性反而会阻碍企业适应变化。以盖璞集团为例：尽管该公司财务极为稳健，2005至2020年间营收始终维持在160亿美元左右停滞不前，尽管其资本回报率连续十余年保持在20%以上且零负债，却始终未能实现增长。通常而言，多重稳健性结构优于单一稳健性。但有时即便构建多重稳健防线，仍难逃衰败命运，全球数以千计的报业集团便是明证。高度稳健的企业通常通过可控风险实现进化，但在极少数情况下，企业也可能通过高风险押注获得成功，奈飞公司的崛起正是如此。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">67.</span>
+            <div class="text-block original-text">We at Nalanda never bet against the odds. And so, despite some rare counterexamples, we have kept and will continue to keep robustness at the front and center of our investment approach. As permanent owners, we seek robustness in companies as the best available benchmark to assess if they are likely to adapt and survive over the long term. A better measure may exist, but I don’t know what it is. We invest only in highly robust companies. Many of them have stayed robust and have grown their sales and profits over decades. But our track record is not perfect. We have witnessed two key problems with this approach.</div>
+            <div class="text-block simplified-text">我们奈兰达从不逆势而为。因此，尽管存在少数罕见反例，我们始终并将继续把稳健性置于投资策略的核心位置。作为企业的永久所有者，我们以稳健性作为最佳可用标尺，以此判断企业能否长期适应变化并存活。或许存在更优的衡量标准，但我尚未知晓。我们只投资于极具稳健性的企业。其中许多公司历经数十年仍保持强健，实现了销售额与利润的双重增长。但我们的投资记录并非完美无缺——这一策略在实践中暴露出两大关键问题。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">68.</span>
+            <div class="text-block original-text">First, a business can lose its robustness. We saw this happen to one of our consumer-focused companies; we still don’t know how or why it lost its way. We invested in this business almost twenty years after its creation. During that period, the management had built the largest brand in its industry in the country. When we invested, the company had no debt, its sales had grown 20 percent annually for the past five years, and it had delivered ROCE of more than 50 percent. Within a few years of our investing, the company’s inventory and receivables started climbing steeply, a leading indicator of potential sales issues. While the company continued to show profits, it had begun consuming cash—while having been a cash generator in earlier years. As a result, it had to start borrowing money just as its ability to repay the loans declined. Being a permanent owner, we are tolerant of declining sales or margins or market share. But we will not risk survivability. As the company’s robustness nose-dived, we exited the business at a loss. The company survives but is a pale reflection of its former glory. This unexplained decline of robustness has occurred in our portfolio only once since our inception in 2007, but it has happened.</div>
+            <div class="text-block simplified-text">首先，企业可能丧失稳健性。我们曾目睹一家面向消费者的企业遭遇这种情况——至今仍不清楚其衰败的具体原因。这家公司在创立近二十年后获得我们投资，此前管理层已将其打造成国内同行业最大品牌。投资时该公司零负债，过去五年销售额年均增长20%，资本回报率持续超过50%。然而入股短短数年后，其库存和应收账款开始急剧攀升，这往往是销售隐患的前兆。尽管账面利润仍在增长，企业却从昔日的现金牛转变为消耗现金的状态，不得不在偿债能力下降时开始举债。作为长期持有者，我们能够容忍销售额、利润率或市场份额的暂时下滑，但绝不会以企业存续为赌注。当该公司的稳健性断崖式下跌时，我们选择亏损退出。这家企业虽仍存续，却已辉煌不再。自2007年成立以来，这种无法解释的稳健性崩塌在我们的投资组合中仅此一例，但确实发生过。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">69.</span>
+            <div class="text-block original-text">The second problem is too much robustness. One high-quality business in the Nalanda portfolio has been too robust. It has been unable or unwilling to implement any neutral strategies to expand its customer base, product segments, or geographies. As a result, the company has grown its sales at less than 5 percent annually for a decade, and its profits have stayed flat during this period. To be fair, its industry has gone through a vicious downcycle, and this business is the only one among its peers that continues to generate profits and free cash flow, and it remains debt free. It is also the only business in our portfolio that has taken robustness to its extreme by eschewing calculated risks. Maybe it is in an industry in which it can’t or shouldn’t. Perhaps when the industry upcycle arrives, it will finally see growth. Or maybe not. We will continue to remain owners in the business. While our returns have been positive, they have been below par. But I love them—they are a class apart in a very tough place. We are willing to sacrifice growth for robustness.</div>
+            <div class="text-block simplified-text">第二个问题是过度稳健。我们投资组合中有一家优质企业就过于稳健——它始终无法或不愿采取任何中性策略来拓展客户群、产品线或地域市场。这导致该公司十年来销售额年增长率不足5%，利润也停滞不前。平心而论，该行业经历了残酷的衰退周期，而这家企业却是同业中唯一持续盈利且保持自由现金流、零负债的公司。它也是我们投资组合中唯一将稳健做到极致、规避任何风险的企业。或许它所在的行业本就难以或不应冒险。待行业复苏周期来临，它或许终将迎来增长——也可能不会。我们仍将继续持有其股份。虽然投资回报率为正，但始终低于行业均值。但我依然欣赏他们——在如此艰难的领域里，他们堪称独树一帜。我们愿意为稳健性牺牲增长。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">70.</span>
+            <div class="text-block original-text">We have made almost forty investments to date, and in all of them, robustness was a primary—but not the only—selection criterion. We have worked on the assumption that robustness will lead to growth and evolution. This assumption has failed us on two occasions: one in which the company lost robustness and another in which the company’s excessive focus on robustness compromised growth. I am surprised at our strategy’s low failure rate. We have been quite lucky, and while robustness should continue to reward us across our portfolio, we will continue to encounter failures of the first or second kind over time.
+The Only Way to Protect Against Loss of Robustness Is Entry Valuation</div>
+            <div class="text-block simplified-text">截至目前，我们已进行了近四十笔投资，在所有项目中，稳健性都是首要（但非唯一）的选择标准。我们始终秉持一个理念：稳健性将推动增长与进化。但这一理念曾两次让我们失望：一次是企业丧失了稳健性，另一次是企业过度追求稳健性而阻碍了发展。令我惊讶的是，这套策略的失败率竟如此之低。我们确实相当幸运，尽管稳健性将继续为我们的投资组合带来回报，但未来仍难免会遇到上述两类失败案例。  
+
+防范稳健性丧失的唯一方法就是严控入局估值。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">71.</span>
+            <div class="text-block original-text">“Confronted with a like challenge to distill the secret of sound investment into three words, we venture the motto, MARGIN OF SAFETY” (emphasis in the original text). This is the best advice for investors in the best chapter of the best investing book ever written: The Intelligent Investor by Benjamin Graham, Buffett’s actual and spiritual mentor. The chapter is titled “ ‘Margin of Safety’ as the Central Concept of Investment.” Graham knew that the corporate world is highly uncertain and that the best protection offered to an investor is the price they pay for a business.
+Another investment legend, Seth Klarman, offers the following advice in his book appropriately titled Margin of Safety: Risk-Averse Value Investing Strategies for the Thoughtful Investor: “Value investing, the strategy of investing in securities trading at an appreciable discount from underlying value, has a long history of delivering excellent investment results with very limited downside risk.”</div>
+            <div class="text-block simplified-text">"当面临用三个词概括稳健投资秘诀的类似挑战时，我们斗胆提出这个座右铭——安全边际"（原文强调）。这是有史以来最伟大的投资著作《聪明的投资者》中最精彩章节里给投资者的最佳忠告，该书作者本杰明·格雷厄姆既是巴菲特的实际导师，也是精神导师。该章节题为"安全边际作为投资的核心概念"。格雷厄姆深知商业世界充满不确定性，而投资者最好的保护伞就是他们为一家企业支付的价格。
+
+另一位投资传奇人物赛斯·卡拉曼在其恰如其分的著作《安全边际：谨慎投资者的避险价值投资策略》中给出如下建议："价值投资——即以显著低于内在价值的价格买入证券的策略——长期保持着优异投资回报与极低下行风险的双重优势。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">72.</span>
+            <div class="text-block original-text">In this chapter, I have used the word “robust” to extend the margin-of-safety concept to many other facets of a company. We have sought a margin of safety on business quality by demanding high ROCE and a wide competitive moat, on the strength of the balance sheet by requiring it to be debt free, on the bargaining power of customers and suppliers by requiring them to be fragmented, and on the sustainability of economics by insisting that the industry be slow-changing.</div>
+            <div class="text-block simplified-text">本章中，我使用"稳健"一词将安全边际理念延伸至企业的多个维度。我们通过以下方式寻求安全边际：要求高资本回报率与宽阔的竞争护城河以确保业务质量，坚持零负债以巩固资产负债表实力，要求客户与供应商高度分散以保障议价能力，以及坚持选择变化缓慢的行业来维持经济可持续性。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">73.</span>
+            <div class="text-block original-text">But even these multiple levels of robustness or margins of safety can become compromised owing to unpredictable changes in the economy, the industry, or the company. The COVID-19 pandemic has severely impacted what had appeared to be highly robust hotel chains; Intel’s erstwhile dominance in semiconductor chips has been upset by the likes of AMD, Nvidia, and Samsung; Amazon has already destroyed many small and large retail businesses; regulators in the United States and Europe appear to be threatening the very existence of Google and Facebook in their current form.
+We do the best we can to choose businesses based on their current and potential degree of robustness. But bad things will happen—we just don’t know what, when, or how. And so we turn to the one aspect of investing that is entirely within our control: the price we pay.</div>
+            <div class="text-block simplified-text">然而，即便是这些多重稳健性层级或安全边际，也可能因经济、行业或企业难以预料的变故而瓦解。新冠疫情重创了曾看似坚不可摧的连锁酒店集团；英特尔在半导体芯片领域的昔日霸主地位已被超威、英伟达和三星等对手动摇；亚马逊早已摧毁无数大小零售企业；而欧美监管机构似乎正威胁着谷歌和脸书以现有形态存续的可能。
+
+我们竭尽所能根据企业当前及潜在的稳健程度进行选择，但坏事终将发生——只是无法预知内容、时机与形式。因此我们必须转向投资中唯一完全可控的要素：支付价格。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">74.</span>
+            <div class="text-block original-text">We know that given the nature of the businesses we are after—those with very low risk and exceptional business quality—they will almost never be available cheap. The market is not an idiot; it is almost always efficient. Almost always. Not always. We wait for those few occasions to pay what we call a “fair” price. Not too low but not too high either.
+What is “fair”? Rather than describe it, let me state the actual number. The median trailing twelve-month (TTM) entry PE ratio for the Nalanda portfolio is 14.9. The median TTM PE for the period from 2005 to 2020 for India’s primary index, Sensex, is 19.7 and for the Midcap Index is 23.8. Thus, we are buying what we think are exceptional businesses at a 25 to 30 percent discount on the index.
+Over almost a quarter of a century of investing, I know I have been wrong on many occasions. The margin of safety of our entry price pays for my errors of judgment.
+A Leader Is Made a Loser</div>
+            <div class="text-block simplified-text">我们深知，鉴于我们所追求的企业特质——极低风险与卓越品质兼具——这类标的几乎从不会廉价可得。市场并非愚者，它几乎总是有效的。几乎总是。但并非永远。我们等待那些为数不多的时机，以支付被我们称为"公允"的价格——既不太低，也不太高。
+
+何为"公允"？与其描述定义，不如直接给出具体数字：那澜陀投资组合的入场市盈率（TTM）中位数为14.9倍。而2005至2020年间，印度基准指数Sensex的TTM市盈率中位数为19.7倍，中型股指数则为23.8倍。这意味着我们是以较指数折价25%至30%的价格，买入这些被我们认定为卓越的企业。
+
+近二十五年的投资生涯中，我深知自己屡犯错误。而入场价格的安全边际，正是为这些判断失误支付的代价。
+
+（注：末句"A Leader Is Made a Loser"为独立标题，采用直译保留原文修辞）</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">75.</span>
+            <div class="text-block original-text">Lazarus of Bethany was miraculously brought back to life by Jesus in the New Testament.18 Charles Lazarus performed a modern capitalist miracle by making Toys “R” Us the largest and most well-respected toy business globally. Lazarus is also a beggar in a parable in the Gospel according to Luke, the third of the four Gospels of the New Testament. Once a miracle of Lazarus, Toys “R” Us suffered the same fate as Lazarus the beggar.</div>
+            <div class="text-block simplified-text">《新约》中记载了耶稣使伯大尼的拉撒路死而复生的神迹。18 查尔斯·拉撒路则创造了现代资本主义的奇迹，将玩具反斗城打造成全球规模最大、最受尊敬的玩具企业。拉撒路同时也是《新约》四福音书中《路加福音》寓言里的乞丐。玩具反斗城曾如拉撒路般经历奇迹，最终却重蹈乞丐拉撒路的覆辙。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">76.</span>
+            <div class="text-block original-text">Charles Lazarus opened his first Toys “R” Us store in 1957.19 In that era, parents typically went to department stores to buy toys. Toy sales were seasonal, and the six weeks leading up to Christmas made up the bulk of sales for the year. Most toy stores were small family-run shops and carried only a small number of toys. Having operated a baby furniture business from 1948 to 1957 and learned the shopping habits of parents, Lazarus decided to risk a new strategy. He wanted to sell toys throughout the year and give parents and children a novel shopping experience. His first store was 25,000 square feet in size and stocked thousands of toy varieties. The store did not keep toys in display cases as did its competitors; instead, it kept them in rows next to each other like items in a grocery store.</div>
+            <div class="text-block simplified-text">查尔斯·拉扎勒斯于1957年开设了首家玩具反斗城门店。当时父母们通常前往百货公司购买玩具，玩具销售具有季节性特征，圣诞节前六周的销售额占全年总量的大部分。多数玩具店是家庭经营的小型店铺，仅陈列少量商品。基于1948至1957年间经营婴儿家具业务时对家长购物习惯的观察，拉扎勒斯决定尝试全新策略：全年销售玩具，并为亲子提供新颖的购物体验。其首家门店占地25,000平方英尺（约2,323平方米），陈列数千种玩具。与竞争对手将玩具锁在展示柜中的做法不同，该店铺像杂货店那样将玩具成排并列摆放。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">77.</span>
+            <div class="text-block original-text">The store was a massive hit given its size, variety, and low prices. Despite his initial success, Lazarus moved slowly at first and opened only four stores until 1966. In 1973, Toys “R” Us started advertising on TV using its store mascot, a cuddly giraffe called Geoffrey. Lazarus also began tapping Japanese manufacturers to make inexpensive toys and negotiated attractive rates for bulk purchases. The company went public in 1978 and grew at more than 20 percent annually for the next decade. Morgan Stanley’s retail analyst compared it to the venerable IBM in 1982: “I think Toys ‘R’ Us is a unique operation—the only proprietary merchandise company that rivals IBM as revolutionary in concept.” The Washington Post compared it to another iconic American brand, McDonald’s, by declaring, “Like McDonald’s, with its regimented service and standardized burgers and fries, Toys ‘R’ Us has become an American institution.”</div>
+            <div class="text-block simplified-text">这家商店因其规模庞大、品种丰富且价格低廉而大获成功。尽管开局顺利，拉扎勒斯最初发展却十分谨慎，直到1966年仅开设了四家门店。1973年，玩具反斗城开始通过其商店吉祥物——一只名为杰弗里的可爱长颈鹿在电视上投放广告。拉扎勒斯还开始与日本制造商合作生产廉价玩具，并通过大宗采购谈判获得诱人的折扣价。公司于1978年上市，此后十年间年均增长率超过20%。摩根士丹利零售分析师在1982年将其与业界翘楚IBM相提并论："我认为玩具反斗城是独一无二的企业——它是唯一在经营理念上与IBM同样具有革命性的专营商品公司。"《华盛顿邮报》则将其比作另一个美国标志性品牌麦当劳，并评价道："正如麦当劳凭借其标准化服务和统一规格的汉堡薯条成为美国文化象征，玩具反斗城也已演变为美国的一种制度。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">78.</span>
+            <div class="text-block original-text">Toys “R” Us kept gaining market share by opening stores slowly and steadily. It did not get enticed by “transformational” M&A, although I am sure there was no dearth of bankers paying their respects to Lazarus every week. It continued, however, to take measured risks, one of which was the opening of a Kids “R” Us clothing store in 1983. The company also started expanding overseas and, in 1984, opened its first international stores in Canada and Singapore. In 1985, the company opened five stores in the United Kingdom, and in 1991 they entered Japan in an 80:20 joint venture with McDonald’s. In the United Kingdom, Toys “R” Us captured a 9 percent market share in just three years. The company continued to expand in overseas markets after its initial successes.</div>
+            <div class="text-block simplified-text">玩具反斗城通过稳健有序地开设门店持续扩大市场份额。尽管可以想见每周都有投资银行家登门拜访拉扎勒斯，但公司从未被所谓"变革性"并购所诱惑。它始终保持着审慎的风险把控，例如1983年试水开设儿童反斗城服装店。企业同期启动海外扩张，1984年首度在加拿大和新加坡开设国际门店；1985年进驻英国市场并开设五家门店；1991年与麦当劳以80:20股比成立合资公司进军日本。在英国市场，玩具反斗城仅用三年便斩获9%的市场占有率。初战告捷后，公司继续在海外市场开疆拓土。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">79.</span>
+            <div class="text-block original-text">In 1988, the Wall Street Journal boldly predicted, “Toys ‘R’ Us, Big Kid on the Block, Won’t Stop Growing.” As if on cue, the problems started. In 1988, Walmart’s market share at 17.4 percent came marginally ahead of that of Toys “R” Us at 16.8 percent. Toys “R” Us was in second place after being the leader for fifteen years. Toys “R” Us was being squeezed at both ends: by discount chains like Walmart, Target, and Costco, which competed on low prices, and by so-called edutainment companies like Zany Brainy, Noodle Kidoodle, and Imaginarium, which offered higher-priced specialized toys and better service.</div>
+            <div class="text-block simplified-text">1988年，《华尔街日报》曾大胆预言："玩具反斗城，这条街上的大孩子，永远不会停止成长。"仿佛应验预言般，危机接踵而至。当年沃尔玛以17.4%的市场份额略微领先玩具反斗城的16.8%，终结了后者长达十五年的霸主地位。玩具反斗城腹背受敌：既要应对沃尔玛、塔吉特和好市多等以低价竞争的大型连锁超市，又要抗衡Zany Brainy、Noodle Kidoodle和Imaginarium等主打高价益智玩具与优质服务的"教育娱乐"公司。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">80.</span>
+            <div class="text-block original-text">In 1998, the company launched its website, ToysRUs.com, and its first mail-order catalog. But the company was struggling, and 1998 was the year of “restructuring,” which is usually the euphemism for a business terminating its science projects and loss-making initiatives. The company announced a huge inventory reduction; the closure of fifty-nine stores in the United States, France, and Germany; the shuttering of thirty-nine Kids “R” Us stores; and a layoff of three thousand workers. The cost of restructuring was so high that the company declared its first net loss since going public.</div>
+            <div class="text-block simplified-text">1998年，该公司推出网站ToysRUs.com并发行首份邮购目录。但公司当时正深陷困境，1998年成为"重组之年"——这类措辞通常意味着企业终止科研项目与亏损业务。该公司宣布大规模削减库存，关闭位于美国、法国和德国的59家门店，关停39家Kids "R" Us分店，同时裁员3000人。重组成本之高，使得这家企业上市以来首次出现净亏损。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">81.</span>
+            <div class="text-block original-text">Too often, a business in trouble tries to buy its way out. Toys “R” Us was no exception. It acquired Imaginarium Toy Centers in 1998. It also tried frequent management changes—the company had three CEOs from 1994 to 2000. But its downward slide continued with Amazon, too, muscling its way into the toy segment. The company’s sales stayed flat at $11 billion from 1997 to 2004, and the operating profit fell by about 65 percent during this period. The operating ROCE was 15 percent in 1997, and it fell to 4 percent in 2004. The situation was so bad that the company shocked the world by announcing that it might completely withdraw from the toy business and focus on the Babies “R” Us chain.
+Okay, let’s pause here and summarize the situation in 2005.</div>
+            <div class="text-block simplified-text">陷入困境的企业往往试图花钱脱困，玩具反斗城也不例外。1998年它收购了Imaginarium玩具中心，还频繁更换管理层——1994至2000年间就更换了三任CEO。但随着亚马逊强势进军玩具领域，其颓势仍在持续。1997至2004年间公司销售额始终停滞在110亿美元，营业利润同期下降约65%。投入资本营业回报率从1997年的15%暴跌至2004年的4%。局面恶化到公司竟宣布可能彻底退出玩具业务、专注婴儿反斗城连锁店，震惊了整个行业。
+
+让我们暂停回顾2005年的局面。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">82.</span>
+            <div class="text-block original-text">Toys “R” Us was spectacularly successful for about four decades, from the late 1950s to the late 1990s. By the mid-2000s, however, it wasn’t growing, its market share was declining, and its profitability had taken a severe beating. Whatever the reasons for its trouble, there was no doubt that it was in trouble. The company’s robustness had suffered significantly. Maybe it was bad luck, maybe it was management missteps, or maybe it was a bit of both.</div>
+            <div class="text-block simplified-text">玩具反斗城从20世纪50年代末到90年代末的约四十年间取得了惊人的成功。然而到了21世纪头十年中期，该公司增长停滞、市场份额萎缩、盈利能力遭受重创。无论困境的根源为何，其经营危机已是不争事实。企业的稳健性严重受损——或许是时运不济，或许是管理失误，抑或两者兼而有之。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">83.</span>
+            <div class="text-block original-text">One way to think about this situation is to picture an elite marathoner whose performance has dipped in recent months. They used to be a picture of health and vigor, but nowadays, they look exhausted and cannot run even ten kilometers at their earlier marathon pace. They are now at the starting line of the Boston Marathon. What would you expect their coach to do before the race starts? If I were the coach, I would advise them to withdraw from the race, rest and recover for a few months, and slowly build their mileage back up. Maybe your advice would be different—you might counsel them to take it easy and just finish the race without worrying about a podium finish to minimize damage to the body. I assume you would be shocked if I told you that the coach not only asked them to run at full speed but also loaded a ten-pound bag on their back!</div>
+            <div class="text-block simplified-text">设想一位精英马拉松选手，其表现近几个月持续下滑。昔日他浑身散发着健康与活力，如今却疲惫不堪，连十公里都难以用原来的马拉松配速完成。此刻他正站在波士顿马拉松的起跑线上。你认为赛前教练会作何安排？若我是教练，会建议他退赛休整数月，循序渐进地恢复跑量。或许你的建议不同——可能劝他放松心态完赛即可，不必执着站上领奖台，将身体损耗降到最低。但若我告诉你，这位教练不仅要求选手全力冲刺，还在他背上加了十磅重的负重包——想必你会震惊不已吧。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">84.</span>
+            <div class="text-block original-text">Yet this is what happened to Toys “R” Us. In 2005, the private equity giants KKR and Bain and the real estate firm Vornado purchased Toys “R” Us for $6.6 billion.20 However, their equity contribution was only $1.3 billion, and they borrowed $5.3 billion for this purchase. And then they loaded this borrowing onto Toys “R” Us! If you know nothing about the leveraged buyout (LBO) industry, you may be rubbing your eyes in disbelief. The private equity folks bought Toys “R” Us for a fat sum of money, borrowed 80 percent of that amount, and then burdened the company with this borrowing to finance their purchase? Oh, yes. Welcome to the wonderful world of finance.</div>
+            <div class="text-block simplified-text">然而，玩具反斗城正是如此遭遇。2005年，私募巨头KKR与贝恩资本联合房地产公司Vornado以66亿美元收购玩具反斗城，其中自有资金仅13亿美元，其余53亿美元均为借款。更令人瞠目的是——这笔巨额债务竟被直接转嫁到玩具反斗城身上！若你对杠杆收购行业一无所知，此刻或许正难以置信地揉着眼睛：私募机构砸重金收购企业后，将80%的收购成本转化为债务，再让被收购公司背负这笔债务来为收购买单？千真万确。欢迎来到金融的奇幻世界。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">85.</span>
+            <div class="text-block original-text">While leverage may be good from a corporate finance perspective, it is bad from my point of view. But I hope all parties can agree that it is terrible for a struggling business. The elite but sick Toys “R” Us marathoner had just been asked to run the Boston Marathon, competing with world-class runners with a ten-pound load on its back. Remember that the capitalist world is a Boston Marathon that never ends—there is no respite at the end of a punishing two-hour race. The race goes on and on and on and on and on: 24 hours × 7 days a week × 365 days a year. It’s unending, unrelenting, unforgiving.</div>
+            <div class="text-block simplified-text">从公司财务角度看，杠杆或许是件好事，但在我看来却有害无益。不过各方至少应该认同：这对困境中的企业绝对是灾难。就像那位天赋异禀却病恹恹的玩具反斗城马拉松选手，刚被要求背着十磅重物去参加波士顿马拉松，与全球顶尖跑者同场竞技。请记住资本主义世界就是场永无止境的波士顿马拉松——没有两小时煎熬后的喘息机会。这场竞赛日复一日年复一年永不停歇：每周7天每天24小时连轴转。它永不终结，永不松懈，永不宽恕。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">86.</span>
+            <div class="text-block original-text">The massive debt load meant that by 2007, 97 percent of the company’s operating profit was consumed by interest payments. Where was the money left to innovate, invest in stores, advertise, hire and train the best people, and do all the things any business needs to do to stay on top of their game? In an Atlantic article on the failure of Toys “R” Us,21 an interviewee remarks that the company was handcuffed and could not make investments. Another one rightly points out, “It’s true that they could not respond to Amazon. But you have to ask yourself why.” Katherine Waldock, a finance professor at Georgetown University’s McDonough School of Business said in a Wall Street Journal article, “The $400 million a year in debt service was really constrictive as they were trying to compete.”</div>
+            <div class="text-block simplified-text">巨额债务负担意味着，到2007年时该公司97%的营业利润都被利息支付吞噬。哪里还有剩余资金用于创新、门店投资、广告宣传、招聘培训顶尖人才，以及维持企业竞争力所需的其他事项？在《大西洋月刊》一篇关于玩具反斗城破产的报道中，受访者指出该公司如同戴着手铐，根本无法进行投资。另一位受访者一针见血地指出："他们确实无力应对亚马逊的竞争，但必须追问深层原因。"乔治城大学麦克多诺商学院金融学教授凯瑟琳·沃尔多克在《华尔街日报》的报道中表示："每年4亿美元的债务利息支出严重束缚了他们的市场竞争力。"</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">87.</span>
+            <div class="text-block original-text">Toys “R” Us was already unrobust at multiple levels, and the additional leverage taken by its private equity owners proved to be the last straw. The company filed for bankruptcy in September 2017, and David Brandon, the CEO, candidly admitted, “The company’s overleveraged capital structure has constrained it from making necessary operational and capital expenditures, including investing in the revitalization of stores. As a result, the company has fallen behind some of its primary competitors on various fronts.” You don’t say.
+✳✳✳
+Toys “R” Us bought the FAO Schwarz business in May 2009. Both companies had been struggling against discount retailers and web-based sellers like Amazon. Most acquisitions compromise the buyer’s robustness, and for an already weakened company like Toys “R” Us, the probability of success is even lower. Unsurprisingly, it closed Manhattan’s iconic FAO Schwarz store in July 2015.22 And left me distraught.</div>
+            <div class="text-block simplified-text">玩具反斗城早已危机四伏，私募股权所有者施加的额外财务杠杆成为压垮它的最后一根稻草。2017年9月公司申请破产时，首席执行官戴维·布兰登坦承："过高的杠杆资本结构限制了公司进行必要的运营与资本支出，包括门店焕新投资。这导致我们在多个关键领域落后于主要竞争对手。"这不言自明。
+
+2009年5月玩具反斗城收购了FAO Schwarz。这两家企业当时都在与亚马逊等折扣零售商和电商平台苦战。多数并购都会削弱收购方的稳健性，对于玩具反斗城这样本就孱弱的企业而言成功率更低。不出所料，2015年7月它关闭了曼哈顿的地标性FAO Schwarz门店——这让我心碎不已。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">88.</span>
+            <div class="text-block original-text">Dear Amazon, you have opened physical book shops in Manhattan. Time for toys?
+Chapter Summary
+Evolutionary theory has taught me that . . .
+. . . we can reimagine investing by owning only robust businesses that are resilient to internal and external shocks, while continuing to evolve and grow.
+1. There is a paradox in the living world: Organic life is highly complex but not fragile. Organisms have survived hundreds of millions of years despite living in constantly changing external environments and undergoing a barrage of internal mutations. This is because they are robust at multiple levels.
+2. Thus, an accidental change in DNA sequence does not affect which amino acids are made; a change in amino acids or their sequence does not impact the synthesis of proteins; and a change in proteins need not affect the body plan of an organism.
+3. Neutral mutations permit new functions and adaptations to arise without disrupting current functioning.</div>
+            <div class="text-block simplified-text">亲爱的亚马逊，你们已在曼哈顿开设实体书店。玩具店是不是也该提上日程了？
+
+章节概要  
+进化论教会我......  
+......我们可以重新构想投资方式：只持有那些能够抵御内外冲击、同时持续进化成长的强健企业。  
+
+1. 生物界存在一个悖论：有机生命高度复杂却并不脆弱。尽管生存环境不断变化且内部经历无数突变，生物体仍能存活数亿年之久，这是因为它们在多个层面都具有强健性。  
+
+2. 因此，DNA序列的偶然改变不会影响氨基酸的生成；氨基酸或其序列的变化不会干扰蛋白质合成；而蛋白质的改变也未必会影响生物体的整体构造。  
+
+3. 中性突变能在不破坏现有功能的前提下，促成新功能和适应性的产生。</div>
+        </div>
+    
+
+        <div class="content-row">
+            <span class="paragraph-number">89.</span>
+            <div class="text-block original-text">4. We want our businesses to mimic the robustness of the living world: to survive and prosper in a dynamic external environment, withstand internal strategic and organizational upheavals, and evolve by taking calculated risks.
+5. Hence, we choose to invest only in businesses that are robust at multiple levels. A robust business has high ROCE, minimal or zero debt, a strong competitive advantage, fragmented customer and supplier bases, a stable management team, and is in a slow-changing industry.
+6. Just because a business is robust today does not mean it will continue to be so. Our only protection against the loss of robustness of a business is to be price sensitive. We do not invest unless the market offers us an attractive valuation, which happens rarely.</div>
+            <div class="text-block simplified-text">4. 我们希望企业能效仿生物界的强韧特质：在动态的外部环境中生存壮大，抵御内部战略与组织动荡，并通过审慎冒险实现进化。  
+5. 因此我们只投资具备多层次韧性的企业。这类企业通常具备高资本回报率、极低或零负债、强大竞争优势、分散的客户与供应商基础、稳定的管理团队，且身处变化缓慢的行业。  
+6. 企业当前的强韧并不代表能持续如此。我们防范企业韧性流失的唯一方法，就是坚持价格敏感原则。除非市场给出罕见的高吸引力估值，否则我们绝不投资。</div>
+        </div>
+    
+    </main>
+</body>
+</html>
