@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="世界历史·九年级上册完整离线 Enhanced HTML 学习网站，包含7个单元、22课和全部原书页面。">
+<title>世界历史·九年级上册 · 增强型离线学习网站</title>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="header-left">
+<button id="menu-toggle" class="icon-button menu-button" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar">目录</button>
+<div class="header-context"><strong>教材首页</strong><span aria-hidden="true">/</span><span id="current-section-name">完整目录</span></div>
+</div>
+<nav class="header-nav" aria-label="单元导航"><span class="header-nav-button is-disabled" aria-disabled="true">←<span>上一单元</span></span><a class="header-nav-button home-button" href="index.html" aria-label="教材首页">首页</a><a class="header-nav-button" href="unit-01.html" aria-label="下一单元"><span>下一单元</span>→</a><button id="theme-toggle" class="icon-button theme-button" type="button" aria-label="切换到深色模式">◐</button></nav>
+</header>
+<div class="drawer-overlay" id="drawer-overlay" hidden></div>
+<div class="site-layout">
+<aside class="sidebar" id="sidebar" aria-label="教材目录" tabindex="-1">
+<div class="sidebar-brand"><span class="brand-mark">史</span><div><strong>世界历史·九年级上册</strong><span>增强型离线学习网站</span></div></div>
+<nav class="sidebar-nav" aria-label="教材目录">
+<a class="sidebar-home is-page-current" href="index.html" aria-current="page">教材首页</a>
+<section class="sidebar-unit is-open" data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-01.html" class="sidebar-unit-link " ><span>第一单元</span><small>古代亚非文明</small></a>
+<button class="unit-toggle" type="button" aria-label="收起第一单元" aria-expanded="true" aria-controls="sidebar-unit-01">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-01" >
+<a href="unit-01.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-01.html#lesson-01" data-section-link="lesson-01"><span>第1课</span>古代埃及</a>
+<a href="unit-01.html#lesson-02" data-section-link="lesson-02"><span>第2课</span>古代两河流域</a>
+<a href="unit-01.html#lesson-03" data-section-link="lesson-03"><span>第3课</span>古代印度</a>
+<a href="unit-01.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-02.html" class="sidebar-unit-link " ><span>第二单元</span><small>古代欧洲文明</small></a>
+<button class="unit-toggle" type="button" aria-label="展开第二单元" aria-expanded="false" aria-controls="sidebar-unit-02">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-02" hidden>
+<a href="unit-02.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-02.html#lesson-04" data-section-link="lesson-04"><span>第4课</span>希腊城邦和亚历山大帝国</a>
+<a href="unit-02.html#lesson-05" data-section-link="lesson-05"><span>第5课</span>罗马城邦和罗马帝国</a>
+<a href="unit-02.html#lesson-06" data-section-link="lesson-06"><span>第6课</span>希腊罗马古典文化</a>
+<a href="unit-02.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-03.html" class="sidebar-unit-link " ><span>第三单元</span><small>封建时代的欧洲</small></a>
+<button class="unit-toggle" type="button" aria-label="展开第三单元" aria-expanded="false" aria-controls="sidebar-unit-03">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-03" hidden>
+<a href="unit-03.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-03.html#lesson-07" data-section-link="lesson-07"><span>第7课</span>基督教的兴起和法兰克王国</a>
+<a href="unit-03.html#lesson-08" data-section-link="lesson-08"><span>第8课</span>西欧庄园</a>
+<a href="unit-03.html#lesson-09" data-section-link="lesson-09"><span>第9课</span>中世纪城市和大学的兴起</a>
+<a href="unit-03.html#lesson-10" data-section-link="lesson-10"><span>第10课</span>拜占庭帝国和《查士丁尼法典》</a>
+<a href="unit-03.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-04.html" class="sidebar-unit-link " ><span>第四单元</span><small>封建时代的亚洲国家</small></a>
+<button class="unit-toggle" type="button" aria-label="展开第四单元" aria-expanded="false" aria-controls="sidebar-unit-04">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-04" hidden>
+<a href="unit-04.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-04.html#lesson-11" data-section-link="lesson-11"><span>第11课</span>古代日本</a>
+<a href="unit-04.html#lesson-12" data-section-link="lesson-12"><span>第12课</span>阿拉伯帝国</a>
+<a href="unit-04.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-05.html" class="sidebar-unit-link " ><span>第五单元</span><small>走向近代</small></a>
+<button class="unit-toggle" type="button" aria-label="展开第五单元" aria-expanded="false" aria-controls="sidebar-unit-05">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-05" hidden>
+<a href="unit-05.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-05.html#lesson-13" data-section-link="lesson-13"><span>第13课</span>西欧经济和社会的发展</a>
+<a href="unit-05.html#lesson-14" data-section-link="lesson-14"><span>第14课</span>文艺复兴运动</a>
+<a href="unit-05.html#lesson-15" data-section-link="lesson-15"><span>第15课</span>探寻新航路</a>
+<a href="unit-05.html#lesson-16" data-section-link="lesson-16"><span>第16课</span>早期殖民掠夺</a>
+<a href="unit-05.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-06.html" class="sidebar-unit-link " ><span>第六单元</span><small>资本主义制度的初步确立</small></a>
+<button class="unit-toggle" type="button" aria-label="展开第六单元" aria-expanded="false" aria-controls="sidebar-unit-06">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-06" hidden>
+<a href="unit-06.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-06.html#lesson-17" data-section-link="lesson-17"><span>第17课</span>君主立宪制的英国</a>
+<a href="unit-06.html#lesson-18" data-section-link="lesson-18"><span>第18课</span>美国的独立</a>
+<a href="unit-06.html#lesson-19" data-section-link="lesson-19"><span>第19课</span>法国大革命和拿破仑帝国</a>
+<a href="unit-06.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="unit-07.html" class="sidebar-unit-link " ><span>第七单元</span><small>工业革命和国际共产主义运动的兴起</small></a>
+<button class="unit-toggle" type="button" aria-label="展开第七单元" aria-expanded="false" aria-controls="sidebar-unit-07">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-unit-07" hidden>
+<a href="unit-07.html#unit-intro" data-section-link="unit-intro">单元导语</a>
+<a href="unit-07.html#lesson-20" data-section-link="lesson-20"><span>第20课</span>第一次工业革命</a>
+<a href="unit-07.html#lesson-21" data-section-link="lesson-21"><span>第21课</span>马克思主义的诞生和国际共产主义运动的兴起</a>
+<a href="unit-07.html#lesson-22" data-section-link="lesson-22"><span>第22课</span>活动课：唱响《国际歌》</a>
+<a href="unit-07.html#source-pages" data-section-link="source-pages">原书页面与插图</a>
+</div></section>
+<section class="sidebar-unit " data-unit-menu>
+<div class="sidebar-unit-head">
+<a href="appendix.html" class="sidebar-unit-link " ><span>附录</span><small>年表、译名表与后记</small></a>
+<button class="unit-toggle" type="button" aria-label="展开附录" aria-expanded="false" aria-controls="sidebar-appendix">⌄</button>
+</div>
+<div class="sidebar-children" id="sidebar-appendix" hidden>
+<a href="appendix.html#timeline" data-section-link="timeline">世界历史大事年表</a>
+<a href="appendix.html#translation-table" data-section-link="translation-table">中外文译名对照表</a>
+<a href="appendix.html#afterword" data-section-link="afterword">后记</a>
+<a href="appendix.html#source-pages" data-section-link="source-pages">原书页面</a>
+</div></section>
+</nav>
+</aside>
+<main class="main-content" id="main">
+<section class="home-hero">
+<div class="home-hero-copy"><p class="eyebrow">义务教育教科书</p><h1>世界历史<br><span>九年级上册</span></h1><p>教育部组织编写 · 总主编齐世荣 · 人民教育出版社</p><div class="hero-stats"><span><strong>7</strong> 个单元</span><span><strong>22</strong> 课</span><span><strong>114</strong> 张原书页图</span></div><a class="primary-button" href="unit-01.html">从第一单元开始 →</a></div>
+<figure class="cover-card"><img src="images/page-001.webp" alt="《世界历史 九年级上册》教材封面" loading="eager" decoding="async"><figcaption>教材封面</figcaption></figure>
+</section>
+<section class="home-section" id="catalog" data-nav-section data-section-title="完整目录"><header class="section-header"><p class="eyebrow">CONTENTS</p><h2>完整目录</h2><p>点击单元进入完整单元页；点击课名直接跳到该单元页内对应锚点。</p></header><div class="toc-grid"><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 01</p><h2>第一单元</h2><p>古代亚非文明</p></div><a class="card-open" href="unit-01.html">打开单元 →</a></div>
+<ul><li><a href="unit-01.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-01.html#lesson-01"><span class="toc-number">1</span><span>古代埃及</span></a></li><li><a href="unit-01.html#lesson-02"><span class="toc-number">2</span><span>古代两河流域</span></a></li><li><a href="unit-01.html#lesson-03"><span class="toc-number">3</span><span>古代印度</span></a></li></ul>
+</article><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 02</p><h2>第二单元</h2><p>古代欧洲文明</p></div><a class="card-open" href="unit-02.html">打开单元 →</a></div>
+<ul><li><a href="unit-02.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-02.html#lesson-04"><span class="toc-number">4</span><span>希腊城邦和亚历山大帝国</span></a></li><li><a href="unit-02.html#lesson-05"><span class="toc-number">5</span><span>罗马城邦和罗马帝国</span></a></li><li><a href="unit-02.html#lesson-06"><span class="toc-number">6</span><span>希腊罗马古典文化</span></a></li></ul>
+</article><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 03</p><h2>第三单元</h2><p>封建时代的欧洲</p></div><a class="card-open" href="unit-03.html">打开单元 →</a></div>
+<ul><li><a href="unit-03.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-03.html#lesson-07"><span class="toc-number">7</span><span>基督教的兴起和法兰克王国</span></a></li><li><a href="unit-03.html#lesson-08"><span class="toc-number">8</span><span>西欧庄园</span></a></li><li><a href="unit-03.html#lesson-09"><span class="toc-number">9</span><span>中世纪城市和大学的兴起</span></a></li><li><a href="unit-03.html#lesson-10"><span class="toc-number">10</span><span>拜占庭帝国和《查士丁尼法典》</span></a></li></ul>
+</article><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 04</p><h2>第四单元</h2><p>封建时代的亚洲国家</p></div><a class="card-open" href="unit-04.html">打开单元 →</a></div>
+<ul><li><a href="unit-04.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-04.html#lesson-11"><span class="toc-number">11</span><span>古代日本</span></a></li><li><a href="unit-04.html#lesson-12"><span class="toc-number">12</span><span>阿拉伯帝国</span></a></li></ul>
+</article><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 05</p><h2>第五单元</h2><p>走向近代</p></div><a class="card-open" href="unit-05.html">打开单元 →</a></div>
+<ul><li><a href="unit-05.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-05.html#lesson-13"><span class="toc-number">13</span><span>西欧经济和社会的发展</span></a></li><li><a href="unit-05.html#lesson-14"><span class="toc-number">14</span><span>文艺复兴运动</span></a></li><li><a href="unit-05.html#lesson-15"><span class="toc-number">15</span><span>探寻新航路</span></a></li><li><a href="unit-05.html#lesson-16"><span class="toc-number">16</span><span>早期殖民掠夺</span></a></li></ul>
+</article><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 06</p><h2>第六单元</h2><p>资本主义制度的初步确立</p></div><a class="card-open" href="unit-06.html">打开单元 →</a></div>
+<ul><li><a href="unit-06.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-06.html#lesson-17"><span class="toc-number">17</span><span>君主立宪制的英国</span></a></li><li><a href="unit-06.html#lesson-18"><span class="toc-number">18</span><span>美国的独立</span></a></li><li><a href="unit-06.html#lesson-19"><span class="toc-number">19</span><span>法国大革命和拿破仑帝国</span></a></li></ul>
+</article><article class="unit-card">
+<div class="unit-card-head"><div><p class="eyebrow">UNIT 07</p><h2>第七单元</h2><p>工业革命和国际共产主义运动的兴起</p></div><a class="card-open" href="unit-07.html">打开单元 →</a></div>
+<ul><li><a href="unit-07.html#unit-intro"><span class="toc-number">导</span><span>单元导语</span></a></li><li><a href="unit-07.html#lesson-20"><span class="toc-number">20</span><span>第一次工业革命</span></a></li><li><a href="unit-07.html#lesson-21"><span class="toc-number">21</span><span>马克思主义的诞生和国际共产主义运动的兴起</span></a></li><li><a href="unit-07.html#lesson-22"><span class="toc-number">22</span><span>活动课：唱响《国际歌》</span></a></li></ul>
+</article></div></section>
+<section class="home-section appendix-callout"><div><p class="eyebrow">APPENDIX</p><h2>附录</h2><p>世界历史大事年表（上）、中外文译名对照表（上）、后记及封底页面。</p></div><a class="secondary-button" href="appendix.html">打开附录 →</a></section>
+<section class="home-section" id="front-matter" data-nav-section data-section-title="封面、版权与目录"><header class="section-header"><p class="eyebrow">FRONT MATTER</p><h2>封面、版权与目录</h2><p>前置页面的可复制文字与完整原书页面。</p></header><div class="transcript-stack"><article class="text-page" data-page="1">
+<div class="page-text-head"><h3>PDF 第 1 页</h3><a href="#source-page-001">查看原书页面</a></div>
+<h4 class="text-subheading">义务教育教科书</h4>
+<h4 class="text-subheading">九年级</h4>
+<h4 class="text-subheading">上册</h4>
+<h4 class="text-subheading">世界历史</h4>
+</article><article class="text-page" data-page="2">
+<div class="page-text-head"><h3>PDF 第 2 页</h3><a href="#source-page-002">查看原书页面</a></div>
+<h4 class="text-subheading">义务教育教科书</h4>
+<h4 class="text-subheading">世界历史</h4>
+<h4 class="text-subheading">九年级</h4>
+<h4 class="text-subheading">上册</h4>
+<h4 class="text-subheading">教育部组织编写</h4>
+<h4 class="text-subheading">总主编齐世荣</h4>
+<p class="body-paragraph">·北京·</p>
+</article><article class="text-page" data-page="3">
+<div class="page-text-head"><h3>PDF 第 3 页</h3><a href="#source-page-003">查看原书页面</a></div>
+<p class="body-paragraph">总主编：齐世荣本册主编：侯建新许斌编写人员：（以姓氏笔画为序）王亚平龙秀清任世江刘景华孙立田张振海张晓晗赵文君徐滨等</p>
+<p class="body-paragraph">责任编辑：张振海美术编辑：张蓓</p>
+<p class="figure-caption">义务教育教科书世界历史九年级上册</p>
+<p class="figure-caption">教育部组织编写</p>
+<p class="figure-caption">出版</p>
+<p class="figure-caption">（北京市海淀区中关村南大街17号院1号楼邮编：100081）</p>
+<p class="figure-caption">网址 http://www.pep.com.cn</p>
+<p class="figure-caption">重印 ××× 出版社</p>
+<p class="figure-caption">发行 ××× 新华书店</p>
+<p class="figure-caption">印刷 ××× 印刷厂</p>
+<p class="figure-caption">版次2018年6月第1版</p>
+<p class="figure-caption">印次年月第次印刷</p>
+<p class="figure-caption">开本787毫米×1092毫米1/16</p>
+<p class="figure-caption">印张7</p>
+<p class="figure-caption">字数116千字</p>
+<p class="figure-caption">印数册</p>
+<p class="figure-caption">书号 ISBN 978-7-107-32903-6</p>
+<p class="figure-caption">定价元</p>
+<p class="figure-caption">定价批号：××号审图号：GS（2016）941号</p>
+<p class="figure-caption">版权所有·未经许可不得采用任何方式擅自复制或使用本产品任何部分·违者必究</p>
+<p class="figure-caption">如发现内容质量问题，请登录中小学教材意见反馈平台：jcyjfk.pep.com.cn</p>
+<p class="figure-caption">如发现印、装质量问题，影响阅读，请与××× 联系调换。电话：×××-××××××××</p>
+</article><article class="text-page" data-page="4">
+<div class="page-text-head"><h3>PDF 第 4 页</h3><a href="#source-page-004">查看原书页面</a></div>
+<h4 class="text-subheading">目录</h4>
+<p class="body-paragraph">古代亚非文明</p>
+<p class="body-paragraph">第１课古代埃及...................................................................2第２课古代两河流域...........................................................6第３课古代印度.................................................................10</p>
+<p class="body-paragraph">第二单元古代欧洲文明</p>
+<p class="body-paragraph">第４课希腊城邦和亚历山大帝国......................................16第5课罗马城邦和罗马帝国.............................................21第6课希腊罗马古典文化.................................................26</p>
+<p class="body-paragraph">第三单元封建时代的欧洲</p>
+<p class="body-paragraph">第7课基督教的兴起和法兰克王国..................................32第8课西欧庄园.................................................................38第9课中世纪城市和大学的兴起......................................42第10课拜占庭帝国和《查士丁尼法典》.........................47</p>
+</article><article class="text-page" data-page="5">
+<div class="page-text-head"><h3>PDF 第 5 页</h3><a href="#source-page-005">查看原书页面</a></div>
+<p class="body-paragraph">封建时代的亚洲国家</p>
+<p class="body-paragraph">走向近代</p>
+<p class="body-paragraph">第13课西欧经济和社会的发展.........................................60第14课文艺复兴运动........................................................65第15课探寻新航路............................................................70第16课早期殖民掠夺........................................................75</p>
+<p class="body-paragraph">第六单元资本主义制度的初步确立</p>
+<p class="body-paragraph">第17课君主立宪制的英国.................................................80第18课美国的独立............................................................84第19课法国大革命和拿破仑帝国.....................................88</p>
+<p class="body-paragraph">第七单元工业革命和国际共产主义运动的兴起</p>
+<p class="body-paragraph">第20课第一次工业革命....................................................94第21课马克思主义的诞生和国际共产主义运动的兴起...98</p>
+<p class="body-paragraph">第22课活动课：唱响《国际歌》...................................102</p>
+<p class="body-paragraph">附录世界历史大事年表（上）.................................................104中外文译名对照表（上）.................................................105</p>
+</article></div><div class="source-pages compact-source"><div class="page-image-grid"><figure class="original-page" id="source-page-001">
+<a href="images/page-001.webp" target="_blank" rel="noopener"><img src="images/page-001.webp" alt="教材前置页面，PDF 第 1 页" loading="lazy" decoding="async"></a>
+<figcaption>PDF 第 1 页（PDF 第 1 页）</figcaption>
+</figure><figure class="original-page" id="source-page-002">
+<a href="images/page-002.webp" target="_blank" rel="noopener"><img src="images/page-002.webp" alt="教材前置页面，PDF 第 2 页" loading="lazy" decoding="async"></a>
+<figcaption>PDF 第 2 页（PDF 第 2 页）</figcaption>
+</figure><figure class="original-page" id="source-page-003">
+<a href="images/page-003.webp" target="_blank" rel="noopener"><img src="images/page-003.webp" alt="教材前置页面，PDF 第 3 页" loading="lazy" decoding="async"></a>
+<figcaption>PDF 第 3 页（PDF 第 3 页）</figcaption>
+</figure><figure class="original-page" id="source-page-004">
+<a href="images/page-004.webp" target="_blank" rel="noopener"><img src="images/page-004.webp" alt="教材前置页面，PDF 第 4 页" loading="lazy" decoding="async"></a>
+<figcaption>PDF 第 4 页（PDF 第 4 页）</figcaption>
+</figure><figure class="original-page" id="source-page-005">
+<a href="images/page-005.webp" target="_blank" rel="noopener"><img src="images/page-005.webp" alt="教材前置页面，PDF 第 5 页" loading="lazy" decoding="async"></a>
+<figcaption>PDF 第 5 页（PDF 第 5 页）</figcaption>
+</figure></div></div></section>
+</main>
+</div>
+<footer class="site-footer">世界历史·九年级上册 · Enhanced HTML 离线版 · 全部原书页面已保留</footer>
+</body>
+</html>

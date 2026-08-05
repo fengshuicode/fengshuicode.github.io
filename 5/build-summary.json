@@ -1,0 +1,27 @@
+{
+  "book": "中国历史·八年级上册",
+  "units": 8,
+  "lessons": 27,
+  "major_text_sections": 35,
+  "source_groups": 36,
+  "images": 142,
+  "manual_review": [
+    "复杂地图、表格和多栏版面文字顺序",
+    "少数生僻字及拼音的PDF文字层缺字",
+    "封面及纯图像装饰页的文字转录"
+  ],
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "appendix.html",
+    "unit-01.html",
+    "unit-02.html",
+    "unit-03.html",
+    "unit-04.html",
+    "unit-05.html",
+    "unit-06.html",
+    "unit-07.html",
+    "unit-08.html"
+  ]
+}
