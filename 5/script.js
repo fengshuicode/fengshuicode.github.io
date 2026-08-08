@@ -5,10 +5,21 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) root.dataset.reducedMotion = 'true';
 
+  const hashId = (hash) => {
+    try { return decodeURIComponent(String(hash).replace(/^#/, '')); }
+    catch (error) { console.warn('[textbook] malformed location hash:', hash, error); return ''; }
+  };
+  const storage = {
+    set(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch (error) { console.warn(`[textbook] localStorage write failed; ${key} will not persist:`, error); }
+    }
+  };
+
   const themeButton = document.getElementById('theme-toggle');
   const setTheme = (theme, persist = true) => {
     root.dataset.theme = theme;
-    if (persist) { try { localStorage.setItem('textbook-theme', theme); } catch (_) {} }
+    if (persist) storage.set('textbook-theme', theme);
     if (themeButton) {
       const dark = theme === 'dark';
       themeButton.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到深色模式');
@@ -104,7 +115,7 @@
     }, {rootMargin:'-84px 0px -62% 0px', threshold:[0,.1,.35,.7]});
     sections.forEach(section => observer.observe(section));
   }
-  const hashId = decodeURIComponent(location.hash.slice(1));
-  if (hashId && document.getElementById(hashId)) setActive(hashId, false);
+  const initialId = hashId(location.hash);
+  if (initialId && document.getElementById(initialId)) setActive(initialId, false);
   else if (sections[0]) setActive(sections[0].id, false);
 })();

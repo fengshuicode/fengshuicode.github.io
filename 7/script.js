@@ -9,8 +9,18 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let lastFocused = null;
 
+  const warnStorage = (action, error) => console.warn(`[textbook] localStorage ${action} failed; preferences will not persist:`, error);
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch (error) { warnStorage('read', error); return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (error) { warnStorage('write', error); } }
+  };
+  const hashId = (hash) => {
+    try { return decodeURIComponent(String(hash).replace(/^#/, '')); }
+    catch (error) { console.warn('[textbook] malformed location hash:', hash, error); return ''; }
+  };
+
   function preferredTheme() {
-    const saved = localStorage.getItem('textbook-theme');
+    const saved = storage.get('textbook-theme');
     if (saved === 'light' || saved === 'dark') return saved;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
@@ -28,7 +38,7 @@
   applyTheme(preferredTheme());
   themeButton?.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('textbook-theme', next);
+    storage.set('textbook-theme', next);
     applyTheme(next);
   });
 
@@ -103,14 +113,14 @@
       if (visible[0]) setActive(visible[0].target.id, false);
     }, { rootMargin: '-24% 0px -62% 0px', threshold: [0, .08, .2, .45] });
     tracked.forEach(section => observer.observe(section));
-    const initial = location.hash.slice(1);
+    const initial = hashId(location.hash);
     setActive(initial && document.getElementById(initial) ? initial : tracked[0].id, false);
   }
 
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#"]');
     if (!link) return;
-    const id = decodeURIComponent(link.getAttribute('href').slice(1));
+    const id = hashId(link.getAttribute('href'));
     const target = document.getElementById(id);
     if (!target) return;
     event.preventDefault();

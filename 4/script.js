@@ -10,8 +10,18 @@
   const sectionName = document.getElementById('current-section-name');
   let lastFocus = null;
 
+  const warnStorage = (action, error) => console.warn(`[textbook] localStorage ${action} failed; preferences will not persist:`, error);
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch (error) { warnStorage('read', error); return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (error) { warnStorage('write', error); } }
+  };
+  const hashId = (hash) => {
+    try { return decodeURIComponent(String(hash).replace(/^#/, '')); }
+    catch (error) { console.warn('[textbook] malformed location hash:', hash, error); return ''; }
+  };
+
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  const storedTheme = localStorage.getItem('textbook-theme');
+  const storedTheme = storage.get('textbook-theme');
   const initialTheme = storedTheme || (prefersDark.matches ? 'dark' : 'light');
 
   function applyTheme(theme) {
@@ -27,7 +37,7 @@
   applyTheme(initialTheme);
   themeButton?.addEventListener('click', () => {
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('textbook-theme', next);
+    storage.set('textbook-theme', next);
     applyTheme(next);
   });
 
@@ -105,7 +115,7 @@
     }, {rootMargin: '-18% 0px -65% 0px', threshold: [0, .05, .2, .5]});
     sections.forEach(section => observer.observe(section));
   }
-  const initialId = location.hash.slice(1);
+  const initialId = hashId(location.hash);
   const initialSection = document.getElementById(initialId) || sections[0];
   if (initialSection) activate(initialSection.id, initialSection.dataset.sectionTitle || '', false);
 })();

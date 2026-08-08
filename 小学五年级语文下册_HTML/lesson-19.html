@@ -138,20 +138,25 @@
 <script>
 (() => {
   const root = document.documentElement;
-  const storedSize = localStorage.getItem('study-font-size');
-  const storedTheme = localStorage.getItem('study-theme');
+  const warnStorage = (action, error) => console.warn(`[study] localStorage ${action} failed; preferences will not persist:`, error);
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch (error) { warnStorage('read', error); return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (error) { warnStorage('write', error); } }
+  };
+  const storedSize = storage.get('study-font-size');
+  const storedTheme = storage.get('study-theme');
   if (storedSize) root.style.setProperty('--study-font-size', storedSize + 'px');
   if (storedTheme === 'dark') root.dataset.theme = 'dark';
   document.querySelectorAll('[data-font]').forEach(btn => btn.addEventListener('click', () => {
     const current = parseFloat(getComputedStyle(root).getPropertyValue('--study-font-size')) || 20;
     const next = Math.min(28, Math.max(16, current + (btn.dataset.font === 'up' ? 1 : -1)));
     root.style.setProperty('--study-font-size', next + 'px');
-    localStorage.setItem('study-font-size', next);
+    storage.set('study-font-size', next);
   }));
   document.querySelectorAll('[data-theme]').forEach(btn => btn.addEventListener('click', () => {
     const dark = root.dataset.theme === 'dark';
     if (dark) delete root.dataset.theme; else root.dataset.theme = 'dark';
-    localStorage.setItem('study-theme', dark ? 'light' : 'dark');
+    storage.set('study-theme', dark ? 'light' : 'dark');
   }));
   const search = document.querySelector('#lesson-search');
   if (search) search.addEventListener('input', () => {

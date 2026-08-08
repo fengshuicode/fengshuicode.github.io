@@ -9,6 +9,12 @@
   const themeButton = document.querySelector('.theme-toggle');
   const currentSectionName = document.getElementById('current-section-name');
   const currentUnit = Number(body.dataset.unit || 0);
+  const storage = {
+    set(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch (error) { console.warn(`[textbook] localStorage write failed; ${key} will not persist:`, error); }
+    }
+  };
   let lastFocus = null;
 
   const themeIcon = () => {
@@ -23,7 +29,7 @@
   themeButton?.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
-    try { localStorage.setItem('textbook-theme', next); } catch (e) {}
+    storage.set('textbook-theme', next);
     themeIcon();
   });
 
