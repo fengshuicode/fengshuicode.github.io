@@ -201,32 +201,7 @@
 </section>
 </main>
 <footer class="site-footer">五年级语文下册 · 离线学习版 HTML</footer>
-<script>
-(() => {
-  const root = document.documentElement;
-  const storedSize = localStorage.getItem('study-font-size');
-  const storedTheme = localStorage.getItem('study-theme');
-  if (storedSize) root.style.setProperty('--study-font-size', storedSize + 'px');
-  if (storedTheme === 'dark') root.dataset.theme = 'dark';
-  document.querySelectorAll('[data-font]').forEach(btn => btn.addEventListener('click', () => {
-    const current = parseFloat(getComputedStyle(root).getPropertyValue('--study-font-size')) || 20;
-    const next = Math.min(28, Math.max(16, current + (btn.dataset.font === 'up' ? 1 : -1)));
-    root.style.setProperty('--study-font-size', next + 'px');
-    localStorage.setItem('study-font-size', next);
-  }));
-  document.querySelectorAll('[data-theme]').forEach(btn => btn.addEventListener('click', () => {
-    const dark = root.dataset.theme === 'dark';
-    if (dark) delete root.dataset.theme; else root.dataset.theme = 'dark';
-    localStorage.setItem('study-theme', dark ? 'light' : 'dark');
-  }));
-  const search = document.querySelector('#lesson-search');
-  if (search) search.addEventListener('input', () => {
-    const q = search.value.trim().toLowerCase();
-    document.querySelectorAll('[data-search]').forEach(card => {
-      card.hidden = q && !card.dataset.search.toLowerCase().includes(q);
-    });
-  });
-})();
-</script>
+<script src="../assets/textbook-ui.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
