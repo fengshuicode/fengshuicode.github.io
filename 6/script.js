@@ -84,7 +84,7 @@
     }, {rootMargin:'-80px 0px -65% 0px', threshold:[0,.05,.2,.5]});
     sections.forEach(s => observer.observe(s));
   }
-  const initial = location.hash && document.querySelector(location.hash);
+  const initial = location.hash ? document.querySelector(location.hash) : null;
   if (initial?.dataset.sectionTitle) setActive(initial.id, initial.dataset.sectionTitle, false);
   else if (sections[0]) setActive(sections[0].id, sections[0].dataset.sectionTitle, false);
 })();
