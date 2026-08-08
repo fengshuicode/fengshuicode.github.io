@@ -2,7 +2,15 @@
 (() => {
   const root = document.documentElement;
   const themeButton = document.querySelector('.theme-toggle');
-  const storage = { get(key) { try { return localStorage.getItem(key); } catch (_) { return null; } }, set(key, value) { try { localStorage.setItem(key, value); } catch (_) {} } };
+  const hashId = (hash) => {
+    try { return decodeURIComponent(String(hash).replace(/^#/, '')); }
+    catch (error) { console.warn('[textbook] malformed location hash:', hash, error); return ''; }
+  };
+  const warnStorage = (action, error) => console.warn(`[textbook] localStorage ${action} failed; preferences will not persist:`, error);
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch (error) { warnStorage('read', error); return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (error) { warnStorage('write', error); } }
+  };
   const stored = storage.get('history-theme');
   const initial = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   const setTheme = (theme) => {
@@ -12,7 +20,8 @@
       const dark = theme === 'dark';
       themeButton.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到深色模式');
       themeButton.title = dark ? '浅色模式' : '深色模式';
-      themeButton.querySelector('span').textContent = dark ? '☀' : '◐';
+      const icon = themeButton.querySelector('span');
+      if (icon) icon.textContent = dark ? '☀' : '◐';
     }
   };
   setTheme(initial);
@@ -75,5 +84,5 @@
     }, {rootMargin:'-18% 0px -62% 0px',threshold:[0,.15,.35,.6]});
     sections.forEach(s=>observer.observe(s));
   }
-  const initialHash=location.hash.slice(1); if (initialHash) activate(initialHash);
+  const initialHash=hashId(location.hash); if (initialHash) activate(initialHash);
 })();

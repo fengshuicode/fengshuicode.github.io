@@ -1,9 +1,14 @@
 (() => {
   const root = document.documentElement;
   const body = document.body;
-  const savedTheme = localStorage.getItem('history-theme');
-  const savedSize = Number(localStorage.getItem('history-font-size'));
-  const savedMode = localStorage.getItem('history-view-mode');
+  const warnStorage = (action, error) => console.warn(`[history] localStorage ${action} failed; preferences will not persist:`, error);
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch (error) { warnStorage('read', error); return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (error) { warnStorage('write', error); } }
+  };
+  const savedTheme = storage.get('history-theme');
+  const savedSize = Number(storage.get('history-font-size'));
+  const savedMode = storage.get('history-view-mode');
   if (savedTheme === 'dark') root.dataset.theme = 'dark';
   if (savedSize >= 15 && savedSize <= 24) root.style.setProperty('--reading-size', `${savedSize}px`);
   if (savedMode === 'text') body.classList.add('text-only');
@@ -17,18 +22,18 @@
     if (action === 'theme') {
       const dark = root.dataset.theme === 'dark';
       if (dark) delete root.dataset.theme; else root.dataset.theme = 'dark';
-      localStorage.setItem('history-theme', dark ? 'light' : 'dark');
+      storage.set('history-theme', dark ? 'light' : 'dark');
     }
     if (action === 'toggle-images') {
       body.classList.toggle('text-only');
-      localStorage.setItem('history-view-mode', body.classList.contains('text-only') ? 'text' : 'spread');
+      storage.set('history-view-mode', body.classList.contains('text-only') ? 'text' : 'spread');
       button.textContent = body.classList.contains('text-only') ? '显示原页' : '图文对照';
     }
     if (action === 'font-up' || action === 'font-down') {
       const current = parseFloat(getComputedStyle(root).getPropertyValue('--reading-size')) || 18;
       const next = Math.max(15, Math.min(24, current + (action === 'font-up' ? 1 : -1)));
       root.style.setProperty('--reading-size', `${next}px`);
-      localStorage.setItem('history-font-size', String(next));
+      storage.set('history-font-size', String(next));
     }
   });
 

@@ -9,6 +9,16 @@
   const sectionTitle = document.getElementById('current-section-title');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let lastFocus = null;
+  const hashId = (hash) => {
+    try { return decodeURIComponent(String(hash).replace(/^#/, '')); }
+    catch (error) { console.warn('[textbook] malformed location hash:', hash, error); return ''; }
+  };
+  const storage = {
+    set(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch (error) { console.warn(`[textbook] localStorage write failed; ${key} will not persist:`, error); }
+    }
+  };
 
   function updateThemeButton() {
     if (!themeButton) return;
@@ -21,7 +31,7 @@
   themeButton?.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
-    try { localStorage.setItem('textbook-theme', next); } catch (e) {}
+    storage.set('textbook-theme', next);
     updateThemeButton();
   });
 
@@ -30,7 +40,7 @@
     lastFocus = document.activeElement;
     sidebar.classList.add('is-open');
     body.classList.add('drawer-open');
-    overlay.hidden = false;
+    if (overlay) overlay.hidden = false;
     menuButton.setAttribute('aria-expanded', 'true');
     menuButton.setAttribute('aria-label', '关闭目录');
     sidebar.focus();
@@ -39,7 +49,7 @@
     if (!sidebar || !menuButton) return;
     sidebar.classList.remove('is-open');
     body.classList.remove('drawer-open');
-    overlay.hidden = true;
+    if (overlay) overlay.hidden = true;
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', '打开目录');
     if (lastFocus instanceof HTMLElement) lastFocus.focus();
@@ -64,7 +74,7 @@
   navLinks.forEach(a => a.addEventListener('click', e => {
     const url = new URL(a.href, location.href);
     if (url.pathname === location.pathname && url.hash) {
-      const target = document.querySelector(url.hash);
+      const target = document.getElementById(hashId(url.hash));
       if (target) {
         e.preventDefault();
         target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'start'});
@@ -84,7 +94,7 @@
     }, {rootMargin:'-80px 0px -65% 0px', threshold:[0,.05,.2,.5]});
     sections.forEach(s => observer.observe(s));
   }
-  const initial = location.hash && document.querySelector(location.hash);
+  const initial = location.hash ? document.getElementById(hashId(location.hash)) : null;
   if (initial?.dataset.sectionTitle) setActive(initial.id, initial.dataset.sectionTitle, false);
   else if (sections[0]) setActive(sections[0].id, sections[0].dataset.sectionTitle, false);
 })();

@@ -1,6 +1,15 @@
 (() => {
   const root = document.documentElement;
-  const storedTheme = localStorage.getItem('textbook-theme');
+  const hashId = (hash) => {
+    try { return decodeURIComponent(String(hash).replace(/^#/, '')); }
+    catch (error) { console.warn('[textbook] malformed location hash:', hash, error); return ''; }
+  };
+  const warnStorage = (action, error) => console.warn(`[textbook] localStorage ${action} failed; preferences will not persist:`, error);
+  const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch (error) { warnStorage('read', error); return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch (error) { warnStorage('write', error); } }
+  };
+  const storedTheme = storage.get('textbook-theme');
   const preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   root.dataset.theme = storedTheme || (preferredDark ? 'dark' : 'light');
 
@@ -14,7 +23,7 @@
   updateThemeButton();
   themeButton?.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('textbook-theme', root.dataset.theme);
+    storage.set('textbook-theme', root.dataset.theme);
     updateThemeButton();
   });
 
@@ -24,7 +33,8 @@
       const target = document.getElementById(button.getAttribute('aria-controls'));
       const expanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', String(!expanded));
-      button.setAttribute('aria-label', button.getAttribute('aria-label').replace(expanded ? '收起' : '展开', expanded ? '展开' : '收起'));
+      const label = button.getAttribute('aria-label');
+      if (label) button.setAttribute('aria-label', label.replace(expanded ? '收起' : '展开', expanded ? '展开' : '收起'));
       unit?.classList.toggle('is-open', !expanded);
       if (target) target.hidden = expanded;
     });
@@ -120,7 +130,7 @@
     link.addEventListener('click', (event) => {
       const url = new URL(link.href, location.href);
       if (url.pathname !== location.pathname || !url.hash) return;
-      const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+      const target = document.getElementById(hashId(url.hash));
       if (!target) return;
       event.preventDefault();
       target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
@@ -129,6 +139,6 @@
     });
   });
 
-  const initial = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : sections[0];
+  const initial = location.hash ? document.getElementById(hashId(location.hash)) : sections[0];
   if (initial?.matches?.('[data-nav-section]')) setCurrentSection(initial, false);
 })();
