@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="HSK七至九级中文阅读训练：原文对照、选择题批改、逐项解析与证据定位。支持离线使用。"><title>阅见 · HSK 高阶阅读训练</title>
+<style>
+:root{--ink:#20352e;--muted:#748078;--green:#245b48;--green-light:#e8f0e9;--paper:#fffefa;--bg:#f4f3ed;--line:#e4e6de;--red:#aa4238;--red-bg:#fff0ec;--gold:#b58d44;--font:18px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}button,input,select{font:inherit}button,a,select,input{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.55}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #bd9555;outline-offset:3px}button{color:inherit}.app{display:grid;grid-template-columns:226px 1fr;min-height:100vh}.sidebar{background:#eef0e8;border-right:1px solid var(--line);padding:30px 18px;display:flex;flex-direction:column;height:100vh;position:sticky;top:0;overflow:auto}.brand{display:flex;gap:10px;align-items:center;padding:0 10px 26px}.logo{background:var(--green);color:#fffdf3;font-family:serif;font-size:25px;width:42px;height:42px;display:grid;place-items:center;border-radius:13px}.brand strong{font-size:22px;letter-spacing:3px}.tiny,.eyebrow{font-size:10px;letter-spacing:1.8px;color:var(--muted)}.nav-label{margin:18px 11px 10px;color:var(--muted);font-size:11px;letter-spacing:2px}.nav{display:grid;gap:7px}.nav button{display:grid;grid-template-columns:26px 1fr;gap:6px;text-align:left;padding:12px 10px;border:1px solid transparent;background:transparent;border-radius:10px}.nav button.active{background:var(--paper);border-color:#dce1d5;box-shadow:0 3px 10px #20352e05}.nav button:hover{background:#ffffff80}.nav .number{font:12px/1.6 Georgia,serif;color:var(--gold);padding-top:2px}.nav .name{font-size:13px;font-weight:600}.nav .sub{font-size:11px;color:var(--muted);margin-top:3px}.sidebar-bottom{margin-top:auto;padding:25px 10px 0;font-size:11px;color:var(--muted)}.sidebar-bottom strong{display:block;color:var(--green);margin-bottom:5px}.main{padding:26px 34px 18px;min-width:0}.topline{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}.crumb{font-size:12px;color:var(--muted)}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{border:1px solid #d7ded2;border-radius:8px;padding:8px 13px;background:var(--paper);font-size:12px;display:inline-flex;align-items:center;justify-content:center;gap:5px;text-decoration:none}.btn:hover{border-color:var(--green)}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.btn.text{border-color:transparent;background:transparent;color:var(--green);padding:6px}.heading{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;gap:20px}.eyebrow{color:var(--green);margin:0 0 7px}h1{font:600 32px/1.4 Georgia,"Songti SC","SimSun",serif;margin:0 0 8px;letter-spacing:1px}.intro{margin:0;color:var(--muted);font-size:12px}.mode{background:#e7eae1;padding:4px;border-radius:9px;display:flex;flex-shrink:0}.mode button{padding:7px 13px;border:0;border-radius:6px;background:transparent;font-size:12px}.mode button.on{background:var(--paper);box-shadow:0 1px 5px #20352e12;color:var(--green);font-weight:600}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}.stat{padding:13px 18px;background:#ffffff66;border:1px solid var(--line);border-radius:10px}.stat small{font-size:11px;color:var(--muted);display:block;margin-bottom:4px}.stat strong{font:24px/1.3 Georgia,serif}.stat span{font-size:11px;color:var(--muted);margin-left:5px}.track{height:4px;border-radius:9px;background:#e6e8df;margin-top:9px;overflow:hidden}.fill{height:100%;background:var(--green);transition:width .2s}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px}.section-head h2{font-size:16px;margin:0}.section-head .meta{font-size:11px;color:var(--muted)}.workspace{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(350px,1fr);gap:16px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:13px;overflow:hidden;min-width:0}.panelbar{padding:13px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;min-height:54px;gap:8px}.panelbar .label{font-size:12px;font-weight:600}.tag{font-size:10px;padding:3px 7px;border-radius:5px;background:var(--green-light);color:var(--green)}.reading,.question-scroll{height:calc(100vh - 367px);min-height:430px;overflow:auto;scrollbar-width:thin;scrollbar-color:#c9d2c4 transparent;scroll-behavior:smooth}.reading{padding:25px 30px 45px}.article-title{font:600 24px/1.5 "Songti SC","SimSun",serif;margin:0 0 5px}.article-sub{font-size:11px;color:var(--muted);margin-bottom:25px}.para{position:relative;margin:0 0 23px;padding-left:26px;border-radius:6px;scroll-margin-top:15px;font-family:"Songti SC","SimSun",Georgia,serif;font-size:var(--font);line-height:1.95;text-align:justify;transition:background .2s}.pnum{position:absolute;left:0;top:6px;font:10px/1.6 system-ui;color:#9aa596}.para.target{background:#f6f0d9;box-shadow:0 0 0 10px #f6f0d9}mark{background:#f2d782;color:inherit;border-radius:2px;padding:1px}.notice{border-left:3px solid #b4975a;background:#f8f4e8;color:#766342;padding:11px 13px;font:12px/1.8 system-ui;margin:0 0 24px;border-radius:0 6px 6px 0}.notice details summary{cursor:pointer}.question-scroll{padding:0 20px 20px}.question{padding:22px 0;border-bottom:1px solid var(--line);scroll-margin-top:8px}.qtop{display:flex;align-items:center;gap:8px;margin-bottom:9px}.qid{color:var(--green);font:600 16px Georgia,serif}.qkind{font-size:10px;color:var(--muted)}.badge{margin-left:auto;font-size:11px;padding:2px 7px;border-radius:4px}.badge.good{background:var(--green-light);color:var(--green)}.badge.bad{background:var(--red-bg);color:var(--red)}.badge.empty{background:#eeeee7;color:#777}.qt{font-size:15px;line-height:1.8;margin:0 0 13px;white-space:pre-line;font-weight:600}.options{display:grid;gap:8px}.option{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;position:relative;background:#fffefa}.option input{width:16px;height:16px;margin:3px 0 0;accent-color:var(--green);flex-shrink:0}.option .letter{font:13px/1.9 Georgia,serif;color:var(--muted)}.option .ot{font-size:13px;line-height:1.8}.option.selected{background:#eef3eb;border-color:#89aa92}.option.correct{border-color:#6e9c7b;background:#edf5ee}.option.wrong{border-color:#d59183;background:var(--red-bg)}.option .result{margin-left:auto;white-space:nowrap;color:var(--green);font-size:11px}.option.wrong .result{color:var(--red)}.option.locked{cursor:default}.explanation{margin-top:14px;background:#f5f6f0;border:1px solid #e2e7da;padding:15px;border-radius:9px;font-size:12px;line-height:1.9}.explanation strong{color:var(--green)}.explanation p{margin:7px 0 10px}.evidence{border-left:2px solid #95af8d;margin:10px 0;padding-left:11px;color:#58634d}.evidence small{display:block;font-size:10px;color:var(--muted)}.explanation details{border-top:1px solid var(--line);padding-top:9px;margin-top:9px}.explanation summary{cursor:pointer;color:var(--green);font-weight:500}.feedback{padding-top:7px}.feedback div{margin:6px 0}.warning{font-size:11px;color:#80663a;background:#faf1dc;padding:9px 11px;border-radius:5px;margin-top:10px}.question-actions{display:flex;justify-content:flex-end;margin-top:9px}.panel-foot{border-top:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;gap:10px;justify-content:space-between;background:#fcfcf6;font-size:12px}.summary{background:var(--green-light);border-radius:8px;padding:12px 14px;margin-top:16px;font-size:12px;line-height:1.8}.empty-state{padding:35px 10px;text-align:center;color:var(--muted);font-size:13px}.jump-list{display:flex;gap:5px;flex-wrap:wrap;margin:0 0 15px}.jump-list button{border:1px solid var(--line);background:white;border-radius:5px;padding:3px 7px;font-size:11px}.jump-list button.done{background:var(--green-light);color:var(--green)}.jump-list button.fail{background:var(--red-bg);color:var(--red)}.mobile-switch{display:none}.bottom-note{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:12px;gap:20px}.sortrow{display:flex;align-items:center;justify-content:space-between;margin:12px 0;gap:10px}.sortrow select{padding:7px 14px;border:1px solid var(--line);background:white;border-radius:6px;min-width:135px}.sortbox{padding:20px 0}.ref{font-family:Georgia,serif;font-size:20px;letter-spacing:2px;margin:15px 0;color:var(--green)}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:50;background:var(--ink);color:white;border-radius:10px;padding:12px 20px;font-size:12px;max-width:90vw;box-shadow:0 4px 25px #0002;display:none}.skip{position:absolute;top:-60px;left:250px;background:white;z-index:100}.skip:focus{top:5px}.fontbtn{border:0;background:transparent;padding:4px 7px;font-size:12px;color:var(--green)}dialog{border:1px solid var(--line);border-radius:12px;padding:24px;max-width:420px;color:var(--ink)}dialog::backdrop{background:#18352955}dialog p{font-size:13px}.dialogactions{display:flex;gap:10px;justify-content:flex-end}.global-review{font-size:12px;margin-top:10px}.panelbar select{background:transparent;border:1px solid var(--line);border-radius:5px;font-size:11px;padding:4px;max-width:125px}
+@media(min-width:1600px){.main{padding-left:50px;padding-right:50px}.workspace{grid-template-columns:1.15fr 1fr}.reading{padding-left:42px;padding-right:42px}.question-scroll{padding-left:28px;padding-right:28px}}
+@media(max-width:1150px){.app{grid-template-columns:185px 1fr}.sidebar{padding:25px 10px}.main{padding:22px 20px}.workspace{grid-template-columns:minmax(0,1fr) minmax(320px,1fr)}h1{font-size:27px}.reading{padding:22px 20px}.intro{max-width:380px}.stats{gap:8px}.stat{padding:10px 13px}}
+@media(max-width:850px){.app{display:block}.sidebar{position:relative;height:auto;padding:14px 16px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 0 12px}.brand strong{font-size:20px}.logo{width:35px;height:35px;font-size:22px}.sidebar-bottom,.nav-label{display:none}.nav{display:flex;overflow:auto;gap:6px}.nav button{min-width:135px;padding:8px;grid-template-columns:20px 1fr}.nav .name{font-size:12px}.nav .sub{font-size:10px}.main{padding:18px 16px}.topline{margin-bottom:16px}.heading{display:block}.mode{display:inline-flex;margin-top:14px}h1{font-size:29px}.intro{max-width:none}.stats{margin-bottom:18px;grid-template-columns:repeat(4,1fr)}.stat{padding:9px}.stat strong{font-size:21px}.stat span{display:none}.workspace{display:block}.panel{margin-bottom:14px}.reading,.question-scroll{height:auto;max-height:none;min-height:0}.reading{padding:25px 22px}.question-scroll{padding-bottom:20px}.mobile-switch{display:flex;gap:8px;margin-bottom:12px}.mobile-switch button{flex:1}.mobile-switch button.on{background:var(--green);color:white}.panel.hide-mobile{display:none}.bottom-note{display:block}.section-head .meta{display:none}.crumb{font-size:11px}.actions .btn{padding:6px 9px}.para{font-size:var(--font)}.skip{left:15px}}
+@media print{.sidebar,.topline,.stats,.mode,.panelbar,.panel-foot,.mobile-switch,.bottom-note,.question-actions,.jump-list{display:none}.app,.workspace{display:block}.main{padding:0}.panel{border:0}.reading,.question-scroll{height:auto;overflow:visible;min-height:0}.question,.para{break-inside:avoid}.option input{display:none}.explanation details .feedback{display:block}.explanation{break-inside:avoid}}
+</style></head>
+<body><a href="#reading" class="skip">跳至阅读原文</a><div class="app"><aside class="sidebar"><div class="brand"><div class="logo">阅</div><div><strong>阅见</strong><div class="tiny">READING STUDIO</div></div></div><div class="nav-label">你的阅读书架</div><nav id="nav" class="nav" aria-label="阅读篇目"></nav><div class="sidebar-bottom"><strong>每个答案，都有依据。</strong>先独立阅读，再核对证据。<br>把“感觉正确”变成“有据可循”。<div style="margin-top:18px">HSK 七—九级 · 专项训练<br>6篇阅读 · 41题 · 1组排序</div></div></aside><main class="main"><div class="topline"><div class="crumb">学习空间 / HSK 七—九级 / 阅读理解</div><div class="actions"><button class="btn" id="download">↓ 下载离线版</button><button class="btn" id="help">使用说明</button></div></div><div class="heading"><div><p class="eyebrow">READ CLOSELY. THINK CLEARLY.</p><h1>读懂文字背后的逻辑。</h1><p class="intro">原文对照 · 逐项解析 · 证据定位，让每一次练习都有收获。</p></div><div class="mode" aria-label="答题模式"><button data-mode="exam" class="on">独立作答</button><button data-mode="practice">即时练习</button></div></div><div class="stats" id="stats"></div><div class="section-head"><h2 id="section-title"></h2><div class="meta" id="section-meta"></div></div><div class="mobile-switch"><button class="btn on" data-mobile="read">阅读原文</button><button class="btn" data-mobile="questions">答题与解析</button></div><div class="workspace"><section class="panel" id="read-panel" aria-label="原文"><div class="panelbar"><div><span class="label">阅读原文</span> <span class="tag">段落已编号</span></div><div><button class="fontbtn" id="smaller" aria-label="缩小原文字号">A−</button><button class="fontbtn" id="larger" aria-label="增大原文字号">A＋</button></div></div><article class="reading" id="reading" tabindex="-1"></article><div class="panel-foot"><span id="read-footer"></span><button class="btn text" id="clear-highlight">清除高亮</button></div></section><section class="panel hide-mobile" id="questions-panel" aria-label="题目与批改"><div class="panelbar"><span class="label" id="question-label">选择与思考</span><select id="filter" aria-label="筛选题目"><option value="all">全部题目</option><option value="wrong">仅看错题</option><option value="unanswered">未答题目</option></select></div><div class="question-scroll" id="questions"></div><div class="panel-foot" id="question-footer"></div></section></div><div class="bottom-note"><span id="save-status">进度保存在当前浏览器；在线与离线版分别保存。</span><span>根据所提供材料整理 · 参考解析，非官方答案</span></div></main></div><div role="status" id="toast" aria-live="polite"></div><dialog id="dialog"><h3 id="dialog-title"></h3><div id="dialog-body"></div><div class="dialogactions"><button class="btn" id="dialog-cancel">取消</button><button class="btn primary" id="dialog-ok">确定</button></div></dialog>
+<script id="data" type="application/json">[
+  {
+    "id": "noodles",
+    "title": "一碗担担面",
+    "kicker": "41—47 · 饮食文化",
+    "paras": [
+      "担担面是川味小吃中的代表性食物，相传为1841年四川自贡一个叫陈包包的小贩创制，因为早期是用扁担挑在肩上沿街叫卖，所以叫作担担面，至今已经有上百年历史。",
+      "当年挑担担面的扁担一头是个煤球炉子，上面一口铜锅。铜锅隔为两格，一格煮面，一格炖鸡；另一头装的是碗筷、调料和洗碗的水桶。卖面的小贩用扁担挑在街上，晃晃悠悠地沿街游走，边走边________：“担担面，担担面。”喜欢担担面的一听到这种熟悉的叫卖声，赶紧叫住小贩说“来一碗”，那么你只要付点儿小钱，就能品尝到这种美食了。",
+      "担担面得名，来自这特殊的年代和叫卖方式；担担面出名，却在于它的调味和独特的面臊。",
+      "先说面臊，其实就是面卤或是浇头。四川人习惯把面臊分为三种：汤汁面臊、稀卤面臊和干煸面臊。汤汁面臊就是带有汤水的，比如红烧牛肉面、清汤牛肉面、香菇炖鸡面等的面臊；稀卤面臊就是面臊比较浓稠，一般都有勾芡这一过程，像打卤面、大蒜鳝鱼面等的面臊就属此列；干煸面臊就是指炒制的面臊，面臊一般都比较干爽，像杂酱面和担担面的面臊就是。",
+      "担担面的面臊非常有特色，人们习惯把它叫作“脆臊”，一听名字就知道好吃，制作起来其实也不麻烦：取动物腿肉剁成肉末，甜面酱用少许油解散；然后锅置火上，放少许油烧热，然后下肉末炒散，加料酒炒干水分，加盐、胡椒粉、味精调味，然后放入适量的甜面酱炒香，肉末呈现诱人的茶色，如果颜色较浅，可以加少许酱油，微微吐油就可以起锅放在一边了。",
+      "再来说说调味。担担面的定碗调料非常多：盐、味精、酱油、醋、辣椒油、香油、白糖、碎米芽菜、葱花和少许的鲜汤，甚至有人会放点儿花生碎和芝麻粉来增香。似乎看起来非常麻烦，但这正是四川厨师的高明和精妙。四川厨师高明，高在用味来刺激你的味蕾，用味来吸引你的食欲，叫你吃了就忘不掉；四川厨师的精妙，妙在可以把很多的调味原料组合在一起，让其和谐地统一，一味衬托另一味，一味更比一味好。",
+      "炒好面臊，放好调料，就可以开始煮面了。面条煮熟后，捞入已调味的碗中，撒上少许的肉末面臊就可以了。如今担担面已遍布各地，虽做法有些许不同，但因其味美受到各地人民的喜爱，已成为一种家常美食小吃。"
+    ],
+    "note": "",
+    "questions": [
+      {
+        "n": 41,
+        "t": "担担面的命名是源于它的：",
+        "opts": [
+          "售卖方式",
+          "制作材料",
+          "产品工艺",
+          "发源地址"
+        ],
+        "a": "A",
+        "p": 1,
+        "quote": "因为早期是用扁担挑在肩上沿街叫卖，所以叫作担担面",
+        "why": "“因为……所以……”明确给出命名的因果关系：挑担沿街售卖。",
+        "feedback": [
+          "与原文因果关系一致。",
+          "肉末、面条等材料不是命名原因。",
+          "炒制、煮面等工艺解释做法，不解释名字。",
+          "自贡是发源地，但名称并非来自地名。"
+        ],
+        "kind": "因果定位",
+        "note": ""
+      },
+      {
+        "n": 42,
+        "t": "第二段的空白处最适合填入：",
+        "opts": [
+          "打闹",
+          "尖叫",
+          "吆喝",
+          "耍宝"
+        ],
+        "a": "C",
+        "p": 2,
+        "quote": "喜欢担担面的一听到这种熟悉的叫卖声",
+        "why": "下文的“叫卖声”回指空格处的行为。“吆喝”可指大声叫卖，与小贩沿街售面完全吻合。",
+        "feedback": [
+          "指嬉闹、打斗，不是叫卖。",
+          "多指尖声喊叫，不能准确表达招揽顾客。",
+          "能与沿街售卖及叫卖声相照应。",
+          "指故意逗人发笑，文中没有这种情境。"
+        ],
+        "kind": "语境选词",
+        "note": ""
+      },
+      {
+        "n": 43,
+        "t": "浇头：",
+        "opts": [
+          "都带有汤水",
+          "都需要勾芡",
+          "起源于四川",
+          "是面臊的别称"
+        ],
+        "a": "D",
+        "p": 4,
+        "quote": "先说面臊，其实就是面卤或是浇头",
+        "why": "“其实就是”建立同义关系，因此面臊、面卤、浇头在此指同类东西。",
+        "feedback": [
+          "把汤汁面臊的特点扩大到了所有浇头。",
+          "把稀卤面臊的特点扩大到了所有浇头。",
+          "“四川人习惯分类”不能推出浇头起源于四川。",
+          "直接对应原文的同义解释。"
+        ],
+        "kind": "概念辨析",
+        "note": ""
+      },
+      {
+        "n": 44,
+        "t": "关于担担面的面臊，哪项正确？\n① 属于干煸面臊  ② 需要事先炒制\n③ 颜色比较清淡  ④ 制作时使用茶叶",
+        "opts": [
+          "①③",
+          "②④",
+          "①④",
+          "①②"
+        ],
+        "a": "D",
+        "p": 4,
+        "quote": "干煸面臊就是指炒制的面臊，面臊一般都比较干爽，像杂酱面和担担面的面臊就是",
+        "why": "第四段明确支持①；第五段详细写炒制步骤，末段又先写“炒好面臊”，支持②。“茶色”是颜色，不是茶叶。",
+        "feedback": [
+          "③错误：原文为诱人的茶色，还可加酱油调深。",
+          "④错误：配料没有茶叶。",
+          "④错误：“茶色”不可理解为加入茶叶。",
+          "①和②均有直接依据。"
+        ],
+        "kind": "组合判断",
+        "note": "同时参看第5段“肉末呈现诱人的茶色”和第7段“炒好面臊”。"
+      },
+      {
+        "n": 45,
+        "t": "担担面的调味原料：",
+        "opts": [
+          "各不相同",
+          "着重麻辣",
+          "多用骨汤",
+          "多而和谐"
+        ],
+        "a": "D",
+        "p": 6,
+        "quote": "可以把很多的调味原料组合在一起，让其和谐地统一",
+        "why": "这段先列举许多调料，后强调“和谐地统一”，概括为“多而和谐”最完整。",
+        "feedback": [
+          "只说不同，遗漏作者强调的协调统一。",
+          "有辣椒油不等于文章着重强调“麻辣”。",
+          "原文只是“少许的鲜汤”，没有“多用骨汤”。",
+          "兼顾原料多和搭配和谐两个重点。"
+        ],
+        "kind": "段落概括",
+        "note": ""
+      },
+      {
+        "n": 46,
+        "t": "担担面：",
+        "opts": [
+          "尚未走出四川",
+          "做法统一严谨",
+          "属于家常美食",
+          "拥有千年历史"
+        ],
+        "a": "C",
+        "p": 7,
+        "quote": "已成为一种家常美食小吃",
+        "why": "末段直接给出担担面如今的定位。",
+        "feedback": [
+          "与“已遍布各地”相反。",
+          "与“做法有些许不同”不符。",
+          "与原文直接一致。",
+          "第一段说上百年，而非千年。"
+        ],
+        "kind": "细节理解",
+        "note": ""
+      },
+      {
+        "n": 47,
+        "t": "最适合做上文标题的是：",
+        "opts": [
+          "回味无穷的美食",
+          "川味美食担担面",
+          "无辣不欢的四川菜",
+          "担担面与它的历史故事"
+        ],
+        "a": "B",
+        "p": 3,
+        "quote": "担担面得名，来自这特殊的年代和叫卖方式；担担面出名，却在于它的调味和独特的面臊",
+        "why": "全文围绕担担面展开，既谈由来，又谈面臊、调味和做法。B点明对象与川味特色，覆盖全文。",
+        "feedback": [
+          "范围太泛，没有点明担担面。",
+          "对象准确，概括全面。",
+          "把担担面扩为四川菜整体，范围过大。",
+          "只突出历史，遗漏大篇幅的制作与调味。"
+        ],
+        "kind": "主旨标题",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "id": "king",
+    "title": "不鸣则已，一鸣惊人",
+    "kicker": "49—54 · 历史故事",
+    "paras": [
+      "战国时期，齐国有一个名叫淳于髡的人。他的口才很好，也很会说话。他常常用一些有趣的隐语，来规劝君主，使君主不但不生气，而且乐于接受。",
+      "齐国的齐威王本来是一个很有才智的君主，但他继位以后，沉迷酒色，不理国家大事，每日只知饮酒作乐，把一切政事都交给大臣去办理，自己则不闻不问。因此，政治混乱，官吏们贪污失职，再加上各国诸侯也都趁机来侵犯，使得齐国________灭亡的边缘。",
+      "齐国的爱国之士都很担忧，但因为畏惧齐威王，没有人敢出面劝谏。其实齐威王是一个很聪明的人，他很喜欢说些隐语来展现自己的智慧。虽然他不喜欢听别人的劝告，但如果劝告得法的话，他还是会接受的。淳于髡知道这点后，便想了一个计策，准备找个机会来劝告齐威王。",
+      "有一天，淳于髡见到了齐威王，就对他说：“大王，臣有一个谜语想请您猜一猜：某个国家的宫廷中住着一只大鸟，已经整整三年了。可是它既不振翅飞翔，也不发声鸣叫，只是毫无目的地蜷伏着。大王，您猜这是一只什么鸟呢？”",
+      "齐威王是一个聪明人，一听就知道淳于髡是在讽刺自己像那只大鸟一样，身为一国之君却毫无作为，只知道享乐。他不再想做一个昏庸的君主，于是沉思片刻后便毅然决定要重新振作起来，做出一番轰轰烈烈的事业，因此他对淳于髡说：“你不知道，这只大鸟不飞则已，一飞冲天；不鸣则已，一鸣惊人。你慢慢等着瞧吧！”",
+      "从此齐威王不再沉迷于饮酒作乐，而开始整顿国政。首先他召见全国的官吏，对尽忠负责的给予奖励，对腐败无能的则加以惩罚。结果全国上下，很快就振作起来，到处充满蓬勃的朝气。另一方面，他也着手整顿军事，强大武力，提升国家的威望。各国诸侯听到这个消息以后都很震惊，不但不敢再来侵犯，甚至还把原先侵占的土地都归还给了齐国。"
+    ],
+    "note": "原材料没有第48题，本页保留49—54题，共6题；不补造第48题。",
+    "questions": [
+      {
+        "n": 49,
+        "t": "齐威王做了国君之后：\n① 不理朝政  ② 经常打猎\n③ 大修宫殿楼阁  ④ 喜欢饮酒取乐",
+        "opts": [
+          "①③",
+          "②④",
+          "①④",
+          "②③"
+        ],
+        "a": "C",
+        "p": 2,
+        "quote": "不理国家大事，每日只知饮酒作乐",
+        "why": "“不理国家大事”对应①；“饮酒作乐”对应④。②③没有出现。",
+        "feedback": [
+          "③没有原文依据。",
+          "②没有原文依据。",
+          "①④均为原文直接陈述。",
+          "②③均没有原文依据。"
+        ],
+        "kind": "组合判断",
+        "note": ""
+      },
+      {
+        "n": 50,
+        "t": "第二段空白处最适合填入：",
+        "opts": [
+          "跨越",
+          "涉足",
+          "开创",
+          "濒临"
+        ],
+        "a": "D",
+        "p": 2,
+        "quote": "政治混乱，官吏们贪污失职，再加上各国诸侯也都趁机来侵犯",
+        "why": "前文列举内忧外患，后接“灭亡的边缘”，表示逼近危险境地。“濒临”与“灭亡的边缘”搭配恰当。",
+        "feedback": [
+          "表示越过，不能表达将要灭亡。",
+          "表示进入某个领域，不搭配灭亡边缘。",
+          "表示开拓、创立，与危险境地不合。",
+          "表示接近，符合国家危急的语境。"
+        ],
+        "kind": "词语搭配",
+        "note": ""
+      },
+      {
+        "n": 51,
+        "t": "齐威王喜欢什么样的劝告？",
+        "opts": [
+          "直接的",
+          "委婉的",
+          "猛烈的",
+          "持续的"
+        ],
+        "a": "B",
+        "p": 1,
+        "quote": "用一些有趣的隐语，来规劝君主，使君主不但不生气，而且乐于接受",
+        "why": "结合第三段喜欢隐语、第五段借大鸟讽喻可知，委婉巧妙的劝告更容易被他接受。",
+        "feedback": [
+          "他不喜欢一般的直言劝告，故事采用隐语。",
+          "隐语与比喻体现委婉表达。",
+          "激烈程度不是他乐于接受的原因。",
+          "文章没有说要反复持续劝告。"
+        ],
+        "kind": "推断理解",
+        "note": "题目中的“喜欢”应结合全文理解为“更容易接受”，不是说他喜欢一切委婉劝告。"
+      },
+      {
+        "n": 52,
+        "t": "淳于髡把大鸟比作：",
+        "opts": [
+          "小人",
+          "敌人",
+          "某大臣",
+          "齐威王"
+        ],
+        "a": "D",
+        "p": 5,
+        "quote": "淳于髡是在讽刺自己像那只大鸟一样",
+        "why": "“自己”承接齐威王；鸟不飞不鸣对应君王毫无作为。",
+        "feedback": [
+          "原文没有把鸟比作小人。",
+          "鸟象征本国君王，不是敌人。",
+          "被劝谏的对象不是大臣。",
+          "原文直接说明所指对象。"
+        ],
+        "kind": "指代关系",
+        "note": ""
+      },
+      {
+        "n": 53,
+        "t": "齐威王改革的措施不包括：",
+        "opts": [
+          "整顿军事",
+          "把土地分给百姓",
+          "惩罚腐败的官员",
+          "奖励尽职的官吏"
+        ],
+        "a": "B",
+        "p": 6,
+        "quote": "对尽忠负责的给予奖励，对腐败无能的则加以惩罚",
+        "why": "末段列出奖官、惩官、整军；土地是诸侯归还给齐国，不能偷换成齐王分给百姓。",
+        "feedback": [
+          "“着手整顿军事”有明确依据，应排除。",
+          "文中没有这一措施，是本题所问的“不包括”。",
+          "“对腐败无能的则加以惩罚”有依据。",
+          "“对尽忠负责的给予奖励”有依据。"
+        ],
+        "kind": "否定细节",
+        "note": ""
+      },
+      {
+        "n": 54,
+        "t": "哪个成语可以概括本文的主要内容？",
+        "opts": [
+          "谋事在人，成事在天",
+          "路见不平，拔刀相助",
+          "重赏之下，必有勇夫",
+          "不鸣则已，一鸣惊人"
+        ],
+        "a": "D",
+        "p": 5,
+        "quote": "不鸣则已，一鸣惊人",
+        "why": "齐威王先沉迷享乐，受到劝谏后振作并取得显著成效；D概括这一前后转变，也呼应原文关键话语。",
+        "feedback": [
+          "文章没有强调结果取决于天命。",
+          "文章并非见义勇为的故事。",
+          "奖励只是改革的一部分，概括不全面。",
+          "准确概括从无所作为到取得惊人成效。"
+        ],
+        "kind": "主旨概括",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "id": "lion",
+    "title": "南狮与北狮",
+    "kicker": "55—61 · 民俗艺术",
+    "paras": [
+      "舞狮是中国优秀的民间艺术，至今已有一千多年的历史。狮舞在旧时称“太平乐”，而到了唐代时更得到广泛的发展。狮艺在当时已成为过年过节、行香走会中的必备节目。在一千多年的发展过程中，狮舞形成了南北两种表演风格。",
+      "北狮造型和真的狮子很像，狮头较为简单，全身披金黄色毛。舞狮者（一般二人舞一头）的裤子、鞋都会披上毛，未舞时看起来已经是________的狮子。狮头上有红结者为雄狮，有绿结者为雌狮。北狮表现灵活的动作，与南狮着重威猛不同。舞动则是以扑、跌、翻、滚、跳跃、擦痒等动作为主，表演较为接近杂耍。北狮一般是雌雄成对出现，由装扮成武士的主人引领。有时一对北狮会配一对小北狮，小狮戏弄大狮，大狮弄儿为乐，尽显天伦。",
+      "河北是北狮的发祥地。其中又以徐水的舞狮最为有名。徐水舞狮的活动时间主要在春节和春季寺庙法会期间，表演时由两人前后配合，前者双手执道具戴在头上扮演狮头，后者俯身双手抓住前者腰部，披上用牛毛缀成的狮皮饰盖扮演狮身，两人合作扮成一只大狮子，称大狮；另由一人头戴狮头面具，身披狮皮扮演小狮子，称少狮；手持绣球逗引狮子的人称为引狮郎，引狮郎与狮子默契配合，形成北方舞狮的一个重要特征。徐水舞狮的基本特征是外形夸张，狮头圆大，眼睛灵动，大嘴张合有度，既威武雄壮，又憨态可掬。",
+      "南狮又称醒狮，以广东等地的醒狮最具代表性，分为文狮、武狮和少狮三大类。醒狮是融武术、舞蹈、音乐等为一体的汉族民俗文化，由唐代宫廷狮子舞脱胎而来。五代十国之后，随着中原移民的南迁，舞狮文化传入广东地区。醒狮现流传于南方地区以及海外华人社区，被认为能驱邪避害，是吉祥瑞物，每逢节庆或有重大活动必有舞狮助兴，长盛不衰，世代相传。",
+      "南狮造型威猛，舞动时注重马步。南狮主要是靠舞者的动作表现出威猛的狮子形态，一般二人舞一头。南狮的狮头设计独特，不完全像真实的狮子头。南狮的狮头还有一只角，传闻以前会用铁制作，以应对舞狮时经常出现的武斗。传统上，南狮狮头有“刘备”“关羽”“张飞”之分。三种狮头，不仅颜色、装饰不同，而且舞法亦根据三人的性格而异。红色为关公狮，代表忠义、胜利，因关羽又被称为武财神，故关公狮又代表财富；黄色为刘备狮，代表泽被苍生、仁义及皇家贵气；黑色为张飞狮，代表霸气、勇猛，故一般张飞狮只有在比赛或者踢馆挑战时才用，一般喜庆之事还是红黄狮较为常见。",
+      "舞南狮时会配以大锣、大鼓、大钹等乐器，有时还会有一人扮作“大头佛”，手执葵扇带领。舞南狮之前通常还会举行“点睛”仪式。主礼嘉宾把朱砂涂在狮的眼睛及天庭上，寓意着赋予灵气及生命。"
+    ],
+    "note": "",
+    "questions": [
+      {
+        "n": 55,
+        "t": "唐代时舞狮：",
+        "opts": [
+          "开始叫作太平乐",
+          "已有一千年历史",
+          "形成了两种风格",
+          "是过节的必备节目"
+        ],
+        "a": "D",
+        "p": 1,
+        "quote": "狮艺在当时已成为过年过节、行香走会中的必备节目",
+        "why": "“当时”紧接“到了唐代时”，所以必备节庆节目是唐代已具备的特点。",
+        "feedback": [
+          "只说旧时称太平乐，未说从唐代开始。",
+          "“至今”千年不能偷换成唐代时已有千年。",
+          "南北风格在漫长发展中形成，未限定唐代。",
+          "准确承接“当时”的时间指向。"
+        ],
+        "kind": "时间辨析",
+        "note": ""
+      },
+      {
+        "n": 56,
+        "t": "北狮的：",
+        "opts": [
+          "狮头有角",
+          "动作灵活",
+          "颜色多变",
+          "造型复杂"
+        ],
+        "a": "B",
+        "p": 2,
+        "quote": "北狮表现灵活的动作，与南狮着重威猛不同",
+        "why": "B是原文直接表达的北狮特征。",
+        "feedback": [
+          "狮头有角出现在南狮介绍中。",
+          "与原文一致。",
+          "原文说北狮全身披金黄色毛。",
+          "原文说北狮狮头较为简单。"
+        ],
+        "kind": "细节理解",
+        "note": ""
+      },
+      {
+        "n": 57,
+        "t": "第二段空白处最适合填入：",
+        "opts": [
+          "惟妙惟肖",
+          "如假包换",
+          "浑然天成",
+          "有板有眼"
+        ],
+        "a": "B",
+        "p": 2,
+        "quote": "北狮造型和真的狮子很像，狮头较为简单，全身披金黄色毛",
+        "why": "此处从头到脚的装扮使其“看起来”像真狮子。“如假包换”在这里是夸张口吻，突出真假难辨；按给定选项和句式，B为参考最佳项。",
+        "feedback": [
+          "侧重描写或模仿逼真，语义接近，但嵌在“是……的狮子”中不及B贴合把它当成真狮的夸张口吻。",
+          "本义保证真货，此处借用来突出看起来仿佛真狮子。",
+          "侧重自然形成、没有雕琢痕迹，不是上下文强调点。",
+          "形容言行有条理、有节奏；此时尚未舞动。"
+        ],
+        "kind": "语境选词",
+        "note": "此题未提供官方答案。A与逼真语义相近，有一定干扰性；B依据现有句式作参考判定，不冒充官方定论。"
+      },
+      {
+        "n": 58,
+        "t": "徐水舞狮有什么特征？",
+        "opts": [
+          "狮头偏小",
+          "瘦小灵活",
+          "有“大头佛”",
+          "有“引狮郎”"
+        ],
+        "a": "D",
+        "p": 3,
+        "quote": "引狮郎与狮子默契配合，形成北方舞狮的一个重要特征",
+        "why": "第三段专门写徐水舞狮，并明确点出引狮郎的作用。",
+        "feedback": [
+          "原文为“狮头圆大”。",
+          "“瘦小”没有依据，不能拿少狮替代整体特征。",
+          "大头佛出现在南狮段落。",
+          "对应原文明确指出的重要特征。"
+        ],
+        "kind": "细节理解",
+        "note": ""
+      },
+      {
+        "n": 59,
+        "t": "广东醒狮：",
+        "opts": [
+          "分为两种",
+          "传自中原",
+          "来自民间",
+          "表演接近杂耍"
+        ],
+        "a": "B",
+        "p": 4,
+        "quote": "随着中原移民的南迁，舞狮文化传入广东地区",
+        "why": "中原移民南迁说明传播方向，中原是传入广东的来源地。",
+        "feedback": [
+          "原文说文狮、武狮、少狮三大类。",
+          "与传播路径直接一致。",
+          "属于民俗文化不等于起源于民间；本段说由唐代宫廷狮子舞脱胎而来。",
+          "接近杂耍是北狮特征。"
+        ],
+        "kind": "来源辨析",
+        "note": ""
+      },
+      {
+        "n": 60,
+        "t": "醒狮中的关公狮代表：",
+        "opts": [
+          "勇猛",
+          "贵气",
+          "财富",
+          "凶悍"
+        ],
+        "a": "C",
+        "p": 5,
+        "quote": "因关羽又被称为武财神，故关公狮又代表财富",
+        "why": "原文明说关公狮除忠义、胜利外，也代表财富。",
+        "feedback": [
+          "勇猛对应张飞狮。",
+          "皇家贵气对应刘备狮。",
+          "原文直接说明。",
+          "原文没有把凶悍列为关公狮的象征。"
+        ],
+        "kind": "细节理解",
+        "note": ""
+      },
+      {
+        "n": 61,
+        "t": "关于南狮，下列哪两项正确？\n① 一般三人一组  ② 狮头非常逼真\n③ 多有“点睛”仪式  ④ 受海外华人欢迎",
+        "opts": [
+          "①③",
+          "③④",
+          "①④",
+          "②③"
+        ],
+        "a": "B",
+        "p": 6,
+        "quote": "舞南狮之前通常还会举行“点睛”仪式",
+        "why": "第六段支持③；第四段说流传于海外华人社区，并在节庆、重大活动中助兴，支持④。第五段说一般二人舞一头、狮头不完全像真实狮子，排除①②。",
+        "feedback": [
+          "①与一般二人舞一头不符；有时另有大头佛不能改成一般三人。",
+          "③④均可从原文找到依据。",
+          "①不成立。",
+          "②与不完全像真实狮子相反。"
+        ],
+        "kind": "组合判断",
+        "note": "④同时参看第4段关于海外华人社区及节庆助兴的介绍。"
+      }
+    ]
+  },
+  {
+    "id": "rocket",
+    "title": "让火箭再次起飞",
+    "kicker": "62—68 · 航天科技",
+    "paras": [
+      "曾经，运载火箭是一次性航天工具。其第一级火箭在完成分离后会______到陆上无人区或空旷海域，不可重复使用。有人曾形容火箭使用的浪费程度，就和一架波音747客机仅完成一次单程飞行就报废一般。造价高昂的火箭如果摆脱“一次性”用品的角色，未来航天发射的成本有望大大降低。这就是人们历经失败仍然坚持尝试的原因，不过他们需要克服的难题不小。",
+      "运载火箭回收试验有两大难点：一是让火箭第一级在分离后垂直下降，其难度就像在暴风雨中让一根扫帚平稳地直立在手掌上；二是精准降落在未锚定且只有足球场大小的浮动平台上极其困难，且着陆的精度要求在10米以内。因此，回收火箭首先要解决火箭着陆的精度问题，要能够回收到预定地点。其次，火箭要以垂直的姿态降落，必须解决姿态控制问题，而越是竖长的物体，就越难以控制。此外，还要解决减速问题，必须是软着陆，又不用降落伞，所以只能用反向推力装置。而且，回收过程是一个变速过程，在这一过程中如何持续有效地解决以上几大问题，难度非常高。",
+      "就回收平台来说，在海上平台上回收火箭比陆地平台更难，因为陆地上的气象条件更好，回收面积也更大，平台更稳定。不过，在陆上降落意味着火箭在空中飞行距离可能更长，消耗的燃料更多。",
+      "火箭的回收只是火箭重复使用的第一步，接下来要验证火箭的发动机是否可以重复使用，还要进一步验证回收二级火箭的可行性。",
+      "火箭的重复使用对于发动机核心部件的性能和寿命提出了更高的要求。对于一次性使用的火箭来说，保证材料和相关设计在短时间内能够承受住压力是一个问题，确保长期使用的耐久性又是另外一个问题。美国航天飞机的主发动机燃烧室的压强高达207个大气压，工作温度约为3300摄氏度，其中一个小小的涡轮泵的功率是主战坦克发动机功率的10倍。",
+      "令人欣喜的是，火箭回收技术的发展已经取得了显著的进展，特别是在降低发射成本方面。例如，中国航天科技集团开发的用于运载火箭助推器和整流罩回收的系统，预计每年可节约十几亿元人民币的发射成本。此外，蓝箭航天的朱雀三号VTVL-1试验箭成功完成了十公里级垂直起降返回飞行试验，标志着中国商业航天在可重复使用运载火箭技术上取得重大突破。这些进展预示着未来卫星发射成本将大幅降低，发射频率将提高，从而推动商业航天产业的快速发展。"
+    ],
+    "note": "本篇保留你提供的材料与时代语境。批改依据是文章内容，不将文中“未来”“预计”等表述当作最新航天进展。",
+    "questions": [
+      {
+        "n": 62,
+        "t": "第一段空白处最适合填入：",
+        "opts": [
+          "飘落",
+          "降落",
+          "堕落",
+          "坠落"
+        ],
+        "a": "D",
+        "p": 1,
+        "quote": "其第一级火箭在完成分离后会______到陆上无人区或空旷海域，不可重复使用",
+        "why": "这里描述一次性火箭分离后掉落的情形。“坠落”突出从高处落下，最贴合语境。",
+        "feedback": [
+          "常指轻物缓慢飘下，不适合沉重火箭。",
+          "可指有控制的下降着陆，未突出此处掉落、弃置的情形。",
+          "多用于思想或行为变坏，是抽象意义。",
+          "准确表达从高处掉落。"
+        ],
+        "kind": "语境选词",
+        "note": ""
+      },
+      {
+        "n": 63,
+        "t": "“仅完成一次单程飞行就报废一般”用来说明：",
+        "opts": [
+          "波音客机质量太差",
+          "波音公司财大气粗",
+          "运载火箭造价昂贵",
+          "火箭使用极其浪费"
+        ],
+        "a": "D",
+        "p": 1,
+        "quote": "有人曾形容火箭使用的浪费程度",
+        "why": "找到比喻前的引导句即可确定目的：强调昂贵设备只使用一次的浪费。",
+        "feedback": [
+          "波音客机只是比喻对象，非评价对象。",
+          "文章不讨论波音公司财力。",
+          "造价昂贵是背景，但比喻直接强调使用浪费。",
+          "与引导句“浪费程度”一致。"
+        ],
+        "kind": "修辞作用",
+        "note": ""
+      },
+      {
+        "n": 64,
+        "t": "火箭回收的难点在于：\n① 降落姿态的控制  ② 降落过程的监测\n③ 降落时间的设定  ④ 降落地点的把握",
+        "opts": [
+          "①③",
+          "③④",
+          "①④",
+          "②③"
+        ],
+        "a": "C",
+        "p": 2,
+        "quote": "回收火箭首先要解决火箭着陆的精度问题，要能够回收到预定地点",
+        "why": "同段随后说“必须解决姿态控制问题”，对应①；预定地点、着陆精度对应④。不能把现实中可能存在的难点补入文章。",
+        "feedback": [
+          "③没有在文中列为难点。",
+          "③没有依据。",
+          "①④分别对应姿态控制和着陆精度。",
+          "②③都不是文中列出的这两项。"
+        ],
+        "kind": "组合判断",
+        "note": "同段另一个证据句为“其次，火箭要以垂直的姿态降落，必须解决姿态控制问题”。"
+      },
+      {
+        "n": 65,
+        "t": "反向推力装置用来解决什么问题？",
+        "opts": [
+          "减速",
+          "加速",
+          "匀速",
+          "超速"
+        ],
+        "a": "A",
+        "p": 2,
+        "quote": "还要解决减速问题，必须是软着陆，又不用降落伞，所以只能用反向推力装置",
+        "why": "“所以”连接问题与解决装置；目标是降低下降速度以实现软着陆。",
+        "feedback": [
+          "原文直接给出装置的用途。",
+          "与此处减速目标相反。",
+          "原文未说保持匀速。",
+          "不是文中使用的问题名称。"
+        ],
+        "kind": "因果定位",
+        "note": ""
+      },
+      {
+        "n": 66,
+        "t": "陆上回收平台的优势是：",
+        "opts": [
+          "消耗燃料少",
+          "气象条件好",
+          "回收面积更精准",
+          "可以使用降落伞"
+        ],
+        "a": "B",
+        "p": 3,
+        "quote": "陆地上的气象条件更好，回收面积也更大，平台更稳定",
+        "why": "B复述原文优势。注意“面积更大”不能改成“面积更精准”。",
+        "feedback": [
+          "文中说陆上降落可能消耗更多燃料。",
+          "原文直接支持。",
+          "把面积大小与着陆精度混淆。",
+          "原文没有说陆地可用降落伞。"
+        ],
+        "kind": "细节理解",
+        "note": ""
+      },
+      {
+        "n": 67,
+        "t": "第五段主要谈的是：",
+        "opts": [
+          "火箭的重复使用",
+          "对发动机的高要求",
+          "航天飞机的工作温度",
+          "建造材料的巨大进步"
+        ],
+        "a": "B",
+        "p": 5,
+        "quote": "火箭的重复使用对于发动机核心部件的性能和寿命提出了更高的要求",
+        "why": "首句是主题句；后文用耐久性、压强、温度与功率来解释要求高在哪里。",
+        "feedback": [
+          "范围过宽，不能体现本段特定重点。",
+          "准确概括首句及后续例证。",
+          "温度只是支持主题的一个例子。",
+          "文中没有说材料已经取得巨大进步。"
+        ],
+        "kind": "段落主旨",
+        "note": ""
+      },
+      {
+        "n": 68,
+        "t": "关于火箭回收技术的发展，哪项描述正确？",
+        "opts": [
+          "火箭回收技术目前还处于试验阶段，尚未实现商业化应用。",
+          "火箭回收技术的发展不会降低卫星发射成本，也不会提高发射频率。",
+          "蓝箭航天的朱雀三号VTVL-1试验箭未能完成十公里级垂直起降返回飞行试验。",
+          "中国航天科技集团开发的火箭助推器和整流罩回收系统预计每年可节约大量的发射成本。"
+        ],
+        "a": "D",
+        "p": 6,
+        "quote": "预计每年可节约十几亿元人民币的发射成本",
+        "why": "D把“十几亿元”概括为“大量”，保留“预计”的语气，与原文相符。",
+        "feedback": [
+          "试验案例不能推出全领域尚未商业应用，原文也没有这个总判断。",
+          "与“成本将大幅降低，发射频率将提高”相反。",
+          "与“成功完成”相反。",
+          "对象、作用及预计语气均与原文一致。"
+        ],
+        "kind": "信息核对",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "id": "airline",
+    "title": "飞机餐的兴衰",
+    "kicker": "排序练习 · 材料待补全",
+    "paras": [
+      "该计划被称为厨师的秘密会议，但只有精英阶层享受到了升级后的餐点。头等舱和商务舱的乘客可以吃到像墨西哥辣椒烧烤排骨和烤西红柿茄子汤这类由顶级厨师设计的菜肴。",
+      "曾经，空中旅行是奢华的顶点。各个航空公司都以自己的食物和饮料的质量和数量自豪。比如美国环球航空公司，曾在从洛杉矶到巴黎的航线上提供最高级的鱼子酱、鲑鱼和36种不同的饮料。乘客还可以从一份豪华菜单中点餐，从复杂的橘汁鸭肉到简单的热狗和汉堡包应有尽有。这顿饭可以从飞机起飞一直吃到塞纳河上的日出。",
+      "【C段正文缺失；原材料仅标注“C（固定位置）”。此处保留占位，不补写原文。】",
+      "今天有些航空还有点餐服务，比如新加坡航空，坐公务舱及以上舱位，就可以获得“点菜”服务，也就是说，他们的选择并非仅限于“鸡肉饭”或“牛肉面”，而是可以从色拉到主菜任意点选，选择多达十几种。当然，这样的服务必须最晚在起飞前一天通过网络或人工座席完成。除了食物可口之外，在头等舱，不少瓷器餐具都是名牌货，塑料材质基本是不会被端上餐桌的。公务舱及以上舱位一般都有餐布服务，食物容器底盘是不会直接接触小桌板的。",
+      "从你踏上飞机的那一刻起，机舱里面的环境首先开始影响你的嗅觉。接着，随着飞机的高度一路攀升，气压下降，机舱内的湿度也骤降。到了大约3000英尺高的时候，湿度低于12%，比大部分沙漠还要干燥。",
+      "此后，越来越多的人开始空中旅行，航空公司开始削减食品预算了。从20世纪60年代到80年代，问题越来越严重。航空公司就像机器人一样用传送带运送食物。再加上石油危机和各国政府对航空公司管制的放松，进一步导致票价下降和竞争加剧，航空公司只能尽可能减少在客户身上的开支。于是，由于成本问题，美味佳肴从飞机餐中消失了。",
+      "到了2013年，厨师的秘密会议的影响已经消失，因为美国航空公司开始与全美航空公司合并。美国航空公司已经不再请名厨打造他们的菜单，转而由内部员工来为客人奉上食物。"
+    ],
+    "note": "C段正文缺失，而且题头69—73与答题区到74的编号不一致。本页按“位置1—6（第3位固定C）”呈现，不占用后面的第74题。参考顺序仅供讨论，不计入41道单选题总分。",
+    "questions": [],
+    "sorting": true
+  },
+  {
+    "id": "sail",
+    "title": "借一束光，驶向远方",
+    "kicker": "74—80 · 太阳光压与太阳帆",
+    "paras": [
+      "太阳光传递光和热，照到人身上，人会感到暖洋洋的，但从未有人感觉到太阳光有压力。实际上，太阳光是有压力的，因为光具有两重性，既是电磁波，又是粒子——光子。光线实际上是光子流，当光子流遇到物体阻挡时，光子就会撞到该物体上，就像空气分子撞到物体上一样，光子的动能就转化成对物体的压力。",
+      "不过，太阳光产生的压力非常小。不仅人感受不到，就连普通的仪器也测不出来。在地球附近，太阳光照射到一个平整、光亮、能完全反射光的表面时，产生的压力最大，100万平方米光亮的面积上才受到9牛的压力，相当于一个2分硬币的重量。在地面上，由于重力、大气压力、空气阻力、摩擦力等力的存在，微乎其微的太阳光压力被淹没在这些宏观力的汪洋大海之中。",
+      "“山中无老虎，猴子称大王。”到了太空中，重力、大气压力、空气阻力、摩擦力等几乎完全消失，太阳光压力的作用才开始显著。一些具有创新思维的人开始想到利用太阳光压来推动航天器在太空飞行。早在20世纪初，俄罗斯宇航理论先驱齐奥尔科夫斯基就提出过这一大胆的设想。以后，又有不少科学家进行过研究。然而，只有当科学技术发展到今天的水平，在有强大的火箭把航天器送入太空的条件下，利用太阳光作为航天推进力才有了实现的可能。",
+      "太阳光压的大小是与接受太阳照射的面积成正比的。受照面积越大，产生的压力越大。为了获得一定的压力，必须有足够大的受照面积，从而引出了太阳帆的概念。太阳帆是一种面积很大，表面平整、光滑、无斑点和皱纹的薄膜，一般由聚酯或聚酰亚胺等高分子材料制成，表面镀铝或银，使其具有全反射的特性。",
+      "一块面积为5×10⁵平方米的太阳帆，在太阳光正射下可获得大约100毫牛的力，用它推动100千克的物体，可产生1毫米/二次方秒的加速度。这个加速度极其微小，只有地面重力加速度的一万分之一。",
+      "俗话说：“涓涓细流汇成大海，块块碎土堆成高山。”速度是加速度与时间的乘积，尽管加速度非常小，只要时间足够长，最终能达到一定的速度。理论上，即使航天器的加速度只有1毫米/二次方秒，那么，一天后，速度达到86.4米/秒；一个月后达到2592米/秒；130天后，就可超过第二宇宙速度，达到11.23千米/秒；一年后可达到31.54千米/秒，足以飞出太阳系。由此可见，加速度不在大而在时间长，时间长则灵。"
+    ],
+    "note": "74—80为你提供的改编选择题，非原卷简答题。本文保留原文，但内部数值存在不一致（例如第2段与第5段的面积—受力比例）；涉及压力、太空环境和逃逸速度的概括也不宜当作严格物理结论。本页按文意判分，并标出问题。",
+    "questions": [
+      {
+        "n": 74,
+        "t": "太阳光为什么有压力？",
+        "opts": [
+          "太阳光具有很高的温度",
+          "光子撞击物体并传递动量",
+          "太阳光受到地球引力的作用",
+          "太阳光能够使空气膨胀"
+        ],
+        "a": "B",
+        "p": 1,
+        "quote": "当光子流遇到物体阻挡时，光子就会撞到该物体上",
+        "why": "文章的解释核心是光子与物体碰撞。B用“传递动量”概括这一机制，是四项中唯一吻合的解释。",
+        "feedback": [
+          "温暖感与光压成因不是同一问题。",
+          "对应光子撞击物体的机制。",
+          "原文未将地球引力作为原因。",
+          "原文没有用空气膨胀解释光压。"
+        ],
+        "kind": "机制理解",
+        "note": "原文用“动能转化成压力”的说法较粗略；B中的“动量”并非逐字原句，而是对撞击机制更准确的表述。"
+      },
+      {
+        "n": 75,
+        "t": "人们感受不到太阳光压力的原因是什么？",
+        "opts": [
+          "太阳光压极其微弱",
+          "人体能够完全反射太阳光",
+          "太阳光压只存在于太空",
+          "人体对光子的运动不敏感"
+        ],
+        "a": "A",
+        "p": 2,
+        "quote": "太阳光产生的压力非常小。不仅人感受不到",
+        "why": "先给原因“非常小”，再说人感受不到，A准确概括。",
+        "feedback": [
+          "原文直接支持。",
+          "原文没有这种人体特性。",
+          "地面也有，只是作用微弱。",
+          "不是文章给出的直接原因。"
+        ],
+        "kind": "因果定位",
+        "note": ""
+      },
+      {
+        "n": 76,
+        "t": "按原文的类比，太阳光产生的力与什么相当？",
+        "opts": [
+          "一枚一元硬币的重量",
+          "一个普通苹果的重量",
+          "一个2分硬币的重量",
+          "一千克物体的重量"
+        ],
+        "a": "C",
+        "p": 2,
+        "quote": "相当于一个2分硬币的重量",
+        "why": "这是原文类比信息提取题，C逐字对应。题干仅作措辞澄清；不是说任何面积上的太阳光受力都一样。",
+        "feedback": [
+          "原文没有提到一元硬币。",
+          "原文没有用苹果作比较。",
+          "按原文措辞应选C。",
+          "原文没有用一千克作比较。"
+        ],
+        "kind": "类比定位",
+        "note": "原题“地面上，太阳光的压力与什么相当”缺少受照面积等条件。原文把9牛与2分硬币重量相等同也有疑点，本题只训练定位原文，不将类比认定为可靠物理量。"
+      },
+      {
+        "n": 77,
+        "t": "科学家认为太阳光压有什么作用？",
+        "opts": [
+          "可以消除太空中的重力",
+          "可以使航天器获得更大的质量",
+          "可以改变太阳光的传播方向",
+          "可以推动航天器在太空飞行"
+        ],
+        "a": "D",
+        "p": 3,
+        "quote": "利用太阳光压来推动航天器在太空飞行",
+        "why": "第三段直接点明应用设想。",
+        "feedback": [
+          "太阳光压的作用不等于消除重力，文中也未这么说。",
+          "文中谈推动运动，不是增加质量。",
+          "不是本文所说的航天应用目的。",
+          "直接对应原文的应用设想。"
+        ],
+        "kind": "细节理解",
+        "note": ""
+      },
+      {
+        "n": 78,
+        "t": "太阳光压的大小与什么成正相关？",
+        "opts": [
+          "航天器飞行的时间",
+          "接受太阳照射的面积",
+          "太阳帆的材料厚度",
+          "航天器本身的质量"
+        ],
+        "a": "B",
+        "p": 4,
+        "quote": "受照面积越大，产生的压力越大",
+        "why": "按本文用语，面积越大，受到的总光作用力越大，故B符合文意。",
+        "feedback": [
+          "时间影响文中累积速度的讨论，不是这里的受力关系。",
+          "原文直接建立面积与受力大小的关系。",
+          "文中没有建立厚度与光压的关系。",
+          "文中未说光压与航天器质量成正比。"
+        ],
+        "kind": "关系定位",
+        "note": "原文把“压力（总力）”和“压强（单位面积受力）”的表述混用风险较高；这里应理解为相同照射条件下的总受力。"
+      },
+      {
+        "n": 79,
+        "t": "太阳帆为什么具有全反射性？",
+        "opts": [
+          "因为太阳帆的面积足够大",
+          "因为太阳帆不受空气阻力影响",
+          "因为太阳帆表面镀有铝或银",
+          "因为太阳帆由高分子材料制成"
+        ],
+        "a": "C",
+        "p": 4,
+        "quote": "表面镀铝或银，使其具有全反射的特性",
+        "why": "“使其”明确连接表面镀层与反射特性。",
+        "feedback": [
+          "大面积关系到受力大小，不是文中给出的反射原因。",
+          "空气阻力不是反射性的成因。",
+          "与原文因果关系一致。",
+          "高分子是基材；文中把反射效果归于表面镀层。"
+        ],
+        "kind": "因果定位",
+        "note": "“全反射”是原文用语；此题考查文中因果链，不要求把这种理想化描述当成所有实际材料的绝对反射率。"
+      },
+      {
+        "n": 80,
+        "t": "按原文，航天器具备什么样的速度就可以飞出太阳系？",
+        "opts": [
+          "86.4米/秒",
+          "2592米/秒",
+          "11.23米/秒",
+          "31.54千米/秒"
+        ],
+        "a": "D",
+        "p": 6,
+        "quote": "一年后可达到31.54千米/秒，足以飞出太阳系",
+        "why": "D对应文中“一年后”的速度及其后结论。辨别数值时要同时检查单位。",
+        "feedback": [
+          "文中是一天后的速度。",
+          "文中是一个月后的速度。",
+          "原文为11.23千米/秒，此项还把单位改成了米/秒。",
+          "数值、单位及文中结论均对应。"
+        ],
+        "kind": "数值辨析",
+        "note": "本题按原文作答。原文没有充分交代位置、初速度、受力变化等条件，不能把31.54千米/秒当作任何情境下离开太阳系的通用门槛。"
+      }
+    ]
+  },
+  {
+    "id": "plastic",
+    "title": "塑料也能“种”出来？",
+    "kicker": "81—87 · 绿色塑料",
+    "paras": [
+      "塑料问世后，即被人们广泛地应用到了几乎所有的领域。但是，在塑料应用极大地促进工农业生产发展，丰富和改善人们物质文化生活的同时，也带来严重的“白色污染”问题。塑料不会自行“腐烂”，如果塑料薄膜长期存在于田间，不仅妨碍耕作，而且破坏土壤的水肥及微生物平衡，对农作物生长造成不利影响。发达国家对使用后的塑料曾采用过掩埋、焚烧和回收利用等方法进行处理，但都存在这样那样的不足。为此，从20世纪70年代开始，中外许多科学家为解决“白色污染”问题，纷纷投身于研制“绿色塑料”——可降解塑料。",
+      "所谓“绿色塑料”，并不是指绿颜色的塑料，而是指能够自行降解和再利用，不会污染环境的塑料。具体地说，就是指在一定使用期限内具有与普通塑料制品同样的功效，而在完成一定的功效后能迅速自行降解，与自然环境同化的一类聚合物。因为它对保护环境具有重大意义，所以被称为“绿色塑料”。",
+      "“绿色塑料”的品种很多，这里只介绍光降解型塑料、天然高分子型塑料、微生物高分子型塑料和转基因型塑料四种。",
+      "光降解型塑料是在聚合物中添加少量光敏剂生产出来的塑料。我国科学家从20世纪80年代就开始了对光降解型塑料的研制。中国科学院上海有机化学研究所和长春应用化学研究所研制的光敏剂及其光降解聚乙烯地膜，早在1995年就通过了技术鉴定，并在推广中证明这一技术已经成熟。光降解聚乙烯地膜在光照下，可分解成4×4平方厘米的碎片，即使以后不再分解、长期存在于土壤中，也不会给土壤的物理化学性能造成影响，不会破坏土壤养分。",
+      "天然高分子型塑料是利用纤维素、木质素等天然物质，用化学方法制成的塑料。比如，日本工业技术研究院利用农作物下脚料，如豆秸等制成的可降解农用地膜就是其中的一种。这种天然高分子塑料地膜具有极好的透明度和伸展性，埋在土中只需数日，即可被微生物分解为二氧化碳和水，不会污染环境。",
+      "微生物高分子型塑料是由一种叫真核产碱性细菌先在葡萄糖溶液中生产出生化聚酯，再经过进一步加工生产出的生物塑料。德国哥廷根大学的生物学家通过对一种细菌的特定基因隔离，使植物细胞内部生成聚酯，再利用这种聚酯制成植物型生化塑料。这种塑料在细菌作用下也可分解成水和二氧化碳，不但不污染环境，而且还可作为肥料回馈大自然。",
+      "转基因型塑料是由美国密歇根州立大学的教授索姆维尔等人研制的。他们利用生物工程技术，从一种叫作营养佳良产碱杆菌的土壤细菌中分离出生产塑料的基因，然后把这一基因转移到一种遗传结构简单的油菜籽属植物中，培育出一种适宜种植的名叫多羟丁酸的塑料植物。这种植物的叶、秆、根都能长出多羟丁酸颗粒塑料，用这种颗粒制成的塑料可以完全被降解。受索姆维尔研究的启发，美国密歇根大学的生物学家则干脆将这种塑料基因直接植入土豆和玉米之中，在人工控制下生长出不含有害成分的生物塑料。不久，人们就可以像种庄稼那样大面积种植和收获塑料了。",
+      "目前，可降解塑料大多还处在研究或试产阶段，距大规模推广使用还有一段时间，但科学家卓有成效的研究已经为人们展现出光明的前景。我们坚信，随着研究的加速进展，绿色环保塑料的新时代一定会很快到来。"
+    ],
+    "note": "81—87为你提供的改编选择题。本文保留历史材料表述；“目前”属于原文语境，“碎裂后无害”“不会污染”等强结论不在本练习中作现实科学核验。答案依据文意。",
+    "questions": [
+      {
+        "n": 81,
+        "t": "塑料的广泛应用造成了什么问题？",
+        "opts": [
+          "大量塑料制品被随意丢弃，导致工业生产效率下降。",
+          "塑料难以自然降解，长期残留会破坏土壤环境及生态平衡。",
+          "塑料的生产消耗了过多资源，使农业生产成本不断提高。",
+          "塑料的回收利用技术不成熟，导致其应用范围受到限制。"
+        ],
+        "a": "B",
+        "p": 1,
+        "quote": "不仅妨碍耕作，而且破坏土壤的水肥及微生物平衡",
+        "why": "B概括了不易降解、长期残留以及土壤生态受损的因果链。",
+        "feedback": [
+          "原文说塑料促进生产，未说工业效率下降。",
+          "准确概括白色污染的具体表现。",
+          "原文没有讨论资源消耗导致农业成本上涨。",
+          "原文说广泛应用到几乎所有领域，未说范围受限。"
+        ],
+        "kind": "信息概括",
+        "note": ""
+      },
+      {
+        "n": 82,
+        "t": "“绿色塑料”又叫什么塑料？",
+        "opts": [
+          "以天然绿色植物为主要原料制成的塑料。",
+          "能够循环使用而不需要任何处理的塑料。",
+          "在使用后能够自行降解、与自然环境同化的塑料。",
+          "通过改变颜色减少环境污染的塑料。"
+        ],
+        "a": "C",
+        "p": 1,
+        "quote": "“绿色塑料”——可降解塑料",
+        "why": "第一段直接给出名称；第二段进一步解释可在使用后自行降解、与自然环境同化，故C符合定义。",
+        "feedback": [
+          "绿色指环保属性，不能限定为绿色植物原料。",
+          "原文没有“不需要任何处理”这个绝对条件。",
+          "准确解释可降解塑料的文中定义。",
+          "文章明确说不是指绿颜色的塑料。"
+        ],
+        "kind": "定义辨析",
+        "note": "题干问名称，给定选项却为定义；本页保留原选项，C对应“可降解塑料”。"
+      },
+      {
+        "n": 83,
+        "t": "在光照下，光降解聚乙烯地膜会发生什么变化？",
+        "opts": [
+          "逐渐分解成较小的碎片，不再对土壤的物理化学性能造成影响。",
+          "在较短时间内彻底转化为二氧化碳和水。",
+          "迅速溶解于土壤水分中，转化成农作物所需的养分。",
+          "其化学结构保持不变，但透明度和伸展性明显提高。"
+        ],
+        "a": "A",
+        "p": 4,
+        "quote": "在光照下，可分解成4×4平方厘米的碎片",
+        "why": "A最贴近本段的碎片化描述及原文声称的土壤影响。不能把下一类材料的分解产物移过来。",
+        "feedback": [
+          "与本文第四段描述一致。",
+          "把天然高分子型等材料的分解结果移给本类。",
+          "原文说光照下分解，未说溶解于土壤水分。",
+          "透明度和伸展性在下一段，且并非本类光照后的变化。"
+        ],
+        "kind": "对象辨析",
+        "note": "仅按原文选择A。“变成碎片”与“完全降解”不能直接画等号；本练习不为原文“长期存在也无影响”的强断言背书。"
+      },
+      {
+        "n": 84,
+        "t": "天然高分子型塑料最终可以被分解成什么？",
+        "opts": [
+          "纤维素和木质素。",
+          "葡萄糖和生化聚酯。",
+          "氮气和天然肥料。",
+          "二氧化碳和水。"
+        ],
+        "a": "D",
+        "p": 5,
+        "quote": "即可被微生物分解为二氧化碳和水",
+        "why": "第五段直接给出文中这种地膜的分解产物。",
+        "feedback": [
+          "纤维素和木质素是制作原料，不是所述分解产物。",
+          "来自微生物高分子型塑料的制造介绍，非本题产物。",
+          "原文没有氮气这一产物。",
+          "与原句完全对应。"
+        ],
+        "kind": "过程辨析",
+        "note": ""
+      },
+      {
+        "n": 85,
+        "t": "除了无污染之外，微生物高分子型塑料还有什么作用？",
+        "opts": [
+          "能够改善植物细胞内部的遗传结构。",
+          "可以作为肥料回馈大自然。",
+          "可以取代所有传统农用地膜。",
+          "能够直接提高农作物的光合作用效率。"
+        ],
+        "a": "B",
+        "p": 6,
+        "quote": "不但不污染环境，而且还可作为肥料回馈大自然",
+        "why": "“不但……而且……”标示递进关系，题目问的正是后半项额外作用。",
+        "feedback": [
+          "文中讲基因操作的制造过程，未说使用塑料能改善遗传结构。",
+          "原文直接点明的额外作用。",
+          "“所有”范围扩大，文中没有这一结论。",
+          "文中没有光合作用效率的内容。"
+        ],
+        "kind": "关联词定位",
+        "note": ""
+      },
+      {
+        "n": 86,
+        "t": "转基因型塑料可通过什么生产出来？",
+        "opts": [
+          "在普通聚乙烯中添加光敏剂，使其在光照下逐渐降解。",
+          "利用纤维素、木质素等天然物质进行化学加工。",
+          "将生产塑料的基因植入植物，使植物生长出可降解塑料。",
+          "通过细菌在葡萄糖溶液中发酵，直接制造塑料薄膜。"
+        ],
+        "a": "C",
+        "p": 7,
+        "quote": "将这种塑料基因直接植入土豆和玉米之中",
+        "why": "第七段的核心是分离相关基因、转入植物，再由植物生成塑料。C概括此过程。",
+        "feedback": [
+          "属于光降解型塑料的制作思路。",
+          "属于天然高分子型塑料。",
+          "准确概括转基因型的生产机制。",
+          "混入微生物型的葡萄糖路线，且“直接制造薄膜”并非原文。"
+        ],
+        "kind": "类别辨析",
+        "note": ""
+      },
+      {
+        "n": 87,
+        "t": "“卓有成效”是什么意思？",
+        "opts": [
+          "研究取得了显著而实际的成果。",
+          "研究过程顺利，没有遇到任何困难。",
+          "研究具有创新性，但尚未取得实际成果。",
+          "研究已经全面完成，并开始大规模商业应用。"
+        ],
+        "a": "A",
+        "p": 8,
+        "quote": "但科学家卓有成效的研究已经为人们展现出光明的前景",
+        "why": "“卓”突出显著，“成效”指成果、效果。研究有显著成果，并不意味着毫无困难或已全部商业化。",
+        "feedback": [
+          "符合词义及上文列举的研究成果。",
+          "有成效不能推出过程没有困难。",
+          "“尚未取得成果”与“有成效”相反。",
+          "本段说大多还处研究或试产阶段，尚未大规模推广。"
+        ],
+        "kind": "词义理解",
+        "note": ""
+      }
+    ]
+  }
+]</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('data').textContent), LETTERS=['A','B','C','D'];
+const KEY='hsk-yuejian-v1'; let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){};
+let state={active:'noodles',mode:'exam',answers:{},checked:{},sort:{},sortSeen:false,font:18,...saved};if(!DATA.some(s=>s.id===state.active))state.active=DATA[0].id;
+let mobile='read',filter='all',highlight=null,dialogAction=null,toastTimer;
+const $=id=>document.getElementById(id),esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sec=()=>DATA.find(s=>s.id===state.active), allQ=()=>DATA.flatMap(s=>s.questions), isChecked=q=>!!state.checked[q.n], isWrong=q=>isChecked(q)&&state.answers[q.n]&&state.answers[q.n]!==q.a;
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(state));$('save-status').textContent='进度已自动保存到当前浏览器 · 在线与离线版分别保存'}catch(e){$('save-status').textContent='浏览器未允许本地保存；本次仍可练习，关闭页面后进度可能丢失'}}
+function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').style.display='none',3600)}
+function modal(title,body,action,ok='确定'){ $('dialog-title').textContent=title;$('dialog-body').innerHTML=body;$('dialog-ok').textContent=ok;dialogAction=action;$('dialog-cancel').hidden=!action;$('dialog').showModal() }
+$('dialog-ok').onclick=()=>{$('dialog').close();if(dialogAction)dialogAction()};$('dialog-cancel').onclick=()=>$('dialog').close();
+function renderNav(){ $('nav').innerHTML=DATA.map((s,i)=>{const done=s.questions.filter(q=>!!state.answers[q.n]).length;return `<button data-section="${s.id}" class="${s.id===state.active?'active':''}" ${s.id===state.active?'aria-current="page"':''}><span class="number">${String(i+1).padStart(2,'0')}</span><div><div class="name">${esc(s.title)}</div><div class="sub">${s.sorting?'排序 · 不计分':s.questions[0].n+'—'+s.questions.at(-1).n+'题 · '+done+'/'+s.questions.length}</div></div></button>`}).join('') }
+function renderStats(){const qs=allQ(),done=qs.filter(q=>state.answers[q.n]).length,graded=qs.filter(q=>isChecked(q)&&state.answers[q.n]),correct=graded.filter(q=>state.answers[q.n]===q.a).length,wrong=graded.length-correct; const card=(name,v,suffix,bar='')=>`<div class="stat"><small>${name}</small><strong>${v}</strong><span>${suffix}</span>${bar}</div>`;$('stats').innerHTML=card('总答题进度',done,'/ 41',`<div class="track"><div class="fill" style="width:${done/41*100}%"></div></div>`)+card('已批改',graded.length,'题')+card('已批改正确率',graded.length?Math.round(correct/graded.length*100)+'%':'—','按已答题计算')+card('待复习错题',wrong,'题');document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('on',state.mode===b.dataset.mode)) }
+function renderReading(){let s=sec();$('section-title').textContent=s.title;$('section-meta').textContent=s.kicker;$('reading').innerHTML=`<div class="article-title">${esc(s.title)}</div><div class="article-sub">${esc(s.kicker)} · ${s.paras.length}个${s.sorting?'选项段':'自然段'}</div>${s.note?`<div class="notice">${esc(s.note)}</div>`:''}`+s.paras.map((p,i)=>{let text=esc(p),target=highlight&&highlight.p===i+1;if(target&&highlight.quote&&p.includes(highlight.quote))text=text.replace(esc(highlight.quote),`<mark>${esc(highlight.quote)}</mark>`);return `<p id="p-${i+1}" class="para ${target?'target':''}"><span class="pnum">${s.sorting?String.fromCharCode(65+i):String(i+1).padStart(2,'0')}</span>${text}</p>`}).join('');$('read-footer').textContent=s.sorting?'C段缺失 · 原有A—G选项已保留':'原文保留 · 解析按自然段定位';document.documentElement.style.setProperty('--font',state.font+'px') }
+function renderQuestion(q){const val=state.answers[q.n],checked=isChecked(q),correct=val===q.a;return `<section class="question" id="q-${q.n}"><div class="qtop"><span class="qid">${q.n}</span><span class="qkind">${esc(q.kind)}</span>${checked?`<span class="badge ${!val?'empty':correct?'good':'bad'}">${!val?'未作答':correct?'✓ 正确':'× 错误'}</span>`:''}</div><h3 class="qt">${esc(q.t)}</h3><div class="options" role="radiogroup" aria-label="第${q.n}题">${q.opts.map((o,i)=>{const l=LETTERS[i],sel=val===l;let cls=checked?(l===q.a?'correct':sel?'wrong':''):sel?'selected':'';return `<label class="option ${cls} ${checked?'locked':''}"><input type="radio" name="q${q.n}" value="${l}" data-q="${q.n}" ${sel?'checked':''} ${checked?'disabled':''}><span class="letter">${l}</span><span class="ot">${esc(o)}</span>${checked&&l===q.a?'<span class="result">✓ 答案</span>':checked&&sel?'<span class="result">× 所选</span>':''}</label>`}).join('')}</div>${checked?`<div class="explanation"><strong>参考答案 ${q.a} · ${esc(q.opts[LETTERS.indexOf(q.a)])}</strong><p>${esc(q.why)}</p><div class="evidence"><small>原文依据 · 第${q.p}段</small>“${esc(q.quote)}”</div><button class="btn text" data-evidence="${q.n}">↗ 定位并高亮原文</button><details><summary>逐项辨析 · 为什么其他选项不合适？</summary><div class="feedback">${q.feedback.map((f,i)=>`<div><b>${LETTERS[i]}${LETTERS[i]===q.a?' ✓':''}</b>　${esc(f)}</div>`).join('')}</div></details>${q.note?`<div class="warning">${esc(q.note)}</div>`:''}</div><div class="question-actions"><button class="btn text" data-retry="${q.n}">重新作答此题</button></div>`:state.mode==='practice'?`<div class="question-actions"><button class="btn text" data-check="${q.n}" ${val?'':'disabled'}>检查此题 →</button></div>`:''}</section>` }
+function renderQuestions(keepScroll=false){const before=$('questions').scrollTop,s=sec();$('filter').hidden=!!s.sorting;$('question-label').textContent=s.sorting?'段落排序 · 参考讨论':'选择与思考';if(s.sorting){renderSort();return}let qs=s.questions;if(filter==='wrong')qs=qs.filter(isWrong);if(filter==='unanswered')qs=qs.filter(q=>!state.answers[q.n]);const done=s.questions.filter(q=>state.answers[q.n]).length,graded=s.questions.filter(q=>isChecked(q)&&state.answers[q.n]),correct=graded.filter(q=>state.answers[q.n]===q.a).length;
+$('questions').innerHTML=`${graded.length?`<div class="summary"><strong>本篇已批改 ${graded.length} 题 · 答对 ${correct} 题</strong><br>正确率 ${Math.round(correct/graded.length*100)}%（按已答且已批改题计算） · 未作答 ${s.questions.length-done} 题</div>`:''}<div class="jump-list" style="margin-top:16px" aria-label="题号导航">${s.questions.map(q=>`<button data-jump="${q.n}" class="${isWrong(q)?'fail':state.answers[q.n]?'done':''}">${q.n}</button>`).join('')}</div>`+(qs.length?qs.map(renderQuestion).join(''):`<div class="empty-state">${filter==='wrong'?'当前篇目没有已批改错题。':'当前筛选下没有题目。'}<br><button class="btn text" id="show-all">显示全部题目</button></div>`);
+$('question-footer').innerHTML=`<span>已作答 <b>${done}</b> / ${s.questions.length}</span><div class="actions"><button class="btn" id="reset-section">重练本篇</button><button class="btn primary" id="submit-section">提交本篇并批改</button></div>`;if(keepScroll)$('questions').scrollTop=before }
+function renderSort(){const opts=['A','B','D','E','F','G'],positions=[1,2,4,5,6];let used=Object.values(state.sort).filter(Boolean);$('questions').innerHTML=`<div class="sortbox"><div class="notice">C固定在第3位。请从A、B、D、E、F、G中选5段填入其余位置，并排除1段。由于C正文缺失，本组不计分。</div>${[1,2,3,4,5,6].map(i=>i===3?'<div class="sortrow"><b>位置 3</b><span class="tag">C · 固定位置，正文缺失</span></div>':`<div class="sortrow"><label for="sort${i}">位置 ${i}</label><select id="sort${i}" data-sort="${i}"><option value="">请选择段落</option>${opts.map(o=>`<option value="${o}" ${state.sort[i]===o?'selected':''} ${used.includes(o)&&state.sort[i]!==o?'disabled':''}>${o} 段</option>`).join('')}</select></div>`).join('')}<div class="sortrow"><span>排除的干扰段</span><strong>${used.length===5?opts.find(o=>!used.includes(o)):'完成5个位置后显示'}</strong></div>${state.sortSeen?`<div class="explanation"><strong>参考推断，不能认定为唯一标准答案</strong><div class="ref">B → F → C → A → G → D</div><p>可能的干扰项：E。你的安排：${[1,2,3,4,5,6].map(i=>i===3?'C':state.sort[i]||'＿').join(' → ')}。</p><div class="evidence"><small>线索1 · B与F</small>“曾经”写早期奢华；“此后”转入普及、削减预算。<button class="btn text" data-sort-evidence="2">定位B段</button><button class="btn text" data-sort-evidence="6">定位F段</button></div><div class="evidence"><small>线索2 · A与G</small>A的“该计划”需要前文介绍计划；G重复“厨师的秘密会议”，并交代2013年后的变化。<button class="btn text" data-sort-evidence="1">定位A段</button><button class="btn text" data-sort-evidence="7">定位G段</button></div><p>D以“今天”谈部分航空仍保留的高端餐饮服务，可以作为当代补充；E转向机舱气压、湿度和嗅觉，与飞机餐服务的历史变迁相比，主题衔接较弱。</p><div class="warning">关键限制：无法核对C是否引出“该计划”，也无法排除C与E的潜在衔接。上面的完整顺序属于基于现有段落的暂定推断；补齐C后才可可靠定序。你的排列不判正误。</div></div>`:''}</div>`;$('question-footer').innerHTML=`<span>已填 ${used.length} / 5 · 不计分</span><button class="btn primary" id="analyze-sort">查看参考分析</button>` }
+function render(){renderNav();renderStats();renderReading();renderQuestions();updateMobile()}
+function updateMobile(){ $('read-panel').classList.toggle('hide-mobile',mobile!=='read');$('questions-panel').classList.toggle('hide-mobile',mobile!=='questions');document.querySelectorAll('[data-mobile]').forEach(b=>b.classList.toggle('on',b.dataset.mobile===mobile)) }
+function submit(){const s=sec(),missing=s.questions.filter(q=>!state.answers[q.n]);const action=()=>{s.questions.forEach(q=>state.checked[q.n]=true);persist();renderStats();renderQuestions();$('questions').scrollTop=0;toast('已批改本篇，未作答题不计入正确率。')};if(missing.length)modal('本篇还有未作答题',`<p>还有 ${missing.length} 题未选。继续批改会显示本篇全部参考答案；未作答题单独标注，正确率只统计已答题。</p>`,action,'继续批改');else action() }
+function resetSection(){modal('重新练习本篇',`<p>清除本篇的选择与批改状态，其余篇目的记录保留。</p>`,()=>{sec().questions.forEach(q=>{delete state.answers[q.n];delete state.checked[q.n]});filter='all';$('filter').value='all';highlight=null;persist();render();toast('本篇已重置，可以重新作答。')},'重新练习')}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;if(d.section){state.active=d.section;highlight=null;filter='all';$('filter').value='all';persist();render();$('reading').scrollTop=0;$('questions').scrollTop=0}if(d.mode){state.mode=d.mode;persist();renderStats();renderQuestions(true);toast(d.mode==='practice'?'即时练习：选完后点击“检查此题”。':'独立作答：完成后统一提交批改。')}if(d.mobile){mobile=d.mobile;updateMobile()}if(d.check){state.checked[d.check]=true;persist();renderStats();renderQuestions(true)}if(d.retry){delete state.checked[d.retry];delete state.answers[d.retry];filter='all';$('filter').value='all';persist();renderNav();renderStats();renderQuestions(true);$('q-'+d.retry).scrollIntoView({behavior:'smooth',block:'start'})}if(d.evidence){const q=sec().questions.find(q=>q.n===+d.evidence);highlight={p:q.p,quote:q.quote};renderReading();mobile='read';updateMobile();$('p-'+q.p).scrollIntoView({behavior:'smooth',block:'center'})}if(d.sortEvidence){highlight={p:+d.sortEvidence};renderReading();mobile='read';updateMobile();$('p-'+d.sortEvidence).scrollIntoView({behavior:'smooth',block:'center'})}if(d.jump){filter='all';$('filter').value='all';renderQuestions(true);$('q-'+d.jump).scrollIntoView({behavior:'smooth',block:'start'})}if(b.id==='submit-section')submit();if(b.id==='reset-section')resetSection();if(b.id==='show-all'){filter='all';$('filter').value='all';renderQuestions()}if(b.id==='clear-highlight'){highlight=null;const top=$('reading').scrollTop;renderReading();$('reading').scrollTop=top}if(b.id==='smaller'||b.id==='larger'){state.font=Math.min(26,Math.max(15,state.font+(b.id==='larger'?1:-1)));document.documentElement.style.setProperty('--font',state.font+'px');persist()}if(b.id==='analyze-sort'){if(Object.values(state.sort).filter(Boolean).length<5){toast('请先填完5个可选位置，再查看参考分析。');return}state.sortSeen=true;persist();renderQuestions();toast('已显示参考推断；本组不判正误。')} });
+document.addEventListener('change',e=>{if(e.target.dataset.q){const n=e.target.dataset.q;if(state.checked[n])return;state.answers[n]=e.target.value;persist();renderNav();renderStats();renderQuestions(true);document.querySelector('input[name="q'+n+'"]:checked')?.focus({preventScroll:true})}if(e.target.dataset.sort){state.sort[e.target.dataset.sort]=e.target.value;state.sortSeen=false;persist();renderQuestions(true)}if(e.target.id==='filter'){filter=e.target.value;renderQuestions()}});
+$('help').onclick=()=>modal('如何使用阅见',`<p>① 左侧切换篇目；桌面端可同时看原文与题目。手机使用“阅读原文 / 答题与解析”切换。</p><p>② 独立作答：完成一篇后统一提交。即时练习：每题选择后点击“检查此题”。批改后选项锁定，可点“重新作答此题”。</p><p>③ 解析包含参考答案、推理、逐项辨析，以及可高亮的原文依据。“仅看错题”筛选当前篇目的已批改错题。</p><p>④ 共41道单选题；排序组不计分。第48题与C段缺失；第57题答案有一定歧义；74—87为改编题。科学材料按文意批改，不作为现实事实核验。</p><p>⑤ 下载版是完整单文件HTML，不需联网。进度保存在当前浏览器中，在线与离线不自动同步。禁用存储时仍可练习，但刷新后可能丢失进度。</p>`,null,'知道了');
+$('download').onclick=()=>{const html='<!doctype html>\n'+document.documentElement.outerHTML;const doc=new DOMParser().parseFromString(html,'text/html');['nav','stats','questions','reading','section-title','section-meta','question-footer'].forEach(id=>{const el=doc.getElementById(id);if(el)el.innerHTML=''});doc.getElementById('dialog').removeAttribute('open');doc.getElementById('toast').style.display='none';const blob=new Blob(['<!doctype html>\n'+doc.documentElement.outerHTML],{type:'text/html;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hsk_reading_studio_cn.html';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('离线版已下载，使用浏览器打开HTML即可练习。')};
+render();
+</script></body></html>
